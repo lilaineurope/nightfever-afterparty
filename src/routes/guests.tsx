@@ -245,7 +245,15 @@ function GuestsPage() {
           Fan page for <em>Night Fever</em> by World of Wonder.{" "}
           <Link to="/" className="text-gold transition hover:text-pink">
             Back to home
+          </Link>{" "}
+          &middot;{" "}
+          <Link
+            to="/connections"
+            className="text-gold transition hover:text-pink"
+          >
+            The connection web
           </Link>
+
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           Biographical details compiled from public interviews and press
