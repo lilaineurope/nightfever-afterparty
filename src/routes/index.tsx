@@ -308,6 +308,14 @@ function Index() {
               >
                 Guests
               </Link>
+              <Link
+                to="/connections"
+                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                Connections
+              </Link>
+
+
 
               <a
                 href="https://www.worldofwonder.com/"
