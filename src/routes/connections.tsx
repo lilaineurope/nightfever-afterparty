@@ -39,7 +39,7 @@ function buildEdges(): Edge[] {
       if (seen.has(key) || !guestBySlug[other]) continue;
       seen.add(key);
       const shared = g.scenes.filter((s) =>
-        guestBySlug[other].scenes.includes(s),
+        guestBySlug[other]!.scenes.includes(s),
       );
       edges.push({ a: g.slug, b: other, shared });
     }
@@ -121,8 +121,8 @@ function ConnectionsPage() {
               aria-label="Network map of Night Fever guests and their connections"
             >
               {edges.map((e) => {
-                const p1 = positions[e.a];
-                const p2 = positions[e.b];
+                const p1 = positions[e.a]!;
+                const p2 = positions[e.b]!;
                 const lit =
                   !focus || e.a === focus || e.b === focus;
                 return (
@@ -140,7 +140,7 @@ function ConnectionsPage() {
               })}
 
               {guests.map((g) => {
-                const p = positions[g.slug];
+                const p = positions[g.slug]!;
                 const lit = isLit(g.slug);
                 const size = 7 + (degree[g.slug] ?? 0) * 1.6;
                 const flip = Math.cos(p.angle) < 0;
@@ -189,7 +189,7 @@ function ConnectionsPage() {
             <div className="rounded-2xl border border-pink/30 bg-card p-6 sm:p-8">
               <div className="flex flex-wrap items-baseline justify-between gap-3">
                 <h2 className="text-2xl font-semibold text-gold">
-                  {guestBySlug[focus].name}
+                  {guestBySlug[focus]!.name}
                 </h2>
                 <button
                   type="button"
@@ -200,12 +200,12 @@ function ConnectionsPage() {
                 </button>
               </div>
               <p className="mt-2 text-sm text-card-foreground/80">
-                {guestBySlug[focus].tagline}
+                {guestBySlug[focus]!.tagline}
               </p>
               <ul className="mt-6 space-y-3">
                 {focusEdges.map((e) => {
                   const otherSlug = e.a === focus ? e.b : e.a;
-                  const other = guestBySlug[otherSlug];
+                  const other = guestBySlug[otherSlug]!;
                   return (
                     <li
                       key={otherSlug}
