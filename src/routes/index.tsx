@@ -200,8 +200,17 @@ function Index() {
               </span>
             ))}
           </div>
+          <div className="mt-10 text-center">
+            <Link
+              to="/guests"
+              className="inline-flex items-center gap-2 rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+            >
+              Explore their careers &amp; connections
+            </Link>
+          </div>
         </div>
       </section>
+
 
       {/* Listen */}
       <section className="px-6 py-24">
@@ -293,6 +302,13 @@ function Index() {
               >
                 Home
               </Link>
+              <Link
+                to="/guests"
+                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                Guests
+              </Link>
+
               <a
                 href="https://www.worldofwonder.com/"
                 target="_blank"
