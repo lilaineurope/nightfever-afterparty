@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { decades, guestBySlug, sceneEvents } from "../data/guests";
+import { guestBySlug } from "../data/guests";
+import { decades, sceneEvents } from "../data/scene";
 
 export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
