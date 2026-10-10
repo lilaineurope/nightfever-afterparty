@@ -1,0 +1,983 @@
+[
+ {
+  "category": "Person",
+  "name": "James St. James",
+  "heard": "James St. James",
+  "time": "00:00:11",
+  "context": "Guest of the episode; NYC club kid, writer and co-host of Night Fever",
+  "link": "https://en.wikipedia.org/wiki/James_St._James",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Fenton Bailey",
+  "heard": "Fenton Bailey",
+  "time": "00:00:19",
+  "context": "Co-host; co-founder of World of Wonder. No Wikipedia page of his own; links to WOW",
+  "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Randy Barbato",
+  "heard": "Randy Barbado",
+  "time": "00:00:19",
+  "context": "Co-host; co-founder of World of Wonder. No Wikipedia page of his own; links to WOW",
+  "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Dianne Brill",
+  "heard": "Diane Brill",
+  "time": "00:03:06",
+  "context": "Downtown 'it girl'; James first saw her in Vanity Fair and later approached her in clubs; subject of an earlier episode",
+  "link": "https://en.wikipedia.org/wiki/Dianne_Brill",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Andy Warhol",
+  "heard": "Andy Warhol",
+  "time": "00:03:42",
+  "context": "Teenage obsession; James tells three stories of encountering him",
+  "link": "https://en.wikipedia.org/wiki/Andy_Warhol",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Edie Sedgwick",
+  "heard": "Edie Sedgwick",
+  "time": "00:03:44",
+  "context": "Warhol superstar James idolised as a teenager",
+  "link": "https://en.wikipedia.org/wiki/Edie_Sedgwick",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Sting",
+  "heard": "Sting",
+  "time": "00:05:08",
+  "context": "Pictured with Diane Brill at the Limelight opening",
+  "link": "https://en.wikipedia.org/wiki/Sting_(musician)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Lisa (high-school best friend)",
+  "heard": "Lisa",
+  "time": "00:06:34",
+  "context": "James's best friend in Michigan who shared his obsessions",
+  "link": "",
+  "status": "Private person"
+ },
+ {
+  "category": "Person",
+  "name": "Boy George",
+  "heard": "Boy George",
+  "time": "00:06:53",
+  "context": "Part of the early-80s pop culture James followed",
+  "link": "https://en.wikipedia.org/wiki/Boy_George",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Liza Minnelli",
+  "heard": "Liza Minnelli",
+  "time": "00:08:14",
+  "context": "James compares his first day of high school to her at Studio 54",
+  "link": "https://en.wikipedia.org/wiki/Liza_Minnelli",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Clancy",
+  "heard": "Clancy",
+  "time": "00:10:10",
+  "context": "A school friend of Randy's",
+  "link": "",
+  "status": "Private person"
+ },
+ {
+  "category": "Person",
+  "name": "Gertrude Stein",
+  "heard": "Gertrude Stein",
+  "time": "00:13:09",
+  "context": "Style James imitated in his NYU audition monologue",
+  "link": "https://en.wikipedia.org/wiki/Gertrude_Stein",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Jayne Houdyshell",
+  "heard": "Jane Houdyshell",
+  "time": "00:14:34",
+  "context": "One of James's professors at NYU; Tony-winning actor",
+  "link": "https://en.wikipedia.org/wiki/Jayne_Houdyshell",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Lara Parker",
+  "heard": "Lara Parker",
+  "time": "00:14:42",
+  "context": "NYU teacher James adored; played Angelique in Dark Shadows",
+  "link": "https://en.wikipedia.org/wiki/Lara_Parker",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Lisa Edelstein",
+  "heard": "Lisa Yee / Lisa E.",
+  "time": "00:14:53",
+  "context": "Met James on day one at NYU; his nightlife partner; later an actor; also an earlier guest",
+  "link": "https://en.wikipedia.org/wiki/Lisa_Edelstein",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Michael Musto",
+  "heard": "Musto / Michael Mustow",
+  "time": "00:18:30",
+  "context": "Village Voice columnist; James's early mentor and plus-one; champion of the Pop Tarts",
+  "link": "https://en.wikipedia.org/wiki/Michael_Musto",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Nelson Sullivan",
+  "heard": "Nelson",
+  "time": "00:18:58",
+  "context": "Mutual friend through whom James met Fenton and Randy; linked RuPaul to WOW",
+  "link": "https://en.wikipedia.org/wiki/Nelson_Sullivan",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Divine",
+  "heard": "Divine",
+  "time": "00:20:13",
+  "context": "On James's fantasy dinner-party list",
+  "link": "https://en.wikipedia.org/wiki/Divine_(performer)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Martha Graham",
+  "heard": "Martha Graham",
+  "time": "00:20:13",
+  "context": "On James's fantasy dinner-party list",
+  "link": "https://en.wikipedia.org/wiki/Martha_Graham",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Philip Glass",
+  "heard": "Phillip Glass",
+  "time": "00:20:13",
+  "context": "On James's fantasy dinner-party list",
+  "link": "https://en.wikipedia.org/wiki/Philip_Glass",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Haoui Montaug",
+  "heard": "Howie Montag",
+  "time": "00:20:13",
+  "context": "On James's fantasy dinner-party list; name unclear in transcript. Downtown doorman and No Entiendes cabaret host",
+  "link": "https://en.wikipedia.org/wiki/Haoui_Montaug",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Benjamin Liu",
+  "heard": "Benjamin Lou",
+  "time": "00:22:04",
+  "context": "Warhol's assistant, who later told James about Warhol noticing him",
+  "link": "https://en.wikipedia.org/wiki/Benjamin_Liu",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "DJ Andy Anderson",
+  "heard": "Andy Anderson",
+  "time": "00:22:42",
+  "context": "Organised a paper-fashion show at Limelight; also a filthy-mouth contest judge; name unclear. Confirmed as filthy-mouth contest judge; paper show not found online",
+  "link": "https://gallery98.org/news/portraits-of-club-stars-nightlife-ephemera-the-1980s/",
+  "status": "Partly confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Rosie O'Donnell",
+  "heard": "Rosie O'Donnell",
+  "time": "00:23:26",
+  "context": "Mentioned as someone startled by James's signature greeting",
+  "link": "https://en.wikipedia.org/wiki/Rosie_O%27Donnell",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Tom Daley",
+  "heard": "Tom Daley",
+  "time": "00:23:34",
+  "context": "Person James rushed up to at a premiere; name unclear. The Olympic diver; at the Stop! That! Train! premiere, May 2026",
+  "link": "https://en.wikipedia.org/wiki/Tom_Daley",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Michael Alig",
+  "heard": "Michael Ehlig / Aylin / Alec / ALIG",
+  "time": "00:23:48",
+  "context": "Club Kids founder; James worked his door at the Tunnel; later convicted of killing Angel Melendez",
+  "link": "https://en.wikipedia.org/wiki/Michael_Alig",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Sylvia Miles",
+  "heard": "Sylvia Miles",
+  "time": "00:25:03",
+  "context": "Actress whose plus-one Musto once was",
+  "link": "https://en.wikipedia.org/wiki/Sylvia_Miles",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "DJ Keoki",
+  "heard": "Keoki",
+  "time": "00:26:08",
+  "context": "Club Kids DJ James spent time with at the Tunnel",
+  "link": "https://en.wikipedia.org/wiki/DJ_Keoki",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Anita Sarko",
+  "heard": "Anito",
+  "time": "00:27:33",
+  "context": "Host of Alig's first party, the filthy-mouth contest at Danceteria",
+  "link": "https://en.wikipedia.org/wiki/Anita_Sarko",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Stephen Saban",
+  "heard": "Steven Saban",
+  "time": "00:28:51",
+  "context": "Nightlife columnist who, with Musto, showed James writers could be glamorous. Details magazine founding editor; no Wikipedia page",
+  "link": "https://jezebel.com/new-yorks-club-icons-gather-to-support-the-legendary-st-1721237256",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Marc Jacobs",
+  "heard": "Marc Jacobs",
+  "time": "00:32:06",
+  "context": "Told James the club scene is the celebration, not the work, and that he should write",
+  "link": "https://en.wikipedia.org/wiki/Marc_Jacobs",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Andre 'Angel' Melendez",
+  "heard": "Angel",
+  "time": "00:40:26",
+  "context": "Drug dealer killed by Michael Alig and Robert Riggs in 1996",
+  "link": "https://en.wikipedia.org/wiki/Andre_Melendez",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Daniel Auster",
+  "heard": "Daniel",
+  "time": "00:40:15",
+  "context": "Mentioned in connection with new information about the Melendez killing. No page of his own; linked to the Melendez case page",
+  "link": "https://en.wikipedia.org/wiki/Andre_Melendez",
+  "status": "Partly confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Robert 'Freeze' Riggs",
+  "heard": "Freeze",
+  "time": "00:40:33",
+  "context": "Alig's accomplice in the Melendez killing",
+  "link": "https://en.wikipedia.org/wiki/Andre_Melendez",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Richie Rich",
+  "heard": "Richie Rich",
+  "time": "00:42:26",
+  "context": "Club Kid who appeared in Shampoo Horns",
+  "link": "https://en.wikipedia.org/wiki/Richie_Rich_(designer)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Jonathan Lawrence ('Junky')",
+  "heard": "Junkie Jonathan",
+  "time": "00:42:26",
+  "context": "Club Kid who appeared in Shampoo Horns. Credited as 'Junky' in Shampoo Horns; links to the film",
+  "link": "https://www.imdb.com/title/tt0126660/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Quentin Crisp",
+  "heard": "Quentin Crisp",
+  "time": "00:44:32",
+  "context": "James's comparison for young Fenton's look",
+  "link": "https://en.wikipedia.org/wiki/Quentin_Crisp",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Arnold 'Arnie' Baskin",
+  "heard": "Arnie Baskin",
+  "time": "00:44:58",
+  "context": "NYU film teacher who moved Randy into Fenton's class",
+  "link": "https://www.amny.com/news/cosmopolitan-nyu-film-professor-arnold-baskin-dies/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "RuPaul",
+  "heard": "RuPaul / Rue / Ru",
+  "time": "00:49:22",
+  "context": "WOW's breakthrough star; asked Fenton and Randy to manage him",
+  "link": "https://en.wikipedia.org/wiki/RuPaul",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Person",
+  "name": "Laurie Pike",
+  "heard": "Lori Pike",
+  "time": "00:51:10",
+  "context": "Friend hired to host Manhattan Cable. No page of her own; WOW page lists Manhattan Cable with her",
+  "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Florida",
+  "heard": "Florida",
+  "time": "00:04:18",
+  "context": "Where James's father lived",
+  "link": "https://en.wikipedia.org/wiki/Florida",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Michigan",
+  "heard": "Michigan",
+  "time": "00:04:18",
+  "context": "Where James's mother lived and he went to high school",
+  "link": "https://en.wikipedia.org/wiki/Michigan",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "East Village",
+  "heard": "East Village",
+  "time": "00:07:29",
+  "context": "On James's teenage list of places to live in NYC",
+  "link": "https://en.wikipedia.org/wiki/East_Village,_Manhattan",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "SoHo",
+  "heard": "Soho",
+  "time": "00:07:29",
+  "context": "On James's teenage list of places to live in NYC",
+  "link": "https://en.wikipedia.org/wiki/SoHo,_Manhattan",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Studio 54",
+  "heard": "Studio 54",
+  "time": "00:08:14",
+  "context": "Legendary NYC club (in the Liza Minnelli comparison)",
+  "link": "https://en.wikipedia.org/wiki/Studio_54",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "NYU Tisch School of the Arts",
+  "heard": "Tish",
+  "time": "00:12:46",
+  "context": "Where James auditioned and studied",
+  "link": "https://en.wikipedia.org/wiki/New_York_University_Tisch_School_of_the_Arts",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Experimental Theatre Wing (NYU)",
+  "heard": "experimental theater wing / ETW",
+  "time": "00:12:56",
+  "context": "James's acting programme, which he disliked. No page of its own; links to Tisch",
+  "link": "https://en.wikipedia.org/wiki/New_York_University_Tisch_School_of_the_Arts",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Playwrights Horizons Theater School",
+  "heard": "playwrights horizons",
+  "time": "00:14:20",
+  "context": "Studio James was nudged towards",
+  "link": "https://en.wikipedia.org/wiki/Playwrights_Horizons_Theater_School",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Rubin Hall (NYU dorm)",
+  "heard": "Ruben",
+  "time": "00:15:06",
+  "context": "Dorm where James met Lisa Edelstein",
+  "link": "https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/residence-halls/rubin-hall.html",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Cat Club",
+  "heard": "Cat Club",
+  "time": "00:16:14",
+  "context": "East Village club where Fenton and Randy first met James. Link supplied by you (Cat Lounge NYC); the original club has no Wikipedia page",
+  "link": "https://www.instagram.com/catlounge.nyc",
+  "status": "Partly confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Area",
+  "heard": "area",
+  "time": "00:16:55",
+  "context": "NYC club where Randy remembers meeting James",
+  "link": "https://en.wikipedia.org/wiki/Area_(nightclub)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Danceteria",
+  "heard": "Danceteria",
+  "time": "00:17:04",
+  "context": "NYC club; site of an early meeting and Alig's first party",
+  "link": "https://en.wikipedia.org/wiki/Danceteria",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Limelight",
+  "heard": "Limelight",
+  "time": "00:05:08",
+  "context": "NYC club in a former church; its 'library' lounge is fondly recalled",
+  "link": "https://en.wikipedia.org/wiki/The_Limelight",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "The Tunnel",
+  "heard": "the tunnel",
+  "time": "00:25:58",
+  "context": "Club where James worked the door at Alig's parties",
+  "link": "https://en.wikipedia.org/wiki/Tunnel_(New_York_nightclub)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "The World",
+  "heard": "the world",
+  "time": "00:26:24",
+  "context": "NYC club where James later did the door",
+  "link": "https://en.wikipedia.org/wiki/The_World_(nightclub)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Club USA",
+  "heard": "Club USA",
+  "time": "00:36:24",
+  "context": "Times Square megaclub Fenton calls Alig's greatest creation. No Wikipedia page; Rolling Stone article on Peter Gatien",
+  "link": "https://www.rollingstone.com/culture/culture-features/peter-gatien-club-king-new-york-nightlife-976251/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Miami Beach / South Beach",
+  "heard": "Miami South Beach / Ocean Drive",
+  "time": "00:33:37",
+  "context": "Where James went to write and get clean",
+  "link": "https://en.wikipedia.org/wiki/South_Beach",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Los Angeles",
+  "heard": "L.A.",
+  "time": "00:35:52",
+  "context": "Where James moved and grew close to Fenton and Randy",
+  "link": "https://en.wikipedia.org/wiki/Los_Angeles",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Rikers Island",
+  "heard": "Rikers",
+  "time": "00:38:41",
+  "context": "Jail where Alig was first held",
+  "link": "https://en.wikipedia.org/wiki/Rikers_Island",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Traverse City, Michigan",
+  "heard": "Traverse City",
+  "time": "00:49:16",
+  "context": "Gay bar where James saw RuPaul's video and decided to return to NYC",
+  "link": "https://en.wikipedia.org/wiki/Traverse_City,_Michigan",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Wall Street",
+  "heard": "Wall Street",
+  "time": "00:48:34",
+  "context": "Where Fenton had a day job",
+  "link": "https://en.wikipedia.org/wiki/Wall_Street",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Place",
+  "name": "Madison Avenue",
+  "heard": "Madison Avenue",
+  "time": "00:48:42",
+  "context": "Where Randy worked at an ad agency",
+  "link": "https://en.wikipedia.org/wiki/Madison_Avenue",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Party Monster red carpet",
+  "heard": "party monster red carpet",
+  "time": "00:02:24",
+  "context": "Where Randy told James to give sound bites",
+  "link": "https://en.wikipedia.org/wiki/Party_Monster_(2003_film)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Limelight opening",
+  "heard": "opening of Limelight",
+  "time": "00:05:08",
+  "context": "Event in the Vanity Fair photo of Diane Brill",
+  "link": "https://en.wikipedia.org/wiki/The_Limelight",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Downtown Dukes and Divas",
+  "heard": "Downtown Dukes and Divas",
+  "time": "00:19:04",
+  "context": "Show where James met Fenton and Randy backstage. Gabriel Rotello's revue series, 1985-86; NYU archive of Nelson Sullivan's videos",
+  "link": "https://findingaids.library.nyu.edu/fales/mss_357/contents/aspace_ref10/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Paper fashion show at Limelight",
+  "heard": "paper fashion show",
+  "time": "00:22:42",
+  "context": "Show with outfits made of paper; Warhol photographed James",
+  "link": "",
+  "status": "Not found online"
+ },
+ {
+  "category": "Event",
+  "name": "Filthy Mouth Contest (Danceteria)",
+  "heard": "filthy mouth contest",
+  "time": "00:27:19",
+  "context": "Michael Alig's first party; James was a judge. Source shows a 1987 contest card from the Palladium, not Danceteria",
+  "link": "https://gallery98.org/news/portraits-of-club-stars-nightlife-ephemera-the-1980s/",
+  "status": "Partly confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Death of Andy Warhol (1987)",
+  "heard": "after Andy Warhol died",
+  "time": "00:30:11",
+  "context": "Left a vacuum in the club scene that Alig filled",
+  "link": "https://en.wikipedia.org/wiki/Andy_Warhol#Death",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Outlaw parties",
+  "heard": "outlaw parties",
+  "time": "00:36:35",
+  "context": "Alig's guerrilla parties in unlikely places",
+  "link": "https://en.wikipedia.org/wiki/Club_Kids",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Killing of Angel Melendez (1996)",
+  "heard": "the murder",
+  "time": "00:37:23",
+  "context": "James now believes it was premeditated",
+  "link": "https://en.wikipedia.org/wiki/Andre_Melendez",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "Manhattan Cable sold to Channel 4",
+  "heard": "Manhattan Cable to Channel 4",
+  "time": "00:51:00",
+  "context": "WOW's TV turning point",
+  "link": "https://m.imdb.com/title/tt1223174/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Event",
+  "name": "World of Wonder founded (c. 1988)",
+  "heard": "World of Wonder ... record company",
+  "time": "00:49:48",
+  "context": "Started as a record label to release the Pop Tarts",
+  "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Book",
+  "name": "POPism: The Warhol Sixties",
+  "heard": "popism",
+  "time": "00:04:36",
+  "context": "Book that showed teenage James the downtown scene",
+  "link": "https://en.wikipedia.org/wiki/Popism",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Book",
+  "name": "Edie: An American Biography",
+  "heard": "the book Edie",
+  "time": "00:05:01",
+  "context": "James's 'holy grail' as a teenager. Book by Jean Stein and George Plimpton (1982); no page of its own",
+  "link": "https://en.wikipedia.org/wiki/Jean_Stein",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Book",
+  "name": "Who's Who in America",
+  "heard": "who's who",
+  "time": "00:06:21",
+  "context": "Reference book James combed in the library",
+  "link": "https://en.wikipedia.org/wiki/Marquis_Who%27s_Who",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Book",
+  "name": "Freak Show (James St. James)",
+  "heard": "Freak Show",
+  "time": "00:08:00",
+  "context": "James's novel, which opens with his first day of high school. The novel has no page; links to the 2017 film adaptation",
+  "link": "https://en.wikipedia.org/wiki/Freak_Show_(film)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Book",
+  "name": "Super Freak (unpublished)",
+  "heard": "super freak",
+  "time": "00:34:56",
+  "context": "James's unpublished early-90s manuscript, partly reused in Freak Show",
+  "link": "",
+  "status": "Not found online"
+ },
+ {
+  "category": "Book",
+  "name": "Children's book about a badger (?)",
+  "heard": "the badger",
+  "time": "00:13:31",
+  "context": "Book his mother read him; source of his audition song; title unclear",
+  "link": "",
+  "status": "Not found online"
+ },
+ {
+  "category": "Book",
+  "name": "Disco Bloodbath / Party Monster (James St. James)",
+  "heard": "book deal",
+  "time": "00:52:18",
+  "context": "The book deal Fenton and Randy helped James land",
+  "link": "https://en.wikipedia.org/wiki/Disco_Bloodbath",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Film",
+  "name": "Party Monster (2003)",
+  "heard": "party monster",
+  "time": "00:02:24",
+  "context": "WOW's film about Alig, based on James's book",
+  "link": "https://en.wikipedia.org/wiki/Party_Monster_(2003_film)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Film",
+  "name": "Shampoo Horns (1998)",
+  "heard": "Shampoo Horns",
+  "time": "00:41:14",
+  "context": "Club Kid movie James and Alig starred in",
+  "link": "https://www.imdb.com/title/tt0126660/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Film",
+  "name": "The Bad Seed (1956)",
+  "heard": "pen mark from the bad seed",
+  "time": "00:23:18",
+  "context": "James dressed as Rhoda Penmark",
+  "link": "https://en.wikipedia.org/wiki/The_Bad_Seed_(1956_film)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Film",
+  "name": "Stop! That! Train!",
+  "heard": "Stop That Train premiere",
+  "time": "00:23:34",
+  "context": "Premiere where James rushed a celebrity; title unclear. World of Wonder film; LA premiere May 2026",
+  "link": "https://en.wikipedia.org/wiki/Stop!_That!_Train!",
+  "status": "Confirmed"
+ },
+ {
+  "category": "TV",
+  "name": "Dark Shadows",
+  "heard": "Dark Shadows",
+  "time": "00:14:42",
+  "context": "Soap in which Lara Parker played Angelique",
+  "link": "https://en.wikipedia.org/wiki/Dark_Shadows",
+  "status": "Confirmed"
+ },
+ {
+  "category": "TV",
+  "name": "MTV",
+  "heard": "MTV",
+  "time": "00:06:55",
+  "context": "Early-80s cultural force",
+  "link": "https://en.wikipedia.org/wiki/MTV",
+  "status": "Confirmed"
+ },
+ {
+  "category": "TV",
+  "name": "Night Fever S01E01 – Dianne Brill",
+  "heard": "the Diane Brill episode",
+  "time": "00:03:06",
+  "context": "Earlier Night Fever episode",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
+  "status": "Confirmed"
+ },
+ {
+  "category": "TV",
+  "name": "Night Fever S01E03 – Lisa Edelstein",
+  "heard": "the third episode we did with her",
+  "time": "00:15:28",
+  "context": "Earlier Night Fever episodes with Lisa Edelstein",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-lisa-edelstein",
+  "status": "Confirmed"
+ },
+ {
+  "category": "TV",
+  "name": "Manhattan Cable",
+  "heard": "Manhattan Cable",
+  "time": "00:51:00",
+  "context": "WOW show built from public-access clips",
+  "link": "https://m.imdb.com/title/tt1223174/",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "The Cars – 'Hello Again' video",
+  "heard": "the cars video ... Hello",
+  "time": "00:05:34",
+  "context": "Warhol-directed video featuring Diane Brill",
+  "link": "https://en.wikipedia.org/wiki/Hello_Again_(The_Cars_song)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "The Fabulous Pop Tarts",
+  "heard": "Pop-Tarts",
+  "time": "00:18:30",
+  "context": "Fenton and Randy's band. No page of their own; covered on the WOW page",
+  "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "David Bowie – 'Boys Keep Swinging'",
+  "heard": "To Boys Keep Swinging",
+  "time": "00:46:00",
+  "context": "Song for Fenton and Randy's first joint film-school film",
+  "link": "https://en.wikipedia.org/wiki/Boys_Keep_Swinging",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "'America' (West Side Story)",
+  "heard": "I Like to Live in America",
+  "time": "00:47:04",
+  "context": "Song for Randy's film-school music video",
+  "link": "https://en.wikipedia.org/wiki/America_(West_Side_Story_song)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "Kraftwerk – 'Radioactivity'",
+  "heard": "radioactivity by Kraftwerk",
+  "time": "00:47:18",
+  "context": "Song for Fenton's film-school music video",
+  "link": "https://en.wikipedia.org/wiki/Radio-Activity",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "Tears for Fears",
+  "heard": "tears for fears",
+  "time": "00:48:15",
+  "context": "James teasingly called the Pop Tarts a 'poor man's' version",
+  "link": "https://en.wikipedia.org/wiki/Tears_for_Fears",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "RuPaul – 'Supermodel (You Better Work)'",
+  "heard": "Supermal",
+  "time": "00:49:22",
+  "context": "Video that sent James back to NYC",
+  "link": "https://en.wikipedia.org/wiki/Supermodel_(You_Better_Work)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Music",
+  "name": "Funtone USA – Dick Richards",
+  "heard": "Fund and Records in Atlanta",
+  "time": "00:51:54",
+  "context": "Atlanta label linked to RuPaul; name unclear. Atlanta label that released RuPaul's first records",
+  "link": "https://en.wikipedia.org/wiki/Dick_Richards_(producer)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "Vanity Fair",
+  "heard": "Vanity Fair",
+  "time": "00:05:08",
+  "context": "Where James first saw Diane Brill",
+  "link": "https://en.wikipedia.org/wiki/Vanity_Fair_(magazine)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "New York magazine",
+  "heard": "New York magazine",
+  "time": "00:07:09",
+  "context": "His teenage subscription and city guide",
+  "link": "https://en.wikipedia.org/wiki/New_York_(magazine)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "Newsweek",
+  "heard": "Newsweek",
+  "time": "00:21:56",
+  "context": "Feature that made James a celebutante within months",
+  "link": "https://en.wikipedia.org/wiki/Newsweek",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "People magazine",
+  "heard": "People magazine",
+  "time": "00:25:34",
+  "context": "Photo of James in drag that made his father cut him off",
+  "link": "https://en.wikipedia.org/wiki/People_(magazine)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "'The Death of Downtown' (Michael Musto)",
+  "heard": "The Death of Downtown",
+  "time": "00:30:11",
+  "context": "Musto's piece after Warhol's death. Article not found online; links to Musto",
+  "link": "https://en.wikipedia.org/wiki/Michael_Musto",
+  "status": "Not found online"
+ },
+ {
+  "category": "Publication",
+  "name": "Project X",
+  "heard": "Project X",
+  "time": "00:32:19",
+  "context": "Club-scene magazine James wrote for. No page of its own; mentioned on the Club Kids page",
+  "link": "https://en.wikipedia.org/wiki/Club_Kids",
+  "status": "Partly confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "OutWeek",
+  "heard": "Outweek",
+  "time": "00:33:23",
+  "context": "Magazine where James had a column",
+  "link": "https://en.wikipedia.org/wiki/OutWeek",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Publication",
+  "name": "'Diary of a Mad Queen' (column)",
+  "heard": "Diary of a Mad Queen",
+  "time": "00:33:32",
+  "context": "James's OutWeek column that impressed Fenton and Randy. Column title not confirmed online; links to OutWeek",
+  "link": "https://en.wikipedia.org/wiki/OutWeek",
+  "status": "Partly confirmed"
+ },
+ {
+  "category": "Organisation",
+  "name": "World of Wonder (WOW)",
+  "heard": "World of Wonder",
+  "time": "00:00:19",
+  "context": "Fenton and Randy's production company",
+  "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Organisation",
+  "name": "Club Kids",
+  "heard": "club kid",
+  "time": "00:00:32",
+  "context": "Alig-era nightlife scene James joined",
+  "link": "https://en.wikipedia.org/wiki/Club_Kids",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Organisation",
+  "name": "Village Voice",
+  "heard": "(Musto's paper)",
+  "time": "00:18:30",
+  "context": "Paper Musto wrote for (implied, not named)",
+  "link": "https://en.wikipedia.org/wiki/The_Village_Voice",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Organisation",
+  "name": "Channel 4",
+  "heard": "Channel 4",
+  "time": "00:51:00",
+  "context": "UK broadcaster that bought Manhattan Cable",
+  "link": "https://en.wikipedia.org/wiki/Channel_4",
+  "status": "Confirmed"
+ },
+ {
+  "category": "Podcast",
+  "name": "Night Fever – James St. James (S06E01)",
+  "heard": "—",
+  "time": "00:00:00",
+  "context": "This episode",
+  "link": "https://podcasts.apple.com/us/podcast/night-fever/id1584126843",
+  "status": "Confirmed"
+ }
+]
