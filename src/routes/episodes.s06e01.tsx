@@ -63,14 +63,10 @@ function EpisodePage() {
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
-  const enriched = useMemo(() => {
-    const counts: Record<string, number> = {};
-    refs.forEach((r) => (counts[r.name] = (counts[r.name] ?? 0) + 1));
-    return refs.map((r) => {
-      const x = crossLinks(r.name);
-      return { ...r, ...x, mentions: counts[r.name]! + x.events.length + (x.guest ? 1 : 0) };
-    });
-  }, []);
+  const enriched = useMemo(
+    () => refs.map((r) => ({ ...r, ...crossLinks(r.name) })),
+    [],
+  );
 
   const cats = ["All", ...Array.from(new Set(refs.map((r) => r.category)))];
   const list = enriched
