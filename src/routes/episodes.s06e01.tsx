@@ -43,7 +43,7 @@ export const Route = createFileRoute("/episodes/s06e01")({
 });
 
 const toSec = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);
-const spotifyAt = (t: string) => `${EPISODE_URL}?t=${toSec(t)}`;
+void toSec; // Spotify web ignores ?t= on episode links; timestamps are shown as seek hints instead
 
 // How often a name comes up across the rest of the show (guests + scene timeline)
 function crossLinks(name: string) {
