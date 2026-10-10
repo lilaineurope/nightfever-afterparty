@@ -5,6 +5,8 @@ import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
 
 type Ref = {
+  rank: number;
+  mentions: number;
   category: string;
   name: string;
   heard: string;
@@ -61,14 +63,10 @@ function EpisodePage() {
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
-  const enriched = useMemo(() => {
-    const counts: Record<string, number> = {};
-    refs.forEach((r) => (counts[r.name] = (counts[r.name] ?? 0) + 1));
-    return refs.map((r) => {
-      const x = crossLinks(r.name);
-      return { ...r, ...x, mentions: counts[r.name]! + x.events.length + (x.guest ? 1 : 0) };
-    });
-  }, []);
+  const enriched = useMemo(
+    () => refs.map((r) => ({ ...r, ...crossLinks(r.name) })),
+    [],
+  );
 
   const cats = ["All", ...Array.from(new Set(refs.map((r) => r.category)))];
   const list = enriched
@@ -164,8 +162,8 @@ function EpisodePage() {
             ))}
           </ul>
           <p className="mt-8 text-xs text-muted-foreground">
-            Mentions = this episode plus appearances across other Night Fever guests and the scene timeline.
-            Timestamps are first mention. <Link to="/connections" className="text-gold hover:text-pink">See the connection web &rarr;</Link>
+            Mention counts are from the episode transcript; timestamps mark the first mention.{" "}
+            <Link to="/connections" className="text-gold hover:text-pink">See the connection web &rarr;</Link>
           </p>
         </div>
       </section>
