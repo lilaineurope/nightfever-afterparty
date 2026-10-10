@@ -19,8 +19,7 @@ export type Episode = {
   top: { name: string; mentions: number }[];
 };
 
-export const episodes: Episode[] = [
-  {
+const s06e01: Episode = {
     id: "s06e01",
     season: 6,
     episode: 1,
@@ -36,7 +35,8 @@ export const episodes: Episode[] = [
       { name: "Andy Warhol", mentions: 24 },
       { name: "Michael Alig", mentions: 21 },
     ],
-  },
-];
+};
 
-export const latestEpisode = episodes[episodes.length - 1];
+export const episodes: Episode[] = [s06e01];
+
+export const latestEpisode: Episode = s06e01;
