@@ -5,6 +5,8 @@ import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
 
 type Ref = {
+  rank: number;
+  mentions: number;
   category: string;
   name: string;
   heard: string;
