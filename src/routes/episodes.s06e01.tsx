@@ -121,8 +121,7 @@ function EpisodePage() {
           <ul className="mt-6 divide-y divide-border">
             {list.map((r, i) => (
               <li key={r.name + i} className="grid gap-3 py-5 sm:grid-cols-[90px_1fr_auto]">
-                <a href={spotifyAt(r.time)} target="_blank" rel="noreferrer"
-                  className="font-mono text-sm text-gold hover:text-pink">{r.time}</a>
+                <span className="font-mono text-sm text-gold" title="Spotify can't jump to a moment from a link — use this time to seek in the player">{r.time}</span>
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">
                     {r.link ? (
