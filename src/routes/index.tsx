@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImage from "../assets/hero.jpg";
+import { latestEpisode } from "../data/episodes";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -152,6 +153,64 @@ function Index() {
           <p className="mt-4 text-muted-foreground">
             Six seasons. Dozens of guests. One unforgettable scene.
           </p>
+        </div>
+      </section>
+
+      {/* Latest release */}
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
+            Latest release
+          </p>
+          <div className="mt-6 grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:grid-cols-[1fr_1.3fr]">
+            <div className="disco-grid border-b border-border p-8 md:border-b-0 md:border-r">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                Season {latestEpisode.season} &middot; Episode{" "}
+                {latestEpisode.episode}
+              </p>
+              <h3 className="mt-3 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow">
+                {latestEpisode.guest}
+              </h3>
+              <p className="mt-5 text-sm text-muted-foreground">
+                {latestEpisode.runtime} &middot; {latestEpisode.references}{" "}
+                tagged references &middot; {latestEpisode.mentions} mentions
+              </p>
+            </div>
+            <div className="p-8">
+              <p className="text-base leading-relaxed text-card-foreground/85">
+                {latestEpisode.blurb}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {latestEpisode.top.map((t) => (
+                  <span
+                    key={t.name}
+                    className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold"
+                  >
+                    {t.name}
+                    <span className="ml-1.5 text-muted-foreground">
+                      {t.mentions} mentions
+                    </span>
+                  </span>
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={latestEpisode.audioUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                >
+                  Listen on Spotify
+                </a>
+                <Link
+                  to="/episodes/s06e01"
+                  className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                >
+                  Every name, timestamped &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -313,6 +372,18 @@ function Index() {
                 className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
                 Connections
+              </Link>
+              <Link
+                to="/timeline"
+                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                Timeline
+              </Link>
+              <Link
+                to="/episodes/s06e01"
+                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                Latest episode
               </Link>
 
 

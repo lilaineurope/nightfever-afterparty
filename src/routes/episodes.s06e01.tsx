@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import refsRaw from "../data/s06e01.json";
 import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
+import { latestEpisode } from "../data/episodes";
 
 type Ref = {
   rank: number;
@@ -17,7 +18,7 @@ type Ref = {
 };
 
 const refs = refsRaw as Ref[];
-const EPISODE_URL = "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4";
+const EPISODE_URL = latestEpisode.audioUrl;
 
 export const Route = createFileRoute("/episodes/s06e01")({
   component: EpisodePage,
