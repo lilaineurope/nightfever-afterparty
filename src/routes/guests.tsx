@@ -252,6 +252,13 @@ function GuestsPage() {
             className="text-gold transition hover:text-pink"
           >
             The connection web
+          </Link>{" "}
+          &middot;{" "}
+          <Link
+            to="/episodes/s06e01"
+            className="text-gold transition hover:text-pink"
+          >
+            Latest episode: James St. James
           </Link>
 
         </p>
