@@ -162,8 +162,8 @@ function EpisodePage() {
             ))}
           </ul>
           <p className="mt-8 text-xs text-muted-foreground">
-            Mentions = this episode plus appearances across other Night Fever guests and the scene timeline.
-            Timestamps are first mention. <Link to="/connections" className="text-gold hover:text-pink">See the connection web &rarr;</Link>
+            Mention counts are from the episode transcript; timestamps mark the first mention.{" "}
+            <Link to="/connections" className="text-gold hover:text-pink">See the connection web &rarr;</Link>
           </p>
         </div>
       </section>
