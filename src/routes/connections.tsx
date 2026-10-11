@@ -75,6 +75,8 @@ function buildEdges(): Edge[] {
 const SIZE = 760;
 const R_OUTER = 300;
 const R_INNER = 150;
+// Room outside the ring so long names are not cut off at the edge.
+const PAD = 130;
 
 function ConnectionsPage() {
   const edges = useMemo(buildEdges, []);
@@ -193,8 +195,8 @@ function ConnectionsPage() {
         <div className="mx-auto max-w-4xl">
           <div className="rounded-3xl border border-gold/20 bg-card p-2 sm:p-6">
             <svg
-              viewBox={`0 0 ${SIZE} ${SIZE}`}
-              className="mx-auto h-auto w-full max-w-[760px]"
+              viewBox={`${-PAD} 0 ${SIZE + PAD * 2} ${SIZE}`}
+              className="mx-auto h-auto w-full max-w-[900px]"
               role="group"
               aria-label="Network map of Night Fever guests, the nights they shared and the figures around them. Every name opens its own overview card."
               onMouseLeave={() => setHover(null)}
@@ -236,11 +238,14 @@ function ConnectionsPage() {
                 );
               })}
 
-              {recurringFigures.map(({ name, events }) => {
+              {recurringFigures.map(({ name, events }, i) => {
                 const p = positions[name]!;
                 const lit =
                   !active || events.some((e) => e.people.includes(active));
                 const flip = Math.cos(p.angle) < 0;
+                // Alternate the label distance so names on the crowded inner
+                // ring do not land on top of each other.
+                const off = i % 2 === 0 ? 14 : 40;
                 const entity = entityFor(name);
                 const external = name === "World of Wonder";
                 const href = external
@@ -260,8 +265,8 @@ function ConnectionsPage() {
                 );
                 const label = (
                   <text
-                    x={(p.x + Math.cos(p.angle) * 12).toFixed(2)}
-                    y={(p.y + Math.sin(p.angle) * 12).toFixed(2)}
+                    x={(p.x + Math.cos(p.angle) * off).toFixed(2)}
+                    y={(p.y + Math.sin(p.angle) * off).toFixed(2)}
                     textAnchor={flip ? "end" : "start"}
                     dominantBaseline="middle"
                     fontSize="11"
