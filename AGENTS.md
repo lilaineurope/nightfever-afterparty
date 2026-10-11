@@ -22,3 +22,5 @@
 - S01E01 and S01E02 use a shared MoodSpectrum that reads optional `colours` arrays from reference JSON and preserves route-specific fallback swatches, so palette length and exact values are data-driven without changing unprovided looks.
 - Home and Episodes lists use the shared EpisodeBlock with portraits mapped by episode ID and confined to the title panel; optional date lines preserve the Episodes page dates and ranking while keeping both layouts consistent.
 - The Episodes index imports its own cross-episode reference collage only in its title section, so its artwork never changes the home or individual episode headers.
+
+- Connections uses episode-connections derived from shared entities filtered to registered, spoken timestamped Person references; its bipartite graph connects people to episode hubs, never inferring meetings from co-mentions or reading scene relationships.
