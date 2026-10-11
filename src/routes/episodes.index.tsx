@@ -9,13 +9,13 @@ export const Route = createFileRoute("/episodes/")({
       {
         name: "description",
         content:
-          "Every tagged Night Fever episode, newest release first: each guest, every name, place and look mentioned, counted and timestamped.",
+          "Every tagged Night Fever episode, listed by afterparty publish date, newest first: each guest, every name, place and look mentioned, counted and timestamped.",
       },
       { property: "og:title", content: "Episodes — Night Fever fan page" },
       {
         property: "og:description",
         content:
-          "Every tagged Night Fever episode, newest release first: each guest, every name, place and look mentioned, counted and timestamped.",
+          "Every tagged Night Fever episode, listed by afterparty publish date, newest first: each guest, every name, place and look mentioned, counted and timestamped.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -34,10 +34,12 @@ function formatReleased(iso: string) {
 }
 
 function EpisodesPage() {
-  // Ranked by publishing date: the episode published most recently comes first.
-  const byPublishingDate = [...episodes].sort(
+  // Ranked by afterparty publish date: the connection published here most
+  // recently comes first. This is the date the index went live on this site,
+  // not the date the episode was published at WOW Presents Plus.
+  const byAfterpartyPublishDate = [...episodes].sort(
     (a, b) =>
-      b.released.localeCompare(a.released) ||
+      b.afterpartyPublished.localeCompare(a.afterpartyPublished) ||
       b.season - a.season ||
       b.episode - a.episode,
   );
@@ -59,7 +61,7 @@ function EpisodesPage() {
             linked to the moment you can hear it.
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold/80">
-            Listed newest release first
+            Listed by afterparty publish date, newest first
           </p>
         </div>
       </section>
@@ -67,7 +69,7 @@ function EpisodesPage() {
       {/* Episode list */}
       <section className="px-6 pb-24">
         <div className="mx-auto flex max-w-4xl flex-col gap-6">
-          {byPublishingDate.map((ep) => (
+          {byAfterpartyPublishDate.map((ep) => (
             <div
               key={ep.id}
               className="rounded-3xl border border-gold/25 bg-card p-8 transition hover:border-gold/50"
@@ -77,7 +79,7 @@ function EpisodesPage() {
                   Season {ep.season} &middot; Episode {ep.episode}
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Released {formatReleased(ep.released)} &middot; {ep.runtime}
+                  Afterparty publish date {formatReleased(ep.afterpartyPublished)} &middot; {ep.runtime}
                 </p>
               </div>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-cream text-glow">
