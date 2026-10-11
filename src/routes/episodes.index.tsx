@@ -97,7 +97,7 @@ function EpisodesPage() {
                   to={episodePath(ep.id)}
                   className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                 >
-                  Every name, timestamped &rarr;
+                  Afterparty connection &rarr;
                 </Link>
                 <a
                   href={ep.audioUrl}
