@@ -4,6 +4,7 @@ import refsRaw from "../data/s06e01.json";
 import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
 import { latestEpisode } from "../data/episodes";
+import { Button } from "@/components/ui/button";
 
 type Ref = {
   rank: number;
@@ -15,6 +16,7 @@ type Ref = {
   context: string;
   link: string;
   status: string;
+  fashion?: string;
 };
 
 const refs = refsRaw as Ref[];
@@ -28,12 +30,12 @@ export const Route = createFileRoute("/episodes/s06e01")({
       {
         name: "description",
         content:
-          "Every person, club, book, song and event mentioned in Night Fever Season 6 Episode 1 with James St. James, with timestamps and links.",
+           `All ${refs.length} references in Night Fever Season 6 Episode 1 with James St. James, with timestamps, links and fashion notes.`,
       },
       { property: "og:title", content: "James St. James — Night Fever S6 E1 Reference Index" },
       {
         property: "og:description",
-        content: "All 109 names, places and works dropped in the James St. James episode, timestamped and linked.",
+         content: `All ${refs.length} names, places, works and looks from the James St. James episode, with timestamps, links and fashion notes.`,
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -72,12 +74,17 @@ function EpisodePage() {
 
   const cats = ["All", ...Array.from(new Set(refs.map((r) => r.category)))];
   const list = enriched
-    .filter((r) => cat === "All" || r.category === cat)
-    .sort((a, b) =>
-      sort === "time"
+    .filter((r) => cat === "Fashion" ? r.fashion !== undefined : cat === "All" || r.category === cat)
+    .sort((a, b) => {
+      if (a.time === "On camera" || b.time === "On camera") {
+        if (a.time === b.time) return a.rank - b.rank;
+        return a.time === "On camera" ? 1 : -1;
+      }
+      return sort === "time"
         ? toSec(a.time) - toSec(b.time)
-        : b.mentions - a.mentions || toSec(a.time) - toSec(b.time),
-    );
+         : b.mentions - a.mentions || toSec(a.time) - toSec(b.time);
+    });
+  const moods = refs.filter((r) => r.category === "Mood");
 
   const btn = (on: boolean) =>
     `rounded-full border px-4 py-1.5 text-sm transition ${
@@ -94,8 +101,8 @@ function EpisodePage() {
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season 6 · Episode 1</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">James St. James</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-            Every name, club, book, song and night dropped in the interview &mdash; {refs.length} references, each
-            with the moment it comes up. Click a timestamp to jump there in Spotify.
+            Every name, club, book, song, night and look from the interview &mdash; {refs.length} references
+            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions.
           </p>
           <a href={EPISODE_URL} target="_blank" rel="noreferrer"
             className="mt-6 inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
@@ -104,26 +111,53 @@ function EpisodePage() {
         </div>
       </section>
 
+      <section aria-labelledby="episode-mood" className="px-6 pb-12">
+        <div className="mx-auto max-w-5xl">
+          <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
+          {[
+            { title: "On screen", entries: moods.filter((r) => r.time === "On camera") },
+            { title: "In the stories", entries: moods.filter((r) => r.time !== "On camera") },
+          ].map((group) => (
+            <div key={group.title} className="mt-6">
+              <h3 className="mb-3 text-sm font-medium uppercase text-gold">{group.title}</h3>
+              <div className="grid gap-4 md:grid-cols-3">
+                {group.entries.map((r) => (
+                  <article key={r.rank} className="rounded-lg border border-border bg-card p-5">
+                    <h4 className="font-semibold text-cream">{r.name}</h4>
+                    {r.fashion && <p className="mt-3 text-sm text-foreground">{r.fashion}</p>}
+                    <p className="mt-3 text-sm text-muted-foreground">{r.context}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <span className="self-center text-sm text-muted-foreground">Sort:</span>
-              <button className={btn(sort === "mentions")} onClick={() => setSort("mentions")}>Most mentioned</button>
-              <button className={btn(sort === "time")} onClick={() => setSort("time")}>Timestamp</button>
+              <Button variant="outline" aria-pressed={sort === "mentions"} className={btn(sort === "mentions")} onClick={() => setSort("mentions")}>Most mentioned</Button>
+              <Button variant="outline" aria-pressed={sort === "time"} className={btn(sort === "time")} onClick={() => setSort("time")}>Timestamp</Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {cats.map((c) => (
-                <button key={c} className={btn(cat === c)} onClick={() => setCat(c)}>{c}</button>
+              {[...cats, "Fashion"].map((c) => (
+                <Button variant="outline" aria-pressed={cat === c} key={c} className={btn(cat === c)} onClick={() => setCat(c)}>{c}</Button>
               ))}
             </div>
           </div>
 
-          <ul className="mt-6 divide-y divide-border">
+          <ul aria-label="Episode references" className="mt-6 divide-y divide-border">
             {list.map((r, i) => (
               <li key={r.name + i} className="grid gap-3 py-5 sm:grid-cols-[90px_1fr_auto]">
-                <a href={spotifyAt(r.time)} target="_blank" rel="noreferrer"
-                  className="font-mono text-sm text-gold hover:text-pink">{r.time}</a>
+                {r.time === "On camera" ? (
+                  <span className="text-sm text-gold">On camera</span>
+                ) : (
+                  <a href={spotifyAt(r.time)} target="_blank" rel="noreferrer"
+                    className="font-mono text-sm text-gold hover:text-pink">{r.time}</a>
+                )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">
                     {r.link ? (
@@ -138,6 +172,11 @@ function EpisodePage() {
                     )}
                   </div>
                   <p className="mt-1 text-sm text-muted-foreground">{r.context}</p>
+                  {r.fashion && (
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      <span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span>{r.fashion}
+                    </p>
+                  )}
                   {r.heard && r.heard !== r.name && (
                     <p className="mt-1 text-xs italic text-muted-foreground/70">Heard as &ldquo;{r.heard}&rdquo;</p>
                   )}
@@ -157,7 +196,7 @@ function EpisodePage() {
                   )}
                 </div>
                 <div className="text-right text-sm text-muted-foreground sm:w-20">
-                  <span className="text-2xl font-bold text-cream">{r.mentions}</span>
+                  <span className="text-2xl font-bold text-cream">{r.mentions === 0 ? "—" : r.mentions}</span>
                   <div className="text-xs">mention{r.mentions === 1 ? "" : "s"}</div>
                 </div>
               </li>
