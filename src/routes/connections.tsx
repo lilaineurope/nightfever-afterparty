@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useMemo, useState, type MouseEvent } from "react";
 import { guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
 import { eventsByGuest, recurringFigures, sceneEvents } from "../data/scene";
+import { entityFor } from "../data/entities";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 
@@ -73,11 +74,29 @@ function buildEdges(): Edge[] {
 
 const SIZE = 760;
 const R_OUTER = 300;
-const R_INNER = 150;
+const R_INNER = 168;
+// Room outside the ring so long names are not cut off at the edge.
+const PAD = 130;
+
+// Rounded to 3 decimals: server and browser float math can differ in the last
+// digit, which React reports as a hydration mismatch.
+const round3 = (n: number) => Math.round(n * 1000) / 1000;
 
 function ConnectionsPage() {
   const edges = useMemo(buildEdges, []);
   const [focus, setFocus] = useState<string | null>(null);
+  const [hover, setHover] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  // Every dot is a real link to that name's overview card. A plain click stays
+  // inside the app; cmd/ctrl/shift/middle-click still opens a new tab.
+  const openCard = (slug: string) => (e: MouseEvent) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+      return;
+    }
+    e.preventDefault();
+    navigate({ to: "/explore/$slug", params: { slug } });
+  };
 
   const positions = useMemo(() => {
     // Rounded to 3 decimals: server and browser float math can differ in the
@@ -103,7 +122,6 @@ function ConnectionsPage() {
     return map;
   }, []);
 
-
   // guest <-> recurring figure links, drawn faintly behind the guest web
   const figureLinks = useMemo(() => {
     const out: { slug: string; name: string }[] = [];
@@ -123,16 +141,60 @@ function ConnectionsPage() {
     return d;
   }, [edges]);
 
+  // The inner ring holds 22 names in a small circle, so their labels are pushed
+  // apart vertically: two names on the same side of the map never share a line.
+  const figureLabels = useMemo(() => {
+    const MIN_GAP = 14;
+    const out: Record<
+      string,
+      { x: number; y: number; anchor: "start" | "end" }
+    > = {};
+    for (const side of ["left", "right"] as const) {
+      const items = recurringFigures
+        .map(({ name }) => ({ name, p: positions[name]! }))
+        .filter(({ p }) => (Math.cos(p.angle) < 0) === (side === "left"))
+        .sort((a, b) => a.p.y - b.p.y);
+      const placed: { name: string; base: number; y: number }[] = [];
+      let prev = -Infinity;
+      for (const { name, p } of items) {
+        const base = p.y + Math.sin(p.angle) * 12;
+        const y = Math.max(base, prev + MIN_GAP);
+        prev = y;
+        placed.push({ name, base, y });
+      }
+      // Slide the column back so the labels stay near their own dots.
+      const last = placed[placed.length - 1];
+      const drift = last ? (last.y - last.base) / 2 : 0;
+      for (const { name, p } of items) {
+        const found = placed.find((q) => q.name === name)!;
+        out[name] = {
+          x: round3(p.x + Math.cos(p.angle) * 14),
+          y: round3(found.y - drift),
+          anchor: Math.cos(p.angle) < 0 ? "end" : "start",
+        };
+      }
+    }
+    return out;
+  }, [positions]);
+
+  // A hovered name lights up the web; a pinned name (from the connectors list
+  // below) also fills in the detail panel.
+  const active = focus ?? hover;
+  const activeEdges = active
+    ? edges.filter((e) => e.a === active || e.b === active)
+    : [];
+  const isLit = (slug: string) =>
+    !active ||
+    slug === active ||
+    activeEdges.some((e) => e.a === slug || e.b === slug);
+
   const focusEdges = focus
     ? edges.filter((e) => e.a === focus || e.b === focus)
     : [];
-  const isLit = (slug: string) =>
-    !focus ||
-    slug === focus ||
-    focusEdges.some((e) => e.a === slug || e.b === slug);
-
   const focusFigures = focus
-    ? recurringFigures.filter((f) => f.events.some((e) => e.people.includes(focus)))
+    ? recurringFigures.filter((f) =>
+        f.events.some((e) => e.people.includes(focus)),
+      )
     : [];
   const focusEvents = focus ? (eventsByGuest[focus] ?? []) : [];
 
@@ -155,9 +217,9 @@ function ConnectionsPage() {
             <span className="text-pink text-glow-pink">everyone</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Listen to enough episodes and the same names keep coming back. Tap
-            anyone below to see who they came up with, which nights they were
-            both at, and the famous names orbiting all of them.
+            Listen to enough episodes and the same names keep coming back. Click
+            anyone below to open their card: who they came up with, which nights
+            they were both at, and the famous names orbiting all of them.
           </p>
           <Link
             to="/timeline"
@@ -173,16 +235,17 @@ function ConnectionsPage() {
         <div className="mx-auto max-w-4xl">
           <div className="rounded-3xl border border-gold/20 bg-card p-2 sm:p-6">
             <svg
-              viewBox={`0 0 ${SIZE} ${SIZE}`}
-              className="mx-auto h-auto w-full max-w-[760px]"
-              role="img"
-              aria-label="Network map of Night Fever guests, the nights they shared and the figures around them"
+              viewBox={`${-PAD} 0 ${SIZE + PAD * 2} ${SIZE}`}
+              className="mx-auto h-auto w-full max-w-[900px]"
+              role="group"
+              aria-label="Network map of Night Fever guests, the nights they shared and the figures around them. Every name opens its own overview card."
+              onMouseLeave={() => setHover(null)}
             >
               {/* faint inner links to recurring figures */}
               {figureLinks.map(({ slug, name }) => {
                 const p1 = positions[slug]!;
                 const p2 = positions[name]!;
-                const lit = !focus || slug === focus;
+                const lit = !active || slug === active;
                 return (
                   <line
                     key={`${slug}-${name}`}
@@ -191,7 +254,7 @@ function ConnectionsPage() {
                     x2={p2.x}
                     y2={p2.y}
                     stroke="var(--color-gold)"
-                    strokeOpacity={lit ? (focus ? 0.4 : 0.12) : 0.04}
+                    strokeOpacity={lit ? (active ? 0.4 : 0.12) : 0.04}
                     strokeWidth={1}
                   />
                 );
@@ -200,7 +263,7 @@ function ConnectionsPage() {
               {edges.map((e) => {
                 const p1 = positions[e.a]!;
                 const p2 = positions[e.b]!;
-                const lit = !focus || e.a === focus || e.b === focus;
+                const lit = !active || e.a === active || e.b === active;
                 return (
                   <line
                     key={`${e.a}-${e.b}`}
@@ -209,8 +272,8 @@ function ConnectionsPage() {
                     x2={p2.x}
                     y2={p2.y}
                     stroke={lit ? "var(--color-pink)" : "var(--color-border)"}
-                    strokeOpacity={lit ? (focus ? 0.85 : 0.35) : 0.15}
-                    strokeWidth={lit && focus ? 2 : 1}
+                    strokeOpacity={lit ? (active ? 0.85 : 0.35) : 0.15}
+                    strokeWidth={lit && active ? 2 : 1}
                   />
                 );
               })}
@@ -218,40 +281,71 @@ function ConnectionsPage() {
               {recurringFigures.map(({ name, events }) => {
                 const p = positions[name]!;
                 const lit =
-                  !focus || events.some((e) => e.people.includes(focus));
-                const flip = Math.cos(p.angle) < 0;
+                  !active || events.some((e) => e.people.includes(active));
+                const lab = figureLabels[name]!;
+                const entity = entityFor(name);
+                const external = name === "World of Wonder";
+                const href = external
+                  ? WOW_URL
+                  : entity
+                    ? `/explore/${entity.slug}`
+                    : undefined;
+                const cardSlug = external ? undefined : entity?.slug;
+                const dot = (
+                  <circle
+                    cx={p.x}
+                    cy={p.y}
+                    r={3 + events.length}
+                    fill="var(--color-cream)"
+                    fillOpacity={0.55}
+                  />
+                );
+                const label = (
+                  <text
+                    x={lab.x.toFixed(2)}
+                    y={lab.y.toFixed(2)}
+                    textAnchor={lab.anchor}
+                    dominantBaseline="middle"
+                    fontSize="11"
+                    fill="var(--color-cream)"
+                    fillOpacity={0.7}
+                    className={
+                      external
+                        ? "underline decoration-gold/60 underline-offset-2 hover:fill-[var(--color-gold)]"
+                        : undefined
+                    }
+                  >
+                    {name}
+                  </text>
+                );
                 return (
-                  <g key={name} opacity={lit ? 1 : 0.15}>
-                    <circle
-                      cx={p.x}
-                      cy={p.y}
-                      r={3 + events.length}
-                      fill="var(--color-cream)"
-                      fillOpacity={0.55}
-                    />
-                    <text
-                      x={(p.x + Math.cos(p.angle) * 12).toFixed(2)}
-                      y={(p.y + Math.sin(p.angle) * 12).toFixed(2)}
-
-                      textAnchor={flip ? "end" : "start"}
-                      dominantBaseline="middle"
-                      fontSize="11"
-                      fill="var(--color-cream)"
-                      fillOpacity={0.7}
-                    >
-                      {name === "World of Wonder" ? (
-                        <a
-                          href={WOW_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline decoration-gold/60 underline-offset-2 hover:fill-[var(--color-gold)]"
-                        >
-                          {name}
-                        </a>
-                      ) : (
-                        name
-                      )}
-                    </text>
+                  <g
+                    key={name}
+                    opacity={lit ? 1 : 0.15}
+                    onMouseEnter={() => setHover(name)}
+                  >
+                    {href ? (
+                      <a
+                        href={href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noopener noreferrer" : undefined}
+                        aria-label={
+                          external
+                            ? "World of Wonder website"
+                            : `Open the ${name} overview card`
+                        }
+                        onClick={cardSlug ? openCard(cardSlug) : undefined}
+                        className="cursor-pointer"
+                      >
+                        {dot}
+                        {label}
+                      </a>
+                    ) : (
+                      <>
+                        {dot}
+                        {label}
+                      </>
+                    )}
                   </g>
                 );
               })}
@@ -264,24 +358,29 @@ function ConnectionsPage() {
                 return (
                   <g
                     key={g.slug}
-                    className="cursor-pointer"
                     opacity={lit ? 1 : 0.25}
-                    onClick={() => setFocus(focus === g.slug ? null : g.slug)}
+                    onMouseEnter={() => setHover(g.slug)}
                   >
-                    <circle
-                      cx={p.x}
-                      cy={p.y}
-                      r={size}
-                      fill={
-                        focus === g.slug
-                          ? "var(--color-pink)"
-                          : "var(--color-gold)"
-                      }
-                    />
+                    <a
+                      href={`/explore/${g.slug}`}
+                      aria-label={`Open the ${g.name} overview card`}
+                      onClick={openCard(g.slug)}
+                      className="cursor-pointer"
+                    >
+                      <circle
+                        cx={p.x}
+                        cy={p.y}
+                        r={size}
+                        fill={
+                          active === g.slug
+                            ? "var(--color-pink)"
+                            : "var(--color-gold)"
+                        }
+                      />
+                    </a>
                     <text
                       x={(p.x + Math.cos(p.angle) * (size + 10)).toFixed(2)}
                       y={(p.y + Math.sin(p.angle) * (size + 10)).toFixed(2)}
-
                       textAnchor={flip ? "end" : "start"}
                       dominantBaseline="middle"
                       fontSize="15"
@@ -295,8 +394,9 @@ function ConnectionsPage() {
             </svg>
           </div>
           <p className="mt-4 text-center text-xs text-muted-foreground">
-            Gold dots are guests, pale dots in the middle are the names that
-            keep coming up. Bigger dot = more connections.
+            Gold dots are guests, pale dots in the middle are the names that keep
+            coming up. Bigger dot = more connections. Click any dot to open that
+            name&rsquo;s card; hover to light up their circle.
           </p>
         </div>
       </section>
@@ -364,7 +464,10 @@ function ConnectionsPage() {
                   </h3>
                   <ul className="mt-3 space-y-2">
                     {focusEvents.map((e) => (
-                      <li key={e.id} className="text-sm text-card-foreground/80">
+                      <li
+                        key={e.id}
+                        className="text-sm text-card-foreground/80"
+                      >
                         <span className="font-semibold text-gold">
                           {e.when}
                         </span>{" "}
@@ -393,12 +496,7 @@ function ConnectionsPage() {
                           {f.name}
                         </a>
                       ) : (
-                        <span
-                          key={f.name}
-                          className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
-                        >
-                          {f.name}
-                        </span>
+                        <EntityLinkChip key={f.name} name={f.name} />
                       ),
                     )}
                   </div>
@@ -407,9 +505,16 @@ function ConnectionsPage() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
+                  to="/explore/$slug"
+                  params={{ slug: focus }}
+                  className="inline-flex rounded-xl bg-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground transition hover:bg-spotlight"
+                >
+                  Open their full card
+                </Link>
+                <Link
                   to="/guests"
                   hash={focus}
-                  className="inline-flex rounded-xl bg-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground transition hover:bg-spotlight"
+                  className="inline-flex rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
                 >
                   Read their full timeline
                 </Link>
@@ -423,7 +528,11 @@ function ConnectionsPage() {
             </div>
           ) : (
             <div className="text-center text-muted-foreground">
-              <p>Pick a name from the web above to see their circle.</p>
+              <p>
+                Click a name under &ldquo;The great connectors&rdquo; below to
+                see their circle, or click any dot in the web to open their
+                card.
+              </p>
             </div>
           )}
         </div>
@@ -484,7 +593,21 @@ function ConnectionsPage() {
                 key={f.name}
                 className="rounded-full border border-gold/25 bg-card px-4 py-2 text-sm text-card-foreground/85"
               >
-                {f.name}{" "}
+                {f.name === "World of Wonder" ? (
+                  <a
+                    href={WOW_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-gold"
+                  >
+                    {f.name}
+                  </a>
+                ) : (
+                  <EntityLinkChip
+                    name={f.name}
+                    className="transition hover:text-gold"
+                  />
+                )}{" "}
                 <span className="text-xs text-pink">{f.events.length}</span>
               </span>
             ))}
@@ -520,7 +643,10 @@ function ConnectionsPage() {
             Guests
           </Link>{" "}
           &middot;{" "}
-          <Link to="/timeline" className="text-gold transition hover:text-pink">
+          <Link
+            to="/timeline"
+            className="text-gold transition hover:text-pink"
+          >
             Timeline
           </Link>{" "}
           &middot;{" "}
@@ -532,8 +658,45 @@ function ConnectionsPage() {
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Connections drawn from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
-              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
-</footer>
+        <p className="mx-auto mt-3 max-w-2xl text-center">
+          <LegalNote />
+        </p>
+      </footer>
     </main>
+  );
+}
+
+/** Small chip that sends a recurring name to its single overview card. */
+function EntityLinkChip({
+  name,
+  className,
+}: {
+  name: string;
+  className?: string;
+}) {
+  const navigate = useNavigate();
+  const entity = entityFor(name);
+  if (!entity) return <span className={className}>{name}</span>;
+  return (
+    <a
+      href={`/explore/${entity.slug}`}
+      aria-label={`Open the ${name} overview card`}
+      onClick={(e) => {
+        if (
+          e.metaKey ||
+          e.ctrlKey ||
+          e.shiftKey ||
+          e.altKey ||
+          e.button !== 0
+        ) {
+          return;
+        }
+        e.preventDefault();
+        navigate({ to: "/explore/$slug", params: { slug: entity.slug } });
+      }}
+      className={className}
+    >
+      {name}
+    </a>
   );
 }
