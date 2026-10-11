@@ -40,7 +40,7 @@ export function SiteMenu() {
         </ul>
       </nav>
       {open && (
-        <ul className="border-t border-border px-4 pb-3 md:hidden">
+        <ul className="border-t border-border px-4 pb-3 lg:hidden">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>
