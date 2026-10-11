@@ -111,28 +111,8 @@ function EpisodePage() {
         </div>
       </section>
 
-      <section aria-labelledby="episode-mood" className="px-6 pb-12">
-        <div className="mx-auto max-w-5xl">
-          <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
-          {[
-            { title: "On screen", entries: moods.filter((r) => r.time === "On camera") },
-            { title: "In the stories", entries: moods.filter((r) => r.time !== "On camera") },
-          ].map((group) => (
-            <div key={group.title} className="mt-6">
-              <h3 className="mb-3 text-sm font-medium uppercase text-gold">{group.title}</h3>
-              <div className="grid gap-4 md:grid-cols-3">
-                {group.entries.map((r) => (
-                  <article key={r.rank} className="rounded-lg border border-border bg-card p-5">
-                    <h4 className="font-semibold text-cream">{r.name}</h4>
-                    {r.fashion && <p className="mt-3 text-sm text-foreground">{r.fashion}</p>}
-                    <p className="mt-3 text-sm text-muted-foreground">{r.context}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <MoodSpectrum moods={moods} />
+
 
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-5xl">
@@ -209,5 +189,64 @@ function EpisodePage() {
         </div>
       </section>
     </main>
+  );
+}
+
+// Swatch colors per look, matched by keywords in the entry name (data stays in the JSON).
+const SWATCHES: { match: RegExp; colors: [string, string]; label: string }[] = [
+  { match: /James's on-camera/i, colors: ["oklch(0.82 0.1 85)", "oklch(0.6 0.13 55)"], label: "Champagne & amber" },
+  { match: /Fenton's on-camera/i, colors: ["oklch(0.5 0.2 262)", "oklch(0.66 0.2 40)"], label: "Cobalt & orange" },
+  { match: /Randy's on-camera/i, colors: ["oklch(0.62 0.18 150)", "oklch(0.3 0.06 260)"], label: "Kelly green & navy" },
+  { match: /film-school/i, colors: ["oklch(0.72 0.25 350)", "oklch(0.7 0.14 70)"], label: "Neon pink & leopard" },
+  { match: /Converse/i, colors: ["oklch(0.78 0.16 350)", "oklch(0.95 0.01 90)"], label: "Pink high tops" },
+  { match: /paper/i, colors: ["oklch(0.97 0.005 90)", "oklch(0.78 0.01 250)"], label: "Paper white & silver" },
+  { match: /Warhol/i, colors: ["oklch(0.85 0.01 250)", "oklch(0.2 0 0)"], label: "Silver & black" },
+  { match: /Drag/i, colors: ["oklch(0.6 0.25 330)", "oklch(0.85 0.15 90)"], label: "Magenta & gold" },
+  { match: /Rhoda|Bad Seed/i, colors: ["oklch(0.88 0.04 230)", "oklch(0.97 0.01 90)"], label: "Powder blue & lace" },
+  { match: /Ball gowns/i, colors: ["oklch(0.2 0.02 300)", "oklch(0.5 0.2 25)"], label: "Velvet black & crimson" },
+  { match: /outfits/i, colors: ["oklch(0.65 0.22 300)", "oklch(0.8 0.15 160)"], label: "Flamboyant mix" },
+];
+const swatchFor = (name: string) =>
+  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["oklch(0.7 0.1 80)", "oklch(0.6 0.2 350)"] as [string, string], label: "Mood" };
+
+function MoodSpectrum({ moods }: { moods: Ref[] }) {
+  const [i, setI] = useState(0);
+  if (moods.length === 0) return null;
+  const active = moods[Math.min(i, moods.length - 1)]!;
+  const sw = swatchFor(active.name);
+  return (
+    <section aria-labelledby="episode-mood" className="px-6 pb-12">
+      <div className="mx-auto max-w-5xl">
+        <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
+        <p className="mt-2 text-sm text-muted-foreground">Slide or tap through the colors of every look in the episode.</p>
+        <div className="mt-6 flex h-16 overflow-hidden rounded-lg border border-border" role="tablist">
+          {moods.map((m, k) => {
+            const s = swatchFor(m.name);
+            return (
+              <button key={m.rank} role="tab" aria-selected={k === i} aria-label={m.name} onClick={() => setI(k)}
+                className={`flex-1 transition-all ${k === i ? "flex-[2.5] ring-2 ring-inset ring-cream" : "opacity-80 hover:opacity-100"}`}
+                style={{ background: `linear-gradient(135deg, ${s.colors[0]} 50%, ${s.colors[1]} 50%)` }} />
+            );
+          })}
+        </div>
+        <input type="range" min={0} max={moods.length - 1} value={i} onChange={(e) => setI(Number(e.target.value))}
+          aria-label="Choose a look" className="mt-3 w-full accent-[var(--gold)]" />
+        <article className="mt-4 rounded-lg border border-border bg-card p-6" style={{ borderLeft: `6px solid ${sw.colors[0]}` }}>
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 className="text-xl font-semibold text-cream">{active.name}</h3>
+            {active.time === "On camera" ? (
+              <span className="text-sm text-gold">On camera</span>
+            ) : (
+              <a href={spotifyAt(active.time)} target="_blank" rel="noreferrer" className="font-mono text-sm text-gold hover:text-pink">{active.time}</a>
+            )}
+          </div>
+          <p className="mt-1 text-xs uppercase tracking-[0.15em] text-pink">{sw.label}</p>
+          {active.fashion && active.fashion !== "Worn or shown in the episode" && (
+            <p className="mt-3 text-foreground">{active.fashion}</p>
+          )}
+          <p className="mt-3 text-sm text-muted-foreground">{active.context}</p>
+        </article>
+      </div>
+    </section>
   );
 }
