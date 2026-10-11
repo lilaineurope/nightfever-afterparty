@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImage from "../assets/hero.jpg";
 import { latestEpisode } from "../data/episodes";
+import { SHOW_URL, WOW_URL } from "../data/guests";
+import { EntityText } from "../components/entity-text";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -117,9 +119,7 @@ function Index() {
             <span className="block text-pink text-glow-pink">Fever</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-cream/90 md:text-xl">
-            The World of Wonder podcast where James St. James, Fenton Bailey,
-            and Randy Barbato relive the campy, gossipy, jaw-dropping history of
-            New York nightlife.
+            <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey, and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife." />
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {platforms.map((platform) => (
@@ -145,7 +145,15 @@ function Index() {
             Step inside the velvet rope
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            <em>Night Fever</em> invites the legends of the 1970s, &rsquo;80s,
+            <a
+              href={SHOW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+            >
+              <em>Night Fever</em>
+            </a>{" "}
+            invites the legends of the 1970s, &rsquo;80s,
             &rsquo;90s, and beyond to share the stories behind the clubs, the
             parties, and the culture that defined downtown New York. It is
             campy, it is gossipy, and it is definitely must-hear podcasting.
@@ -231,7 +239,7 @@ function Index() {
                   {host.role}
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-card-foreground/80">
-                  {host.bio}
+                  <EntityText text={host.bio} />
                 </p>
               </article>
             ))}
@@ -352,7 +360,24 @@ function Index() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              Fan page for <em>Night Fever</em> by World of Wonder.
+              Fan page for{" "}
+              <a
+                href={SHOW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+              >
+                <em>Night Fever</em>
+              </a>{" "}
+              by{" "}
+              <a
+                href={WOW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+              >
+                World of Wonder
+              </a>.
             </p>
             <div className="flex gap-6 text-sm text-muted-foreground">
               <Link
@@ -399,8 +424,7 @@ function Index() {
             </div>
           </div>
           <p className="mt-6 text-center text-xs text-muted-foreground/60">
-            Not affiliated with World of Wonder or the Night Fever podcast. All
-            trademarks and show content belong to their respective owners.
+            <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All trademarks and show content belong to their respective owners." />
           </p>
         </div>
       </footer>
