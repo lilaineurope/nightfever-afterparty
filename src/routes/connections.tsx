@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
 import { eventsByGuest, recurringFigures, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/connections")({
   component: ConnectionsPage,
@@ -531,7 +532,8 @@ function ConnectionsPage() {
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Connections drawn from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
-      </footer>
+              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
+</footer>
     </main>
   );
 }

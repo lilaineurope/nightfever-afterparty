@@ -5,6 +5,7 @@ import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -382,7 +383,8 @@ function Index() {
             <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All trademarks and show content belong to their respective owners." />
           </p>
         </div>
-      </footer>
+              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
+</footer>
     </main>
   );
 }

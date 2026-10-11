@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { CATEGORIES, entities } from "../data/entities";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/explore/")({
   head: () => ({
@@ -57,6 +58,10 @@ function ExplorePage() {
           ))}
         </ul>
       </div>
-    </main>
+          <footer className="border-t border-border px-6 py-10 text-center">
+        <LegalNote />
+      </footer>
+
+</main>
   );
 }
