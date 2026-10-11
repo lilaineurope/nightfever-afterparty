@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const PAGES = [
   { to: "/", label: "Home" },
+  { to: "/episodes", label: "Episodes" },
   { to: "/guests", label: "Guests" },
   { to: "/explore", label: "Everything A–Z" },
   { to: "/timeline", label: "Timeline" },
@@ -13,7 +14,7 @@ const PAGES = [
 export function SiteMenu() {
   const [open, setOpen] = useState(false);
   const item =
-    "block rounded-lg px-3 py-2 text-sm font-medium text-cream/80 transition hover:text-pink";
+    "block whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-cream/80 transition hover:text-pink";
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
