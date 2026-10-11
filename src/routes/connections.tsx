@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { guestBySlug, guests, WOW_URL } from "../data/guests";
+import { guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
 import { eventsByGuest, recurringFigures, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
 
