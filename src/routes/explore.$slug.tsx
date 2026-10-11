@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { entityBySlug, relatedTo } from "../data/entities";
+import { entityBySlug, episodeShort, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
 import { latestEpisode } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { EntityLink } from "../components/entity-link";
@@ -48,6 +48,8 @@ function EntityPage() {
   const e = entityBySlug[slug]!;
   const g = e.guest;
   const related = relatedTo(e);
+  const allMentions = totalMentions(e);
+  const perEpisode = mentionsByEpisode(e);
   const toSec = (t: string) => t.split(":").map(Number).reduce((a, n) => a * 60 + n, 0);
 
   return (
@@ -111,7 +113,18 @@ function EntityPage() {
 
         {e.refs.length > 0 && (
           <section>
-            <h2 className={h}>In the episodes</h2>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h2 className={h}>In the episodes</h2>
+              <p className="text-xs text-muted-foreground">
+                {allMentions === 0 ? "No counted mentions" : `${allMentions} mentions across all episodes`}
+                {perEpisode.length > 0 && (
+                  <span className="text-gold">
+                    {" — "}
+                    {perEpisode.map((p) => `${episodeShort(p.episode)} ${p.count}`).join(" · ")}
+                  </span>
+                )}
+              </p>
+            </div>
             <ul className="mt-4 space-y-3">
               {e.refs.map((r) => (
                 <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
@@ -131,7 +144,7 @@ function EntityPage() {
                       ) : (
                         <a href={`${latestEpisode.audioUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
                       )}
-                      {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"}`}
+                      {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"} in this episode`}
                     </span>
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground"><EntityText text={r.context} /></p>

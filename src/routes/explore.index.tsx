@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { CATEGORIES, categoryMentions, entities, totalMentions } from "../data/entities";
+import {
+  CATEGORIES,
+  categoryMentions,
+  categoryMentionsByEpisode,
+  entities,
+  episodeShort,
+  mentionsByEpisode,
+  totalMentions,
+} from "../data/entities";
+import { episodes } from "../data/episodes";
 import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/explore/")({
@@ -27,6 +36,14 @@ function ExplorePage() {
     `rounded-full border px-3 py-1 text-xs font-medium transition ${
       cat === c ? "border-gold bg-gold text-gold-foreground" : "border-border bg-secondary text-secondary-foreground hover:text-pink"
     }`;
+  // "S6E1 336 · S1E1 293" — how one category's mentions split per episode
+  const split = (c: string) => {
+    const by = categoryMentionsByEpisode[c] ?? {};
+    return episodes
+      .filter((ep) => (by[ep.id] ?? 0) > 0)
+      .map((ep) => `${episodeShort(ep.id)} ${by[ep.id]}`)
+      .join(" · ");
+  };
   return (
     <main className="min-h-screen bg-background px-6 py-16 text-foreground">
       <div className="mx-auto max-w-5xl">
@@ -42,25 +59,41 @@ function ExplorePage() {
             </button>
           ))}
         </div>
-        <p className="mt-6 text-center text-xs text-muted-foreground">{shown.length} cards</p>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-muted-foreground">
+          Chip numbers are counted across all episodes
+          {split(cat) && (
+            <>
+              {" — per episode: "}
+              <span className="text-gold">{split(cat)}</span>
+            </>
+          )}
+        </p>
+        <p className="mt-3 text-center text-xs text-muted-foreground">{shown.length} cards</p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((e) => (
-            <li key={e.slug}>
-              <Link to="/explore/$slug" params={{ slug: e.slug }}
-                className="block rounded-xl border border-border bg-card p-4 transition hover:border-gold/50">
-                <span className="block font-semibold text-gold">{e.name}</span>
-                <span className="mt-1 block text-xs text-muted-foreground">
-                  {e.guest ? "Night Fever guest" : e.category}
-                  {" · "}
-                  {(() => {
-                    const n = e.refs.length + e.events.length + e.inGuestStories.length;
-                    const m = totalMentions(e);
-                    return `${n} ${n === 1 ? "story" : "stories"}${m > 0 ? ` · ${m} ${m === 1 ? "mention" : "mentions"}` : ""}`;
-                  })()}
-                </span>
-              </Link>
-            </li>
-          ))}
+          {shown.map((e) => {
+            const n = e.refs.length + e.events.length + e.inGuestStories.length;
+            const m = totalMentions(e);
+            const per = mentionsByEpisode(e);
+            return (
+              <li key={e.slug}>
+                <Link to="/explore/$slug" params={{ slug: e.slug }}
+                  className="block rounded-xl border border-border bg-card p-4 transition hover:border-gold/50">
+                  <span className="block font-semibold text-gold">{e.name}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    {e.guest ? "Night Fever guest" : e.category}
+                    {" · "}
+                    {n} {n === 1 ? "story" : "stories"}
+                    {m > 0 ? ` · ${m} ${m === 1 ? "mention" : "mentions"} across all episodes` : ""}
+                  </span>
+                  {per.length > 0 && (
+                    <span className="mt-1 block text-[11px] text-muted-foreground/70">
+                      per episode: {per.map((p) => `${episodeShort(p.episode)} ${p.count}`).join(" · ")}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
           <footer className="border-t border-border px-6 py-10 text-center">

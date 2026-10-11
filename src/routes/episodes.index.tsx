@@ -77,7 +77,7 @@ function EpisodesPage() {
               </p>
               <p className="mt-4 text-xs text-muted-foreground">
                 {ep.references} tagged references &middot; {ep.mentions}{" "}
-                mentions
+                mentions in this episode
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {ep.top.map((t) => (
@@ -87,7 +87,7 @@ function EpisodesPage() {
                   >
                     {t.name}
                     <span className="ml-1.5 text-muted-foreground">
-                      {t.mentions} mentions
+                      {t.mentions} here
                     </span>
                   </span>
                 ))}
