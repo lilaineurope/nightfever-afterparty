@@ -3,7 +3,7 @@ import { useState } from "react";
 import heroImage from "../assets/hero-people.jpg";
 import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
-import { CATEGORIES, entities } from "../data/entities";
+import { AzSection } from "../components/az-section";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
@@ -87,14 +87,6 @@ const platforms = [
 
 function Index() {
   const [email, setEmail] = useState("");
-  const [azCat, setAzCat] = useState("All");
-  const azShown = entities.filter((e) =>
-    azCat === "All"
-      ? true
-      : azCat === "Fashion"
-        ? e.refs.some((r) => r.fashion)
-        : e.category === azCat,
-  );
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -210,6 +202,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <AzSection />
 
       {/* Featured guests */}
       <section className="spotlight px-6 py-24">
