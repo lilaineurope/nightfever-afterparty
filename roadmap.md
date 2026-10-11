@@ -23,3 +23,5 @@
 - [x] Mention counts split: per episode vs across all episodes (A–Z chips, cards, episode pages)
 - [x] Presenters' on-camera looks slider: third colour added to every swatch (S1E1 + S6E1)
 - [x] Episode overview: button reads "Afterparty connection" instead of "Every name, timestamped"
+- [x] "Episodes" added to the header menu (opens /episodes, newest-first by release date)
+- [x] Home page episode cards' button reads "Afterparty connection"; guests page card matched to it

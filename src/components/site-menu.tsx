@@ -23,13 +23,13 @@ export function SiteMenu() {
         </Link>
         <button
           type="button"
-          className="rounded-lg border border-border px-3 py-1.5 text-sm text-cream lg:hidden"
+          className="rounded-lg border border-border px-3 py-1.5 text-sm text-cream md:hidden"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
         >
           Menu
         </button>
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>
@@ -40,7 +40,7 @@ export function SiteMenu() {
         </ul>
       </nav>
       {open && (
-        <ul className="border-t border-border px-4 pb-3 lg:hidden">
+        <ul className="border-t border-border px-4 pb-3 md:hidden">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>
