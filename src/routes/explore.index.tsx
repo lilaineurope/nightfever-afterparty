@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { CATEGORIES, entities } from "../data/entities";
+import { CATEGORIES, categoryMentions, entities, totalMentions } from "../data/entities";
 import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/explore/")({
@@ -38,6 +38,7 @@ function ExplorePage() {
           {["All", ...CATEGORIES].map((c) => (
             <button key={c} type="button" className={chip(c)} aria-pressed={cat === c} onClick={() => setCat(c)}>
               {c}
+              <span className="ml-1 opacity-70">{categoryMentions[c] ?? 0}</span>
             </button>
           ))}
         </div>
@@ -53,7 +54,8 @@ function ExplorePage() {
                   {" · "}
                   {(() => {
                     const n = e.refs.length + e.events.length + e.inGuestStories.length;
-                    return `${n} ${n === 1 ? "story" : "stories"}`;
+                    const m = totalMentions(e);
+                    return `${n} ${n === 1 ? "story" : "stories"}${m > 0 ? ` · ${m} ${m === 1 ? "mention" : "mentions"}` : ""}`;
                   })()}
                 </span>
               </Link>

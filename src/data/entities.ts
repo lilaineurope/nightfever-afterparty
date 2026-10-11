@@ -131,3 +131,19 @@ export const CATEGORIES = [
   "Person", "Music", "Organisation", "Mood", "Place", "Book", "Event",
   "Publication", "Podcast", "TV", "Film", "Fashion",
 ] as const;
+
+/** Total mentions of one entity across all episode reference lists. */
+export const totalMentions = (e: Entity): number =>
+  e.refs.reduce((sum, r) => sum + r.mentions, 0);
+
+/** Total mentions per category across all episodes ("Fashion" counts entries with a fashion note). */
+export const categoryMentions: Record<string, number> = (() => {
+  const out: Record<string, number> = { All: 0, Fashion: 0 };
+  for (const c of CATEGORIES) out[c] = 0;
+  for (const r of refs) {
+    out["All"] = (out["All"] ?? 0) + r.mentions;
+    out[r.category] = (out[r.category] ?? 0) + r.mentions;
+    if (r.fashion) out["Fashion"] = (out["Fashion"] ?? 0) + r.mentions;
+  }
+  return out;
+})();
