@@ -88,6 +88,13 @@ const platforms = [
 function Index() {
   const [email, setEmail] = useState("");
   const [azCat, setAzCat] = useState("All");
+  const azShown = entities.filter((e) =>
+    azCat === "All"
+      ? true
+      : azCat === "Fashion"
+        ? e.refs.some((r) => r.fashion)
+        : e.category === azCat,
+  );
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
