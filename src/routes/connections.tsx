@@ -79,25 +79,29 @@ function ConnectionsPage() {
   const [focus, setFocus] = useState<string | null>(null);
 
   const positions = useMemo(() => {
+    // Rounded to 3 decimals: server and browser float math can differ in the
+    // last digit, which React reports as a hydration mismatch.
+    const r = (n: number) => Math.round(n * 1000) / 1000;
     const map: Record<string, { x: number; y: number; angle: number }> = {};
     guests.forEach((g, i) => {
       const angle = (i / guests.length) * Math.PI * 2 - Math.PI / 2;
       map[g.slug] = {
-        x: SIZE / 2 + Math.cos(angle) * R_OUTER,
-        y: SIZE / 2 + Math.sin(angle) * R_OUTER,
+        x: r(SIZE / 2 + Math.cos(angle) * R_OUTER),
+        y: r(SIZE / 2 + Math.sin(angle) * R_OUTER),
         angle,
       };
     });
     figureNames.forEach((name, i) => {
       const angle = (i / figureNames.length) * Math.PI * 2 - Math.PI / 2;
       map[name] = {
-        x: SIZE / 2 + Math.cos(angle) * R_INNER,
-        y: SIZE / 2 + Math.sin(angle) * R_INNER,
+        x: r(SIZE / 2 + Math.cos(angle) * R_INNER),
+        y: r(SIZE / 2 + Math.sin(angle) * R_INNER),
         angle,
       };
     });
     return map;
   }, []);
+
 
   // guest <-> recurring figure links, drawn faintly behind the guest web
   const figureLinks = useMemo(() => {
@@ -225,8 +229,9 @@ function ConnectionsPage() {
                       fillOpacity={0.55}
                     />
                     <text
-                      x={p.x + Math.cos(p.angle) * 12}
-                      y={p.y + Math.sin(p.angle) * 12}
+                      x={(p.x + Math.cos(p.angle) * 12).toFixed(2)}
+                      y={(p.y + Math.sin(p.angle) * 12).toFixed(2)}
+
                       textAnchor={flip ? "end" : "start"}
                       dominantBaseline="middle"
                       fontSize="11"
@@ -273,8 +278,9 @@ function ConnectionsPage() {
                       }
                     />
                     <text
-                      x={p.x + Math.cos(p.angle) * (size + 10)}
-                      y={p.y + Math.sin(p.angle) * (size + 10)}
+                      x={(p.x + Math.cos(p.angle) * (size + 10)).toFixed(2)}
+                      y={(p.y + Math.sin(p.angle) * (size + 10)).toFixed(2)}
+
                       textAnchor={flip ? "end" : "start"}
                       dominantBaseline="middle"
                       fontSize="15"
