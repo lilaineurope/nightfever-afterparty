@@ -199,31 +199,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Hosts */}
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Your guides through the scene
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {hosts.map((host) => (
-              <article
-                key={host.name}
-                className="rounded-2xl border border-border bg-card p-6 transition hover:border-gold/40"
-              >
-                <h3 className="text-xl font-semibold text-gold">{host.name}</h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-pink">
-                  {host.role}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-card-foreground/80">
-                  <EntityText text={host.bio} />
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Featured guests */}
       <section className="spotlight px-6 py-24">
         <div className="mx-auto max-w-6xl">
