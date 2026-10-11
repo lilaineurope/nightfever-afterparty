@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
+import { entityFor, totalMentions } from "../data/entities";
 
 type Ref = {
   rank: number;
@@ -64,14 +65,22 @@ function crossLinks(name: string) {
   return { guest, events };
 }
 
-type Sort = "mentions" | "time";
+type Sort = "mentions" | "all" | "time";
 
 function EpisodePage() {
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
   const enriched = useMemo(
-    () => refs.map((r) => ({ ...r, ...crossLinks(r.name) })),
+    () =>
+      refs.map((r) => {
+        const card = entityFor(r.name);
+        return {
+          ...r,
+          ...crossLinks(r.name),
+          everywhere: card ? totalMentions(card) : r.mentions,
+        };
+      }),
     [],
   );
 
@@ -83,9 +92,10 @@ function EpisodePage() {
         if (a.time === b.time) return a.rank - b.rank;
         return a.time === "On camera" ? 1 : -1;
       }
-      return sort === "time"
-        ? toSec(a.time) - toSec(b.time)
-         : b.mentions - a.mentions || toSec(a.time) - toSec(b.time);
+      if (sort === "time") return toSec(a.time) - toSec(b.time);
+      if (sort === "all")
+        return b.everywhere - a.everywhere || b.mentions - a.mentions;
+      return b.mentions - a.mentions || toSec(a.time) - toSec(b.time);
     });
   const moods = refs.filter((r) => r.category === "Mood");
 
@@ -105,7 +115,7 @@ function EpisodePage() {
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">James St. James</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
             Every name, club, book, song, night and look from the interview &mdash; {refs.length} references
-            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions.
+            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode.
           </p>
           <a href={EPISODE_URL} target="_blank" rel="noreferrer"
             className="mt-6 inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
@@ -131,7 +141,8 @@ function EpisodePage() {
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
             <div className="flex flex-wrap gap-2">
               <span className="self-center text-sm text-muted-foreground">Sort:</span>
-              <Button variant="outline" aria-pressed={sort === "mentions"} className={btn(sort === "mentions")} onClick={() => setSort("mentions")}>Most mentioned</Button>
+              <Button variant="outline" aria-pressed={sort === "mentions"} className={btn(sort === "mentions")} onClick={() => setSort("mentions")}>Most mentioned here</Button>
+              <Button variant="outline" aria-pressed={sort === "all"} className={btn(sort === "all")} onClick={() => setSort("all")}>Most mentioned across all</Button>
               <Button variant="outline" aria-pressed={sort === "time"} className={btn(sort === "time")} onClick={() => setSort("time")}>Timestamp</Button>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -187,15 +198,22 @@ function EpisodePage() {
                     </div>
                   )}
                 </div>
-                <div className="text-right text-sm text-muted-foreground sm:w-20">
+                <div className="text-right text-sm text-muted-foreground sm:w-28">
                   <span className="text-2xl font-bold text-cream">{r.mentions === 0 ? "—" : r.mentions}</span>
-                  <div className="text-xs">mention{r.mentions === 1 ? "" : "s"}</div>
+                  <div className="text-xs">in this episode</div>
+                  {r.everywhere > 0 && r.everywhere !== r.mentions && (
+                    <div className="mt-1 text-xs text-gold">{r.everywhere} across all</div>
+                  )}
+                  {r.everywhere > 0 && r.everywhere === r.mentions && (
+                    <div className="mt-1 text-xs text-muted-foreground/70">this episode only</div>
+                  )}
                 </div>
               </li>
             ))}
           </ul>
           <p className="mt-8 text-xs text-muted-foreground">
-            Mention counts are from the episode transcript; timestamps mark the first mention.{" "}
+            The big number counts mentions in this episode; the gold number counts the same name across all
+            episodes on the site. Timestamps mark the first mention.{" "}
             <Link to="/connections" className="text-gold hover:text-pink">See the connection web &rarr;</Link>
           </p>
         </div>
