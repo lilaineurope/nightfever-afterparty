@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import heroImage from "../assets/hero-arty-2c.jpg";
+import heroImage from "../assets/hero-people.jpg";
 import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
 import { SHOW_URL, WOW_URL } from "../data/guests";
@@ -104,8 +104,8 @@ function Index() {
             src={heroImage}
             alt="Disco ball scattering gold and pink light across a glamorous nightclub"
             className="h-full w-full object-cover opacity-60"
-            width={1376}
-            height={768}
+            width={1536}
+            height={864}
             fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
