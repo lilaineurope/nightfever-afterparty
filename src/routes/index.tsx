@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import heroImage from "../assets/hero-people.jpg";
+import diannePortrait from "../assets/block-dianne-brill.jpg";
+import mustoPortrait from "../assets/block-michael-musto.jpg";
+import jamesPortrait from "../assets/block-james-st-james.jpg";
 import { episodePath, episodes, latestEpisode } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
@@ -31,13 +34,17 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
-      { property: "og:image", content: heroImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: heroImage },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
 });
+
+const episodePortraits: Record<string, string> = {
+  s01e01: diannePortrait,
+  s01e02: mustoPortrait,
+  s06e01: jamesPortrait,
+};
 
 const hosts = [
   {
@@ -169,17 +176,22 @@ function Index() {
                 key={ep.id}
                 className="grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:col-span-2 md:grid-cols-[1fr_1.3fr]"
               >
-                <div className="disco-grid border-b border-border p-8 md:border-b-0 md:border-r">
+                <div className="relative min-h-[440px] overflow-hidden border-b border-border p-8 md:border-b-0 md:border-r">
+                  <img src={episodePortraits[ep.id]} alt="" aria-hidden="true" width={1024} height={1024} loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover object-right" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/20 to-background/10" aria-hidden="true" />
+                  <div className="relative z-10">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                     Season {ep.season} &middot; Episode {ep.episode}
                   </p>
                   <h3 className="mt-3 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow">
                     {ep.guest}
                   </h3>
-                  <p className="mt-5 text-sm text-muted-foreground">
+                  <p className="mt-5 text-sm text-cream/90">
                     {ep.runtime} &middot; {ep.references} tagged references
                     &middot; {ep.mentions} mentions in this episode
                   </p>
+                  </div>
                 </div>
                 <div className="p-8">
                   <p className="text-base leading-relaxed text-card-foreground/85">
