@@ -18,13 +18,12 @@ export function EpisodeNetwork() {
   ), [episode, search]);
   const selected = episodePeople.find(person => person.slug === focus);
   const active = episodePeople.find(person => person.slug === (hover ?? focus));
-  const hubs = episodes.map((ep, i) => ({ ...ep, x: 550, y: 360 + i * 100 }));
+  const hubs = episodes.map((ep, i) => ({ ...ep, x: 550, y: 150 + i * 150 }));
+  const rowCount = Math.ceil(visible.length / 2);
+  const graphHeight = Math.max(640, rowCount * 32 + 80);
   const positions = visible.map((person, index) => {
-    const ring = index % 3;
-    const ringCount = Math.ceil((visible.length - ring) / 3);
-    const angle = Math.floor(index / 3) / Math.max(1, ringCount) * Math.PI * 2 - Math.PI / 2;
-    const radius = 270 + ring * 65;
-    return { person, x: rounded(550 + Math.cos(angle) * radius), y: rounded(460 + Math.sin(angle) * radius), angle };
+    const left = index < rowCount;
+    return { person, x: left ? 340 : 760, y: 40 + (left ? index : index - rowCount) * 32, left };
   });
   const personButton = (person: typeof episodePeople[number]) => (
     <Button key={person.slug} variant="outline" onClick={() => setFocus(person.slug)}
@@ -48,24 +47,26 @@ export function EpisodeNetwork() {
         </div>
         <p className="mt-5 text-center text-sm text-gold">{visible.length} people · {episodes.length} published episode indexes</p>
         <div className="relative mt-3 border-y border-gold/20 bg-card">
-          <svg viewBox="0 0 1100 920" className="block h-auto w-full" role="group" aria-label="People mentioned in published episodes, linked to the episodes containing their timestamped references" onMouseLeave={() => setHover(null)}>
+          <div className="max-h-[720px] overflow-auto">
+          <svg viewBox={`0 0 1100 ${graphHeight}`} className="block h-auto w-full min-w-[900px]" role="group" aria-label="People mentioned in published episodes, linked to the episodes containing their timestamped references" onMouseLeave={() => setHover(null)}>
             {positions.flatMap(({ person, x, y }) => hubs.filter(hub => person.episodeIds.includes(hub.id)).map(hub =>
               <line key={`${person.slug}-${hub.id}`} x1={x} y1={y} x2={hub.x} y2={hub.y} stroke={active?.slug === person.slug ? 'var(--color-pink)' : 'var(--color-gold)'} strokeOpacity={active ? (active.slug === person.slug ? 0.9 : 0.035) : 0.09} strokeWidth={active?.slug === person.slug ? 2.5 : 1} />,
             ))}
-            {hubs.map(hub => <g key={hub.id}>
+            {hubs.map(hub => <a key={hub.id} href={episodePath(hub.id)} aria-label={`Open S${hub.season} E${hub.episode} · ${hub.guest}`} className="cursor-pointer">
               <circle cx={hub.x} cy={hub.y} r={26} fill="var(--color-background)" stroke="var(--color-pink)" strokeWidth={2} />
               <text x={hub.x} y={hub.y + 4} textAnchor="middle" fontSize={12} fill="var(--color-pink)">S{hub.season}E{hub.episode}</text>
               <text x={hub.x} y={hub.y + 43} textAnchor="middle" fontSize={13} fill="var(--color-cream)">{hub.guest}</text>
-            </g>)}
-            {positions.map(({ person, x, y, angle }, i) => <g key={person.slug} opacity={!active || active.slug === person.slug || active.episodeIds.some(id => person.episodeIds.includes(id)) ? 1 : 0.25} onMouseEnter={() => setHover(person.slug)}>
-              <a href={`/explore/${person.slug}`} aria-label={`Open the ${person.name} overview card`} onFocus={() => setHover(person.slug)} onBlur={() => setHover(null)}>
+            </a>)}
+            {positions.map(({ person, x, y, left }) => <g key={person.slug} onMouseEnter={() => setHover(person.slug)}>
+              <a href={`/explore/${person.slug}`} aria-label={`Open the ${person.name} overview card`} className="cursor-pointer" onFocus={() => setHover(person.slug)} onBlur={() => setHover(null)}>
                 <title>{`${person.name} — ${person.mentions} mentions; ${person.episodeIds.map(id => { const ep = episodes.find(ep => ep.id === id); return ep ? `S${ep.season}E${ep.episode}` : id; }).join(', ')}`}</title>
-                <circle cx={x} cy={y} r={12} fill="transparent" />
+                <rect x={left ? 12 : x - 14} y={y - 14} width={326} height={28} fill="transparent" />
                 <circle cx={x} cy={y} r={rounded(Math.min(11, 4 + Math.sqrt(person.mentions) / 2))} fill={person.episodeIds.length > 1 ? 'var(--color-gold)' : 'var(--color-cream)'} stroke={active?.slug === person.slug ? 'var(--color-pink)' : 'var(--color-background)'} strokeWidth={2} />
-                {visible.length <= 15 && <text x={rounded(x + Math.cos(angle) * 18)} y={rounded(y + Math.sin(angle) * 18)} textAnchor={Math.cos(angle) < 0 ? 'end' : 'start'} dominantBaseline="middle" fontSize={12} fill="var(--color-cream)">{person.name}</text>}
+                <text x={left ? x - 20 : x + 20} y={y} textAnchor={left ? 'end' : 'start'} dominantBaseline="middle" fontSize={14} fill={active?.slug === person.slug ? 'var(--color-pink)' : 'var(--color-cream)'}>{person.name}</text>
               </a>
             </g>)}
           </svg>
+          </div>
           <div className="min-h-16 border-t border-border px-4 py-3 text-center" aria-live="polite">
             {active ? <><p className="font-semibold text-gold">{active.name}</p><p className="text-xs text-muted-foreground">{active.mentions} mentions across {active.episodeIds.length} {active.episodeIds.length === 1 ? 'episode' : 'episodes'}</p></> : <p className="text-xs text-muted-foreground">Gold: mentioned in multiple episodes · Pale: mentioned in one episode</p>}
           </div>
