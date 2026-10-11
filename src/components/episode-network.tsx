@@ -58,12 +58,12 @@ export function EpisodeNetwork() {
               <text x={hub.x} y={hub.y + 43} textAnchor="middle" fontSize={13} fill="var(--color-cream)">{hub.guest}</text>
             </g>)}
             {positions.map(({ person, x, y, angle }, i) => <g key={person.slug} opacity={!active || active.slug === person.slug || active.episodeIds.some(id => person.episodeIds.includes(id)) ? 1 : 0.25} onMouseEnter={() => setHover(person.slug)}>
-              <Link to="/explore/$slug" params={{ slug: person.slug }} aria-label={`Open the ${person.name} overview card`} onFocus={() => setHover(person.slug)} onBlur={() => setHover(null)}>
+              <a href={`/explore/${person.slug}`} aria-label={`Open the ${person.name} overview card`} onFocus={() => setHover(person.slug)} onBlur={() => setHover(null)}>
                 <title>{person.name} — {person.mentions} mentions; {person.episodeIds.map(id => { const ep = episodes.find(ep => ep.id === id); return ep ? `S${ep.season}E${ep.episode}` : id; }).join(', ')}</title>
                 <circle cx={x} cy={y} r={12} fill="transparent" />
                 <circle cx={x} cy={y} r={Math.min(11, 4 + Math.sqrt(person.mentions) / 2)} fill={person.episodeIds.length > 1 ? 'var(--color-gold)' : 'var(--color-cream)'} stroke={active?.slug === person.slug ? 'var(--color-pink)' : 'var(--color-background)'} strokeWidth={2} />
-                {(visible.length <= 15 || (i < 9 && visible.length > 15)) && <text x={rounded(x + Math.cos(angle) * 18)} y={rounded(y + Math.sin(angle) * 18)} textAnchor={Math.cos(angle) < 0 ? 'end' : 'start'} dominantBaseline="middle" fontSize={12} fill="var(--color-cream)">{person.name}</text>}
-              </Link>
+                {visible.length <= 15 && <text x={rounded(x + Math.cos(angle) * 18)} y={rounded(y + Math.sin(angle) * 18)} textAnchor={Math.cos(angle) < 0 ? 'end' : 'start'} dominantBaseline="middle" fontSize={12} fill="var(--color-cream)">{person.name}</text>}
+              </a>
             </g>)}
           </svg>
           <div className="min-h-16 border-t border-border px-4 py-3 text-center" aria-live="polite">
@@ -82,7 +82,7 @@ export function EpisodeNetwork() {
         return <div key={ep.id} className="border-t border-border pt-4">
           <Link to={episodePath(ep.id)} className="font-semibold text-gold">S{ep.season} E{ep.episode} · {ep.guest}</Link>
           <p className="mt-1 text-xs text-pink">{refs.reduce((sum, ref) => sum + ref.mentions, 0)} mentions in this episode · {selected.mentions} across all episodes</p>
-          {refs.map(ref => <div key={`${ref.rank}-${ref.name}`} className="mt-3 text-sm"><Link to={episodePath(ep.id)} hash={`ref-${ref.rank}`} className="text-gold underline underline-offset-4">{ref.time}</Link><p className="mt-1 text-muted-foreground">{ref.context}</p>{ref.status !== 'Confirmed' && <p className="mt-1 text-xs text-pink">{ref.status}</p>}</div>)}
+          {refs.map(ref => <div key={`${ref.rank}-${ref.name}`} className="mt-3 text-sm"><Link to={episodePath(ep.id)} className="text-gold underline underline-offset-4">{ref.time}</Link><p className="mt-1 text-muted-foreground">{ref.context}</p>{ref.status !== 'Confirmed' && <p className="mt-1 text-xs text-pink">{ref.status}</p>}</div>)}
         </div>;
       })}</div>
     </div></section>}
