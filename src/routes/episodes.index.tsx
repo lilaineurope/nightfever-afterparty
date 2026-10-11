@@ -9,13 +9,13 @@ export const Route = createFileRoute("/episodes/")({
       {
         name: "description",
         content:
-          "Every tagged Night Fever episode in season and episode order: each guest, every name, place and look mentioned, counted and timestamped.",
+          "Every tagged Night Fever episode, newest release first: each guest, every name, place and look mentioned, counted and timestamped.",
       },
       { property: "og:title", content: "Episodes — Night Fever fan page" },
       {
         property: "og:description",
         content:
-          "Every tagged Night Fever episode in season and episode order: each guest, every name, place and look mentioned, counted and timestamped.",
+          "Every tagged Night Fever episode, newest release first: each guest, every name, place and look mentioned, counted and timestamped.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
