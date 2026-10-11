@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Add S01E02 Michael Musto with the exact 250 supplied references, text-only Mood and presenter looks, shared connections, and season/episode-ordered lists.
 - [x] One profile page per person/place/book/etc, everything linked to it (guests, timeline, episode, home)
 - [x] Site menu on every page listing all pages
 - [x] Home background: collage with more drag queens
