@@ -15,6 +15,8 @@ export type Episode = {
   listenUrl: string;
   /** Approximate runtime as listed on Spotify */
   runtime: string;
+  /** Date this afterparty connection was published on this site (ISO) */
+  afterpartyPublished: string;
   /** Short summary written from the public episode description */
   blurb: string;
   /** How many names, places and works are tagged on the episode page */
@@ -34,6 +36,7 @@ const s06e01: Episode = {
     watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-601",
     listenUrl: "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4",
     runtime: "54 min",
+    afterpartyPublished: "2026-10-10",
     blurb:
       "The host finally takes the guest chair himself: his childhood, the move to New York, and the club years he has spent documenting ever since.",
     references: 119,
@@ -55,6 +58,7 @@ const s01e01: Episode = {
       "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
     listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
     runtime: "51 min",
+    afterpartyPublished: "2026-10-11",
     blurb:
       "The very first episode: the 'Queen of the Night' on Warhol, Mugler, Danceteria and inventing her own silhouette.",
     references: 112,
@@ -75,6 +79,7 @@ const s01e02: Episode = {
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-michael-musto",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   runtime: "1:04:35",
+  afterpartyPublished: "2026-10-11",
   blurb: "Village Voice nightlife columnist and author of 'La Dolce Musto' on the downtown scene, Warhol, outlaw parties and the Club Kids.",
   references: mustoRefs.length,
   mentions: mustoRefs.reduce((sum, ref) => sum + ref.mentions, 0),
