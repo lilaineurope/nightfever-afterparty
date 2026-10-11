@@ -32,3 +32,4 @@
 - [x] Episode detail pages (/episodes/s06e01, /episodes/s01e01) also offer Watch and Listen under the title
 - [x] Trial James St. James episode background in the home collage style; all intended portraits checked against the episode's reference list
 - [x] Remove the duplicated portrait from James's collage; each person appears once
+- [x] Episodes page ranks episodes by publishing date, newest release first
