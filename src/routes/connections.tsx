@@ -515,8 +515,13 @@ function ConnectionsPage() {
           &middot;{" "}
           <Link to="/timeline" className="text-gold transition hover:text-pink">
             Timeline
+          </Link>{" "}
+          &middot;{" "}
+          <Link to="/about" className="text-gold transition hover:text-pink">
+            About
           </Link>
         </p>
+
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Connections drawn from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>

@@ -298,9 +298,13 @@ function GuestsPage() {
             className="text-gold transition hover:text-pink"
           >
             Latest episode: James St. James
+          </Link>{" "}
+          &middot;{" "}
+          <Link to="/about" className="text-gold transition hover:text-pink">
+            About
           </Link>
-
         </p>
+
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Biographical details compiled from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
