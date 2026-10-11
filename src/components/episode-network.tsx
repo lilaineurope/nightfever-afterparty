@@ -59,9 +59,9 @@ export function EpisodeNetwork() {
             </g>)}
             {positions.map(({ person, x, y, angle }, i) => <g key={person.slug} opacity={!active || active.slug === person.slug || active.episodeIds.some(id => person.episodeIds.includes(id)) ? 1 : 0.25} onMouseEnter={() => setHover(person.slug)}>
               <a href={`/explore/${person.slug}`} aria-label={`Open the ${person.name} overview card`} onFocus={() => setHover(person.slug)} onBlur={() => setHover(null)}>
-                <title>{person.name} — {person.mentions} mentions; {person.episodeIds.map(id => { const ep = episodes.find(ep => ep.id === id); return ep ? `S${ep.season}E${ep.episode}` : id; }).join(', ')}</title>
+                <title>{`${person.name} — ${person.mentions} mentions; ${person.episodeIds.map(id => { const ep = episodes.find(ep => ep.id === id); return ep ? `S${ep.season}E${ep.episode}` : id; }).join(', ')}`}</title>
                 <circle cx={x} cy={y} r={12} fill="transparent" />
-                <circle cx={x} cy={y} r={Math.min(11, 4 + Math.sqrt(person.mentions) / 2)} fill={person.episodeIds.length > 1 ? 'var(--color-gold)' : 'var(--color-cream)'} stroke={active?.slug === person.slug ? 'var(--color-pink)' : 'var(--color-background)'} strokeWidth={2} />
+                <circle cx={x} cy={y} r={rounded(Math.min(11, 4 + Math.sqrt(person.mentions) / 2))} fill={person.episodeIds.length > 1 ? 'var(--color-gold)' : 'var(--color-cream)'} stroke={active?.slug === person.slug ? 'var(--color-pink)' : 'var(--color-background)'} strokeWidth={2} />
                 {visible.length <= 15 && <text x={rounded(x + Math.cos(angle) * 18)} y={rounded(y + Math.sin(angle) * 18)} textAnchor={Math.cos(angle) < 0 ? 'end' : 'start'} dominantBaseline="middle" fontSize={12} fill="var(--color-cream)">{person.name}</text>}
               </a>
             </g>)}
