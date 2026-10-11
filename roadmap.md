@@ -38,3 +38,7 @@
 - [x] Trial James St. James episode background in the home collage style; all intended portraits checked against the episode's reference list
 - [x] Remove the duplicated portrait from James's collage; each person appears once
 - [x] Episodes page ranked by afterparty publish date (when the connection went live here), newest first — WOW publishing date shown too but not used for ranking
+
+- [x] Match Episodes page blocks to the home portrait layout, preserving both dates and afterparty-date ranking.
+
+- [x] Create a dense Episodes page header collage using references from all indexed episodes; verify artwork loads and episode links, dates and order remain intact.

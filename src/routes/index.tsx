@@ -2,12 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import heroImage from "../assets/hero-people.jpg";
-import diannePortrait from "../assets/block-dianne-brill.jpg";
-import mustoPortrait from "../assets/block-michael-musto.jpg";
-import jamesPortrait from "../assets/block-james-st-james.jpg";
-import { episodePath, episodes, latestEpisode } from "../data/episodes";
+import { episodes } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
+import { EpisodeBlock } from "@/components/episode-block";
 import { AzSection } from "../components/az-section";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
@@ -39,12 +37,6 @@ export const Route = createFileRoute("/")({
     links: [{ rel: "canonical", href: "/" }],
   }),
 });
-
-const episodePortraits: Record<string, string> = {
-  s01e01: diannePortrait,
-  s01e02: mustoPortrait,
-  s06e01: jamesPortrait,
-};
 
 const hosts = [
   {
@@ -172,70 +164,7 @@ function Index() {
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {episodes.map((ep) => (
-              <div
-                key={ep.id}
-                className="grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:col-span-2 md:grid-cols-[1fr_1.3fr]"
-              >
-                <div className="relative min-h-[440px] overflow-hidden border-b border-border p-8 md:border-b-0 md:border-r">
-                  <img src={episodePortraits[ep.id]} alt="" aria-hidden="true" width={1024} height={1024} loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover object-right" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/20 to-background/10" aria-hidden="true" />
-                  <div className="relative z-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                    Season {ep.season} &middot; Episode {ep.episode}
-                  </p>
-                  <h3 className="mt-3 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow">
-                    {ep.guest}
-                  </h3>
-                  <p className="mt-5 text-sm text-cream/90">
-                    {ep.runtime} &middot; {ep.references} tagged references
-                    &middot; {ep.mentions} mentions in this episode
-                  </p>
-                  </div>
-                </div>
-                <div className="p-8">
-                  <p className="text-base leading-relaxed text-card-foreground/85">
-                    {ep.blurb}
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {ep.top.map((t) => (
-                      <span
-                        key={t.name}
-                        className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold"
-                      >
-                        {t.name}
-                        <span className="ml-1.5 text-muted-foreground">
-                          {t.mentions} here
-                        </span>
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <Link
-                      to={episodePath(ep.id)}
-                      className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                    >
-                      Afterparty connection &rarr;
-                    </Link>
-                    <a
-                      href={ep.watchUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                    >
-                      Watch the episode
-                    </a>
-                    <a
-                      href={ep.listenUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                    >
-                      Listen to the episode
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <EpisodeBlock key={ep.id} ep={ep} />
             ))}
           </div>
         </div>

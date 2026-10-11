@@ -1,6 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { episodePath, episodes } from "@/data/episodes";
+import { createFileRoute } from "@tanstack/react-router";
+import { episodes } from "@/data/episodes";
+import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
+import episodesBackground from "@/assets/episodes-reference-collage.jpg";
 
 export const Route = createFileRoute("/episodes/")({
   head: () => ({
@@ -24,15 +26,6 @@ export const Route = createFileRoute("/episodes/")({
   component: EpisodesPage,
 });
 
-function formatReleased(iso: string) {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
-
 function EpisodesPage() {
   // Ranked by afterparty publish date: the connection published here most
   // recently comes first. This is the date the index went live on this site,
@@ -47,15 +40,17 @@ function EpisodesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <section className="disco-grid px-6 pb-16 pt-24">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-6 pb-16 pt-24 sm:min-h-[560px]">
+        <img src={episodesBackground} alt="Illustrated collage of nightlife people, clubs, books and music mentioned across the indexed episodes" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-pink">
             Episodes
           </p>
           <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
             Every episode, <span className="text-gold">timestamped</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base text-cream/90 sm:text-lg">
             Each episode becomes an index: every name, place, song, book and
             look that comes up, counted by how often it is mentioned and
             linked to the moment you can hear it.
@@ -68,75 +63,9 @@ function EpisodesPage() {
 
       {/* Episode list */}
       <section className="px-6 pb-24">
-        <div className="mx-auto flex max-w-4xl flex-col gap-6">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6">
           {byAfterpartyPublishDate.map((ep) => (
-            <div
-              key={ep.id}
-              className="rounded-3xl border border-gold/25 bg-card p-8 transition hover:border-gold/50"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                  Season {ep.season} &middot; Episode {ep.episode}
-                </p>
-                <div className="text-right text-xs text-muted-foreground">
-                  <p>
-                    Afterparty publish date{" "}
-                    {formatReleased(ep.afterpartyPublished)} &middot;{" "}
-                    {ep.runtime}
-                  </p>
-                  <p className="mt-1">
-                    WOW publishing date {formatReleased(ep.released)}
-                  </p>
-                </div>
-              </div>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-cream text-glow">
-                {ep.guest}
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-card-foreground/85">
-                {ep.blurb}
-              </p>
-              <p className="mt-4 text-xs text-muted-foreground">
-                {ep.references} tagged references &middot; {ep.mentions}{" "}
-                mentions in this episode
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {ep.top.map((t) => (
-                  <span
-                    key={t.name}
-                    className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold"
-                  >
-                    {t.name}
-                    <span className="ml-1.5 text-muted-foreground">
-                      {t.mentions} here
-                    </span>
-                  </span>
-                ))}
-              </div>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  to={episodePath(ep.id)}
-                  className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                >
-                  Afterparty connection &rarr;
-                </Link>
-                <a
-                  href={ep.watchUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                >
-                  Watch the episode
-                </a>
-                <a
-                  href={ep.listenUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                >
-                  Listen to the episode
-                </a>
-              </div>
-            </div>
+            <EpisodeBlock key={ep.id} ep={ep} showDates headingLevel={2} />
           ))}
         </div>
       </section>
