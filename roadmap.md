@@ -27,3 +27,4 @@
 - [x] Home page episode cards' button reads "Afterparty connection"; guests page card matched to it
 - [ ] Guests joined into the Timeline page; menu shows the pair as "Timeline" only
 - [ ] Connections page shows only the dot graph — remove the Everything A–Z strip (it has its own page)
+- [ ] Episode blocks: three buttons — "Afterparty connection", "Watch the episode" (WOW Presents Plus), "Listen to the episode" (Spotify)
