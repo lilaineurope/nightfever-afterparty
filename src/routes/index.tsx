@@ -140,6 +140,7 @@ function Index() {
       </section>
 
 
+
       {/* Latest release */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
