@@ -111,7 +111,16 @@ function EpisodePage() {
         </div>
       </section>
 
-      <MoodSpectrum moods={moods} />
+      <MoodSpectrum
+        moods={moods.filter((m) => m.time !== "On camera")}
+        id="episode-mood"
+        title="Mood of the episode"
+      />
+      <MoodSpectrum
+        moods={moods.filter((m) => m.time === "On camera")}
+        id="presenter-looks"
+        title="Presenters’ on-camera looks"
+      />
 
 
       <section className="px-6 pb-24">
@@ -194,44 +203,44 @@ function EpisodePage() {
 
 // Swatch colors per look, matched by keywords in the entry name (data stays in the JSON).
 const SWATCHES: { match: RegExp; colors: [string, string]; label: string }[] = [
-  { match: /James's on-camera/i, colors: ["oklch(0.82 0.1 85)", "oklch(0.6 0.13 55)"], label: "Champagne & amber" },
-  { match: /Fenton's on-camera/i, colors: ["oklch(0.5 0.2 262)", "oklch(0.66 0.2 40)"], label: "Cobalt & orange" },
-  { match: /Randy's on-camera/i, colors: ["oklch(0.62 0.18 150)", "oklch(0.3 0.06 260)"], label: "Kelly green & navy" },
-  { match: /film-school/i, colors: ["oklch(0.72 0.25 350)", "oklch(0.7 0.14 70)"], label: "Neon pink & leopard" },
-  { match: /Converse/i, colors: ["oklch(0.78 0.16 350)", "oklch(0.95 0.01 90)"], label: "Pink high tops" },
-  { match: /paper/i, colors: ["oklch(0.97 0.005 90)", "oklch(0.78 0.01 250)"], label: "Paper white & silver" },
-  { match: /Warhol/i, colors: ["oklch(0.85 0.01 250)", "oklch(0.2 0 0)"], label: "Silver & black" },
-  { match: /Drag/i, colors: ["oklch(0.6 0.25 330)", "oklch(0.85 0.15 90)"], label: "Magenta & gold" },
-  { match: /Rhoda|Bad Seed/i, colors: ["oklch(0.88 0.04 230)", "oklch(0.97 0.01 90)"], label: "Powder blue & lace" },
-  { match: /Ball gowns/i, colors: ["oklch(0.2 0.02 300)", "oklch(0.5 0.2 25)"], label: "Velvet black & crimson" },
-  { match: /outfits/i, colors: ["oklch(0.65 0.22 300)", "oklch(0.8 0.15 160)"], label: "Flamboyant mix" },
+  { match: /James's on-camera/i, colors: ["var(--mood-swatch-1)", "var(--mood-swatch-2)"], label: "Champagne & amber" },
+  { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-4)"], label: "Cobalt & orange" },
+  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-5)", "var(--mood-swatch-6)"], label: "Kelly green & navy" },
+  { match: /film-school/i, colors: ["var(--mood-swatch-7)", "var(--mood-swatch-8)"], label: "Neon pink & leopard" },
+  { match: /Converse/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-10)"], label: "Pink high tops" },
+  { match: /paper/i, colors: ["var(--mood-swatch-11)", "var(--mood-swatch-12)"], label: "Paper white & silver" },
+  { match: /Warhol/i, colors: ["var(--mood-swatch-13)", "var(--mood-swatch-14)"], label: "Silver & black" },
+  { match: /Drag/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)"], label: "Magenta & gold" },
+  { match: /Rhoda|Bad Seed/i, colors: ["var(--mood-swatch-17)", "var(--mood-swatch-18)"], label: "Powder blue & lace" },
+  { match: /Ball gowns/i, colors: ["var(--mood-swatch-19)", "var(--mood-swatch-20)"], label: "Velvet black & crimson" },
+  { match: /outfits/i, colors: ["var(--mood-swatch-21)", "var(--mood-swatch-22)"], label: "Flamboyant mix" },
 ];
 const swatchFor = (name: string) =>
-  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["oklch(0.7 0.1 80)", "oklch(0.6 0.2 350)"] as [string, string], label: "Mood" };
+  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-23)", "var(--mood-swatch-24)"] as [string, string], label: "Mood" };
 
-function MoodSpectrum({ moods }: { moods: Ref[] }) {
+function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: string }) {
   const [i, setI] = useState(0);
   if (moods.length === 0) return null;
-  const active = moods[Math.min(i, moods.length - 1)]!;
+  const active = moods[Math.min(i, moods.length - 1)];
+  if (!active) return null;
   const sw = swatchFor(active.name);
   return (
-    <section aria-labelledby="episode-mood" className="px-6 pb-12">
+    <section aria-labelledby={id} className="px-6 pb-12">
       <div className="mx-auto max-w-5xl">
-        <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
-        <p className="mt-2 text-sm text-muted-foreground">Slide or tap through the colors of every look in the episode.</p>
-        <div className="mt-6 flex h-16 overflow-hidden rounded-lg border border-border" role="tablist">
+        <h2 id={id} className="text-3xl font-bold text-cream">{title}</h2>
+        <div className="mt-6 flex h-16 overflow-hidden rounded-lg border border-border" role="group" aria-label={`${title} colors`}>
           {moods.map((m, k) => {
             const s = swatchFor(m.name);
             return (
-              <button key={m.rank} role="tab" aria-selected={k === i} aria-label={m.name} onClick={() => setI(k)}
-                className={`flex-1 transition-all ${k === i ? "flex-[2.5] ring-2 ring-inset ring-cream" : "opacity-80 hover:opacity-100"}`}
+              <Button variant="ghost" key={m.rank} aria-pressed={k === i} aria-label={m.name} onClick={() => setI(k)}
+                className={`h-full min-w-0 rounded-none p-0 flex-1 transition-all motion-reduce:transition-none ${k === i ? "flex-[2.5] ring-2 ring-inset ring-cream" : "opacity-80 hover:opacity-100"}`}
                 style={{ background: `linear-gradient(135deg, ${s.colors[0]} 50%, ${s.colors[1]} 50%)` }} />
             );
           })}
         </div>
         <input type="range" min={0} max={moods.length - 1} value={i} onChange={(e) => setI(Number(e.target.value))}
-          aria-label="Choose a look" className="mt-3 w-full accent-[var(--gold)]" />
-        <article className="mt-4 rounded-lg border border-border bg-card p-6" style={{ borderLeft: `6px solid ${sw.colors[0]}` }}>
+          aria-label={`Choose a look: ${title}`} className="mt-3 w-full accent-[var(--gold)]" />
+        <article className="mt-4 border-l-4 pl-5 py-2" style={{ borderLeftColor: sw.colors[0] }} aria-live="polite">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="text-xl font-semibold text-cream">{active.name}</h3>
             {active.time === "On camera" ? (
