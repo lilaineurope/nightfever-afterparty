@@ -12,3 +12,5 @@
 - [x] Terms + Privacy linked in every page footer; newsletter consent checkbox added
 - [ ] Lisa to confirm the contact details in the legal pages (Instagram only for now — an email address would be better for GDPR requests)
 - [ ] Update the "109 tagged references" count on the home card to 119 (awaiting Lisa's OK)
+- [x] Everything A–Z strip above "Legendary guests" on the home page
+- [ ] A–Z strip also placed under the intro on the Connections page — Lisa to confirm that's what she meant

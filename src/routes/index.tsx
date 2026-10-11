@@ -3,6 +3,7 @@ import { useState } from "react";
 import heroImage from "../assets/hero-people.jpg";
 import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
+import { AzSection } from "../components/az-section";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
@@ -201,6 +202,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <AzSection />
 
       {/* Featured guests */}
       <section className="spotlight px-6 py-24">

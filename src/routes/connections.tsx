@@ -5,6 +5,7 @@ import { eventsByGuest, recurringFigures, sceneEvents } from "../data/scene";
 import { entityFor } from "../data/entities";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
+import { AzSection } from "../components/az-section";
 
 export const Route = createFileRoute("/connections")({
   component: ConnectionsPage,
@@ -229,6 +230,8 @@ function ConnectionsPage() {
           </Link>
         </div>
       </section>
+
+      <AzSection limit={9} />
 
       {/* Web */}
       <section className="px-4 pb-8">

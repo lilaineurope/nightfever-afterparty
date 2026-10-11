@@ -51,7 +51,10 @@ function ExplorePage() {
                 <span className="mt-1 block text-xs text-muted-foreground">
                   {e.guest ? "Night Fever guest" : e.category}
                   {" · "}
-                  {e.refs.length + e.events.length + e.inGuestStories.length} stories
+                  {(() => {
+                    const n = e.refs.length + e.events.length + e.inGuestStories.length;
+                    return `${n} ${n === 1 ? "story" : "stories"}`;
+                  })()}
                 </span>
               </Link>
             </li>
