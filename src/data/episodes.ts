@@ -7,8 +7,10 @@ export type Episode = {
   guest: string;
   /** Release date (ISO) as listed on Spotify / WOW Presents Plus */
   released: string;
-  /** Link to the episode audio */
-  audioUrl: string;
+  /** WOW Presents Plus page where the episode can be watched */
+  watchUrl: string;
+  /** Spotify address where the episode can be heard */
+  listenUrl: string;
   /** Approximate runtime as listed on Spotify */
   runtime: string;
   /** Short summary written from the public episode description */
@@ -27,7 +29,8 @@ const s06e01: Episode = {
     episode: 1,
     guest: "James St. James",
     released: "2026-08-21",
-    audioUrl: "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4",
+    watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-601",
+    listenUrl: "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4",
     runtime: "54 min",
     blurb:
       "The host finally takes the guest chair himself: his childhood, the move to New York, and the club years he has spent documenting ever since.",
@@ -46,8 +49,9 @@ const s01e01: Episode = {
     episode: 1,
     guest: "Dianne Brill",
     released: "2021-08-30",
-    audioUrl:
+    watchUrl:
       "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
+    listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
     runtime: "51 min",
     blurb:
       "The very first episode: the 'Queen of the Night' on Warhol, Mugler, Danceteria and inventing her own silhouette.",
