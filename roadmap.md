@@ -20,3 +20,6 @@
 - [ ] A–Z strip also placed under the intro on the Connections page — Lisa to confirm that's what she meant
 
 - [x] Match the two "Latest episodes" cards on / to the S6E1 card's format/layout
+- [x] Mention counts split: per episode vs across all episodes (A–Z chips, cards, episode pages)
+- [ ] Presenters' on-camera looks slider: add a third colour to each swatch (S1E1 + S6E1)
+- [ ] Episode overview: button reads "Afterparty connection" instead of "Every name, timestamped"
