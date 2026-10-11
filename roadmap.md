@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Correct S01E02 story Mood colours to match individual descriptions.
+- [ ] Create a matching S01E02 header collage using only people mentioned in that episode, with each face once.
 - [x] Add S01E02 Michael Musto with the exact 250 supplied references, text-only Mood and presenter looks, shared connections, and season/episode-ordered lists.
 - [x] One profile page per person/place/book/etc, everything linked to it (guests, timeline, episode, home)
 - [x] Site menu on every page listing all pages
