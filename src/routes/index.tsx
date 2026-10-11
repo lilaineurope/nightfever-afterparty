@@ -164,14 +164,10 @@ function Index() {
             Latest episodes
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {episodes.map((ep, i) => (
+            {episodes.map((ep) => (
               <div
                 key={ep.id}
-                className={
-                  i === 0
-                    ? "grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:col-span-2 md:grid-cols-[1fr_1.3fr]"
-                    : "overflow-hidden rounded-3xl border border-border bg-card"
-                }
+                className="grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:col-span-2 md:grid-cols-[1fr_1.3fr]"
               >
                 <div className="disco-grid border-b border-border p-8 md:border-b-0 md:border-r">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
