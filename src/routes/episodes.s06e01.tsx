@@ -9,6 +9,7 @@ import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
+import episodeBackground from "../assets/episode-james-st-james.jpg";
 
 type Ref = {
   rank: number;
@@ -106,8 +107,13 @@ function EpisodePage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="disco-grid px-6 pb-12 pt-24">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="relative flex min-h-[480px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[540px]">
+        <div className="absolute inset-0" aria-hidden="true">
+          <img src={episodeBackground} alt="" width={1536} height={864} fetchPriority="high"
+            className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
           <Link to="/timeline" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
             &larr; Timeline &amp; guests
           </Link>
