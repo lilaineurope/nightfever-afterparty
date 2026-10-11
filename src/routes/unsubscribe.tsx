@@ -7,8 +7,8 @@ import {
 import { LegalLinks } from "@/components/legal-links";
 
 export const Route = createFileRoute("/unsubscribe")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    token: typeof search.token === "string" ? search.token : undefined,
+  validateSearch: (search) => ({
+    token: typeof search["token"] === "string" ? search["token"] : undefined,
   }),
   head: () => ({
     meta: [

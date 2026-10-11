@@ -67,10 +67,13 @@ export const episodes: Episode[] = [s06e01, s01e01].sort((a, b) =>
 
 export const latestEpisode: Episode = s06e01;
 
-const EPISODE_PATHS = {
+const EPISODE_PATHS: Record<
+  Episode["id"],
+  "/episodes/s06e01" | "/episodes/s01e01"
+> = {
   s06e01: "/episodes/s06e01",
   s01e01: "/episodes/s01e01",
-} as const;
+};
 
 export function episodePath(id: Episode["id"]) {
   return EPISODE_PATHS[id];
