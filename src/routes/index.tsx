@@ -178,7 +178,7 @@ function Index() {
                   </h3>
                   <p className="mt-5 text-sm text-muted-foreground">
                     {ep.runtime} &middot; {ep.references} tagged references
-                    &middot; {ep.mentions} mentions
+                    &middot; {ep.mentions} mentions in this episode
                   </p>
                 </div>
                 <div className="p-8">
@@ -193,7 +193,7 @@ function Index() {
                       >
                         {t.name}
                         <span className="ml-1.5 text-muted-foreground">
-                          {t.mentions} mentions
+                          {t.mentions} here
                         </span>
                       </span>
                     ))}

@@ -77,7 +77,7 @@ function EpisodesPage() {
               </p>
               <p className="mt-4 text-xs text-muted-foreground">
                 {ep.references} tagged references &middot; {ep.mentions}{" "}
-                mentions
+                mentions in this episode
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {ep.top.map((t) => (
@@ -87,7 +87,7 @@ function EpisodesPage() {
                   >
                     {t.name}
                     <span className="ml-1.5 text-muted-foreground">
-                      {t.mentions} mentions
+                      {t.mentions} here
                     </span>
                   </span>
                 ))}
@@ -97,7 +97,7 @@ function EpisodesPage() {
                   to={episodePath(ep.id)}
                   className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                 >
-                  Every name, timestamped &rarr;
+                  Afterparty connection &rarr;
                 </Link>
                 <a
                   href={ep.audioUrl}

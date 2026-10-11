@@ -1,5 +1,6 @@
 import refsJson from "./s06e01.json";
 import refs01Json from "./s01e01.json";
+import { episodes } from "./episodes";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 
@@ -144,6 +145,40 @@ export const categoryMentions: Record<string, number> = (() => {
     out["All"] = (out["All"] ?? 0) + r.mentions;
     out[r.category] = (out[r.category] ?? 0) + r.mentions;
     if (r.fashion) out["Fashion"] = (out["Fashion"] ?? 0) + r.mentions;
+  }
+  return out;
+})();
+
+/** "S6E1" style short label for an episode id. */
+export const episodeShort = (id: string): string => {
+  const ep = episodes.find((x) => x.id === id);
+  return ep ? `S${ep.season}E${ep.episode}` : id;
+};
+
+/** Mentions of one entity inside a single episode. */
+export const mentionsIn = (e: Entity, episode: string): number =>
+  e.refs
+    .filter((r) => r.episode === episode)
+    .reduce((sum, r) => sum + r.mentions, 0);
+
+/** How an entity's mentions split per episode (newest first, empty episodes dropped). */
+export const mentionsByEpisode = (e: Entity): { episode: string; count: number }[] =>
+  episodes
+    .map((ep) => ({ episode: ep.id, count: mentionsIn(e, ep.id) }))
+    .filter((x) => x.count > 0);
+
+/** Mentions per category, split per episode. */
+export const categoryMentionsByEpisode: Record<string, Record<string, number>> = (() => {
+  const out: Record<string, Record<string, number>> = {};
+  const bump = (c: string, ep: string, n: number) => {
+    out[c] = out[c] ?? {};
+    out[c][ep] = (out[c][ep] ?? 0) + n;
+  };
+  for (const r of refs) {
+    const ep = r.episode ?? "";
+    bump("All", ep, r.mentions);
+    bump(r.category, ep, r.mentions);
+    if (r.fashion) bump("Fashion", ep, r.mentions);
   }
   return out;
 })();
