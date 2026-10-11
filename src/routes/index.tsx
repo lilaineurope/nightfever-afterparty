@@ -3,6 +3,7 @@ import { useState } from "react";
 import heroImage from "../assets/hero-people.jpg";
 import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
+import { CATEGORIES, entities } from "../data/entities";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
@@ -86,6 +87,7 @@ const platforms = [
 
 function Index() {
   const [email, setEmail] = useState("");
+  const [azCat, setAzCat] = useState("All");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
