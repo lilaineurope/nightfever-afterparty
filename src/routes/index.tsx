@@ -206,12 +206,20 @@ function Index() {
                       Afterparty connection &rarr;
                     </Link>
                     <a
-                      href={ep.audioUrl}
+                      href={ep.watchUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                     >
-                      Listen on {ep.id === "s01e01" ? "WOW" : "Spotify"}
+                      Watch the episode
+                    </a>
+                    <a
+                      href={ep.listenUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                    >
+                      Listen to the episode
                     </a>
                   </div>
                 </div>
@@ -378,12 +386,6 @@ function Index() {
                 className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
                 Home
-              </Link>
-              <Link
-                to="/guests"
-                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-              >
-                Guests
               </Link>
               <Link
                 to="/connections"

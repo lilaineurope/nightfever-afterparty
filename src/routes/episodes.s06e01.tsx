@@ -24,7 +24,7 @@ type Ref = {
 };
 
 const refs = refsRaw as Ref[];
-const EPISODE_URL = latestEpisode.audioUrl;
+const EPISODE_URL = latestEpisode.listenUrl;
 
 export const Route = createFileRoute("/episodes/s06e01")({
   component: EpisodePage,
@@ -108,8 +108,8 @@ function EpisodePage() {
     <main className="min-h-screen bg-background text-foreground">
       <section className="disco-grid px-6 pb-12 pt-24">
         <div className="mx-auto max-w-4xl text-center">
-          <Link to="/guests" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
-            &larr; All guests
+          <Link to="/timeline" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
+            &larr; Timeline &amp; guests
           </Link>
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season 6 · Episode 1</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">James St. James</h1>
