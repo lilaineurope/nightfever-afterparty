@@ -18,3 +18,5 @@
 - [ ] Update the "109 tagged references" count on the home card to 119 (awaiting Lisa's OK)
 - [x] Everything A–Z strip above "Legendary guests" on the home page
 - [ ] A–Z strip also placed under the intro on the Connections page — Lisa to confirm that's what she meant
+
+- [ ] Match the two "Latest episodes" cards on / to the S6E1 card's format/layout
