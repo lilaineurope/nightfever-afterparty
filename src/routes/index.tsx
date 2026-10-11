@@ -223,7 +223,7 @@ function Index() {
               to="/guests"
               className="inline-flex items-center gap-2 rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
             >
-              Explore their careers &amp; connections
+              Explore their connections
             </Link>
           </div>
         </div>
