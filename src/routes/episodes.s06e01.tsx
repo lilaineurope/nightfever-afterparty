@@ -111,28 +111,8 @@ function EpisodePage() {
         </div>
       </section>
 
-      <section aria-labelledby="episode-mood" className="px-6 pb-12">
-        <div className="mx-auto max-w-5xl">
-          <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
-          {[
-            { title: "On screen", entries: moods.filter((r) => r.time === "On camera") },
-            { title: "In the stories", entries: moods.filter((r) => r.time !== "On camera") },
-          ].map((group) => (
-            <div key={group.title} className="mt-6">
-              <h3 className="mb-3 text-sm font-medium uppercase text-gold">{group.title}</h3>
-              <div className="grid gap-4 md:grid-cols-3">
-                {group.entries.map((r) => (
-                  <article key={r.rank} className="rounded-lg border border-border bg-card p-5">
-                    <h4 className="font-semibold text-cream">{r.name}</h4>
-                    {r.fashion && <p className="mt-3 text-sm text-foreground">{r.fashion}</p>}
-                    <p className="mt-3 text-sm text-muted-foreground">{r.context}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <MoodSpectrum moods={moods} />
+
 
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-5xl">
