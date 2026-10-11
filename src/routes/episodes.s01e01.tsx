@@ -8,6 +8,7 @@ import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
+import { episodeById } from "../data/episodes";
 
 type Ref = {
   rank: number;
@@ -23,9 +24,8 @@ type Ref = {
 };
 
 const refs = refsRaw as Ref[];
-// This episode streams on WOW Presents Plus, not Spotify — so no timestamp deep links.
-const EPISODE_URL =
-  "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill";
+// Watch on WOW Presents Plus, hear on Spotify — both come from the shared episode list.
+const thisEpisode = episodeById("s01e01");
 
 export const Route = createFileRoute("/episodes/s01e01")({
   component: EpisodePage,
@@ -115,10 +115,16 @@ function EpisodePage() {
             Every name, club, book, song, night and look from the interview &mdash; {refs.length} references
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode.
           </p>
-          <a href={EPISODE_URL} target="_blank" rel="noreferrer"
-            className="mt-6 inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
-            Listen to the episode
-          </a>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
+              className="inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
+              Watch the episode
+            </a>
+            <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
+              className="inline-block rounded-full border border-gold px-6 py-3 font-semibold text-gold hover:bg-gold hover:text-gold-foreground">
+              Listen to the episode
+            </a>
+          </div>
         </div>
       </section>
 

@@ -71,6 +71,10 @@ export const episodes: Episode[] = [s06e01, s01e01].sort((a, b) =>
 
 export const latestEpisode: Episode = s06e01;
 
+/** Look an episode up by its route id, for the episode pages themselves. */
+export const episodeById = (id: string): Episode =>
+  episodes.find((e) => e.id === id) ?? latestEpisode;
+
 export function episodePath(
   id: Episode["id"],
 ): "/episodes/s06e01" | "/episodes/s01e01" {

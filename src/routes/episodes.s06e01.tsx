@@ -117,10 +117,16 @@ function EpisodePage() {
             Every name, club, book, song, night and look from the interview &mdash; {refs.length} references
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode.
           </p>
-          <a href={EPISODE_URL} target="_blank" rel="noreferrer"
-            className="mt-6 inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
-            Listen to the episode
-          </a>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a href={latestEpisode.watchUrl} target="_blank" rel="noreferrer"
+              className="inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
+              Watch the episode
+            </a>
+            <a href={latestEpisode.listenUrl} target="_blank" rel="noreferrer"
+              className="inline-block rounded-full border border-gold px-6 py-3 font-semibold text-gold hover:bg-gold hover:text-gold-foreground">
+              Listen to the episode
+            </a>
+          </div>
         </div>
       </section>
 
