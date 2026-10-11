@@ -47,3 +47,7 @@
 - [x] Rebuild Connections from all 185 timestamped people in the three published episode indexes only; verify filters, mention totals, timestamp evidence and clickable shared cards.
 
 - [x] Refine the Episodes header collage faces to more closely resemble the real people, preserving its layout and style; applied and verified as illustrated likenesses, not exact photographs.
+
+## Open (11 Oct 2026, late)
+- [ ] Connections: restore the original circular web format (v1) populated only from names in the published episode indexes; keep dots clickable + names, focus panel, great connectors, recurring names.
+- [ ] Home episode blocks: show Afterparty publish date + WOW publishing date exactly like the Episodes page, ranked by afterparty publish date (newest first).
