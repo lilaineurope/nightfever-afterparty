@@ -2,6 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { CATEGORIES, entities } from "../data/entities";
 
+const storyCount = (e: (typeof entities)[number]) =>
+  e.refs.length + e.events.length + e.inGuestStories.length;
+
 // The A–Z strip: every name on the site, one card each. Shown on the home page
 // and on the connections page; the full list lives at /explore.
 export function AzSection({ limit = 12 }: { limit?: number }) {
@@ -13,6 +16,14 @@ export function AzSection({ limit = 12 }: { limit?: number }) {
         ? e.refs.some((r) => r.fashion)
         : e.category === cat,
   );
+  // In "All" the names with the most stories come first, so the strip leads with
+  // the big recurring names instead of the first twelve lines of the A–Z list.
+  const ordered =
+    cat === "All"
+      ? [...shown].sort(
+          (a, b) => storyCount(b) - storyCount(a) || a.name.localeCompare(b.name),
+        )
+      : shown;
   const chip = (c: string) =>
     `rounded-full border px-3 py-1 text-xs font-medium transition ${
       cat === c
@@ -44,28 +55,32 @@ export function AzSection({ limit = 12 }: { limit?: number }) {
           ))}
         </div>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.slice(0, limit).map((e) => (
-            <li key={e.slug}>
-              <Link
-                to="/explore/$slug"
-                params={{ slug: e.slug }}
-                className="block rounded-xl border border-border bg-card p-4 transition hover:border-gold/50"
-              >
-                <span className="block font-semibold text-gold">{e.name}</span>
-                <span className="mt-1 block text-xs text-muted-foreground">
-                  {e.guest ? "Night Fever guest" : e.category}
-                  {" · "}
-                  {e.refs.length + e.events.length + e.inGuestStories.length}{" "}
-                  stories
-                </span>
-              </Link>
-            </li>
-          ))}
+          {ordered.slice(0, limit).map((e) => {
+            const n = storyCount(e);
+            return (
+              <li key={e.slug}>
+                <Link
+                  to="/explore/$slug"
+                  params={{ slug: e.slug }}
+                  className="block rounded-xl border border-border bg-card p-4 transition hover:border-gold/50"
+                >
+                  <span className="block font-semibold text-gold">
+                    {e.name}
+                  </span>
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    {e.guest ? "Night Fever guest" : e.category}
+                    {" · "}
+                    {n} {n === 1 ? "story" : "stories"}
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          {shown.length} {shown.length === 1 ? "card" : "cards"} in{" "}
-          {cat === "All" ? "everything" : cat.toLowerCase()} &middot;{" "}
-          {entities.length} in total
+          {cat === "All"
+            ? `${shown.length} cards in total`
+            : `${shown.length} ${cat.toLowerCase()} cards of ${shown.length === entities.length ? "" : entities.length}`}
         </p>
         <div className="mt-6 text-center">
           <Link
