@@ -78,9 +78,16 @@ function EpisodesPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                   Season {ep.season} &middot; Episode {ep.episode}
                 </p>
-                <p className="text-xs text-muted-foreground">
-                  Afterparty publish date {formatReleased(ep.afterpartyPublished)} &middot; {ep.runtime}
-                </p>
+                <div className="text-right text-xs text-muted-foreground">
+                  <p>
+                    Afterparty publish date{" "}
+                    {formatReleased(ep.afterpartyPublished)} &middot;{" "}
+                    {ep.runtime}
+                  </p>
+                  <p className="mt-1">
+                    WOW publishing date {formatReleased(ep.released)}
+                  </p>
+                </div>
               </div>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-cream text-glow">
                 {ep.guest}
