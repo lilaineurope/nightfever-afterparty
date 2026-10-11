@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as GuestsRouteImport } from './routes/guests'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
 import { Route as ExploreIndexRouteImport } from './routes/explore.index'
@@ -36,6 +37,11 @@ const ConnectionsRoute = ConnectionsRouteImport.update({
 const GuestsRoute = GuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimelineRoute = TimelineRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
+  '/privacy': typeof PrivacyRoute
   '/timeline': typeof TimelineRoute
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/explore/$slug': typeof ExploreSlugRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
+  '/privacy': typeof PrivacyRoute
   '/timeline': typeof TimelineRoute
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/explore/$slug': typeof ExploreSlugRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
+  '/privacy': typeof PrivacyRoute
   '/timeline': typeof TimelineRoute
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/explore/$slug': typeof ExploreSlugRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connections'
     | '/guests'
+    | '/privacy'
     | '/timeline'
     | '/episodes/s06e01'
     | '/explore/$slug'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connections'
     | '/guests'
+    | '/privacy'
     | '/timeline'
     | '/episodes/s06e01'
     | '/explore/$slug'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connections'
     | '/guests'
+    | '/privacy'
     | '/timeline'
     | '/episodes/s06e01'
     | '/explore/$slug'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ConnectionsRoute: typeof ConnectionsRoute
   GuestsRoute: typeof GuestsRoute
+  PrivacyRoute: typeof PrivacyRoute
   TimelineRoute: typeof TimelineRoute
   EpisodesS06e01Route: typeof EpisodesS06e01Route
   ExploreSlugRoute: typeof ExploreSlugRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/guests'
       fullPath: '/guests'
       preLoaderRoute: typeof GuestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/timeline': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ConnectionsRoute: ConnectionsRoute,
   GuestsRoute: GuestsRoute,
+  PrivacyRoute: PrivacyRoute,
   TimelineRoute: TimelineRoute,
   EpisodesS06e01Route: EpisodesS06e01Route,
   ExploreSlugRoute: ExploreSlugRoute,
