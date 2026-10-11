@@ -238,14 +238,11 @@ function ConnectionsPage() {
                 );
               })}
 
-              {recurringFigures.map(({ name, events }, i) => {
+              {recurringFigures.map(({ name, events }) => {
                 const p = positions[name]!;
                 const lit =
                   !active || events.some((e) => e.people.includes(active));
-                const flip = Math.cos(p.angle) < 0;
-                // Nudge every other name above or below its dot, so the two
-                // closest names on the inner ring never share one text line.
-                const lift = i % 2 === 0 ? -16 : 16;
+                const lab = figureLabels[name]!;
                 const entity = entityFor(name);
                 const external = name === "World of Wonder";
                 const href = external
@@ -265,9 +262,9 @@ function ConnectionsPage() {
                 );
                 const label = (
                   <text
-                    x={(p.x + Math.cos(p.angle) * 12).toFixed(2)}
-                    y={(p.y + Math.sin(p.angle) * 12 + lift).toFixed(2)}
-                    textAnchor={flip ? "end" : "start"}
+                    x={lab.x.toFixed(2)}
+                    y={lab.y.toFixed(2)}
+                    textAnchor={lab.anchor}
                     dominantBaseline="middle"
                     fontSize="11"
                     fill="var(--color-cream)"
