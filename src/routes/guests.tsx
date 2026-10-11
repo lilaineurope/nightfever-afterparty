@@ -47,6 +47,7 @@ function GuestsPage() {
             The people <span className="text-pink text-glow-pink">in the room</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Everyone interviewed on{" "}
             <a
               href={SHOW_URL}
               target="_blank"
@@ -301,9 +302,7 @@ function GuestsPage() {
 
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          Biographical details compiled from public interviews and press
-          coverage. Not affiliated with World of Wonder or the Night Fever
-          podcast.
+          <EntityText text="Biographical details compiled from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
       </footer>
     </main>

@@ -487,7 +487,24 @@ function ConnectionsPage() {
 
       <footer className="border-t border-border px-6 py-12 text-center">
         <p className="text-sm text-muted-foreground">
-          Fan page for <em>Night Fever</em> by World of Wonder.{" "}
+          Fan page for{" "}
+          <a
+            href={SHOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+          >
+            <em>Night Fever</em>
+          </a>{" "}
+          by{" "}
+          <a
+            href={WOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+          >
+            World of Wonder
+          </a>.{" "}
           <Link to="/" className="text-gold transition hover:text-pink">
             Home
           </Link>{" "}
@@ -501,8 +518,7 @@ function ConnectionsPage() {
           </Link>
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          Connections drawn from public interviews and press coverage. Not
-          affiliated with World of Wonder or the Night Fever podcast.
+          <EntityText text="Connections drawn from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
       </footer>
     </main>
