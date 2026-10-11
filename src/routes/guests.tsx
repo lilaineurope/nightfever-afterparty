@@ -47,7 +47,15 @@ function GuestsPage() {
             The people <span className="text-pink text-glow-pink">in the room</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Everyone interviewed on <em>Night Fever</em> has a long, strange,
+            <a
+              href={SHOW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+            >
+              <em>Night Fever</em>
+            </a>{" "}
+            has a long, strange,
             brilliant career behind them &mdash; and most of them are still at
             it. Here is who they are, what they did, what they are doing now,
             and how their paths keep crossing.
