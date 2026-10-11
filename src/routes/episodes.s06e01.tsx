@@ -5,6 +5,7 @@ import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
 import { latestEpisode } from "../data/episodes";
 import { Button } from "@/components/ui/button";
+import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
 
 type Ref = {
@@ -150,11 +151,11 @@ function EpisodePage() {
                 )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">
-                    {r.link ? (
-                      <a href={r.link} target="_blank" rel="noreferrer"
-                        className="text-lg font-semibold text-cream underline decoration-border underline-offset-4 hover:text-pink">{r.name}</a>
-                    ) : (
-                      <span className="text-lg font-semibold text-cream">{r.name}</span>
+                    <EntityLink name={r.name}
+                      className="text-lg font-semibold text-cream underline decoration-border underline-offset-4 hover:text-pink" />
+                    {r.link && (
+                      <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} elsewhere`}
+                        className="text-xs text-muted-foreground hover:text-gold">↗</a>
                     )}
                     <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs text-secondary-foreground">{r.category}</span>
                     {r.status !== "Confirmed" && (
@@ -173,7 +174,7 @@ function EpisodePage() {
                   {(r.guest || r.events.length > 0) && (
                     <div className="mt-2 flex flex-wrap gap-2 text-xs">
                       {r.guest && (
-                        <Link to="/guests" hash={r.guest.slug} className="rounded-full border border-pink/50 px-2.5 py-0.5 text-pink hover:bg-pink hover:text-pink-foreground">
+                        <Link to="/explore/$slug" params={{ slug: r.guest.slug }} className="rounded-full border border-pink/50 px-2.5 py-0.5 text-pink hover:bg-pink hover:text-pink-foreground">
                           Night Fever guest &rarr;
                         </Link>
                       )}

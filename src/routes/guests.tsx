@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { eras, guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
+import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
 
 export const Route = createFileRoute("/guests")({
@@ -194,12 +195,11 @@ function GuestsPage() {
                                     {scene}
                                   </a>
                                 ) : (
-                                  <span
+                                  <EntityLink
                                     key={scene}
-                                    className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
-                                  >
-                                    {scene}
-                                  </span>
+                                    name={scene}
+                                    className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-gold/50 hover:text-gold"
+                                  />
                                 ),
                               )}
                             </div>
@@ -223,6 +223,13 @@ function GuestsPage() {
                             </div>
                           </div>
 
+                          <Link
+                            to="/explore/$slug"
+                            params={{ slug: guest.slug }}
+                            className="mr-3 inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
+                          >
+                            Full overview &rarr;
+                          </Link>
                           <a
                             href={guest.episodeUrl}
                             target="_blank"
