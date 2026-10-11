@@ -208,10 +208,10 @@ function ConnectionsPage() {
       <section className="disco-grid px-6 pb-12 pt-24">
         <div className="mx-auto max-w-4xl text-center">
           <Link
-            to="/guests"
+            to="/timeline"
             className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink"
           >
-            &larr; Guests &amp; timelines
+            &larr; Timeline &amp; guests
           </Link>
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             Everyone knows{" "}
@@ -515,7 +515,7 @@ function ConnectionsPage() {
                   Open their full card
                 </Link>
                 <Link
-                  to="/guests"
+                  to="/timeline"
                   hash={focus}
                   className="inline-flex rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
                 >
@@ -640,10 +640,6 @@ function ConnectionsPage() {
           </a>.{" "}
           <Link to="/" className="text-gold transition hover:text-pink">
             Home
-          </Link>{" "}
-          &middot;{" "}
-          <Link to="/guests" className="text-gold transition hover:text-pink">
-            Guests
           </Link>{" "}
           &middot;{" "}
           <Link

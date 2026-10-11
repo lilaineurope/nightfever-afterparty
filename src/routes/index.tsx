@@ -380,12 +380,6 @@ function Index() {
                 Home
               </Link>
               <Link
-                to="/guests"
-                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-              >
-                Guests
-              </Link>
-              <Link
                 to="/connections"
                 className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
