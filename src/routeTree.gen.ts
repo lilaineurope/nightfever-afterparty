@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as TimelineRouteImport } from './routes/timeline'
@@ -18,6 +19,11 @@ import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnectionsRoute = ConnectionsRouteImport.update({
@@ -43,6 +49,7 @@ const EpisodesS06e01Route = EpisodesS06e01RouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
   '/timeline': typeof TimelineRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
   '/timeline': typeof TimelineRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
   '/timeline': typeof TimelineRoute
@@ -65,12 +74,25 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/connections' | '/guests' | '/timeline' | '/episodes/s06e01'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/connections'
+    | '/guests'
+    | '/timeline'
+    | '/episodes/s06e01'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/connections' | '/guests' | '/timeline' | '/episodes/s06e01'
+  to:
+    | '/'
+    | '/about'
+    | '/connections'
+    | '/guests'
+    | '/timeline'
+    | '/episodes/s06e01'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/connections'
     | '/guests'
     | '/timeline'
@@ -79,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ConnectionsRoute: typeof ConnectionsRoute
   GuestsRoute: typeof GuestsRoute
   TimelineRoute: typeof TimelineRoute
@@ -92,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connections': {
@@ -127,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ConnectionsRoute: ConnectionsRoute,
   GuestsRoute: GuestsRoute,
   TimelineRoute: TimelineRoute,

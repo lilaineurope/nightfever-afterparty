@@ -177,8 +177,13 @@ function TimelinePage() {
           &middot;{" "}
           <Link to="/guests" className="text-gold transition hover:text-pink">
             Guests
+          </Link>{" "}
+          &middot;{" "}
+          <Link to="/about" className="text-gold transition hover:text-pink">
+            About
           </Link>
         </p>
+
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Dates and events compiled from public records, interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>

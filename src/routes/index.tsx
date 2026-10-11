@@ -410,11 +410,15 @@ function Index() {
               >
                 Latest episode
               </Link>
-
-
-
+              <Link
+                to="/about"
+                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                About
+              </Link>
               <a
                 href="https://www.worldofwonder.com/"
+
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
