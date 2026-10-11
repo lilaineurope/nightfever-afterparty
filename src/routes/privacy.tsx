@@ -39,7 +39,8 @@ const atAGlance = [
   "No advertising or analytics trackers are loaded on this site.",
   "No cookies are set for tracking, profiling or personalisation.",
   "Nothing is ever sold or shared with advertisers.",
-  "The email field on the home page is a placeholder — it sends nothing.",
+  "The afterparty newsletter stores your address only if you tick the consent box.",
+  "Every newsletter email carries a one-click unsubscribe link.",
 ];
 
 function Section({
@@ -162,13 +163,18 @@ function PrivacyPage() {
               Legal basis: legitimate interest in maintaining the site.
             </p>
             <p>
-              <strong className="text-cream">Email address.</strong> The
-              &ldquo;Join the afterparty&rdquo; form on the home page is a
-              placeholder: it stores nothing and sends nothing. If a real mailing
-              list is ever connected, this page will be updated first, your
-              address will only be used for the newsletter, consent will be
-              recorded, and you can unsubscribe at any time. Legal basis when
-              that happens: consent.
+              <strong className="text-cream">Email address.</strong> If you
+              tick the consent box on the &ldquo;Join the afterparty&rdquo;
+              form and subscribe, your email address is stored together with
+              the exact time you agreed. It is used only to send the
+              newsletter: episode reminders, guest highlights and fan notes.
+              The list is not shared with, sold to, or shown to anyone else,
+              and the subscriber list is not publicly readable. You can
+              unsubscribe at any time with the one-click link in every email,
+              which marks your address as unsubscribed (the address stays
+              blocked from re-adding automatically by accident). To have the
+              address deleted entirely, write via the contact details above.
+              Legal basis: consent, which you can withdraw at any time.
             </p>
             <p>
               <strong className="text-cream">Nothing else.</strong> There is no
@@ -239,9 +245,9 @@ function PrivacyPage() {
               <li>withdraw any consent you gave, without effect on what happened before.</li>
             </ul>
             <p>
-              Requests are free and answered within one month. If a future
-              mailing list is connected, you can withdraw consent by
-              unsubscribing with one click in any message.
+              You can withdraw your newsletter consent by unsubscribing with
+              one click in any message, or on the unsubscribe page the emails
+              link to.
             </p>
           </Section>
 
