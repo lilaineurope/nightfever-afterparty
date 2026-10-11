@@ -3,8 +3,6 @@ import { useState } from "react";
 
 const PAGES = [
   { to: "/", label: "Home" },
-  { to: "/episodes/s06e01", label: "Latest episode" },
-  { to: "/episodes/s01e01", label: "S1 E1: Dianne Brill" },
   { to: "/guests", label: "Guests" },
   { to: "/explore", label: "Everything A–Z" },
   { to: "/timeline", label: "Timeline" },
@@ -20,7 +18,7 @@ export function SiteMenu() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
         <Link to="/" className="text-sm font-bold uppercase tracking-[0.2em] text-gold text-glow">
-          Night Fever fans
+          Night Fever afterparty
         </Link>
         <button
           type="button"

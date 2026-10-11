@@ -10,7 +10,13 @@
 - [x] Terms & Conditions page at /terms
 - [x] Privacy Policy (GDPR) page at /privacy
 - [x] Terms + Privacy linked in every page footer; newsletter consent checkbox added
+- [x] No episodes in the header menu (Lisa's rule: episode links live in footers only)
+- [x] Remove the "Legendary guests" block from the home page
+- [x] Episodes page at /episodes: all episodes newest-first by release date; footer links point there
+- [x] Working mailing list: Lovable Cloud table with recorded consent, unsubscribe link, privacy page update
 - [ ] Lisa to confirm the contact details in the legal pages (Instagram only for now — an email address would be better for GDPR requests)
-- [ ] Update the "109 tagged references" count on the home card to 119 (awaiting Lisa's OK)
+- [x] Home card counts updated to the real numbers (119 references, 336 mentions)
 - [x] Everything A–Z strip above "Legendary guests" on the home page
 - [ ] A–Z strip also placed under the intro on the Connections page — Lisa to confirm that's what she meant
+
+- [x] Match the two "Latest episodes" cards on / to the S6E1 card's format/layout

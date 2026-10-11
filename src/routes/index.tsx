@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import heroImage from "../assets/hero-people.jpg";
-import { latestEpisode } from "../data/episodes";
+import { episodePath, episodes, latestEpisode } from "../data/episodes";
+import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
 import { AzSection } from "../components/az-section";
 import { SHOW_URL, WOW_URL } from "../data/guests";
@@ -86,17 +88,27 @@ const platforms = [
 ];
 
 function Index() {
+  const subscribeFn = useServerFn(subscribeNewsletter);
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(
+    null,
+  );
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim() && consent) {
-      setSubmitted(true);
-      setEmail("");
-      setConsent(false);
-    }
+    if (!email.trim() || !consent) return;
+    setPending(true);
+    subscribeFn({ data: { email: email.trim(), consent: true } })
+      .then((res) => {
+        setResult(res);
+        if (res.ok) {
+          setEmail("");
+          setConsent(false);
+        }
+      })
+      .finally(() => setPending(false));
   };
 
   return (
@@ -145,96 +157,71 @@ function Index() {
 
 
 
-      {/* Latest release */}
+      {/* Latest episodes */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-            Latest release
+            Latest episodes
           </p>
-          <div className="mt-6 grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:grid-cols-[1fr_1.3fr]">
-            <div className="disco-grid border-b border-border p-8 md:border-b-0 md:border-r">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                Season {latestEpisode.season} &middot; Episode{" "}
-                {latestEpisode.episode}
-              </p>
-              <h3 className="mt-3 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow">
-                {latestEpisode.guest}
-              </h3>
-              <p className="mt-5 text-sm text-muted-foreground">
-                {latestEpisode.runtime} &middot; {latestEpisode.references}{" "}
-                tagged references &middot; {latestEpisode.mentions} mentions
-              </p>
-            </div>
-            <div className="p-8">
-              <p className="text-base leading-relaxed text-card-foreground/85">
-                {latestEpisode.blurb}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {latestEpisode.top.map((t) => (
-                  <span
-                    key={t.name}
-                    className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold"
-                  >
-                    {t.name}
-                    <span className="ml-1.5 text-muted-foreground">
-                      {t.mentions} mentions
-                    </span>
-                  </span>
-                ))}
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {episodes.map((ep) => (
+              <div
+                key={ep.id}
+                className="grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:col-span-2 md:grid-cols-[1fr_1.3fr]"
+              >
+                <div className="disco-grid border-b border-border p-8 md:border-b-0 md:border-r">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                    Season {ep.season} &middot; Episode {ep.episode}
+                  </p>
+                  <h3 className="mt-3 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow">
+                    {ep.guest}
+                  </h3>
+                  <p className="mt-5 text-sm text-muted-foreground">
+                    {ep.runtime} &middot; {ep.references} tagged references
+                    &middot; {ep.mentions} mentions
+                  </p>
+                </div>
+                <div className="p-8">
+                  <p className="text-base leading-relaxed text-card-foreground/85">
+                    {ep.blurb}
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {ep.top.map((t) => (
+                      <span
+                        key={t.name}
+                        className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold"
+                      >
+                        {t.name}
+                        <span className="ml-1.5 text-muted-foreground">
+                          {t.mentions} mentions
+                        </span>
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link
+                      to={episodePath(ep.id)}
+                      className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                    >
+                      Every name, timestamped &rarr;
+                    </Link>
+                    <a
+                      href={ep.audioUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                    >
+                      Listen on {ep.id === "s01e01" ? "WOW" : "Spotify"}
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={latestEpisode.audioUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                >
-                  Listen on Spotify
-                </a>
-                <Link
-                  to="/episodes/s06e01"
-                  className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                >
-                  Every name, timestamped &rarr;
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       <AzSection />
-
-      {/* Featured guests */}
-      <section className="spotlight px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Legendary guests
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-            From club owners and columnists to musicians and performers, the
-            voices that shaped New York nightlife take the mic.
-          </p>
-          <div className="mt-12 flex flex-wrap justify-center gap-3">
-            {featuredGuests.map((guest) => (
-              <EntityLink
-                key={guest}
-                name={guest}
-                className="rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition hover:border-pink/50 hover:text-pink"
-              />
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              to="/guests"
-              className="inline-flex items-center gap-2 rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-            >
-              Explore their connections
-            </Link>
-          </div>
-        </div>
-      </section>
-
 
       {/* Listen */}
       <section className="px-6 py-24">
@@ -273,13 +260,21 @@ function Index() {
             Get episode reminders, guest highlights, and fan notes delivered to
             your inbox.
           </p>
-          {submitted ? (
-            <div className="mt-8 rounded-2xl border border-pink/30 bg-pink/10 p-6 text-pink">
-              <p className="font-medium">Thanks — nothing was sent</p>
-              <p className="mt-1 text-sm text-pink/80">
-                The mailing list isn&rsquo;t connected yet, so your address never
-                left your browser.
-              </p>
+          {result ? (
+            <div
+              className={
+                result.ok
+                  ? "mt-8 rounded-2xl border border-pink/30 bg-pink/10 p-6 text-pink"
+                  : "mt-8 rounded-2xl border border-destructive/40 bg-destructive/10 p-6 text-destructive-foreground"
+              }
+            >
+              <p className="font-medium">{result.message}</p>
+              {result.ok && (
+                <p className="mt-1 text-sm text-pink/80">
+                  Your address is stored with the moment you agreed, and you
+                  can unsubscribe any time with the link in every email.
+                </p>
+              )}
             </div>
           ) : (
             <form onSubmit={handleSubscribe} className="mt-8 flex flex-col gap-4">
@@ -296,9 +291,10 @@ function Index() {
                   className="mt-0.5 h-4 w-4 shrink-0 accent-pink"
                 />
                 <span>
-                  I understand this form is a placeholder that stores nothing,
-                  and that I&rsquo;ll be asked again before any real mailing list
-                  is connected. See the{" "}
+                  I want to receive the Night Fever afterparty newsletter and I
+                  understand my email address is stored only for this list. I
+                  can unsubscribe any time with the link in every email. See
+                  the{" "}
                   <Link
                     to="/privacy"
                     className="text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-pink"
@@ -323,9 +319,10 @@ function Index() {
                 />
                 <button
                   type="submit"
-                  className="rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                  disabled={pending}
+                  className="rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                 >
-                  Subscribe
+                  {pending ? "Signing you up…" : "Subscribe"}
                 </button>
               </div>
             </form>
@@ -401,16 +398,10 @@ function Index() {
                 Timeline
               </Link>
               <Link
-                to="/episodes/s06e01"
+                to="/episodes"
                 className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
-                Latest episode
-              </Link>
-              <Link
-                to="/episodes/s01e01"
-                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-              >
-                S1 E1: Dianne Brill
+                Episodes
               </Link>
               <Link
                 to="/about"

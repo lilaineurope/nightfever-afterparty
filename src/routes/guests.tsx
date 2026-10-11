@@ -310,17 +310,10 @@ function GuestsPage() {
           </Link>{" "}
           &middot;{" "}
           <Link
-            to="/episodes/s06e01"
+            to="/episodes"
             className="text-gold transition hover:text-pink"
           >
-            Latest episode: James St. James
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/episodes/s01e01"
-            className="text-gold transition hover:text-pink"
-          >
-            S1 E1: Dianne Brill
+            Episodes
           </Link>{" "}
           &middot;{" "}
           <Link to="/about" className="text-gold transition hover:text-pink">
