@@ -42,3 +42,5 @@
 - [x] Match Episodes page blocks to the home portrait layout, preserving both dates and afterparty-date ranking.
 
 - [x] Create a dense Episodes page header collage using references from all indexed episodes; verify artwork loads and episode links, dates and order remain intact.
+
+- [ ] Rebuild Connections from all timestamped people in published episode indexes only, with episode and timestamp evidence.
