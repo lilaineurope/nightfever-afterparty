@@ -114,13 +114,21 @@ function EntityPage() {
             <h2 className={h}>In the episodes</h2>
             <ul className="mt-4 space-y-3">
               {e.refs.map((r) => (
-                <li key={r.rank} className="rounded-xl border border-border bg-card p-4">
+                <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <Link to="/episodes/s06e01" className="font-semibold text-gold hover:text-pink">
-                      S{latestEpisode.season}E{latestEpisode.episode} · {latestEpisode.guest}
-                    </Link>
+                    {r.episode === "s01e01" ? (
+                      <Link to="/episodes/s01e01" className="font-semibold text-gold hover:text-pink">
+                        S1E1 · Dianne Brill
+                      </Link>
+                    ) : (
+                      <Link to="/episodes/s06e01" className="font-semibold text-gold hover:text-pink">
+                        S{latestEpisode.season}E{latestEpisode.episode} · {latestEpisode.guest}
+                      </Link>
+                    )}
                     <span className="text-xs text-muted-foreground">
-                      {r.time === "On camera" ? "On camera" : (
+                      {r.time === "On camera" ? "On camera" : r.episode === "s01e01" ? (
+                        <span className="font-mono">{r.time}</span>
+                      ) : (
                         <a href={`${latestEpisode.audioUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
                       )}
                       {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"}`}
