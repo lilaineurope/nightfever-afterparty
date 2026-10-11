@@ -31,8 +31,8 @@ const s06e01: Episode = {
     runtime: "54 min",
     blurb:
       "The host finally takes the guest chair himself: his childhood, the move to New York, and the club years he has spent documenting ever since.",
-    references: 109,
-    mentions: 319,
+    references: 119,
+    mentions: 336,
     top: [
       { name: "James St. James", mentions: 25 },
       { name: "Andy Warhol", mentions: 24 },
