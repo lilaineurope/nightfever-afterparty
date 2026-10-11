@@ -5,6 +5,8 @@ export type Episode = {
   episode: number;
   /** Guest of the episode */
   guest: string;
+  /** Release date (ISO) as listed on Spotify / WOW Presents Plus */
+  released: string;
   /** Link to the episode audio */
   audioUrl: string;
   /** Approximate runtime as listed on Spotify */
@@ -24,6 +26,7 @@ const s06e01: Episode = {
     season: 6,
     episode: 1,
     guest: "James St. James",
+    released: "2026-08-21",
     audioUrl: "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4",
     runtime: "54 min",
     blurb:
@@ -42,6 +45,7 @@ const s01e01: Episode = {
     season: 1,
     episode: 1,
     guest: "Dianne Brill",
+    released: "2021-08-30",
     audioUrl:
       "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
     runtime: "51 min",
@@ -56,6 +60,18 @@ const s01e01: Episode = {
     ],
 };
 
-export const episodes: Episode[] = [s01e01, s06e01];
+/** Newest first, by release date */
+export const episodes: Episode[] = [s06e01, s01e01].sort((a, b) =>
+  b.released.localeCompare(a.released),
+);
 
 export const latestEpisode: Episode = s06e01;
+
+const EPISODE_PATHS = {
+  s06e01: "/episodes/s06e01",
+  s01e01: "/episodes/s01e01",
+} as const;
+
+export function episodePath(id: Episode["id"]) {
+  return EPISODE_PATHS[id];
+}

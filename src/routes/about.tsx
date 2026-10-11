@@ -248,10 +248,10 @@ function AboutPage() {
           </Link>{" "}
           &middot;{" "}
           <Link
-            to="/episodes/s06e01"
+            to="/episodes"
             className="text-gold transition hover:text-pink"
           >
-            Latest episode
+            Episodes
           </Link>
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
