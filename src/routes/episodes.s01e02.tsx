@@ -9,6 +9,7 @@ import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
+import { MoodSpectrum } from "../components/mood-spectrum";
 import episodeBackground from "../assets/episode-michael-musto.jpg";
 
 type Ref = {
@@ -22,6 +23,7 @@ type Ref = {
   link: string;
   status: string;
   fashion?: string;
+  colours?: string[];
 };
 
 const refs = refsRaw as Ref[];
@@ -140,8 +142,8 @@ function EpisodePage() {
         <div className="mx-auto max-w-5xl">
           <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
         </div>
-        <MoodSpectrum moods={moods.filter((m) => m.time === "On camera")} id="presenter-looks" title="On screen" />
-        <MoodSpectrum moods={moods.filter((m) => m.time !== "On camera")} id="story-looks" title="In the stories" />
+        <MoodSpectrum swatchFor={swatchFor} nested moods={moods.filter((m) => m.time === "On camera")} id="presenter-looks" title="On screen" />
+        <MoodSpectrum swatchFor={swatchFor} nested moods={moods.filter((m) => m.time !== "On camera")} id="story-looks" title="In the stories" />
       </section>
 
       <section className="px-6 pb-24">
@@ -266,44 +268,3 @@ const SWATCHES: { match: RegExp; colors: [string, string, string]; label: string
 const swatchFor = (name: string) =>
   SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-12)", "var(--mood-swatch-13)", "var(--mood-swatch-14)"] as [string, string, string], label: "Story palette · unspecified colours" };
 
-function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: string }) {
-  const [i, setI] = useState(0);
-  if (moods.length === 0) return null;
-  const active = moods[Math.min(i, moods.length - 1)];
-  if (!active) return null;
-  const sw = swatchFor(active.name);
-  return (
-    <section aria-labelledby={id} className="pt-8">
-      <div className="mx-auto max-w-5xl">
-        <h3 id={id} className="text-xl font-bold text-cream">{title}</h3>
-        <div className="mt-6 flex h-16 overflow-hidden rounded-lg border border-border" role="group" aria-label={`${title} colors`}>
-          {moods.map((m, k) => {
-            const s = swatchFor(m.name);
-            return (
-              <Button variant="ghost" key={m.rank} aria-pressed={k === i} aria-label={m.name} onClick={() => setI(k)}
-                className={`h-full min-w-0 rounded-none p-0 flex-1 transition-all motion-reduce:transition-none ${k === i ? "flex-[2.5] ring-2 ring-inset ring-cream" : "opacity-80 hover:opacity-100"}`}
-                style={{ background: `linear-gradient(135deg, ${s.colors[0]} 0 33.333%, ${s.colors[1]} 33.333% 66.666%, ${s.colors[2]} 66.666% 100%)` }} />
-            );
-          })}
-        </div>
-        <input type="range" min={0} max={moods.length - 1} value={i} onChange={(e) => setI(Number(e.target.value))}
-          aria-label={`Choose a look: ${title}`} className="mt-3 w-full accent-[var(--gold)]" />
-        <article className="mt-4 border-l-4 pl-5 py-2" style={{ borderLeftColor: sw.colors[0] }} aria-live="polite">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h4 className="text-xl font-semibold text-cream">{active.name}</h4>
-            {active.time === "On camera" ? (
-              <span className="text-sm text-gold">On camera</span>
-            ) : (
-              <span className="font-mono text-sm text-gold">{active.time}</span>
-            )}
-          </div>
-          <p className="mt-1 text-xs uppercase tracking-[0.15em] text-pink">{sw.label}</p>
-          {active.fashion && active.fashion !== "Worn or shown in the episode" && (
-            <p className="mt-3 text-foreground">{active.fashion}</p>
-          )}
-          <p className="mt-3 text-sm text-muted-foreground"><EntityText text={active.context} /></p>
-        </article>
-      </div>
-    </section>
-  );
-}
