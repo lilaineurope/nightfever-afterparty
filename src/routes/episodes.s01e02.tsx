@@ -9,6 +9,7 @@ import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
+import episodeBackground from "../assets/episode-michael-musto.jpg";
 
 type Ref = {
   rank: number;
@@ -104,8 +105,13 @@ function EpisodePage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="disco-grid px-6 pb-12 pt-24">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="relative flex min-h-[480px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[540px]">
+        <div className="absolute inset-0" aria-hidden="true">
+          <img src={episodeBackground} alt="" width={1536} height={864} fetchPriority="high"
+            className="h-full w-full object-cover object-[75%_center] sm:object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
           <Link to="/timeline" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
             &larr; Timeline &amp; guests
           </Link>
@@ -231,15 +237,34 @@ function EpisodePage() {
   );
 }
 
-// Swatch colors per look, matched by keywords in the entry name (data stays in the JSON).
+// Presenter colours follow the supplied descriptions; story palettes interpret materials and themes, not verified outfit colours.
 const SWATCHES: { match: RegExp; colors: [string, string, string]; label: string }[] = [
   { match: /Michael's on-camera/i, colors: ["var(--mood-swatch-33)", "var(--mood-swatch-28)", "var(--mood-swatch-12)"], label: "Lavender-white, tortoiseshell & grey" },
   { match: /James's on-camera/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-11)", "var(--mood-swatch-25)"], label: "Black, white & pearl" },
   { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-20)", "var(--mood-swatch-12)"], label: "Black, red & grey" },
   { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-6)", "var(--mood-swatch-11)", "var(--mood-swatch-13)"], label: "Navy, white & translucent" },
+  { match: /Bernard Zette's theme characters/i, colors: ["var(--mood-swatch-20)", "var(--mood-swatch-17)", "var(--mood-swatch-25)"], label: "Story palette · costume red, space blue & courtly pearl" },
+  { match: /Young RuPaul's look/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-13)", "var(--mood-swatch-31)"], label: "Story palette · rubber black & metallic Mylar" },
+  { match: /Young Musto's Studio 54 look/i, colors: ["var(--mood-swatch-31)", "var(--mood-swatch-12)", "var(--mood-swatch-6)"], label: "Story palette · wire silver, Brillo grey & midnight" },
+  { match: /James's little girl's dress/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-25)", "var(--mood-swatch-35)"], label: "Story palette · party pink, pinafore pearl & confetti yellow" },
+  { match: /Rudolf and Dianne's comic-book glamour/i, colors: ["var(--mood-swatch-20)", "var(--mood-swatch-14)", "var(--mood-swatch-1)"], label: "Story palette · comic-book red, ink black & glamour gold" },
+  { match: /Musto's roles in A Sound of Muzak/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-11)", "var(--mood-swatch-15)"], label: "Story palette · nun black, habit white & stage fuchsia" },
+  { match: /John Sex's unicorn hairdo/i, colors: ["var(--mood-swatch-35)", "var(--mood-swatch-11)", "var(--mood-swatch-7)"], label: "Story palette · unicorn gold, white & electric pink" },
+  { match: /Paulina Porizkova's new blonde hair/i, colors: ["var(--mood-swatch-35)", "var(--mood-swatch-30)", "var(--mood-swatch-36)"], label: "Story palette · blonde, pale gold & champagne" },
+  { match: /Dean Johnson's six-foot-six bald drag/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-15)", "var(--mood-swatch-31)"], label: "Story palette · punk black, fuchsia & silver" },
+  { match: /Dianne Brill's rubber dress/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-27)", "var(--mood-swatch-13)"], label: "Story palette · rubber black, water teal & rescue silver" },
+  { match: /Deflated airplane balloon/i, colors: ["var(--mood-swatch-13)", "var(--mood-swatch-17)", "var(--mood-swatch-28)"], label: "Story palette · balloon silver, sky blue & rubber-band amber" },
+  { match: /^Downtown dressing$/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-22)", "var(--mood-swatch-14)"], label: "Story palette · DIY fuchsia, acid mint & street black" },
+  { match: /Raquel Welch's Victor\/Victoria costume/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-11)", "var(--mood-swatch-20)"], label: "Story palette · cabaret black, white & curtain red" },
+  { match: /Peter Allen shirtless/i, colors: ["var(--mood-swatch-8)", "var(--mood-swatch-24)", "var(--mood-swatch-6)"], label: "Story palette · warm amber, dance-floor pink & midnight" },
+  { match: /Lahoma hanging up the wig/i, colors: ["var(--mood-swatch-26)", "var(--mood-swatch-12)", "var(--mood-swatch-14)"], label: "Story palette · fading plum, grey & black" },
+  { match: /Baroness Sherry gussied up/i, colors: ["var(--mood-swatch-26)", "var(--mood-swatch-25)", "var(--mood-swatch-1)"], label: "Story palette · evening plum, pearl & gold" },
+  { match: /Citrus Hills's grapefruit headpiece/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-4)", "var(--mood-swatch-5)"], label: "Story palette · grapefruit pink, citrus orange & peel green" },
+  { match: /'Mop and Glow' shine/i, colors: ["var(--mood-swatch-11)", "var(--mood-swatch-13)", "var(--mood-swatch-22)"], label: "Story palette · glossy white, reflective silver & mint" },
+  { match: /Dressed down in button-down shirts/i, colors: ["var(--mood-swatch-17)", "var(--mood-swatch-11)", "var(--mood-swatch-12)"], label: "Story palette · understated blue, white & grey" },
 ];
 const swatchFor = (name: string) =>
-  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-23)", "var(--mood-swatch-33)", "var(--mood-swatch-24)"] as [string, string, string], label: "Mood" };
+  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-12)", "var(--mood-swatch-13)", "var(--mood-swatch-14)"] as [string, string, string], label: "Story palette · unspecified colours" };
 
 function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: string }) {
   const [i, setI] = useState(0);
