@@ -164,8 +164,12 @@ function EpisodePage() {
                 )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">
-                    <EntityLink name={r.name}
-                      className="text-lg font-semibold text-cream underline decoration-border underline-offset-4 hover:text-pink" />
+                    {r.link ? (
+                      <EntityLink name={r.name}
+                        className="text-lg font-semibold text-cream underline decoration-border underline-offset-4 hover:text-pink" />
+                    ) : (
+                      <span className="text-lg font-semibold text-cream">{r.name}</span>
+                    )}
                     {r.link && (
                       <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} elsewhere`}
                         className="text-xs text-muted-foreground hover:text-gold">↗</a>
