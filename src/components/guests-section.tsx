@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { eras, guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
+import { eras, guestBySlug, guests, WOW_URL } from "../data/guests";
 import { EntityLink } from "./entity-link";
 import { EntityText } from "./entity-text";
-import { LegalNote } from "./legal-links";
 
 /**
  * The guest half of the scene story: the era strip plus the expandable
@@ -205,75 +204,6 @@ export function GuestsSection() {
           </div>
         </div>
       </section>
-
-      <section className="spotlight px-6 py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-cream">
-            Hear it from them
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Every story above is told properly, and much more scandalously, on
-            the show itself.
-          </p>
-          <a
-            href="https://creators.spotify.com/pod/profile/night-fever/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground transition hover:bg-spotlight"
-          >
-            Browse all episodes
-          </a>
-        </div>
-      </section>
-
-      <footer className="border-t border-border px-6 py-12 text-center">
-        <p className="text-sm text-muted-foreground">
-          Fan page for{" "}
-          <a
-            href={SHOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-          >
-            <em>Night Fever</em>
-          </a>{" "}
-          by{" "}
-          <a
-            href={WOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-          >
-            World of Wonder
-          </a>.{" "}
-          <Link to="/" className="text-gold transition hover:text-pink">
-            Back to home
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/connections"
-            className="text-gold transition hover:text-pink"
-          >
-            The connection web
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/episodes"
-            className="text-gold transition hover:text-pink"
-          >
-            Episodes
-          </Link>{" "}
-          &middot;{" "}
-          <Link to="/about" className="text-gold transition hover:text-pink">
-            About
-          </Link>
-        </p>
-
-        <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          <EntityText text="Biographical details compiled from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
-        </p>
-              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
-</footer>
-    </main>
+    </>
   );
 }

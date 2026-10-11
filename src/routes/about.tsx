@@ -227,10 +227,6 @@ function AboutPage() {
             Home
           </Link>{" "}
           &middot;{" "}
-          <Link to="/guests" className="text-gold transition hover:text-pink">
-            Guests
-          </Link>{" "}
-          &middot;{" "}
           <Link
             to="/connections"
             className="text-gold transition hover:text-pink"
