@@ -24,3 +24,4 @@
 - The Episodes index imports its own cross-episode reference collage only in its title section, so its artwork never changes the home or individual episode headers.
 
 - Connections uses episode-connections derived from shared entities filtered to registered, spoken timestamped Person references; its bipartite graph connects people to episode hubs, never inferring meetings from co-mentions or reading scene relationships.
+- Connections lays out people in spaced, labelled columns within a scrollable graph; every dot and name links to its shared overview, so all names remain readable even as episode references grow.
