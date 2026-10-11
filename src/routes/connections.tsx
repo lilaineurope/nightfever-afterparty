@@ -442,8 +442,9 @@ function ConnectionsPage() {
             The names everyone drops
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-            Not guests on the show, but present in more than one of the nights
-            the guests lived through.
+            The names in the rooms — hosts, regulars and legends who keep
+            surfacing in more than one of the nights the guests lived through,
+            whether or not they ever sat down for an interview.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-2">
             {recurringFigures.map((f) => (
