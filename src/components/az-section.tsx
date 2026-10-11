@@ -80,7 +80,7 @@ export function AzSection({ limit = 12 }: { limit?: number }) {
         <p className="mt-6 text-center text-xs text-muted-foreground">
           {cat === "All"
             ? `${shown.length} cards in total`
-            : `${shown.length} ${cat.toLowerCase()} cards of ${shown.length === entities.length ? "" : entities.length}`}
+            : `${shown.length} ${cat.toLowerCase()} cards · ${entities.length} in total`}
         </p>
         <div className="mt-6 text-center">
           <Link
