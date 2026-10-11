@@ -243,9 +243,9 @@ function ConnectionsPage() {
                 const lit =
                   !active || events.some((e) => e.people.includes(active));
                 const flip = Math.cos(p.angle) < 0;
-                // Alternate the label distance so names on the crowded inner
-                // ring fall on two clearly separated rings instead of one line.
-                const off = i % 2 === 0 ? 18 : 62;
+                // Nudge every other name above or below its dot, so the two
+                // closest names on the inner ring never share one text line.
+                const lift = i % 2 === 0 ? -16 : 16;
                 const entity = entityFor(name);
                 const external = name === "World of Wonder";
                 const href = external
@@ -265,8 +265,8 @@ function ConnectionsPage() {
                 );
                 const label = (
                   <text
-                    x={(p.x + Math.cos(p.angle) * off).toFixed(2)}
-                    y={(p.y + Math.sin(p.angle) * off).toFixed(2)}
+                    x={(p.x + Math.cos(p.angle) * 12).toFixed(2)}
+                    y={(p.y + Math.sin(p.angle) * 12 + lift).toFixed(2)}
                     textAnchor={flip ? "end" : "start"}
                     dominantBaseline="middle"
                     fontSize="11"
