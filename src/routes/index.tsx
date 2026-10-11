@@ -139,31 +139,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="disco-grid px-6 py-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Step inside the velvet rope
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            <a
-              href={SHOW_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-            >
-              <em>Night Fever</em>
-            </a>{" "}
-            invites the legends of the 1970s, &rsquo;80s,
-            &rsquo;90s, and beyond to share the stories behind the clubs, the
-            parties, and the culture that defined downtown New York. It is
-            campy, it is gossipy, and it is definitely must-hear podcasting.
-          </p>
-          <p className="mt-4 text-muted-foreground">
-            Six seasons. Dozens of guests. One unforgettable scene.
-          </p>
-        </div>
-      </section>
 
       {/* Latest release */}
       <section className="px-6 py-24">
