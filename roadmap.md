@@ -28,3 +28,4 @@
 - [x] Guests joined into the Timeline page; menu shows the pair as "Timeline" only
 - [x] Connections page shows only the dot graph — A–Z strip removed (it lives on /explore)
 - [x] Episode blocks: "Afterparty connection", "Watch the episode" (WOW Presents Plus), "Listen to the episode" (Spotify)
+- [x] Episode detail pages (/episodes/s06e01, /episodes/s01e01) also offer Watch and Listen under the title
