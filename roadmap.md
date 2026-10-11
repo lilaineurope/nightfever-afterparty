@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Make every Connections dot and name clickable, with every person's name visible and separated.
+- [x] Make every Connections dot and name clickable, with every person's name visible and separated; verified all 185 labels and dot navigation to the shared overview.
 - [x] Apply supplied variable-length Mood palettes to S01E01 and S01E02 and verify stripes, chips, and unchanged fallback looks.
 - [x] Correct S01E02 story Mood colours to match individual descriptions.
 - [x] Create a matching S01E02 header collage using only people mentioned in that episode, with each face once.
