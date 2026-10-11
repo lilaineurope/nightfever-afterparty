@@ -74,7 +74,7 @@ function buildEdges(): Edge[] {
 
 const SIZE = 760;
 const R_OUTER = 300;
-const R_INNER = 150;
+const R_INNER = 168;
 // Room outside the ring so long names are not cut off at the edge.
 const PAD = 130;
 
