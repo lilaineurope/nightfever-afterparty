@@ -142,7 +142,7 @@ function EntityPage() {
                       {r.time === "On camera" ? "On camera" : r.episode === "s01e01" ? (
                         <span className="font-mono">{r.time}</span>
                       ) : (
-                        <a href={`${latestEpisode.audioUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
+                        <a href={`${latestEpisode.listenUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
                       )}
                       {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"} in this episode`}
                     </span>

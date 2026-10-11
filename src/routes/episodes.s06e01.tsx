@@ -24,7 +24,7 @@ type Ref = {
 };
 
 const refs = refsRaw as Ref[];
-const EPISODE_URL = latestEpisode.audioUrl;
+const EPISODE_URL = latestEpisode.listenUrl;
 
 export const Route = createFileRoute("/episodes/s06e01")({
   component: EpisodePage,
