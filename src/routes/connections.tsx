@@ -382,7 +382,7 @@ function ConnectionsPage() {
                 Named {focusPerson.mentions}{" "}
                 {focusPerson.mentions === 1 ? "time" : "times"} across{" "}
                 {focusPerson.episodeIds.length} published{" "}
-                {focusPerson.episodeIds.length === 1 ? "episode" : "_episodes"}
+                {focusPerson.episodeIds.length === 1 ? "episode" : "episodes"}
                 :{" "}
                 {focusPerson.episodeIds
                   .map((id) => episodeLabel.get(id))
