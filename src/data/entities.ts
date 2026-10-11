@@ -46,7 +46,7 @@ export const slugify = (n: string) =>
 
 const byKey = new Map<string, Entity>();
 
-function add(name: string, category: string, extra: Partial<Entity> = {}) {
+function add(name: string, category: string, extra: { guest?: Guest; link?: string } = {}) {
   const key = slugify(name);
   if (!key) return undefined;
   let e = byKey.get(key);
