@@ -210,7 +210,7 @@ const SWATCHES: { match: RegExp; colors: [string, string]; label: string }[] = [
   { match: /Dianne's on-camera/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)"], label: "Cobalt & platinum" },
   { match: /James's on-camera/i, colors: ["var(--mood-swatch-1)", "var(--mood-swatch-2)"], label: "Pale grey & teal" },
   { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-4)"], label: "Navy & orange" },
-  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-5)", "var(--mood-swatch-6)"], label: "Off camera" },
+  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-6)"], label: "Navy cap & blue blocks" },
   { match: /cocktail dresses/i, colors: ["var(--mood-swatch-7)", "var(--mood-swatch-8)"], label: "1950s satin & patent" },
   { match: /Corsets/i, colors: ["var(--mood-swatch-19)", "var(--mood-swatch-20)"], label: "Lace & velvet" },
   { match: /Menswear/i, colors: ["var(--mood-swatch-5)", "var(--mood-swatch-6)"], label: "Pinstripe & navy" },
