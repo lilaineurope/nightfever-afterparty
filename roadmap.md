@@ -6,7 +6,9 @@
 - [x] Lisa confirmed the final home background
 - [x] Remove "Step inside the velvet rope" intro block from home
 - [x] Remove "Your guides through the scene" block from home
-- [ ] EU GDPR compliance: privacy policy page with real controller/contact details, cookie & tracking notice, newsletter consent
-- [ ] Terms & Conditions page
-- [ ] Link Terms + Privacy in every footer and the site menu
+- [x] Home CTA now reads "Explore their connections"
+- [x] Terms & Conditions page at /terms
+- [x] Privacy Policy (GDPR) page at /privacy
+- [x] Terms + Privacy linked in every page footer; newsletter consent checkbox added
+- [ ] Lisa to confirm the contact details in the legal pages (Instagram only for now — an email address would be better for GDPR requests)
 - [ ] Update the "109 tagged references" count on the home card to 119 (awaiting Lisa's OK)
