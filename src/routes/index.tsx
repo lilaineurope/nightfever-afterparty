@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import heroImage from "../assets/hero-arty-1b.jpg";
+import heroImage from "../assets/hero-arty-2b.jpg";
 import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
 import { SHOW_URL, WOW_URL } from "../data/guests";
