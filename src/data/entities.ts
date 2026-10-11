@@ -1,0 +1,128 @@
+import refsJson from "./s06e01.json";
+import { guests, type Guest } from "./guests";
+import { sceneEvents, type SceneEvent } from "./scene";
+
+// One overview card per name, place, book, song, look... Every page links here.
+
+export type Ref = {
+  rank: number;
+  mentions: number;
+  category: string;
+  name: string;
+  heard: string;
+  time: string;
+  context: string;
+  link: string;
+  status: string;
+  fashion?: string;
+};
+
+export type Entity = {
+  slug: string;
+  name: string;
+  category: string;
+  link?: string;
+  guest?: Guest;
+  refs: Ref[]; // S06E01 mentions
+  events: SceneEvent[]; // scene timeline
+  inGuestStories: Guest[]; // guests whose scenes/timeline mention it
+};
+
+const refs = refsJson as Ref[];
+
+const clean = (n: string) =>
+  n
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/&/g, "and")
+    .replace(/^the\s+/i, "")
+    .trim()
+    .toLowerCase();
+
+export const slugify = (n: string) =>
+  clean(n)
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+const byKey = new Map<string, Entity>();
+
+function add(name: string, category: string, extra: Partial<Entity> = {}) {
+  const key = slugify(name);
+  if (!key) return undefined;
+  let e = byKey.get(key);
+  if (!e) {
+    e = { slug: key, name, category, refs: [], events: [], inGuestStories: [] };
+    byKey.set(key, e);
+  }
+  if (extra.guest) {
+    e.guest = extra.guest;
+    e.slug = extra.guest.slug;
+    e.name = extra.guest.name;
+    e.category = "Person";
+  }
+  if (extra.link && !e.link) e.link = extra.link;
+  return e;
+}
+
+for (const g of guests) add(g.name, "Person", { guest: g });
+for (const r of refs) {
+  const e = add(r.name, r.category, { link: r.link || undefined });
+  e?.refs.push(r);
+}
+const placeOf = (p: string) => p.split(",")[0]!.trim();
+for (const ev of sceneEvents) {
+  for (const f of ev.figures) add(f, "Person");
+  add(placeOf(ev.place), "Place");
+}
+for (const g of guests) for (const s of g.scenes) add(s, "Place");
+
+// Wire events and guest stories to every entity.
+for (const e of byKey.values()) {
+  const n = clean(e.name);
+  const loose = n.length >= 5 ? n : null;
+  e.events = sceneEvents.filter(
+    (ev) =>
+      (e.guest && ev.people.includes(e.guest.slug)) ||
+      ev.figures.some((f) => slugify(f) === slugify(e.name)) ||
+      slugify(placeOf(ev.place)) === slugify(e.name) ||
+      (!!loose && (ev.title + " " + ev.text).toLowerCase().includes(loose)),
+  );
+  e.inGuestStories = guests.filter(
+    (g) =>
+      g !== e.guest &&
+      (g.scenes.some((s) => slugify(s) === slugify(e.name)) ||
+        (!!loose &&
+          [g.now, ...g.timeline.map((t) => t.text)].join(" ").toLowerCase().includes(loose))),
+  );
+}
+
+export const entities: Entity[] = [...byKey.values()].sort((a, b) =>
+  a.name.localeCompare(b.name),
+);
+export const entityBySlug: Record<string, Entity> = Object.fromEntries(
+  entities.map((e) => [e.slug, e]),
+);
+export const entityFor = (name: string): Entity | undefined =>
+  byKey.get(slugify(name)) ?? entityBySlug[name];
+
+/** Other entities that share a night, a story or a guest with this one. */
+export function relatedTo(e: Entity): Entity[] {
+  const out = new Map<string, Entity>();
+  const push = (x?: Entity) => x && x.slug !== e.slug && out.set(x.slug, x);
+  for (const ev of e.events) {
+    ev.people.forEach((p) => push(entityBySlug[p]));
+    ev.figures.forEach((f) => push(entityFor(f)));
+    push(entityFor(placeOf(ev.place)));
+  }
+  e.inGuestStories.forEach((g) => push(entityBySlug[g.slug]));
+  if (e.guest) {
+    e.guest.scenes.forEach((s) => push(entityFor(s)));
+    e.guest.linkedTo.forEach((s) => push(entityBySlug[s]));
+  }
+  return [...out.values()];
+}
+
+export const CATEGORIES = [
+  "Person", "Music", "Organisation", "Mood", "Place", "Book", "Event",
+  "Publication", "Podcast", "TV", "Film", "Fashion",
+] as const;
