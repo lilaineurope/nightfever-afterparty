@@ -85,6 +85,32 @@
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.78 0.12 85);
 
+  /* Episode look palettes */
+  --mood-swatch-1: oklch(0.82 0.1 85);
+  --mood-swatch-2: oklch(0.6 0.13 55);
+  --mood-swatch-3: oklch(0.5 0.2 262);
+  --mood-swatch-4: oklch(0.66 0.2 40);
+  --mood-swatch-5: oklch(0.62 0.18 150);
+  --mood-swatch-6: oklch(0.3 0.06 260);
+  --mood-swatch-7: oklch(0.72 0.25 350);
+  --mood-swatch-8: oklch(0.7 0.14 70);
+  --mood-swatch-9: oklch(0.78 0.16 350);
+  --mood-swatch-10: oklch(0.95 0.01 90);
+  --mood-swatch-11: oklch(0.97 0.005 90);
+  --mood-swatch-12: oklch(0.78 0.01 250);
+  --mood-swatch-13: oklch(0.85 0.01 250);
+  --mood-swatch-14: oklch(0.2 0 0);
+  --mood-swatch-15: oklch(0.6 0.25 330);
+  --mood-swatch-16: oklch(0.85 0.15 90);
+  --mood-swatch-17: oklch(0.88 0.04 230);
+  --mood-swatch-18: oklch(0.97 0.01 90);
+  --mood-swatch-19: oklch(0.2 0.02 300);
+  --mood-swatch-20: oklch(0.5 0.2 25);
+  --mood-swatch-21: oklch(0.65 0.22 300);
+  --mood-swatch-22: oklch(0.8 0.15 160);
+  --mood-swatch-23: oklch(0.7 0.1 80);
+  --mood-swatch-24: oklch(0.6 0.2 350);
+
   /* Custom semantic tokens */
   --gold: oklch(0.78 0.12 85);
   --gold-foreground: oklch(0.15 0.04 270);
