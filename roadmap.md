@@ -41,4 +41,4 @@
 
 - [x] Match Episodes page blocks to the home portrait layout, preserving both dates and afterparty-date ranking.
 
-- [ ] Create a dense Episodes page header collage using references from all indexed episodes.
+- [x] Create a dense Episodes page header collage using references from all indexed episodes; verify artwork loads and episode links, dates and order remain intact.
