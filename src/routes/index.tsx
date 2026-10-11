@@ -98,19 +98,16 @@ function Index() {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("[nl] submit", { email, consent });
     if (!email.trim() || !consent) return;
     setPending(true);
     subscribeFn({ data: { email: email.trim(), consent: true } })
       .then((res) => {
-        console.log("[nl] result", res);
         setResult(res);
         if (res.ok) {
           setEmail("");
           setConsent(false);
         }
       })
-      .catch((err) => console.error("[nl] error", err))
       .finally(() => setPending(false));
   };
 
