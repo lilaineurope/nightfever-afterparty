@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { EntityLink } from "../components/entity-link";
 import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
@@ -90,7 +91,7 @@ function TimelinePage() {
             <li key={e.id} className="relative">
               <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full bg-gold" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-                {e.when} &middot; {e.place}
+                {e.when} &middot; <EntityLink name={e.place.split(",")[0]!} className="hover:text-gold">{e.place}</EntityLink>
               </p>
               <h2 className="mt-1 text-xl font-semibold text-gold">{e.title}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -100,8 +101,8 @@ function TimelinePage() {
                 {e.people.map((slug) => (
                   <Link
                     key={slug}
-                    to="/guests"
-                    hash={slug}
+                    to="/explore/$slug"
+                    params={{ slug }}
                     className="rounded-full border border-gold/40 px-3 py-1 text-xs font-medium text-gold transition hover:bg-gold hover:text-gold-foreground"
                   >
                     {guestBySlug[slug]?.name ?? slug}
@@ -119,12 +120,11 @@ function TimelinePage() {
                       {f}
                     </a>
                   ) : (
-                    <span
+                    <EntityLink
                       key={f}
-                      className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
-                    >
-                      {f}
-                    </span>
+                      name={f}
+                      className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:text-gold"
+                    />
                   ),
                 )}
               </div>

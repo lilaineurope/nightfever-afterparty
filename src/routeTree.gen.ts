@@ -15,6 +15,8 @@ import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
+import { Route as ExploreIndexRouteImport } from './routes/explore.index'
+import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +48,16 @@ const EpisodesS06e01Route = EpisodesS06e01RouteImport.update({
   path: '/episodes/s06e01',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExploreIndexRoute = ExploreIndexRouteImport.update({
+  id: '/explore/',
+  path: '/explore/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreSlugRoute = ExploreSlugRouteImport.update({
+  id: '/explore/$slug',
+  path: '/explore/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +66,8 @@ export interface FileRoutesByFullPath {
   '/guests': typeof GuestsRoute
   '/timeline': typeof TimelineRoute
   '/episodes/s06e01': typeof EpisodesS06e01Route
+  '/explore/$slug': typeof ExploreSlugRoute
+  '/explore/': typeof ExploreIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +76,8 @@ export interface FileRoutesByTo {
   '/guests': typeof GuestsRoute
   '/timeline': typeof TimelineRoute
   '/episodes/s06e01': typeof EpisodesS06e01Route
+  '/explore/$slug': typeof ExploreSlugRoute
+  '/explore': typeof ExploreIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +87,8 @@ export interface FileRoutesById {
   '/guests': typeof GuestsRoute
   '/timeline': typeof TimelineRoute
   '/episodes/s06e01': typeof EpisodesS06e01Route
+  '/explore/$slug': typeof ExploreSlugRoute
+  '/explore/': typeof ExploreIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +99,8 @@ export interface FileRouteTypes {
     | '/guests'
     | '/timeline'
     | '/episodes/s06e01'
+    | '/explore/$slug'
+    | '/explore/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +109,8 @@ export interface FileRouteTypes {
     | '/guests'
     | '/timeline'
     | '/episodes/s06e01'
+    | '/explore/$slug'
+    | '/explore'
   id:
     | '__root__'
     | '/'
@@ -97,6 +119,8 @@ export interface FileRouteTypes {
     | '/guests'
     | '/timeline'
     | '/episodes/s06e01'
+    | '/explore/$slug'
+    | '/explore/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +130,8 @@ export interface RootRouteChildren {
   GuestsRoute: typeof GuestsRoute
   TimelineRoute: typeof TimelineRoute
   EpisodesS06e01Route: typeof EpisodesS06e01Route
+  ExploreSlugRoute: typeof ExploreSlugRoute
+  ExploreIndexRoute: typeof ExploreIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,6 +178,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS06e01RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/explore/': {
+      id: '/explore/'
+      path: '/explore'
+      fullPath: '/explore/'
+      preLoaderRoute: typeof ExploreIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore/$slug': {
+      id: '/explore/$slug'
+      path: '/explore/$slug'
+      fullPath: '/explore/$slug'
+      preLoaderRoute: typeof ExploreSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -162,6 +202,8 @@ const rootRouteChildren: RootRouteChildren = {
   GuestsRoute: GuestsRoute,
   TimelineRoute: TimelineRoute,
   EpisodesS06e01Route: EpisodesS06e01Route,
+  ExploreSlugRoute: ExploreSlugRoute,
+  ExploreIndexRoute: ExploreIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

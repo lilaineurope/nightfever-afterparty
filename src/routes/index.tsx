@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImage from "../assets/hero.jpg";
 import { latestEpisode } from "../data/episodes";
+import { EntityLink } from "../components/entity-link";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 
@@ -259,12 +260,11 @@ function Index() {
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-3">
             {featuredGuests.map((guest) => (
-              <span
+              <EntityLink
                 key={guest}
+                name={guest}
                 className="rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition hover:border-pink/50 hover:text-pink"
-              >
-                {guest}
-              </span>
+              />
             ))}
           </div>
           <div className="mt-10 text-center">
