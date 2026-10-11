@@ -5,6 +5,7 @@ import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
 import { latestEpisode } from "../data/episodes";
 import { Button } from "@/components/ui/button";
+import { EntityText } from "../components/entity-text";
 
 type Ref = {
   rank: number;
@@ -160,7 +161,7 @@ function EpisodePage() {
                       <span className="rounded-full border border-gold/40 px-2.5 py-0.5 text-xs text-gold">{r.status}</span>
                     )}
                   </div>
-                  <p className="mt-1 text-sm text-muted-foreground">{r.context}</p>
+                  <p className="mt-1 text-sm text-muted-foreground"><EntityText text={r.context} /></p>
                   {r.fashion && (
                     <p className="mt-2 text-sm text-muted-foreground">
                       <span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span>{r.fashion}
@@ -253,7 +254,7 @@ function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: s
           {active.fashion && active.fashion !== "Worn or shown in the episode" && (
             <p className="mt-3 text-foreground">{active.fashion}</p>
           )}
-          <p className="mt-3 text-sm text-muted-foreground">{active.context}</p>
+          <p className="mt-3 text-sm text-muted-foreground"><EntityText text={active.context} /></p>
         </article>
       </div>
     </section>
