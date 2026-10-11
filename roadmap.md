@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Add S01E02 Michael Musto with the exact 250 supplied references, text-only Mood and presenter looks, shared connections, and season/episode-ordered lists.
 - [x] One profile page per person/place/book/etc, everything linked to it (guests, timeline, episode, home)
 - [x] Site menu on every page listing all pages
 - [x] Home background: collage with more drag queens
@@ -17,7 +18,7 @@
 - [ ] Lisa to confirm the contact details in the legal pages (Instagram only for now — an email address would be better for GDPR requests)
 - [x] Home card counts updated to the real numbers (119 references, 336 mentions)
 - [x] Everything A–Z strip above "Legendary guests" on the home page
-- [ ] A–Z strip also placed under the intro on the Connections page — Lisa to confirm that's what she meant
+- [x] A–Z placement resolved: home and /explore only; removed from Connections.
 
 - [x] Match the two "Latest episodes" cards on / to the S6E1 card's format/layout
 - [x] Mention counts split: per episode vs across all episodes (A–Z chips, cards, episode pages)

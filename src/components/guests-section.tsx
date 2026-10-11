@@ -3,6 +3,7 @@ import { useState } from "react";
 import { eras, guestBySlug, guests, WOW_URL } from "../data/guests";
 import { EntityLink } from "./entity-link";
 import { EntityText } from "./entity-text";
+import { episodePath, episodes } from "../data/episodes";
 
 /**
  * The guest half of the scene story: the era strip plus the expandable
@@ -64,6 +65,7 @@ export function GuestsSection() {
           <div className="mt-12 space-y-4">
             {guests.map((guest) => {
               const open = active === guest.slug;
+              const indexedEpisode = episodes.find((episode) => episode.guest === guest.name);
               return (
                 <article
                   key={guest.slug}
@@ -179,9 +181,9 @@ export function GuestsSection() {
                           >
                             Full overview &rarr;
                           </Link>
-                          {guest.slug === "dianne-brill" && (
+                          {indexedEpisode && (
                             <Link
-                              to="/episodes/s01e01"
+                              to={episodePath(indexedEpisode.id)}
                               className="mr-3 inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
                             >
                               Afterparty connection &rarr;

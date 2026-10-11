@@ -19,6 +19,7 @@ import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as EpisodesIndexRouteImport } from './routes/episodes.index'
 import { Route as EpisodesS01e01RouteImport } from './routes/episodes.s01e01'
+import { Route as EpisodesS01e02RouteImport } from './routes/episodes.s01e02'
 import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
 import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
@@ -73,6 +74,11 @@ const EpisodesS01e01Route = EpisodesS01e01RouteImport.update({
   path: '/episodes/s01e01',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpisodesS01e02Route = EpisodesS01e02RouteImport.update({
+  id: '/episodes/s01e02',
+  path: '/episodes/s01e02',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EpisodesS06e01Route = EpisodesS06e01RouteImport.update({
   id: '/episodes/s06e01',
   path: '/episodes/s06e01',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
+  '/episodes/s01e02': typeof EpisodesS01e02Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/episodes/': typeof EpisodesIndexRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
+  '/episodes/s01e02': typeof EpisodesS01e02Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/episodes': typeof EpisodesIndexRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
+  '/episodes/s01e02': typeof EpisodesS01e02Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/episodes/': typeof EpisodesIndexRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/unsubscribe'
     | '/episodes/s01e01'
+    | '/episodes/s01e02'
     | '/episodes/s06e01'
     | '/explore/$slug'
     | '/episodes/'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/unsubscribe'
     | '/episodes/s01e01'
+    | '/episodes/s01e02'
     | '/episodes/s06e01'
     | '/explore/$slug'
     | '/episodes'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/unsubscribe'
     | '/episodes/s01e01'
+    | '/episodes/s01e02'
     | '/episodes/s06e01'
     | '/explore/$slug'
     | '/episodes/'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   TimelineRoute: typeof TimelineRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   EpisodesS01e01Route: typeof EpisodesS01e01Route
+  EpisodesS01e02Route: typeof EpisodesS01e02Route
   EpisodesS06e01Route: typeof EpisodesS06e01Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   EpisodesIndexRoute: typeof EpisodesIndexRoute
@@ -271,6 +284,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS01e01RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/episodes/s01e02': {
+      id: '/episodes/s01e02'
+      path: '/episodes/s01e02'
+      fullPath: '/episodes/s01e02'
+      preLoaderRoute: typeof EpisodesS01e02RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/episodes/s06e01': {
       id: '/episodes/s06e01'
       path: '/episodes/s06e01'
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   TimelineRoute: TimelineRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   EpisodesS01e01Route: EpisodesS01e01Route,
+  EpisodesS01e02Route: EpisodesS01e02Route,
   EpisodesS06e01Route: EpisodesS06e01Route,
   ExploreSlugRoute: ExploreSlugRoute,
   EpisodesIndexRoute: EpisodesIndexRoute,

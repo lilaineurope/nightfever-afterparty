@@ -1,5 +1,6 @@
 import refsJson from "./s06e01.json";
 import refs01Json from "./s01e01.json";
+import refs02Json from "./s01e02.json";
 import { episodes } from "./episodes";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
@@ -17,7 +18,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01";
+  episode?: "s06e01" | "s01e01" | "s01e02";
 };
 
 export type Entity = {
@@ -26,7 +27,7 @@ export type Entity = {
   category: string;
   link?: string;
   guest?: Guest;
-  refs: Ref[]; // S06E01 mentions
+  refs: Ref[]; // References across the indexed episodes
   events: SceneEvent[]; // scene timeline
   inGuestStories: Guest[]; // guests whose scenes/timeline mention it
 };
@@ -34,6 +35,7 @@ export type Entity = {
 const refs: Ref[] = [
   ...(refsJson as Ref[]).map((r) => ({ ...r, episode: "s06e01" as const })),
   ...(refs01Json as Ref[]).map((r) => ({ ...r, episode: "s01e01" as const })),
+  ...(refs02Json as Ref[]).map((r) => ({ ...r, episode: "s01e02" as const })),
 ];
 
 const clean = (n: string) =>
@@ -161,7 +163,7 @@ export const mentionsIn = (e: Entity, episode: string): number =>
     .filter((r) => r.episode === episode)
     .reduce((sum, r) => sum + r.mentions, 0);
 
-/** How an entity's mentions split per episode (newest first, empty episodes dropped). */
+/** How an entity's mentions split per episode (season/episode order, empty episodes dropped). */
 export const mentionsByEpisode = (e: Entity): { episode: string; count: number }[] =>
   episodes
     .map((ep) => ({ episode: ep.id, count: mentionsIn(e, ep.id) }))

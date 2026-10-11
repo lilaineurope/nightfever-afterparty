@@ -1,3 +1,5 @@
+import mustoRefs from "./s01e02.json";
+
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
   id: string;
@@ -64,9 +66,24 @@ const s01e01: Episode = {
     ],
 };
 
-/** Newest first, by release date */
-export const episodes: Episode[] = [s06e01, s01e01].sort((a, b) =>
-  b.released.localeCompare(a.released),
+const s01e02: Episode = {
+  id: "s01e02",
+  season: 1,
+  episode: 2,
+  guest: "Michael Musto",
+  released: "2021-09-06",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-michael-musto",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  runtime: "1:04:35",
+  blurb: "Village Voice nightlife columnist and author of 'La Dolce Musto' on the downtown scene, Warhol, outlaw parties and the Club Kids.",
+  references: mustoRefs.length,
+  mentions: mustoRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...mustoRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+/** Season and episode order, earliest first. */
+export const episodes: Episode[] = [s01e01, s01e02, s06e01].sort((a, b) =>
+  a.season - b.season || a.episode - b.episode,
 );
 
 export const latestEpisode: Episode = s06e01;
@@ -77,10 +94,12 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
+    case "s01e02":
+      return "/episodes/s01e02";
     default:
       return "/episodes/s06e01";
   }
