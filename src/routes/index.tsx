@@ -104,7 +104,7 @@ function Index() {
             src={heroImage}
             alt="Disco ball scattering gold and pink light across a glamorous nightclub"
             className="h-full w-full object-cover opacity-60"
-            width={1344}
+            width={1376}
             height={768}
             fetchPriority="high"
           />
