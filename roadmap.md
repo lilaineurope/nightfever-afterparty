@@ -4,3 +4,9 @@
 - [x] Home background: collage with more drag queens
 - [x] Home background: the torn-paper collage, with even more drag queens
 - [x] Lisa confirmed the final home background
+- [x] Remove "Step inside the velvet rope" intro block from home
+- [x] Remove "Your guides through the scene" block from home
+- [ ] EU GDPR compliance: privacy policy page with real controller/contact details, cookie & tracking notice, newsletter consent
+- [ ] Terms & Conditions page
+- [ ] Link Terms + Privacy in every footer and the site menu
+- [ ] Update the "109 tagged references" count on the home card to 119 (awaiting Lisa's OK)
