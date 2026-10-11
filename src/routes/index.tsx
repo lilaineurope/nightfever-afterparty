@@ -162,10 +162,18 @@ function Index() {
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
             Latest episodes
           </p>
+          {/* Same ranking as the Episodes page: afterparty publish date, newest first. */}
           <div className="mt-6 flex flex-col gap-6">
-            {episodes.map((ep) => (
-              <EpisodeBlock key={ep.id} ep={ep} />
-            ))}
+            {[...episodes]
+              .sort(
+                (a, b) =>
+                  b.afterpartyPublished.localeCompare(a.afterpartyPublished) ||
+                  b.season - a.season ||
+                  b.episode - a.episode,
+              )
+              .map((ep) => (
+                <EpisodeBlock key={ep.id} ep={ep} showDates />
+              ))}
           </div>
         </div>
       </section>
