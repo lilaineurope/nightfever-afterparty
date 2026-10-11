@@ -244,8 +244,8 @@ function ConnectionsPage() {
                   !active || events.some((e) => e.people.includes(active));
                 const flip = Math.cos(p.angle) < 0;
                 // Alternate the label distance so names on the crowded inner
-                // ring do not land on top of each other.
-                const off = i % 2 === 0 ? 14 : 40;
+                // ring fall on two clearly separated rings instead of one line.
+                const off = i % 2 === 0 ? 18 : 62;
                 const entity = entityFor(name);
                 const external = name === "World of Wonder";
                 const href = external
