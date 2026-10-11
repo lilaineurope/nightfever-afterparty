@@ -78,6 +78,10 @@ const R_INNER = 168;
 // Room outside the ring so long names are not cut off at the edge.
 const PAD = 130;
 
+// Rounded to 3 decimals: server and browser float math can differ in the last
+// digit, which React reports as a hydration mismatch.
+const round3 = (n: number) => Math.round(n * 1000) / 1000;
+
 function ConnectionsPage() {
   const edges = useMemo(buildEdges, []);
   const [focus, setFocus] = useState<string | null>(null);
@@ -136,6 +140,42 @@ function ConnectionsPage() {
     }
     return d;
   }, [edges]);
+
+  // The inner ring holds 22 names in a small circle, so their labels are pushed
+  // apart vertically: two names on the same side of the map never share a line.
+  const figureLabels = useMemo(() => {
+    const MIN_GAP = 14;
+    const out: Record<
+      string,
+      { x: number; y: number; anchor: "start" | "end" }
+    > = {};
+    for (const side of ["left", "right"] as const) {
+      const items = recurringFigures
+        .map(({ name }) => ({ name, p: positions[name]! }))
+        .filter(({ p }) => (Math.cos(p.angle) < 0) === (side === "left"))
+        .sort((a, b) => a.p.y - b.p.y);
+      const placed: { name: string; base: number; y: number }[] = [];
+      let prev = -Infinity;
+      for (const { name, p } of items) {
+        const base = p.y + Math.sin(p.angle) * 12;
+        const y = Math.max(base, prev + MIN_GAP);
+        prev = y;
+        placed.push({ name, base, y });
+      }
+      // Slide the column back so the labels stay near their own dots.
+      const last = placed[placed.length - 1];
+      const drift = last ? (last.y - last.base) / 2 : 0;
+      for (const { name, p } of items) {
+        const found = placed.find((q) => q.name === name)!;
+        out[name] = {
+          x: round3(p.x + Math.cos(p.angle) * 14),
+          y: round3(found.y - drift),
+          anchor: Math.cos(p.angle) < 0 ? "end" : "start",
+        };
+      }
+    }
+    return out;
+  }, [positions]);
 
   // A hovered name lights up the web; a pinned name (from the connectors list
   // below) also fills in the detail panel.
