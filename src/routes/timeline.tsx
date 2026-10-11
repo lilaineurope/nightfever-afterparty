@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { guestBySlug } from "../data/guests";
+import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
+import { EntityText } from "../components/entity-text";
 
 export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
@@ -93,7 +94,7 @@ function TimelinePage() {
               </p>
               <h2 className="mt-1 text-xl font-semibold text-gold">{e.title}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {e.text}
+                <EntityText text={e.text} />
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {e.people.map((slug) => (
@@ -106,14 +107,26 @@ function TimelinePage() {
                     {guestBySlug[slug]?.name ?? slug}
                   </Link>
                 ))}
-                {e.figures.map((f) => (
-                  <span
-                    key={f}
-                    className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
-                  >
-                    {f}
-                  </span>
-                ))}
+                {e.figures.map((f) =>
+                  f === "World of Wonder" ? (
+                    <a
+                      key={f}
+                      href={WOW_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:bg-gold hover:text-gold-foreground"
+                    >
+                      {f}
+                    </a>
+                  ) : (
+                    <span
+                      key={f}
+                      className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                    >
+                      {f}
+                    </span>
+                  ),
+                )}
               </div>
             </li>
           ))}
@@ -140,7 +153,24 @@ function TimelinePage() {
 
       <footer className="border-t border-border px-6 py-12 text-center">
         <p className="text-sm text-muted-foreground">
-          Fan page for <em>Night Fever</em> by World of Wonder.{" "}
+          Fan page for{" "}
+          <a
+            href="https://creators.spotify.com/pod/profile/night-fever/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+          >
+            <em>Night Fever</em>
+          </a>{" "}
+          by{" "}
+          <a
+            href={WOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+          >
+            World of Wonder
+          </a>.{" "}
           <Link to="/" className="text-gold transition hover:text-pink">
             Home
           </Link>{" "}
@@ -150,9 +180,7 @@ function TimelinePage() {
           </Link>
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          Dates and events compiled from public records, interviews and press
-          coverage. Not affiliated with World of Wonder or the Night Fever
-          podcast.
+          <EntityText text="Dates and events compiled from public records, interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
       </footer>
     </main>
