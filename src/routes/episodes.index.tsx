@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { episodes } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
-import episodesBackground from "@/assets/episodes-reference-collage.jpg";
+import episodesBackground from "@/assets/episodes-reference-collage-refined.jpg";
 
 export const Route = createFileRoute("/episodes/")({
   head: () => ({
