@@ -20,4 +20,4 @@
 - Episode-specific illustrated backgrounds are imported by their own episode route and confined to its title section, so reference and Mood displays remain data-driven and other pages stay unchanged.
 - S01E02 story Mood swatches match each reference's materials or themes and are labelled as story palettes, not verified outfit colours; keep presenter swatches separate so unspecified costumes never become factual colour claims.
 - S01E01 and S01E02 use a shared MoodSpectrum that reads optional `colours` arrays from reference JSON and preserves route-specific fallback swatches, so palette length and exact values are data-driven without changing unprovided looks.
-- Home episode-block portraits are mapped by episode ID in the home route and confined to the title panel, so the header artwork, reference data, and episode links remain unchanged.
+- Home and Episodes lists use the shared EpisodeBlock with portraits mapped by episode ID and confined to the title panel; optional date lines preserve the Episodes page dates and ranking while keeping both layouts consistent.
