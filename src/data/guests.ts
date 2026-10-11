@@ -10,7 +10,8 @@ export type Guest = {
   linkedTo: string[];
 };
 
-const SHOW_URL = "https://creators.spotify.com/pod/profile/night-fever/";
+export const SHOW_URL = "https://creators.spotify.com/pod/profile/night-fever/";
+export const WOW_URL = "https://www.worldofwonder.com/";
 
 export const guests: Guest[] = [
   {

@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { guestBySlug, guests } from "../data/guests";
+import { guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
 import { eventsByGuest, recurringFigures, sceneEvents } from "../data/scene";
+import { EntityText } from "../components/entity-text";
 
 export const Route = createFileRoute("/connections")({
   component: ConnectionsPage,
@@ -232,7 +233,18 @@ function ConnectionsPage() {
                       fill="var(--color-cream)"
                       fillOpacity={0.7}
                     >
-                      {name}
+                      {name === "World of Wonder" ? (
+                        <a
+                          href={WOW_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline decoration-gold/60 underline-offset-2 hover:fill-[var(--color-gold)]"
+                        >
+                          {name}
+                        </a>
+                      ) : (
+                        name
+                      )}
                     </text>
                   </g>
                 );
@@ -329,7 +341,8 @@ function ConnectionsPage() {
                       )}
                       {e.events.length > 0 && (
                         <p className="mt-1 text-xs text-muted-foreground">
-                          Both there for: {e.events.join("; ")}
+                          Both there for:{" "}
+                          <EntityText text={e.events.join("; ")} />
                         </p>
                       )}
                     </li>
@@ -348,7 +361,7 @@ function ConnectionsPage() {
                         <span className="font-semibold text-gold">
                           {e.when}
                         </span>{" "}
-                        &mdash; {e.title}
+                        &mdash; <EntityText text={e.title} />
                       </li>
                     ))}
                   </ul>
@@ -361,14 +374,26 @@ function ConnectionsPage() {
                     In the same rooms
                   </h3>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {focusFigures.map((f) => (
-                      <span
-                        key={f.name}
-                        className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
-                      >
-                        {f.name}
-                      </span>
-                    ))}
+                    {focusFigures.map((f) =>
+                      f.name === "World of Wonder" ? (
+                        <a
+                          key={f.name}
+                          href={WOW_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:bg-gold hover:text-gold-foreground"
+                        >
+                          {f.name}
+                        </a>
+                      ) : (
+                        <span
+                          key={f.name}
+                          className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                        >
+                          {f.name}
+                        </span>
+                      ),
+                    )}
                   </div>
                 </div>
               )}
@@ -462,7 +487,24 @@ function ConnectionsPage() {
 
       <footer className="border-t border-border px-6 py-12 text-center">
         <p className="text-sm text-muted-foreground">
-          Fan page for <em>Night Fever</em> by World of Wonder.{" "}
+          Fan page for{" "}
+          <a
+            href={SHOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+          >
+            <em>Night Fever</em>
+          </a>{" "}
+          by{" "}
+          <a
+            href={WOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
+          >
+            World of Wonder
+          </a>.{" "}
           <Link to="/" className="text-gold transition hover:text-pink">
             Home
           </Link>{" "}
@@ -476,8 +518,7 @@ function ConnectionsPage() {
           </Link>
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          Connections drawn from public interviews and press coverage. Not
-          affiliated with World of Wonder or the Night Fever podcast.
+          <EntityText text="Connections drawn from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
       </footer>
     </main>
