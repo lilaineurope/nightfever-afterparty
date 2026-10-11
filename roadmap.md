@@ -21,5 +21,5 @@
 
 - [x] Match the two "Latest episodes" cards on / to the S6E1 card's format/layout
 - [x] Mention counts split: per episode vs across all episodes (A–Z chips, cards, episode pages)
-- [ ] Presenters' on-camera looks slider: add a third colour to each swatch (S1E1 + S6E1)
-- [ ] Episode overview: button reads "Afterparty connection" instead of "Every name, timestamped"
+- [x] Presenters' on-camera looks slider: third colour added to every swatch (S1E1 + S6E1)
+- [x] Episode overview: button reads "Afterparty connection" instead of "Every name, timestamped"
