@@ -407,6 +407,12 @@ function Index() {
                 Latest episode
               </Link>
               <Link
+                to="/episodes/s01e01"
+                className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                S1 E1: Dianne Brill
+              </Link>
+              <Link
                 to="/about"
                 className="transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >

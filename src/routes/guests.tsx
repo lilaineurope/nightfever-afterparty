@@ -231,6 +231,14 @@ function GuestsPage() {
                           >
                             Full overview &rarr;
                           </Link>
+                          {guest.slug === "dianne-brill" && (
+                            <Link
+                              to="/episodes/s01e01"
+                              className="mr-3 inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
+                            >
+                              Every name, timestamped &rarr;
+                            </Link>
+                          )}
                           <a
                             href={guest.episodeUrl}
                             target="_blank"
@@ -306,6 +314,13 @@ function GuestsPage() {
             className="text-gold transition hover:text-pink"
           >
             Latest episode: James St. James
+          </Link>{" "}
+          &middot;{" "}
+          <Link
+            to="/episodes/s01e01"
+            className="text-gold transition hover:text-pink"
+          >
+            S1 E1: Dianne Brill
           </Link>{" "}
           &middot;{" "}
           <Link to="/about" className="text-gold transition hover:text-pink">

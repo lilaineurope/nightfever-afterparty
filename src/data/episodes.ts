@@ -37,6 +37,25 @@ const s06e01: Episode = {
     ],
 };
 
-export const episodes: Episode[] = [s06e01];
+const s01e01: Episode = {
+    id: "s01e01",
+    season: 1,
+    episode: 1,
+    guest: "Dianne Brill",
+    audioUrl:
+      "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
+    runtime: "51 min",
+    blurb:
+      "The very first episode: the 'Queen of the Night' on Warhol, Mugler, Danceteria and inventing her own silhouette.",
+    references: 112,
+    mentions: 293,
+    top: [
+      { name: "Dianne Brill", mentions: 31 },
+      { name: "Andy Warhol", mentions: 18 },
+      { name: "Rudolf Piper", mentions: 13 },
+    ],
+};
+
+export const episodes: Episode[] = [s01e01, s06e01];
 
 export const latestEpisode: Episode = s06e01;

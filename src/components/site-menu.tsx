@@ -4,6 +4,7 @@ import { useState } from "react";
 const PAGES = [
   { to: "/", label: "Home" },
   { to: "/episodes/s06e01", label: "Latest episode" },
+  { to: "/episodes/s01e01", label: "S1 E1: Dianne Brill" },
   { to: "/guests", label: "Guests" },
   { to: "/explore", label: "Everything A–Z" },
   { to: "/timeline", label: "Timeline" },
