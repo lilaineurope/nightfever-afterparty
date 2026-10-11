@@ -1,71 +1,19 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { eras, guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
-import { EntityLink } from "../components/entity-link";
-import { EntityText } from "../components/entity-text";
-import { LegalNote } from "../components/legal-links";
+import { EntityLink } from "./entity-link";
+import { EntityText } from "./entity-text";
+import { LegalNote } from "./legal-links";
 
-export const Route = createFileRoute("/guests")({
-  component: GuestsPage,
-  head: () => ({
-    meta: [
-      { title: "Night Fever Guests — Careers, Timelines & Connections" },
-      {
-        name: "description",
-        content:
-          "Every Night Fever guest, with a career timeline, what they are doing now, how they connect to each other, and a link to their episode.",
-      },
-      {
-        property: "og:title",
-        content: "Night Fever Guests — Careers, Timelines & Connections",
-      },
-      {
-        property: "og:description",
-        content:
-          "Career timelines and connection maps for the nightlife legends interviewed on Night Fever.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/guests" }],
-  }),
-});
-
-function GuestsPage() {
+/**
+ * The guest half of the scene story: the era strip plus the expandable
+ * guest cards. Rendered inside the Timeline page so the people and the
+ * nights they lived through live on one page.
+ */
+export function GuestsSection() {
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <section className="disco-grid px-6 pb-16 pt-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <Link
-            to="/"
-            className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink"
-          >
-            &larr; Night Fever fan page
-          </Link>
-          <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            The people <span className="text-pink text-glow-pink">in the room</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Everyone interviewed on{" "}
-            <a
-              href={SHOW_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-            >
-              <em>Night Fever</em>
-            </a>{" "}
-            has a long, strange,
-            brilliant career behind them &mdash; and most of them are still at
-            it. Here is who they are, what they did, what they are doing now,
-            and how their paths keep crossing.
-          </p>
-        </div>
-      </section>
-
+    <>
       {/* Era timeline */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-5xl">

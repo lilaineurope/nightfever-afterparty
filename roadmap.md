@@ -25,3 +25,5 @@
 - [x] Episode overview: button reads "Afterparty connection" instead of "Every name, timestamped"
 - [x] "Episodes" added to the header menu (opens /episodes, newest-first by release date)
 - [x] Home page episode cards' button reads "Afterparty connection"; guests page card matched to it
+- [ ] Guests joined into the Timeline page; menu shows the pair as "Timeline" only
+- [ ] Connections page shows only the dot graph — remove the Everything A–Z strip (it has its own page)

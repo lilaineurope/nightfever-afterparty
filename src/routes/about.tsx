@@ -39,14 +39,9 @@ export const Route = createFileRoute("/about")({
 
 const pages = [
   {
-    to: "/guests" as const,
-    title: "The people",
-    text: "Every guest with a career timeline, what they are doing now, and the episode they were on.",
-  },
-  {
-    to: "/connections" as const,
-    title: "The connections",
-    text: "A web of who was in the same room, the same club, the same story — built from what they actually said.",
+    to: "/timeline" as const,
+    title: "The timeline",
+    text: "The scene itself, from the 1970s to today, plus every guest: real nights, real places, career timelines and what they are doing now.",
   },
   {
     to: "/timeline" as const,

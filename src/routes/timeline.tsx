@@ -5,16 +5,17 @@ import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
+import { GuestsSection } from "../components/guests-section";
 
 export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
   head: () => ({
     meta: [
-      { title: "Nightlife Timeline — 1970s to Today, Club by Club" },
+      { title: "Timeline & Guests — 1970s to Today, Club by Club" },
       {
         name: "description",
         content:
-          "A year-by-year timeline of the nightlife scene behind Night Fever: CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race and the people in every room.",
+          "A year-by-year timeline of the nightlife scene behind Night Fever — CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race — with every guest's career timeline, what they are doing now and their episode.",
       },
       {
         property: "og:title",
@@ -134,6 +135,8 @@ function TimelinePage() {
         </ol>
       </section>
 
+      <GuestsSection />
+
       <section className="spotlight px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-cream">
@@ -174,10 +177,6 @@ function TimelinePage() {
           </a>.{" "}
           <Link to="/" className="text-gold transition hover:text-pink">
             Home
-          </Link>{" "}
-          &middot;{" "}
-          <Link to="/guests" className="text-gold transition hover:text-pink">
-            Guests
           </Link>{" "}
           &middot;{" "}
           <Link to="/about" className="text-gold transition hover:text-pink">
