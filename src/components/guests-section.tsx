@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { eras, guestBySlug, guests, WOW_URL } from "../data/guests";
 import { EntityLink } from "./entity-link";
