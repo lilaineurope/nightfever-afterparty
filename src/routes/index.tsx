@@ -162,7 +162,7 @@ function Index() {
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
             Latest episodes
           </p>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <div className="mt-6 flex flex-col gap-6">
             {episodes.map((ep) => (
               <EpisodeBlock key={ep.id} ep={ep} />
             ))}
