@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
-import { latestEpisode } from "../data/episodes";
+import { episodeById, episodePath } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { EntityLink } from "../components/entity-link";
 import { LegalNote } from "../components/legal-links";
@@ -126,23 +126,19 @@ function EntityPage() {
               </p>
             </div>
             <ul className="mt-4 space-y-3">
-              {e.refs.map((r) => (
+              {e.refs.map((r) => {
+                const episode = episodeById(r.episode ?? "s06e01");
+                return (
                 <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    {r.episode === "s01e01" ? (
-                      <Link to="/episodes/s01e01" className="font-semibold text-gold hover:text-pink">
-                        S1E1 · Dianne Brill
-                      </Link>
-                    ) : (
-                      <Link to="/episodes/s06e01" className="font-semibold text-gold hover:text-pink">
-                        S{latestEpisode.season}E{latestEpisode.episode} · {latestEpisode.guest}
-                      </Link>
-                    )}
+                    <Link to={episodePath(episode.id)} className="font-semibold text-gold hover:text-pink">
+                      S{episode.season}E{episode.episode} · {episode.guest}
+                    </Link>
                     <span className="text-xs text-muted-foreground">
-                      {r.time === "On camera" ? "On camera" : r.episode === "s01e01" ? (
+                      {r.time === "On camera" ? "On camera" : !episode.listenUrl.includes("/episode/") ? (
                         <span className="font-mono">{r.time}</span>
                       ) : (
-                        <a href={`${latestEpisode.listenUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
+                        <a href={`${episode.listenUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
                       )}
                       {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"} in this episode`}
                     </span>
@@ -152,7 +148,8 @@ function EntityPage() {
                     <p className="mt-2 text-sm text-muted-foreground"><span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span>{r.fashion}</p>
                   )}
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </section>
         )}
