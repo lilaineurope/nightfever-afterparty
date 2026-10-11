@@ -179,8 +179,9 @@ function AboutPage() {
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
             This is a fan page. It isn't affiliated with{" "}
-            <EntityText />
+            <EntityText text="World of Wonder" />
             , and it doesn't host audio — the listen buttons go to the show
+
             itself. If you spot something wrong, or you were in one of these
             nights, I'd genuinely like to hear about it.
           </p>
