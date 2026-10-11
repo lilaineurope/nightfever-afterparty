@@ -34,6 +34,14 @@ function formatReleased(iso: string) {
 }
 
 function EpisodesPage() {
+  // Ranked by publishing date: the episode published most recently comes first.
+  const byPublishingDate = [...episodes].sort(
+    (a, b) =>
+      b.released.localeCompare(a.released) ||
+      b.season - a.season ||
+      b.episode - a.episode,
+  );
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Header */}
@@ -50,13 +58,16 @@ function EpisodesPage() {
             look that comes up, counted by how often it is mentioned and
             linked to the moment you can hear it.
           </p>
+          <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold/80">
+            Listed newest release first
+          </p>
         </div>
       </section>
 
       {/* Episode list */}
       <section className="px-6 pb-24">
         <div className="mx-auto flex max-w-4xl flex-col gap-6">
-          {episodes.map((ep) => (
+          {byPublishingDate.map((ep) => (
             <div
               key={ep.id}
               className="rounded-3xl border border-gold/25 bg-card p-8 transition hover:border-gold/50"
