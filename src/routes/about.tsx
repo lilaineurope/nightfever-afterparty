@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import portraitImage from "../assets/about-portrait.jpg";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
@@ -256,7 +257,8 @@ function AboutPage() {
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their respective owners." />
         </p>
-      </footer>
+              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
+</footer>
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { eras, guestBySlug, guests, SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/guests")({
   component: GuestsPage,
@@ -315,7 +316,8 @@ function GuestsPage() {
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Biographical details compiled from public interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
-      </footer>
+              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
+</footer>
     </main>
   );
 }

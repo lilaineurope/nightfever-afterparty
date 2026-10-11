@@ -5,6 +5,7 @@ import { latestEpisode } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -85,13 +86,15 @@ const platforms = [
 
 function Index() {
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (email.trim() && consent) {
       setSubmitted(true);
       setEmail("");
+      setConsent(false);
     }
   };
 
@@ -199,31 +202,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Hosts */}
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Your guides through the scene
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {hosts.map((host) => (
-              <article
-                key={host.name}
-                className="rounded-2xl border border-border bg-card p-6 transition hover:border-gold/40"
-              >
-                <h3 className="text-xl font-semibold text-gold">{host.name}</h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-pink">
-                  {host.role}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-card-foreground/80">
-                  <EntityText text={host.bio} />
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Featured guests */}
       <section className="spotlight px-6 py-24">
         <div className="mx-auto max-w-6xl">
@@ -248,7 +226,7 @@ function Index() {
               to="/guests"
               className="inline-flex items-center gap-2 rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
             >
-              Explore their careers &amp; connections
+              Explore their connections
             </Link>
           </div>
         </div>
@@ -294,39 +272,78 @@ function Index() {
           </p>
           {submitted ? (
             <div className="mt-8 rounded-2xl border border-pink/30 bg-pink/10 p-6 text-pink">
-              <p className="font-medium">You are on the list!</p>
+              <p className="font-medium">Thanks — nothing was sent</p>
               <p className="mt-1 text-sm text-pink/80">
-                Watch your inbox for the next episode spotlight.
+                The mailing list isn&rsquo;t connected yet, so your address never
+                left your browser.
               </p>
             </div>
           ) : (
-            <form
-              onSubmit={handleSubscribe}
-              className="mt-8 flex flex-col gap-3 sm:flex-row"
-            >
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="flex-1 rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-              />
-              <button
-                type="submit"
-                className="rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+            <form onSubmit={handleSubscribe} className="mt-8 flex flex-col gap-4">
+              <label
+                htmlFor="consent"
+                className="flex items-start gap-3 text-left text-xs leading-relaxed text-muted-foreground"
               >
-                Subscribe
-              </button>
+                <input
+                  id="consent"
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  required
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-pink"
+                />
+                <span>
+                  I understand this form is a placeholder that stores nothing,
+                  and that I&rsquo;ll be asked again before any real mailing list
+                  is connected. See the{" "}
+                  <Link
+                    to="/privacy"
+                    className="text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-pink"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                </span>
+              </label>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <label htmlFor="email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  className="flex-1 rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                />
+                <button
+                  type="submit"
+                  className="rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                >
+                  Subscribe
+                </button>
+              </div>
             </form>
           )}
           <p className="mt-4 text-xs text-muted-foreground">
-            This is a fan page. Subscribing here only saves your email for this
-            demo form.
+            No trackers, no advertising cookies, and nothing about you is sold.
+            Read the{" "}
+            <Link
+              to="/privacy"
+              className="text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-pink"
+            >
+              Privacy Policy
+            </Link>{" "}
+            or the{" "}
+            <Link
+              to="/terms"
+              className="text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-pink"
+            >
+              Terms &amp; Conditions
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -407,7 +424,8 @@ function Index() {
             <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All trademarks and show content belong to their respective owners." />
           </p>
         </div>
-      </footer>
+              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
+</footer>
     </main>
   );
 }

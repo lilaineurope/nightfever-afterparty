@@ -3,6 +3,7 @@ import { entityBySlug, relatedTo } from "../data/entities";
 import { latestEpisode } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { EntityLink } from "../components/entity-link";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/explore/$slug")({
   loader: ({ params }) => {
@@ -176,6 +177,10 @@ function EntityPage() {
           </section>
         )}
       </div>
-    </main>
+          <footer className="border-t border-border px-6 py-10 text-center">
+        <LegalNote />
+      </footer>
+
+</main>
   );
 }

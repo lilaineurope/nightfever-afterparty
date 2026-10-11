@@ -4,6 +4,7 @@ import { EntityLink } from "../components/entity-link";
 import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
@@ -187,7 +188,8 @@ function TimelinePage() {
         <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
           <EntityText text="Dates and events compiled from public records, interviews and press coverage. Not affiliated with World of Wonder or the Night Fever podcast." />
         </p>
-      </footer>
+              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
+</footer>
     </main>
   );
 }

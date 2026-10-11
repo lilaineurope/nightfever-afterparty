@@ -7,6 +7,7 @@ import { latestEpisode } from "../data/episodes";
 import { Button } from "@/components/ui/button";
 import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
+import { LegalNote } from "../components/legal-links";
 
 type Ref = {
   rank: number;
@@ -199,7 +200,11 @@ function EpisodePage() {
           </p>
         </div>
       </section>
-    </main>
+          <footer className="border-t border-border px-6 py-10 text-center">
+        <LegalNote />
+      </footer>
+
+</main>
   );
 }
 

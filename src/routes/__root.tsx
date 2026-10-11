@@ -79,14 +79,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Night Fever fan page — every name, place and story" },
+      {
+        name: "description",
+        content:
+          "A fan-made index of the Night Fever podcast by World of Wonder: timelines, a connection map, and a timestamped list of every name, place, song and story mentioned.",
+      },
+      { name: "author", content: "Lisa Lang" },
+      { property: "og:title", content: "Night Fever fan page" },
+      {
+        property: "og:description",
+        content:
+          "Every name, place, song and story dropped in the Night Fever interviews — indexed, timestamped and connected.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
