@@ -224,24 +224,24 @@ function EpisodePage() {
 }
 
 // Swatch colors per look, matched by keywords in the entry name (data stays in the JSON).
-const SWATCHES: { match: RegExp; colors: [string, string]; label: string }[] = [
-  { match: /Dianne's on-camera/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)"], label: "Cobalt & platinum" },
-  { match: /James's on-camera/i, colors: ["var(--mood-swatch-1)", "var(--mood-swatch-2)"], label: "Pale grey & teal" },
-  { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-4)"], label: "Navy & orange" },
-  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-6)"], label: "Navy cap & blue blocks" },
-  { match: /cocktail dresses/i, colors: ["var(--mood-swatch-7)", "var(--mood-swatch-8)"], label: "1950s satin & patent" },
-  { match: /Corsets/i, colors: ["var(--mood-swatch-19)", "var(--mood-swatch-20)"], label: "Lace & velvet" },
-  { match: /Menswear/i, colors: ["var(--mood-swatch-5)", "var(--mood-swatch-6)"], label: "Pinstripe & navy" },
-  { match: /lunchbox/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-10)"], label: "Big hair & flow" },
-  { match: /Dianne Brill look/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)"], label: "Sparkle & curves" },
-  { match: /Gold dress/i, colors: ["var(--mood-swatch-21)", "var(--mood-swatch-22)"], label: "Gold & dollar green" },
-  { match: /Rubber skirts/i, colors: ["var(--mood-swatch-13)", "var(--mood-swatch-14)"], label: "Rubber black & blonde" },
-  { match: /décolletage/i, colors: ["var(--mood-swatch-11)", "var(--mood-swatch-12)"], label: "Body art" },
-  { match: /Trench-coated/i, colors: ["var(--mood-swatch-17)", "var(--mood-swatch-18)"], label: "Film-noir beige" },
-  { match: /bridesmaid/i, colors: ["var(--mood-swatch-23)", "var(--mood-swatch-24)"], label: "Thrift-store pastel" },
+const SWATCHES: { match: RegExp; colors: [string, string, string]; label: string }[] = [
+  { match: /Dianne's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-25)", "var(--mood-swatch-26)"], label: "Cobalt, platinum & plum" },
+  { match: /James's on-camera/i, colors: ["var(--mood-swatch-13)", "var(--mood-swatch-27)", "var(--mood-swatch-28)"], label: "Pale grey, teal & library brown" },
+  { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-6)", "var(--mood-swatch-4)", "var(--mood-swatch-29)"], label: "Navy, orange & curtain green" },
+  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-6)", "var(--mood-swatch-3)", "var(--mood-swatch-9)"], label: "Navy, royal blue & pink boxes" },
+  { match: /cocktail dresses/i, colors: ["var(--mood-swatch-7)", "var(--mood-swatch-8)", "var(--mood-swatch-14)"], label: "Satin pink, gold & patent" },
+  { match: /Corsets/i, colors: ["var(--mood-swatch-19)", "var(--mood-swatch-20)", "var(--mood-swatch-30)"], label: "Velvet, red & lace cream" },
+  { match: /Menswear/i, colors: ["var(--mood-swatch-6)", "var(--mood-swatch-31)", "var(--mood-swatch-23)"], label: "Navy, pinstripe & tan" },
+  { match: /lunchbox/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-10)", "var(--mood-swatch-17)"], label: "Pink, cream & flow" },
+  { match: /Dianne Brill look/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)", "var(--mood-swatch-25)"], label: "Magenta, gold & sparkle" },
+  { match: /Gold dress/i, colors: ["var(--mood-swatch-8)", "var(--mood-swatch-22)", "var(--mood-swatch-32)"], label: "Gold, dollar green & burgundy" },
+  { match: /Rubber skirts/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-25)", "var(--mood-swatch-13)"], label: "Rubber black, blonde & silver" },
+  { match: /décolletage/i, colors: ["var(--mood-swatch-11)", "var(--mood-swatch-13)", "var(--mood-swatch-14)"], label: "Skin white, grey & ink" },
+  { match: /Trench-coated/i, colors: ["var(--mood-swatch-17)", "var(--mood-swatch-23)", "var(--mood-swatch-14)"], label: "Film-noir beige, tan & ink" },
+  { match: /bridesmaid/i, colors: ["var(--mood-swatch-24)", "var(--mood-swatch-33)", "var(--mood-swatch-23)"], label: "Thrift pastel: pink, lilac & tan" },
 ];
 const swatchFor = (name: string) =>
-  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-23)", "var(--mood-swatch-24)"] as [string, string], label: "Mood" };
+  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-23)", "var(--mood-swatch-33)", "var(--mood-swatch-24)"] as [string, string, string], label: "Mood" };
 
 function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: string }) {
   const [i, setI] = useState(0);
@@ -259,7 +259,7 @@ function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: s
             return (
               <Button variant="ghost" key={m.rank} aria-pressed={k === i} aria-label={m.name} onClick={() => setI(k)}
                 className={`h-full min-w-0 rounded-none p-0 flex-1 transition-all motion-reduce:transition-none ${k === i ? "flex-[2.5] ring-2 ring-inset ring-cream" : "opacity-80 hover:opacity-100"}`}
-                style={{ background: `linear-gradient(135deg, ${s.colors[0]} 50%, ${s.colors[1]} 50%)` }} />
+                style={{ background: `linear-gradient(135deg, ${s.colors[0]} 0 33.333%, ${s.colors[1]} 33.333% 66.666%, ${s.colors[2]} 66.666% 100%)` }} />
             );
           })}
         </div>

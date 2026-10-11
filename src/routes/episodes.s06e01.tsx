@@ -227,21 +227,21 @@ function EpisodePage() {
 }
 
 // Swatch colors per look, matched by keywords in the entry name (data stays in the JSON).
-const SWATCHES: { match: RegExp; colors: [string, string]; label: string }[] = [
-  { match: /James's on-camera/i, colors: ["var(--mood-swatch-1)", "var(--mood-swatch-2)"], label: "Champagne & amber" },
-  { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-4)"], label: "Cobalt & orange" },
-  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-5)", "var(--mood-swatch-6)"], label: "Kelly green & navy" },
-  { match: /film-school/i, colors: ["var(--mood-swatch-7)", "var(--mood-swatch-8)"], label: "Neon pink & leopard" },
-  { match: /Converse/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-10)"], label: "Pink high tops" },
-  { match: /paper/i, colors: ["var(--mood-swatch-11)", "var(--mood-swatch-12)"], label: "Paper white & silver" },
-  { match: /Warhol/i, colors: ["var(--mood-swatch-13)", "var(--mood-swatch-14)"], label: "Silver & black" },
-  { match: /Drag/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)"], label: "Magenta & gold" },
-  { match: /Rhoda|Bad Seed/i, colors: ["var(--mood-swatch-17)", "var(--mood-swatch-18)"], label: "Powder blue & lace" },
-  { match: /Ball gowns/i, colors: ["var(--mood-swatch-19)", "var(--mood-swatch-20)"], label: "Velvet black & crimson" },
-  { match: /outfits/i, colors: ["var(--mood-swatch-21)", "var(--mood-swatch-22)"], label: "Flamboyant mix" },
+const SWATCHES: { match: RegExp; colors: [string, string, string]; label: string }[] = [
+  { match: /James's on-camera/i, colors: ["var(--mood-swatch-1)", "var(--mood-swatch-2)", "var(--mood-swatch-32)"], label: "Champagne, amber & burgundy" },
+  { match: /Fenton's on-camera/i, colors: ["var(--mood-swatch-3)", "var(--mood-swatch-34)", "var(--mood-swatch-35)"], label: "Cobalt, orange & wallpaper yellow" },
+  { match: /Randy's on-camera/i, colors: ["var(--mood-swatch-6)", "var(--mood-swatch-5)", "var(--mood-swatch-36)"], label: "Navy, kelly green & plaid cream" },
+  { match: /film-school/i, colors: ["var(--mood-swatch-7)", "var(--mood-swatch-8)", "var(--mood-swatch-15)"], label: "Neon pink, leopard & magenta" },
+  { match: /Converse/i, colors: ["var(--mood-swatch-9)", "var(--mood-swatch-10)", "var(--mood-swatch-12)"], label: "Pink, cream & sole grey" },
+  { match: /paper/i, colors: ["var(--mood-swatch-11)", "var(--mood-swatch-25)", "var(--mood-swatch-13)"], label: "Paper white, silver & grey" },
+  { match: /Warhol/i, colors: ["var(--mood-swatch-25)", "var(--mood-swatch-14)", "var(--mood-swatch-10)"], label: "Silver, black & flash white" },
+  { match: /Drag/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-16)", "var(--mood-swatch-7)"], label: "Magenta, gold & hot pink" },
+  { match: /Rhoda|Bad Seed/i, colors: ["var(--mood-swatch-17)", "var(--mood-swatch-30)", "var(--mood-swatch-32)"], label: "Powder blue, lace cream & burgundy" },
+  { match: /Ball gowns/i, colors: ["var(--mood-swatch-14)", "var(--mood-swatch-20)", "var(--mood-swatch-8)"], label: "Velvet black, crimson & gold" },
+  { match: /outfits/i, colors: ["var(--mood-swatch-15)", "var(--mood-swatch-8)", "var(--mood-swatch-5)"], label: "Magenta, gold & green" },
 ];
 const swatchFor = (name: string) =>
-  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-23)", "var(--mood-swatch-24)"] as [string, string], label: "Mood" };
+  SWATCHES.find((s) => s.match.test(name)) ?? { colors: ["var(--mood-swatch-23)", "var(--mood-swatch-33)", "var(--mood-swatch-24)"] as [string, string, string], label: "Mood" };
 
 function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: string }) {
   const [i, setI] = useState(0);
@@ -259,7 +259,7 @@ function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: s
             return (
               <Button variant="ghost" key={m.rank} aria-pressed={k === i} aria-label={m.name} onClick={() => setI(k)}
                 className={`h-full min-w-0 rounded-none p-0 flex-1 transition-all motion-reduce:transition-none ${k === i ? "flex-[2.5] ring-2 ring-inset ring-cream" : "opacity-80 hover:opacity-100"}`}
-                style={{ background: `linear-gradient(135deg, ${s.colors[0]} 50%, ${s.colors[1]} 50%)` }} />
+                style={{ background: `linear-gradient(135deg, ${s.colors[0]} 0 33.333%, ${s.colors[1]} 33.333% 66.666%, ${s.colors[2]} 66.666% 100%)` }} />
             );
           })}
         </div>
