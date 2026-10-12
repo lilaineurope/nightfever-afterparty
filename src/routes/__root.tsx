@@ -79,14 +79,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Night Fever fan page — every name, place and story" },
+      { title: "Night Fever Afterparty — every name, place and story" },
       {
         name: "description",
         content:
           "A fan-made index of the Night Fever podcast by World of Wonder: timelines, a connection map, and a timestamped list of every name, place, song and story mentioned.",
       },
       { name: "author", content: "Lisa Lang" },
-      { property: "og:title", content: "Night Fever fan page" },
+      { property: "og:title", content: "Night Fever Afterparty" },
       {
         property: "og:description",
         content:

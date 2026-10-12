@@ -14,7 +14,7 @@ export const Route = createFileRoute("/explore/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
-    const title = `${loaderData.name} — ${loaderData.category} | Night Fever fan page`;
+    const title = `${loaderData.name} — ${loaderData.category} | Night Fever Afterparty`;
     const desc = `Every story, night and connection around ${loaderData.name} from the Night Fever podcast and the scene it covers.`;
     return {
       meta: [

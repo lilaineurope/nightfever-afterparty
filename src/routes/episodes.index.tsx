@@ -8,13 +8,13 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/episodes/")({
   head: () => ({
     meta: [
-      { title: "Episodes — Night Fever fan page" },
+      { title: "Episodes — Night Fever Afterparty" },
       {
         name: "description",
         content:
           "Every tagged Night Fever episode, listed by afterparty publish date, newest first: each guest, every name, place and look mentioned, counted and timestamped.",
       },
-      { property: "og:title", content: "Episodes — Night Fever fan page" },
+      { property: "og:title", content: "Episodes — Night Fever Afterparty" },
       {
         property: "og:description",
         content:

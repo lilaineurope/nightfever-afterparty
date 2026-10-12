@@ -15,7 +15,7 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About — Why this Night Fever fan page exists" },
+      { title: "About — Why this Night Fever Afterparty exists" },
       {
         name: "description",
         content:
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/about")({
       },
       {
         property: "og:title",
-        content: "About — Why this Night Fever fan page exists",
+        content: "About — Why this Night Fever Afterparty exists",
       },
       {
         property: "og:description",
@@ -66,7 +66,7 @@ function AboutPage() {
             to="/"
             className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink"
           >
-            &larr; Night Fever fan page
+            &larr; Night Fever Afterparty
           </Link>
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             Why I made <span className="text-pink text-glow-pink">this</span>
