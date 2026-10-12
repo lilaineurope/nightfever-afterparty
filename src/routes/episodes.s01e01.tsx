@@ -115,8 +115,8 @@ function EpisodePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <Link to="/timeline" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
-            &larr; Timeline &amp; guests
+          <Link to="/guests" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
+            &larr; All guests
           </Link>
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season 1 · Episode 1</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">Dianne Brill</h1>
