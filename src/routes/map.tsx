@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
-import { CATEGORIES, entityFor, relatedTo, totalMentions, type Entity } from "@/data/entities";
+import { CATEGORIES, entities, entityFor, relatedTo, totalMentions, type Entity } from "@/data/entities";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/map")({
@@ -47,11 +47,33 @@ function buildSpots(): Spot[] {
     }
     if (!s.places.some((p) => p.slug === e.slug)) s.places.push(e);
   }
+  const sec = (t: string) => {
+    const p = t.split(":").map(Number);
+    if (p.length < 2 || p.some(isNaN)) return null;
+    return p.reduce((a, b) => a * 60 + b, 0);
+  };
   for (const s of byCoord.values()) {
     const m = new Map<string, Entity>();
-    for (const p of s.places)
-      for (const r of relatedTo(p))
-        if (!s.places.some((x) => x.slug === r.slug)) m.set(r.slug, r);
+    const keep = (r: Entity) => {
+      if (!s.places.some((x) => x.slug === r.slug)) m.set(r.slug, r);
+    };
+    for (const p of s.places) {
+      relatedTo(p).forEach(keep);
+      // Anything named within 90 seconds of this place in the same episode.
+      for (const pr of p.refs) {
+        const t = sec(pr.time);
+        if (t == null) continue;
+        for (const x of entities)
+          if (
+            x.refs.some((r) => {
+              if (r.episode !== pr.episode) return false;
+              const u = sec(r.time);
+              return u != null && Math.abs(u - t) <= 90;
+            })
+          )
+            keep(x);
+      }
+    }
     s.connected = [...m.values()].sort((a, b) => totalMentions(b) - totalMentions(a));
   }
   return [...byCoord.values()];
@@ -76,13 +98,18 @@ function MapPage() {
   const markers = useRef<any[]>([]);
   const [ready, setReady] = useState(false);
 
+  const chips = useMemo(() => {
+    const out: [string, number][] = [["All", spots.length]];
+    for (const c of CATEGORIES) {
+      if (c === "Mood") continue;
+      const n = spots.filter((s) => s.connected.some((x) => x.category === c)).length;
+      if (n > 0) out.push([c, n]);
+    }
+    return out;
+  }, [spots]);
+
   const visible = useMemo(
-    () =>
-      cat === "All"
-        ? spots
-        : cat === "Place"
-          ? spots
-          : spots.filter((s) => s.connected.some((c) => c.category === cat)),
+    () => (cat === "All" ? spots : spots.filter((s) => s.connected.some((c) => c.category === cat))),
     [spots, cat],
   );
 
@@ -152,10 +179,10 @@ function MapPage() {
           The scene, <span className="text-pink text-glow-pink">pinned</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Every real club, street, school and city named on the site — with the people, music, books and stories tied to each. Pick a category to see where it happened.
+          Every real club, street and city named on the site. Under each place you'll find the names that come up alongside it — in the same moment of an episode or the same story on the timeline. Pick a category to see only the places linked to it; the number shows how many places that is.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {["All", ...CATEGORIES.filter((c) => c !== "Place" && c !== "Mood")].map((c) => (
+          {chips.map(([c, n]) => (
             <button
               key={c}
               onClick={() => setCat(c)}
@@ -163,7 +190,7 @@ function MapPage() {
                 cat === c ? "border-pink bg-pink/15 text-pink" : "border-border text-card-foreground/80 hover:border-gold/50"
               }`}
             >
-              {c}
+              {c} <span className="text-muted-foreground">{n}</span>
             </button>
           ))}
         </div>
