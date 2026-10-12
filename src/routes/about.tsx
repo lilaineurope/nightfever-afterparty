@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import portraitImage from "../assets/about-portrait.jpg";
+import portraitImage from "../assets/about-portrait-illustrated.jpg";
 import { SHOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
@@ -95,15 +95,15 @@ function AboutPage() {
             <div className="rounded-3xl border border-gold/30 bg-card p-3 spotlight">
               <img
                 src={portraitImage}
-                alt="Portrait of Lisa Lang, the person who made this fan page"
+                alt="Illustrated portrait of Lisa Lang, the person who made this fan page"
                 className="aspect-square w-full rounded-2xl object-cover"
                 loading="lazy"
-                width={1124}
-                height={1124}
+                width={1024}
+                height={1024}
               />
             </div>
             <figcaption className="mt-3 text-center text-xs text-muted-foreground">
-              Snapshot by Christine Hasebrink at CEF22, Zurich, September 2022 —{" "}
+              Drawn from a snapshot by Christine Hasebrink at CEF22, Zurich, September 2022 —{" "}
               <a
                 href={IG_POST}
                 target="_blank"
