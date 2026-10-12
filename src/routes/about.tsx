@@ -3,6 +3,7 @@ import portraitImage from "../assets/about-portrait.jpg";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
+import { SiteFooter } from "@/components/site-footer";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
@@ -202,54 +203,6 @@ function AboutPage() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-6 py-12 text-center">
-        <p className="text-sm text-muted-foreground">
-          Fan page for{" "}
-          <a
-            href={SHOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={GOLD_LINK}
-          >
-            <em>Night Fever</em>
-          </a>{" "}
-          by{" "}
-          <a
-            href={WOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={GOLD_LINK}
-          >
-            World of Wonder
-          </a>
-          .{" "}
-          <Link to="/" className="text-gold transition hover:text-pink">
-            Home
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/connections"
-            className="text-gold transition hover:text-pink"
-          >
-            Connections
-          </Link>{" "}
-          &middot;{" "}
-          <Link to="/timeline" className="text-gold transition hover:text-pink">
-            Timeline
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/episodes"
-            className="text-gold transition hover:text-pink"
-          >
-            Episodes
-          </Link>
-        </p>
-        <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their respective owners." />
-        </p>
-              <p className="mx-auto mt-3 max-w-2xl text-center"><LegalNote /></p>
-</footer>
-    </main>
+      <SiteFooter />    </main>
   );
 }

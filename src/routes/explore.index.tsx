@@ -11,6 +11,7 @@ import {
 } from "../data/entities";
 import { episodes } from "../data/episodes";
 import { LegalNote } from "../components/legal-links";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/explore/")({
   head: () => ({
@@ -96,10 +97,7 @@ function ExplorePage() {
           })}
         </ul>
       </div>
-          <footer className="border-t border-border px-6 py-10 text-center">
-        <LegalNote />
-      </footer>
-
+          <SiteFooter />
 </main>
   );
 }

@@ -5,6 +5,7 @@ import {
   unsubscribeNewsletter,
 } from "@/lib/newsletter.functions";
 import { LegalLinks } from "@/components/legal-links";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/unsubscribe")({
   validateSearch: (search) => ({
@@ -90,11 +91,6 @@ function UnsubscribePage() {
           </Link>
         </p>
       </div>
-      <footer className="mt-12 text-center">
-        <p className="mx-auto max-w-2xl text-xs text-muted-foreground">
-          <LegalLinks />
-        </p>
-      </footer>
-    </main>
+      <SiteFooter />    </main>
   );
 }
