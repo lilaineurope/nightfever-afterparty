@@ -62,7 +62,7 @@
 - [x] Remove "see the full timeline" link from Connections (Timeline has its own page).
 - [x] Guests page again at /guests: guest-by-guest cards move off the Timeline page; "Guests" added to the top menu.
 - [x] "Home" removed from the top menu and the mobile menu — the "Night Fever afterparty" logo link is the home button on every page.
-- [x] Site published at https://nightfever-fan-hub.lovable.app (publishing requested, page confirmed serving with the right title).
+- [x] Site published at https://nightfever-afterparty.lovable.app (renamed from nightfever-fan-hub at Lisa's request; page confirmed serving with the right title).
 - [ ] Lisa to review the three high-severity build-tool advisories (source-map-js via the Tailwind plugin, js-yaml via TanStack Start) — no direct fix; watch for upstream releases before sharing broadly.
 - [ ] Lisa to confirm the map pins are in the right spots and that the map itself loads on her machine (pins are approximate from public addresses; the map could not be loaded from here).
 
