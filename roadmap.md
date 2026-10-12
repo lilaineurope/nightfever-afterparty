@@ -59,3 +59,4 @@
 - [ ] Map page (/map): show every referenced place by location, grouped/labeled by category; add "Map" to the top menu.
 - [ ] Pub quiz generator (/quiz): generate quiz questions from the published episode indexes; add "Pub Quiz" to the top menu.
 - [x] Move "The names everyone drops" from Connections to the home page; remove the Everything A–Z strip from home.
+- [x] Remove "see the full timeline" link from Connections (Timeline has its own page).
