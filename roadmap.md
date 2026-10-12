@@ -60,3 +60,4 @@
 - [ ] Pub quiz generator (/quiz): generate quiz questions from the published episode indexes; add "Pub Quiz" to the top menu.
 - [x] Move "The names everyone drops" from Connections to the home page; remove the Everything A–Z strip from home.
 - [x] Remove "see the full timeline" link from Connections (Timeline has its own page).
+- [ ] Guests page again at /guests: guest-by-guest cards move off the Timeline page; "Guests" added to the top menu.
