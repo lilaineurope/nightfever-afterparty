@@ -53,3 +53,8 @@
 - [ ] Home episode blocks: show Afterparty publish date + WOW publishing date exactly like the Episodes page, ranked by afterparty publish date (newest first).
 - [x] Connections rebuilt in the original circular web format from published-episode names only (185 dots, core = 33 multi-episode names, focus panel, great connectors, names-everyone-drops).
 - [x] Home episode blocks now carry both dates and rank by afterparty publish date, matching the Episodes page.
+- [x] About moved out of the top menu into a shared footer; every page uses the same home-style footer.
+
+## Open (12 Oct 2026)
+- [ ] Map page (/map): show every referenced place by location, grouped/labeled by category; add "Map" to the top menu.
+- [ ] Pub quiz generator (/quiz): generate quiz questions from the published episode indexes; add "Pub Quiz" to the top menu.
