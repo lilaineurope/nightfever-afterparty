@@ -1,5 +1,6 @@
-import { entities, totalMentions, type Entity } from "@/data/entities";
+import { entities, entityFor, totalMentions, type Entity } from "@/data/entities";
 import { episodes } from "@/data/episodes";
+import { sceneEvents } from "@/data/scene";
 
 // Pub quiz questions generated only from the published episode indexes.
 
@@ -116,15 +117,73 @@ const makers: Maker[] = [
   },
 ];
 
+// Story questions: about the nights, clubs, people and events themselves.
+const linked = sceneEvents
+  .map((ev) => ({ ev, ents: ev.figures.map((f) => entityFor(f)).filter((x): x is Entity => !!x) }))
+  .filter((x) => x.ents.length > 0);
+
+const storyMakers: Maker[] = [
+  // Story clue → who/what (from what's said in the episodes)
+  makers[3]!,
+  // What year?
+  (r, i) => {
+    const { ev, ents } = pick(linked, r);
+    const years = new Set<number>([ev.year]);
+    while (years.size < 4) years.add(ev.year + Math.round((r() - 0.5) * 16));
+    return {
+      id: `yr-${i}-${ev.id}`,
+      prompt: `When did this happen? "${ev.title}"`,
+      options: [...years].sort((a, b) => a - b).map(String),
+      answer: String(ev.year),
+      explain: `${ev.when} — ${ev.text}`,
+      slug: ents[0]!.slug,
+    };
+  },
+  // Where did it happen?
+  (r, i) => {
+    const { ev, ents } = pick(linked, r);
+    const others = shuffle([...new Set(sceneEvents.map((x) => x.place))].filter((p) => p !== ev.place), r).slice(0, 3);
+    return {
+      id: `where-${i}-${ev.id}`,
+      prompt: `Where did this happen? "${ev.title}"`,
+      options: shuffle([ev.place, ...others], r),
+      answer: ev.place,
+      explain: ev.text,
+      slug: ents[0]!.slug,
+    };
+  },
+  // Who was in the story?
+  (r, i) => {
+    const { ev, ents } = pick(linked, r);
+    const e = pick(ents, r);
+    const absent = shuffle(
+      pool.filter((p) => p.category === "Person" && !ev.figures.includes(p.name) && !ev.text.includes(p.name)),
+      r,
+    ).slice(0, 3);
+    return {
+      id: `who-${i}-${ev.id}-${e.slug}`,
+      prompt: `Who was part of this story? "${maskName(ev.text, e.name)}"`,
+      options: shuffle([e.name, ...absent.map((x) => x.name)], r),
+      answer: e.name,
+      explain: `${e.name} — ${ev.when}, ${ev.place}.`,
+      slug: e.slug,
+    };
+  },
+];
+
+// Mostly story questions; an episode-trivia question only now and then.
+const episodeMakers: Maker[] = [makers[0]!, makers[1]!, makers[2]!];
+
 export function generateQuiz(seed: number, count = 10): QuizQuestion[] {
   const r = rng(seed);
   const out: QuizQuestion[] = [];
   const seen = new Set<string>();
   let guard = 0;
-  while (out.length < count && guard++ < 200) {
-    const q = makers[out.length % makers.length]!(r, out.length);
-    if (!q || seen.has(q.slug) || new Set(q.options).size !== q.options.length) continue;
-    seen.add(q.slug);
+  while (out.length < count && guard++ < 400) {
+    const fromEpisodes = r() < 0.1;
+    const q = fromEpisodes ? pick(episodeMakers, r)(r, out.length) : pick(storyMakers, r)(r, out.length);
+    if (!q || seen.has(q.id.split("-").slice(2).join("-")) || new Set(q.options).size !== q.options.length) continue;
+    seen.add(q.id.split("-").slice(2).join("-"));
     out.push(q);
   }
   return out;
