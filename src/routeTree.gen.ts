@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as GuestsRouteImport } from './routes/guests'
+import { Route as MapRouteImport } from './routes/map'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -43,6 +44,11 @@ const ConnectionsRoute = ConnectionsRouteImport.update({
 const GuestsRoute = GuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
+  '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
   '/terms': typeof TermsRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
+  '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
   '/terms': typeof TermsRoute
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
+  '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
   '/terms': typeof TermsRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connections'
     | '/guests'
+    | '/map'
     | '/privacy'
     | '/quiz'
     | '/terms'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connections'
     | '/guests'
+    | '/map'
     | '/privacy'
     | '/quiz'
     | '/terms'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connections'
     | '/guests'
+    | '/map'
     | '/privacy'
     | '/quiz'
     | '/terms'
@@ -212,6 +224,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ConnectionsRoute: typeof ConnectionsRoute
   GuestsRoute: typeof GuestsRoute
+  MapRoute: typeof MapRoute
   PrivacyRoute: typeof PrivacyRoute
   QuizRoute: typeof QuizRoute
   TermsRoute: typeof TermsRoute
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/guests'
       fullPath: '/guests'
       preLoaderRoute: typeof GuestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -340,6 +360,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ConnectionsRoute: ConnectionsRoute,
   GuestsRoute: GuestsRoute,
+  MapRoute: MapRoute,
   PrivacyRoute: PrivacyRoute,
   QuizRoute: QuizRoute,
   TermsRoute: TermsRoute,
