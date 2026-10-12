@@ -61,3 +61,5 @@
 - [x] Move "The names everyone drops" from Connections to the home page; remove the Everything A–Z strip from home.
 - [x] Remove "see the full timeline" link from Connections (Timeline has its own page).
 - [x] Guests page again at /guests: guest-by-guest cards move off the Timeline page; "Guests" added to the top menu.
+- [x] "Home" removed from the top menu and the mobile menu — the "Night Fever afterparty" logo link is the home button on every page.
+
