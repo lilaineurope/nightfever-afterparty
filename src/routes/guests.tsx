@@ -27,6 +27,7 @@ export const Route = createFileRoute("/guests")({
 function GuestsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <h1 className="sr-only">Night Fever guests</h1>
       <GuestsSection />
       <SiteFooter />
     </main>
