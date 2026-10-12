@@ -11,6 +11,7 @@ import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
 import { MoodSpectrum } from "../components/mood-spectrum";
 import episodeBackground from "../assets/episode-dianne-brill.jpg";
+import { SiteFooter } from "@/components/site-footer";
 
 type Ref = {
   rank: number;
@@ -231,10 +232,7 @@ function EpisodePage() {
           </p>
         </div>
       </section>
-          <footer className="border-t border-border px-6 py-10 text-center">
-        <LegalNote />
-      </footer>
-
+          <SiteFooter />
 </main>
   );
 }

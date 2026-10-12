@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
+import { SiteFooter } from "@/components/site-footer";
 
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
 
@@ -302,49 +303,6 @@ function PrivacyPage() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-6 py-12 text-center">
-        <p className="text-sm text-muted-foreground">
-          Fan page for{" "}
-          <a
-            href={SHOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={GOLD_LINK}
-          >
-            <em>Night Fever</em>
-          </a>{" "}
-          by{" "}
-          <a
-            href={WOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={GOLD_LINK}
-          >
-            World of Wonder
-          </a>
-          .{" "}
-          <Link to="/" className="text-gold transition hover:text-pink">
-            Home
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/terms"
-            className="text-gold transition hover:text-pink"
-          >
-            Terms
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/privacy"
-            className="text-gold transition hover:text-pink"
-          >
-            Privacy
-          </Link>
-        </p>
-        <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their respective owners." />
-        </p>
-      </footer>
-    </main>
+      <SiteFooter />    </main>
   );
 }

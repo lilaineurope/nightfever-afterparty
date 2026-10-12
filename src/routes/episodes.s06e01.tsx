@@ -10,6 +10,7 @@ import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import episodeBackground from "../assets/episode-james-st-james.jpg";
+import { SiteFooter } from "@/components/site-footer";
 
 type Ref = {
   rank: number;
@@ -230,10 +231,7 @@ function EpisodePage() {
           </p>
         </div>
       </section>
-          <footer className="border-t border-border px-6 py-10 text-center">
-        <LegalNote />
-      </footer>
-
+          <SiteFooter />
 </main>
   );
 }

@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { SHOW_URL, WOW_URL } from "@/data/guests";
+import { WOW_URL } from "@/data/guests";
 import { episodes, episodePath } from "@/data/episodes";
 import { episodePeople } from "@/data/episode-connections";
 import { EntityText } from "@/components/entity-text";
 import { LegalNote } from "@/components/legal-links";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/connections")({
   component: ConnectionsPage,
@@ -515,50 +516,6 @@ function ConnectionsPage() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-6 py-12 text-center">
-        <p className="text-sm text-muted-foreground">
-          Fan page for{" "}
-          <a
-            href={SHOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-          >
-            <em>Night Fever</em>
-          </a>{" "}
-          by{" "}
-          <a
-            href={WOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-          >
-            World of Wonder
-          </a>
-          .{" "}
-          <Link to="/" className="text-gold transition hover:text-pink">
-            Home
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            to="/timeline"
-            className="text-gold transition hover:text-pink"
-          >
-            Timeline
-          </Link>{" "}
-          &middot;{" "}
-          <Link to="/about" className="text-gold transition hover:text-pink">
-            About
-          </Link>
-        </p>
-
-        <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground/60">
-          <EntityText text="Connections drawn only from timestamped person references in the published episode indexes. Not affiliated with World of Wonder or the Night Fever podcast." />
-        </p>
-        <p className="mx-auto mt-3 max-w-2xl text-center">
-          <LegalNote />
-        </p>
-      </footer>
-    </main>
+      <SiteFooter />    </main>
   );
 }

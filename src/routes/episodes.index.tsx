@@ -3,6 +3,7 @@ import { episodes } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
 import episodesBackground from "@/assets/episodes-reference-collage-refined.jpg";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
   head: () => ({
@@ -70,11 +71,6 @@ function EpisodesPage() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-6 py-12 text-center">
-        <p className="mx-auto max-w-2xl text-xs text-muted-foreground">
-          <LegalLinks />
-        </p>
-      </footer>
-    </main>
+      <SiteFooter />    </main>
   );
 }
