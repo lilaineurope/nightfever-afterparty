@@ -33,7 +33,7 @@ export function SiteFooter() {
             </a>
             .
           </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <Link to="/" className={LINK}>
               Home
             </Link>
@@ -51,6 +51,12 @@ export function SiteFooter() {
             </Link>
             <Link to="/connections" className={LINK}>
               Connections
+            </Link>
+            <Link to="/map" className={LINK}>
+              Map
+            </Link>
+            <Link to="/quiz" className={LINK}>
+              Pub Quiz
             </Link>
             <Link to="/about" className={LINK}>
               About
