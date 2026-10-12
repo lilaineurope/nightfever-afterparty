@@ -5,18 +5,17 @@ import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
-import { GuestsSection } from "../components/guests-section";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
   head: () => ({
     meta: [
-      { title: "Timeline & Guests — 1970s to Today, Club by Club" },
+      { title: "Nightlife Timeline — 1970s to Today, Club by Club" },
       {
         name: "description",
         content:
-          "A year-by-year timeline of the nightlife scene behind Night Fever — CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race — with every guest's career timeline, what they are doing now and their episode.",
+          "A year-by-year timeline of the nightlife scene behind Night Fever — CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race.",
       },
       {
         property: "og:title",
@@ -136,7 +135,6 @@ function TimelinePage() {
         </ol>
       </section>
 
-      <GuestsSection />
 
       <section className="spotlight px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">

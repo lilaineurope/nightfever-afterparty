@@ -13,7 +13,7 @@
 - Partition the episode's Mood sliders by the reference JSON's on-camera marker and give each independent selection state, so story and presenter looks remain separate after spreadsheet updates.
 - Every person/place/work has exactly one overview card at /explore/$slug, built from src/data/entities.ts by merging guests, scene timeline and episode references; link names via EntityLink — so profiles are never duplicated.
 - The site menu lives once in __root (SiteMenu) — so every page shows all pages.
-- The guest cards live inside the Timeline page (src/components/guests-section.tsx rendered by /timeline); /guests only redirects there, so the people and the nights they lived through stay on one page and the menu carries a single "Timeline" entry.
+- Guest cards live on their own /guests page (src/components/guests-section.tsx) with a "Guests" menu entry; the Timeline page carries only the scene timeline — so each view has one job.
 - The Everything A–Z card strip lives on /explore only; "The names everyone drops" (NamesEveryoneDrops) lives on the home page only, and Connections keeps just the dot graph and great connectors — so each view has one job.
 - Every episode in src/data/episodes.ts stores both watchUrl (WOW Presents Plus) and listenUrl (Spotify); episode blocks always offer "Afterparty connection", "Watch the episode" and "Listen to the episode", so the two addresses never drift apart.
 - Keep shared episode lists in ascending season/episode order and resolve guest/reference episode links through the shared episode registry, so new episodes appear consistently without binary episode assumptions.

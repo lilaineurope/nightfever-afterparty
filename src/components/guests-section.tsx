@@ -7,7 +7,7 @@ import { episodePath, episodes } from "../data/episodes";
 
 /**
  * The guest half of the scene story: the era strip plus the expandable
- * guest cards. Rendered inside the Timeline page so the people and the
+ * guest cards. Rendered on the Guests page (/guests) so the people and the
  * nights they lived through live on one page.
  */
 export function GuestsSection() {

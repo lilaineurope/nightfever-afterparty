@@ -5,6 +5,7 @@ const PAGES = [
   { to: "/", label: "Home" },
   { to: "/episodes", label: "Episodes" },
   { to: "/explore", label: "Everything A–Z" },
+  { to: "/guests", label: "Guests" },
   { to: "/timeline", label: "Timeline" },
   { to: "/connections", label: "Connections" },
   { to: "/map", label: "Map" },

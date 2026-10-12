@@ -43,6 +43,9 @@ export function SiteFooter() {
             <Link to="/explore" className={LINK}>
               Everything A&ndash;Z
             </Link>
+            <Link to="/guests" className={LINK}>
+              Guests
+            </Link>
             <Link to="/timeline" className={LINK}>
               Timeline
             </Link>
