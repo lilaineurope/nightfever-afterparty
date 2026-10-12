@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
-import { CATEGORIES, entityFor, relatedTo, totalMentions, type Entity } from "@/data/entities";
+import { CATEGORIES, entities, entityFor, relatedTo, totalMentions, type Entity } from "@/data/entities";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/map")({
@@ -47,11 +47,33 @@ function buildSpots(): Spot[] {
     }
     if (!s.places.some((p) => p.slug === e.slug)) s.places.push(e);
   }
+  const sec = (t: string) => {
+    const p = t.split(":").map(Number);
+    if (p.length < 2 || p.some(isNaN)) return null;
+    return p.reduce((a, b) => a * 60 + b, 0);
+  };
   for (const s of byCoord.values()) {
     const m = new Map<string, Entity>();
-    for (const p of s.places)
-      for (const r of relatedTo(p))
-        if (!s.places.some((x) => x.slug === r.slug)) m.set(r.slug, r);
+    const keep = (r: Entity) => {
+      if (!s.places.some((x) => x.slug === r.slug)) m.set(r.slug, r);
+    };
+    for (const p of s.places) {
+      relatedTo(p).forEach(keep);
+      // Anything named within 90 seconds of this place in the same episode.
+      for (const pr of p.refs) {
+        const t = sec(pr.time);
+        if (t == null) continue;
+        for (const x of entities)
+          if (
+            x.refs.some((r) => {
+              if (r.episode !== pr.episode) return false;
+              const u = sec(r.time);
+              return u != null && Math.abs(u - t) <= 90;
+            })
+          )
+            keep(x);
+      }
+    }
     s.connected = [...m.values()].sort((a, b) => totalMentions(b) - totalMentions(a));
   }
   return [...byCoord.values()];
