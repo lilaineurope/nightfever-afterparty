@@ -1,0 +1,129 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { generateQuiz, type QuizQuestion } from "@/lib/quiz";
+import { SiteFooter } from "@/components/site-footer";
+
+export const Route = createFileRoute("/quiz")({
+  component: QuizPage,
+  head: () => ({
+    meta: [
+      { title: "Night Fever Pub Quiz Generator — Club-kid trivia" },
+      {
+        name: "description",
+        content:
+          "Generate a fresh Night Fever pub quiz from every name, place and story in the published episode indexes — answers and timestamps included.",
+      },
+      { property: "og:title", content: "Night Fever Pub Quiz Generator" },
+      {
+        property: "og:description",
+        content: "Ten fresh nightlife trivia questions every time, built from the Night Fever episode indexes.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+});
+
+function QuizPage() {
+  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const [count, setCount] = useState(10);
+  const [picked, setPicked] = useState<Record<string, string>>({});
+  const [reveal, setReveal] = useState(false);
+
+  const newQuiz = (n = count) => {
+    setQuestions(generateQuiz(Math.floor(Math.random() * 1e9), n));
+    setPicked({});
+    setReveal(false);
+  };
+  useEffect(() => newQuiz(10), []);
+
+  const score = questions.filter((q) => picked[q.id] === q.answer).length;
+
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="disco-grid px-6 pb-12 pt-24 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Pub quiz generator</p>
+        <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
+          Last orders, <span className="text-pink text-glow-pink">trivia queens</span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+          Every question is built from the published episode indexes — play along, or print it for your next quiz night.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 print:hidden">
+          <label className="text-sm text-muted-foreground">
+            Questions{" "}
+            <select
+              value={count}
+              onChange={(e) => setCount(Number(e.target.value))}
+              className="ml-1 rounded-lg border border-border bg-card px-2 py-1.5 text-cream"
+            >
+              {[5, 10, 15, 20].map((n) => (
+                <option key={n} value={n}>{n}</option>
+              ))}
+            </select>
+          </label>
+          <button onClick={() => newQuiz()} className="rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground hover:bg-pink/90">
+            Generate new quiz
+          </button>
+          <button onClick={() => setReveal((v) => !v)} className="rounded-xl border border-gold/50 px-5 py-2.5 text-sm font-semibold text-gold hover:bg-gold/10">
+            {reveal ? "Hide answers" : "Show answers"}
+          </button>
+          <button onClick={() => window.print()} className="rounded-xl border border-border px-5 py-2.5 text-sm text-cream hover:border-gold/50">
+            Print
+          </button>
+        </div>
+      </section>
+
+      <section className="px-6 pb-20">
+        <ol className="mx-auto max-w-3xl space-y-5">
+          {questions.map((q, i) => {
+            const choice = picked[q.id];
+            const done = reveal || !!choice;
+            return (
+              <li key={q.id} className="rounded-2xl border border-border bg-card p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Question {i + 1}</p>
+                <p className="mt-2 text-lg font-semibold text-cream">{q.prompt}</p>
+                <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                  {q.options.map((o) => {
+                    const right = done && o === q.answer;
+                    const wrong = choice === o && o !== q.answer;
+                    return (
+                      <button
+                        key={o}
+                        disabled={!!choice}
+                        onClick={() => setPicked((p) => ({ ...p, [q.id]: o }))}
+                        className={`rounded-xl border px-4 py-2.5 text-left text-sm transition ${
+                          right
+                            ? "border-gold bg-gold/15 text-gold"
+                            : wrong
+                              ? "border-destructive bg-destructive/15 text-cream"
+                              : "border-border text-card-foreground/85 hover:border-gold/50"
+                        }`}
+                      >
+                        {o}
+                      </button>
+                    );
+                  })}
+                </div>
+                {done && (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    {q.explain}{" "}
+                    <Link to="/explore/$slug" params={{ slug: q.slug }} className="text-gold underline underline-offset-2 hover:text-pink">
+                      See the card
+                    </Link>
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+        {questions.length > 0 && (
+          <p className="mt-8 text-center text-cream">
+            Score: <span className="font-bold text-pink">{score}</span> / {questions.length}
+          </p>
+        )}
+      </section>
+      <SiteFooter />
+    </main>
+  );
+}

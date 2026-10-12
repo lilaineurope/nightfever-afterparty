@@ -7,6 +7,8 @@ const PAGES = [
   { to: "/explore", label: "Everything A–Z" },
   { to: "/timeline", label: "Timeline" },
   { to: "/connections", label: "Connections" },
+  { to: "/map", label: "Map" },
+  { to: "/quiz", label: "Pub Quiz" },
 ] as const;
 
 export function SiteMenu() {
