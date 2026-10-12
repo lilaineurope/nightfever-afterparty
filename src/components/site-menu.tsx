@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 const PAGES = [
-  { to: "/", label: "Home" },
   { to: "/episodes", label: "Episodes" },
   { to: "/explore", label: "Everything A–Z" },
   { to: "/guests", label: "Guests" },
