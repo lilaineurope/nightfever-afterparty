@@ -6,7 +6,7 @@ import { episodes } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
 import { EpisodeBlock } from "@/components/episode-block";
-import { AzSection } from "../components/az-section";
+import { NamesEveryoneDrops } from "@/components/names-everyone-drops";
 import { WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
@@ -179,7 +179,7 @@ function Index() {
         </div>
       </section>
 
-      <AzSection />
+      <NamesEveryoneDrops />
 
       {/* Listen */}
       <section className="px-6 py-24">
