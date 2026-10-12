@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import portraitImage from "../assets/about-portrait.jpg";
-import { SHOW_URL, WOW_URL } from "../data/guests";
+import { SHOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";

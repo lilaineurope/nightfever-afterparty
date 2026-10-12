@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { SHOW_URL, WOW_URL } from "@/data/guests";
+import { WOW_URL } from "@/data/guests";
 import { episodes, episodePath } from "@/data/episodes";
 import { episodePeople } from "@/data/episode-connections";
 import { EntityText } from "@/components/entity-text";

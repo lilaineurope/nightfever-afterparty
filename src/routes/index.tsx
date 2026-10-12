@@ -7,7 +7,7 @@ import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
 import { EpisodeBlock } from "@/components/episode-block";
 import { AzSection } from "../components/az-section";
-import { SHOW_URL, WOW_URL } from "../data/guests";
+import { WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
