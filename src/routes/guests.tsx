@@ -27,15 +27,6 @@ export const Route = createFileRoute("/guests")({
 function GuestsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="disco-grid px-6 pb-4 pt-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">The guests</p>
-        <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
-          Guest <span className="text-pink text-glow-pink">by guest</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Who they are, the nights they lived through, and what they are doing now.
-        </p>
-      </section>
       <GuestsSection />
       <SiteFooter />
     </main>
