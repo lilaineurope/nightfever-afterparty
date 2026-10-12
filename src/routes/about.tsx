@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import portraitImage from "../assets/about-portrait-illustrated.jpg";
+import portraitImage from "../assets/about-portrait-illustrated-2.jpg";
 import { SHOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";

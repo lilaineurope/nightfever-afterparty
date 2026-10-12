@@ -68,5 +68,5 @@
 - [ ] Lisa to confirm the map pins are in the right spots and that the map itself loads on her machine (pins are approximate from public addresses; the map could not be loaded from here).
 - [ ] Lisa to review the three high-severity build-tool advisories (source-map-js via the Tailwind plugin, js-yaml via TanStack Start) — no direct fix; watch for upstream releases before sharing broadly.
 - [ ] Later, if Lisa wants it: turn the site into a phone app — home-screen icon (quick), plus offline support (more setup), or an app-store build (separate project). She asked only for the answer for now, not the work.
-- [ ] About page portrait redrawn in the header style; Lisa asked for a second pass that is "less spooky" — warmer, brighter, no inky ghost effect.
+- [x] About page portrait redrawn in the header's torn-paper style; the warmer, friendlier second pass is the one in use (about-portrait-illustrated-2.jpg), the darker draft removed.
 
