@@ -157,12 +157,6 @@ function ConnectionsPage() {
     <main className="min-h-screen bg-background text-foreground">
       <section className="disco-grid px-6 pb-12 pt-24">
         <div className="mx-auto max-w-4xl text-center">
-          <Link
-            to="/timeline"
-            className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink"
-          >
-            &larr; Timeline &amp; guests
-          </Link>
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             Everyone knows{" "}
             <span className="text-pink text-glow-pink">everyone</span>
@@ -176,12 +170,6 @@ function ConnectionsPage() {
             Shared mentions are not proof of a personal relationship or a
             shared night.
           </p>
-          <Link
-            to="/timeline"
-            className="mt-8 inline-flex rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
-          >
-            See the full 1970s&ndash;today timeline
-          </Link>
         </div>
       </section>
 
@@ -423,12 +411,6 @@ function ConnectionsPage() {
                 >
                   Read their overview
                 </Link>
-                <Link
-                  to="/timeline"
-                  className="inline-flex rounded-xl border border-pink/40 px-5 py-2.5 text-sm font-semibold text-pink transition hover:bg-pink hover:text-pink-foreground"
-                >
-                  See the whole scene timeline
-                </Link>
               </div>
             </div>
           ) : (
@@ -481,41 +463,7 @@ function ConnectionsPage() {
         </div>
       </section>
 
-      {/* Recurring names */}
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            The names everyone drops
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-            The names in the rooms — hosts, regulars and legends who keep
-            surfacing in more than one of the published episode stories,
-            whether or not they ever sat down for an interview.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-2">
-            {[...core]
-              .sort(
-                (a, b) =>
-                  b.episodeIds.length - a.episodeIds.length ||
-                  b.mentions - a.mentions,
-              )
-              .map((p) => (
-                <Link
-                  key={p.slug}
-                  to="/explore/$slug"
-                  params={{ slug: p.slug }}
-                  className="rounded-full border border-gold/25 bg-card px-4 py-2 text-sm text-card-foreground/85 transition hover:border-gold/60"
-                >
-                  {p.name}{" "}
-                  <span className="text-xs text-pink">
-                    {p.episodeIds.length}
-                  </span>
-                </Link>
-              ))}
-          </div>
-        </div>
-      </section>
-
-      <SiteFooter />    </main>
+      <SiteFooter />
+    </main>
   );
 }

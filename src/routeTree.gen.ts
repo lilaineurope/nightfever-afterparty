@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
@@ -47,6 +48,11 @@ const GuestsRoute = GuestsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
   '/privacy': typeof PrivacyRoute
+  '/quiz': typeof QuizRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
   '/privacy': typeof PrivacyRoute
+  '/quiz': typeof QuizRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/connections': typeof ConnectionsRoute
   '/guests': typeof GuestsRoute
   '/privacy': typeof PrivacyRoute
+  '/quiz': typeof QuizRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/connections'
     | '/guests'
     | '/privacy'
+    | '/quiz'
     | '/terms'
     | '/timeline'
     | '/unsubscribe'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/connections'
     | '/guests'
     | '/privacy'
+    | '/quiz'
     | '/terms'
     | '/timeline'
     | '/unsubscribe'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/connections'
     | '/guests'
     | '/privacy'
+    | '/quiz'
     | '/terms'
     | '/timeline'
     | '/unsubscribe'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   ConnectionsRoute: typeof ConnectionsRoute
   GuestsRoute: typeof GuestsRoute
   PrivacyRoute: typeof PrivacyRoute
+  QuizRoute: typeof QuizRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
@@ -247,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -321,6 +341,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConnectionsRoute: ConnectionsRoute,
   GuestsRoute: GuestsRoute,
   PrivacyRoute: PrivacyRoute,
+  QuizRoute: QuizRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
   UnsubscribeRoute: UnsubscribeRoute,
