@@ -66,4 +66,5 @@
 - [x] Site renamed to "Night Fever Afterparty" in every browser tab title, og:title and share-preview title; published and confirmed live.
 - [ ] Lisa to decide whether the on-screen brand in the top menu and footer should also be capitalised to "Night Fever Afterparty" (it currently reads "Night Fever afterparty").
 - [ ] Lisa to confirm the map pins are in the right spots and that the map itself loads on her machine (pins are approximate from public addresses; the map could not be loaded from here).
+- [ ] Lisa to review the three high-severity build-tool advisories (source-map-js via the Tailwind plugin, js-yaml via TanStack Start) — no direct fix; watch for upstream releases before sharing broadly.
 
