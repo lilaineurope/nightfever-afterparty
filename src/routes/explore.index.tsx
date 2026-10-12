@@ -16,9 +16,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/explore/")({
   head: () => ({
     meta: [
-      { title: "Everything A–Z — Night Fever fan page" },
+      { title: "Everything A–Z — Night Fever Afterparty" },
       { name: "description", content: "Every person, club, song, book, film and look mentioned around Night Fever, each with one overview card." },
-      { property: "og:title", content: "Everything A–Z — Night Fever fan page" },
+      { property: "og:title", content: "Everything A–Z — Night Fever Afterparty" },
       { property: "og:description", content: "Every name, room and story from Night Fever, linked to one overview card each." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

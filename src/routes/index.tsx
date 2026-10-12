@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Night Fever Fan Page — NYC Nightlife Stories" },
+      { title: "Night Fever Afterparty — NYC Nightlife Stories" },
       {
         name: "description",
         content:
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Night Fever Fan Page — NYC Nightlife Stories",
+        content: "Night Fever Afterparty — NYC Nightlife Stories",
       },
       {
         property: "og:description",

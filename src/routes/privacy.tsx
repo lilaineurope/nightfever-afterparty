@@ -12,7 +12,7 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Night Fever fan page" },
+      { title: "Privacy Policy — Night Fever Afterparty" },
       {
         name: "description",
         content:
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/privacy")({
       },
       {
         property: "og:title",
-        content: "Privacy Policy — Night Fever fan page",
+        content: "Privacy Policy — Night Fever Afterparty",
       },
       {
         property: "og:description",
@@ -70,7 +70,7 @@ function PrivacyPage() {
             to="/"
             className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink"
           >
-            &larr; Night Fever fan page
+            &larr; Night Fever Afterparty
           </Link>
           <h1 className="mt-6 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-5xl">
             Privacy Policy
