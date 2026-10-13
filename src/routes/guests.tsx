@@ -11,12 +11,13 @@ export const Route = createFileRoute("/guests")({
       {
         name: "description",
         content:
-          "Every Night Fever guest, one by one: their era, career timeline, what they are doing now and their episode.",
+          "Every Night Fever guest, one by one. The Timestamp and the Afterparty show how they are connected, step by step.",
       },
       { property: "og:title", content: "Night Fever Guests — Guest by guest" },
       {
         property: "og:description",
-        content: "The legends who sat down with James St. James — their nights, their careers, and where they are now.",
+        content:
+          "The list of guests interviewed by the three World of Wonder founders, with connections revealed step by step.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -36,14 +37,17 @@ function GuestsPage() {
           height={1024}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-background/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_50%_46%,color-mix(in_oklab,var(--background)_88%,transparent),transparent_72%)]" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             The <span className="text-pink text-glow-pink">guests</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The legends who sat down with James St. James — their nights, their
-            careers, and where they are now.
+            This is the list of guests interviewed by the three World of Wonder
+            founders. The Timestamp and the Afterparty will step by step show
+            their connections.
           </p>
         </div>
       </section>
