@@ -62,9 +62,9 @@ function ConnectionsPage() {
           </p>
         </div>
       </section>
+      <GreatConnectors />
       <PopularPlaces />
       <BestInFashion />
-      <GreatConnectors />
       <SiteFooter />
     </main>
   );
