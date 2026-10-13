@@ -81,6 +81,7 @@
 - [x] Everything A–Z: remove the chip caption line and the "N cards" count under the filters.
 - [x] Connections: "Great Connectors" block restored underneath the graph (33 multi-episode names, linked to their cards).
 - [x] Timeline: torn-paper decade collage header (src/assets/timeline-header.jpg) applied above the decade filters, with a stronger scrim so the title stays readable.
-- [ ] Publish the live site with the Great Connectors block, the cleaned-up Everything A–Z page, and the new Timeline header.
+- [x] Published the Great Connectors block, the cleaned-up Everything A–Z page and the new Timeline header; confirmed live.
+- [ ] Publish again once Lisa is happy with the category filters and the two new blocks (not live yet).
 - [x] Connections: category filter chips above the graph, using the same categories as the timestamp indexes.
 - [x] Connections: added a "Most popular places" block and a "Best in fashion" block, both driven by the timestamp data.
