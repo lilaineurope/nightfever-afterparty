@@ -10,7 +10,7 @@ import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
 import { MoodSpectrum } from "../components/mood-spectrum";
-import episodeBackground from "../assets/episode-patricia-field-v2.jpg";
+import episodeBackground from "../assets/episode-patricia-field.jpg.asset.json";
 import { SiteFooter } from "@/components/site-footer";
 
 type Ref = {
