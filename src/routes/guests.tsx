@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuestsSection } from "@/components/guests-section";
 import { SiteFooter } from "@/components/site-footer";
+import guestsHeader from "@/assets/guests-header.jpg";
 
 export const Route = createFileRoute("/guests")({
   component: GuestsPage,
@@ -27,7 +28,25 @@ export const Route = createFileRoute("/guests")({
 function GuestsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <h1 className="sr-only">Night Fever guests</h1>
+      <section className="relative flex min-h-[420px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[480px]">
+        <img
+          src={guestsHeader}
+          alt=""
+          width={1920}
+          height={1024}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
+            The <span className="text-pink text-glow-pink">guests</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            The legends who sat down with James St. James — their nights, their
+            careers, and where they are now.
+          </p>
+        </div>
+      </section>
       <GuestsSection />
       <SiteFooter />
     </main>
