@@ -13,7 +13,7 @@ export type Guest = {
 export const SHOW_URL = "https://creators.spotify.com/pod/profile/night-fever/";
 export const WOW_URL = "https://www.worldofwonder.com/";
 
-export const guests: Guest[] = [
+export const coreGuests: Guest[] = [
   {
     slug: "dianne-brill",
     name: "Dianne Brill",
@@ -344,6 +344,12 @@ export const guests: Guest[] = [
     linkedTo: ["michael-musto", "christina-visca", "dianne-brill"],
   },
 ];
+
+import { moreGuests } from "./guests-more";
+export const guests: Guest[] = [...coreGuests, ...moreGuests].sort((a, b) => {
+  const n = (x: Guest) => { const m = x.episode.match(/(\d+)\D+(\d+)/); return m ? Number(m[1]) * 100 + Number(m[2]) : 0; };
+  return n(a) - n(b);
+});
 
 export const guestBySlug = Object.fromEntries(
   guests.map((g) => [g.slug, g]),

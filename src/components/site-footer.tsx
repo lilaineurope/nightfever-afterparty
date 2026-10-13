@@ -38,7 +38,7 @@ export function SiteFooter() {
               Home
             </Link>
             <Link to="/episodes" className={LINK}>
-              Episodes
+              Afterparty
             </Link>
             <Link to="/explore" className={LINK}>
               Everything A&ndash;Z

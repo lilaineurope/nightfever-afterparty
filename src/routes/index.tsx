@@ -161,7 +161,7 @@ function Index() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-            Latest episodes
+            Latest afterparty
           </p>
           {/* Same ranking as the Episodes page: afterparty publish date, newest first. */}
           <div className="mt-6 flex flex-col gap-6">
