@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { episodeShort } from "@/data/entities";
 import { bestInFashion, popularPlaces, type EpisodeEntity } from "@/data/episode-connections";
 
-function Card({ item, note }: { item: EpisodeEntity; note?: string }) {
+function Card({ item, note }: { item: EpisodeEntity; note?: string | undefined }) {
   return (
     <li>
       <Link
