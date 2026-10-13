@@ -13,6 +13,7 @@ import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   component: Index,
   head: () => ({
     meta: [

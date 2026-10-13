@@ -6,6 +6,7 @@ import { BestInFashion, PopularPlaces } from "@/components/connections-blocks";
 import { episodePeople } from "@/data/episode-connections";
 import { episodeShort } from "@/data/entities";
 export const Route = createFileRoute("/connections")({
+  staticData: { sitemap: true },
   component: ConnectionsPage,
   head: () => ({
     meta: [

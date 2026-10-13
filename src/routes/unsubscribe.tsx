@@ -8,6 +8,7 @@ import { LegalLinks } from "@/components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/unsubscribe")({
+  staticData: { sitemap: false },
   validateSearch: (search) => ({
     token: typeof search["token"] === "string" ? search["token"] : undefined,
   }),

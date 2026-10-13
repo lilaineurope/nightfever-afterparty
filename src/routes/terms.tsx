@@ -9,6 +9,7 @@ const GOLD_LINK =
   "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 export const Route = createFileRoute("/terms")({
+  staticData: { sitemap: true },
   component: TermsPage,
   head: () => ({
     meta: [

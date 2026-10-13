@@ -32,6 +32,7 @@ const refs = refsRaw as Ref[];
 const thisEpisode = episodeById("s01e02");
 
 export const Route = createFileRoute("/episodes/s01e02")({
+  staticData: { sitemap: true },
   component: EpisodePage,
   head: () => ({
     meta: [

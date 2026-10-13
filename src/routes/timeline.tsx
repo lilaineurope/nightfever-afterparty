@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/site-footer";
 import timelineHeader from "@/assets/timeline-header.jpg";
 
 export const Route = createFileRoute("/timeline")({
+  staticData: { sitemap: true },
   component: TimelinePage,
   head: () => ({
     meta: [

@@ -7,6 +7,7 @@ import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/explore/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const e = entityBySlug[params.slug];
     if (!e) throw notFound();

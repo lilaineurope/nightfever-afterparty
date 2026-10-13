@@ -16,6 +16,7 @@ import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
@@ -60,6 +61,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -140,6 +147,7 @@ export interface FileRoutesByTo {
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -160,6 +168,7 @@ export interface FileRoutesById {
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -181,6 +190,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/privacy'
     | '/quiz'
+    | '/sitemap.xml'
     | '/terms'
     | '/timeline'
     | '/unsubscribe'
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/privacy'
     | '/quiz'
+    | '/sitemap.xml'
     | '/terms'
     | '/timeline'
     | '/unsubscribe'
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/privacy'
     | '/quiz'
+    | '/sitemap.xml'
     | '/terms'
     | '/timeline'
     | '/unsubscribe'
@@ -239,6 +251,7 @@ export interface RootRouteChildren {
   MapRoute: typeof MapRoute
   PrivacyRoute: typeof PrivacyRoute
   QuizRoute: typeof QuizRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
@@ -300,6 +313,13 @@ declare module '@tanstack/react-router' {
       path: '/quiz'
       fullPath: '/quiz'
       preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -383,6 +403,7 @@ const rootRouteChildren: RootRouteChildren = {
   MapRoute: MapRoute,
   PrivacyRoute: PrivacyRoute,
   QuizRoute: QuizRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
   UnsubscribeRoute: UnsubscribeRoute,

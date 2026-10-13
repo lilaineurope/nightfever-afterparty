@@ -13,6 +13,7 @@ import { SiteFooter } from "@/components/site-footer";
 import exploreHeader from "@/assets/explore-header.jpg";
 
 export const Route = createFileRoute("/explore/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Everything A–Z | Night Fever fan page" },
