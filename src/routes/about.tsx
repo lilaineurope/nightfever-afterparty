@@ -98,22 +98,23 @@ function AboutPage() {
 
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-cream">
-              It started as a spreadsheet
+              It started as a list
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              I listened to the Season 6 opener - James St. James, with Fenton
-              Bailey and Randy Barbato - and wrote down every single thing they
-              mentioned. Who, where, what, at what minute.
+              After a while, I started to write them down. Every name, every
+              club, every book and song the guests drop - who, where, what, at
+              what minute.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              It ended up at 119 references and 319 mentions in one 54-minute
-              conversation. Super!
+              Then I discovered Lovable (easily obvious - I live in Stockholm)
+              and asked Claude to help me. Now I play around with the data:
+              collect it, sort it, figure out how to display it - and turn it
+              into a game.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Then the obvious next question: who keeps turning up in other
-              people's lists?! That's how the connection web and the scene
-              timeline were born. What you're looking at is my note-taking -
-              shared with you instead of hoarded.
+              You can usually meet me on Tuesdays at Bar Kaja for Pub Quiz
+              night. What you're looking at is my note-taking - shared with you
+              instead of hoarded.
             </p>
           </div>
         </div>
