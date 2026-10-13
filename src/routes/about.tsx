@@ -6,6 +6,7 @@ import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
+const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
 
 const GOLD_LINK =
   "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
@@ -128,8 +129,17 @@ function AboutPage() {
             This is a fan page. It isn't affiliated with{" "}
             <EntityText text="World of Wonder" />
             , and it doesn't host audio - the listen buttons go to the show
-            itself. If you spot something wrong, or you were in one of these
-            nights, I'd genuinely like to hear about it.
+            itself. If you spot something wrong, or you would like to add
+            something let me know -{" "}
+            <a
+              href={IG_PROFILE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={GOLD_LINK}
+            >
+              find me on Instagram
+            </a>
+            .
           </p>
         </div>
       </section>
