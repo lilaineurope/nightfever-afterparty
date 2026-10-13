@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getRouterInstance } from "@tanstack/react-start";
 import { sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap";
+import { entities } from "@/data/entities";
 
 // The public site origin.
 const BASE_URL = "https://nightfever-afterparty.lovable.app";
