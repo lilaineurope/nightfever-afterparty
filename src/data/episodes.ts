@@ -38,7 +38,7 @@ const s06e01: Episode = {
     runtime: "54 min",
     afterpartyPublished: "2026-10-10",
     blurb:
-      "The host finally takes the guest chair himself: his childhood, the move to New York, and the club years he has spent documenting ever since.",
+      "The host finally takes the guest chair! James on growing up, moving to New York and the club years he has been documenting ever since - with Warhol and Michael Alig never far away.",
     references: 119,
     mentions: 336,
     top: [
@@ -60,7 +60,7 @@ const s01e01: Episode = {
     runtime: "51 min",
     afterpartyPublished: "2026-10-11",
     blurb:
-      "The very first episode: the 'Queen of the Night' on Warhol, Mugler, Danceteria and inventing her own silhouette.",
+      "Where it all started - the very first episode! Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Pure glamour.",
     references: 112,
     mentions: 293,
     top: [
@@ -80,7 +80,8 @@ const s01e02: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   runtime: "1:04:35",
   afterpartyPublished: "2026-10-11",
-  blurb: "Village Voice nightlife columnist and author of 'La Dolce Musto' on the downtown scene, Warhol, outlaw parties and the Club Kids.",
+  blurb:
+    "The oldest club kid in the world! Village Voice legend Michael Musto on Studio 54, outlaw parties, ACT UP, the Club Kids - and the vodka cranberry waiting for him at the Limelight.",
   references: mustoRefs.length,
   mentions: mustoRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...mustoRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
