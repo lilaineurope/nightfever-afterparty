@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import diannePortrait from "@/assets/block-dianne-brill.jpg";
 import mustoPortrait from "@/assets/block-michael-musto.jpg";
 import jamesPortrait from "@/assets/block-james-st-james.jpg";
+import fieldPortrait from "@/assets/block-patricia-field.jpg";
 
 const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
   s01e02: mustoPortrait,
+  s03e01: fieldPortrait,
   s06e01: jamesPortrait,
 };
 
