@@ -86,4 +86,4 @@
 - [x] Connections: category filter chips above the graph, using the same categories as the timestamp indexes.
 - [x] Connections: added a "Most popular places" block and a "Best in fashion" block, both driven by the timestamp data.
 - [x] Pub Quiz marked "(beta)" in the menu, footer and on the page, with a note that the generator is still being tested.
-- [ ] Publish Patricia Field (S3E1), her card portrait, the copy rewrites and the Pub Quiz beta labels; nothing from this batch is live yet.
+- [x] Published Patricia Field (S3E1), her card portrait, the copy rewrites and the Pub Quiz beta labels; confirmed the live page serves.
