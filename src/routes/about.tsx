@@ -14,20 +14,20 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About — Why this Night Fever Afterparty exists" },
+      { title: "About | Night Fever fan page" },
       {
         name: "description",
         content:
-          "Why this fan page for the Night Fever podcast was made: one listener's spreadsheet of every name, place and story dropped in the interviews, turned into timelines and a connection map.",
+          "Why I made this Night Fever fan page - it started as my spreadsheet of every name, place and story dropped in the interviews, and grew into timelines and a connection map!",
       },
       {
         property: "og:title",
-        content: "About — Why this Night Fever Afterparty exists",
+        content: "About | Night Fever fan page",
       },
       {
         property: "og:description",
         content:
-          "A fan-made index of every name, place and story dropped in the Night Fever interviews — how it started and how it's made.",
+          "My fan-made index of every name, place and story dropped in the Night Fever interviews - how it started and how I make it.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
@@ -47,7 +47,7 @@ function AboutPage() {
             to="/"
             className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink"
           >
-            &larr; Night Fever Afterparty
+            &larr; Night Fever fan page
           </Link>
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             Why I made <span className="text-pink text-glow-pink">this</span>
@@ -62,9 +62,9 @@ function AboutPage() {
             >
               <em>Night Fever</em>
             </a>{" "}
-            is stuffed with names, clubs, songs, lawsuits and design credits,
-            and I got tired of being the one person in the room who had to look
-            all of them up.
+            is stuffed with names, clubs, songs, lawsuits and design credits. I
+            got tired of being the one person in the room who had to look them
+            all up!
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ function AboutPage() {
               />
             </div>
             <figcaption className="mt-3 text-center text-xs text-muted-foreground">
-              Drawn from a snapshot by Christine Hasebrink at CEF22, Zurich, September 2022 —{" "}
+              Drawn from a snapshot by Christine Hasebrink at CEF22, Zurich, September 2022 -{" "}
               <a
                 href={IG_POST}
                 target="_blank"
@@ -102,16 +102,19 @@ function AboutPage() {
               It started as a spreadsheet
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              I listened to the Season 6 opener — James St. James, with Fenton
-              Bailey and Randy Barbato — and wrote down every single thing they
-              mentioned. Who, where, what, at what minute. It ended up at 119
-              references and 319 mentions in one 54-minute conversation.
+              I listened to the Season 6 opener - James St. James, with Fenton
+              Bailey and Randy Barbato - and wrote down every single thing they
+              mentioned. Who, where, what, at what minute.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Once the list existed, the obvious next question was who keeps
-              turning up in other people's lists. That's how the connection web
-              and the scene timeline got built. What you're looking at is one
-              listener's note-taking, published instead of hoarded.
+              It ended up at 119 references and 319 mentions in one 54-minute
+              conversation. Super!
+            </p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              Then the obvious next question: who keeps turning up in other
+              people's lists?! That's how the connection web and the scene
+              timeline were born. What you're looking at is my note-taking -
+              shared with you instead of hoarded.
             </p>
           </div>
         </div>
@@ -123,7 +126,7 @@ function AboutPage() {
           <p className="leading-relaxed text-muted-foreground">
             This is a fan page. It isn't affiliated with{" "}
             <EntityText text="World of Wonder" />
-            , and it doesn't host audio — the listen buttons go to the show
+            , and it doesn't host audio - the listen buttons go to the show
             itself. If you spot something wrong, or you were in one of these
             nights, I'd genuinely like to hear about it.
           </p>
