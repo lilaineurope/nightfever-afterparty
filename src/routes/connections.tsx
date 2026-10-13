@@ -1,10 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { WOW_URL } from "@/data/guests";
-import { episodes, episodePath } from "@/data/episodes";
+import { episodes } from "@/data/episodes";
 import { episodePeople } from "@/data/episode-connections";
-import { EntityText } from "@/components/entity-text";
-import { LegalNote } from "@/components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/connections")({
@@ -36,11 +33,8 @@ export const Route = createFileRoute("/connections")({
 
 type Person = (typeof episodePeople)[number];
 
-const SIZE = 1000;
-const R_OUTER = 452;
-const R_OUTER_INNER = 418;
-const R_CORE_OUTER = 240;
-const R_CORE_INNER = 208;
+const SIZE = 720;
+const CENTER = SIZE / 2;
 
 const episodeLabel = new Map(
   episodes.map((ep) => [
@@ -49,47 +43,9 @@ const episodeLabel = new Map(
   ]),
 );
 
-function sharedEpisodes(a: Person, b: Person): string[] {
-  return a.episodeIds.filter((id) => b.episodeIds.includes(id));
-}
-
 function ConnectionsPage() {
+  const [query, setQuery] = useState("");
   const [focus, setFocus] = useState<string | null>(null);
-
-  const core = useMemo(
-    () => episodePeople.filter((p) => p.episodeIds.length >= 2),
-    [],
-  );
-  const ring = useMemo(
-    () =>
-      episodePeople
-        .filter((p) => p.episodeIds.length < 2)
-        .sort((a, b) => a.name.localeCompare(b.name)),
-    [],
-  );
-
-  const positions = useMemo(() => {
-    const map: Record<string, { x: number; y: number; angle: number }> = {};
-    core.forEach((p, i) => {
-      const angle = (i / core.length) * Math.PI * 2 - Math.PI / 2;
-      const radius = i % 2 === 0 ? R_CORE_OUTER : R_CORE_INNER;
-      map[p.slug] = {
-        x: SIZE / 2 + Math.cos(angle) * radius,
-        y: SIZE / 2 + Math.sin(angle) * radius,
-        angle,
-      };
-    });
-    ring.forEach((p, i) => {
-      const angle = (i / ring.length) * Math.PI * 2 - Math.PI / 2;
-      const radius = i % 2 === 0 ? R_OUTER : R_OUTER_INNER;
-      map[p.slug] = {
-        x: SIZE / 2 + Math.cos(angle) * radius,
-        y: SIZE / 2 + Math.sin(angle) * radius,
-        angle,
-      };
-    });
-    return map;
-  }, [core, ring]);
 
   // Links between names that share a published episode.
   const links = useMemo(() => {
@@ -117,22 +73,23 @@ function ConnectionsPage() {
     return d;
   }, [links]);
 
-  const coreLinks = useMemo(
-    () =>
-      [...links.entries()].filter(([key]) => {
-        const [a, b] = key.split("|");
-        return core.some((p) => p.slug === a) && core.some((p) => p.slug === b);
-      }),
-    [links, core],
-  );
-  const strongLinks = useMemo(
-    () => coreLinks.filter(([, ids]) => ids.length >= 2),
-    [coreLinks],
-  );
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    const list = q
+      ? episodePeople.filter((p) => p.name.toLowerCase().includes(q))
+      : episodePeople;
+    return [...list].sort(
+      (a, b) =>
+        b.episodeIds.length - a.episodeIds.length ||
+        b.mentions - a.mentions ||
+        a.name.localeCompare(b.name),
+    );
+  }, [query]);
 
   const focusPerson = focus
     ? episodePeople.find((p) => p.slug === focus)
     : undefined;
+
   const focusLinks = useMemo(() => {
     if (!focus) return [];
     const out: { other: Person; shared: string[] }[] = [];
@@ -144,14 +101,50 @@ function ConnectionsPage() {
       if (other) out.push({ other, shared: ids });
     }
     return out.sort(
-      (x, y) => y.shared.length - x.shared.length || y.other.mentions - x.other.mentions,
+      (x, y) =>
+        y.shared.length - x.shared.length || y.other.mentions - x.other.mentions,
     );
   }, [focus, links]);
 
-  const focusLineTargets = useMemo(
-    () => focusLinks.slice(0, 40).map((l) => l.other.slug),
-    [focusLinks],
-  );
+  // Orbit layout: closest circle = shares every published episode with the
+  // focus name; each ring further out shares fewer.
+  const ORBIT_LIMIT = 24;
+  const orbit = useMemo(() => {
+    if (!focusPerson || focusLinks.length === 0) return [];
+    const shown = focusLinks.slice(0, ORBIT_LIMIT);
+    const maxShared = shown[0]!.shared.length;
+    const rings = new Map<number, typeof focusLinks>();
+    for (const l of shown) {
+      const ring = maxShared - l.shared.length;
+      const arr = rings.get(ring) ?? [];
+      arr.push(l);
+      rings.set(ring, arr);
+    }
+    const ringCount = rings.size;
+    const out: {
+      other: Person;
+      shared: string[];
+      x: number;
+      y: number;
+      r: number;
+    }[] = [];
+    for (const [ring, arr] of [...rings.entries()].sort((a, b) => a[0] - b[0])) {
+      const radius =
+        ringCount === 1
+          ? 200
+          : 150 + (ring / (ringCount - 1)) * (CENTER - 190);
+      arr.forEach((l, i) => {
+        const angle = (i / arr.length) * Math.PI * 2 - Math.PI / 2 + ring * 0.35;
+        out.push({
+          ...l,
+          x: CENTER + Math.cos(angle) * radius,
+          y: CENTER + Math.sin(angle) * radius,
+          r: Math.max(6, 22 - ring * 4),
+        });
+      });
+    }
+    return out;
+  }, [focusPerson, focusLinks]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -162,9 +155,9 @@ function ConnectionsPage() {
             <span className="text-pink text-glow-pink">everyone</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Every name in the published episode indexes, arranged in one web.
-            Tap anyone to light up their circle; open a name to read their
-            overview.
+            Pick any name from the published episode indexes and see who
+            surfaces alongside them. The closer a name sits, the more episodes
+            they share.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
             Shared mentions are not proof of a personal relationship or a
@@ -173,187 +166,149 @@ function ConnectionsPage() {
         </div>
       </section>
 
-      {/* Web */}
-      <section className="px-4 pb-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="rounded-3xl border border-gold/20 bg-card p-2 sm:p-6">
-            <svg
-              viewBox={`0 0 ${SIZE} ${SIZE}`}
-              className="mx-auto h-auto w-full max-w-[900px]"
-              role="img"
-              aria-label="Network map of every name in the published Night Fever episode indexes, connected by shared episode appearances"
-            >
-              {/* faint links between names that share exactly one episode */}
-              {coreLinks
-                .filter(([, ids]) => ids.length < 2)
-                .map(([key, ids]) => {
-                  const [a, b] = key.split("|");
-                  const p1 = positions[a!]!;
-                  const p2 = positions[b!]!;
-                  const lit =
-                    !!focus && (a === focus || b === focus);
-                  return (
-                    <line
-                      key={key}
-                      x1={p1.x}
-                      y1={p1.y}
-                      x2={p2.x}
-                      y2={p2.y}
-                      stroke="var(--color-gold)"
-                      strokeOpacity={lit ? 0.5 : 0.1}
-                      strokeWidth={1}
-                    />
-                  );
-                })}
-
-              {/* pink links between names that surface together in more than one episode */}
-              {strongLinks.map(([key, ids]) => {
-                const [a, b] = key.split("|");
-                const p1 = positions[a!]!;
-                const p2 = positions[b!]!;
-                const lit = !!focus && (a === focus || b === focus);
-                return (
-                  <line
-                    key={key}
-                    x1={p1.x}
-                    y1={p1.y}
-                    x2={p2.x}
-                    y2={p2.y}
-                    stroke={lit ? "var(--color-pink)" : "var(--color-border)"}
-                    strokeOpacity={lit ? 0.9 : 0.35}
-                    strokeWidth={lit ? 2 : 1}
-                  />
-                );
-              })}
-
-              {/* when focused, light the focused name's wider circle */}
-              {focus &&
-                focusLineTargets.map((slug) => {
-                  const p1 = positions[focus]!;
-                  const p2 = positions[slug];
-                  if (!p2 || slug === focus) return null;
-                  return (
-                    <line
-                      key={`focus-${slug}`}
-                      x1={p1.x}
-                      y1={p1.y}
-                      x2={p2.x}
-                      y2={p2.y}
-                      stroke="var(--color-pink)"
-                      strokeOpacity={0.3}
-                      strokeWidth={1}
-                    />
-                  );
-                })}
-
-              {/* outer ring: names in one published episode so far */}
-              {ring.map((p) => {
-                const pos = positions[p.slug]!;
-                const lit =
-                  !focus ||
-                  focus === p.slug ||
-                  focusLineTargets.includes(p.slug);
-                const size = 5;
-                const flip = Math.cos(pos.angle) < 0;
-                return (
-                  <g key={p.slug} opacity={lit ? 1 : 0.2}>
-                    <circle
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={size}
-                      fill="var(--color-gold)"
-                      fillOpacity={0.8}
-                      className="cursor-pointer"
-                      onClick={() =>
-                        setFocus(focus === p.slug ? null : p.slug)
-                      }
-                    />
-                    <a
-                      href={`/explore/${p.slug}`}
-                      aria-label={`${p.name} overview`}
-                      onClick={(e) => {
-                        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
-                        e.preventDefault();
-                        setFocus(p.slug);
-                      }}
-                    >
-                      <text
-                        x={pos.x + Math.cos(pos.angle) * (size + 6)}
-                        y={pos.y + Math.sin(pos.angle) * (size + 6)}
-                        textAnchor={flip ? "end" : "start"}
-                        dominantBaseline="middle"
-                        fontSize="9.5"
-                        fill="var(--color-cream)"
-                        className="cursor-pointer"
-                      >
-                        {p.name}
-                      </text>
-                    </a>
-                  </g>
-                );
-              })}
-
-              {/* inner rings: names that keep surfacing across episodes */}
-              {core.map((p) => {
-                const pos = positions[p.slug]!;
-                const lit =
-                  !focus ||
-                  focus === p.slug ||
-                  focusLineTargets.includes(p.slug);
-                const size = 3.5 + p.episodeIds.length * 2.5;
-                const flip = Math.cos(pos.angle) < 0;
-                return (
-                  <g key={p.slug} opacity={lit ? 1 : 0.15}>
-                    <circle
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={size}
-                      fill={focus === p.slug ? "var(--color-pink)" : "var(--color-cream)"}
-                      fillOpacity={0.6}
-                      className="cursor-pointer"
-                      onClick={() =>
-                        setFocus(focus === p.slug ? null : p.slug)
-                      }
-                    />
-                    <a
-                      href={`/explore/${p.slug}`}
-                      aria-label={`${p.name} overview`}
-                      onClick={(e) => {
-                        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
-                        e.preventDefault();
-                        setFocus(p.slug);
-                      }}
-                    >
-                      <text
-                        x={pos.x + Math.cos(pos.angle) * (size + 6)}
-                        y={pos.y + Math.sin(pos.angle) * (size + 6)}
-                        textAnchor={flip ? "end" : "start"}
-                        dominantBaseline="middle"
-                        fontSize="10.5"
-                        fill="var(--color-cream)"
-                        className="cursor-pointer"
-                      >
-                        {p.name}
-                      </text>
-                    </a>
-                  </g>
-                );
-              })}
-            </svg>
+      {/* Name picker */}
+      <section className="px-6 pb-8">
+        <div className="mx-auto max-w-4xl">
+          <label htmlFor="name-search" className="sr-only">
+            Search a name
+          </label>
+          <input
+            id="name-search"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search a name…"
+            className="w-full rounded-xl border border-gold/30 bg-card px-5 py-3 text-cream placeholder:text-muted-foreground focus:border-pink focus:outline-none"
+          />
+          <div className="mt-4 flex max-h-64 flex-wrap gap-2 overflow-y-auto rounded-2xl border border-border bg-card/60 p-4">
+            {filtered.map((p) => (
+              <button
+                key={p.slug}
+                type="button"
+                onClick={() => setFocus(focus === p.slug ? null : p.slug)}
+                className={`rounded-full border px-3 py-1.5 text-sm transition ${
+                  focus === p.slug
+                    ? "border-pink bg-pink/20 text-pink"
+                    : "border-border bg-secondary/50 text-cream hover:border-gold/50"
+                }`}
+              >
+                {p.name}
+                <span className="ml-1.5 text-xs text-muted-foreground">
+                  {p.episodeIds.length}{" "}
+                  {p.episodeIds.length === 1 ? "ep" : "eps"}
+                </span>
+              </button>
+            ))}
+            {filtered.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                No name matches “{query}”.
+              </p>
+            )}
           </div>
-          <p className="mt-4 text-center text-xs text-muted-foreground">
-            Pale dots in the middle keep surfacing across episodes; gold dots
-            on the ring are named in one published episode so far. Bigger dot =
-            more episodes. A plain click focuses a name; modifier-click opens
-            their overview.
-          </p>
+        </div>
+      </section>
+
+      {/* Focus circle */}
+      <section className="px-4 pb-8">
+        <div className="mx-auto max-w-4xl">
+          {focusPerson ? (
+            <div className="rounded-3xl border border-gold/20 bg-card p-2 sm:p-6">
+              <svg
+                viewBox={`0 0 ${SIZE} ${SIZE}`}
+                className="mx-auto h-auto w-full max-w-[680px]"
+                role="img"
+                aria-label={`Circle of names that surface alongside ${focusPerson.name} in the published episode indexes`}
+              >
+                {orbit.map((o) => (
+                  <line
+                    key={`line-${o.other.slug}`}
+                    x1={CENTER}
+                    y1={CENTER}
+                    x2={o.x}
+                    y2={o.y}
+                    stroke={
+                      o.shared.length >= 2
+                        ? "var(--color-pink)"
+                        : "var(--color-gold)"
+                    }
+                    strokeOpacity={o.shared.length >= 2 ? 0.6 : 0.25}
+                    strokeWidth={o.shared.length >= 2 ? 2 : 1}
+                  />
+                ))}
+                {orbit.map((o) => (
+                  <g key={o.other.slug}>
+                    <circle
+                      cx={o.x}
+                      cy={o.y}
+                      r={o.r}
+                      fill="var(--color-gold)"
+                      fillOpacity={0.85}
+                      className="cursor-pointer"
+                      onClick={() => setFocus(o.other.slug)}
+                    />
+                    <a
+                      href={`/explore/${o.other.slug}`}
+                      aria-label={`${o.other.name} overview`}
+                      onClick={(e) => {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+                        e.preventDefault();
+                        setFocus(o.other.slug);
+                      }}
+                    >
+                      <text
+                        x={o.x}
+                        y={o.y + o.r + 12}
+                        textAnchor="middle"
+                        fontSize="12"
+                        fill="var(--color-cream)"
+                        className="cursor-pointer"
+                      >
+                        {o.other.name}
+                      </text>
+                    </a>
+                  </g>
+                ))}
+                <circle
+                  cx={CENTER}
+                  cy={CENTER}
+                  r={34}
+                  fill="var(--color-pink)"
+                  fillOpacity={0.9}
+                />
+                <text
+                  x={CENTER}
+                  y={CENTER + 52}
+                  textAnchor="middle"
+                  fontSize="15"
+                  fontWeight="bold"
+                  fill="var(--color-pink)"
+                >
+                  {focusPerson.name}
+                </text>
+              </svg>
+              <p className="mt-4 text-center text-xs text-muted-foreground">
+                Pink in the middle is {focusPerson.name}. The closer a name
+                sits, the more episodes they share. Tap a name to re-centre the
+                circle on them; modifier-click opens their overview.
+                {focusLinks.length > ORBIT_LIMIT &&
+                  ` Showing the ${ORBIT_LIMIT} closest — the full list of ${focusLinks.length} is below.`}
+              </p>
+            </div>
+          ) : (
+            <div className="rounded-3xl border border-border bg-card/60 p-10 text-center text-muted-foreground">
+              <p>
+                Search or tap a name above to see their circle — everyone who
+                surfaces alongside them in the published episodes.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Focus detail */}
       <section className="px-6 py-10">
         <div className="mx-auto max-w-4xl">
-          {focusPerson ? (
+          {focusPerson && (
             <div className="rounded-2xl border border-pink/30 bg-card p-6 sm:p-8">
               <div className="flex flex-wrap items-baseline justify-between gap-3">
                 <h2 className="text-2xl font-semibold text-gold">
@@ -371,8 +326,7 @@ function ConnectionsPage() {
                 Named {focusPerson.mentions}{" "}
                 {focusPerson.mentions === 1 ? "time" : "times"} across{" "}
                 {focusPerson.episodeIds.length} published{" "}
-                {focusPerson.episodeIds.length === 1 ? "episode" : "episodes"}
-                :{" "}
+                {focusPerson.episodeIds.length === 1 ? "episode" : "episodes"}:{" "}
                 {focusPerson.episodeIds
                   .map((id) => episodeLabel.get(id))
                   .join(" · ")}
@@ -391,8 +345,8 @@ function ConnectionsPage() {
                       {other.name}
                     </a>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      {other.mentions} mentions in{" "}
-                      {other.episodeIds.length} published{" "}
+                      {other.mentions} mentions in {other.episodeIds.length}{" "}
+                      published{" "}
                       {other.episodeIds.length === 1 ? "episode" : "episodes"}
                     </p>
                     <p className="mt-1 text-xs text-pink">
@@ -413,10 +367,6 @@ function ConnectionsPage() {
                 </Link>
               </div>
             </div>
-          ) : (
-            <div className="text-center text-muted-foreground">
-              <p>Pick a name from the web above to see their circle.</p>
-            </div>
           )}
         </div>
       </section>
@@ -432,16 +382,21 @@ function ConnectionsPage() {
             episode indexes.
           </p>
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
-            {[...core]
+            {episodePeople
+              .filter((p) => p.episodeIds.length >= 2)
               .sort(
                 (a, b) =>
                   (degree[b.slug] ?? 0) - (degree[a.slug] ?? 0) ||
                   b.mentions - a.mentions,
               )
               .map((p) => (
-                <a
+                <button
                   key={p.slug}
-                  href={`/explore/${p.slug}`}
+                  type="button"
+                  onClick={() => {
+                    setFocus(p.slug);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   className="flex items-center justify-between gap-4 rounded-xl border border-border bg-card px-5 py-4 text-left transition hover:border-gold/50"
                 >
                   <span>
@@ -457,7 +412,7 @@ function ConnectionsPage() {
                   <span className="shrink-0 rounded-full bg-pink/15 px-3 py-1 text-xs font-semibold text-pink">
                     {degree[p.slug] ?? 0} links
                   </span>
-                </a>
+                </button>
               ))}
           </div>
         </div>

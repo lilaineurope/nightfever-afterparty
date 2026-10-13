@@ -12,6 +12,7 @@ import {
 import { episodes } from "../data/episodes";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import exploreHeader from "@/assets/explore-header.jpg";
 
 export const Route = createFileRoute("/explore/")({
   head: () => ({
@@ -46,12 +47,27 @@ function ExplorePage() {
       .join(" · ");
   };
   return (
-    <main className="min-h-screen bg-background px-6 py-16 text-foreground">
-      <div className="mx-auto max-w-5xl">
-        <h1 className="text-center text-5xl font-bold tracking-tight text-cream text-glow">Everything A–Z</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-          Every person, room, song, book and look — each with its own card showing every story it turns up in.
-        </p>
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[480px]">
+        <img
+          src={exploreHeader}
+          alt=""
+          width={1920}
+          height={1024}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
+            Everything <span className="text-pink text-glow-pink">A–Z</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Every person, room, song, book and look — each with its own card
+            showing every story it turns up in.
+          </p>
+        </div>
+      </section>
+      <div className="mx-auto max-w-5xl px-6 pb-16 pt-8">
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {["All", ...CATEGORIES].map((c) => (
             <button key={c} type="button" className={chip(c)} aria-pressed={cat === c} onClick={() => setCat(c)}>
