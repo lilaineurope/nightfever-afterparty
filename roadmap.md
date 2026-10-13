@@ -87,5 +87,5 @@
 - [x] Connections: added a "Most popular places" block and a "Best in fashion" block, both driven by the timestamp data.
 - [x] Pub Quiz marked "(beta)" in the menu, footer and on the page, with a note that the generator is still being tested.
 - [x] Published Patricia Field (S3E1), her card portrait, the copy rewrites and the Pub Quiz beta labels; confirmed the live page serves.
-- [ ] Patricia Field episode page: create and apply a torn-paper header collage using only people mentioned in S3E1, each face once.
-- [ ] Patricia Field header: make it more fashion/garment focused (garments, fabrics, beads, dress form), then swap it in once Lisa approves.
+- [x] Patricia Field header: torn-paper collage of people mentioned in S3E1 only, each face once; the fashion-focused second pass (garments on hangers, dress form, fabrics, accessories) is applied to her page title and verified loading in the preview.
+- [ ] Publish Patricia Field's new header when Lisa says "update the live site" - it is preview-only; the first, less garment-heavy version is kept in case she prefers it.
