@@ -163,6 +163,23 @@ function Index() {
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
             Latest afterparty
           </p>
+          <div className="mx-auto mt-6 max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+              Welcome to the afterparty
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              On the Night Fever podcast, James St. James asks every guest
+              about the nights they lived through &mdash; the people they
+              loved, feuded with, and lost. This site is the afterparty: the
+              morning-after debrief. Every episode that has been published here
+              gets a timestamp index &mdash; every name, place, song, design and
+              look dropped in the conversation, counted and linked to the
+              moment it was said. Everything A&ndash;Z gathers the people,
+              places and things across all episodes, the Timeline follows the
+              scene from the 1970s to today, and Connections shows how the
+              names are tied together.
+            </p>
+          </div>
           {/* Same ranking as the Episodes page: afterparty publish date, newest first. */}
           <div className="mt-6 flex flex-col gap-6">
             {[...episodes]
