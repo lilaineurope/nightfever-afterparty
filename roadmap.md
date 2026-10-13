@@ -85,3 +85,7 @@
 - [ ] Publish again once Lisa is happy with the category filters and the two new blocks (not live yet).
 - [x] Connections: category filter chips above the graph, using the same categories as the timestamp indexes.
 - [x] Connections: added a "Most popular places" block and a "Best in fashion" block, both driven by the timestamp data.
+- [x] Pub Quiz marked "(beta)" in the menu, footer and on the page, with a note that the generator is still being tested.
+- [x] Published Patricia Field (S3E1), her card portrait, the copy rewrites and the Pub Quiz beta labels; confirmed the live page serves.
+- [x] Patricia Field header: torn-paper collage of people mentioned in S3E1 only, each face once; the fashion-focused second pass (garments on hangers, dress form, fabrics, accessories) is applied to her page title and verified loading in the preview.
+- [ ] Publish Patricia Field's new header when Lisa says "update the live site" - it is preview-only; the first, less garment-heavy version is kept in case she prefers it.

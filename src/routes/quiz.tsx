@@ -43,12 +43,15 @@ function QuizPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="disco-grid px-6 pb-12 pt-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Pub quiz generator</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Pub quiz generator (beta)</p>
         <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
           Last orders, <span className="text-pink text-glow-pink">trivia queens</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
           Every question comes straight from the published episode indexes. Play along, or print it for your next quiz night - grab a drink!
+        </p>
+        <p className="mx-auto mt-4 max-w-xl rounded-xl border border-gold/40 bg-gold/5 px-4 py-3 text-sm text-gold">
+          This is where I'm experimenting on the best pub quiz generator ever. Testing ongoing - tell me what works and what doesn't!
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 print:hidden">
           <label className="text-sm text-muted-foreground">

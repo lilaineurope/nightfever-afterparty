@@ -10,6 +10,7 @@ import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
 import { MoodSpectrum } from "../components/mood-spectrum";
+import episodeBackground from "../assets/episode-patricia-field-v2.jpg";
 import { SiteFooter } from "@/components/site-footer";
 
 type Ref = {
@@ -109,7 +110,11 @@ function EpisodePage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="relative flex min-h-[480px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[540px]">
-        <div className="absolute inset-0 bg-gradient-to-b from-pink/10 via-background to-background" aria-hidden="true" />
+        <div className="absolute inset-0" aria-hidden="true">
+          <img src={episodeBackground} alt="" width={1376} height={768} fetchPriority="high"
+            className="h-full w-full object-cover object-[75%_center] sm:object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        </div>
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <Link to="/guests" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
             &larr; Meet all the guests
