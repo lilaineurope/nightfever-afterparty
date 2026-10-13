@@ -40,16 +40,16 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                     {ep.guest}
                   </Heading>
                   <p className="mt-5 text-sm text-cream/90">
-                    {ep.runtime} &middot; {ep.references} tagged references
-                    &middot; {ep.mentions} mentions in this episode
+                    {ep.runtime} &middot; {ep.references} references
+                    &middot; {ep.mentions} mentions
                   </p>
                   </div>
                 </div>
                 <div className="p-8">
                   {showDates && (
                     <div className="mb-5 text-xs leading-relaxed text-muted-foreground">
-                      <p>Afterparty publish date {formatDate(ep.afterpartyPublished)}</p>
-                      <p className="mt-1">WOW publishing date {formatDate(ep.released)}</p>
+                      <p>On the afterparty since {formatDate(ep.afterpartyPublished)}</p>
+                      <p className="mt-1">First aired on WOW {formatDate(ep.released)}</p>
                     </div>
                   )}
                   <p className="text-base leading-relaxed text-card-foreground/85">
@@ -63,7 +63,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       >
                         {t.name}
                         <span className="ml-1.5 text-muted-foreground">
-                          {t.mentions} here
+                          {t.mentions}x
                         </span>
                       </span>
                     ))}
@@ -73,7 +73,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       to={episodePath(ep.id)}
                       className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
-                      Timestamp &rarr;
+                      Dive in &rarr;
                     </Link></Button>
                     <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><a
                       href={ep.watchUrl}
@@ -81,7 +81,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                     >
-                      Watch the episode
+                      Watch on WOW
                     </a></Button>
                     <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><a
                       href={ep.listenUrl}
@@ -89,7 +89,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                     >
-                      Listen to the episode
+                      Listen on Spotify
                     </a></Button>
                   </div>
                 </div>

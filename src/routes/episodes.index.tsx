@@ -8,17 +8,17 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/episodes/")({
   head: () => ({
     meta: [
-      { title: "Afterparty — Night Fever Afterparty" },
+      { title: "Afterparty | Night Fever fan page" },
       {
         name: "description",
         content:
-          "Every tagged Night Fever episode, listed by afterparty publish date, newest first: each guest, every name, place and look mentioned, counted and timestamped.",
+          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest afterparty first!",
       },
-      { property: "og:title", content: "Afterparty — Night Fever Afterparty" },
+      { property: "og:title", content: "Afterparty | Night Fever fan page" },
       {
         property: "og:description",
         content:
-          "Every tagged Night Fever episode, listed by afterparty publish date, newest first: each guest, every name, place and look mentioned, counted and timestamped.",
+          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest afterparty first!",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -49,15 +49,16 @@ function EpisodesPage() {
             Afterparty
           </p>
           <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
-            Every episode, <span className="text-gold">timestamped</span>
+            Every episode - <span className="text-gold">unpacked &amp; timestamped</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base text-cream/90 sm:text-lg">
-            Each episode becomes an index: every name, place, song, book and
-            look that comes up, counted by how often it is mentioned and
-            linked to the moment you can hear it.
+            I kept hitting pause - so you don't have to! Every episode gets its
+            own index: every name, club, song, book and look the guests drop,
+            counted and linked to the exact minute you hear it. Pick an episode,
+            grab a drink and dive in!
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold/80">
-            Listed by afterparty publish date, newest first
+            Newest afterparty first
           </p>
         </div>
       </section>
