@@ -18,7 +18,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Why I made this Night Fever fan page - it started as my spreadsheet of every name, place and story dropped in the interviews, and grew into timelines and a connection map!",
+          "Night Fever is my happy place - I started writing down every name, place and story the guests drop, and turned it into this fan page with Lovable and Claude.",
       },
       {
         property: "og:title",
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/about")({
       {
         property: "og:description",
         content:
-          "My fan-made index of every name, place and story dropped in the Night Fever interviews - how it started and how I make it.",
+          "Night Fever is my happy place - how my note-taking became this fan page, built with Lovable and Claude in Stockholm.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
@@ -53,7 +53,6 @@ function AboutPage() {
             Why I made <span className="text-pink text-glow-pink">this</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Because I kept hitting pause. Every episode of{" "}
             <a
               href={SHOW_URL}
               target="_blank"
@@ -62,9 +61,9 @@ function AboutPage() {
             >
               <em>Night Fever</em>
             </a>{" "}
-            is stuffed with names, clubs, songs, lawsuits and design credits. I
-            got tired of being the one person in the room who had to look them
-            all up!
+            is my happy place. I love listening to the stories - each episode
+            is a treasure chest of gems, cross-references to other stories,
+            books, places and so many interesting people and their work.
           </p>
         </div>
       </section>
@@ -99,22 +98,23 @@ function AboutPage() {
 
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-cream">
-              It started as a spreadsheet
+              It started as a list
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              I listened to the Season 6 opener - James St. James, with Fenton
-              Bailey and Randy Barbato - and wrote down every single thing they
-              mentioned. Who, where, what, at what minute.
+              After a while, I started to write them down. Every name, every
+              club, every book and song the guests drop - who, where, what, at
+              what minute.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              It ended up at 119 references and 319 mentions in one 54-minute
-              conversation. Super!
+              Then I discovered Lovable (easily obvious - I live in Stockholm)
+              and asked Claude to help me. Now I play around with the data:
+              collect it, sort it, figure out how to display it - and turn it
+              into a game.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Then the obvious next question: who keeps turning up in other
-              people's lists?! That's how the connection web and the scene
-              timeline were born. What you're looking at is my note-taking -
-              shared with you instead of hoarded.
+              You can usually meet me on Tuesdays at Bar Kaja for Pub Quiz
+              night. What you're looking at is my note-taking - shared with you
+              instead of hoarded.
             </p>
           </div>
         </div>
