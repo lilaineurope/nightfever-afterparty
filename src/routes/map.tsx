@@ -5,6 +5,7 @@ import { CATEGORIES, entities, entityFor, relatedTo, totalMentions, type Entity 
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/map")({
+  staticData: { sitemap: true },
   component: MapPage,
   head: () => ({
     meta: [

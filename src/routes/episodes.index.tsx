@@ -6,6 +6,7 @@ import episodesBackground from "@/assets/episodes-reference-collage-refined.jpg"
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Afterparty | Night Fever fan page" },

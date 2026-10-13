@@ -13,6 +13,7 @@ const GOLD_LINK =
   "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 export const Route = createFileRoute("/about")({
+  staticData: { sitemap: true },
   component: AboutPage,
   head: () => ({
     meta: [

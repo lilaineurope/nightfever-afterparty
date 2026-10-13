@@ -4,6 +4,7 @@ import { generateQuiz, type QuizQuestion } from "@/lib/quiz";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/quiz")({
+  staticData: { sitemap: true },
   component: QuizPage,
   head: () => ({
     meta: [

@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import guestsHeader from "@/assets/guests-header.jpg";
 
 export const Route = createFileRoute("/guests")({
+  staticData: { sitemap: true },
   component: GuestsPage,
   head: () => ({
     meta: [

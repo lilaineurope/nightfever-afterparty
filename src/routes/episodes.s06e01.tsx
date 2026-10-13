@@ -29,6 +29,7 @@ const refs = refsRaw as Ref[];
 const EPISODE_URL = latestEpisode.listenUrl;
 
 export const Route = createFileRoute("/episodes/s06e01")({
+  staticData: { sitemap: true },
   component: EpisodePage,
   head: () => ({
     meta: [
