@@ -141,7 +141,7 @@ export function GuestsSection() {
                         {indexedEpisode && (
                           <Link
                             to={episodePath(indexedEpisode.id)}
-                            className="mr-3 inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
+                            className="mr-3 inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                           >
                             Timestamp &rarr;
                           </Link>

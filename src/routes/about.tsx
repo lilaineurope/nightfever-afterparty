@@ -65,8 +65,8 @@ function AboutPage() {
             </a>{" "}
             is my happy place. I listen for the stories - and every episode is
             a treasure chest of gems: cross-references to other stories, books,
-            places, and so many interesting people and their work. Honestly,
-            it's super. Dive in.
+            places, and so many interesting people and their work. I think it
+            is absolutely awesome. Dive in.
           </p>
         </div>
       </section>
