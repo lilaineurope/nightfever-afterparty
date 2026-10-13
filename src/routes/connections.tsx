@@ -108,9 +108,11 @@ function ConnectionsPage() {
 
   // Orbit layout: closest circle = shares every published episode with the
   // focus name; each ring further out shares fewer.
+  const ORBIT_LIMIT = 24;
   const orbit = useMemo(() => {
     if (!focusPerson || focusLinks.length === 0) return [];
-    const maxShared = focusLinks[0]!.shared.length;
+    const shown = focusLinks.slice(0, ORBIT_LIMIT);
+    const maxShared = shown[0]!.shared.length;
     const rings = new Map<number, typeof focusLinks>();
     for (const l of focusLinks) {
       const ring = maxShared - l.shared.length;
