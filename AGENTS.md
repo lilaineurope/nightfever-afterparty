@@ -24,3 +24,4 @@
 - The Episodes index imports its own cross-episode reference collage only in its title section, so its artwork never changes the home or individual episode headers.
 
 - Connections is an interactive force graph (Anytype-style): episodes are hub nodes, timestamped people from published episode indexes link to the episodes naming them; drag, zoom, tap to highlight — never populated from the scene timeline or unpublished guest profiles.
+- Guest cards derive Timestamp/Watch/Listen links from the shared episode registry (matched by guest name), falling back to the guest's WOW link and a Spotify search — so a newly registered afterparty appears on /guests automatically.
