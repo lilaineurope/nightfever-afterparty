@@ -88,3 +88,4 @@
 - [x] Pub Quiz marked "(beta)" in the menu, footer and on the page, with a note that the generator is still being tested.
 - [x] Published Patricia Field (S3E1), her card portrait, the copy rewrites and the Pub Quiz beta labels; confirmed the live page serves.
 - [ ] Patricia Field episode page: create and apply a torn-paper header collage using only people mentioned in S3E1, each face once.
+- [ ] Patricia Field header: make it more fashion/garment focused (garments, fabrics, beads, dress form), then swap it in once Lisa approves.
