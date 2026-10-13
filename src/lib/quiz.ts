@@ -1,6 +1,7 @@
 import { entities, entityFor, totalMentions, type Entity } from "@/data/entities";
 import { episodes } from "@/data/episodes";
 import { sceneEvents } from "@/data/scene";
+import { guests } from "@/data/guests";
 
 // Pub quiz questions generated only from the published episode indexes.
 
@@ -150,6 +151,19 @@ const storyMakers: Maker[] = [
       answer: ev.place,
       explain: ev.text,
       slug: ents[0]!.slug,
+    };
+  },
+  // Which guest is this?
+  (r, i) => {
+    const g = pick(guests, r);
+    const others = shuffle(guests.filter((x) => x.slug !== g.slug), r).slice(0, 3);
+    return {
+      id: `guest-${i}-${g.slug}`,
+      prompt: `Which Night Fever guest is this? "${maskName(g.tagline, g.name)}"`,
+      options: shuffle([g.name, ...others.map((x) => x.name)], r),
+      answer: g.name,
+      explain: `${g.name} — ${g.now}`,
+      slug: g.slug,
     };
   },
   // Who was in the story?
