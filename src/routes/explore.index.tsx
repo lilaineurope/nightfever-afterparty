@@ -12,6 +12,7 @@ import {
 import { episodes } from "../data/episodes";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import exploreHeader from "@/assets/explore-header.jpg";
 
 export const Route = createFileRoute("/explore/")({
   head: () => ({
