@@ -147,12 +147,20 @@ export function GuestsSection() {
                           </Link>
                         )}
                         <a
-                          href={guest.episodeUrl}
+                          href={indexedEpisode?.watchUrl ?? (guest.episodeUrl.includes("wowpresentsplus") ? guest.episodeUrl : "https://www.wowpresentsplus.com/night-fever")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mr-3 inline-flex items-center gap-2 rounded-xl border border-pink/50 px-5 py-2.5 text-sm font-semibold text-pink transition hover:bg-pink hover:text-pink-foreground"
+                        >
+                          Watch the episode
+                        </a>
+                        <a
+                          href={indexedEpisode?.listenUrl ?? `https://open.spotify.com/search/${encodeURIComponent(`Night Fever ${guest.name}`)}/episodes`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                         >
-                          Listen to this episode
+                          Listen to the episode
                         </a>
                       </div>
                     </div>
