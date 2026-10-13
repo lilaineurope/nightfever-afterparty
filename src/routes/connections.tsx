@@ -290,6 +290,8 @@ function ConnectionsPage() {
                 Pink in the middle is {focusPerson.name}. The closer a name
                 sits, the more episodes they share. Tap a name to re-centre the
                 circle on them; modifier-click opens their overview.
+                {focusLinks.length > ORBIT_LIMIT &&
+                  ` Showing the ${ORBIT_LIMIT} closest — the full list of ${focusLinks.length} is below.`}
               </p>
             </div>
           ) : (
