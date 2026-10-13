@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ClientOnly } from "@tanstack/react-router";
 import { ConnectionsGraph } from "@/components/connections-graph";
 import { SiteFooter } from "@/components/site-footer";
+import { BestInFashion, PopularPlaces } from "@/components/connections-blocks";
 import { episodePeople } from "@/data/episode-connections";
 import { episodeShort } from "@/data/entities";
 export const Route = createFileRoute("/connections")({
@@ -57,10 +58,12 @@ function ConnectionsPage() {
             <ConnectionsGraph />
           </ClientOnly>
           <p className="mt-8 text-center text-xs text-muted-foreground">
-            Connections drawn only from timestamped person references in the published episode indexes.
+            Connections drawn only from timestamped references in the published episode indexes.
           </p>
         </div>
       </section>
+      <PopularPlaces />
+      <BestInFashion />
       <GreatConnectors />
       <SiteFooter />
     </main>
