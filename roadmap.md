@@ -72,3 +72,4 @@
 
 - [x] Guests page: "The guests" header + subtitle with a 12-guest torn-paper collage (src/assets/guests-header.jpg), verified.
 - [x] Everything A–Z: dense reference collage header (src/assets/explore-header.jpg), verified.
+- [ ] Brighten Everything A–Z header, make faces fun not serious
