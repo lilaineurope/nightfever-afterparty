@@ -9,20 +9,20 @@ export const Route = createFileRoute("/connections")({
   component: ConnectionsPage,
   head: () => ({
     meta: [
-      { title: "The Night Fever Web — How the Names Are Connected" },
+      { title: "Connections | Night Fever fan page" },
       {
         name: "description",
         content:
-          "A web of every name in the published Night Fever episode indexes, connected by the episodes they surface in together.",
+          "Who turns up with who?! A web of every name in my published Night Fever episode indexes, tied together by the episodes they share.",
       },
       {
         property: "og:title",
-        content: "The Night Fever Web — How the Names Are Connected",
+        content: "Connections | Night Fever fan page",
       },
       {
         property: "og:description",
         content:
-          "Every timestamped name from the published Night Fever episode indexes, arranged in one web.",
+          "Every timestamped name from my published Night Fever episode indexes - all in one web. Dive in!",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/connections" },
@@ -42,13 +42,13 @@ function ConnectionsPage() {
             <span className="text-pink text-glow-pink">everyone</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Every episode is a pink star; every name dropped in it floats around
-            it. Names mentioned in more than one episode sit between the stars
-            and tie them together.
+            Every episode is a pink star, and every name dropped in it floats
+            around it. Names that turn up in more than one episode sit between
+            the stars and tie them together - so exciting!
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
-            Shared mentions are not proof of a personal relationship or a
-            shared night.
+            Just so you know: a shared mention isn't proof they knew each other
+            or shared a night.
           </p>
         </div>
       </section>
@@ -58,7 +58,7 @@ function ConnectionsPage() {
             <ConnectionsGraph />
           </ClientOnly>
           <p className="mt-8 text-center text-xs text-muted-foreground">
-            Connections drawn only from timestamped references in the published episode indexes.
+            I only draw connections from timestamped references in the published episode indexes.
           </p>
         </div>
       </section>
@@ -79,8 +79,8 @@ function GreatConnectors() {
           Great <span className="text-gold">Connectors</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-          The names dropped in more than one episode — the ones that tie the
-          stars together. Tap any name for its full card.
+          The names dropped in more than one episode - the ones that tie the
+          stars together. Tap any name and dive in!
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {connectors.map((p) => (

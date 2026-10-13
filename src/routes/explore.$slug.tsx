@@ -14,8 +14,8 @@ export const Route = createFileRoute("/explore/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
-    const title = `${loaderData.name} — ${loaderData.category} | Night Fever Afterparty`;
-    const desc = `Every story, night and connection around ${loaderData.name} from the Night Fever podcast and the scene it covers.`;
+    const title = `${loaderData.name} - ${loaderData.category} | Night Fever fan page`;
+    const desc = `Every story, night and connection around ${loaderData.name} from the Night Fever podcast and the scene it covers. Dive in!`;
     return {
       meta: [
         { title },
@@ -35,8 +35,8 @@ export const Route = createFileRoute("/explore/$slug")({
 function EntityNotFound() {
   return (
     <main className="min-h-screen bg-background px-6 py-24 text-center">
-      <h1 className="text-3xl font-bold text-cream">No card for that name yet</h1>
-      <Link to="/explore" className="mt-6 inline-block text-gold hover:text-pink">Browse everything &rarr;</Link>
+      <h1 className="text-3xl font-bold text-cream">Oops - no card for that name yet!</h1>
+      <Link to="/explore" className="mt-6 inline-block text-gold hover:text-pink">Browse everything A&ndash;Z &rarr;</Link>
     </main>
   );
 }
@@ -117,10 +117,10 @@ function EntityPage() {
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 className={h}>In the episodes</h2>
               <p className="text-xs text-muted-foreground">
-                {allMentions === 0 ? "No counted mentions" : `${allMentions} mentions across all episodes`}
+                {allMentions === 0 ? "No counted mentions yet" : `${allMentions} mentions across all episodes`}
                 {perEpisode.length > 0 && (
                   <span className="text-gold">
-                    {" — "}
+                    {" - "}
                     {perEpisode.map((p) => `${episodeShort(p.episode)} ${p.count}`).join(" · ")}
                   </span>
                 )}
@@ -178,7 +178,7 @@ function EntityPage() {
 
         {e.inGuestStories.length > 0 && (
           <section>
-            <h2 className={h}>In the guests' stories</h2>
+            <h2 className={h}>Pops up in the guests' stories</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {e.inGuestStories.map((x) => <EntityLink key={x.slug} name={x.slug} className={chip}>{x.name}</EntityLink>)}
             </div>
@@ -187,7 +187,7 @@ function EntityPage() {
 
         {related.length > 0 && (
           <section>
-            <h2 className={h}>In the same rooms</h2>
+            <h2 className={h}>In the same rooms (aka the gang)</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {related.map((x) => (
                 <Link key={x.slug} to="/explore/$slug" params={{ slug: x.slug }} className={chip}>{x.name}</Link>
