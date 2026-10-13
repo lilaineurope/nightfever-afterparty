@@ -1,6 +1,7 @@
 import refsJson from "./s06e01.json";
 import refs01Json from "./s01e01.json";
 import refs02Json from "./s01e02.json";
+import refs301Json from "./s03e01.json";
 import { episodes } from "./episodes";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
@@ -18,7 +19,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s03e01";
 };
 
 export type Entity = {
@@ -36,6 +37,7 @@ const refs: Ref[] = [
   ...(refsJson as Ref[]).map((r) => ({ ...r, episode: "s06e01" as const })),
   ...(refs01Json as Ref[]).map((r) => ({ ...r, episode: "s01e01" as const })),
   ...(refs02Json as Ref[]).map((r) => ({ ...r, episode: "s01e02" as const })),
+  ...(refs301Json as Ref[]).map((r) => ({ ...r, episode: "s03e01" as const })),
 ];
 
 const clean = (n: string) =>
