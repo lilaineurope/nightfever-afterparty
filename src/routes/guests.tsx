@@ -11,12 +11,13 @@ export const Route = createFileRoute("/guests")({
       {
         name: "description",
         content:
-          "Every Night Fever guest, one by one: their era, career timeline, what they are doing now and their episode.",
+          "Every Night Fever guest, one by one. The Timestamp and the Afterparty show how they are connected, step by step.",
       },
       { property: "og:title", content: "Night Fever Guests — Guest by guest" },
       {
         property: "og:description",
-        content: "The legends who sat down with James St. James — their nights, their careers, and where they are now.",
+        content:
+          "The list of guests interviewed by the three World of Wonder founders, with connections revealed step by step.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -42,8 +43,9 @@ function GuestsPage() {
             The <span className="text-pink text-glow-pink">guests</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The legends who sat down with James St. James — their nights, their
-            careers, and where they are now.
+            This is the list of guests interviewed by the three World of Wonder
+            founders. The Timestamp and the Afterparty will step by step show
+            their connections.
           </p>
         </div>
       </section>
