@@ -16,20 +16,20 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Night Fever Afterparty — NYC Nightlife Stories" },
+      { title: "Night Fever fan page | NYC nightlife stories" },
       {
         name: "description",
         content:
-          "A fan page for Night Fever, the World of Wonder podcast hosted by James St. James, Fenton Bailey, and Randy Barbato. Celebrating the campy, glamorous history of New York nightlife.",
+          "My fan page for Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato. The campy, glamorous history of New York nightlife - unpacked and timestamped!",
       },
       {
         property: "og:title",
-        content: "Night Fever Afterparty — NYC Nightlife Stories",
+        content: "Night Fever fan page | NYC nightlife stories",
       },
       {
         property: "og:description",
         content:
-          "A fan celebration of the World of Wonder podcast about New York nightlife legends.",
+          "A fan page for the World of Wonder podcast about New York nightlife legends. Grab a drink and dive in!",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -43,17 +43,17 @@ const hosts = [
   {
     name: "James St. James",
     role: "Host",
-    bio: "Downtown legend, author, and nightlife historian who lived the stories most people only read about.",
+    bio: "Downtown legend, author and nightlife historian. He lived the stories most of us only read about!",
   },
   {
     name: "Fenton Bailey",
     role: "Co-Host",
-    bio: "Co-founder of World of Wonder and producer who helped shape modern queer television.",
+    bio: "Co-founder of World of Wonder - the producer who helped shape modern queer TV.",
   },
   {
     name: "Randy Barbato",
     role: "Co-Host",
-    bio: "Co-founder of World of Wonder and longtime chronicler of pop culture and club life.",
+    bio: "Co-founder of World of Wonder and a longtime chronicler of pop culture and club life.",
   },
 ];
 
@@ -129,14 +129,14 @@ function Index() {
 
         <div className="relative z-10 max-w-3xl text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-gold">
-            A fan celebration
+            My fan page
           </p>
           <h1 className="text-balance text-6xl font-bold leading-[0.95] tracking-tight text-cream text-glow sm:text-7xl md:text-8xl">
             Night
             <span className="block text-pink text-glow-pink">Fever</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-cream/90 md:text-xl">
-            <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey, and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife." />
+            <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {platforms.map((platform) => (
@@ -169,15 +169,17 @@ function Index() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               On the Night Fever podcast, James St. James asks every guest
-              about the nights they lived through &mdash; the people they
-              loved, feuded with, and lost. This site is the afterparty: the
-              morning-after debrief. Every episode that has been published here
-              gets a timestamp index &mdash; every name, place, song, design and
-              look dropped in the conversation, counted and linked to the
-              moment it was said. Everything A&ndash;Z gathers the people,
-              places and things across all episodes, the Timeline follows the
-              scene from the 1970s to today, and Connections shows how the
-              names are tied together.
+              about the nights they lived through - the people they loved,
+              feuded with and lost. This site is my afterparty, aka the
+              morning-after debrief!
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Every episode I publish here gets a timestamp index - every name,
+              place, song, design and look, counted and linked to the exact
+              moment it was said. Everything A&ndash;Z gathers the whole gang,
+              the Timeline follows the scene from the 1970s to today, and
+              Connections shows how they're all tied together. Pick an episode
+              and dive in!
             </p>
           </div>
           {/* Same ranking as the Episodes page: afterparty publish date, newest first. */}
@@ -202,11 +204,11 @@ function Index() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-4xl rounded-3xl border border-gold/20 bg-card p-8 text-center sm:p-12">
           <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Listen wherever you party
+            Listen wherever you party!
           </h2>
           <p className="mt-4 text-muted-foreground">
-            New episodes drop on Mondays. Find the show on your favorite
-            podcast platform.
+            New episodes drop on Mondays - so exciting! Find the show on your
+            favourite podcast app.
           </p>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
             {platforms.map((platform) => (
@@ -229,11 +231,11 @@ function Index() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Join the afterparty
+            Join the afterparty!
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Get episode reminders, guest highlights, and fan notes delivered to
-            your inbox.
+            Want a heads-up when a new afterparty goes up? I'll send episode
+            reminders, guest highlights and fan notes straight to your inbox.
           </p>
           {result ? (
             <div
@@ -246,8 +248,8 @@ function Index() {
               <p className="font-medium">{result.message}</p>
               {result.ok && (
                 <p className="mt-1 text-sm text-pink/80">
-                  Your address is stored with the moment you agreed, and you
-                  can unsubscribe any time with the link in every email.
+                  I store your address with the moment you agreed. You can
+                  unsubscribe any time with the link in every email.
                 </p>
               )}
             </div>
@@ -297,13 +299,13 @@ function Index() {
                   disabled={pending}
                   className="rounded-xl bg-pink px-6 py-3 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                 >
-                  {pending ? "Signing you up…" : "Subscribe"}
+                  {pending ? "Signing you up…" : "Count me in!"}
                 </button>
               </div>
             </form>
           )}
           <p className="mt-4 text-xs text-muted-foreground">
-            No trackers, no advertising cookies, and nothing about you is sold.
+            No trackers, no advertising cookies - and I never sell anything about you.
             Read the{" "}
             <Link
               to="/privacy"

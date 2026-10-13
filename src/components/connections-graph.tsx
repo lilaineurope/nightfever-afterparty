@@ -131,7 +131,7 @@ export function ConnectionsGraph() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Find a name…"
+            placeholder="Who are you looking for?"
             className="w-full rounded-xl border border-gold/30 bg-card px-4 py-2.5 text-cream placeholder:text-muted-foreground focus:border-pink focus:outline-none"
           />
           {matches.length > 0 && (
@@ -249,7 +249,7 @@ export function ConnectionsGraph() {
       </div>
 
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        Drag to move · scroll or +/− to zoom · drag a dot to pull it · tap a dot to light up its links
+        Drag to move around · scroll or +/− to zoom · pull a dot to play with it · tap a dot to light up its links!
       </p>
 
       {sel && (
@@ -259,12 +259,12 @@ export function ConnectionsGraph() {
             {sel.slug && (
               <button onClick={() => navigate({ to: "/explore/$slug", params: { slug: sel.slug! } })}
                 className="text-xs font-medium uppercase tracking-wider text-pink hover:underline">
-                Open overview →
+                Dive in →
               </button>
             )}
           </div>
           <p className="mt-2 text-sm text-muted-foreground">
-            {sel.kind === "episode" ? "Names timestamped in this episode:" : "Named in:"}
+            {sel.kind === "episode" ? "Everyone timestamped in this episode:" : "Turns up in:"}
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {[...(neighbours.get(sel.id) ?? [])].map((id) => {

@@ -7,16 +7,16 @@ export const Route = createFileRoute("/quiz")({
   component: QuizPage,
   head: () => ({
     meta: [
-      { title: "Night Fever Pub Quiz Generator — Club-kid trivia" },
+      { title: "Pub Quiz | Night Fever fan page" },
       {
         name: "description",
         content:
-          "Generate a fresh Night Fever pub quiz from every name, place and story in the published episode indexes — answers and timestamps included.",
+          "Make a fresh Night Fever pub quiz from every name, place and story in my published episode indexes - answers and timestamps included!",
       },
-      { property: "og:title", content: "Night Fever Pub Quiz Generator" },
+      { property: "og:title", content: "Pub Quiz | Night Fever fan page" },
       {
         property: "og:description",
-        content: "Ten fresh nightlife trivia questions every time, built from the Night Fever episode indexes.",
+        content: "Ten fresh nightlife trivia questions every time, built from the Night Fever episode indexes. Grab a drink!",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -47,7 +47,7 @@ function QuizPage() {
           Last orders, <span className="text-pink text-glow-pink">trivia queens</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Every question is built from the published episode indexes — play along, or print it for your next quiz night.
+          Every question comes straight from the published episode indexes. Play along, or print it for your next quiz night - grab a drink!
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 print:hidden">
           <label className="text-sm text-muted-foreground">
@@ -63,7 +63,7 @@ function QuizPage() {
             </select>
           </label>
           <button onClick={() => newQuiz()} className="rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground hover:bg-pink/90">
-            Generate new quiz
+            Shake up a new quiz!
           </button>
           <button onClick={() => setReveal((v) => !v)} className="rounded-xl border border-gold/50 px-5 py-2.5 text-sm font-semibold text-gold hover:bg-gold/10">
             {reveal ? "Hide answers" : "Show answers"}
@@ -109,7 +109,7 @@ function QuizPage() {
                   <p className="mt-3 text-sm text-muted-foreground">
                     {q.explain}{" "}
                     <Link to="/explore/$slug" params={{ slug: q.slug }} className="text-gold underline underline-offset-2 hover:text-pink">
-                      See the card
+                      Dive into the card
                     </Link>
                   </p>
                 )}
@@ -119,7 +119,16 @@ function QuizPage() {
         </ol>
         {questions.length > 0 && (
           <p className="mt-8 text-center text-cream">
-            Score: <span className="font-bold text-pink">{score}</span> / {questions.length}
+            Your score: <span className="font-bold text-pink">{score}</span> / {questions.length}
+            {Object.keys(picked).length === questions.length && (
+              <span className="mt-2 block text-sm text-muted-foreground">
+                {score === questions.length
+                  ? "Full marks?! You're a true club kid - love it!"
+                  : score >= questions.length / 2
+                    ? "Super! You clearly know the gang. Another round?"
+                    : "Not bad! Grab another drink and have another go."}
+              </span>
+            )}
           </p>
         )}
       </section>

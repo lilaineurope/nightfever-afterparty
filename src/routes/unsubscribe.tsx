@@ -13,15 +13,15 @@ export const Route = createFileRoute("/unsubscribe")({
   }),
   head: () => ({
     meta: [
-      { title: "Unsubscribe — Night Fever afterparty" },
+      { title: "Unsubscribe | Night Fever fan page" },
       {
         name: "description",
-        content: "Remove your email address from the Night Fever afterparty newsletter list.",
+        content: "Leaving the party? Remove your email address from my Night Fever afterparty newsletter.",
       },
-      { property: "og:title", content: "Unsubscribe — Night Fever afterparty" },
+      { property: "og:title", content: "Unsubscribe | Night Fever fan page" },
       {
         property: "og:description",
-        content: "Remove your email address from the Night Fever afterparty newsletter list.",
+        content: "Leaving the party? Remove your email address from my Night Fever afterparty newsletter.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -50,7 +50,7 @@ function UnsubscribePage() {
     <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-24 text-foreground">
       <div className="w-full max-w-md rounded-3xl border border-gold/25 bg-card p-8 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-cream text-glow">
-          Unsubscribe
+          Leaving the party?
         </h1>
         {!token && (
           <p className="mt-4 text-sm text-muted-foreground">

@@ -53,7 +53,7 @@ export function MoodSpectrum({ moods, id, title, swatchFor, nested = false }: {
           })}
         </div>
         <input type="range" min={0} max={moods.length - 1} value={i} onChange={(e) => setI(Number(e.target.value))}
-          aria-label={`Choose a look: ${title}`} className="mt-3 w-full accent-[var(--gold)]" />
+          aria-label={`Pick a look: ${title}`} className="mt-3 w-full accent-[var(--gold)]" />
         <article className="mt-4 border-l-4 pl-5 py-2" style={{ borderLeftColor: palette[0]?.hex ?? sw.colors[0] }} aria-live="polite">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <LookHeading className="text-xl font-semibold text-cream">{active.name}</LookHeading>

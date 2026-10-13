@@ -12,7 +12,7 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Night Fever Afterparty" },
+      { title: "Privacy Policy | Night Fever fan page" },
       {
         name: "description",
         content:
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/privacy")({
       },
       {
         property: "og:title",
-        content: "Privacy Policy — Night Fever Afterparty",
+        content: "Privacy Policy | Night Fever fan page",
       },
       {
         property: "og:description",
@@ -76,8 +76,8 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 11 October 2026. This page explains, in plain language,
-            what happens to your data when you read this site.
+            Last updated: 11 October 2026. Here's what happens to your data when
+            you read my site - in plain words, promise!
           </p>
         </div>
       </section>

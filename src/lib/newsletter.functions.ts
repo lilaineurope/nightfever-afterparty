@@ -40,12 +40,12 @@ export const subscribeNewsletter = createServerFn({ method: "POST" })
       console.error("Newsletter subscribe failed:", error.message);
       return {
         ok: false as const,
-        message: "Something went wrong on our side — please try again in a moment.",
+        message: "Oops - something went wrong on my side. Please try again in a moment!",
       };
     }
     return {
       ok: true as const,
-      message: "You're on the list — welcome to the afterparty.",
+      message: "You're on the list - welcome to the afterparty! So exciting!",
     };
   });
 
@@ -68,11 +68,11 @@ export const unsubscribeNewsletter = createServerFn({ method: "POST" })
       console.error("Newsletter unsubscribe failed:", error.message);
       return {
         ok: false as const,
-        message: "Something went wrong — please try again in a moment.",
+        message: "Oops - something went wrong. Please try again in a moment!",
       };
     }
     return {
       ok: true as const,
-      message: "You're off the list. No hard feelings — the disco ball keeps spinning.",
+      message: "You're off the list. No hard feelings - the disco ball keeps spinning!",
     };
   });

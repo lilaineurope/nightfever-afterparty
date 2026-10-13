@@ -60,7 +60,7 @@ export function PopularPlaces() {
     <Block
       title="Most popular"
       highlight="places"
-      blurb="The rooms the episodes kept going back to, counted by how often they were named."
+      blurb="The rooms the gang keeps going back to - counted by how often they get named. Which one would you sneak into?"
     >
       {popularPlaces.map((p) => (
         <Card key={p.slug} item={p} />
@@ -74,7 +74,7 @@ export function BestInFashion() {
     <Block
       title="Best in"
       highlight="fashion"
-      blurb="What the episodes themselves said about the looks — the words used when the name came up."
+      blurb="What the episodes themselves say about the looks - the exact words used when the name came up. Love it!"
     >
       {bestInFashion.map((f) => (
         <Card key={f.slug} item={f} note={f.fashionNotes[0]} />

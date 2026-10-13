@@ -13,12 +13,12 @@ export function NamesEveryoneDrops() {
     <section className="px-6 py-20">
       <div className="mx-auto max-w-4xl">
         <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-          The names everyone drops
+          The names everyone drops!
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-          The names in the rooms — hosts, regulars and legends who keep
-          surfacing in more than one of the published episode stories, whether
-          or not they ever sat down for an interview.
+          The names in the rooms - hosts, regulars and legends who keep
+          popping up in more than one episode, whether or not they ever sat
+          down for an interview. Tap a name and dive in!
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-2">
           {recurring.map((p) => (

@@ -150,7 +150,7 @@ const curatedEvents: SceneEvent[] = [
     year: 1981,
     when: "1981",
     title: "Susanne Bartsch opens her SoHo boutique",
-    text: "The Swiss transplant imports British designers — Leigh Bowery, Vivienne Westwood, BodyMap — and turns her fashion shows into parties.",
+    text: "The Swiss transplant imports British designers - Leigh Bowery, Vivienne Westwood, BodyMap - and turns her fashion shows into parties.",
     place: "Thompson Street, SoHo",
     decade: "1980s",
     people: ["susanne-bartsch"],

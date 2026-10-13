@@ -7,17 +7,17 @@ export const Route = createFileRoute("/guests")({
   component: GuestsPage,
   head: () => ({
     meta: [
-      { title: "Night Fever Guests — Who they are, what they did, where they are now" },
+      { title: "Guests | Night Fever fan page" },
       {
         name: "description",
         content:
-          "Every Night Fever guest, one by one. The Timestamp and the Afterparty show how they are connected, step by step.",
+          "Every Night Fever guest, one by one! The Timestamp and the Afterparty show how they are all connected, step by step.",
       },
-      { property: "og:title", content: "Night Fever Guests — Guest by guest" },
+      { property: "og:title", content: "Guests | Night Fever fan page" },
       {
         property: "og:description",
         content:
-          "The list of guests interviewed by the three World of Wonder founders, with connections revealed step by step.",
+          "Meet the gang interviewed by the three World of Wonder founders - with their connections revealed step by step.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,9 +45,9 @@ function GuestsPage() {
             The <span className="text-pink text-glow-pink">guests</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            This is the list of guests interviewed by the three World of Wonder
-            founders. The Timestamp and the Afterparty will step by step show
-            their connections.
+            Meet the gang interviewed by the three World of Wonder founders!
+            Step by step, the Timestamp and the Afterparty show how they're all
+            connected. Pick a guest and dive in!
           </p>
         </div>
       </section>

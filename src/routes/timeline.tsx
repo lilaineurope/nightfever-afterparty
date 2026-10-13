@@ -12,20 +12,20 @@ export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
   head: () => ({
     meta: [
-      { title: "Nightlife Timeline — 1970s to Today, Club by Club" },
+      { title: "Timeline | Night Fever fan page" },
       {
         name: "description",
         content:
-          "A year-by-year timeline of the nightlife scene behind Night Fever — CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race.",
+          "The nightlife scene behind Night Fever, year by year - CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race. Grab a drink!",
       },
       {
         property: "og:title",
-        content: "Nightlife Timeline — 1970s to Today, Club by Club",
+        content: "Timeline | Night Fever fan page",
       },
       {
         property: "og:description",
         content:
-          "Fifty years of clubs, records and scandals, with the Night Fever guests marked in every scene.",
+          "Fifty years of clubs, records and scandals - with the Night Fever guests marked in every scene.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/timeline" },
@@ -67,8 +67,8 @@ function TimelinePage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/85">
             The doors that opened, the records that broke, the scandals that
-            closed rooms for good &mdash; and which of the guests was standing
-            there when it happened.
+            closed rooms for good - and which of the guests was standing there
+            when it happened! Pick a decade and dive in.
           </p>
         </div>
       </section>

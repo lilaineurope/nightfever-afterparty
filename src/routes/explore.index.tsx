@@ -15,10 +15,10 @@ import exploreHeader from "@/assets/explore-header.jpg";
 export const Route = createFileRoute("/explore/")({
   head: () => ({
     meta: [
-      { title: "Everything A–Z — Night Fever Afterparty" },
-      { name: "description", content: "Every person, club, song, book, film and look mentioned around Night Fever, each with one overview card." },
-      { property: "og:title", content: "Everything A–Z — Night Fever Afterparty" },
-      { property: "og:description", content: "Every name, room and story from Night Fever, linked to one overview card each." },
+      { title: "Everything A–Z | Night Fever fan page" },
+      { name: "description", content: "Every person, club, song, book, film and look mentioned around Night Fever - each with its very own card. Dive in!" },
+      { property: "og:title", content: "Everything A–Z | Night Fever fan page" },
+      { property: "og:description", content: "Every name, room and story from Night Fever, each with its own card. Pick one and dive in!" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -52,8 +52,8 @@ function ExplorePage() {
             Everything <span className="text-pink text-glow-pink">A–Z</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Every person, room, song, book and look — each with its own card
-            showing every story it turns up in.
+            Every person, room, song, book and look - each with its own card
+            showing every story it turns up in. Pick a category and dive in!
           </p>
         </div>
       </section>

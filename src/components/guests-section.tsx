@@ -16,7 +16,7 @@ export function GuestsSection() {
     <section className="px-6 pb-16 pt-28">
       <div className="mx-auto max-w-5xl">
         <p className="text-center text-sm text-muted-foreground">
-          Tap a name to open their full timeline.
+          Tap a name to open their full timeline - so many stories!
         </p>
 
         <div className="mt-8 space-y-4">
@@ -79,7 +79,7 @@ export function GuestsSection() {
                       <div className="space-y-6">
                         <div>
                           <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-                            What they are doing now
+                            What they're up to now
                           </h3>
                           <p className="mt-3 text-sm leading-relaxed text-card-foreground/80">
                             <EntityText text={guest.now} />
@@ -136,7 +136,7 @@ export function GuestsSection() {
                           params={{ slug: guest.slug }}
                           className="mr-3 inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
                         >
-                          Full overview &rarr;
+                          Their full card &rarr;
                         </Link>
                         {indexedEpisode && (
                           <Link

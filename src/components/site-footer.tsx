@@ -13,7 +13,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            Fan page for{" "}
+            My fan page for{" "}
             <a
               href={SHOW_URL}
               target="_blank"
@@ -72,7 +72,7 @@ export function SiteFooter() {
           </div>
         </div>
         <p className="mt-6 text-center text-xs text-muted-foreground/60">
-          <EntityText text="Not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their respective owners." />
+          <EntityText text="Made by a fan - not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their owners." />
         </p>
       </div>
       <p className="mx-auto mt-3 max-w-2xl text-center">
