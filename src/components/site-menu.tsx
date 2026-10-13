@@ -19,7 +19,7 @@ export function SiteMenu() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
         <Link to="/" className="text-sm font-bold uppercase tracking-[0.2em] text-gold text-glow">
-          Night Fever afterparty
+          Night Fever fan page
         </Link>
         <button
           type="button"
