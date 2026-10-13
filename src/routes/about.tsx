@@ -18,7 +18,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Why I made this Night Fever fan page - it started as my spreadsheet of every name, place and story dropped in the interviews, and grew into timelines and a connection map!",
+          "Night Fever is my happy place - I started writing down every name, place and story the guests drop, and turned it into this fan page with Lovable and Claude.",
       },
       {
         property: "og:title",
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/about")({
       {
         property: "og:description",
         content:
-          "My fan-made index of every name, place and story dropped in the Night Fever interviews - how it started and how I make it.",
+          "Night Fever is my happy place - how my note-taking became this fan page, built with Lovable and Claude in Stockholm.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
