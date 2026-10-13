@@ -114,7 +114,7 @@ function ConnectionsPage() {
     const shown = focusLinks.slice(0, ORBIT_LIMIT);
     const maxShared = shown[0]!.shared.length;
     const rings = new Map<number, typeof focusLinks>();
-    for (const l of focusLinks) {
+    for (const l of shown) {
       const ring = maxShared - l.shared.length;
       const arr = rings.get(ring) ?? [];
       arr.push(l);
