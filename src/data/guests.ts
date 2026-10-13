@@ -17,7 +17,7 @@ export const coreGuests: Guest[] = [
   {
     slug: "dianne-brill",
     name: "Dianne Brill",
-    tagline: "The \"Queen of the Night\" crowned by Andy Warhol himself.",
+    tagline: "The \"Queen of the Night\" - crowned by Andy Warhol himself!",
     episode: "Season 1, Episode 1",
     episodeUrl: SHOW_URL,
     timeline: [
@@ -36,14 +36,14 @@ export const coreGuests: Guest[] = [
         text: "Subject of new retrospective profiles on her life in and beyond the night.",
       },
     ],
-    now: "Still designing and writing, splitting her time between the US and Germany, and revisiting her nightlife years in interviews and essays.",
+    now: "Still designing and writing! She splits her time between the US and Germany and revisits her nightlife years in interviews and essays.",
     scenes: ["Studio 54", "Danceteria", "Area", "Warhol's Factory"],
     linkedTo: ["michael-musto", "susanne-bartsch", "peter-gatien"],
   },
   {
     slug: "michael-musto",
     name: "Michael Musto",
-    tagline: "The gossip columnist who wrote the nightlife down as it happened.",
+    tagline: "The gossip columnist who wrote the nightlife down as it happened - every single night.",
     episode: "Season 1, Episode 2",
     episodeUrl: SHOW_URL,
     timeline: [
@@ -54,7 +54,7 @@ export const coreGuests: Guest[] = [
       },
       {
         year: "1980s–90s",
-        text: "Chronicles Studio 54, the Warhol circle, a young RuPaul and the Club Kid years — including the Michael Alig case.",
+        text: "Chronicles Studio 54, the Warhol circle, a young RuPaul and the Club Kid years - including the Michael Alig case.",
       },
       {
         year: "2023",
@@ -65,7 +65,7 @@ export const coreGuests: Guest[] = [
         text: "Interviewed about the scene's legacy and announces a cabaret singing turn in New York.",
       },
     ],
-    now: "Still writing and commentating on nightlife, drag and pop culture — and now performing a little himself.",
+    now: "Still writing and commentating on nightlife, drag and pop culture - and now performing a little himself, love it!",
     scenes: ["Studio 54", "Limelight", "Village Voice"],
     linkedTo: ["dianne-brill", "peter-gatien", "susanne-bartsch", "joey-arias"],
   },
@@ -91,7 +91,7 @@ export const coreGuests: Guest[] = [
         text: "Leads Bravo's Girlfriends' Guide to Divorce.",
       },
     ],
-    now: "Keeps acting while also working as a painter, writer and director.",
+    now: "Still acting - and working as a painter, writer and director too. Super!",
     scenes: ["Downtown celebutante scene", "Danceteria"],
     linkedTo: ["dianne-brill", "michael-musto"],
   },
@@ -109,7 +109,7 @@ export const coreGuests: Guest[] = [
       },
       {
         year: "1990s",
-        text: "His rooms become the home of the Club Kids — and of the Michael Alig scandal.",
+        text: "His rooms become the home of the Club Kids - and of the Michael Alig scandal.",
       },
       {
         year: "Late 1990s",
@@ -121,7 +121,7 @@ export const coreGuests: Guest[] = [
         text: "Receives a public apology from New York's outgoing nightlife czar over the deportation.",
       },
     ],
-    now: "Speaks publicly as an elder statesman of New York nightlife, joining panels and interviews about the city's club history.",
+    now: "Speaks as an elder statesman of New York nightlife, aka the man on every panel about the city's club history.",
     scenes: ["Limelight", "Tunnel", "Palladium", "Club USA"],
     linkedTo: ["michael-musto", "dianne-brill", "christina-visca"],
   },
@@ -146,14 +146,14 @@ export const coreGuests: Guest[] = [
         text: "Publishes the memoirs Porcelain and Then It Fell Apart.",
       },
     ],
-    now: "Still making and producing music, and campaigning loudly for veganism and animal rights.",
+    now: "Still making and producing music - and campaigning loudly for veganism and animal rights.",
     scenes: ["Mars", "Tunnel", "NYC dance floors"],
     linkedTo: ["peter-gatien", "christina-visca"],
   },
   {
     slug: "joey-arias",
     name: "Joey Arias",
-    tagline: "Cabaret shapeshifter who channels Billie Holiday.",
+    tagline: "The cabaret shapeshifter who channels Billie Holiday.",
     episode: "Season 1, Episode 10",
     episodeUrl: SHOW_URL,
     timeline: [
@@ -171,17 +171,17 @@ export const coreGuests: Guest[] = [
       },
       {
         year: "2025",
-        text: "Profiled by NPR — \"I want to live to be at least 200 years old\" — while still touring summer cabaret shows.",
+        text: "Profiled by NPR - \"I want to live to be at least 200 years old\" - while still touring summer cabaret shows.",
       },
     ],
-    now: "Performing regularly, including Provincetown summer seasons, and treated as royalty by the current drag generation.",
+    now: "Performing regularly, including Provincetown summer seasons. The current drag generation treats him like royalty!",
     scenes: ["Pyramid Club", "Wigstock", "East Village performance"],
     linkedTo: ["michael-musto", "michelle-visage", "jayne-county"],
   },
   {
     slug: "tish-and-snooky",
     name: "Tish & Snooky",
-    tagline: "Blondie's backing singers who invented Manic Panic.",
+    tagline: "Blondie's backing singers - and the sisters who invented Manic Panic!",
     episode: "Episode aired 20 August 2025",
     episodeUrl: SHOW_URL,
     timeline: [
@@ -191,7 +191,7 @@ export const coreGuests: Guest[] = [
       },
       {
         year: "7 July 1977",
-        text: "Open the Manic Panic shop on St Marks Place — America's first punk boutique.",
+        text: "Open the Manic Panic shop on St Marks Place - America's first punk boutique.",
       },
       { year: "1977–1989", text: "Run the St Marks Place store." },
       {
@@ -203,15 +203,15 @@ export const coreGuests: Guest[] = [
         text: "Featured in the New York Times as East Village punk institutions.",
       },
     ],
-    now: "Still running Manic Panic together and celebrating its punk anniversaries loudly.",
+    now: "Still running Manic Panic together - and celebrating its punk anniversaries loudly.",
     scenes: ["CBGB", "Max's Kansas City", "St Marks Place"],
     linkedTo: ["nick-egan", "jayne-county"],
   },
   {
     slug: "nick-egan",
     name: "Nick Egan",
-    tagline: "Punk graphic designer turned music-video director.",
-    episode: "Season 5, Episode 4 — 9 July 2025",
+    tagline: "The punk graphic designer turned music-video director.",
+    episode: "Season 5, Episode 4 - 9 July 2025",
     episodeUrl:
       "https://creators.spotify.com/pod/profile/night-fever/episodes/Nick-Egan-e3580ja",
     timeline: [
@@ -240,7 +240,7 @@ export const coreGuests: Guest[] = [
   {
     slug: "christina-visca",
     name: "Christina Visca",
-    tagline: "Promoter who ran the city's biggest rooms with Junior Vasquez.",
+    tagline: "The promoter who ran the city's biggest rooms with Junior Vasquez.",
     episode: "Season 6, Episode 2",
     episodeUrl: "https://www.wowpresentsplus.com/videos/nf-602",
     timeline: [
@@ -261,15 +261,15 @@ export const coreGuests: Guest[] = [
         text: "Tells her side of the story on Night Fever's sixth season.",
       },
     ],
-    now: "Still a presence in New York nightlife circles and one of the scene's great oral historians.",
+    now: "Still part of the New York nightlife gang - and one of the scene's great storytellers.",
     scenes: ["Junior Vasquez nights", "Sound Factory era"],
     linkedTo: ["peter-gatien", "susanne-bartsch", "moby"],
   },
   {
     slug: "jayne-county",
     name: "Jayne County",
-    tagline: "Punk and glam pioneer, and a trans trailblazer.",
-    episode: "Season 2, Episode 2 — 15 August 2022",
+    tagline: "Punk and glam pioneer - and a trans trailblazer.",
+    episode: "Season 2, Episode 2 - 15 August 2022",
     episodeUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-202",
     timeline: [
       { year: "1947", text: "Born in Georgia; heads north to New York." },
@@ -286,14 +286,14 @@ export const coreGuests: Guest[] = [
         text: "Devotes herself to making visual art.",
       },
     ],
-    now: "Painting and making art, still cited as an influence by punk and trans artists alike.",
+    now: "Painting and making art. Punk and trans artists still name her as an influence!",
     scenes: ["Warhol's Factory", "CBGB", "Max's Kansas City"],
     linkedTo: ["tish-and-snooky", "joey-arias"],
   },
   {
     slug: "michelle-visage",
     name: "Michelle Visage",
-    tagline: "Club-scene singer turned Drag Race's sharpest judge.",
+    tagline: "The club-scene singer turned Drag Race's sharpest judge.",
     episode: "Season 2, Episode 1",
     episodeUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-201",
     timeline: [
@@ -311,14 +311,14 @@ export const coreGuests: Guest[] = [
         text: "Tours, hosts and takes on West End and Broadway stage work.",
       },
     ],
-    now: "Still judging Drag Race across its many franchises and performing worldwide.",
+    now: "Still judging Drag Race across its many franchises - and performing worldwide.",
     scenes: ["RuPaul's Drag Race", "World of Wonder", "NYC dance music"],
     linkedTo: ["joey-arias", "michael-musto"],
   },
   {
     slug: "susanne-bartsch",
     name: "Susanne Bartsch",
-    tagline: "The party impresario who never stopped throwing the ball.",
+    tagline: "The party impresario who never stopped throwing the ball!",
     episode: "Season 2, Episode 3",
     episodeUrl: SHOW_URL,
     timeline: [
@@ -339,7 +339,7 @@ export const coreGuests: Guest[] = [
         text: "Subject of documentaries and museum-level fashion attention; keeps hosting Bartschland nights.",
       },
     ],
-    now: "Still throwing parties in New York and mentoring the performers who fill them.",
+    now: "Still throwing parties in New York - and mentoring the performers who fill them.",
     scenes: ["Copacabana", "Roxy", "Bartschland", "Club Kids"],
     linkedTo: ["michael-musto", "christina-visca", "dianne-brill"],
   },
