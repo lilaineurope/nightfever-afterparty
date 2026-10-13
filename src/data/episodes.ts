@@ -1,4 +1,5 @@
 import mustoRefs from "./s01e02.json";
+import fieldRefs from "./s03e01.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -87,8 +88,25 @@ const s01e02: Episode = {
   top: [...mustoRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
+const s03e01: Episode = {
+  id: "s03e01",
+  season: 3,
+  episode: 1,
+  guest: "Patricia Field",
+  released: "2023-06-15",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-301",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  runtime: "52 min",
+  afterpartyPublished: "2026-10-13",
+  blurb:
+    "The fashion legend herself! Patricia Field on her 8th Street store, the House of Field balls, dressing Carrie Bradshaw and Miranda Priestly - and why the world needs way more personal style.",
+  references: fieldRefs.length,
+  mentions: fieldRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...fieldRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
 /** Season and episode order, earliest first. */
-export const episodes: Episode[] = [s01e01, s01e02, s06e01].sort((a, b) =>
+export const episodes: Episode[] = [s01e01, s01e02, s03e01, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -100,12 +118,14 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s03e01" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
     case "s01e02":
       return "/episodes/s01e02";
+    case "s03e01":
+      return "/episodes/s03e01";
     default:
       return "/episodes/s06e01";
   }
