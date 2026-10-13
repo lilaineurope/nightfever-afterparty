@@ -70,5 +70,5 @@
 - [ ] Later, if Lisa wants it: turn the site into a phone app — home-screen icon (quick), plus offline support (more setup), or an app-store build (separate project). She asked only for the answer for now, not the work.
 - [x] About page portrait redrawn in the header's torn-paper style; the warmer, friendlier second pass is the one in use (about-portrait-illustrated-2.jpg), the darker draft removed.
 
-- [ ] Guests page: add header + subtitle and an illustrated collage of all 12 guests in the torn-paper header style.
-- [ ] Everything A–Z page: header picture referencing as many logged facts on the page as possible, torn-paper header style.
+- [x] Guests page: "The guests" header + subtitle with a 12-guest torn-paper collage (src/assets/guests-header.jpg), verified.
+- [x] Everything A–Z: dense reference collage header (src/assets/explore-header.jpg), verified.
