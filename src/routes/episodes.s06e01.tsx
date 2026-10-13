@@ -32,16 +32,16 @@ export const Route = createFileRoute("/episodes/s06e01")({
   component: EpisodePage,
   head: () => ({
     meta: [
-      { title: "James St. James — Night Fever S6 E1 Reference Index" },
+      { title: "James St. James - Night Fever S6 E1 Reference Index | Night Fever fan page" },
       {
         name: "description",
         content:
-           `All ${refs.length} references in Night Fever Season 6 Episode 1 with James St. James, with timestamps, links and fashion notes.`,
+           `All ${refs.length} references in Night Fever Season 6 Episode 1 with James St. James - timestamps, links and fashion notes included. Dive in!`,
       },
-      { property: "og:title", content: "James St. James — Night Fever S6 E1 Reference Index" },
+      { property: "og:title", content: "James St. James - Night Fever S6 E1 Reference Index | Night Fever fan page" },
       {
         property: "og:description",
-         content: `All ${refs.length} names, places, works and looks from the James St. James episode, with timestamps, links and fashion notes.`,
+         content: `All ${refs.length} names, places, works and looks from the James St. James episode - timestamped and linked. Grab a drink and dive in!`,
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -116,13 +116,13 @@ function EpisodePage() {
         </div>
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <Link to="/guests" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
-            &larr; All guests
+            &larr; Meet all the guests
           </Link>
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season 6 · Episode 1</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">James St. James</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-            Every name, club, book, song, night and look from the interview &mdash; {refs.length} references
-            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode.
+            Every name, club, book, song, night and look from the interview - {refs.length} references
+            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. So exciting!
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <a href={latestEpisode.watchUrl} target="_blank" rel="noreferrer"
@@ -145,7 +145,7 @@ function EpisodePage() {
       <MoodSpectrum
         moods={moods.filter((m) => m.time === "On camera")}
         id="presenter-looks"
-        title="Presenters’ on-camera looks"
+        title="The presenters’ on-camera looks"
       />
 
 
@@ -153,7 +153,7 @@ function EpisodePage() {
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
             <div className="flex flex-wrap gap-2">
-              <span className="self-center text-sm text-muted-foreground">Sort:</span>
+              <span className="self-center text-sm text-muted-foreground">Sort by:</span>
               <Button variant="outline" aria-pressed={sort === "mentions"} className={btn(sort === "mentions")} onClick={() => setSort("mentions")}>Most mentioned here</Button>
               <Button variant="outline" aria-pressed={sort === "all"} className={btn(sort === "all")} onClick={() => setSort("all")}>Most mentioned across all</Button>
               <Button variant="outline" aria-pressed={sort === "time"} className={btn(sort === "time")} onClick={() => setSort("time")}>Timestamp</Button>
@@ -200,7 +200,7 @@ function EpisodePage() {
                     <div className="mt-2 flex flex-wrap gap-2 text-xs">
                       {r.guest && (
                         <Link to="/explore/$slug" params={{ slug: r.guest.slug }} className="rounded-full border border-pink/50 px-2.5 py-0.5 text-pink hover:bg-pink hover:text-pink-foreground">
-                          Night Fever guest &rarr;
+                          A Night Fever guest &rarr;
                         </Link>
                       )}
                       {r.events.slice(0, 3).map((e) => (
@@ -225,9 +225,9 @@ function EpisodePage() {
             ))}
           </ul>
           <p className="mt-8 text-xs text-muted-foreground">
-            The big number counts mentions in this episode; the gold number counts the same name across all
-            episodes on the site. Timestamps mark the first mention.{" "}
-            <Link to="/connections" className="text-gold hover:text-pink">See the connection web &rarr;</Link>
+            The big number counts mentions in this episode. The gold number counts the same name across all
+            episodes on the site. Timestamps mark the first mention. Spot something wrong? Tell me!{" "}
+            <Link to="/connections" className="text-gold hover:text-pink">Dive into the connection web &rarr;</Link>
           </p>
         </div>
       </section>
