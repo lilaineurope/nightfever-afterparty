@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://nightfever-afterparty.lovable.app/sitemap.xml

@@ -79,6 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "D1N8TQwOz9IS3c8V40Mwe8r72YsHRgNF2sxzCSOvN5Y" },
       { title: "Night Fever fan page | every name, place and story" },
       {
         name: "description",
