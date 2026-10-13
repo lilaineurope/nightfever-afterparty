@@ -53,7 +53,6 @@ function AboutPage() {
             Why I made <span className="text-pink text-glow-pink">this</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Because I kept hitting pause. Every episode of{" "}
             <a
               href={SHOW_URL}
               target="_blank"
@@ -62,9 +61,9 @@ function AboutPage() {
             >
               <em>Night Fever</em>
             </a>{" "}
-            is stuffed with names, clubs, songs, lawsuits and design credits. I
-            got tired of being the one person in the room who had to look them
-            all up!
+            is my happy place. I love listening to the stories - each episode
+            is a treasure chest of gems, cross-references to other stories,
+            books, places and so many interesting people and their work.
           </p>
         </div>
       </section>
