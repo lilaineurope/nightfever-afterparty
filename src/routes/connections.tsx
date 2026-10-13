@@ -1,7 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ClientOnly } from "@tanstack/react-router";
 import { ConnectionsGraph } from "@/components/connections-graph";
 import { SiteFooter } from "@/components/site-footer";
+import { episodePeople } from "@/data/episode-connections";
+import { episodeShort } from "@/data/entities";
 export const Route = createFileRoute("/connections")({
   component: ConnectionsPage,
   head: () => ({
@@ -59,6 +61,7 @@ function ConnectionsPage() {
           </p>
         </div>
       </section>
+      <GreatConnectors />
       <SiteFooter />
     </main>
   );
