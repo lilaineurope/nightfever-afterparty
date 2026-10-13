@@ -140,25 +140,6 @@ function TimelinePage() {
         </ol>
       </section>
 
-
-      <section className="spotlight px-6 py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-cream">
-            See how it all wires together
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Every one of these nights put the same people in the same rooms.
-            The connection web draws the lines.
-          </p>
-          <Link
-            to="/connections"
-            className="mt-8 inline-flex rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground transition hover:bg-spotlight"
-          >
-            Open the connection web
-          </Link>
-        </div>
-      </section>
-
       <SiteFooter />    </main>
   );
 }
