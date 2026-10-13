@@ -12,7 +12,7 @@ export const Route = createFileRoute("/terms")({
   component: TermsPage,
   head: () => ({
     meta: [
-      { title: "Terms & Conditions — Night Fever Afterparty" },
+      { title: "Terms & Conditions | Night Fever fan page" },
       {
         name: "description",
         content:
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/terms")({
       },
       {
         property: "og:title",
-        content: "Terms & Conditions — Night Fever Afterparty",
+        content: "Terms & Conditions | Night Fever fan page",
       },
       {
         property: "og:description",
@@ -75,8 +75,8 @@ function TermsPage() {
             Terms &amp; Conditions
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 11 October 2026. Plain-language rules for using this
-            site. They are written for people, not for lawyers.
+            Last updated: 11 October 2026. The house rules for my site - written
+            for people, not for lawyers!
           </p>
         </div>
       </section>
