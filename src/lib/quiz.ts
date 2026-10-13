@@ -75,7 +75,7 @@ const makers: Maker[] = [
     const options = shuffle([e.category, ...shuffle(cats, r).slice(0, 3)], r);
     return {
       id: `cat-${i}-${e.slug}`,
-      prompt: `"${e.name}" — is it a…`,
+      prompt: `"${e.name}" - is it a…`,
       options,
       answer: e.category,
       explain: `${e.name} is filed under ${e.category}.`,
@@ -112,7 +112,7 @@ const makers: Maker[] = [
       prompt: `Who or what is this? "${maskName(ref.context, e.name)}"`,
       options,
       answer: e.name,
-      explain: `It's ${e.name} — ${guestOf.get(ref.episode!)} episode, ${ref.time}.`,
+      explain: `It's ${e.name} - ${guestOf.get(ref.episode!)} episode, ${ref.time}.`,
       slug: e.slug,
     };
   },
@@ -136,7 +136,7 @@ const storyMakers: Maker[] = [
       prompt: `When did this happen? "${ev.title}"`,
       options: [...years].sort((a, b) => a - b).map(String),
       answer: String(ev.year),
-      explain: `${ev.when} — ${ev.text}`,
+      explain: `${ev.when} - ${ev.text}`,
       slug: ents[0]!.slug,
     };
   },
@@ -162,7 +162,7 @@ const storyMakers: Maker[] = [
       prompt: `Which Night Fever guest is this? "${maskName(g.tagline, g.name)}"`,
       options: shuffle([g.name, ...others.map((x) => x.name)], r),
       answer: g.name,
-      explain: `${g.name} — ${g.now}`,
+      explain: `${g.name} - ${g.now}`,
       slug: g.slug,
     };
   },
@@ -179,7 +179,7 @@ const storyMakers: Maker[] = [
       prompt: `Who was part of this story? "${maskName(ev.text, e.name)}"`,
       options: shuffle([e.name, ...absent.map((x) => x.name)], r),
       answer: e.name,
-      explain: `${e.name} — ${ev.when}, ${ev.place}.`,
+      explain: `${e.name} - ${ev.when}, ${ev.place}.`,
       slug: e.slug,
     };
   },
