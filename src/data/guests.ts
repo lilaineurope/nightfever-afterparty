@@ -347,7 +347,7 @@ export const coreGuests: Guest[] = [
 
 import { moreGuests } from "./guests-more";
 export const guests: Guest[] = [...coreGuests, ...moreGuests].sort((a, b) => {
-  const n = (x: Guest) => { const m = x.episode.match(/(\d+)\D+(\d+)/); return m ? +m[1] * 100 + +m[2] : 0; };
+  const n = (x: Guest) => { const m = x.episode.match(/(\d+)\D+(\d+)/); return m ? Number(m[1]) * 100 + Number(m[2]) : 0; };
   return n(a) - n(b);
 });
 
