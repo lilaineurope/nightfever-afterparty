@@ -125,7 +125,8 @@ function AboutPage() {
                 Bar Kaja
               </a>{" "}
               for Pub Quiz night - come say hi. Everything you're looking at is
-              my note-taking, shared with you instead of hoarded in a drawer.
+              my note-taking, shared with you. Hope you enjoy data
+              visualisation as much as I do!
             </p>
           </div>
         </div>
