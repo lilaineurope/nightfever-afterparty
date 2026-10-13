@@ -71,3 +71,4 @@
 - [x] About page portrait redrawn in the header's torn-paper style; the warmer, friendlier second pass is the one in use (about-portrait-illustrated-2.jpg), the darker draft removed.
 
 - [ ] Guests page: add header + subtitle and an illustrated collage of all 12 guests in the torn-paper header style.
+- [ ] Everything A–Z page: header picture referencing as many logged facts on the page as possible, torn-paper header style.
