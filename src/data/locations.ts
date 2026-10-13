@@ -5,6 +5,9 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Tunnel", lat: 40.7536, lng: -74.0063, area: "Chelsea" },
+  { name: "Sound Factory", lat: 40.7631, lng: -73.9967, area: "Hell's Kitchen" },
+  { name: "Nell's", lat: 40.7395, lng: -74.0058, area: "Meatpacking" },
   { name: "101 Avenue A", lat: 40.7253, lng: -73.9838, area: "East Village" },
   { name: "126 East 14th Street", lat: 40.7335, lng: -73.9884, area: "Union Square" },
   { name: "157 Hudson Street", lat: 40.7213, lng: -74.0089, area: "Tribeca" },
