@@ -79,4 +79,4 @@
 
 ## Open (13 Oct 2026)
 - [x] Everything A–Z: remove the chip caption line and the "N cards" count under the filters.
-- [ ] Connections: add the "Great Connectors" block back underneath the graph.
+- [x] Connections: "Great Connectors" block restored underneath the graph (33 multi-episode names, linked to their cards).
