@@ -80,4 +80,4 @@
 ## Open (13 Oct 2026)
 - [x] Everything A–Z: remove the chip caption line and the "N cards" count under the filters.
 - [x] Connections: "Great Connectors" block restored underneath the graph (33 multi-episode names, linked to their cards).
-- [ ] Timeline: new header collage in the torn-paper style, applied above the decade filters.
+- [x] Timeline: torn-paper decade collage header (src/assets/timeline-header.jpg) applied above the decade filters, with a stronger scrim so the title stays readable.
