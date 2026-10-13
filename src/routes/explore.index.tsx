@@ -3,13 +3,11 @@ import { useState } from "react";
 import {
   CATEGORIES,
   categoryMentions,
-  categoryMentionsByEpisode,
   entities,
   episodeShort,
   mentionsByEpisode,
   totalMentions,
 } from "../data/entities";
-import { episodes } from "../data/episodes";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 import exploreHeader from "@/assets/explore-header.jpg";
@@ -38,14 +36,6 @@ function ExplorePage() {
     `rounded-full border px-3 py-1 text-xs font-medium transition ${
       cat === c ? "border-gold bg-gold text-gold-foreground" : "border-border bg-secondary text-secondary-foreground hover:text-pink"
     }`;
-  // "S6E1 336 · S1E1 293" — how one category's mentions split per episode
-  const split = (c: string) => {
-    const by = categoryMentionsByEpisode[c] ?? {};
-    return episodes
-      .filter((ep) => (by[ep.id] ?? 0) > 0)
-      .map((ep) => `${episodeShort(ep.id)} ${by[ep.id]}`)
-      .join(" · ");
-  };
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="relative flex min-h-[420px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[480px]">
@@ -76,16 +66,6 @@ function ExplorePage() {
             </button>
           ))}
         </div>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-muted-foreground">
-          Chip numbers are counted across all episodes
-          {split(cat) && (
-            <>
-              {" — per episode: "}
-              <span className="text-gold">{split(cat)}</span>
-            </>
-          )}
-        </p>
-        <p className="mt-3 text-center text-xs text-muted-foreground">{shown.length} cards</p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((e) => {
             const n = e.refs.length + e.events.length + e.inGuestStories.length;
