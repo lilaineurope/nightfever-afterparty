@@ -20,7 +20,7 @@ export function LegalNote() {
   return (
     <span className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/70">
       <span>
-        No trackers, no advertising cookies, no data sold. See the{" "}
+        No trackers, no advertising cookies, and I never sell your data. See the{" "}
       </span>
       <LegalLinks />
       <span>.</span>
