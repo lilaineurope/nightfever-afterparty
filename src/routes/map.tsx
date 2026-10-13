@@ -8,16 +8,16 @@ export const Route = createFileRoute("/map")({
   component: MapPage,
   head: () => ({
     meta: [
-      { title: "Night Fever Map — Every club, street and city on one map" },
+      { title: "Map | Night Fever fan page" },
       {
         name: "description",
         content:
-          "A map of every real place named in Night Fever — clubs, streets, schools and cities — with the people, music, books and stories connected to each.",
+          "Every real place named in Night Fever on one map - clubs, streets, schools and cities - with the people, music, books and stories connected to each. Dive in!",
       },
-      { property: "og:title", content: "Night Fever Map — The scene, pinned" },
+      { property: "og:title", content: "Map | Night Fever fan page" },
       {
         property: "og:description",
-        content: "From CBGB to Studio 54 to the Limelight: every place, and everything that happened there.",
+        content: "From CBGB to Studio 54 to the Limelight - every place, and everything that happened there!",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -179,7 +179,7 @@ function MapPage() {
           The scene, <span className="text-pink text-glow-pink">pinned</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Every real club, street and city named on the site. Under each place you'll find the names that come up alongside it — in the same moment of an episode or the same story on the timeline. Pick a category to see only the places linked to it; the number shows how many places that is.
+          Every real club, street and city named on the site - pinned! Under each place you'll find the names that come up alongside it, in the same moment of an episode or the same story on the timeline. Pick a category to see only the places linked to it - the number tells you how many places that is.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {chips.map(([c, n]) => (
@@ -203,7 +203,7 @@ function MapPage() {
               <div ref={mapEl} className="h-full w-full" aria-label="Map of Night Fever places" />
             ) : (
               <div className="flex h-full items-center justify-center p-8 text-center text-muted-foreground">
-                The interactive map switches on once Google Maps is connected. All places are listed alongside.
+                The interactive map switches on once Google Maps is connected. Until then, all the places are listed right here!
               </div>
             )}
           </div>
@@ -240,7 +240,7 @@ function MapPage() {
                     params={{ slug: s.places[0]!.slug }}
                     className="mt-3 inline-block text-xs text-gold underline underline-offset-2 hover:text-pink"
                   >
-                    Open the place card
+                    Dive into this place
                   </Link>
                 </li>
               );
@@ -248,7 +248,7 @@ function MapPage() {
           </ol>
         </div>
         <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-muted-foreground">
-          Pins are approximate, from public addresses of each venue. Vague places like eras or TV channels are left off the map.
+          Pins are approximate, from the public address of each venue. Vague places like eras or TV channels are left off the map. Spot a wrong pin? Tell me!
         </p>
       </section>
       <SiteFooter />
