@@ -9,7 +9,8 @@ import {
   type SimulationNodeDatum,
 } from "d3-force";
 import { episodes } from "@/data/episodes";
-import { episodePeople } from "@/data/episode-connections";
+import { CATEGORIES } from "@/data/entities";
+import { categoryCounts, episodeEntities } from "@/data/episode-connections";
 
 type Node = SimulationNodeDatum & {
   id: string;
@@ -17,6 +18,7 @@ type Node = SimulationNodeDatum & {
   kind: "episode" | "person";
   weight: number;
   slug?: string;
+  categories: string[];
 };
 type Edge = { source: string | Node; target: string | Node };
 
@@ -37,23 +39,28 @@ export function ConnectionsGraph() {
   const [view, setView] = useState({ x: 0, y: 0, k: 1 });
   const drag = useRef<{ node?: Node; panX?: number; panY?: number; moved: boolean } | null>(null);
 
+  const [cat, setCat] = useState<string>("All");
+
   const { nodes, edges, neighbours, sim } = useMemo(() => {
+    const people = episodeEntities.filter((p) => cat === "All" || p.categories.includes(cat));
     const nodes: Node[] = [
       ...episodes.map((ep) => ({
         id: `ep:${ep.id}`,
         label: `S${ep.season}E${ep.episode} · ${ep.guest}`,
         kind: "episode" as const,
         weight: 5,
+        categories: [] as string[],
       })),
-      ...episodePeople.map((p) => ({
+      ...people.map((p) => ({
         id: p.slug,
         slug: p.slug,
         label: p.name,
         kind: "person" as const,
         weight: p.episodeIds.length,
+        categories: p.categories,
       })),
     ];
-    const edges: Edge[] = episodePeople.flatMap((p) =>
+    const edges: Edge[] = people.flatMap((p) =>
       p.episodeIds.map((e) => ({ source: p.slug, target: `ep:${e}` })),
     );
     const neighbours = new Map<string, Set<string>>();
@@ -70,7 +77,7 @@ export function ConnectionsGraph() {
       .stop();
     for (let i = 0; i < 300; i++) sim.tick();
     return { nodes, edges, neighbours, sim };
-  }, []);
+  }, [cat]);
 
   useEffect(() => {
     sim.on("tick", () => setTick((t) => t + 1));
@@ -100,6 +107,24 @@ export function ConnectionsGraph() {
 
   return (
     <div className="relative">
+      <div className="mb-4 flex flex-wrap justify-center gap-2">
+        {["All", ...CATEGORIES.filter((c) => (categoryCounts[c] ?? 0) > 0)].map((c) => (
+          <button
+            key={c}
+            type="button"
+            aria-pressed={cat === c}
+            onClick={() => { setCat(c); setSelected(null); setHover(null); }}
+            className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+              cat === c
+                ? "border-gold bg-gold text-gold-foreground"
+                : "border-border bg-secondary text-secondary-foreground hover:text-pink"
+            }`}
+          >
+            {c}
+            <span className="ml-1 opacity-70">{categoryCounts[c] ?? 0}</span>
+          </button>
+        ))}
+      </div>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[220px]">
           <input
