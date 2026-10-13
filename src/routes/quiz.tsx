@@ -43,7 +43,7 @@ function QuizPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="disco-grid px-6 pb-12 pt-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Pub quiz generator</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Pub quiz generator (beta)</p>
         <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
           Last orders, <span className="text-pink text-glow-pink">trivia queens</span>
         </h1>

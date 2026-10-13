@@ -56,7 +56,7 @@ export function SiteFooter() {
               Map
             </Link>
             <Link to="/quiz" className={LINK}>
-              Pub Quiz
+              Pub Quiz (beta)
             </Link>
             <Link to="/about" className={LINK}>
               About
