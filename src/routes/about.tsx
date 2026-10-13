@@ -102,20 +102,20 @@ function AboutPage() {
               It started as a list
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              After a while, I started to write them down. Every name, every
-              club, every book and song the guests drop - who, where, what, at
-              what minute.
+              Because once you start noticing the names, you can't stop. So I
+              wrote them all down: every name, every club, every book and song
+              the guests drop - who, where, what, and at what minute.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               Then I discovered Lovable (easily obvious - I live in Stockholm)
-              and asked Claude to help me. Now I play around with the data:
-              collect it, sort it, figure out how to display it - and turn it
-              into a game.
+              and asked Claude to help me build it. Now I get to play with my
+              notes: collect them, sort them, figure out how to show them - and
+              turn the whole thing into a game. Love it!
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               You can usually meet me on Tuesdays at Bar Kaja for Pub Quiz
-              night. What you're looking at is my note-taking - shared with you
-              instead of hoarded.
+              night - come say hi. Everything you're looking at is my
+              note-taking, shared with you instead of hoarded in a drawer.
             </p>
           </div>
         </div>
