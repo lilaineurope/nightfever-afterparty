@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 const PAGES = [
-  { to: "/episodes", label: "Timestamps" },
+  { to: "/episodes", label: "Afterparty" },
   { to: "/explore", label: "Everything A–Z" },
   { to: "/guests", label: "Guests" },
   { to: "/timeline", label: "Timeline" },

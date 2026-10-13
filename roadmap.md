@@ -73,6 +73,6 @@
 - [x] Guests page: "The guests" header + subtitle with a 12-guest torn-paper collage (src/assets/guests-header.jpg), verified.
 - [x] Everything A–Z: dense reference collage header (src/assets/explore-header.jpg), verified.
 - [x] Brighten Everything A–Z header, make faces fun not serious
-- [ ] Add all WOW Night Fever guests (S1–S6) to Guests, shared across pages
-- [ ] Rename Episodes to Timestamps in menu/footer/pages
-- [ ] Rename home 'Latest episodes' to Timestamps
+- [x] Add all WOW Night Fever guests (S1–S6) to Guests, shared across pages
+- [x] Rename Episodes page to "Afterparty" (menu, footer, page)
+- [x] Home heading "Latest afterparty"; top-left brand "Night Fever fan page"

@@ -8,13 +8,13 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/episodes/")({
   head: () => ({
     meta: [
-      { title: "Timestamps — Night Fever Afterparty" },
+      { title: "Afterparty — Night Fever Afterparty" },
       {
         name: "description",
         content:
           "Every tagged Night Fever episode, listed by afterparty publish date, newest first: each guest, every name, place and look mentioned, counted and timestamped.",
       },
-      { property: "og:title", content: "Timestamps — Night Fever Afterparty" },
+      { property: "og:title", content: "Afterparty — Night Fever Afterparty" },
       {
         property: "og:description",
         content:
@@ -46,7 +46,7 @@ function EpisodesPage() {
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-pink">
-            Timestamps
+            Afterparty
           </p>
           <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
             Every episode, <span className="text-gold">timestamped</span>
