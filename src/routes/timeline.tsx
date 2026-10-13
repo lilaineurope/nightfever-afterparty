@@ -61,12 +61,6 @@ function TimelinePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_50%_46%,color-mix(in_oklab,var(--background)_88%,transparent),transparent_72%)]" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <Link
-            to="/connections"
-            className="inline-block rounded-full border border-gold/40 bg-background/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold backdrop-blur-sm transition hover:text-pink"
-          >
-            &larr; The connection web
-          </Link>
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             Fifty years of{" "}
             <span className="text-pink text-glow-pink">one long night</span>
@@ -144,25 +138,6 @@ function TimelinePage() {
             </li>
           ))}
         </ol>
-      </section>
-
-
-      <section className="spotlight px-6 py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-cream">
-            See how it all wires together
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Every one of these nights put the same people in the same rooms.
-            The connection web draws the lines.
-          </p>
-          <Link
-            to="/connections"
-            className="mt-8 inline-flex rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground transition hover:bg-spotlight"
-          >
-            Open the connection web
-          </Link>
-        </div>
       </section>
 
       <SiteFooter />    </main>
