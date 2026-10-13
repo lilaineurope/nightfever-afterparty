@@ -73,7 +73,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       to={episodePath(ep.id)}
                       className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
-                      Afterparty connection &rarr;
+                      Timestamp &rarr;
                     </Link></Button>
                     <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><a
                       href={ep.watchUrl}
