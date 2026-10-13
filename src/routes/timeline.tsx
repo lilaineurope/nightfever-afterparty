@@ -59,6 +59,7 @@ function TimelinePage() {
         />
         <div className="absolute inset-0 bg-background/30" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_50%_46%,color-mix(in_oklab,var(--background)_88%,transparent),transparent_72%)]" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <Link
             to="/connections"
