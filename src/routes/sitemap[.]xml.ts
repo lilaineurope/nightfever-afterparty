@@ -18,6 +18,17 @@ export const Route = createFileRoute("/sitemap.xml")({
         }
         const router = await getRouterInstance();
         const entries: SitemapEntry[] = sitemapStaticPaths(router).map((path) => ({ path }));
+        // Entity overview cards under /explore/$slug: local collection, all public.
+        for (const entity of entities) {
+          const location = router.buildLocation({
+            to: "/explore/$slug",
+            params: { slug: entity.slug },
+            search: () => ({}),
+            hash: "",
+          });
+          const path = sitemapPathForLocation(router, location, "/explore/$slug");
+          if (path) entries.push({ path });
+        }
         // Dynamic overview cards (/explore/$slug) are included via the route's
         // staticData.sitemap decision; all slugs come from the router inventory.
         if (entries.length === 0) {
