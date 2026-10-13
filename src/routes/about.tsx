@@ -61,9 +61,10 @@ function AboutPage() {
             >
               <em>Night Fever</em>
             </a>{" "}
-            is my happy place. I love listening to the stories - each episode
-            is a treasure chest of gems, cross-references to other stories,
-            books, places and so many interesting people and their work.
+            is my happy place. I listen for the stories - and every episode is
+            a treasure chest of gems: cross-references to other stories, books,
+            places, and so many interesting people and their work. Honestly,
+            it's super. Dive in.
           </p>
         </div>
       </section>
