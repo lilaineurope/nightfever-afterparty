@@ -23,5 +23,4 @@
 - Home and Episodes lists use the shared EpisodeBlock with portraits mapped by episode ID and confined to the title panel; optional date lines preserve the Episodes page dates and ranking while keeping both layouts consistent.
 - The Episodes index imports its own cross-episode reference collage only in its title section, so its artwork never changes the home or individual episode headers.
 
-- Connections uses episode-connections derived from shared entities filtered to registered, spoken timestamped Person references; its circular web (the original Connections format) puts single-episode names on the outer ring and multi-episode names in the core, linking people who surface together in episodes — never populating dots or relationships from the scene timeline or unpublished guest profiles.
-- Connections keeps the original web format with every dot and name opening its shared overview (plain click focuses, modifier-click navigates), so all names remain readable even as episode references grow.
+- Connections is an interactive force graph (Anytype-style): episodes are hub nodes, timestamped people from published episode indexes link to the episodes naming them; drag, zoom, tap to highlight — never populated from the scene timeline or unpublished guest profiles.
