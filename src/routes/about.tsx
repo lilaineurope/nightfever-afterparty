@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
+const BAR_KAJA = "https://barkaja.org/";
 
 const GOLD_LINK =
   "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
@@ -114,9 +115,17 @@ function AboutPage() {
               turn the whole thing into a game. Love it!
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              You can usually meet me on Tuesdays at Bar Kaja for Pub Quiz
-              night - come say hi. Everything you're looking at is my
-              note-taking, shared with you instead of hoarded in a drawer.
+              You can usually meet me on Tuesdays at{" "}
+              <a
+                href={BAR_KAJA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={GOLD_LINK}
+              >
+                Bar Kaja
+              </a>{" "}
+              for Pub Quiz night - come say hi. Everything you're looking at is
+              my note-taking, shared with you instead of hoarded in a drawer.
             </p>
           </div>
         </div>
