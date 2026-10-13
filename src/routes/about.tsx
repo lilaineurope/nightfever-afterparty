@@ -6,6 +6,7 @@ import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
+const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
 
 const GOLD_LINK =
   "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
