@@ -37,7 +37,9 @@ function GuestsPage() {
           height={1024}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-background/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_50%_46%,color-mix(in_oklab,var(--background)_88%,transparent),transparent_72%)]" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             The <span className="text-pink text-glow-pink">guests</span>
