@@ -1,5 +1,6 @@
 import mustoRefs from "./s01e02.json";
 import fieldRefs from "./s03e01.json";
+import bartschRefs from "./s02e03.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -88,6 +89,23 @@ const s01e02: Episode = {
   top: [...mustoRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
+const s02e03: Episode = {
+  id: "s02e03",
+  season: 2,
+  episode: 3,
+  guest: "Susanne Bartsch",
+  released: "2022-08-22",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-203",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  runtime: "1:01:34",
+  afterpartyPublished: "2026-10-14",
+  blurb:
+    "The Empress of the Night! Susanne Bartsch on running away to London, the Blitz, her SoHo stores, Savage, Bentley's and the Copa - and throwing the Love Balls that raised millions for AIDS.",
+  references: bartschRefs.length,
+  mentions: bartschRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...bartschRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
 const s03e01: Episode = {
   id: "s03e01",
   season: 3,
@@ -106,7 +124,7 @@ const s03e01: Episode = {
 };
 
 /** Season and episode order, earliest first. */
-export const episodes: Episode[] = [s01e01, s01e02, s03e01, s06e01].sort((a, b) =>
+export const episodes: Episode[] = [s01e01, s01e02, s02e03, s03e01, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -118,12 +136,14 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s03e01" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s02e03" | "/episodes/s03e01" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
     case "s01e02":
       return "/episodes/s01e02";
+    case "s02e03":
+      return "/episodes/s02e03";
     case "s03e01":
       return "/episodes/s03e01";
     default:
