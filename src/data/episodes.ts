@@ -1,6 +1,7 @@
 import mustoRefs from "./s01e02.json";
 import fieldRefs from "./s03e01.json";
 import bartschRefs from "./s02e03.json";
+import edelsteinRefs from "./s01e03.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -89,6 +90,23 @@ const s01e02: Episode = {
   top: [...mustoRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
+const s01e03: Episode = {
+  id: "s01e03",
+  season: 1,
+  episode: 3,
+  guest: "Lisa Edelstein",
+  released: "2021-09-13",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-lisa-edelstein",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  runtime: "1:08:34",
+  afterpartyPublished: "2026-10-15",
+  blurb:
+    "Lisa E., the it girl! James's NYU partner-in-crime on their plan to conquer the clubs, lunchboxes and drooping hats, Warhol's memorial - and the New York Times story that changed her life.",
+  references: edelsteinRefs.length,
+  mentions: edelsteinRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...edelsteinRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
 const s02e03: Episode = {
   id: "s02e03",
   season: 2,
@@ -124,7 +142,7 @@ const s03e01: Episode = {
 };
 
 /** Season and episode order, earliest first. */
-export const episodes: Episode[] = [s01e01, s01e02, s02e03, s03e01, s06e01].sort((a, b) =>
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -136,12 +154,14 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s02e03" | "/episodes/s03e01" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
     case "s01e02":
       return "/episodes/s01e02";
+    case "s01e03":
+      return "/episodes/s01e03";
     case "s02e03":
       return "/episodes/s02e03";
     case "s03e01":

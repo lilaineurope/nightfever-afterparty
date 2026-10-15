@@ -6,10 +6,12 @@ import mustoPortrait from "@/assets/block-michael-musto.jpg";
 import jamesPortrait from "@/assets/block-james-st-james.jpg";
 import fieldPortrait from "@/assets/block-patricia-field.jpg";
 import bartschPortrait from "@/assets/block-susanne-bartsch.jpg";
+import edelsteinPortrait from "@/assets/block-lisa-edelstein.jpg";
 
 const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
   s01e02: mustoPortrait,
+  s01e03: edelsteinPortrait,
   s02e03: bartschPortrait,
   s03e01: fieldPortrait,
   s06e01: jamesPortrait,
