@@ -116,10 +116,6 @@ export const coreGuests: Guest[] = [
         text: "Acquitted on federal drug charges, then pleads guilty in a tax evasion case and is eventually deported to Canada.",
       },
       { year: "2020", text: "Publishes his memoir, Club King." },
-      {
-        year: "2023",
-        text: "Receives a public apology from New York's outgoing nightlife czar over the deportation.",
-      },
     ],
     now: "Speaks as an elder statesman of New York nightlife, aka the man on every panel about the city's club history.",
     scenes: ["Limelight", "Tunnel", "Palladium", "Club USA"],

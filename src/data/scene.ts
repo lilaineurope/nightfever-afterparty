@@ -464,17 +464,6 @@ const curatedEvents: SceneEvent[] = [
     figures: ["Fenton Bailey", "Randy Barbato", "James St. James"],
   },
   {
-    id: "gatien-apology",
-    year: 2023,
-    when: "2023",
-    title: "New York's nightlife office apologises to Gatien",
-    text: "The city's outgoing night mayor publicly regrets the deportation: a quiet, late rewriting of the record.",
-    place: "New York City",
-    decade: "2020s",
-    people: ["peter-gatien", "michael-musto"],
-    figures: ["Ariel Palitz"],
-  },
-  {
     id: "manic-panic-anniv",
     year: 2025,
     when: "2025",
