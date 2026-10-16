@@ -18,7 +18,7 @@ export type SceneEvent = {
   title: string;
   text: string;
   place: string;
-  decade: "1970s" | "1980s" | "1990s" | "2000s" | "2010s+";
+  decade: "1970s" | "1980s" | "1990s" | "2000s" | "2010s" | "2020s";
   people: string[];
   figures: string[];
   /** Set when the moment comes from an afterparty timestamp index. */
@@ -436,7 +436,7 @@ const curatedEvents: SceneEvent[] = [
     title: "Susanne Bartsch: FASHION UNDERGROUND opens at the Museum at FIT",
     text: "Her wardrobe enters a museum while she is still hosting on Tuesdays. Nightlife becomes archive and living practice at once.",
     place: "Museum at FIT",
-    decade: "2010s+",
+    decade: "2010s",
     people: ["susanne-bartsch"],
     figures: ["Leigh Bowery", "Thierry Mugler", "Valerie Steele"],
   },
@@ -447,7 +447,7 @@ const curatedEvents: SceneEvent[] = [
     title: "Peter Gatien publishes Club King",
     text: "The memoir, written from Toronto after deportation, reopens the argument over who really killed New York nightlife.",
     place: "Toronto",
-    decade: "2010s+",
+    decade: "2020s",
     people: ["peter-gatien"],
     figures: ["Michael Alig", "Rudy Giuliani"],
   },
@@ -458,7 +458,7 @@ const curatedEvents: SceneEvent[] = [
     title: "Night Fever starts recording the survivors",
     text: "World of Wonder's podcast sits the scene's originals down one by one, and they keep naming each other.",
     place: "World of Wonder, Los Angeles",
-    decade: "2010s+",
+    decade: "2020s",
     people: ["michael-musto", "jayne-county", "michelle-visage", "joey-arias"],
     figures: ["Fenton Bailey", "Randy Barbato", "James St. James"],
   },
@@ -469,7 +469,7 @@ const curatedEvents: SceneEvent[] = [
     title: "New York's nightlife office apologises to Gatien",
     text: "The city's outgoing night mayor publicly regrets the deportation: a quiet, late rewriting of the record.",
     place: "New York City",
-    decade: "2010s+",
+    decade: "2020s",
     people: ["peter-gatien", "michael-musto"],
     figures: ["Ariel Palitz"],
   },
@@ -480,7 +480,7 @@ const curatedEvents: SceneEvent[] = [
     title: "Manic Panic hits its late forties and the New York Times comes calling",
     text: "Tish and Snooky are still behind the counter, still the living link between CBGB and the current punk generation.",
     place: "East Village",
-    decade: "2010s+",
+    decade: "2020s",
     people: ["tish-and-snooky", "nick-egan"],
     figures: ["Debbie Harry", "New York Times"],
   },
@@ -489,7 +489,7 @@ const curatedEvents: SceneEvent[] = [
 // Milestones from every WOW guest profile, so the timeline, A–Z, map and quiz
 // grow automatically whenever a guest is added.
 function decadeOf(y: number): SceneEvent["decade"] {
-  return y < 1980 ? "1970s" : y < 1990 ? "1980s" : y < 2000 ? "1990s" : y < 2010 ? "2000s" : "2010s+";
+  return y < 1980 ? "1970s" : y < 1990 ? "1980s" : y < 2000 ? "1990s" : y < 2010 ? "2000s" : y < 2020 ? "2010s" : "2020s";
 }
 const guestMilestones: SceneEvent[] = moreGuests.flatMap((g) =>
   g.timeline.flatMap((item, i) => {
@@ -551,7 +551,7 @@ const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
 
 export const sceneEvents: SceneEvent[] = [...curatedEvents, ...guestMilestones, ...afterpartyMoments];
 
-export const decades = ["1970s", "1980s", "1990s", "2000s", "2010s+"] as const;
+export const decades = ["1970s", "1980s", "1990s", "2000s", "2010s", "2020s"] as const;
 
 export const eventsByGuest: Record<string, SceneEvent[]> = Object.fromEntries(
   guests.map((g) => [
