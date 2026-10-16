@@ -87,7 +87,7 @@ function TimelinePage() {
                   : "border-border bg-secondary text-secondary-foreground hover:border-gold/50"
               }`}
             >
-              {d === "all" ? "Everything" : d}
+              {d === "all" ? "Everything" : <Decades text={d} />}
             </button>
           ))}
         </div>
@@ -99,7 +99,7 @@ function TimelinePage() {
             <li key={e.id} className="relative">
               <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full bg-gold" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-                {e.when} &middot; <EntityLink name={e.place.split(",")[0]!} className="hover:text-gold">{e.place}</EntityLink>
+                <Decades text={e.when} /> &middot; <EntityLink name={e.place.split(",")[0]!} className="hover:text-gold">{e.place}</EntityLink>
               </p>
               <h2 className="mt-1 text-xl font-semibold text-gold">{e.title}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -151,5 +151,23 @@ function TimelinePage() {
       </section>
 
       <SiteFooter />    </main>
+  );
+}
+
+// Labels are styled in capitals, but decades read "1970s", not "1970S".
+function Decades({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\d{2,4}s)\b/).map((part, i) =>
+        /^\d{2,4}s$/.test(part) ? (
+          <span key={i}>
+            {part.slice(0, -1)}
+            <span className="normal-case">s</span>
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
   );
 }
