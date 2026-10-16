@@ -436,7 +436,7 @@ const curatedEvents: SceneEvent[] = [
     title: "Susanne Bartsch: FASHION UNDERGROUND opens at the Museum at FIT",
     text: "Her wardrobe enters a museum while she is still hosting on Tuesdays. Nightlife becomes archive and living practice at once.",
     place: "Museum at FIT",
-    decade: "2010s+",
+    decade: "2010s",
     people: ["susanne-bartsch"],
     figures: ["Leigh Bowery", "Thierry Mugler", "Valerie Steele"],
   },
