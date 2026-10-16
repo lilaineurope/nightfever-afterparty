@@ -7,7 +7,7 @@ import { useRouter } from "@tanstack/react-router";
  * localStorage under "skipgc", the key GoatCounter's own script also honours);
  * ?me=off switches it back on.
  */
-const GOATCOUNTER_CODE = "";
+const GOATCOUNTER_CODE = "lilaineurope";
 const COUNTED_HOSTS = ["nightfever-afterparty.lovable.app"];
 const SKIP_KEY = "skipgc";
 

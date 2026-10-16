@@ -1,6 +1,10 @@
 # Nightfever Afterparty
 
-I want to make a fan page of the night fever podcast by world of wonder https://creators.spotify.com/pod/profile/night-fever/
+My fan-made companion to *Night Fever*, the World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy history of New York nightlife.
+
+For every episode I build an "afterparty": a timestamped index of every name, club, song, book and look the guests drop, counted, linked and connected, plus a mood board of the outfits. Around it: guest profiles, an A–Z of everyone mentioned, a scene timeline, a connection web, a map and a pub quiz.
+
+Not affiliated with World of Wonder. Listen to the podcast: https://creators.spotify.com/pod/profile/night-fever/
 
 This project was built with [Lovable](https://lovable.dev).
 

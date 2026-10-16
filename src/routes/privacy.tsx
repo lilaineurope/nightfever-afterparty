@@ -17,7 +17,7 @@ export const Route = createFileRoute("/privacy")({
       {
         name: "description",
         content:
-          "How this fan-made Night Fever podcast index handles your data: no trackers, no advertising cookies, what the host logs, and how to exercise your GDPR rights.",
+          "How this fan-made Night Fever podcast index handles your data: no advertising trackers, cookie-free visit counting, what the host logs, and how to exercise your GDPR rights.",
       },
       {
         property: "og:title",
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/privacy")({
       {
         property: "og:description",
         content:
-          "A fan page with no trackers and no advertising cookies. What is collected, why, for how long, and your rights under the GDPR.",
+          "A fan page with no advertising trackers and no cookies. What is collected, why, for how long, and your rights under the GDPR.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/privacy" },
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 const atAGlance = [
-  "No advertising or analytics trackers are loaded on this site.",
+  "No advertising trackers are loaded on this site. Visits are counted anonymously with GoatCounter, without cookies.",
   "No cookies are set for tracking, profiling or personalisation.",
   "Nothing is ever sold or shared with advertisers.",
   "The afterparty newsletter stores your address only if you tick the consent box.",
@@ -77,7 +77,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 11 October 2026. Here's what happens to your data when
+            Last updated: 16 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -165,6 +165,16 @@ function PrivacyPage() {
               Legal basis: legitimate interest in maintaining the site.
             </p>
             <p>
+              <strong className="text-cream">Visit statistics.</strong> To see
+              which pages people read, visits to the published site are counted
+              with GoatCounter, a privacy-friendly, open-source counter. It sets
+              no cookies and does not store your IP address. For each page view
+              it records the page, the site you came from, your browser and
+              system type, screen size and country, and it cannot recognise you
+              across sites or build a profile of you. Legal basis: legitimate
+              interest in knowing which parts of the site are read.
+            </p>
+            <p>
               <strong className="text-cream">Email address.</strong> If you
               tick the consent box on the &ldquo;Join the afterparty&rdquo;
               form and subscribe, your email address is stored together with
@@ -187,9 +197,10 @@ function PrivacyPage() {
 
           <Section title="3. Cookies and trackers">
             <p>
-              This site loads no advertising networks, no analytics services, no
-              social-media pixels and no cross-site trackers, and it sets no
-              cookies for measurement or personalisation. Only strictly necessary
+              This site loads no advertising networks, no social-media pixels and
+              no cross-site trackers, and it sets no cookies for measurement or
+              personalisation. The only measurement is the cookie-free
+              GoatCounter visit count described above. Only strictly necessary
               technical storage used by the hosting platform to deliver the page
               is involved, which does not require consent under the ePrivacy
               rules.
@@ -215,7 +226,8 @@ function PrivacyPage() {
             <p>
               The hosting platform that publishes this site acts as a data
               processor for the technical logs above, under its own terms and
-              privacy documentation. No data is sold, rented or brokered. If a
+              privacy documentation. GoatCounter processes the anonymous visit
+              statistics described above. No data is sold, rented or brokered. If a
               future feature needs another processor (for example an email
               provider), it will be named here before it goes live.
             </p>
@@ -226,7 +238,8 @@ function PrivacyPage() {
               Hosting logs are kept for the short period the hosting platform
               needs them for security and operation, after which they are
               deleted. Error reports are kept only long enough to diagnose the
-              fault. Because the email form stores nothing, there is nothing to
+              fault. Visit statistics are kept as anonymous page counts.
+              Because the email form stores nothing, there is nothing to
               delete there.
             </p>
           </Section>
