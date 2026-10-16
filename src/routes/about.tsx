@@ -67,7 +67,7 @@ function AboutPage() {
             is my happy place. I listen for the stories - and every episode is
             a treasure chest of gems: cross-references to other stories, books,
             places, and so many interesting people and their work. I think it
-            is absolutely awesome. Dive in.
+            is absolutely awesome. Dive in!
           </p>
         </div>
       </section>
@@ -110,7 +110,7 @@ function AboutPage() {
               the guests drop - who, where, what, and at what minute.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Then I discovered Lovable (easily obvious - I live in Stockholm)
+              Then I discovered Lovable (pretty obvious - I live in Stockholm)
               and asked Claude to help me build it. Now I get to play with my
               notes: collect them, sort them, figure out how to show them - and
               turn the whole thing into a game. Love it!
@@ -129,6 +129,9 @@ function AboutPage() {
               my note-taking, shared with you. Hope you enjoy data
               visualisation as much as I do!
             </p>
+            <p className="mt-6 text-2xl font-semibold italic text-pink text-glow-pink">
+              Hej, Lisa
+            </p>
           </div>
         </div>
       </section>
@@ -140,8 +143,8 @@ function AboutPage() {
             This is a fan page. It isn't affiliated with{" "}
             <EntityText text="World of Wonder" />
             , and it doesn't host audio - the listen buttons go to the show
-            itself. If you spot something wrong, or you would like to add
-            something let me know -{" "}
+            itself. If you spot something wrong or would like to add
+            something, let me know -{" "}
             <a
               href={IG_PROFILE}
               target="_blank"
