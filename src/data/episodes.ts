@@ -169,7 +169,7 @@ const s05e06: Episode = {
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-506",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   runtime: "47:17",
-  afterpartyPublished: "2026-10-16",
+  afterpartyPublished: "2026-10-17",
   blurb:
     "Christopher Makos, Warhol's perfect companion! From a Catholic boy in El Monte to Tennessee Williams's typewriter, Tony Perkins on the Riviera, a weekend with Man Ray and Andy in drag.",
   references: makosRefs.length,
