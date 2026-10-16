@@ -1,4 +1,4 @@
-import { SpotifyPlayer, playAt } from "@/components/spotify-player";
+import { FeedPlayer, playAt } from "@/components/feed-player";
 import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -237,7 +237,7 @@ function EpisodePage() {
       </section>
           <SiteFooter />
           <div className="h-28" aria-hidden="true" />
-          <SpotifyPlayer episodeId={EPISODE_URL.split("/episode/")[1]?.split("?")[0] ?? ""} label="S6E1 · James St. James" />
+          <FeedPlayer src="https://anchor.fm/s/68428444/podcast/play/124554015/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-21%2Fc7dcf7aa-4b58-5bb2-8cc1-c4189e449912.mp3" label="S6E1 · James St. James" spotifyUrl={EPISODE_URL} />
 </main>
   );
 }
