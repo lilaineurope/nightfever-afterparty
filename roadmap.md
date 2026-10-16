@@ -90,5 +90,5 @@
 - [x] Patricia Field header: torn-paper collage of people mentioned in S3E1 only, each face once; the fashion-focused second pass (garments on hangers, dress form, fabrics, accessories) is applied to her page title and verified loading in the preview.
 - [x] Publish Patricia Field's new header - published and confirmed live.
 - [x] Top menu: Connections and Map marked "(beta)", matching Pub Quiz.
-- [ ] Timeline: decide whether dated references from the episode indexes (s01e01, s01e02, s03e01, s06e01) should feed the Timeline too - today it only grows from the hand-written scene events and the guest profiles.
+- [x] Timeline: every dated reference from all seven afterparty indexes now feeds the Timeline, each linked back to its afterparty and timestamp.
 - [x] Home page: shows only the three newest afterparties (Richie Rich, Lisa Edelstein, Susanne Bartsch), ranked by afterparty publish date; the Episodes page still lists all seven.
