@@ -117,7 +117,7 @@ function ContactPage() {
                     <option key={t} value={t}>{t}</option>
                   ))}
                 </select>
-                <span aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gold">&#9662;</span>
+                <svg aria-hidden="true" viewBox="0 0 20 20" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gold" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l5 5 5-5" /></svg>
                 </span>
               </label>
               <label className="block">
