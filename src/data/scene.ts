@@ -18,7 +18,7 @@ export type SceneEvent = {
   title: string;
   text: string;
   place: string;
-  decade: "1970s" | "1980s" | "1990s" | "2000s" | "2010s+";
+  decade: "1970s" | "1980s" | "1990s" | "2000s" | "2010s" | "2020s";
   people: string[];
   figures: string[];
   /** Set when the moment comes from an afterparty timestamp index. */
@@ -489,7 +489,7 @@ const curatedEvents: SceneEvent[] = [
 // Milestones from every WOW guest profile, so the timeline, A–Z, map and quiz
 // grow automatically whenever a guest is added.
 function decadeOf(y: number): SceneEvent["decade"] {
-  return y < 1980 ? "1970s" : y < 1990 ? "1980s" : y < 2000 ? "1990s" : y < 2010 ? "2000s" : "2010s+";
+  return y < 1980 ? "1970s" : y < 1990 ? "1980s" : y < 2000 ? "1990s" : y < 2010 ? "2000s" : y < 2020 ? "2010s" : "2020s";
 }
 const guestMilestones: SceneEvent[] = moreGuests.flatMap((g) =>
   g.timeline.flatMap((item, i) => {
@@ -551,7 +551,7 @@ const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
 
 export const sceneEvents: SceneEvent[] = [...curatedEvents, ...guestMilestones, ...afterpartyMoments];
 
-export const decades = ["1970s", "1980s", "1990s", "2000s", "2010s+"] as const;
+export const decades = ["1970s", "1980s", "1990s", "2000s", "2010s", "2020s"] as const;
 
 export const eventsByGuest: Record<string, SceneEvent[]> = Object.fromEntries(
   guests.map((g) => [
