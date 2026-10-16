@@ -1,5 +1,6 @@
 import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
+import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
 import { episodeById, episodePath } from "../data/episodes";
@@ -54,7 +55,6 @@ function EntityPage() {
   const related = relatedTo(e);
   const allMentions = totalMentions(e);
   const perEpisode = mentionsByEpisode(e);
-  const toSec = (t: string) => t.split(":").map(Number).reduce((a, n) => a * 60 + n, 0);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -136,11 +136,7 @@ function EntityPage() {
                       S{episode.season}E{episode.episode} · {episode.guest}
                     </Link>
                     <span className="text-xs text-muted-foreground">
-                      {r.time === "On camera" ? "On camera" : !episode.listenUrl.includes("/episode/") ? (
-                        <span className="font-mono">{r.time}</span>
-                      ) : (
-                        <a href={`${episode.listenUrl}?t=${toSec(r.time) * 1000}`} target="_blank" rel="noreferrer" className="font-mono text-gold hover:text-pink">{r.time}</a>
-                      )}
+                      {r.time === "On camera" ? "On camera" : <Timestamp episodeId={episode.id} time={r.time} />}
                       {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"} in this episode`}
                     </span>
                   </div>

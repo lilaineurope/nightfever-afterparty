@@ -1,3 +1,4 @@
+import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -72,6 +73,7 @@ function crossLinks(name: string) {
 type Sort = "mentions" | "all" | "time";
 
 function EpisodePage() {
+  useEpisodePlayer("s05e06");
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
@@ -145,8 +147,8 @@ function EpisodePage() {
         <div className="mx-auto max-w-5xl">
           <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
         </div>
-        <MoodSpectrum swatchFor={swatchFor} nested moods={moods.filter((m) => m.time === "On camera")} id="presenter-looks" title="On screen" />
-        <MoodSpectrum swatchFor={swatchFor} nested moods={moods.filter((m) => m.time !== "On camera")} id="story-looks" title="In the stories" />
+        <MoodSpectrum episodeId="s05e06" swatchFor={swatchFor} nested moods={moods.filter((m) => m.time === "On camera")} id="presenter-looks" title="On screen" />
+        <MoodSpectrum episodeId="s05e06" swatchFor={swatchFor} nested moods={moods.filter((m) => m.time !== "On camera")} id="story-looks" title="In the stories" />
       </section>
 
       <section className="px-6 pb-24">
@@ -171,7 +173,7 @@ function EpisodePage() {
                 {r.time === "On camera" ? (
                   <span className="text-sm text-gold">On camera</span>
                 ) : (
-                  <span className="font-mono text-sm text-gold">{r.time}</span>
+                  <Timestamp episodeId="s05e06" time={r.time} className="text-sm" />
                 )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">

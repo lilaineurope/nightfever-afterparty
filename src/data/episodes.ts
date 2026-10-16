@@ -18,6 +18,8 @@ export type Episode = {
   watchUrl: string;
   /** Spotify address where the episode can be heard */
   listenUrl: string;
+  /** The show's own public podcast audio (RSS enclosure) - feeds the site's episode player and every timestamp */
+  audioUrl: string;
   /** Approximate runtime as listed on Spotify */
   runtime: string;
   /** Date this afterparty connection was published on this site (ISO) */
@@ -40,6 +42,8 @@ const s06e01: Episode = {
     released: "2026-08-21",
     watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-601",
     listenUrl: "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4",
+    audioUrl:
+      "https://anchor.fm/s/68428444/podcast/play/124554015/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-21%2Fc7dcf7aa-4b58-5bb2-8cc1-c4189e449912.mp3",
     runtime: "54 min",
     afterpartyPublished: "2026-10-10",
     blurb:
@@ -62,6 +66,8 @@ const s01e01: Episode = {
     watchUrl:
       "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
     listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+    audioUrl:
+      "https://traffic.megaphone.fm/APO6963798592.mp3",
     runtime: "51 min",
     afterpartyPublished: "2026-10-11",
     blurb:
@@ -83,6 +89,8 @@ const s01e02: Episode = {
   released: "2021-09-06",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-michael-musto",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://traffic.megaphone.fm/APO5000936966.mp3",
   runtime: "1:04:35",
   afterpartyPublished: "2026-10-11",
   blurb:
@@ -100,6 +108,8 @@ const s01e03: Episode = {
   released: "2021-09-13",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-lisa-edelstein",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://traffic.megaphone.fm/APO6468224536.mp3",
   runtime: "1:08:34",
   afterpartyPublished: "2026-10-15",
   blurb:
@@ -117,6 +127,8 @@ const s02e03: Episode = {
   released: "2022-08-22",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-203",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://traffic.megaphone.fm/APO2258730998.mp3",
   runtime: "1:01:34",
   afterpartyPublished: "2026-10-14",
   blurb:
@@ -134,6 +146,8 @@ const s03e01: Episode = {
   released: "2023-06-15",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-301",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://traffic.megaphone.fm/APO8384165495.mp3",
   runtime: "52 min",
   afterpartyPublished: "2026-10-13",
   blurb:
@@ -151,6 +165,8 @@ const s04e08: Episode = {
   released: "2024-08-21",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-408",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://traffic.megaphone.fm/APO8522098604.mp3",
   runtime: "1:03:03",
   afterpartyPublished: "2026-10-16",
   blurb:
@@ -168,6 +184,8 @@ const s05e06: Episode = {
   released: "2025-07-23",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-506",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://anchor.fm/s/68428444/podcast/play/105847809/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-22%2F176ceac0-a5de-b68f-2a93-568eb4cf8014.mp3",
   runtime: "47:17",
   afterpartyPublished: "2026-10-17",
   blurb:

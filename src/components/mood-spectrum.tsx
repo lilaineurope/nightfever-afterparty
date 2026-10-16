@@ -1,3 +1,4 @@
+import { Timestamp } from "@/components/episode-player";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { EntityText } from "./entity-text";
@@ -20,7 +21,8 @@ function paletteFor(entry: MoodEntry) {
   });
 }
 
-export function MoodSpectrum({ moods, id, title, swatchFor, nested = false }: {
+export function MoodSpectrum({ moods, id, title, swatchFor, nested = false, episodeId }: {
+  episodeId?: string;
   moods: MoodEntry[];
   id: string;
   title: string;
@@ -57,7 +59,7 @@ export function MoodSpectrum({ moods, id, title, swatchFor, nested = false }: {
         <article className="mt-4 border-l-4 pl-5 py-2" style={{ borderLeftColor: palette[0]?.hex ?? sw.colors[0] }} aria-live="polite">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <LookHeading className="text-xl font-semibold text-cream">{active.name}</LookHeading>
-            {active.time === "On camera" ? <span className="text-sm text-gold">On camera</span> : <span className="font-mono text-sm text-gold">{active.time}</span>}
+            {active.time === "On camera" ? <span className="text-sm text-gold">On camera</span> : episodeId ? <Timestamp episodeId={episodeId} time={active.time} className="text-sm" /> : <span className="font-mono text-sm text-gold">{active.time}</span>}
           </div>
           {palette.length ? (
             <ul aria-label="Look colours" className="mt-2 flex flex-wrap gap-2">

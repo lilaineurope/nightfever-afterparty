@@ -1,4 +1,4 @@
-import { FeedPlayer, playAt } from "@/components/feed-player";
+import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -54,8 +54,6 @@ export const Route = createFileRoute("/episodes/s06e01")({
 });
 
 const toSec = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);
-// Fallback link (ctrl/cmd-click or before the player loads): opens Spotify at that second.
-const spotifyAt = (t: string) => `${EPISODE_URL}?t=${toSec(t)}`;
 
 // How often a name comes up across the rest of the show (guests + scene timeline)
 function crossLinks(name: string) {
@@ -73,6 +71,7 @@ function crossLinks(name: string) {
 type Sort = "mentions" | "all" | "time";
 
 function EpisodePage() {
+  useEpisodePlayer("s06e01");
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
@@ -174,9 +173,7 @@ function EpisodePage() {
                 {r.time === "On camera" ? (
                   <span className="text-sm text-gold">On camera</span>
                 ) : (
-                  <a href={spotifyAt(r.time)} target="_blank" rel="noreferrer"
-                    onClick={(e) => { if (playAt(toSec(r.time))) e.preventDefault(); }}
-                    className="font-mono text-sm text-gold hover:text-pink">&#9654; {r.time}</a>
+                  <Timestamp episodeId="s06e01" time={r.time} className="text-sm" />
                 )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">
@@ -236,8 +233,6 @@ function EpisodePage() {
         </div>
       </section>
           <SiteFooter />
-          <div className="h-28" aria-hidden="true" />
-          <FeedPlayer src="https://anchor.fm/s/68428444/podcast/play/124554015/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-21%2Fc7dcf7aa-4b58-5bb2-8cc1-c4189e449912.mp3" label="S6E1 · James St. James" spotifyUrl={EPISODE_URL} />
 </main>
   );
 }
@@ -287,7 +282,7 @@ function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: s
             {active.time === "On camera" ? (
               <span className="text-sm text-gold">On camera</span>
             ) : (
-              <a href={spotifyAt(active.time)} target="_blank" rel="noreferrer" onClick={(e) => { if (playAt(toSec(active.time))) e.preventDefault(); }} className="font-mono text-sm text-gold hover:text-pink">&#9654; {active.time}</a>
+              <Timestamp episodeId="s06e01" time={active.time} className="text-sm" />
             )}
           </div>
           <p className="mt-1 text-xs uppercase tracking-[0.15em] text-pink">{sw.label}</p>

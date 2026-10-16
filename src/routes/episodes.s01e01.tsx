@@ -1,3 +1,4 @@
+import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -72,6 +73,7 @@ function crossLinks(name: string) {
 type Sort = "mentions" | "all" | "time";
 
 function EpisodePage() {
+  useEpisodePlayer("s01e01");
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
@@ -140,12 +142,14 @@ function EpisodePage() {
       </section>
 
       <MoodSpectrum
+        episodeId="s01e01"
         swatchFor={swatchFor}
         moods={moods.filter((m) => m.time !== "On camera")}
         id="episode-mood"
         title="Mood of the episode"
       />
       <MoodSpectrum
+        episodeId="s01e01"
         swatchFor={swatchFor}
         moods={moods.filter((m) => m.time === "On camera")}
         id="presenter-looks"
@@ -175,7 +179,7 @@ function EpisodePage() {
                 {r.time === "On camera" ? (
                   <span className="text-sm text-gold">On camera</span>
                 ) : (
-                  <span className="font-mono text-sm text-gold">{r.time}</span>
+                  <Timestamp episodeId="s01e01" time={r.time} className="text-sm" />
                 )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">

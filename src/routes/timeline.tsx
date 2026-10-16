@@ -1,3 +1,4 @@
+import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { EntityLink } from "../components/entity-link";
@@ -111,7 +112,7 @@ function TimelinePage() {
                   <a href={`/episodes/${e.source.episodeId}`} className="text-pink underline-offset-2 hover:underline">
                     {e.source.guest} Afterparty ({e.source.label})
                   </a>
-                  {e.source.time && e.source.time !== "On camera" ? ` at ${e.source.time}` : ""}
+                  {e.source.time && e.source.time !== "On camera" ? (<> at <Timestamp episodeId={e.source.episodeId} time={e.source.time} /></>) : ""}
                 </p>
               )}
               <div className="mt-3 flex flex-wrap gap-2">

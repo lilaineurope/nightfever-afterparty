@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import { SiteMenu } from "../components/site-menu";
 import { SiteStats } from "../components/site-stats";
+import { EpisodePlayer } from "../components/episode-player";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -134,6 +135,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <SiteMenu />
       <Outlet />
+      <EpisodePlayer />
       <SiteStats />
     </QueryClientProvider>
   );
