@@ -2,6 +2,7 @@ import mustoRefs from "./s01e02.json";
 import fieldRefs from "./s03e01.json";
 import bartschRefs from "./s02e03.json";
 import edelsteinRefs from "./s01e03.json";
+import richieRefs from "./s04e08.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -141,8 +142,25 @@ const s03e01: Episode = {
   top: [...fieldRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
+const s04e08: Episode = {
+  id: "s04e08",
+  season: 4,
+  episode: 8,
+  guest: "Richie Rich",
+  released: "2024-08-21",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-408",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  runtime: "1:03:03",
+  afterpartyPublished: "2026-10-16",
+  blurb:
+    "Boom! Richie Rich skates from the Ice Capades to the Style Summit, Hotel 17 and Susanne Bartsch's side - then Heatherette, with Miss Piggy front row and Paris in a studded bodysuit.",
+  references: richieRefs.length,
+  mentions: richieRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...richieRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
 /** Season and episode order, earliest first. */
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s06e01].sort((a, b) =>
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s04e08, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -154,7 +172,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s04e08" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -166,6 +184,8 @@ export function episodePath(
       return "/episodes/s02e03";
     case "s03e01":
       return "/episodes/s03e01";
+    case "s04e08":
+      return "/episodes/s04e08";
     default:
       return "/episodes/s06e01";
   }
