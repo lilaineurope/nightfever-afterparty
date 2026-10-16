@@ -105,6 +105,15 @@ function TimelinePage() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 <EntityText text={e.text} />
               </p>
+              {e.source && (
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Heard in the{" "}
+                  <a href={`/episodes/${e.source.episodeId}`} className="text-pink underline-offset-2 hover:underline">
+                    {e.source.guest} afterparty ({e.source.label})
+                  </a>
+                  {e.source.time && e.source.time !== "On camera" ? ` at ${e.source.time}` : ""}
+                </p>
+              )}
               <div className="mt-3 flex flex-wrap gap-2">
                 {e.people.map((slug) => (
                   <Link
