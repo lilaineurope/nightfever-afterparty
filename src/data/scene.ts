@@ -6,6 +6,7 @@ import s01e03 from "./s01e03.json";
 import s02e03 from "./s02e03.json";
 import s03e01 from "./s03e01.json";
 import s04e08 from "./s04e08.json";
+import s05e06 from "./s05e06.json";
 import s06e01 from "./s06e01.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
@@ -523,6 +524,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s02e03", label: "S2 E3", guest: "Susanne Bartsch", refs: s02e03 as Ref[] },
   { id: "s03e01", label: "S3 E1", guest: "Patricia Field", refs: s03e01 as Ref[] },
   { id: "s04e08", label: "S4 E8", guest: "Richie Rich", refs: s04e08 as Ref[] },
+  { id: "s05e06", label: "S5 E6", guest: "Christopher Makos", refs: s05e06 as Ref[] },
   { id: "s06e01", label: "S6 E1", guest: "James St. James", refs: s06e01 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
