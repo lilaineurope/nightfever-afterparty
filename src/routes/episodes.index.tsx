@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { episodes } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
@@ -28,7 +29,10 @@ export const Route = createFileRoute("/episodes/")({
   component: EpisodesPage,
 });
 
+const SEASONS = [1, 2, 3, 4, 5, 6];
+
 function EpisodesPage() {
+  const [season, setSeason] = useState<number | null>(null);
   // Ranked by afterparty publish date: the connection published here most
   // recently comes first. This is the date the index went live on this site,
   // not the date the episode was published at WOW Presents Plus.
@@ -66,8 +70,27 @@ function EpisodesPage() {
 
       {/* Episode list */}
       <section className="px-6 pb-24">
+        <div className="mx-auto mb-8 flex max-w-5xl flex-wrap justify-center gap-2" role="group" aria-label="Filter by season">
+          {[null, ...SEASONS].map((s) => {
+            const count = s === null ? episodes.length : episodes.filter((ep) => ep.season === s).length;
+            const on = season === s;
+            return (
+              <button key={s ?? "all"} type="button" aria-pressed={on} disabled={count === 0}
+                onClick={() => setSeason(s)}
+                title={count === 0 ? "No afterparty for this season yet" : undefined}
+                className={`rounded-full border px-4 py-1.5 text-sm transition ${
+                  on
+                    ? "border-gold bg-gold text-gold-foreground"
+                    : "border-border text-muted-foreground hover:border-pink hover:text-pink"
+                } disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted-foreground`}>
+                {s === null ? "All seasons" : `Season ${s}`}
+                <span className={`ml-1.5 text-xs ${on ? "" : "text-pink"}`}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
         <div className="mx-auto flex max-w-5xl flex-col gap-6">
-          {byAfterpartyPublishDate.map((ep) => (
+          {byAfterpartyPublishDate.filter((ep) => season === null || ep.season === season).map((ep) => (
             <EpisodeBlock key={ep.id} ep={ep} showDates headingLevel={2} />
           ))}
         </div>
