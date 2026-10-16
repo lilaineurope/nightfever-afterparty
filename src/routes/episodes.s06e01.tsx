@@ -1,3 +1,4 @@
+import { SpotifyPlayer, playAt } from "@/components/spotify-player";
 import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -53,8 +54,8 @@ export const Route = createFileRoute("/episodes/s06e01")({
 });
 
 const toSec = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);
-// Spotify timestamp links need the time in milliseconds (seconds are ignored).
-const spotifyAt = (t: string) => `${EPISODE_URL}?t=${toSec(t) * 1000}`;
+// Fallback link (ctrl/cmd-click or before the player loads): opens Spotify at that second.
+const spotifyAt = (t: string) => `${EPISODE_URL}?t=${toSec(t)}`;
 
 // How often a name comes up across the rest of the show (guests + scene timeline)
 function crossLinks(name: string) {
@@ -174,7 +175,8 @@ function EpisodePage() {
                   <span className="text-sm text-gold">On camera</span>
                 ) : (
                   <a href={spotifyAt(r.time)} target="_blank" rel="noreferrer"
-                    className="font-mono text-sm text-gold hover:text-pink">{r.time}</a>
+                    onClick={(e) => { if (playAt(toSec(r.time))) e.preventDefault(); }}
+                    className="font-mono text-sm text-gold hover:text-pink">&#9654; {r.time}</a>
                 )}
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2">
@@ -234,6 +236,8 @@ function EpisodePage() {
         </div>
       </section>
           <SiteFooter />
+          <div className="h-28" aria-hidden="true" />
+          <SpotifyPlayer episodeId={EPISODE_URL.split("/episode/")[1]?.split("?")[0] ?? ""} label="S6E1 · James St. James" />
 </main>
   );
 }
@@ -283,7 +287,7 @@ function MoodSpectrum({ moods, id, title }: { moods: Ref[]; id: string; title: s
             {active.time === "On camera" ? (
               <span className="text-sm text-gold">On camera</span>
             ) : (
-              <a href={spotifyAt(active.time)} target="_blank" rel="noreferrer" className="font-mono text-sm text-gold hover:text-pink">{active.time}</a>
+              <a href={spotifyAt(active.time)} target="_blank" rel="noreferrer" onClick={(e) => { if (playAt(toSec(active.time))) e.preventDefault(); }} className="font-mono text-sm text-gold hover:text-pink">&#9654; {active.time}</a>
             )}
           </div>
           <p className="mt-1 text-xs uppercase tracking-[0.15em] text-pink">{sw.label}</p>
