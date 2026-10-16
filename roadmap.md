@@ -91,3 +91,4 @@
 - [x] Publish Patricia Field's new header - published and confirmed live.
 - [x] Top menu: Connections and Map marked "(beta)", matching Pub Quiz.
 - [ ] Timeline: decide whether dated references from the episode indexes (s01e01, s01e02, s03e01, s06e01) should feed the Timeline too - today it only grows from the hand-written scene events and the guest profiles.
+- [x] Home page: shows only the three newest afterparties (Richie Rich, Lisa Edelstein, Susanne Bartsch), ranked by afterparty publish date; the Episodes page still lists all seven.

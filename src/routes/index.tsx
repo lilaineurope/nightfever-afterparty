@@ -183,7 +183,7 @@ function Index() {
               and dive in!
             </p>
           </div>
-          {/* Same ranking as the Episodes page: afterparty publish date, newest first. */}
+          {/* Same ranking as the Episodes page: afterparty publish date, newest first. Only the three newest show here. */}
           <div className="mt-6 flex flex-col gap-6">
             {[...episodes]
               .sort(
@@ -192,6 +192,7 @@ function Index() {
                   b.season - a.season ||
                   b.episode - a.episode,
               )
+              .slice(0, 3)
               .map((ep) => (
                 <EpisodeBlock key={ep.id} ep={ep} showDates />
               ))}
