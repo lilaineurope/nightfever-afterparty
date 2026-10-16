@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 // Messages are delivered to Lisa's inbox by Web3Forms. The access key is public
 // by design and only identifies the form: the inbox address never appears on the
 // site or in this code.
-const WEB3FORMS_KEY = "";
+const WEB3FORMS_KEY = "3d0712b7-d07c-41fa-a7dc-f0fef1d6994c";
 
 type Search = { about?: string };
 
