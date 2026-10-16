@@ -109,11 +109,11 @@ export const coreGuests: Guest[] = [
       },
       {
         year: "1990s",
-        text: "His rooms become the home of the Club Kids - and of the Michael Alig scandal.",
+        text: "His rooms become the home of the Club Kids - and are pulled into the fallout of the Michael Alig case.",
       },
       {
         year: "Late 1990s",
-        text: "Prosecuted and eventually deported to Canada.",
+        text: "Acquitted on federal drug charges, then pleads guilty in a tax evasion case and is eventually deported to Canada.",
       },
       { year: "2020", text: "Publishes his memoir, Club King." },
       {
