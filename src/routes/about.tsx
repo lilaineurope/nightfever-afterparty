@@ -101,6 +101,9 @@ function AboutPage() {
           </figure>
 
           <div>
+            <p className="mb-4 text-2xl font-semibold italic text-pink text-glow-pink">
+              Hej, Lisa here.
+            </p>
             <h2 className="text-2xl font-bold tracking-tight text-cream">
               It started as a list
             </h2>
@@ -128,9 +131,6 @@ function AboutPage() {
               for Pub Quiz night - come say hi. Everything you're looking at is
               my note-taking, shared with you. Hope you enjoy data
               visualisation as much as I do!
-            </p>
-            <p className="mt-6 text-2xl font-semibold italic text-pink text-glow-pink">
-              Hej, Lisa
             </p>
           </div>
         </div>
