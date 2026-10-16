@@ -9,8 +9,12 @@ import { episodePath, episodes } from "../data/episodes";
  * The guest half of the scene story: the expandable guest cards. Rendered on
  * the Guests page (/guests) so the people live on one page.
  */
+const SEASONS = [1, 2, 3, 4, 5, 6];
+const seasonOf = (episode: string) => Number(episode.match(/Season (\d+)/)?.[1] ?? 0);
+
 export function GuestsSection() {
   const [active, setActive] = useState<string | null>(null);
+  const [season, setSeason] = useState<number | null>(null);
 
   return (
     <section className="px-6 pb-16 pt-28">
@@ -19,8 +23,27 @@ export function GuestsSection() {
           Tap a name to open their full timeline - so many stories!
         </p>
 
+        <div className="mt-8 flex flex-wrap justify-center gap-2" role="group" aria-label="Filter by season">
+          {[null, ...SEASONS].map((s) => {
+            const count = s === null ? guests.length : guests.filter((g) => seasonOf(g.episode) === s).length;
+            const on = season === s;
+            return (
+              <button key={s ?? "all"} type="button" aria-pressed={on} disabled={count === 0}
+                onClick={() => setSeason(s)}
+                className={`rounded-full border px-4 py-1.5 text-sm transition ${
+                  on
+                    ? "border-gold bg-gold text-gold-foreground"
+                    : "border-border text-muted-foreground hover:border-pink hover:text-pink"
+                } disabled:cursor-not-allowed disabled:opacity-40`}>
+                {s === null ? "All seasons" : `Season ${s}`}
+                <span className={`ml-1.5 text-xs ${on ? "" : "text-pink"}`}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
         <div className="mt-8 space-y-4">
-          {guests.map((guest) => {
+          {guests.filter((g) => season === null || seasonOf(g.episode) === season).map((guest) => {
             const open = active === guest.slug;
             const indexedEpisode = episodes.find((episode) => episode.guest === guest.name);
             return (

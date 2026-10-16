@@ -29,6 +29,16 @@ function nodeRadius(n: Node) {
   return n.kind === "episode" ? 22 : 4 + n.weight * 3;
 }
 
+/** Five-pointed star around (0,0), point up - every episode is a pink star. */
+function starPoints(outer: number): string {
+  const inner = outer * 0.48;
+  return Array.from({ length: 10 }, (_, i) => {
+    const rad = i % 2 === 0 ? outer : inner;
+    const a = -Math.PI / 2 + (i * Math.PI) / 5;
+    return `${(rad * Math.cos(a)).toFixed(1)},${(rad * Math.sin(a)).toFixed(1)}`;
+  }).join(" ");
+}
+
 export function ConnectionsGraph() {
   const navigate = useNavigate();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -230,9 +240,12 @@ export function ConnectionsGraph() {
                     drag.current = null;
                   }}
                 >
-                  <circle r={r}
-                    className={n.kind === "episode" ? "fill-pink stroke-cream" : n.id === active ? "fill-pink" : n.weight > 1 ? "fill-cream" : "fill-gold"}
-                    strokeWidth={n.kind === "episode" ? 2 : 0} />
+                  {n.kind === "episode" ? (
+                    <polygon points={starPoints(r * 1.35)} className="fill-pink stroke-cream" strokeWidth={2} strokeLinejoin="round" />
+                  ) : (
+                    <circle r={r}
+                      className={n.id === active ? "fill-pink" : n.weight > 1 ? "fill-cream" : "fill-gold"} />
+                  )}
                   {showLabel && (
                     <text y={r + 12} textAnchor="middle"
                       className={n.kind === "episode" ? "fill-pink font-semibold" : "fill-cream"}

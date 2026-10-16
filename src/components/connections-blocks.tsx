@@ -57,15 +57,57 @@ function Block({
 
 export function PopularPlaces() {
   return (
-    <Block
+    <TopTen
       title="Most popular"
       highlight="places"
-      blurb="The rooms the gang keeps going back to - counted by how often they get named. Which one would you sneak into?"
-    >
-      {popularPlaces.map((p) => (
-        <Card key={p.slug} item={p} />
-      ))}
-    </Block>
+      blurb="The top 10 rooms the gang keeps going back to - counted by how often they get named. Which one would you sneak into?"
+      items={popularPlaces.map((p) => ({ slug: p.slug, name: p.name, episodeIds: p.episodeIds, mentions: p.mentions }))}
+    />
+  );
+}
+
+/** A numbered top-10 list - used for Great Connectors and Most popular places. */
+export function TopTen({
+  title,
+  highlight,
+  blurb,
+  items,
+}: {
+  title: string;
+  highlight: string;
+  blurb: string;
+  items: { slug: string; name: string; episodeIds: string[]; mentions: number }[];
+}) {
+  return (
+    <section className="px-4 pb-16 sm:px-6">
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+          {title} <span className="text-gold">{highlight}</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+          {blurb}
+        </p>
+        <ol className="mt-8 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+          {items.slice(0, 10).map((p, i) => (
+            <li key={p.slug}>
+              <Link
+                to="/explore/$slug"
+                params={{ slug: p.slug }}
+                className="flex items-baseline gap-4 px-5 py-3 transition hover:bg-gold/5"
+              >
+                <span className="w-7 shrink-0 text-right text-lg font-bold text-pink">{i + 1}</span>
+                <span className="flex-1 font-semibold text-gold">{p.name}</span>
+                <span className="text-right text-xs text-muted-foreground">
+                  {p.episodeIds.length} {p.episodeIds.length === 1 ? "episode" : "episodes"} · {p.mentions}{" "}
+                  {p.mentions === 1 ? "mention" : "mentions"}
+                  <span className="hidden sm:inline"> · {p.episodeIds.map((id) => episodeShort(id)).join(" · ")}</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 }
 

@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ClientOnly } from "@tanstack/react-router";
 import { ConnectionsGraph } from "@/components/connections-graph";
 import { SiteFooter } from "@/components/site-footer";
-import { BestInFashion, PopularPlaces } from "@/components/connections-blocks";
+import { BestInFashion, PopularPlaces, TopTen } from "@/components/connections-blocks";
 import { episodePeople } from "@/data/episode-connections";
-import { episodeShort } from "@/data/entities";
 export const Route = createFileRoute("/connections")({
   staticData: { sitemap: true },
   component: ConnectionsPage,
@@ -72,39 +71,15 @@ function ConnectionsPage() {
 }
 
 function GreatConnectors() {
-  const connectors = episodePeople.filter((p) => p.episodeIds.length > 1);
+  const connectors = episodePeople
+    .filter((p) => p.episodeIds.length > 1)
+    .sort((a, b) => b.episodeIds.length - a.episodeIds.length || b.mentions - a.mentions);
   return (
-    <section className="px-4 pb-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-          Great <span className="text-gold">Connectors</span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-          The names dropped in more than one episode - the ones that tie the
-          stars together. Tap any name and dive in!
-        </p>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {connectors.map((p) => (
-            <li key={p.slug}>
-              <Link
-                to="/explore/$slug"
-                params={{ slug: p.slug }}
-                className="block rounded-xl border border-border bg-card p-4 transition hover:border-gold/50"
-              >
-                <span className="block font-semibold text-gold">{p.name}</span>
-                <span className="mt-1 block text-xs text-muted-foreground">
-                  {p.episodeIds.length} episodes
-                  {" · "}
-                  {p.mentions} {p.mentions === 1 ? "mention" : "mentions"}
-                </span>
-                <span className="mt-1 block text-[11px] text-muted-foreground/70">
-                  {p.episodeIds.map((id) => episodeShort(id)).join(" · ")}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <TopTen
+      title="Great"
+      highlight="Connectors"
+      blurb="The top 10 names dropped in the most episodes - the ones that tie the stars together. Tap any name and dive in!"
+      items={connectors}
+    />
   );
 }

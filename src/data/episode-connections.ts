@@ -69,7 +69,7 @@ const byMentions = (a: EpisodePerson, b: EpisodePerson) =>
 export const popularPlaces = episodeEntities
   .filter((row) => row.categories.includes('Place'))
   .sort(byMentions)
-  .slice(0, 8);
+  .slice(0, 10);
 
 /** The looks the episodes described most often, most mentioned first. */
 export const bestInFashion = episodeEntities
