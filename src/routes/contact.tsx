@@ -109,13 +109,16 @@ function ContactPage() {
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">What it's about</span>
-                <select name="about" required defaultValue={about ?? ""} className={`mt-1 [color-scheme:dark] ${FIELD}`}>
+                <span className="relative mt-1 block">
+                <select name="about" required defaultValue={about ?? ""} className={`appearance-none pr-10 [color-scheme:dark] ${FIELD}`}>
                   <option value="" disabled>Pick a page</option>
                   {about && !TOPICS.includes(about) && <option value={about}>{about}</option>}
                   {TOPICS.map((t) => (
                     <option key={t} value={t}>{t}</option>
                   ))}
                 </select>
+                <span aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gold">&#9662;</span>
+                </span>
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">Your message</span>
