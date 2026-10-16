@@ -6,8 +6,8 @@ const PAGES = [
   { to: "/explore", label: "Everything A–Z" },
   { to: "/guests", label: "Guests" },
   { to: "/timeline", label: "Timeline" },
-  { to: "/connections", label: "Connections" },
-  { to: "/map", label: "Map" },
+  { to: "/connections", label: "Connections (beta)" },
+  { to: "/map", label: "Map (beta)" },
   { to: "/quiz", label: "Pub Quiz (beta)" },
 ] as const;
 
