@@ -17,12 +17,12 @@ export const Route = createFileRoute("/unsubscribe")({
       { title: "Unsubscribe | Night Fever fan page" },
       {
         name: "description",
-        content: "Leaving the party? Remove your email address from my Night Fever afterparty newsletter.",
+        content: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.",
       },
       { property: "og:title", content: "Unsubscribe | Night Fever fan page" },
       {
         property: "og:description",
-        content: "Leaving the party? Remove your email address from my Night Fever afterparty newsletter.",
+        content: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -62,7 +62,7 @@ function UnsubscribePage() {
         {token && !result && (
           <>
             <p className="mt-4 text-sm text-muted-foreground">
-              This removes your email address from the afterparty list. You can
+              This removes your email address from the Afterparty list. You can
               always sign up again later.
             </p>
             <button

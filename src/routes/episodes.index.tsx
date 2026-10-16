@@ -14,13 +14,13 @@ export const Route = createFileRoute("/episodes/")({
       {
         name: "description",
         content:
-          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest afterparty first!",
+          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!",
       },
       { property: "og:title", content: "Afterparty | Night Fever fan page" },
       {
         property: "og:description",
         content:
-          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest afterparty first!",
+          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -63,7 +63,7 @@ function EpisodesPage() {
             grab a drink and dive in!
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold/80">
-            Newest afterparty first
+            Newest Afterparty first
           </p>
         </div>
       </section>
@@ -77,7 +77,7 @@ function EpisodesPage() {
             return (
               <button key={s ?? "all"} type="button" aria-pressed={on} disabled={count === 0}
                 onClick={() => setSeason(s)}
-                title={count === 0 ? "No afterparty for this season yet" : undefined}
+                title={count === 0 ? "No Afterparty for this season yet" : undefined}
                 className={`rounded-full border px-4 py-1.5 text-sm transition ${
                   on
                     ? "border-gold bg-gold text-gold-foreground"

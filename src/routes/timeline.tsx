@@ -109,7 +109,7 @@ function TimelinePage() {
                 <p className="mt-2 text-xs text-muted-foreground">
                   Heard in the{" "}
                   <a href={`/episodes/${e.source.episodeId}`} className="text-pink underline-offset-2 hover:underline">
-                    {e.source.guest} afterparty ({e.source.label})
+                    {e.source.guest} Afterparty ({e.source.label})
                   </a>
                   {e.source.time && e.source.time !== "On camera" ? ` at ${e.source.time}` : ""}
                 </p>

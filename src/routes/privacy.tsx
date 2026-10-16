@@ -41,7 +41,7 @@ const atAGlance = [
   "No advertising trackers are loaded on this site. Visits are counted anonymously with GoatCounter, without cookies.",
   "No cookies are set for tracking, profiling or personalisation.",
   "Nothing is ever sold or shared with advertisers.",
-  "The afterparty newsletter stores your address only if you tick the consent box.",
+  "The Afterparty newsletter stores your address only if you tick the consent box.",
   "Every newsletter email carries a one-click unsubscribe link.",
 ];
 
@@ -176,7 +176,7 @@ function PrivacyPage() {
             </p>
             <p>
               <strong className="text-cream">Email address.</strong> If you
-              tick the consent box on the &ldquo;Join the afterparty&rdquo;
+              tick the consent box on the &ldquo;Join the Afterparty&rdquo;
               form and subscribe, your email address is stored together with
               the exact time you agreed. It is used only to send the
               newsletter: episode reminders, guest highlights and fan notes.

@@ -161,17 +161,14 @@ function Index() {
       {/* Latest episodes */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-            Latest afterparty
-          </p>
-          <div className="mx-auto mt-6 max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-              Welcome to the afterparty
+              Welcome to the Afterparty
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               On the Night Fever podcast, James St. James asks every guest
               about the nights they lived through - the people they loved,
-              feuded with and lost. This site is my afterparty, aka the
+              feuded with and lost. This site is my Afterparty, aka the
               morning-after debrief!
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
@@ -184,9 +181,9 @@ function Index() {
             </p>
           </div>
           <h3 className="mt-14 text-center text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-            Latest afterparty releases
+            Latest Afterparty releases
           </h3>
-          {/* Same ranking as the Episodes page: afterparty publish date, newest first. Only the three newest show here. */}
+          {/* Same ranking as the Episodes page: Afterparty publish date, newest first. Only the three newest show here. */}
           <div className="mt-6 flex flex-col gap-6">
             {[...episodes]
               .sort(
@@ -203,7 +200,7 @@ function Index() {
           <div className="mt-10 text-center">
             <Link to="/episodes"
               className="inline-block rounded-full border border-gold px-6 py-3 font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground">
-              More afterparties &rarr;
+              More Afterparties &rarr;
             </Link>
           </div>
         </div>
@@ -242,10 +239,10 @@ function Index() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Join the afterparty!
+            Join the Afterparty!
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Want a heads-up when a new afterparty goes up? I'll send episode
+            Want a heads-up when a new Afterparty goes up? I'll send episode
             reminders, guest highlights and fan notes straight to your inbox.
           </p>
           {result ? (
@@ -279,7 +276,7 @@ function Index() {
                   className="mt-0.5 h-4 w-4 shrink-0 accent-pink"
                 />
                 <span>
-                  I want to receive the Night Fever afterparty newsletter and I
+                  I want to receive the Night Fever Afterparty newsletter and I
                   understand my email address is stored only for this list. I
                   can unsubscribe any time with the link in every email. See
                   the{" "}

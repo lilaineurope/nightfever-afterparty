@@ -58,7 +58,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                 <div className="p-8">
                   {showDates && (
                     <div className="mb-5 text-xs leading-relaxed text-muted-foreground">
-                      <p>On the afterparty since {formatDate(ep.afterpartyPublished)}</p>
+                      <p>On the Afterparty since {formatDate(ep.afterpartyPublished)}</p>
                       <p className="mt-1">First aired on WOW {formatDate(ep.released)}</p>
                     </div>
                   )}

@@ -45,7 +45,7 @@ export const subscribeNewsletter = createServerFn({ method: "POST" })
     }
     return {
       ok: true as const,
-      message: "You're on the list - welcome to the afterparty! So exciting!",
+      message: "You're on the list - welcome to the Afterparty! So exciting!",
     };
   });
 
