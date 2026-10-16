@@ -200,6 +200,9 @@ function MapPage() {
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
           Every real club, street and city named on the site - pinned! Under each place you'll find the names that come up alongside it, in the same moment of an episode or the same story on the timeline. Pick a category to see only the places linked to it - the number tells you how many places that is.
         </p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          And then there's <span className="font-semibold text-pink">Bring us home</span>. The guests don't only talk about famous clubs - they mention the Burger King bathroom where Richie got his make-up done, a farm in Pennsylvania with an attacking rooster, a boutique window on Ibiza, a club nobody can quite remember the name of. Many of these places closed long ago, changed their name, or were never written down anywhere, so I couldn't find them on a map. They're still part of the story, so they get their own button - until we find out where they really were.
+        </p>
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {chips.map(([c, n]) => (
             <button
@@ -229,7 +232,7 @@ function MapPage() {
           {cat === BRING_HOME ? (
             <div className="max-h-[640px] overflow-y-auto rounded-3xl border border-pink/40 bg-card p-6">
               <h2 className="text-2xl font-bold text-cream">Bring us home</h2>
-              <p className="mt-3 text-muted-foreground">Here is a list of places which have no real location:</p>
+              <p className="mt-3 text-muted-foreground">These are places from the stories that I couldn&apos;t pin down yet. Here is a list of places which have no real location:</p>
               <ul className="mt-4 space-y-2">
                 {homeless.map((e) => (
                   <li key={e.slug} className="flex flex-wrap items-baseline gap-x-2">
