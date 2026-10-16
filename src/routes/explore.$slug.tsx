@@ -1,4 +1,5 @@
 import { linkPlace } from "@/lib/link-label";
+import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
 import { episodeById, episodePath } from "../data/episodes";
@@ -67,7 +68,8 @@ function EntityPage() {
           </p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow">{e.name}</h1>
           {g && <p className="mt-4 text-lg text-muted-foreground"><EntityText text={g.tagline} /></p>}
-          {e.link && (
+          {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
+          {e.link && !(g && e.link.includes("wowpresentsplus")) && (
             <a href={e.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm text-gold underline underline-offset-4 hover:text-pink">
               Read more {linkPlace(e.link)} &rarr;
             </a>
@@ -106,10 +108,6 @@ function EntityPage() {
                   {g.linkedTo.map((s) => <EntityLink key={s} name={s} className={chip}>{entityBySlug[s]?.name ?? s}</EntityLink>)}
                 </div>
               </div>
-              <a href={g.episodeUrl} target="_blank" rel="noopener noreferrer"
-                className="inline-flex rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground hover:bg-pink/90">
-                Listen to this episode
-              </a>
             </div>
           </section>
         )}

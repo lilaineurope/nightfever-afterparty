@@ -3,7 +3,7 @@ import { useState } from "react";
 import { guestBySlug, guests, WOW_URL } from "../data/guests";
 import { EntityLink } from "./entity-link";
 import { EntityText } from "./entity-text";
-import { episodePath, episodes } from "../data/episodes";
+import { GuestEpisodeLinks } from "./guest-episode-links";
 
 /**
  * The guest half of the scene story: the expandable guest cards. Rendered on
@@ -45,7 +45,6 @@ export function GuestsSection() {
         <div className="mt-8 space-y-4">
           {guests.filter((g) => season === null || seasonOf(g.episode) === season).map((guest) => {
             const open = active === guest.slug;
-            const indexedEpisode = episodes.find((episode) => episode.guest === guest.name);
             return (
               <article
                 key={guest.slug}
@@ -154,37 +153,16 @@ export function GuestsSection() {
                           </div>
                         </div>
 
+                        <div className="mt-3 flex flex-wrap gap-3">
                         <Link
                           to="/explore/$slug"
                           params={{ slug: guest.slug }}
-                          className="mr-3 inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
+                          className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
                         >
                           Their full card &rarr;
                         </Link>
-                        {indexedEpisode && (
-                          <Link
-                            to={episodePath(indexedEpisode.id)}
-                            className="mr-3 inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                          >
-                            Timestamp &rarr;
-                          </Link>
-                        )}
-                        <a
-                          href={indexedEpisode?.watchUrl ?? (guest.episodeUrl.includes("wowpresentsplus") ? guest.episodeUrl : "https://www.wowpresentsplus.com/night-fever")}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mr-3 inline-flex items-center gap-2 rounded-xl border border-pink/50 px-5 py-2.5 text-sm font-semibold text-pink transition hover:bg-pink hover:text-pink-foreground"
-                        >
-                          Watch the episode
-                        </a>
-                        <a
-                          href={indexedEpisode?.listenUrl ?? `https://open.spotify.com/search/${encodeURIComponent(`Night Fever ${guest.name}`)}/episodes`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                        >
-                          Listen to the episode
-                        </a>
+                        <GuestEpisodeLinks guest={guest} className="contents" />
+                        </div>
                       </div>
                     </div>
                   </div>
