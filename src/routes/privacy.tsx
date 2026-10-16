@@ -184,6 +184,15 @@ function PrivacyPage() {
               replying.
             </p>
             <p>
+              <strong className="text-cream">Episode player.</strong> Nothing
+              plays or loads until you press play or tap a timestamp. Then your
+              browser streams the episode straight from the show&rsquo;s own
+              podcast host (the same public feed podcast apps use), which sees
+              your IP address like any podcast app would and may play the
+              show&rsquo;s ads. This site stores no audio and doesn&rsquo;t
+              record what you listen to.
+            </p>
+            <p>
               <strong className="text-cream">Email address.</strong> If you
               tick the consent box on the &ldquo;Join the Afterparty&rdquo;
               form and subscribe, your email address is stored together with
@@ -236,8 +245,9 @@ function PrivacyPage() {
               The hosting platform that publishes this site acts as a data
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter processes the anonymous visit
-              statistics described above, and Web3Forms delivers contact-form
-              messages to my inbox. No data is sold, rented or brokered. If a
+              statistics described above, Web3Forms delivers contact-form
+              messages to my inbox, and when you press play the show&rsquo;s own
+              podcast host streams the episode to you. No data is sold, rented or brokered. If a
               future feature needs another processor (for example an email
               provider), it will be named here before it goes live.
             </p>
