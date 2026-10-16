@@ -1,5 +1,12 @@
 import { guests } from "./guests";
 import { moreGuests } from "./guests-more";
+import s01e01 from "./s01e01.json";
+import s01e02 from "./s01e02.json";
+import s01e03 from "./s01e03.json";
+import s02e03 from "./s02e03.json";
+import s03e01 from "./s03e01.json";
+import s04e08 from "./s04e08.json";
+import s06e01 from "./s06e01.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -14,6 +21,8 @@ export type SceneEvent = {
   decade: "1970s" | "1980s" | "1990s" | "2000s" | "2010s+";
   people: string[];
   figures: string[];
+  /** Set when the moment comes from an afterparty timestamp index. */
+  source?: { episodeId: string; label: string; guest: string; time: string };
 };
 
 const curatedEvents: SceneEvent[] = [
@@ -504,7 +513,43 @@ const guestMilestones: SceneEvent[] = moreGuests.flatMap((g) =>
   }),
 );
 
-export const sceneEvents: SceneEvent[] = [...curatedEvents, ...guestMilestones];
+// Every afterparty reference whose name or note carries a real year becomes a
+// Timeline moment, so new timestamp indexes feed the Timeline automatically.
+type Ref = { name: string; heard?: string; context: string; time: string; category: string };
+const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[] }[] = [
+  { id: "s01e01", label: "S1 E1", guest: "Dianne Brill", refs: s01e01 as Ref[] },
+  { id: "s01e02", label: "S1 E2", guest: "Michael Musto", refs: s01e02 as Ref[] },
+  { id: "s01e03", label: "S1 E3", guest: "Lisa Edelstein", refs: s01e03 as Ref[] },
+  { id: "s02e03", label: "S2 E3", guest: "Susanne Bartsch", refs: s02e03 as Ref[] },
+  { id: "s03e01", label: "S3 E1", guest: "Patricia Field", refs: s03e01 as Ref[] },
+  { id: "s04e08", label: "S4 E8", guest: "Richie Rich", refs: s04e08 as Ref[] },
+  { id: "s06e01", label: "S6 E1", guest: "James St. James", refs: s06e01 as Ref[] },
+];
+const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
+const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
+  ep.refs.flatMap((r, i) => {
+    // Ignore years that are only part of a party's name (e.g. "Disco 2000").
+    const clean = (t: string) => t.replace(/Disco 2000/gi, "");
+    const m = clean(r.context).match(YEAR) ?? clean(r.name).match(YEAR);
+    if (!m) return [];
+    const year = Number(m[1]);
+    const place = r.category === "Place" ? r.name : "New York";
+    return [{
+      id: `ap-${ep.id}-${i}`,
+      year,
+      when: String(year),
+      title: r.name,
+      text: r.context,
+      place,
+      decade: decadeOf(year),
+      people: [],
+      figures: r.category === "Person" && r.name !== ep.guest ? [r.name, ep.guest] : [ep.guest],
+      source: { episodeId: ep.id, label: ep.label, guest: ep.guest, time: r.time },
+    }];
+  }),
+);
+
+export const sceneEvents: SceneEvent[] = [...curatedEvents, ...guestMilestones, ...afterpartyMoments];
 
 export const decades = ["1970s", "1980s", "1990s", "2000s", "2010s+"] as const;
 
