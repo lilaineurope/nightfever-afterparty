@@ -3,6 +3,7 @@ import fieldRefs from "./s03e01.json";
 import bartschRefs from "./s02e03.json";
 import edelsteinRefs from "./s01e03.json";
 import richieRefs from "./s04e08.json";
+import makosRefs from "./s05e06.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -159,8 +160,25 @@ const s04e08: Episode = {
   top: [...richieRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
+const s05e06: Episode = {
+  id: "s05e06",
+  season: 5,
+  episode: 6,
+  guest: "Christopher Makos",
+  released: "2025-07-23",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-506",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  runtime: "47:17",
+  afterpartyPublished: "2026-10-16",
+  blurb:
+    "Christopher Makos, Warhol's perfect companion! From a Catholic boy in El Monte to Tennessee Williams's typewriter, Tony Perkins on the Riviera, a weekend with Man Ray and Andy in drag.",
+  references: makosRefs.length,
+  mentions: makosRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...makosRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
 /** Season and episode order, earliest first. */
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s04e08, s06e01].sort((a, b) =>
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s04e08, s05e06, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -172,7 +190,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s04e08" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s04e08" | "/episodes/s05e06" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -186,6 +204,8 @@ export function episodePath(
       return "/episodes/s03e01";
     case "s04e08":
       return "/episodes/s04e08";
+    case "s05e06":
+      return "/episodes/s05e06";
     default:
       return "/episodes/s06e01";
   }
