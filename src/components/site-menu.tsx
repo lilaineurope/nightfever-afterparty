@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
-const PAGES = [
+// The one list of pages: the top menu and the footer both read it.
+export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
   { to: "/explore", label: "Everything A–Z" },
   { to: "/guests", label: "Guests" },

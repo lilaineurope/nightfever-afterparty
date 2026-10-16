@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { SHOW_URL, WOW_URL } from "@/data/guests";
 import { EntityText } from "@/components/entity-text";
 import { LegalNote } from "@/components/legal-links";
+import { PAGES } from "@/components/site-menu";
 
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
 
-// One shared footer for every page, identical to the home footer.
+// One shared footer for every page. Its links mirror the top menu (same PAGES list),
+// plus About and Contact.
 export function SiteFooter() {
   return (
     <footer className="border-t border-border px-6 py-12">
@@ -33,46 +35,22 @@ export function SiteFooter() {
             </a>
             .
           </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <Link to="/" className={LINK}>
-              Home
-            </Link>
-            <Link to="/episodes" className={LINK}>
-              Afterparty
-            </Link>
-            <Link to="/explore" className={LINK}>
-              Everything A&ndash;Z
-            </Link>
-            <Link to="/guests" className={LINK}>
-              Guests
-            </Link>
-            <Link to="/timeline" className={LINK}>
-              Timeline
-            </Link>
-            <Link to="/connections" className={LINK}>
-              Connections
-            </Link>
-            <Link to="/map" className={LINK}>
-              Map
-            </Link>
-            <Link to="/quiz" className={LINK}>
-              Pub Quiz (beta)
-            </Link>
-            <Link to="/about" className={LINK}>
-              About
-            </Link>
-            <Link to="/contact" className={LINK}>
-              Contact
-            </Link>
-            <a
-              href={WOW_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={LINK}
-            >
-              World of Wonder
-            </a>
-          </div>
+          <nav aria-label="Footer" className="flex flex-col items-center gap-2 sm:items-end">
+            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              {PAGES.map((p) => (
+                <li key={p.to}>
+                  <Link to={p.to} className={LINK}>
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-muted-foreground">
+              <Link to="/about" className={LINK}>About</Link>
+              {" · "}
+              <Link to="/contact" className={LINK}>Contact</Link>
+            </p>
+          </nav>
         </div>
         <p className="mt-6 text-center text-xs text-muted-foreground/60">
           <EntityText text="Made by a fan - not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their owners." />
