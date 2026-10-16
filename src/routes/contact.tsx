@@ -28,6 +28,12 @@ export const Route = createFileRoute("/contact")({
   }),
 });
 
+// The pages a message can be about - same names as the site menu.
+const TOPICS = [
+  "Home", "Afterparty", "Everything A–Z", "Guests", "Timeline", "Connections",
+  "Map", "Bring us home", "Pub Quiz", "About", "Something else",
+];
+
 const FIELD =
   "w-full rounded-xl border border-border bg-background px-4 py-2.5 text-cream placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none";
 
@@ -103,7 +109,13 @@ function ContactPage() {
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">What it's about</span>
-                <input name="about" defaultValue={about ?? ""} maxLength={120} placeholder="e.g. Bring us home: Colossus" className={`mt-1 ${FIELD}`} />
+                <select name="about" required defaultValue={about ?? ""} className={`mt-1 [color-scheme:dark] ${FIELD}`}>
+                  <option value="" disabled>Pick a page</option>
+                  {about && !TOPICS.includes(about) && <option value={about}>{about}</option>}
+                  {TOPICS.map((t) => (
+                    <option key={t} value={t}>{t}</option>
+                  ))}
+                </select>
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">Your message</span>
