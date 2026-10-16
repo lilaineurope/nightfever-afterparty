@@ -1,3 +1,4 @@
+import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import refsRaw from "../data/s06e01.json";
@@ -180,7 +181,7 @@ function EpisodePage() {
                     <EntityLink name={r.name}
                       className="text-lg font-semibold text-cream underline decoration-border underline-offset-4 hover:text-pink" />
                     {r.link && (
-                      <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} elsewhere`}
+                      <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} ${linkPlace(r.link)}`} title={`Read more ${linkPlace(r.link)}`}
                         className="text-xs text-muted-foreground hover:text-gold">↗</a>
                     )}
                     <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs text-secondary-foreground">{r.category}</span>

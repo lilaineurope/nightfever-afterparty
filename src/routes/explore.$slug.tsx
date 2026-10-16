@@ -1,3 +1,4 @@
+import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
 import { episodeById, episodePath } from "../data/episodes";
@@ -68,7 +69,7 @@ function EntityPage() {
           {g && <p className="mt-4 text-lg text-muted-foreground"><EntityText text={g.tagline} /></p>}
           {e.link && (
             <a href={e.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm text-gold underline underline-offset-4 hover:text-pink">
-              Read more elsewhere &rarr;
+              Read more {linkPlace(e.link)} &rarr;
             </a>
           )}
         </div>

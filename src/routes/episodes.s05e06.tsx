@@ -1,3 +1,4 @@
+import { linkPlace } from "@/lib/link-label";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import refsRaw from "../data/s05e06.json";
@@ -181,7 +182,7 @@ function EpisodePage() {
                       <span className="text-lg font-semibold text-cream">{r.name}</span>
                     )}
                     {r.link && (
-                      <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} elsewhere`}
+                      <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} ${linkPlace(r.link)}`} title={`Read more ${linkPlace(r.link)}`}
                         className="text-xs text-muted-foreground hover:text-gold">↗</a>
                     )}
                     <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs text-secondary-foreground">{r.category}</span>
