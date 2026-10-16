@@ -1,8 +1,29 @@
 import { Link } from "@tanstack/react-router";
+import { useLayoutEffect, useRef } from "react";
 import { episodePeople } from "@/data/episode-connections";
 
-// Names that surface in more than one published episode.
+// Names that surface in more than one published episode - only the first
+// ROWS rows of chips are shown, at every screen width.
+const ROWS = 5;
+
 export function NamesEveryoneDrops() {
+  const box = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const fit = () => {
+      const chips = [...el.children] as HTMLElement[];
+      chips.forEach((c) => (c.hidden = false));
+      const tops = [...new Set(chips.map((c) => c.offsetTop))].sort((a, b) => a - b);
+      const cut = tops[ROWS];
+      if (cut !== undefined) chips.forEach((c) => (c.hidden = c.offsetTop >= cut));
+      el.style.maxHeight = "none";
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el.parentElement ?? el);
+    return () => ro.disconnect();
+  }, []);
   const recurring = episodePeople
     .filter((p) => p.episodeIds.length >= 2)
     .sort(
@@ -20,7 +41,11 @@ export function NamesEveryoneDrops() {
           popping up in more than one episode, whether or not they ever sat
           down for an interview. Tap a name and dive in!
         </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
+        <div
+          ref={box}
+          className="mt-10 flex flex-wrap justify-center gap-2 overflow-hidden"
+          style={{ maxHeight: "13.9rem" }}
+        >
           {recurring.map((p) => (
             <Link
               key={p.slug}

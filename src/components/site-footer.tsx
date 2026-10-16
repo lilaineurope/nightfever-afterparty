@@ -61,6 +61,9 @@ export function SiteFooter() {
             <Link to="/about" className={LINK}>
               About
             </Link>
+            <Link to="/contact" className={LINK}>
+              Contact
+            </Link>
             <a
               href={WOW_URL}
               target="_blank"

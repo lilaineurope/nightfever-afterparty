@@ -175,6 +175,15 @@ function PrivacyPage() {
               interest in knowing which parts of the site are read.
             </p>
             <p>
+              <strong className="text-cream">Contact form.</strong> If you send
+              a message through the contact page, your name, email address and
+              message are delivered to my inbox by Web3Forms, a form-delivery
+              service, so I can read and answer it. Nothing is stored on this
+              site, and the messages are not used for anything else. Legal
+              basis: your consent in sending it, and my legitimate interest in
+              replying.
+            </p>
+            <p>
               <strong className="text-cream">Email address.</strong> If you
               tick the consent box on the &ldquo;Join the Afterparty&rdquo;
               form and subscribe, your email address is stored together with
@@ -227,7 +236,8 @@ function PrivacyPage() {
               The hosting platform that publishes this site acts as a data
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter processes the anonymous visit
-              statistics described above. No data is sold, rented or brokered. If a
+              statistics described above, and Web3Forms delivers contact-form
+              messages to my inbox. No data is sold, rented or brokered. If a
               future feature needs another processor (for example an email
               provider), it will be named here before it goes live.
             </p>

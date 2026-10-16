@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
 import { CATEGORIES, entities, entityFor, relatedTo, totalMentions, type Entity } from "@/data/entities";
+import { episodeShort } from "@/data/entities";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/map")({
@@ -90,8 +91,19 @@ declare global {
 const KEY = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"] as string | undefined;
 const CHANNEL = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"] as string | undefined;
 
+const BRING_HOME = "Bring us home";
+
+/** Places named in the episodes that have no pin yet - Lisa's "Bring us home" list. */
+function homelessPlaces(): Entity[] {
+  const pinned = new Set(LOCATIONS.map((l) => entityFor(l.name)?.slug).filter(Boolean));
+  return entities
+    .filter((e) => e.category === "Place" && e.refs.length > 0 && !pinned.has(e.slug))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 function MapPage() {
   const spots = useMemo(buildSpots, []);
+  const homeless = useMemo(homelessPlaces, []);
   const [cat, setCat] = useState<string>("All");
   const [active, setActive] = useState<string | null>(null);
   const mapEl = useRef<HTMLDivElement>(null);
@@ -106,11 +118,17 @@ function MapPage() {
       const n = spots.filter((s) => s.connected.some((x) => x.category === c)).length;
       if (n > 0) out.push([c, n]);
     }
+    if (homeless.length > 0) out.push([BRING_HOME, homeless.length]);
     return out;
-  }, [spots]);
+  }, [spots, homeless]);
 
   const visible = useMemo(
-    () => (cat === "All" ? spots : spots.filter((s) => s.connected.some((c) => c.category === cat))),
+    () =>
+      cat === BRING_HOME
+        ? []
+        : cat === "All"
+          ? spots
+          : spots.filter((s) => s.connected.some((c) => c.category === cat)),
     [spots, cat],
   );
 
@@ -208,6 +226,31 @@ function MapPage() {
               </div>
             )}
           </div>
+          {cat === BRING_HOME ? (
+            <div className="max-h-[640px] overflow-y-auto rounded-3xl border border-pink/40 bg-card p-6">
+              <h2 className="text-2xl font-bold text-cream">Bring us home</h2>
+              <p className="mt-3 text-muted-foreground">Here is a list of places which have no real location:</p>
+              <ul className="mt-4 space-y-2">
+                {homeless.map((e) => (
+                  <li key={e.slug} className="flex flex-wrap items-baseline gap-x-2">
+                    <Link to="/explore/$slug" params={{ slug: e.slug }} className="font-semibold text-gold hover:text-pink">
+                      {e.name}
+                    </Link>
+                    <span className="text-xs text-muted-foreground">
+                      {[...new Set(e.refs.map((r) => (r.episode ? episodeShort(r.episode) : "")))].filter(Boolean).join(" · ")}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-muted-foreground">
+                Do you know where they are? Send me a message and we can bring it home together.
+              </p>
+              <Link to="/contact" search={{ about: "Bring us home" }}
+                className="mt-4 inline-block rounded-full bg-pink px-5 py-2 text-sm font-semibold text-pink-foreground hover:opacity-90">
+                Send me a message
+              </Link>
+            </div>
+          ) : (
           <ol className="max-h-[640px] space-y-3 overflow-y-auto pr-1">
             {visible.map((s) => {
               const shown = cat === "All" ? s.connected : s.connected.filter((c) => c.category === cat);
@@ -247,6 +290,7 @@ function MapPage() {
               );
             })}
           </ol>
+          )}
         </div>
         <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-muted-foreground">
           Pins are approximate, from the public address of each venue. Vague places like eras or TV channels are left off the map. Spot a wrong pin? Tell me!

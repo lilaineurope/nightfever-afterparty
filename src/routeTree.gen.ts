@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectionsRouteImport } from './routes/connections'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -45,6 +46,11 @@ const AboutRoute = AboutRouteImport.update({
 const ConnectionsRoute = ConnectionsRouteImport.update({
   id: '/connections',
   path: '/connections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuestsRoute = GuestsRouteImport.update({
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
+  '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
+  '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
@@ -196,6 +204,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connections': typeof ConnectionsRoute
+  '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
@@ -222,6 +231,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connections'
+    | '/contact'
     | '/guests'
     | '/map'
     | '/privacy'
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connections'
+    | '/contact'
     | '/guests'
     | '/map'
     | '/privacy'
@@ -270,6 +281,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connections'
+    | '/contact'
     | '/guests'
     | '/map'
     | '/privacy'
@@ -295,6 +307,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ConnectionsRoute: typeof ConnectionsRoute
+  ContactRoute: typeof ContactRoute
   GuestsRoute: typeof GuestsRoute
   MapRoute: typeof MapRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/connections'
       fullPath: '/connections'
       preLoaderRoute: typeof ConnectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guests': {
@@ -479,6 +499,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ConnectionsRoute: ConnectionsRoute,
+  ContactRoute: ContactRoute,
   GuestsRoute: GuestsRoute,
   MapRoute: MapRoute,
   PrivacyRoute: PrivacyRoute,

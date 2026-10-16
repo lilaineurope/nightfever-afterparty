@@ -212,7 +212,8 @@ function Index() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-4xl rounded-3xl border border-gold/20 bg-card p-8 text-center sm:p-12">
           <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-            Listen wherever you party!
+            Listen wherever you party -
+            <span className="mt-1 block text-pink text-glow-pink">Celebrate the Original!</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
             New episodes drop on Mondays - so exciting! Find the show on your
