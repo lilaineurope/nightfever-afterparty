@@ -92,3 +92,4 @@
 - [x] Top menu: Connections and Map marked "(beta)", matching Pub Quiz.
 - [x] Timeline: every dated reference from all seven afterparty indexes now feeds the Timeline, each linked back to its afterparty and timestamp.
 - [x] Home page: shows only the three newest afterparties (Richie Rich, Lisa Edelstein, Susanne Bartsch), ranked by afterparty publish date; the Episodes page still lists all seven.
+- [x] Add a 2020s decade button to the Timeline, with every moment from 2020 onward filed under it
