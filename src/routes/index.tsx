@@ -183,6 +183,9 @@ function Index() {
               and dive in!
             </p>
           </div>
+          <h3 className="mt-14 text-center text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            Latest afterparty releases
+          </h3>
           {/* Same ranking as the Episodes page: afterparty publish date, newest first. Only the three newest show here. */}
           <div className="mt-6 flex flex-col gap-6">
             {[...episodes]
@@ -196,6 +199,12 @@ function Index() {
               .map((ep) => (
                 <EpisodeBlock key={ep.id} ep={ep} showDates />
               ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link to="/episodes"
+              className="inline-block rounded-full border border-gold px-6 py-3 font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground">
+              More afterparties &rarr;
+            </Link>
           </div>
         </div>
       </section>
