@@ -64,7 +64,7 @@ export function SiteStats() {
     const script = document.createElement("script");
     script.async = true;
     script.src = "https://gc.zgo.at/count.js";
-    script.dataset.goatcounter = `https://${GOATCOUNTER_CODE}.goatcounter.com/count`;
+    script.setAttribute("data-goatcounter", `https://${GOATCOUNTER_CODE}.goatcounter.com/count`);
     script.onload = count;
     document.body.appendChild(script);
 
