@@ -4,6 +4,7 @@ import bartschRefs from "./s02e03.json";
 import edelsteinRefs from "./s01e03.json";
 import richieRefs from "./s04e08.json";
 import makosRefs from "./s05e06.json";
+import goodeRefs from "./s03e06.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -196,7 +197,25 @@ const s05e06: Episode = {
 };
 
 /** Season and episode order, earliest first. */
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s04e08, s05e06, s06e01].sort((a, b) =>
+const s03e06: Episode = {
+  id: "s03e06",
+  season: 3,
+  episode: 6,
+  guest: "Eric Goode",
+  released: "2023-07-20",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-306",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO4562653957.mp3",
+  runtime: "57:09",
+  afterpartyPublished: "2026-10-18",
+  blurb:
+    "Eric Goode, the mind behind Area! From Etch A Sketch drawings at the Mudd Club and a pig carcass at the Club With No Name to Area's ever-changing themes, MK's Dobermans, the Maritime Hotel, Tiger King and a lifelong love of tortoises.",
+  references: goodeRefs.length,
+  mentions: goodeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...goodeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s03e06, s04e08, s05e06, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -208,7 +227,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s04e08" | "/episodes/s05e06" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -220,6 +239,8 @@ export function episodePath(
       return "/episodes/s02e03";
     case "s03e01":
       return "/episodes/s03e01";
+    case "s03e06":
+      return "/episodes/s03e06";
     case "s04e08":
       return "/episodes/s04e08";
     case "s05e06":

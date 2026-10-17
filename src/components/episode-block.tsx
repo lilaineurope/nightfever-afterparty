@@ -9,6 +9,7 @@ import bartschPortrait from "@/assets/block-susanne-bartsch.jpg";
 import edelsteinPortrait from "@/assets/block-lisa-edelstein.jpg";
 import richiePortrait from "@/assets/block-richie-rich.jpg";
 import makosPortrait from "@/assets/block-christopher-makos.jpg";
+import goodePortrait from "@/assets/block-eric-goode.jpg";
 
 const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -18,6 +19,7 @@ const episodePortraits: Record<string, string> = {
   s03e01: fieldPortrait,
   s04e08: richiePortrait,
   s05e06: makosPortrait,
+  s03e06: goodePortrait,
   s06e01: jamesPortrait,
 };
 
