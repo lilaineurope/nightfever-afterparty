@@ -23,6 +23,10 @@ const episodePortraits: Record<string, string> = {
   s06e01: jamesPortrait,
 };
 
+// Boxes whose portrait sits on the left keep that side in view when the box crops the picture.
+const portraitLeft = new Set(["s03e06"]);
+
+
 function formatDate(iso: string) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
@@ -42,7 +46,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
               >
                 <div className="relative min-h-[440px] overflow-hidden border-b border-border p-8 md:border-b-0 md:border-r">
                   {portrait && <img src={portrait} alt="" aria-hidden="true" width={1024} height={1024} loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover object-right" />}
+                    className={`absolute inset-0 h-full w-full object-cover ${portraitLeft.has(ep.id) ? "object-left" : "object-right"}`} />}
                   <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/20 to-background/10" aria-hidden="true" />
                   <div className="relative z-10">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
