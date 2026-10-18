@@ -37,7 +37,7 @@ export const Route = createFileRoute("/explore/$slug")({
     const description = (/[.!?…]$/.test(short) ? short : `${short}.`) + eps;
     const path = `/explore/${d.slug}`;
     const head = pageHead({ path, title, description, image: "/og/explore.jpg", type: "article", noindex: d.thin });
-    const TYPES: Record<string, string> = { Person: "Person", Place: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
+    const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
     if (/wikipedia\.org/.test(d.link)) thing["sameAs"] = d.link;
     return {

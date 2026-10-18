@@ -523,7 +523,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {
-    if (r.category !== "Event" && r.category !== "Place") return [];
+    if (r.category !== "Event" && r.category !== "Club" && r.category !== "Location") return [];
     if (r.time === "On camera") return [];
     // Ignore years that are only part of a party's name (e.g. "Disco 2000").
     const clean = (t: string) => t.replace(/Disco 2000/gi, "");
@@ -532,7 +532,7 @@ const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
     const year = Number(m[1]);
     // A guest association is not evidence of a location. Keep event locations
     // unspecified until the source provides structured place data.
-    const place = r.category === "Place" ? r.name : "";
+    const place = r.category === "Club" || r.category === "Location" ? r.name : "";
     return [{
       id: `ap-${ep.id}-${i}`,
       year,

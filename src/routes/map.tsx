@@ -2,7 +2,7 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
-import { CATEGORIES, entities, entityFor, relatedTo, totalMentions, type Entity } from "@/data/entities";
+import { CATEGORIES, entities, entityFor, isPlace, relatedTo, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -82,7 +82,7 @@ const BRING_HOME = "Bring us home";
 function homelessPlaces(): Entity[] {
   const pinned = new Set(LOCATIONS.map((l) => entityFor(l.name)?.slug).filter(Boolean));
   return entities
-    .filter((e) => e.category === "Place" && e.refs.length > 0 && !pinned.has(e.slug))
+    .filter((e) => isPlace(e.category) && e.refs.length > 0 && !pinned.has(e.slug))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 

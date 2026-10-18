@@ -59,14 +59,14 @@ export function PopularPlaces() {
   return (
     <TopTen
       title="Most popular"
-      highlight="places"
-      blurb="The top 10 rooms the gang keeps going back to - counted by how often they get named. Which one would you sneak into?"
+      highlight="clubs"
+      blurb="The top 10 clubs the gang keeps going back to - counted by how often they get named. Which one would you sneak into?"
       items={popularPlaces.map((p) => ({ slug: p.slug, name: p.name, episodeIds: p.episodeIds, mentions: p.mentions }))}
     />
   );
 }
 
-/** A numbered top-10 list - used for Great Connectors and Most popular places. */
+/** A numbered top-10 list - used for Great Connectors and Most popular clubs. */
 export function TopTen({
   title,
   highlight,

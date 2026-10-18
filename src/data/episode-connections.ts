@@ -65,9 +65,9 @@ export const categoryCounts: Record<string, number> = (() => {
 const byMentions = (a: EpisodePerson, b: EpisodePerson) =>
   b.mentions - a.mentions || b.episodeIds.length - a.episodeIds.length || a.name.localeCompare(b.name);
 
-/** Rooms the scene kept talking about, most mentioned first. */
+/** Clubs the scene kept talking about, most mentioned first. */
 export const popularPlaces = episodeEntities
-  .filter((row) => row.categories.includes('Place'))
+  .filter((row) => row.categories.includes('Club'))
   .sort(byMentions)
   .slice(0, 10);
 

@@ -96,9 +96,9 @@ for (const r of refs) {
 const placeOf = (p: string) => p.split(",")[0]!.trim();
 for (const ev of sceneEvents) {
   for (const f of ev.figures) add(f, "Person");
-  add(placeOf(ev.place), "Place");
+  add(placeOf(ev.place), "Location");
 }
-for (const g of guests) for (const s of g.scenes) add(s, "Place");
+for (const g of guests) for (const s of g.scenes) add(s, "Location");
 
 // Wire events and guest stories to every entity.
 for (const e of byKey.values()) {
@@ -147,9 +147,13 @@ export function relatedTo(e: Entity): Entity[] {
 }
 
 export const CATEGORIES = [
-  "Person", "Music", "Organisation", "Mood", "Place", "Book", "Event",
+  "Person", "Music", "Organisation", "Mood", "Club", "Location", "Book", "Event",
   "Publication", "Podcast", "TV", "Film", "Fashion",
 ] as const;
+
+/** Clubs (actual clubs, bars and club nights) and Locations (countries, cities, streets, buildings) together. */
+export const PLACE_CATEGORIES = ["Club", "Location"] as const;
+export const isPlace = (category: string) => category === "Club" || category === "Location";
 
 /** Total mentions of one entity across all episode reference lists. */
 export const totalMentions = (e: Entity): number =>
