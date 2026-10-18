@@ -5,6 +5,7 @@ import edelsteinRefs from "./s01e03.json";
 import richieRefs from "./s04e08.json";
 import makosRefs from "./s05e06.json";
 import goodeRefs from "./s03e06.json";
+import piperRefs from "./s01e07.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -215,7 +216,25 @@ const s03e06: Episode = {
   top: [...goodeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s02e03, s03e01, s03e06, s04e08, s05e06, s06e01].sort((a, b) =>
+const s01e07: Episode = {
+  id: "s01e07",
+  season: 1,
+  episode: 7,
+  guest: "Rudolf Piper",
+  released: "2021-10-11",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-rudolf-piper",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO1329477005.mp3",
+  runtime: "1:10:35",
+  afterpartyPublished: "2026-10-19",
+  blurb:
+    "Rudolf Piper, the club man behind Pravda, Danceteria, the Tunnel and Mars! From a 24-hour bunker club in Berlin and Keith Haring's black-and-white floor to Madonna's first shows, the Club Kids' basement, a Liberace party with white pianos everywhere and the clubs that followed in Paris, Miami and São Paulo.",
+  references: piperRefs.length,
+  mentions: piperRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...piperRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s03e01, s03e06, s04e08, s05e06, s06e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -227,7 +246,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -245,6 +264,8 @@ export function episodePath(
       return "/episodes/s04e08";
     case "s05e06":
       return "/episodes/s05e06";
+    case "s01e07":
+      return "/episodes/s01e07";
     default:
       return "/episodes/s06e01";
   }
