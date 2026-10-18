@@ -100,6 +100,44 @@ const SPOTIFY: Record<string, string> = {
   "The B-52's": "spotify:artist:3gdbcIdNypBsYNu3iiCjtN",
   "Blondie": "spotify:artist:4tpUmLEVLCGFr93o8hFFIB",
   "Suicide": "spotify:artist:6uVeWolwyRDrT84lLsaZyW",
+  "Bow Wow Wow": "spotify:artist:52K4ArhA4OgMO7AsyEgqCT",
+  "Stray Cats": "spotify:artist:2ibPkysx2PXqWLmxFD7jSg",
+  "INXS": "spotify:artist:1eClJfHLoDI4rZe5HxzBFv",
+  "The Clash": "spotify:artist:3RGLhK1IP9jnYFH4BRFJBS",
+  "Dexys Midnight Runners": "spotify:artist:4QTVePrFu1xuGM9K0kNXkk",
+  "Sonic Youth": "spotify:artist:5UqTO8smerMvxHYA5xsXb6",
+  "Sex Pistols": "spotify:artist:1u7kkVrr14iBvrpYnZILJR",
+  "The Psychedelic Furs": "spotify:artist:0O0lrN34wrcuBenkqlEDZe",
+  "A Flock of Seagulls": "spotify:artist:0uAjBatvB4ubpd4kCfjmNt",
+  "AC/DC": "spotify:artist:711MCceyCBcFnzjGY4Q7Un",
+  "Aerosmith": "spotify:artist:7Ey4PD4MYsKc5I2dolUwbH",
+  "Coldplay": "spotify:artist:4gzpq5DPGxSnKTe4SA8HAU",
+  "Culture Club": "spotify:artist:6kz53iCdBSqhQCZ21CoLcc",
+  "Deee-Lite": "spotify:artist:4eQJIXFEujzhTVVS1gIfu5",
+  "Oasis": "spotify:artist:2DaxqgrOhkeH0fpeiQq2f4",
+  "Ramones": "spotify:artist:1co4F2pPNH8JjTutZkmgSm",
+  "Roxy Music": "spotify:artist:3fhOTtm0LBJ3Ojn4hIljLo",
+  "T. Rex": "spotify:artist:3dBVyJ7JuOMt4GE9607Qin",
+  "The Buggles": "spotify:artist:057gc1fxmJ2vkctjQJ7Tal",
+  "The Soup Dragons": "spotify:artist:5BEYGWk6aPdNXxBx9pwU8S",
+  "The Stranglers": "spotify:artist:0RUEHcBiENFEqxgicqS2ig",
+  "Buffalo Gals": "spotify:track:5lik8MXJIcgeJz2wZgt530",
+  "Ordinary World": "spotify:track:0wokCRaKD0zPNhMRXAgVsr",
+  "Sugar Kane": "spotify:track:6q03mlzKsM1m3TLpi6T6Cw",
+  "I Want Candy": "spotify:track:77xK9g76GEdK5HC4r9AhFu",
+  "Need You Tonight": "spotify:track:5eU8qMd0TpaLqTGDZJaLDs",
+  "Rapture": "spotify:track:0D6qZlc6vNR7PDW2RKGPsV",
+  "Real Wild Child": "spotify:track:6ZAwEE4kTdtvyE66iRhFxR",
+  "Searching (INXS)": "spotify:track:2O7U0XEK5i1PVtw31530Oa",
+  "Video Killed the Radio Star": "spotify:track:2wsBzDQpkFmrFnkneiKo9u",
+  "White Lines (Duran Duran)": "spotify:track:0IuJngZDzgHXciiGyvILlH",
+  "White Man in Hammersmith Palais": "spotify:track:5bIfqDrgR8qgWXvormRHVe",
+  "You Oughta Know": "spotify:track:0Dw9z44gXhplDh5HCWZIxP",
+  "Divine Thing (probably)": "spotify:track:4VJYmTsXG9hAfWFBEJruRK",
+  "The Wedding Album": "spotify:album:0PqCkTvKFJxzr9uujq7a3T",
+  "Blah-Blah-Blah": "spotify:album:4j1zp01LTkV9kNWAuKU45c",
+  "Kick": "spotify:album:7cuwWzS0oiApEt2fpKafkX",
+  "Searching for the Young Soul Rebels": "spotify:album:5iawHcgRuKL5HMRbigdvWC",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
@@ -112,9 +150,9 @@ export const MUSIC_SHELVES: Shelf[] = [
   { key: "stage", label: "Stage & musicals" },
 ];
 
-const SOUNDS = /^(hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae)$/i;
+const SOUNDS = /^(hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions)$/i;
 const STAGE = /^(flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball)$/i;
-const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock)$/i;
+const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know)$/i;
 
 export const jukebox: CollectionItem[] = entities
   .filter((e) => hasCat(e, ["Music"]))

@@ -7,6 +7,7 @@ import makosRefs from "./s05e06.json";
 import goodeRefs from "./s03e06.json";
 import piperRefs from "./s01e07.json";
 import valentiDynellRefs from "./s06e03.json";
+import eganRefs from "./s05e04.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -254,7 +255,26 @@ const s06e03: Episode = {
   top: [...valentiDynellRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s03e01, s03e06, s04e08, s05e06, s06e01, s06e03].sort((a, b) =>
+const s05e04: Episode = {
+  id: "s05e04",
+  season: 5,
+  episode: 4,
+  guest: "Nick Egan",
+  released: "2025-07-09",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-504",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl:
+    "https://anchor.fm/s/68428444/podcast/play/105168938/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-7%2F14f43340-2f90-2573-508f-f0b3b161d1a2.mp3",
+  runtime: "1:02:49",
+  afterpartyPublished: "2026-10-20",
+  blurb:
+    "Nick Egan, the art-school punk who sang in The Tea Set! From modelling for Vivienne Westwood and steering Bow Wow Wow for Malcolm McLaren - the See Jungle cover included - to Duck Rock and Buffalo Gals, the Stray Cats making tattoos mainstream and his first videos as MTV took off, then Marc Jacobs' grunge show and Sonic Youth's Sugar Kane, Duran Duran's Ordinary World and INXS's Kick.",
+  references: eganRefs.length,
+  mentions: eganRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...eganRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s03e01, s03e06, s04e08, s05e04, s05e06, s06e01, s06e03].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -266,7 +286,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -288,6 +308,8 @@ export function episodePath(
       return "/episodes/s01e07";
     case "s06e03":
       return "/episodes/s06e03";
+    case "s05e04":
+      return "/episodes/s05e04";
     default:
       return "/episodes/s06e01";
   }
