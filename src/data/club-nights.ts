@@ -111,6 +111,7 @@ const s54: ClubNight = {
 const dt: ClubNight = {
   slug: "danceteria",
   club: "Danceteria",
+  playlistId: "2aPYyqs3vWySfJPTCBeK1C",
   note:
     "From documented accounts of Danceteria (1980–1986): interviews with resident DJs Mark Kamins and Johnny Dynell, Tim Lawrence's history Life and Death on the New York Dance Floor, 1980–1983, and the bands who played its stages. Some songs were named as played or born there, some are by acts who performed there live, and some stand in for artists the DJs are known to have mixed. Not one exact night.",
   sources: [
