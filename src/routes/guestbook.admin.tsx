@@ -2,13 +2,11 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import type { Session } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
-import { adminListGuestbook, moderateGuestbook, type ModeratedNote } from "@/lib/guestbook.functions";
+import { adminListGuestbook, changeGuestbookKey, moderateGuestbook, type ModeratedNote } from "@/lib/guestbook.functions";
 import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 
-// Lisa's moderation page: sign in with an emailed link (no password), then approve, hide, delete or reply.
-// Only accounts listed in the guestbook_admins table can see or change notes.
+// Lisa's moderation page. No accounts: she types her secret moderation key (it can be remembered on her own device),
+// and every request carries it to the server, which checks it against a salted hash.
 export const Route = createFileRoute("/guestbook/admin")({
   staticData: { sitemap: false },
   component: AdminPage,
@@ -16,30 +14,43 @@ export const Route = createFileRoute("/guestbook/admin")({
     pageHead({ path: "/guestbook/admin", title: "Guestbook moderation | Night Fever fan page", description: "Moderation for the Night Fever fan page guestbook.", noindex: true }),
 });
 
+const STORE = "nf-guestbook-key";
 const FIELD =
   "w-full rounded-xl border border-border bg-background px-4 py-2.5 text-cream placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none";
 const BTN = "rounded-full px-4 py-1.5 text-sm font-semibold transition disabled:opacity-50";
 type Tab = "pending" | "approved" | "hidden";
+type Action = "approve" | "hide" | "pending" | "delete" | "reply";
+
+const readKey = () => {
+  try {
+    return localStorage.getItem(STORE) ?? "";
+  } catch {
+    return "";
+  }
+};
+const saveKey = (k: string | null) => {
+  try {
+    if (k) localStorage.setItem(STORE, k);
+    else localStorage.removeItem(STORE);
+  } catch {
+    /* private mode - the key just isn't remembered */
+  }
+};
 
 function AdminPage() {
-  const [session, setSession] = useState<Session | null | undefined>(undefined);
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setSession(data.session));
-    const { data } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
-    return () => data.subscription.unsubscribe();
-  }, []);
-
+  const [key, setKey] = useState<string | null>(null);
+  useEffect(() => setKey(readKey()), []);
   return (
     <main className="min-h-screen bg-background px-6 pb-24 pt-24 text-foreground">
       <div className="mx-auto max-w-4xl">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook</p>
         <h1 className="mt-3 text-4xl font-bold text-cream">Moderation</h1>
-        {session === undefined ? (
+        {key === null ? (
           <p className="mt-8 text-muted-foreground">Loading...</p>
-        ) : session ? (
-          <Moderation email={session.user.email ?? ""} />
+        ) : key ? (
+          <Moderation keyValue={key} onForget={() => { saveKey(null); setKey(""); }} onChanged={(k) => { if (readKey()) saveKey(k); setKey(k); }} />
         ) : (
-          <SignIn />
+          <KeyForm onKey={(k, remember) => { if (remember) saveKey(k); setKey(k); }} />
         )}
         <p className="mt-12 text-sm">
           <Link to="/guestbook" className="text-gold underline underline-offset-2 hover:text-pink">← Back to the guestbook</Link>
@@ -49,62 +60,56 @@ function AdminPage() {
   );
 }
 
-function SignIn() {
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [error, setError] = useState("");
-  async function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
+function KeyForm({ onKey, error }: { onKey: (key: string, remember: boolean) => void; error?: string }) {
+  function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
-    const email = String(new FormData(ev.currentTarget).get("email") ?? "").trim();
-    setState("sending");
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: `${window.location.origin}/guestbook/admin` },
-    });
-    if (error) {
-      setError(error.message);
-      setState("error");
-    } else setState("sent");
+    const f = new FormData(ev.currentTarget);
+    onKey(String(f.get("key") ?? "").trim(), f.get("remember") === "on");
   }
-  if (state === "sent")
-    return <p className="mt-8 rounded-2xl border border-gold/25 bg-card p-6 text-cream">Check your inbox - the sign-in link brings you straight back here.</p>;
   return (
     <form onSubmit={onSubmit} className="mt-8 max-w-md space-y-4 rounded-2xl border border-gold/25 bg-card p-6">
       <label className="block">
-        <span className="text-sm text-muted-foreground">Your email</span>
-        <input name="email" type="email" required autoComplete="email" className={`mt-1 ${FIELD}`} />
+        <span className="text-sm text-muted-foreground">Moderation key</span>
+        <input name="key" type="password" required minLength={16} autoComplete="current-password" className={`mt-1 ${FIELD}`} />
       </label>
-      <button type="submit" disabled={state === "sending"} className={`${BTN} w-full bg-pink py-2.5 text-pink-foreground hover:opacity-90`}>
-        {state === "sending" ? "Sending..." : "Email me a sign-in link"}
+      <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        <input type="checkbox" name="remember" defaultChecked className="h-4 w-4 accent-pink" />
+        Remember it on this device
+      </label>
+      <button type="submit" className={`${BTN} w-full bg-pink py-2.5 text-pink-foreground hover:opacity-90`}>
+        Open the guestbook queue
       </button>
-      {state === "error" && <p className="text-sm text-pink">{error}</p>}
+      {error && <p className="text-sm text-pink">{error}</p>}
     </form>
   );
 }
 
-function Moderation({ email }: { email: string }) {
+function Moderation({ keyValue, onForget, onChanged }: { keyValue: string; onForget: () => void; onChanged: (k: string) => void }) {
   const list = useServerFn(adminListGuestbook);
   const moderate = useServerFn(moderateGuestbook);
-  const [data, setData] = useState<{ admin: boolean; notes: ModeratedNote[] } | null>(null);
+  const [notes, setNotes] = useState<ModeratedNote[] | null>(null);
   const [tab, setTab] = useState<Tab>("pending");
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [failed, setFailed] = useState("");
 
   const load = useCallback(async () => {
     try {
-      setData(await list());
+      setNotes(await list({ data: { key: keyValue } }));
+      setFailed("");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Could not load the notes.");
+      setFailed(e instanceof Error ? e.message : "Could not open the queue.");
     }
-  }, [list]);
+  }, [list, keyValue]);
   useEffect(() => {
     void load();
   }, [load]);
 
-  async function act(id: string, action: "approve" | "hide" | "pending" | "delete" | "reply", reply?: string) {
+  async function act(id: string, action: Action, reply?: string) {
     setBusy(id + action);
     setError("");
     try {
-      await moderate({ data: { id, action, reply } });
+      await moderate({ data: { key: keyValue, id, action, reply } });
       await load();
     } catch (e) {
       setError(e instanceof Error ? e.message : "That didn't work.");
@@ -113,29 +118,25 @@ function Moderation({ email }: { email: string }) {
     }
   }
 
-  const signOut = (
-    <button type="button" onClick={() => supabase.auth.signOut()} className="text-sm text-muted-foreground underline underline-offset-2 hover:text-pink">
-      Sign out
-    </button>
-  );
-
-  if (!data) return <p className="mt-8 text-muted-foreground">{error || "Loading notes..."}</p>;
-  if (!data.admin)
+  if (failed)
     return (
-      <div className="mt-8 space-y-3 rounded-2xl border border-gold/25 bg-card p-6">
-        <p className="text-cream">You're signed in as {email}, but this account isn't a guestbook moderator.</p>
-        {signOut}
+      <div className="mt-8 space-y-3">
+        <p className="text-pink">{failed}</p>
+        <button type="button" onClick={onForget} className={`${BTN} border border-border text-cream hover:border-gold`}>
+          Try another key
+        </button>
       </div>
     );
+  if (!notes) return <p className="mt-8 text-muted-foreground">Loading notes...</p>;
 
   const counts = { pending: 0, approved: 0, hidden: 0 } as Record<Tab, number>;
-  data.notes.forEach((n) => counts[n.status]++);
-  const shown = data.notes.filter((n) => n.status === tab);
+  notes.forEach((n) => counts[n.status]++);
+  const shown = notes.filter((n) => n.status === tab);
 
   return (
     <div className="mt-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex gap-2" role="tablist">
+        <div className="flex flex-wrap gap-2" role="tablist">
           {(["pending", "approved", "hidden"] as Tab[]).map((t) => (
             <button
               key={t}
@@ -149,9 +150,9 @@ function Moderation({ email }: { email: string }) {
             </button>
           ))}
         </div>
-        <span className="text-sm text-muted-foreground">
-          {email} · {signOut}
-        </span>
+        <button type="button" onClick={onForget} className="text-sm text-muted-foreground underline underline-offset-2 hover:text-pink">
+          Forget the key on this device
+        </button>
       </div>
       {error && <p className="mt-4 text-sm text-pink">{error}</p>}
       {shown.length === 0 ? (
@@ -163,19 +164,47 @@ function Moderation({ email }: { email: string }) {
           ))}
         </ul>
       )}
+      <ChangeKey keyValue={keyValue} onChanged={onChanged} />
     </div>
   );
 }
 
-function AdminNote({
-  note,
-  busy,
-  act,
-}: {
-  note: ModeratedNote;
-  busy: string | null;
-  act: (id: string, action: "approve" | "hide" | "pending" | "delete" | "reply", reply?: string) => Promise<void>;
-}) {
+function ChangeKey({ keyValue, onChanged }: { keyValue: string; onChanged: (k: string) => void }) {
+  const change = useServerFn(changeGuestbookKey);
+  const [open, setOpen] = useState(false);
+  const [msg, setMsg] = useState("");
+  async function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
+    ev.preventDefault();
+    const f = new FormData(ev.currentTarget);
+    const a = String(f.get("new") ?? "").trim();
+    if (a !== String(f.get("again") ?? "").trim()) return setMsg("The two keys don't match.");
+    try {
+      await change({ data: { key: keyValue, newKey: a } });
+      setMsg("Done - use the new key from now on.");
+      onChanged(a);
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "That didn't work.");
+    }
+  }
+  return (
+    <div className="mt-12 border-t border-border pt-6">
+      {!open ? (
+        <button type="button" onClick={() => setOpen(true)} className="text-sm text-muted-foreground underline underline-offset-2 hover:text-pink">
+          Change the moderation key
+        </button>
+      ) : (
+        <form onSubmit={onSubmit} className="max-w-md space-y-3">
+          <input name="new" type="password" required minLength={16} autoComplete="new-password" placeholder="New key (16+ characters)" className={FIELD} />
+          <input name="again" type="password" required minLength={16} autoComplete="new-password" placeholder="New key again" className={FIELD} />
+          <button type="submit" className={`${BTN} border border-gold text-gold hover:bg-gold/10`}>Save new key</button>
+          {msg && <p className="text-sm text-muted-foreground">{msg}</p>}
+        </form>
+      )}
+    </div>
+  );
+}
+
+function AdminNote({ note, busy, act }: { note: ModeratedNote; busy: string | null; act: (id: string, action: Action, reply?: string) => Promise<void> }) {
   const [reply, setReply] = useState(note.reply ?? "");
   const [confirmDelete, setConfirmDelete] = useState(false);
   const ep = showEpisode(note.episode);

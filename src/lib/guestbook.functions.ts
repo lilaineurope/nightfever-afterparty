@@ -1,10 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 // The guestbook. Visitors' notes wait as "pending" until Lisa approves them on /guestbook/admin.
-// Neither table has grants for anon/authenticated: only these validated server functions (service role) reach them,
-// and the moderation ones check the signed-in user against guestbook_admins.
+// None of the guestbook tables has grants for anon/authenticated: only these validated server functions (service role)
+// reach them, and the moderation ones need Lisa's secret key.
 
 export type GuestbookNote = {
   id: string;
@@ -91,41 +90,67 @@ export const signGuestbook = createServerFn({ method: "POST" })
     return { ok: true, message: "Thank you! Your note will appear here as soon as I've read it." };
   });
 
-async function isAdmin(userId: string) {
+// --- Moderation (Lisa only) -------------------------------------------------------------------------------------
+// No accounts: the moderation page sends a long secret key with every request. Only a salted SHA-256 hash of it is
+// stored (guestbook_settings), compared in constant time; wrong keys are logged and, after 10 in 15 minutes,
+// every attempt is refused for a while.
+
+const sha256 = async (text: string) => {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+};
+const sameText = (a: string, b: string) => {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+};
+
+async function checkKey(key: string) {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  const { data } = await supabaseAdmin.from("guestbook_admins").select("user_id").eq("user_id", userId).maybeSingle();
-  return !!data;
+  const since = new Date(Date.now() - 15 * 60 * 1000).toISOString();
+  const { count } = await supabaseAdmin
+    .from("guestbook_key_failures")
+    .select("id", { count: "exact", head: true })
+    .gte("created_at", since);
+  if ((count ?? 0) >= 10) throw new Error("Too many wrong keys - please wait 15 minutes and try again.");
+  const { data } = await supabaseAdmin.from("guestbook_settings").select("key_salt,key_hash").eq("id", 1).maybeSingle();
+  const ok = !!data && sameText(await sha256(data.key_salt + key), data.key_hash);
+  if (!ok) {
+    await supabaseAdmin.from("guestbook_key_failures").insert({});
+    throw new Error("That key isn't right.");
+  }
+  return supabaseAdmin;
 }
 
-/** Moderators only: every note, pending first. */
+const keySchema = z.object({ key: z.string().min(16).max(200) });
+
+/** Moderator only: every note, newest first. */
 export const adminListGuestbook = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }): Promise<{ admin: boolean; notes: ModeratedNote[] }> => {
-    if (!(await isAdmin(context.userId))) return { admin: false, notes: [] };
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data, error } = await supabaseAdmin
+  .inputValidator((input: unknown) => keySchema.parse(input))
+  .handler(async ({ data }): Promise<ModeratedNote[]> => {
+    const db = await checkKey(data.key);
+    const { data: notes, error } = await db
       .from("guestbook_entries")
       .select(`${PUBLIC_COLUMNS},status`)
       .order("created_at", { ascending: false })
       .limit(1000);
     if (error) throw new Error(error.message);
-    return { admin: true, notes: data as ModeratedNote[] };
+    return notes as ModeratedNote[];
   });
 
-const moderateSchema = z.object({
+const moderateSchema = keySchema.extend({
   id: z.string().uuid(),
   action: z.enum(["approve", "hide", "pending", "delete", "reply"]),
   reply: z.string().trim().max(600).optional(),
 });
 
-/** Moderators only: approve, hide, delete or reply to a note. */
+/** Moderator only: approve, hide, delete or reply to a note. */
 export const moderateGuestbook = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => moderateSchema.parse(input))
-  .handler(async ({ data, context }) => {
-    if (!(await isAdmin(context.userId))) throw new Error("Only the site's moderator can do that.");
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const table = supabaseAdmin.from("guestbook_entries");
+  .handler(async ({ data }) => {
+    const db = await checkKey(data.key);
+    const table = db.from("guestbook_entries");
     const { error } =
       data.action === "delete"
         ? await table.delete().eq("id", data.id)
@@ -137,6 +162,22 @@ export const moderateGuestbook = createServerFn({ method: "POST" })
                 approved_at: data.action === "approve" ? new Date().toISOString() : null,
               })
               .eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+/** Moderator only: replace the key. */
+export const changeGuestbookKey = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) =>
+    keySchema.extend({ newKey: z.string().trim().min(16, "Please use at least 16 characters.").max(200) }).parse(input),
+  )
+  .handler(async ({ data }) => {
+    const db = await checkKey(data.key);
+    const salt = [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const { error } = await db
+      .from("guestbook_settings")
+      .update({ key_salt: salt, key_hash: await sha256(salt + data.newKey), updated_at: new Date().toISOString() })
+      .eq("id", 1);
     if (error) throw new Error(error.message);
     return { ok: true };
   });

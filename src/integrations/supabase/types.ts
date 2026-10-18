@@ -14,19 +14,16 @@ export type Database = {
   }
   public: {
     Tables: {
-      guestbook_admins: {
-        Row: {
-          created_at: string
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          user_id?: string
-        }
+      guestbook_key_failures: {
+        Row: { created_at: string; id: number }
+        Insert: { created_at?: string; id?: number }
+        Update: { created_at?: string; id?: number }
+        Relationships: []
+      }
+      guestbook_settings: {
+        Row: { id: number; key_hash: string; key_salt: string; updated_at: string }
+        Insert: { id?: number; key_hash: string; key_salt: string; updated_at?: string }
+        Update: { id?: number; key_hash?: string; key_salt?: string; updated_at?: string }
         Relationships: []
       }
       guestbook_entries: {

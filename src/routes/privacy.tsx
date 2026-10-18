@@ -201,8 +201,8 @@ function PrivacyPage() {
             <p>
               <strong className="text-cream">Nothing else.</strong> There is no
               account system for visitors, no uploads, no payments, and no
-              profile of you built from your reading. (The only sign-in on the
-              site is my own, to read and approve guestbook notes.)
+              profile of you built from your reading. (The only private page is
+              my own guestbook moderation page, opened with a secret key.)
             </p>
           </Section>
 
