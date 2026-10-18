@@ -1,17 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { bookClub, jukebox } from "@/data/collections";
-import { entities } from "@/data/entities";
 import { LOCATIONS } from "@/data/locations";
 import { sceneEvents } from "@/data/scene";
-import { guests } from "@/data/guests";
 import timelineImg from "@/assets/cards/timeline.jpg";
 import connectionsImg from "@/assets/cards/connections.jpg";
 import jukeboxImg from "@/assets/cards/jukebox.jpg";
 import bookClubImg from "@/assets/cards/book-club.jpg";
 import mapImg from "@/assets/cards/map.jpg";
 import quizImg from "@/assets/cards/quiz.jpg";
-import azImg from "@/assets/cards/a-z.jpg";
-import guestsImg from "@/assets/cards/guests.jpg";
 
 // Home page "more to explore" grid: one card per page, with live counts from the same data the pages use.
 const CARDS = [
@@ -21,8 +17,6 @@ const CARDS = [
   { to: "/book-club", title: "Book Club", img: bookClubImg, line: "The diaries, novels, magazines and gossip columns from the stories.", count: `${bookClub.length} books & magazines` },
   { to: "/map", title: "Map", img: mapImg, line: "Every club, street and city on one map - and the ones still lost.", count: `${LOCATIONS.length} places` },
   { to: "/quiz", title: "Pub Quiz", img: quizImg, line: "Ten fresh nightlife questions every time, answers and timestamps included.", count: "new quiz every time" },
-  { to: "/explore", title: "A–Z", img: azImg, line: "Every person, room, song and look with its own card.", count: `${entities.length} cards` },
-  { to: "/guests", title: "Meet the guests", img: guestsImg, line: "The nightlife legends interviewed on Night Fever, one by one.", count: `${guests.length} guests` },
 ] as const;
 
 export function ExplorePages() {
@@ -31,7 +25,7 @@ export function ExplorePages() {
       <h3 id="explore-pages" className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-gold">
         More to explore
       </h3>
-      <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
         {CARDS.map((c) => (
           <li key={c.to}>
             <Link
