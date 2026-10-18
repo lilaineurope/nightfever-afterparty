@@ -226,7 +226,7 @@ const s01e07: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO1329477005.mp3",
   runtime: "1:10:35",
-  afterpartyPublished: "2026-10-19",
+  afterpartyPublished: "2026-10-18T13:40", // same day as S03E06 but published later, so it lists first
   blurb:
     "Rudolf Piper, the club man behind Pravda, Danceteria, the Tunnel and Mars! From a 24-hour bunker club in Berlin and Keith Haring's black-and-white floor to Madonna's first shows, the Club Kids' basement, a Liberace party with white pianos everywhere and the clubs that followed in Paris, Miami and São Paulo.",
   references: piperRefs.length,
