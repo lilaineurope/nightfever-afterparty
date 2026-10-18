@@ -27,7 +27,7 @@
 - Guest cards derive Timestamp/Watch/Listen links from the shared episode registry (matched by guest name), falling back to the guest's WOW link and a Spotify search — so a newly registered afterparty appears on /guests automatically.
 - Integrate new episodes into episodes.ts, entities.ts, scene.ts afterpartyIndexes and locations.ts; reuse existing entity names — so every page receives each episode without duplicates.
 - Decade labels styled in capitals keep a lower-case "s" (1970s, not 1970S) via the Timeline's Decades helper.
-- The top menu (PAGES in site-menu.tsx) is, in order: Afterparty, Guests, Timeline, Connections, Jukebox, Book Club, Map, Pub Quiz, A–Z. The footer (SiteFooter, on every page) carries no page list - just the show and World of Wonder links, About and Contact.
+- The top menu (PAGES in site-menu.tsx) is, in order: Afterparty, Guests, Timeline, Connections, Jukebox, Book Club, Map, Pub Quiz, A–Z. The footer (SiteFooter, on every page) carries no page list - just the show and World of Wonder links, About, Contact and Under the hood.
 - Attribute sensitive or unflattering episode claims to their teller, or "as told on the show"; neutral facts need none. Apply to references, Timeline and guests; never invent years — for legal safety and accurate dates.
 - Episode portraits fill edge to edge, faces below text; refill repositioned tops with the same collage and verify desktop/phone — so labels remain readable.
 - Outside links say where they go: "Read more on Wikipedia", "on WOW Presents Plus", "on IMDb", "on Google" (src/lib/link-label.ts linkPlace), falling back to "elsewhere" - never a generic label for a Wikipedia link.
@@ -49,3 +49,4 @@
 
 - Places are two categories: "Club" (actual clubs - nightclubs, discos, after-hours, gay and dance bars, jazz and rock clubs, club nights and named club rooms) and "Location" (countries, cities, neighbourhoods, streets, and every other building: hotels, restaurants, shops, galleries, museums, theatres, schools). Never use "Place". Every new episode's reference sheet and JSON uses Club/Location; isPlace() in entities.ts covers both, so the Map, Timeline and quiz treat them alike while Most popular clubs counts only clubs.
 - afterpartyPublished is the Afterparty date (YYYY-MM-DD); when two go up the same day, add the time to the later one (YYYY-MM-DDTHH:MM) so the newest lists first on Home and Afterparty.
+- /under-the-hood lists every tool and service used to make and run the site (src/routes/under-the-hood.tsx GROUPS) - add a line whenever a new tool or service is used, and keep the privacy page in step for anything visitors touch.

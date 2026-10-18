@@ -6,7 +6,7 @@ import { LegalNote } from "@/components/legal-links";
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
 
-// One shared footer for every page: the show and World of Wonder links, About and Contact.
+// One shared footer for every page: the show and World of Wonder links, About, Contact and Under the hood.
 // The page links live only in the top menu.
 export function SiteFooter() {
   return (
@@ -38,6 +38,8 @@ export function SiteFooter() {
               <Link to="/about" className={LINK}>About</Link>
               {" · "}
               <Link to="/contact" className={LINK}>Contact</Link>
+              {" · "}
+              <Link to="/under-the-hood" className={LINK}>Under the hood</Link>
             </p>
           </nav>
         </div>

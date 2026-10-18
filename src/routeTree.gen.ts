@@ -22,6 +22,7 @@ import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as UnderTheHoodRouteImport } from './routes/under-the-hood'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as EpisodesIndexRouteImport } from './routes/episodes.index'
 import { Route as EpisodesS01e01RouteImport } from './routes/episodes.s01e01'
@@ -100,6 +101,11 @@ const TermsRoute = TermsRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnderTheHoodRoute = UnderTheHoodRouteImport.update({
+  id: '/under-the-hood',
+  path: '/under-the-hood',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UnsubscribeRoute = UnsubscribeRouteImport.update({
@@ -187,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
   '/episodes/s01e02': typeof EpisodesS01e02Route
@@ -216,6 +223,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
   '/episodes/s01e02': typeof EpisodesS01e02Route
@@ -246,6 +254,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
   '/episodes/s01e02': typeof EpisodesS01e02Route
@@ -277,6 +286,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/timeline'
+    | '/under-the-hood'
     | '/unsubscribe'
     | '/episodes/s01e01'
     | '/episodes/s01e02'
@@ -306,6 +316,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/timeline'
+    | '/under-the-hood'
     | '/unsubscribe'
     | '/episodes/s01e01'
     | '/episodes/s01e02'
@@ -335,6 +346,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/timeline'
+    | '/under-the-hood'
     | '/unsubscribe'
     | '/episodes/s01e01'
     | '/episodes/s01e02'
@@ -365,6 +377,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
+  UnderTheHoodRoute: typeof UnderTheHoodRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   EpisodesS01e01Route: typeof EpisodesS01e01Route
   EpisodesS01e02Route: typeof EpisodesS01e02Route
@@ -472,6 +485,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/under-the-hood': {
+      id: '/under-the-hood'
+      path: '/under-the-hood'
+      fullPath: '/under-the-hood'
+      preLoaderRoute: typeof UnderTheHoodRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/unsubscribe': {
@@ -589,6 +609,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
+  UnderTheHoodRoute: UnderTheHoodRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   EpisodesS01e01Route: EpisodesS01e01Route,
   EpisodesS01e02Route: EpisodesS01e02Route,
