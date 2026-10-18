@@ -142,8 +142,10 @@ const storyMakers: Maker[] = [
   },
   // Where did it happen?
   (r, i) => {
-    const { ev, ents } = pick(linked, r);
-    const others = shuffle([...new Set(sceneEvents.map((x) => x.place))].filter((p) => p !== ev.place), r).slice(0, 3);
+    const located = linked.filter(({ ev }) => ev.place.trim().length > 0);
+    if (!located.length) return null;
+    const { ev, ents } = pick(located, r);
+    const others = shuffle([...new Set(sceneEvents.map((x) => x.place))].filter((p) => p.trim().length > 0 && p !== ev.place), r).slice(0, 3);
     return {
       id: `where-${i}-${ev.id}`,
       prompt: `Where did this happen? "${ev.title}"`,
@@ -179,7 +181,7 @@ const storyMakers: Maker[] = [
       prompt: `Who was part of this story? "${maskName(ev.text, e.name)}"`,
       options: shuffle([e.name, ...absent.map((x) => x.name)], r),
       answer: e.name,
-      explain: `${e.name} - ${ev.when}, ${ev.place}.`,
+      explain: `${e.name} - ${ev.when}${ev.place ? `, ${ev.place}` : ""}.`,
       slug: e.slug,
     };
   },
