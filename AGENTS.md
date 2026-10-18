@@ -36,3 +36,4 @@
 - Automatic afterparty Timeline extraction accepts dated Event/Place references only; unprovided event locations stay empty and cannot feed location quizzes — so release years and guest associations never become invented scene facts.
 - "The names everyone drops" (home), Great Connectors, Most popular places and the Connections graph are computed from episodes.ts + entities.ts (episode-connections.ts) - never hand-listed - so a new Afterparty feeds them automatically once registered; after adding an episode, check its names show up in those counts.
 - Site search (SiteSearch in SiteMenu, index in src/lib/search-index.ts) is built from entities.ts + episodes.ts + PAGES and loaded lazily on first open - so every new episode, card and page is searchable automatically, with no hand-kept list.
+- Everything A–Z merges names by dropping bracketed asides, but keeps episode codes like "(S01E07)" - so each episode's on-camera look keeps its own card.

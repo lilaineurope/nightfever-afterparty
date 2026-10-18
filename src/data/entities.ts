@@ -52,9 +52,11 @@ const refs: Ref[] = [
   ...(refs506Json as Ref[]).map((r) => ({ ...r, episode: "s05e06" as const })),
 ];
 
+// Bracketed asides are dropped so "Danceteria (probably)" joins "Danceteria", but an episode code such as
+// "(S01E07)" is kept, so each episode's on-camera look keeps its own card.
 const clean = (n: string) =>
   n
-    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/\s*\(([^)]*)\)/g, (m, inner: string) => (/^S\d{2}E\d{2}$/i.test(inner.trim()) ? ` ${inner}` : ""))
     .replace(/&/g, "and")
     .replace(/^the\s+/i, "")
     .trim()
