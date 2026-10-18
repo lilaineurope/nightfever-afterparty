@@ -128,7 +128,7 @@ function EpisodePage() {
           <p className="mt-2 text-sm text-muted-foreground">Released 11 Oct 2021 · 1:10:35 as a podcast</p>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
             Every name, club, book, song, night and look from the interview - {refs.length} references
-            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. From a 24-hour club six floors under a Berlin bunker and the one-night Pravda to Danceteria's floors, Madonna's first shows, Keith Haring's black-and-white floor, the Club Kids' basement at the Tunnel and a Liberace party with ten white pianos. Wow!
+            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. From a 24-hour club six floors under a Berlin bunker and the one-night Pravda to Danceteria's floors, Madonna's first shows, Keith Haring's black-and-white floor, the Club Kids' basement at the Tunnel and a Liberace party with white pianos everywhere. Wow!
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
