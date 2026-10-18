@@ -22,6 +22,7 @@ export function CollectionPage({
   topSlot,
   onPlay,
   playingSlug,
+  extraShelf,
 }: {
   header: string;
   kicker: string;
@@ -34,6 +35,8 @@ export function CollectionPage({
   topSlot?: ReactNode;
   onPlay?: (item: CollectionItem) => void;
   playingSlug?: string | undefined;
+  /** An extra filter chip that shows its own content instead of the item list (e.g. the Jukebox's Clubs). */
+  extraShelf?: { key: string; label: string; count: number; content: ReactNode } | undefined;
 }) {
   const [shelf, setShelf] = useState("all");
   const [sort, setSort] = useState<"mentions" | "az" | "episode">("mentions");
@@ -73,6 +76,11 @@ export function CollectionPage({
                 {s.label} <span className="ml-1 opacity-70">{counts[s.key]}</span>
               </button>
             ))}
+            {extraShelf && (
+              <button type="button" className={chip(shelf === extraShelf.key)} aria-pressed={shelf === extraShelf.key} onClick={() => setShelf(extraShelf.key)}>
+                {extraShelf.label} <span className="ml-1 opacity-70">{extraShelf.count}</span>
+              </button>
+            )}
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <span>Sort:</span>
@@ -83,6 +91,9 @@ export function CollectionPage({
         </div>
 
         {topSlot && <div className="mt-6">{topSlot}</div>}
+        {extraShelf && shelf === extraShelf.key ? (
+          <div className="mt-6">{extraShelf.content}</div>
+        ) : (
         <ol className="mt-6 space-y-4">
           {shown.map((it, i) => (
             <li key={it.slug} className={`rounded-2xl border bg-card p-5 ${playingSlug === it.slug ? "border-pink" : "border-border"}`}>
@@ -127,6 +138,7 @@ export function CollectionPage({
             </li>
           ))}
         </ol>
+        )}
         <p className="mt-8 text-xs text-muted-foreground">{note}</p>
       </div>
       <SiteFooter />

@@ -4,6 +4,8 @@ import { JukeboxPlayer, useJukebox } from "@/components/jukebox-player";
 import { MUSIC_SHELVES, SPOTIFY_PLAYLIST_URL, jukebox, listenLinks } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 import header from "@/assets/jukebox-header.jpg";
+import { ClubNightsList } from "@/components/club-nights-list";
+import { CLUB_NIGHTS } from "@/data/club-nights";
 
 const description = `Every song, record, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie at the Mudd Club to Warm Leatherette, each with the moment it comes up. Press play!`;
 
@@ -43,6 +45,7 @@ function JukeboxPage() {
       intro={<>Every song, record, band and sound that comes up in the interviews - the playlist of the night. Tap a timestamp to hear the story, press play, or take the whole lot with you as the <a href={SPOTIFY_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" className="text-gold underline decoration-gold/50 underline-offset-2 hover:text-pink">Night Fever Afterparty Jukebox playlist on Spotify</a>.</>}
       items={jukebox}
       shelves={[...MUSIC_SHELVES]}
+      extraShelf={{ key: "clubs", label: "Clubs", count: CLUB_NIGHTS.length, content: <ClubNightsList /> }}
       extras={(m) => {
         const l = listenLinks(m.name);
         return m.shelf === "stage" ? [] : [{ label: "Listen on Spotify", href: l.spotify }, { label: "Watch on YouTube", href: l.youtube }];
