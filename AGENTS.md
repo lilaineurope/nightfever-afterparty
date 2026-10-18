@@ -13,7 +13,7 @@
 - Partition the episode's Mood sliders by the reference JSON's on-camera marker and give each independent selection state, so story and presenter looks remain separate after spreadsheet updates.
 - Every person/place/work has exactly one overview card at /explore/$slug, built from src/data/entities.ts by merging guests, scene timeline and episode references; link names via EntityLink — so profiles are never duplicated.
 - The site menu lives once in __root (SiteMenu) — so every page shows all pages.
-- Guest cards live on their own /guests page (src/components/guests-section.tsx) linked from the footer next to World of Wonder (not the top menu - it is merging into the Afterparty page); the Timeline page carries only the scene timeline — so each view has one job.
+- Guest cards live on their own /guests page (src/components/guests-section.tsx), in the top menu right after Afterparty; the Timeline page carries only the scene timeline — so each view has one job.
 - The Everything A–Z card strip lives on /explore only; "The names everyone drops" (NamesEveryoneDrops) lives on the home page only, and Connections keeps just the dot graph and great connectors — so each view has one job.
 - Every episode in src/data/episodes.ts stores both watchUrl (WOW Presents Plus) and listenUrl (Spotify); episode blocks always offer "Afterparty connection", "Watch the episode" and "Listen to the episode", so the two addresses never drift apart.
 - Keep shared episode lists in ascending season/episode order and resolve guest/reference episode links through the shared episode registry, so new episodes appear consistently without binary episode assumptions.
@@ -27,7 +27,7 @@
 - Guest cards derive Timestamp/Watch/Listen links from the shared episode registry (matched by guest name), falling back to the guest's WOW link and a Spotify search — so a newly registered afterparty appears on /guests automatically.
 - Integrate new episodes into episodes.ts, entities.ts, scene.ts afterpartyIndexes and locations.ts; reuse existing entity names — so every page receives each episode without duplicates.
 - Decade labels styled in capitals keep a lower-case "s" (1970s, not 1970S) via the Timeline's Decades helper.
-- The top menu (PAGES in site-menu.tsx) is, in order: Afterparty, Timeline, Connections, Jukebox, Book Club, Map, Pub Quiz, A–Z. The footer (SiteFooter, on every page) carries no page list - just the show and World of Wonder links, Meet the guests, About and Contact.
+- The top menu (PAGES in site-menu.tsx) is, in order: Afterparty, Guests, Timeline, Connections, Jukebox, Book Club, Map, Pub Quiz, A–Z. The footer (SiteFooter, on every page) carries no page list - just the show and World of Wonder links, About and Contact.
 - Attribute sensitive or unflattering episode claims to their teller, or "as told on the show"; neutral facts need none. Apply to references, Timeline and guests; never invent years — for legal safety and accurate dates.
 - Episode portraits fill edge to edge, faces below text; refill repositioned tops with the same collage and verify desktop/phone — so labels remain readable.
 - Outside links say where they go: "Read more on Wikipedia", "on WOW Presents Plus", "on IMDb", "on Google" (src/lib/link-label.ts linkPlace), falling back to "elsewhere" - never a generic label for a Wikipedia link.

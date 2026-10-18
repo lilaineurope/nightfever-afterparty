@@ -20,7 +20,7 @@ export const norm = (s: string) =>
   s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "'");
 
 const items: Item[] = [
-  ...[...PAGES, { to: "/guests", label: "Guests" }, { to: "/about", label: "About" }, { to: "/contact", label: "Contact" }].map((p) => ({ kind: "page" as const, title: p.label, sub: "Page", to: p.to, key: norm(p.label === "A–Z" ? "A–Z Everything A-Z" : p.label), texts: [] })),
+  ...[...PAGES, { to: "/about", label: "About" }, { to: "/contact", label: "Contact" }].map((p) => ({ kind: "page" as const, title: p.label, sub: "Page", to: p.to, key: norm(p.label === "A–Z" ? "A–Z Everything A-Z" : p.label), texts: [] })),
   ...episodes.map((e) => ({
     kind: "episode" as const,
     title: `${e.guest}`,
