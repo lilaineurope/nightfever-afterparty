@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      guestbook_admins: {
+        Row: { created_at: string; user_id: string }
+        Insert: { created_at?: string; user_id: string }
+        Update: { created_at?: string; user_id?: string }
+        Relationships: []
+      }
+      guestbook_entries: {
+        Row: {
+          approved_at: string | null
+          created_at: string
+          episode: string | null
+          id: string
+          message: string
+          name: string
+          place: string | null
+          reply: string | null
+          status: string
+        }
+        Insert: {
+          approved_at?: string | null
+          created_at?: string
+          episode?: string | null
+          id?: string
+          message: string
+          name: string
+          place?: string | null
+          reply?: string | null
+          status?: string
+        }
+        Update: {
+          approved_at?: string | null
+          created_at?: string
+          episode?: string | null
+          id?: string
+          message?: string
+          name?: string
+          place?: string | null
+          reply?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           consented_at: string

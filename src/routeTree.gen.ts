@@ -40,6 +40,8 @@ import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
 import { Route as EpisodesS06e03RouteImport } from './routes/episodes.s06e03'
 import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
+import { Route as GuestbookIndexRouteImport } from './routes/guestbook.index'
+import { Route as GuestbookAdminRouteImport } from './routes/guestbook.admin'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -196,6 +198,16 @@ const ExploreSlugRoute = ExploreSlugRouteImport.update({
   path: '/explore/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuestbookIndexRoute = GuestbookIndexRouteImport.update({
+  id: '/guestbook/',
+  path: '/guestbook/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuestbookAdminRoute = GuestbookAdminRouteImport.update({
+  id: '/guestbook/admin',
+  path: '/guestbook/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -227,8 +239,10 @@ export interface FileRoutesByFullPath {
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
+  '/guestbook/admin': typeof GuestbookAdminRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
+  '/guestbook/': typeof GuestbookIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -260,8 +274,10 @@ export interface FileRoutesByTo {
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
+  '/guestbook/admin': typeof GuestbookAdminRoute
   '/episodes': typeof EpisodesIndexRoute
   '/explore': typeof ExploreIndexRoute
+  '/guestbook': typeof GuestbookIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -294,8 +310,10 @@ export interface FileRoutesById {
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
+  '/guestbook/admin': typeof GuestbookAdminRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
+  '/guestbook/': typeof GuestbookIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -329,8 +347,10 @@ export interface FileRouteTypes {
     | '/episodes/s06e01'
     | '/episodes/s06e03'
     | '/explore/$slug'
+    | '/guestbook/admin'
     | '/episodes/'
     | '/explore/'
+    | '/guestbook/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -362,8 +382,10 @@ export interface FileRouteTypes {
     | '/episodes/s06e01'
     | '/episodes/s06e03'
     | '/explore/$slug'
+    | '/guestbook/admin'
     | '/episodes'
     | '/explore'
+    | '/guestbook'
   id:
     | '__root__'
     | '/'
@@ -395,8 +417,10 @@ export interface FileRouteTypes {
     | '/episodes/s06e01'
     | '/episodes/s06e03'
     | '/explore/$slug'
+    | '/guestbook/admin'
     | '/episodes/'
     | '/explore/'
+    | '/guestbook/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -429,8 +453,10 @@ export interface RootRouteChildren {
   EpisodesS06e01Route: typeof EpisodesS06e01Route
   EpisodesS06e03Route: typeof EpisodesS06e03Route
   ExploreSlugRoute: typeof ExploreSlugRoute
+  GuestbookAdminRoute: typeof GuestbookAdminRoute
   EpisodesIndexRoute: typeof EpisodesIndexRoute
   ExploreIndexRoute: typeof ExploreIndexRoute
+  GuestbookIndexRoute: typeof GuestbookIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -652,6 +678,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExploreSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guestbook/': {
+      id: '/guestbook/'
+      path: '/guestbook'
+      fullPath: '/guestbook/'
+      preLoaderRoute: typeof GuestbookIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guestbook/admin': {
+      id: '/guestbook/admin'
+      path: '/guestbook/admin'
+      fullPath: '/guestbook/admin'
+      preLoaderRoute: typeof GuestbookAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -685,8 +725,10 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS06e01Route: EpisodesS06e01Route,
   EpisodesS06e03Route: EpisodesS06e03Route,
   ExploreSlugRoute: ExploreSlugRoute,
+  GuestbookAdminRoute: GuestbookAdminRoute,
   EpisodesIndexRoute: EpisodesIndexRoute,
   ExploreIndexRoute: ExploreIndexRoute,
+  GuestbookIndexRoute: GuestbookIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

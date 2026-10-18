@@ -21,6 +21,7 @@ const atAGlance = [
   "Nothing is ever sold or shared with advertisers.",
   "The Afterparty newsletter stores your address only if you tick the consent box.",
   "Every newsletter email carries a one-click unsubscribe link.",
+  "Guestbook notes show only the name, place and note you choose to share, after I've read them - and come down whenever you ask.",
 ];
 
 function Section({
@@ -185,9 +186,23 @@ function PrivacyPage() {
               Legal basis: consent, which you can withdraw at any time.
             </p>
             <p>
+              <strong className="text-cream">Guestbook.</strong> If you sign the
+              guestbook, the name or nickname, the optional place and favourite
+              episode, and the note you write are stored in the site&rsquo;s
+              database together with the time you sent it. No email address is
+              asked for. Every note waits until I have read it, and only
+              approved notes are shown publicly on the guestbook page. A copy of
+              the note is sent to my inbox by Web3Forms so I know it is waiting.
+              Notes stay up until you ask me to take them down (via the contact
+              page) or I remove them; hidden and removed notes are deleted from
+              the database. Legal basis: your consent when you tick the box,
+              which you can withdraw at any time.
+            </p>
+            <p>
               <strong className="text-cream">Nothing else.</strong> There is no
-              account system, no comments, no uploads, no payments, and no
-              profile of you built from your reading.
+              account system for visitors, no uploads, no payments, and no
+              profile of you built from your reading. (The only sign-in on the
+              site is my own, to read and approve guestbook notes.)
             </p>
           </Section>
 
@@ -228,7 +243,9 @@ function PrivacyPage() {
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter processes the anonymous visit
               statistics described above, Web3Forms delivers contact-form
-              messages to my inbox, and when you press play the show&rsquo;s own
+              messages and guestbook alerts to my inbox, the hosting
+              platform&rsquo;s built-in database keeps newsletter sign-ups and
+              guestbook notes, and when you press play the show&rsquo;s own
               podcast host streams the episode to you. No data is sold, rented or brokered. If a
               future feature needs another processor (for example an email
               provider), it will be named here before it goes live.
@@ -242,7 +259,8 @@ function PrivacyPage() {
               deleted. Error reports are kept only long enough to diagnose the
               fault. Visit statistics are kept as anonymous page counts.
               Because the email form stores nothing, there is nothing to
-              delete there.
+              delete there. Guestbook notes are kept while they are shown and
+              deleted when you ask or when I take them down.
             </p>
           </Section>
 
@@ -264,7 +282,8 @@ function PrivacyPage() {
             <p>
               You can withdraw your newsletter consent by unsubscribing with
               one click in any message, or on the unsubscribe page the emails
-              link to.
+              link to. To take down a guestbook note, write via the contact
+              page and tell me the name it was signed with.
             </p>
           </Section>
 

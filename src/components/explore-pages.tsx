@@ -8,6 +8,7 @@ import jukeboxImg from "@/assets/cards/jukebox.jpg";
 import bookClubImg from "@/assets/cards/book-club.jpg";
 import mapImg from "@/assets/cards/map.jpg";
 import quizImg from "@/assets/cards/quiz.jpg";
+import guestbookImg from "@/assets/cards/guestbook.jpg";
 
 // Home page "more to explore" grid: one card per page, with live counts from the same data the pages use.
 const CARDS = [
@@ -46,6 +47,18 @@ export function ExplorePages() {
           </li>
         ))}
       </ul>
+      <Link
+        to="/guestbook"
+        className="group relative mt-4 flex items-center justify-between gap-4 overflow-hidden rounded-2xl border border-border px-5 py-5 transition hover:border-pink sm:mt-5 sm:px-7"
+      >
+        <img src={guestbookImg} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-60 transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/30" />
+        <span className="relative">
+          <span className="block text-lg font-semibold text-cream group-hover:text-pink">Sign the guestbook</span>
+          <span className="block text-sm text-muted-foreground">Leave a note for the Afterparty - your episode, your club, your night.</span>
+        </span>
+        <span className="relative shrink-0 rounded-full bg-pink px-4 py-2 text-sm font-semibold text-pink-foreground">Sign it &rarr;</span>
+      </Link>
     </section>
   );
 }

@@ -13,7 +13,7 @@ const GROUPS: Group[] = [
     title: "Building the site",
     blurb: "Where the pages are made, stored and put online.",
     tools: [
-      { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups in its built-in database (Lovable Cloud)." },
+      { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups and guestbook notes in its built-in database (Lovable Cloud)." },
       { name: "Claude", href: "https://claude.ai", what: "My co-pilot for everything behind the scenes: writes the code, researches every name and place, checks the links, transcribes the episodes and builds the reference sheets." },
       { name: "GitHub", href: "https://github.com", what: "Stores the site's code; every change syncs straight into Lovable." },
       { name: "React, TanStack and Tailwind", href: "https://tanstack.com", what: "The open-source building blocks the pages are written in." },
@@ -59,6 +59,7 @@ const GROUPS: Group[] = [
     title: "Visitors and search",
     blurb: "Counting visits without tracking you, and helping people find the site.",
     tools: [
+      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and new-guestbook-note alerts to my inbox." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
     ],
