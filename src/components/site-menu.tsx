@@ -21,10 +21,10 @@ export function SiteMenu() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
-        <Link to="/" className="whitespace-nowrap text-sm font-bold uppercase tracking-[0.2em] text-gold text-glow">
+        <Link to="/" className="whitespace-nowrap text-sm font-bold uppercase tracking-[0.12em] text-gold text-glow xl:tracking-[0.2em]">
           Night Fever fan page
         </Link>
-        <div className="flex items-center gap-2 xl:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <SiteSearch />
           <button
             type="button"
@@ -35,7 +35,7 @@ export function SiteMenu() {
             Menu
           </button>
         </div>
-        <ul className="hidden items-center gap-0.5 xl:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>
@@ -49,7 +49,7 @@ export function SiteMenu() {
         </ul>
       </nav>
       {open && (
-        <ul className="border-t border-border px-4 pb-3 xl:hidden">
+        <ul className="border-t border-border px-4 pb-3 lg:hidden">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>

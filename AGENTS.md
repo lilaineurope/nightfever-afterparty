@@ -43,3 +43,4 @@
 - Book Club (/book-club) and Jukebox (/jukebox) are built from entities.ts via src/data/collections.ts (Book/Publication and Music references) with the shared CollectionPage - so every new Afterparty adds its books and songs automatically; songs link to Spotify/YouTube searches, books to Open Library, nothing is hosted.
 - The top menu shows the full links only from xl (1280px) up, with the short label "A–Z"; below that it is the Menu button - so the bar never wraps.
 - The Jukebox player (src/components/jukebox-player.tsx) uses the Spotify iFrame API, loaded only when a visitor presses play, and auto-advances to the next song; Spotify IDs live in SPOTIFY in src/data/collections.ts and must come from real Spotify URLs (never guessed). The privacy page names this one embed.
+- Header collages never repeat a reference: each object appears once (check the Gemini image for duplicates before using it, and ask Gemini to remove repeats).
