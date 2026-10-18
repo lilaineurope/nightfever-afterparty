@@ -5,9 +5,10 @@ import { SiteSearch } from "@/components/site-search";
 // The one list of pages: the top menu and the footer both read it.
 export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
-  { to: "/explore", label: "Everything A–Z" },
-  { to: "/guests", label: "Guests" },
+  { to: "/explore", label: "A–Z" },
   { to: "/timeline", label: "Timeline" },
+  { to: "/book-club", label: "Book Club" },
+  { to: "/jukebox", label: "Jukebox" },
   { to: "/connections", label: "Connections (beta)" },
   { to: "/map", label: "Map (beta)" },
   { to: "/quiz", label: "Pub Quiz (beta)" },
@@ -16,14 +17,14 @@ export const PAGES = [
 export function SiteMenu() {
   const [open, setOpen] = useState(false);
   const item =
-    "block whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-cream/80 transition hover:text-pink";
+    "block whitespace-nowrap rounded-lg px-2 py-2 text-sm font-medium text-cream/80 transition hover:text-pink";
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
-        <Link to="/" className="text-sm font-bold uppercase tracking-[0.2em] text-gold text-glow">
+        <Link to="/" className="whitespace-nowrap text-sm font-bold uppercase tracking-[0.2em] text-gold text-glow">
           Night Fever fan page
         </Link>
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <SiteSearch />
           <button
             type="button"
@@ -34,7 +35,7 @@ export function SiteMenu() {
             Menu
           </button>
         </div>
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-0.5 xl:flex">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>
@@ -48,7 +49,7 @@ export function SiteMenu() {
         </ul>
       </nav>
       {open && (
-        <ul className="border-t border-border px-4 pb-3 md:hidden">
+        <ul className="border-t border-border px-4 pb-3 xl:hidden">
           {PAGES.map((p) => (
             <li key={p.to}>
               <Link to={p.to} className={item} onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "text-gold" }}>

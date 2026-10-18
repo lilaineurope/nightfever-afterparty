@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BookClubRouteImport } from './routes/book-club'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GuestsRouteImport } from './routes/guests'
+import { Route as JukeboxRouteImport } from './routes/jukebox'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as QuizRouteImport } from './routes/quiz'
@@ -45,6 +47,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookClubRoute = BookClubRouteImport.update({
+  id: '/book-club',
+  path: '/book-club',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConnectionsRoute = ConnectionsRouteImport.update({
   id: '/connections',
   path: '/connections',
@@ -58,6 +65,11 @@ const ContactRoute = ContactRouteImport.update({
 const GuestsRoute = GuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JukeboxRoute = JukeboxRouteImport.update({
+  id: '/jukebox',
+  path: '/jukebox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -164,9 +176,11 @@ const ExploreSlugRoute = ExploreSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book-club': typeof BookClubRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
+  '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
@@ -191,9 +205,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book-club': typeof BookClubRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
+  '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
@@ -219,9 +235,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book-club': typeof BookClubRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
+  '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
@@ -248,9 +266,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/book-club'
     | '/connections'
     | '/contact'
     | '/guests'
+    | '/jukebox'
     | '/map'
     | '/privacy'
     | '/quiz'
@@ -275,9 +295,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/book-club'
     | '/connections'
     | '/contact'
     | '/guests'
+    | '/jukebox'
     | '/map'
     | '/privacy'
     | '/quiz'
@@ -302,9 +324,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/book-club'
     | '/connections'
     | '/contact'
     | '/guests'
+    | '/jukebox'
     | '/map'
     | '/privacy'
     | '/quiz'
@@ -330,9 +354,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BookClubRoute: typeof BookClubRoute
   ConnectionsRoute: typeof ConnectionsRoute
   ContactRoute: typeof ContactRoute
   GuestsRoute: typeof GuestsRoute
+  JukeboxRoute: typeof JukeboxRoute
   MapRoute: typeof MapRoute
   PrivacyRoute: typeof PrivacyRoute
   QuizRoute: typeof QuizRoute
@@ -371,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book-club': {
+      id: '/book-club'
+      path: '/book-club'
+      fullPath: '/book-club'
+      preLoaderRoute: typeof BookClubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/connections': {
       id: '/connections'
       path: '/connections'
@@ -390,6 +423,13 @@ declare module '@tanstack/react-router' {
       path: '/guests'
       fullPath: '/guests'
       preLoaderRoute: typeof GuestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jukebox': {
+      id: '/jukebox'
+      path: '/jukebox'
+      fullPath: '/jukebox'
+      preLoaderRoute: typeof JukeboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -538,9 +578,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BookClubRoute: BookClubRoute,
   ConnectionsRoute: ConnectionsRoute,
   ContactRoute: ContactRoute,
   GuestsRoute: GuestsRoute,
+  JukeboxRoute: JukeboxRoute,
   MapRoute: MapRoute,
   PrivacyRoute: PrivacyRoute,
   QuizRoute: QuizRoute,

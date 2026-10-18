@@ -13,7 +13,7 @@
 - Partition the episode's Mood sliders by the reference JSON's on-camera marker and give each independent selection state, so story and presenter looks remain separate after spreadsheet updates.
 - Every person/place/work has exactly one overview card at /explore/$slug, built from src/data/entities.ts by merging guests, scene timeline and episode references; link names via EntityLink — so profiles are never duplicated.
 - The site menu lives once in __root (SiteMenu) — so every page shows all pages.
-- Guest cards live on their own /guests page (src/components/guests-section.tsx) with a "Guests" menu entry; the Timeline page carries only the scene timeline — so each view has one job.
+- Guest cards live on their own /guests page (src/components/guests-section.tsx) linked from the footer next to World of Wonder (not the top menu - it is merging into the Afterparty page); the Timeline page carries only the scene timeline — so each view has one job.
 - The Everything A–Z card strip lives on /explore only; "The names everyone drops" (NamesEveryoneDrops) lives on the home page only, and Connections keeps just the dot graph and great connectors — so each view has one job.
 - Every episode in src/data/episodes.ts stores both watchUrl (WOW Presents Plus) and listenUrl (Spotify); episode blocks always offer "Afterparty connection", "Watch the episode" and "Listen to the episode", so the two addresses never drift apart.
 - Keep shared episode lists in ascending season/episode order and resolve guest/reference episode links through the shared episode registry, so new episodes appear consistently without binary episode assumptions.
@@ -40,3 +40,5 @@
 - SEO lives in src/lib/seo.ts: every page uses pageHead (absolute canonical, og:url, og:site_name, its own 1200x630 share picture in public/og/) and episode pages use episodeHead(id) with a keyword title from EPISODE_TOPICS and PodcastEpisode JSON-LD - so search results and shared links stay rich. For a new episode: add its EPISODE_TOPICS line, add it to EP in scripts/og-images.py and run it.
 - Card pages (/explore/$slug) get a description from their first story line and WebPage/about JSON-LD; one-episode cards with nothing else (isThinCard) stay on the site but are noindex and out of the sitemap - so Google ranks the rich cards.
 - Images in src/assets are web-sized (headers max 1920px wide, boxes 1024px, JPEG quality ~80, about 200-500 KB) - never commit 2 MB originals, they slow pages and hurt search ranking.
+- Book Club (/book-club) and Jukebox (/jukebox) are built from entities.ts via src/data/collections.ts (Book/Publication and Music references) with the shared CollectionPage - so every new Afterparty adds its books and songs automatically; songs link to Spotify/YouTube searches, books to Open Library, nothing is hosted.
+- The top menu shows the full links only from xl (1280px) up, with the short label "A–Z"; below that it is the Menu button - so the bar never wraps.
