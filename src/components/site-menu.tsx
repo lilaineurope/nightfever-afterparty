@@ -2,16 +2,16 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteSearch } from "@/components/site-search";
 
-// The one list of pages: the top menu and the footer both read it.
+// The one list of pages for the top menu (and site search).
 export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
-  { to: "/explore", label: "A–Z" },
   { to: "/timeline", label: "Timeline" },
-  { to: "/book-club", label: "Book Club" },
+  { to: "/connections", label: "Connections" },
   { to: "/jukebox", label: "Jukebox" },
-  { to: "/connections", label: "Connections (beta)" },
-  { to: "/map", label: "Map (beta)" },
-  { to: "/quiz", label: "Pub Quiz (beta)" },
+  { to: "/book-club", label: "Book Club" },
+  { to: "/map", label: "Map" },
+  { to: "/quiz", label: "Pub Quiz" },
+  { to: "/explore", label: "A–Z" },
 ] as const;
 
 export function SiteMenu() {

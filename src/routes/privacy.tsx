@@ -203,8 +203,12 @@ function PrivacyPage() {
             </p>
             <p>
               Nothing is embedded from Spotify, YouTube, Instagram or any other
-              service, so those companies cannot see that you were here. Their
-              names appear only as ordinary links.
+              service, so those companies cannot see that you were here - with
+              one exception you switch on yourself: the Jukebox page loads
+              Spotify&rsquo;s own player only after you press a Play button. From
+              that moment Spotify&rsquo;s privacy policy applies to the player and
+              Spotify may set its own cookies. Everywhere else their names appear
+              only as ordinary links.
             </p>
           </Section>
 

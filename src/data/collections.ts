@@ -13,6 +13,8 @@ export type CollectionItem = {
   mentions: number;
   firstRelease: number; // earliest episode release, for "newest first"
   moments: { episodeId: string; code: string; guest: string; time: string; context: string }[];
+  /** Spotify URI (spotify:track:… / album / artist) for the Jukebox player, when one exists */
+  spotify?: string | undefined;
 };
 
 const hasCat = (e: Entity, cats: string[]) => cats.includes(e.category) || e.refs.some((r) => cats.includes(r.category));
@@ -53,6 +55,40 @@ export const bookClub: CollectionItem[] = entities
   .sort(byMentions);
 
 // ---------- Jukebox ----------
+// Official Spotify IDs, checked against Spotify search results (never guessed).
+const SPOTIFY: Record<string, string> = {
+  "'Heart of Glass' – Blondie": "spotify:track:5lQOzJmQladWC4kLQClssB",
+  "'The Glamorous Life' – Sheila E.": "spotify:track:179SfVFJ0ZN41toTxnpgRD",
+  "'Dancing in the Dark' video – Bruce Springsteen": "spotify:track:7FwBtcecmlpc1sLySPXeGE",
+  "The Cars – 'Hello Again' video": "spotify:track:6HFpfx0Efw1ckqKTLVrMQy",
+  "David Bowie – 'Boys Keep Swinging'": "spotify:track:5NXCDF2wyPv06X54abGTcp",
+  "Kraftwerk – 'Radioactivity'": "spotify:track:3kwql90R2gmkK12R8uGHCs",
+  "RuPaul – 'Supermodel (You Better Work)'": "spotify:track:4D8ZS6i1MX6cuFUZ9jdKYp",
+  "'America' (West Side Story)": "spotify:track:71LoilVErjHICT2y5Qxz2E",
+  "Fade to Grey": "spotify:track:3yobQNuKVJ62WDU7h725Fu",
+  "The Lady in Red": "spotify:track:5tawGZuoaKGinhLIn9U5X4",
+  "Too Funky": "spotify:track:1GoYYxXkwaQuLrFwc6nWCV",
+  "Warm Leatherette": "spotify:track:1Yqv2qCLzmpNXEWR7tWZtU",
+  "Bedtime Stories": "spotify:album:1saoZHjleM0tAQQoCvpMrB",
+  "Presence (Led Zeppelin)": "spotify:album:3uhD8hNpb0m3iIZ18RHH5u",
+  "Flora the Red Menace": "spotify:album:2VyTCz0JMUOhZVTb5XaQ7Z",
+  "Victor/Victoria (Broadway)": "spotify:album:2d8srwInH3rMaj3G6Pim4D",
+  "Village People": "spotify:artist:0dCKce6tJJdHvlWnDMwzPW",
+  "Duran Duran": "spotify:artist:0lZoBs4Pzo7R89JM9lxwoT",
+  "Frankie Goes to Hollywood": "spotify:artist:1mZu3rO7qSD09GdDpePHhY",
+  "Kraftwerk": "spotify:artist:0dmPX6ovclgOy8WWJaFEUU",
+  "Led Zeppelin": "spotify:artist:36QJpDe2go2KgaRleHCDTp",
+  "ABC": "spotify:artist:2s79xe5F6eUQkjwjww27Fh",
+  "New York Dolls": "spotify:artist:0WhGV9lzljq2QKJ8ipw6jx",
+  "Tears for Fears": "spotify:artist:4bthk9UfsYUYdcFyqxmSUU",
+  "The Temptations": "spotify:artist:3RwQ26hR2tJtA8F9p2n7jG",
+  "The Who": "spotify:artist:67ea9eGLXYMsO2eYQRui3w",
+  "Santana": "spotify:artist:6GI52t8N5F02MxU0g5U69P",
+  "Creedence Clearwater Revival": "spotify:artist:3IYUhFvPQItj6xySrBmZkd",
+  "The Rolling Stones": "spotify:artist:22bE4uQ6baNwSHPVcDxLCe",
+  "U2": "spotify:artist:51Blml2LZPmy7TTiAg47vQ",
+};
+
 export const MUSIC_SHELVES: Shelf[] = [
   { key: "songs", label: "Songs, records & videos" },
   { key: "artists", label: "Artists & bands" },
@@ -68,7 +104,7 @@ export const jukebox: CollectionItem[] = entities
   .filter((e) => hasCat(e, ["Music"]))
   .map((e) => {
     const shelf = SOUNDS.test(e.name) ? "sounds" : STAGE.test(e.name) ? "stage" : SONG.test(e.name) ? "songs" : "artists";
-    return toItem(e, shelf, ["Music"]);
+    return { ...toItem(e, shelf, ["Music"]), spotify: SPOTIFY[e.name] };
   })
   .sort(byMentions);
 

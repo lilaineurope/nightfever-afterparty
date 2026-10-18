@@ -19,6 +19,9 @@ export function CollectionPage({
   shelves,
   extras,
   note,
+  topSlot,
+  onPlay,
+  playingSlug,
 }: {
   header: string;
   kicker: string;
@@ -28,6 +31,9 @@ export function CollectionPage({
   shelves: Shelf[];
   extras: (item: CollectionItem) => Extra[];
   note: ReactNode;
+  topSlot?: ReactNode;
+  onPlay?: (item: CollectionItem) => void;
+  playingSlug?: string | undefined;
 }) {
   const [shelf, setShelf] = useState("all");
   const [sort, setSort] = useState<"mentions" | "az" | "episode">("mentions");
@@ -74,9 +80,10 @@ export function CollectionPage({
           </div>
         </div>
 
+        {topSlot && <div className="mt-6">{topSlot}</div>}
         <ol className="mt-6 space-y-4">
           {shown.map((it, i) => (
-            <li key={it.slug} className="rounded-2xl border border-border bg-card p-5">
+            <li key={it.slug} className={`rounded-2xl border bg-card p-5 ${playingSlug === it.slug ? "border-pink" : "border-border"}`}>
               <div className="flex flex-wrap items-baseline justify-between gap-3">
                 <div className="flex items-baseline gap-3">
                   <span className="w-7 shrink-0 text-right font-mono text-sm text-gold/70">{i + 1}</span>
@@ -102,7 +109,12 @@ export function CollectionPage({
                   </li>
                 ))}
               </ul>
-              <div className="mt-3 flex flex-wrap gap-3 pl-10 text-xs">
+              <div className="mt-3 flex flex-wrap items-center gap-3 pl-10 text-xs">
+                {onPlay && it.spotify && (
+                  <button type="button" onClick={() => onPlay(it)} className="rounded-full bg-pink px-3 py-1 font-semibold text-pink-foreground hover:opacity-90">
+                    {playingSlug === it.slug ? "♫ Playing" : "▶ Play"}
+                  </button>
+                )}
                 {it.link && (
                   <a href={it.link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(it.link)} ↗</a>
                 )}

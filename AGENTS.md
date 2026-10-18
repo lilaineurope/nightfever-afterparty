@@ -27,7 +27,7 @@
 - Guest cards derive Timestamp/Watch/Listen links from the shared episode registry (matched by guest name), falling back to the guest's WOW link and a Spotify search — so a newly registered afterparty appears on /guests automatically.
 - Integrate new episodes into episodes.ts, entities.ts, scene.ts afterpartyIndexes and locations.ts; reuse existing entity names — so every page receives each episode without duplicates.
 - Decade labels styled in capitals keep a lower-case "s" (1970s, not 1970S) via the Timeline's Decades helper.
-- The footer (SiteFooter) reads the same PAGES list as the top menu (SiteMenu), plus About and Contact, and every page renders it - so footer and menu never drift apart.
+- The top menu (PAGES in site-menu.tsx) is, in order: Afterparty, Timeline, Connections, Jukebox, Book Club, Map, Pub Quiz, A–Z. The footer (SiteFooter, on every page) carries no page list - just the show and World of Wonder links, Meet the guests, About and Contact.
 - Attribute sensitive or unflattering episode claims to their teller, or "as told on the show"; neutral facts need none. Apply to references, Timeline and guests; never invent years — for legal safety and accurate dates.
 - Episode portraits fill edge to edge, faces below text; refill repositioned tops with the same collage and verify desktop/phone — so labels remain readable.
 - Outside links say where they go: "Read more on Wikipedia", "on WOW Presents Plus", "on IMDb", "on Google" (src/lib/link-label.ts linkPlace), falling back to "elsewhere" - never a generic label for a Wikipedia link.
@@ -42,3 +42,4 @@
 - Images in src/assets are web-sized (headers max 1920px wide, boxes 1024px, JPEG quality ~80, about 200-500 KB) - never commit 2 MB originals, they slow pages and hurt search ranking.
 - Book Club (/book-club) and Jukebox (/jukebox) are built from entities.ts via src/data/collections.ts (Book/Publication and Music references) with the shared CollectionPage - so every new Afterparty adds its books and songs automatically; songs link to Spotify/YouTube searches, books to Open Library, nothing is hosted.
 - The top menu shows the full links only from xl (1280px) up, with the short label "A–Z"; below that it is the Menu button - so the bar never wraps.
+- The Jukebox player (src/components/jukebox-player.tsx) uses the Spotify iFrame API, loaded only when a visitor presses play, and auto-advances to the next song; Spotify IDs live in SPOTIFY in src/data/collections.ts and must come from real Spotify URLs (never guessed). The privacy page names this one embed.

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionPage } from "@/components/collection-page";
+import { JukeboxPlayer, useJukebox } from "@/components/jukebox-player";
 import { MUSIC_SHELVES, jukebox, listenLinks } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 import header from "@/assets/jukebox-header.jpg";
@@ -29,8 +30,13 @@ export const Route = createFileRoute("/jukebox")({
 });
 
 function JukeboxPage() {
+  const { current, playIndex, step, holder } = useJukebox(jukebox);
+  const first = jukebox.findIndex((m) => m.spotify);
   return (
     <CollectionPage
+      topSlot={<JukeboxPlayer playlist={jukebox} current={current} onPlayFirst={() => void playIndex(first)} step={step} holder={holder} />}
+      onPlay={(m) => void playIndex(jukebox.indexOf(m))}
+      playingSlug={current !== null ? jukebox[current]?.slug : undefined}
       header={header}
       kicker="The Night Fever"
       title={<>Juke<span className="text-pink text-glow-pink">box</span></>}

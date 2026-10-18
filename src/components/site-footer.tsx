@@ -2,13 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { SHOW_URL, WOW_URL } from "@/data/guests";
 import { EntityText } from "@/components/entity-text";
 import { LegalNote } from "@/components/legal-links";
-import { PAGES } from "@/components/site-menu";
 
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
 
-// One shared footer for every page. Its links mirror the top menu (same PAGES list),
-// plus About and Contact; Guests sits next to the World of Wonder link (it is merging into the Afterparty page).
+// One shared footer for every page: the show and World of Wonder links, Meet the guests, About and Contact.
+// The page links live only in the top menu.
 export function SiteFooter() {
   return (
     <footer className="border-t border-border px-6 py-12">
@@ -39,16 +38,7 @@ export function SiteFooter() {
             </Link>
           </p>
           <nav aria-label="Footer" className="flex flex-col items-center gap-2 sm:items-end">
-            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              {PAGES.map((p) => (
-                <li key={p.to}>
-                  <Link to={p.to} className={LINK}>
-                    {p.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               <Link to="/about" className={LINK}>About</Link>
               {" · "}
               <Link to="/contact" className={LINK}>Contact</Link>
