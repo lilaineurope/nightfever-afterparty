@@ -35,6 +35,7 @@ import { Route as EpisodesS03e06RouteImport } from './routes/episodes.s03e06'
 import { Route as EpisodesS04e08RouteImport } from './routes/episodes.s04e08'
 import { Route as EpisodesS05e06RouteImport } from './routes/episodes.s05e06'
 import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
+import { Route as EpisodesS06e03RouteImport } from './routes/episodes.s06e03'
 import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
 
@@ -168,6 +169,11 @@ const EpisodesS06e01Route = EpisodesS06e01RouteImport.update({
   path: '/episodes/s06e01',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpisodesS06e03Route = EpisodesS06e03RouteImport.update({
+  id: '/episodes/s06e03',
+  path: '/episodes/s06e03',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreIndexRoute = ExploreIndexRouteImport.update({
   id: '/explore/',
   path: '/explore/',
@@ -205,6 +211,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s04e08': typeof EpisodesS04e08Route
   '/episodes/s05e06': typeof EpisodesS05e06Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
+  '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
@@ -235,6 +242,7 @@ export interface FileRoutesByTo {
   '/episodes/s04e08': typeof EpisodesS04e08Route
   '/episodes/s05e06': typeof EpisodesS05e06Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
+  '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/episodes': typeof EpisodesIndexRoute
   '/explore': typeof ExploreIndexRoute
@@ -266,6 +274,7 @@ export interface FileRoutesById {
   '/episodes/s04e08': typeof EpisodesS04e08Route
   '/episodes/s05e06': typeof EpisodesS05e06Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
+  '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
@@ -298,6 +307,7 @@ export interface FileRouteTypes {
     | '/episodes/s04e08'
     | '/episodes/s05e06'
     | '/episodes/s06e01'
+    | '/episodes/s06e03'
     | '/explore/$slug'
     | '/episodes/'
     | '/explore/'
@@ -328,6 +338,7 @@ export interface FileRouteTypes {
     | '/episodes/s04e08'
     | '/episodes/s05e06'
     | '/episodes/s06e01'
+    | '/episodes/s06e03'
     | '/explore/$slug'
     | '/episodes'
     | '/explore'
@@ -358,6 +369,7 @@ export interface FileRouteTypes {
     | '/episodes/s04e08'
     | '/episodes/s05e06'
     | '/episodes/s06e01'
+    | '/episodes/s06e03'
     | '/explore/$slug'
     | '/episodes/'
     | '/explore/'
@@ -389,6 +401,7 @@ export interface RootRouteChildren {
   EpisodesS04e08Route: typeof EpisodesS04e08Route
   EpisodesS05e06Route: typeof EpisodesS05e06Route
   EpisodesS06e01Route: typeof EpisodesS06e01Route
+  EpisodesS06e03Route: typeof EpisodesS06e03Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   EpisodesIndexRoute: typeof EpisodesIndexRoute
   ExploreIndexRoute: typeof ExploreIndexRoute
@@ -578,6 +591,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS06e01RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/episodes/s06e03': {
+      id: '/episodes/s06e03'
+      path: '/episodes/s06e03'
+      fullPath: '/episodes/s06e03'
+      preLoaderRoute: typeof EpisodesS06e03RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore/': {
       id: '/explore/'
       path: '/explore'
@@ -621,6 +641,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS04e08Route: EpisodesS04e08Route,
   EpisodesS05e06Route: EpisodesS05e06Route,
   EpisodesS06e01Route: EpisodesS06e01Route,
+  EpisodesS06e03Route: EpisodesS06e03Route,
   ExploreSlugRoute: ExploreSlugRoute,
   EpisodesIndexRoute: EpisodesIndexRoute,
   ExploreIndexRoute: ExploreIndexRoute,

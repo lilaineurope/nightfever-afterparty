@@ -69,6 +69,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s04e08: "Heatherette, the Club Kids & Susanne Bartsch",
   s05e06: "Andy Warhol, Man Ray & Tennessee Williams",
   s06e01: "Party Monster, Warhol & Michael Alig",
+  s06e03: "the Mudd Club, Jackie 60 & Mother",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

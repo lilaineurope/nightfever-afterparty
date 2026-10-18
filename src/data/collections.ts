@@ -87,6 +87,19 @@ const SPOTIFY: Record<string, string> = {
   "Creedence Clearwater Revival": "spotify:artist:3IYUhFvPQItj6xySrBmZkd",
   "The Rolling Stones": "spotify:artist:22bE4uQ6baNwSHPVcDxLCe",
   "U2": "spotify:artist:51Blml2LZPmy7TTiAg47vQ",
+  "Crass": "spotify:artist:054P3YpUCLmd6a8HwdWDXE",
+  "Elements of Vogue": "spotify:track:2IsWxmCvUFkpAyZUuJNQ0X",
+  "DNA": "spotify:track:5Ti1MI6q3HftWtArMIe6OU",
+  "Deep in Vogue": "spotify:track:1WHwnBfPaMt6A32VrR0dXv",
+  "Vogue (Madonna song)": "spotify:track:27QvYgBk0CHOVHthWnkuWt",
+  "Silent Night (Stevie Nicks)": "spotify:track:0WeaB3ox7Xb9OLDbEDKaFd",
+  "Fans (Malcolm McLaren)": "spotify:album:3dzKtfxhjj4HpmSZfDYwnH",
+  "Duck Rock": "spotify:album:6S4f7yDtJlS0iQMEuCtIF0",
+  "Ian Dury and the Blockheads": "spotify:artist:7r993rArgKraCkh8w4Wszl",
+  "Talking Heads": "spotify:artist:2x9SpqnPi8rlE9pjHBwmSC",
+  "The B-52's": "spotify:artist:3gdbcIdNypBsYNu3iiCjtN",
+  "Blondie": "spotify:artist:4tpUmLEVLCGFr93o8hFFIB",
+  "Suicide": "spotify:artist:6uVeWolwyRDrT84lLsaZyW",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
@@ -99,9 +112,9 @@ export const MUSIC_SHELVES: Shelf[] = [
   { key: "stage", label: "Stage & musicals" },
 ];
 
-const SOUNDS = /^(hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin)$/i;
-const STAGE = /^(flora the red menace|victor\/victoria.*|positive me)$/i;
-const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*)$/i;
+const SOUNDS = /^(hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae)$/i;
+const STAGE = /^(flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball)$/i;
+const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock)$/i;
 
 export const jukebox: CollectionItem[] = entities
   .filter((e) => hasCat(e, ["Music"]))

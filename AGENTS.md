@@ -30,6 +30,7 @@
 - The top menu (PAGES in site-menu.tsx) is, in order: Afterparty, Guests, Timeline, Connections, Jukebox, Book Club, Map, Pub Quiz, A–Z. The footer (SiteFooter, on every page) carries no page list - just the show and World of Wonder links, About, Contact and Under the hood.
 - Attribute sensitive or unflattering episode claims to their teller, or "as told on the show"; neutral facts need none. Apply to references, Timeline and guests; never invent years — for legal safety and accurate dates.
 - Episode portraits fill edge to edge, faces below text; refill repositioned tops with the same collage and verify desktop/phone — so labels remain readable.
+- Episode box pictures (block-*.jpg) use the Makos design from S06E03 on: navy paper with a dense patchwork of torn black-and-white paper scraps, masking tape, pink crayon loop and zigzag scribbles, gold splatter and gold-leaf flakes, and the portrait with a solid pink sticker edge bottom right.
 - Outside links say where they go: "Read more on Wikipedia", "on WOW Presents Plus", "on IMDb", "on Google" (src/lib/link-label.ts linkPlace), falling back to "elsewhere" - never a generic label for a Wikipedia link.
 - GuestEpisodeLinks supplies Watch/Listen everywhere and Timestamp when registered in episodes.ts — so guest cards stay consistent.
 - EpisodePlayer in __root streams RSS audioUrl without storing audio; all times use Timestamp, episode pages call useEpisodePlayer(id), bar links to WOW/Spotify — so playback stays site-wide.

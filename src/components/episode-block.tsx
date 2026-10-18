@@ -11,6 +11,7 @@ import richiePortrait from "@/assets/block-richie-rich.jpg";
 import makosPortrait from "@/assets/block-christopher-makos.jpg";
 import goodePortrait from "@/assets/block-eric-goode.jpg";
 import piperPortrait from "@/assets/block-rudolf-piper.jpg";
+import valentiDynellPortrait from "@/assets/block-chi-chi-valenti-johnny-dynell.jpg";
 
 const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -23,6 +24,7 @@ const episodePortraits: Record<string, string> = {
   s03e06: goodePortrait,
   s01e07: piperPortrait,
   s06e01: jamesPortrait,
+  s06e03: valentiDynellPortrait,
 };
 
 // Boxes whose portrait sits on the left keep that side in view when the box crops the picture.
