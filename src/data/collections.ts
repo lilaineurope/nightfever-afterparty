@@ -138,6 +138,15 @@ const SPOTIFY: Record<string, string> = {
   "Blah-Blah-Blah": "spotify:album:4j1zp01LTkV9kNWAuKU45c",
   "Kick": "spotify:album:7cuwWzS0oiApEt2fpKafkX",
   "Searching for the Young Soul Rebels": "spotify:album:5iawHcgRuKL5HMRbigdvWC",
+  "Bongwater": "spotify:artist:6JooToEGjbAab8XNmXqkF8",
+  "Pulsallama": "spotify:track:3ZtcVSZiaHA1NiZQYYmfTE",
+  "Devo": "spotify:track:1HQeXwrVQ01Ugq5YhgYV0c",
+  "Television": "spotify:track:7Me0vOSlJfaPY7Pc4GeItd",
+  "The Damned": "spotify:track:4d8oVJ2hcvRRf8sUDhNyJg",
+  "Shpongle": "spotify:album:7fAOqI4aJxx5oTeCMLPONf",
+  "The Fuzztones": "spotify:album:1S6JeyisuGACAeehnV1vHQ",
+  "Hairspray": "spotify:album:3XPjEfpawBvohxBMDXwXXW",
+  "The Music Man": "spotify:album:7asTNsTacprhKJ4KeXtXUj",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
@@ -151,8 +160,8 @@ export const MUSIC_SHELVES: Shelf[] = [
 ];
 
 const SOUNDS = /^(hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions)$/i;
-const STAGE = /^(flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball)$/i;
-const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know)$/i;
+const STAGE = /^(flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball|hairspray|the music man)$/i;
+const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know|ghost cat)$/i;
 
 export const jukebox: CollectionItem[] = entities
   .filter((e) => hasCat(e, ["Music"]))

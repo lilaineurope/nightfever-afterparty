@@ -8,6 +8,7 @@ import goodeRefs from "./s03e06.json";
 import piperRefs from "./s01e07.json";
 import valentiDynellRefs from "./s06e03.json";
 import eganRefs from "./s05e04.json";
+import magnusonRefs from "./s04e10.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -274,7 +275,25 @@ const s05e04: Episode = {
   top: [...eganRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s03e01, s03e06, s04e08, s05e04, s05e06, s06e01, s06e03].sort((a, b) =>
+const s04e10: Episode = {
+  id: "s04e10",
+  season: 4,
+  episode: 10,
+  guest: "Ann Magnuson",
+  released: "2024-09-04",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-410",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO2610883704.mp3",
+  runtime: "1:07:52",
+  afterpartyPublished: "2026-10-21",
+  blurb:
+    "Ann Magnuson, the West Virginia girl who managed Club 57! From childhood shows in Charleston and London punk watched from a safe distance to New York, New Wave Vaudeville and a year running Club 57 for Stanley Strychacki - the Monster Movie Club, Ladies Auxiliary proms and Klaus Nomi singing opera on a snow mound - then the Pyramid and Danceteria, Pulsallama, Bongwater and Vulcan Death Grip, The Hunger with Bowie, Desperately Seeking Susan, Making Mr. Right, Anything But Love, Ghost Cat and her own suRURALism.",
+  references: magnusonRefs.length,
+  mentions: magnusonRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...magnusonRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s03e01, s03e06, s04e08, s04e10, s05e04, s05e06, s06e01, s06e03].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -286,7 +305,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -310,6 +329,8 @@ export function episodePath(
       return "/episodes/s06e03";
     case "s05e04":
       return "/episodes/s05e04";
+    case "s04e10":
+      return "/episodes/s04e10";
     default:
       return "/episodes/s06e01";
   }
