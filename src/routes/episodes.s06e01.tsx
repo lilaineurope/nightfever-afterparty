@@ -1,5 +1,6 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
+import { episodeHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import refsRaw from "../data/s06e01.json";
@@ -33,24 +34,7 @@ const EPISODE_URL = latestEpisode.listenUrl;
 export const Route = createFileRoute("/episodes/s06e01")({
   staticData: { sitemap: true },
   component: EpisodePage,
-  head: () => ({
-    meta: [
-      { title: "James St. James - Night Fever S6 E1 Reference Index | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-           `All ${refs.length} references in Night Fever Season 6 Episode 1 with James St. James - timestamps, links and fashion notes included. Dive in!`,
-      },
-      { property: "og:title", content: "James St. James - Night Fever S6 E1 Reference Index | Night Fever fan page" },
-      {
-        property: "og:description",
-         content: `All ${refs.length} names, places, works and looks from the James St. James episode - timestamped and linked. Grab a drink and dive in!`,
-      },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/episodes/s06e01" }],
-  }),
+  head: () => episodeHead("s06e01", refs.length),
 });
 
 const toSec = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);

@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
@@ -8,23 +9,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/map")({
   staticData: { sitemap: true },
   component: MapPage,
-  head: () => ({
-    meta: [
-      { title: "Map | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "Every real place named in Night Fever on one map - clubs, streets, schools and cities - with the people, music, books and stories connected to each. Dive in!",
-      },
-      { property: "og:title", content: "Map | Night Fever fan page" },
-      {
-        property: "og:description",
-        content: "From CBGB to Studio 54 to the Limelight - every place, and everything that happened there!",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead({ path: "/map", title: "Map of New York nightlife – every club and place in Night Fever", description: "Every real place named in Night Fever on one map - clubs, streets, schools and cities - with the people, music, books and stories connected to each. Dive in!", image: "/og/home.jpg" }),
 });
 
 type Spot = {

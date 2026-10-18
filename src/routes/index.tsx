@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -15,29 +16,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "Night Fever fan page | NYC nightlife stories" },
-      {
-        name: "description",
-        content:
-          "My fan page for Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato. The campy, glamorous history of New York nightlife - unpacked and timestamped!",
-      },
-      {
-        property: "og:title",
-        content: "Night Fever fan page | NYC nightlife stories",
-      },
-      {
-        property: "og:description",
-        content:
-          "A fan page for the World of Wonder podcast about New York nightlife legends. Grab a drink and dive in!",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
+  head: () => pageHead({ path: "/", title: "Night Fever podcast fan page – NYC nightlife names, clubs & stories", description: "My fan page for Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato. The campy, glamorous history of New York nightlife - unpacked and timestamped!", image: "/og/home.jpg" }),
 });
 
 const hosts = [

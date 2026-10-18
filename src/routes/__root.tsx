@@ -97,7 +97,34 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Every name, place, song and story dropped in the Night Fever interviews - indexed, timestamped and connected!",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Night Fever fan page" },
+      { property: "og:image", content: "https://nightfever-afterparty.lovable.app/og/home.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://nightfever-afterparty.lovable.app/og/home.jpg" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Night Fever fan page",
+          alternateName: "Night Fever Afterparty",
+          url: "https://nightfever-afterparty.lovable.app/",
+          description:
+            "An unofficial fan-made index of the Night Fever podcast by World of Wonder: every name, club, place and look the guests mention, timestamped and connected.",
+          inLanguage: "en",
+          author: { "@type": "Person", name: "Lisa Lang" },
+          about: {
+            "@type": "PodcastSeries",
+            name: "Night Fever",
+            url: "https://www.wowpresentsplus.com/night-fever",
+            publisher: { "@type": "Organization", name: "World of Wonder" },
+          },
+        }),
+      },
     ],
     links: [
       {

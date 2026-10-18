@@ -200,3 +200,11 @@ export const categoryMentionsByEpisode: Record<string, Record<string, number>> =
   }
   return out;
 })();
+
+/** A card that appears in only one episode with nothing else around it: kept for visitors,
+ * but left out of the sitemap and marked noindex so Google sees the rich cards instead. */
+export const isThinCard = (e: Entity): boolean =>
+  !e.guest &&
+  new Set(e.refs.map((r) => r.episode)).size < 2 &&
+  e.events.length === 0 &&
+  e.inGuestStories.length === 0;

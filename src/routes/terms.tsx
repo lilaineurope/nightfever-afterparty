@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
@@ -11,30 +12,7 @@ const GOLD_LINK =
 export const Route = createFileRoute("/terms")({
   staticData: { sitemap: true },
   component: TermsPage,
-  head: () => ({
-    meta: [
-      { title: "Terms & Conditions | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "The rules of this fan-made Night Fever podcast index: what it is, what it isn't, who owns what, how to ask for a correction, and how the data behind it may be reused.",
-      },
-      {
-        property: "og:title",
-        content: "Terms & Conditions | Night Fever fan page",
-      },
-      {
-        property: "og:description",
-        content:
-          "An unofficial, non-commercial fan index. What you can expect from it, what belongs to whom, and how to request a correction or removal.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/terms" },
-      { name: "twitter:card", content: "summary" },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/terms" }],
-  }),
+  head: () => pageHead({ path: "/terms", title: "Terms & Conditions | Night Fever fan page", description: "The rules of this fan-made Night Fever podcast index: what it is, what it isn't, who owns what, how to ask for a correction, and how the data behind it may be reused.", image: "/og/home.jpg" }),
 });
 
 const quickFacts = [

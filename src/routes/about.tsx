@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import portraitImage from "../assets/about-portrait-illustrated-2.jpg";
 import { SHOW_URL } from "../data/guests";
@@ -15,29 +16,7 @@ const GOLD_LINK =
 export const Route = createFileRoute("/about")({
   staticData: { sitemap: true },
   component: AboutPage,
-  head: () => ({
-    meta: [
-      { title: "About | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "Night Fever is my happy place - I started writing down every name, place and story the guests drop, and turned it into this fan page with Lovable and Claude.",
-      },
-      {
-        property: "og:title",
-        content: "About | Night Fever fan page",
-      },
-      {
-        property: "og:description",
-        content:
-          "Night Fever is my happy place - how my note-taking became this fan page, built with Lovable and Claude in Stockholm.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
+  head: () => pageHead({ path: "/about", title: "About | Night Fever fan page", description: "Night Fever is my happy place - I started writing down every name, place and story the guests drop, and turned it into this fan page with Lovable and Claude.", image: "/og/home.jpg" }),
 });
 
 function AboutPage() {

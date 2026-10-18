@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SHOW_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
@@ -11,30 +12,7 @@ const GOLD_LINK =
 export const Route = createFileRoute("/privacy")({
   staticData: { sitemap: true },
   component: PrivacyPage,
-  head: () => ({
-    meta: [
-      { title: "Privacy Policy | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "How this fan-made Night Fever podcast index handles your data: no advertising trackers, cookie-free visit counting, what the host logs, and how to exercise your GDPR rights.",
-      },
-      {
-        property: "og:title",
-        content: "Privacy Policy | Night Fever fan page",
-      },
-      {
-        property: "og:description",
-        content:
-          "A fan page with no advertising trackers and no cookies. What is collected, why, for how long, and your rights under the GDPR.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/privacy" },
-      { name: "twitter:card", content: "summary" },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/privacy" }],
-  }),
+  head: () => pageHead({ path: "/privacy", title: "Privacy Policy | Night Fever fan page", description: "How this fan-made Night Fever podcast index handles your data: no advertising trackers, cookie-free visit counting, what the host logs, and how to exercise your GDPR rights.", image: "/og/home.jpg" }),
 });
 
 const atAGlance = [

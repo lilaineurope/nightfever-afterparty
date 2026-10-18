@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { episodes } from "@/data/episodes";
@@ -8,24 +9,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
   staticData: { sitemap: true },
-  head: () => ({
-    meta: [
-      { title: "Afterparty | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!",
-      },
-      { property: "og:title", content: "Afterparty | Night Fever fan page" },
-      {
-        property: "og:description",
-        content:
-          "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
+  head: () => pageHead({ path: "/episodes", title: "Night Fever Afterparty – every episode's names, clubs & looks", description: "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!", image: "/og/episodes.jpg" }),
   component: EpisodesPage,
 });
 

@@ -1,5 +1,6 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
+import { episodeHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import refsRaw from "../data/s01e03.json";
@@ -36,23 +37,7 @@ const thisEpisode = episodeById("s01e03");
 export const Route = createFileRoute("/episodes/s01e03")({
   staticData: { sitemap: true },
   component: EpisodePage,
-  head: () => ({
-    meta: [
-      { title: "Lisa Edelstein - Night Fever S1 E3 Reference Index | Night Fever fan page" },
-      {
-        name: "description",
-        content: `All ${refs.length} references in Night Fever Season 1 Episode 3 with Lisa Edelstein - timestamps, links and fashion notes included. Dive in!`,
-      },
-      { property: "og:title", content: "Lisa Edelstein - Night Fever S1 E3 Reference Index | Night Fever fan page" },
-      {
-        property: "og:description",
-        content: `All ${refs.length} names, places, works and looks from the Lisa Edelstein episode - timestamped and linked. Grab a drink and dive in!`,
-      },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/episodes/s01e03" }],
-  }),
+  head: () => episodeHead("s01e03", refs.length),
 });
 
 const toSec = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);

@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -12,22 +13,7 @@ export const Route = createFileRoute("/unsubscribe")({
   validateSearch: (search) => ({
     token: typeof search["token"] === "string" ? search["token"] : undefined,
   }),
-  head: () => ({
-    meta: [
-      { title: "Unsubscribe | Night Fever fan page" },
-      {
-        name: "description",
-        content: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.",
-      },
-      { property: "og:title", content: "Unsubscribe | Night Fever fan page" },
-      {
-        property: "og:description",
-        content: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
+  head: () => pageHead({ path: "/unsubscribe", title: "Unsubscribe | Night Fever fan page", description: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.", image: "/og/home.jpg", noindex: true }),
   component: UnsubscribePage,
 });
 

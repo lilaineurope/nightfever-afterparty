@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { generateQuiz, type QuizQuestion } from "@/lib/quiz";
@@ -6,23 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/quiz")({
   staticData: { sitemap: true },
   component: QuizPage,
-  head: () => ({
-    meta: [
-      { title: "Pub Quiz | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "Make a fresh Night Fever pub quiz from every name, place and story in my published episode indexes - answers and timestamps included!",
-      },
-      { property: "og:title", content: "Pub Quiz | Night Fever fan page" },
-      {
-        property: "og:description",
-        content: "Ten fresh nightlife trivia questions every time, built from the Night Fever episode indexes. Grab a drink!",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead({ path: "/quiz", title: "Night Fever pub quiz – New York nightlife trivia", description: "Make a fresh Night Fever pub quiz from every name, place and story in my published episode indexes - answers and timestamps included!", image: "/og/home.jpg" }),
 });
 
 function QuizPage() {

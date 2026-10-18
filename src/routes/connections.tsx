@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { ClientOnly } from "@tanstack/react-router";
 import { ConnectionsGraph } from "@/components/connections-graph";
@@ -7,29 +8,7 @@ import { episodePeople } from "@/data/episode-connections";
 export const Route = createFileRoute("/connections")({
   staticData: { sitemap: true },
   component: ConnectionsPage,
-  head: () => ({
-    meta: [
-      { title: "Connections | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "Who turns up with who?! A web of every name in my published Night Fever episode indexes, tied together by the episodes they share.",
-      },
-      {
-        property: "og:title",
-        content: "Connections | Night Fever fan page",
-      },
-      {
-        property: "og:description",
-        content:
-          "Every timestamped name from my published Night Fever episode indexes - all in one web. Dive in!",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/connections" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/connections" }],
-  }),
+  head: () => pageHead({ path: "/connections", title: "Connections – who turns up with who in Night Fever", description: "Who turns up with who?! A web of every name in my published Night Fever episode indexes, tied together by the episodes they share.", image: "/og/home.jpg" }),
 });
 
 function ConnectionsPage() {

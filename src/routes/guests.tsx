@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { GuestsSection } from "@/components/guests-section";
 import { SiteFooter } from "@/components/site-footer";
@@ -6,25 +7,7 @@ import guestsHeader from "@/assets/guests-header.jpg";
 export const Route = createFileRoute("/guests")({
   staticData: { sitemap: true },
   component: GuestsPage,
-  head: () => ({
-    meta: [
-      { title: "Guests | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "Every Night Fever guest, one by one! The Timestamp and the Afterparty show how they are all connected, step by step.",
-      },
-      { property: "og:title", content: "Guests | Night Fever fan page" },
-      {
-        property: "og:description",
-        content:
-          "Meet the gang interviewed by the three World of Wonder founders - with their connections revealed step by step.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/guests" }],
-  }),
+  head: () => pageHead({ path: "/guests", title: "Night Fever guests – nightlife legends of the 70s, 80s & 90s", description: "Every Night Fever guest, one by one! The Timestamp and the Afterparty show how they are all connected, step by step.", image: "/og/guests.jpg" }),
 });
 
 function GuestsPage() {

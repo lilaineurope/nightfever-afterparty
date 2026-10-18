@@ -1,5 +1,6 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
+import { episodeHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import refsRaw from "../data/s02e03.json";
@@ -36,23 +37,7 @@ const thisEpisode = episodeById("s02e03");
 export const Route = createFileRoute("/episodes/s02e03")({
   staticData: { sitemap: true },
   component: EpisodePage,
-  head: () => ({
-    meta: [
-      { title: "Susanne Bartsch - Night Fever S2 E3 Reference Index | Night Fever fan page" },
-      {
-        name: "description",
-        content: `All ${refs.length} references in Night Fever Season 2 Episode 3 with Susanne Bartsch - timestamps, links and fashion notes included. Dive in!`,
-      },
-      { property: "og:title", content: "Susanne Bartsch - Night Fever S2 E3 Reference Index | Night Fever fan page" },
-      {
-        property: "og:description",
-        content: `All ${refs.length} names, places, works and looks from the Susanne Bartsch episode - timestamped and linked. Grab a drink and dive in!`,
-      },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/episodes/s02e03" }],
-  }),
+  head: () => episodeHead("s02e03", refs.length),
 });
 
 const toSec = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);

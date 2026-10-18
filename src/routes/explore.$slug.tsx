@@ -2,7 +2,8 @@ import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { entityBySlug, episodeShort, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
+import { entityBySlug, episodeShort, isThinCard, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
+import { abs, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodeById, episodePath } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { EntityLink } from "../components/entity-link";
@@ -14,22 +15,44 @@ export const Route = createFileRoute("/explore/$slug")({
   loader: ({ params }) => {
     const e = entityBySlug[params.slug];
     if (!e) throw notFound();
-    return { slug: e.slug, name: e.name, category: e.guest ? "Night Fever guest" : e.category };
+    const story = e.refs.find((r) => r.context)?.context ?? e.events[0]?.text ?? "";
+    return {
+      slug: e.slug,
+      name: e.name,
+      category: e.guest ? "Night Fever guest" : e.category,
+      rawCategory: e.guest ? "Person" : e.category,
+      episodes: [...new Set(e.refs.map((r) => r.episode).filter(Boolean))].map((id) => episodeShort(id as string)),
+      story,
+      link: e.link ?? "",
+      thin: isThinCard(e),
+    };
   },
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
-    const title = `${loaderData.name} - ${loaderData.category} | Night Fever fan page`;
-    const desc = `Every story, night and connection around ${loaderData.name} from the Night Fever podcast and the scene it covers. Dive in!`;
+    const d = loaderData;
+    const title = `${d.name} - ${d.category} | Night Fever fan page`;
+    const eps = d.episodes.length ? ` Mentioned in Night Fever ${d.episodes.join(", ")}.` : "";
+    const base = d.story ? `${d.name}: ${d.story}` : `Every story, night and connection around ${d.name} from the Night Fever podcast.`;
+    const short = base.length > 150 ? base.slice(0, 147).replace(/\s+\S*$/, "") + "…" : base;
+    const description = (/[.!?…]$/.test(short) ? short : `${short}.`) + eps;
+    const path = `/explore/${d.slug}`;
+    const head = pageHead({ path, title, description, image: "/og/explore.jpg", type: "article", noindex: d.thin });
+    const TYPES: Record<string, string> = { Person: "Person", Place: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
+    const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
+    if (/wikipedia\.org/.test(d.link)) thing["sameAs"] = d.link;
     return {
-      meta: [
-        { title },
-        { name: "description", content: desc },
-        { property: "og:title", content: title },
-        { property: "og:description", content: desc },
-        { property: "og:type", content: "article" },
-        { name: "twitter:card", content: "summary_large_image" },
+      ...head,
+      scripts: [
+        jsonLd({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: title,
+          url: abs(path),
+          description,
+          isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE },
+          about: thing,
+        }),
       ],
-      links: [{ rel: "canonical", href: `/explore/${loaderData.slug}` }],
     };
   },
   notFoundComponent: EntityNotFound,

@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -12,29 +13,7 @@ import timelineHeader from "@/assets/timeline-header.jpg";
 export const Route = createFileRoute("/timeline")({
   staticData: { sitemap: true },
   component: TimelinePage,
-  head: () => ({
-    meta: [
-      { title: "Timeline | Night Fever fan page" },
-      {
-        name: "description",
-        content:
-          "The nightlife scene behind Night Fever, year by year - CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race. Grab a drink!",
-      },
-      {
-        property: "og:title",
-        content: "Timeline | Night Fever fan page",
-      },
-      {
-        property: "og:description",
-        content:
-          "Fifty years of clubs, records and scandals - with the Night Fever guests marked in every scene.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/timeline" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/timeline" }],
-  }),
+  head: () => pageHead({ path: "/timeline", title: "New York nightlife timeline, decade by decade | Night Fever fan page", description: "The nightlife scene behind Night Fever, year by year - CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race. Grab a drink!", image: "/og/timeline.jpg" }),
 });
 
 function TimelinePage() {

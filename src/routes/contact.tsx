@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
@@ -14,18 +15,7 @@ export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): Search =>
     typeof s["about"] === "string" ? { about: (s["about"] as string).slice(0, 120) } : {},
   component: ContactPage,
-  head: () => ({
-    meta: [
-      { title: "Contact | Night Fever fan page" },
-      {
-        name: "description",
-        content: "Spotted something wrong, know where a lost club was, or just want to say hi? Send me a message!",
-      },
-      { property: "og:title", content: "Contact | Night Fever fan page" },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
+  head: () => pageHead({ path: "/contact", title: "Contact | Night Fever fan page", description: "Spotted something wrong, know where a lost club was, or just want to say hi? Send me a message!", image: "/og/home.jpg" }),
 });
 
 // The pages a message can be about - same names as the site menu.

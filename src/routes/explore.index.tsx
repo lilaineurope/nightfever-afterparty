@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
@@ -14,17 +15,7 @@ import exploreHeader from "@/assets/explore-header.jpg";
 
 export const Route = createFileRoute("/explore/")({
   staticData: { sitemap: true },
-  head: () => ({
-    meta: [
-      { title: "Everything A–Z | Night Fever fan page" },
-      { name: "description", content: "Every person, club, song, book, film and look mentioned around Night Fever - each with its very own card. Dive in!" },
-      { property: "og:title", content: "Everything A–Z | Night Fever fan page" },
-      { property: "og:description", content: "Every name, room and story from Night Fever, each with its own card. Pick one and dive in!" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/explore" }],
-  }),
+  head: () => pageHead({ path: "/explore", title: "Everything A–Z – every name, club & look from Night Fever", description: "Every person, club, song, book, film and look mentioned around Night Fever - each with its very own card. Dive in!", image: "/og/explore.jpg" }),
   component: ExplorePage,
 });
 
