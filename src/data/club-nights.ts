@@ -72,6 +72,7 @@ const pg: ClubNight = {
 const s54: ClubNight = {
   slug: "studio-54",
   club: "Studio 54",
+  playlistId: "1wxk4SWOmqT2ILYOn9CJc8",
   note:
     "Most of these are on A Night at Studio 54 (Casablanca, 1979), the double album made with the club's owners and mixed by its DJs Roy Thode and Marc Paul Simon from records played at the club. The rest come from Brooklyn Museum curator Matthew Yakobosky's list of songs heard in Studio 54 DJ sets between 1977 and 1980, and Devil's Gun, reported as the first record played on opening night. Not one exact night.",
   sources: [
