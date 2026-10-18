@@ -25,6 +25,7 @@ export type ClubNight = {
 const pg: ClubNight = {
   slug: "paradise-garage",
   club: "Paradise Garage",
+  playlistId: "3fgUA8uxz3DavUVhit80Ty",
   note:
     "Records documented at the Paradise Garage (1977–1987), mostly through resident DJ Larry Levan: the club's \"Top 100\" published in Bill Brewster and Frank Broughton's Last Night a DJ Saved My Life, a 1979 Levan set recorded at the Garage, his West End remixes made famous there and a top five from Garage staffer Joey Llanos. Not one exact night - the records the club was known for.",
   sources: [
