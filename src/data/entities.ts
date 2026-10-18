@@ -99,14 +99,37 @@ for (const r of refs) {
   const e = add(r.name, r.category, { link: r.link || undefined });
   e?.refs.push(r);
 }
-// A place that already has its own card under its full name ("The Pants Pub, Washington Place") keeps it;
-// otherwise the text before the first comma names the card ("Max's Kansas City, Park Avenue South").
-const placeOf = (p: string) => (byKey.has(slugify(p)) ? p : p.split(",")[0]!.trim());
+// Scene and guest-story labels that are not a place or a thing of their own - they get no card (the text still shows).
+const NOT_A_CARD = new Set(
+  ["Worldwide", "Cinemas worldwide", "US daytime television", "Music video era", "NYC dance floors",
+   "Downtown celebutante scene", "East Village performance"].map((n) => n.toLowerCase()),
+);
+// Cards known only from the Timeline or guest stories, so no episode row sets their category.
+const CARD_CATEGORY: Record<string, string> = {
+  "sound-factory": "Club", "junior-vasquez-nights": "Club", bartschland: "Club", wigstock: "Event",
+  "london-punk": "Music", "nyc-dance-music": "Music", "logo-tv": "Organisation", fox: "Organisation",
+  "v2-records": "Organisation", "cirque-du-soleil": "Organisation",
+};
+const known = (n: string) => !NOT_A_CARD.has(n.trim().toLowerCase());
+
+// Which card(s) a scene place points to. A place that already has its own card under its full name
+// ("The Pants Pub, Washington Place") keeps it; otherwise the text before the first comma names the card
+// ("Max's Kansas City, Park Avenue South"), and "London and New York" points to both London and New York.
+const placesOf = (p: string): string[] => {
+  if (!p.trim() || !known(p)) return [];
+  if (byKey.has(slugify(p))) return [p];
+  const head = p.split(",")[0]!.trim();
+  if (/ and /i.test(head)) {
+    const parts = head.split(/ and /i).map((x) => x.trim()).filter((x) => byKey.has(slugify(x)));
+    if (parts.length) return parts;
+  }
+  return known(head) ? [head] : [];
+};
 for (const ev of sceneEvents) {
-  for (const f of ev.figures) add(f, "Person");
-  add(placeOf(ev.place), "Location");
+  for (const f of ev.figures) add(f, CARD_CATEGORY[slugify(f)] ?? "Person");
+  for (const pl of placesOf(ev.place)) add(pl, CARD_CATEGORY[slugify(pl)] ?? "Location");
 }
-for (const g of guests) for (const s of g.scenes) add(s, "Location");
+for (const g of guests) for (const s of g.scenes) if (known(s)) add(s, CARD_CATEGORY[slugify(s)] ?? "Location");
 
 // Wire events and guest stories to every entity.
 for (const e of byKey.values()) {
@@ -116,7 +139,7 @@ for (const e of byKey.values()) {
     (ev) =>
       (e.guest && ev.people.includes(e.guest.slug)) ||
       ev.figures.some((f) => slugify(f) === slugify(e.name)) ||
-      slugify(placeOf(ev.place)) === slugify(e.name) ||
+      placesOf(ev.place).some((pl) => slugify(pl) === slugify(e.name)) ||
       (!!loose && (ev.title + " " + ev.text).toLowerCase().includes(loose)),
   );
   e.inGuestStories = guests.filter(
@@ -144,7 +167,7 @@ export function relatedTo(e: Entity): Entity[] {
   for (const ev of e.events) {
     ev.people.forEach((p) => push(entityBySlug[p]));
     ev.figures.forEach((f) => push(entityFor(f)));
-    push(entityFor(placeOf(ev.place)));
+    placesOf(ev.place).forEach((pl) => push(entityFor(pl)));
   }
   e.inGuestStories.forEach((g) => push(entityBySlug[g.slug]));
   if (e.guest) {

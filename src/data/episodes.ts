@@ -1,3 +1,5 @@
+import jamesRefs from "./s06e01.json";
+import brillRefs from "./s01e01.json";
 import mustoRefs from "./s01e02.json";
 import fieldRefs from "./s03e01.json";
 import bartschRefs from "./s02e03.json";
@@ -53,13 +55,9 @@ const s06e01: Episode = {
     afterpartyPublished: "2026-10-10",
     blurb:
       "The host finally takes the guest chair! James on growing up, moving to New York and the club years he has been documenting ever since - with Warhol and Michael Alig never far away.",
-    references: 124,
-    mentions: 353,
-    top: [
-      { name: "James St. James", mentions: 25 },
-      { name: "Andy Warhol", mentions: 24 },
-      { name: "Michael Alig", mentions: 21 },
-    ],
+    references: jamesRefs.length,
+    mentions: jamesRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+    top: [...jamesRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e01: Episode = {
@@ -77,13 +75,9 @@ const s01e01: Episode = {
     afterpartyPublished: "2026-10-11",
     blurb:
       "Where it all started - the very first episode! Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Pure glamour.",
-    references: 116,
-    mentions: 315,
-    top: [
-      { name: "Dianne Brill", mentions: 31 },
-      { name: "New York", mentions: 18 },
-      { name: "Andy Warhol", mentions: 18 },
-    ],
+    references: brillRefs.length,
+    mentions: brillRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+    top: [...brillRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e02: Episode = {
