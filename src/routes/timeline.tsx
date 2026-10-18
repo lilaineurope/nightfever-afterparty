@@ -100,7 +100,8 @@ function TimelinePage() {
             <li key={e.id} className="relative">
               <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full bg-gold" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-                <Decades text={e.when} /> &middot; <EntityLink name={e.place.split(",")[0]!} className="hover:text-gold">{e.place}</EntityLink>
+                <Decades text={e.when} />
+                {e.place && (<> &middot; <EntityLink name={e.place.split(",")[0] ?? e.place} className="hover:text-gold">{e.place}</EntityLink></>)}
               </p>
               <h2 className="mt-1 text-xl font-semibold text-gold">{e.title}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

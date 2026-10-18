@@ -504,8 +504,8 @@ const guestMilestones: SceneEvent[] = moreGuests.flatMap((g) =>
   }),
 );
 
-// Every afterparty reference whose name or note carries a real year becomes a
-// Timeline moment, so new timestamp indexes feed the Timeline automatically.
+// Only dated events and places describe scene moments. Years on mentioned
+// works or person profiles are not evidence that an event happened there.
 type Ref = { name: string; heard?: string; context: string; time: string; category: string };
 const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[] }[] = [
   { id: "s01e01", label: "S1 E1", guest: "Dianne Brill", refs: s01e01 as Ref[] },
@@ -521,12 +521,16 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {
+    if (r.category !== "Event" && r.category !== "Place") return [];
+    if (r.time === "On camera") return [];
     // Ignore years that are only part of a party's name (e.g. "Disco 2000").
     const clean = (t: string) => t.replace(/Disco 2000/gi, "");
     const m = clean(r.context).match(YEAR) ?? clean(r.name).match(YEAR);
     if (!m) return [];
     const year = Number(m[1]);
-    const place = r.category === "Place" ? r.name : "New York";
+    // A guest association is not evidence of a location. Keep event locations
+    // unspecified until the source provides structured place data.
+    const place = r.category === "Place" ? r.name : "";
     return [{
       id: `ap-${ep.id}-${i}`,
       year,
@@ -536,7 +540,7 @@ const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
       place,
       decade: decadeOf(year),
       people: [],
-      figures: r.category === "Person" && r.name !== ep.guest ? [r.name, ep.guest] : [ep.guest],
+      figures: [ep.guest],
       source: { episodeId: ep.id, label: ep.label, guest: ep.guest, time: r.time },
     }];
   }),
