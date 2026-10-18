@@ -120,6 +120,31 @@ def loops(img, rr, cx, cy, rx, ry, turns=5):
     img.alpha_composite(lay)
 
 
+HOT = (255, 46, 170)
+
+
+def brush_stroke(img, rr, path, width, colour=HOT, alpha=1.0):
+    """Wide dry-brush stroke (as in the Rudolf Piper box): bristles that skip on the paper grain."""
+    path = np.array(path, np.float32)
+    d = np.gradient(path, axis=0); nrm = np.stack([-d[:, 1], d[:, 0]], 1)
+    nrm /= np.linalg.norm(nrm, axis=1, keepdims=True) + 1e-6
+    nb = int(width / 5.0)
+    lay = np.zeros((S, S), np.float32)
+    for b in range(nb):
+        off = (b / nb - 0.5) * width + rr.uniform(-2, 2)
+        start = rr.randint(0, len(path) // 6); end = len(path) - rr.randint(0, len(path) // 4)
+        strength = rr.uniform(0.6, 1)
+        p = path[start:end] + nrm[start:end] * off
+        for j in range(len(p) - 1):
+            cv2.line(lay, tuple(map(int, p[j])), tuple(map(int, p[j + 1])), strength, 2, cv2.LINE_AA)
+    grain = np.random.default_rng(rr.randint(0, 9999)).random(lay.shape).astype(np.float32)
+    grain = cv2.GaussianBlur(grain, (0, 0), 1.8)
+    lay *= np.clip((grain - 0.28) * 4.0, 0, 1)
+    a = (np.clip(lay * alpha * 1.3, 0, 1) * 255).astype('uint8')
+    layer = Image.new('RGBA', (S, S), colour + (0,)); layer.putalpha(Image.fromarray(a))
+    img.alpha_composite(layer)
+
+
 def splatter(img, rr, cx, cy, n=60, spread=90):
     d = ImageDraw.Draw(img)
     for _ in range(n):
@@ -189,8 +214,9 @@ def build(out, seed, portrait=None, pscale=0.66, dx=0, dy=0):
         place(img, scrap(rr, r, w, h), cx, cy, rr.uniform(-6, 6))
     for _ in range(8):
         tape(img, rr, rr.uniform(60, 1400), rr.uniform(10, 1900), rr.uniform(-0.6, 0.6))
-    for _ in range(6):
-        loops(img, rr, rr.uniform(150, 1800), rr.choice([rr.uniform(150, 650), rr.uniform(600, 1950)]), rr.uniform(55, 95), rr.uniform(110, 190), turns=rr.randint(4, 7))
+    # one wide hot-pink dry-brush stroke rising from bottom left to top right (Lisa: brush like Rudolf Piper, not spirals)
+    ox = rr.uniform(-80, 80)
+    brush_stroke(img, rr, [(40 + t * 19.2 + ox, 2120 - t * 15.2 - 120 * math.sin(t / 22)) for t in range(118)], 500)
     for _ in range(3):
         scribble(img, rr, rr.uniform(150, 1800), rr.uniform(150, 1900), rr.uniform(260, 420), rr.uniform(100, 180), rr.uniform(-0.9, 0.9))
     for _ in range(10):
