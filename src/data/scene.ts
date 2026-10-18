@@ -540,7 +540,7 @@ const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
       place,
       decade: decadeOf(year),
       people: [],
-      figures: r.category === "Person" && r.name !== ep.guest ? [r.name, ep.guest] : [ep.guest],
+      figures: [ep.guest],
       source: { episodeId: ep.id, label: ep.label, guest: ep.guest, time: r.time },
     }];
   }),

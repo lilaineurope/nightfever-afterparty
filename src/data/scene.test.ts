@@ -1,4 +1,5 @@
-import { describe, expect, test } from "bun:test";
+import { describe, test } from "node:test";
+import assert from "node:assert/strict";
 import { sceneEvents } from "./scene";
 import { generateQuiz } from "../lib/quiz";
 
@@ -11,25 +12,25 @@ describe("afterparty Timeline accuracy", () => {
     "The Mirror Crack'd (1980)",
   ]) {
     test(`${title} is a mentioned work, not a scene moment`, () => {
-      expect(moments.filter((event) => event.title === title)).toHaveLength(0);
+      assert.equal(moments.filter((event) => event.title === title).length, 0);
     });
   }
 
   test("Makos's career span does not create a 1976 New York event", () => {
-    expect(moments.filter((event) => event.title === "Christopher Makos")).toHaveLength(0);
+    assert.equal(moments.filter((event) => event.title === "Christopher Makos").length, 0);
   });
 
   test("Patricia Field's dated first store remains at its supplied place", () => {
-    expect(moments.find((event) => event.title === "The Pants Pub, Washington Place")).toMatchObject({
-      year: 1966, place: "The Pants Pub, Washington Place",
-      source: { episodeId: "s03e01" },
-    });
+    const store = moments.find((event) => event.title === "The Pants Pub, Washington Place");
+    assert.equal(store?.year, 1966);
+    assert.equal(store?.place, "The Pants Pub, Washington Place");
+    assert.equal(store?.source?.episodeId, "s03e01");
   });
 
   test("the dated bridge party remains without an invented city", () => {
-    expect(moments.find((event) => event.title === "Williamsburg Bridge outlaw party")).toMatchObject({
-      year: 1985, place: "",
-    });
+    const party = moments.find((event) => event.title === "Williamsburg Bridge outlaw party");
+    assert.equal(party?.year, 1985);
+    assert.equal(party?.place, "");
   });
 
   test("quiz never uses removed film moments or unspecified locations", () => {
@@ -39,14 +40,14 @@ describe("afterparty Timeline accuracy", () => {
     for (let seed = 1; seed <= 100; seed++) {
       for (const question of generateQuiz(seed, 20)) {
         if (!question.id.startsWith("where-") && !question.id.startsWith("yr-")) continue;
-        expect(question.prompt).not.toMatch(removed);
+        assert.doesNotMatch(question.prompt, removed);
         if (!question.id.startsWith("where-")) continue;
         locationQuestions++;
-        expect(question.answer.trim().length).toBeGreaterThan(0);
-        expect(question.options.every((option) => option.trim().length > 0)).toBe(true);
-        for (const title of unlocated) expect(question.prompt).not.toBe(`Where did this happen? "${title}"`);
+        assert.ok(question.answer.trim().length > 0);
+        assert.ok(question.options.every((option) => option.trim().length > 0));
+        for (const title of unlocated) assert.notEqual(question.prompt, `Where did this happen? "${title}"`);
       }
     }
-    expect(locationQuestions).toBeGreaterThan(0);
+    assert.ok(locationQuestions > 0);
   });
 });
