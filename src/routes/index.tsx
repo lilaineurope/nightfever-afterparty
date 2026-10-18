@@ -8,6 +8,7 @@ import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
 import { EpisodeBlock } from "@/components/episode-block";
 import { NamesEveryoneDrops } from "@/components/names-everyone-drops";
+import { ExplorePages } from "@/components/explore-pages";
 import { WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
@@ -153,7 +154,7 @@ function Index() {
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Every episode I publish here gets a timestamp index - every name,
               place, song, design and look, counted and linked to the exact
-              moment it was said. Everything A&ndash;Z gathers the whole gang,
+              moment it was said. A&ndash;Z gathers the whole gang,
               the Timeline follows the scene from the 1970s to today, and
               Connections shows how they're all tied together. Pick an episode
               and dive in!
@@ -182,6 +183,7 @@ function Index() {
               More Afterparties &rarr;
             </Link>
           </div>
+          <ExplorePages />
         </div>
       </section>
 
