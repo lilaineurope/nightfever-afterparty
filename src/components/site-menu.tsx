@@ -5,7 +5,6 @@ import { SiteSearch } from "@/components/site-search";
 // The one list of pages for the top menu (and site search).
 export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
-  { to: "/guests", label: "Guests" },
   { to: "/timeline", label: "Timeline" },
   { to: "/connections", label: "Connections" },
   { to: "/jukebox", label: "Jukebox" },
