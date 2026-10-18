@@ -18,7 +18,8 @@ export const Route = createFileRoute("/terms")({
 const quickFacts = [
   "Unofficial fan page. Not run by, endorsed by or connected to World of Wonder.",
   "Non-commercial. Nothing is sold here and there are no ads.",
-  "No audio is hosted — every listen button goes to the official release.",
+  "No audio is hosted — the player streams the show's own feed and every listen button goes to the official release.",
+  "Guestbook notes are read before they go up and come down whenever their writer asks.",
   "Anyone named on the site can ask for a correction or a removal.",
 ];
 
@@ -127,7 +128,28 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="3. Accuracy and no guarantees">
+          <Section title="3. Guestbook notes">
+            <p>
+              Anyone can leave a note in the{" "}
+              <Link to="/guestbook" className={GOLD_LINK}>guestbook</Link>.
+              Every note is read before it appears, and I decide which notes go
+              up; I may also hide or remove a note later. Notes are shown
+              exactly as written (I don&rsquo;t edit them), sometimes with a
+              short reply from me underneath.
+            </p>
+            <p>
+              Please keep it kind and about the show and the nightlife it
+              covers: no links or advertising, no private details or allegations
+              about real people, nothing hateful, and nothing you don&rsquo;t
+              have the right to share. Your note stays yours; by sending it you
+              allow it to be shown on this site together with the name and place
+              you gave. You can ask for your note to be taken down at any time
+              via the contact page. Notes are the opinions of the people who
+              wrote them, not of this site.
+            </p>
+          </Section>
+
+          <Section title="4. Accuracy and no guarantees">
             <p>
               Entries start from what was actually said in an episode and are
               then checked against public interviews, obituaries and press
@@ -143,7 +165,7 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="4. Who owns what">
+          <Section title="5. Who owns what">
             <p>
               The <em>Night Fever</em> name, artwork, audio, and everything
               belonging to{" "}
@@ -158,13 +180,14 @@ function TermsPage() {
               with a link back are fine.
             </p>
             <p>
-              No episode audio is hosted, embedded or reproduced here. Every
-              listen button takes you to the official release on Spotify, Apple
-              Podcasts or WOW Presents Plus.
+              No episode audio is hosted or stored here. The site&rsquo;s
+              episode player streams each episode straight from the show&rsquo;s
+              own public podcast feed, and every listen button takes you to the
+              official release on Spotify, Apple Podcasts or WOW Presents Plus.
             </p>
           </Section>
 
-          <Section title="5. Corrections, personality rights and removals">
+          <Section title="6. Corrections, personality rights and removals">
             <p>
               If you are named on this site &mdash; or you are a representative
               of someone who is &mdash; you can ask for a factual correction, for
@@ -189,7 +212,7 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="6. Links out">
+          <Section title="7. Links out">
             <p>
               Links to Spotify, Apple Podcasts, WOW Presents Plus, Instagram,
               Wikipedia and other services leave this site. This page is not
@@ -198,7 +221,7 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="7. Changes and availability">
+          <Section title="8. Changes and availability">
             <p>
               The site can be edited, moved or taken down at any time, with or
               without notice. Nothing here creates an obligation to keep it
@@ -206,7 +229,7 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="8. Liability">
+          <Section title="9. Liability">
             <p>
               To the extent the law allows, the person behind this site is not
               liable for losses arising from reading or relying on it. Nothing in
@@ -215,7 +238,7 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="9. Governing law">
+          <Section title="10. Governing law">
             <p>
               These terms are written under Swedish and European Union law,
               where the site is run from. That does not remove any mandatory
@@ -223,7 +246,7 @@ function TermsPage() {
             </p>
           </Section>
 
-          <Section title="10. Contact">
+          <Section title="11. Contact">
             <p>
               Corrections, permissions, removals and general questions:{" "}
               <a
