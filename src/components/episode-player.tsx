@@ -143,7 +143,7 @@ export function EpisodePlayer() {
     <>
       {audioEl}
       {show && ep && (<>
-      <div className={min ? "h-10" : "h-28"} aria-hidden="true" />
+      <div className={min ? "h-10" : "h-32"} aria-hidden="true" />
       <div
         role="region"
         aria-label="Episode player"
@@ -200,6 +200,11 @@ export function EpisodePlayer() {
             />
             <span className="w-14 shrink-0 font-mono text-xs text-muted-foreground">{fmt(dur)}</span>
           </div>
+        )}
+        {!min && (
+          <p className="mx-auto max-w-5xl px-4 pb-2 text-[11px] leading-snug text-muted-foreground/80">
+            This fan site doesn't host any audio - the player streams each episode straight from the show's own podcast feed.
+          </p>
         )}
       </div>
       </>)}
