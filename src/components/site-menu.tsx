@@ -12,6 +12,7 @@ export const PAGES = [
   { to: "/map", label: "Map" },
   { to: "/quiz", label: "Pub Quiz" },
   { to: "/explore", label: "A–Z" },
+  { to: "/guestbook", label: "Guestbook" },
 ] as const;
 
 export function SiteMenu() {

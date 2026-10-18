@@ -6,7 +6,7 @@ import { LegalNote } from "@/components/legal-links";
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
 
-// One shared footer for every page: the show and World of Wonder links, Meet the guests, Sign the guestbook, About, Contact and Under the hood.
+// One shared footer for every page: the show and World of Wonder links, Meet the guests, About, Contact, Under the hood and Guestbook.
 // The other page links live only in the top menu.
 export function SiteFooter() {
   return (
@@ -36,10 +36,7 @@ export function SiteFooter() {
             <Link to="/guests" className="whitespace-nowrap text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink">
               Meet the guests
             </Link>
-            {" · "}
-            <Link to="/guestbook" className="whitespace-nowrap text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink">
-              Sign the guestbook
-            </Link>
+
           </p>
           <nav aria-label="Footer" className="flex flex-col items-center gap-2 sm:items-end">
             <p className="text-sm text-muted-foreground">
@@ -48,6 +45,8 @@ export function SiteFooter() {
               <Link to="/contact" className={LINK}>Contact</Link>
               {" · "}
               <Link to="/under-the-hood" className={LINK}>Under the hood</Link>
+              {" · "}
+              <Link to="/guestbook" className={LINK}>Guestbook</Link>
             </p>
           </nav>
         </div>
