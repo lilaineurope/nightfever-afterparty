@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { SiteSearch } from "@/components/site-search";
 
 // The one list of pages: the top menu and the footer both read it.
 export const PAGES = [
@@ -22,14 +23,17 @@ export function SiteMenu() {
         <Link to="/" className="text-sm font-bold uppercase tracking-[0.2em] text-gold text-glow">
           Night Fever fan page
         </Link>
-        <button
-          type="button"
-          className="rounded-lg border border-border px-3 py-1.5 text-sm text-cream md:hidden"
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
-        >
-          Menu
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <SiteSearch />
+          <button
+            type="button"
+            className="rounded-lg border border-border px-3 py-1.5 text-sm text-cream"
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+          >
+            Menu
+          </button>
+        </div>
         <ul className="hidden items-center gap-1 md:flex">
           {PAGES.map((p) => (
             <li key={p.to}>
@@ -38,6 +42,9 @@ export function SiteMenu() {
               </Link>
             </li>
           ))}
+          <li className="ml-1">
+            <SiteSearch />
+          </li>
         </ul>
       </nav>
       {open && (
