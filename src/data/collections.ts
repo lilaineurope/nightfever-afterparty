@@ -89,6 +89,9 @@ const SPOTIFY: Record<string, string> = {
   "U2": "spotify:artist:51Blml2LZPmy7TTiAg47vQ",
 };
 
+/** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
+export const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/4RGIXkJLnDLZvSIagpUU3p";
+
 export const MUSIC_SHELVES: Shelf[] = [
   { key: "songs", label: "Songs, records & videos" },
   { key: "artists", label: "Artists & bands" },

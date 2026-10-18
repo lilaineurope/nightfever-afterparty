@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { CollectionItem } from "@/data/collections";
+import { SPOTIFY_PLAYLIST_URL, type CollectionItem } from "@/data/collections";
 
 // Spotify's own embed player, loaded only after a visitor presses play (nothing from Spotify loads before that).
 // Spotify plays 30-second previews to visitors who aren't logged in to Spotify, full songs to those who are.
@@ -114,6 +114,14 @@ export function JukeboxPlayer({
         </div>
       </div>
       <div ref={holder} className={current === null ? "hidden" : "mt-4 overflow-hidden rounded-xl"} />
+      <a
+        href={SPOTIFY_PLAYLIST_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/60 px-4 py-1.5 text-sm font-semibold text-gold transition hover:border-pink hover:text-pink"
+      >
+        Follow the playlist on Spotify ↗
+      </a>
       <p className="mt-3 text-[11px] leading-snug text-muted-foreground/80">
         Plays through Spotify's own player, which only loads when you press play. Not logged in to Spotify? You'll hear 30-second previews - log in for full songs. The jukebox moves on to the next song by itself.
       </p>

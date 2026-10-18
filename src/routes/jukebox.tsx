@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionPage } from "@/components/collection-page";
 import { JukeboxPlayer, useJukebox } from "@/components/jukebox-player";
-import { MUSIC_SHELVES, jukebox, listenLinks } from "@/data/collections";
+import { MUSIC_SHELVES, SPOTIFY_PLAYLIST_URL, jukebox, listenLinks } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 import header from "@/assets/jukebox-header.jpg";
 
@@ -40,7 +40,7 @@ function JukeboxPage() {
       header={header}
       kicker="The Night Fever"
       title={<>Juke<span className="text-pink text-glow-pink">box</span></>}
-      intro={<>Every song, record, band and sound that comes up in the interviews - the playlist of the night. Tap a timestamp to hear the story, or follow the links to listen to the music itself.</>}
+      intro={<>Every song, record, band and sound that comes up in the interviews - the playlist of the night. Tap a timestamp to hear the story, press play, or take the whole lot with you as the <a href={SPOTIFY_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" className="text-gold underline decoration-gold/50 underline-offset-2 hover:text-pink">Night Fever Afterparty Jukebox playlist on Spotify</a>.</>}
       items={jukebox}
       shelves={[...MUSIC_SHELVES]}
       extras={(m) => {
