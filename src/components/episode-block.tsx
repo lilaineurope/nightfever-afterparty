@@ -24,7 +24,7 @@ const episodePortraits: Record<string, string> = {
 };
 
 // Boxes whose portrait sits on the left keep that side in view when the box crops the picture.
-const portraitLeft = new Set(["s03e06"]);
+const portraitLeft = new Set<string>([]);
 
 
 function formatDate(iso: string) {
