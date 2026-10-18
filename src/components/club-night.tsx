@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { KIND_LABEL, playlistUrl, trackUrl, type ClubNight } from "@/data/club-nights";
 
@@ -52,6 +53,11 @@ export function ClubNightPlaylist({ night }: { night: ClubNight }) {
               </a>
               <span className="text-sm text-muted-foreground"> · {s.artist} ({s.year})</span>
               {s.why && <p className="mt-0.5 text-xs text-card-foreground/70">{s.why}</p>}
+              {s.guest && (
+                <Link to="/explore/$slug" params={{ slug: s.guest.slug }} className="mt-1 inline-block rounded-full border border-pink/50 px-2 py-0.5 text-[11px] font-semibold text-pink hover:bg-pink/10">
+                  Night Fever guest: {s.guest.label} &rarr;
+                </Link>
+              )}
             </div>
             <div className="col-start-2 mt-1 flex flex-wrap items-center gap-1.5 sm:col-start-3 sm:mt-0 sm:justify-end">
               {kinds.length > 1 && (

@@ -12,6 +12,7 @@ export type ClubSong = {
   kind: Kind;
   why?: string;
   sources: string[]; // Source keys
+  guest?: { slug: string; label: string }; // a Night Fever guest tied to this song at the club (links to their card)
 };
 export type ClubNight = {
   slug: string; // entity slug of the club card
@@ -127,7 +128,7 @@ const dt: ClubNight = {
     { title: "Planet Rock", artist: "Afrika Bambaataa & the Soulsonic Force", year: 1982, spotify: "5aD3fAa1fy8XUesj3lgr19", kind: "played", why: "Kamins names it among his Danceteria records; Bambaataa DJed there in March 1982", sources: ["K", "F"] },
     { title: "Taj Mahal", artist: "Jorge Ben", year: 1972, spotify: "0H2G2c1u3XnzOlGFNJ6Er0", kind: "played", why: "Kamins: \"I'm famous for playing 'Taj Mahal'\"", sources: ["K"] },
     { title: "Ashes to Ashes", artist: "David Bowie", year: 1980, spotify: "37CRPk0L5ZpfPeePEPwE0t", kind: "played", why: "Its video premiered at the club in summer 1980", sources: ["L"] },
-    { title: "Jam Hot", artist: "Johnny Dynell", year: 1983, spotify: "46qCv6ODMDCcadIjntyqrQ", kind: "played", why: "Dynell DJed there and says it was born at Danceteria", sources: ["J"] },
+    { title: "Jam Hot", artist: "Johnny Dynell", year: 1983, spotify: "46qCv6ODMDCcadIjntyqrQ", kind: "played", why: "Dynell DJed there and says it was born at Danceteria", sources: ["J"], guest: { slug: "chi-chi-valenti-johnny-dynell", label: "Johnny Dynell" } },
     { title: "Smooth Operator", artist: "Sade", year: 1984, spotify: "7pLuEMFougkSHXrPBtNxTR", kind: "live", why: "Sade played their first US show there in 1983", sources: ["S"] },
     { title: "This Charming Man", artist: "The Smiths", year: 1983, spotify: "1FvDJ9KGxcqwv1utyPL3JZ", kind: "live", why: "Their US debut, New Year's Eve 1983", sources: ["T"] },
     { title: "Cavern", artist: "Liquid Liquid", year: 1983, spotify: "6j370rNNGiu8zOnoSTioPk", kind: "live", sources: ["K"] },
