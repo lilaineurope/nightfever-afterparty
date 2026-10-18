@@ -99,7 +99,9 @@ for (const r of refs) {
   const e = add(r.name, r.category, { link: r.link || undefined });
   e?.refs.push(r);
 }
-const placeOf = (p: string) => p.split(",")[0]!.trim();
+// A place that already has its own card under its full name ("The Pants Pub, Washington Place") keeps it;
+// otherwise the text before the first comma names the card ("Max's Kansas City, Park Avenue South").
+const placeOf = (p: string) => (byKey.has(slugify(p)) ? p : p.split(",")[0]!.trim());
 for (const ev of sceneEvents) {
   for (const f of ev.figures) add(f, "Person");
   add(placeOf(ev.place), "Location");

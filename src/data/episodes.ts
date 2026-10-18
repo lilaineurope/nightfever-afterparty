@@ -53,8 +53,8 @@ const s06e01: Episode = {
     afterpartyPublished: "2026-10-10",
     blurb:
       "The host finally takes the guest chair! James on growing up, moving to New York and the club years he has been documenting ever since - with Warhol and Michael Alig never far away.",
-    references: 119,
-    mentions: 336,
+    references: 124,
+    mentions: 353,
     top: [
       { name: "James St. James", mentions: 25 },
       { name: "Andy Warhol", mentions: 24 },
@@ -77,12 +77,12 @@ const s01e01: Episode = {
     afterpartyPublished: "2026-10-11",
     blurb:
       "Where it all started - the very first episode! Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Pure glamour.",
-    references: 112,
-    mentions: 293,
+    references: 116,
+    mentions: 315,
     top: [
       { name: "Dianne Brill", mentions: 31 },
+      { name: "New York", mentions: 18 },
       { name: "Andy Warhol", mentions: 18 },
-      { name: "Rudolf Piper", mentions: 13 },
     ],
 };
 

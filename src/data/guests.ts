@@ -37,7 +37,7 @@ export const coreGuests: Guest[] = [
       },
     ],
     now: "Still designing and writing! She splits her time between the US and Germany and revisits her nightlife years in interviews and essays.",
-    scenes: ["Studio 54", "Danceteria", "Area", "Warhol's Factory"],
+    scenes: ["Studio 54", "Danceteria", "Area", "The Factory"],
     linkedTo: ["michael-musto", "susanne-bartsch", "peter-gatien"],
   },
   {
@@ -258,7 +258,7 @@ export const coreGuests: Guest[] = [
       },
     ],
     now: "Still part of the New York nightlife gang - and one of the scene's great storytellers.",
-    scenes: ["Junior Vasquez nights", "Sound Factory era"],
+    scenes: ["Junior Vasquez nights", "Sound Factory"],
     linkedTo: ["peter-gatien", "susanne-bartsch", "moby"],
   },
   {
@@ -283,7 +283,7 @@ export const coreGuests: Guest[] = [
       },
     ],
     now: "Painting and making art. Punk and trans artists still name her as an influence!",
-    scenes: ["Warhol's Factory", "CBGB", "Max's Kansas City"],
+    scenes: ["The Factory", "CBGB", "Max's Kansas City"],
     linkedTo: ["tish-and-snooky", "joey-arias"],
   },
   {

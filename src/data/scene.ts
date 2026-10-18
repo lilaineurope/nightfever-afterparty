@@ -71,7 +71,7 @@ const curatedEvents: SceneEvent[] = [
     when: "1974",
     title: "Blondie forms, with Tish and Snooky behind Debbie Harry",
     text: "The Stilettoes become Blondie. The Bellomo sisters sing backing vocals in the earliest line-up before leaving to open a shop.",
-    place: "CBGB and Max's Kansas City",
+    place: "CBGB, Max's Kansas City",
     decade: "1970s",
     people: ["tish-and-snooky"],
     figures: ["Debbie Harry", "Chris Stein", "Blondie"],
@@ -367,7 +367,7 @@ const curatedEvents: SceneEvent[] = [
     place: "New York",
     decade: "1990s",
     people: ["peter-gatien", "michael-musto"],
-    figures: ["Michael Alig", "Andre Melendez", "James St. James"],
+    figures: ["Michael Alig", "Andre 'Angel' Melendez", "James St. James"],
   },
   {
     id: "gatien-trial",
