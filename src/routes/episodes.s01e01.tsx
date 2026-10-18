@@ -9,6 +9,7 @@ import { sceneEvents } from "../data/scene";
 import { Button } from "@/components/ui/button";
 import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
+import { namedOnCount } from "@/lib/name-links";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
@@ -179,10 +180,10 @@ function EpisodePage() {
                       <span className="rounded-full border border-gold/40 px-2.5 py-0.5 text-xs text-gold">{r.status}</span>
                     )}
                   </div>
-                  <p className="mt-1 text-sm text-muted-foreground"><EntityText text={r.context} /></p>
+                  <p className="mt-1 text-sm text-muted-foreground"><EntityText text={r.context} self={r.name} /></p>
                   {r.fashion && (
                     <p className="mt-2 text-sm text-muted-foreground">
-                      <span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span>{r.fashion}
+                      <span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span><EntityText text={r.fashion} self={r.name} />
                     </p>
                   )}
                   {r.heard && r.heard !== r.name && r.heard !== "—" && (
@@ -210,7 +211,7 @@ function EpisodePage() {
                     <div className="mt-1 text-xs text-gold">{r.everywhere} across all</div>
                   )}
                   {r.everywhere > 0 && r.everywhere === r.mentions && (
-                    <div className="mt-1 text-xs text-muted-foreground/70">this episode only</div>
+                    <div className="mt-1 text-xs text-muted-foreground/70">{namedOnCount(r.name) > 0 ? `only counted here · named on ${namedOnCount(r.name)} more card${namedOnCount(r.name) > 1 ? "s" : ""}` : "this episode only"}</div>
                   )}
                 </div>
               </li>

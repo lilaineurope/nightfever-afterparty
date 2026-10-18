@@ -5,6 +5,7 @@ import { clubNightFor } from "@/data/club-nights";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, isThinCard, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
+import { namedOn } from "@/lib/name-links";
 import { abs, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodeById, episodePath } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
@@ -166,9 +167,9 @@ function EntityPage() {
                       {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"} in this episode`}
                     </span>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground"><EntityText text={r.context} /></p>
+                  <p className="mt-2 text-sm text-muted-foreground"><EntityText text={r.context} self={e.name} /></p>
                   {r.fashion && (
-                    <p className="mt-2 text-sm text-muted-foreground"><span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span>{r.fashion}</p>
+                    <p className="mt-2 text-sm text-muted-foreground"><span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span><EntityText text={r.fashion} self={e.name} /></p>
                   )}
                 </li>
                 );
@@ -195,6 +196,20 @@ function EntityPage() {
                 </li>
               ))}
             </ol>
+          </section>
+        )}
+
+        {namedOn(e).length > 0 && (
+          <section>
+            <h2 className={h}>Also named on these cards</h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {namedOn(e).map((x) => (
+                <Link key={`${x.entity.slug}-${x.ref.episode}`} to="/explore/$slug" params={{ slug: x.entity.slug }} className={chip}>
+                  {x.entity.name}
+                  {x.ref.episode && <span className="ml-1.5 text-muted-foreground">{episodeShort(x.ref.episode)}</span>}
+                </Link>
+              ))}
+            </div>
           </section>
         )}
 
