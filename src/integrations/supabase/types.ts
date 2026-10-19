@@ -14,18 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      guestbook_key_failures: {
-        Row: { created_at: string; id: number }
-        Insert: { created_at?: string; id?: number }
-        Update: { created_at?: string; id?: number }
-        Relationships: []
-      }
-      guestbook_settings: {
-        Row: { id: number; key_hash: string; key_salt: string; updated_at: string }
-        Insert: { id?: number; key_hash: string; key_salt: string; updated_at?: string }
-        Update: { id?: number; key_hash?: string; key_salt?: string; updated_at?: string }
-        Relationships: []
-      }
       guestbook_entries: {
         Row: {
           approved_at: string | null
@@ -59,6 +47,42 @@ export type Database = {
           place?: string | null
           reply?: string | null
           status?: string
+        }
+        Relationships: []
+      }
+      guestbook_key_failures: {
+        Row: {
+          created_at: string
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
+      guestbook_settings: {
+        Row: {
+          id: number
+          key_hash: string
+          key_salt: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          key_hash: string
+          key_salt: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          key_hash?: string
+          key_salt?: string
+          updated_at?: string
         }
         Relationships: []
       }
