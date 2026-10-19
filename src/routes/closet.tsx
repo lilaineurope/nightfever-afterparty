@@ -1,15 +1,17 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { Timestamp } from "@/components/episode-player";
 import { episodes } from "@/data/episodes";
 import { MODES, PIECES, SLOTS, options, piecesFor, verdict, type Mode, type Piece, type Slot } from "@/data/closet";
 import vt323 from "@/assets/fonts/vt323.woff2?url";
 import leopard from "@/assets/leopard.svg?url";
+import makos from "@/assets/cards/guestbook.jpg";
 
-// Club Closet - a homage to the 90s wardrobe computer: beige monitor, leopard side panels, a white screen with the
-// outfit on a figure (or the pieces rail by rail), chunky buttons and a category bar. Our own name, colours and pieces.
+// Club Closet - a wardrobe built from the looks in the episodes, in two styles that share everything but the skin:
+// "Afterparty Style" (the site's navy, pink dry-brush, torn scraps and gold) and "Clueless Style" (a homage to the 90s
+// wardrobe computer: beige monitor, leopard panels, white screen, chunky bevelled buttons, pixel font).
 export const Route = createFileRoute("/closet")({
   staticData: { sitemap: false },
   component: ClosetPage,
@@ -22,7 +24,81 @@ export const Route = createFileRoute("/closet")({
     }),
 });
 
-const PIXEL = "font-[ClubPixel,ui-monospace,monospace]";
+type StyleId = "afterparty" | "clueless";
+const PIXEL = "font-[ClubPixel,ui-monospace,monospace] tracking-widest";
+const SKINS = {
+  clueless: {
+    name: "Clueless Style",
+    font: PIXEL,
+    bezel: "rounded-[28px] p-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,.8)] sm:p-5",
+    bezelStyle: { backgroundImage: "linear-gradient(180deg,#e6dfcf,#c9bfaa)" } as React.CSSProperties,
+    frame: "overflow-hidden rounded-[14px] border-4 border-[#2a2620] bg-black",
+    bar: "bg-[#120d16] text-[#f0e6d2] text-base sm:text-xl",
+    barBox: "border-2 border-[#f0e6d2]",
+    panel: "leopard",
+    screen: "bg-[#f7f5f0] text-[#1b1820]",
+    match: "text-[#1f6f3a]",
+    mis: "text-[#c2185b]",
+    card: "rounded-sm border-2 border-[#1b1820] bg-white",
+    keys: "border-t-2 border-[#1b1820] bg-[#2b2533]",
+    key: "bevel m-1 flex-1 bg-[#d8d2dc] py-1 text-lg text-[#1b1820]",
+    keyOn: "!bg-gold",
+    btn: "bevel border-2 border-[#1b1820] px-2 leading-none text-white",
+    btnSmall: "bg-[#5b2a86] py-2 text-lg md:text-xl",
+    btnBig: "bg-pink py-3 text-2xl md:text-3xl",
+    btnOn: "!bg-gold !text-[#1b1820]",
+    small: "text-[#6b5b70]",
+    src: "text-[#5c5560]",
+    who: "text-[#8a5a00]",
+    ts: "!text-[#8a5a00]",
+    link: "hover:text-[#c2185b]",
+    rule: "border-dashed border-[#cfc6d4]",
+    chip: "bevel bg-[#d8d2dc] text-[#1b1820]",
+    chipOn: "!bg-gold",
+    nav: "bg-[#120d16] text-[#f0e6d2] text-base sm:text-lg",
+    brand: "text-[#6b6150]",
+    ink: "#1b1820",
+    verdictSize: "text-2xl",
+  },
+  afterparty: {
+    name: "Afterparty Style",
+    font: "font-semibold uppercase tracking-[0.18em]",
+    bezel: "rounded-[28px] border-2 border-gold/50 bg-card p-3 shadow-[0_0_70px_-15px] shadow-pink/50 sm:p-5",
+    bezelStyle: {} as React.CSSProperties,
+    frame: "overflow-hidden rounded-2xl border border-gold/40 bg-background",
+    bar: "bg-gradient-to-r from-pink to-[oklch(0.5_0.2_320)] text-pink-foreground text-xs sm:text-sm",
+    barBox: "rounded-full border border-pink-foreground/70",
+    panel: "makos",
+    screen: "bg-[#0b0e26] text-cream",
+    match: "text-gold",
+    mis: "text-pink",
+    card: "rounded-xl border border-gold/30 bg-background/70",
+    keys: "border-t border-gold/20",
+    key: "m-1 flex-1 rounded-full border border-border bg-card py-1.5 text-xs text-cream transition hover:border-gold",
+    keyOn: "!border-gold !bg-gold/20 !text-gold",
+    btn: "rounded-2xl border px-2 leading-tight shadow-lg transition hover:scale-[1.03] active:scale-95",
+    btnSmall: "border-gold/70 bg-background/85 py-2.5 text-xs text-gold backdrop-blur",
+    btnBig: "border-pink bg-pink py-4 text-lg text-pink-foreground shadow-pink/40",
+    btnOn: "!border-gold !bg-gold !text-[#1b1820]",
+    small: "text-gold/80",
+    src: "text-muted-foreground",
+    who: "text-gold",
+    ts: "",
+    link: "hover:text-pink",
+    rule: "border-border",
+    chip: "rounded-full border border-gold/60 bg-background text-gold",
+    chipOn: "!bg-gold !text-[#1b1820]",
+    nav: "bg-background text-gold text-[11px] sm:text-xs",
+    brand: "text-gold/60",
+    ink: "#f2d58a",
+    verdictSize: "text-lg",
+  },
+};
+type Skin = (typeof SKINS)["clueless"];
+const SkinCtx = createContext<Skin>(SKINS.afterparty);
+const useSkin = () => useContext(SkinCtx);
+const STORE = "nf-closet-style";
+
 const SHORT: Record<Slot, string> = { head: "HAIR & HATS", top: "TOPS & DRESSES", bottom: "SKIRTS & PANTS", feet: "SHOES", extra: "EXTRAS" };
 const epLabel = (id: string) => {
   const e = episodes.find((x) => x.id === id);
@@ -31,6 +107,25 @@ const epLabel = (id: string) => {
 const rnd = (n: number) => Math.floor(Math.random() * n);
 
 function ClosetPage() {
+  const [style, setStyle] = useState<StyleId>("afterparty");
+  useEffect(() => {
+    try {
+      const s = localStorage.getItem(STORE);
+      if (s === "clueless" || s === "afterparty") setStyle(s);
+    } catch {
+      /* private mode */
+    }
+  }, []);
+  const chooseStyle = (s: StyleId) => {
+    setStyle(s);
+    try {
+      localStorage.setItem(STORE, s);
+    } catch {
+      /* private mode */
+    }
+  };
+  const k = SKINS[style];
+
   const [mode, setMode] = useState<Mode>("all");
   const [pick, setPick] = useState("");
   const opts = useMemo(() => options(mode), [mode]);
@@ -60,6 +155,7 @@ function ClosetPage() {
   useEffect(autoDress, [rails]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const step = (s: Slot, d: number) => setIdx((cur) => ({ ...cur, [s]: (cur[s] + d + rails[s].items.length) % rails[s].items.length }));
+  const toggleLock = (s: Slot) => setLocked((l) => ({ ...l, [s]: !l[s] }));
   const chosen = Object.fromEntries(SLOTS.map((s) => [s.id, rails[s.id].items[idx[s.id] % rails[s.id].items.length]!])) as Record<Slot, Piece>;
   const full = !!chosen.top.full;
   const worn = SLOTS.map((s) => chosen[s.id]).filter((p) => !(full && p.slot === "bottom"));
@@ -67,217 +163,228 @@ function ClosetPage() {
   const label =
     mode === "all" ? "THE WHOLE SHOW" : (opts.find((o) => o.id === pick)?.label ?? MODES.find((m) => m.id === mode)!.label).toUpperCase();
   const browseSlots = focus ? SLOTS.filter((s) => s.id === focus) : SLOTS.filter((s) => !(full && s.id === "bottom"));
+  const toggleView = () => {
+    setView(view === "browse" ? "dressed" : "browse");
+    setFocus(null);
+  };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <style>{`@font-face{font-family:ClubPixel;src:url(${vt323}) format("woff2");font-display:swap}
+    <SkinCtx.Provider value={k}>
+      <main className="min-h-screen bg-background text-foreground">
+        <style>{`@font-face{font-family:ClubPixel;src:url(${vt323}) format("woff2");font-display:swap}
 .leopard{background:#e9c995 url(${leopard}) repeat;background-size:120px 120px}
+.makos{background:linear-gradient(180deg,rgba(11,14,38,.15),rgba(11,14,38,.55)),url(${makos}) center/cover}
 .bevel{box-shadow:inset 3px 3px 0 rgba(255,255,255,.55),inset -3px -3px 0 rgba(0,0,0,.45),0 3px 0 rgba(0,0,0,.4)}
 .bevel:active{box-shadow:inset -3px -3px 0 rgba(255,255,255,.4),inset 3px 3px 0 rgba(0,0,0,.45)}`}</style>
 
-      <section className="disco-grid px-6 pb-6 pt-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Demo · not in the menu yet</p>
-        <h1 className="mt-4 text-balance text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
-          Club <span className="text-pink text-glow-pink">Closet</span>
-        </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-          {PIECES.length} pieces from the looks in the guests&rsquo; stories, each in its real colour. Choose who or what dresses
-          you, then hit <strong className="text-cream">Dress me</strong>.
-        </p>
-      </section>
-
-      {/* dress me for... */}
-      <section className="px-4 pb-6">
-        <div className="mx-auto max-w-5xl">
-          <p className={`${PIXEL} text-center text-xl tracking-widest text-gold`}>DRESS ME FOR…</p>
-          <div className="mt-2 flex flex-wrap justify-center gap-1.5">
-            {MODES.map((m) => (
+        <section className="disco-grid px-6 pb-6 pt-24 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Demo · not in the menu yet</p>
+          <h1 className="mt-4 text-balance text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
+            Club <span className="text-pink text-glow-pink">Closet</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
+            {PIECES.length} pieces from the looks in the guests&rsquo; stories, each in its real colour. Choose who or what dresses
+            you, then hit <strong className="text-cream">Dress me</strong>.
+          </p>
+          {/* style switch */}
+          <div role="radiogroup" aria-label="Wardrobe style" className="mx-auto mt-6 inline-flex rounded-full border border-gold/50 bg-card p-1">
+            {(["afterparty", "clueless"] as StyleId[]).map((s) => (
               <button
-                key={m.id}
+                key={s}
                 type="button"
-                onClick={() => {
-                  setMode(m.id);
-                  setPick(m.id === "all" ? "" : (options(m.id)[0]?.id ?? ""));
-                  setFocus(null);
-                }}
-                className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${mode === m.id ? "border-pink bg-pink text-pink-foreground" : "border-border text-cream hover:border-gold"}`}
+                role="radio"
+                aria-checked={style === s}
+                onClick={() => chooseStyle(s)}
+                className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${style === s ? "bg-pink text-pink-foreground" : "text-cream hover:text-gold"} ${s === "clueless" ? "font-[ClubPixel,ui-monospace,monospace] text-base tracking-widest" : ""}`}
               >
-                {m.label}
+                {SKINS[s].name}
               </button>
             ))}
           </div>
-          {mode !== "all" && (
-            <div className="mx-auto mt-3 max-w-md">
-              <label className="sr-only" htmlFor="closet-pick">Choose</label>
-              <span className="relative block">
-                <select
-                  id="closet-pick"
-                  value={pick}
-                  onChange={(e) => setPick(e.target.value)}
-                  className="w-full appearance-none rounded-xl border border-gold/50 bg-card px-4 py-2.5 pr-10 text-cream [color-scheme:dark] focus:border-pink focus:outline-none"
+        </section>
+
+        {/* dress me for... */}
+        <section className="px-4 pb-6">
+          <div className="mx-auto max-w-5xl">
+            <p className={`${k.font} text-center text-gold ${style === "clueless" ? "text-xl" : "text-xs"}`}>DRESS ME FOR…</p>
+            <div className="mt-2 flex flex-wrap justify-center gap-1.5">
+              {MODES.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    setMode(m.id);
+                    setPick(m.id === "all" ? "" : (options(m.id)[0]?.id ?? ""));
+                    setFocus(null);
+                  }}
+                  className={`border px-3 py-1 text-xs font-semibold transition ${style === "clueless" ? "rounded-sm" : "rounded-full"} ${mode === m.id ? "border-pink bg-pink text-pink-foreground" : "border-border text-cream hover:border-gold"}`}
                 >
-                  {opts.map((o) => (
-                    <option key={o.id} value={o.id}>
-                      {o.label} ({o.count} {o.count === 1 ? "piece" : "pieces"})
-                    </option>
-                  ))}
-                </select>
-                <svg aria-hidden="true" viewBox="0 0 20 20" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gold" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l5 5 5-5" /></svg>
-              </span>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* the monitor */}
-      <section className="px-2 pb-6 sm:px-4">
-        <div className="mx-auto max-w-5xl rounded-[28px] bg-[#d9d0bd] p-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,.8)] sm:p-5" style={{ backgroundImage: "linear-gradient(180deg,#e6dfcf,#c9bfaa)" }}>
-          <div className="overflow-hidden rounded-[14px] border-4 border-[#2a2620] bg-black">
-            {/* top bar */}
-            <div className={`${PIXEL} flex items-center justify-between gap-2 bg-[#120d16] px-3 py-1 text-base text-[#f0e6d2] sm:text-xl`}>
-              <span className="tracking-widest">CLUB CLOSET</span>
-              <span className="truncate border-2 border-[#f0e6d2] px-2 leading-tight tracking-widest">{label}</span>
-              <span className="text-pink">♥</span>
-            </div>
-
-            <div className="grid grid-cols-[minmax(0,1fr)] sm:grid-cols-[110px_minmax(0,1fr)_110px] md:grid-cols-[150px_minmax(0,1fr)_150px]">
-              {/* left leopard panel */}
-              <div className="leopard hidden flex-col justify-end gap-3 p-3 sm:flex">
-                <ChunkyButton onClick={autoDress}>AUTO DRESS</ChunkyButton>
-                <ChunkyButton onClick={() => { setView(view === "browse" ? "dressed" : "browse"); setFocus(null); }} active={view === "browse"}>
-                  {view === "browse" ? "SEE IT ON" : "BROWSE"}
-                </ChunkyButton>
-              </div>
-
-              {/* the white screen */}
-              <div className="min-h-[460px] bg-[#f7f5f0] p-3 text-[#1b1820] sm:p-4">
-                {view === "dressed" ? (
-                  <div key={flash} className="grid h-full grid-cols-1 items-center gap-3 animate-in fade-in duration-300 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-                    <Figure chosen={chosen} full={full} />
-                    <div className="min-w-0">
-                      <p className={`${PIXEL} text-2xl tracking-widest ${v.match ? "text-[#1f6f3a]" : "animate-pulse text-[#c2185b]"}`}>{v.match ? "MATCH!" : "MIS-MATCH!"}</p>
-                      <p className="text-sm">{v.line}</p>
-                      <ul className="mt-3 space-y-2">
-                        {SLOTS.filter((s) => !(full && s.id === "bottom")).map((s) => (
-                          <PieceLine key={s.id} piece={chosen[s.id]} slot={s.id} locked={locked[s.id]} borrowed={rails[s.id].borrowed}
-                            onLock={() => setLocked((l) => ({ ...l, [s.id]: !l[s.id] }))} />
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ) : (
-                  <ul className="space-y-3">
-                    {browseSlots.map((s) => (
-                      <li key={s.id} className="rounded-sm border-2 border-[#1b1820] bg-white">
-                        <div className="flex items-center gap-3 p-2">
-                          <Garment slot={s.id} piece={chosen[s.id]} big />
-                          <div className="min-w-0 flex-1">
-                            <p className={`${PIXEL} text-sm tracking-widest text-[#6b5b70]`}>{SHORT[s.id]}{rails[s.id].borrowed && " · FROM THE WHOLE CLOSET"}</p>
-                            <p className="truncate text-lg font-semibold">{chosen[s.id].label}</p>
-                            <Source piece={chosen[s.id]} />
-                          </div>
-                        </div>
-                        <div className="flex border-t-2 border-[#1b1820] bg-[#2b2533]">
-                          <PixelKey onClick={() => step(s.id, -1)} label={`Previous ${s.label}`}>◀◀</PixelKey>
-                          <PixelKey onClick={() => setLocked((l) => ({ ...l, [s.id]: !l[s.id] }))} label={locked[s.id] ? "Unlock" : "Keep this one"} active={locked[s.id]}>
-                            {locked[s.id] ? "KEPT" : "▶ KEEP"}
-                          </PixelKey>
-                          <PixelKey onClick={() => step(s.id, 1)} label={`Next ${s.label}`}>▶▶</PixelKey>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {/* right leopard panel */}
-              <div className="leopard hidden flex-col justify-end p-3 sm:flex">
-                <ChunkyButton onClick={() => { autoDress(); setView("dressed"); setFocus(null); }} big>DRESS ME</ChunkyButton>
-              </div>
-            </div>
-
-            {/* phone buttons */}
-            <div className="leopard flex gap-2 p-2 sm:hidden">
-              <ChunkyButton grow onClick={autoDress}>AUTO DRESS</ChunkyButton>
-              <ChunkyButton grow onClick={() => { setView(view === "browse" ? "dressed" : "browse"); setFocus(null); }} active={view === "browse"}>
-                {view === "browse" ? "SEE IT ON" : "BROWSE"}
-              </ChunkyButton>
-              <ChunkyButton grow onClick={() => { autoDress(); setView("dressed"); }} big>DRESS ME</ChunkyButton>
-            </div>
-
-            {/* category bar */}
-            <nav aria-label="Closet rails" className={`${PIXEL} flex gap-x-4 overflow-x-auto bg-[#120d16] px-3 py-1 text-base tracking-widest text-[#f0e6d2] sm:text-lg`}>
-              {SLOTS.map((s) => (
-                <button key={s.id} type="button" onClick={() => { setView("browse"); setFocus(s.id); }}
-                  className={`shrink-0 hover:text-pink ${focus === s.id && view === "browse" ? "text-pink underline" : ""}`}>
-                  {SHORT[s.id]}
+                  {m.label}
                 </button>
               ))}
-              <button type="button" onClick={() => { setView("browse"); setFocus(null); }} className="ml-auto shrink-0 border-2 border-[#f0e6d2] px-2 hover:text-pink">ALL</button>
-            </nav>
+            </div>
+            {mode !== "all" && (
+              <div className="mx-auto mt-3 max-w-md">
+                <label className="sr-only" htmlFor="closet-pick">Choose</label>
+                <span className="relative block">
+                  <select
+                    id="closet-pick"
+                    value={pick}
+                    onChange={(e) => setPick(e.target.value)}
+                    className="w-full appearance-none rounded-xl border border-gold/50 bg-card px-4 py-2.5 pr-10 text-cream [color-scheme:dark] focus:border-pink focus:outline-none"
+                  >
+                    {opts.map((o) => (
+                      <option key={o.id} value={o.id}>
+                        {o.label} ({o.count} {o.count === 1 ? "piece" : "pieces"})
+                      </option>
+                    ))}
+                  </select>
+                  <svg aria-hidden="true" viewBox="0 0 20 20" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gold" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l5 5 5-5" /></svg>
+                </span>
+              </div>
+            )}
           </div>
-          <p className={`${PIXEL} mt-2 text-center text-sm tracking-[0.3em] text-[#6b6150]`}>NIGHT FEVER AFTERPARTY</p>
-        </div>
-        <p className="mx-auto mt-4 max-w-5xl text-center text-xs text-muted-foreground">
-          Every piece links back to the look it comes from and the moment in the episode. Shapes are simple drawings in each
-          piece&rsquo;s own colour - original artwork can follow.
-        </p>
-      </section>
-      <SiteFooter />
-    </main>
+        </section>
+
+        {/* the wardrobe */}
+        <section className="px-2 pb-6 sm:px-4">
+          <div className={`mx-auto max-w-5xl ${k.bezel}`} style={k.bezelStyle}>
+            <div className={k.frame}>
+              <div className={`${k.font} ${k.bar} flex items-center justify-between gap-2 px-3 py-1.5`}>
+                <span>CLUB CLOSET</span>
+                <span className={`${k.barBox} truncate px-2 leading-tight`}>{label}</span>
+                <span className={style === "clueless" ? "text-pink" : ""}>♥</span>
+              </div>
+
+              <div className="grid grid-cols-[minmax(0,1fr)] sm:grid-cols-[110px_minmax(0,1fr)_110px] md:grid-cols-[150px_minmax(0,1fr)_150px]">
+                <div className={`${k.panel} hidden flex-col justify-end gap-3 p-3 sm:flex`}>
+                  <ChunkyButton onClick={autoDress}>AUTO DRESS</ChunkyButton>
+                  <ChunkyButton onClick={toggleView} active={view === "browse"}>{view === "browse" ? "SEE IT ON" : "BROWSE"}</ChunkyButton>
+                </div>
+
+                <div className={`min-h-[460px] p-3 sm:p-4 ${k.screen}`}>
+                  {view === "dressed" ? (
+                    <div key={flash} className="grid h-full grid-cols-1 items-center gap-3 animate-in fade-in duration-300 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+                      <Figure chosen={chosen} full={full} />
+                      <div className="min-w-0">
+                        <p className={`${k.font} ${k.verdictSize} ${v.match ? k.match : `animate-pulse ${k.mis}`}`}>{v.match ? "MATCH!" : "MIS-MATCH!"}</p>
+                        <p className="text-sm">{v.line}</p>
+                        <ul className="mt-3 space-y-2">
+                          {SLOTS.filter((s) => !(full && s.id === "bottom")).map((s) => (
+                            <PieceLine key={s.id} piece={chosen[s.id]} slot={s.id} locked={locked[s.id]} borrowed={rails[s.id].borrowed} onLock={() => toggleLock(s.id)} />
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    <ul className="space-y-3">
+                      {browseSlots.map((s) => (
+                        <li key={s.id} className={k.card}>
+                          <div className="flex items-center gap-3 p-2">
+                            <Garment slot={s.id} piece={chosen[s.id]} big />
+                            <div className="min-w-0 flex-1">
+                              <p className={`${k.font} text-[11px] sm:text-sm ${k.small}`}>{SHORT[s.id]}{rails[s.id].borrowed && " · FROM THE WHOLE CLOSET"}</p>
+                              <p className="truncate text-lg font-semibold">{chosen[s.id].label}</p>
+                              <Source piece={chosen[s.id]} />
+                            </div>
+                          </div>
+                          <div className={`flex ${k.keys}`}>
+                            <PixelKey onClick={() => step(s.id, -1)} label={`Previous ${s.label}`}>◀◀</PixelKey>
+                            <PixelKey onClick={() => toggleLock(s.id)} label={locked[s.id] ? "Unlock" : "Keep this one"} active={locked[s.id]}>
+                              {locked[s.id] ? "KEPT" : "▶ KEEP"}
+                            </PixelKey>
+                            <PixelKey onClick={() => step(s.id, 1)} label={`Next ${s.label}`}>▶▶</PixelKey>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                <div className={`${k.panel} hidden flex-col justify-end p-3 sm:flex`}>
+                  <ChunkyButton onClick={() => { autoDress(); setView("dressed"); setFocus(null); }} big>DRESS ME</ChunkyButton>
+                </div>
+              </div>
+
+              <div className={`${k.panel} flex gap-2 p-2 sm:hidden`}>
+                <ChunkyButton grow onClick={autoDress}>AUTO DRESS</ChunkyButton>
+                <ChunkyButton grow onClick={toggleView} active={view === "browse"}>{view === "browse" ? "SEE IT ON" : "BROWSE"}</ChunkyButton>
+                <ChunkyButton grow onClick={() => { autoDress(); setView("dressed"); }} big>DRESS ME</ChunkyButton>
+              </div>
+
+              <nav aria-label="Closet rails" className={`${k.font} ${k.nav} flex gap-x-4 overflow-x-auto px-3 py-1.5`}>
+                {SLOTS.map((s) => (
+                  <button key={s.id} type="button" onClick={() => { setView("browse"); setFocus(s.id); }}
+                    className={`shrink-0 hover:text-pink ${focus === s.id && view === "browse" ? "text-pink underline" : ""}`}>
+                    {SHORT[s.id]}
+                  </button>
+                ))}
+                <button type="button" onClick={() => { setView("browse"); setFocus(null); }} className={`ml-auto shrink-0 px-2 hover:text-pink ${k.barBox}`}>ALL</button>
+              </nav>
+            </div>
+            <p className={`${k.font} mt-2 text-center text-xs sm:text-sm ${k.brand}`}>NIGHT FEVER AFTERPARTY</p>
+          </div>
+          <p className="mx-auto mt-4 max-w-5xl text-center text-xs text-muted-foreground">
+            Every piece links back to the look it comes from and the moment in the episode. Shapes are simple drawings in each
+            piece&rsquo;s own colour - original artwork can follow.
+          </p>
+        </section>
+        <SiteFooter />
+      </main>
+    </SkinCtx.Provider>
   );
 }
 
 function ChunkyButton({ children, onClick, active, big, grow }: { children: React.ReactNode; onClick: () => void; active?: boolean; big?: boolean; grow?: boolean }) {
+  const k = useSkin();
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`${PIXEL} bevel ${grow ? "flex-1" : "w-full"} border-2 border-[#1b1820] px-2 leading-none tracking-widest text-white transition ${big ? "bg-pink py-3 text-2xl md:text-3xl" : "py-2 text-lg md:text-xl"} ${active ? "bg-gold text-[#1b1820]" : big ? "" : "bg-[#5b2a86]"}`}
-    >
+    <button type="button" onClick={onClick}
+      className={`${k.font} ${k.btn} ${grow ? "flex-1" : "w-full"} ${big ? k.btnBig : k.btnSmall} ${active ? k.btnOn : ""}`}>
       {children}
     </button>
   );
 }
 
 function PixelKey({ children, onClick, label, active }: { children: React.ReactNode; onClick: () => void; label: string; active?: boolean }) {
+  const k = useSkin();
   return (
-    <button type="button" aria-label={label} onClick={onClick}
-      className={`${PIXEL} bevel m-1 flex-1 bg-[#d8d2dc] py-1 text-lg tracking-widest text-[#1b1820] ${active ? "bg-gold" : ""}`}>
+    <button type="button" aria-label={label} onClick={onClick} className={`${k.font} ${k.key} ${active ? k.keyOn : ""}`}>
       {children}
     </button>
   );
 }
 
 function Source({ piece }: { piece: Piece }) {
+  const k = useSkin();
   return (
-    <p className="relative truncate text-xs text-[#5c5560]">
-      {piece.who && <span className="font-semibold text-[#8a5a00]">{piece.who} · </span>}
+    <p className={`relative truncate text-xs ${k.src}`}>
+      {piece.who && <span className={`font-semibold ${k.who}`}>{piece.who} · </span>}
       {piece.lookSlug ? (
-        <Link to="/explore/$slug" params={{ slug: piece.lookSlug }} className="underline decoration-dotted underline-offset-2 hover:text-[#c2185b]">{piece.look}</Link>
+        <Link to="/explore/$slug" params={{ slug: piece.lookSlug }} className={`underline decoration-dotted underline-offset-2 ${k.link}`}>{piece.look}</Link>
       ) : (
         piece.look
       )}
       {" · "}
-      {epLabel(piece.episode)} <Timestamp episodeId={piece.episode} time={piece.time} className="text-xs !text-[#8a5a00]" />
+      {epLabel(piece.episode)} <Timestamp episodeId={piece.episode} time={piece.time} className={`text-xs ${k.ts}`} />
     </p>
   );
 }
 
 function PieceLine({ piece, slot, locked, borrowed, onLock }: { piece: Piece; slot: Slot; locked: boolean; borrowed: boolean; onLock: () => void }) {
+  const k = useSkin();
   return (
-    <li className="flex items-center gap-2 border-b border-dashed border-[#cfc6d4] pb-2">
-      <span className="h-6 w-6 shrink-0 rounded-sm border border-[#1b1820]" style={{ background: piece.hex ?? piece.palette[0] ?? "#c8a24b" }} />
+    <li className={`flex items-center gap-2 border-b pb-2 ${k.rule}`}>
+      <span className="h-6 w-6 shrink-0 rounded-sm border" style={{ background: colourOf(piece), borderColor: k.ink }} />
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-semibold">
-          <span className={`${PIXEL} mr-1 text-xs tracking-widest text-[#6b5b70]`}>{SHORT[slot]}</span>
+          <span className={`${k.font} mr-1 text-[10px] sm:text-xs ${k.small}`}>{SHORT[slot]}</span>
           {piece.label}
-          {borrowed && <span className="ml-1 text-[10px] text-[#c2185b]">(whole closet)</span>}
+          {borrowed && <span className="ml-1 text-[10px] text-pink">(whole closet)</span>}
         </p>
         <Source piece={piece} />
       </div>
       <button type="button" onClick={onLock} aria-pressed={locked} title={locked ? "Unlock" : "Keep this one when you auto-dress"}
-        className={`${PIXEL} bevel shrink-0 px-2 text-sm tracking-widest ${locked ? "bg-gold text-[#1b1820]" : "bg-[#d8d2dc] text-[#1b1820]"}`}>
+        className={`${k.font} shrink-0 px-2 py-0.5 text-[11px] sm:text-sm ${k.chip} ${locked ? k.chipOn : ""}`}>
         {locked ? "KEPT" : "KEEP"}
       </button>
     </li>
@@ -296,7 +403,10 @@ const texture = (label: string) => {
   if (/polka|dot/.test(l)) return "dots";
   return "";
 };
-const colourOf = (p: Piece) => p.hex ?? p.palette[0] ?? "#c8a24b";
+// Pieces whose story names no colour get one from the house palette, picked by name so it never changes.
+const HOUSE = ["#e8337f", "#c8a24b", "#141414", "#efe8da", "#7d2bd1", "#c62828", "#1d5fa8", "#f2d58a", "#2fb5a3"];
+const colourOf = (p: Piece) =>
+  p.hex ?? p.palette[0] ?? HOUSE[[...p.label].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % HOUSE.length]!;
 
 function Patterns({ id }: { id: string }) {
   return (
@@ -313,10 +423,11 @@ function Patterns({ id }: { id: string }) {
 }
 
 function Fill({ d, piece, id }: { d: string; piece: Piece; id: string }) {
+  const ink = useSkin().ink;
   const tex = texture(piece.label);
   return (
     <>
-      <path d={d} fill={colourOf(piece)} stroke="#1b1820" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d={d} fill={colourOf(piece)} stroke={ink} strokeWidth="1.6" strokeLinejoin="round" />
       {tex && <path d={d} fill={`url(#${id}-${tex})`} />}
       <path d={d} fill={`url(#${id}-sheen)`} />
     </>
@@ -335,11 +446,12 @@ function Figure({ chosen, full }: { chosen: Record<Slot, Piece>; full: boolean }
   const id = "fig";
   const { head, top, bottom, feet, extra } = chosen;
   const skin = "#e9d3c0";
+  const ink = useSkin().ink;
   return (
     <svg viewBox="0 0 200 420" className="mx-auto h-[380px] w-auto max-w-full" role="img" aria-label="The outfit on a figure">
       <Patterns id={id} />
       {/* figure */}
-      <g fill={skin} stroke="#1b1820" strokeWidth="1.4">
+      <g fill={skin} stroke={ink} strokeWidth="1.4">
         <circle cx="100" cy="52" r="22" />
         <rect x="92" y="70" width="16" height="16" />
         <path d="M66 92Q100 80 134 92L146 190L134 192L126 120L124 200L76 200L74 120L66 192L54 190Z" />
@@ -379,7 +491,7 @@ function Figure({ chosen, full }: { chosen: Record<Slot, Piece>; full: boolean }
       {isDrape(extra.label) ? (
         <Fill id={id} piece={extra} d="M60 92Q100 120 140 92L146 104Q100 136 54 104Z" />
       ) : isNecklace(extra.label) ? (
-        <g>{[...Array(9)].map((_, i) => <circle key={i} cx={84 + i * 4} cy={94 + Math.sin((i / 8) * Math.PI) * 10} r="2.6" fill={colourOf(extra)} stroke="#1b1820" strokeWidth="0.6" />)}</g>
+        <g>{[...Array(9)].map((_, i) => <circle key={i} cx={84 + i * 4} cy={94 + Math.sin((i / 8) * Math.PI) * 10} r="2.6" fill={colourOf(extra)} stroke={ink} strokeWidth="0.6" />)}</g>
       ) : /bag|clutch|purse|lunchbox/i.test(extra.label) ? (
         <Fill id={id} piece={extra} d="M146 196L168 196L170 222L144 222Z" />
       ) : (
