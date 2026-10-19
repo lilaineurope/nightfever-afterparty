@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookClubRouteImport } from './routes/book-club'
+import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GuestsRouteImport } from './routes/guests'
@@ -56,6 +57,11 @@ const AboutRoute = AboutRouteImport.update({
 const BookClubRoute = BookClubRouteImport.update({
   id: '/book-club',
   path: '/book-club',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClosetRoute = ClosetRouteImport.update({
+  id: '/closet',
+  path: '/closet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnectionsRoute = ConnectionsRouteImport.update({
@@ -213,6 +219,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
+  '/closet': typeof ClosetRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
@@ -248,6 +255,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
+  '/closet': typeof ClosetRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
@@ -284,6 +292,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
+  '/closet': typeof ClosetRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
@@ -321,6 +330,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
+    | '/closet'
     | '/connections'
     | '/contact'
     | '/guests'
@@ -356,6 +366,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
+    | '/closet'
     | '/connections'
     | '/contact'
     | '/guests'
@@ -391,6 +402,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
+    | '/closet'
     | '/connections'
     | '/contact'
     | '/guests'
@@ -427,6 +439,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BookClubRoute: typeof BookClubRoute
+  ClosetRoute: typeof ClosetRoute
   ConnectionsRoute: typeof ConnectionsRoute
   ContactRoute: typeof ContactRoute
   GuestsRoute: typeof GuestsRoute
@@ -480,6 +493,13 @@ declare module '@tanstack/react-router' {
       path: '/book-club'
       fullPath: '/book-club'
       preLoaderRoute: typeof BookClubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/closet': {
+      id: '/closet'
+      path: '/closet'
+      fullPath: '/closet'
+      preLoaderRoute: typeof ClosetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connections': {
@@ -699,6 +719,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BookClubRoute: BookClubRoute,
+  ClosetRoute: ClosetRoute,
   ConnectionsRoute: ConnectionsRoute,
   ContactRoute: ContactRoute,
   GuestsRoute: GuestsRoute,
