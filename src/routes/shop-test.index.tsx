@@ -6,7 +6,7 @@ import networkImg from "@/assets/cards/connections.jpg";
 import quizImg from "@/assets/cards/quiz.jpg";
 
 // Hidden shop (still a trial run - research for selling Fredrik's Amaze plugin): not linked or mentioned anywhere on the
-// site, not in the menu, search or sitemap, and noindex. Each Buy button opens a LIVE Creem payment link. Three standalone licensed-software products, each its own private GitHub repo - never a bundle.
+// site, not in the menu, search or sitemap, and noindex. Each Buy button opens a Creem TEST-mode payment link. Three standalone licensed-software products, each its own private GitHub repo - never a bundle.
 // Before anything is sold for real: Terms (drop "non-commercial", add sales terms), Privacy (Creem as payment
 // provider) and Under the hood (Creem) must be updated in the same change.
 export const Route = createFileRoute("/shop-test/")({
@@ -32,11 +32,13 @@ type Product = {
   extras: string;
 };
 
-/** Each product's LIVE Creem payment link (Products -> Copy link). Empty = button disabled. */
+/** Back in TEST mode (Lisa, 20 Oct): the Buy buttons open Creem test-mode checkouts - no real money moves.
+ *  The live products (deactivated in Creem) were: wardrobe prod_1FfDUE7n4xCFXXHKfZxzkb, network prod_6g1auBSAtcI8ZFaH8poRwb,
+ *  quiz prod_7IhWZecRBE4JTVAZTb9HG1 - switch back only when Lisa says so. */
 export const CREEM_LINKS: Record<Product["key"], string> = {
-  wardrobe: "https://www.creem.io/payment/prod_1FfDUE7n4xCFXXHKfZxzkb",
-  network: "https://www.creem.io/payment/prod_6g1auBSAtcI8ZFaH8poRwb",
-  quiz: "https://www.creem.io/payment/prod_7IhWZecRBE4JTVAZTb9HG1",
+  wardrobe: "https://www.creem.io/test/payment/prod_2cEC2uqObUjwLvchuKs4kr",
+  network: "https://www.creem.io/test/payment/prod_7Ijfq9iRSSgHdzSmlqu0Lh",
+  quiz: "https://www.creem.io/test/payment/prod_4aQAXEEoIfQETkPufJDRGd",
 };
 
 const PRODUCTS: Product[] = [
@@ -75,6 +77,9 @@ const PRODUCTS: Product[] = [
 function ShopTestPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <div className="border-b border-pink/50 bg-pink px-4 py-2 text-center text-sm font-semibold text-pink-foreground">
+        TEST MODE - nothing is for sale and no real money moves. Pay with the test card 4111 1111 1111 1111, any future date, any CVC.
+      </div>
       <section className="disco-grid px-6 pb-10 pt-16 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Shop · test</p>
         <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
@@ -117,7 +122,7 @@ function ShopTestPage() {
                     </span>
                     {link ? (
                       <a href={link} className="rounded-full bg-pink px-5 py-2.5 font-semibold text-pink-foreground transition hover:opacity-90">
-                        Buy →
+                        Buy (test) →
                       </a>
                     ) : (
                       <span className="rounded-full border border-border px-4 py-2 text-xs text-muted-foreground">Waiting for the Creem link</span>
