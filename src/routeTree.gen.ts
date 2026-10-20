@@ -44,6 +44,8 @@ import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
 import { Route as GuestbookIndexRouteImport } from './routes/guestbook.index'
 import { Route as GuestbookAdminRouteImport } from './routes/guestbook.admin'
+import { Route as ShopTestIndexRouteImport } from './routes/shop-test.index'
+import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -220,6 +222,16 @@ const GuestbookAdminRoute = GuestbookAdminRouteImport.update({
   path: '/guestbook/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopTestIndexRoute = ShopTestIndexRouteImport.update({
+  id: '/shop-test/',
+  path: '/shop-test/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopTestThanksRoute = ShopTestThanksRouteImport.update({
+  id: '/shop-test/thanks',
+  path: '/shop-test/thanks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -254,9 +266,11 @@ export interface FileRoutesByFullPath {
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/shop-test/thanks': typeof ShopTestThanksRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
   '/guestbook/': typeof GuestbookIndexRoute
+  '/shop-test/': typeof ShopTestIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -291,9 +305,11 @@ export interface FileRoutesByTo {
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/shop-test/thanks': typeof ShopTestThanksRoute
   '/episodes': typeof EpisodesIndexRoute
   '/explore': typeof ExploreIndexRoute
   '/guestbook': typeof GuestbookIndexRoute
+  '/shop-test': typeof ShopTestIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -329,9 +345,11 @@ export interface FileRoutesById {
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/shop-test/thanks': typeof ShopTestThanksRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
   '/guestbook/': typeof GuestbookIndexRoute
+  '/shop-test/': typeof ShopTestIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -368,9 +386,11 @@ export interface FileRouteTypes {
     | '/episodes/s06e03'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/shop-test/thanks'
     | '/episodes/'
     | '/explore/'
     | '/guestbook/'
+    | '/shop-test/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -405,9 +425,11 @@ export interface FileRouteTypes {
     | '/episodes/s06e03'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/shop-test/thanks'
     | '/episodes'
     | '/explore'
     | '/guestbook'
+    | '/shop-test'
   id:
     | '__root__'
     | '/'
@@ -442,9 +464,11 @@ export interface FileRouteTypes {
     | '/episodes/s06e03'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/shop-test/thanks'
     | '/episodes/'
     | '/explore/'
     | '/guestbook/'
+    | '/shop-test/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -480,9 +504,11 @@ export interface RootRouteChildren {
   EpisodesS06e03Route: typeof EpisodesS06e03Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   GuestbookAdminRoute: typeof GuestbookAdminRoute
+  ShopTestThanksRoute: typeof ShopTestThanksRoute
   EpisodesIndexRoute: typeof EpisodesIndexRoute
   ExploreIndexRoute: typeof ExploreIndexRoute
   GuestbookIndexRoute: typeof GuestbookIndexRoute
+  ShopTestIndexRoute: typeof ShopTestIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -732,6 +758,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuestbookAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop-test/': {
+      id: '/shop-test/'
+      path: '/shop-test'
+      fullPath: '/shop-test/'
+      preLoaderRoute: typeof ShopTestIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop-test/thanks': {
+      id: '/shop-test/thanks'
+      path: '/shop-test/thanks'
+      fullPath: '/shop-test/thanks'
+      preLoaderRoute: typeof ShopTestThanksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -768,9 +808,11 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS06e03Route: EpisodesS06e03Route,
   ExploreSlugRoute: ExploreSlugRoute,
   GuestbookAdminRoute: GuestbookAdminRoute,
+  ShopTestThanksRoute: ShopTestThanksRoute,
   EpisodesIndexRoute: EpisodesIndexRoute,
   ExploreIndexRoute: ExploreIndexRoute,
   GuestbookIndexRoute: GuestbookIndexRoute,
+  ShopTestIndexRoute: ShopTestIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
