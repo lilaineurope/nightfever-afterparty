@@ -2,19 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteSearch } from "@/components/site-search";
 
-// The one list of pages for the top menu (and site search).
-export const PAGES = [
-  { to: "/episodes", label: "Afterparty" },
-  { to: "/timeline", label: "Timeline" },
-  { to: "/connections", label: "Connections" },
-  { to: "/jukebox", label: "Jukebox" },
-  { to: "/book-club", label: "Book Club" },
-  { to: "/map", label: "Map" },
-  { to: "/wardrobe", label: "Wardrobe" },
-  { to: "/quiz", label: "Pub Quiz" },
-  { to: "/explore", label: "A–Z" },
-  { to: "/guestbook", label: "Guestbook" },
-] as const;
+// The page list lives in src/lib/pages.ts (shared with search, contact form and guestbook).
+export { PAGES } from "@/lib/pages";
+import { PAGES } from "@/lib/pages";
 
 export function SiteMenu() {
   const [open, setOpen] = useState(false);

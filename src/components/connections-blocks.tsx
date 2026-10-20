@@ -1,6 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { episodeShort } from "@/data/entities";
 import { bestInFashion, popularPlaces, type EpisodeEntity } from "@/data/episode-connections";
+
+/** Just the two numbers: connections (episodes the name links to) and mentions. */
+const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+function Stats({ item }: { item: { episodeIds: string[]; mentions: number } }) {
+  return <>{plural(item.episodeIds.length, "connection")} · {plural(item.mentions, "mention")}</>;
+}
 
 function Card({ item, note }: { item: EpisodeEntity; note?: string | undefined }) {
   return (
@@ -12,18 +17,13 @@ function Card({ item, note }: { item: EpisodeEntity; note?: string | undefined }
       >
         <span className="block font-semibold text-gold">{item.name}</span>
         <span className="mt-1 block text-xs text-muted-foreground">
-          {item.mentions} {item.mentions === 1 ? "mention" : "mentions"}
-          {" · "}
-          {item.episodeIds.length} {item.episodeIds.length === 1 ? "episode" : "episodes"}
+          <Stats item={item} />
         </span>
         {note && (
           <span className="mt-2 block text-xs italic leading-relaxed text-cream/80">
             &ldquo;{note}&rdquo;
           </span>
         )}
-        <span className="mt-2 block text-[11px] text-muted-foreground/70">
-          {item.episodeIds.map((id) => episodeShort(id)).join(" · ")}
-        </span>
       </Link>
     </li>
   );
@@ -97,10 +97,8 @@ export function TopTen({
               >
                 <span className="w-7 shrink-0 text-right text-lg font-bold text-pink">{i + 1}</span>
                 <span className="flex-1 font-semibold text-gold">{p.name}</span>
-                <span className="text-right text-xs text-muted-foreground">
-                  {p.episodeIds.length} {p.episodeIds.length === 1 ? "episode" : "episodes"} · {p.mentions}{" "}
-                  {p.mentions === 1 ? "mention" : "mentions"}
-                  <span className="hidden sm:inline"> · {p.episodeIds.map((id) => episodeShort(id)).join(" · ")}</span>
+                <span className="whitespace-nowrap text-right text-xs text-muted-foreground">
+                  <Stats item={p} />
                 </span>
               </Link>
             </li>

@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { guestbookPage } from "@/lib/pages";
 
 // The guestbook. Visitors' notes wait as "pending" until Lisa approves them on /guestbook/admin.
 // None of the guestbook tables has grants for anon/authenticated: only these validated server functions (service role)
@@ -10,13 +11,14 @@ export type GuestbookNote = {
   name: string;
   place: string | null;
   episode: string | null;
+  page: string | null;
   message: string;
   reply: string | null;
   created_at: string;
 };
 export type ModeratedNote = GuestbookNote & { status: "pending" | "approved" | "hidden" };
 
-const PUBLIC_COLUMNS = "id,name,place,episode,message,reply,created_at";
+const PUBLIC_COLUMNS = "id,name,place,episode,page,message,reply,created_at";
 
 /** Public: approved notes, newest first. */
 export const listGuestbook = createServerFn({ method: "GET" }).handler(async (): Promise<GuestbookNote[]> => {
@@ -46,6 +48,10 @@ const signSchema = z.object({
     .string()
     .optional()
     .transform((v) => (v && /^s\d\de\d\d$/.test(v) ? v : null)),
+  page: z
+    .string()
+    .optional()
+    .transform((v) => (guestbookPage(v) ? v! : null)), // only pages from the one page list (src/lib/pages.ts)
   message: z.string().trim().min(2, "Your note is a little short!").max(1000, "Please keep your note under 1000 characters."),
   consent: z.literal(true, { message: "Please tick the box so I can show your note." }),
   website: z.string().max(0).optional(), // spam trap - people never see this field
@@ -81,6 +87,7 @@ export const signGuestbook = createServerFn({ method: "POST" })
       name: data.name,
       place: data.place,
       episode: data.episode,
+      page: data.page,
       message: data.message,
     });
     if (error) {

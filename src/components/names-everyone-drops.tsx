@@ -53,7 +53,10 @@ export function NamesEveryoneDrops() {
               params={{ slug: p.slug }}
               className="rounded-full border border-gold/25 bg-card px-4 py-2 text-sm text-card-foreground/85 transition hover:border-gold/60"
             >
-              {p.name} <span className="text-xs text-pink">{p.episodeIds.length}</span>
+              {p.name}{" "}
+              <span className="text-xs text-pink">
+                {p.episodeIds.length} connections · {p.mentions} {p.mentions === 1 ? "mention" : "mentions"}
+              </span>
             </Link>
           ))}
         </div>

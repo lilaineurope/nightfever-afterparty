@@ -21,7 +21,7 @@ const atAGlance = [
   "Nothing is ever sold or shared with advertisers.",
   "The Afterparty newsletter stores your address only if you tick the consent box.",
   "Every newsletter email carries a one-click unsubscribe link.",
-  "Guestbook notes show only the name, place and note you choose to share, after I've read them - and come down whenever you ask.",
+  "Guestbook notes show only the name, place, favourites and note you choose to share, after I've read them - and come down whenever you ask.",
 ];
 
 function Section({
@@ -187,8 +187,8 @@ function PrivacyPage() {
             </p>
             <p>
               <strong className="text-cream">Guestbook.</strong> If you sign the
-              guestbook, the name or nickname, the optional place and favourite
-              episode, and the note you write are stored in the site&rsquo;s
+              guestbook, the name or nickname, the optional place, favourite
+              episode and favourite page, and the note you write are stored in the site&rsquo;s
               database together with the time you sent it. No email address is
               asked for. Every note waits until I have read it, and only
               approved notes are shown publicly on the guestbook page. A copy of
@@ -227,7 +227,8 @@ function PrivacyPage() {
             <p>
               Nothing is embedded from Spotify, YouTube, Instagram or any other
               service, so those companies cannot see that you were here - with
-              one exception you switch on yourself: the Jukebox page loads
+              one exception you switch on yourself: the Jukebox page, and the
+              song, band and club cards in Everything A&ndash;Z, load
               Spotify&rsquo;s own player only after you press a Play button. From
               that moment Spotify&rsquo;s privacy policy applies to the player and
               Spotify may set its own cookies. Everywhere else their names appear

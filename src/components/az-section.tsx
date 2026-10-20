@@ -6,7 +6,7 @@ const storyCount = (e: (typeof entities)[number]) =>
   e.refs.length + e.events.length + e.inGuestStories.length;
 
 // The A–Z strip: every name on the site, one card each. Shown on the home page
-// and on the connections page; the full list lives at /explore.
+// and on the Network page; the full list lives at /explore.
 export function AzSection({ limit = 12 }: { limit?: number }) {
   const [cat, setCat] = useState("All");
   const shown = entities.filter((e) =>

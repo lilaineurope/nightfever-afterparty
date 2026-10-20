@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { adminListGuestbook, changeGuestbookKey, moderateGuestbook, type ModeratedNote } from "@/lib/guestbook.functions";
 import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
+import { guestbookPage } from "@/lib/pages";
 
 // Lisa's moderation page. No accounts: she types her secret moderation key (it can be remembered on her own device),
 // and every request carries it to the server, which checks it against a salted hash.
@@ -217,6 +218,7 @@ function AdminNote({ note, busy, act }: { note: ModeratedNote; busy: string | nu
         {note.place && <span className="text-muted-foreground"> · {note.place}</span>}
         <span className="text-muted-foreground"> · {new Date(note.created_at).toLocaleString("en-GB")}</span>
         {ep && <span className="block text-xs text-muted-foreground">Favourite: {episodeLabel(ep)}</span>}
+        {guestbookPage(note.page) && <span className="block text-xs text-muted-foreground">Favourite page: {guestbookPage(note.page)!.label}</span>}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         {note.status !== "approved" && (

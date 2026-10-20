@@ -3,7 +3,7 @@
 // Loaded lazily by SiteSearch the first time someone opens search, so it never weighs down page loads.
 import { entities, episodeShort } from "@/data/entities";
 import { episodes, episodePath } from "@/data/episodes";
-import { PAGES } from "@/components/site-menu";
+import { PAGES, OTHER_PAGES } from "@/lib/pages";
 
 export type SearchHit = {
   kind: "card" | "episode" | "page";
@@ -20,7 +20,7 @@ export const norm = (s: string) =>
   s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "'");
 
 const items: Item[] = [
-  ...[...PAGES, { to: "/guests", label: "Guests" }, { to: "/about", label: "About" }, { to: "/contact", label: "Contact" }, { to: "/under-the-hood", label: "Under the hood" }].map((p) => ({ kind: "page" as const, title: p.label, sub: "Page", to: p.to, key: norm(p.label === "A–Z" ? "A–Z Everything A-Z" : p.label), texts: [] })),
+  ...[...PAGES, ...OTHER_PAGES].map((p) => ({ kind: "page" as const, title: p.label, sub: "Page", to: p.to, key: norm(p.label === "A–Z" ? "A–Z Everything A-Z" : p.label), texts: [] })),
   ...episodes.map((e) => ({
     kind: "episode" as const,
     title: `${e.guest}`,

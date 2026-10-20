@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   forceSimulation,
   forceLink,
@@ -8,7 +8,7 @@ import {
   forceCollide,
   type SimulationNodeDatum,
 } from "d3-force";
-import { episodes } from "@/data/episodes";
+import { episodes, episodePath } from "@/data/episodes";
 import { CATEGORIES } from "@/data/entities";
 import { categoryCounts, episodeEntities } from "@/data/episode-connections";
 
@@ -18,6 +18,7 @@ type Node = SimulationNodeDatum & {
   kind: "episode" | "person";
   weight: number;
   slug?: string;
+  episodeId?: (typeof episodes)[number]["id"];
   categories: string[];
 };
 type Edge = { source: string | Node; target: string | Node };
@@ -58,6 +59,7 @@ export function ConnectionsGraph() {
         id: `ep:${ep.id}`,
         label: `S${ep.season}E${ep.episode} · ${ep.guest}`,
         kind: "episode" as const,
+        episodeId: ep.id,
         weight: 5,
         categories: [] as string[],
       })),
@@ -115,6 +117,12 @@ export function ConnectionsGraph() {
 
   const sel = nodes.find((n) => n.id === selected);
 
+  /** Every star and dot opens its own page: an episode's Afterparty, or a name's A–Z card. */
+  function openNode(n: Node) {
+    if (n.episodeId) navigate({ to: episodePath(n.episodeId) });
+    else if (n.slug) navigate({ to: "/explore/$slug", params: { slug: n.slug } });
+  }
+
   return (
     <div className="relative">
       <div className="mb-4 flex flex-wrap justify-center gap-2">
@@ -164,7 +172,13 @@ export function ConnectionsGraph() {
         <button onClick={() => { setView({ x: 0, y: 0, k: 1 }); setSelected(null); }} className="rounded-lg border border-border px-3 py-2 text-sm text-cream hover:border-pink">Reset</button>
       </div>
 
-      <div className="overflow-hidden rounded-3xl border border-gold/20 bg-card">
+      <div className="relative overflow-hidden rounded-3xl border border-gold/20 bg-card">
+        {sel && (
+          <div className="absolute left-3 top-3 z-10 flex max-w-[calc(100%-1.5rem)] flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border border-pink/40 bg-background/90 px-4 py-2 shadow-lg backdrop-blur">
+            <span className="font-semibold text-gold">{sel.label}</span>
+            <NodeLink n={sel} className="text-sm font-semibold text-pink hover:underline" />
+          </div>
+        )}
         <svg
           ref={svgRef}
           viewBox={`0 0 ${W} ${H}`}
@@ -222,6 +236,10 @@ export function ConnectionsGraph() {
               return (
                 <g key={n.id} transform={`translate(${n.x},${n.y})`} opacity={dim ? 0.15 : 1}
                   className="cursor-pointer"
+                  role="link"
+                  aria-label={n.kind === "episode" ? `${n.label} - open the Afterparty` : `${n.label} - open the card`}
+                  tabIndex={n.kind === "episode" ? 0 : -1}
+                  onKeyDown={(e) => { if (e.key === "Enter") openNode(n); }}
                   onPointerEnter={() => setHover(n.id)}
                   onPointerLeave={() => setHover(null)}
                   onPointerDown={(e) => {
@@ -234,7 +252,8 @@ export function ConnectionsGraph() {
                     const d = drag.current;
                     if (d?.node) { d.node.fx = null; d.node.fy = null; sim.alphaTarget(0); }
                     if (d && !d.moved) {
-                      if ((e.metaKey || e.ctrlKey) && n.slug) navigate({ to: "/explore/$slug", params: { slug: n.slug } });
+                      // First tap lights up the links, a second tap (or ctrl/cmd-click) opens the page.
+                      if (e.metaKey || e.ctrlKey || selected === n.id) openNode(n);
                       else setSelected(n.id);
                     }
                     drag.current = null;
@@ -250,7 +269,7 @@ export function ConnectionsGraph() {
                     <text y={r + 12} textAnchor="middle"
                       className={n.kind === "episode" ? "fill-pink font-semibold" : "fill-cream"}
                       fontSize={n.kind === "episode" ? 15 : 10 / Math.max(1, view.k * 0.7)}
-                      style={{ pointerEvents: "none" }}>
+                      style={{ pointerEvents: n.kind === "episode" ? "auto" : "none" }}>
                       {n.label}
                     </text>
                   )}
@@ -262,19 +281,14 @@ export function ConnectionsGraph() {
       </div>
 
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        Drag to move around · scroll or +/− to zoom · pull a dot to play with it · tap a dot to light up its links!
+        Drag to move around · scroll or +/− to zoom · pull a dot to play with it · tap a star or dot to light up its links, tap it again to open it!
       </p>
 
       {sel && (
         <div className="mt-6 rounded-2xl border border-pink/30 bg-card p-6">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <h2 className="text-2xl font-semibold text-gold">{sel.label}</h2>
-            {sel.slug && (
-              <button onClick={() => navigate({ to: "/explore/$slug", params: { slug: sel.slug! } })}
-                className="text-xs font-medium uppercase tracking-wider text-pink hover:underline">
-                Dive in →
-              </button>
-            )}
+            <NodeLink n={sel} className="text-xs font-medium uppercase tracking-wider text-pink hover:underline" />
           </div>
           <p className="mt-2 text-sm text-muted-foreground">
             {sel.kind === "episode" ? "Everyone timestamped in this episode:" : "Turns up in:"}
@@ -294,4 +308,21 @@ export function ConnectionsGraph() {
       )}
     </div>
   );
+}
+
+/** The link a selected star or dot opens: the episode's Afterparty, or the name's A–Z card. */
+function NodeLink({ n, className }: { n: Node; className: string }) {
+  if (n.episodeId)
+    return (
+      <Link to={episodePath(n.episodeId)} className={className}>
+        Open the Afterparty →
+      </Link>
+    );
+  if (n.slug)
+    return (
+      <Link to="/explore/$slug" params={{ slug: n.slug }} className={className}>
+        Dive in →
+      </Link>
+    );
+  return null;
 }

@@ -220,7 +220,7 @@ function EpisodePage() {
           <p className="mt-8 text-xs text-muted-foreground">
             The big number counts mentions in this episode. The gold number counts the same name across all
             episodes on the site. Timestamps mark the first mention. Spot something wrong? Tell me!{" "}
-            <Link to="/connections" className="text-gold hover:text-pink">Dive into the connection web &rarr;</Link>
+            <Link to="/network" className="text-gold hover:text-pink">Dive into the Network &rarr;</Link>
           </p>
         </div>
       </section>

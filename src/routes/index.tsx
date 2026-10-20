@@ -155,8 +155,8 @@ function Index() {
               Every episode I publish here gets a timestamp index - every name,
               place, song, design and look, counted and linked to the exact
               moment it was said. A&ndash;Z gathers the whole gang,
-              the Timeline follows the scene from the 1970s to today, and
-              Connections shows how they're all tied together. Pick an episode
+              the Timeline follows the scene from the 1960s to today, and
+              the Network shows how they're all tied together. Pick an episode
               and dive in!
             </p>
           </div>

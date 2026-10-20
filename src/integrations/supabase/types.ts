@@ -19,6 +19,7 @@ export type Database = {
           approved_at: string | null
           created_at: string
           episode: string | null
+          page: string | null
           id: string
           message: string
           name: string
@@ -30,6 +31,7 @@ export type Database = {
           approved_at?: string | null
           created_at?: string
           episode?: string | null
+          page?: string | null
           id?: string
           message: string
           name: string
@@ -41,6 +43,7 @@ export type Database = {
           approved_at?: string | null
           created_at?: string
           episode?: string | null
+          page?: string | null
           id?: string
           message?: string
           name?: string

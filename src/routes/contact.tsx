@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
 
 import { WEB3FORMS_KEY } from "@/lib/web3forms";
+import { CONTACT_TOPICS } from "@/lib/pages";
 
 type Search = { about?: string };
 
@@ -15,11 +16,8 @@ export const Route = createFileRoute("/contact")({
   head: () => pageHead({ path: "/contact", title: "Contact | Night Fever fan page", description: "Spotted something wrong, know where a lost club was, or just want to say hi? Send me a message!", image: "/og/home.jpg" }),
 });
 
-// The pages a message can be about - same names as the site menu.
-const TOPICS = [
-  "Home", "Afterparty", "Everything A–Z", "Guests", "Timeline", "Connections",
-  "Map", "Bring us home", "Pub Quiz", "About", "Something else",
-];
+// The pages a message can be about - built from the one page list (src/lib/pages.ts), so it never goes stale.
+const TOPICS = CONTACT_TOPICS;
 
 const FIELD =
   "w-full rounded-xl border border-border bg-background px-4 py-2.5 text-cream placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none";

@@ -7,6 +7,7 @@ import { listGuestbook, signGuestbook, type GuestbookNote } from "@/lib/guestboo
 import { SHOW_EPISODES, showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 import { episodePath } from "@/data/episodes";
 import { sendToInbox } from "@/lib/web3forms";
+import { GUESTBOOK_PAGES, guestbookPage } from "@/lib/pages";
 import guestbookHeader from "@/assets/guestbook-header.jpg";
 
 export const Route = createFileRoute("/guestbook/")({
@@ -81,6 +82,7 @@ const TILTS = ["-rotate-[0.8deg]", "rotate-[0.6deg]", "-rotate-[0.3deg]"];
 
 function NoteCard({ note, tilt }: { note: GuestbookNote; tilt: number }) {
   const ep = showEpisode(note.episode);
+  const pg = guestbookPage(note.page);
   const date = new Date(note.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   return (
     <article className={`relative mb-6 break-inside-avoid rounded-2xl border border-gold/25 bg-card p-5 pt-7 shadow-lg ${TILTS[tilt]}`}>
@@ -102,6 +104,14 @@ function NoteCard({ note, tilt }: { note: GuestbookNote; tilt: number }) {
                 {episodeLabel(ep)}
               </Link>
             )}
+          </span>
+        )}
+        {pg && (
+          <span className="mt-1 block text-xs text-muted-foreground">
+            Favourite page:{" "}
+            <a href={pg.to} className="text-gold underline decoration-gold/50 underline-offset-2 hover:text-pink">
+              {pg.label}
+            </a>
           </span>
         )}
       </footer>
@@ -131,6 +141,7 @@ function SignForm() {
       name: String(form.get("name") ?? ""),
       place: String(form.get("place") ?? ""),
       episode: String(form.get("episode") ?? ""),
+      page: String(form.get("page") ?? ""),
       message: String(form.get("message") ?? ""),
     };
     setState({ status: "sending" });
@@ -147,6 +158,7 @@ function SignForm() {
           name: fields.name,
           place: fields.place,
           episode: fields.episode,
+          page: guestbookPage(fields.page)?.label ?? "",
           message: `${fields.message}\n\nApprove or hide it at nightfever-afterparty.lovable.app/guestbook/admin`,
         });
       }
@@ -187,6 +199,20 @@ function SignForm() {
             {SHOW_EPISODES.map((e) => (
               <option key={e.code} value={e.code}>
                 {episodeLabel(e)}
+              </option>
+            ))}
+          </select>
+          <svg aria-hidden="true" viewBox="0 0 20 20" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gold" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l5 5 5-5" /></svg>
+        </span>
+      </label>
+      <label className="block">
+        <span className="text-sm text-muted-foreground">Favourite page on this site (optional)</span>
+        <span className="relative mt-1 block">
+          <select name="page" defaultValue="" className={`appearance-none pr-10 [color-scheme:dark] ${FIELD}`}>
+            <option value="">Pick one if you like</option>
+            {GUESTBOOK_PAGES.map((p) => (
+              <option key={p.to} value={p.to}>
+                {p.label}
               </option>
             ))}
           </select>

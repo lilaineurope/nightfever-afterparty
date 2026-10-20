@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as JukeboxRouteImport } from './routes/jukebox'
 import { Route as MapRouteImport } from './routes/map'
+import { Route as NetworkRouteImport } from './routes/network'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -82,6 +83,11 @@ const JukeboxRoute = JukeboxRouteImport.update({
 const MapRoute = MapRouteImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkRoute = NetworkRouteImport.update({
+  id: '/network',
+  path: '/network',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -224,6 +230,7 @@ export interface FileRoutesByFullPath {
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
+  '/network': typeof NetworkRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -260,6 +267,7 @@ export interface FileRoutesByTo {
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
+  '/network': typeof NetworkRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -297,6 +305,7 @@ export interface FileRoutesById {
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
+  '/network': typeof NetworkRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -335,6 +344,7 @@ export interface FileRouteTypes {
     | '/guests'
     | '/jukebox'
     | '/map'
+    | '/network'
     | '/privacy'
     | '/quiz'
     | '/sitemap.xml'
@@ -371,6 +381,7 @@ export interface FileRouteTypes {
     | '/guests'
     | '/jukebox'
     | '/map'
+    | '/network'
     | '/privacy'
     | '/quiz'
     | '/sitemap.xml'
@@ -407,6 +418,7 @@ export interface FileRouteTypes {
     | '/guests'
     | '/jukebox'
     | '/map'
+    | '/network'
     | '/privacy'
     | '/quiz'
     | '/sitemap.xml'
@@ -444,6 +456,7 @@ export interface RootRouteChildren {
   GuestsRoute: typeof GuestsRoute
   JukeboxRoute: typeof JukeboxRoute
   MapRoute: typeof MapRoute
+  NetworkRoute: typeof NetworkRoute
   PrivacyRoute: typeof PrivacyRoute
   QuizRoute: typeof QuizRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -528,6 +541,13 @@ declare module '@tanstack/react-router' {
       path: '/map'
       fullPath: '/map'
       preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network': {
+      id: '/network'
+      path: '/network'
+      fullPath: '/network'
+      preLoaderRoute: typeof NetworkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -724,6 +744,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuestsRoute: GuestsRoute,
   JukeboxRoute: JukeboxRoute,
   MapRoute: MapRoute,
+  NetworkRoute: NetworkRoute,
   PrivacyRoute: PrivacyRoute,
   QuizRoute: QuizRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

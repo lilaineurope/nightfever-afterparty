@@ -2,6 +2,7 @@ import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { clubNightFor } from "@/data/club-nights";
+import { MusicPlayer } from "@/components/music-player";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, isThinCard, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
@@ -104,6 +105,7 @@ function EntityPage() {
       </section>
 
       <div className="mx-auto max-w-4xl space-y-12 px-6 pb-20">
+        <MusicPlayer slug={e.slug} />
         {clubNightFor(e.slug) && <ClubNightPlaylist night={clubNightFor(e.slug)!} />}
         {g && (
           <section className="grid gap-8 rounded-2xl border border-border bg-card p-6 md:grid-cols-2">
