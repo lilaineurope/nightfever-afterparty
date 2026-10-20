@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookClubRouteImport } from './routes/book-club'
-import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GuestsRouteImport } from './routes/guests'
@@ -25,6 +24,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as UnderTheHoodRouteImport } from './routes/under-the-hood'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
+import { Route as WardrobeRouteImport } from './routes/wardrobe'
 import { Route as EpisodesIndexRouteImport } from './routes/episodes.index'
 import { Route as EpisodesS01e01RouteImport } from './routes/episodes.s01e01'
 import { Route as EpisodesS01e02RouteImport } from './routes/episodes.s01e02'
@@ -57,11 +57,6 @@ const AboutRoute = AboutRouteImport.update({
 const BookClubRoute = BookClubRouteImport.update({
   id: '/book-club',
   path: '/book-club',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClosetRoute = ClosetRouteImport.update({
-  id: '/closet',
-  path: '/closet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnectionsRoute = ConnectionsRouteImport.update({
@@ -122,6 +117,11 @@ const UnderTheHoodRoute = UnderTheHoodRouteImport.update({
 const UnsubscribeRoute = UnsubscribeRouteImport.update({
   id: '/unsubscribe',
   path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WardrobeRoute = WardrobeRouteImport.update({
+  id: '/wardrobe',
+  path: '/wardrobe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EpisodesIndexRoute = EpisodesIndexRouteImport.update({
@@ -219,7 +219,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
-  '/closet': typeof ClosetRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
@@ -232,6 +231,7 @@ export interface FileRoutesByFullPath {
   '/timeline': typeof TimelineRoute
   '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/wardrobe': typeof WardrobeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
   '/episodes/s01e02': typeof EpisodesS01e02Route
   '/episodes/s01e03': typeof EpisodesS01e03Route
@@ -255,7 +255,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
-  '/closet': typeof ClosetRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
@@ -268,6 +267,7 @@ export interface FileRoutesByTo {
   '/timeline': typeof TimelineRoute
   '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/wardrobe': typeof WardrobeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
   '/episodes/s01e02': typeof EpisodesS01e02Route
   '/episodes/s01e03': typeof EpisodesS01e03Route
@@ -292,7 +292,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
-  '/closet': typeof ClosetRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/guests': typeof GuestsRoute
@@ -305,6 +304,7 @@ export interface FileRoutesById {
   '/timeline': typeof TimelineRoute
   '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/wardrobe': typeof WardrobeRoute
   '/episodes/s01e01': typeof EpisodesS01e01Route
   '/episodes/s01e02': typeof EpisodesS01e02Route
   '/episodes/s01e03': typeof EpisodesS01e03Route
@@ -330,7 +330,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
-    | '/closet'
     | '/connections'
     | '/contact'
     | '/guests'
@@ -343,6 +342,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/under-the-hood'
     | '/unsubscribe'
+    | '/wardrobe'
     | '/episodes/s01e01'
     | '/episodes/s01e02'
     | '/episodes/s01e03'
@@ -366,7 +366,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
-    | '/closet'
     | '/connections'
     | '/contact'
     | '/guests'
@@ -379,6 +378,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/under-the-hood'
     | '/unsubscribe'
+    | '/wardrobe'
     | '/episodes/s01e01'
     | '/episodes/s01e02'
     | '/episodes/s01e03'
@@ -402,7 +402,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
-    | '/closet'
     | '/connections'
     | '/contact'
     | '/guests'
@@ -415,6 +414,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/under-the-hood'
     | '/unsubscribe'
+    | '/wardrobe'
     | '/episodes/s01e01'
     | '/episodes/s01e02'
     | '/episodes/s01e03'
@@ -439,7 +439,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BookClubRoute: typeof BookClubRoute
-  ClosetRoute: typeof ClosetRoute
   ConnectionsRoute: typeof ConnectionsRoute
   ContactRoute: typeof ContactRoute
   GuestsRoute: typeof GuestsRoute
@@ -452,6 +451,7 @@ export interface RootRouteChildren {
   TimelineRoute: typeof TimelineRoute
   UnderTheHoodRoute: typeof UnderTheHoodRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
+  WardrobeRoute: typeof WardrobeRoute
   EpisodesS01e01Route: typeof EpisodesS01e01Route
   EpisodesS01e02Route: typeof EpisodesS01e02Route
   EpisodesS01e03Route: typeof EpisodesS01e03Route
@@ -493,13 +493,6 @@ declare module '@tanstack/react-router' {
       path: '/book-club'
       fullPath: '/book-club'
       preLoaderRoute: typeof BookClubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/closet': {
-      id: '/closet'
-      path: '/closet'
-      fullPath: '/closet'
-      preLoaderRoute: typeof ClosetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connections': {
@@ -584,6 +577,13 @@ declare module '@tanstack/react-router' {
       path: '/unsubscribe'
       fullPath: '/unsubscribe'
       preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wardrobe': {
+      id: '/wardrobe'
+      path: '/wardrobe'
+      fullPath: '/wardrobe'
+      preLoaderRoute: typeof WardrobeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/episodes/': {
@@ -719,7 +719,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BookClubRoute: BookClubRoute,
-  ClosetRoute: ClosetRoute,
   ConnectionsRoute: ConnectionsRoute,
   ContactRoute: ContactRoute,
   GuestsRoute: GuestsRoute,
@@ -732,6 +731,7 @@ const rootRouteChildren: RootRouteChildren = {
   TimelineRoute: TimelineRoute,
   UnderTheHoodRoute: UnderTheHoodRoute,
   UnsubscribeRoute: UnsubscribeRoute,
+  WardrobeRoute: WardrobeRoute,
   EpisodesS01e01Route: EpisodesS01e01Route,
   EpisodesS01e02Route: EpisodesS01e02Route,
   EpisodesS01e03Route: EpisodesS01e03Route,

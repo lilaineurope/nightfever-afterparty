@@ -9,18 +9,18 @@ import vt323 from "@/assets/fonts/vt323.woff2?url";
 import leopard from "@/assets/leopard.svg?url";
 import makos from "@/assets/cards/guestbook.jpg";
 
-// Club Closet - a wardrobe built from the looks in the episodes, in two styles that share everything but the skin:
+// The Wardrobe - built from the looks in the episodes, in two styles that share everything but the skin:
 // "Afterparty Style" (the site's navy, pink dry-brush, torn scraps and gold) and "Clueless Style" (a homage to the 90s
 // wardrobe computer: beige monitor, leopard panels, white screen, chunky bevelled buttons, pixel font).
-export const Route = createFileRoute("/closet")({
-  staticData: { sitemap: false },
+export const Route = createFileRoute("/wardrobe")({
+  staticData: { sitemap: true },
   component: ClosetPage,
   head: () =>
     pageHead({
-      path: "/closet",
-      title: "Club Closet | Night Fever fan page",
-      description: "Dress yourself from the looks in Night Fever's stories - by episode, guest, designer, club, place or colour.",
-      noindex: true,
+      path: "/wardrobe",
+      title: "The Wardrobe – dress like the Night Fever guests | Night Fever fan page",
+      description: "Dress yourself from 700 looks in Night Fever's stories - by episode, guest, designer, club, place or colour mood. Afterparty Style or Clueless Style!",
+      image: "/og/wardrobe.jpg",
     }),
 });
 
@@ -178,9 +178,9 @@ function ClosetPage() {
 .bevel:active{box-shadow:inset -3px -3px 0 rgba(255,255,255,.4),inset 3px 3px 0 rgba(0,0,0,.45)}`}</style>
 
         <section className="disco-grid px-6 pb-6 pt-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Demo · not in the menu yet</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Dress me!</p>
           <h1 className="mt-4 text-balance text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
-            Club <span className="text-pink text-glow-pink">Closet</span>
+            The <span className="text-pink text-glow-pink">Wardrobe</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
             {PIECES.length} pieces from the looks in the guests&rsquo; stories, each in its real colour. Choose who or what dresses
@@ -251,7 +251,7 @@ function ClosetPage() {
           <div className={`mx-auto max-w-5xl ${k.bezel}`} style={k.bezelStyle}>
             <div className={k.frame}>
               <div className={`${k.font} ${k.bar} flex items-center justify-between gap-2 px-3 py-1.5`}>
-                <span>CLUB CLOSET</span>
+                <span>WARDROBE</span>
                 <span className={`${k.barBox} truncate px-2 leading-tight`}>{label}</span>
                 <span className={style === "clueless" ? "text-pink" : ""}>♥</span>
               </div>
@@ -283,7 +283,7 @@ function ClosetPage() {
                           <div className="flex items-center gap-3 p-2">
                             <Garment slot={s.id} piece={chosen[s.id]} big />
                             <div className="min-w-0 flex-1">
-                              <p className={`${k.font} text-[11px] sm:text-sm ${k.small}`}>{SHORT[s.id]}{rails[s.id].borrowed && " · FROM THE WHOLE CLOSET"}</p>
+                              <p className={`${k.font} text-[11px] sm:text-sm ${k.small}`}>{SHORT[s.id]}{rails[s.id].borrowed && " · FROM THE WHOLE WARDROBE"}</p>
                               <p className="truncate text-lg font-semibold">{chosen[s.id].label}</p>
                               <Source piece={chosen[s.id]} />
                             </div>
@@ -312,7 +312,7 @@ function ClosetPage() {
                 <ChunkyButton grow onClick={() => { autoDress(); setView("dressed"); }} big>DRESS ME</ChunkyButton>
               </div>
 
-              <nav aria-label="Closet rails" className={`${k.font} ${k.nav} flex gap-x-4 overflow-x-auto px-3 py-1.5`}>
+              <nav aria-label="Wardrobe rails" className={`${k.font} ${k.nav} flex gap-x-4 overflow-x-auto px-3 py-1.5`}>
                 {SLOTS.map((s) => (
                   <button key={s.id} type="button" onClick={() => { setView("browse"); setFocus(s.id); }}
                     className={`shrink-0 hover:text-pink ${focus === s.id && view === "browse" ? "text-pink underline" : ""}`}>
@@ -379,7 +379,7 @@ function PieceLine({ piece, slot, locked, borrowed, onLock }: { piece: Piece; sl
         <p className="truncate text-sm font-semibold">
           <span className={`${k.font} mr-1 text-[10px] sm:text-xs ${k.small}`}>{SHORT[slot]}</span>
           {piece.label}
-          {borrowed && <span className="ml-1 text-[10px] text-pink">(whole closet)</span>}
+          {borrowed && <span className="ml-1 text-[10px] text-pink">(whole wardrobe)</span>}
         </p>
         <Source piece={piece} />
       </div>

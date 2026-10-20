@@ -10,6 +10,7 @@ export const PAGES = [
   { to: "/jukebox", label: "Jukebox" },
   { to: "/book-club", label: "Book Club" },
   { to: "/map", label: "Map" },
+  { to: "/wardrobe", label: "Wardrobe" },
   { to: "/quiz", label: "Pub Quiz" },
   { to: "/explore", label: "A–Z" },
   { to: "/guestbook", label: "Guestbook" },
@@ -18,10 +19,10 @@ export const PAGES = [
 export function SiteMenu() {
   const [open, setOpen] = useState(false);
   const item =
-    "block whitespace-nowrap rounded-lg px-2 py-2 text-sm font-medium text-cream/80 transition hover:text-pink";
+    "block whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium text-cream/80 transition hover:text-pink xl:px-2";
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
-      <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
+      <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-2 xl:px-4">
         <Link to="/" className="whitespace-nowrap text-sm font-bold uppercase tracking-[0.12em] text-gold text-glow xl:tracking-[0.2em]">
           Night Fever fan page
         </Link>

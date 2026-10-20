@@ -199,6 +199,14 @@ function PrivacyPage() {
               which you can withdraw at any time.
             </p>
             <p>
+              <strong className="text-cream">Remembered in your own browser.</strong>{" "}
+              The Wardrobe remembers which style you picked (Afterparty or
+              Clueless) in your browser&rsquo;s own storage, so it opens the
+              same way next time. It never leaves your device, is not a cookie,
+              is not used to recognise or track you, and you can clear it any
+              time by clearing this site&rsquo;s data in your browser.
+            </p>
+            <p>
               <strong className="text-cream">Nothing else.</strong> There is no
               account system for visitors, no uploads, no payments, and no
               profile of you built from your reading. (The only private page is

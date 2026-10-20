@@ -180,6 +180,12 @@ function TermsPage() {
               with a link back are fine.
             </p>
             <p>
+              The Wardrobe&rsquo;s &ldquo;Clueless Style&rdquo; is an
+              affectionate homage to the wardrobe computer in the 1995 film{" "}
+              <em>Clueless</em>. It uses no images, sound or text from the film,
+              which belongs to its owners, and is not connected to them.
+            </p>
+            <p>
               No episode audio is hosted or stored here. The site&rsquo;s
               episode player streams each episode straight from the show&rsquo;s
               own public podcast feed, and every listen button takes you to the

@@ -2,7 +2,7 @@ import { entities, entityFor, type Entity, type Ref } from "./entities";
 import { episodes } from "./episodes";
 import { linkNames } from "../lib/name-links";
 
-// The Club Closet: every garment, accessory and bit of hair or make-up named in the episodes' looks (Mood rows, with
+// The Wardrobe (/wardrobe): every garment, accessory and bit of hair or make-up named in the episodes' looks (Mood rows, with
 // their colours sampled from the stories and screenshots) and fashion notes, sorted onto five rails. Each piece keeps
 // its source - episode, timestamp, look card - and the cards its story names, so the closet can be filtered by
 // episode, guest or host, club, location, event, music, film/TV or colour.
