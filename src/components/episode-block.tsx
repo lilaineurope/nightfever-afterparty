@@ -33,6 +33,8 @@ const episodePortraits: Record<string, string> = {
 
 // Boxes whose portrait sits on the left keep that side in view when the box crops the picture.
 const portraitLeft = new Set<string>([]);
+// Boxes shown whole (two guests, or a reclining pose) - the others zoom in so the portrait is bigger and more central.
+const portraitWhole = new Set<string>(["s06e03", "s01e01"]);
 
 
 function formatDate(iso: string) {
@@ -54,18 +56,17 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
               >
                 <div className="relative min-h-[440px] overflow-hidden border-b border-border p-8 md:border-b-0 md:border-r">
                   {portrait && <img src={portrait} alt="" aria-hidden="true" width={1024} height={1024} loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover ${portraitLeft.has(ep.id) ? "object-left" : "object-right"}`} />}
-                  <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/20 to-background/10" aria-hidden="true" />
-                  <div className="relative z-10">
+                    className={`absolute inset-0 h-full w-full object-cover ${portraitLeft.has(ep.id) ? "object-left" : portraitWhole.has(ep.id) ? "object-right" : "object-right [transform-origin:64%_40%] [transform:translateX(-8%)_scale(1.3)]"}`} />}
+                                    <div className="relative z-10 inline-block max-w-full -rotate-1 border-2 border-gold bg-card/95 px-4 py-3 shadow-[4px_5px_0_var(--color-gold)]">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                     Season {ep.season} &middot; Episode {ep.episode}
                   </p>
-                  <Heading className="mt-3 text-4xl font-bold leading-[1] tracking-tight text-cream text-glow">
+                  <Heading className="mt-2 text-3xl leading-[1] tracking-tight text-cream sm:text-4xl">
                     {ep.guest}
                   </Heading>
-                  <p className="mt-5 text-sm text-cream/90">
-                    {ep.runtime} &middot; {ep.references} references
-                    &middot; {ep.mentions} mentions
+                  <p className="mt-3 text-sm text-cream/90">
+                    {ep.runtime} &middot; <span className="bg-pink px-1 text-pink-foreground">{ep.references}</span> references
+                    &middot; <span className="bg-highlight px-1 text-cream">{ep.mentions}</span> mentions
                   </p>
                   </div>
                 </div>

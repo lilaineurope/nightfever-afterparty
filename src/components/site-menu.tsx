@@ -11,9 +11,9 @@ export function SiteMenu() {
   const item =
     "block whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium text-cream/80 transition hover:text-pink xl:px-2";
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b-[3px] border-gold bg-background/95 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-2 xl:px-4">
-        <Link to="/" className="whitespace-nowrap text-sm font-bold uppercase tracking-[0.12em] text-gold text-glow xl:tracking-[0.2em]">
+        <Link to="/" className="inline-block -rotate-2 whitespace-nowrap bg-gold px-2 py-1 font-[family-name:var(--font-flyer)] text-sm uppercase text-gold-foreground transition hover:bg-pink">
           Night Fever fan page
         </Link>
         <div className="flex items-center gap-2 lg:hidden">

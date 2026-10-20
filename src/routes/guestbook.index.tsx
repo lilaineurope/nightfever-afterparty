@@ -194,7 +194,7 @@ function SignForm() {
       <label className="block">
         <span className="text-sm text-muted-foreground">Favourite episode (optional)</span>
         <span className="relative mt-1 block">
-          <select name="episode" defaultValue="" className={`appearance-none pr-10 [color-scheme:dark] ${FIELD}`}>
+          <select name="episode" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FIELD}`}>
             <option value="">Pick one if you like</option>
             {SHOW_EPISODES.map((e) => (
               <option key={e.code} value={e.code}>
@@ -208,7 +208,7 @@ function SignForm() {
       <label className="block">
         <span className="text-sm text-muted-foreground">Favourite page on this site (optional)</span>
         <span className="relative mt-1 block">
-          <select name="page" defaultValue="" className={`appearance-none pr-10 [color-scheme:dark] ${FIELD}`}>
+          <select name="page" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FIELD}`}>
             <option value="">Pick one if you like</option>
             {GUESTBOOK_PAGES.map((p) => (
               <option key={p.to} value={p.to}>

@@ -1,23 +1,34 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+/* Xerox Flyer type - self-hosted (open licences), never from a font service */
+@import "@fontsource/archivo-black/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-400-italic.css";
+@import "@fontsource/ibm-plex-mono/latin-600.css";
+@import "@fontsource/permanent-marker/latin-400.css";
+@import "@fontsource/special-elite/latin-400.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system: "Night Fever" — a Studio 54 inspired, camp-glamorous
- * nightlife palette. Deep club blacks, champagne gold, hot pink, and
- * warm cream. No generic purple AI gradients.
+ * Design system: "Xerox Flyer" - a downtown club flyer photocopied onto off-white paper:
+ * black ink, one hot-pink spot colour, square corners, ransom-note headlines (Archivo Black),
+ * typewriter/mono body (IBM Plex Mono), marker captions (Permanent Marker), Special Elite for asides.
+ * The token NAMES are kept from the earlier dark "Night Fever" look so every page re-themes from here:
+ * cream = ink text, gold = ink accent (links, labels, rules), pink = the spot colour, card = white paper.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  /* Xerox Flyer: square corners everywhere (rounded-full pills stay round) */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -48,42 +59,43 @@
   --color-night-foreground: var(--night-foreground);
   --color-cream: var(--cream);
   --color-spotlight: var(--spotlight);
+  --color-highlight: var(--highlight);
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0rem;
 
-  /* Club floor after dark */
-  --background: oklch(0.145 0.03 270);
-  --foreground: oklch(0.96 0.01 85);
+  /* Photocopy paper and black ink */
+  --background: oklch(0.94 0.012 85);
+  --foreground: oklch(0.18 0 0);
 
-  --card: oklch(0.2 0.04 270);
-  --card-foreground: oklch(0.96 0.01 85);
+  --card: oklch(0.985 0.004 90);
+  --card-foreground: oklch(0.18 0 0);
 
-  --popover: oklch(0.18 0.04 270);
-  --popover-foreground: oklch(0.96 0.01 85);
+  --popover: oklch(0.985 0.004 90);
+  --popover-foreground: oklch(0.18 0 0);
 
-  /* Champagne gold primary */
-  --primary: oklch(0.78 0.12 85);
-  --primary-foreground: oklch(0.15 0.04 270);
+  /* Ink primary */
+  --primary: oklch(0.18 0 0);
+  --primary-foreground: oklch(0.96 0.01 85);
 
-  /* Deep velvet secondary */
-  --secondary: oklch(0.24 0.05 300);
-  --secondary-foreground: oklch(0.96 0.01 85);
+  /* Grey paper secondary */
+  --secondary: oklch(0.9 0.012 85);
+  --secondary-foreground: oklch(0.18 0 0);
 
-  --muted: oklch(0.24 0.04 270);
-  --muted-foreground: oklch(0.7 0.04 270);
+  --muted: oklch(0.9 0.012 85);
+  --muted-foreground: oklch(0.38 0.01 85);
 
-  /* Hot pink accent */
-  --accent: oklch(0.65 0.22 350);
-  --accent-foreground: oklch(0.98 0.01 85);
+  /* Hot pink spot colour */
+  --accent: oklch(0.58 0.24 0);
+  --accent-foreground: oklch(0.99 0 0);
 
-  --destructive: oklch(0.58 0.22 25);
-  --destructive-foreground: oklch(0.98 0.01 85);
+  --destructive: oklch(0.52 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.78 0.12 85);
+  --border: oklch(0.18 0 0 / 30%);
+  --input: oklch(0.18 0 0 / 45%);
+  --ring: oklch(0.58 0.24 0);
 
   /* Episode look palettes */
   --mood-swatch-1: oklch(0.82 0.1 85);
@@ -123,15 +135,22 @@
   --mood-swatch-35: oklch(0.85 0.15 95);
   --mood-swatch-36: oklch(0.8 0.04 80);
 
-  /* Custom semantic tokens */
-  --gold: oklch(0.78 0.12 85);
-  --gold-foreground: oklch(0.15 0.04 270);
-  --pink: oklch(0.65 0.22 350);
-  --pink-foreground: oklch(0.98 0.01 85);
-  --night: oklch(0.12 0.03 270);
+  /* Custom semantic tokens (names kept from the dark look - see the note at the top) */
+  --gold: oklch(0.18 0 0);
+  --gold-foreground: oklch(0.96 0.01 85);
+  --pink: oklch(0.58 0.24 0);
+  --pink-foreground: oklch(0.99 0 0);
+  --night: oklch(0.18 0 0);
   --night-foreground: oklch(0.96 0.01 85);
-  --cream: oklch(0.96 0.02 85);
-  --spotlight: oklch(0.9 0.08 75);
+  --cream: oklch(0.18 0 0);
+  --spotlight: oklch(0.58 0.24 0);
+  /* Marker yellow - the masking-tape / gold-leaf colour from the episode box pictures */
+  --highlight: #f2cf5b;
+
+  --font-flyer: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --font-mono-body: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-marker: "Permanent Marker", "Comic Sans MS", cursive;
+  --font-type: "Special Elite", "Courier New", monospace;
 }
 
 @layer base {
@@ -142,7 +161,23 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-mono-body);
     font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  /* Ransom-note headlines: Archivo Black has one weight, so never fake a bold on top of it */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-flyer);
+    font-weight: 400 !important;
+    font-synthesis: none;
+    letter-spacing: -0.01em;
+  }
+
+  h1,
+  h2 {
+    text-transform: uppercase;
   }
 
   ::selection {
@@ -156,26 +191,36 @@
     text-wrap: balance;
   }
 
-  .text-glow {
-    text-shadow: 0 0 28px oklch(0.78 0.12 85 / 0.45);
-  }
-
+  /* No neon glow on paper */
+  .text-glow,
   .text-glow-pink {
-    text-shadow: 0 0 28px oklch(0.65 0.22 350 / 0.45);
+    text-shadow: none;
   }
 
   .spotlight {
-    background: radial-gradient(
-      600px circle at 50% 0%,
-      oklch(0.78 0.12 85 / 0.12),
-      transparent 60%
-    );
+    background: none;
   }
 
+  /* Faint photocopy grid */
   .disco-grid {
     background-image:
-      linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+      linear-gradient(oklch(0.18 0 0 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.18 0 0 / 0.05) 1px, transparent 1px);
     background-size: 48px 48px;
+  }
+
+  .font-marker {
+    font-family: var(--font-marker);
+  }
+
+  .font-type {
+    font-family: var(--font-type);
+  }
+
+  /* A polaroid print: thick white frame, deep bottom edge for the handwritten caption */
+  .polaroid {
+    background: #fbfaf6;
+    padding: 18px 18px 72px;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 18px 34px rgb(0 0 0 / 28%);
   }
 }

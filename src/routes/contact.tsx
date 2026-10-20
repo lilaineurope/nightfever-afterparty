@@ -95,7 +95,7 @@ function ContactPage() {
               <label className="block">
                 <span className="text-sm text-muted-foreground">What it's about</span>
                 <span className="relative mt-1 block">
-                <select name="about" required defaultValue={about ?? ""} className={`appearance-none pr-10 [color-scheme:dark] ${FIELD}`}>
+                <select name="about" required defaultValue={about ?? ""} className={`appearance-none pr-10 [color-scheme:light] ${FIELD}`}>
                   <option value="" disabled>Pick a page</option>
                   {about && !TOPICS.includes(about) && <option value={about}>{about}</option>}
                   {TOPICS.map((t) => (

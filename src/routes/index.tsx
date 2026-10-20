@@ -94,45 +94,49 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* Hero */}
-      <section className="relative flex min-h-[80vh] items-center justify-center px-6 py-24">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Disco ball scattering gold and pink light across a glamorous nightclub"
-            className="h-full w-full object-cover opacity-60"
-            width={1536}
-            height={864}
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
-        </div>
-
-        <div className="relative z-10 max-w-3xl text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-gold">
-            My fan page
-          </p>
-          <h1 className="text-balance text-6xl font-bold leading-[0.95] tracking-tight text-cream text-glow sm:text-7xl md:text-8xl">
-            Night
-            <span className="block text-pink text-glow-pink">Fever</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-cream/90 md:text-xl">
-            <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            {platforms.map((platform) => (
-              <a
-                key={platform.name}
-                href={platform.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-night/80 px-5 py-2.5 text-sm font-medium text-gold backdrop-blur-sm transition hover:border-gold hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-              >
-                <platform.icon className="h-4 w-4" />
-                Listen on {platform.name}
-              </a>
-            ))}
+      {/* Hero - a flyer: headline on the left, the crowd as a taped-up Polaroid on the right */}
+      <section className="disco-grid px-6 pb-16 pt-14 md:pt-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="min-w-0 text-center md:text-left">
+            <p className="font-type text-base text-muted-foreground">my fan page · tonight and every night since 1977</p>
+            <h1 className="mt-3 text-[clamp(2.4rem,11vw,6rem)] leading-[0.9]">
+              Night Fever
+              <span className="mt-2 block">
+                <span className="inline-block -rotate-2 bg-pink px-3 text-pink-foreground">Afterparty</span>
+              </span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/90 md:mx-0 md:text-lg">
+              <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+              {platforms.map((platform) => (
+                <a
+                  key={platform.name}
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border-2 border-gold bg-card px-4 py-2.5 text-sm font-semibold uppercase text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                >
+                  <platform.icon className="h-4 w-4" />
+                  Listen on {platform.name}
+                </a>
+              ))}
+            </div>
           </div>
+          <figure className="polaroid relative mx-auto w-full max-w-md min-w-0 rotate-3">
+            <span aria-hidden="true" className="absolute -top-4 left-1/2 h-8 w-32 -translate-x-1/2 -rotate-6 bg-[rgb(242_220_140_/_0.85)]" />
+            <img
+              src={heroImage}
+              alt="The Night Fever crowd - drag queens, club kids and party legends"
+              className="aspect-square w-full object-cover [filter:saturate(0.85)_contrast(1.05)_sepia(0.12)]"
+              width={1536}
+              height={864}
+              fetchPriority="high"
+            />
+            <figcaption className="font-marker absolute inset-x-4 bottom-5 -rotate-1 text-center text-lg text-[#1f2a6b] sm:text-xl">
+              the gang, the morning after ♥
+            </figcaption>
+          </figure>
         </div>
       </section>
 

@@ -231,7 +231,7 @@ function ClosetPage() {
                     id="closet-pick"
                     value={pick}
                     onChange={(e) => setPick(e.target.value)}
-                    className="w-full appearance-none rounded-xl border border-gold/50 bg-card px-4 py-2.5 pr-10 text-cream [color-scheme:dark] focus:border-pink focus:outline-none"
+                    className="w-full appearance-none rounded-xl border border-gold/50 bg-card px-4 py-2.5 pr-10 text-cream [color-scheme:light] focus:border-pink focus:outline-none"
                   >
                     {opts.map((o) => (
                       <option key={o.id} value={o.id}>
