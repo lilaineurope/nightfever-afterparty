@@ -15,7 +15,7 @@ import valentiDynellPortrait from "@/assets/block-chi-chi-valenti-johnny-dynell.
 import eganPortrait from "@/assets/block-nick-egan.jpg";
 import magnusonPortrait from "@/assets/block-ann-magnuson.jpg";
 
-const episodePortraits: Record<string, string> = {
+export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
   s01e02: mustoPortrait,
   s01e03: edelsteinPortrait,
@@ -119,5 +119,40 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                   </div>
                 </div>
               </article>
+  );
+}
+
+const CARD_TILT = ["-rotate-1", "rotate-1", "-rotate-[0.5deg]"];
+
+/** Home page "Latest Afterparties": a taped-up photocopy card - square portrait zoomed on the guest, episode code,
+ *  name in flyer capitals, references (pink) and mentions (marker yellow). The whole card opens the episode. */
+export function EpisodeCard({ ep, index = 0 }: { ep: Episode; index?: number }) {
+  const portrait = episodePortraits[ep.id];
+  return (
+    <Link
+      to={episodePath(ep.id)}
+      className={`block border-2 border-gold bg-card p-2.5 text-cream transition hover:-translate-y-1 hover:shadow-[6px_8px_0_var(--color-gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${CARD_TILT[index % CARD_TILT.length]}`}
+    >
+      <span className="block aspect-square overflow-hidden">
+        {portrait && (
+          <img
+            src={portrait}
+            alt={ep.guest}
+            width={1024}
+            height={1024}
+            loading="lazy"
+            className="h-full w-full object-cover [transform-origin:66%_78%] [transform:scale(1.45)]"
+          />
+        )}
+      </span>
+      <span className="mt-2.5 block text-xs uppercase">
+        S{ep.season} · E{ep.episode}
+      </span>
+      <span className="mt-0.5 block font-[family-name:var(--font-flyer)] text-[26px] uppercase leading-tight">{ep.guest}</span>
+      <span className="mt-1 block text-[13px]">
+        <span className="bg-pink px-1 text-pink-foreground">{ep.references}</span> references ·{" "}
+        <span className="bg-highlight px-1 text-cream">{ep.mentions}</span> mentions
+      </span>
+    </Link>
   );
 }

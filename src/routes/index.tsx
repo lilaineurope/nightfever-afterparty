@@ -6,7 +6,7 @@ import heroImage from "../assets/hero-people.jpg";
 import { episodes } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
-import { EpisodeBlock } from "@/components/episode-block";
+import { EpisodeCard } from "@/components/episode-block";
 import { NamesEveryoneDrops } from "@/components/names-everyone-drops";
 import { ExplorePages } from "@/components/explore-pages";
 import { WOW_URL } from "../data/guests";
@@ -144,7 +144,7 @@ function Index() {
 
       {/* Latest episodes */}
       <section className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
               Welcome to the Afterparty
@@ -164,11 +164,9 @@ function Index() {
               and dive in!
             </p>
           </div>
-          <h3 className="mt-14 text-center text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-            Latest Afterparty releases
-          </h3>
+          <h2 className="mt-16 border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Latest Afterparties</h2>
           {/* Same ranking as the Episodes page: Afterparty publish date, newest first. Only the three newest show here. */}
-          <div className="mt-6 flex flex-col gap-6">
+          <div className="mt-7 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {[...episodes]
               .sort(
                 (a, b) =>
@@ -177,13 +175,13 @@ function Index() {
                   b.episode - a.episode,
               )
               .slice(0, 3)
-              .map((ep) => (
-                <EpisodeBlock key={ep.id} ep={ep} showDates />
+              .map((ep, i) => (
+                <EpisodeCard key={ep.id} ep={ep} index={i} />
               ))}
           </div>
           <div className="mt-10 text-center">
             <Link to="/episodes"
-              className="inline-block rounded-full border border-gold px-6 py-3 font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground">
+              className="inline-block bg-gold px-6 py-3 font-semibold uppercase text-gold-foreground transition hover:bg-pink">
               More Afterparties &rarr;
             </Link>
           </div>
