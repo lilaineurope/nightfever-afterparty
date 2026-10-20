@@ -53,13 +53,13 @@ export function useEpisodePlayer(episodeId: string) {
 export function Timestamp({ episodeId, time, className = "" }: { episodeId: string; time: string; className?: string }) {
   if (!time || time === "On camera") return <span className={className}>{time}</span>;
   const ep = episodes.find((e) => e.id === episodeId);
-  if (!ep?.audioUrl) return <span className={`font-mono ${className}`}>{time}</span>;
+  if (!ep?.audioUrl) return <span className={`bg-highlight px-1 font-mono text-cream ${className}`}>{time}</span>;
   return (
     <button
       type="button"
       onClick={() => playEpisodeAt(episodeId, toSeconds(time))}
       title={`Play S${ep.season}E${ep.episode} from ${time}`}
-      className={`inline-flex items-center gap-1 font-mono text-gold transition hover:text-pink ${className}`}
+      className={`inline-flex items-center gap-1 bg-highlight px-1 font-mono text-cream transition hover:bg-pink hover:text-pink-foreground ${className}`}
     >
       <span aria-hidden="true" className="text-[0.75em]">&#9654;</span>
       <span className="sr-only">Play from </span>

@@ -224,3 +224,15 @@
     box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 18px 34px rgb(0 0 0 / 28%);
   }
 }
+
+/* Colour coding kept from the old dark site (Lisa, 20 Oct): links bold pink, timestamps marker yellow (in Timestamp).
+   Unlayered so it beats the utility classes: every text link written as "text-gold" (the old gold links) turns bold
+   pink; buttons and tiles that carry a border or a fill keep their own look. */
+a.text-gold:not([class*="border"]):not([class*="bg-"]) {
+  color: var(--color-pink);
+  font-weight: 700;
+  text-decoration-color: color-mix(in oklab, var(--color-pink) 45%, transparent);
+}
+a.text-gold:not([class*="border"]):not([class*="bg-"]):hover {
+  color: var(--color-gold);
+}
