@@ -35,7 +35,7 @@ function ThanksPage() {
           Thank you, <span className="text-pink text-glow-pink">darling!</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-          Your guide is on its way - Creem sends the download link and the receipt to your email.
+          Your license is on its way - Creem emails the license key and the receipt. Access to the code follows.
         </p>
         {got.length > 0 ? (
           <dl className="mx-auto mt-8 max-w-md rounded-2xl border border-gold/25 bg-card p-5 text-left text-sm">
