@@ -27,15 +27,12 @@ function ThanksPage() {
   const got = Object.entries(q);
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="border-b border-pink/50 bg-pink px-4 py-2 text-center text-sm font-semibold text-pink-foreground">
-        TEST MODE - no real money moved.
-      </div>
       <section className="disco-grid px-6 pb-24 pt-16 text-center">
         <h1 className="text-5xl font-bold tracking-tight text-cream text-glow">
           Thank you, <span className="text-pink text-glow-pink">darling!</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-          Your license is on its way - Creem emails the license key and the receipt. Access to the code follows.
+          Your license is on its way - Creem emails the license key, the download and the receipt.
         </p>
         {got.length > 0 ? (
           <dl className="mx-auto mt-8 max-w-md rounded-2xl border border-gold/25 bg-card p-5 text-left text-sm">

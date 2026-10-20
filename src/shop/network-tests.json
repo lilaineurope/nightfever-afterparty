@@ -1,0 +1,37 @@
+{
+ "ran": "2026-10-20",
+ "tests": [
+  {
+   "name": "buildGraph makes one node per hub and linked item, one edge per hub link",
+   "ok": true
+  },
+  {
+   "name": "neighbours work both ways",
+   "ok": true
+  },
+  {
+   "name": "category filter keeps every hub but only matching items",
+   "ok": true
+  },
+  {
+   "name": "categoryCounts counts linked items once per category",
+   "ok": true
+  },
+  {
+   "name": "greatConnectors: most hubs first, ties by mentions, singles left out",
+   "ok": true
+  },
+  {
+   "name": "mostPopular: one category, most mentioned first",
+   "ok": true
+  },
+  {
+   "name": "search finds labels case-insensitively",
+   "ok": true
+  },
+  {
+   "name": "layout is repeatable with a seed",
+   "ok": true
+  }
+ ]
+}

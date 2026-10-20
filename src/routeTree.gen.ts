@@ -45,6 +45,7 @@ import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
 import { Route as GuestbookIndexRouteImport } from './routes/guestbook.index'
 import { Route as GuestbookAdminRouteImport } from './routes/guestbook.admin'
 import { Route as ShopTestIndexRouteImport } from './routes/shop-test.index'
+import { Route as ShopTestProductRouteImport } from './routes/shop-test.$product'
 import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
 
 const IndexRoute = IndexRouteImport.update({
@@ -227,6 +228,11 @@ const ShopTestIndexRoute = ShopTestIndexRouteImport.update({
   path: '/shop-test/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopTestProductRoute = ShopTestProductRouteImport.update({
+  id: '/shop-test/$product',
+  path: '/shop-test/$product',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopTestThanksRoute = ShopTestThanksRouteImport.update({
   id: '/shop-test/thanks',
   path: '/shop-test/thanks',
@@ -266,6 +272,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
@@ -305,6 +312,7 @@ export interface FileRoutesByTo {
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
   '/episodes': typeof EpisodesIndexRoute
   '/explore': typeof ExploreIndexRoute
@@ -345,6 +353,7 @@ export interface FileRoutesById {
   '/episodes/s06e03': typeof EpisodesS06e03Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
@@ -386,6 +395,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e03'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/shop-test/$product'
     | '/shop-test/thanks'
     | '/episodes/'
     | '/explore/'
@@ -425,6 +435,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e03'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/shop-test/$product'
     | '/shop-test/thanks'
     | '/episodes'
     | '/explore'
@@ -464,6 +475,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e03'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/shop-test/$product'
     | '/shop-test/thanks'
     | '/episodes/'
     | '/explore/'
@@ -504,6 +516,7 @@ export interface RootRouteChildren {
   EpisodesS06e03Route: typeof EpisodesS06e03Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   GuestbookAdminRoute: typeof GuestbookAdminRoute
+  ShopTestProductRoute: typeof ShopTestProductRoute
   ShopTestThanksRoute: typeof ShopTestThanksRoute
   EpisodesIndexRoute: typeof EpisodesIndexRoute
   ExploreIndexRoute: typeof ExploreIndexRoute
@@ -765,6 +778,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopTestIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop-test/$product': {
+      id: '/shop-test/$product'
+      path: '/shop-test/$product'
+      fullPath: '/shop-test/$product'
+      preLoaderRoute: typeof ShopTestProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop-test/thanks': {
       id: '/shop-test/thanks'
       path: '/shop-test/thanks'
@@ -808,6 +828,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS06e03Route: EpisodesS06e03Route,
   ExploreSlugRoute: ExploreSlugRoute,
   GuestbookAdminRoute: GuestbookAdminRoute,
+  ShopTestProductRoute: ShopTestProductRoute,
   ShopTestThanksRoute: ShopTestThanksRoute,
   EpisodesIndexRoute: EpisodesIndexRoute,
   ExploreIndexRoute: ExploreIndexRoute,

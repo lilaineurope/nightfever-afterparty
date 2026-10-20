@@ -1,0 +1,69 @@
+{
+ "ran": "2026-10-20",
+ "tests": [
+  {
+   "name": "returns the requested number of questions",
+   "ok": true
+  },
+  {
+   "name": "default is 10 questions",
+   "ok": true
+  },
+  {
+   "name": "never repeats a question in one quiz",
+   "ok": true
+  },
+  {
+   "name": "every question has four distinct options including the answer",
+   "ok": true
+  },
+  {
+   "name": "same seed gives the same quiz, different seeds differ",
+   "ok": true
+  },
+  {
+   "name": "every question type can be built from the sample data",
+   "ok": true
+  },
+  {
+   "name": "category filter only asks about those categories",
+   "ok": true
+  },
+  {
+   "name": "wrong answers for name questions come from the same category when possible",
+   "ok": true
+  },
+  {
+   "name": "source rides along with the question",
+   "ok": true
+  },
+  {
+   "name": "too little data: fewer questions, never a crash or a broken question",
+   "ok": true
+  },
+  {
+   "name": "year options stay near the answer and never in the future",
+   "ok": true
+  },
+  {
+   "name": "clues blank out the answer",
+   "ok": true
+  },
+  {
+   "name": "scoreQuiz counts right answers",
+   "ok": true
+  },
+  {
+   "name": "PubQuiz renders the first question with four options",
+   "ok": true
+  },
+  {
+   "name": "PubQuiz sheet layout shows every question",
+   "ok": true
+  },
+  {
+   "name": "PubQuiz with no data says so",
+   "ok": true
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "ran": "2026-10-20",
+ "tests": [
+  {
+   "name": "pieces land on the right rail",
+   "ok": true
+  },
+  {
+   "name": "dresses cover the bottom rail",
+   "ok": true
+  },
+  {
+   "name": "colours named after a garment become pieces in that colour, said the natural way round",
+   "ok": true
+  },
+  {
+   "name": "things that are not worn, or only mention clothes, are left out",
+   "ok": true
+  },
+  {
+   "name": "tag filters and options",
+   "ok": true
+  },
+  {
+   "name": "an empty rail borrows from the whole wardrobe and says so",
+   "ok": true
+  },
+  {
+   "name": "colour moods",
+   "ok": true
+  },
+  {
+   "name": "designers match by full name, alias, surname (people) and tag",
+   "ok": true
+  },
+  {
+   "name": "seeded outfits are repeatable, and kept pieces stay put",
+   "ok": true
+  },
+  {
+   "name": "verdicts",
+   "ok": true
+  },
+  {
+   "name": "keyword lists are configurable",
+   "ok": true
+  },
+  {
+   "name": "colourOf always gives a colour, stable by name",
+   "ok": true
+  },
+  {
+   "name": "the React wardrobe renders with the sample looks",
+   "ok": true
+  },
+  {
+   "name": "an empty wardrobe says so",
+   "ok": true
+  }
+ ]
+}
