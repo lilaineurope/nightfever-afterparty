@@ -34,9 +34,9 @@ type Product = {
 
 /** Paste each product's payment link from Creem here (Test Mode on -> Products -> the product -> Share). Empty = button disabled. */
 export const CREEM_TEST_LINKS: Record<Product["key"], string> = {
-  wardrobe: "",
-  network: "",
-  quiz: "",
+  wardrobe: "https://www.creem.io/test/payment/prod_2cEC2uqObUjwLvchuKs4kr",
+  network: "https://www.creem.io/test/payment/prod_7Ijfq9iRSSgHdzSmlqu0Lh",
+  quiz: "https://www.creem.io/test/payment/prod_4aQAXEEoIfQETkPufJDRGd",
 };
 
 const PRODUCTS: Product[] = [
