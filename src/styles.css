@@ -14,7 +14,7 @@
 /*
  * Design system: "Xerox Flyer" - a downtown club flyer photocopied onto off-white paper:
  * black ink, one hot-pink spot colour, square corners, ransom-note headlines (Archivo Black),
- * typewriter/mono body (IBM Plex Mono), marker captions (Permanent Marker), Special Elite for asides.
+ * typewriter body text (Special Elite), IBM Plex Mono for timestamps and small data, marker captions (Permanent Marker).
  * The token NAMES are kept from the earlier dark "Night Fever" look so every page re-themes from here:
  * cream = ink text, gold = ink accent (links, labels, rules), pink = the spot colour, card = white paper.
  */
@@ -161,7 +161,8 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-mono-body);
+    /* All normal text in the typewriter face (Special Elite), like "tonight and every night since 1977" */
+    font-family: var(--font-type);
     font-feature-settings: "liga" 1, "calt" 1;
   }
 
