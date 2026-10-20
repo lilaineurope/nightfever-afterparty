@@ -24,29 +24,29 @@ const CARDS = [
   { to: "/guestbook", title: "Guestbook", img: guestbookImg, line: "Leave a note for the Afterparty - your episode, your club, your night.", count: "Sign it!" },
 ] as const;
 
+// Xerox Flyer tiles (exactly as the design): a heavy black-ruled grid of type-only tiles, some flooded pink or black.
+const FILL: Record<string, string> = {
+  "/network": "bg-pink text-pink-foreground",
+  "/book-club": "bg-gold text-gold-foreground",
+  "/wardrobe": "bg-gold text-gold-foreground",
+  "/guestbook": "bg-pink text-pink-foreground",
+};
+
 export function ExplorePages() {
   return (
-    <section aria-labelledby="explore-pages" className="mt-20">
-      <h3 id="explore-pages" className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+    <section aria-labelledby="explore-pages" className="mt-16">
+      <h2 id="explore-pages" className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">
         More to explore
-      </h3>
-      <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      </h2>
+      <ul className="mt-6 grid grid-cols-1 gap-[3px] border-[3px] border-gold bg-gold sm:grid-cols-2 lg:grid-cols-4">
         {CARDS.map((c) => (
-          <li key={c.to}>
+          <li key={c.to} className="flex">
             <Link
               to={c.to}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-pink"
+              className={`group block w-full p-5 transition hover:bg-highlight hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-pink ${FILL[c.to] ?? "bg-background text-cream"}`}
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img src={c.img} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
-                <span className="absolute bottom-2 left-2 rounded-full bg-background/80 px-2 py-0.5 text-[10px] font-medium text-gold sm:left-3 sm:px-2.5 sm:text-[11px]">{c.count}</span>
-              </div>
-              <div className="flex flex-1 flex-col p-3 sm:p-4">
-                <span className="text-base font-semibold text-cream group-hover:text-pink sm:text-lg">{c.title}</span>
-                <span className="mt-1 hidden flex-1 text-sm text-muted-foreground sm:block">{c.line}</span>
-                <span className="mt-auto pt-2 text-xs font-semibold sm:pt-3 text-gold group-hover:text-pink">Open &rarr;</span>
-              </div>
+              <span className="block font-[family-name:var(--font-flyer)] text-[30px] uppercase leading-tight">{c.title}</span>
+              <span className="mt-1 block text-[13px]">{c.count}</span>
             </Link>
           </li>
         ))}

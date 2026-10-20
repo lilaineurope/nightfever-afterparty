@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import heroImage from "../assets/hero-people.jpg";
-import { episodes } from "../data/episodes";
+import { episodes, episodePath } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
 import { EpisodeCard } from "@/components/episode-block";
@@ -68,6 +68,10 @@ const platforms = [
   },
 ];
 
+const latest = [...episodes].sort(
+  (a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished) || b.season - a.season || b.episode - a.episode,
+)[0]!;
+
 function Index() {
   const subscribeFn = useServerFn(subscribeNewsletter);
   const [email, setEmail] = useState("");
@@ -94,77 +98,55 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* Hero - a flyer: headline on the left, the crowd as a taped-up Polaroid on the right */}
-      <section className="disco-grid px-6 pb-16 pt-14 md:pt-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="@container min-w-0 text-center md:text-left">
-            <p className="font-type text-base text-muted-foreground">my fan page · tonight and every night since 1977</p>
-            <h1 className="mt-3 text-[clamp(2.2rem,12.5cqw,6rem)] leading-[0.9]">
-              Night Fever
-              <span className="mt-2 block">
-                <span className="inline-block -rotate-2 bg-pink px-3 text-pink-foreground">Afterparty</span>
-              </span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/90 md:mx-0 md:text-lg">
-              <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
-              {platforms.map((platform) => (
-                <a
-                  key={platform.name}
-                  href={platform.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border-2 border-gold bg-card px-4 py-2.5 text-sm font-semibold uppercase text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                >
-                  <platform.icon className="h-4 w-4" />
-                  Listen on {platform.name}
-                </a>
-              ))}
-            </div>
+      {/* Hero - exactly the Xerox Flyer design: stacked headline with "Afterparty" on a pink strip, the crowd as a taped Polaroid */}
+      <section className="mx-auto grid max-w-6xl items-center gap-8 px-6 pb-6 pt-10 md:grid-cols-2">
+        <div className="@container min-w-0">
+          <p className="font-type text-lg">tonight · and every night since 1977 ·</p>
+          <h1 className="mt-3 text-[clamp(2.4rem,13cqw,8.5rem)] leading-[0.86] tracking-[-0.02em]">
+            Night
+            <br />
+            Fever
+            <br />
+            <span className="inline-block -rotate-[1.5deg] bg-pink px-3 text-pink-foreground">Afterparty</span>
+          </h1>
+          <p className="mt-6 max-w-[480px] text-base leading-relaxed">
+            <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              to={episodePath(latest.id)}
+              className="bg-gold px-5 py-3.5 font-semibold uppercase text-gold-foreground transition hover:bg-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+            >
+              Latest Afterparty &rarr;
+            </Link>
+            <a
+              href="#listen"
+              className="border-2 border-gold px-5 py-3 font-semibold uppercase transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+            >
+              Listen
+            </a>
           </div>
-          <figure className="polaroid relative mx-auto w-full max-w-md min-w-0 rotate-3">
-            <span aria-hidden="true" className="absolute -top-4 left-1/2 h-8 w-32 -translate-x-1/2 -rotate-6 bg-[rgb(242_220_140_/_0.85)]" />
-            <img
-              src={heroImage}
-              alt="The Night Fever crowd - drag queens, club kids and party legends"
-              className="aspect-square w-full object-cover [filter:saturate(0.85)_contrast(1.05)_sepia(0.12)]"
-              width={1536}
-              height={864}
-              fetchPriority="high"
-            />
-            <figcaption className="font-marker absolute inset-x-4 bottom-5 -rotate-1 text-center text-lg text-[#1f2a6b] sm:text-xl">
-              the gang, the morning after ♥
-            </figcaption>
-          </figure>
         </div>
+        <figure className="polaroid relative mx-auto w-full max-w-[470px] min-w-0 rotate-3 !p-[22px] !pb-[84px]">
+          <span aria-hidden="true" className="absolute -top-4 left-1/2 h-8 w-[130px] -translate-x-1/2 -rotate-[5deg] bg-[rgb(242_220_140_/_0.85)]" />
+          <img
+            src={heroImage}
+            alt="The Night Fever crowd - drag queens, club kids and party legends"
+            className="aspect-square w-full object-cover [filter:saturate(0.85)_contrast(1.05)_sepia(0.12)]"
+            width={1536}
+            height={864}
+            fetchPriority="high"
+          />
+          <figcaption className="font-marker absolute inset-x-[22px] bottom-[22px] -rotate-[1.5deg] text-center text-xl text-[#1f2a6b] sm:text-[26px]">
+            the gang, the morning after ♥
+          </figcaption>
+        </figure>
       </section>
 
-
-
       {/* Latest episodes */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-10">
         <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-              Welcome to the Afterparty
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              On the Night Fever podcast, James St. James asks every guest
-              about the nights they lived through - the people they loved,
-              feuded with and lost. This site is my Afterparty, aka the
-              morning-after debrief!
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Every episode I publish here gets a timestamp index - every name,
-              place, song, design and look, counted and linked to the exact
-              moment it was said. A&ndash;Z gathers the whole gang,
-              the Timeline follows the scene from the 1960s to today, and
-              the Network shows how they're all tied together. Pick an episode
-              and dive in!
-            </p>
-          </div>
-          <h2 className="mt-16 border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Latest Afterparties</h2>
+          <h2 className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Latest Afterparties</h2>
           {/* Same ranking as the Episodes page: Afterparty publish date, newest first. Only the three newest show here. */}
           <div className="mt-7 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {[...episodes]
@@ -191,8 +173,31 @@ function Index() {
 
       <NamesEveryoneDrops />
 
+      {/* Welcome - the intro, below the design's sections */}
+      <section className="px-6 py-16">
+        <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+              Welcome to the Afterparty
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              On the Night Fever podcast, James St. James asks every guest
+              about the nights they lived through - the people they loved,
+              feuded with and lost. This site is my Afterparty, aka the
+              morning-after debrief!
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Every episode I publish here gets a timestamp index - every name,
+              place, song, design and look, counted and linked to the exact
+              moment it was said. A&ndash;Z gathers the whole gang,
+              the Timeline follows the scene from the 1960s to today, and
+              the Network shows how they're all tied together. Pick an episode
+              and dive in!
+            </p>
+          </div>
+      </section>
+
       {/* Listen */}
-      <section className="px-6 py-24">
+      <section id="listen" className="scroll-mt-20 px-6 py-24">
         <div className="mx-auto max-w-4xl rounded-3xl border border-gold/20 bg-card p-8 text-center sm:p-12">
           <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
             Listen wherever you party -

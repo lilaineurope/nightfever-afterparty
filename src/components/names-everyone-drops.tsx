@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { useLayoutEffect, useRef } from "react";
 import { episodePeople } from "@/data/episode-connections";
 
-// Names that surface in more than one published episode - only the first
+// Names that surface in more than one published episode, set as a flyer headline - only the first
 // ROWS rows of chips are shown, at every screen width.
-const ROWS = 5;
+const ROWS = 4;
 
 export function NamesEveryoneDrops() {
-  const box = useRef<HTMLDivElement>(null);
+  const box = useRef<HTMLParagraphElement>(null);
   useLayoutEffect(() => {
     const el = box.current;
     if (!el) return;
@@ -31,35 +31,29 @@ export function NamesEveryoneDrops() {
         b.episodeIds.length - a.episodeIds.length || b.mentions - a.mentions,
     );
   return (
-    <section className="px-6 py-20">
-      <div className="mx-auto max-w-4xl">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-          The names everyone drops!
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-          The names in the rooms - hosts, regulars and legends who keep
-          popping up in more than one episode, whether or not they ever sat
-          down for an interview. Tap a name and dive in!
+    <section className="px-6 pb-16 pt-6">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">The names everyone drops</h2>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
+          Hosts, regulars and legends who keep popping up in more than one episode. Tap a name and dive in!
         </p>
-        <div
+        <p
           ref={box}
-          className="mt-10 flex flex-wrap justify-center gap-2 overflow-hidden"
+          className="mt-5 overflow-hidden font-[family-name:var(--font-flyer)] text-2xl uppercase leading-[1.5] sm:text-[30px]"
           style={{ maxHeight: "13.9rem" }}
         >
-          {recurring.map((p) => (
-            <Link
-              key={p.slug}
-              to="/explore/$slug"
-              params={{ slug: p.slug }}
-              className="rounded-full border border-gold/25 bg-card px-4 py-2 text-sm text-card-foreground/85 transition hover:border-gold/60"
-            >
-              {p.name}{" "}
-              <span className="text-xs text-pink">
+          {recurring.map((p, i) => (
+            <span key={p.slug}>
+              {i > 0 && <span className="text-pink"> / </span>}
+              <Link to="/explore/$slug" params={{ slug: p.slug }} className="whitespace-nowrap transition hover:text-pink">
+                {p.name}
+              </Link>
+              <sup className="ml-1 font-[family-name:var(--font-mono-body)] text-[11px] normal-case tracking-normal text-pink">
                 {p.episodeIds.length} connections · {p.mentions} {p.mentions === 1 ? "mention" : "mentions"}
-              </span>
-            </Link>
+              </sup>
+            </span>
           ))}
-        </div>
+        </p>
       </div>
     </section>
   );
