@@ -14,12 +14,12 @@ import { PIECES } from "@/data/closet";
 
 // Home page "more to explore" grid: one card per page, with live counts from the same data the pages use.
 const CARDS = [
-  { to: "/timeline", title: "Timeline", img: timelineImg, line: "New York nightlife decade by decade, with the guests in every scene.", count: `${sceneEvents.length} moments` },
+  { to: "/timeline", title: "Timeline", img: timelineImg, line: "New York nightlife decade by decade, with the guests in every scene.", count: `${sceneEvents.length} Moments` },
   { to: "/connections", title: "Connections", img: connectionsImg, line: "Who turns up with who - every name dropped, tied to the episodes they share.", count: "The web of names" },
-  { to: "/jukebox", title: "Jukebox", img: jukeboxImg, line: "Every song, band and sound the guests mention - press play.", count: `${jukebox.length} songs & acts` },
-  { to: "/book-club", title: "Book Club", img: bookClubImg, line: "The diaries, novels, magazines and gossip columns from the stories.", count: `${bookClub.length} books & magazines` },
-  { to: "/map", title: "Map", img: mapImg, line: "Every club, street and city on one map - and the ones still lost.", count: `${LOCATIONS.length} places` },
-  { to: "/wardrobe", title: "Wardrobe", img: wardrobeImg, line: "Dress yourself from the guests' looks - by episode, designer, club or colour.", count: `${PIECES.length} pieces` },
+  { to: "/jukebox", title: "Jukebox", img: jukeboxImg, line: "Every song, band and sound the guests mention - press play.", count: `${jukebox.length} Songs & Acts` },
+  { to: "/book-club", title: "Book Club", img: bookClubImg, line: "The diaries, novels, magazines and gossip columns from the stories.", count: `${bookClub.length} Books & Magazines` },
+  { to: "/map", title: "Map", img: mapImg, line: "Every club, street and city on one map - and the ones still lost.", count: `${LOCATIONS.length} Places` },
+  { to: "/wardrobe", title: "Wardrobe", img: wardrobeImg, line: "Dress yourself from the guests' looks - by episode, designer, club or colour.", count: `${PIECES.length} Pieces` },
   { to: "/quiz", title: "Pub Quiz", img: quizImg, line: "Ten fresh nightlife questions every time, answers and timestamps included.", count: "New quiz every time" },
   { to: "/guestbook", title: "Guestbook", img: guestbookImg, line: "Leave a note for the Afterparty - your episode, your club, your night.", count: "Sign it!" },
 ] as const;
