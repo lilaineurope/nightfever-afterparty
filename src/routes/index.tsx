@@ -2,7 +2,7 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import heroImage from "../assets/hero-people.jpg";
+import heroImage from "../assets/hero-hosts.jpg";
 import { episodes, episodePath } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
@@ -131,14 +131,14 @@ function Index() {
           <span aria-hidden="true" className="absolute -top-4 left-1/2 h-8 w-[130px] -translate-x-1/2 -rotate-[5deg] bg-[rgb(242_220_140_/_0.85)]" />
           <img
             src={heroImage}
-            alt="The Night Fever crowd - drag queens, club kids and party legends"
-            className="aspect-square w-full object-cover [filter:saturate(0.85)_contrast(1.05)_sepia(0.12)]"
-            width={1536}
-            height={864}
+            alt="Night Fever hosts James St. James, Fenton Bailey and Randy Barbato in a selfie under a mirror ball"
+            className="aspect-[5/4] w-full object-cover [filter:saturate(0.9)_contrast(1.05)_sepia(0.08)]"
+            width={1400}
+            height={1121}
             fetchPriority="high"
           />
           <figcaption className="font-marker absolute inset-x-[22px] bottom-[22px] -rotate-[1.5deg] text-center text-xl text-[#1f2a6b] sm:text-[26px]">
-            the gang, the morning after ♥
+            under the mirror ball ♥
           </figcaption>
         </figure>
       </section>
