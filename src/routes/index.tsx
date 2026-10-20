@@ -97,9 +97,9 @@ function Index() {
       {/* Hero - a flyer: headline on the left, the crowd as a taped-up Polaroid on the right */}
       <section className="disco-grid px-6 pb-16 pt-14 md:pt-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="min-w-0 text-center md:text-left">
+          <div className="@container min-w-0 text-center md:text-left">
             <p className="font-type text-base text-muted-foreground">my fan page · tonight and every night since 1977</p>
-            <h1 className="mt-3 text-[clamp(2.4rem,11vw,6rem)] leading-[0.9]">
+            <h1 className="mt-3 text-[clamp(2.2rem,12.5cqw,6rem)] leading-[0.9]">
               Night Fever
               <span className="mt-2 block">
                 <span className="inline-block -rotate-2 bg-pink px-3 text-pink-foreground">Afterparty</span>
