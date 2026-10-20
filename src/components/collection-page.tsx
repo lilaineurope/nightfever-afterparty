@@ -11,7 +11,6 @@ type Extra = { label: string; href: string };
 
 /** Shared layout for the Book Club and the Jukebox: header, shelf filter, sort, and one card per title. */
 export function CollectionPage({
-  header,
   kicker,
   title,
   intro,
@@ -24,7 +23,6 @@ export function CollectionPage({
   playingSlug,
   extraShelf,
 }: {
-  header: string;
   kicker: string;
   title: ReactNode;
   intro: ReactNode;
@@ -53,11 +51,7 @@ export function CollectionPage({
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="relative flex min-h-[420px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[480px]">
-        <img src={header} alt="" width={1376} height={768} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-background/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_50%_46%,color-mix(in_oklab,var(--background)_88%,transparent),transparent_72%)]" />
+      <section className="relative px-6 pb-12 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <p className="text-sm uppercase tracking-[0.2em] text-pink">{kicker}</p>
           <h1 className="mt-3 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">{title}</h1>

@@ -16,7 +16,7 @@ const GROUPS: Group[] = [
       { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups and guestbook notes in its built-in database (Lovable Cloud)." },
       { name: "Claude", href: "https://claude.ai", what: "My co-pilot for everything behind the scenes: writes the code, researches every name and place, checks the links, transcribes the episodes and builds the reference sheets." },
       { name: "GitHub", href: "https://github.com", what: "Stores the site's code; every change syncs straight into Lovable." },
-      { name: "Archivo Black, IBM Plex Mono, Permanent Marker and Special Elite", href: "https://fontsource.org", what: "The flyer fonts - headlines (Archivo Black), the typewriter text everywhere (Special Elite), timestamps and small data (IBM Plex Mono) and the handwritten Polaroid caption (Permanent Marker). Open licences (SIL OFL and Apache), served from this site, not from a font service." },
+      { name: "Archivo Black, IBM Plex Mono and Special Elite", href: "https://fontsource.org", what: "The flyer fonts - headlines (Archivo Black), the typewriter text everywhere (Special Elite), and timestamps and small data (IBM Plex Mono). Open licences (SIL OFL and Apache), served from this site, not from a font service." },
       { name: "VT323", href: "https://github.com/phoikoi/VT323", what: "The pixel font in the Wardrobe's Clueless Style - open licence (SIL OFL), served from this site, not from a font service." },
       { name: "React, TanStack and Tailwind", href: "https://tanstack.com", what: "The open-source building blocks the pages are written in." },
     ],

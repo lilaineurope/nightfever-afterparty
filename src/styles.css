@@ -6,7 +6,6 @@
 @import "@fontsource/ibm-plex-mono/latin-400.css";
 @import "@fontsource/ibm-plex-mono/latin-400-italic.css";
 @import "@fontsource/ibm-plex-mono/latin-600.css";
-@import "@fontsource/permanent-marker/latin-400.css";
 @import "@fontsource/special-elite/latin-400.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -14,7 +13,7 @@
 /*
  * Design system: "Xerox Flyer" - a downtown club flyer photocopied onto off-white paper:
  * black ink, one hot-pink spot colour, square corners, ransom-note headlines (Archivo Black),
- * typewriter body text (Special Elite), IBM Plex Mono for timestamps and small data, marker captions (Permanent Marker).
+ * typewriter body text (Special Elite), IBM Plex Mono for timestamps and small data.
  * The token NAMES are kept from the earlier dark "Night Fever" look so every page re-themes from here:
  * cream = ink text, gold = ink accent (links, labels, rules), pink = the spot colour, card = white paper.
  */
@@ -149,7 +148,6 @@
 
   --font-flyer: "Archivo Black", "Arial Black", Impact, sans-serif;
   --font-mono-body: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --font-marker: "Permanent Marker", "Comic Sans MS", cursive;
   --font-type: "Special Elite", "Courier New", monospace;
 }
 
@@ -208,10 +206,6 @@
       linear-gradient(oklch(0.18 0 0 / 0.05) 1px, transparent 1px),
       linear-gradient(90deg, oklch(0.18 0 0 / 0.05) 1px, transparent 1px);
     background-size: 48px 48px;
-  }
-
-  .font-marker {
-    font-family: var(--font-marker);
   }
 
   .font-type {

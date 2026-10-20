@@ -4,7 +4,6 @@ import { useState } from "react";
 import { episodes } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
-import episodesBackground from "@/assets/episodes-reference-collage-refined.jpg";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
@@ -30,14 +29,12 @@ function EpisodesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-6 pb-16 pt-24 sm:min-h-[560px]">
-        <img src={episodesBackground} alt="Illustrated collage of nightlife people, clubs, books and music mentioned across the indexed episodes" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+      <section className="relative px-6 pb-16 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-pink">
             Afterparty
           </p>
-          <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
+          <h1 className="mt-4 text-[2.5rem] font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             Every episode - <span className="text-gold">unpacked &amp; timestamped</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base text-cream/90 sm:text-lg">

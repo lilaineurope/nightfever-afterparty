@@ -2,7 +2,6 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import heroImage from "../assets/hero-hosts.jpg";
 import { episodes, episodePath } from "../data/episodes";
 import { subscribeNewsletter } from "../lib/newsletter.functions";
 import { EntityLink } from "../components/entity-link";
@@ -98,8 +97,8 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* Hero - exactly the Xerox Flyer design: stacked headline with "Afterparty" on a pink strip, the crowd as a taped Polaroid */}
-      <section className="mx-auto grid max-w-6xl items-center gap-8 px-6 pb-6 pt-10 md:grid-cols-2">
+      {/* Hero: stacked headline with "Afterparty" on a pink strip - no picture (Lisa, 21 Oct: no header pictures while the design is reworked) */}
+      <section className="mx-auto max-w-6xl px-6 pb-6 pt-10">
         <div className="@container min-w-0">
           <p className="font-type text-lg">tonight · and every night since 1977 ·</p>
           <h1 className="mt-3 text-[clamp(2.4rem,13cqw,8.5rem)] leading-[0.86] tracking-[-0.02em]">
@@ -127,20 +126,6 @@ function Index() {
             </a>
           </div>
         </div>
-        <figure className="polaroid relative mx-auto w-full max-w-[470px] min-w-0 rotate-3 !p-[22px] !pb-[84px]">
-          <span aria-hidden="true" className="absolute -top-4 left-1/2 h-8 w-[130px] -translate-x-1/2 -rotate-[5deg] bg-[rgb(242_220_140_/_0.85)]" />
-          <img
-            src={heroImage}
-            alt="Night Fever hosts James St. James, Fenton Bailey and Randy Barbato in a selfie under a mirror ball"
-            className="aspect-[5/4] w-full object-cover [filter:saturate(0.9)_contrast(1.05)_sepia(0.08)]"
-            width={1400}
-            height={1121}
-            fetchPriority="high"
-          />
-          <figcaption className="font-marker absolute inset-x-[22px] bottom-[22px] -rotate-[1.5deg] text-center text-xl text-[#1f2a6b] sm:text-[26px]">
-            under the mirror ball ♥
-          </figcaption>
-        </figure>
       </section>
 
       {/* Latest episodes */}

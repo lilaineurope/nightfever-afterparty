@@ -13,7 +13,6 @@ import { EntityText } from "../components/entity-text";
 import { namedOnCount } from "@/lib/name-links";
 import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
-import episodeBackground from "../assets/episode-james-st-james.jpg";
 import { SiteFooter } from "@/components/site-footer";
 
 type Ref = {
@@ -95,12 +94,7 @@ function EpisodePage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="relative flex min-h-[480px] items-center overflow-hidden px-6 pb-12 pt-24 sm:min-h-[540px]">
-        <div className="absolute inset-0" aria-hidden="true">
-          <img src={episodeBackground} alt="" width={1536} height={864} fetchPriority="high"
-            className="h-full w-full object-cover object-[75%_center] sm:object-center" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
-        </div>
+      <section className="relative px-6 pb-12 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl border-2 border-gold bg-card/92 px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10">
           <Link to="/guests" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
             &larr; Meet all the guests

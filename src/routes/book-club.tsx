@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CollectionPage } from "@/components/collection-page";
 import { BOOK_SHELVES, bookClub, findBookLink } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
-import header from "@/assets/book-club-header.jpg";
 
 const books = bookClub.filter((b) => b.shelf === "books").length;
 const press = bookClub.length - books;
@@ -33,7 +32,6 @@ export const Route = createFileRoute("/book-club")({
 function BookClubPage() {
   return (
     <CollectionPage
-      header={header}
       kicker="The Night Fever"
       title={<>Book <span className="text-pink text-glow-pink">Club</span></>}
       intro={<>Every book, magazine, gossip column and newspaper the guests drop - from diaries read aloud to the columns that made the Club Kids famous. Tap a timestamp to hear the moment it comes up.</>}
