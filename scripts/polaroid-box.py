@@ -106,17 +106,35 @@ def accent_red(rgb):
     return rgb * keep + grey * (1 - keep)
 
 
-def place(rgb, a, W, H, head, cx, width=0.0, zoom=1.0):
-    """Scale the cut-out so the head starts at `head` of the height (or to a figure width), head centred on cx."""
+def cut_sides(a, band=4, share=0.08):
+    """Which sides of the source picture cut through the figure (a clean straight cut, like a cropped photo)."""
+    ys, xs = np.where(a > 0); fh = ys.max() - ys.min() + 1; h0, w0 = a.shape
+    col = lambda c0, c1: (a[:, c0:c1].max(1) > 0).sum()
+    return {"left": xs.min() <= band and col(0, band + 1) > share * fh,
+            "right": xs.max() >= w0 - 1 - band and col(w0 - 1 - band, w0) > share * fh,
+            "bottom": ys.max() >= h0 - 1 - band}
+
+
+def place(rgb, a, W, H, head, cx, width=0.0, zoom=1.0, align=True):
+    """Scale the cut-out so the head starts at `head` of the height (or to a figure width), head centred on cx.
+    With align (Lisa, 22 Oct 2026): where the portrait has a clean cut on a side (the figure runs out of its own
+    picture, like Chi Chi & Johnny or Rudolf), that cut lines up with the polaroid's edge instead of floating
+    inside the photo with a pink outline - both sides cut: the figure fills the width edge to edge."""
     ys, xs = np.where(a > 0); top = ys.min(); h0, w0 = a.shape
+    sides = cut_sides(a) if align else {"left": False, "right": False, "bottom": False}
     k = (H * (1 - head)) / (h0 - top) if not width else (W * width) / (xs.max() - xs.min())
     k *= zoom  # >1 = bigger figure, the body runs off the bottom edge
+    if sides["left"] and sides["right"]: k = W / (xs.max() - xs.min() + 1)
     nw, nh = int(w0 * k), int(h0 * k)
     img = np.asarray(Image.fromarray(rgb.clip(0, 255).astype(np.uint8)).resize((nw, nh), Image.LANCZOS), np.float32)
     ar = cv2.resize(a, (nw, nh), interpolation=cv2.INTER_NEAREST)
     hd = ar[: int((top + (h0 - top) * 0.25) * k)]
     hx = np.where(hd > 0)[1].mean() if (hd > 0).any() else nw / 2
     ox = int(W * cx - hx); oy = int(H * head - top * k)
+    if sides["left"]: ox = -int(xs.min() * k) - 2
+    elif sides["right"]: ox = W - int((xs.max() + 1) * k) + 2
+    if sides["bottom"] and oy + int((ys.max() + 1) * k) < H: oy = H - int((ys.max() + 1) * k) + 2
+    print("  clean cut on:", [s for s, v in sides.items() if v] or "none")
     can = np.zeros((H, W, 3), np.float32); ca = np.zeros((H, W), np.uint8)
     sx, sy, dx, dy = max(0, -ox), max(0, -oy), max(0, ox), max(0, oy)
     cw, ch = min(nw - sx, W - dx), min(nh - sy, H - dy)
@@ -136,7 +154,7 @@ def main():
     ap.add_argument("episode"); ap.add_argument("portrait"); ap.add_argument("collage"); ap.add_argument("out")
     ap.add_argument("--crop", default=""); ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--accent-red", action="store_true"); ap.add_argument("--composite", action="store_true")
-    ap.add_argument("--head", type=float, default=0.06); ap.add_argument("--zoom", type=float, default=1.25, help="figure size (1 = head to waist fits the box)"); ap.add_argument("--ring", type=int, default=24)
+    ap.add_argument("--head", type=float, default=0.06); ap.add_argument("--zoom", type=float, default=1.25, help="figure size (1 = head to waist fits the box)"); ap.add_argument("--ring", type=int, default=24); ap.add_argument("--no-align", action="store_true", help="never line clean cuts up with the edge")
     ap.add_argument("--width", type=float, default=0.0, help="figure width as a share of the box (0 = fit by height)")
     ap.add_argument("--labels", default="", help="scrap labels separated by | (default: top references from src/data/<id>.json)")
     ap.add_argument("--header", default="", help="WxH for a wide episode header (portrait on the right) instead of the square box")
@@ -174,7 +192,7 @@ def main():
         spots = [(0.03, 0.08), (0.36, 0.05), (0.04, 0.80), (0.42, 0.84)]
         out = scraps(out, labels, rng, spots, scale=max(0.8, H / B * 1.15))
     else:
-        can, ca = place(rgb, a, W, H, o.head, o.cx or 0.5, o.width, o.zoom)
+        can, ca = place(rgb, a, W, H, o.head, o.cx or 0.5, o.width, o.zoom, not o.no_align)
         out = sticker(bg, can, ca, o.ring)  # scraps go on top, pinned to the four corners like a real collage
         out = scraps(out, labels, rng, [(0.025, 0.035), (0.99, 0.05), (0.02, 0.86), (0.99, 0.88)])
     Image.fromarray(out.clip(0, 255).astype(np.uint8)).save(o.out, quality=84, optimize=True)
