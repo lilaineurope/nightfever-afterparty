@@ -10,10 +10,16 @@ export const PAGES = [
   { to: "/jukebox", label: "Jukebox" },
   { to: "/book-club", label: "Book Club" },
   { to: "/map", label: "Map" },
-  { to: "/wardrobe", label: "Wardrobe" },
-  { to: "/quiz", label: "Pub Quiz" },
   { to: "/explore", label: "A–Z" },
   { to: "/guestbook", label: "Guestbook" },
+] as const;
+
+/** Pages that exist but are not linked anywhere yet (Lisa, 22 Oct 2026: Wardrobe and Pub Quiz need more work).
+ *  They stay reachable by URL, are left out of the menu, search, sitemap, home cards and both dropdowns
+ *  (their routes say staticData.sitemap: false). Move them back into PAGES to relaunch them. */
+export const UNLINKED_PAGES = [
+  { to: "/wardrobe", label: "Wardrobe" },
+  { to: "/quiz", label: "Pub Quiz" },
 ] as const;
 
 /** Pages outside the top menu (footer and elsewhere). */
@@ -46,4 +52,6 @@ export const GUESTBOOK_PAGES: SitePage[] = ALL_PAGES.filter(
   (p) => !["/contact", "/privacy", "/terms", "/under-the-hood", "/guestbook"].includes(p.to),
 );
 
-export const guestbookPage = (to: string | null | undefined) => GUESTBOOK_PAGES.find((p) => p.to === to);
+// Older guestbook entries may name an unlinked page - still show its name, just not as a choice.
+export const guestbookPage = (to: string | null | undefined) =>
+  GUESTBOOK_PAGES.find((p) => p.to === to) ?? (UNLINKED_PAGES as readonly SitePage[]).find((p) => p.to === to);

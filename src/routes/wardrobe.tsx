@@ -13,7 +13,7 @@ import makos from "@/assets/cards/guestbook.jpg";
 // "Afterparty Style" (the site's navy, pink dry-brush, torn scraps and gold) and "Clueless Style" (a homage to the 90s
 // wardrobe computer: beige monitor, leopard panels, white screen, chunky bevelled buttons, pixel font).
 export const Route = createFileRoute("/wardrobe")({
-  staticData: { sitemap: true },
+  staticData: { sitemap: false }, // unlinked for now (Lisa, 22 Oct 2026) - see UNLINKED_PAGES in src/lib/pages.ts
   component: ClosetPage,
   head: () =>
     pageHead({
