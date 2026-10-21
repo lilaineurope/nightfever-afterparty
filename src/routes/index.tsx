@@ -99,7 +99,7 @@ function Index() {
 
   return (
     <main className="paper-home min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* Hero: stacked headline NIGHT / FEVER / AFTERPARTY, the last word in the cut-out type style - no picture beside it */}
+      {/* Hero: stacked headline NIGHT / FEVER / AFTERPARTY, the last word in a pink-on-black box with a collage shadow - no picture beside it */}
       <section className="mx-auto max-w-6xl px-6 pb-6 pt-10">
         <div className="@container min-w-0">
           <p className="font-type text-lg">tonight · and every night since 1977 ·</p>
@@ -108,16 +108,20 @@ function Index() {
             <br />
             Fever
             <br />
-            {/* "Afterparty" in the giant cut-out style (Lisa, 21 Oct): letters cut out of a halftone photocopy of the
-                jukebox collage, with a pink misprint shadow (a drop-shadow of the letters, so the word is in the text once) */}
-            <span
-              className="mt-[0.06em] block whitespace-nowrap bg-cover bg-center text-[13.56cqw] text-transparent [-webkit-background-clip:text] [background-clip:text]"
-              style={{ backgroundImage: `url(${afterpartyFill})`, filter: "drop-shadow(0.035em 0.035em 0 var(--color-pink))" }}
-            >
-              Afterparty
+            {/* "Afterparty" box (Lisa, 21 Oct): solid pink letters on a black box, tilted, whose offset shadow is cut
+                out of a halftone photocopy of the jukebox collage */}
+            <span className="relative mt-[0.12em] inline-block -rotate-[1.5deg] text-[11.6cqw] leading-[0.95]">
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 translate-x-[0.1em] translate-y-[0.11em] bg-cover bg-center"
+                style={{ backgroundImage: `url(${afterpartyFill})` }}
+              />
+              <span className="relative block whitespace-nowrap bg-cream px-[0.14em] pb-[0.02em] pt-[0.07em] text-pink">
+                Afterparty
+              </span>
             </span>
           </h1>
-          <p className="mt-6 max-w-[480px] text-base leading-relaxed">
+          <p className="mt-8 max-w-[480px] text-base leading-relaxed">
             <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
