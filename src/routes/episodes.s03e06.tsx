@@ -106,7 +106,7 @@ function EpisodePage() {
     }`;
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="episode-page min-h-screen bg-background text-foreground">
       <section className="relative px-6 pb-12 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl border-2 border-gold bg-card/92 px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10">
           <Link to="/episodes" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">

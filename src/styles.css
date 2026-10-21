@@ -243,3 +243,33 @@ body:has(main.paper-home)::after {
   mix-blend-mode: multiply;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 0'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='.3'/></svg>");
 }
+
+/* Episode pages (Lisa, 21 Oct): every text link is pink; on hover it gets a pink fill with white letters so it stays
+   readable. Pill links (rounded-full chips) keep their outline but fill pink with white letters on hover; buttons with
+   their own fill keep their own look. Unlayered and more specific than the a.text-gold rule above, so it wins here. */
+main.episode-page a:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]) {
+  color: var(--color-pink);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    background-color 0.15s,
+    color 0.15s,
+    box-shadow 0.15s;
+}
+main.episode-page a:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]):hover,
+main.episode-page a:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]):focus-visible {
+  background-color: var(--color-pink);
+  color: var(--color-pink-foreground);
+  box-shadow: 0 0 0 3px var(--color-pink);
+  text-decoration-color: transparent;
+}
+main.episode-page a.rounded-full:not([class*="bg-"]):hover,
+main.episode-page a.rounded-full:not([class*="bg-"]):focus-visible {
+  background-color: var(--color-pink);
+  border-color: var(--color-pink);
+  color: var(--color-pink-foreground);
+}
+main.episode-page a:not([class*="bg-"]):hover *,
+main.episode-page a:not([class*="bg-"]):focus-visible * {
+  color: inherit;
+}
