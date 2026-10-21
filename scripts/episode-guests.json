@@ -1,58 +1,72 @@
 [
  {
   "id": "s01e01",
-  "guest": "Dianne Brill"
+  "guest": "Dianne Brill",
+  "line": "The Queen of the Night · downtown club icon, crowned by Andy Warhol"
  },
  {
   "id": "s01e02",
-  "guest": "Michael Musto"
+  "guest": "Michael Musto",
+  "line": "Village Voice nightlife columnist · La Dolce Musto"
  },
  {
   "id": "s01e03",
-  "guest": "Lisa Edelstein"
+  "guest": "Lisa Edelstein",
+  "line": "\"Lisa E.\", 80s it girl · actor, playwright and James's partner-in-crime"
  },
  {
   "id": "s01e07",
-  "guest": "Rudolf Piper"
+  "guest": "Rudolf Piper",
+  "line": "Club owner and promoter · Danceteria, the Tunnel, Mars"
  },
  {
   "id": "s02e03",
-  "guest": "Susanne Bartsch"
+  "guest": "Susanne Bartsch",
+  "line": "Empress of the Night · Love Ball founder, boutique owner and party host"
  },
  {
   "id": "s02e08",
-  "guest": "Michelangelo Signorile"
+  "guest": "Michelangelo Signorile",
+  "line": "Journalist and co-founder of OutWeek magazine"
  },
  {
   "id": "s03e01",
-  "guest": "Patricia Field"
+  "guest": "Patricia Field",
+  "line": "Store owner, stylist and costume designer · Sex and the City"
  },
  {
   "id": "s03e06",
-  "guest": "Eric Goode"
+  "guest": "Eric Goode",
+  "line": "Area co-founder · club, restaurant and hotel owner · tortoise conservationist"
  },
  {
   "id": "s04e08",
-  "guest": "Richie Rich"
+  "guest": "Richie Rich",
+  "line": "Club kid, figure skater, singer and designer · Heatherette"
  },
  {
   "id": "s04e10",
-  "guest": "Ann Magnuson"
+  "guest": "Ann Magnuson",
+  "line": "Actress, performance artist and singer · Club 57 · Bongwater, Pulsallama"
  },
  {
   "id": "s05e04",
-  "guest": "Nick Egan"
+  "guest": "Nick Egan",
+  "line": "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS"
  },
  {
   "id": "s05e06",
-  "guest": "Christopher Makos"
+  "guest": "Christopher Makos",
+  "line": "Photographer and artist · Andy Warhol's best friend and travelling companion"
  },
  {
   "id": "s06e01",
-  "guest": "James St. James"
+  "guest": "James St. James",
+  "line": "Club Kid legend, author and host of Night Fever"
  },
  {
   "id": "s06e03",
-  "guest": "Chi Chi Valenti & Johnny Dynell"
+  "guest": "Chi Chi Valenti & Johnny Dynell",
+  "line": "Poet, journalist and door legend · DJ, producer and promoter · Jackie 60, Mother"
  }
 ]

@@ -4,7 +4,8 @@ Every guest gets a polaroid: the square photo from scripts/polaroid-box.py goes 
 and this framed print (photo + wide bottom strip with the guest's name and episode code) is the keepsake - saved in
 the episode folder and in the Polaroids folder, and used as the Tipeee thank-you gift.
 
-Usage: python3 scripts/polaroid-frame.py <photo.jpg> "<Guest name>" "<S01E01>" <out.jpg>
+Usage: python3 scripts/polaroid-frame.py <photo.jpg> "<Guest name>" "<S01E01>" <out.jpg> ["<description line>"]
+(the description line comes from scripts/episode-guests.json "line" - the guest line from the episode page header)
 """
 import io, os, sys
 import numpy as np
@@ -20,8 +21,17 @@ def font(name, size):
     return ImageFont.truetype(buf, size)
 
 
-def frame(photo, name, code):
-    P = 1024; side = 64; top = 64; bottom = 300           # classic proportions: 88 x 107 mm
+def wrap(d, text, f, width):
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if d.textlength(t, font=f) <= width or not cur: cur = t
+        else: lines.append(cur); cur = w
+    return lines + [cur] if cur else lines
+
+
+def frame(photo, name, code, line=""):
+    P = 1024; side = 64; top = 64; bottom = 340           # classic proportions: 88 x 107 mm
     W, H = P + 2 * side, P + top + bottom
     rng = np.random.default_rng(7)
     base = np.linspace([253, 251, 244], [239, 233, 216], H)[:, None, :].repeat(W, 1)
@@ -36,16 +46,21 @@ def frame(photo, name, code):
     d = ImageDraw.Draw(card)
     d.rectangle([side - 1, top - 1, side + P, top + P], outline=(0, 0, 0, 60))
     f1 = font("special-elite", 64 if len(name) < 22 else 50)
-    f2 = font("archivo-black", 30)
+    f2 = font("archivo-black", 26)
+    f3 = font("special-elite", 30)
+    y = top + P + 48
     nw = d.textlength(name, font=f1)
-    d.text(((W - nw) / 2, top + P + 70), name, font=f1, fill=(30, 28, 28))
+    d.text(((W - nw) / 2, y), name, font=f1, fill=(30, 28, 28)); y += 84
+    for l in wrap(d, line, f3, W - 2 * side - 40)[:2]:
+        lw = d.textlength(l, font=f3)
+        d.text(((W - lw) / 2, y), l, font=f3, fill=(70, 66, 62)); y += 40
     tag = f"{code} · THE AFTERPARTY"
     tw = d.textlength(tag, font=f2)
-    d.text(((W - tw) / 2, top + P + 175), tag, font=f2, fill=(236, 64, 150))
+    d.text(((W - tw) / 2, H - 70), tag, font=f2, fill=(236, 64, 150))
     return card
 
 
 if __name__ == "__main__":
     photo, name, code, out = sys.argv[1:5]
-    frame(photo, name, code).save(out, quality=90, optimize=True)
+    frame(photo, name, code, sys.argv[5] if len(sys.argv) > 5 else "").save(out, quality=90, optimize=True)
     print(out)
