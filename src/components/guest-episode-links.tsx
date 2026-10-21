@@ -22,7 +22,7 @@ export function GuestEpisodeLinks({ guest, className = "" }: { guest: Guest; cla
       {indexed && (
         <Link
           to={episodePath(indexed.id)}
-          className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+          className="inline-flex items-center gap-2 rounded-xl border-2 border-pink bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
         >
           Afterparty &rarr;
         </Link>
@@ -31,7 +31,7 @@ export function GuestEpisodeLinks({ guest, className = "" }: { guest: Guest; cla
         href={watch}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-xl border border-pink/50 px-5 py-2.5 text-sm font-semibold text-pink transition hover:bg-pink hover:text-pink-foreground"
+        className="inline-flex items-center gap-2 rounded-xl bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-5 py-2.5 text-sm font-semibold"
       >
         Watch the episode
       </a>
@@ -39,7 +39,7 @@ export function GuestEpisodeLinks({ guest, className = "" }: { guest: Guest; cla
         href={listen}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+        className="inline-flex items-center gap-2 rounded-xl bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-5 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
       >
         Listen to the episode
       </a>

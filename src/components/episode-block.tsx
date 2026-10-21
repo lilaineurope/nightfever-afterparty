@@ -96,7 +96,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                   <div className="mt-8 flex flex-wrap gap-3">
                     <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><Link
                       to={episodePath(ep.id)}
-                      className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                      className="inline-flex items-center gap-2 rounded-xl border-2 border-pink bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
                       Afterparty &rarr;
                     </Link></Button>
@@ -104,7 +104,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       href={ep.watchUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                      className="inline-flex items-center gap-2 rounded-xl bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-5 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
                       Watch on WOW
                     </a></Button>
@@ -112,7 +112,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       href={ep.listenUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                      className="inline-flex items-center gap-2 rounded-xl bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-5 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
                       Listen on Spotify
                     </a></Button>

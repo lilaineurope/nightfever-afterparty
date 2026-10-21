@@ -50,6 +50,7 @@ function TimelinePage() {
               key={d}
               type="button"
               onClick={() => setDecade(d)}
+              aria-pressed={decade === d}
               className={`rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
                 decade === d
                   ? "border-pink bg-pink/15 text-pink"

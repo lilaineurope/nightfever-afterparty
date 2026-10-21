@@ -120,11 +120,11 @@ function EpisodePage() {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-pink px-6 py-3 font-semibold text-pink-foreground hover:opacity-90">
+              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
               Watch the episode
             </a>
             <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full border border-gold px-6 py-3 font-semibold text-gold hover:bg-gold hover:text-gold-foreground">
+              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
               Listen to the episode
             </a>
           </div>

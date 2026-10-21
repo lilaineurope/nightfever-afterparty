@@ -273,3 +273,23 @@ main.episode-page a:not([class*="bg-"]):hover *,
 main.episode-page a:not([class*="bg-"]):focus-visible * {
   color: inherit;
 }
+
+/* Filter and sort chips on every page (Lisa, 21 Oct): the selected chip ("All" by default) is solid black with white
+   letters; hovering any other chip turns it all pink with white letters. Applies to every chip button that says
+   whether it is pressed (aria-pressed), so new pages get it automatically. */
+button[aria-pressed="true"].rounded-full,
+[role="radio"][aria-checked="true"] {
+  background-color: var(--color-cream) !important;
+  border-color: var(--color-cream) !important;
+  color: var(--color-background) !important;
+}
+button[aria-pressed="false"].rounded-full:not(:disabled):hover,
+[role="radio"][aria-checked="false"]:hover {
+  background-color: var(--color-pink) !important;
+  border-color: var(--color-pink) !important;
+  color: var(--color-pink-foreground) !important;
+}
+button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
+[role="radio"]:is([aria-checked="true"], :hover) * {
+  color: inherit !important;
+}

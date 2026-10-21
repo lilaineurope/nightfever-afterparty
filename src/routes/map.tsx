@@ -196,6 +196,7 @@ function MapPage() {
             <button
               key={c}
               onClick={() => setCat(c)}
+              aria-pressed={cat === c}
               className={`rounded-full border px-4 py-1.5 text-sm transition ${
                 cat === c ? "border-pink bg-pink/15 text-pink" : "border-border text-card-foreground/80 hover:border-gold/50"
               }`}
