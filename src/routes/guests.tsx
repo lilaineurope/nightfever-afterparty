@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/guests")({
   staticData: { sitemap: true },
   component: GuestsPage,
-  head: () => pageHead({ path: "/guests", title: "Night Fever guests – nightlife legends of the 70s, 80s & 90s", description: "Every Night Fever guest, one by one! The Timestamp and the Afterparty show how they are all connected, step by step.", image: "/og/guests.jpg" }),
+  head: () => pageHead({ path: "/guests", title: "Night Fever guests – nightlife legends of the 70s, 80s & 90s", description: "Every Night Fever guest, one by one! The Afterparties show how they are all connected, step by step.", image: "/og/guests.jpg" }),
 });
 
 function GuestsPage() {
@@ -19,7 +19,7 @@ function GuestsPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Meet the gang interviewed by the three World of Wonder founders!
-            Step by step, the Timestamp and the Afterparty show how they're all
+            Step by step, the Afterparties show how they're all
             connected. Pick a guest and dive in!
           </p>
         </div>

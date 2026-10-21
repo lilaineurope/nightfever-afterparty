@@ -4,7 +4,7 @@ import { episodePath, episodes } from "../data/episodes";
 
 /**
  * The guest's episode buttons, shared by the Guests list and the guest's own card:
- * Timestamp (as soon as their Afterparty index is published), Watch and Listen.
+ * Afterparty (as soon as their Afterparty index is published), Watch and Listen.
  */
 export function GuestEpisodeLinks({ guest, className = "" }: { guest: Guest; className?: string }) {
   const indexed = episodes.find((episode) => episode.guest === guest.name);
@@ -24,7 +24,7 @@ export function GuestEpisodeLinks({ guest, className = "" }: { guest: Guest; cla
           to={episodePath(indexed.id)}
           className="inline-flex items-center gap-2 rounded-xl bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-pink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
         >
-          Timestamp &rarr;
+          Afterparty &rarr;
         </Link>
       )}
       <a
