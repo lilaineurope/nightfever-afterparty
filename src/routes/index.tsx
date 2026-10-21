@@ -218,9 +218,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Tip the fan page on Tipeee */}
-      <TipBox />
-
       {/* Fan club / newsletter */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
@@ -318,6 +315,9 @@ function Index() {
           </p>
         </div>
       </section>
+
+      {/* Tip the fan page on Tipeee - last section before the footer; the footer "Tip the fan page" link jumps here */}
+      <TipBox />
 
       {/* Footer */}
       <SiteFooter />    </main>

@@ -7,7 +7,7 @@ export const TIPEEE_URL = "https://en.tipeee.com/afterparty";
  */
 export function TipBox({ className = "" }: { className?: string }) {
   return (
-    <section aria-labelledby="tip-heading" className={`px-6 py-16 ${className}`}>
+    <section id="tip" aria-labelledby="tip-heading" className={`scroll-mt-20 px-6 py-16 ${className}`}>
       <div className="relative mx-auto max-w-3xl border-[3px] border-gold bg-card px-6 py-8 shadow-[8px_10px_0_var(--color-gold)] sm:px-10">
         <span
           aria-hidden="true"
