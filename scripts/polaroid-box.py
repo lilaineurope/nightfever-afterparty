@@ -42,9 +42,9 @@ def screen(tone, cell, angle, ss=2):
     return np.asarray(Image.fromarray((m * 255).astype(np.uint8)).resize((W, H), Image.BOX), np.float32) / 255
 
 
-def halftone(img):
+def halftone(img, size=(B, B)):
     """Black halftone plus a pink spot-colour halftone from the picture's own pinks and reds."""
-    img = img.convert("RGB").resize((B, B), Image.LANCZOS)
+    img = img.convert("RGB").resize(size, Image.LANCZOS)
     s = np.asarray(img, np.float32)
     g = np.asarray(ImageOps.autocontrast(img.convert("L"), cutoff=2), np.float32) / 255
     R, G, Bl = s[..., 0], s[..., 1], s[..., 2]
@@ -57,14 +57,15 @@ def halftone(img):
     return out
 
 
-def scraps(out, labels, rng):
+def scraps(out, labels, rng, spots=None, scale=1.0):
     """Torn paper scraps with the episode's top references typed on them, in the upper corners."""
     im = Image.fromarray(out.clip(0, 255).astype(np.uint8)).convert("RGBA")
-    spots = [(0.04, 0.05), (0.60, 0.04), (0.03, 0.30), (0.66, 0.26)]
+    Hh, Ww = out.shape[:2]
+    spots = spots or [(0.04, 0.05), (0.60, 0.04), (0.03, 0.30), (0.66, 0.26)]
     styles = [("archivo-black", 30, (251, 250, 246), (28, 26, 26)), ("special-elite", 30, (28, 26, 26), (251, 250, 246)),
               ("archivo-black", 28, (236, 64, 150), (255, 255, 255)), ("special-elite", 30, (242, 220, 140), (28, 26, 26))]
     for (fx, fy), label, (fname, size, bg, fg) in zip(spots, labels, styles):
-        f = font(fname, size); text = label.upper() if fname == "archivo-black" else label
+        size = int(size * scale); f = font(fname, size); text = label.upper() if fname == "archivo-black" else label
         w = int(f.getlength(text)) + 28; h = size + 22
         tile = Image.new("RGBA", (w, h), bg + (255,)); d = ImageDraw.Draw(tile)
         d.text((14, 9), text, font=f, fill=fg + (255,))
@@ -74,7 +75,7 @@ def scraps(out, labels, rng):
         tile.putalpha(Image.fromarray(a))
         tile = tile.rotate(float(rng.uniform(-6, 6)), expand=True, resample=Image.BICUBIC)
         sh = Image.new("RGBA", tile.size, (0, 0, 0, 0)); sh.putalpha(tile.split()[3].point(lambda v: v * 90 // 255))
-        x = int(min(fx * B, B - tile.width - 8)); y = int(fy * B)
+        x = int(min(fx * Ww, Ww - tile.width - 8)); y = int(fy * Hh)
         im.alpha_composite(sh.filter(ImageFilter.GaussianBlur(3)), (x + 3, y + 5)); im.alpha_composite(tile, (x, y))
     return np.asarray(im.convert("RGB"), np.float32)
 
@@ -105,6 +106,30 @@ def accent_red(rgb):
     return rgb * keep + grey * (1 - keep)
 
 
+def place(rgb, a, W, H, head, cx, width=0.0):
+    """Scale the cut-out so the head starts at `head` of the height (or to a figure width), head centred on cx."""
+    ys, xs = np.where(a > 0); top = ys.min(); h0, w0 = a.shape
+    k = (H * (1 - head)) / (h0 - top) if not width else (W * width) / (xs.max() - xs.min())
+    nw, nh = int(w0 * k), int(h0 * k)
+    img = np.asarray(Image.fromarray(rgb.clip(0, 255).astype(np.uint8)).resize((nw, nh), Image.LANCZOS), np.float32)
+    ar = cv2.resize(a, (nw, nh), interpolation=cv2.INTER_NEAREST)
+    hd = ar[: int((top + (h0 - top) * 0.25) * k)]
+    hx = np.where(hd > 0)[1].mean() if (hd > 0).any() else nw / 2
+    ox = int(W * cx - hx); oy = int(H * head - top * k)
+    can = np.zeros((H, W, 3), np.float32); ca = np.zeros((H, W), np.uint8)
+    sx, sy, dx, dy = max(0, -ox), max(0, -oy), max(0, ox), max(0, oy)
+    cw, ch = min(nw - sx, W - dx), min(nh - sy, H - dy)
+    can[dy:dy + ch, dx:dx + cw] = img[sy:sy + ch, sx:sx + cw]; ca[dy:dy + ch, dx:dx + cw] = ar[sy:sy + ch, sx:sx + cw]
+    return can, ca
+
+
+def sticker(bg, can, ca, ring):
+    rr = cv2.dilate(ca, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * ring + 1, 2 * ring + 1)))
+    rs = cv2.GaussianBlur(rr.astype(np.float32), (3, 3), 0)[..., None]; fs = cv2.GaussianBlur(ca.astype(np.float32), (3, 3), 0)[..., None]
+    out = bg * (1 - rs) + PINK * rs
+    return out * (1 - fs) + can * fs
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode"); ap.add_argument("portrait"); ap.add_argument("collage"); ap.add_argument("out")
@@ -112,36 +137,45 @@ def main():
     ap.add_argument("--accent-red", action="store_true"); ap.add_argument("--composite", action="store_true")
     ap.add_argument("--head", type=float, default=0.09); ap.add_argument("--ring", type=int, default=24)
     ap.add_argument("--width", type=float, default=0.0, help="figure width as a share of the box (0 = fit by height)")
+    ap.add_argument("--labels", default="", help="scrap labels separated by | (default: top references from src/data/<id>.json)")
+    ap.add_argument("--header", default="", help="WxH for a wide episode header (portrait on the right) instead of the square box")
+    ap.add_argument("--cx", type=float, default=0.0, help="horizontal head centre (share of the width)")
     o = ap.parse_args(); rng = np.random.default_rng(o.seed)
 
+    W, H = (int(v) for v in o.header.split("x")) if o.header else (B, B)
     col = Image.open(o.collage).convert("RGB")
     if o.crop: col = col.crop(tuple(int(v) for v in o.crop.split(",")))
-    w, h = col.size; side = min(w, h); col = col.crop(((w - side) // 2, (h - side) // 2, (w + side) // 2, (h + side) // 2))
-    bg = halftone(col)
-    refs = json.load(open(os.path.join(ROOT, "src/data", f"{o.episode}.json")))
-    from_ep = [r["name"] for r in refs if r["category"] != "Mood" and r["name"] not in HOST_OR_CITY and r.get("status") != "Private person"]
-    guest = next(e for e in json.load(open(os.path.join(ROOT, "scripts", "episode-guests.json"))) if e["id"] == o.episode)["guest"]
-    labels = [n for n in from_ep if n != guest and not any(n == g for g in guest.split(" & "))][:4]
-    bg = scraps(bg, [l if len(l) <= 22 else l[:21] + "…" for l in labels], rng)
+    w, h = col.size; r = W / H
+    cw_, ch_ = (min(w, int(h * r)), min(h, int(w / r)))
+    col = col.crop(((w - cw_) // 2, (h - ch_) // 2, (w + cw_) // 2, (h + ch_) // 2))
+    bg = halftone(col, (W, H))
+
+    if o.labels:
+        labels = [l.strip() for l in o.labels.split("|") if l.strip()]
+    else:
+        refs = json.load(open(os.path.join(ROOT, "src/data", f"{o.episode}.json")))
+        from_ep = [r["name"] for r in refs if r["category"] != "Mood" and r["name"] not in HOST_OR_CITY and r.get("status") != "Private person"]
+        guest = next(e for e in json.load(open(os.path.join(ROOT, "scripts", "episode-guests.json"))) if e["id"] == o.episode)["guest"]
+        labels = [n for n in from_ep if n != guest and not any(n == g for g in guest.split(" & "))][:4]
+    import re
+    hosts = ("James St. James", "Fenton", "Randy")
+    clean = []
+    for l in labels if o.labels else [n for n in from_ep if n != guest and not any(n == g for g in guest.split(" & "))]:
+        l = re.split(r" \(|:|,| / | - ", l)[0].strip()
+        if l and len(l) <= 22 and not any(h in l for h in hosts) and l not in clean: clean.append(l)
+    labels = clean[:4]
 
     rgb, a = cutout(Image.open(o.portrait), o.composite)
     if o.accent_red: rgb = accent_red(rgb)
-    ys, xs = np.where(a > 0); top = ys.min(); H, W = a.shape
-    k = (B * (1 - o.head)) / (H - top) if not o.width else (B * o.width) / (xs.max() - xs.min())
-    nw, nh = int(W * k), int(H * k)
-    img = np.asarray(Image.fromarray(rgb.clip(0, 255).astype(np.uint8)).resize((nw, nh), Image.LANCZOS), np.float32)
-    ar = cv2.resize(a, (nw, nh), interpolation=cv2.INTER_NEAREST)
-    head = ar[: int(nh * 0.0) + int((top + (H - top) * 0.25) * k)]
-    hx = np.where(head > 0)[1].mean() if (head > 0).any() else nw / 2
-    ox = int(B * 0.5 - hx); oy = int(B * o.head - top * k)
-    can = np.zeros((B, B, 3), np.float32); ca = np.zeros((B, B), np.uint8)
-    sx, sy, dx, dy = max(0, -ox), max(0, -oy), max(0, ox), max(0, oy)
-    cw, ch = min(nw - sx, B - dx), min(nh - sy, B - dy)
-    can[dy:dy + ch, dx:dx + cw] = img[sy:sy + ch, sx:sx + cw]; ca[dy:dy + ch, dx:dx + cw] = ar[sy:sy + ch, sx:sx + cw]
-    ring = cv2.dilate(ca, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * o.ring + 1, 2 * o.ring + 1)))
-    rs = cv2.GaussianBlur(ring.astype(np.float32), (3, 3), 0)[..., None]; fs = cv2.GaussianBlur(ca.astype(np.float32), (3, 3), 0)[..., None]
-    out = bg * (1 - rs) + PINK * rs
-    out = out * (1 - fs) + can * fs
+    if o.header:
+        can, ca = place(rgb, a, W, H, o.head, o.cx or 0.8, o.width)
+        out = sticker(bg, can, ca, max(10, o.ring * H // B))
+        spots = [(0.03, 0.08), (0.36, 0.05), (0.04, 0.80), (0.42, 0.84)]
+        out = scraps(out, labels, rng, spots, scale=max(0.8, H / B * 1.15))
+    else:
+        can, ca = place(rgb, a, W, H, o.head, o.cx or 0.5, o.width)
+        out = sticker(bg, can, ca, o.ring)  # scraps go on top, pinned to the four corners like a real collage
+        out = scraps(out, labels, rng, [(0.025, 0.035), (0.99, 0.05), (0.02, 0.86), (0.99, 0.88)])
     Image.fromarray(out.clip(0, 255).astype(np.uint8)).save(o.out, quality=84, optimize=True)
     print(o.episode, "->", o.out, "scraps:", labels)
 
