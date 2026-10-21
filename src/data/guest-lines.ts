@@ -7,7 +7,7 @@ export const GUEST_LINES: Record<string, string> = {
   s01e03: "\"Lisa E.\", 80s it girl · actor, playwright and James's partner-in-crime",
   s01e07: "Club owner and promoter · Danceteria, the Tunnel, Mars",
   s02e03: "Empress of the Night · Love Ball founder, boutique owner and party host",
-  s02e08: "Journalist and co-founder of OutWeek magazine",
+  s02e08: "Journalist and co-founder of OutWeek magazine · ACT UP · Queer in America",
   s03e01: "Store owner, stylist and costume designer · Sex and the City",
   s03e06: "Area co-founder · club, restaurant and hotel owner · tortoise conservationist",
   s04e08: "Club kid, figure skater, singer and designer · Heatherette",

@@ -349,4 +349,15 @@ export const LOCATIONS: Located[] = [
   { name: "Catch a Rising Star", lat: 40.7713, lng: -73.9538, area: "Upper East Side" },
   { name: "MoMA PS1", lat: 40.7454, lng: -73.9472, area: "Long Island City" },
   { name: "Long Island City", lat: 40.7447, lng: -73.9485, area: "Queens" },
+  // S02E08 - Michelangelo Signorile
+  { name: "Staten Island", lat: 40.5795, lng: -74.1502, area: "Staten Island" },
+  { name: "South Beach boardwalk, Staten Island", lat: 40.5838, lng: -74.0663, area: "Staten Island" },
+  { name: "St. John Villa Academy", lat: 40.5987, lng: -74.0715, area: "Staten Island" },
+  { name: "New Dorp High School", lat: 40.5698, lng: -74.1129, area: "Staten Island" },
+  { name: "Syracuse University", lat: 43.0392, lng: -76.1351, area: "Syracuse, New York" },
+  { name: "72nd Street and York Avenue", lat: 40.7672, lng: -73.9520, area: "Upper East Side" },
+  { name: "Fifth Avenue", lat: 40.7743, lng: -73.9654, area: "Upper East Side" },
+  { name: "Central Park", lat: 40.7829, lng: -73.9654, area: "Manhattan" },
+  { name: "Saint Peter's Church (Citicorp)", lat: 40.7581, lng: -73.9701, area: "Midtown" },
+  { name: "The Anvil", lat: 40.7410, lng: -74.0080, area: "Meatpacking District" },
 ];

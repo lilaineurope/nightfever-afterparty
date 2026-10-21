@@ -147,6 +147,9 @@ const SPOTIFY: Record<string, string> = {
   "The Fuzztones": "spotify:album:1S6JeyisuGACAeehnV1vHQ",
   "Hairspray": "spotify:album:3XPjEfpawBvohxBMDXwXXW",
   "The Music Man": "spotify:album:7asTNsTacprhKJ4KeXtXUj",
+  "Run-DMC": "spotify:artist:3CQIn7N5CuRDP8wEI7FiDA",
+  "Public Enemy": "spotify:artist:6Mo9PoU6svvhgEum7wh2Nd",
+  "Beastie Boys": "spotify:artist:03r4iKL2g2442PT9n2UKsx",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

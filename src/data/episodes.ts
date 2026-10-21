@@ -11,6 +11,7 @@ import piperRefs from "./s01e07.json";
 import valentiDynellRefs from "./s06e03.json";
 import eganRefs from "./s05e04.json";
 import magnusonRefs from "./s04e10.json";
+import signorileRefs from "./s02e08.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -287,7 +288,25 @@ const s04e10: Episode = {
   top: [...magnusonRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s03e01, s03e06, s04e08, s04e10, s05e04, s05e06, s06e01, s06e03].sort((a, b) =>
+const s02e08: Episode = {
+  id: "s02e08",
+  season: 2,
+  episode: 8,
+  guest: "Michelangelo Signorile",
+  released: "2022-09-26",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-208",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO9383473018.mp3",
+  runtime: "1:02:35",
+  afterpartyPublished: "2026-10-22",
+  blurb:
+    "Michelangelo Signorile, from gossip-column planter to ACT UP and OutWeek! Mike Hall Associates and the columns of Liz Smith and Suzy, the Gaultier lookalike contest at the Palladium, being turned away from The World by James, Suzygate, a first protest at Cardinal Ratzinger's speech, the Malcolm Forbes cover and the birth of outing.",
+  references: signorileRefs.length,
+  mentions: signorileRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...signorileRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e04, s05e06, s06e01, s06e03].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -299,7 +318,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -325,6 +344,8 @@ export function episodePath(
       return "/episodes/s05e04";
     case "s04e10":
       return "/episodes/s04e10";
+    case "s02e08":
+      return "/episodes/s02e08";
     default:
       return "/episodes/s06e01";
   }
