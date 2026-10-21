@@ -51,7 +51,7 @@ export function useEpisodePlayer(episodeId: string) {
 
 // Timestamps (Lisa, 21 Oct): no yellow box - the time itself in marker yellow, with a thin ink drop shadow so it
 // stays readable on the paper background; normal weight, bold on hover (Lisa, 21 Oct).
-const TS = "font-mono font-normal text-[#e3b300]";
+const TS = "font-normal text-[#e3b300]"; // same typeface as the text around it (Lisa, 22 Oct)
 
 /** A clickable "▶ 00:12:34" that jumps the player to that moment. */
 export function Timestamp({ episodeId, time, className = "" }: { episodeId: string; time: string; className?: string }) {
