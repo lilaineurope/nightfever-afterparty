@@ -1,19 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { episodePath, type Episode } from "@/data/episodes";
 import { Button } from "@/components/ui/button";
-import diannePortrait from "@/assets/block-dianne-brill.jpg";
-import mustoPortrait from "@/assets/block-michael-musto.jpg";
-import jamesPortrait from "@/assets/block-james-st-james.jpg";
-import fieldPortrait from "@/assets/block-patricia-field.jpg";
-import bartschPortrait from "@/assets/block-susanne-bartsch.jpg";
-import edelsteinPortrait from "@/assets/block-lisa-edelstein.jpg";
-import richiePortrait from "@/assets/block-richie-rich.jpg";
-import makosPortrait from "@/assets/block-christopher-makos.jpg";
-import goodePortrait from "@/assets/block-eric-goode.jpg";
-import piperPortrait from "@/assets/block-rudolf-piper.jpg";
-import valentiDynellPortrait from "@/assets/block-chi-chi-valenti-johnny-dynell.jpg";
-import eganPortrait from "@/assets/block-nick-egan.jpg";
-import magnusonPortrait from "@/assets/block-ann-magnuson.jpg";
+import { guestLine } from "@/data/guest-lines";
+import diannePortrait from "@/assets/polaroid-dianne-brill.jpg";
+import mustoPortrait from "@/assets/polaroid-michael-musto.jpg";
+import jamesPortrait from "@/assets/polaroid-james-st-james.jpg";
+import fieldPortrait from "@/assets/polaroid-patricia-field.jpg";
+import bartschPortrait from "@/assets/polaroid-susanne-bartsch.jpg";
+import edelsteinPortrait from "@/assets/polaroid-lisa-edelstein.jpg";
+import richiePortrait from "@/assets/polaroid-richie-rich.jpg";
+import makosPortrait from "@/assets/polaroid-christopher-makos.jpg";
+import goodePortrait from "@/assets/polaroid-eric-goode.jpg";
+import piperPortrait from "@/assets/polaroid-rudolf-piper.jpg";
+import valentiDynellPortrait from "@/assets/polaroid-chi-chi-valenti-johnny-dynell.jpg";
+import eganPortrait from "@/assets/polaroid-nick-egan.jpg";
+import magnusonPortrait from "@/assets/polaroid-ann-magnuson.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -31,10 +32,6 @@ export const episodePortraits: Record<string, string> = {
   s04e10: magnusonPortrait,
 };
 
-// Boxes whose portrait sits on the left keep that side in view when the box crops the picture.
-const portraitLeft = new Set<string>([]);
-// Boxes shown whole (two guests, or a reclining pose) - the others zoom in so the portrait is bigger and more central.
-const portraitWhole = new Set<string>(["s06e03", "s01e01"]);
 
 
 function formatDate(iso: string) {
@@ -49,26 +46,12 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
   headingLevel?: 2 | 3;
 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
-  const portrait = episodePortraits[ep.id];
   return (
               <article
                 className="grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:grid-cols-[1fr_1.3fr]"
               >
-                <div className="relative min-h-[440px] overflow-hidden border-b border-border p-8 md:border-b-0 md:border-r">
-                  {portrait && <img src={portrait} alt="" aria-hidden="true" width={1024} height={1024} loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover ${portraitLeft.has(ep.id) ? "object-left" : portraitWhole.has(ep.id) ? "object-right" : "object-right [transform-origin:64%_40%] [transform:translateX(-8%)_scale(1.3)]"}`} />}
-                                    <div className="relative z-10 inline-block max-w-full -rotate-1 border-2 border-gold bg-card/95 px-4 py-3 shadow-[4px_5px_0_var(--color-gold)]">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                    Season {ep.season} &middot; Episode {ep.episode}
-                  </p>
-                  <Heading className="mt-2 text-3xl leading-[1] tracking-tight text-cream sm:text-4xl">
-                    {ep.guest}
-                  </Heading>
-                  <p className="mt-3 text-sm text-cream/90">
-                    {ep.runtime} &middot; <span className="bg-pink px-1 text-pink-foreground">{ep.references}</span> references
-                    &middot; <span className="bg-highlight px-1 text-cream">{ep.mentions}</span> mentions
-                  </p>
-                  </div>
+                <div className="flex items-center justify-center border-b border-border p-6 sm:p-10 md:border-b-0 md:border-r">
+                  <Polaroid ep={ep} Heading={Heading} tilt={ep.episode % 2 ? "-rotate-[1.5deg]" : "rotate-[1.5deg]"} className="w-full max-w-[400px]" />
                 </div>
                 <div className="p-8">
                   {showDates && (
@@ -124,35 +107,42 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
 
 const CARD_TILT = ["-rotate-1", "rotate-1", "-rotate-[0.5deg]"];
 
-/** Home page "Latest Afterparties": a taped-up photocopy card - square portrait zoomed on the guest, episode code,
- *  name in flyer capitals, references (pink) and mentions (marker yellow). The whole card opens the episode. */
-export function EpisodeCard({ ep, index = 0 }: { ep: Episode; index?: number }) {
-  const portrait = episodePortraits[ep.id];
+/** The polaroid (Lisa, 22 Oct 2026): the guest's polaroid photo on an instant-print card, with the season line, name,
+ *  the guest's description line, and references (pink) and mentions (marker yellow) written in the white strip. */
+function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
+  ep: Episode;
+  Heading?: "h2" | "h3" | "span";
+  tilt?: string;
+  className?: string;
+}) {
+  const photo = episodePortraits[ep.id];
+  const line = guestLine(ep.id);
   return (
-    <Link
-      to={episodePath(ep.id)}
-      className={`block border-2 border-gold bg-card p-2.5 text-cream transition hover:-translate-y-1 hover:shadow-[6px_8px_0_var(--color-gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${CARD_TILT[index % CARD_TILT.length]}`}
-    >
-      <span className="block aspect-square overflow-hidden">
-        {portrait && (
-          <img
-            src={portrait}
-            alt={ep.guest}
-            width={1024}
-            height={1024}
-            loading="lazy"
-            className="h-full w-full object-cover [transform-origin:66%_78%] [transform:scale(1.45)]"
-          />
-        )}
+    <div className={`polaroid ${tilt} ${className}`}>
+      <span className="polaroid-photo">
+        {photo && <img src={photo} alt={ep.guest} width={1024} height={1024} loading="lazy" />}
       </span>
-      <span className="mt-2.5 block text-xs uppercase">
+      <span className="mt-3.5 block text-xs uppercase">
         S{ep.season} · E{ep.episode}
       </span>
-      <span className="mt-0.5 block font-[family-name:var(--font-flyer)] text-[26px] uppercase leading-tight">{ep.guest}</span>
-      <span className="mt-1 block text-[13px]">
+      <Heading className="mt-0.5 block font-[family-name:var(--font-flyer)] text-[26px] uppercase leading-tight">{ep.guest}</Heading>
+      {line && <span className="mt-1.5 block text-[13.5px] leading-snug text-cream/75">{line}</span>}
+      <span className="mt-2 block text-[13px]">
         <span className="bg-pink px-1 text-pink-foreground">{ep.references}</span> references ·{" "}
         <span className="bg-highlight px-1 text-cream">{ep.mentions}</span> mentions
       </span>
+    </div>
+  );
+}
+
+/** Home page "Latest Afterparties": the episode's polaroid; the whole card opens the episode. */
+export function EpisodeCard({ ep, index = 0 }: { ep: Episode; index?: number }) {
+  return (
+    <Link
+      to={episodePath(ep.id)}
+      className={`polaroid-link block transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${CARD_TILT[index % CARD_TILT.length]}`}
+    >
+      <Polaroid ep={ep} />
     </Link>
   );
 }
