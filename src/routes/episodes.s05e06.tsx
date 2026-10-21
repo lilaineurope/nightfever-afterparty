@@ -15,6 +15,7 @@ import { entityFor, totalMentions } from "../data/entities";
 import { episodeById } from "../data/episodes";
 import { MoodSpectrum } from "../components/mood-spectrum";
 import { SiteFooter } from "@/components/site-footer";
+import { isOtherShowGuest } from "@/lib/show-guests";
 
 type Ref = {
   rank: number;
@@ -57,6 +58,9 @@ function crossLinks(name: string) {
 
 type Sort = "mentions" | "all" | "time";
 
+// Filter chip: only the other Night Fever guests this episode mentions
+const NIGHT_FEVER = "Night Fever";
+
 function EpisodePage() {
   useEpisodePlayer("s05e06");
   const [sort, setSort] = useState<Sort>("mentions");
@@ -77,7 +81,13 @@ function EpisodePage() {
 
   const cats = ["All", ...Array.from(new Set(refs.map((r) => r.category)))];
   const list = enriched
-    .filter((r) => cat === "Fashion" ? r.fashion !== undefined : cat === "All" || r.category === cat)
+    .filter((r) =>
+      cat === "Fashion"
+        ? r.fashion !== undefined
+        : cat === NIGHT_FEVER
+          ? isOtherShowGuest(r.name, thisEpisode.guest)
+          : cat === "All" || r.category === cat,
+    )
     .sort((a, b) => {
       if (a.time === "On camera" || b.time === "On camera") {
         if (a.time === b.time) return a.rank - b.rank;
@@ -99,8 +109,8 @@ function EpisodePage() {
     <main className="min-h-screen bg-background text-foreground">
       <section className="relative px-6 pb-12 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl border-2 border-gold bg-card/92 px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10">
-          <Link to="/guests" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
-            &larr; Meet all the guests
+          <Link to="/episodes" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
+            &larr; More Afterparties
           </Link>
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season 5 · Episode 6</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">Christopher Makos</h1>
@@ -141,7 +151,7 @@ function EpisodePage() {
               <Button variant="outline" aria-pressed={sort === "time"} className={btn(sort === "time")} onClick={() => setSort("time")}>Timestamp</Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {[...cats, "Fashion"].map((c) => (
+              {[...cats, "Fashion", ...(refs.some((r) => isOtherShowGuest(r.name, thisEpisode.guest)) ? [NIGHT_FEVER] : [])].map((c) => (
                 <Button variant="outline" aria-pressed={cat === c} key={c} className={btn(cat === c)} onClick={() => setCat(c)}>{c}</Button>
               ))}
             </div>
