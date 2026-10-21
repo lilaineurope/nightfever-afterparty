@@ -64,6 +64,7 @@ const GROUPS: Group[] = [
       { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and new-guestbook-note alerts to my inbox." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
+      { name: "Tipeee", href: "https://en.tipeee.com/afterparty", what: "Takes tips for the fan page - the Tip buttons are plain links to my Tipeee page, which handles the payment." },
     ],
   },
 ];
@@ -75,7 +76,7 @@ export const Route = createFileRoute("/under-the-hood")({
     pageHead({
       path: "/under-the-hood",
       title: "Under the hood | Night Fever fan page",
-      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, Google Maps, GoatCounter and more.",
+      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, Google Maps, GoatCounter, Tipeee and more.",
       image: "/og/home.jpg",
     }),
 });

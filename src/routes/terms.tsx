@@ -17,7 +17,7 @@ export const Route = createFileRoute("/terms")({
 
 const quickFacts = [
   "Unofficial fan page. Not run by, endorsed by or connected to World of Wonder.",
-  "Non-commercial. Nothing is sold here and there are no ads.",
+  "Non-commercial. Nothing is sold here and there are no ads. Tips on Tipeee are voluntary, buy nothing and help cover the running costs.",
   "No audio is hosted — the player streams the show's own feed and every listen button goes to the official release.",
   "Guestbook notes are read before they go up and come down whenever their writer asks.",
   "Anyone named on the site can ask for a correction or a removal.",
@@ -55,7 +55,7 @@ function TermsPage() {
             Terms &amp; Conditions
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 11 October 2026. The house rules for my site - written
+            Last updated: 21 October 2026. The house rules for my site - written
             for people, not for lawyers!
           </p>
         </div>

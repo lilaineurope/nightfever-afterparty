@@ -56,7 +56,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 16 October 2026. Here's what happens to your data when
+            Last updated: 21 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -243,6 +243,14 @@ function PrivacyPage() {
               link, you leave this site and that service&rsquo;s own privacy
               policy applies from that moment. This page has no influence over
               what they do with your data.
+            </p>
+            <p>
+              Tips work the same way: the &ldquo;Tip on Tipeee&rdquo; buttons are
+              plain links to my page on Tipeee. Nothing from Tipeee loads on this
+              site, and Tipeee alone handles the payment and your payment details
+              under its own privacy policy - I never see your card or bank
+              details. What Tipeee shares with me, such as the name you tip
+              under, is set out in its own policy.
             </p>
           </Section>
 

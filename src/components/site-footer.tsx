@@ -2,11 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { SHOW_URL, WOW_URL } from "@/data/guests";
 import { EntityText } from "@/components/entity-text";
 import { LegalNote } from "@/components/legal-links";
+import { TIPEEE_URL } from "@/components/tip-box";
 
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
 
-// One shared footer for every page: the show and World of Wonder links, Meet the guests, About, Contact, Under the hood and Guestbook.
+// One shared footer for every page: the show and World of Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook and the Tipeee tip link.
 // The other page links live only in the top menu.
 export function SiteFooter() {
   return (
@@ -47,6 +48,10 @@ export function SiteFooter() {
               <Link to="/under-the-hood" className={LINK}>Under the hood</Link>
               {" · "}
               <Link to="/guestbook" className={LINK}>Guestbook</Link>
+              {" · "}
+              <a href={TIPEEE_URL} target="_blank" rel="noopener noreferrer" className={LINK}>
+                Tip the fan page <span aria-hidden="true">&#8599;</span>
+              </a>
             </p>
           </nav>
         </div>

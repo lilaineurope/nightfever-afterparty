@@ -5,6 +5,7 @@ import { SHOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import { TipBox } from "@/components/tip-box";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
@@ -137,6 +138,7 @@ function AboutPage() {
         </div>
       </section>
 
+      <TipBox />
       <SiteFooter />
     </main>
   );
