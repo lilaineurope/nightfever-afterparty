@@ -231,3 +231,15 @@ a.text-gold:not([class*="border"]):not([class*="bg-"]) {
 a.text-gold:not([class*="border"]):not([class*="bg-"]):hover {
   color: var(--color-gold);
 }
+
+/* Home page "used newspaper" paper (Lisa, 21 Oct): a fine photocopy grain multiplied over the whole page while the home
+   page is shown, matching the Tipeee cut-out banner. Scoped with :has() so it renders server-side with no flash. */
+body:has(main.paper-home)::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 0'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='.3'/></svg>");
+}

@@ -12,6 +12,7 @@ import { WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import afterpartyFill from "@/assets/home-afterparty-fill.webp";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -96,8 +97,8 @@ function Index() {
   };
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* Hero: stacked headline with "Afterparty" on a pink strip - no picture (Lisa, 21 Oct: no header pictures while the design is reworked) */}
+    <main className="paper-home min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Hero: stacked headline NIGHT / FEVER / AFTERPARTY, the last word in the cut-out type style - no picture beside it */}
       <section className="mx-auto max-w-6xl px-6 pb-6 pt-10">
         <div className="@container min-w-0">
           <p className="font-type text-lg">tonight · and every night since 1977 ·</p>
@@ -106,7 +107,14 @@ function Index() {
             <br />
             Fever
             <br />
-            <span className="inline-block -rotate-[1.5deg] bg-pink px-3 text-pink-foreground">Afterparty</span>
+            {/* "Afterparty" in the giant cut-out style (Lisa, 21 Oct): letters cut out of a halftone photocopy of the
+                jukebox collage, with a pink misprint shadow (a drop-shadow of the letters, so the word is in the text once) */}
+            <span
+              className="mt-[0.06em] block whitespace-nowrap bg-cover bg-center text-[13.56cqw] text-transparent [-webkit-background-clip:text] [background-clip:text]"
+              style={{ backgroundImage: `url(${afterpartyFill})`, filter: "drop-shadow(0.035em 0.035em 0 var(--color-pink))" }}
+            >
+              Afterparty
+            </span>
           </h1>
           <p className="mt-6 max-w-[480px] text-base leading-relaxed">
             <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />

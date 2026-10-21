@@ -92,7 +92,7 @@ function EpisodePage() {
 
   const btn = (on: boolean) =>
     `rounded-full border px-4 py-1.5 text-sm transition ${
-      on ? "border-gold bg-gold text-gold-foreground" : "border-border text-muted-foreground hover:border-pink hover:text-pink"
+      on ? "border-gold bg-gold text-gold-foreground" : "border-border text-muted-foreground hover:border-pink hover:bg-pink hover:text-pink-foreground"
     }`;
 
   return (
