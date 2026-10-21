@@ -5,6 +5,7 @@ import { SiteSearch } from "@/components/site-search";
 // The page list lives in src/lib/pages.ts (shared with search, contact form and guestbook).
 export { PAGES } from "@/lib/pages";
 import { PAGES } from "@/lib/pages";
+import logoShadow from "@/assets/home-afterparty-fill.webp";
 
 export function SiteMenu() {
   const [open, setOpen] = useState(false);
@@ -13,8 +14,14 @@ export function SiteMenu() {
   return (
     <header className="sticky top-0 z-50 border-b-[3px] border-gold bg-background/95 backdrop-blur">
       <nav aria-label="Site" className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-2 xl:px-4">
-        <Link to="/" className="inline-block -rotate-2 whitespace-nowrap bg-gold px-2 py-1 font-[family-name:var(--font-flyer)] text-sm uppercase text-gold-foreground transition hover:bg-pink">
-          Night Fever fan page
+        {/* Logo: same treatment as the home AFTERPARTY box - black label, tilted, with a halftone collage offset shadow */}
+        <Link to="/" className="group relative inline-block -rotate-2 whitespace-nowrap font-[family-name:var(--font-flyer)] text-sm uppercase">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 translate-x-[4px] translate-y-[4px] bg-cover bg-center"
+            style={{ backgroundImage: `url(${logoShadow})` }}
+          />
+          <span className="relative block bg-gold px-2 py-1 text-gold-foreground transition group-hover:bg-pink">Night Fever fan page</span>
         </Link>
         <div className="flex items-center gap-2 lg:hidden">
           <SiteSearch />
