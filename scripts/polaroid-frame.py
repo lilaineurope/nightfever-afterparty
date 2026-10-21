@@ -2,7 +2,7 @@
 
 Every guest gets a polaroid: the square photo from scripts/polaroid-box.py goes on the site (home + Afterparty boxes),
 and this framed print (photo + wide bottom strip with the guest's name and episode code) is the keepsake - saved in
-the episode folder and in the Polaroids folder, and used as the Tipeee thank-you gift.
+the episode folder and in the Polaroids folder.
 
 Usage: python3 scripts/polaroid-frame.py <photo.jpg> "<Guest name>" "<S01E01>" <out.jpg> ["<description line>"]
 (the description line comes from scripts/episode-guests.json "line" - the guest line from the episode page header)
