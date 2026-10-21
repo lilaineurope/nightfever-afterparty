@@ -106,10 +106,11 @@ def accent_red(rgb):
     return rgb * keep + grey * (1 - keep)
 
 
-def place(rgb, a, W, H, head, cx, width=0.0):
+def place(rgb, a, W, H, head, cx, width=0.0, zoom=1.0):
     """Scale the cut-out so the head starts at `head` of the height (or to a figure width), head centred on cx."""
     ys, xs = np.where(a > 0); top = ys.min(); h0, w0 = a.shape
     k = (H * (1 - head)) / (h0 - top) if not width else (W * width) / (xs.max() - xs.min())
+    k *= zoom  # >1 = bigger figure, the body runs off the bottom edge
     nw, nh = int(w0 * k), int(h0 * k)
     img = np.asarray(Image.fromarray(rgb.clip(0, 255).astype(np.uint8)).resize((nw, nh), Image.LANCZOS), np.float32)
     ar = cv2.resize(a, (nw, nh), interpolation=cv2.INTER_NEAREST)
@@ -135,7 +136,7 @@ def main():
     ap.add_argument("episode"); ap.add_argument("portrait"); ap.add_argument("collage"); ap.add_argument("out")
     ap.add_argument("--crop", default=""); ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--accent-red", action="store_true"); ap.add_argument("--composite", action="store_true")
-    ap.add_argument("--head", type=float, default=0.09); ap.add_argument("--ring", type=int, default=24)
+    ap.add_argument("--head", type=float, default=0.06); ap.add_argument("--zoom", type=float, default=1.25, help="figure size (1 = head to waist fits the box)"); ap.add_argument("--ring", type=int, default=24)
     ap.add_argument("--width", type=float, default=0.0, help="figure width as a share of the box (0 = fit by height)")
     ap.add_argument("--labels", default="", help="scrap labels separated by | (default: top references from src/data/<id>.json)")
     ap.add_argument("--header", default="", help="WxH for a wide episode header (portrait on the right) instead of the square box")
@@ -173,7 +174,7 @@ def main():
         spots = [(0.03, 0.08), (0.36, 0.05), (0.04, 0.80), (0.42, 0.84)]
         out = scraps(out, labels, rng, spots, scale=max(0.8, H / B * 1.15))
     else:
-        can, ca = place(rgb, a, W, H, o.head, o.cx or 0.5, o.width)
+        can, ca = place(rgb, a, W, H, o.head, o.cx or 0.5, o.width, o.zoom)
         out = sticker(bg, can, ca, o.ring)  # scraps go on top, pinned to the four corners like a real collage
         out = scraps(out, labels, rng, [(0.025, 0.035), (0.99, 0.05), (0.02, 0.86), (0.99, 0.88)])
     Image.fromarray(out.clip(0, 255).astype(np.uint8)).save(o.out, quality=84, optimize=True)
