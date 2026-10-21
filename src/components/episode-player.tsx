@@ -49,17 +49,21 @@ export function useEpisodePlayer(episodeId: string) {
   }, [episodeId]);
 }
 
+// Timestamps (Lisa, 21 Oct): no yellow box - the time itself in bold marker yellow, with a thin ink drop shadow so it
+// stays readable on the paper background; pink on hover.
+const TS = "font-mono font-bold text-[#e3b300] [text-shadow:1px_1px_0_var(--color-cream)]";
+
 /** A clickable "▶ 00:12:34" that jumps the player to that moment. */
 export function Timestamp({ episodeId, time, className = "" }: { episodeId: string; time: string; className?: string }) {
   if (!time || time === "On camera") return <span className={className}>{time}</span>;
   const ep = episodes.find((e) => e.id === episodeId);
-  if (!ep?.audioUrl) return <span className={`bg-highlight px-1 font-mono text-cream ${className}`}>{time}</span>;
+  if (!ep?.audioUrl) return <span className={`${TS} ${className}`}>{time}</span>;
   return (
     <button
       type="button"
       onClick={() => playEpisodeAt(episodeId, toSeconds(time))}
       title={`Play S${ep.season}E${ep.episode} from ${time}`}
-      className={`inline-flex items-center gap-1 bg-highlight px-1 font-mono text-cream transition hover:bg-pink hover:text-pink-foreground ${className}`}
+      className={`inline-flex items-center gap-1 self-start ${TS} transition hover:text-pink ${className}`}
     >
       <span aria-hidden="true" className="text-[0.75em]">&#9654;</span>
       <span className="sr-only">Play from </span>
