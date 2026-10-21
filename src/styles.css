@@ -232,9 +232,9 @@ a.text-gold:not([class*="border"]):not([class*="bg-"]):hover {
   color: var(--color-gold);
 }
 
-/* Home page "used newspaper" paper (Lisa, 21 Oct): a fine photocopy grain multiplied over the whole page while the home
-   page is shown, matching the Tipeee cut-out banner. Scoped with :has() so it renders server-side with no flash. */
-body:has(main.paper-home)::after {
+/* "Used newspaper" paper on EVERY page (Lisa, 21 Oct - first on the home page, then site-wide): a fine photocopy grain
+   multiplied over the whole viewport, matching the Tipeee cut-out banner. Pure CSS, so it renders server-side. */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
