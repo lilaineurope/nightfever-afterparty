@@ -49,9 +49,9 @@ export function useEpisodePlayer(episodeId: string) {
   }, [episodeId]);
 }
 
-// Timestamps (Lisa, 21 Oct): no yellow box - the time itself in bold marker yellow, with a thin ink drop shadow so it
-// stays readable on the paper background; pink on hover.
-const TS = "font-mono font-bold text-[#e3b300] [text-shadow:1px_1px_0_var(--color-cream)]";
+// Timestamps (Lisa, 21 Oct): no yellow box - the time itself in marker yellow, with a thin ink drop shadow so it
+// stays readable on the paper background; normal weight, bold on hover (Lisa, 21 Oct).
+const TS = "font-mono font-normal text-[#e3b300] [text-shadow:1px_1px_0_var(--color-cream)]";
 
 /** A clickable "▶ 00:12:34" that jumps the player to that moment. */
 export function Timestamp({ episodeId, time, className = "" }: { episodeId: string; time: string; className?: string }) {
@@ -63,7 +63,7 @@ export function Timestamp({ episodeId, time, className = "" }: { episodeId: stri
       type="button"
       onClick={() => playEpisodeAt(episodeId, toSeconds(time))}
       title={`Play S${ep.season}E${ep.episode} from ${time}`}
-      className={`inline-flex items-center gap-1 self-start ${TS} transition hover:text-pink ${className}`}
+      className={`inline-flex items-center gap-1 self-start ${TS} transition hover:font-bold focus-visible:font-bold ${className}`}
     >
       <span aria-hidden="true" className="text-[0.75em]">&#9654;</span>
       <span className="sr-only">Play from </span>
