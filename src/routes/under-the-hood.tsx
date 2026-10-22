@@ -64,7 +64,7 @@ const GROUPS: Group[] = [
       { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and new-guestbook-note alerts to my inbox." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
-      { name: "Ko-fi", href: "https://ko-fi.com/lilaineurope", what: "Takes tips for the fan page - the \"Buy the Afterparty a drink\" box in the footer opens Ko-fi's own tip panel (only when you press the button), and Ko-fi and PayPal handle the payment." },
+      { name: "Ko-fi", href: "https://ko-fi.com/lilaineurope", what: "Takes tips for the fan page - the \"Buy the Afterparty a drink\" box in the footer opens Ko-fi's own tip panel (only when you press Tip), and Ko-fi and PayPal handle the payment." },
     ],
   },
 ];

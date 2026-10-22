@@ -230,8 +230,8 @@ function PrivacyPage() {
               two exceptions you switch on yourself: the Jukebox page, and the
               song, band and club cards in Everything A&ndash;Z, load
               Spotify&rsquo;s own player only after you press a Play button; and
-              the &ldquo;Buy a drink&rdquo; button in the footer loads Ko-fi&rsquo;s
-              own tip panel only after you press it. From that moment Spotify&rsquo;s
+              the tip box in the footer is drawn by this site and loads Ko-fi&rsquo;s
+              own tip panel only after you press its &ldquo;Tip&rdquo; button. From that moment Spotify&rsquo;s
               or Ko-fi&rsquo;s privacy policy applies to that panel and they may set
               their own cookies. Everywhere else their names appear only as
               ordinary links.
@@ -248,7 +248,7 @@ function PrivacyPage() {
             </p>
             <p>
               Tips go through Ko-fi. Nothing from Ko-fi loads until you press
-              &ldquo;Buy a drink&rdquo; in the footer (or follow the link to my Ko-fi
+              &ldquo;Tip&rdquo; in the footer (or follow the link to my Ko-fi
               page); then Ko-fi&rsquo;s own tip panel opens, and Ko-fi and its payment
               partners (PayPal) handle the payment and your payment details under
               their own privacy policies - I never see your card or bank details.
