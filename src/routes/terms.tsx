@@ -17,7 +17,7 @@ export const Route = createFileRoute("/terms")({
 
 const quickFacts = [
   "Unofficial fan page. Not run by, endorsed by or connected to World of Wonder.",
-  "Non-commercial. Nothing is sold here and there are no ads. Tips on Tipeee are voluntary, buy nothing and help cover the running costs.",
+  "Non-commercial. Nothing is sold here and there are no ads. Tips on Ko-fi are voluntary, buy nothing and help cover the running costs.",
   "No audio is hosted — the player streams the show's own feed and every listen button goes to the official release.",
   "Guestbook notes are read before they go up and come down whenever their writer asks.",
   "Anyone named on the site can ask for a correction or a removal.",

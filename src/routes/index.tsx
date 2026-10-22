@@ -13,7 +13,6 @@ import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 import afterpartyFill from "@/assets/home-afterparty-fill.webp";
-import { TipBox } from "@/components/tip-box";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -319,9 +318,6 @@ function Index() {
           </p>
         </div>
       </section>
-
-      {/* Tip the fan page on Tipeee - last section before the footer; the footer "Tip the fan page" link jumps here */}
-      <TipBox />
 
       {/* Footer */}
       <SiteFooter />    </main>
