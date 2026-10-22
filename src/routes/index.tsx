@@ -83,7 +83,7 @@ function Index() {
             {/* Lisa's intro (23 Oct 2026) */}
             <EntityText text="On the Night Fever podcast, James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife." />{" "}
             This site is <Link to="/about" className="text-gold">my</Link>{" "}
-            <Link to="/episodes" className="text-gold">Afterparty</Link>, where every episode gets a{" "}
+            <Link to="/episodes" className="text-gold">AFTERPARTY</Link>, where every episode gets a{" "}
             <Link to="/explore" className="text-gold">timestamp index</Link> - every{" "}
             <Link to="/network" className="text-gold">name</Link>,{" "}
             <Link to="/map" className="text-gold">place</Link>,{" "}
