@@ -10,7 +10,7 @@ const TEXT_LINK = "text-gold underline decoration-gold/50 underline-offset-2 tra
 
 // One shared footer for every page (Lisa, 22 Oct 2026): all the footer text on the left - the show and World of
 // Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook, "Tip the fan page" (jumps to the box),
-// the fan-page disclaimer and the legal note - and the Ko-fi tip box on the right (below the text on phones); no extra text next to the box.
+// the fan-page disclaimer and the legal note - and the Tipeee tip box on the right (below the text on phones); no extra text next to the box.
 // The other page links live only in the top menu.
 export function SiteFooter() {
   return (

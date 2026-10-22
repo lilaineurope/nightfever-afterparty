@@ -227,14 +227,12 @@ function PrivacyPage() {
             <p>
               Nothing is embedded from Spotify, YouTube, Instagram or any other
               service, so those companies cannot see that you were here - with
-              two exceptions you switch on yourself: the Jukebox page, and the
+              one exception you switch on yourself: the Jukebox page, and the
               song, band and club cards in Everything A&ndash;Z, load
-              Spotify&rsquo;s own player only after you press a Play button; and
-              the tip box in the footer is drawn by this site and loads Ko-fi&rsquo;s
-              own tip panel only after you press its &ldquo;Tip&rdquo; button. From that moment Spotify&rsquo;s
-              or Ko-fi&rsquo;s privacy policy applies to that panel and they may set
-              their own cookies. Everywhere else their names appear only as
-              ordinary links.
+              Spotify&rsquo;s own player only after you press a Play button. From
+              that moment Spotify&rsquo;s privacy policy applies to the player and
+              Spotify may set its own cookies. Everywhere else their names appear
+              only as ordinary links.
             </p>
           </Section>
 
@@ -247,13 +245,12 @@ function PrivacyPage() {
               what they do with your data.
             </p>
             <p>
-              Tips go through Ko-fi. Nothing from Ko-fi loads until you press
-              &ldquo;Tip&rdquo; in the footer (or follow the link to my Ko-fi
-              page); then Ko-fi&rsquo;s own tip panel opens, and Ko-fi and its payment
-              partners (PayPal) handle the payment and your payment details under
-              their own privacy policies - I never see your card or bank details.
-              What Ko-fi shares with me, such as the name and message you tip
-              with, is set out in Ko-fi&rsquo;s own policy.
+              Tips work the same way: the tip box in the footer is drawn by this
+              site, and its &ldquo;tip!&rdquo; button is a plain link to my page on Tipeee. Nothing from Tipeee loads on this
+              site, and Tipeee alone handles the payment and your payment details
+              under its own privacy policy - I never see your card or bank
+              details. What Tipeee shares with me, such as the name you tip
+              under, is set out in its own policy.
             </p>
           </Section>
 
