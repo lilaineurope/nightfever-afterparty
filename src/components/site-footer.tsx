@@ -51,7 +51,7 @@ export function SiteFooter() {
             <LegalNote align="left" />
           </p>
         </div>
-        <TipBox className="mx-auto w-full max-w-[400px] md:mx-0" />
+        <TipBox className="mx-auto w-full max-w-[460px] md:mx-0" />
       </div>
     </footer>
   );
