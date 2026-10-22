@@ -233,7 +233,7 @@ a.text-gold:not([class*="border"]):not([class*="bg-"]):hover {
 }
 
 /* "Used newspaper" paper on EVERY page (Lisa, 21 Oct - first on the home page, then site-wide): a fine photocopy grain
-   multiplied over the whole viewport, matching the Tipeee cut-out banner. Pure CSS, so it renders server-side. */
+   multiplied over the whole viewport, matching the old cut-out banner. Pure CSS, so it renders server-side. */
 body::after {
   content: "";
   position: fixed;
