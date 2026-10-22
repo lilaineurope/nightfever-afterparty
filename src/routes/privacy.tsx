@@ -245,8 +245,8 @@ function PrivacyPage() {
               what they do with your data.
             </p>
             <p>
-              Tips work the same way: the &ldquo;Tip on Tipeee&rdquo; button in the
-              footer is a plain link to my page on Tipeee. Nothing from Tipeee loads on this
+              Tips work the same way: the &ldquo;tip!&rdquo; button in the footer&rsquo;s tip box
+              is a plain link to my page on Tipeee. Nothing from Tipeee loads on this
               site, and Tipeee alone handles the payment and your payment details
               under its own privacy policy - I never see your card or bank
               details. What Tipeee shares with me, such as the name you tip

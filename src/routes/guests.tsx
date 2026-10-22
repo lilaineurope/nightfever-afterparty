@@ -25,7 +25,6 @@ function GuestsPage() {
         </div>
       </section>
       <GuestsSection />
-      {/* <InterviewNext /> - waiting for Lisa to OK the examples (23 Oct 2026) */}
       <SiteFooter />
     </main>
   );

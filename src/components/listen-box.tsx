@@ -2,36 +2,29 @@
 const PLATFORMS = [
   { name: "Spotify", href: "https://creators.spotify.com/pod/profile/night-fever/", icon: SpotifyIcon },
   { name: "Apple Podcasts", href: "https://podcasts.apple.com/us/podcast/night-fever/id1584126843", icon: AppleIcon },
-  { name: "WOW Presents Plus", href: "https://www.wowpresentsplus.com/night-fever", icon: WowIcon },
+  { name: "World of Wonder", href: "https://www.wowpresentsplus.com/night-fever", icon: WowIcon },
 ];
 
 /**
- * "Listen wherever you party - Celebrate the Original!" box in the footer of every page (Lisa, 23 Oct 2026;
+ * "Celebrate the Original!" box in the footer of every page (Lisa, 23 Oct 2026;
  * it used to be a section at the bottom of the home page). id="listen" so the home hero's Listen button jumps here.
  */
 export function ListenBox({ className = "" }: { className?: string }) {
   return (
     <section id="listen" aria-labelledby="listen-heading" className={`scroll-mt-20 ${className}`}>
-      <div className="relative w-full border-[3px] border-gold bg-card px-6 pb-7 pt-10 shadow-[8px_10px_0_var(--color-gold)] sm:px-8">
-        <span
-          aria-hidden="true"
-          className="absolute -left-3 -top-5 -rotate-[6deg] bg-gold px-4 py-1.5 font-[family-name:var(--font-flyer)] text-2xl uppercase text-gold-foreground"
-        >
-          listen!
-        </span>
+      <div className="relative w-full border-[3px] border-gold bg-card px-6 py-7 shadow-[8px_10px_0_var(--color-gold)] sm:px-8">
         <h2 id="listen-heading" className="text-3xl leading-[0.95]">
-          Listen wherever you party -
-          <span className="mt-1 block text-pink">Celebrate the Original!</span>
+          <span className="text-pink">Celebrate the Original!</span>
         </h2>
         <p className="mt-4 text-sm leading-relaxed">New episodes drop every week - so exciting! Find the show on your favourite podcast app.</p>
-        <div className="mt-5 flex flex-wrap gap-3">
+        <div className="mt-5 flex flex-wrap gap-2 sm:flex-nowrap">
           {PLATFORMS.map((p) => (
             <a
               key={p.name}
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-gold bg-gold px-4 py-2.5 text-sm font-semibold uppercase text-gold-foreground transition hover:bg-card hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap border-2 border-gold bg-gold px-3 py-2.5 text-xs font-semibold uppercase text-gold-foreground transition hover:bg-card hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
             >
               <p.icon className="h-4 w-4" />
               {p.name}

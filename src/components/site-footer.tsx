@@ -3,20 +3,24 @@ import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
 import { EntityText } from "@/components/entity-text";
 import { LegalNote } from "@/components/legal-links";
 import { TipBox } from "@/components/tip-box";
+import { ListenBox } from "@/components/listen-box";
+import { NewsletterBox } from "@/components/newsletter-box";
 
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
 const TEXT_LINK = "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
-// One shared footer for every page (Lisa, 22 Oct 2026): all the footer text on the left - the show and World of
+// One shared footer for every page (Lisa, 22-23 Oct 2026): on the left the Listen box, the newsletter sign-up, then all the footer text - the show and World of
 // Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook, "Tip the fan page" (jumps to the box),
 // the fan-page disclaimer and the legal note - and the Tipeee tip box on the right (below the text on phones); no extra text next to the box.
 // The other page links live only in the top menu.
 export function SiteFooter() {
   return (
     <footer className="border-t border-border px-6 py-14">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_auto]">
+      <div className="mx-auto grid max-w-6xl items-start gap-12 md:grid-cols-[1fr_auto]">
         <div className="space-y-4 text-left">
+          <ListenBox className="mb-10 max-w-[560px]" />
+          <NewsletterBox className="mb-10 max-w-[560px]" />
           <p className="text-sm text-muted-foreground">
             My fan page for{" "}
             <a href={NIGHT_FEVER_URL} target="_blank" rel="noopener noreferrer" className={TEXT_LINK}>
@@ -51,7 +55,7 @@ export function SiteFooter() {
             <LegalNote align="left" />
           </p>
         </div>
-        <TipBox className="mx-auto w-full max-w-[460px] md:mx-0" />
+        <TipBox className="mx-auto w-full max-w-[400px] md:mx-0" />
       </div>
     </footer>
   );
