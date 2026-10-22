@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { NIGHT_FEVER_URL } from "@/data/guests";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -143,6 +144,14 @@ function Index() {
               className="border-2 border-gold px-5 py-3 font-semibold uppercase transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
             >
               Listen
+            </a>
+            <a
+              href={NIGHT_FEVER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-gold px-5 py-3 font-semibold uppercase transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+            >
+              Watch <span aria-hidden="true">&#8599;</span>
             </a>
           </div>
         </div>
