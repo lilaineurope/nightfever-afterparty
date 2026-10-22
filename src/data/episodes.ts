@@ -317,7 +317,7 @@ const s05e03: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/104950113/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-2%2F7ef0eb79-bcc9-93de-3ac3-393c8f20b595.mp3",
   runtime: "1:06:45",
-  afterpartyPublished: "2026-10-23",
+  afterpartyPublished: "2026-10-22T13:00",
   blurb:
     "Amanda Lepore, original Club Kid, LaChapelle muse and Doll Parts author! A fall on the stairs at The Building, the glitter-rock crowd in New Jersey, the Cave Canem opening, go-go dancing in the cage at Disco 2000, the Club Kids on The Joan Rivers Show, a Beverly Hillbillies barn party for Donna Douglas and diamonds glued under her nose.",
   references: leporeRefs.length,
