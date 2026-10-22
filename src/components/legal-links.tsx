@@ -16,9 +16,9 @@ export function LegalLinks() {
   );
 }
 
-export function LegalNote() {
+export function LegalNote({ align = "center" }: { align?: "center" | "left" }) {
   return (
-    <span className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/70">
+    <span className={`inline-flex flex-wrap items-center ${align === "left" ? "justify-start" : "justify-center"} gap-x-2 gap-y-1 text-xs text-muted-foreground/70`}>
       <span>
         No trackers, no advertising cookies, and I never sell your data. See the{" "}
       </span>

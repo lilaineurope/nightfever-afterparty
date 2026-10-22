@@ -25,22 +25,10 @@ export function TipBox({ className = "" }: { className?: string }) {
 
   return (
     <section id="tip" aria-labelledby="tip-heading" className={`scroll-mt-20 ${className}`}>
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 md:flex-row md:items-center md:gap-12">
-        <div className="flex-1">
-          <p className="font-mono text-xs uppercase tracking-[0.24em] text-pink">Support the fan page</p>
-          <h2 id="tip-heading" className="mt-2 text-3xl leading-[0.95] sm:text-[40px]">
-            Buy the Afterparty a drink
-          </h2>
-          <p className="mt-4 text-base leading-relaxed">
-            The site is free, has no ads and is made in my spare time - every Afterparty takes hours of listening,
-            checking and building. A drink helps cover the running costs and keeps the next episode coming.
-          </p>
-          <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            Tips go through Ko-fi and PayPal - I never see your card details. An unofficial fan project: tips support
-            this fan page, not the podcast or World of Wonder.
-          </p>
-        </div>
-
+      <h2 id="tip-heading" className="sr-only">
+        Buy the Afterparty a drink
+      </h2>
+      <div>
         <div className="relative w-full max-w-[400px] border-[3px] border-gold bg-card px-6 py-6 shadow-[8px_10px_0_var(--color-gold)]">
           <span
             aria-hidden="true"
@@ -130,6 +118,10 @@ export function TipBox({ className = "" }: { className?: string }) {
             </div>
           )}
         </div>
+        <p className="mt-5 max-w-[400px] text-xs leading-relaxed text-muted-foreground">
+          Tips go through Ko-fi and PayPal - I never see your card details. An unofficial fan project: tips support this
+          fan page, not the podcast or World of Wonder.
+        </p>
       </div>
     </section>
   );

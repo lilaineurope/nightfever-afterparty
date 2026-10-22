@@ -6,41 +6,32 @@ import { TipBox } from "@/components/tip-box";
 
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
+const TEXT_LINK = "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
-// One shared footer for every page: the Ko-fi "Buy the Afterparty a drink" box (Lisa, 22 Oct 2026), then the show and World of Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook and "Tip the fan page" (jumps to the box).
+// One shared footer for every page (Lisa, 22 Oct 2026): all the footer text on the left - the show and World of
+// Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook, "Tip the fan page" (jumps to the box),
+// the fan-page disclaimer and the legal note - and the Ko-fi tip box on the right (below the text on phones); no extra text next to the box.
 // The other page links live only in the top menu.
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border px-6 py-12">
-      <TipBox className="mb-14 mt-4" />
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+    <footer className="border-t border-border px-6 py-14">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_auto]">
+        <div className="space-y-4 text-left">
           <p className="text-sm text-muted-foreground">
             My fan page for{" "}
-            <a
-              href={SHOW_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-            >
+            <a href={SHOW_URL} target="_blank" rel="noopener noreferrer" className={TEXT_LINK}>
               <em>Night Fever</em>
             </a>{" "}
             by{" "}
-            <a
-              href={WOW_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink"
-            >
+            <a href={WOW_URL} target="_blank" rel="noopener noreferrer" className={TEXT_LINK}>
               World of Wonder
             </a>
             {" · "}
-            <Link to="/guests" className="whitespace-nowrap text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink">
+            <Link to="/guests" className={`whitespace-nowrap ${TEXT_LINK}`}>
               Meet the guests
             </Link>
-
           </p>
-          <nav aria-label="Footer" className="flex flex-col items-center gap-2 sm:items-end">
+          <nav aria-label="Footer">
             <p className="text-sm text-muted-foreground">
               <Link to="/about" className={LINK}>About</Link>
               {" · "}
@@ -53,14 +44,15 @@ export function SiteFooter() {
               <a href="#tip" className={LINK}>Tip the fan page</a>
             </p>
           </nav>
+          <p className="max-w-xl text-xs text-muted-foreground/60">
+            <EntityText text="Made by a fan - not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their owners." />
+          </p>
+          <p>
+            <LegalNote align="left" />
+          </p>
         </div>
-        <p className="mt-6 text-center text-xs text-muted-foreground/60">
-          <EntityText text="Made by a fan - not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their owners." />
-        </p>
+        <TipBox className="mx-auto w-full max-w-[400px] md:mx-0" />
       </div>
-      <p className="mx-auto mt-3 max-w-2xl text-center">
-        <LegalNote />
-      </p>
     </footer>
   );
 }
