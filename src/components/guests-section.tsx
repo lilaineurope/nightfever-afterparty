@@ -120,7 +120,7 @@ export function GuestsSection() {
                                   href={WOW_URL}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:bg-gold hover:text-gold-foreground"
+                                  className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                                 >
                                   {scene}
                                 </a>
@@ -128,7 +128,7 @@ export function GuestsSection() {
                                 <EntityLink
                                   key={scene}
                                   name={scene}
-                                  className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-gold/50 hover:text-gold"
+                                  className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                                 />
                               ),
                             )}
@@ -145,7 +145,7 @@ export function GuestsSection() {
                                 key={slug}
                                 href={`#${slug}`}
                                 onClick={() => setActive(slug)}
-                                className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold transition hover:bg-gold hover:text-gold-foreground"
+                                className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                               >
                                 {guestBySlug[slug]?.name}
                               </a>
@@ -157,7 +157,7 @@ export function GuestsSection() {
                         <Link
                           to="/explore/$slug"
                           params={{ slug: guest.slug }}
-                          className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold hover:text-gold-foreground"
+                          className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                         >
                           Their full card &rarr;
                         </Link>

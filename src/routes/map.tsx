@@ -263,7 +263,7 @@ function MapPage() {
                           key={c.slug}
                           to="/explore/$slug"
                           params={{ slug: c.slug }}
-                          className="rounded-full border border-border px-2.5 py-0.5 text-xs text-card-foreground/80 hover:border-gold/60 hover:text-gold"
+                          className="rounded-full border border-border px-2.5 py-0.5 text-xs text-card-foreground/80 transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                         >
                           {c.name} <span className="text-muted-foreground">· {c.category}</span>
                         </Link>

@@ -30,7 +30,7 @@ function nodeRadius(n: Node) {
   return n.kind === "episode" ? 22 : 4 + n.weight * 3;
 }
 
-/** Five-pointed star around (0,0), point up - every episode is a pink star. */
+/** Five-pointed star around (0,0), point up - every episode is a white star with an ink outline. */
 function starPoints(outer: number): string {
   const inner = outer * 0.48;
   return Array.from({ length: 10 }, (_, i) => {
@@ -260,10 +260,12 @@ export function ConnectionsGraph() {
                   }}
                 >
                   {n.kind === "episode" ? (
-                    <polygon points={starPoints(r * 1.35)} className="fill-pink stroke-cream" strokeWidth={2} strokeLinejoin="round" />
+                    <polygon points={starPoints(r * 1.35)} className={`fill-white stroke-cream ${n.id === active ? "stroke-pink" : ""}`} strokeWidth={n.id === active ? 3 : 2} strokeLinejoin="round" />
                   ) : (
+                    // Lisa, 23 Oct 2026: names linking several episodes (references) pink, names in one episode (mentions) marker yellow
                     <circle r={r}
-                      className={n.id === active ? "fill-pink" : n.weight > 1 ? "fill-cream" : "fill-gold"} />
+                      className={`${n.weight > 1 ? "fill-pink" : "fill-highlight"} ${n.id === active ? "stroke-cream" : "stroke-cream/40"}`}
+                      strokeWidth={n.id === active ? 2.5 : 0.75} />
                   )}
                   {showLabel && (
                     <text y={r + 12} textAnchor="middle"
@@ -281,6 +283,10 @@ export function ConnectionsGraph() {
       </div>
 
       <p className="mt-3 text-center text-xs text-muted-foreground">
+        <span className="mr-1 inline-block">&#9734; episodes</span> ·{" "}
+        <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-pink align-middle" /> in several episodes ·{" "}
+        <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-highlight align-middle ring-1 ring-cream/40" /> in one episode
+        <br />
         Drag to move around · scroll or +/− to zoom · pull a dot to play with it · tap a star or dot to light up its links, tap it again to open it!
       </p>
 
@@ -298,7 +304,7 @@ export function ConnectionsGraph() {
               const n = nodes.find((x) => x.id === id)!;
               return (
                 <button key={id} onClick={() => focusNode(n)}
-                  className="rounded-full border border-gold/30 px-3 py-1 text-sm text-cream hover:border-pink hover:text-pink">
+                  className="rounded-full border border-gold/30 px-3 py-1 text-sm text-cream transition hover:border-pink hover:bg-pink hover:text-pink-foreground">
                   {n.label}
                 </button>
               );

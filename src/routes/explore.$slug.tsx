@@ -73,7 +73,7 @@ function EntityNotFound() {
 }
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
-const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-gold/50 hover:text-gold";
+const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 
 function EntityPage() {
   const { slug } = Route.useLoaderData();

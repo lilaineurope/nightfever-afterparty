@@ -1,7 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { EntityLink } from "../components/entity-link";
 import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
@@ -17,6 +17,20 @@ export const Route = createFileRoute("/timeline")({
 
 function TimelinePage() {
   const [decade, setDecade] = useState<string>("all");
+  // Year chips elsewhere (episode pages) link to /timeline#ev-<event id>: show every decade, jump there, mark it (Lisa, 23 Oct 2026)
+  const [target, setTarget] = useState<string | null>(null);
+  useEffect(() => {
+    const jump = () => {
+      const id = window.location.hash.startsWith("#ev-") ? decodeURIComponent(window.location.hash.slice(4)) : null;
+      if (!id) return;
+      setDecade("all");
+      setTarget(id);
+      window.setTimeout(() => document.getElementById(`ev-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+    };
+    jump();
+    window.addEventListener("hashchange", jump);
+    return () => window.removeEventListener("hashchange", jump);
+  }, []);
 
   const sorted = useMemo(
     () => [...sceneEvents].sort((a, b) => a.year - b.year),
@@ -66,7 +80,11 @@ function TimelinePage() {
       <section className="px-6 py-14">
         <ol className="mx-auto max-w-3xl space-y-8 border-l border-gold/25 pl-6">
           {shown.map((e) => (
-            <li key={e.id} className="relative">
+            <li
+              key={e.id}
+              id={`ev-${e.id}`}
+              className={`relative scroll-mt-28 transition-colors ${target === e.id ? "-ml-3 bg-pink/10 py-3 pl-3 outline outline-2 outline-pink" : ""}`}
+            >
               <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full bg-gold" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
                 <Decades text={e.when} />
@@ -91,7 +109,7 @@ function TimelinePage() {
                     key={slug}
                     to="/explore/$slug"
                     params={{ slug }}
-                    className="rounded-full border border-gold/40 px-3 py-1 text-xs font-medium text-gold transition hover:bg-gold hover:text-gold-foreground"
+                    className="rounded-full border border-gold/40 px-3 py-1 text-xs font-medium text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                   >
                     {guestBySlug[slug]?.name ?? slug}
                   </Link>
@@ -103,7 +121,7 @@ function TimelinePage() {
                       href={WOW_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:bg-gold hover:text-gold-foreground"
+                      className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                     >
                       {f}
                     </a>
@@ -111,7 +129,7 @@ function TimelinePage() {
                     <EntityLink
                       key={f}
                       name={f}
-                      className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:text-gold"
+                      className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                     />
                   ),
                 )}

@@ -201,7 +201,7 @@ function EpisodePage() {
                         </Link>
                       )}
                       {r.events.slice(0, 3).map((e) => (
-                        <Link key={e.id} to="/timeline" className="rounded-full border border-border px-2.5 py-0.5 text-muted-foreground hover:text-gold">
+                        <Link key={e.id} to="/timeline" hash={`ev-${e.id}`} className="rounded-full border border-border px-2.5 py-0.5 text-muted-foreground hover:text-gold">
                           {e.year}: {e.title}
                         </Link>
                       ))}
