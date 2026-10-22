@@ -21,7 +21,7 @@ export const Route = createFileRoute("/book-club")({
         itemListElement: bookClub.slice(0, 50).map((b, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          item: { "@type": b.shelf === "books" ? "Book" : "Periodical", name: b.name, url: abs(`/explore/${b.slug}`) },
+          item: { "@type": b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(`/explore/${b.slug}`) },
         })),
       }),
     ],

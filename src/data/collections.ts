@@ -43,14 +43,26 @@ const byMentions = (a: CollectionItem, b: CollectionItem) => b.mentions - a.ment
 // ---------- Book Club ----------
 export const BOOK_SHELVES: Shelf[] = [
   { key: "books", label: "Books" },
-  { key: "press", label: "Magazines, papers & columns" },
+  { key: "magazines", label: "Magazines" },
+  { key: "newspapers", label: "Newspapers" },
+  { key: "columns", label: "Columns & articles" },
 ];
+
+// Lisa, 23 Oct 2026: magazines, newspapers and columns are separate shelves.
+// Columns & articles: a single piece or a named column - quoted titles, "Magazine – 'Story'", or a column/piece named in brackets after its writer.
+const COLUMN = /^'|\s[–-]\s'|^(Page Six|Ms\. Lonely Hearts|Nations|Venus Envy)\b/;
+const NEWSPAPER = /\b(Times|Post|News|Daily|Journal|Chronicle|Inquirer|Newsday|Voice|Spectator|Dispatch)\b/;
+function pressShelf(name: string): string {
+  if (COLUMN.test(name)) return "columns";
+  if (/\bmagazine\b/i.test(name)) return "magazines";
+  return NEWSPAPER.test(name) ? "newspapers" : "magazines";
+}
 
 export const bookClub: CollectionItem[] = entities
   .filter((e) => hasCat(e, ["Book", "Publication"]))
   .map((e) => {
     const isBook = e.category === "Book" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
-    return toItem(e, isBook ? "books" : "press", ["Book", "Publication"]);
+    return toItem(e, isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
   })
   .sort(byMentions);
 
