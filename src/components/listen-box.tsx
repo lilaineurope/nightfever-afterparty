@@ -16,8 +16,7 @@ export function ListenBox({ className = "" }: { className?: string }) {
         <h2 id="listen-heading" className="text-3xl leading-[0.95]">
           <span className="text-pink">Celebrate the Original!</span>
         </h2>
-        <p className="mt-4 text-sm leading-relaxed">New episodes drop every week - so exciting! Find the show on your favourite podcast app.</p>
-        <div className="mt-5 flex flex-wrap gap-2 sm:flex-nowrap">
+        <div className="mt-6 flex flex-wrap gap-2 sm:flex-nowrap">
           {PLATFORMS.map((p) => (
             <a
               key={p.name}
