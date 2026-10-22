@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { episodePath, type Episode } from "@/data/episodes";
-import { Button } from "@/components/ui/button";
 import { guestLine } from "@/data/guest-lines";
 import diannePortrait from "@/assets/polaroid-dianne-brill.jpg";
 import mustoPortrait from "@/assets/polaroid-michael-musto.jpg";
@@ -80,29 +79,30 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       </span>
                     ))}
                   </div>
+                  {/* Hover (Lisa, 23 Oct 2026): the fill turns to paper and the text stays readable in black ink */}
                   <div className="mt-8 flex flex-wrap gap-3">
-                    <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><Link
+                    <Link
                       to={episodePath(ep.id)}
-                      className="inline-flex items-center gap-2 rounded-xl border-2 border-pink bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                      className="inline-flex items-center gap-2 rounded-xl border-2 border-pink bg-pink px-5 py-2.5 text-sm font-semibold text-pink-foreground transition hover:bg-card hover:text-cream focus-visible:bg-card focus-visible:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
                       Afterparty &rarr;
-                    </Link></Button>
-                    <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><a
+                    </Link>
+                    <a
                       href={ep.watchUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-5 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                      className="inline-flex items-center gap-2 rounded-xl border-2 border-cream bg-cream px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-card hover:text-cream focus-visible:bg-card focus-visible:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
                       Watch on WOW
-                    </a></Button>
-                    <Button asChild variant="ghost" className="h-auto p-0 hover:bg-transparent"><a
+                    </a>
+                    <a
                       href={ep.listenUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-5 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+                      className="inline-flex items-center gap-2 rounded-xl border-2 border-cream bg-cream px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-card hover:text-cream focus-visible:bg-card focus-visible:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
                       Listen on Spotify
-                    </a></Button>
+                    </a>
                   </div>
                 </div>
               </article>
