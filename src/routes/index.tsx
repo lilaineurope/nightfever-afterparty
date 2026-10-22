@@ -98,10 +98,12 @@ function Index() {
               Latest Afterparty &rarr;
             </Link>
             <a
-              href="#listen"
+              href="https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-gold px-5 py-3 font-semibold uppercase transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
             >
-              Listen
+              Listen <span aria-hidden="true">&#8599;</span>
             </a>
             <a
               href={NIGHT_FEVER_URL}
