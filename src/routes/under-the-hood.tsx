@@ -61,7 +61,7 @@ const GROUPS: Group[] = [
     title: "Visitors and search",
     blurb: "Counting visits without tracking you, and helping people find the site.",
     tools: [
-      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and new-guestbook-note alerts to my inbox." },
+      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages, \"Who to interview next\" suggestions and new-guestbook-note alerts to my inbox." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
       { name: "Tipeee", href: "https://en.tipeee.com/afterparty", what: "Takes tips for the fan page - the tip box in the footer is a plain link to my Tipeee page, which handles the payment (cards through Adyen in the Netherlands, or PayPal)." },

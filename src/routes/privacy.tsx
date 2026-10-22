@@ -56,7 +56,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 21 October 2026. Here's what happens to your data when
+            Last updated: 23 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -163,6 +163,16 @@ function PrivacyPage() {
               replying.
             </p>
             <p>
+              <strong className="text-cream">Interview suggestions.</strong> If
+              you use the &ldquo;Your choice&rdquo; form in the &ldquo;Who to
+              interview next&rdquo; box, your suggestion, the optional reason
+              and the optional name you give are delivered to my inbox by
+              Web3Forms, just like the contact form. Nothing is stored on this
+              site. If I put a suggestion up on the site, it is shown without
+              your name unless you ask me to credit you. Legal basis: your
+              consent in sending it.
+            </p>
+            <p>
               <strong className="text-cream">Episode player.</strong> Nothing
               plays or loads until you press play or tap a timestamp. Then your
               browser streams the episode straight from the show&rsquo;s own
@@ -260,7 +270,7 @@ function PrivacyPage() {
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter processes the anonymous visit
               statistics described above, Web3Forms delivers contact-form
-              messages and guestbook alerts to my inbox, the hosting
+              messages, interview suggestions and guestbook alerts to my inbox, the hosting
               platform&rsquo;s built-in database keeps newsletter sign-ups and
               guestbook notes, and when you press play the show&rsquo;s own
               podcast host streams the episode to you. No data is sold, rented or brokered. If a
@@ -275,8 +285,8 @@ function PrivacyPage() {
               needs them for security and operation, after which they are
               deleted. Error reports are kept only long enough to diagnose the
               fault. Visit statistics are kept as anonymous page counts.
-              Because the email form stores nothing, there is nothing to
-              delete there. Guestbook notes are kept while they are shown and
+              Because the contact and suggestion forms store nothing, there
+              is nothing to delete there. Guestbook notes are kept while they are shown and
               deleted when you ask or when I take them down.
             </p>
           </Section>
