@@ -123,9 +123,7 @@ function Index() {
           <p className="mt-8 max-w-[480px] text-base leading-relaxed">
             {/* Lisa's intro (23 Oct 2026) */}
             <EntityText text="On the Night Fever podcast, James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. This site is my Afterparty, where every episode gets a timestamp index - every name, place, song, design and look, counted and linked to the exact moment it was said." />
-          </p>
-          <p className="mt-4 max-w-[480px] text-base leading-relaxed">
-            A&ndash;Z gathers the whole gang, the Timeline follows the scene from the 1960s to today, and the Network shows how they&rsquo;re all tied together. Pick an episode and dive in!
+
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link

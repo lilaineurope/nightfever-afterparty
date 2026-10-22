@@ -2,6 +2,7 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { GuestsSection } from "@/components/guests-section";
 import { SiteFooter } from "@/components/site-footer";
+import { InterviewNext } from "@/components/interview-next";
 
 export const Route = createFileRoute("/guests")({
   staticData: { sitemap: true },
@@ -25,6 +26,7 @@ function GuestsPage() {
         </div>
       </section>
       <GuestsSection />
+      <InterviewNext />
       <SiteFooter />
     </main>
   );
