@@ -12,6 +12,7 @@ export const GUEST_LINES: Record<string, string> = {
   s03e06: "Area co-founder · club, restaurant and hotel owner · tortoise conservationist",
   s04e08: "Club kid, figure skater, singer and designer · Heatherette",
   s04e10: "Actress, performance artist and singer · Club 57 · Bongwater, Pulsallama",
+  s05e03: "Trans icon, model and singer · Club Kid · David LaChapelle's muse",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
   s06e01: "Club Kid legend, author and host of Night Fever",

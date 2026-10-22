@@ -350,6 +350,11 @@ export const LOCATIONS: Located[] = [
   { name: "MoMA PS1", lat: 40.7454, lng: -73.9472, area: "Long Island City" },
   { name: "Long Island City", lat: 40.7447, lng: -73.9485, area: "Queens" },
   // S02E08 - Michelangelo Signorile
+  { name: "Cave Canem", lat: 40.7234, lng: -73.9883, area: "East Village" },
+  { name: "Lucky Cheng's", lat: 40.7234, lng: -73.9883, area: "East Village" },
+  { name: "First Avenue", lat: 40.7480, lng: -73.9720, area: "East Side" },
+  { name: "Park Avenue", lat: 40.7616, lng: -73.9707, area: "Midtown East" },
+  { name: "Pittsburgh", lat: 40.4406, lng: -79.9959, area: "Pennsylvania" },
   { name: "Staten Island", lat: 40.5795, lng: -74.1502, area: "Staten Island" },
   { name: "South Beach boardwalk, Staten Island", lat: 40.5838, lng: -74.0663, area: "Staten Island" },
   { name: "St. John Villa Academy", lat: 40.5987, lng: -74.0715, area: "Staten Island" },
