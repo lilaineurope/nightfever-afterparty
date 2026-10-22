@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-/** Lisa's Ko-fi page (one drink = €3, PayPal connected; Lisa, 22 Oct 2026). */
+/** Lisa's Ko-fi page (one drink = €1, PayPal connected; Lisa, 22 Oct 2026). */
 export const KOFI_URL = "https://ko-fi.com/lilaineurope";
 /** Ko-fi's own embeddable tip panel (feed hidden). */
 const KOFI_PANEL = `${KOFI_URL}/?hidefeed=true&widget=true&embed=true&preview=true`;
@@ -27,7 +27,7 @@ export function TipBox({ className = "" }: { className?: string }) {
         </h2>
         <p className="mt-4 text-base leading-relaxed">
           The site is free, has no ads and is made in my spare time - every Afterparty takes hours of listening, checking
-          and building. If you enjoy it, a drink (€3) helps cover the running costs and keeps the next episode coming.
+          and building. If you enjoy it, a drink (€1) helps cover the running costs and keeps the next episode coming.
         </p>
 
         {open ? (
