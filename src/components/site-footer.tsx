@@ -11,7 +11,7 @@ const LINK =
 const TEXT_LINK = "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 // One shared footer for every page (Lisa, 22-23 Oct 2026): on the left the Listen box, the newsletter sign-up, then all the footer text - the show and World of
-// Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook, "Tip the fan page" (jumps to the box),
+// Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook (no "Tip the fan page" link - Lisa, 23 Oct),
 // the fan-page disclaimer and the legal note - and the Tipeee tip box on the right (below the text on phones); no extra text next to the box.
 // The other page links live only in the top menu.
 export function SiteFooter() {
@@ -44,8 +44,6 @@ export function SiteFooter() {
               <Link to="/under-the-hood" className={LINK}>Under the hood</Link>
               {" · "}
               <Link to="/guestbook" className={LINK}>Guestbook</Link>
-              {" · "}
-              <a href="#tip" className={LINK}>Tip the fan page</a>
             </p>
           </nav>
           <p className="max-w-xl text-xs text-muted-foreground/60">
