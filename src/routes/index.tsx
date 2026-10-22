@@ -122,7 +122,13 @@ function Index() {
           </h1>
           <p className="mt-8 max-w-[480px] text-base leading-relaxed">
             {/* Lisa's intro (23 Oct 2026) */}
-            <EntityText text="On the Night Fever podcast, James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. This site is my Afterparty, where every episode gets a timestamp index - every name, place, song, design and look, counted and linked to the exact moment it was said." />
+            <EntityText text="On the Night Fever podcast, James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife." />{" "}
+            This site is <Link to="/about" className="text-gold">my</Link>{" "}
+            <Link to="/episodes" className="text-gold">Afterparty</Link>, where every episode gets a{" "}
+            <Link to="/explore" className="text-gold">timestamp index</Link> - every{" "}
+            <Link to="/network" className="text-gold">name</Link>,{" "}
+            <Link to="/map" className="text-gold">place</Link>,{" "}
+            <Link to="/jukebox" className="text-gold">song</Link>, design and look, counted and linked to the exact moment it was said.
 
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
