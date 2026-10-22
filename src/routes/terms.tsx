@@ -1,6 +1,6 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SHOW_URL, WOW_URL } from "../data/guests";
+import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -85,7 +85,7 @@ function TermsPage() {
             <p>
               This is a fan-made index of the{" "}
               <a
-                href={SHOW_URL}
+                href={NIGHT_FEVER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={GOLD_LINK}

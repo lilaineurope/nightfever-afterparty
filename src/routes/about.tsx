@@ -1,7 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import portraitImage from "../assets/about-portrait-illustrated-2.jpg";
-import { SHOW_URL } from "../data/guests";
+import { NIGHT_FEVER_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
@@ -36,7 +36,7 @@ function AboutPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             <a
-              href={SHOW_URL}
+              href={NIGHT_FEVER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={GOLD_LINK}

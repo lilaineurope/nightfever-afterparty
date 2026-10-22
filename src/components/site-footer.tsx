@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { SHOW_URL, WOW_URL } from "@/data/guests";
+import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
 import { EntityText } from "@/components/entity-text";
 import { LegalNote } from "@/components/legal-links";
 import { TipBox } from "@/components/tip-box";
@@ -19,7 +19,7 @@ export function SiteFooter() {
         <div className="space-y-4 text-left">
           <p className="text-sm text-muted-foreground">
             My fan page for{" "}
-            <a href={SHOW_URL} target="_blank" rel="noopener noreferrer" className={TEXT_LINK}>
+            <a href={NIGHT_FEVER_URL} target="_blank" rel="noopener noreferrer" className={TEXT_LINK}>
               <em>Night Fever</em>
             </a>{" "}
             by{" "}

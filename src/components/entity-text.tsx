@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { SHOW_URL, WOW_URL } from "@/data/guests";
+import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
 import { entityFor } from "@/data/entities";
 import { linkNames } from "@/lib/name-links";
 
@@ -25,7 +25,7 @@ export function EntityText({
     <>
       {parts.map((part, i) =>
         part === "Night Fever" ? (
-          <a key={i} href={SHOW_URL} target="_blank" rel="noopener noreferrer" className={className}>
+          <a key={i} href={NIGHT_FEVER_URL} target="_blank" rel="noopener noreferrer" className={className}>
             Night Fever
           </a>
         ) : part === "World of Wonder" ? (

@@ -10,6 +10,8 @@ export type Guest = {
   linkedTo: string[];
 };
 
+/** Every "Night Fever" name link on the site goes straight to the show on WOW Presents Plus (Lisa, 23 Oct 2026). */
+export const NIGHT_FEVER_URL = "https://www.wowpresentsplus.com/night-fever";
 export const SHOW_URL = "https://creators.spotify.com/pod/profile/night-fever/";
 export const WOW_URL = "https://www.worldofwonder.com/";
 
