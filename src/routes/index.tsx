@@ -121,7 +121,11 @@ function Index() {
             </span>
           </h1>
           <p className="mt-8 max-w-[480px] text-base leading-relaxed">
-            <EntityText text="The World of Wonder podcast where James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. Love it!" />
+            {/* Lisa's intro (23 Oct 2026) */}
+            <EntityText text="On the Night Fever podcast, James St. James, Fenton Bailey and Randy Barbato relive the campy, gossipy, jaw-dropping history of New York nightlife. This site is my Afterparty, where every episode gets a timestamp index - every name, place, song, design and look, counted and linked to the exact moment it was said." />
+          </p>
+          <p className="mt-4 max-w-[480px] text-base leading-relaxed">
+            A&ndash;Z gathers the whole gang, the Timeline follows the scene from the 1960s to today, and the Network shows how they&rsquo;re all tied together. Pick an episode and dive in!
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -169,29 +173,6 @@ function Index() {
       </section>
 
       <NamesEveryoneDrops />
-
-      {/* Welcome - the intro, below the design's sections */}
-      <section className="px-6 py-16">
-        <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-cream sm:text-4xl">
-              Welcome to the Afterparty
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              On the Night Fever podcast, James St. James asks every guest
-              about the nights they lived through - the people they loved,
-              feuded with and lost. This site is my Afterparty, aka the
-              morning-after debrief!
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Every episode I publish here gets a timestamp index - every name,
-              place, song, design and look, counted and linked to the exact
-              moment it was said. A&ndash;Z gathers the whole gang,
-              the Timeline follows the scene from the 1960s to today, and
-              the Network shows how they're all tied together. Pick an episode
-              and dive in!
-            </p>
-          </div>
-      </section>
 
       {/* Listen */}
       <section id="listen" className="scroll-mt-20 px-6 py-24">
