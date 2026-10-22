@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { EntityLink } from "./entity-link";
 import { episodePath, type Episode } from "@/data/episodes";
 import { guestLine } from "@/data/guest-lines";
 import diannePortrait from "@/assets/polaroid-dianne-brill.jpg";
@@ -68,15 +69,17 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {ep.top.map((t) => (
-                      <span
+                      // Each name chip opens that name's A-Z card (Lisa, 23 Oct 2026)
+                      <EntityLink
                         key={t.name}
-                        className="rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold"
+                        name={t.name}
+                        className="group rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                       >
                         {t.name}
-                        <span className="ml-1.5 text-muted-foreground">
+                        <span className="ml-1.5 text-muted-foreground group-hover:text-pink-foreground">
                           {t.mentions}x
                         </span>
-                      </span>
+                      </EntityLink>
                     ))}
                   </div>
                   {/* Hover (Lisa, 23 Oct 2026): the fill turns to paper and the text stays readable in black ink */}
