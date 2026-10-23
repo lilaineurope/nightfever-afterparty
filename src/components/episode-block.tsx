@@ -17,6 +17,7 @@ import eganPortrait from "@/assets/polaroid-nick-egan.jpg";
 import magnusonPortrait from "@/assets/polaroid-ann-magnuson.jpg";
 import signorilePortrait from "@/assets/polaroid-michelangelo-signorile.jpg";
 import leporePortrait from "@/assets/polaroid-amanda-lepore.jpg";
+import norwichPortrait from "@/assets/polaroid-william-norwich.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -34,6 +35,7 @@ export const episodePortraits: Record<string, string> = {
   s04e10: magnusonPortrait,
   s02e08: signorilePortrait,
   s05e03: leporePortrait,
+  s06e08: norwichPortrait,
 };
 
 
