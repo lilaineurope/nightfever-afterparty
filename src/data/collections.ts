@@ -164,6 +164,16 @@ const SPOTIFY: Record<string, string> = {
   "Beastie Boys": "spotify:artist:03r4iKL2g2442PT9n2UKsx",
   "My Hair Looks Fierce": "spotify:track:08yzdQW3TpyAwTToQjkYJW",
   "Champagne (Amanda Lepore)": "spotify:track:1KArrl4IXmxGxIvcWLhws4",
+  "Madonna – 'Borderline'": "spotify:track:55vHakozxvDmLT7smkEYCN",
+  "Madonna – 'Lucky Star'": "spotify:track:5ldD98ZX90b0w8dClRLCka",
+  "Whitney Houston – 'I Wanna Dance with Somebody'": "spotify:track:2tUBqZG2AbRi7Q0BIrVrEj",
+  "Tina Turner – Foreign Affair": "spotify:album:3hgAoHSmany3EiKL0Aqh3G",
+  "Tina Turner – 'Proud Mary'": "spotify:track:4ppxp8rJB8eOhM9TFm6dK2",
+  "Nirvana – Nevermind": "spotify:album:2UJcKiJxNryhL050F5Z1Fk",
+  "Guns N' Roses": "spotify:artist:3qm84nBOXUEQ2vnTfUTTFC",
+  "Iggy Pop – 'Nightclubbing'": "spotify:track:6WPGAupim73K9XQL4iIefZ",
+  "Motörhead – 'Ace of Spades'": "spotify:track:3CIOopLwvyMvXk97ZEksKO",
+  "Hedwig and the Angry Inch": "spotify:album:1nDUzE7LFkfVBRAf5ZSfbr",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
