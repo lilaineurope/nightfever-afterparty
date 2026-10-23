@@ -14,6 +14,7 @@ import magnusonRefs from "./s04e10.json";
 import signorileRefs from "./s02e08.json";
 import leporeRefs from "./s05e03.json";
 import norwichRefs from "./s06e08.json";
+import schmidtRefs from "./s02e06.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -344,7 +345,25 @@ const s06e08: Episode = {
   top: [...norwichRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08].sort((a, b) =>
+const s02e06: Episode = {
+  id: "s02e06",
+  season: 2,
+  episode: 6,
+  guest: "Michael Schmidt",
+  released: "2022-09-12",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-206",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO3849520172.mp3",
+  runtime: "1:07:09",
+  afterpartyPublished: "2026-10-24",
+  blurb:
+    "Michael Schmidt, the chain-mail man! Meeting James at the Gaiety, Annie Flanders walking him into Area, a dress in a SoHo window that brought Cher calling, Tina Turner's crystal dress, Debbie Harry's razor-blade gown, a Palladium room with Iggy Pop in Braille, Squeezebox at Don Hill's - and Dita Von Teese in 3D print.",
+  references: schmidtRefs.length,
+  mentions: schmidtRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...schmidtRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -364,7 +383,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -396,6 +415,8 @@ export function episodePath(
       return "/episodes/s05e03";
     case "s06e08":
       return "/episodes/s06e08";
+    case "s02e06":
+      return "/episodes/s02e06";
     default:
       return "/episodes/s06e01";
   }
