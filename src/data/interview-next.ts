@@ -25,6 +25,18 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s06e03",
     time: "00:13:52",
   },
+  {
+    name: "DuPont twins",
+    why: "James says he'd love to get the DuPont twins on the show - Nikki, who had them as interns, offers to work it out.",
+    episodeId: "s02e04",
+    time: "00:55:59",
+  },
+  {
+    name: "Cornelia Guest",
+    why: "James would love to have Cornelia on the show too, after watching her interview on The Nikki Haskell Show.",
+    episodeId: "s02e04",
+    time: "00:55:59",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
