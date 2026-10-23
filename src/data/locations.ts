@@ -365,4 +365,11 @@ export const LOCATIONS: Located[] = [
   { name: "Central Park", lat: 40.7829, lng: -73.9654, area: "Manhattan" },
   { name: "Saint Peter's Church (Citicorp)", lat: 40.7581, lng: -73.9701, area: "Midtown" },
   { name: "The Anvil", lat: 40.7410, lng: -74.0080, area: "Meatpacking District" },
+  { name: "New York, New York", lat: 40.7608, lng: -73.9779, area: "Midtown" },
+  { name: "Canal Bar", lat: 40.7254, lng: -74.0089, area: "Hudson Square" },
+  { name: "Trump Tower", lat: 40.7625, lng: -73.9739, area: "Midtown" },
+  { name: "Metropolitan Museum of Art", lat: 40.7794, lng: -73.9632, area: "Upper East Side" },
+  { name: "East Hampton", lat: 40.9634, lng: -72.1848, area: "Long Island" },
+  { name: "Connecticut", lat: 41.6032, lng: -73.0877, area: "Connecticut" },
+  { name: "Texas", lat: 31.9686, lng: -99.9018, area: "Texas" },
 ];

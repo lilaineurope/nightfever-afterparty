@@ -13,6 +13,7 @@ import eganRefs from "./s05e04.json";
 import magnusonRefs from "./s04e10.json";
 import signorileRefs from "./s02e08.json";
 import leporeRefs from "./s05e03.json";
+import norwichRefs from "./s06e08.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -325,7 +326,25 @@ const s05e03: Episode = {
   top: [...leporeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03].sort((a, b) =>
+const s06e08: Episode = {
+  id: "s06e08",
+  season: 6,
+  episode: 8,
+  guest: "William Norwich",
+  released: "2026-10-07",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-608",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://anchor.fm/s/68428444/podcast/play/127047586/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-7%2Fbe2eabc1-b2bd-ef95-c501-74590c2e28b6.mp3",
+  runtime: "1:01:07",
+  afterpartyPublished: "2026-10-23",
+  blurb:
+    "William Norwich, the Daily News uptown society columnist of the go-go 80s! Uptown versus Downtown with Dinah Prince, Suzy and the Cholly Knickerbockers, Brooke Astor's emeralds, Jayne Wrightsman's last interview, Blaine Trump's AIDS fundraising, Anna Wintour during the newspaper strike - and James escorted out of an East Hampton party.",
+  references: norwichRefs.length,
+  mentions: norwichRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...norwichRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -337,7 +356,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -367,6 +386,8 @@ export function episodePath(
       return "/episodes/s02e08";
     case "s05e03":
       return "/episodes/s05e03";
+    case "s06e08":
+      return "/episodes/s06e08";
     default:
       return "/episodes/s06e01";
   }
