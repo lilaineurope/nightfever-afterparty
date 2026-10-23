@@ -1,14 +1,14 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { ClientOnly } from "@tanstack/react-router";
-import { ConnectionsGraph } from "@/components/connections-graph";
+import { NetworkSpotlight } from "@/components/network-spotlight";
 import { SiteFooter } from "@/components/site-footer";
 import { BestInFashion, PopularPlaces, TopTen } from "@/components/connections-blocks";
 import { episodePeople } from "@/data/episode-connections";
 export const Route = createFileRoute("/network")({
   staticData: { sitemap: true },
   component: NetworkPage,
-  head: () => pageHead({ path: "/network", title: "Network – who turns up with who in Night Fever", description: "Who turns up with who?! The Network: a web of every name in my published Night Fever episode indexes, tied together by the episodes they share.", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/network", title: "Network – who turns up with who in Night Fever", description: "Who turns up with who?! The Network: put one Night Fever Afterparty in the spotlight and see which episodes drop the same names.", image: "/og/home.jpg" }),
 });
 
 function NetworkPage() {
@@ -21,9 +21,9 @@ function NetworkPage() {
             <span className="text-pink text-glow-pink">everyone</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Every episode is a pink star, and every name dropped in it floats
-            around it. Names that turn up in more than one episode sit between
-            the stars and tie them together - so exciting!
+            Put one Afterparty in the spotlight and see which other episodes
+            drop the same names - the thicker the line, the more they share.
+            Tap a line to see exactly who and what ties them together!
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
             Just so you know: a shared mention isn't proof they knew each other
@@ -33,8 +33,8 @@ function NetworkPage() {
       </section>
       <section className="px-4 pb-16 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <ClientOnly fallback={<div className="h-[70vh] rounded-3xl border border-gold/20 bg-card" />}>
-            <ConnectionsGraph />
+          <ClientOnly fallback={<div className="h-[70vh] border-2 border-gold bg-card" />}>
+            <NetworkSpotlight />
           </ClientOnly>
           <p className="mt-8 text-center text-xs text-muted-foreground">
             I only draw connections from timestamped references in the published episode indexes.
