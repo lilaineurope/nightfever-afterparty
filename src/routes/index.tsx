@@ -1,8 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { InterviewNext } from "@/components/interview-next";
-import { NIGHT_FEVER_URL } from "@/data/guests";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { episodes, episodePath } from "../data/episodes";
+import { episodes } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
 import { EpisodeCard } from "@/components/episode-block";
 import { NamesEveryoneDrops } from "@/components/names-everyone-drops";
@@ -50,9 +49,6 @@ const featuredGuests = [
 ];
 
 
-const latest = [...episodes].sort(
-  (a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished) || b.season - a.season || b.episode - a.episode,
-)[0]!;
 
 function Index() {
   return (
@@ -90,30 +86,6 @@ function Index() {
             <Link to="/jukebox" className="text-gold">song</Link>, design and look, counted and linked to the exact moment it was said.
 
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              to={episodePath(latest.id)}
-              className="bg-gold px-5 py-3.5 font-semibold uppercase text-gold-foreground transition hover:bg-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-            >
-              Latest Afterparty &rarr;
-            </Link>
-            <a
-              href="https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-gold px-5 py-3 font-semibold uppercase transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-            >
-              Listen <span aria-hidden="true">&#8599;</span>
-            </a>
-            <a
-              href={NIGHT_FEVER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-gold px-5 py-3 font-semibold uppercase transition hover:bg-gold hover:text-gold-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-            >
-              Watch <span aria-hidden="true">&#8599;</span>
-            </a>
-          </div>
         </div>
       </section>
 
