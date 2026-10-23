@@ -2,6 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { EntityLink } from "./entity-link";
 import { afterpartyNumber, episodePath, type Episode } from "@/data/episodes";
 import { guestLine } from "@/data/guest-lines";
+import { episodeQuotes } from "@/data/quotes";
+import { Timestamp } from "@/components/episode-player";
+import "@fontsource/covered-by-your-grace/400.css";
 import diannePortrait from "@/assets/polaroid-dianne-brill.jpg";
 import mustoPortrait from "@/assets/polaroid-michael-musto.jpg";
 import jamesPortrait from "@/assets/polaroid-james-st-james.jpg";
@@ -50,6 +53,25 @@ function formatDate(iso: string) {
   return new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
   });
+}
+
+// Quote note: the guest's line in pink pencil handwriting (an invented hand - never the guest's own), name typed underneath
+function QuoteNote({ ep }: { ep: Episode }) {
+  const q = episodeQuotes[ep.id];
+  if (!q) return null;
+  const n = q.quote.length;
+  const size = n <= 50 ? "2.4rem" : n <= 85 ? "1.95rem" : "1.7rem";
+  return (
+    <figure className="mt-10 max-w-[480px] -rotate-1">
+      <blockquote style={{ color: "#E2287F", fontFamily: "'Covered By Your Grace', cursive", fontSize: size, lineHeight: 1.25 }}>
+        &ldquo;{q.quote}&rdquo;
+      </blockquote>
+      <figcaption className="mt-3 flex items-center gap-4 font-type text-sm text-[#141414]">
+        <span>- {q.who ?? ep.guest}</span>
+        <Timestamp episodeId={ep.id} time={q.time} />
+      </figcaption>
+    </figure>
+  );
 }
 
 export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
@@ -115,6 +137,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                       Listen on Spotify
                     </a>
                   </div>
+                  <QuoteNote ep={ep} />
                 </div>
               </article>
   );
