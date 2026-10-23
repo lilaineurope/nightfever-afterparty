@@ -93,7 +93,12 @@ def cutout(img, composite):
     big = st[1:, cv2.CC_STAT_AREA].max()
     a = np.isin(lab, [i for i in range(1, n) if st[i, cv2.CC_STAT_AREA] > 0.06 * big]).astype(np.uint8)
     a = cv2.morphologyEx(a, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15)))
-    H, W = a.shape; ff = a.copy(); m = np.zeros((H + 2, W + 2), np.uint8); cv2.floodFill(ff, m, (0, 0), 1); a = a | (1 - ff)
+    # fill holes inside the figure only: flood the background from every border pixel, not just one corner -
+    # a figure touching the top edge (a cap, a hat) splits the background in two (S02E06 Michael Schmidt)
+    H, W = a.shape; ff = a.copy(); m = np.zeros((H + 2, W + 2), np.uint8)
+    for x, y in [(x, 0) for x in range(0, W, 8)] + [(x, H - 1) for x in range(0, W, 8)] + [(0, y) for y in range(0, H, 8)] + [(W - 1, y) for y in range(0, H, 8)]:
+        if ff[y, x] == 0: cv2.floodFill(ff, m, (x, y), 1)
+    a = a | (1 - ff)
     if composite: a = cv2.erode(a, np.ones((5, 5), np.uint8))
     return rgb.astype(np.float32), a
 
