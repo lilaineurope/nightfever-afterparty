@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { EntityLink } from "./entity-link";
-import { episodePath, type Episode } from "@/data/episodes";
+import { afterpartyNumber, episodePath, type Episode } from "@/data/episodes";
 import { guestLine } from "@/data/guest-lines";
 import diannePortrait from "@/assets/polaroid-dianne-brill.jpg";
 import mustoPortrait from "@/assets/polaroid-michael-musto.jpg";
@@ -131,8 +131,14 @@ function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
       <span className="polaroid-photo">
         {photo && <img src={photo} alt={ep.guest} width={1024} height={1024} loading="lazy" />}
       </span>
-      <span className="mt-3.5 block text-xs uppercase">
-        S{ep.season} · E{ep.episode}
+      <span className="mt-3.5 flex items-baseline justify-between text-xs uppercase">
+        <span>
+          S{ep.season} · E{ep.episode}
+        </span>
+        {/* Afterparty number (Lisa, 23 Oct 2026): the order it went up on the fan page, James St. James = 1 */}
+        <span className="text-sm font-bold" aria-label={`Afterparty number ${afterpartyNumber(ep.id)}`}>
+          {afterpartyNumber(ep.id)}
+        </span>
       </span>
       <Heading className="mt-0.5 block font-[family-name:var(--font-flyer)] text-[26px] uppercase leading-tight">{ep.guest}</Heading>
       {line && <span className="mt-1.5 block text-[13.5px] leading-snug text-cream/75">{line}</span>}

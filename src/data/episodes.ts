@@ -370,6 +370,14 @@ export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e
 export const latestEpisode: Episode = s06e01;
 
 /** Look an episode up by its route id, for the episode pages themselves. */
+/** Afterparty number (Lisa, 23 Oct 2026): the order the Afterparties went up on the fan page - S06E01 James St. James is
+ *  number 1, then counting up by afterpartyPublished (same date -> season/episode order). A new episode simply gets the next
+ *  number once its afterpartyPublished date is set. Shown in the top-right corner of every polaroid. */
+const afterpartyOrder = [...episodes]
+  .sort((a, b) => a.afterpartyPublished.localeCompare(b.afterpartyPublished) || a.season - b.season || a.episode - b.episode)
+  .map((ep) => ep.id);
+export const afterpartyNumber = (id: string): number => afterpartyOrder.indexOf(id) + 1;
+
 export const episodeById = (id: string): Episode =>
   episodes.find((e) => e.id === id) ?? latestEpisode;
 
