@@ -15,6 +15,7 @@ export const GUEST_LINES: Record<string, string> = {
   s05e03: "Trans icon, model and singer · Club Kid · David LaChapelle's muse",
   s06e08: "Society columnist · Vogue editor · novelist",
   s02e06: "Designer · the chain-mail man · Squeezebox host",
+  s01e04: "Club King · the Limelight, the Tunnel, Club USA & the Palladium",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
   s06e01: "Club Kid legend, author and host of Night Fever",

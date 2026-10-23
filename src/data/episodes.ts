@@ -15,6 +15,7 @@ import signorileRefs from "./s02e08.json";
 import leporeRefs from "./s05e03.json";
 import norwichRefs from "./s06e08.json";
 import schmidtRefs from "./s02e06.json";
+import gatienRefs from "./s01e04.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -363,7 +364,25 @@ const s02e06: Episode = {
   top: [...schmidtRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06].sort((a, b) =>
+const s01e04: Episode = {
+  id: "s01e04",
+  season: 1,
+  episode: 4,
+  guest: "Peter Gatien",
+  released: "2021-09-20",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-peter-gatien",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO4213256955.mp3",
+  runtime: "58:57",
+  afterpartyPublished: "2026-10-25",
+  blurb:
+    "Peter Gatien, the Club King! Rush in Cornwall, sharks under the dance floor in Atlanta, an old church that became the Limelight, Whitney Houston singing, Disco 2000, Club USA's slide and the Tunnel's hip-hop Sundays - and, as Peter tells it, Giuliani's war on his clubs.",
+  references: gatienRefs.length,
+  mentions: gatienRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...gatienRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -383,7 +402,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -417,6 +436,8 @@ export function episodePath(
       return "/episodes/s06e08";
     case "s02e06":
       return "/episodes/s02e06";
+    case "s01e04":
+      return "/episodes/s01e04";
     default:
       return "/episodes/s06e01";
   }

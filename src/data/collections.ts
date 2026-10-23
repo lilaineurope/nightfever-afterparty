@@ -174,6 +174,16 @@ const SPOTIFY: Record<string, string> = {
   "Iggy Pop – 'Nightclubbing'": "spotify:track:6WPGAupim73K9XQL4iIefZ",
   "Motörhead – 'Ace of Spades'": "spotify:track:3CIOopLwvyMvXk97ZEksKO",
   "Hedwig and the Angry Inch": "spotify:album:1nDUzE7LFkfVBRAf5ZSfbr",
+  "Rush": "spotify:artist:2Hkut4rAAyrQxRdof7FVJq",
+  "Village People – 'Macho Man'": "spotify:track:3wOJk31hFeYyc7Ex4J9VlQ",
+  "Village People – 'San Francisco (You've Got Me)'": "spotify:track:05J0ee4WEBFuv3FCzmRXWe",
+  "Village People – 'Y.M.C.A.'": "spotify:track:3UAdO916wku6gCnTL8ObL8",
+  "The Trammps": "spotify:artist:1zgNpeHQe8GulzfVkYP2VK",
+  "The Trammps – 'Disco Inferno'": "spotify:track:4NHLhoZgBkICm5LtTRXFAP",
+  "Sister Sledge": "spotify:artist:6gkWznnJkdkwRPVcmnrays",
+  "Wu-Tang Clan": "spotify:artist:34EP7KEpOjXcM2TCat1ISk",
+  "Pearl Jam": "spotify:artist:1w5Kfo2jwwIPruYS2UWh56",
+  "Red Hot Chili Peppers": "spotify:artist:0L8ExT028jH3ddEcZwqJJ5",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
