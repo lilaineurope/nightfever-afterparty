@@ -184,6 +184,9 @@ const SPOTIFY: Record<string, string> = {
   "Wu-Tang Clan": "spotify:artist:34EP7KEpOjXcM2TCat1ISk",
   "Pearl Jam": "spotify:artist:1w5Kfo2jwwIPruYS2UWh56",
   "Red Hot Chili Peppers": "spotify:artist:0L8ExT028jH3ddEcZwqJJ5",
+  "Chubby Checker – 'The Twist'": "spotify:track:4YCnTYbq3oL1Lqpyxg33CU",
+  "B.J. Thomas – 'Raindrops Keep Fallin' on My Head'": "spotify:track:0oMTxTIHAt3hstaoObsmFs",
+  "Labelle – 'Lady Marmalade'": "spotify:track:17VWTx7LD7liGlpnlGhUbn",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
