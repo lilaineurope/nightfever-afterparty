@@ -74,7 +74,6 @@ const EPISODE_TOPICS: Record<string, string> = {
   s04e10: "Club 57, The Hunger & Bongwater",
   s02e08: "OutWeek, ACT UP & Suzygate",
   s05e03: "the Club Kids, Disco 2000 & David LaChapelle",
-  s06e08: "Uptown society, Brooke Astor & the Daily News column",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

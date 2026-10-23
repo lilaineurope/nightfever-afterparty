@@ -71,10 +71,4 @@ export const COME_BACK: InterviewTip[] = [
     episodeId: "s06e03",
     time: "01:01:44",
   },
-  {
-    name: "William Norwich",
-    why: "The hosts say it feels like it should be a two-parter - there's still a lot of uptown, downtown to explore.",
-    episodeId: "s06e08",
-    time: "00:59:37",
-  },
 ];
