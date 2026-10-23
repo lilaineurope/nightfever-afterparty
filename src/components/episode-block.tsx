@@ -135,8 +135,9 @@ function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
         <span>
           S{ep.season} · E{ep.episode}
         </span>
-        {/* Afterparty number (Lisa, 23 Oct 2026): the order it went up on the fan page, James St. James = 1 */}
-        <span className="text-sm font-bold" aria-label={`Afterparty number ${afterpartyNumber(ep.id)}`}>
+        {/* Afterparty number (Lisa, 23 Oct 2026): the order it went up on the fan page, James St. James = 1 -
+            same font and size as the S · E line opposite */}
+        <span aria-label={`Afterparty number ${afterpartyNumber(ep.id)}`}>
           {afterpartyNumber(ep.id)}
         </span>
       </span>
