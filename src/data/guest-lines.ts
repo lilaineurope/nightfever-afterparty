@@ -17,6 +17,7 @@ export const GUEST_LINES: Record<string, string> = {
   s02e06: "Designer · the chain-mail man · Squeezebox host",
   s01e04: "Club King · the Limelight, the Tunnel, Club USA & the Palladium",
   s02e04: "Studio 54 regular · stockbroker · host of The Nikki Haskell Show",
+  s06e07: "Palladium door legend · artist · 80s It girl",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
   s06e01: "Club Kid legend, author and host of Night Fever",

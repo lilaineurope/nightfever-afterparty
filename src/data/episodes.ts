@@ -17,6 +17,7 @@ import norwichRefs from "./s06e08.json";
 import schmidtRefs from "./s02e06.json";
 import gatienRefs from "./s01e04.json";
 import haskellRefs from "./s02e04.json";
+import randallRefs from "./s06e07.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -401,7 +402,25 @@ const s02e04: Episode = {
   top: [...haskellRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04].sort((a, b) =>
+const s06e07: Episode = {
+  id: "s06e07",
+  season: 6,
+  episode: 7,
+  guest: "Sally Randall",
+  released: "2026-09-30",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-607",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://anchor.fm/s/68428444/podcast/play/126574237/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-30%2F97e3c042-582e-f931-d087-898fab1ec538.mp3",
+  runtime: "1:05:05",
+  afterpartyPublished: "2026-10-27",
+  blurb:
+    "Sally Randall, the face at the Palladium door! Opening night as the crowd rolled under the gates, Napoleon hats and long wigs, SVA with Keith and Kenny, a lip-sync Jesus Christ Superstar at Danceteria, the club crowd on Oprah - and why she turned down Letterman.",
+  references: randallRefs.length,
+  mentions: randallRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...randallRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -421,7 +440,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -459,6 +478,8 @@ export function episodePath(
       return "/episodes/s01e04";
     case "s02e04":
       return "/episodes/s02e04";
+    case "s06e07":
+      return "/episodes/s06e07";
     default:
       return "/episodes/s06e01";
   }

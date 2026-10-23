@@ -42,6 +42,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Sally Randall",
+    why: "James wraps up: 'Sally, we love you. We'll have to have you back on and talk some more.'",
+    episodeId: "s06e07",
+    time: "01:01:15",
+  },
+  {
     name: "Dianne Brill",
     why: "The hosts hope to have her back - and offer her the co-host chair.",
     episodeId: "s01e01",

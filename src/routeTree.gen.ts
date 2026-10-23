@@ -45,6 +45,7 @@ import { Route as EpisodesS05e04RouteImport } from './routes/episodes.s05e04'
 import { Route as EpisodesS05e06RouteImport } from './routes/episodes.s05e06'
 import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
 import { Route as EpisodesS06e03RouteImport } from './routes/episodes.s06e03'
+import { Route as EpisodesS06e07RouteImport } from './routes/episodes.s06e07'
 import { Route as EpisodesS06e08RouteImport } from './routes/episodes.s06e08'
 import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
@@ -234,6 +235,11 @@ const EpisodesS06e03Route = EpisodesS06e03RouteImport.update({
   path: '/episodes/s06e03',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpisodesS06e07Route = EpisodesS06e07RouteImport.update({
+  id: '/episodes/s06e07',
+  path: '/episodes/s06e07',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EpisodesS06e08Route = EpisodesS06e08RouteImport.update({
   id: '/episodes/s06e08',
   path: '/episodes/s06e08',
@@ -311,6 +317,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s05e06': typeof EpisodesS05e06Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e03': typeof EpisodesS06e03Route
+  '/episodes/s06e07': typeof EpisodesS06e07Route
   '/episodes/s06e08': typeof EpisodesS06e08Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
@@ -357,6 +364,7 @@ export interface FileRoutesByTo {
   '/episodes/s05e06': typeof EpisodesS05e06Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e03': typeof EpisodesS06e03Route
+  '/episodes/s06e07': typeof EpisodesS06e07Route
   '/episodes/s06e08': typeof EpisodesS06e08Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
@@ -404,6 +412,7 @@ export interface FileRoutesById {
   '/episodes/s05e06': typeof EpisodesS05e06Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e03': typeof EpisodesS06e03Route
+  '/episodes/s06e07': typeof EpisodesS06e07Route
   '/episodes/s06e08': typeof EpisodesS06e08Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
@@ -452,6 +461,7 @@ export interface FileRouteTypes {
     | '/episodes/s05e06'
     | '/episodes/s06e01'
     | '/episodes/s06e03'
+    | '/episodes/s06e07'
     | '/episodes/s06e08'
     | '/explore/$slug'
     | '/guestbook/admin'
@@ -498,6 +508,7 @@ export interface FileRouteTypes {
     | '/episodes/s05e06'
     | '/episodes/s06e01'
     | '/episodes/s06e03'
+    | '/episodes/s06e07'
     | '/episodes/s06e08'
     | '/explore/$slug'
     | '/guestbook/admin'
@@ -544,6 +555,7 @@ export interface FileRouteTypes {
     | '/episodes/s05e06'
     | '/episodes/s06e01'
     | '/episodes/s06e03'
+    | '/episodes/s06e07'
     | '/episodes/s06e08'
     | '/explore/$slug'
     | '/guestbook/admin'
@@ -591,6 +603,7 @@ export interface RootRouteChildren {
   EpisodesS05e06Route: typeof EpisodesS05e06Route
   EpisodesS06e01Route: typeof EpisodesS06e01Route
   EpisodesS06e03Route: typeof EpisodesS06e03Route
+  EpisodesS06e07Route: typeof EpisodesS06e07Route
   EpisodesS06e08Route: typeof EpisodesS06e08Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   GuestbookAdminRoute: typeof GuestbookAdminRoute
@@ -856,6 +869,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS06e03RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/episodes/s06e07': {
+      id: '/episodes/s06e07'
+      path: '/episodes/s06e07'
+      fullPath: '/episodes/s06e07'
+      preLoaderRoute: typeof EpisodesS06e07RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/episodes/s06e08': {
       id: '/episodes/s06e08'
       path: '/episodes/s06e08'
@@ -951,6 +971,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS05e06Route: EpisodesS05e06Route,
   EpisodesS06e01Route: EpisodesS06e01Route,
   EpisodesS06e03Route: EpisodesS06e03Route,
+  EpisodesS06e07Route: EpisodesS06e07Route,
   EpisodesS06e08Route: EpisodesS06e08Route,
   ExploreSlugRoute: ExploreSlugRoute,
   GuestbookAdminRoute: GuestbookAdminRoute,

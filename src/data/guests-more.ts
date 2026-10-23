@@ -76,6 +76,6 @@ export const moreGuests: Guest[] = [
   g("raja", "Raja", 6, 4, "nf-604", "Winner of RuPaul's Drag Race Season 3.", [["2011", "Wins RuPaul's Drag Race Season 3."]], "Performs and works as a make-up artist.", [], ["michelle-visage"]),
   g("nora-burns", "Nora Burns", 6, 5, "nf-605", "Comedian and writer of downtown comedy.", [["Late 1970s", "Arrives in Manhattan."], ["1980s–90s", "Performs with Unitard and The Nellie Olesons."]], "Writes and performs comedy."),
   g("lincoln-palsgrove-iv", "Lincoln Palsgrove IV", 6, 6, "nf-606", "Nightlife figure and performer.", [["2000s", "Part of the New York nightlife scene."]], "Talks about his years in the scene."),
-  g("sally-randall", "Sally Randall", 6, 7, "nf-607", "Nightlife figure.", [["1980s", "Part of the New York club world."]], "Talks about her years in the scene."),
+  g("sally-randall", "Sally Randall", 6, 7, "nf-607", "Artist, Palladium door legend and one of downtown's 80s It girls.", [["Late 1970s", "Studies at the School of Visual Arts on a full scholarship."], ["1985", "Works the Palladium door from opening night."], ["1980s", "Writes a nightlife column for New York Talk."]], "Back to painting - shown by galleries in Los Angeles, New York and Miami.", ["Palladium", "Danceteria", "Mudd Club"], ["joey-arias"]),
   g("william-norwich", "William Norwich", 6, 8, "nf-608", "Journalist, author and society columnist.", [["1980s", "Writes a society column bridging uptown and downtown."]], "Writes novels and journalism."),
 ];

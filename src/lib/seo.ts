@@ -78,6 +78,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s02e06: "chain mail for Cher & Tina, Squeezebox & Area",
   s01e04: "the Limelight, the Tunnel & Club USA",
   s02e04: "Studio 54, Le Club & The Nikki Haskell Show",
+  s06e07: "the Palladium door, Danceteria & Oprah",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

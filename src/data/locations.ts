@@ -447,4 +447,16 @@ export const LOCATIONS: Located[] = [
   { name: "Beverly Hills Hotel", lat: 34.0818, lng: -118.4136, area: "Beverly Hills" },
   { name: "Czechoslovakia", lat: 49.8, lng: 15.47, area: "Czech Republic" },
   { name: "Mar-a-Lago", lat: 26.677, lng: -80.037, area: "Palm Beach" },
+  // S06E07 Sally Randall
+  { name: "Rye, New York", lat: 40.9807, lng: -73.6837, area: "Westchester" },
+  { name: "Manursing Island Club", lat: 40.959, lng: -73.674, area: "Rye" },
+  { name: "Randalls Island", lat: 40.7932, lng: -73.9213, area: "East River" },
+  { name: "Bowery", lat: 40.724, lng: -73.9921, area: "Lower East Side" },
+  { name: "Iran", lat: 32.4279, lng: 53.688, area: "Iran" },
+  { name: "Rhode Island School of Design", lat: 41.8256, lng: -71.4079, area: "Providence" },
+  { name: "UCLA", lat: 34.0689, lng: -118.4452, area: "Los Angeles" },
+  { name: "Boston University", lat: 42.3505, lng: -71.1054, area: "Boston" },
+  { name: "Maryland Institute College of Art", lat: 39.307, lng: -76.62, area: "Baltimore" },
+  { name: "Berlin after-hours club", lat: 40.7252, lng: -73.9967, area: "NoHo" },
+  { name: "Chase Bank building, Houston and Broadway", lat: 40.7252, lng: -73.9967, area: "NoHo" },
 ];
