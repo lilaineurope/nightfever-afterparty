@@ -23,4 +23,5 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s06e03: { quote: "I was more of a mind game door person than a mean door person.", time: "00:26:46", who: "Chi Chi Valenti" }, // Chi Chi Valenti & Johnny Dynell
   s06e08: { quote: "Look, things weren't better in the old days, but they were different.", time: "00:17:54" }, // William Norwich
   s06e07: { quote: "If you do it with humor, they don't have a rebuttal.", time: "00:42:43" }, // Sally Randall
+  s01e10: { quote: "I was engineered to perform. My life is what I'm doing.", time: "00:51:01" }, // Joey Arias
 };
