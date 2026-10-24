@@ -3,24 +3,24 @@
 export type EpisodeQuote = { quote: string; time: string; who?: string }; // who: only when not the episode's guest line
 
 export const episodeQuotes: Record<string, EpisodeQuote> = {
-  s01e01: { quote: "I don't need the goal, I just need the soul.", time: "00:09:40" }, // Dianne Brill
+  s01e01: { quote: "Just be authentic and connect. They're looking for you too.", time: "00:48:51" }, // Dianne Brill
   s01e02: { quote: "This is either the low point of civilization or the high point of my entire life.", time: "01:02:40" }, // Michael Musto
   s01e03: { quote: "Fame for fame's sake is ugly. It's just ugly.", time: "01:01:51" }, // Lisa Edelstein
-  s01e04: { quote: "Customers love dancing over a shark cage.", time: "00:17:34" }, // Peter Gatien
-  s01e07: { quote: "It was majestic. It was a cathedral of clubs.", time: "01:03:47" }, // Rudolf Piper
-  s02e03: { quote: "The dance floor to me is a religion of action.", time: "00:03:56" }, // Susanne Bartsch
-  s02e04: { quote: "That's when I invented the disco nap.", time: "00:07:03" }, // Nikki Haskell
-  s02e06: { quote: "I never really understood prior to being with Nikki that art was a way of life.", time: "00:13:11" }, // Michael Schmidt
-  s02e08: { quote: "Everything that I walked down the runway with, they just let me keep.", time: "00:20:53" }, // Michelangelo Signorile
-  s03e01: { quote: "You're not born with style. You're born naked.", time: "00:34:32" }, // Patricia Field
-  s03e06: { quote: "That club was made out of spit and tape and garbage.", time: "00:12:09" }, // Eric Goode
-  s04e08: { quote: "I was supposed to be Kristi Yamaguchi's pair partner, but I kept kind of dropping her. I'm like, honey, I'm a single skater.", time: "00:07:54" }, // Richie Rich
+  s01e04: { quote: "The idea is to really draw a cross-section of people. In the end, they end up entertaining each other.", time: "00:34:11" }, // Peter Gatien
+  s01e07: { quote: "Every generation has its own cool people, and whether the generation before considers them cool is a different question.", time: "01:00:29" }, // Rudolf Piper
+  s02e03: { quote: "I'm like the last one standing, the Chelsea girl here, working that hallway until the cows come home.", time: "00:02:12" }, // Susanne Bartsch
+  s02e04: { quote: "I do my best thinking on the dance floor.", time: "00:29:32" }, // Nikki Haskell
+  s02e06: { quote: "I don't want to just make a dress that will be worn on a model and then forgotten the next day. I want to create a moment.", time: "01:00:25" }, // Michael Schmidt
+  s02e08: { quote: "There was something I found in ACT UP that was sort of antithetical to the scene. It was very nurturing... whereas we were ruthless and bitchy.", time: "00:41:54" }, // Michelangelo Signorile
+  s03e01: { quote: "I mean, you could call it craziness, but I call it originality.", time: "00:22:25" }, // Patricia Field
+  s03e06: { quote: "People say I'm in the hospitality business. I was in the in-hospitality business, because Area was terribly uncomfortable.", time: "00:31:53" }, // Eric Goode
+  s04e08: { quote: "I think in a way Heatherette was a little bit too ahead of its time.", time: "00:02:07" }, // Richie Rich
   s04e10: { quote: "These were like primal caves that we could all go into and dance around the bonfire and do cave paintings and feel less alone.", time: "00:45:11" }, // Ann Magnuson
-  s05e03: { quote: "I couldn't get away from the glamour.", time: "01:02:17" }, // Amanda Lepore
-  s05e04: { quote: "They liked me because I had a good look. I couldn't sing, but I had a good look.", time: "00:08:20" }, // Nick Egan
-  s05e06: { quote: "If there's no line, there's no point.", time: "00:27:58" }, // Christopher Makos
-  s06e01: { quote: "I didn't want to be his plus one. I wanted to be my own person. I wanted to be my own star.", time: "00:24:55" }, // James St. James
-  s06e03: { quote: "I was more of a mind game door person than a mean door person.", time: "00:26:46", who: "Chi Chi Valenti" }, // Chi Chi Valenti & Johnny Dynell
+  s05e03: { quote: "Oh, I didn't know that these were real diamonds.", time: "00:37:21" }, // Amanda Lepore
+  s05e04: { quote: "Ego isn't necessarily a bad thing. You have to have an ego to do what any of us do.", time: "00:11:06" }, // Nick Egan
+  s05e06: { quote: "There is nothing more surreal than a drag queen.", time: "00:31:02" }, // Christopher Makos
+  s06e01: { quote: "I was obsessed with the idea of it girls. And I thought, well, why can't there be it boys?", time: "00:03:46" }, // James St. James
+  s06e03: { quote: "Club 57 was kooky and kinky and just like zippity doo-dah. It was really fun.", time: "00:29:54", who: "Johnny Dynell" }, // Chi Chi Valenti & Johnny Dynell
   s06e08: { quote: "Look, things weren't better in the old days, but they were different.", time: "00:17:54" }, // William Norwich
   s06e07: { quote: "If you do it with humor, they don't have a rebuttal.", time: "00:42:43" }, // Sally Randall
   s01e10: { quote: "I was engineered to perform. My life is what I'm doing.", time: "00:51:01" }, // Joey Arias
