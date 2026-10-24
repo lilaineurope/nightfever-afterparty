@@ -484,4 +484,10 @@ export const LOCATIONS: Located[] = [
   { name: "Tennessee", lat: 35.86, lng: -86.66, area: "Tennessee" },
   { name: "Jewish Center (Upper West Side)", lat: 40.7874, lng: -73.9739, area: "Upper West Side" },
   { name: "Lenox Hill", lat: 40.7662, lng: -73.9602, area: "Upper East Side" },
+  // S04E04 Zaldy
+  { name: "Fashion Institute of Technology", lat: 40.7476, lng: -73.994, area: "Chelsea" },
+  { name: "Savannah College of Art and Design", lat: 32.0809, lng: -81.0912, area: "Savannah" },
+  { name: "Otis College of Art and Design", lat: 34.0585, lng: -118.2795, area: "Westlake, Los Angeles" },
+  { name: "MacArthur Park", lat: 34.0577, lng: -118.277, area: "Westlake, Los Angeles" },
+  { name: "The O2 Arena", lat: 51.503, lng: 0.0032, area: "Greenwich, London" },
 ];

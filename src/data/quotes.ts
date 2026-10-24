@@ -25,4 +25,5 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s06e07: { quote: "I had to build my defenses. And I do think that part of the outfits, too, were a defense.", time: "00:14:26" }, // Sally Randall
   s01e10: { quote: "I was engineered to perform. My life is what I'm doing.", time: "00:51:01" }, // Joey Arias
   s03e08: { quote: "Disco died the night I saw the B-52's.", time: "00:09:49" }, // Larry Tee
+  s04e04: { quote: "Glitter is still a valid option. Glitter looks amazingly expensive in the lights.", time: "00:09:56" }, // Zaldy
 };

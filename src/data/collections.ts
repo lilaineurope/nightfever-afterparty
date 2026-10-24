@@ -204,6 +204,7 @@ const SPOTIFY: Record<string, string> = {
   "Depeche Mode": "spotify:artist:762310PdDnwsDxAQxzQkfX",
   "Yazoo": "spotify:artist:1G1mX30GpUJqOr1QU2eBSs",
   "Larry Tee & Princess Superstar – 'Licky'": "spotify:track:47AJkANRAXUGcr4HBPfcqq",
+  "RuPaul – 'Back to My Roots'": "spotify:track:4v8VlAmAY5bCl0Tuv9e1tq",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

@@ -81,6 +81,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s06e07: "the Palladium door, Danceteria & Oprah",
   s01e10: "Klaus Nomi, Bowie & Fiorucci",
   s03e08: "Celebrity Club, RuPaul & Electroclash",
+  s04e04: "RuPaul, Michael Jackson & the Love Ball",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */
