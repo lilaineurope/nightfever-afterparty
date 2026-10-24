@@ -22,6 +22,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s06e01: { quote: "I was obsessed with the idea of it girls. And I thought, well, why can't there be it boys?", time: "00:03:46" }, // James St. James
   s06e03: { quote: "Club 57 was kooky and kinky and just like zippity doo-dah. It was really fun.", time: "00:29:54", who: "Johnny Dynell" }, // Chi Chi Valenti & Johnny Dynell
   s06e08: { quote: "Look, things weren't better in the old days, but they were different.", time: "00:17:54" }, // William Norwich
-  s06e07: { quote: "If you do it with humor, they don't have a rebuttal.", time: "00:42:43" }, // Sally Randall
+  s06e07: { quote: "I had to build my defenses. And I do think that part of the outfits, too, were a defense.", time: "00:14:26" }, // Sally Randall
   s01e10: { quote: "I was engineered to perform. My life is what I'm doing.", time: "00:51:01" }, // Joey Arias
 };
