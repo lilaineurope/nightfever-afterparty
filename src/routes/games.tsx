@@ -1,6 +1,11 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
+import { Timestamp } from "@/components/episode-player";
+import { episodePortraits } from "@/components/episode-block";
+import { episodes, episodePath } from "@/data/episodes";
+import { entityFor } from "@/data/entities";
+import { useMemo } from "react";
 
 // Games - the ideas board for turning the fan page into a game (Lisa, 24 Oct 2026).
 // Unlinked for now: not in the menu, search or sitemap, and noindex. See UNLINKED_PAGES in src/lib/pages.ts.
@@ -11,7 +16,7 @@ export const Route = createFileRoute("/games")({
     pageHead({
       path: "/games",
       title: "Games – the Night Fever Afterparty game ideas | Night Fever fan page",
-      description: "Ideas for turning the Night Fever fan page into a game: The Door, Six Degrees, Club Crawl, Dress for the Door and Name That Night.",
+      description: "Ideas for turning the Night Fever fan page into a game: The Door, Follow the Names, Six Degrees, Club Crawl, Dress for the Door and Name That Night.",
       image: "/og/home.jpg",
       noindex: true,
     }),
@@ -42,6 +47,22 @@ const GAMES: Game[] = [
     ],
     uses: ["Episode references and timestamps", "Afterparty quotes", "Polaroids", "Pub Quiz question logic"],
     needs: ["Question picker per episode", "Daily door schedule", "Progress saved in the visitor's browser", "Share card"],
+  },
+  {
+    name: "Follow the Names",
+    status: "Idea",
+    pitch:
+      "A discovery journey that replays how this site was made. You start with one episode - James St. James - and the only way forward is a name someone drops. Every guest who gets name-dropped becomes a door you can open next.",
+    play: [
+      "Start at S6 E1. The guests James name-drops light up as your next doors.",
+      "Tap a name-drop to hear the exact moment it was said, then open that guest's episode.",
+      "Each episode you open adds its own name-drops, so the map branches out - everyone's journey is different.",
+      "Collect each guest's polaroid in the order you found them: your own Afterparty.",
+      "No one dropped the name? Use a wildcard (like Chi Chi & Johnny on Lisa's trail).",
+      "Play Lisa's trail as the guided route, or find your own.",
+    ],
+    uses: ["Name-drops in every episode (who, when, the context)", "Episode player timestamps", "Polaroids", "Network graph"],
+    needs: ["Trail map that grows as you play", "Unlocked guests saved in the visitor's browser", "Wildcard rule", "Shareable trail picture"],
   },
   {
     name: "Six Degrees of Night Fever",
@@ -94,6 +115,73 @@ const STATUS_STYLE: Record<Status, string> = {
   Later: "bg-muted text-muted-foreground",
 };
 
+type Step = { id: string; guest: string; date: string; by?: { id: string; guest: string; time: string; context: string } | undefined };
+
+// Lisa's real trail: the Afterparties in the order she published them, each with the earlier episode that first dropped
+// that guest's name. Built from the data, so it grows with every new Afterparty.
+function useTrail(): Step[] {
+  return useMemo(() => {
+    const ordered = [...episodes].sort((a, b) => a.afterpartyPublished.localeCompare(b.afterpartyPublished));
+    return ordered.map((e, i) => {
+      const earlier = ordered.slice(0, i);
+      const refs = entityFor(e.guest)?.refs ?? [];
+      const prior = earlier.map((p) => ({ p, r: refs.find((r) => r.episode === p.id) })).find((x) => x.r);
+      return {
+        id: e.id,
+        guest: e.guest,
+        date: e.afterpartyPublished.slice(0, 10),
+        by: prior ? { id: prior.p.id, guest: prior.p.guest, time: prior.r!.time, context: prior.r!.context } : undefined,
+      };
+    });
+  }, []);
+}
+
+const short = (id: string) => `S${Number(id.slice(1, 3))} E${Number(id.slice(4, 6))}`;
+
+function LisasTrail() {
+  const trail = useTrail();
+  return (
+    <section className="px-6 pb-12">
+      <div className="mx-auto max-w-4xl rounded-2xl border border-pink/50 bg-card p-6">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-pink">Lisa's trail - how the Afterparty order happened</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Every Afterparty in the order it was published, and the earlier episode that dropped the guest's name. Tap a time to hear
+          the name-drop.
+        </p>
+        <ol className="mt-5 grid gap-3">
+          {trail.map((s, i) => (
+            <li key={s.id} className="flex items-start gap-3 border-t border-border pt-3 first:border-t-0 first:pt-0">
+              <span className="w-6 shrink-0 pt-1 text-right text-sm font-semibold text-gold">{i + 1}</span>
+              {episodePortraits[s.id] ? (
+                <img src={episodePortraits[s.id]} alt="" loading="lazy" className="h-12 w-12 shrink-0 rounded-sm object-cover" />
+              ) : (
+                <span className="h-12 w-12 shrink-0 rounded-sm bg-muted" />
+              )}
+              <div className="min-w-0 text-sm leading-relaxed">
+                <Link to={episodePath(s.id as never)} className="font-semibold text-cream hover:text-pink">
+                  {s.guest}
+                </Link>{" "}
+                <span className="text-muted-foreground">· {short(s.id)}</span>
+                {i === 0 ? (
+                  <p className="text-muted-foreground">The starting point.</p>
+                ) : s.by ? (
+                  <p className="text-muted-foreground">
+                    Name-dropped by <span className="text-foreground">{s.by.guest}</span> ({short(s.by.id)}){" "}
+                    <Timestamp episodeId={s.by.id} time={s.by.time} className="text-xs" />
+                    <span className="block text-xs">{s.by.context}</span>
+                  </p>
+                ) : (
+                  <p className="text-muted-foreground">Wildcard - nobody on the trail had dropped the name yet.</p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function GamesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -125,6 +213,8 @@ function GamesPage() {
           </p>
         </div>
       </section>
+
+      <LisasTrail />
 
       <section className="px-6 pb-20">
         <ol className="mx-auto grid max-w-4xl gap-6">
