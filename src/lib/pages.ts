@@ -20,6 +20,7 @@ export const PAGES = [
 export const UNLINKED_PAGES = [
   { to: "/wardrobe", label: "Wardrobe" },
   { to: "/quiz", label: "Pub Quiz" },
+  { to: "/games", label: "Games" }, // ideas board (Lisa, 24 Oct 2026)
 ] as const;
 
 /** Pages outside the top menu (footer and elsewhere). */

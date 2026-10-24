@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookClubRouteImport } from './routes/book-club'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as JukeboxRouteImport } from './routes/jukebox'
 import { Route as MapRouteImport } from './routes/map'
@@ -80,6 +81,11 @@ const ConnectionsRoute = ConnectionsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuestsRoute = GuestsRouteImport.update({
@@ -299,6 +305,7 @@ export interface FileRoutesByFullPath {
   '/book-club': typeof BookClubRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
@@ -348,6 +355,7 @@ export interface FileRoutesByTo {
   '/book-club': typeof BookClubRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
@@ -398,6 +406,7 @@ export interface FileRoutesById {
   '/book-club': typeof BookClubRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
   '/map': typeof MapRoute
@@ -449,6 +458,7 @@ export interface FileRouteTypes {
     | '/book-club'
     | '/connections'
     | '/contact'
+    | '/games'
     | '/guests'
     | '/jukebox'
     | '/map'
@@ -498,6 +508,7 @@ export interface FileRouteTypes {
     | '/book-club'
     | '/connections'
     | '/contact'
+    | '/games'
     | '/guests'
     | '/jukebox'
     | '/map'
@@ -547,6 +558,7 @@ export interface FileRouteTypes {
     | '/book-club'
     | '/connections'
     | '/contact'
+    | '/games'
     | '/guests'
     | '/jukebox'
     | '/map'
@@ -597,6 +609,7 @@ export interface RootRouteChildren {
   BookClubRoute: typeof BookClubRoute
   ConnectionsRoute: typeof ConnectionsRoute
   ContactRoute: typeof ContactRoute
+  GamesRoute: typeof GamesRoute
   GuestsRoute: typeof GuestsRoute
   JukeboxRoute: typeof JukeboxRoute
   MapRoute: typeof MapRoute
@@ -676,6 +689,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guests': {
@@ -981,6 +1001,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookClubRoute: BookClubRoute,
   ConnectionsRoute: ConnectionsRoute,
   ContactRoute: ContactRoute,
+  GamesRoute: GamesRoute,
   GuestsRoute: GuestsRoute,
   JukeboxRoute: JukeboxRoute,
   MapRoute: MapRoute,
