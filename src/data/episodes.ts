@@ -18,6 +18,7 @@ import schmidtRefs from "./s02e06.json";
 import gatienRefs from "./s01e04.json";
 import haskellRefs from "./s02e04.json";
 import randallRefs from "./s06e07.json";
+import ariasRefs from "./s01e10.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -420,7 +421,25 @@ const s06e07: Episode = {
   top: [...randallRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07].sort((a, b) =>
+const s01e10: Episode = {
+  id: "s01e10",
+  season: 1,
+  episode: 10,
+  guest: "Joey Arias",
+  released: "2021-11-01",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-joey-arias",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO6186863452.mp3",
+  runtime: "1:10:36",
+  afterpartyPublished: "2026-10-28",
+  blurb:
+    "Joey Arias, not a queen but a goddess! Fiorucci's star stylist, Klaus Nomi's soul brother, Bowie on Saturday Night Live, Club 57, the Andy and Edie show at Danceteria, a movie date with Warhol, Billie Holiday at the Limelight and Bar d'O.",
+  references: ariasRefs.length,
+  mentions: ariasRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...ariasRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -440,7 +459,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -480,6 +499,8 @@ export function episodePath(
       return "/episodes/s02e04";
     case "s06e07":
       return "/episodes/s06e07";
+    case "s01e10":
+      return "/episodes/s01e10";
     default:
       return "/episodes/s06e01";
   }

@@ -25,6 +25,7 @@ import schmidtPortrait from "@/assets/polaroid-michael-schmidt.jpg";
 import gatienPortrait from "@/assets/polaroid-peter-gatien.jpg";
 import haskellPortrait from "@/assets/polaroid-nikki-haskell.jpg";
 import randallPortrait from "@/assets/polaroid-sally-randall.jpg";
+import ariasPortrait from "@/assets/polaroid-joey-arias.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -47,6 +48,7 @@ export const episodePortraits: Record<string, string> = {
   s01e04: gatienPortrait,
   s02e04: haskellPortrait,
   s06e07: randallPortrait,
+  s01e10: ariasPortrait,
 };
 
 
