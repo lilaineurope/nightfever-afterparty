@@ -24,6 +24,7 @@ import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as TrailRouteImport } from './routes/trail'
 import { Route as UnderTheHoodRouteImport } from './routes/under-the-hood'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as WardrobeRouteImport } from './routes/wardrobe'
@@ -131,6 +132,11 @@ const TermsRoute = TermsRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrailRoute = TrailRouteImport.update({
+  id: '/trail',
+  path: '/trail',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UnderTheHoodRoute = UnderTheHoodRouteImport.update({
@@ -315,6 +321,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/trail': typeof TrailRoute
   '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/wardrobe': typeof WardrobeRoute
@@ -365,6 +372,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/trail': typeof TrailRoute
   '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/wardrobe': typeof WardrobeRoute
@@ -416,6 +424,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/trail': typeof TrailRoute
   '/under-the-hood': typeof UnderTheHoodRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/wardrobe': typeof WardrobeRoute
@@ -468,6 +477,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/timeline'
+    | '/trail'
     | '/under-the-hood'
     | '/unsubscribe'
     | '/wardrobe'
@@ -518,6 +528,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/timeline'
+    | '/trail'
     | '/under-the-hood'
     | '/unsubscribe'
     | '/wardrobe'
@@ -568,6 +579,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/timeline'
+    | '/trail'
     | '/under-the-hood'
     | '/unsubscribe'
     | '/wardrobe'
@@ -619,6 +631,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
+  TrailRoute: typeof TrailRoute
   UnderTheHoodRoute: typeof UnderTheHoodRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   WardrobeRoute: typeof WardrobeRoute
@@ -759,6 +772,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trail': {
+      id: '/trail'
+      path: '/trail'
+      fullPath: '/trail'
+      preLoaderRoute: typeof TrailRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/under-the-hood': {
@@ -1011,6 +1031,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
+  TrailRoute: TrailRoute,
   UnderTheHoodRoute: UnderTheHoodRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   WardrobeRoute: WardrobeRoute,

@@ -16,7 +16,7 @@ export const Route = createFileRoute("/games")({
     pageHead({
       path: "/games",
       title: "Games – the Night Fever Afterparty game ideas | Night Fever fan page",
-      description: "Ideas for turning the Night Fever fan page into a game: The Door, Follow the Names, Six Degrees, Club Crawl, Dress for the Door and Name That Night.",
+      description: "Ideas for turning the Night Fever fan page into a game: The Door, Follow the Names, James's Games, Six Degrees, Club Crawl, Dress for the Door and Name That Night.",
       image: "/og/home.jpg",
       noindex: true,
     }),
@@ -31,6 +31,10 @@ type Game = {
   play: string[];
   uses: string[];
   needs: string[];
+  /** Moments on the show this game comes from - tap to hear them. */
+  moments?: { id: string; time: string; label: string }[];
+  /** A playable draft, if there is one. */
+  draft?: "/trail";
 };
 
 const GAMES: Game[] = [
@@ -50,7 +54,8 @@ const GAMES: Game[] = [
   },
   {
     name: "Follow the Names",
-    status: "Idea",
+    status: "Next up",
+    draft: "/trail",
     pitch:
       "A discovery journey that replays how this site was made. You start with one episode - James St. James - and the only way forward is a name someone drops. Every guest who gets name-dropped becomes a door you can open next.",
     play: [
@@ -63,6 +68,29 @@ const GAMES: Game[] = [
     ],
     uses: ["Name-drops in every episode (who, when, the context)", "Episode player timestamps", "Polaroids", "Network graph"],
     needs: ["Trail map that grows as you play", "Unlocked guests saved in the visitor's browser", "Wildcard rule", "Shareable trail picture"],
+  },
+  {
+    name: "James's Games",
+    status: "Idea",
+    pitch:
+      "James plays quick games with his guests on the show - 60 seconds on the clock, true or false, a lightning round. Play the same game yourself, then hear how the guest did.",
+    play: [
+      "Pick a game from the show. The clock starts, you type your answers.",
+      "Answers count if they were accepted on the show - by the guest or the hosts piling in.",
+      "Then compare: you got 12 original Tunnel kids, Larry got 3 before the hosts jumped in.",
+      "Tap to hear the real moment from the episode.",
+      "New games join whenever James plays one in a new Afterparty.",
+    ],
+    uses: ["Episode references (the names and themes said in each game)", "Episode player timestamps", "Pub Quiz question logic"],
+    needs: ["Accepted-answer list per game (from the episode)", "60-second clock and typed answers with name matching", "True or false cards", "Score to share"],
+    moments: [
+      { id: "s03e08", time: "00:03:54", label: "Larry Tee: name 25 original Tunnel club kids in 60 seconds" },
+      { id: "s04e08", time: "00:24:19", label: "Richie Rich: name 10 90s club kids and why they were fabulous" },
+      { id: "s03e06", time: "00:14:07", label: "Eric Goode: 60 seconds to name Area's themes" },
+      { id: "s01e07", time: "00:21:51", label: "Rudolf Piper: true or false - who really worked at Danceteria?" },
+      { id: "s02e08", time: "00:01:44", label: "Michelangelo Signorile: lightning round through his first 20 years" },
+      { id: "s01e04", time: "00:39:16", label: "Bonus: Peter Gatien on the game show the Tunnel staged, with RuPaul" },
+    ],
   },
   {
     name: "Six Degrees of Night Fever",
@@ -228,6 +256,11 @@ function GamesPage() {
                 </span>
               </div>
               <p className="mt-3 leading-relaxed">{g.pitch}</p>
+              {g.draft && (
+                <Link to={g.draft} className="mt-3 inline-block rounded-full bg-pink px-4 py-2 text-xs font-semibold uppercase tracking-wider text-pink-foreground hover:opacity-90">
+                  Play the first draft &rarr;
+                </Link>
+              )}
               <div className="mt-5 grid gap-5 sm:grid-cols-3">
                 <div>
                   <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">How it plays</h3>
@@ -254,6 +287,20 @@ function GamesPage() {
                   </ul>
                 </div>
               </div>
+              {g.moments && (
+                <div className="mt-5 border-t border-border pt-4">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">On the show</h3>
+                  <ul className="mt-2 space-y-2 text-sm leading-relaxed">
+                    {g.moments.map((m) => (
+                      <li key={m.id + m.time} className="flex flex-wrap items-baseline gap-x-2">
+                        <span className="text-muted-foreground">{short(m.id)}</span>
+                        <span>{m.label}</span>
+                        <Timestamp episodeId={m.id} time={m.time} className="text-xs" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </li>
           ))}
         </ol>
