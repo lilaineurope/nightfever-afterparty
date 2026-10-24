@@ -193,6 +193,17 @@ const SPOTIFY: Record<string, string> = {
   "Chubby Checker – 'The Twist'": "spotify:track:4YCnTYbq3oL1Lqpyxg33CU",
   "B.J. Thomas – 'Raindrops Keep Fallin' on My Head'": "spotify:track:0oMTxTIHAt3hstaoObsmFs",
   "Labelle – 'Lady Marmalade'": "spotify:track:17VWTx7LD7liGlpnlGhUbn",
+  "Chicks on Speed": "spotify:artist:4EySud7Ww0GNvkwhRYZHLV",
+  "The B-52's – 'Rock Lobster'": "spotify:track:0rme3FLbw5o1KLXpJzivjS",
+  "Butthole Surfers": "spotify:artist:62BcWP4fzR8axESibNQEhs",
+  "The Black Crowes": "spotify:artist:5krkohEVJYw0qoB5VWwxaC",
+  "Liza Minnelli – 'Losing My Mind'": "spotify:track:2loMPlz3JWjFGF6fPoiSoo",
+  "Pet Shop Boys": "spotify:artist:2ycnb8Er79LoH2AsR5ldjh",
+  "Robin S. – 'Show Me Love'": "spotify:track:4t0UsYzmmmZRMTWn77jiGF",
+  "Fischerspooner": "spotify:artist:5R7K1GezC0jy24v1R2n4x3",
+  "Depeche Mode": "spotify:artist:762310PdDnwsDxAQxzQkfX",
+  "Yazoo": "spotify:artist:1G1mX30GpUJqOr1QU2eBSs",
+  "Larry Tee & Princess Superstar – 'Licky'": "spotify:track:47AJkANRAXUGcr4HBPfcqq",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

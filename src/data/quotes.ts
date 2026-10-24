@@ -24,4 +24,5 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s06e08: { quote: "Look, things weren't better in the old days, but they were different.", time: "00:17:54" }, // William Norwich
   s06e07: { quote: "I had to build my defenses. And I do think that part of the outfits, too, were a defense.", time: "00:14:26" }, // Sally Randall
   s01e10: { quote: "I was engineered to perform. My life is what I'm doing.", time: "00:51:01" }, // Joey Arias
+  s03e08: { quote: "Disco died the night I saw the B-52's.", time: "00:09:49" }, // Larry Tee
 };

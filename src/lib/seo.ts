@@ -80,6 +80,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s02e04: "Studio 54, Le Club & The Nikki Haskell Show",
   s06e07: "the Palladium door, Danceteria & Oprah",
   s01e10: "Klaus Nomi, Bowie & Fiorucci",
+  s03e08: "Celebrity Club, RuPaul & Electroclash",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

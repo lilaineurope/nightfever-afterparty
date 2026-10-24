@@ -21,6 +21,7 @@ import s01e04 from "./s01e04.json";
 import s02e04 from "./s02e04.json";
 import s06e07 from "./s06e07.json";
 import s01e10 from "./s01e10.json";
+import s03e08 from "./s03e08.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -541,6 +542,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s02e04", label: "S2 E4", guest: "Nikki Haskell", refs: s02e04 as Ref[] },
   { id: "s06e07", label: "S6 E7", guest: "Sally Randall", refs: s06e07 as Ref[] },
   { id: "s01e10", label: "S1 E10", guest: "Joey Arias", refs: s01e10 as Ref[] },
+  { id: "s03e08", label: "S3 E8", guest: "Larry Tee", refs: s03e08 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>

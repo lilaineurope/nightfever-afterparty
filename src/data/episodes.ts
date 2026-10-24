@@ -19,6 +19,7 @@ import gatienRefs from "./s01e04.json";
 import haskellRefs from "./s02e04.json";
 import randallRefs from "./s06e07.json";
 import ariasRefs from "./s01e10.json";
+import teeRefs from "./s03e08.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -439,7 +440,25 @@ const s01e10: Episode = {
   top: [...ariasRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10].sort((a, b) =>
+const s03e08: Episode = {
+  id: "s03e08",
+  season: 3,
+  episode: 8,
+  guest: "Larry Tee",
+  released: "2023-08-03",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-308",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO8489230682.mp3",
+  runtime: "1:06:53",
+  afterpartyPublished: "2026-10-29",
+  blurb:
+    "Larry Tee, superstar DJ! Up from Atlanta with RuPaul and Lahoma van Zandt, Celebrity Club in the Tunnel basement, Nelson Sullivan's townhouse, co-writing 'Supermodel', Liza dancing in his booth at Love Machine, naming Electroclash in Williamsburg - and Zuzii in London and Berlin.",
+  references: teeRefs.length,
+  mentions: teeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...teeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -459,7 +478,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -501,6 +520,8 @@ export function episodePath(
       return "/episodes/s06e07";
     case "s01e10":
       return "/episodes/s01e10";
+    case "s03e08":
+      return "/episodes/s03e08";
     default:
       return "/episodes/s06e01";
   }
