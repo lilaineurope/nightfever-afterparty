@@ -10,6 +10,7 @@ import { WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import { QuoteOfTheDay } from "@/components/quote-of-the-day";
 import afterpartyFill from "@/assets/home-afterparty-fill.webp";
 
 export const Route = createFileRoute("/")({
@@ -89,6 +90,7 @@ function Index() {
               <Link to="/jukebox" className="text-gold">song</Link>, design and look, counted and linked to the exact moment it was said.
             </p>
           </div>
+          <QuoteOfTheDay />
         </div>
       </section>
 
