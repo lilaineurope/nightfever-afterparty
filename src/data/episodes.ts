@@ -35,6 +35,8 @@ export type Episode = {
   watchUrl: string;
   /** Spotify address where the episode can be heard */
   listenUrl: string;
+  /** Lisa's public YouTube playlist for this Afterparty (only once it is public) */
+  youtubePlaylistUrl?: string;
   /** The show's own public podcast audio (RSS enclosure) - feeds the site's episode player and every timestamp */
   audioUrl: string;
   /** Approximate runtime as listed on Spotify */
@@ -59,6 +61,7 @@ const s06e01: Episode = {
     released: "2026-08-21",
     watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-601",
     listenUrl: "https://open.spotify.com/episode/2WEQu8LV4uIufb9Wb6Fye4",
+    youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLRIJuRxg5A6w",
     audioUrl:
       "https://anchor.fm/s/68428444/podcast/play/124554015/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-21%2Fc7dcf7aa-4b58-5bb2-8cc1-c4189e449912.mp3",
     runtime: "54 min",
