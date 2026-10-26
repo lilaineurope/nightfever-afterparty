@@ -21,6 +21,7 @@ export const GUEST_LINES: Record<string, string> = {
   s01e10: "Drag goddess · Klaus Nomi's partner · Fiorucci stylist",
   s03e08: "DJ · 'Supermodel' songwriter · Electroclash founder",
   s04e04: "Club Kid · model · RuPaul's Emmy-winning designer",
+  s02e01: "Voguer · Seduction singer · Drag Race judge",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
   s06e01: "Club Kid legend, author and host of Night Fever",
