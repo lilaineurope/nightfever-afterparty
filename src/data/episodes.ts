@@ -82,6 +82,7 @@ const s01e01: Episode = {
     watchUrl:
       "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-dianne-brill",
     listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+    youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLTgZt5aNlNVg",
     audioUrl:
       "https://traffic.megaphone.fm/APO6963798592.mp3",
     runtime: "51 min",
