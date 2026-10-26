@@ -27,6 +27,9 @@ export function ClubNightsList() {
               {c.playlistId && (
                 <a href={playlistUrl(c.playlistId)} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold hover:text-pink">Spotify ↗</a>
               )}
+              {c.youtubePlaylist && (
+                <a href={c.youtubePlaylist} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold hover:text-pink">YouTube ↗</a>
+              )}
             </div>
           </li>
         ))}

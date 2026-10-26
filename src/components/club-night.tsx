@@ -21,16 +21,23 @@ export function ClubNightPlaylist({ night }: { night: ClubNight }) {
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">{night.note}</p>
 
-      {night.playlistId && (
+      {(night.playlistId || night.youtubePlaylist) && (
         <div className="mt-5 flex flex-wrap items-center gap-3">
-          {!open && (
+          {night.playlistId && !open && (
             <button type="button" onClick={() => setOpen(true)} className="rounded-full bg-pink px-4 py-1.5 text-sm font-semibold text-pink-foreground hover:opacity-90">
               ▶ Play it here
             </button>
           )}
-          <a href={playlistUrl(night.playlistId)} target="_blank" rel="noopener noreferrer" className="rounded-full border border-gold/60 px-4 py-1.5 text-sm font-semibold text-gold transition hover:border-pink hover:text-pink">
-            Follow the playlist on Spotify ↗
-          </a>
+          {night.playlistId && (
+            <a href={playlistUrl(night.playlistId)} target="_blank" rel="noopener noreferrer" className="rounded-full border border-gold/60 px-4 py-1.5 text-sm font-semibold text-gold transition hover:border-pink hover:text-pink">
+              Follow the playlist on Spotify ↗
+            </a>
+          )}
+          {night.youtubePlaylist && (
+            <a href={night.youtubePlaylist} target="_blank" rel="noopener noreferrer" className="rounded-full border border-gold/60 px-4 py-1.5 text-sm font-semibold text-gold transition hover:border-pink hover:text-pink">
+              The AFTERPARTY playlist on YouTube ↗
+            </a>
+          )}
         </div>
       )}
       {open && night.playlistId && (

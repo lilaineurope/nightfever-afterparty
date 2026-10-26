@@ -18,6 +18,7 @@ export type ClubNight = {
   slug: string; // entity slug of the club card
   club: string;
   playlistId?: string; // Lisa's public Spotify playlist, once created
+  youtubePlaylist?: string; // Lisa's public AFTERPARTY playlist on YouTube, once it is public
   note: string; // where the songs come from
   sources: Source[];
   songs: ClubSong[];
@@ -112,8 +113,9 @@ const dt: ClubNight = {
   slug: "danceteria",
   club: "Danceteria",
   playlistId: "2aPYyqs3vWySfJPTCBeK1C",
+  youtubePlaylist: "https://www.youtube.com/playlist?list=PLVw_1KfuOBCM",
   note:
-    "From documented accounts of Danceteria (1980–1986): interviews with resident DJs Mark Kamins and Johnny Dynell, Tim Lawrence's history Life and Death on the New York Dance Floor, 1980–1983, and the bands who played its stages. Some songs were named as played or born there, some are by acts who performed there live, and some stand in for artists the DJs are known to have mixed. Not one exact night.",
+    "From documented accounts of Danceteria (1980–1986): interviews with resident DJs Mark Kamins and Johnny Dynell, Tim Lawrence's history Life and Death on the New York Dance Floor, 1980–1983, and the bands who played its stages - plus the songs YouTube recognises in footage filmed inside the club. Some songs were named as played or born there, some are by acts who performed there live, and some stand in for artists the DJs are known to have mixed. Not one exact night.",
   sources: [
     { key: "K", label: "Mark Kamins interview (Red Bull Music Academy, 2014)", href: "https://daily.redbullmusicacademy.com/2014/02/mark-kamins-interview" },
     { key: "L", label: "Tim Lawrence, \"Nightclubbing: Danceteria\" (Red Bull Music Academy, 2016)", href: "https://daily.redbullmusicacademy.com/2016/10/danceteria-nightclubbing" },
@@ -124,6 +126,10 @@ const dt: ClubNight = {
     { key: "S", label: "Sade (band) - Wikipedia", href: "https://en.wikipedia.org/wiki/Sade_(band)" },
     { key: "T", label: "The Smiths' Danceteria gig (Spin)", href: "https://www.spinmagazine.com/2014/04/madonna-smiths-danceteria-gig-legendary-coat-check/" },
     { key: "N", label: "52nd Street - the Factory years", href: "https://www.liquisearch.com/52nd_street_band/the_factory_years" },
+    { key: "D", label: "New York Dance Stand 1983, complete Danceteria episode (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=PTDI4InokjI" },
+    { key: "E", label: "New York Dance Stand from Danceteria, 1983, with Dianne Brill (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=TueeQKzdB6s" },
+    { key: "X", label: "Natasha's fashion show at Danceteria, 1984 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=rM2JfP0f2aQ" },
+    { key: "V", label: "Danceteria, 1980s New York clubbing - Nelson Sullivan / Kinolibrary (YouTube - a viewer's track ID)", href: "https://www.youtube.com/watch?v=8TgoJwcdzSE" },
   ],
   songs: [
     { title: "Everybody", artist: "Madonna", year: 1982, spotify: "4sFGkok98Cu0gu52fD48Xr", kind: "played", why: "Mark Kamins played her demo at the club; she first performed it there on 18 Dec 1982", sources: ["W", "K"] },
@@ -153,6 +159,12 @@ const dt: ClubNight = {
     { title: "Wardance", artist: "Killing Joke", year: 1980, spotify: "38Pqjy8ptttAXIBxNUk2Iu", kind: "dj-artist", sources: ["L"] },
     { title: "I Feel Love (12\")", artist: "Donna Summer", year: 1977, spotify: "7B7lf3sIze5VR2WuYttn18", kind: "dj-artist", sources: ["L"] },
     { title: "Rock Lobster", artist: "The B-52's", year: 1979, spotify: "0rme3FLbw5o1KLXpJzivjS", kind: "dj-artist", why: "Kamins: \"I would play B-52's\"", sources: ["K"] },
+    { title: "Blue Monday", artist: "New Order", year: 1983, spotify: "6hHc7Pks7wtBIW8Z6A0iFq", kind: "played", why: "Plays on New York Dance Stand, filmed at the club in 1983 (YouTube's song recognition)", sources: ["D"] },
+    { title: "Haunted House of Rock", artist: "Whodini", year: 1983, spotify: "50brfU9ecCxbyTEe8MNXUP", kind: "played", why: "Plays on both New York Dance Stand shows filmed at the club in 1983 (YouTube's song recognition)", sources: ["D", "E"] },
+    { title: "I Love You", artist: "Yello", year: 1983, spotify: "3JGMel50Hoif9AySxeGgep", kind: "played", why: "Plays on New York Dance Stand, filmed at the club in 1983 (YouTube's song recognition)", sources: ["D"] },
+    { title: "Jukebox (Don't Put Another Dime)", artist: "The Flirts", year: 1982, spotify: "4ELCfn46P7TLfPSEkf2nbo", kind: "played", why: "Plays at Natasha's fashion show at the club in 1984 (YouTube's song recognition)", sources: ["X"] },
+    { title: "White Wedding", artist: "Billy Idol", year: 1982, spotify: "24kNjskAjp7GBtP0MPEiC6", kind: "played", why: "Plays at Natasha's fashion show at the club in 1984 (YouTube's song recognition)", sources: ["X"] },
+    { title: "Funkbox Party", artist: "The Masterdon Committee", year: 1982, spotify: "6078HP47Q6H6LcQN9nKLxX", kind: "played", why: "A viewer identifies it in Nelson Sullivan's footage from inside the club", sources: ["V"] },
   ],
 };
 
