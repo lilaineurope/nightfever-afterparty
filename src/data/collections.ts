@@ -69,6 +69,18 @@ export const bookClub: CollectionItem[] = entities
 // ---------- Jukebox ----------
 // Official Spotify IDs, checked against Spotify search results (never guessed).
 const SPOTIFY: Record<string, string> = {
+  // S02E01 Michelle Visage
+  "Seduction": "spotify:artist:66pXn4ZrPf6yzk5PHGkUZA",
+  "The S.O.U.L. S.Y.S.T.E.M. – 'It's Gonna Be a Lovely Day'": "spotify:track:5A5Ej8R3QY9xb98dmVowmL",
+  "RuPaul & Michelle Visage – 'Hard Candy Christmas'": "spotify:track:2LwrpoR8yAumt09op7N2tt",
+  "Seduction – 'Two to Make It Right'": "spotify:track:6GS6uE1vDmtzxO8GztAR2O",
+  "Teena Marie – 'Déjà Vu'": "spotify:track:7p37jbu5FjiHlkXV4wEQei",
+  "Seduction – 'Heartbeat'": "spotify:track:3PFFwk0K0TrFmBC9ZEZaeg",
+  "Madonna – 'Who's That Girl'": "spotify:track:3G0NNqwQ1sqRpySr6soHlH",
+  "Paula Abdul – 'Opposites Attract'": "spotify:track:7z38bideBRvGAgjXe2SECm",
+  "Jennifer Holliday – 'I Am Love'": "spotify:track:4EFThxuJ1AQeVhJG4vo8Vy",
+  "Seduction – '(You're My One and Only) True Love'": "spotify:track:0symbiCfmFvJDJgR6y8gkf",
+  "RuPaul – Ho Ho Ho": "spotify:album:0OLhbI7D1zycFCFYXgBxt2",
   "'Heart of Glass' – Blondie": "spotify:track:5lQOzJmQladWC4kLQClssB",
   "'The Glamorous Life' – Sheila E.": "spotify:track:179SfVFJ0ZN41toTxnpgRD",
   "'Dancing in the Dark' video – Bruce Springsteen": "spotify:track:7FwBtcecmlpc1sLySPXeGE",

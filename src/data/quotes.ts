@@ -26,4 +26,5 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s01e10: { quote: "I was engineered to perform. My life is what I'm doing.", time: "00:51:01" }, // Joey Arias
   s03e08: { quote: "Disco died the night I saw the B-52's.", time: "00:09:49" }, // Larry Tee
   s04e04: { quote: "Glitter is still a valid option. Glitter looks amazingly expensive in the lights.", time: "00:09:56" }, // Zaldy
+  s02e01: { quote: "Dorothy clicked her heels three times and ended up in Kansas. I clicked my heels three times and ended up on Christopher Street.", time: "00:11:50" }, // Michelle Visage
 };
