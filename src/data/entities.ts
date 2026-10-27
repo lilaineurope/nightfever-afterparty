@@ -260,6 +260,10 @@ export const categoryMentionsByEpisode: Record<string, Record<string, number>> =
 
 /** A card that appears in only one episode with nothing else around it: kept for visitors,
  * but left out of the sitemap and marked noindex so Google sees the rich cards instead. */
+/** Sitemap (Lisa, 27 Oct 2026): only guests' cards and names dropped in two or more episodes, so Google spends its
+ *  visits on the strongest pages first. Every other card stays on the site, linked from its episodes. */
+export const inSitemap = (e: Entity): boolean => !!e.guest || new Set(e.refs.map((r) => r.episode)).size >= 2;
+
 export const isThinCard = (e: Entity): boolean =>
   !e.guest &&
   new Set(e.refs.map((r) => r.episode)).size < 2 &&

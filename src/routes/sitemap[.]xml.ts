@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getRouterInstance } from "@tanstack/react-start";
 import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap";
-import { entities, isThinCard } from "@/data/entities";
+import { entities, inSitemap } from "@/data/entities";
 
 // The public site origin.
 const BASE_URL = "https://nightfever-afterparty.com";
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = sitemapStaticPaths(router).map((path) => ({ path }));
         // Entity overview cards under /explore/$slug: local collection, all public.
         for (const entity of entities) {
-          if (isThinCard(entity)) continue; // one-line cards stay on the site but out of the sitemap
+          if (!inSitemap(entity)) continue; // guests and names from 2+ episodes only; the rest stay on the site, out of the sitemap
           const location = router.buildLocation({
             to: "/explore/$slug",
             params: { slug: entity.slug },
