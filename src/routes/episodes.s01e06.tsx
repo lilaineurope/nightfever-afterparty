@@ -114,8 +114,8 @@ function EpisodePage() {
           </Link>
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season 1 · Episode 6</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">Waltpaper</h1>
-          <p className="mt-4 text-gold">Voguer · Seduction singer · Drag Race judge</p>
-          <p className="mt-2 text-sm text-muted-foreground">Released 8 Aug 2022 · 1:01:04 as a podcast</p>
+          <p className="mt-4 text-gold">Club kid · Artist · Author of New York Club Kids</p>
+          <p className="mt-2 text-sm text-muted-foreground">Released 4 Oct 2021 · 54:12 as a podcast</p>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
             Every name, club, book, song, night and look from the interview - {refs.length} references
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. Walt Cassidy goes from a California childhood and a punk Mohawk in Norfolk, Virginia to Kent State and, in 1991, New York - Wigstock in Union Square, an art studio in the attic of The Building, the club kid houses in Gramercy Park and the stage of the Limelight. Michael Alig, Desi and the second wave of club kids, drag queens versus club kids, the House of Field and the Style Summit, and how the 90s turned darker - deconstructed.
