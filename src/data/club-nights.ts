@@ -8,7 +8,8 @@ export type ClubSong = {
   title: string;
   artist: string;
   year: number;
-  spotify: string; // Spotify track id (checked against Spotify, never guessed)
+  spotify?: string; // Spotify track id (checked against Spotify, never guessed) - left out when the song isn't on Spotify
+  youtube?: string; // video to link instead when the song isn't on Spotify
   kind: Kind;
   why?: string;
   sources: string[]; // Source keys
@@ -28,14 +29,21 @@ const pg: ClubNight = {
   slug: "paradise-garage",
   club: "Paradise Garage",
   playlistId: "3fgUA8uxz3DavUVhit80Ty",
+  youtubePlaylist: "https://www.youtube.com/playlist?list=PLckHVSymsCkI",
   note:
-    "Records documented at the Paradise Garage (1977–1987), mostly through resident DJ Larry Levan: the club's \"Top 100\" published in Bill Brewster and Frank Broughton's Last Night a DJ Saved My Life, a 1979 Levan set recorded at the Garage, his West End remixes made famous there and a top five from Garage staffer Joey Llanos. Not one exact night - the records the club was known for.",
+    "Records documented at the Paradise Garage (1977–1987), mostly through resident DJ Larry Levan: the club's \"Top 100\" published in Bill Brewster and Frank Broughton's Last Night a DJ Saved My Life, a 1979 Levan set recorded at the Garage, his West End remixes made famous there and a top five from Garage staffer Joey Llanos - plus the records YouTube recognises in Larry Levan's sets taped at the club, up to the closing night in 1987. Not one exact night - the records the club was known for.",
   sources: [
     { key: "A", label: "Paradise Garage Top 100 (Last Night a DJ Saved My Life, via Wikipedia)", href: "https://en.wikipedia.org/wiki/Paradise_Garage" },
     { key: "B", label: "Larry Levan, Live at the Paradise Garage (set recorded 1979)", href: "https://www.allmusic.com/album/live-at-the-paradise-garage-mw0000105029" },
     { key: "C", label: "Larry Levan's West End remixes made famous at the Garage", href: "https://sisterray.co.uk/products/larry-levan-s-classic-west-end-records-remixes-made-famous-at-the-legendary-paradise-garage" },
     { key: "D", label: "Joey Llanos's top 5 Garage tracks (Dancing Astronaut)", href: "https://dancingastronaut.com/2015/12/paradise-garages-joey-llanos-unveils-top-5-classic-tracks-legendary-nyc-nightclub/" },
     { key: "E", label: "Larry Levan, Genius of Time (Resident Advisor review)", href: "https://ra.co/reviews/18942" },
+    { key: "F", label: "Larry Levan live at the Paradise Garage, 1979 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=39JerMg2IQE" },
+    { key: "G", label: "Larry Levan live at the Paradise Garage, 1985 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=luAx0xKWiRo" },
+    { key: "H", label: "Larry Levan live at the Paradise Garage, 1986-87 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=SnEc9lhNR0A" },
+    { key: "I", label: "Larry Levan, the final night of the Paradise Garage, 1987 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=B3cGe4GwZR8" },
+    { key: "J", label: "Larry Levan live at the Paradise Garage closing party, 1987 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=qgQ0FAaBT-U" },
+    { key: "K", label: "The Paradise Garage 1985, Larry Levan (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=S-sJeTfXmQY" },
   ],
   songs: [
     { title: "Love Is the Message", artist: "MFSB", year: 1973, spotify: "1GbBfA4tgiCpNXHIEogoJP", kind: "played", sources: ["A"] },
@@ -66,7 +74,24 @@ const pg: ClubNight = {
     { title: "Let No Man Put Asunder", artist: "First Choice", year: 1983, spotify: "5p3PdTiNcAz68eBNkDHgGn", kind: "played", sources: ["A"] },
     { title: "Padlock (Larry Levan mix)", artist: "Gwen Guthrie", year: 1985, spotify: "6vVwnG6libRP0JUYDZbfyk", kind: "played", sources: ["A", "E"] },
     { title: "Slave to the Rhythm", artist: "Grace Jones", year: 1985, spotify: "3Hv9i1KAOXF2Wn42tj5s0h", kind: "played", sources: ["A"] },
-    { title: "Move Your Body", artist: "Marshall Jefferson", year: 1986, spotify: "4dKi8v4oeEpGDz18UXF2E5", kind: "played", sources: ["A"] },
+    { title: "Move Your Body", artist: "Marshall Jefferson", year: 1986, spotify: "4dKi8v4oeEpGDz18UXF2E5", kind: "played", why: "Also played on the closing night in 1987", sources: ["A", "I", "J"] },
+    { title: "It's Music", artist: "Damon Harris", year: 1978, spotify: "53DStjK5fenegoTJyarKye", kind: "played", why: "In Larry Levan's 1979 set taped at the club (YouTube's song recognition)", sources: ["F"] },
+    { title: "Dreaming a Dream (Goes Dancin')", artist: "Crown Heights Affair", year: 1975, spotify: "0AuTsJ4N8TiNonl9Celcbb", kind: "played", why: "In Larry Levan's 1979 set taped at the club (YouTube's song recognition)", sources: ["F"] },
+    { title: "Right in the Socket", artist: "Shalamar", year: 1979, spotify: "3QmyJDY3uu0ytymUYCli1P", kind: "played", why: "In Larry Levan's 1979 set taped at the club (YouTube's song recognition)", sources: ["F"] },
+    { title: "Pick Me Up, I'll Dance", artist: "Melba Moore", year: 1979, spotify: "523Cyc5NfYlI6wqXUSLLMs", kind: "played", why: "In Larry Levan's 1979 set taped at the club (YouTube's song recognition)", sources: ["F"] },
+    { title: "Take Me Home", artist: "Cher", year: 1979, spotify: "3YWTp4Ap4sZNIyFkP0a0rx", kind: "played", why: "In Larry Levan's 1979 set taped at the club (YouTube's song recognition)", sources: ["F"] },
+    { title: "Angel in My Pocket", artist: "Change", year: 1980, spotify: "0rIzzj9UYWCZDCld6Ko8wE", kind: "played", why: "In Larry Levan's 1979 set taped at the club (YouTube's song recognition)", sources: ["F"] },
+    { title: "Call Me Mr. Telephone", artist: "Cheyne", year: 1985, spotify: "234P04Ybak2Iob7Nliya2q", kind: "played", why: "In Larry Levan's 1985 sets taped at the club (YouTube's song recognition)", sources: ["G", "K"] },
+    { title: "Music Is the Answer", artist: "Colonel Abrams", year: 1984, spotify: "6G97WtWxjUEaW1EZoWiyMk", kind: "played", why: "In Larry Levan's 1985 sets taped at the club (YouTube's song recognition)", sources: ["G", "K"] },
+    { title: "I Want It to Be Real", artist: "John Rocca", year: 1984, spotify: "3RaKDxzGRJ1PSrwxLK3IFK", kind: "played", why: "In Larry Levan's 1985 sets taped at the club (YouTube's song recognition)", sources: ["G", "K"] },
+    { title: "Mystery of Love", artist: "Fingers Inc.", year: 1985, spotify: "1E8hMeQvfgvQPjN3BZ2viF", kind: "played", why: "In Larry Levan's 1986-87 set taped at the club (YouTube's song recognition)", sources: ["H"] },
+    { title: "The Magnificent Dance", artist: "The Clash", year: 1981, spotify: "2vUlFUyRbemQaseUj6NESz", kind: "played", why: "In Larry Levan's 1986-87 set taped at the club (YouTube's song recognition)", sources: ["H"] },
+    { title: "I'm Here Again", artist: "Thelma Houston", year: 1979, spotify: "1ATW550oLVrduhPtSq7eDP", kind: "played", why: "In Larry Levan's 1986-87 set taped at the club (YouTube's song recognition)", sources: ["H"] },
+    { title: "Nude Photo", artist: "Rhythim Is Rhythim (Derrick May)", year: 1987, spotify: "2VLCjPLcKFkMcver7t8yLf", kind: "played", why: "Played on the club's closing night in 1987 (YouTube's song recognition)", sources: ["I", "J"] },
+    { title: "Dreamin'", artist: "Loleatta Holloway", year: 1976, spotify: "5JWbh2iOVqgOAExDnduyHB", kind: "played", why: "Played on the club's closing night in 1987 (YouTube's song recognition)", sources: ["I", "J"] },
+    { title: "You Don't Know", artist: "Serious Intention", year: 1985, spotify: "6EeqiIJ6lFo7Ok0OUBeVQq", kind: "played", why: "Played on the club's closing night in 1987 (YouTube's song recognition)", sources: ["I", "J"] },
+    { title: "Let's Make a Baby", artist: "Billy Paul", year: 1976, spotify: "2nUdP86O3XTrrsz4KItvQV", kind: "played", why: "Played on the club's closing night in 1987 (YouTube's song recognition)", sources: ["I", "J"] },
+    { title: "Goin' Down", artist: "Joe Smooth", year: 1987, spotify: "6X2Xz0SUU5bbJfAX25dlSR", kind: "played", why: "Played on the club's closing night in 1987 (YouTube's song recognition)", sources: ["I", "J"] },
   ],
 };
 
@@ -74,13 +99,17 @@ const s54: ClubNight = {
   slug: "studio-54",
   club: "Studio 54",
   playlistId: "1wxk4SWOmqT2ILYOn9CJc8",
+  youtubePlaylist: "https://www.youtube.com/playlist?list=PLC7nN_IAiRM4",
   note:
-    "Most of these are on A Night at Studio 54 (Casablanca, 1979), the double album made with the club's owners and mixed by its DJs Roy Thode and Marc Paul Simon from records played at the club. The rest come from Brooklyn Museum curator Matthew Yakobosky's list of songs heard in Studio 54 DJ sets between 1977 and 1980, and Devil's Gun, reported as the first record played on opening night. Not one exact night.",
+    "Most of these are on A Night at Studio 54 (Casablanca, 1979), the double album made with the club's owners and mixed by its DJs Roy Thode and Marc Paul Simon from records played at the club. The rest come from Brooklyn Museum curator Matthew Yakobosky's list of songs heard in Studio 54 DJ sets between 1977 and 1980, Devil's Gun, reported as the first record played on opening night, and the songs YouTube recognises in footage filmed inside the club. Not one exact night.",
   sources: [
     { key: "A", label: "A Night at Studio 54 (Casablanca, 1979 - Wikipedia)", href: "https://en.wikipedia.org/wiki/A_Night_at_Studio_54" },
     { key: "B", label: "Studio 54 DJ-set playlist by Brooklyn Museum curator Matthew Yakobosky (Slowdown)", href: "https://www.slowdown.media/article/a-studio-playlist-by-brooklyn-museum-curator-matthew-yakobosky" },
     { key: "C", label: "Devil's Gun (Wikipedia)", href: "https://en.wikipedia.org/wiki/Devil%27s_Gun" },
     { key: "D", label: "Richie Kaczor (Wikipedia)", href: "https://en.wikipedia.org/wiki/Richie_Kaczor" },
+    { key: "E", label: "Anton Perich Presents: Kenzo at Studio 54, 1977 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=v3b8Z71zoPE" },
+    { key: "F", label: "Studio 54 Grease opening party, 1978 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=MmxEsVit4u8" },
+    { key: "G", label: "Inside Studio 54, 1980s - Nelson Sullivan (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=5cOy3HykFdc" },
   ],
   songs: [
     { title: "Devil's Gun", artist: "C.J. & Co.", year: 1977, spotify: "2Dhvk1foUg665791VnnQmK", kind: "played", why: "Reported as the first record played on opening night, 26 April 1977", sources: ["C"] },
@@ -106,6 +135,17 @@ const s54: ClubNight = {
     { title: "Moon Boots", artist: "Orlando Riva Sound", year: 1977, spotify: "4PYJXVHOazUQhwDMwwKdRR", kind: "played", sources: ["B"] },
     { title: "Don't Stop", artist: "Ish", year: 1978, spotify: "5CBmSuEdqXKEYPWCZkJUnj", kind: "played", sources: ["B"] },
     { title: "Boogie Oogie Oogie", artist: "A Taste of Honey", year: 1978, spotify: "07NrCEN3egNvw8td2LxqJO", kind: "played", sources: ["B"] },
+    { title: "I Need a Man", artist: "Grace Jones", year: 1977, spotify: "3Zc9b3YS8wcGDzH92joizS", kind: "played", why: "Plays in the footage of Kenzo's party at the club in 1977 (YouTube's song recognition)", sources: ["E"] },
+    { title: "Best of My Love", artist: "The Emotions", year: 1977, spotify: "2M2WJ7gBlcKNxdhyfPp9zY", kind: "played", why: "Plays in the footage of Kenzo's party at the club in 1977 (YouTube's song recognition)", sources: ["E"] },
+    { title: "I'm Still in Love with You", artist: "Al Green", year: 1972, spotify: "2GEDd9qtGXU7IvGgqTF6Uj", kind: "played", why: "Plays in the footage of Kenzo's party at the club in 1977 (YouTube's song recognition)", sources: ["E"] },
+    { title: "You Are the Song", artist: "Herbie Mann", year: 1977, spotify: "4n915OiBw2n9zGDoNzRqko", kind: "played", why: "Plays in the footage of Kenzo's party at the club in 1977 (YouTube's song recognition)", sources: ["E"] },
+    { title: "City, Country, City", artist: "War", year: 1972, spotify: "2RWS2btML7g1ZgqWPWGu7b", kind: "played", why: "Plays in the footage of Kenzo's party at the club in 1977 (YouTube's song recognition)", sources: ["E"] },
+    { title: "I Can't Turn You Loose", artist: "Anthony White", year: 1977, spotify: "4A6ZWZ37qwP7Io8ca1Y4q5", kind: "played", why: "Plays in the footage of Kenzo's party at the club in 1977 (YouTube's song recognition)", sources: ["E"] },
+    { title: "If My Friends Could See Me Now", artist: "Linda Clifford", year: 1978, youtube: "https://www.youtube.com/watch?v=JB11xXzejZE", kind: "played", why: "Plays at the Grease opening party at the club in 1978 (YouTube's song recognition)", sources: ["F"] },
+    { title: "Miss You", artist: "The Rolling Stones", year: 1978, spotify: "3hJLKtTpgct9Y9wKww0BiR", kind: "played", why: "Plays at the Grease opening party at the club in 1978 (YouTube's song recognition)", sources: ["F"] },
+    { title: "Touch My Heart", artist: "Madleen Kane", year: 1978, youtube: "https://www.youtube.com/watch?v=FsnyTtsFjdc", kind: "played", why: "Plays at the Grease opening party at the club in 1978 (YouTube's song recognition)", sources: ["F"] },
+    { title: "Let's Start the Dance", artist: "Bohannon", year: 1978, spotify: "5kzro4mOcjwXuugRc6nzm7", kind: "played", why: "Plays at the Grease opening party at the club in 1978 (YouTube's song recognition)", sources: ["F"] },
+    { title: "Body", artist: "The Jacksons", year: 1984, spotify: "1B7rsWK4bD7UYhAVQq6Wbq", kind: "played", why: "Plays in Nelson Sullivan's footage from inside the club (YouTube's song recognition)", sources: ["G"] },
   ],
 };
 

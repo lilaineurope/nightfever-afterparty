@@ -18,7 +18,7 @@ export function ClubNightsList() {
             </Link>
             <ul className="mt-3 flex-1 space-y-1 text-sm text-muted-foreground">
               {c.songs.slice(0, 4).map((s) => (
-                <li key={s.spotify}>{s.title} <span className="opacity-70">· {s.artist}</span></li>
+                <li key={s.spotify ?? s.title}>{s.title} <span className="opacity-70">· {s.artist}</span></li>
               ))}
               <li className="opacity-70">+ {c.songs.length - 4} more</li>
             </ul>

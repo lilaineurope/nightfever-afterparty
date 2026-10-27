@@ -52,10 +52,10 @@ export function ClubNightPlaylist({ night }: { night: ClubNight }) {
 
       <ol className="mt-6 divide-y divide-border/60 border-y border-border/60">
         {shown.map((s, i) => (
-          <li key={s.spotify} className="grid grid-cols-[2rem_1fr] gap-x-2 py-3 sm:grid-cols-[2rem_1fr_auto]">
+          <li key={s.spotify ?? s.title} className="grid grid-cols-[2rem_1fr] gap-x-2 py-3 sm:grid-cols-[2rem_1fr_auto]">
             <span className="pt-0.5 text-right font-mono text-xs text-gold/70">{i + 1}</span>
             <div>
-              <a href={trackUrl(s.spotify)} target="_blank" rel="noopener noreferrer" className="font-semibold text-cream hover:text-pink">
+              <a href={s.spotify ? trackUrl(s.spotify) : s.youtube} target="_blank" rel="noopener noreferrer" className="font-semibold text-cream hover:text-pink">
                 {s.title}
               </a>
               <span className="text-sm text-muted-foreground"> · {s.artist} ({s.year})</span>
