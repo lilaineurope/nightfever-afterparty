@@ -4,6 +4,7 @@ import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
 
 const GOLD_LINK =
@@ -55,7 +56,7 @@ function TermsPage() {
             Terms &amp; Conditions
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 21 October 2026. The house rules for my site - written
+            Last updated: 27 October 2026. The house rules for my site - written
             for people, not for lawyers!
           </p>
         </div>
@@ -198,7 +199,11 @@ function TermsPage() {
               If you are named on this site &mdash; or you are a representative
               of someone who is &mdash; you can ask for a factual correction, for
               a private person to be unlinked, or for an entry to be removed
-              altogether. Send a message{" "}
+              altogether. Email{" "}
+              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+                {CONTACT_EMAIL}
+              </a>{" "}
+              or send a message{" "}
               <a
                 href={IG_PROFILE}
                 target="_blank"
@@ -255,6 +260,10 @@ function TermsPage() {
           <Section title="11. Contact">
             <p>
               Corrections, permissions, removals and general questions:{" "}
+              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+                {CONTACT_EMAIL}
+              </a>{" "}
+              or{" "}
               <a
                 href={IG_PROFILE}
                 target="_blank"

@@ -63,6 +63,7 @@ const GROUPS: Group[] = [
     blurb: "Counting visits without tracking you, and helping people find the site.",
     tools: [
       { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and alerts about new \"Who to interview next\" suggestions and guestbook notes to my inbox." },
+      { name: "Forward Email", href: "https://forwardemail.net", what: "Passes on emails sent to hello@nightfever-afterparty.com to my own inbox, without keeping them." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
       { name: "Tipeee", href: "https://en.tipeee.com/afterparty", what: "Takes tips for the fan page - the tip box in the footer is a plain link to my Tipeee page, which handles the payment (cards through Adyen in the Netherlands, or PayPal)." },

@@ -4,6 +4,7 @@ import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
 const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
 
 const GOLD_LINK =
@@ -56,7 +57,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 23 October 2026. Here's what happens to your data when
+            Last updated: 27 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -90,7 +91,11 @@ function PrivacyPage() {
               here.
             </p>
             <p>
-              The quickest way to reach her is{" "}
+              You can reach her by email at{" "}
+              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+                {CONTACT_EMAIL}
+              </a>{" "}
+              or{" "}
               <a
                 href={IG_PROFILE}
                 target="_blank"
@@ -99,8 +104,8 @@ function PrivacyPage() {
               >
                 on Instagram
               </a>
-              . Please write &ldquo;privacy&rdquo; in the first line so it is not
-              mistaken for fan mail.
+              . Please write &ldquo;privacy&rdquo; in the subject or first line so
+              it is not mistaken for fan mail.
             </p>
             <p>
               The site is not affiliated with{" "}
@@ -271,7 +276,9 @@ function PrivacyPage() {
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter processes the anonymous visit
               statistics described above, Web3Forms delivers contact-form
-              messages, interview suggestions and guestbook alerts to my inbox, the hosting
+              messages, interview suggestions and guestbook alerts to my inbox, Forward Email
+              passes on emails sent to the site&rsquo;s address to my inbox (it does not
+              keep them), the hosting
               platform&rsquo;s built-in database keeps newsletter sign-ups,
               guestbook notes and interview suggestions, and when you press play the show&rsquo;s own
               podcast host streams the episode to you. No data is sold, rented or brokered. If a
@@ -310,8 +317,11 @@ function PrivacyPage() {
             <p>
               You can withdraw your newsletter consent by unsubscribing with
               one click in any message, or on the unsubscribe page the emails
-              link to. To take down a guestbook note, write via the contact
-              page and tell me the name it was signed with.
+              link to. To take down a guestbook note, write to{" "}
+              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+                {CONTACT_EMAIL}
+              </a>{" "}
+              or use the contact page, and tell me the name it was signed with.
             </p>
           </Section>
 

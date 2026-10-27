@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 import { WEB3FORMS_KEY } from "@/lib/web3forms";
 import { CONTACT_TOPICS } from "@/lib/pages";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
 
 type Search = { about?: string };
 
@@ -124,6 +125,13 @@ function ContactPage() {
             </form>
           )}
         </div>
+        <p className="mx-auto mt-6 max-w-xl text-center text-sm text-muted-foreground">
+          Rather write an email? Send it to{" "}
+          <a href={CONTACT_MAILTO} className="text-gold underline underline-offset-2 hover:text-pink">
+            {CONTACT_EMAIL}
+          </a>
+          .
+        </p>
       </section>
       <SiteFooter />
     </main>
