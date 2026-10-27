@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      interview_suggestions: {
+        Row: {
+          approved_at: string | null
+          created_at: string
+          from_name: string | null
+          id: string
+          status: string
+          who: string
+          why: string | null
+        }
+        Insert: {
+          approved_at?: string | null
+          created_at?: string
+          from_name?: string | null
+          id?: string
+          status?: string
+          who: string
+          why?: string | null
+        }
+        Update: {
+          approved_at?: string | null
+          created_at?: string
+          from_name?: string | null
+          id?: string
+          status?: string
+          who?: string
+          why?: string | null
+        }
+        Relationships: []
+      }
       guestbook_entries: {
         Row: {
           approved_at: string | null

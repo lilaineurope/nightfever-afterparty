@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { adminListGuestbook, changeGuestbookKey, moderateGuestbook, type ModeratedNote } from "@/lib/guestbook.functions";
+import { adminListSuggestions, moderateSuggestion, type PendingSuggestion } from "@/lib/suggestions.functions";
 import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 import { guestbookPage } from "@/lib/pages";
 
@@ -44,7 +45,7 @@ function AdminPage() {
   return (
     <main className="min-h-screen bg-background px-6 pb-24 pt-24 text-foreground">
       <div className="mx-auto max-w-4xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook &amp; interview suggestions</p>
         <h1 className="mt-3 text-4xl font-bold text-cream">Moderation</h1>
         {key === null ? (
           <p className="mt-8 text-muted-foreground">Loading...</p>
@@ -78,7 +79,7 @@ function KeyForm({ onKey, error }: { onKey: (key: string, remember: boolean) => 
         Remember it on this device
       </label>
       <button type="submit" className={`${BTN} w-full bg-pink py-2.5 text-pink-foreground hover:opacity-90`}>
-        Open the guestbook queue
+        Open moderation
       </button>
       {error && <p className="text-sm text-pink">{error}</p>}
     </form>
@@ -136,6 +137,8 @@ function Moderation({ keyValue, onForget, onChanged }: { keyValue: string; onFor
 
   return (
     <div className="mt-8">
+      <Suggestions keyValue={keyValue} />
+      <h2 className="mb-4 mt-12 text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook notes</h2>
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap gap-2" role="tablist">
           {(["pending", "approved", "hidden"] as Tab[]).map((t) => (
@@ -258,5 +261,107 @@ function AdminNote({ note, busy, act }: { note: ModeratedNote; busy: string | nu
         )}
       </div>
     </li>
+  );
+}
+
+/** "Who to interview next" suggestions (Lisa, 27 Oct 2026). The email link opens this page with ?suggestion=<id>:
+ *  that one is shown first, highlighted. Approve = on the home page straight away; Don't approve = deleted for good. */
+function Suggestions({ keyValue }: { keyValue: string }) {
+  const list = useServerFn(adminListSuggestions);
+  const moderate = useServerFn(moderateSuggestion);
+  const [rows, setRows] = useState<PendingSuggestion[] | null>(null);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const [done, setDone] = useState("");
+  const [focus, setFocus] = useState<string | null>(null);
+  useEffect(() => {
+    try {
+      setFocus(new URLSearchParams(window.location.search).get("suggestion"));
+    } catch {
+      /* no query string */
+    }
+  }, []);
+  const load = useCallback(async () => {
+    try {
+      setRows(await list({ data: { key: keyValue } }));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not load the suggestions.");
+    }
+  }, [list, keyValue]);
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  async function act(row: PendingSuggestion, action: "approve" | "reject") {
+    setBusy(row.id + action);
+    setError("");
+    try {
+      await moderate({ data: { key: keyValue, id: row.id, action } });
+      setDone(
+        action === "approve"
+          ? `${row.who} is on the home page now.`
+          : row.status === "approved"
+            ? `${row.who} is off the home page and deleted.`
+            : `${row.who} was not approved and has been deleted.`,
+      );
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "That didn't work.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  if (!rows) return <p className="text-muted-foreground">{error || "Loading suggestions..."}</p>;
+  const pending = rows.filter((r) => r.status === "pending").sort((a, b) => Number(b.id === focus) - Number(a.id === focus));
+  const approved = rows.filter((r) => r.status === "approved");
+  const asked = focus && !rows.some((r) => r.id === focus);
+
+  return (
+    <section aria-labelledby="sugg-h">
+      <h2 id="sugg-h" className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Who to interview next - suggestions</h2>
+      {done && <p className="mt-4 border-2 border-pink p-3 text-sm font-semibold text-pink">{done}</p>}
+      {asked && !done && <p className="mt-4 text-sm text-muted-foreground">That suggestion has already been handled.</p>}
+      {error && <p className="mt-4 text-sm text-pink">{error}</p>}
+      {pending.length === 0 ? (
+        <p className="mt-4 text-muted-foreground">No suggestions waiting.</p>
+      ) : (
+        <ul className="mt-4 space-y-4">
+          {pending.map((r) => (
+            <li key={r.id} className={`rounded-2xl border bg-card p-5 ${r.id === focus ? "border-pink shadow-[0_0_0_2px_var(--color-pink)]" : "border-gold/25"}`}>
+              <p className="text-xl font-bold text-cream">{r.who}</p>
+              {r.why && <p className="mt-1 text-cream/90">&ldquo;{r.why}&rdquo;</p>}
+              <p className="mt-2 text-sm text-muted-foreground">
+                From {r.from_name || "(no name given)"} · {new Date(r.created_at).toLocaleString("en-GB")} · the name is never shown on the site
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button type="button" disabled={!!busy} onClick={() => act(r, "approve")} className={`${BTN} bg-pink px-6 py-2.5 text-pink-foreground hover:opacity-90`}>
+                  {busy === r.id + "approve" ? "..." : "Approve"}
+                </button>
+                <button type="button" disabled={!!busy} onClick={() => act(r, "reject")} className={`${BTN} border border-border px-6 py-2.5 text-cream hover:border-gold`}>
+                  {busy === r.id + "reject" ? "..." : "Don't approve"}
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {approved.length > 0 && (
+        <details className="mt-6">
+          <summary className="cursor-pointer text-sm text-muted-foreground hover:text-pink">On the home page ({approved.length})</summary>
+          <ul className="mt-3 space-y-2">
+            {approved.map((r) => (
+              <li key={r.id} className="flex flex-wrap items-center gap-3 text-sm">
+                <span className="text-cream">{r.who}</span>
+                {r.why && <span className="text-muted-foreground">&ldquo;{r.why}&rdquo;</span>}
+                <button type="button" disabled={!!busy} onClick={() => act(r, "reject")} className="text-xs text-muted-foreground underline underline-offset-2 hover:text-pink">
+                  {busy === r.id + "reject" ? "..." : "Take it off"}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </section>
   );
 }

@@ -166,11 +166,12 @@ function PrivacyPage() {
               <strong className="text-cream">Interview suggestions.</strong> If
               you use the &ldquo;Your choice&rdquo; form in the &ldquo;Who to
               interview next&rdquo; box, your suggestion, the optional reason
-              and the optional name you give are delivered to my inbox by
-              Web3Forms, just like the contact form. Nothing is stored on this
-              site. If I put a suggestion up on the site, it is shown without
-              your name unless you ask me to credit you. Legal basis: your
-              consent in sending it.
+              and the optional name you give are saved in the site&rsquo;s
+              database, and Web3Forms sends me a note about it, just like the
+              contact form. I read every suggestion: the ones I pick are shown
+              in the box (the suggestion and the reason, never your name), the
+              others are deleted. Ask me any time to take yours down. Legal
+              basis: your consent in sending it.
             </p>
             <p>
               <strong className="text-cream">Episode player.</strong> Nothing
@@ -271,8 +272,8 @@ function PrivacyPage() {
               privacy documentation. GoatCounter processes the anonymous visit
               statistics described above, Web3Forms delivers contact-form
               messages, interview suggestions and guestbook alerts to my inbox, the hosting
-              platform&rsquo;s built-in database keeps newsletter sign-ups and
-              guestbook notes, and when you press play the show&rsquo;s own
+              platform&rsquo;s built-in database keeps newsletter sign-ups,
+              guestbook notes and interview suggestions, and when you press play the show&rsquo;s own
               podcast host streams the episode to you. No data is sold, rented or brokered. If a
               future feature needs another processor (for example an email
               provider), it will be named here before it goes live.

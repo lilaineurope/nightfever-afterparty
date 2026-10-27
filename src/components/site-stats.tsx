@@ -8,7 +8,7 @@ import { useRouter } from "@tanstack/react-router";
  * ?me=off switches it back on.
  */
 const GOATCOUNTER_CODE = "lilaineurope";
-const COUNTED_HOSTS = ["nightfever-afterparty.lovable.app"];
+const COUNTED_HOSTS = ["nightfever-afterparty.lovable.app", "nightfever-afterparty.com", "www.nightfever-afterparty.com"];
 const SKIP_KEY = "skipgc";
 
 type GoatCounter = { count?: (vars: { path: string }) => void; no_onload?: boolean };

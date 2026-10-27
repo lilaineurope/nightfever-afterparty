@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { sendToInbox } from "@/lib/web3forms";
+import { listFanPicks, suggestGuest, type FanPick } from "@/lib/suggestions.functions";
 import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
 import { episodeById, episodePath } from "@/data/episodes";
 import { EntityLink } from "@/components/entity-link";
@@ -25,31 +27,50 @@ function Tip({ tip }: { tip: InterviewTip }) {
   );
 }
 
-/** "Your choice": visitors suggest a guest; it goes to Lisa's inbox through Web3Forms (Lisa, 23 Oct 2026). Nothing is stored on the site. */
+/** "Your choice": visitors suggest a guest (Lisa, 23 Oct 2026). Since 27 Oct each suggestion is stored as pending
+ *  (src/lib/suggestions.functions.ts) and Lisa gets an email with a link to approve or reject it; approved ones show
+ *  under "Suggested by you, the fans" straight away - never with the visitor's name. */
 function YourChoice() {
   const [who, setWho] = useState("");
   const [why, setWhy] = useState("");
   const [from, setFrom] = useState("");
   const [trap, setTrap] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [problem, setProblem] = useState("");
+  const opened = useRef(Date.now());
+  const suggest = useServerFn(suggestGuest);
   const field =
     "w-full border-2 border-gold bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink";
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!who.trim() || trap) return;
+    if (!who.trim()) return;
     setState("sending");
-    const ok = await sendToInbox({
-      subject: `Who to interview next: ${who.trim()}`,
-      suggestion: who.trim(),
-      why: why.trim(),
-      from: from.trim() || "(no name given)",
-    });
-    setState(ok ? "sent" : "error");
-    if (ok) {
+    setProblem("");
+    try {
+      const res = await suggest({ data: { who, why, from, website: trap, elapsed: Date.now() - opened.current } });
+      if (!res.ok) {
+        setProblem(res.message);
+        setState("error");
+        return;
+      }
+      if (res.id) {
+        // Heads-up to Lisa's inbox, with the link to approve or reject this one suggestion.
+        void sendToInbox({
+          subject: `Who to interview next: ${who.trim()}`,
+          suggestion: who.trim(),
+          why: why.trim() || "(no reason given)",
+          from: from.trim() || "(no name given)",
+          approve_or_reject: `${window.location.origin}/guestbook/admin?suggestion=${res.id}`,
+        });
+      }
+      setState("sent");
       setWho("");
       setWhy("");
       setFrom("");
+    } catch (err) {
+      setProblem(err instanceof Error ? err.message : "");
+      setState("error");
     }
   };
 
@@ -79,13 +100,40 @@ function YourChoice() {
               {state === "sending" ? "Sending…" : "Suggest!"}
             </button>
           </div>
-          {state === "error" && <p className="text-xs text-destructive">That didn&rsquo;t go through - please try again.</p>}
+          {state === "error" && <p className="text-xs text-destructive">{problem || "That didn\u2019t go through - please try again."}</p>}
           <p className="text-xs text-muted-foreground">
-            Sent to my inbox, nothing is stored on the site. See the{" "}
+            I read every suggestion first. If I pick yours, it shows up below - your name never does. See the{" "}
             <Link to="/privacy" className="text-gold">Privacy Policy</Link>.
           </p>
         </form>
       )}
+      <FanPicks />
+    </div>
+  );
+}
+
+/** "Suggested by you, the fans": the suggestions Lisa approved, most suggested first. */
+function FanPicks() {
+  const list = useServerFn(listFanPicks);
+  const [picks, setPicks] = useState<FanPick[]>([]);
+  useEffect(() => {
+    list().then(setPicks).catch(() => setPicks([]));
+  }, [list]);
+  if (!picks.length) return null;
+  return (
+    <div className="mt-8">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Suggested by you, the fans</h3>
+      <ul className="mt-4 space-y-4">
+        {picks.map((p) => (
+          <li key={p.who} className="border-t border-border pt-4 first:border-t-0 first:pt-0">
+            <EntityLink name={p.who} className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream hover:text-pink">
+              {p.who}
+            </EntityLink>
+            {p.why && <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">&ldquo;{p.why}&rdquo;</p>}
+            <p className="mt-1.5 text-xs text-muted-foreground">{p.count > 1 ? `Suggested by ${p.count} fans` : "Suggested by a fan"}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
