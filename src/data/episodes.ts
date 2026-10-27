@@ -345,6 +345,7 @@ const s06e08: Episode = {
   guest: "William Norwich",
   released: "2026-10-07",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-608",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLAneKCdsFCiA",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/127047586/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-7%2Fbe2eabc1-b2bd-ef95-c501-74590c2e28b6.mp3",
   runtime: "1:01:07",
