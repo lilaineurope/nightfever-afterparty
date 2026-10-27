@@ -83,6 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "google-site-verification", content: "D1N8TQwOz9IS3c8V40Mwe8r72YsHRgNF2sxzCSOvN5Y" },
+      // Search Console property for the own domain https://nightfever-afterparty.com/ (27 Oct 2026) - keep both tags
+      { name: "google-site-verification", content: "OSmYxOhIBmHN5GpMphTNxkQz4bBQpsoNDsKShQOGQ1k" },
       { title: "Night Fever fan page | every name, place and story" },
       {
         name: "description",
