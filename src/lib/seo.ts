@@ -2,7 +2,7 @@
 // and structured data (schema.org JSON-LD) for Google. Episode pages call episodeHead(id).
 import { episodeById } from "@/data/episodes";
 
-export const SITE = "https://nightfever-afterparty.lovable.app";
+export const SITE = "https://nightfever-afterparty.com";
 export const SITE_NAME = "Night Fever fan page";
 
 export const abs = (path: string) => (path.startsWith("http") ? path : `${SITE}${path.startsWith("/") ? "" : "/"}${path}`);

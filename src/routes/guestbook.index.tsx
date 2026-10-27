@@ -154,7 +154,7 @@ function SignForm() {
           place: fields.place,
           episode: fields.episode,
           page: guestbookPage(fields.page)?.label ?? "",
-          message: `${fields.message}\n\nApprove or hide it at nightfever-afterparty.lovable.app/guestbook/admin`,
+          message: `${fields.message}\n\nApprove or hide it at ${window.location.origin}/guestbook/admin`,
         });
       }
     } catch (e) {

@@ -8,7 +8,7 @@ Not affiliated with World of Wonder. Listen to the podcast: https://creators.spo
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://nightfever-afterparty.lovable.app
+**Live app**: https://nightfever-afterparty.com
 
 ## Build with Lovable
 

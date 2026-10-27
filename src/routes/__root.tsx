@@ -98,11 +98,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Night Fever fan page" },
-      { property: "og:image", content: "https://nightfever-afterparty.lovable.app/og/home.jpg" },
+      { property: "og:image", content: "https://nightfever-afterparty.com/og/home.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://nightfever-afterparty.lovable.app/og/home.jpg" },
+      { name: "twitter:image", content: "https://nightfever-afterparty.com/og/home.jpg" },
     ],
     scripts: [
       {
@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "WebSite",
           name: "Night Fever fan page",
           alternateName: "Night Fever Afterparty",
-          url: "https://nightfever-afterparty.lovable.app/",
+          url: "https://nightfever-afterparty.com/",
           description:
             "An unofficial fan-made index of the Night Fever podcast by World of Wonder: every name, club, place and look the guests mention, timestamped and connected.",
           inLanguage: "en",

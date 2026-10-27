@@ -4,7 +4,7 @@ import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEnt
 import { entities, isThinCard } from "@/data/entities";
 
 // The public site origin.
-const BASE_URL = "https://nightfever-afterparty.lovable.app";
+const BASE_URL = "https://nightfever-afterparty.com";
 
 export const Route = createFileRoute("/sitemap.xml")({
   staticData: { sitemap: false },

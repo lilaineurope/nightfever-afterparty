@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
 
 // TEST ONLY - where Creem sends a buyer back after a test purchase (set as the product's return/success URL:
-// https://nightfever-afterparty.lovable.app/shop-test/thanks). Creem adds checkout_id, order_id, customer_id and
+// https://nightfever-afterparty.com/shop-test/thanks). Creem adds checkout_id, order_id, customer_id and
 // product_id to the address; they are only shown here so the test run can be checked, never stored.
 type Search = { checkout_id?: string; order_id?: string; product_id?: string };
 const pick = (s: Record<string, unknown>, k: string) => (typeof s[k] === "string" ? (s[k] as string).slice(0, 80) : undefined);
