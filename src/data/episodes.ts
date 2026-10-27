@@ -101,6 +101,7 @@ const s01e02: Episode = {
   guest: "Michael Musto",
   released: "2021-09-06",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-michael-musto",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLY2BLNzi5Qvs",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl:
     "https://traffic.megaphone.fm/APO5000936966.mp3",
