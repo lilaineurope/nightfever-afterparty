@@ -402,6 +402,17 @@ export const LOCATIONS: Located[] = [
   { name: "2001 Odyssey", lat: 40.6337, lng: -74.017, area: "Bay Ridge" },
   { name: "42nd Street", lat: 40.7553, lng: -73.9869, area: "Times Square" },
   { name: "Beacon Theatre", lat: 40.7805, lng: -73.9812, area: "Upper West Side" },
+  // S01E06 Waltpaper
+  { name: "The Building", lat: 40.7448, lng: -73.9905, area: "Flatiron" },
+  { name: "Groove Thing (The Building)", lat: 40.7448, lng: -73.9905, area: "Flatiron" },
+  { name: "Gramercy Park", lat: 40.7368, lng: -73.9845, area: "Gramercy" },
+  { name: "Greystone Hotel (SVA dorm)", lat: 40.7909, lng: -73.9740, area: "Upper West Side" },
+  { name: "Norfolk, Virginia", lat: 36.8508, lng: -76.2859, area: "Virginia" },
+  { name: "Missouri", lat: 38.5739, lng: -92.6038, area: "Missouri" },
+  { name: "Hawaii", lat: 20.7984, lng: -156.3319, area: "Hawaii" },
+  { name: "Disneyland", lat: 33.8121, lng: -117.9190, area: "California" },
+  { name: "Knott's Berry Farm", lat: 33.8443, lng: -117.9986, area: "California" },
+  { name: "Cleveland", lat: 41.4993, lng: -81.6944, area: "Ohio" },
   // S02E01 Michelle Visage
   { name: "Christopher Street Piers", lat: 40.7330, lng: -74.0110, area: "West Village" },
   { name: "Christopher Street", lat: 40.7334, lng: -74.0040, area: "West Village" },

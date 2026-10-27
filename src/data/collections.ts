@@ -138,6 +138,7 @@ const SPOTIFY: Record<string, string> = {
   "Coldplay": "spotify:artist:4gzpq5DPGxSnKTe4SA8HAU",
   "Culture Club": "spotify:artist:6kz53iCdBSqhQCZ21CoLcc",
   "Deee-Lite": "spotify:artist:4eQJIXFEujzhTVVS1gIfu5",
+  "KISS": "spotify:artist:07XSN3sPlIlB2L2XNcTwJw",
   "Bush Tetras – 'Too Many Creeps'": "spotify:track:17yxzUcZSu3S9KyoGF0ckI",
   "USA for Africa – 'We Are the World'": "spotify:track:3Z2tPWiNiIpg8UMMoowHIk",
   "Jesus Christ Superstar": "spotify:album:32tSaPx5IHoxZiZHXLhH61",

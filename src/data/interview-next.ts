@@ -37,10 +37,22 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s02e04",
     time: "00:55:59",
   },
+  {
+    name: "House of Field",
+    why: "James, talking about Walt's House of Field years, says it's a whole different podcast - he'd love to talk to them sometime.",
+    episodeId: "s01e06",
+    time: "00:41:20",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
+  {
+    name: "Waltpaper",
+    why: "James closes: 'I'd like to have you back' - they could talk for another three hours.",
+    episodeId: "s01e06",
+    time: "00:53:06",
+  },
   {
     name: "Sally Randall",
     why: "James wraps up: 'Sally, we love you. We'll have to have you back on and talk some more.'",

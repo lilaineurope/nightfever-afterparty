@@ -281,7 +281,9 @@ function PrivacyPage() {
               keep them), the hosting
               platform&rsquo;s built-in database keeps newsletter sign-ups,
               guestbook notes and interview suggestions, and when you press play the show&rsquo;s own
-              podcast host streams the episode to you. No data is sold, rented or brokered. If a
+              podcast host streams the episode to you. When pages change, the site tells search engines
+              which addresses to look at again (IndexNow, read by Bing and others) - that message
+              holds page addresses only, never anything about visitors. No data is sold, rented or brokered. If a
               future feature needs another processor (for example an email
               provider), it will be named here before it goes live.
             </p>

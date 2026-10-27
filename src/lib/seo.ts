@@ -83,6 +83,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s03e08: "Celebrity Club, RuPaul & Electroclash",
   s04e04: "RuPaul, Michael Jackson & the Love Ball",
   s02e01: "voguing, Seduction & RuPaul",
+  s01e06: "the Limelight, Michael Alig & the club kids",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

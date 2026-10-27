@@ -22,6 +22,7 @@ import ariasRefs from "./s01e10.json";
 import teeRefs from "./s03e08.json";
 import zaldyRefs from "./s04e04.json";
 import visageRefs from "./s02e01.json";
+import waltRefs from "./s01e06.json";
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -513,7 +514,25 @@ const s02e01: Episode = {
   top: [...visageRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01].sort((a, b) =>
+const s01e06: Episode = {
+  id: "s01e06",
+  season: 1,
+  episode: 6,
+  guest: "Waltpaper",
+  released: "2021-10-04",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-waltpaper",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO3488732340.mp3",
+  runtime: "54:12",
+  afterpartyPublished: "2026-11-01",
+  blurb:
+    "Waltpaper, from a punk Mohawk in Norfolk to the Limelight stage! Wigstock 1991, an art studio in the attic of The Building, the club kid houses, Michael Alig's mentoring, drag queens versus club kids, the House of Field - and the 90s turning darker.",
+  references: waltRefs.length,
+  mentions: waltRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: [...waltRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -533,7 +552,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -581,6 +600,8 @@ export function episodePath(
       return "/episodes/s04e04";
     case "s02e01":
       return "/episodes/s02e01";
+    case "s01e06":
+      return "/episodes/s01e06";
     default:
       return "/episodes/s06e01";
   }

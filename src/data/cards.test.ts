@@ -25,7 +25,7 @@ const DISTINCT = new Set(
   [
     ["baby-rue", "boy-bar"], ["bailey", "bebe-buell"], ["bern", "brian-eno"], ["dean-johnson", "don-johnson"],
     ["leo", "lila"], ["mk", "mokai"], ["nice", "nico"], ["paper", "pierre"], ["paris", "piers"], ["rome", "romeo"],
-    ["soho", "sushi"], ["astro-earl", "australia"], ["carlyle", "carol"],
+    ["soho", "sushi"], ["astro-earl", "australia"], ["hawaii", "howie"], ["carlyle", "carol"],
     ["jay-z", "jazz"], ["nas", "nasa"], ["paper", "peru"], ["peru", "pierre"],
     ["bar-one", "bern"], ["bar-one", "brian-eno"], ["east-village", "east-village-eye"], ["daisy", "dose"], ["michael-jackson", "michael-jackson-one"], ["raven", "raven-o"],
   ].map((p) => p.sort().join("|")),

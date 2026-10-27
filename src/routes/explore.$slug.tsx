@@ -8,8 +8,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { entityBySlug, episodeShort, isThinCard, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
 import { namedOn } from "@/lib/name-links";
 import { abs, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
-import { episodeById, episodePath } from "../data/episodes";
+import { episodeById, episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
+import { GUEST_LINES } from "../data/guest-lines";
 import { EntityLink } from "../components/entity-link";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
@@ -29,6 +30,7 @@ export const Route = createFileRoute("/explore/$slug")({
       story,
       link: e.link ?? "",
       thin: isThinCard(e),
+      guest: e.guest ? guestFacts(e.guest.episode, e.guest.tagline) : null,
     };
   },
   head: ({ loaderData }) => {
@@ -43,7 +45,16 @@ export const Route = createFileRoute("/explore/$slug")({
     const head = pageHead({ path, title, description, image: "/og/explore.jpg", type: "article", noindex: d.thin });
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
-    if (/wikipedia\.org/.test(d.link)) thing["sameAs"] = d.link;
+    if (/wikipedia\.org|imdb\.com/.test(d.link)) thing["sameAs"] = d.link;
+    // Guests: a fuller Person (what they're known for, and the Night Fever episode they're interviewed in) - Lisa, 27 Oct 2026.
+    if (d.guest) {
+      thing["description"] = d.guest.tagline;
+      if (d.guest.line) thing["jobTitle"] = d.guest.line;
+      if (d.guest.path) {
+        thing["image"] = abs(`/og/${d.guest.id}.jpg`);
+        thing["subjectOf"] = { "@type": "PodcastEpisode", name: `Night Fever ${d.guest.code} - the AFTERPARTY`, url: abs(d.guest.path) };
+      }
+    }
     return {
       ...head,
       scripts: [
@@ -62,6 +73,20 @@ export const Route = createFileRoute("/explore/$slug")({
   notFoundComponent: EntityNotFound,
   component: EntityPage,
 });
+
+/** "Season 1, Episode 6" -> the episode id, code, guest line and AFTERPARTY page (when there is one) for the Person markup. */
+function guestFacts(episode: string, tagline: string) {
+  const m = episode.match(/Season (\d+), Episode (\d+)/);
+  const id = m ? `s${(m[1] ?? "").padStart(2, "0")}e${(m[2] ?? "").padStart(2, "0")}` : "";
+  const ep = id ? episodes.find((x) => x.id === id) : undefined;
+  return {
+    id,
+    code: id.toUpperCase(),
+    tagline,
+    line: GUEST_LINES[id] ?? null,
+    path: ep ? episodePath(ep.id) : null,
+  };
+}
 
 function EntityNotFound() {
   return (

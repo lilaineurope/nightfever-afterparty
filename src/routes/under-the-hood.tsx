@@ -66,6 +66,8 @@ const GROUPS: Group[] = [
       { name: "Forward Email", href: "https://forwardemail.net", what: "Passes on emails sent to hello@nightfever-afterparty.com to my own inbox, without keeping them." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
+      { name: "Bing Webmaster Tools", href: "https://www.bing.com/webmasters", what: "Does the same for Bing (and the search engines that use it, like DuckDuckGo)." },
+      { name: "IndexNow", href: "https://www.indexnow.org", what: "Tells Bing and other search engines straight away when a page is new or has changed - just the page addresses, nothing about visitors." },
       { name: "Tipeee", href: "https://en.tipeee.com/afterparty", what: "Takes tips for the fan page - the tip box in the footer is a plain link to my Tipeee page, which handles the payment (cards through Adyen in the Netherlands, or PayPal)." },
     ],
   },
