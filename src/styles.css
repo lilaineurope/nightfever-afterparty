@@ -481,3 +481,7 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 }
 .jbx-cat-note { margin: 6px 0 0; color: #333; opacity: 1; }
 .jbx-subchips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin: 22px 0 0; }
+.jbx-ep-stats { align-self: center; font-size: 13px; color: #fff; white-space: nowrap; }
+.jbx-ep-stats b { font-weight: normal; padding: 1px 5px; }
+.jbx-ep-stats .ref { background: var(--pink); color: #fff; }
+.jbx-ep-stats .men { background: var(--jy); color: #111; }

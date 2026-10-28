@@ -583,6 +583,9 @@ export function JukeboxMachine({
               </p>
               <div className="jbx-ep-links jbx-ep-top">
                 <Link to={episodePath(ep.id)}>The Afterparty →</Link>
+                <span className="jbx-ep-stats">
+                  <b className="ref">{ep.references}</b> references · <b className="men">{ep.mentions}</b> mentions
+                </span>
                 <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${guestName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
               </div>
               <div className="jbx-ep-links jbx-ep-lists">
