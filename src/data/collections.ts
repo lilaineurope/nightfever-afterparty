@@ -232,14 +232,16 @@ export const MUSIC_SHELVES: Shelf[] = [
   { key: "stage", label: "Stage & musicals" },
 ];
 
-const SOUNDS = /^(hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions)$/i;
-const STAGE = /^(flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball|hairspray|the music man)$/i;
-const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know|ghost cat)$/i;
+const SOUNDS = /^(electroclash|goth|industrial music|glitter rock|london punk|nyc dance music|hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions)$/i;
+const STAGE = /^(jesus christ superstar|hedwig and the angry inch|flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball|hairspray|the music man)$/i;
+const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know|ghost cat|my hair looks fierce|champagne \(amanda lepore\))$/i;
+
+const BAND_WITH_APOSTROPHE = /^(Guns N' Roses)$/;
 
 export const jukebox: CollectionItem[] = entities
   .filter((e) => hasCat(e, ["Music"]))
   .map((e) => {
-    const shelf = SOUNDS.test(e.name) ? "sounds" : STAGE.test(e.name) ? "stage" : SONG.test(e.name) ? "songs" : "artists";
+    const shelf = SOUNDS.test(e.name) ? "sounds" : STAGE.test(e.name) ? "stage" : SONG.test(e.name) && !BAND_WITH_APOSTROPHE.test(e.name) ? "songs" : "artists";
     return { ...toItem(e, shelf, ["Music"]), spotify: SPOTIFY[e.name] };
   })
   .sort(byMentions);
@@ -255,3 +257,14 @@ export const listenLinks = (name: string) => {
 
 export const findBookLink = (name: string) =>
   `https://openlibrary.org/search?q=${encodeURIComponent(name.replace(/\s*\([^)]*\)/g, "").replace(/[‘’'"“”]/g, ""))}`;
+
+/** Every club the guests mention (Lisa, 28 Oct 2026: the Jukebox's Clubs button lists them all under the three club playlists). */
+export const clubsMentioned = entities
+  .filter((e) => e.category === "Club")
+  .map((e) => ({
+    slug: e.slug,
+    name: e.name,
+    mentions: e.refs.reduce((n, r) => n + r.mentions, 0),
+    episodes: new Set(e.refs.map((r) => r.episode).filter(Boolean)).size,
+  }))
+  .sort((a, b) => b.episodes - a.episodes || b.mentions - a.mentions || a.name.localeCompare(b.name));

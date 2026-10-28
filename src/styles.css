@@ -337,3 +337,102 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
   box-shadow: inset 0 1px 4px rgb(0 0 0 / 0.45), inset 0 0 0 1px rgb(0 0 0 / 0.25);
   background: linear-gradient(125deg, rgb(255 255 255 / 0.18) 0%, rgb(255 255 255 / 0) 35%, rgb(255 255 255 / 0) 70%, rgb(255 255 255 / 0.08) 100%);
 }
+
+/* ---------- The Jukebox machine (Lisa, 28 Oct 2026) ---------- */
+.jbx { --jy: #f6e06a; max-width: 920px; margin: 0 auto; font-family: var(--font-type); color: var(--foreground); }
+.jbx-dome { background: #111; border-radius: 460px 460px 0 0; padding: 26px 26px 0; border: 4px solid #111; box-shadow: 8px 8px 0 #111; }
+.jbx-tubes { border-radius: 440px 440px 0 0; padding: 18px 18px 0; background: linear-gradient(90deg, var(--pink), #ff7fbf 20%, var(--jy) 50%, #ff7fbf 80%, var(--pink)); }
+.jbx-inner { border-radius: 420px 420px 0 0; background: #1d1a1c; padding: 48px 40px 26px; text-align: center; color: #fff; }
+.jbx-kicker { color: var(--jy); letter-spacing: .3em; font-size: 12px; }
+.jbx-title { font-family: var(--font-flyer); font-size: 58px; line-height: 1; margin: 6px 0 0; letter-spacing: -1px; color: #fff; }
+.jbx-title span { color: var(--pink); }
+.jbx-screen { margin: 20px auto 0; max-width: 640px; aspect-ratio: 16 / 9; background: radial-gradient(circle at 50% 40%, #3a0f25, #0b0b0b 70%); border: 3px solid #444; position: relative; overflow: hidden; }
+.jbx-idle, .jbx-sound { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; padding: 16px; color: #fff; width: 100%; }
+.jbx-idle { cursor: pointer; background: none; border: 0; font: inherit; }
+.jbx-idle:hover .jbx-play, .jbx-idle:focus-visible .jbx-play { transform: scale(1.08); }
+.jbx-play { width: 74px; height: 52px; background: var(--pink); border-radius: 12px; display: grid; place-items: center; font-size: 24px; transition: transform .15s; }
+.jbx-np { font-size: 12px; letter-spacing: .2em; color: var(--jy); text-transform: uppercase; }
+.jbx-np b { color: #fff; letter-spacing: .05em; }
+.jbx-st { font-family: var(--font-flyer); font-size: 24px; line-height: 1.1; text-transform: uppercase; }
+.jbx-sa { font-size: 14px; opacity: .8; }
+.jbx-small { font-size: 11px; opacity: .65; }
+.jbx-video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.jbx-spotify { width: 100%; max-width: 520px; min-height: 152px; }
+.jbx-nowline { margin-top: 12px; min-height: 20px; display: grid; gap: 4px; }
+.jbx-drop { font-size: 13px; color: #fff; }
+.jbx .jbx-ts { color: var(--jy); font-weight: bold; }
+.jbx-strip .jbx-ts, .jbx-clubs .jbx-ts { color: #a0760a; }
+.jbx-mode { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 16px 0 4px; }
+.jbx-mode button { font-family: var(--font-flyer); font-size: 13px; text-transform: uppercase; padding: 9px 16px; border: 2px solid #fff; color: #fff; background: transparent; cursor: pointer; }
+.jbx-mode button:hover { border-color: var(--jy); color: var(--jy); }
+.jbx-mode button.on { background: var(--pink); border-color: var(--pink); color: #fff; }
+.jbx-grill { background: repeating-linear-gradient(90deg, #c9c9c9 0 6px, #8d8d8d 6px 9px); height: 26px; border: 4px solid #111; border-top: 0; box-shadow: 8px 8px 0 #111; }
+.jbx-panel { background: var(--card); border: 4px solid #111; border-top: 0; box-shadow: 8px 8px 0 #111; padding: 20px 20px 24px; }
+.jbx-chips, .jbx-eps { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+.jbx-eps { margin-top: 14px; padding-top: 14px; border-top: 1px dashed #bdb6a8; }
+.jbx-chip { border: 1px solid #bdb6a8; border-radius: 99px; padding: 5px 12px; font-size: 12.5px; background: #f6f3ec; cursor: pointer; font-family: inherit; color: inherit; }
+.jbx-chip small { opacity: .6; margin-left: 2px; }
+.jbx-chip:hover { color: var(--pink); }
+.jbx-chip.on { background: #111; color: #fff; border-color: #111; }
+.jbx-sep { width: 1px; height: 22px; background: #bdb6a8; margin: 0 4px; }
+.jbx-pager { display: flex; justify-content: space-between; align-items: center; margin: 18px 4px 10px; font-family: var(--font-flyer); font-size: 13px; text-transform: uppercase; }
+.jbx-pager b { color: var(--pink); }
+.jbx-pager button { font-size: 18px; padding: 2px 10px; border: 2px solid #111; background: #fff; cursor: pointer; }
+.jbx-pager button:disabled { opacity: .25; cursor: default; }
+.jbx-pager.bottom { margin-top: 16px; }
+.jbx-rack { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; list-style: none; padding: 0; margin: 0; }
+.jbx-strip { display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 10px; background: #fff; border: 2px solid #111; border-top: 5px solid var(--pink); border-bottom: 5px solid var(--pink); padding: 7px 10px; }
+.jbx-strip.hot { background: #fff3f9; outline: 3px solid var(--jy); }
+.jbx-code { font-family: var(--font-flyer); background: #111; color: #fff; text-align: center; padding: 6px 0; font-size: 15px; }
+.jbx-tt { min-width: 0; }
+.jbx-name { display: block; font-family: var(--font-flyer); text-transform: uppercase; font-size: 13px; line-height: 1.15; color: inherit; }
+.jbx-name:hover { color: var(--pink); }
+.jbx-tt i { display: block; font-style: normal; font-size: 12.5px; }
+.jbx-tt small { display: block; font-size: 11px; color: #555; margin-top: 2px; }
+.jbx-btns { display: flex; gap: 6px; }
+.jbx-ic { width: 32px; height: 32px; border: 2px solid #111; display: grid; place-items: center; font-size: 13px; background: #fff; color: #111; cursor: pointer; text-decoration: none; }
+.jbx-ic:hover { background: #111; color: #fff; }
+.jbx-ic.v { background: var(--pink); color: #fff; border-color: var(--pink); }
+.jbx-ic.v:hover { background: #111; border-color: #111; }
+.jbx-ic.off { opacity: .2; cursor: default; }
+.jbx-ic.off:hover { background: #fff; color: #111; }
+.jbx-foot { margin: 22px auto 0; font-size: 14px; text-align: center; line-height: 1.6; }
+.jbx-foot a { color: var(--pink); font-weight: bold; }
+.jbx-clubs { margin-top: 18px; }
+.jbx-clubs-intro { max-width: 680px; margin: 0 auto 14px; font-size: 14px; text-align: center; }
+.jbx-clubcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; list-style: none; padding: 0; }
+.jbx-clubcards > li { background: #1d1a1c; color: #fff; border: 2px solid #111; border-top: 5px solid var(--pink); padding: 14px; display: flex; flex-direction: column; }
+.jbx-clubname { font-family: var(--font-flyer); font-size: 20px; text-transform: uppercase; color: #fff; margin-top: 4px; }
+.jbx-clubname:hover { color: var(--pink); }
+.jbx-clubcards ul { list-style: none; padding: 0; margin: 10px 0 0; font-size: 13px; flex: 1; }
+.jbx-clubcards ul span { opacity: .65; }
+.jbx-clublinks { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; font-size: 13px; font-weight: bold; }
+.jbx-clublinks a { color: var(--jy); }
+.jbx-clublinks a:hover { color: var(--pink); }
+.jbx-h2 { font-family: var(--font-flyer); text-transform: uppercase; font-size: 18px; margin: 26px 0 10px; text-align: center; }
+.jbx-h2 small { color: var(--pink); }
+.jbx-clublist { columns: 3; column-gap: 18px; list-style: none; padding: 0; font-size: 13.5px; }
+.jbx-clublist li { break-inside: avoid; padding: 4px 0; border-bottom: 1px dashed #d4cec2; display: flex; justify-content: space-between; gap: 8px; }
+.jbx-clublist li.chosen a { color: var(--pink); font-weight: bold; }
+.jbx-clublist a:hover { color: var(--pink); text-decoration: underline; }
+.jbx-clublist small { opacity: .6; white-space: nowrap; }
+@media (max-width: 760px) {
+  .jbx-clubcards { grid-template-columns: 1fr; }
+  .jbx-clublist { columns: 2; }
+}
+@media (max-width: 640px) {
+  .jbx-rack { grid-template-columns: 1fr; }
+  .jbx-dome { padding: 12px 12px 0; box-shadow: 5px 5px 0 #111; }
+  .jbx-tubes { padding: 10px 10px 0; }
+  .jbx-inner { padding: 34px 10px 18px; }
+  .jbx-title { font-size: 38px; }
+  .jbx-st { font-size: 17px; }
+  .jbx-play { width: 58px; height: 40px; font-size: 18px; }
+  .jbx-idle { gap: 6px; }
+  .jbx-np { font-size: 10px; letter-spacing: .12em; }
+  .jbx-mode button { font-size: 11px; padding: 8px 10px; }
+  .jbx-grill, .jbx-panel { box-shadow: 5px 5px 0 #111; }
+  .jbx-panel { padding: 14px 10px 18px; }
+  .jbx-clublist { columns: 1; }
+  .jbx-sep { display: none; }
+}

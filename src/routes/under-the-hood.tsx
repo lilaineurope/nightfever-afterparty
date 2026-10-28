@@ -37,6 +37,7 @@ const GROUPS: Group[] = [
     tools: [
       { name: "The Night Fever podcast feed", href: "https://creators.spotify.com", what: "The episode player streams each episode straight from the show's own podcast feed." },
       { name: "Spotify", href: "https://open.spotify.com", what: "Plays the Jukebox and the song, band and club cards (only after you press play), opens the listen links and hosts the Night Fever Afterparty Jukebox playlist." },
+      { name: "YouTube", href: "https://www.youtube.com", what: "Plays the Jukebox's music videos and its video of the day (only after you press play, through YouTube's privacy-enhanced player) and hosts the AFTERPARTY playlists." },
       { name: "Apple Podcasts", href: "https://podcasts.apple.com", what: "Listen links for every episode." },
       { name: "WOW Presents Plus", href: "https://www.wowpresentsplus.com", what: "Where the watch links take you to see the episodes." },
     ],
@@ -80,7 +81,7 @@ export const Route = createFileRoute("/under-the-hood")({
     pageHead({
       path: "/under-the-hood",
       title: "Under the hood | Night Fever fan page",
-      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, Google Maps, GoatCounter, Tipeee and more.",
+      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, YouTube, Google Maps, GoatCounter, Tipeee and more.",
       image: "/og/home.jpg",
     }),
 });

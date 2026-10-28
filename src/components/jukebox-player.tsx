@@ -19,7 +19,7 @@ declare global {
 }
 
 let apiPromise: Promise<IFrameAPI> | null = null;
-function loadApi(): Promise<IFrameAPI> {
+export function loadApi(): Promise<IFrameAPI> {
   if (!apiPromise) {
     apiPromise = new Promise((resolve) => {
       window.onSpotifyIframeApiReady = (api) => resolve(api);

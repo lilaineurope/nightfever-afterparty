@@ -57,7 +57,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 27 October 2026. Here's what happens to your data when
+            Last updated: 28 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -247,8 +247,13 @@ function PrivacyPage() {
               song, band and club cards in Everything A&ndash;Z, load
               Spotify&rsquo;s own player only after you press a Play button. From
               that moment Spotify&rsquo;s privacy policy applies to the player and
-              Spotify may set its own cookies. Everywhere else their names appear
-              only as ordinary links.
+              Spotify may set its own cookies. The Jukebox&rsquo;s video buttons
+              work the same way: a YouTube video loads only after you press
+              &#9654;, through YouTube&rsquo;s privacy-enhanced player
+              (youtube-nocookie.com), and from then on YouTube&rsquo;s (Google&rsquo;s)
+              privacy policy applies to that player. Before you press, nothing
+              loads from YouTube - not even the picture. Everywhere else their
+              names appear only as ordinary links.
             </p>
           </Section>
 

@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CollectionPage } from "@/components/collection-page";
-import { JukeboxPlayer, useJukebox } from "@/components/jukebox-player";
-import { MUSIC_SHELVES, SPOTIFY_PLAYLIST_URL, jukebox, listenLinks } from "@/data/collections";
+import { JukeboxMachine } from "@/components/jukebox-machine";
+import { SiteFooter } from "@/components/site-footer";
+import { SPOTIFY_PLAYLIST_URL, jukebox } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
-import { ClubNightsList } from "@/components/club-nights-list";
-import { CLUB_NIGHTS } from "@/data/club-nights";
 
 const description = `Every song, record, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie at the Mudd Club to Warm Leatherette, each with the moment it comes up. Press play!`;
 
@@ -31,24 +29,22 @@ export const Route = createFileRoute("/jukebox")({
 });
 
 function JukeboxPage() {
-  const { current, playIndex, step, holder } = useJukebox(jukebox);
-  const first = jukebox.findIndex((m) => m.spotify);
   return (
-    <CollectionPage
-      topSlot={<JukeboxPlayer playlist={jukebox} current={current} onPlayFirst={() => void playIndex(first)} step={step} holder={holder} />}
-      onPlay={(m) => void playIndex(jukebox.indexOf(m))}
-      playingSlug={current !== null ? jukebox[current]?.slug : undefined}
-      kicker="The Night Fever"
-      title={<>Juke<span className="text-pink text-glow-pink">box</span></>}
-      intro={<>Every song, record, band and sound that comes up in the interviews - the playlist of the night. Tap a timestamp to hear the story, press play, or take the whole lot with you as the <a href={SPOTIFY_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" className="text-gold underline decoration-gold/50 underline-offset-2 hover:text-pink">Night Fever Afterparty Jukebox playlist on Spotify</a>.</>}
-      items={jukebox}
-      shelves={[...MUSIC_SHELVES]}
-      extraShelf={{ key: "clubs", label: "Clubs", count: CLUB_NIGHTS.length, content: <ClubNightsList /> }}
-      extras={(m) => {
-        const l = listenLinks(m.name);
-        return m.shelf === "stage" ? [] : [{ label: "Listen on Spotify", href: l.spotify }, { label: "Watch on YouTube", href: l.youtube }];
-      }}
-      note={<>The jukebox fills itself from my episode indexes, so every new Afterparty adds its songs. Nothing is hosted here: the links search Spotify and YouTube, and timestamps play the show's own podcast feed.</>}
-    />
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="px-4 pb-16 pt-10 sm:px-6">
+        <JukeboxMachine items={jukebox} />
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+          Every song, record, band and sound that comes up in the interviews - the playlist of the night, most dropped first. The screen shows a
+          different video every day. The jukebox fills itself from my episode indexes, so every new Afterparty adds its songs. Nothing is hosted
+          here: Spotify and YouTube only load when you press play, and timestamps play the show&rsquo;s own podcast feed. Take the whole lot with you as
+          the{" "}
+          <a href={SPOTIFY_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-pink underline underline-offset-2">
+            Night Fever Afterparty Jukebox playlist on Spotify
+          </a>
+          .
+        </p>
+      </section>
+      <SiteFooter />
+    </main>
   );
 }
