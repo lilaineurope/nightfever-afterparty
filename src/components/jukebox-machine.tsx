@@ -64,12 +64,45 @@ export function videoOfTheDay(pool: CollectionItem[], date = new Date()): Collec
   return pool[order[days % pool.length]!]!;
 }
 
+const guestName = (g: string) => g.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia");
+
+/** One Share button (no social-media scripts): the phone's own share sheet where there is one, otherwise copy the link. */
+function ShareButton({ id, guest }: { id: string; guest: string }) {
+  const [copied, setCopied] = useState(false);
+  const share = async () => {
+    const url = `${window.location.origin}/jukebox?afterparty=${id}`;
+    const title = `${guest}'s AFTERPARTY playlist – Night Fever Jukebox`;
+    try {
+      if (navigator.share) return await navigator.share({ title, url });
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* closed the share sheet */
+    }
+  };
+  return (
+    <button type="button" className="jbx-share" onClick={() => void share()}>
+      {copied ? "Link copied ✓" : "Share ↗"}
+    </button>
+  );
+}
+
 function newestMusicEpisode(items: CollectionItem[]): string {
   const ids = new Set(items.flatMap((i) => i.moments.map((m) => m.episodeId)));
   return [...episodes].filter((e) => ids.has(e.id)).sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished))[0]?.id ?? "";
 }
 
-export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
+export function JukeboxMachine({
+  items,
+  initialEpisode,
+  onPickEpisode,
+}: {
+  items: CollectionItem[];
+  /** From a shared link (/jukebox?afterparty=s05e04): open on that Afterparty and cue its first song. */
+  initialEpisode?: string | undefined;
+  onPickEpisode?: (id: string) => void;
+}) {
   const pool = useMemo(() => items.filter(embeddable), [items]);
   const today = useMemo(() => videoOfTheDay(pool), [pool]);
 
@@ -77,7 +110,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const [filter, setFilter] = useState<Filter>("episodes");
   const [sort, setSort] = useState<"dropped" | "az" | "timeline">("dropped");
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
-  const [episodeId, setEpisodeId] = useState<string>(() => newestMusicEpisode(items));
+  const [episodeId, setEpisodeId] = useState<string>(() => initialEpisode || newestMusicEpisode(items));
   const [mode, setMode] = useState<Kind>("video");
   const [now, setNow] = useState<{ item: CollectionItem; kind: Kind } | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
@@ -159,13 +192,21 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   /** Episodes: tap a polaroid - the jukebox plays the first song of that Afterparty and lists its songs. */
   const pickEpisode = (id: string) => {
     setEpisodeId(id);
+    onPickEpisode?.(id);
     const songs = items.filter((i) => i.moments.some((m) => m.episodeId === id)).sort((a, b) => secs(epMoment(a, id)?.time ?? "") - secs(epMoment(b, id)?.time ?? ""));
     listRef.current = songs;
     const first = songs.find((x) => canPlay(x, "video")) ?? songs.find((x) => x.spotify);
     if (first) play(first, canPlay(first, "video") ? "video" : "sound");
   };
 
-  const shownItem = now?.item ?? today;
+  // A shared Afterparty link cues that Afterparty's first song on the screen instead of today's video.
+  const cued = useMemo(() => {
+    if (!initialEpisode) return undefined;
+    const songs = items.filter((i) => i.moments.some((m) => m.episodeId === initialEpisode)).sort((a, b) => secs(epMoment(a, initialEpisode)?.time ?? "") - secs(epMoment(b, initialEpisode)?.time ?? ""));
+    return songs.find((x) => embeddable(x)) ?? songs.find((x) => x.spotify);
+  }, [initialEpisode, items]);
+  const idleItem = cued ?? today;
+  const shownItem = now?.item ?? idleItem;
   const label = stripLabel(shownItem);
   const at = (it: CollectionItem) => (filter === "episodes" && episodeId ? epMoment(it, episodeId) : undefined) ?? firstMoment(it);
   const shownAt = at(shownItem);
@@ -188,8 +229,8 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
               ) : now?.kind === "sound" ? (
                 <SoundScreen item={now.item} onEnd={(it) => next(it, "sound")} />
               ) : (
-                <button type="button" className="jbx-idle" onClick={() => play(today, mode === "sound" && today.spotify ? "sound" : "video")} aria-label={`Play today's video: ${label.title}`}>
-                  <span className="jbx-np">TODAY&rsquo;S VIDEO · A NEW ONE EVERY DAY</span>
+                <button type="button" className="jbx-idle" onClick={() => play(idleItem, (mode === "sound" || !embeddable(idleItem)) && idleItem.spotify ? "sound" : "video")} aria-label={`Play ${label.title}`}>
+                  <span className="jbx-np">{cued && ep ? `${guestName(ep.guest)}’s AFTERPARTY PLAYLIST` : <>TODAY&rsquo;S VIDEO · A NEW ONE EVERY DAY</>}</span>
                   <span className="jbx-play" aria-hidden="true">▶</span>
                   <span className="jbx-st">{label.title}</span>
                   <span className="jbx-sa">{label.sub}</span>
@@ -237,7 +278,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
               <button key={e.id} type="button" className={`jbx-pol${episodeId === e.id ? " on" : ""}`} aria-pressed={episodeId === e.id} onClick={() => pickEpisode(e.id)} title={`Play the songs from ${e.guest}'s Afterparty`}>
                 {episodePortraits[e.id] && <img src={episodePortraits[e.id]} alt="" loading="lazy" />}
                 <span>S{e.season}E{e.episode}</span>
-                <b>{e.guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia")}</b>
+                <b>{guestName(e.guest)}</b>
               </button>
             ))}
           </div>
@@ -253,7 +294,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
             )}
             <div>
               <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
-              <h2 className="jbx-ep-name">{ep.guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia")}</h2>
+              <h2 className="jbx-ep-name">{guestName(ep.guest)}</h2>
               <p className="jbx-ep-note">
                 {list.length} {list.length === 1 ? "song or band" : "songs and bands"} from the episode, in the order they come up. Take them with you:
               </p>
@@ -265,6 +306,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
                   <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist ↗</a>
                 )}
                 <Link to={episodePath(ep.id)}>The Afterparty →</Link>
+                <ShareButton id={ep.id} guest={guestName(ep.guest)} />
               </div>
             </div>
           </div>
@@ -386,7 +428,6 @@ function VideoScreen({ item, onEnd, onFail }: { item: CollectionItem; onEnd: () 
       src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1&enablejsapi=1${origin}`}
       title={`${stripLabel(item).title} - video on YouTube`}
       allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-      allowFullScreen
       referrerPolicy="strict-origin-when-cross-origin"
     />
   );
