@@ -65,17 +65,25 @@ export function videoOfTheDay(pool: CollectionItem[], date = new Date()): Collec
   return pool[order[days % pool.length]!]!;
 }
 
+function newestMusicEpisode(items: CollectionItem[]): string {
+  const ids = new Set(items.flatMap((i) => i.moments.map((m) => m.episodeId)));
+  return [...episodes].filter((e) => ids.has(e.id)).sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished))[0]?.id ?? "";
+}
+
 export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const pool = useMemo(() => items.filter(embeddable), [items]);
   const today = useMemo(() => videoOfTheDay(pool), [pool]);
 
-  const [filter, setFilter] = useState<Filter>("all");
+  // Lisa, 28 Oct 2026: for now just two buttons - Afterparties (the default) and Clubs; more come back one by one.
+  const [filter, setFilter] = useState<Filter>("episodes");
   const [sort, setSort] = useState<"dropped" | "az" | "timeline">("dropped");
-  const [episodeId, setEpisodeId] = useState<string>("");
+  // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
+  const [episodeId, setEpisodeId] = useState<string>(() => newestMusicEpisode(items));
   const [page, setPage] = useState(0);
   const [mode, setMode] = useState<Kind>("video");
   const [now, setNow] = useState<{ item: CollectionItem; kind: Kind } | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
+  const polsRef = useRef<HTMLDivElement>(null);
   /** Videos that wouldn't play for this visitor (e.g. blocked in their country) - skipped from then on. */
   const [failed, setFailed] = useState<Set<string>>(() => new Set());
   const failedRef = useRef(failed);
@@ -104,6 +112,12 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const pages = Math.max(1, Math.ceil(list.length / PAGE));
   const shown = list.slice(page * PAGE, page * PAGE + PAGE);
   useEffect(() => setPage(0), [filter, sort, episodeId]);
+  // Show the chosen polaroid in the row (it scrolls sideways) without moving the page.
+  useEffect(() => {
+    const row = polsRef.current;
+    const on = row?.querySelector<HTMLElement>(".jbx-pol.on");
+    if (row && on) row.scrollLeft = on.offsetLeft - row.offsetLeft - 16;
+  }, [filter, episodeId]);
 
   const listRef = useRef(list);
   listRef.current = list;
@@ -161,7 +175,6 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const ep = filter === "episodes" && episodeId ? episodes.find((e) => e.id === episodeId) : undefined;
 
   const chip = (on: boolean) => `jbx-chip${on ? " on" : ""}`;
-  const counts = (k: string) => items.filter((i) => i.shelf === k).length;
 
   return (
     <div className="jbx">
@@ -194,7 +207,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
               )}
               {shownAt && (
                 <p className="jbx-drop">
-                  dropped {shownItem.mentions || 1}× on Night Fever · {ep ? "in" : "first by"} {shownAt.guest}, {shownAt.code}{" "}
+                  dropped {shownItem.mentions || 1}× on Night Fever · {ep && shownAt.episodeId === ep.id ? "in" : "first by"} {shownAt.guest}, {shownAt.code}{" "}
                   <Timestamp episodeId={shownAt.episodeId} time={shownAt.time} className="jbx-ts" />
                 </p>
               )}
@@ -217,21 +230,12 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
 
       <div className="jbx-panel">
         <div className="jbx-chips">
-          <button type="button" className={chip(sort === "dropped")} aria-pressed={sort === "dropped"} onClick={() => setSort("dropped")}>Most dropped</button>
-          <button type="button" className={chip(sort === "az")} aria-pressed={sort === "az"} onClick={() => setSort("az")}>A–Z</button>
-          <button type="button" className={chip(sort === "timeline")} aria-pressed={sort === "timeline"} onClick={() => setSort("timeline")}>Timeline</button>
-          <span className="jbx-sep" aria-hidden="true" />
-          <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => setFilter("all")}>All <small>{items.length}</small></button>
-          <button type="button" className={chip(filter === "songs")} aria-pressed={filter === "songs"} onClick={() => setFilter("songs")}>Songs <small>{counts("songs")}</small></button>
-          <button type="button" className={chip(filter === "artists")} aria-pressed={filter === "artists"} onClick={() => setFilter("artists")}>Artists &amp; bands <small>{counts("artists")}</small></button>
-          <button type="button" className={chip(filter === "sounds")} aria-pressed={filter === "sounds"} onClick={() => setFilter("sounds")}>Sounds &amp; scenes <small>{counts("sounds")}</small></button>
-          <button type="button" className={chip(filter === "stage")} aria-pressed={filter === "stage"} onClick={() => setFilter("stage")}>Musicals <small>{counts("stage")}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>Afterparties <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
         </div>
 
         {filter === "episodes" && (
-          <div className="jbx-pols" role="group" aria-label="Pick an Afterparty">
+          <div ref={polsRef} className="jbx-pols" role="group" aria-label="Pick an Afterparty">
             {musicEpisodes.map((e) => (
               <button key={e.id} type="button" className={`jbx-pol${episodeId === e.id ? " on" : ""}`} aria-pressed={episodeId === e.id} onClick={() => pickEpisode(e.id)} title={`Play the songs from ${e.guest}'s Afterparty`}>
                 {episodePortraits[e.id] && <img src={episodePortraits[e.id]} alt="" loading="lazy" />}
@@ -254,7 +258,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
               <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
               <h2 className="jbx-ep-name">{ep.guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia")}</h2>
               <p className="jbx-ep-note">
-                {list.length} song{list.length === 1 ? "" : "s"}, records and bands from the episode, in the order they come up. Take them with you:
+                {list.length} {list.length === 1 ? "song or band" : "songs and bands"} from the episode, in the order they come up. Take them with you:
               </p>
               <div className="jbx-ep-links">
                 {episodeSpotifyUrl(ep.id) && (
@@ -275,13 +279,15 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
+            {pages > 1 && (
             <div className="jbx-pager">
-              <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">◀</button>
-              <span>
-                <b>{shown.length ? `${page * PAGE + 1}–${page * PAGE + shown.length}` : "-"}</b> of {list.length}
-              </span>
-              <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next page">▶</button>
-            </div>
+                <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">◀</button>
+                <span>
+                  <b>{shown.length ? `${page * PAGE + 1}–${page * PAGE + shown.length}` : "-"}</b> of {list.length}
+                </span>
+                <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next page">▶</button>
+              </div>
+            )}
             <ol className="jbx-rack">
               {shown.flatMap((it, k) => {
                 const l = stripLabel(it);

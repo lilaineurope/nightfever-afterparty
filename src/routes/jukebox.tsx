@@ -34,7 +34,7 @@ function JukeboxPage() {
       <section className="px-4 pb-16 pt-10 sm:px-6">
         <JukeboxMachine items={jukebox} />
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-          Every song, record, band and sound that comes up in the interviews - the playlist of the night, most dropped first. The screen shows a
+          Every song, record, band and sound that comes up in the interviews - the playlist of the night, Afterparty by Afterparty. The screen shows a
           different video every day. The jukebox fills itself from my episode indexes, so every new Afterparty adds its songs. Nothing is hosted
           here: Spotify and YouTube only load when you press play, and timestamps play the show&rsquo;s own podcast feed. Take the whole lot with you as
           the{" "}
