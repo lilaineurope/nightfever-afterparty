@@ -388,7 +388,6 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .jbx-foot { margin: 22px auto 0; font-size: 14px; text-align: center; line-height: 1.6; }
 .jbx-foot a { color: var(--pink); font-weight: bold; }
 .jbx-clubs { margin-top: 18px; }
-.jbx-clubs-intro { max-width: 680px; margin: 0 auto 14px; font-size: 14px; text-align: center; }
 .jbx-clubcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; list-style: none; padding: 0; }
 .jbx-clubcards > li { background: #1d1a1c; color: #fff; border: 2px solid #111; border-top: 5px solid var(--pink); padding: 14px; display: flex; flex-direction: column; }
 .jbx-clubname { font-family: var(--font-flyer); font-size: 20px; text-transform: uppercase; color: #fff; margin-top: 4px; }

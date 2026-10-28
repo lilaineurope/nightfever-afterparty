@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Timestamp, openEpisodePlayer, pauseEpisode } from "@/components/episode-player";
 import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
-import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
-import { BOOK_SHELVES, SPOTIFY_PLAYLIST_URL, bookClub, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
+import { BOOK_SHELVES, SPOTIFY_PLAYLIST_URL, bookClub, listenLinks, type CollectionItem } from "@/data/collections";
 import { episodes, episodeById, episodePath, stageName } from "@/data/episodes";
 import { episodePortraits } from "@/components/episode-block";
 import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl } from "@/data/episode-spotify";
@@ -56,7 +55,7 @@ const FASHION_TITLE = /fashion|runway|couture|catwalk|collection|designer|stylis
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
 /** EVERYTHING ("all"), AFTERPARTIES ("episodes"), Clubs, or one category across every Afterparty ("cat"). */
-type Filter = "all" | "episodes" | "clubs" | "cat";
+type Filter = "all" | "episodes" | "cat";
 
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
@@ -149,7 +148,7 @@ export function JukeboxMachine({
   const today = useMemo(() => videoOfTheDay(pool), [pool]);
 
   // Lisa, 28 Oct 2026: for now just two buttons - Afterparties (the default) and Clubs; more come back one by one.
-  const [filter, setFilter] = useState<Filter>(initialFilter ?? "episodes");
+  const [filter, setFilter] = useState<Filter>(initialFilter === "clubs" ? "cat" : "episodes");
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
   const [episodeId, setEpisodeId] = useState<string>(() => initialEpisode || newestMusicEpisode(items));
   const [mode, setMode] = useState<Kind>("video");
@@ -160,7 +159,7 @@ export function JukeboxMachine({
   /** What plays next after a clip: the list it was started from. */
   const queueRef = useRef<Clip[]>([]);
   /** A category button (Music, Films & TV, ...) - that category across every Afterparty. */
-  const [topCat, setTopCat] = useState<EpCat>("music");
+  const [topCat, setTopCat] = useState<EpCat>(initialFilter === "clubs" ? "clubs" : "music");
   const [allClips, setAllClips] = useState<Clip[]>([]);
   const [views, setViews] = useState<Record<string, number>>({});
   const viewsRef = useRef(views);
@@ -294,9 +293,9 @@ export function JukeboxMachine({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, allClips, musicNames, views]);
   const catTotal = (k: EpCat) => allSections.find((x) => x.id === k)?.entries.length ?? 0;
-  const sectioned = filter === "episodes" || filter === "all" || filter === "cat" || filter === "clubs";
+  const sectioned = filter === "episodes" || filter === "all" || filter === "cat";
   const shownSections =
-    filter === "episodes" ? sections : filter === "all" ? allSections : filter === "cat" ? allSections.filter((x) => x.id === topCat) : filter === "clubs" ? allSections.filter((x) => x.id === "clubs") : [];
+    filter === "episodes" ? sections : filter === "all" ? allSections : filter === "cat" ? allSections.filter((x) => x.id === topCat) : [];
   epQueueRef.current = shownSections.flatMap((x) => x.entries);
   /** The Afterparty a strip comes from: the picked one, or where it was first dropped. */
   const epFor = (e: Entry) => {
@@ -372,7 +371,7 @@ export function JukeboxMachine({
     setNow(n ? { item: n, kind: canPlay(n, "video") ? "video" : "sound" } : null);
   };
   const shuffle = () => {
-    const l = (filter === "clubs" ? items : list).filter((x) => canPlay(x, mode));
+    const l = list.filter((x) => canPlay(x, mode));
     if (l.length) play(l[Math.floor(Math.random() * l.length)]!, mode);
   };
   const switchMode = (k: Kind) => {
@@ -581,16 +580,12 @@ export function JukeboxMachine({
         <div className="jbx-chips">
           <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => setFilter("all")}>EVERYTHING <small>{allSections.reduce((n, x) => n + x.entries.length, 0) || items.length}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
-          {/* The categories cover every Afterparty (Lisa, 28 Oct 2026: moved up from under the Afterparty panel). */}
-          {EP_CATS.filter((k) => k.id !== "all").map((k) =>
-            k.id === "clubs" ? (
-              <button key={k.id} type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
-            ) : (
-              <button key={k.id} type="button" className={chip(filter === "cat" && topCat === k.id)} aria-pressed={filter === "cat" && topCat === k.id} onClick={() => { setFilter("cat"); setTopCat(k.id); }}>
-                {k.label} <small>{catTotal(k.id) || "…"}</small>
-              </button>
-            ),
-          )}
+          {/* The categories cover every Afterparty (Lisa, 28 Oct 2026); Clubs = the club videos only (29 Oct - the club playlists moved to Clubkid Culture). */}
+          {EP_CATS.filter((k) => k.id !== "all").map((k) => (
+            <button key={k.id} type="button" className={chip(filter === "cat" && topCat === k.id)} aria-pressed={filter === "cat" && topCat === k.id} onClick={() => { setFilter("cat"); setTopCat(k.id); }}>
+              {k.label} <small>{catTotal(k.id) || "…"}</small>
+            </button>
+          ))}
         </div>
 
         {filter === "episodes" && (
@@ -638,18 +633,7 @@ export function JukeboxMachine({
           </div>
         )}
 
-        {filter === "clubs" ? (
-          <ClubsShelf>
-            {shownSections.map((sec) => (
-              <section key={sec.id} className="jbx-sec">
-                <h3 className="jbx-rest-h">
-                  Clubs on video <small>{sec.entries.length}</small>
-                </h3>
-                <ol className="jbx-rack jbx-rest">{sec.entries.map((e) => { const x = epFor(e); return x ? entryStrip(e, x) : null; })}</ol>
-              </section>
-            ))}
-          </ClubsShelf>
-        ) : filter === "episodes" && !episodeId ? (
+        {filter === "episodes" && !episodeId ? (
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
@@ -802,56 +786,6 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
       <span className="jbx-sa">{l.sub}</span>
       <div ref={holder} className="jbx-spotify" />
       <span className="jbx-small">Not logged in to Spotify? You&rsquo;ll hear 30-second previews - log in for full songs.</span>
-    </div>
-  );
-}
-
-function ClubsShelf({ children }: { children?: ReactNode }) {
-  const chosen = new Set(CLUB_NIGHTS.map((c) => c.slug));
-  return (
-    <div className="jbx-clubs">
-      <p className="jbx-clubs-intro">
-        Three clubs have their own playlist: what they actually played, built only from documented DJ lists, recorded sets, club albums and live shows,
-        with every song&rsquo;s source on the club&rsquo;s page.
-      </p>
-      <ul className="jbx-clubcards">
-        {CLUB_NIGHTS.map((c) => (
-          <li key={c.slug}>
-            <p className="jbx-np">CLUB PLAYLIST · {c.songs.length} SONGS</p>
-            <Link to="/explore/$slug" params={{ slug: c.slug }} className="jbx-clubname">{c.club}</Link>
-            <ul>
-              {c.songs.slice(0, 4).map((s) => (
-                <li key={s.spotify ?? s.title}>
-                  {s.title} <span>· {s.artist}</span>
-                </li>
-              ))}
-              <li><span>+ {c.songs.length - 4} more</span></li>
-            </ul>
-            <div className="jbx-clublinks">
-              <Link to="/explore/$slug" params={{ slug: c.slug }}>Songs &amp; sources →</Link>
-              {c.playlistId && (
-                <a href={playlistUrl(c.playlistId)} target="_blank" rel="noopener noreferrer">Spotify ↗</a>
-              )}
-              {c.youtubePlaylist && (
-                <a href={c.youtubePlaylist} target="_blank" rel="noopener noreferrer">YouTube ↗</a>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
-      {children}
-      <h2 className="jbx-h2">Every club mentioned on Night Fever <small>{clubsMentioned.length}</small></h2>
-      <ol className="jbx-clublist">
-        {clubsMentioned.map((c) => (
-          <li key={c.slug} className={chosen.has(c.slug) ? "chosen" : ""}>
-            <Link to="/explore/$slug" params={{ slug: c.slug }}>{c.name}</Link>
-            <small>
-              {c.episodes > 1 ? `${c.episodes} episodes` : "1 episode"}
-              {c.mentions > 0 ? ` · ${c.mentions}×` : ""}
-            </small>
-          </li>
-        ))}
-      </ol>
     </div>
   );
 }

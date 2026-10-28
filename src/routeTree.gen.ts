@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookClubRouteImport } from './routes/book-club'
+import { Route as ClubkidCultureRouteImport } from './routes/clubkid-culture'
 import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GamesRouteImport } from './routes/games'
@@ -76,6 +77,11 @@ const AboutRoute = AboutRouteImport.update({
 const BookClubRoute = BookClubRouteImport.update({
   id: '/book-club',
   path: '/book-club',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubkidCultureRoute = ClubkidCultureRouteImport.update({
+  id: '/clubkid-culture',
+  path: '/clubkid-culture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnectionsRoute = ConnectionsRouteImport.update({
@@ -333,6 +339,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
+  '/clubkid-culture': typeof ClubkidCultureRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
@@ -388,6 +395,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
+  '/clubkid-culture': typeof ClubkidCultureRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
@@ -444,6 +452,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-club': typeof BookClubRoute
+  '/clubkid-culture': typeof ClubkidCultureRoute
   '/connections': typeof ConnectionsRoute
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
@@ -501,6 +510,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
+    | '/clubkid-culture'
     | '/connections'
     | '/contact'
     | '/games'
@@ -556,6 +566,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
+    | '/clubkid-culture'
     | '/connections'
     | '/contact'
     | '/games'
@@ -611,6 +622,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book-club'
+    | '/clubkid-culture'
     | '/connections'
     | '/contact'
     | '/games'
@@ -667,6 +679,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BookClubRoute: typeof BookClubRoute
+  ClubkidCultureRoute: typeof ClubkidCultureRoute
   ConnectionsRoute: typeof ConnectionsRoute
   ContactRoute: typeof ContactRoute
   GamesRoute: typeof GamesRoute
@@ -740,6 +753,13 @@ declare module '@tanstack/react-router' {
       path: '/book-club'
       fullPath: '/book-club'
       preLoaderRoute: typeof BookClubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clubkid-culture': {
+      id: '/clubkid-culture'
+      path: '/clubkid-culture'
+      fullPath: '/clubkid-culture'
+      preLoaderRoute: typeof ClubkidCultureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connections': {
@@ -1099,6 +1119,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BookClubRoute: BookClubRoute,
+  ClubkidCultureRoute: ClubkidCultureRoute,
   ConnectionsRoute: ConnectionsRoute,
   ContactRoute: ContactRoute,
   GamesRoute: GamesRoute,
