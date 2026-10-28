@@ -28,5 +28,5 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s04e04: { quote: "Glitter is still a valid option. Glitter looks amazingly expensive in the lights.", time: "00:09:56" }, // Zaldy
   s02e01: { quote: "Dorothy clicked her heels three times and ended up in Kansas. I clicked my heels three times and ended up on Christopher Street.", time: "00:11:50" }, // Michelle Visage
   s01e06: { quote: "Punk gave me my skeleton and the club kids gave me my flesh.", time: "00:09:20" }, // Waltpaper
-  s02e07: { quote: "I really do say I went from the club to the girls' club.", time: "00:46:09" }, // Jenny Talia
+  s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
