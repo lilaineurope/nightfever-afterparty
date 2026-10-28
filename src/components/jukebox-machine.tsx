@@ -4,17 +4,20 @@ import { Timestamp } from "@/components/episode-player";
 import { loadApi } from "@/components/jukebox-player";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { SPOTIFY_PLAYLIST_URL, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
-import { episodes, episodeById } from "@/data/episodes";
+import { episodes, episodeById, episodePath } from "@/data/episodes";
+import { episodePortraits } from "@/components/episode-block";
+import { JUKEBOX_YOUTUBE_URL, episodeSpotifyUrl } from "@/data/episode-spotify";
+import { YEARS } from "@/data/jukebox-years";
 import { NO_EMBED, YOUTUBE } from "@/data/jukebox-videos";
 
-// The Jukebox as a jukebox (Lisa, 28 Oct 2026): a cabinet with a screen on top, title strips with selection codes below.
+// The Jukebox as a jukebox (Lisa, 28 Oct 2026): a cabinet with a screen on top, title strips with a big play button below.
 // ♫ plays a song through Spotify's player, ▶ plays its video through YouTube's privacy-enhanced player - both load only
 // when a visitor presses a button. The screen's "video of the day" is the same for everyone all day (Stockholm time) and
 // walks through a shuffled order of every video, like the quote of the day.
 
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
-type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episode" | "clubs";
+type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs";
 
 const PAGE = 24;
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
@@ -38,12 +41,6 @@ const secs = (t: string) => t.split(":").reduce((n, x) => n * 60 + (Number(x) ||
 export const firstMoment = (it: CollectionItem): Moment | undefined =>
   [...it.moments].filter((m) => m.time && m.time !== "On camera").sort((a, b) => released(a) - released(b) || secs(a.time) - secs(b.time))[0] ?? it.moments[0];
 
-const code = (i: number) => {
-  const row = Math.floor(i / 4);
-  const L = (n: number) => String.fromCharCode(65 + n);
-  return (row < 26 ? L(row) : L(Math.floor(row / 26) - 1) + L(row % 26)) + ((i % 4) + 1);
-};
-const shortTime = (t: string) => t.replace(/^00:/, "");
 
 function rng(seed: number) {
   let t = seed >>> 0;
@@ -73,24 +70,35 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const today = useMemo(() => videoOfTheDay(pool), [pool]);
 
   const [filter, setFilter] = useState<Filter>("all");
-  const [sort, setSort] = useState<"dropped" | "az" | "newest">("dropped");
+  const [sort, setSort] = useState<"dropped" | "az" | "timeline">("dropped");
   const [episodeId, setEpisodeId] = useState<string>("");
   const [page, setPage] = useState(0);
   const [mode, setMode] = useState<Kind>("video");
   const [now, setNow] = useState<{ item: CollectionItem; kind: Kind } | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
+  /** Videos that wouldn't play for this visitor (e.g. blocked in their country) - skipped from then on. */
+  const [failed, setFailed] = useState<Set<string>>(() => new Set());
+  const failedRef = useRef(failed);
+  failedRef.current = failed;
 
   const musicEpisodes = useMemo(() => {
     const ids = new Set(items.flatMap((i) => i.moments.map((m) => m.episodeId)));
     return episodes.filter((e) => ids.has(e.id)).sort((a, b) => a.season - b.season || a.episode - b.episode);
   }, [items]);
 
+  const epMoment = (it: CollectionItem, ep: string) =>
+    it.moments.filter((m) => m.episodeId === ep).sort((a, b) => secs(a.time) - secs(b.time))[0];
+
   const list = useMemo(() => {
     let l = items;
-    if (filter === "episode") l = episodeId ? items.filter((i) => i.moments.some((m) => m.episodeId === episodeId)) : [];
-    else if (filter !== "all" && filter !== "clubs") l = items.filter((i) => i.shelf === filter);
+    if (filter === "episodes") {
+      if (!episodeId) return [];
+      // An episode's songs in the order they come up in the interview.
+      return items.filter((i) => i.moments.some((m) => m.episodeId === episodeId)).sort((a, b) => secs(epMoment(a, episodeId)?.time ?? "") - secs(epMoment(b, episodeId)?.time ?? ""));
+    }
+    if (filter !== "all" && filter !== "clubs") l = items.filter((i) => i.shelf === filter);
     if (sort === "az") l = [...l].sort((a, b) => stripLabel(a).title.replace(/^the\s+/i, "").localeCompare(stripLabel(b).title.replace(/^the\s+/i, "")));
-    if (sort === "newest") l = [...l].sort((a, b) => b.firstRelease - a.firstRelease || b.mentions - a.mentions);
+    if (sort === "timeline") l = [...l].sort((a, b) => (YEARS[a.name] ?? 9999) - (YEARS[b.name] ?? 9999) || b.mentions - a.mentions);
     return l;
   }, [items, filter, sort, episodeId]);
   const pages = Math.max(1, Math.ceil(list.length / PAGE));
@@ -100,18 +108,34 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const listRef = useRef(list);
   listRef.current = list;
 
-  const play = (item: CollectionItem, kind: Kind) => {
-    setNow({ item, kind });
+  const toScreen = () => {
     const top = screenRef.current?.getBoundingClientRect().top ?? 0;
     if (top < 0 || top > window.innerHeight * 0.6) screenRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
-  const canPlay = (it: CollectionItem, kind: Kind) => (kind === "video" ? embeddable(it) : !!it.spotify);
+  const play = (item: CollectionItem, kind: Kind) => {
+    setNow({ item, kind });
+    toScreen();
+  };
+  const canPlay = (it: CollectionItem, kind: Kind) => (kind === "video" ? embeddable(it) && !failedRef.current.has(it.slug) : !!it.spotify);
+  /** The big play button: the video, or the song from Spotify when there's no video (or when "Sound only" is on). */
+  const bestKind = (it: CollectionItem): Kind | null =>
+    mode === "sound" && it.spotify ? "sound" : canPlay(it, "video") ? "video" : it.spotify ? "sound" : null;
   /** Like a real jukebox: when a song ends, the next selection in the current list plays. */
   const next = (from: CollectionItem, kind: Kind) => {
     const l = listRef.current;
     const at = l.indexOf(from);
     const n = l.find((x, k) => k > at && canPlay(x, kind));
     if (n) setNow({ item: n, kind });
+  };
+  const fail = (it: CollectionItem) => {
+    const f = new Set(failedRef.current).add(it.slug);
+    failedRef.current = f;
+    setFailed(f);
+    // Move on to the next selection that plays (its video, or its song from Spotify).
+    const l = listRef.current.includes(it) ? listRef.current : pool;
+    const at = l.indexOf(it);
+    const n = [...l.slice(at + 1), ...l.slice(0, at)].find((x) => canPlay(x, "video") || !!x.spotify);
+    setNow(n ? { item: n, kind: canPlay(n, "video") ? "video" : "sound" } : null);
   };
   const shuffle = () => {
     const l = (filter === "clubs" ? items : list).filter((x) => canPlay(x, mode));
@@ -121,11 +145,20 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
     setMode(k);
     if (now && now.kind !== k && canPlay(now.item, k)) setNow({ item: now.item, kind: k });
   };
+  /** Episodes: tap a polaroid - the jukebox plays the first song of that Afterparty and lists its songs. */
+  const pickEpisode = (id: string) => {
+    setEpisodeId(id);
+    const songs = items.filter((i) => i.moments.some((m) => m.episodeId === id)).sort((a, b) => secs(epMoment(a, id)?.time ?? "") - secs(epMoment(b, id)?.time ?? ""));
+    listRef.current = songs;
+    const first = songs.find((x) => canPlay(x, "video")) ?? songs.find((x) => x.spotify);
+    if (first) play(first, canPlay(first, "video") ? "video" : "sound");
+  };
 
   const shownItem = now?.item ?? today;
   const label = stripLabel(shownItem);
-  const at = (it: CollectionItem) => (filter === "episode" && episodeId ? it.moments.find((m) => m.episodeId === episodeId) : undefined) ?? firstMoment(it);
+  const at = (it: CollectionItem) => (filter === "episodes" && episodeId ? epMoment(it, episodeId) : undefined) ?? firstMoment(it);
   const shownAt = at(shownItem);
+  const ep = filter === "episodes" && episodeId ? episodes.find((e) => e.id === episodeId) : undefined;
 
   const chip = (on: boolean) => `jbx-chip${on ? " on" : ""}`;
   const counts = (k: string) => items.filter((i) => i.shelf === k).length;
@@ -141,7 +174,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
             </h1>
             <div ref={screenRef} className={`jbx-screen${now ? " playing" : ""}`}>
               {now?.kind === "video" ? (
-                <VideoScreen key={now.item.slug} item={now.item} onEnd={() => next(now.item, "video")} />
+                <VideoScreen key={now.item.slug} item={now.item} onEnd={() => next(now.item, "video")} onFail={() => fail(now.item)} />
               ) : now?.kind === "sound" ? (
                 <SoundScreen item={now.item} onEnd={(it) => next(it, "sound")} />
               ) : (
@@ -161,7 +194,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
               )}
               {shownAt && (
                 <p className="jbx-drop">
-                  dropped {shownItem.mentions || 1}× on Night Fever · first by {shownAt.guest}, {shownAt.code}{" "}
+                  dropped {shownItem.mentions || 1}× on Night Fever · {ep ? "in" : "first by"} {shownAt.guest}, {shownAt.code}{" "}
                   <Timestamp episodeId={shownAt.episodeId} time={shownAt.time} className="jbx-ts" />
                 </p>
               )}
@@ -186,113 +219,147 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
         <div className="jbx-chips">
           <button type="button" className={chip(sort === "dropped")} aria-pressed={sort === "dropped"} onClick={() => setSort("dropped")}>Most dropped</button>
           <button type="button" className={chip(sort === "az")} aria-pressed={sort === "az"} onClick={() => setSort("az")}>A–Z</button>
-          <button type="button" className={chip(sort === "newest")} aria-pressed={sort === "newest"} onClick={() => setSort("newest")}>Newest episode</button>
+          <button type="button" className={chip(sort === "timeline")} aria-pressed={sort === "timeline"} onClick={() => setSort("timeline")}>Timeline</button>
           <span className="jbx-sep" aria-hidden="true" />
           <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => setFilter("all")}>All <small>{items.length}</small></button>
           <button type="button" className={chip(filter === "songs")} aria-pressed={filter === "songs"} onClick={() => setFilter("songs")}>Songs <small>{counts("songs")}</small></button>
           <button type="button" className={chip(filter === "artists")} aria-pressed={filter === "artists"} onClick={() => setFilter("artists")}>Artists &amp; bands <small>{counts("artists")}</small></button>
           <button type="button" className={chip(filter === "sounds")} aria-pressed={filter === "sounds"} onClick={() => setFilter("sounds")}>Sounds &amp; scenes <small>{counts("sounds")}</small></button>
           <button type="button" className={chip(filter === "stage")} aria-pressed={filter === "stage"} onClick={() => setFilter("stage")}>Musicals <small>{counts("stage")}</small></button>
-          <button
-            type="button"
-            className={chip(filter === "episode")}
-            aria-pressed={filter === "episode"}
-            onClick={() => {
-              setFilter("episode");
-              if (!episodeId) setEpisodeId(musicEpisodes[0]?.id ?? "");
-            }}
-          >
-            By Afterparty <small>{musicEpisodes.length}</small>
-          </button>
+          <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>Episodes <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
         </div>
 
-        {filter === "episode" && (
-          <div className="jbx-eps" role="group" aria-label="Pick an Afterparty">
+        {filter === "episodes" && (
+          <div className="jbx-pols" role="group" aria-label="Pick an Afterparty">
             {musicEpisodes.map((e) => (
-              <button key={e.id} type="button" className={chip(episodeId === e.id)} aria-pressed={episodeId === e.id} onClick={() => setEpisodeId(e.id)}>
-                S{e.season}E{e.episode} · {e.guest.replace(/ aka .*/, "")}
+              <button key={e.id} type="button" className={`jbx-pol${episodeId === e.id ? " on" : ""}`} aria-pressed={episodeId === e.id} onClick={() => pickEpisode(e.id)} title={`Play the songs from ${e.guest}'s Afterparty`}>
+                {episodePortraits[e.id] && <img src={episodePortraits[e.id]} alt="" loading="lazy" />}
+                <span>S{e.season}E{e.episode}</span>
+                <b>{e.guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia")}</b>
               </button>
             ))}
           </div>
         )}
 
+        {ep && (
+          <div className="jbx-ep">
+            {episodePortraits[ep.id] && (
+              <Link to={episodePath(ep.id)} className="jbx-ep-pol" aria-label={`${ep.guest}'s Afterparty`}>
+                <img src={episodePortraits[ep.id]} alt="" />
+                <span>S{ep.season}E{ep.episode}</span>
+              </Link>
+            )}
+            <div>
+              <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
+              <h2 className="jbx-ep-name">{ep.guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia")}</h2>
+              <p className="jbx-ep-note">
+                {list.length} song{list.length === 1 ? "" : "s"}, records and bands from the episode, in the order they come up. Take them with you:
+              </p>
+              <div className="jbx-ep-links">
+                {episodeSpotifyUrl(ep.id) && (
+                  <a href={episodeSpotifyUrl(ep.id)} target="_blank" rel="noopener noreferrer">♫ Spotify playlist ↗</a>
+                )}
+                {ep.youtubePlaylistUrl && (
+                  <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist ↗</a>
+                )}
+                <Link to={episodePath(ep.id)}>The Afterparty →</Link>
+              </div>
+            </div>
+          </div>
+        )}
+
         {filter === "clubs" ? (
           <ClubsShelf />
+        ) : filter === "episodes" && !episodeId ? (
+          <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
             <div className="jbx-pager">
-              <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous selections">◀</button>
+              <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">◀</button>
               <span>
-                Selections <b>{shown.length ? `${code(page * PAGE)} – ${code(page * PAGE + shown.length - 1)}` : "-"}</b> of {list.length}
+                <b>{shown.length ? `${page * PAGE + 1}–${page * PAGE + shown.length}` : "-"}</b> of {list.length}
               </span>
-              <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next selections">▶</button>
+              <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next page">▶</button>
             </div>
             <ol className="jbx-rack">
-              {shown.map((it, k) => {
-                const i = page * PAGE + k;
+              {shown.flatMap((it, k) => {
                 const l = stripLabel(it);
                 const m = at(it);
-                const vid = videoId(it);
                 const hot = now?.item.slug === it.slug;
-                const yt = listenLinks(it.name).youtube;
-                return (
+                const kind = bestKind(it);
+                const year = YEARS[it.name];
+                const decade = (y?: number) => (!y ? "" : y < 1900 ? "Before 1900" : `${Math.floor(y / 10) * 10}s`);
+                const prev = k > 0 ? decade(YEARS[shown[k - 1]!.name]) : "";
+                const out = [];
+                // Timeline: a marker at every new decade (the exact year sits on each strip).
+                if (sort === "timeline" && filter !== "episodes" && year && decade(year) !== prev)
+                  out.push(<li key={`y${decade(year)}`} className="jbx-year" aria-hidden="true"><span>{decade(year)}</span></li>);
+                out.push(
                   <li key={it.slug} className={`jbx-strip${hot ? " hot" : ""}`}>
-                    <span className="jbx-code">{code(i)}</span>
+                    {kind ? (
+                      <button type="button" className="jbx-big" onClick={() => play(it, kind)} aria-label={kind === "video" ? `Play the video of ${l.title}` : `Play ${l.title} from Spotify`} title={kind === "video" ? "Play the video" : "Play the song (no video)"}>
+                        <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+                        {kind === "sound" && <small>audio</small>}
+                      </button>
+                    ) : (
+                      <a className="jbx-big off" href={videoId(it) ? `https://www.youtube.com/watch?v=${videoId(it)}` : listenLinks(it.name).youtube} target="_blank" rel="noopener noreferrer" aria-label={`Find ${l.title} on YouTube`} title="Find it on YouTube">
+                        <span aria-hidden="true">↗</span>
+                        <small>YouTube</small>
+                      </a>
+                    )}
                     <div className="jbx-tt">
                       <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{l.title}</Link>
-                      <i>{l.sub}</i>
+                      <i>
+                        {l.sub}
+                        {year ? ` · ${year < 1900 ? "19th century" : year}` : ""}
+                      </i>
                       {m && (
                         <small>
-                          dropped {it.mentions || 1}× · {filter === "episode" ? "in" : "first in"} {m.code}{" "}
+                          dropped {it.mentions || 1}× · {filter === "episodes" ? "in" : "first in"} {m.code}{" "}
                           <Timestamp episodeId={m.episodeId} time={m.time} className="jbx-ts" />
                         </small>
                       )}
                     </div>
-                    <div className="jbx-btns">
-                      {it.spotify ? (
-                        <button type="button" className={`jbx-ic${hot && now?.kind === "sound" ? " v" : ""}`} onClick={() => play(it, "sound")} title={`Play ${l.title} from Spotify`} aria-label={`Play ${l.title} from Spotify`}>♫</button>
-                      ) : (
-                        <span className="jbx-ic off" title="Not on Spotify" aria-hidden="true">♫</span>
-                      )}
-                      {vid && embeddable(it) ? (
-                        <button type="button" className="jbx-ic v" onClick={() => play(it, "video")} title={`Play the video of ${l.title}`} aria-label={`Play the video of ${l.title}`}>▶</button>
-                      ) : (
-                        <a className="jbx-ic v" href={vid ? `https://www.youtube.com/watch?v=${vid}` : yt} target="_blank" rel="noopener noreferrer" title={vid ? `Watch ${l.title} on YouTube` : `Search ${l.title} on YouTube`} aria-label={vid ? `Watch ${l.title} on YouTube` : `Search ${l.title} on YouTube`}>↗</a>
-                      )}
-                    </div>
-                  </li>
+                  </li>,
                 );
+                return out;
               })}
             </ol>
             {pages > 1 && (
               <div className="jbx-pager bottom">
-                <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous selections">◀</button>
+                <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">◀</button>
                 <span>
                   Page {page + 1} of {pages}
                 </span>
-                <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next selections">▶</button>
+                <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next page">▶</button>
               </div>
             )}
           </>
         )}
       </div>
       <p className="jbx-foot">
-        ♫ plays the song from Spotify · ▶ plays its video from YouTube · ↗ finds it on YouTube · the timestamp plays the moment it&rsquo;s dropped on the show.
+        ▶ plays the video on the jukebox screen - or the song from Spotify when there&rsquo;s no video · the timestamp plays the moment it&rsquo;s dropped on the show.
         <br />
-        Take it with you:{" "}
+        Take it with you: the Jukebox on{" "}
         <a href={SPOTIFY_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">
-          the Jukebox on Spotify ↗
+          Spotify ↗
+        </a>{" "}
+        and on{" "}
+        <a href={JUKEBOX_YOUTUBE_URL} target="_blank" rel="noopener noreferrer">
+          YouTube ↗
         </a>
       </p>
     </div>
   );
 }
 
-function VideoScreen({ item, onEnd }: { item: CollectionItem; onEnd: () => void }) {
+function VideoScreen({ item, onEnd, onFail }: { item: CollectionItem; onEnd: () => void; onFail: () => void }) {
   const frame = useRef<HTMLIFrameElement>(null);
   const endRef = useRef(onEnd);
   endRef.current = onEnd;
+  const failRef = useRef(onFail);
+  failRef.current = onFail;
   useEffect(() => {
     // Ask the YouTube player to report its state, so the jukebox can move on when the video ends.
     const hello = () => frame.current?.contentWindow?.postMessage(JSON.stringify({ event: "listening", id: 1, channel: "widget" }), "*");
@@ -308,6 +375,12 @@ function VideoScreen({ item, onEnd }: { item: CollectionItem; onEnd: () => void 
       }
       if (d.event === "initialDelivery" || d.event === "onReady") clearInterval(t);
       const state = d.event === "onStateChange" ? d.info : d.event === "infoDelivery" ? (d.info as { playerState?: number } | undefined)?.playerState : undefined;
+      // The video can't play here (removed, or blocked in the visitor's country): skip it, like a jukebox with a stuck record.
+      if (d.event === "onError" && !ended) {
+        ended = true;
+        failRef.current();
+        return;
+      }
       if (state === 0 && !ended) {
         ended = true;
         setTimeout(() => endRef.current(), 800);
