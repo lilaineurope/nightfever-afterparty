@@ -469,7 +469,8 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .jbx-share { font-family: var(--font-flyer); font-size: 12px; text-transform: uppercase; padding: 8px 12px; border: 2px solid var(--jy); color: var(--jy); background: transparent; cursor: pointer; }
 .jbx-share:hover { background: var(--jy); color: #111; }
 .jbx-count { font-family: var(--font-type); font-size: 14px; text-transform: none; margin-left: 6px; }
-.jbx-ep-links a:first-child { background: var(--pink); border-color: var(--pink); }
+.jbx-ep-top a:first-child { background: var(--pink); border-color: var(--pink); }
+.jbx-ep-lists { margin-top: 10px; }
 .jbx-ep-links a:hover { background: var(--jy); border-color: var(--jy); color: #111; }
 .jbx-np.dark { color: var(--jy); }
 .jbx-hint { text-align: center; margin: 18px 0 6px; font-size: 14px; }
