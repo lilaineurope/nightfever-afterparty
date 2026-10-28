@@ -4,7 +4,7 @@ import { Timestamp, openEpisodePlayer, pauseEpisode } from "@/components/episode
 import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
-import { SPOTIFY_PLAYLIST_URL, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
+import { BOOK_SHELVES, SPOTIFY_PLAYLIST_URL, bookClub, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
 import { episodes, episodeById, episodePath } from "@/data/episodes";
 import { episodePortraits } from "@/components/episode-block";
 import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl } from "@/data/episode-spotify";
@@ -102,13 +102,14 @@ function newestMusicEpisode(items: CollectionItem[]): string {
   return [...episodes].filter((e) => ids.has(e.id)).sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished))[0]?.id ?? "";
 }
 
-type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "films";
+type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "pubs" | "films";
 const EP_CATS: { id: EpCat; label: string }[] = [
   { id: "all", label: "All" },
   { id: "music", label: "Music" },
   { id: "clubs", label: "Clubs" },
   { id: "people", label: "People" },
   { id: "fashion", label: "Fashion" },
+  { id: "pubs", label: "Publications" },
   { id: "films", label: "Films & TV" },
 ];
 function clipCats(c: Clip, musicNames: Set<string>): EpCat[] {
@@ -218,7 +219,22 @@ export function JukeboxMachine({
   }, [items]);
   const restCats = useMemo(() => new Map(rest.map((c) => [c, clipCats(c, musicNames)])), [rest, musicNames]);
   const shownRest = epCat === "all" ? rest : rest.filter((c) => restCats.get(c)?.includes(epCat));
-  const catCount = (k: EpCat) => (k === "all" ? list.length + rest.length : rest.filter((c) => restCats.get(c)?.includes(k)).length + (k === "music" ? list.length : 0));
+  /** Publications (Lisa, 28 Oct 2026): the episode's books, magazines, newspapers and columns - from the Book Club - with a video when the playlist has one. */
+  const pubs = useMemo(() => {
+    if (filter !== "episodes" || !episodeId) return [];
+    const at = (it: CollectionItem) => it.moments.find((m) => m.episodeId === episodeId);
+    return bookClub
+      .filter((it) => at(it))
+      .map((it) => {
+        // Its own video, or a video about it ("The Rise and Fall of Details Magazine").
+        const n = normName(it.name);
+        const clip = rest.find((c) => normName(c.name) === n) ?? (n.length >= 6 ? rest.find((c) => normName(c.title).includes(n)) : undefined);
+        return { it, m: at(it)!, clip };
+      })
+      .sort((a, b) => secs(a.m.time) - secs(b.m.time));
+  }, [filter, episodeId, rest]);
+  const catCount = (k: EpCat) =>
+    k === "all" ? list.length + rest.length : k === "pubs" ? pubs.length : rest.filter((c) => restCats.get(c)?.includes(k)).length + (k === "music" ? list.length : 0);
   /** After a clip: the next one in the list (the whole episodes and trailers are skipped when moving on). */
   const nextClip = (from?: Clip) => {
     const l = queueRef.current;
@@ -437,6 +453,43 @@ export function JukeboxMachine({
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
+            {filter === "episodes" && epCat === "pubs" && ep && (
+              <>
+                <h3 className="jbx-rest-h">
+                  Publications <small>{pubs.length} books, magazines, newspapers and columns</small>
+                </h3>
+                <ol className="jbx-rack jbx-rest">
+                  {pubs.map(({ it, m, clip: c }) => {
+                    const shelf = BOOK_SHELVES.find((x) => x.key === it.shelf)?.label.replace(/s$/, "").replace("Columns & article", "Column or article") ?? "Publication";
+                    const hot = !!c && clip?.id === c.id;
+                    return (
+                      <li key={it.slug} className={`jbx-strip${hot ? " hot" : ""}`}>
+                        {c && !failed.has(`clip:${c.id}`) ? (
+                          <button type="button" className="jbx-big" onClick={() => playClip(c, pubs.flatMap((x) => (x.clip ? [x.clip] : [])))} aria-label={`Play the video: ${it.name}`} title="Play the video">
+                            <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+                          </button>
+                        ) : (
+                          <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-big off" aria-label={`Read about ${it.name}`} title="No video - read about it on its card">
+                            <span aria-hidden="true">→</span>
+                            <small>Read</small>
+                          </Link>
+                        )}
+                        <div className="jbx-tt">
+                          <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{it.name}</Link>
+                          <i>
+                            {shelf}
+                            {m.context ? ` · ${m.context}` : ""}
+                          </i>
+                          <small>
+                            in {m.code} <Timestamp episodeId={m.episodeId} time={m.time} className="jbx-ts" />
+                          </small>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </>
+            )}
             {(filter !== "episodes" || epCat === "all" || epCat === "music") && (
             <ol className="jbx-rack">
               {shown.flatMap((it, k) => {
@@ -483,7 +536,7 @@ export function JukeboxMachine({
               })}
             </ol>
             )}
-            {shownRest.length > 0 && ep && (
+            {epCat !== "pubs" && shownRest.length > 0 && ep && (
               <>
                 <h3 className="jbx-rest-h">
                   {epCat === "all" ? "The rest of the AFTERPARTY" : epCat === "music" ? "More music videos" : EP_CATS.find((k) => k.id === epCat)!.label}{" "}
