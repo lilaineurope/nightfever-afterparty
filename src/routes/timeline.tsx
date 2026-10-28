@@ -11,11 +11,12 @@ import { SiteFooter } from "@/components/site-footer";
 
 // "<N> years of one long night" counts itself (Lisa, 28 Oct 2026): from the earliest moment on the Timeline to today, in tens.
 const WORDS: Record<number, string> = { 40: "Forty", 50: "Fifty", 60: "Sixty", 70: "Seventy", 80: "Eighty", 90: "Ninety", 100: "A hundred" };
-const SPAN = (() => {
-  const first = Math.min(...sceneEvents.map((e) => e.year));
-  const tens = Math.floor((new Date().getFullYear() - first) / 10) * 10;
-  return WORDS[tens] ?? String(tens);
-})();
+// Worked out at render time, never at module load: the live server (Cloudflare) reads its clock as 1970 outside a request, which gave "0 years".
+const FIRST_YEAR = Math.min(...sceneEvents.map((e) => e.year));
+const spanWord = () => {
+  const tens = Math.floor((new Date().getFullYear() - FIRST_YEAR) / 10) * 10;
+  return WORDS[tens] ?? "Sixty";
+};
 
 export const Route = createFileRoute("/timeline")({
   staticData: { sitemap: true },
@@ -54,7 +55,7 @@ function TimelinePage() {
       <section className="relative px-6 pb-12 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            {SPAN} years of{" "}
+            {spanWord()} years of{" "}
             <span className="text-pink text-glow-pink">one long night</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/85">
