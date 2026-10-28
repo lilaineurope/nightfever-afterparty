@@ -230,7 +230,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
 
       <div className="jbx-panel">
         <div className="jbx-chips">
-          <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>Afterparties <small>{musicEpisodes.length}</small></button>
+          <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
         </div>
 
