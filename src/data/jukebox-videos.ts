@@ -132,6 +132,7 @@ export const YOUTUBE: Record<string, string> = {
   "The Fabulous Pop Tarts": "dku1fm9KUoY",
   "The Fuzztones": "dWXKfHxWD6E",
   "The Lady in Red": "p_B6J-ZNDHs",
+  "The Must": "yuTSTLdDDBI",
   "The Psychedelic Furs": "LIT0_gPvFUI",
   "The Rolling Stones": "8SktQwZmoNA",
   "The S.O.U.L. S.Y.S.T.E.M. – 'It's Gonna Be a Lovely Day'": "wtQ6ca4mL7I",
