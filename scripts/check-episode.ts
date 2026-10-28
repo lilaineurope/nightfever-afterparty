@@ -7,10 +7,14 @@
  *  2. COUNT     rows whose mentions differ from a plain whole-word count of the name and its "heard" variants
  *               (a hint, not the truth: nicknames, first names and misheard words are counted by the episode script)
  *  3. NEW YORK  the city count (New York not followed by Times, Post, Dolls, Magazine, University...)
+ *  4. INTERVIEW TIPS  every line where someone says who the show should have on (a new face) or have back (a second
+ *               round), plus what src/data/interview-next.ts already holds for this episode - read each hit in context
+ *               and add the real ones (Lisa, 28 Oct 2026: always check, every episode)
  * The transcript stays on Lisa's computer and is never committed.
  */
 import { readFileSync } from "node:fs";
 import { entities, entityFor } from "../src/data/entities";
+import { COME_BACK, NEW_FACES } from "../src/data/interview-next";
 
 const [id, transcriptPath] = process.argv.slice(2);
 if (!id || !transcriptPath) {
@@ -77,3 +81,12 @@ const cityText = own
 const city = (cityText.match(/(?<![\w-]|upstate |upstate, )New York(?![\w-]| (?:Times|Post|Dolls|Magazine|University|Daily News|Historical|Observer|Review|Fashion Week|State)| ?-New York)/gi) ?? []).length;
 const row = rows.find((r) => r.name === "New York");
 console.log(`\n3. NEW YORK - city mentions ${city}, row ${row ? row.mentions : "MISSING"}${row && row.mentions !== city ? "  <- check" : ""}\n`);
+
+// 4. Interview tips: who the show should have on next, or have back for a second round.
+const TIP = /(you should (interview|have|talk to|get)|should (interview|have .{0,20} on|talk to)|have (him|her|them|you) (back|on)|get (him|her|them) on|bring (him|her|them) on|come back (on|again)|back on (the show|again)|part (two|2)|second (round|episode|part)|another (episode|three hours|hour)|talk (some )?more|tried to get|we need to (get|have|interview)|have you (interviewed|talked to|had)|did you (interview|have) .{0,30} on|on the show)/i;
+const lines = readFileSync(transcriptPath, "utf8").split("\n").filter((l) => /^\s*\[\d/.test(l) && TIP.test(l));
+console.log("4. INTERVIEW TIPS - lines to read in context (new faces / second round):");
+if (!lines.length) console.log("   none found");
+for (const l of lines) console.log("   " + l.trim().slice(0, 220));
+const have = [...NEW_FACES, ...COME_BACK].filter((t) => t.episodeId === id);
+console.log(`   already in interview-next.ts for ${id}: ${have.length ? have.map((t) => `${t.name} (${t.time})`).join(", ") : "nothing yet"}\n`);
