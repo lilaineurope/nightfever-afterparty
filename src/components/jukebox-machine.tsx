@@ -226,7 +226,7 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
           <button type="button" className={chip(filter === "artists")} aria-pressed={filter === "artists"} onClick={() => setFilter("artists")}>Artists &amp; bands <small>{counts("artists")}</small></button>
           <button type="button" className={chip(filter === "sounds")} aria-pressed={filter === "sounds"} onClick={() => setFilter("sounds")}>Sounds &amp; scenes <small>{counts("sounds")}</small></button>
           <button type="button" className={chip(filter === "stage")} aria-pressed={filter === "stage"} onClick={() => setFilter("stage")}>Musicals <small>{counts("stage")}</small></button>
-          <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>Episodes <small>{musicEpisodes.length}</small></button>
+          <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>Afterparties <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
         </div>
 
