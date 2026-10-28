@@ -103,18 +103,18 @@ function newestMusicEpisode(items: CollectionItem[]): string {
 }
 
 type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "pubs" | "films" | "events";
-// Lisa, 28 Oct 2026: music first, then clubs, films & TV, fashion, publications (people last), each ranked by popularity.
+// Lisa, 28 Oct 2026: Music, Clubs, Films & TV, People, Fashion, Events, Publications - each ranked by popularity.
 const EP_CATS: { id: EpCat; label: string }[] = [
   { id: "all", label: "All" },
   { id: "music", label: "Music" },
   { id: "clubs", label: "Clubs" },
   { id: "films", label: "Films & TV" },
-  { id: "fashion", label: "Fashion" },
-  { id: "pubs", label: "Publications" },
-  { id: "events", label: "Events" },
   { id: "people", label: "People" },
+  { id: "fashion", label: "Fashion" },
+  { id: "events", label: "Events" },
+  { id: "pubs", label: "Publications" },
 ];
-const SECTION_ORDER: EpCat[] = ["music", "clubs", "films", "fashion", "pubs", "events", "people"];
+const SECTION_ORDER: EpCat[] = ["music", "clubs", "films", "people", "fashion", "events", "pubs"];
 type Entry =
   | { key: string; kind: "song"; it: CollectionItem; views: number }
   | { key: string; kind: "clip"; c: Clip; views: number }
@@ -264,7 +264,8 @@ export function JukeboxMachine({
     for (const c of rest) {
       if (pubClips.has(c.id)) continue;
       const cats = restCats.get(c) ?? [];
-      const sec = SECTION_ORDER.find((k) => k !== "pubs" && cats.includes(k));
+      // A designer or model is a person too - the Fashion section takes them first (Lisa wants People before Fashion on screen).
+      const sec = (["music", "clubs", "films", "fashion", "events", "people"] as EpCat[]).find((k) => cats.includes(k));
       if (sec) by[sec].push({ key: `clip:${c.id}`, kind: "clip", c, views: v(c.id) });
     }
     for (const p of pubs) by.pubs.push({ key: `pub:${p.it.slug}`, kind: "pub", it: p.it, m: p.m, c: p.clip, views: p.clip ? v(p.clip.id) : -1 });
@@ -578,7 +579,7 @@ export function JukeboxMachine({
               <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
               <h2 className="jbx-ep-name">{guestName(ep.guest)}</h2>
               <p className="jbx-ep-note">
-                Everything from the episode you can play here - music first, then the clubs, films &amp; TV, fashion, publications, events and people, the most watched on top. Take it with you:
+                Everything from the episode you can play here - music first, then the clubs, films &amp; TV, people, fashion, events and publications, the most watched on top. Take it with you:
               </p>
               <div className="jbx-ep-links">
                 {episodeSpotifyUrl(ep.id) && (
