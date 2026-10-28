@@ -134,22 +134,14 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                     >
                       Afterparty &rarr;
                     </Link>
-                    <a
-                      href={ep.watchUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    {/* Lisa, 28 Oct 2026: the Jukebox button replaces Watch on WOW / Listen on Spotify (both stay in the episode player bar). */}
+                    <Link
+                      to="/jukebox"
+                      search={{ afterparty: ep.id }}
                       className="inline-flex items-center gap-2 rounded-xl border-2 border-cream bg-cream px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-card hover:text-cream focus-visible:bg-card focus-visible:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
                     >
-                      Watch on WOW
-                    </a>
-                    <a
-                      href={ep.listenUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border-2 border-cream bg-cream px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-card hover:text-cream focus-visible:bg-card focus-visible:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-                    >
-                      Listen on Spotify
-                    </a>
+                      Turn on the AFTERPARTY JUKEBOX
+                    </Link>
                   </div>
                   <QuoteNote ep={ep} />
                 </div>
