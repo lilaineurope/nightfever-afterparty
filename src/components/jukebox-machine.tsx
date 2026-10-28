@@ -28,6 +28,11 @@ export type Clip = {
   fashion?: string;
 };
 const clipFiles = import.meta.glob<{ default: Clip[] }>("../data/episode-videos/*.json");
+/** Every Afterparty's videos at once - for the category buttons, which cover all Afterparties (Lisa, 28 Oct 2026). */
+const loadAllClips = async (): Promise<Clip[]> => {
+  const ids = Object.keys(clipFiles).map((k) => k.replace(/^.*\/(.*)\.json$/, "$1")).sort();
+  return (await Promise.all(ids.map((id) => loadClips(id)))).flat();
+};
 const loadClips = async (ep: string): Promise<Clip[]> => {
   const f = clipFiles[`../data/episode-videos/${ep}.json`];
   return f ? (await f()).default.map((c) => ({ ...c, ep })) : [];
@@ -48,7 +53,7 @@ const FASHION_TITLE = /fashion|runway|couture|catwalk|collection|designer|stylis
 
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
-type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs";
+type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs" | "cat";
 
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
@@ -163,19 +168,21 @@ export function JukeboxMachine({
   const [clips, setClips] = useState<{ ep: string; list: Clip[] }>({ ep: "", list: [] });
   /** What plays next after a clip: the list it was started from. */
   const queueRef = useRef<Clip[]>([]);
-  const [epCat, setEpCat] = useState<EpCat>("all");
+  /** A category button (Music, Films & TV, ...) - that category across every Afterparty. */
+  const [topCat, setTopCat] = useState<EpCat>("music");
+  const [allClips, setAllClips] = useState<Clip[]>([]);
   const [views, setViews] = useState<Record<string, number>>({});
   const viewsRef = useRef(views);
   viewsRef.current = views;
   useEffect(() => {
     let live = true;
     void loadViews().then((v) => live && setViews(v));
+    void loadAllClips().then((c) => live && setAllClips(c));
     return () => {
       live = false;
     };
   }, []);
   const epQueueRef = useRef<Entry[]>([]);
-  useEffect(() => setEpCat("all"), [episodeId]);
   const screenRef = useRef<HTMLDivElement>(null);
   const polsRef = useRef<HTMLDivElement>(null);
   /** Videos that wouldn't play for this visitor (e.g. blocked in their country) - skipped from then on. */
@@ -257,26 +264,59 @@ export function JukeboxMachine({
       })
       .sort((a, b) => secs(a.m.time) - secs(b.m.time));
   }, [filter, episodeId, rest]);
-  /** The Afterparty in sections - music, clubs, films & TV, fashion, publications, people - each ranked by YouTube views. */
-  const sections = useMemo(() => {
-    if (filter !== "episodes" || !episodeId) return [];
+  /** A list in sections - music, clubs, films & TV, people, fashion, events, publications - each ranked by YouTube views. */
+  const mkSections = (songs: CollectionItem[], cl: Clip[], pb: { it: CollectionItem; m: Moment; clip?: Clip | undefined }[], cats: (c: Clip) => EpCat[]) => {
     const v = (id?: string) => (id ? (views[id] ?? 0) : -1);
-    const pubClips = new Set(pubs.flatMap((p) => (p.clip ? [p.clip.id] : [])));
+    const pubClips = new Set(pb.flatMap((p) => (p.clip ? [p.clip.id] : [])));
     const by: Record<EpCat, Entry[]> = { all: [], music: [], clubs: [], films: [], fashion: [], pubs: [], events: [], people: [] };
-    for (const it of list) by.music.push({ key: `song:${it.slug}`, kind: "song", it, views: v(videoId(it)) });
-    for (const c of rest) {
+    for (const it of songs) by.music.push({ key: `song:${it.slug}`, kind: "song", it, views: v(videoId(it)) });
+    for (const c of cl) {
       if (pubClips.has(c.id)) continue;
-      const cats = restCats.get(c) ?? [];
       // A designer or model is a person too - the Fashion section takes them first (Lisa wants People before Fashion on screen).
-      const sec = (["music", "clubs", "films", "fashion", "events", "people"] as EpCat[]).find((k) => cats.includes(k));
+      const sec = (["music", "clubs", "films", "fashion", "events", "people"] as EpCat[]).find((k) => cats(c).includes(k));
       if (sec) by[sec].push({ key: `clip:${c.id}`, kind: "clip", c, views: v(c.id) });
     }
-    for (const p of pubs) by.pubs.push({ key: `pub:${p.it.slug}`, kind: "pub", it: p.it, m: p.m, c: p.clip, views: p.clip ? v(p.clip.id) : -1 });
+    for (const p of pb) by.pubs.push({ key: `pub:${p.it.slug}`, kind: "pub", it: p.it, m: p.m, c: p.clip, views: p.clip ? v(p.clip.id) : -1 });
     return SECTION_ORDER.map((id) => ({ id, label: EP_CATS.find((k) => k.id === id)!.label, entries: [...by[id]].sort((a, b) => b.views - a.views) })).filter((x) => x.entries.length);
+  };
+  /** One Afterparty in sections. */
+  const sections = useMemo(() => {
+    if (filter !== "episodes" || !episodeId) return [];
+    return mkSections(list, rest, pubs, (c) => restCats.get(c) ?? []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, episodeId, list, rest, restCats, pubs, views]);
-  const shownSections = epCat === "all" ? sections : sections.filter((x) => x.id === epCat);
+  /** Every Afterparty together, for EVERYTHING and the category buttons (Lisa, 28 Oct 2026) - each video once. */
+  const allSections = useMemo(() => {
+    const songVids = new Set(items.flatMap((it) => (videoId(it) ? [videoId(it)!] : [])));
+    const seen = new Set<string>();
+    const cl = allClips.filter((c) => {
+      if (c.cat === "Night Fever" || songVids.has(c.id) || seen.has(c.id)) return false;
+      seen.add(c.id);
+      return true;
+    });
+    const catOf = new Map(cl.map((c) => [c, clipCats(c, musicNames)]));
+    const order = new Map(episodes.map((e, i) => [e.id, i]));
+    const pb = bookClub
+      .map((it) => {
+        const m = [...it.moments].sort((a, b) => (order.get(a.episodeId) ?? 99) - (order.get(b.episodeId) ?? 99) || secs(a.time) - secs(b.time))[0];
+        const n = normName(it.name);
+        const clip = cl.find((c) => normName(c.name) === n) ?? (n.length >= 6 ? cl.find((c) => normName(c.title).includes(n)) : undefined);
+        return m ? { it, m, clip } : null;
+      })
+      .filter((x): x is { it: CollectionItem; m: Moment; clip: Clip | undefined } => !!x);
+    return mkSections(items, cl, pb, (c) => catOf.get(c) ?? []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, allClips, musicNames, views]);
+  const catTotal = (k: EpCat) => allSections.find((x) => x.id === k)?.entries.length ?? 0;
+  const sectioned = filter === "episodes" || filter === "all" || filter === "cat" || filter === "clubs";
+  const shownSections =
+    filter === "episodes" ? sections : filter === "all" ? allSections : filter === "cat" ? allSections.filter((x) => x.id === topCat) : filter === "clubs" ? allSections.filter((x) => x.id === "clubs") : [];
   epQueueRef.current = shownSections.flatMap((x) => x.entries);
-  const catCount = (k: EpCat) => (k === "all" ? sections.reduce((n, x) => n + x.entries.length, 0) : (sections.find((x) => x.id === k)?.entries.length ?? 0));
+  /** The Afterparty a strip comes from: the picked one, or where it was first dropped. */
+  const epFor = (e: Entry) => {
+    const id = filter === "episodes" && episodeId ? episodeId : e.kind === "song" ? firstMoment(e.it)?.episodeId : e.kind === "pub" ? e.m.episodeId : e.c.ep;
+    return episodes.find((x) => x.id === id);
+  };
   /** Like a jukebox: after a song or a video, the next one down the list that plays. */
   const advance = (fromKey: string) => {
     const q = epQueueRef.current;
@@ -299,7 +339,7 @@ export function JukeboxMachine({
   };
   /** After a clip: the next one in the list (the whole episodes and trailers are skipped when moving on). */
   const nextClip = (from?: Clip) => {
-    if (filter === "episodes" && from) return advance(`clip:${from.id}`);
+    if (sectioned && from) return advance(`clip:${from.id}`);
     const l = queueRef.current;
     const at = from ? l.indexOf(from) : -1;
     const n = l.find((x, k) => k > at && x.cat !== "Night Fever" && !failedRef.current.has(`clip:${x.id}`));
@@ -328,7 +368,7 @@ export function JukeboxMachine({
     mode === "sound" && it.spotify ? "sound" : canPlay(it, "video") ? "video" : it.spotify ? "sound" : null;
   /** Like a real jukebox: when a song ends, the next selection in the current list plays. */
   const next = (from: CollectionItem, kind: Kind) => {
-    if (filter === "episodes") return advance(`song:${from.slug}`);
+    if (sectioned) return advance(`song:${from.slug}`);
     const l = listRef.current;
     const at = l.indexOf(from);
     const n = l.find((x, k) => k > at && canPlay(x, kind));
@@ -338,7 +378,7 @@ export function JukeboxMachine({
     const f = new Set(failedRef.current).add(it.slug);
     failedRef.current = f;
     setFailed(f);
-    if (filter === "episodes") return advance(`song:${it.slug}`);
+    if (sectioned) return advance(`song:${it.slug}`);
     // Move on to the next selection that plays (its video, or its song from Spotify).
     const l = listRef.current.includes(it) ? listRef.current : pool;
     const at = l.indexOf(it);
@@ -553,9 +593,18 @@ export function JukeboxMachine({
 
       <div className="jbx-panel">
         <div className="jbx-chips">
-          <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => { setFilter("all"); setSort("az"); }}>EVERYTHING <small>{items.length}</small></button>
+          <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => setFilter("all")}>EVERYTHING <small>{allSections.reduce((n, x) => n + x.entries.length, 0) || items.length}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
-          <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
+          {/* The categories cover every Afterparty (Lisa, 28 Oct 2026: moved up from under the Afterparty panel). */}
+          {EP_CATS.filter((k) => k.id !== "all").map((k) =>
+            k.id === "clubs" ? (
+              <button key={k.id} type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
+            ) : (
+              <button key={k.id} type="button" className={chip(filter === "cat" && topCat === k.id)} aria-pressed={filter === "cat" && topCat === k.id} onClick={() => { setFilter("cat"); setTopCat(k.id); }}>
+                {k.label} <small>{catTotal(k.id) || "…"}</small>
+              </button>
+            ),
+          )}
         </div>
 
         {filter === "episodes" && (
@@ -603,36 +652,32 @@ export function JukeboxMachine({
           </div>
         )}
 
-        {ep && filter === "episodes" && sections.length > 0 && (
-          <div className="jbx-subchips" role="group" aria-label="Show from this Afterparty">
-            {EP_CATS.map((k) => {
-              const n = catCount(k.id);
-              if (!n) return null;
-              return (
-                <button key={k.id} type="button" className={chip(epCat === k.id)} aria-pressed={epCat === k.id} onClick={() => setEpCat(k.id)}>
-                  {k.label} <small>{n}</small>
-                </button>
-              );
-            })}
-          </div>
-        )}
-
         {filter === "clubs" ? (
-          <ClubsShelf />
+          <ClubsShelf>
+            {shownSections.map((sec) => (
+              <section key={sec.id} className="jbx-sec">
+                <h3 className="jbx-rest-h">
+                  Clubs on video <small>{sec.entries.length}</small>
+                </h3>
+                <ol className="jbx-rack jbx-rest">{sec.entries.map((e) => { const x = epFor(e); return x ? entryStrip(e, x) : null; })}</ol>
+              </section>
+            ))}
+          </ClubsShelf>
         ) : filter === "episodes" && !episodeId ? (
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
-            {filter === "episodes" && ep &&
+            {sectioned && (filter !== "episodes" || ep) && shownSections.length === 0 && filter !== "episodes" && <p className="jbx-hint">Loading every Afterparty&rsquo;s videos…</p>}
+            {sectioned && (filter !== "episodes" || ep) &&
               shownSections.map((sec) => (
                 <section key={sec.id} className="jbx-sec">
                   <h3 className="jbx-rest-h">
                     {sec.label} <small>{sec.entries.length}</small>
                   </h3>
-                  <ol className="jbx-rack jbx-rest">{sec.entries.map((e) => entryStrip(e, ep))}</ol>
+                  <ol className="jbx-rack jbx-rest">{sec.entries.map((e) => { const x = epFor(e); return x ? entryStrip(e, x) : null; })}</ol>
                 </section>
               ))}
-            {filter !== "episodes" && (
+            {!sectioned && (
             <ol className="jbx-rack">
               {shown.flatMap((it, k) => {
                 const l = stripLabel(it);
