@@ -63,7 +63,7 @@ export function CollectionPage({
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
           <div className="flex flex-wrap gap-2">
             <button type="button" className={chip(shelf === "all")} aria-pressed={shelf === "all"} onClick={() => setShelf("all")}>
-              All <span className="ml-1 opacity-70">{items.length}</span>
+              <span className="uppercase">Everything</span> <span className="ml-1 opacity-70">{items.length}</span>
             </button>
             {shelves.map((s) => (
               <button key={s.key} type="button" className={chip(shelf === s.key)} aria-pressed={shelf === s.key} onClick={() => setShelf(s.key)}>

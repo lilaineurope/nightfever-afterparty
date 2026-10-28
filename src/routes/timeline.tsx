@@ -80,7 +80,7 @@ function TimelinePage() {
                   : "border-border bg-secondary text-secondary-foreground hover:border-gold/50"
               }`}
             >
-              {d === "all" ? "Everything" : <Decades text={d} />}
+              {d === "all" ? (<>Everything<span className="ml-1.5 text-pink">{sceneEvents.length}</span></>) : <Decades text={d} />}
             </button>
           ))}
         </div>

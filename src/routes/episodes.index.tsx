@@ -64,7 +64,7 @@ function EpisodesPage() {
                     ? "border-gold bg-gold text-gold-foreground"
                     : "border-border text-muted-foreground hover:border-pink hover:text-pink"
                 } disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted-foreground`}>
-                {s === null ? "All seasons" : `Season ${s}`}
+                {s === null ? <span className="uppercase">Everything</span> : `Season ${s}`}
                 <span className={`ml-1.5 text-xs ${on ? "" : "text-pink"}`}>{count}</span>
               </button>
             );
