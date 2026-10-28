@@ -279,10 +279,10 @@ export function JukeboxMachine({
               </p>
               <div className="jbx-ep-links">
                 {episodeSpotifyUrl(ep.id) && (
-                  <a href={episodeSpotifyUrl(ep.id)} target="_blank" rel="noopener noreferrer">♫ Spotify playlist{SPOTIFY_SONGS[ep.id] ? <small> · {SPOTIFY_SONGS[ep.id]} songs</small> : null} ↗</a>
+                  <a href={episodeSpotifyUrl(ep.id)} target="_blank" rel="noopener noreferrer">♫ Spotify playlist{SPOTIFY_SONGS[ep.id] ? <span className="jbx-count" title={`${SPOTIFY_SONGS[ep.id]} songs`}>{SPOTIFY_SONGS[ep.id]}</span> : null} ↗</a>
                 )}
                 {ep.youtubePlaylistUrl && (
-                  <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist{YOUTUBE_VIDEOS[ep.id] ? <small> · {YOUTUBE_VIDEOS[ep.id]} videos</small> : null} ↗</a>
+                  <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist{YOUTUBE_VIDEOS[ep.id] ? <span className="jbx-count" title={`${YOUTUBE_VIDEOS[ep.id]} videos`}>{YOUTUBE_VIDEOS[ep.id]}</span> : null} ↗</a>
                 )}
                 <Link to={episodePath(ep.id)}>The Afterparty →</Link>
                 <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${guestName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
