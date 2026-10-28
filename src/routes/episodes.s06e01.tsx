@@ -15,6 +15,7 @@ import { LegalNote } from "../components/legal-links";
 import { entityFor, totalMentions } from "../data/entities";
 import { SiteFooter } from "@/components/site-footer";
 import { isOtherShowGuest } from "@/lib/show-guests";
+import { ShareButton } from "@/components/share-button";
 
 type Ref = {
   rank: number;
@@ -131,6 +132,7 @@ function EpisodePage() {
                 The AFTERPARTY playlist on YouTube
               </a>
             )}
+            <ShareButton path="/episodes/s06e01" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>
       </section>

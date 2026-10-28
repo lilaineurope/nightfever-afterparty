@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Timestamp } from "@/components/episode-player";
 import { loadApi } from "@/components/jukebox-player";
+import { ShareButton } from "@/components/share-button";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { SPOTIFY_PLAYLIST_URL, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
 import { episodes, episodeById, episodePath } from "@/data/episodes";
@@ -65,28 +66,6 @@ export function videoOfTheDay(pool: CollectionItem[], date = new Date()): Collec
 }
 
 const guestName = (g: string) => g.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia");
-
-/** One Share button (no social-media scripts): the phone's own share sheet where there is one, otherwise copy the link. */
-function ShareButton({ id, guest }: { id: string; guest: string }) {
-  const [copied, setCopied] = useState(false);
-  const share = async () => {
-    const url = `${window.location.origin}/jukebox?afterparty=${id}`;
-    const title = `${guest}'s AFTERPARTY playlist – Night Fever Jukebox`;
-    try {
-      if (navigator.share) return await navigator.share({ title, url });
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* closed the share sheet */
-    }
-  };
-  return (
-    <button type="button" className="jbx-share" onClick={() => void share()}>
-      {copied ? "Link copied ✓" : "Share ↗"}
-    </button>
-  );
-}
 
 function newestMusicEpisode(items: CollectionItem[]): string {
   const ids = new Set(items.flatMap((i) => i.moments.map((m) => m.episodeId)));
@@ -306,7 +285,7 @@ export function JukeboxMachine({
                   <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist ↗</a>
                 )}
                 <Link to={episodePath(ep.id)}>The Afterparty →</Link>
-                <ShareButton id={ep.id} guest={guestName(ep.guest)} />
+                <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${guestName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
               </div>
             </div>
           </div>
