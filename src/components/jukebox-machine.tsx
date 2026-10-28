@@ -19,7 +19,6 @@ type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
 type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs";
 
-const PAGE = 24;
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
 export const videoId = (it: CollectionItem) => YOUTUBE[it.name];
@@ -79,7 +78,6 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
   const [sort, setSort] = useState<"dropped" | "az" | "timeline">("dropped");
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
   const [episodeId, setEpisodeId] = useState<string>(() => newestMusicEpisode(items));
-  const [page, setPage] = useState(0);
   const [mode, setMode] = useState<Kind>("video");
   const [now, setNow] = useState<{ item: CollectionItem; kind: Kind } | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
@@ -109,9 +107,8 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
     if (sort === "timeline") l = [...l].sort((a, b) => (YEARS[a.name] ?? 9999) - (YEARS[b.name] ?? 9999) || b.mentions - a.mentions);
     return l;
   }, [items, filter, sort, episodeId]);
-  const pages = Math.max(1, Math.ceil(list.length / PAGE));
-  const shown = list.slice(page * PAGE, page * PAGE + PAGE);
-  useEffect(() => setPage(0), [filter, sort, episodeId]);
+  // The whole list on one page - no paging (Lisa, 28 Oct 2026).
+  const shown = list;
   // Show the chosen polaroid in the row (it scrolls sideways) without moving the page.
   useEffect(() => {
     const row = polsRef.current;
@@ -279,15 +276,6 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
-            {pages > 1 && (
-            <div className="jbx-pager">
-                <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">◀</button>
-                <span>
-                  <b>{shown.length ? `${page * PAGE + 1}–${page * PAGE + shown.length}` : "-"}</b> of {list.length}
-                </span>
-                <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next page">▶</button>
-              </div>
-            )}
             <ol className="jbx-rack">
               {shown.flatMap((it, k) => {
                 const l = stripLabel(it);
@@ -332,15 +320,6 @@ export function JukeboxMachine({ items }: { items: CollectionItem[] }) {
                 return out;
               })}
             </ol>
-            {pages > 1 && (
-              <div className="jbx-pager bottom">
-                <button type="button" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">◀</button>
-                <span>
-                  Page {page + 1} of {pages}
-                </span>
-                <button type="button" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1} aria-label="Next page">▶</button>
-              </div>
-            )}
           </>
         )}
       </div>
