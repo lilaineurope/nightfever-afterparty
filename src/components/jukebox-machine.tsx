@@ -7,7 +7,7 @@ import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { SPOTIFY_PLAYLIST_URL, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
 import { episodes, episodeById, episodePath } from "@/data/episodes";
 import { episodePortraits } from "@/components/episode-block";
-import { JUKEBOX_YOUTUBE_URL, episodeSpotifyUrl } from "@/data/episode-spotify";
+import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl } from "@/data/episode-spotify";
 import { YEARS } from "@/data/jukebox-years";
 import { NO_EMBED, YOUTUBE } from "@/data/jukebox-videos";
 
@@ -279,10 +279,10 @@ export function JukeboxMachine({
               </p>
               <div className="jbx-ep-links">
                 {episodeSpotifyUrl(ep.id) && (
-                  <a href={episodeSpotifyUrl(ep.id)} target="_blank" rel="noopener noreferrer">♫ Spotify playlist ↗</a>
+                  <a href={episodeSpotifyUrl(ep.id)} target="_blank" rel="noopener noreferrer">♫ Spotify playlist{SPOTIFY_SONGS[ep.id] ? <small> · {SPOTIFY_SONGS[ep.id]} songs</small> : null} ↗</a>
                 )}
                 {ep.youtubePlaylistUrl && (
-                  <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist ↗</a>
+                  <a href={ep.youtubePlaylistUrl} target="_blank" rel="noopener noreferrer">▶ YouTube playlist{YOUTUBE_VIDEOS[ep.id] ? <small> · {YOUTUBE_VIDEOS[ep.id]} videos</small> : null} ↗</a>
                 )}
                 <Link to={episodePath(ep.id)}>The Afterparty →</Link>
                 <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${guestName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />

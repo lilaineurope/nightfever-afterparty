@@ -29,3 +29,15 @@ export const episodeSpotifyUrl = (id: string) => (EPISODE_SPOTIFY[id] ? `https:/
 
 /** The big YouTube playlist with every Jukebox video, most dropped first. */
 export const JUKEBOX_YOUTUBE_URL = "https://www.youtube.com/playlist?list=PLBsKZe3J9J3s";
+
+/** How many songs / videos each playlist holds (Lisa, 28 Oct 2026: the playlist buttons show the count, so people see there's more).
+ *  Update the numbers whenever a playlist changes. */
+export const SPOTIFY_SONGS: Record<string, number> = {
+  s01e01: 4, s01e02: 6, s01e04: 9, s01e06: 3, s01e07: 4, s01e10: 5, s02e01: 11, s02e03: 6, s02e04: 3, s02e06: 11, s02e07: 2,
+  s02e08: 3, s03e06: 3, s03e08: 17, s04e04: 3, s04e08: 3, s04e10: 12, s05e03: 2, s05e04: 31, s06e01: 6, s06e03: 12, s06e07: 4,
+};
+export const YOUTUBE_VIDEOS: Record<string, number> = {
+  s01e01: 41, s01e02: 101, s01e03: 66, s01e04: 36, s01e06: 52, s01e07: 45, s01e10: 64, s02e01: 73, s02e03: 50, s02e04: 28,
+  s02e06: 40, s02e07: 41, s02e08: 30, s03e01: 45, s03e06: 57, s03e08: 64, s04e04: 62, s04e08: 60, s04e10: 90, s05e03: 31,
+  s05e04: 84, s05e06: 35, s06e01: 40, s06e03: 80, s06e07: 40, s06e08: 36,
+};

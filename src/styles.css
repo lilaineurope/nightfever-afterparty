@@ -464,6 +464,7 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .jbx-ep-links a { font-family: var(--font-flyer); font-size: 12px; text-transform: uppercase; padding: 8px 12px; border: 2px solid #fff; color: #fff; }
 .jbx-share { font-family: var(--font-flyer); font-size: 12px; text-transform: uppercase; padding: 8px 12px; border: 2px solid var(--jy); color: var(--jy); background: transparent; cursor: pointer; }
 .jbx-share:hover { background: var(--jy); color: #111; }
+.jbx-ep-links a small { font-size: inherit; opacity: .85; white-space: nowrap; }
 .jbx-ep-links a:first-child { background: var(--pink); border-color: var(--pink); }
 .jbx-ep-links a:hover { background: var(--jy); border-color: var(--jy); color: #111; }
 .jbx-np.dark { color: var(--jy); }
