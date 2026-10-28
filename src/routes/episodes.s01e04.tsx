@@ -122,20 +122,10 @@ function EpisodePage() {
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. James calls him the Club King. Peter tells of a jeans store and a hotel bar in Cornwall, Ontario, where a young Rush was his first booking, then Rum Bottoms in South Florida with Village People and the Trammps, sharks under a glass dance floor in Atlanta and Andy Warhol hosting his openings. Then the Limelight in an old church - Whitney Houston singing, Fred Rothbell-Mista's library, Michael Alig's Disco 2000 - Club USA's giant slide in Times Square, the Tunnel's Sunday hip-hop nights and the Palladium. And, as Peter tells it, Giuliani's campaign against him: a federal trial he says ended in an acquittal in three and a half hours, and the deportation that landed him in Toronto. Wow!
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Watch the episode
-            </a>
-            <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Listen to the episode
-            </a>
-            {thisEpisode.youtubePlaylistUrl && (
-              <a href={thisEpisode.youtubePlaylistUrl} target="_blank" rel="noreferrer"
-                className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
-                The AFTERPARTY playlist on YouTube
-              </a>
-            )}
+            <Link to="/jukebox" search={{ afterparty: "s01e04" }}
+              className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
+              Turn on the AFTERPARTY JUKEBOX
+            </Link>
             <ShareButton path="/episodes/s01e04" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>

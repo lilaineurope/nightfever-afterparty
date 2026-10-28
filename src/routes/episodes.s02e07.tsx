@@ -122,20 +122,10 @@ function EpisodePage() {
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. Jenny Dembrow, aka Jenny Talia, reads her goodbye to Michael Alig, then goes back to sneaking into Mars at 15, getting turned away at The Building until Pat Field's redid her look, and the VIP glass cube where she found her tribe. The Phil Donahue Show in a borrowed gimp mask, Gaultier's runway and Steven Meisel's Calvin Klein campaign, the club kids in Paris, Queen of Manhattan in a pink prom dress, the 11th Street after-hours - and how she went from the club to the Lower East Side Girls Club.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Watch the episode
-            </a>
-            <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Listen to the episode
-            </a>
-            {thisEpisode.youtubePlaylistUrl && (
-              <a href={thisEpisode.youtubePlaylistUrl} target="_blank" rel="noreferrer"
-                className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
-                The AFTERPARTY playlist on YouTube
-              </a>
-            )}
+            <Link to="/jukebox" search={{ afterparty: "s02e07" }}
+              className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
+              Turn on the AFTERPARTY JUKEBOX
+            </Link>
             <ShareButton path="/episodes/s02e07" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>

@@ -122,20 +122,10 @@ function EpisodePage() {
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. Superstar DJ Larry Tee rolls up from Atlanta in 1987 with Lahoma van Zandt and RuPaul - the van flipped on the way. Then Celebrity Club in the basement of the Tunnel, where the Club Kids were born, life in Nelson Sullivan's Meatpacking townhouse, the hot body contest at Disco 2000, co-writing 'Supermodel', Liza Minnelli dancing in his booth at Love Machine, naming Electroclash in Williamsburg, 'Licky' with Princess Superstar, and his label Zuzii in London and Berlin. Work!
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Watch the episode
-            </a>
-            <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Listen to the episode
-            </a>
-            {thisEpisode.youtubePlaylistUrl && (
-              <a href={thisEpisode.youtubePlaylistUrl} target="_blank" rel="noreferrer"
-                className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
-                The AFTERPARTY playlist on YouTube
-              </a>
-            )}
+            <Link to="/jukebox" search={{ afterparty: "s03e08" }}
+              className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
+              Turn on the AFTERPARTY JUKEBOX
+            </Link>
             <ShareButton path="/episodes/s03e08" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>

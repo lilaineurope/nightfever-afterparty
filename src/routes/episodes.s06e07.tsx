@@ -122,20 +122,10 @@ function EpisodePage() {
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. James opens with his diary from the weeks before the Palladium opened, then Sally takes us to the door on opening night, when the crowd rolled under the gates. She tells of the Sally look - Napoleon hats, long wigs and sparkly tights - an art scholarship at SVA with Keith and Kenny, Edit deAk taking her to her first club, dancing on Pizza a Go Go's rickety balcony with Dean Johnson, her lip-sync Jesus Christ Superstar at Danceteria, the club crowd on Oprah, saying no to Letterman, and grinding old masters' pigments by hand. Wow!
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Watch the episode
-            </a>
-            <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Listen to the episode
-            </a>
-            {thisEpisode.youtubePlaylistUrl && (
-              <a href={thisEpisode.youtubePlaylistUrl} target="_blank" rel="noreferrer"
-                className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
-                The AFTERPARTY playlist on YouTube
-              </a>
-            )}
+            <Link to="/jukebox" search={{ afterparty: "s06e07" }}
+              className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
+              Turn on the AFTERPARTY JUKEBOX
+            </Link>
             <ShareButton path="/episodes/s06e07" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>

@@ -122,20 +122,10 @@ function EpisodePage() {
             and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. From the Stray Cats' quiffs and sleeve tattoos - which, as Nick tells it, made tattoos youth culture - and his first rose-and-dagger on the Sunset Strip to art-school punk, The Tea Set and modelling in Vivienne Westwood's Buffalo collection, Bow Wow Wow and the See Jungle cover after Manet, Malcolm McLaren pairing square dance with hip-hop on Duck Rock and Buffalo Gals, his first videos as MTV took off, Marc Jacobs' grunge show and Sonic Youth's Sugar Kane in the Perry Ellis showroom, Duran Duran's Ordinary World at Huntington Gardens and INXS's Kick. Wow!
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href={thisEpisode.watchUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Watch the episode
-            </a>
-            <a href={thisEpisode.listenUrl} target="_blank" rel="noreferrer"
-              className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
-              Listen to the episode
-            </a>
-            {thisEpisode.youtubePlaylistUrl && (
-              <a href={thisEpisode.youtubePlaylistUrl} target="_blank" rel="noreferrer"
-                className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
-                The AFTERPARTY playlist on YouTube
-              </a>
-            )}
+            <Link to="/jukebox" search={{ afterparty: "s05e04" }}
+              className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
+              Turn on the AFTERPARTY JUKEBOX
+            </Link>
             <ShareButton path="/episodes/s05e04" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>
