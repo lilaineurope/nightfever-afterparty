@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import refsRaw from "../data/s06e01.json";
 import { guests } from "../data/guests";
 import { sceneEvents } from "../data/scene";
-import { episodeById, latestEpisode } from "../data/episodes";
+import { episodeById } from "../data/episodes";
 import { Button } from "@/components/ui/button";
 import { EntityLink } from "../components/entity-link";
 import { EntityText } from "../components/entity-text";
@@ -31,7 +31,6 @@ type Ref = {
 };
 
 const refs = refsRaw as Ref[];
-const EPISODE_URL = latestEpisode.listenUrl;
 const thisEpisode = episodeById("s06e01");
 
 export const Route = createFileRoute("/episodes/s06e01")({

@@ -53,7 +53,8 @@ const FASHION_TITLE = /fashion|runway|couture|catwalk|collection|designer|stylis
 
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
-type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs" | "cat";
+/** EVERYTHING ("all"), AFTERPARTIES ("episodes"), Clubs, or one category across every Afterparty ("cat"). */
+type Filter = "all" | "episodes" | "clubs" | "cat";
 
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
@@ -158,7 +159,6 @@ export function JukeboxMachine({
 
   // Lisa, 28 Oct 2026: for now just two buttons - Afterparties (the default) and Clubs; more come back one by one.
   const [filter, setFilter] = useState<Filter>(initialFilter ?? "episodes");
-  const [sort, setSort] = useState<"dropped" | "az" | "timeline">("dropped");
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
   const [episodeId, setEpisodeId] = useState<string>(() => initialEpisode || newestMusicEpisode(items));
   const [mode, setMode] = useState<Kind>("video");
@@ -199,19 +199,14 @@ export function JukeboxMachine({
     it.moments.filter((m) => m.episodeId === ep).sort((a, b) => secs(a.time) - secs(b.time))[0];
 
   const list = useMemo(() => {
-    let l = items;
+    const l = items;
     if (filter === "episodes") {
       if (!episodeId) return [];
       // An episode's songs in the order they come up in the interview.
       return items.filter((i) => i.moments.some((m) => m.episodeId === episodeId)).sort((a, b) => secs(epMoment(a, episodeId)?.time ?? "") - secs(epMoment(b, episodeId)?.time ?? ""));
     }
-    if (filter !== "all" && filter !== "clubs") l = items.filter((i) => i.shelf === filter);
-    if (sort === "az") l = [...l].sort((a, b) => stripLabel(a).title.replace(/^the\s+/i, "").localeCompare(stripLabel(b).title.replace(/^the\s+/i, "")));
-    if (sort === "timeline") l = [...l].sort((a, b) => (YEARS[a.name] ?? 9999) - (YEARS[b.name] ?? 9999) || b.mentions - a.mentions);
     return l;
-  }, [items, filter, sort, episodeId]);
-  // The whole list on one page - no paging (Lisa, 28 Oct 2026).
-  const shown = list;
+  }, [items, filter, episodeId]);
   // Show the chosen polaroid in the row (it scrolls sideways) without moving the page.
   useEffect(() => {
     const row = polsRef.current;
@@ -232,7 +227,7 @@ export function JukeboxMachine({
       live = false;
     };
   }, [filter, episodeId]);
-  const rest = clips.ep === episodeId && filter === "episodes" ? clips.list : [];
+  const rest = useMemo(() => (clips.ep === episodeId && filter === "episodes" ? clips.list : []), [clips, episodeId, filter]);
   const playClip = (c: Clip, queue: Clip[]) => {
     queueRef.current = queue;
     setNow(null);
@@ -677,52 +672,6 @@ export function JukeboxMachine({
                   <ol className="jbx-rack jbx-rest">{sec.entries.map((e) => { const x = epFor(e); return x ? entryStrip(e, x) : null; })}</ol>
                 </section>
               ))}
-            {!sectioned && (
-            <ol className="jbx-rack">
-              {shown.flatMap((it, k) => {
-                const l = stripLabel(it);
-                const m = at(it);
-                const hot = now?.item.slug === it.slug;
-                const kind = bestKind(it);
-                const year = YEARS[it.name];
-                const decade = (y?: number) => (!y ? "" : y < 1900 ? "Before 1900" : `${Math.floor(y / 10) * 10}s`);
-                const prev = k > 0 ? decade(YEARS[shown[k - 1]!.name]) : "";
-                const out = [];
-                // Timeline: a marker at every new decade (the exact year sits on each strip).
-                if (sort === "timeline" && year && decade(year) !== prev)
-                  out.push(<li key={`y${decade(year)}`} className="jbx-year" aria-hidden="true"><span>{decade(year)}</span></li>);
-                out.push(
-                  <li key={it.slug} className={`jbx-strip${hot ? " hot" : ""}`}>
-                    {kind ? (
-                      <button type="button" className="jbx-big" onClick={() => play(it, kind)} aria-label={kind === "video" ? `Play the video of ${l.title}` : `Play ${l.title} from Spotify`} title={kind === "video" ? "Play the video" : "Play the song (no video)"}>
-                        <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
-                        {kind === "sound" && <small>audio</small>}
-                      </button>
-                    ) : (
-                      <a className="jbx-big off" href={videoId(it) ? `https://www.youtube.com/watch?v=${videoId(it)}` : listenLinks(it.name).youtube} target="_blank" rel="noopener noreferrer" aria-label={`Find ${l.title} on YouTube`} title="Find it on YouTube">
-                        <span aria-hidden="true">↗</span>
-                        <small>YouTube</small>
-                      </a>
-                    )}
-                    <div className="jbx-tt">
-                      <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{l.title}</Link>
-                      <i>
-                        {l.sub}
-                        {year ? ` · ${year < 1900 ? "19th century" : year}` : ""}
-                      </i>
-                      {m && (
-                        <small>
-                          dropped {it.mentions || 1}× · first in {m.code}{" "}
-                          <Timestamp episodeId={m.episodeId} time={m.time} className="jbx-ts" />
-                        </small>
-                      )}
-                    </div>
-                  </li>,
-                );
-                return out;
-              })}
-            </ol>
-            )}
           </>
         )}
       </div>
