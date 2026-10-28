@@ -478,3 +478,4 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
   .jbx-ep-name { font-size: 19px; }
   .jbx-pol { flex-basis: 88px; }
 }
+.jbx-cat-note { margin: 6px 0 0; color: #333; opacity: 1; }

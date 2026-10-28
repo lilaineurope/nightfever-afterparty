@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Timestamp } from "@/components/episode-player";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Timestamp, openEpisodePlayer, pauseEpisode } from "@/components/episode-player";
 import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
@@ -14,12 +14,55 @@ import { EntityLink } from "@/components/entity-link";
 
 /** The rest of an Afterparty's YouTube playlist (Lisa, 28 Oct 2026): the people, clubs, nights, films and TV from the
  * episode, each tied to its reference (A–Z card + timestamp). One JSON per episode, loaded only when it is picked. */
-export type Clip = { id: string; name: string; cat: string; time: string | null; title: string; channel: string };
+export type Clip = {
+  id: string;
+  name: string;
+  cat: string;
+  time: string | null;
+  title: string;
+  channel: string;
+  /** The Afterparty it is dropped in (added on load). */
+  ep?: string;
+  /** For Night Fever videos: the episode the video is. */
+  of?: string;
+  fashion?: string;
+};
 const clipFiles = import.meta.glob<{ default: Clip[] }>("../data/episode-videos/*.json");
+const fileEp = (path: string) => path.match(/(s\d\de\d\d)\.json$/)?.[1] ?? "";
 const loadClips = async (ep: string): Promise<Clip[]> => {
   const f = clipFiles[`../data/episode-videos/${ep}.json`];
-  return f ? (await f()).default : [];
+  return f ? (await f()).default.map((c) => ({ ...c, ep })) : [];
 };
+const loadAllClips = async (): Promise<Clip[]> =>
+  (await Promise.all(Object.entries(clipFiles).map(async ([path, f]) => (await f()).default.map((c) => ({ ...c, ep: fileEp(path) }))))).flat();
+
+/** Categories built from every Afterparty playlist (Lisa, 28 Oct 2026). */
+/** People = persons who aren't musicians (Lisa, 28 Oct 2026: the musicians live under Music). DJs, singers, composers and
+ * record people are counted as musicians. Add new names here when an Afterparty brings one. */
+const MUSICIANS = new Set<string>(["Adam Ant", "Afrojack", "Andrew Lloyd Webber", "Anita Sarko", "Annabella Lwin", "Annie Lennox", "Barbra Streisand", "Beyoncé", "Billie Holiday", "Billy Idol", "Björk", "Boy George", "Britney Spears", "Bryan Ferry", "Clive Davis", "Cyndi Lauper", "David Bowie", "David Byrne", "David Cole", "David Morales", "Dean Johnson", "Debbie Harry", "Diana Ross", "DJ Andy Anderson", "DJ Keoki", "Eartha Kitt", "Frankie Knuckles", "George Michael", "Grace Jones", "Grandmaster Flash", "Gwen Stefani", "Howie Pyro", "Iggy Pop", "Ike Turner", "James Brown", "Janis Joplin", "Jennifer Holliday", "Joan Jett", "John Cale", "John Sex", "John Taylor", "Kevin Aviance", "Kim Gordon", "Klaus Nomi", "Kylie Minogue", "Lady Gaga", "Lady Miss Kier", "Larry Tee", "Liberace", "Lil Nas X", "Lil' Kim", "Liza Minnelli", "Lou Reed", "Lydia Lunch", "Madonna", "Man Parrish", "Marc Shaiman", "Martha Wash", "MC Skat Kat", "Meat Loaf", "Michael Feinstein", "Michael Hutchence", "Michael Jackson", "Michael Stipe", "Mitzi Gaynor", "Nico", "Nina Hagen", "Peaches", "Pebbles", "Peter Allen", "Pharrell Williams", "Princess Superstar", "Rachel Auburn", "Richard Butler", "Richard Hell", "Romy Haag", "Rudi Protrudi", "Sade", "Scott Wittman", "Seymour Stein", "Steve Aoki", "Steve Strange", "Stevie Nicks", "Teena Marie", "Tim Armstrong", "Tina Turner", "Tish & Snooky", "Tony Basil", "Trevor Horn"]);
+type Pick = { key: string; name: string; cat: string; clips: Clip[]; eps: number };
+const normName = (n: string) => n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s*\(.*?\)/g, "").replace(/^the /, "").trim();
+const MUSIC_VIDEO = /official (music )?video|\(official|music video|live (at|from|in)\b| - topic$|vevo$/i;
+const FASHION_NOTE = /designer|couture|\blabel\b|stylist|make-?up artist|\bmodel\b|supermodel|runway|milliner|fashion (editor|house|journalist|photographer|icon|writer|critic|historian|show)/i;
+const FASHION_TITLE = /fashion|runway|couture|catwalk|collection|designer|stylist|hairstylist|cfda|videofashion|heatherette/i;
+function picksFor(all: Clip[], keep: (c: Clip) => boolean): Pick[] {
+  const by = new Map<string, Pick>();
+  for (const c of all) {
+    if (!keep(c)) continue;
+    const key = normName(c.name);
+    const p = by.get(key) ?? { key, name: c.name, cat: c.cat, clips: [], eps: 0 };
+    if (!p.clips.some((x) => x.id === c.id && x.ep === c.ep)) p.clips.push(c);
+    by.set(key, p);
+  }
+  const rel = (e?: string) => (e ? Date.parse(episodeById(e).released) || 0 : 0);
+  return [...by.values()]
+    .map((p) => {
+      p.clips.sort((a, b) => rel(a.ep) - rel(b.ep) || secs(a.time ?? "") - secs(b.time ?? ""));
+      p.eps = new Set(p.clips.map((c) => c.ep)).size;
+      return p;
+    })
+    .sort((a, b) => b.eps - a.eps || a.name.replace(/^the\s+/i, "").localeCompare(b.name.replace(/^the\s+/i, "")));
+}
 
 // The Jukebox as a jukebox (Lisa, 28 Oct 2026): a cabinet with a screen on top, title strips with a big play button below.
 // ♫ plays a song through Spotify's player, ▶ plays its video through YouTube's privacy-enhanced player - both load only
@@ -28,7 +71,7 @@ const loadClips = async (ep: string): Promise<Clip[]> => {
 
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
-type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs";
+type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs" | "people" | "fashion" | "films";
 
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
@@ -105,8 +148,9 @@ export function JukeboxMachine({
   /** A video from the rest of the Afterparty playlist on the screen (instead of a song). */
   const [clip, setClip] = useState<Clip | null>(null);
   const [clips, setClips] = useState<{ ep: string; list: Clip[] }>({ ep: "", list: [] });
-  const clipsRef = useRef(clips);
-  clipsRef.current = clips;
+  /** What plays next after a clip: the list it was started from. */
+  const queueRef = useRef<Clip[]>([]);
+  const [allClips, setAllClips] = useState<Clip[] | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
   const polsRef = useRef<HTMLDivElement>(null);
   /** Videos that wouldn't play for this visitor (e.g. blocked in their country) - skipped from then on. */
@@ -148,6 +192,8 @@ export function JukeboxMachine({
 
   useEffect(() => {
     if (filter !== "episodes" || !episodeId) return;
+    // The show itself sits ready in the player bar (paused), so visitors can listen while they go through the playlist.
+    openEpisodePlayer(episodeId);
     let live = true;
     void loadClips(episodeId).then((list) => live && setClips({ ep: episodeId, list }));
     return () => {
@@ -155,14 +201,41 @@ export function JukeboxMachine({
     };
   }, [filter, episodeId]);
   const rest = clips.ep === episodeId && filter === "episodes" ? clips.list : [];
-  const playClip = (c: Clip) => {
+  const playClip = (c: Clip, queue: Clip[]) => {
+    queueRef.current = queue;
     setNow(null);
     setClip(c);
     toScreen();
   };
+  useEffect(() => {
+    if (!["people", "fashion", "films", "clubs"].includes(filter) || allClips) return;
+    let live = true;
+    void loadAllClips().then((l) => live && setAllClips(l));
+    return () => {
+      live = false;
+    };
+  }, [filter, allClips]);
+  const musicNames = useMemo(() => {
+    const s = new Set<string>();
+    for (const it of items) {
+      s.add(normName(it.name));
+      const l = stripLabel(it);
+      s.add(normName(l.title));
+      if (l.sub) s.add(normName(l.sub));
+    }
+    return s;
+  }, [items]);
+  const picks = useMemo((): Pick[] => {
+    if (!allClips) return [];
+    if (filter === "people") return picksFor(allClips, (c) => c.cat === "Person" && !MUSICIANS.has(c.name) && !musicNames.has(normName(c.name)) && !MUSIC_VIDEO.test(c.title) && !MUSIC_VIDEO.test(c.channel));
+    if (filter === "fashion") return picksFor(allClips, (c) => c.cat !== "Club" && c.cat !== "Night Fever" && !MUSICIANS.has(c.name) && (c.cat === "Mood" || (!!c.fashion && FASHION_NOTE.test(c.fashion)) || FASHION_TITLE.test(c.title)));
+    if (filter === "films") return picksFor(allClips, (c) => c.cat === "Film" || c.cat === "TV");
+    if (filter === "clubs") return picksFor(allClips, (c) => c.cat === "Club");
+    return [];
+  }, [allClips, filter, musicNames]);
   /** After a clip: the next one in the list (the whole episodes and trailers are skipped when moving on). */
   const nextClip = (from?: Clip) => {
-    const l = clipsRef.current.list;
+    const l = queueRef.current;
     const at = from ? l.indexOf(from) : -1;
     const n = l.find((x, k) => k > at && x.cat !== "Night Fever" && !failedRef.current.has(`clip:${x.id}`));
     if (n) setClip(n);
@@ -195,7 +268,8 @@ export function JukeboxMachine({
     const n = l.find((x, k) => k > at && canPlay(x, kind));
     if (n) setNow({ item: n, kind });
     // The songs are done: carry on with the rest of the Afterparty playlist.
-    else if (kind === "video" && filter === "episodes" && clipsRef.current.list.length) {
+    else if (kind === "video" && filter === "episodes" && rest.length) {
+      queueRef.current = rest;
       setNow(null);
       nextClip();
     }
@@ -274,10 +348,10 @@ export function JukeboxMachine({
                   <p className="jbx-np">
                     NOW PLAYING · VIDEO · <b>{clip.name}</b> - {clip.title}
                   </p>
-                  {clip.time && ep && (
+                  {clip.time && clip.ep && (
                     <p className="jbx-drop">
-                      dropped in {guestName(ep.guest)}&rsquo;s episode, S{ep.season}E{ep.episode}{" "}
-                      <Timestamp episodeId={ep.id} time={clip.time} className="jbx-ts" />
+                      dropped in {guestName(episodeById(clip.ep).guest)}&rsquo;s episode, S{episodeById(clip.ep).season}E{episodeById(clip.ep).episode}{" "}
+                      <Timestamp episodeId={clip.ep} time={clip.time} className="jbx-ts" />
                     </p>
                   )}
                 </>
@@ -311,9 +385,12 @@ export function JukeboxMachine({
 
       <div className="jbx-panel">
         <div className="jbx-chips">
-          <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => { setFilter("all"); setSort("az"); }}>A–Z <small>{items.length}</small></button>
+          <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => { setFilter("all"); setSort("az"); }}>Music <small>{items.length}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
+          <button type="button" className={chip(filter === "people")} aria-pressed={filter === "people"} onClick={() => setFilter("people")}>People</button>
+          <button type="button" className={chip(filter === "fashion")} aria-pressed={filter === "fashion"} onClick={() => setFilter("fashion")}>Fashion</button>
+          <button type="button" className={chip(filter === "films")} aria-pressed={filter === "films"} onClick={() => setFilter("films")}>Films &amp; TV</button>
         </div>
 
         {filter === "episodes" && (
@@ -358,7 +435,25 @@ export function JukeboxMachine({
         )}
 
         {filter === "clubs" ? (
-          <ClubsShelf />
+          <ClubsShelf>
+            <PickRack title="Inside the clubs" note="Footage, interviews and TV reports for every club with a video, most dropped first." picks={picks} loading={!allClips} hot={clip?.id} failed={failed} onPlay={playClip} />
+          </ClubsShelf>
+        ) : filter === "people" || filter === "fashion" || filter === "films" ? (
+          <PickRack
+            title={filter === "people" ? "The people" : filter === "fashion" ? "Fashion" : "Films & TV"}
+            note={
+              filter === "people"
+                ? "Everyone the guests talk about who has a video - interviews, TV clips, portraits (the musicians are under Music). Most dropped first."
+                : filter === "fashion"
+                  ? "Designers, stylists, shows and looks from the stories. Most dropped first."
+                  : "Every film and TV show that comes up, with its trailer or a clip. Most dropped first."
+            }
+            picks={picks}
+            loading={!allClips}
+            hot={clip?.id}
+            failed={failed}
+            onPlay={playClip}
+          />
         ) : filter === "episodes" && !episodeId ? (
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
@@ -424,13 +519,13 @@ export function JukeboxMachine({
                             <small>YouTube</small>
                           </a>
                         ) : (
-                          <button type="button" className="jbx-big" onClick={() => playClip(c)} aria-label={`Play the video: ${c.name}`} title="Play the video">
+                          <button type="button" className="jbx-big" onClick={() => playClip(c, rest)} aria-label={`Play the video: ${c.name}`} title="Play the video">
                             <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
                           </button>
                         )}
                         <div className="jbx-tt">
                           {c.cat === "Night Fever" ? (
-                            <Link to={episodePath(ep.id)} className="jbx-name">{c.name}</Link>
+                            <Link to={episodePath(c.of ?? ep.id)} className="jbx-name">{c.name}</Link>
                           ) : (
                             <EntityLink name={c.name} className="jbx-name" />
                           )}
@@ -502,9 +597,14 @@ function VideoScreen({ vid, title, onEnd, onFail }: { vid: string; title: string
       }
     };
     window.addEventListener("message", onMsg);
+    // Only one thing plays at a time: the show (episode player) pauses the video, and the video pauses the show.
+    pauseEpisode();
+    const hush = () => frame.current?.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "pauseVideo", args: [] }), "*");
+    window.addEventListener("nf-episode-play", hush);
     return () => {
       clearInterval(t);
       window.removeEventListener("message", onMsg);
+      window.removeEventListener("nf-episode-play", hush);
     };
   }, []);
   const id = vid;
@@ -524,6 +624,7 @@ function VideoScreen({ vid, title, onEnd, onFail }: { vid: string; title: string
 type Controller = {
   loadUri: (uri: string) => void;
   play: () => void;
+  pause?: () => void;
   addListener: (ev: string, cb: (e: { data: { isPaused: boolean; position: number; duration: number } }) => void) => void;
 };
 
@@ -540,6 +641,7 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
     cur.current = item;
     ending.current = false;
     if (!item.spotify) return;
+    pauseEpisode();
     if (ctrl.current) {
       ctrl.current.loadUri(item.spotify);
       ctrl.current.play();
@@ -566,12 +668,14 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
       alive = false;
     };
   }, [item]);
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    const hush = () => ctrl.current?.pause?.();
+    window.addEventListener("nf-episode-play", hush);
+    return () => {
+      window.removeEventListener("nf-episode-play", hush);
       ctrl.current = null;
-    },
-    [],
-  );
+    };
+  }, []);
 
   return (
     <div className="jbx-sound">
@@ -584,7 +688,62 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
   );
 }
 
-function ClubsShelf() {
+/** One strip per name across every Afterparty: its first video, how many Afterparties drop it, and the first time it comes up. */
+function PickRack({ title, note, picks, loading, hot, failed, onPlay }: { title: string; note: string; picks: Pick[]; loading: boolean; hot?: string | undefined; failed: Set<string>; onPlay: (c: Clip, queue: Clip[]) => void }) {
+  const queue = picks.map((p) => p.clips[0]!);
+  return (
+    <>
+      <h3 className="jbx-rest-h">
+        {title} {!loading && <small>{picks.length}</small>}
+      </h3>
+      <p className="jbx-ep-note jbx-cat-note">{note}</p>
+      {loading ? (
+        <p className="jbx-hint">Loading the videos…</p>
+      ) : (
+        <ol className="jbx-rack jbx-rest">
+          {picks.map((p) => {
+            const c = p.clips[0]!;
+            const e = c.ep ? episodeById(c.ep) : undefined;
+            const isHot = hot === c.id;
+            return (
+              <li key={p.key} className={`jbx-strip${isHot ? " hot" : ""}`}>
+                {failed.has(`clip:${c.id}`) ? (
+                  <a className="jbx-big off" href={`https://www.youtube.com/watch?v=${c.id}`} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${p.name} on YouTube`} title="Won't play here - watch it on YouTube">
+                    <span aria-hidden="true">↗</span>
+                    <small>YouTube</small>
+                  </a>
+                ) : (
+                  <button type="button" className="jbx-big" onClick={() => onPlay(c, queue)} aria-label={`Play the video: ${p.name}`} title="Play the video">
+                    <span aria-hidden="true">{isHot ? "♫" : "▶"}</span>
+                  </button>
+                )}
+                <div className="jbx-tt">
+                  <EntityLink name={p.name} className="jbx-name" />
+                  <i>
+                    {p.cat} · {c.title}
+                  </i>
+                  {e && (
+                    <small>
+                      {p.eps > 1 ? `in ${p.eps} AFTERPARTIES · first in` : "in"} S{e.season}E{e.episode}
+                      {c.time ? (
+                        <>
+                          {" "}
+                          <Timestamp episodeId={e.id} time={c.time} className="jbx-ts" />
+                        </>
+                      ) : null}
+                    </small>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+    </>
+  );
+}
+
+function ClubsShelf({ children }: { children?: ReactNode }) {
   const chosen = new Set(CLUB_NIGHTS.map((c) => c.slug));
   return (
     <div className="jbx-clubs">
@@ -617,6 +776,7 @@ function ClubsShelf() {
           </li>
         ))}
       </ul>
+      {children}
       <h2 className="jbx-h2">Every club mentioned on Night Fever <small>{clubsMentioned.length}</small></h2>
       <ol className="jbx-clublist">
         {clubsMentioned.map((c) => (

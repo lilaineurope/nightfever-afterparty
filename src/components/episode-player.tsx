@@ -42,6 +42,17 @@ export function playEpisodeAt(episodeId: string, seconds: number) {
   return true;
 }
 
+/** Show an episode in the player bar, paused (unless another one is playing right now). */
+export function openEpisodePlayer(episodeId: string) {
+  if (state.episodeId !== episodeId && !(audio && !audio.paused)) set({ episodeId, open: true });
+  else if (state.episodeId === episodeId && !state.open) set({ open: true });
+}
+
+/** The Jukebox pauses the show while it plays a video or a song (and pauses itself when the show plays - "nf-episode-play"). */
+export function pauseEpisode() {
+  if (audio && !audio.paused) audio.pause();
+}
+
 /** Episode pages show their own episode in the player straight away (paused). */
 export function useEpisodePlayer(episodeId: string) {
   useEffect(() => {
@@ -133,7 +144,10 @@ export function EpisodePlayer() {
     <audio
       ref={ref}
       preload="none"
-      onPlay={() => setPlaying(true)}
+      onPlay={() => {
+        setPlaying(true);
+        window.dispatchEvent(new Event("nf-episode-play"));
+      }}
       onPause={() => setPlaying(false)}
       onTimeUpdate={(e) => setT(e.currentTarget.currentTime)}
       onLoadedMetadata={(e) => setDur(e.currentTarget.duration)}
