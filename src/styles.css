@@ -389,6 +389,10 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .jbx-name:hover { color: var(--pink); }
 .jbx-tt i { display: block; font-style: normal; font-size: 12.5px; }
 .jbx-tt small { display: block; font-size: 11px; color: #555; margin-top: 2px; }
+.jbx-rest-h { margin: 28px 0 0; font-family: var(--font-flyer); text-transform: uppercase; font-size: 18px; letter-spacing: .04em; border-top: 3px solid #111; padding-top: 14px; }
+.jbx-rest-h small { font-family: var(--font-type); text-transform: none; font-size: 14px; letter-spacing: 0; margin-left: 8px; }
+.jbx-rest .jbx-strip { border-top-color: #111; border-bottom-color: #111; }
+.jbx-rest .jbx-tt i { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .jbx-btns { display: flex; gap: 6px; }
 .jbx-ic { width: 32px; height: 32px; border: 2px solid #111; display: grid; place-items: center; font-size: 13px; background: #fff; color: #111; cursor: pointer; text-decoration: none; }
 .jbx-ic:hover { background: #111; color: #fff; }
