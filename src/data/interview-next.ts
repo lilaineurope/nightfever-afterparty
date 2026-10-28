@@ -60,6 +60,12 @@ export const COME_BACK: InterviewTip[] = [
     time: "01:01:15",
   },
   {
+    name: "Michelle Visage",
+    why: "James signs off: he can't wait for Michelle to come back and tell them more about her life.",
+    episodeId: "s02e01",
+    time: "01:00:44",
+  },
+  {
     name: "Dianne Brill",
     why: "The hosts hope to have her back - and offer her the co-host chair.",
     episodeId: "s01e01",
