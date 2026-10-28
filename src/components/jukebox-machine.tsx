@@ -102,7 +102,7 @@ function newestMusicEpisode(items: CollectionItem[]): string {
   return [...episodes].filter((e) => ids.has(e.id)).sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished))[0]?.id ?? "";
 }
 
-type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "pubs" | "films";
+type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "pubs" | "films" | "events";
 // Lisa, 28 Oct 2026: music first, then clubs, films & TV, fashion, publications (people last), each ranked by popularity.
 const EP_CATS: { id: EpCat; label: string }[] = [
   { id: "all", label: "All" },
@@ -111,9 +111,10 @@ const EP_CATS: { id: EpCat; label: string }[] = [
   { id: "films", label: "Films & TV" },
   { id: "fashion", label: "Fashion" },
   { id: "pubs", label: "Publications" },
+  { id: "events", label: "Events" },
   { id: "people", label: "People" },
 ];
-const SECTION_ORDER: EpCat[] = ["music", "clubs", "films", "fashion", "pubs", "people"];
+const SECTION_ORDER: EpCat[] = ["music", "clubs", "films", "fashion", "pubs", "events", "people"];
 type Entry =
   | { key: string; kind: "song"; it: CollectionItem; views: number }
   | { key: string; kind: "clip"; c: Clip; views: number }
@@ -130,6 +131,7 @@ function clipCats(c: Clip, musicNames: Set<string>): EpCat[] {
   if (c.cat === "Person" && !musician) out.push("people");
   if (c.cat !== "Club" && !musician && (c.cat === "Mood" || (!!c.fashion && FASHION_NOTE.test(c.fashion)) || FASHION_TITLE.test(c.title))) out.push("fashion");
   if (c.cat === "Film" || c.cat === "TV") out.push("films");
+  if (c.cat === "Event") out.push("events");
   return out;
 }
 
@@ -257,7 +259,7 @@ export function JukeboxMachine({
     if (filter !== "episodes" || !episodeId) return [];
     const v = (id?: string) => (id ? (views[id] ?? 0) : -1);
     const pubClips = new Set(pubs.flatMap((p) => (p.clip ? [p.clip.id] : [])));
-    const by: Record<EpCat, Entry[]> = { all: [], music: [], clubs: [], films: [], fashion: [], pubs: [], people: [] };
+    const by: Record<EpCat, Entry[]> = { all: [], music: [], clubs: [], films: [], fashion: [], pubs: [], events: [], people: [] };
     for (const it of list) by.music.push({ key: `song:${it.slug}`, kind: "song", it, views: v(videoId(it)) });
     for (const c of rest) {
       if (pubClips.has(c.id)) continue;
@@ -576,7 +578,7 @@ export function JukeboxMachine({
               <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
               <h2 className="jbx-ep-name">{guestName(ep.guest)}</h2>
               <p className="jbx-ep-note">
-                Everything from the episode you can play here - music first, then the clubs, films &amp; TV, fashion, publications and people, the most watched on top. Take it with you:
+                Everything from the episode you can play here - music first, then the clubs, films &amp; TV, fashion, publications, events and people, the most watched on top. Take it with you:
               </p>
               <div className="jbx-ep-links">
                 {episodeSpotifyUrl(ep.id) && (
