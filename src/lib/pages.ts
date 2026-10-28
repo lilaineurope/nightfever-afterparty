@@ -7,7 +7,6 @@ export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
   { to: "/timeline", label: "Timeline" },
   { to: "/jukebox", label: "Jukebox" },
-  { to: "/book-club", label: "Book Club" },
   { to: "/explore", label: "A–Z" }, // back on the top menu (Lisa, 28 Oct 2026)
   { to: "/guestbook", label: "Guestbook" },
 ] as const;
@@ -24,6 +23,7 @@ export const UNLINKED_PAGES = [
 
 /** Pages outside the top menu (footer and elsewhere). */
 export const OTHER_PAGES = [
+  { to: "/book-club", label: "Book Club" }, // off the top menu (Lisa, 29 Oct 2026) - still in search, sitemap, the dropdowns and the home tile
   { to: "/network", label: "Network" }, // off the top menu until the mentor reset (Lisa, 27 Oct 2026) - still in search, sitemap and the home cards
   { to: "/map", label: "Map" }, // off the top menu while Lisa reworks it (27 Oct 2026) - still in search, sitemap and the home cards
   { to: "/guests", label: "Guests" },
