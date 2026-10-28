@@ -103,15 +103,24 @@ function newestMusicEpisode(items: CollectionItem[]): string {
 }
 
 type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "pubs" | "films";
+// Lisa, 28 Oct 2026: music first, then clubs, films & TV, fashion, publications (people last), each ranked by popularity.
 const EP_CATS: { id: EpCat; label: string }[] = [
   { id: "all", label: "All" },
   { id: "music", label: "Music" },
   { id: "clubs", label: "Clubs" },
-  { id: "people", label: "People" },
+  { id: "films", label: "Films & TV" },
   { id: "fashion", label: "Fashion" },
   { id: "pubs", label: "Publications" },
-  { id: "films", label: "Films & TV" },
+  { id: "people", label: "People" },
 ];
+const SECTION_ORDER: EpCat[] = ["music", "clubs", "films", "fashion", "pubs", "people"];
+type Entry =
+  | { key: string; kind: "song"; it: CollectionItem; views: number }
+  | { key: string; kind: "clip"; c: Clip; views: number }
+  | { key: string; kind: "pub"; it: CollectionItem; m: Moment; c?: Clip | undefined; views: number };
+/** YouTube views, fetched once (src/data/video-views.json) and loaded with the Afterparty lists. */
+const loadViews = async (): Promise<Record<string, number>> => (await import("../data/video-views.json")).default as Record<string, number>;
+const fmtViews = (n: number) => (n >= 1e9 ? `${(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `${(n / 1e6).toFixed(n >= 1e7 ? 0 : 1)}M` : n >= 1e3 ? `${Math.round(n / 1e3)}K` : `${n}`).replace(".0", "");
 function clipCats(c: Clip, musicNames: Set<string>): EpCat[] {
   if (c.cat === "Night Fever") return [];
   const musician = c.cat === "Person" && (MUSICIANS.has(c.name) || musicNames.has(normName(c.name)) || MUSIC_VIDEO.test(c.title) || MUSIC_VIDEO.test(c.channel));
@@ -150,6 +159,17 @@ export function JukeboxMachine({
   /** What plays next after a clip: the list it was started from. */
   const queueRef = useRef<Clip[]>([]);
   const [epCat, setEpCat] = useState<EpCat>("all");
+  const [views, setViews] = useState<Record<string, number>>({});
+  const viewsRef = useRef(views);
+  viewsRef.current = views;
+  useEffect(() => {
+    let live = true;
+    void loadViews().then((v) => live && setViews(v));
+    return () => {
+      live = false;
+    };
+  }, []);
+  const epQueueRef = useRef<Entry[]>([]);
   useEffect(() => setEpCat("all"), [episodeId]);
   const screenRef = useRef<HTMLDivElement>(null);
   const polsRef = useRef<HTMLDivElement>(null);
@@ -218,7 +238,6 @@ export function JukeboxMachine({
     return s;
   }, [items]);
   const restCats = useMemo(() => new Map(rest.map((c) => [c, clipCats(c, musicNames)])), [rest, musicNames]);
-  const shownRest = epCat === "all" ? rest : rest.filter((c) => restCats.get(c)?.includes(epCat));
   /** Publications (Lisa, 28 Oct 2026): the episode's books, magazines, newspapers and columns - from the Book Club - with a video when the playlist has one. */
   const pubs = useMemo(() => {
     if (filter !== "episodes" || !episodeId) return [];
@@ -233,10 +252,48 @@ export function JukeboxMachine({
       })
       .sort((a, b) => secs(a.m.time) - secs(b.m.time));
   }, [filter, episodeId, rest]);
-  const catCount = (k: EpCat) =>
-    k === "all" ? list.length + rest.length : k === "pubs" ? pubs.length : rest.filter((c) => restCats.get(c)?.includes(k)).length + (k === "music" ? list.length : 0);
+  /** The Afterparty in sections - music, clubs, films & TV, fashion, publications, people - each ranked by YouTube views. */
+  const sections = useMemo(() => {
+    if (filter !== "episodes" || !episodeId) return [];
+    const v = (id?: string) => (id ? (views[id] ?? 0) : -1);
+    const pubClips = new Set(pubs.flatMap((p) => (p.clip ? [p.clip.id] : [])));
+    const by: Record<EpCat, Entry[]> = { all: [], music: [], clubs: [], films: [], fashion: [], pubs: [], people: [] };
+    for (const it of list) by.music.push({ key: `song:${it.slug}`, kind: "song", it, views: v(videoId(it)) });
+    for (const c of rest) {
+      if (pubClips.has(c.id)) continue;
+      const cats = restCats.get(c) ?? [];
+      const sec = SECTION_ORDER.find((k) => k !== "pubs" && cats.includes(k));
+      if (sec) by[sec].push({ key: `clip:${c.id}`, kind: "clip", c, views: v(c.id) });
+    }
+    for (const p of pubs) by.pubs.push({ key: `pub:${p.it.slug}`, kind: "pub", it: p.it, m: p.m, c: p.clip, views: p.clip ? v(p.clip.id) : -1 });
+    return SECTION_ORDER.map((id) => ({ id, label: EP_CATS.find((k) => k.id === id)!.label, entries: [...by[id]].sort((a, b) => b.views - a.views) })).filter((x) => x.entries.length);
+  }, [filter, episodeId, list, rest, restCats, pubs, views]);
+  const shownSections = epCat === "all" ? sections : sections.filter((x) => x.id === epCat);
+  epQueueRef.current = shownSections.flatMap((x) => x.entries);
+  const catCount = (k: EpCat) => (k === "all" ? sections.reduce((n, x) => n + x.entries.length, 0) : (sections.find((x) => x.id === k)?.entries.length ?? 0));
+  /** Like a jukebox: after a song or a video, the next one down the list that plays. */
+  const advance = (fromKey: string) => {
+    const q = epQueueRef.current;
+    const i = q.findIndex((e) => e.key === fromKey || (e.kind === "pub" && !!e.c && fromKey === `clip:${e.c.id}`));
+    for (const e of q.slice(i + 1)) {
+      if (e.kind === "song") {
+        const k = bestKind(e.it);
+        if (k) {
+          setClip(null);
+          setNow({ item: e.it, kind: k });
+          return;
+        }
+      } else if (e.c && !failedRef.current.has(`clip:${e.c.id}`)) {
+        setNow(null);
+        setClip(e.c);
+        return;
+      }
+    }
+    setClip(null);
+  };
   /** After a clip: the next one in the list (the whole episodes and trailers are skipped when moving on). */
   const nextClip = (from?: Clip) => {
+    if (filter === "episodes" && from) return advance(`clip:${from.id}`);
     const l = queueRef.current;
     const at = from ? l.indexOf(from) : -1;
     const n = l.find((x, k) => k > at && x.cat !== "Night Fever" && !failedRef.current.has(`clip:${x.id}`));
@@ -265,21 +322,17 @@ export function JukeboxMachine({
     mode === "sound" && it.spotify ? "sound" : canPlay(it, "video") ? "video" : it.spotify ? "sound" : null;
   /** Like a real jukebox: when a song ends, the next selection in the current list plays. */
   const next = (from: CollectionItem, kind: Kind) => {
+    if (filter === "episodes") return advance(`song:${from.slug}`);
     const l = listRef.current;
     const at = l.indexOf(from);
     const n = l.find((x, k) => k > at && canPlay(x, kind));
     if (n) setNow({ item: n, kind });
-    // The songs are done: carry on with the rest of the Afterparty playlist.
-    else if (kind === "video" && filter === "episodes" && rest.length) {
-      queueRef.current = rest;
-      setNow(null);
-      nextClip();
-    }
   };
   const fail = (it: CollectionItem) => {
     const f = new Set(failedRef.current).add(it.slug);
     failedRef.current = f;
     setFailed(f);
+    if (filter === "episodes") return advance(`song:${it.slug}`);
     // Move on to the next selection that plays (its video, or its song from Spotify).
     const l = listRef.current.includes(it) ? listRef.current : pool;
     const at = l.indexOf(it);
@@ -298,7 +351,10 @@ export function JukeboxMachine({
   const pickEpisode = (id: string) => {
     setEpisodeId(id);
     onPickEpisode?.(id);
-    const songs = items.filter((i) => i.moments.some((m) => m.episodeId === id)).sort((a, b) => secs(epMoment(a, id)?.time ?? "") - secs(epMoment(b, id)?.time ?? ""));
+    const vw = viewsRef.current;
+    const songs = items
+      .filter((i) => i.moments.some((m) => m.episodeId === id))
+      .sort((a, b) => (vw[videoId(b) ?? ""] ?? -1) - (vw[videoId(a) ?? ""] ?? -1) || secs(epMoment(a, id)?.time ?? "") - secs(epMoment(b, id)?.time ?? ""));
     listRef.current = songs;
     const first = songs.find((x) => canPlay(x, "video")) ?? songs.find((x) => x.spotify);
     if (first) play(first, canPlay(first, "video") ? "video" : "sound");
@@ -318,6 +374,110 @@ export function JukeboxMachine({
   const ep = filter === "episodes" && episodeId ? episodes.find((e) => e.id === episodeId) : undefined;
 
   const chip = (on: boolean) => `jbx-chip${on ? " on" : ""}`;
+
+  /** One strip on an Afterparty list: a song, a video, or a publication. */
+  const entryStrip = (e: Entry, ep: { id: string; season: number; episode: number }) => {
+    const code = `S${ep.season}E${ep.episode}`;
+    const seen = e.views > 0 ? ` · ${fmtViews(e.views)} views` : "";
+    if (e.kind === "song") {
+      const it = e.it;
+      const l = stripLabel(it);
+      const m = epMoment(it, ep.id);
+      const hot = !clip && now?.item.slug === it.slug;
+      const kind = bestKind(it);
+      return (
+        <li key={e.key} className={`jbx-strip${hot ? " hot" : ""}`}>
+          {kind ? (
+            <button type="button" className="jbx-big" onClick={() => play(it, kind)} aria-label={kind === "video" ? `Play the video of ${l.title}` : `Play ${l.title} from Spotify`} title={kind === "video" ? "Play the video" : "Play the song (no video)"}>
+              <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+              {kind === "sound" && <small>audio</small>}
+            </button>
+          ) : (
+            <a className="jbx-big off" href={listenLinks(it.name).youtube} target="_blank" rel="noopener noreferrer" aria-label={`Find ${l.title} on YouTube`} title="Find it on YouTube">
+              <span aria-hidden="true">↗</span>
+              <small>YouTube</small>
+            </a>
+          )}
+          <div className="jbx-tt">
+            <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{l.title}</Link>
+            <i>
+              {l.sub}
+              {YEARS[it.name] ? ` · ${YEARS[it.name]! < 1900 ? "19th century" : YEARS[it.name]}` : ""}
+            </i>
+            {m && (
+              <small>
+                in {code} <Timestamp episodeId={ep.id} time={m.time} className="jbx-ts" />
+                {seen}
+              </small>
+            )}
+          </div>
+        </li>
+      );
+    }
+    if (e.kind === "pub") {
+      const it = e.it;
+      const c = e.c;
+      const shelf = BOOK_SHELVES.find((x) => x.key === it.shelf)?.label.replace(/s$/, "").replace("Columns & article", "Column or article") ?? "Publication";
+      const hot = !!c && clip?.id === c.id;
+      return (
+        <li key={e.key} className={`jbx-strip${hot ? " hot" : ""}`}>
+          {c && !failed.has(`clip:${c.id}`) ? (
+            <button type="button" className="jbx-big" onClick={() => playClip(c, [])} aria-label={`Play the video: ${it.name}`} title="Play the video">
+              <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+            </button>
+          ) : (
+            <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-big off" aria-label={`Read about ${it.name}`} title="No video - read about it on its card">
+              <span aria-hidden="true">→</span>
+              <small>Read</small>
+            </Link>
+          )}
+          <div className="jbx-tt">
+            <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{it.name}</Link>
+            <i>
+              {shelf}
+              {e.m.context ? ` · ${e.m.context}` : ""}
+            </i>
+            <small>
+              in {code} <Timestamp episodeId={ep.id} time={e.m.time} className="jbx-ts" />
+              {seen}
+            </small>
+          </div>
+        </li>
+      );
+    }
+    const c = e.c;
+    const hot = clip?.id === c.id;
+    return (
+      <li key={e.key} className={`jbx-strip${hot ? " hot" : ""}`}>
+        {failed.has(`clip:${c.id}`) ? (
+          <a className="jbx-big off" href={`https://www.youtube.com/watch?v=${c.id}`} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${c.name} on YouTube`} title="Won't play here - watch it on YouTube">
+            <span aria-hidden="true">↗</span>
+            <small>YouTube</small>
+          </a>
+        ) : (
+          <button type="button" className="jbx-big" onClick={() => playClip(c, [])} aria-label={`Play the video: ${c.name}`} title="Play the video">
+            <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+          </button>
+        )}
+        <div className="jbx-tt">
+          <EntityLink name={c.name} className="jbx-name" />
+          <i>
+            {c.cat === "Person" && restCats.get(c)?.includes("music") ? "Musician" : c.cat === "Mood" ? "Look" : c.cat} · {c.title}
+          </i>
+          <small>
+            {c.time ? (
+              <>
+                in {code} <Timestamp episodeId={ep.id} time={c.time} className="jbx-ts" />
+              </>
+            ) : (
+              <>in {code}</>
+            )}
+            {seen}
+          </small>
+        </div>
+      </li>
+    );
+  };
 
   return (
     <div className="jbx">
@@ -416,8 +576,7 @@ export function JukeboxMachine({
               <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
               <h2 className="jbx-ep-name">{guestName(ep.guest)}</h2>
               <p className="jbx-ep-note">
-                {list.length} {list.length === 1 ? "song or band" : "songs and bands"} from the episode, in the order they come up
-                {rest.length ? <> - then {rest.length} more videos: the people, clubs and nights from the episode</> : null}. Take them with you:
+                Everything from the episode you can play here - music first, then the clubs, films &amp; TV, fashion, publications and people, the most watched on top. Take it with you:
               </p>
               <div className="jbx-ep-links">
                 {episodeSpotifyUrl(ep.id) && (
@@ -433,11 +592,11 @@ export function JukeboxMachine({
           </div>
         )}
 
-        {ep && filter === "episodes" && rest.length > 0 && (
+        {ep && filter === "episodes" && sections.length > 0 && (
           <div className="jbx-subchips" role="group" aria-label="Show from this Afterparty">
             {EP_CATS.map((k) => {
               const n = catCount(k.id);
-              if (!n && k.id !== "all") return null;
+              if (!n) return null;
               return (
                 <button key={k.id} type="button" className={chip(epCat === k.id)} aria-pressed={epCat === k.id} onClick={() => setEpCat(k.id)}>
                   {k.label} <small>{n}</small>
@@ -453,44 +612,16 @@ export function JukeboxMachine({
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
-            {filter === "episodes" && epCat === "pubs" && ep && (
-              <>
-                <h3 className="jbx-rest-h">
-                  Publications <small>{pubs.length} books, magazines, newspapers and columns</small>
-                </h3>
-                <ol className="jbx-rack jbx-rest">
-                  {pubs.map(({ it, m, clip: c }) => {
-                    const shelf = BOOK_SHELVES.find((x) => x.key === it.shelf)?.label.replace(/s$/, "").replace("Columns & article", "Column or article") ?? "Publication";
-                    const hot = !!c && clip?.id === c.id;
-                    return (
-                      <li key={it.slug} className={`jbx-strip${hot ? " hot" : ""}`}>
-                        {c && !failed.has(`clip:${c.id}`) ? (
-                          <button type="button" className="jbx-big" onClick={() => playClip(c, pubs.flatMap((x) => (x.clip ? [x.clip] : [])))} aria-label={`Play the video: ${it.name}`} title="Play the video">
-                            <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
-                          </button>
-                        ) : (
-                          <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-big off" aria-label={`Read about ${it.name}`} title="No video - read about it on its card">
-                            <span aria-hidden="true">→</span>
-                            <small>Read</small>
-                          </Link>
-                        )}
-                        <div className="jbx-tt">
-                          <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{it.name}</Link>
-                          <i>
-                            {shelf}
-                            {m.context ? ` · ${m.context}` : ""}
-                          </i>
-                          <small>
-                            in {m.code} <Timestamp episodeId={m.episodeId} time={m.time} className="jbx-ts" />
-                          </small>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </>
-            )}
-            {(filter !== "episodes" || epCat === "all" || epCat === "music") && (
+            {filter === "episodes" && ep &&
+              shownSections.map((sec) => (
+                <section key={sec.id} className="jbx-sec">
+                  <h3 className="jbx-rest-h">
+                    {sec.label} <small>{sec.entries.length}</small>
+                  </h3>
+                  <ol className="jbx-rack jbx-rest">{sec.entries.map((e) => entryStrip(e, ep))}</ol>
+                </section>
+              ))}
+            {filter !== "episodes" && (
             <ol className="jbx-rack">
               {shown.flatMap((it, k) => {
                 const l = stripLabel(it);
@@ -502,7 +633,7 @@ export function JukeboxMachine({
                 const prev = k > 0 ? decade(YEARS[shown[k - 1]!.name]) : "";
                 const out = [];
                 // Timeline: a marker at every new decade (the exact year sits on each strip).
-                if (sort === "timeline" && filter !== "episodes" && year && decade(year) !== prev)
+                if (sort === "timeline" && year && decade(year) !== prev)
                   out.push(<li key={`y${decade(year)}`} className="jbx-year" aria-hidden="true"><span>{decade(year)}</span></li>);
                 out.push(
                   <li key={it.slug} className={`jbx-strip${hot ? " hot" : ""}`}>
@@ -525,7 +656,7 @@ export function JukeboxMachine({
                       </i>
                       {m && (
                         <small>
-                          dropped {it.mentions || 1}× · {filter === "episodes" ? "in" : "first in"} {m.code}{" "}
+                          dropped {it.mentions || 1}× · first in {m.code}{" "}
                           <Timestamp episodeId={m.episodeId} time={m.time} className="jbx-ts" />
                         </small>
                       )}
@@ -535,50 +666,6 @@ export function JukeboxMachine({
                 return out;
               })}
             </ol>
-            )}
-            {epCat !== "pubs" && shownRest.length > 0 && ep && (
-              <>
-                <h3 className="jbx-rest-h">
-                  {epCat === "all" ? "The rest of the AFTERPARTY" : epCat === "music" ? "More music videos" : EP_CATS.find((k) => k.id === epCat)!.label}{" "}
-                  <small>{shownRest.length} videos</small>
-                </h3>
-                <ol className="jbx-rack jbx-rest">
-                  {shownRest.map((c) => {
-                    const hot = clip?.id === c.id;
-                    const off = failed.has(`clip:${c.id}`);
-                    return (
-                      <li key={c.id} className={`jbx-strip${hot ? " hot" : ""}`}>
-                        {off ? (
-                          <a className="jbx-big off" href={`https://www.youtube.com/watch?v=${c.id}`} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${c.name} on YouTube`} title="Won't play here - watch it on YouTube">
-                            <span aria-hidden="true">↗</span>
-                            <small>YouTube</small>
-                          </a>
-                        ) : (
-                          <button type="button" className="jbx-big" onClick={() => playClip(c, shownRest)} aria-label={`Play the video: ${c.name}`} title="Play the video">
-                            <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
-                          </button>
-                        )}
-                        <div className="jbx-tt">
-                          {c.cat === "Night Fever" ? (
-                            <Link to={episodePath(c.of ?? ep.id)} className="jbx-name">{c.name}</Link>
-                          ) : (
-                            <EntityLink name={c.name} className="jbx-name" />
-                          )}
-                          <i>
-                            {c.cat === "Night Fever" ? "Night Fever" : c.cat} · {c.title}
-                          </i>
-                          {c.time && c.cat !== "Night Fever" && (
-                            <small>
-                              in S{ep.season}E{ep.episode}{" "}
-                              <Timestamp episodeId={ep.id} time={c.time} className="jbx-ts" />
-                            </small>
-                          )}
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </>
             )}
           </>
         )}
