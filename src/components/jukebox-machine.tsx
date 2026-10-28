@@ -28,41 +28,18 @@ export type Clip = {
   fashion?: string;
 };
 const clipFiles = import.meta.glob<{ default: Clip[] }>("../data/episode-videos/*.json");
-const fileEp = (path: string) => path.match(/(s\d\de\d\d)\.json$/)?.[1] ?? "";
 const loadClips = async (ep: string): Promise<Clip[]> => {
   const f = clipFiles[`../data/episode-videos/${ep}.json`];
   return f ? (await f()).default.map((c) => ({ ...c, ep })) : [];
 };
-const loadAllClips = async (): Promise<Clip[]> =>
-  (await Promise.all(Object.entries(clipFiles).map(async ([path, f]) => (await f()).default.map((c) => ({ ...c, ep: fileEp(path) }))))).flat();
-
-/** Categories built from every Afterparty playlist (Lisa, 28 Oct 2026). */
+/** The categories inside an Afterparty (Lisa, 28 Oct 2026): Music, Clubs, People, Fashion, Films & TV. */
 /** People = persons who aren't musicians (Lisa, 28 Oct 2026: the musicians live under Music). DJs, singers, composers and
  * record people are counted as musicians. Add new names here when an Afterparty brings one. */
 const MUSICIANS = new Set<string>(["Adam Ant", "Afrojack", "Andrew Lloyd Webber", "Anita Sarko", "Annabella Lwin", "Annie Lennox", "Barbra Streisand", "Beyoncé", "Billie Holiday", "Billy Idol", "Björk", "Boy George", "Britney Spears", "Bryan Ferry", "Clive Davis", "Cyndi Lauper", "David Bowie", "David Byrne", "David Cole", "David Morales", "Dean Johnson", "Debbie Harry", "Diana Ross", "DJ Andy Anderson", "DJ Keoki", "Eartha Kitt", "Frankie Knuckles", "George Michael", "Grace Jones", "Grandmaster Flash", "Gwen Stefani", "Howie Pyro", "Iggy Pop", "Ike Turner", "James Brown", "Janis Joplin", "Jennifer Holliday", "Joan Jett", "John Cale", "John Sex", "John Taylor", "Kevin Aviance", "Kim Gordon", "Klaus Nomi", "Kylie Minogue", "Lady Gaga", "Lady Miss Kier", "Larry Tee", "Liberace", "Lil Nas X", "Lil' Kim", "Liza Minnelli", "Lou Reed", "Lydia Lunch", "Madonna", "Man Parrish", "Marc Shaiman", "Martha Wash", "MC Skat Kat", "Meat Loaf", "Michael Feinstein", "Michael Hutchence", "Michael Jackson", "Michael Stipe", "Mitzi Gaynor", "Nico", "Nina Hagen", "Peaches", "Pebbles", "Peter Allen", "Pharrell Williams", "Princess Superstar", "Rachel Auburn", "Richard Butler", "Richard Hell", "Romy Haag", "Rudi Protrudi", "Sade", "Scott Wittman", "Seymour Stein", "Steve Aoki", "Steve Strange", "Stevie Nicks", "Teena Marie", "Tim Armstrong", "Tina Turner", "Tish & Snooky", "Tony Basil", "Trevor Horn"]);
-type Pick = { key: string; name: string; cat: string; clips: Clip[]; eps: number };
 const normName = (n: string) => n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s*\(.*?\)/g, "").replace(/^the /, "").trim();
 const MUSIC_VIDEO = /official (music )?video|\(official|music video|live (at|from|in)\b| - topic$|vevo$/i;
 const FASHION_NOTE = /designer|couture|\blabel\b|stylist|make-?up artist|\bmodel\b|supermodel|runway|milliner|fashion (editor|house|journalist|photographer|icon|writer|critic|historian|show)/i;
 const FASHION_TITLE = /fashion|runway|couture|catwalk|collection|designer|stylist|hairstylist|cfda|videofashion|heatherette/i;
-function picksFor(all: Clip[], keep: (c: Clip) => boolean): Pick[] {
-  const by = new Map<string, Pick>();
-  for (const c of all) {
-    if (!keep(c)) continue;
-    const key = normName(c.name);
-    const p = by.get(key) ?? { key, name: c.name, cat: c.cat, clips: [], eps: 0 };
-    if (!p.clips.some((x) => x.id === c.id && x.ep === c.ep)) p.clips.push(c);
-    by.set(key, p);
-  }
-  const rel = (e?: string) => (e ? Date.parse(episodeById(e).released) || 0 : 0);
-  return [...by.values()]
-    .map((p) => {
-      p.clips.sort((a, b) => rel(a.ep) - rel(b.ep) || secs(a.time ?? "") - secs(b.time ?? ""));
-      p.eps = new Set(p.clips.map((c) => c.ep)).size;
-      return p;
-    })
-    .sort((a, b) => b.eps - a.eps || a.name.replace(/^the\s+/i, "").localeCompare(b.name.replace(/^the\s+/i, "")));
-}
 
 // The Jukebox as a jukebox (Lisa, 28 Oct 2026): a cabinet with a screen on top, title strips with a big play button below.
 // ♫ plays a song through Spotify's player, ▶ plays its video through YouTube's privacy-enhanced player - both load only
@@ -71,7 +48,7 @@ function picksFor(all: Clip[], keep: (c: Clip) => boolean): Pick[] {
 
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
-type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs" | "people" | "fashion" | "films";
+type Filter = "all" | "songs" | "artists" | "sounds" | "stage" | "episodes" | "clubs";
 
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
@@ -125,6 +102,27 @@ function newestMusicEpisode(items: CollectionItem[]): string {
   return [...episodes].filter((e) => ids.has(e.id)).sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished))[0]?.id ?? "";
 }
 
+type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "films";
+const EP_CATS: { id: EpCat; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "music", label: "Music" },
+  { id: "clubs", label: "Clubs" },
+  { id: "people", label: "People" },
+  { id: "fashion", label: "Fashion" },
+  { id: "films", label: "Films & TV" },
+];
+function clipCats(c: Clip, musicNames: Set<string>): EpCat[] {
+  if (c.cat === "Night Fever") return [];
+  const musician = c.cat === "Person" && (MUSICIANS.has(c.name) || musicNames.has(normName(c.name)) || MUSIC_VIDEO.test(c.title) || MUSIC_VIDEO.test(c.channel));
+  const out: EpCat[] = [];
+  if (c.cat === "Music" || musician) out.push("music");
+  if (c.cat === "Club") out.push("clubs");
+  if (c.cat === "Person" && !musician) out.push("people");
+  if (c.cat !== "Club" && !musician && (c.cat === "Mood" || (!!c.fashion && FASHION_NOTE.test(c.fashion)) || FASHION_TITLE.test(c.title))) out.push("fashion");
+  if (c.cat === "Film" || c.cat === "TV") out.push("films");
+  return out;
+}
+
 export function JukeboxMachine({
   items,
   initialEpisode,
@@ -150,7 +148,8 @@ export function JukeboxMachine({
   const [clips, setClips] = useState<{ ep: string; list: Clip[] }>({ ep: "", list: [] });
   /** What plays next after a clip: the list it was started from. */
   const queueRef = useRef<Clip[]>([]);
-  const [allClips, setAllClips] = useState<Clip[] | null>(null);
+  const [epCat, setEpCat] = useState<EpCat>("all");
+  useEffect(() => setEpCat("all"), [episodeId]);
   const screenRef = useRef<HTMLDivElement>(null);
   const polsRef = useRef<HTMLDivElement>(null);
   /** Videos that wouldn't play for this visitor (e.g. blocked in their country) - skipped from then on. */
@@ -207,14 +206,6 @@ export function JukeboxMachine({
     setClip(c);
     toScreen();
   };
-  useEffect(() => {
-    if (!["people", "fashion", "films", "clubs"].includes(filter) || allClips) return;
-    let live = true;
-    void loadAllClips().then((l) => live && setAllClips(l));
-    return () => {
-      live = false;
-    };
-  }, [filter, allClips]);
   const musicNames = useMemo(() => {
     const s = new Set<string>();
     for (const it of items) {
@@ -225,14 +216,9 @@ export function JukeboxMachine({
     }
     return s;
   }, [items]);
-  const picks = useMemo((): Pick[] => {
-    if (!allClips) return [];
-    if (filter === "people") return picksFor(allClips, (c) => c.cat === "Person" && !MUSICIANS.has(c.name) && !musicNames.has(normName(c.name)) && !MUSIC_VIDEO.test(c.title) && !MUSIC_VIDEO.test(c.channel));
-    if (filter === "fashion") return picksFor(allClips, (c) => c.cat !== "Club" && c.cat !== "Night Fever" && !MUSICIANS.has(c.name) && (c.cat === "Mood" || (!!c.fashion && FASHION_NOTE.test(c.fashion)) || FASHION_TITLE.test(c.title)));
-    if (filter === "films") return picksFor(allClips, (c) => c.cat === "Film" || c.cat === "TV");
-    if (filter === "clubs") return picksFor(allClips, (c) => c.cat === "Club");
-    return [];
-  }, [allClips, filter, musicNames]);
+  const restCats = useMemo(() => new Map(rest.map((c) => [c, clipCats(c, musicNames)])), [rest, musicNames]);
+  const shownRest = epCat === "all" ? rest : rest.filter((c) => restCats.get(c)?.includes(epCat));
+  const catCount = (k: EpCat) => (k === "all" ? list.length + rest.length : rest.filter((c) => restCats.get(c)?.includes(k)).length + (k === "music" ? list.length : 0));
   /** After a clip: the next one in the list (the whole episodes and trailers are skipped when moving on). */
   const nextClip = (from?: Clip) => {
     const l = queueRef.current;
@@ -388,9 +374,6 @@ export function JukeboxMachine({
           <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => { setFilter("all"); setSort("az"); }}>Music <small>{items.length}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "clubs")} aria-pressed={filter === "clubs"} onClick={() => setFilter("clubs")}>Clubs <small>{clubsMentioned.length}</small></button>
-          <button type="button" className={chip(filter === "people")} aria-pressed={filter === "people"} onClick={() => setFilter("people")}>People</button>
-          <button type="button" className={chip(filter === "fashion")} aria-pressed={filter === "fashion"} onClick={() => setFilter("fashion")}>Fashion</button>
-          <button type="button" className={chip(filter === "films")} aria-pressed={filter === "films"} onClick={() => setFilter("films")}>Films &amp; TV</button>
         </div>
 
         {filter === "episodes" && (
@@ -434,30 +417,27 @@ export function JukeboxMachine({
           </div>
         )}
 
+        {ep && filter === "episodes" && rest.length > 0 && (
+          <div className="jbx-subchips" role="group" aria-label="Show from this Afterparty">
+            {EP_CATS.map((k) => {
+              const n = catCount(k.id);
+              if (!n && k.id !== "all") return null;
+              return (
+                <button key={k.id} type="button" className={chip(epCat === k.id)} aria-pressed={epCat === k.id} onClick={() => setEpCat(k.id)}>
+                  {k.label} <small>{n}</small>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {filter === "clubs" ? (
-          <ClubsShelf>
-            <PickRack title="Inside the clubs" note="Footage, interviews and TV reports for every club with a video, most dropped first." picks={picks} loading={!allClips} hot={clip?.id} failed={failed} onPlay={playClip} />
-          </ClubsShelf>
-        ) : filter === "people" || filter === "fashion" || filter === "films" ? (
-          <PickRack
-            title={filter === "people" ? "The people" : filter === "fashion" ? "Fashion" : "Films & TV"}
-            note={
-              filter === "people"
-                ? "Everyone the guests talk about who has a video - interviews, TV clips, portraits (the musicians are under Music). Most dropped first."
-                : filter === "fashion"
-                  ? "Designers, stylists, shows and looks from the stories. Most dropped first."
-                  : "Every film and TV show that comes up, with its trailer or a clip. Most dropped first."
-            }
-            picks={picks}
-            loading={!allClips}
-            hot={clip?.id}
-            failed={failed}
-            onPlay={playClip}
-          />
+          <ClubsShelf />
         ) : filter === "episodes" && !episodeId ? (
           <p className="jbx-hint">Pick a polaroid: the jukebox plays that Afterparty&rsquo;s songs and shows its playlists.</p>
         ) : (
           <>
+            {(filter !== "episodes" || epCat === "all" || epCat === "music") && (
             <ol className="jbx-rack">
               {shown.flatMap((it, k) => {
                 const l = stripLabel(it);
@@ -502,13 +482,15 @@ export function JukeboxMachine({
                 return out;
               })}
             </ol>
-            {rest.length > 0 && ep && (
+            )}
+            {shownRest.length > 0 && ep && (
               <>
                 <h3 className="jbx-rest-h">
-                  The rest of the AFTERPARTY <small>{rest.length} videos</small>
+                  {epCat === "all" ? "The rest of the AFTERPARTY" : epCat === "music" ? "More music videos" : EP_CATS.find((k) => k.id === epCat)!.label}{" "}
+                  <small>{shownRest.length} videos</small>
                 </h3>
                 <ol className="jbx-rack jbx-rest">
-                  {rest.map((c) => {
+                  {shownRest.map((c) => {
                     const hot = clip?.id === c.id;
                     const off = failed.has(`clip:${c.id}`);
                     return (
@@ -519,7 +501,7 @@ export function JukeboxMachine({
                             <small>YouTube</small>
                           </a>
                         ) : (
-                          <button type="button" className="jbx-big" onClick={() => playClip(c, rest)} aria-label={`Play the video: ${c.name}`} title="Play the video">
+                          <button type="button" className="jbx-big" onClick={() => playClip(c, shownRest)} aria-label={`Play the video: ${c.name}`} title="Play the video">
                             <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
                           </button>
                         )}
@@ -685,61 +667,6 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
       <div ref={holder} className="jbx-spotify" />
       <span className="jbx-small">Not logged in to Spotify? You&rsquo;ll hear 30-second previews - log in for full songs.</span>
     </div>
-  );
-}
-
-/** One strip per name across every Afterparty: its first video, how many Afterparties drop it, and the first time it comes up. */
-function PickRack({ title, note, picks, loading, hot, failed, onPlay }: { title: string; note: string; picks: Pick[]; loading: boolean; hot?: string | undefined; failed: Set<string>; onPlay: (c: Clip, queue: Clip[]) => void }) {
-  const queue = picks.map((p) => p.clips[0]!);
-  return (
-    <>
-      <h3 className="jbx-rest-h">
-        {title} {!loading && <small>{picks.length}</small>}
-      </h3>
-      <p className="jbx-ep-note jbx-cat-note">{note}</p>
-      {loading ? (
-        <p className="jbx-hint">Loading the videos…</p>
-      ) : (
-        <ol className="jbx-rack jbx-rest">
-          {picks.map((p) => {
-            const c = p.clips[0]!;
-            const e = c.ep ? episodeById(c.ep) : undefined;
-            const isHot = hot === c.id;
-            return (
-              <li key={p.key} className={`jbx-strip${isHot ? " hot" : ""}`}>
-                {failed.has(`clip:${c.id}`) ? (
-                  <a className="jbx-big off" href={`https://www.youtube.com/watch?v=${c.id}`} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${p.name} on YouTube`} title="Won't play here - watch it on YouTube">
-                    <span aria-hidden="true">↗</span>
-                    <small>YouTube</small>
-                  </a>
-                ) : (
-                  <button type="button" className="jbx-big" onClick={() => onPlay(c, queue)} aria-label={`Play the video: ${p.name}`} title="Play the video">
-                    <span aria-hidden="true">{isHot ? "♫" : "▶"}</span>
-                  </button>
-                )}
-                <div className="jbx-tt">
-                  <EntityLink name={p.name} className="jbx-name" />
-                  <i>
-                    {p.cat} · {c.title}
-                  </i>
-                  {e && (
-                    <small>
-                      {p.eps > 1 ? `in ${p.eps} AFTERPARTIES · first in` : "in"} S{e.season}E{e.episode}
-                      {c.time ? (
-                        <>
-                          {" "}
-                          <Timestamp episodeId={e.id} time={c.time} className="jbx-ts" />
-                        </>
-                      ) : null}
-                    </small>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      )}
-    </>
   );
 }
 
