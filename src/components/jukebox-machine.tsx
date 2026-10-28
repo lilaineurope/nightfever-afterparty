@@ -139,17 +139,20 @@ export function JukeboxMachine({
   items,
   initialEpisode,
   onPickEpisode,
+  initialFilter,
 }: {
   items: CollectionItem[];
   /** From a shared link (/jukebox?afterparty=s05e04): open on that Afterparty and cue its first song. */
   initialEpisode?: string | undefined;
   onPickEpisode?: (id: string) => void;
+  /** /jukebox?show=clubs opens on the Clubs button. */
+  initialFilter?: "clubs" | undefined;
 }) {
   const pool = useMemo(() => items.filter(embeddable), [items]);
   const today = useMemo(() => videoOfTheDay(pool), [pool]);
 
   // Lisa, 28 Oct 2026: for now just two buttons - Afterparties (the default) and Clubs; more come back one by one.
-  const [filter, setFilter] = useState<Filter>("episodes");
+  const [filter, setFilter] = useState<Filter>(initialFilter ?? "episodes");
   const [sort, setSort] = useState<"dropped" | "az" | "timeline">("dropped");
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
   const [episodeId, setEpisodeId] = useState<string>(() => initialEpisode || newestMusicEpisode(items));

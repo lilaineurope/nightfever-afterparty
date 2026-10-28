@@ -4,7 +4,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { episodes } from "../data/episodes";
 import { EntityLink } from "../components/entity-link";
 import { EpisodeCard } from "@/components/episode-block";
-import { NamesEveryoneDrops } from "@/components/names-everyone-drops";
+import { HallOfFame } from "@/components/hall-of-fame";
 import { ExplorePages } from "@/components/explore-pages";
 import { WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
@@ -122,7 +122,7 @@ function Index() {
         </div>
       </section>
 
-      <NamesEveryoneDrops />
+      <HallOfFame />
 
       {/* Who to interview next - tips heard on the show (Lisa, 23 Oct 2026) */}
       <InterviewNext />

@@ -9,13 +9,18 @@ const description = `Every song, record, band and sound the Night Fever guests m
 
 // Shareable links (Lisa, 28 Oct 2026): tapping a polaroid puts the Afterparty in the address, /jukebox?afterparty=s05e04,
 // so the link opens the Jukebox on that Afterparty's playlist (and a shared link shows the guest's share picture).
-type Search = { afterparty?: string };
+type Search = { afterparty?: string; show?: "clubs" };
 const isMusicEpisode = (id: string) => episodes.some((e) => e.id === id) && jukebox.some((j) => j.moments.some((m) => m.episodeId === id));
 
 export const Route = createFileRoute("/jukebox")({
   staticData: { sitemap: true },
+  // /jukebox?show=clubs opens on the Clubs button (the home page's Clubs tile, Lisa 28 Oct 2026).
   validateSearch: (s: Record<string, unknown>): Search =>
-    typeof s["afterparty"] === "string" && isMusicEpisode(s["afterparty"] as string) ? { afterparty: s["afterparty"] as string } : {},
+    typeof s["afterparty"] === "string" && isMusicEpisode(s["afterparty"] as string)
+      ? { afterparty: s["afterparty"] as string }
+      : s["show"] === "clubs"
+        ? { show: "clubs" }
+        : {},
   loaderDeps: ({ search }) => ({ afterparty: search.afterparty }),
   loader: ({ deps }) => ({ afterparty: deps.afterparty }),
   head: ({ loaderData }) => ({
@@ -52,12 +57,12 @@ export const Route = createFileRoute("/jukebox")({
 });
 
 function JukeboxPage() {
-  const { afterparty } = Route.useSearch();
+  const { afterparty, show } = Route.useSearch();
   const navigate = useNavigate({ from: "/jukebox" });
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="px-4 pb-16 pt-10 sm:px-6">
-        <JukeboxMachine items={jukebox} initialEpisode={afterparty} onPickEpisode={(id) => void navigate({ search: id ? { afterparty: id } : {}, replace: true, resetScroll: false })} />
+        <JukeboxMachine items={jukebox} initialEpisode={afterparty} initialFilter={show} onPickEpisode={(id) => void navigate({ search: id ? { afterparty: id } : {}, replace: true, resetScroll: false })} />
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
           Every song, record, band and sound that comes up in the interviews - the playlist of the night, Afterparty by Afterparty. The screen shows a
           different video every day. The jukebox fills itself from my episode indexes, so every new Afterparty adds its songs. Nothing is hosted

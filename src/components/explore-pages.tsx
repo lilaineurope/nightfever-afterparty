@@ -1,29 +1,29 @@
 import { Link } from "@tanstack/react-router";
-import { bookClub, jukebox } from "@/data/collections";
-import { LOCATIONS } from "@/data/locations";
+import { bookClub, clubsMentioned, jukebox } from "@/data/collections";
+import { entities } from "@/data/entities";
 import { sceneEvents } from "@/data/scene";
-import timelineImg from "@/assets/cards/timeline.jpg";
-import connectionsImg from "@/assets/cards/connections.jpg";
-import jukeboxImg from "@/assets/cards/jukebox.jpg";
-import bookClubImg from "@/assets/cards/book-club.jpg";
-import mapImg from "@/assets/cards/map.jpg";
-import guestbookImg from "@/assets/cards/guestbook.jpg";
+import { COME_BACK, NEW_FACES } from "@/data/interview-next";
 
-// Home page "more to explore" grid: one card per page, with live counts from the same data the pages use.
+// Home page "more to explore" grid (Lisa, 28 Oct 2026): Timeline, Book Club, Jukebox, A–Z, Guestbook, Clubs (-> the Jukebox's Clubs button),
+// with live counts from the same data the pages use.
 const CARDS = [
-  { to: "/timeline", title: "Timeline", img: timelineImg, line: "New York nightlife decade by decade, with the guests in every scene.", count: `${sceneEvents.length} Moments` },
-  { to: "/network", title: "Network", img: connectionsImg, line: "Who turns up with who - every name dropped, tied to the episodes they share.", count: "The web of names" },
-  { to: "/jukebox", title: "Jukebox", img: jukeboxImg, line: "Every song, band and sound the guests mention - press play.", count: `${jukebox.length} Songs & Acts` },
-  { to: "/book-club", title: "Book Club", img: bookClubImg, line: "The diaries, novels, magazines and gossip columns from the stories.", count: `${bookClub.length} Books & Magazines` },
-  { to: "/map", title: "Map", img: mapImg, line: "Every club, street and city on one map - and the ones still lost.", count: `${LOCATIONS.length} Places` },
-  { to: "/guestbook", title: "Guestbook", img: guestbookImg, line: "Leave a note for the Afterparty - your episode, your club, your night.", count: "Sign it!" },
-] as const;
+  { to: "/timeline", search: undefined, key: "timeline", title: "Timeline", count: `${sceneEvents.length} Moments` },
+  { to: "/book-club", search: undefined, key: "book-club", title: "Book Club", count: `${bookClub.length} Books & Magazines` },
+  { to: "/jukebox", search: undefined, key: "jukebox", title: "Jukebox", count: `${jukebox.length} Songs & Acts` },
+  { to: "/explore", search: undefined, key: "explore", title: "A–Z", count: `${entities.length} Names` },
+  { to: "/guestbook", search: undefined, key: "guestbook", title: "Guestbook", count: "Sign it!" },
+  { to: "/jukebox", search: { show: "clubs" as const }, key: "clubs", title: "Clubs", count: `${clubsMentioned.length} Clubs` },
+  // Lisa, 28 Oct 2026: a full-width tile down to the "Who to interview next" list on this page.
+  { to: "/", search: undefined, hash: "interview-next", key: "interview", title: "Who to interview next", count: `${NEW_FACES.length + COME_BACK.length} Names - and your pick` },
+];
 
 // Xerox Flyer tiles (exactly as the design): a heavy black-ruled grid of type-only tiles, some flooded pink or black.
 const FILL: Record<string, string> = {
-  "/network": "bg-pink text-pink-foreground",
-  "/book-club": "bg-gold text-gold-foreground",
-  "/guestbook": "bg-pink text-pink-foreground",
+  "book-club": "bg-gold text-gold-foreground",
+  explore: "bg-pink text-pink-foreground",
+  clubs: "bg-gold text-gold-foreground",
+  guestbook: "bg-pink text-pink-foreground",
+  interview: "bg-background text-cream",
 };
 
 export function ExplorePages() {
@@ -34,10 +34,12 @@ export function ExplorePages() {
       </h2>
       <ul className="mt-6 grid grid-cols-1 gap-[3px] border-[3px] border-gold bg-gold sm:grid-cols-2 lg:grid-cols-3">
         {CARDS.map((c) => (
-          <li key={c.to} className="flex">
+          <li key={c.key} className={`flex${c.key === "interview" ? " sm:col-span-2 lg:col-span-3" : ""}`}>
             <Link
               to={c.to}
-              className={`group block w-full p-5 transition hover:bg-highlight hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-pink ${FILL[c.to] ?? "bg-background text-cream"}`}
+              {...(c.search ? { search: c.search } : {})}
+              {...("hash" in c && c.hash ? { hash: c.hash } : {})}
+              className={`group block w-full p-5 transition hover:bg-highlight hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-pink ${FILL[c.key] ?? "bg-background text-cream"}`}
             >
               <span className="block font-[family-name:var(--font-flyer)] text-[30px] uppercase leading-tight">{c.title}</span>
               <span className="mt-1 block text-[13px]">{c.count}</span>

@@ -25,6 +25,11 @@ import visageRefs from "./s02e01.json";
 import waltRefs from "./s01e06.json";
 import jennyRefs from "./s02e07.json";
 
+/** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
+ * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
+const NOT_ON_THE_BOX = new Set(["Michael Alig"]);
+const topNames = (refs: { name: string; mentions: number }[]) => refs.filter((r) => !NOT_ON_THE_BOX.has(r.name)).sort((a, b) => b.mentions - a.mentions).slice(0, 3);
+
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
   id: string;
@@ -73,7 +78,7 @@ const s06e01: Episode = {
       "The host finally takes the guest chair! James on growing up, moving to New York and the club years he has been documenting ever since - with Warhol and Michael Alig never far away.",
     references: jamesRefs.length,
     mentions: jamesRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-    top: [...jamesRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+    top: topNames(jamesRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e01: Episode = {
@@ -94,7 +99,7 @@ const s01e01: Episode = {
       "Where it all started - the very first episode! Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Pure glamour.",
     references: brillRefs.length,
     mentions: brillRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-    top: [...brillRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+    top: topNames(brillRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e02: Episode = {
@@ -114,7 +119,7 @@ const s01e02: Episode = {
     "The oldest club kid in the world! Village Voice legend Michael Musto on Studio 54, outlaw parties, ACT UP, the Club Kids - and, as he tells it, the vodka cranberry waiting for him at the Limelight.",
   references: mustoRefs.length,
   mentions: mustoRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...mustoRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(mustoRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e03: Episode = {
@@ -133,7 +138,7 @@ const s01e03: Episode = {
     "Lisa E., the it girl! James's NYU partner-in-crime on their plan to conquer the clubs, lunchboxes and drooping hats, Warhol's memorial - and the New York Times story that changed her life.",
   references: edelsteinRefs.length,
   mentions: edelsteinRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...edelsteinRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(edelsteinRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLAknZ8rbAhR4",
 };
 
@@ -153,7 +158,7 @@ const s02e03: Episode = {
     "The Empress of the Night! Susanne Bartsch on running away to London, the Blitz, her SoHo stores, Savage, Bentley's and the Copa - and throwing the Love Balls that raised millions for AIDS.",
   references: bartschRefs.length,
   mentions: bartschRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...bartschRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(bartschRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLK2eT8Odqysw",
 };
 
@@ -174,7 +179,7 @@ const s03e01: Episode = {
     "The fashion legend herself! Patricia Field on her 8th Street store, the House of Field balls, dressing Carrie Bradshaw and Miranda Priestly - and why the world needs way more personal style.",
   references: fieldRefs.length,
   mentions: fieldRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...fieldRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(fieldRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e08: Episode = {
@@ -194,7 +199,7 @@ const s04e08: Episode = {
     "Boom! Richie Rich skates from the Ice Capades to the Style Summit, Hotel 17 and Susanne Bartsch's side - then Heatherette, with Miss Piggy front row and Paris in a studded bodysuit.",
   references: richieRefs.length,
   mentions: richieRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...richieRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(richieRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e06: Episode = {
@@ -214,7 +219,7 @@ const s05e06: Episode = {
     "Christopher Makos, Warhol's perfect companion! From a Catholic boy in El Monte to Tennessee Williams's typewriter, Tony Perkins on the Riviera, a weekend with Man Ray and Andy in drag.",
   references: makosRefs.length,
   mentions: makosRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...makosRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(makosRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 /** Season and episode order, earliest first. */
@@ -234,7 +239,7 @@ const s03e06: Episode = {
     "Eric Goode, the mind behind Area! From Etch A Sketch drawings at the Mudd Club and a pig carcass at the Club With No Name to Area's ever-changing themes, MK's Dobermans, the Maritime Hotel, Tiger King and a lifelong love of tortoises.",
   references: goodeRefs.length,
   mentions: goodeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...goodeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(goodeRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e07: Episode = {
@@ -252,7 +257,7 @@ const s01e07: Episode = {
     "Rudolf Piper, the club man behind Pravda, Danceteria, the Tunnel and Mars! From a 24-hour bunker club in Berlin and Keith Haring's black-and-white floor to Madonna's first shows, the Club Kids' basement, a Liberace party with white pianos everywhere and the clubs that followed in Paris, Miami and São Paulo.",
   references: piperRefs.length,
   mentions: piperRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...piperRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(piperRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEVw6ON78TZM",
 };
 
@@ -273,7 +278,7 @@ const s06e03: Episode = {
     "Chi Chi Valenti & Johnny Dynell, the couple who met at the Mudd Club! From Chi Chi on its door and Johnny's first DJ night there - without owning a single record - to Jackie 60's wild theme nights and Night of a Thousand Stevies, the House of Xtravaganza, Elements of Vogue and the balls coming downtown, and Click + Drag at Mother, the tightest door Chi Chi ever ran.",
   references: valentiDynellRefs.length,
   mentions: valentiDynellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...valentiDynellRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(valentiDynellRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e04: Episode = {
@@ -293,7 +298,7 @@ const s05e04: Episode = {
     "Nick Egan, the art-school punk who sang in The Tea Set! From modelling for Vivienne Westwood and steering Bow Wow Wow for Malcolm McLaren - the See Jungle cover included - to Duck Rock and Buffalo Gals, the Stray Cats making tattoos mainstream and his first videos as MTV took off, then Marc Jacobs' grunge show and Sonic Youth's Sugar Kane, Duran Duran's Ordinary World and INXS's Kick.",
   references: eganRefs.length,
   mentions: eganRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...eganRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(eganRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e10: Episode = {
@@ -312,7 +317,7 @@ const s04e10: Episode = {
     "Ann Magnuson, the West Virginia girl who managed Club 57! From childhood shows in Charleston and London punk watched from a safe distance to New York, New Wave Vaudeville and a year running Club 57 for Stanley Strychacki - the Monster Movie Club, Ladies Auxiliary proms and Klaus Nomi singing opera on a snow mound - then the Pyramid and Danceteria, Pulsallama, Bongwater and Vulcan Death Grip, The Hunger with Bowie, Desperately Seeking Susan, Making Mr. Right, Anything But Love, Ghost Cat and her own suRURALism.",
   references: magnusonRefs.length,
   mentions: magnusonRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...magnusonRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(magnusonRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e08: Episode = {
@@ -330,7 +335,7 @@ const s02e08: Episode = {
     "Michelangelo Signorile, from gossip-column planter to ACT UP and OutWeek! Mike Hall Associates and the columns of Liz Smith and Suzy, the Gaultier lookalike contest at the Palladium, being turned away from The World by James, Suzygate, a first protest at Cardinal Ratzinger's speech, the Malcolm Forbes cover and the birth of outing.",
   references: signorileRefs.length,
   mentions: signorileRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...signorileRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(signorileRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLBdv5CNDx8Wg",
 };
 
@@ -350,7 +355,7 @@ const s05e03: Episode = {
     "Amanda Lepore, original Club Kid, LaChapelle muse and Doll Parts author! A fall on the stairs at The Building, the glitter-rock crowd in New Jersey, the Cave Canem opening, go-go dancing in the cage at Disco 2000, the Club Kids on The Joan Rivers Show, a Beverly Hillbillies barn party for Donna Douglas and diamonds glued under her nose.",
   references: leporeRefs.length,
   mentions: leporeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...leporeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(leporeRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s06e08: Episode = {
@@ -369,7 +374,7 @@ const s06e08: Episode = {
     "William Norwich, the Daily News uptown society columnist of the go-go 80s! Uptown versus Downtown with Dinah Prince, Suzy and the Cholly Knickerbockers, Brooke Astor's emeralds, Jayne Wrightsman's last interview, Blaine Trump's AIDS fundraising, Anna Wintour during the newspaper strike - and James escorted out of an East Hampton party.",
   references: norwichRefs.length,
   mentions: norwichRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...norwichRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(norwichRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e06: Episode = {
@@ -387,7 +392,7 @@ const s02e06: Episode = {
     "Michael Schmidt, the chain-mail man! Meeting James at the Gaiety, Annie Flanders walking him into Area, a dress in a SoHo window that brought Cher calling, Tina Turner's crystal dress, Debbie Harry's razor-blade gown, a Palladium room with Iggy Pop in Braille, Squeezebox at Don Hill's - and Dita Von Teese in 3D print.",
   references: schmidtRefs.length,
   mentions: schmidtRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...schmidtRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(schmidtRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLaWjcrYbPf7Y",
 };
 
@@ -406,7 +411,7 @@ const s01e04: Episode = {
     "Peter Gatien, the Club King! Rush in Cornwall, sharks under the dance floor in Atlanta, an old church that became the Limelight, Whitney Houston singing, Disco 2000, Club USA's slide and the Tunnel's hip-hop Sundays - and, as Peter tells it, Giuliani's war on his clubs.",
   references: gatienRefs.length,
   mentions: gatienRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...gatienRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(gatienRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLXKM8jtNUvYs",
 };
 
@@ -425,7 +430,7 @@ const s02e04: Episode = {
     "Nikki Haskell, the queen of the disco nap! The Daisy on Rodeo Drive, Le Club, a broker by day and dancing every night, Studio 54's opening night, The Nikki Haskell Show, Imelda Marcos in Manila - and the tapes nobody else has.",
   references: haskellRefs.length,
   mentions: haskellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...haskellRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(haskellRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEN9ytk00s2o",
 };
 
@@ -445,7 +450,7 @@ const s06e07: Episode = {
     "Sally Randall, the face at the Palladium door! Opening night as the crowd rolled under the gates, Napoleon hats and long wigs, SVA with Keith and Kenny, a lip-sync Jesus Christ Superstar at Danceteria, the club crowd on Oprah - and why she turned down Letterman.",
   references: randallRefs.length,
   mentions: randallRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...randallRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(randallRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e10: Episode = {
@@ -463,7 +468,7 @@ const s01e10: Episode = {
     "Joey Arias, not a queen but a goddess! Fiorucci's star stylist, Klaus Nomi's soul brother, Bowie on Saturday Night Live, Club 57, the Andy and Edie show at Danceteria, a movie date with Warhol, Billie Holiday at the Limelight and Bar d'O.",
   references: ariasRefs.length,
   mentions: ariasRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...ariasRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(ariasRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLHwtitorQnoQ",
 };
 
@@ -483,7 +488,7 @@ const s03e08: Episode = {
     "Larry Tee, superstar DJ! Up from Atlanta with RuPaul and Lahoma van Zandt, Celebrity Club in the Tunnel basement, Nelson Sullivan's townhouse, co-writing 'Supermodel', Liza dancing in his booth at Love Machine, naming Electroclash in Williamsburg - and Zuzii in London and Berlin.",
   references: teeRefs.length,
   mentions: teeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...teeRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(teeRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e04: Episode = {
@@ -502,7 +507,7 @@ const s04e04: Episode = {
     "Zaldy, from the Tunnel basement to three Emmys! Dressing Ru for decades, Miss Boy Bar, twin looks with Mathu Andersen, the alien reveal that won the Love Ball, walking for Mugler, the Levi's taxi ad - and Michael Jackson's loafers in a Ziploc.",
   references: zaldyRefs.length,
   mentions: zaldyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...zaldyRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(zaldyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e01: Episode = {
@@ -521,7 +526,7 @@ const s02e01: Episode = {
     "Michelle Visage, from New Jersey teen clubs to Drag Race! A fake ID from her mother, voguing at the Underground and on the piers with the House of Magnifique, the Love Ball, the Seduction audition, meeting RuPaul at the Copa - and co-hosting The RuPaul Show.",
   references: visageRefs.length,
   mentions: visageRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...visageRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(visageRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e06: Episode = {
@@ -540,7 +545,7 @@ const s01e06: Episode = {
     "Waltpaper, from a punk Mohawk in Norfolk to the Limelight stage! Wigstock 1991, an art studio in the attic of The Building, the club kid houses, Michael Alig's mentoring, drag queens versus club kids, the House of Field - and the 90s turning darker.",
   references: waltRefs.length,
   mentions: waltRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...waltRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(waltRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e07: Episode = {
@@ -559,7 +564,7 @@ const s02e07: Episode = {
     "Jenny Talia, club kid icon and Queen of Manhattan! Her goodbye to Michael Alig, sneaking into The Building at 15, Phil Donahue in a gimp mask, Gaultier and Steven Meisel's Calvin Klein ad, the club kids in Paris with Gloria Gaynor - and from the club to the Lower East Side Girls Club.",
   references: jennyRefs.length,
   mentions: jennyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: [...jennyRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  top: topNames(jennyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07].sort((a, b) =>

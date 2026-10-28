@@ -22,6 +22,9 @@ PINK = np.array([236, 64, 150], np.float32)
 INK = np.array([28, 26, 26], np.float32)
 PAPER = np.array([237, 231, 220], np.float32)
 HOST_OR_CITY = {"James St. James", "Fenton Bailey", "Randy Barbato", "New York", "World of Wonder", "World of Wonder (WOW)"}
+# Never on a polaroid scrap (Lisa, 28 Oct 2026): Michael Alig is a controversial name - his mentions stay in the lists,
+# but the polaroids give the space to the next reference in rank instead.
+NEVER_ON_POLAROID = {"Michael Alig"}
 
 
 def font(name, size):
@@ -198,7 +201,7 @@ def main():
     clean = []
     for l in labels if o.labels else [n for n in from_ep if n != guest and not any(n == g for g in guest.split(" & "))]:
         l = re.split(r" \(|:|,| / | - ", l)[0].strip()
-        if l and len(l) <= 22 and not any(h in l for h in hosts) and l not in clean: clean.append(l)
+        if l and len(l) <= 22 and not any(h in l for h in hosts) and l not in NEVER_ON_POLAROID and l not in clean: clean.append(l)
     labels = clean[:4]
 
     rgb, a = cutout(Image.open(o.portrait), o.composite)
