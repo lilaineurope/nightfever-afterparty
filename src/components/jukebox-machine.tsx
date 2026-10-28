@@ -582,10 +582,10 @@ export function JukeboxMachine({
                 Everything from the episode you can play here - music first, then the clubs, films &amp; TV, people, fashion, events and publications, the most watched on top. Take it with you:
               </p>
               <div className="jbx-ep-links jbx-ep-top">
-                <Link to={episodePath(ep.id)}>The Afterparty →</Link>
-                <span className="jbx-ep-stats">
-                  <b className="ref">{ep.references}</b> references · <b className="men">{ep.mentions}</b> mentions
-                </span>
+                <Link to={episodePath(ep.id)}>
+                  The Afterparty
+                  <span className="jbx-count" title={`${ep.references} references and ${ep.mentions} mentions`}>{ep.references + ep.mentions}</span> →
+                </Link>
                 <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${guestName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
               </div>
               <div className="jbx-ep-links jbx-ep-lists">
