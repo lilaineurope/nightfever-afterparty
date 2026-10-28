@@ -402,6 +402,9 @@ export const LOCATIONS: Located[] = [
   { name: "2001 Odyssey", lat: 40.6337, lng: -74.017, area: "Bay Ridge" },
   { name: "42nd Street", lat: 40.7553, lng: -73.9869, area: "Times Square" },
   { name: "Beacon Theatre", lat: 40.7805, lng: -73.9812, area: "Upper West Side" },
+  // S02E07 Jenny Talia
+  { name: "Pratt Institute", lat: 40.6913, lng: -73.9637, area: "Brooklyn" },
+  { name: "Oklahoma", lat: 35.4676, lng: -97.5164, area: "Oklahoma" },
   // S01E06 Waltpaper
   { name: "The Building", lat: 40.7448, lng: -73.9905, area: "Flatiron" },
   { name: "Groove Thing (The Building)", lat: 40.7448, lng: -73.9905, area: "Flatiron" },

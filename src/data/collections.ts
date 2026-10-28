@@ -139,6 +139,8 @@ const SPOTIFY: Record<string, string> = {
   "Culture Club": "spotify:artist:6kz53iCdBSqhQCZ21CoLcc",
   "Deee-Lite": "spotify:artist:4eQJIXFEujzhTVVS1gIfu5",
   "KISS": "spotify:artist:07XSN3sPlIlB2L2XNcTwJw",
+  "Gloria Gaynor – 'I Will Survive'": "spotify:track:7rIovIsXE6kMn629b7kDig",
+  "Rancid": "spotify:artist:6xTk3EK5T9UzudENVvu9YB",
   "Bush Tetras – 'Too Many Creeps'": "spotify:track:17yxzUcZSu3S9KyoGF0ckI",
   "USA for Africa – 'We Are the World'": "spotify:track:3Z2tPWiNiIpg8UMMoowHIk",
   "Jesus Christ Superstar": "spotify:album:32tSaPx5IHoxZiZHXLhH61",

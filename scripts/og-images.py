@@ -40,7 +40,8 @@ EP={"s01e01":("episode-dianne-brill.jpg","Dianne Brill",1,1),"s01e02":("episode-
 "s03e08":("polaroid-larry-tee.jpg","Larry Tee",3,8),
 "s04e04":("polaroid-zaldy.jpg","Zaldy",4,4),
 "s02e01":("polaroid-michelle-visage.jpg","Michelle Visage",2,1),
-"s01e06":("polaroid-waltpaper.jpg","Waltpaper",1,6)}
+"s01e06":("polaroid-waltpaper.jpg","Waltpaper",1,6),
+"s02e07":("polaroid-jenny-talia.jpg","Jenny Talia",2,7)}
 for k,(f,g,s,e) in EP.items():
     im=Image.open(A+f)
     if f.startswith(("block-", "polaroid-")):  # square portrait: blurred cover background + portrait on the right

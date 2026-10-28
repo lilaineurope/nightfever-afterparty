@@ -101,13 +101,14 @@ def cutout(img, composite):
     # ...but a hole that is plain studio backdrop (the gap between raised arms and the head - S02E03 Susanne Bartsch,
     # Lisa 28 Oct 2026) stays background, so the collage shows through it too
     holes = ((1 - ff) & (1 - a)).astype(np.uint8)
-    edge = np.zeros_like(a, bool); edge[:6, :] = edge[-6:, :] = edge[:, :6] = edge[:, -6:] = True
-    bgpx = rgb[edge & (a == 0)].reshape(-1, 3).astype(np.float32)
-    bgc = np.median(bgpx, axis=0) if len(bgpx) else np.array([200, 200, 200], np.float32)
+    bgpx = rgb[(a == 0) & (ff == 1)].reshape(-1, 3).astype(np.float32)  # the backdrop seen outside the figure
+    lum = bgpx.mean(1) if len(bgpx) else np.array([200.0])
+    lo, hi = np.percentile(lum, 2) - 12, np.percentile(lum, 99.5) + 12  # studio light falls off: use the whole range
     n2, lab2, st2, _ = cv2.connectedComponentsWithStats(holes)
     for i in range(1, n2):
         px = rgb[lab2 == i].astype(np.float32)
-        if st2[i, cv2.CC_STAT_AREA] > 400 and np.linalg.norm(px.mean(0) - bgc) < 28 and px.std(0).mean() < 18:
+        flat = px.std(0).mean() < 12 and (px.max(1) - px.min(1)).mean() < 14
+        if st2[i, cv2.CC_STAT_AREA] > 150 and flat and lo <= px.mean() <= hi:
             holes[lab2 == i] = 0
     a = a | holes
     if composite: a = cv2.erode(a, np.ones((5, 5), np.uint8))
