@@ -514,6 +514,7 @@ const s02e01: Episode = {
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-201",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO8315202370.mp3",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCIbesoI82iQ",
   runtime: "1:01:04",
   afterpartyPublished: "2026-10-31",
   blurb:
@@ -532,6 +533,7 @@ const s01e06: Episode = {
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-waltpaper",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO3488732340.mp3",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLYXcNI2FQ3e0",
   runtime: "54:12",
   afterpartyPublished: "2026-11-01",
   blurb:
@@ -550,6 +552,7 @@ const s02e07: Episode = {
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-207",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO6193118189.mp3",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLJLnyR5VUQWY",
   runtime: "52:35",
   afterpartyPublished: "2026-11-02",
   blurb:

@@ -130,6 +130,12 @@ function EpisodePage() {
               className="inline-block rounded-full bg-cream text-background border-2 border-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
               Listen to the episode
             </a>
+            {thisEpisode.youtubePlaylistUrl && (
+              <a href={thisEpisode.youtubePlaylistUrl} target="_blank" rel="noreferrer"
+                className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
+                The AFTERPARTY playlist on YouTube
+              </a>
+            )}
             <ShareButton path="/episodes/s02e07" title={`${thisEpisode.guest.replace(/ aka .*/, "")}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
         </div>
