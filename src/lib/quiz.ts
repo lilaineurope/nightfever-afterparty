@@ -2,6 +2,7 @@ import { entities, entityFor, totalMentions, type Entity } from "@/data/entities
 import { episodes } from "@/data/episodes";
 import { sceneEvents } from "@/data/scene";
 import { guests } from "@/data/guests";
+import { seededRandom } from "@/lib/random";
 
 // Pub quiz questions generated only from the published episode indexes.
 
@@ -14,13 +15,6 @@ export type QuizQuestion = {
   slug: string;
 };
 
-function rng(seed: number) {
-  let s = seed >>> 0 || 1;
-  return () => {
-    s = (s * 1664525 + 1013904223) >>> 0;
-    return s / 2 ** 32;
-  };
-}
 
 const spoken = (e: Entity) =>
   e.refs.filter((r) => r.mentions > 0 && r.time && r.time !== "On camera");
@@ -191,7 +185,7 @@ const storyMakers: Maker[] = [
 const episodeMakers: Maker[] = [makers[0]!, makers[1]!, makers[2]!];
 
 export function generateQuiz(seed: number, count = 10): QuizQuestion[] {
-  const r = rng(seed);
+  const r = seededRandom(seed);
   const out: QuizQuestion[] = [];
   const seen = new Set<string>();
   let guard = 0;

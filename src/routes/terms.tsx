@@ -4,11 +4,9 @@ import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 
-import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
-const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
+import { CONTACT_EMAIL, CONTACT_MAILTO, INSTAGRAM_URL } from "@/lib/contact";
+import { TEXT_LINK } from "@/lib/styles";
 
-const GOLD_LINK =
-  "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 export const Route = createFileRoute("/terms")({
   staticData: { sitemap: true },
@@ -89,7 +87,7 @@ function TermsPage() {
                 href={NIGHT_FEVER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 <em>Night Fever</em>
               </a>{" "}
@@ -104,7 +102,7 @@ function TermsPage() {
                 href={WOW_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 World of Wonder
               </a>
@@ -132,7 +130,7 @@ function TermsPage() {
           <Section title="3. Guestbook notes">
             <p>
               Anyone can leave a note in the{" "}
-              <Link to="/guestbook" className={GOLD_LINK}>guestbook</Link>.
+              <Link to="/guestbook" className={TEXT_LINK}>guestbook</Link>.
               Every note is read before it appears, and I decide which notes go
               up; I may also hide or remove a note later. Notes are shown
               exactly as written (I don&rsquo;t edit them), sometimes with a
@@ -200,15 +198,15 @@ function TermsPage() {
               of someone who is &mdash; you can ask for a factual correction, for
               a private person to be unlinked, or for an entry to be removed
               altogether. Email{" "}
-              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+              <a href={CONTACT_MAILTO} className={TEXT_LINK}>
                 {CONTACT_EMAIL}
               </a>{" "}
               or send a message{" "}
               <a
-                href={IG_PROFILE}
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 on Instagram
               </a>{" "}
@@ -260,15 +258,15 @@ function TermsPage() {
           <Section title="11. Contact">
             <p>
               Corrections, permissions, removals and general questions:{" "}
-              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+              <a href={CONTACT_MAILTO} className={TEXT_LINK}>
                 {CONTACT_EMAIL}
               </a>{" "}
               or{" "}
               <a
-                href={IG_PROFILE}
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 @lilaineurope on Instagram
               </a>
@@ -278,11 +276,11 @@ function TermsPage() {
 
           <p className="mt-10 border-t border-border pt-6 text-sm text-muted-foreground">
             How your data is handled is covered separately in the{" "}
-            <Link to="/privacy" className={GOLD_LINK}>
+            <Link to="/privacy" className={TEXT_LINK}>
               Privacy Policy
             </Link>
             . The story behind the project is on the{" "}
-            <Link to="/about" className={GOLD_LINK}>
+            <Link to="/about" className={TEXT_LINK}>
               About page
             </Link>
             .{" "}

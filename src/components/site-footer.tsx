@@ -5,10 +5,10 @@ import { LegalNote } from "@/components/legal-links";
 import { TipBox } from "@/components/tip-box";
 import { ListenBox } from "@/components/listen-box";
 import { NewsletterBox } from "@/components/newsletter-box";
+import { TEXT_LINK } from "@/lib/styles";
 
 const LINK =
   "transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold";
-const TEXT_LINK = "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 // One shared footer for every page (Lisa, 22-23 Oct 2026): on the left the Listen box, the newsletter sign-up, then all the footer text - the show and World of
 // Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook (no "Tip the fan page" link - Lisa, 23 Oct),

@@ -4,11 +4,9 @@ import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 
-import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
-const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
+import { CONTACT_EMAIL, CONTACT_MAILTO, INSTAGRAM_URL } from "@/lib/contact";
+import { TEXT_LINK } from "@/lib/styles";
 
-const GOLD_LINK =
-  "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 export const Route = createFileRoute("/privacy")({
   staticData: { sitemap: true },
@@ -92,15 +90,15 @@ function PrivacyPage() {
             </p>
             <p>
               You can reach her by email at{" "}
-              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+              <a href={CONTACT_MAILTO} className={TEXT_LINK}>
                 {CONTACT_EMAIL}
               </a>{" "}
               or{" "}
               <a
-                href={IG_PROFILE}
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 on Instagram
               </a>
@@ -113,7 +111,7 @@ function PrivacyPage() {
                 href={WOW_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 World of Wonder
               </a>{" "}
@@ -122,7 +120,7 @@ function PrivacyPage() {
                 href={NIGHT_FEVER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 <em>Night Fever</em>
               </a>{" "}
@@ -325,7 +323,7 @@ function PrivacyPage() {
               You can withdraw your newsletter consent by unsubscribing with
               one click in any message, or on the unsubscribe page the emails
               link to. To take down a guestbook note, write to{" "}
-              <a href={CONTACT_MAILTO} className={GOLD_LINK}>
+              <a href={CONTACT_MAILTO} className={TEXT_LINK}>
                 {CONTACT_EMAIL}
               </a>{" "}
               or use the contact page, and tell me the name it was signed with.
@@ -341,7 +339,7 @@ function PrivacyPage() {
                 href="https://www.imy.se/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 Integritetsskyddsmyndigheten (IMY)
               </a>
@@ -372,9 +370,9 @@ function PrivacyPage() {
           </Section>
 
           <p className="mt-10 border-t border-border pt-6 text-sm text-muted-foreground">
-            See also the <Link to="/terms" className={GOLD_LINK}>Terms &amp;
+            See also the <Link to="/terms" className={TEXT_LINK}>Terms &amp;
             Conditions</Link> &mdash; and the honest note on the{" "}
-            <Link to="/about" className={GOLD_LINK}>
+            <Link to="/about" className={TEXT_LINK}>
               About page
             </Link>{" "}
             about how this index is researched.{" "}

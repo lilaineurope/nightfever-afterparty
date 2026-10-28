@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { entityFor, totalMentions } from "@/data/entities";
 import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME } from "@/data/mentors";
+import { stageName } from "@/data/episodes";
 
 // Hall of Fame (Lisa, 28 Oct 2026; replaces "The names everyone drops"): the top 10 mentors of the scene - who took whom under
 // their wing, as the guests tell it - ranked by how many people they mentored, then by how often they come up across every Afterparty.
-const short = (n: string) => n.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia").replace(/ \(as heard\)$/, "");
+const short = (n: string) => stageName(n).replace(/ \(as heard\)$/, "");
 
 const mentors = (() => {
   const by = new Map<string, typeof MENTOR_LINKS>();

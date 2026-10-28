@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { WEB3FORMS_KEY } from "@/lib/web3forms";
 import { CONTACT_TOPICS } from "@/lib/pages";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
+import { FORM_FIELD } from "@/lib/styles";
 
 type Search = { about?: string };
 
@@ -20,8 +21,6 @@ export const Route = createFileRoute("/contact")({
 // The pages a message can be about - built from the one page list (src/lib/pages.ts), so it never goes stale.
 const TOPICS = CONTACT_TOPICS;
 
-const FIELD =
-  "w-full rounded-xl border border-border bg-background px-4 py-2.5 text-cream placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none";
 
 function ContactPage() {
   const { about } = Route.useSearch();
@@ -87,16 +86,16 @@ function ContactPage() {
             <form onSubmit={onSubmit} className="space-y-4">
               <label className="block">
                 <span className="text-sm text-muted-foreground">Your name</span>
-                <input name="name" required maxLength={120} className={`mt-1 ${FIELD}`} />
+                <input name="name" required maxLength={120} className={`mt-1 ${FORM_FIELD}`} />
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">Your email, so I can reply</span>
-                <input name="email" type="email" required maxLength={255} className={`mt-1 ${FIELD}`} />
+                <input name="email" type="email" required maxLength={255} className={`mt-1 ${FORM_FIELD}`} />
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">What it's about</span>
                 <span className="relative mt-1 block">
-                <select name="about" required defaultValue={about ?? ""} className={`appearance-none pr-10 [color-scheme:light] ${FIELD}`}>
+                <select name="about" required defaultValue={about ?? ""} className={`appearance-none pr-10 [color-scheme:light] ${FORM_FIELD}`}>
                   <option value="" disabled>Pick a page</option>
                   {about && !TOPICS.includes(about) && <option value={about}>{about}</option>}
                   {TOPICS.map((t) => (
@@ -108,7 +107,7 @@ function ContactPage() {
               </label>
               <label className="block">
                 <span className="text-sm text-muted-foreground">Your message</span>
-                <textarea name="message" required rows={6} maxLength={5000} className={`mt-1 ${FIELD}`} />
+                <textarea name="message" required rows={6} maxLength={5000} className={`mt-1 ${FORM_FIELD}`} />
               </label>
               <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               <p className="text-xs text-muted-foreground">

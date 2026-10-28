@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { episodes } from "@/data/episodes";
+import { toSeconds } from "@/lib/time";
 
 /*
  * One episode player for the whole site. It plays the show's own public podcast audio
@@ -17,7 +18,6 @@ const set = (s: Partial<State>) => {
 };
 let audio: HTMLAudioElement | null = null;
 
-export const toSeconds = (t: string) => t.split(":").reduce((a, b) => a * 60 + Number(b), 0);
 
 /** Play an episode from a given second. Runs synchronously inside the click, so phones allow it. */
 export function playEpisodeAt(episodeId: string, seconds: number) {

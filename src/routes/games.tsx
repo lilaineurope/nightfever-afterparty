@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
 import { Timestamp } from "@/components/episode-player";
 import { episodePortraits } from "@/components/episode-block";
-import { episodes, episodePath } from "@/data/episodes";
+import { episodes, episodePath, episodeCode } from "@/data/episodes";
 import { entityFor } from "@/data/entities";
 import { useMemo } from "react";
 
@@ -164,7 +164,6 @@ function useTrail(): Step[] {
   }, []);
 }
 
-const short = (id: string) => `S${Number(id.slice(1, 3))} E${Number(id.slice(4, 6))}`;
 
 function LisasTrail() {
   const trail = useTrail();
@@ -189,12 +188,12 @@ function LisasTrail() {
                 <Link to={episodePath(s.id as never)} className="font-semibold text-cream hover:text-pink">
                   {s.guest}
                 </Link>{" "}
-                <span className="text-muted-foreground">· {short(s.id)}</span>
+                <span className="text-muted-foreground">· {episodeCode(s.id)}</span>
                 {i === 0 ? (
                   <p className="text-muted-foreground">The starting point.</p>
                 ) : s.by ? (
                   <p className="text-muted-foreground">
-                    Name-dropped by <span className="text-foreground">{s.by.guest}</span> ({short(s.by.id)}){" "}
+                    Name-dropped by <span className="text-foreground">{s.by.guest}</span> ({episodeCode(s.by.id)}){" "}
                     <Timestamp episodeId={s.by.id} time={s.by.time} className="text-xs" />
                     <span className="block text-xs">{s.by.context}</span>
                   </p>
@@ -293,7 +292,7 @@ function GamesPage() {
                   <ul className="mt-2 space-y-2 text-sm leading-relaxed">
                     {g.moments.map((m) => (
                       <li key={m.id + m.time} className="flex flex-wrap items-baseline gap-x-2">
-                        <span className="text-muted-foreground">{short(m.id)}</span>
+                        <span className="text-muted-foreground">{episodeCode(m.id)}</span>
                         <span>{m.label}</span>
                         <Timestamp episodeId={m.id} time={m.time} className="text-xs" />
                       </li>

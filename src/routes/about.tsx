@@ -5,13 +5,12 @@ import { NIGHT_FEVER_URL } from "../data/guests";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import { INSTAGRAM_URL } from "@/lib/contact";
+import { TEXT_LINK } from "@/lib/styles";
 
 const IG_POST = "https://www.instagram.com/p/Cip1xrSM33P/";
-const IG_PROFILE = "https://www.instagram.com/lilaineurope/";
 const BAR_KAJA = "https://barkaja.org/";
 
-const GOLD_LINK =
-  "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 
 export const Route = createFileRoute("/about")({
   staticData: { sitemap: true },
@@ -39,7 +38,7 @@ function AboutPage() {
               href={NIGHT_FEVER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={GOLD_LINK}
+              className={TEXT_LINK}
             >
               <em>Night Fever</em>
             </a>{" "}
@@ -71,7 +70,7 @@ function AboutPage() {
                 href={IG_POST}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 the original post
               </a>
@@ -103,7 +102,7 @@ function AboutPage() {
                 href={BAR_KAJA}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={GOLD_LINK}
+                className={TEXT_LINK}
               >
                 Bar Kaja
               </a>{" "}
@@ -125,10 +124,10 @@ function AboutPage() {
             itself. If you spot something wrong or would like to add
             something, let me know -{" "}
             <a
-              href={IG_PROFILE}
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={GOLD_LINK}
+              className={TEXT_LINK}
             >
               find me on Instagram
             </a>

@@ -1,7 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { episodes } from "@/data/episodes";
+import { episodes, SEASONS } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
@@ -12,7 +12,6 @@ export const Route = createFileRoute("/episodes/")({
   component: EpisodesPage,
 });
 
-const SEASONS = [1, 2, 3, 4, 5, 6];
 
 function EpisodesPage() {
   const [season, setSeason] = useState<number | null>(null);

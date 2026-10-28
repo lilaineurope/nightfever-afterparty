@@ -4,12 +4,12 @@ import { guestBySlug, guests, WOW_URL } from "../data/guests";
 import { EntityLink } from "./entity-link";
 import { EntityText } from "./entity-text";
 import { GuestEpisodeLinks } from "./guest-episode-links";
+import { SEASONS } from "@/data/episodes";
 
 /**
  * The guest half of the scene story: the expandable guest cards. Rendered on
  * the Guests page (/guests) so the people live on one page.
  */
-const SEASONS = [1, 2, 3, 4, 5, 6];
 const seasonOf = (episode: string) => Number(episode.match(/Season (\d+)/)?.[1] ?? 0);
 
 export function GuestsSection() {

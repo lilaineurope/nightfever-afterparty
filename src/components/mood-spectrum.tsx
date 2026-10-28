@@ -13,6 +13,8 @@ type MoodEntry = {
 };
 
 type Swatch = { colors: string[]; label: string };
+/** Shown only for a look without sampled `colours` in its JSON row (none today - every Mood row has them). */
+const UNSPECIFIED: Swatch = { colors: ["var(--mood-swatch-12)", "var(--mood-swatch-13)", "var(--mood-swatch-14)"], label: "Story palette · unspecified colours" };
 
 function paletteFor(entry: MoodEntry) {
   return (entry.colours ?? []).flatMap((colour) => {
@@ -21,12 +23,12 @@ function paletteFor(entry: MoodEntry) {
   });
 }
 
-export function MoodSpectrum({ moods, id, title, swatchFor, nested = false, episodeId }: {
+export function MoodSpectrum({ moods, id, title, swatchFor = () => UNSPECIFIED, nested = false, episodeId }: {
   episodeId?: string;
   moods: MoodEntry[];
   id: string;
   title: string;
-  swatchFor: (name: string) => Swatch;
+  swatchFor?: (name: string) => Swatch;
   nested?: boolean;
 }) {
   const [i, setI] = useState(0);

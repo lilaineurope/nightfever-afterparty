@@ -208,8 +208,6 @@ export const CATEGORIES = [
   "Publication", "Podcast", "TV", "Film", "Fashion",
 ] as const;
 
-/** Clubs (actual clubs, bars and club nights) and Locations (countries, cities, streets, buildings) together. */
-export const PLACE_CATEGORIES = ["Club", "Location"] as const;
 export const isPlace = (category: string) => category === "Club" || category === "Location";
 
 /** Total mentions of one entity across all episode reference lists. */
@@ -245,22 +243,6 @@ export const mentionsByEpisode = (e: Entity): { episode: string; count: number }
   episodes
     .map((ep) => ({ episode: ep.id, count: mentionsIn(e, ep.id) }))
     .filter((x) => x.count > 0);
-
-/** Mentions per category, split per episode. */
-export const categoryMentionsByEpisode: Record<string, Record<string, number>> = (() => {
-  const out: Record<string, Record<string, number>> = {};
-  const bump = (c: string, ep: string, n: number) => {
-    out[c] = out[c] ?? {};
-    out[c][ep] = (out[c][ep] ?? 0) + n;
-  };
-  for (const r of refs) {
-    const ep = r.episode ?? "";
-    bump("All", ep, r.mentions);
-    bump(r.category, ep, r.mentions);
-    if (r.fashion) bump("Fashion", ep, r.mentions);
-  }
-  return out;
-})();
 
 /** A card that appears in only one episode with nothing else around it: kept for visitors,
  * but left out of the sitemap and marked noindex so Google sees the rich cards instead. */

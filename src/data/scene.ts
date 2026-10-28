@@ -583,24 +583,3 @@ const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
 export const sceneEvents: SceneEvent[] = [...curatedEvents, ...guestMilestones, ...afterpartyMoments];
 
 export const decades = ["1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"] as const;
-
-export const eventsByGuest: Record<string, SceneEvent[]> = Object.fromEntries(
-  guests.map((g) => [
-    g.slug,
-    sceneEvents.filter((e) => e.people.includes(g.slug)),
-  ]),
-);
-
-/** Non-guest figures who appear in more than one event, with their events. */
-export const recurringFigures: { name: string; events: SceneEvent[] }[] = (() => {
-  const map = new Map<string, SceneEvent[]>();
-  for (const e of sceneEvents) {
-    for (const f of e.figures) {
-      map.set(f, [...(map.get(f) ?? []), e]);
-    }
-  }
-  return [...map.entries()]
-    .filter(([, evs]) => evs.length > 1)
-    .map(([name, events]) => ({ name, events }))
-    .sort((a, b) => b.events.length - a.events.length);
-})();

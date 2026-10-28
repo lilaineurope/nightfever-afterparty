@@ -2,3 +2,5 @@
 // never appears on the site or in the repo. Every page that shows an email address uses this constant.
 export const CONTACT_EMAIL = "hello@nightfever-afterparty.com";
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
+/** Lisa's Instagram, linked on About, Terms and Privacy. */
+export const INSTAGRAM_URL = "https://www.instagram.com/lilaineurope/";

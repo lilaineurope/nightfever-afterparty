@@ -8,6 +8,7 @@ import { SHOW_EPISODES, showEpisode, episodeLabel } from "@/lib/guestbook-episod
 import { episodePath } from "@/data/episodes";
 import { sendToInbox } from "@/lib/web3forms";
 import { GUESTBOOK_PAGES, guestbookPage } from "@/lib/pages";
+import { FORM_FIELD } from "@/lib/styles";
 
 export const Route = createFileRoute("/guestbook/")({
   staticData: { sitemap: true },
@@ -22,8 +23,6 @@ export const Route = createFileRoute("/guestbook/")({
     }),
 });
 
-const FIELD =
-  "w-full rounded-xl border border-border bg-background px-4 py-2.5 text-cream placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none";
 const MAX = 1000;
 
 function GuestbookPage() {
@@ -179,17 +178,17 @@ function SignForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="text-sm text-muted-foreground">Your name or nickname</span>
-          <input name="name" required maxLength={60} autoComplete="nickname" className={`mt-1 ${FIELD}`} />
+          <input name="name" required maxLength={60} autoComplete="nickname" className={`mt-1 ${FORM_FIELD}`} />
         </label>
         <label className="block">
           <span className="text-sm text-muted-foreground">Where you're from (optional)</span>
-          <input name="place" maxLength={60} placeholder="e.g. Berlin" className={`mt-1 ${FIELD}`} />
+          <input name="place" maxLength={60} placeholder="e.g. Berlin" className={`mt-1 ${FORM_FIELD}`} />
         </label>
       </div>
       <label className="block">
         <span className="text-sm text-muted-foreground">Favourite episode (optional)</span>
         <span className="relative mt-1 block">
-          <select name="episode" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FIELD}`}>
+          <select name="episode" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FORM_FIELD}`}>
             <option value="">Pick one if you like</option>
             {SHOW_EPISODES.map((e) => (
               <option key={e.code} value={e.code}>
@@ -203,7 +202,7 @@ function SignForm() {
       <label className="block">
         <span className="text-sm text-muted-foreground">Favourite page on this site (optional)</span>
         <span className="relative mt-1 block">
-          <select name="page" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FIELD}`}>
+          <select name="page" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FORM_FIELD}`}>
             <option value="">Pick one if you like</option>
             {GUESTBOOK_PAGES.map((p) => (
               <option key={p.to} value={p.to}>
@@ -219,7 +218,7 @@ function SignForm() {
           <span>Your note</span>
           <span className={length > MAX - 50 ? "text-pink" : ""}>{length}/{MAX}</span>
         </span>
-        <textarea name="message" required minLength={2} maxLength={MAX} rows={5} onChange={(e) => setLength(e.target.value.length)} className={`mt-1 ${FIELD}`} />
+        <textarea name="message" required minLength={2} maxLength={MAX} rows={5} onChange={(e) => setLength(e.target.value.length)} className={`mt-1 ${FORM_FIELD}`} />
       </label>
       {/* spam trap: hidden from people, bots fill it in */}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />

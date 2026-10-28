@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { KIND_LABEL, playlistUrl, trackUrl, type ClubNight } from "@/data/club-nights";
+import { TEXT_LINK } from "@/lib/styles";
 
-const LINK = "text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-pink";
 
 /** "A night at <club> sounded like this" on the club's A–Z card: every song, why it is here and its sources.
  *  Spotify's player loads only after "Play it here" is pressed (and only once the playlist exists). */
@@ -91,7 +91,7 @@ export function ClubNightPlaylist({ night }: { night: ClubNight }) {
           {night.sources.map((s) => (
             <li key={s.key} className="text-muted-foreground">
               <span className="mr-2 inline-block w-5 rounded-full border border-gold/40 text-center font-mono text-[11px] text-gold">{s.key}</span>
-              <a href={s.href} target="_blank" rel="noopener noreferrer" className={LINK}>{s.label}</a>
+              <a href={s.href} target="_blank" rel="noopener noreferrer" className={TEXT_LINK}>{s.label}</a>
             </li>
           ))}
         </ul>

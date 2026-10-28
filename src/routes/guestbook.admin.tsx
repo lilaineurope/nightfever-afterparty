@@ -6,6 +6,7 @@ import { adminListGuestbook, changeGuestbookKey, moderateGuestbook, type Moderat
 import { adminListSuggestions, moderateSuggestion, type PendingSuggestion } from "@/lib/suggestions.functions";
 import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 import { guestbookPage } from "@/lib/pages";
+import { FORM_FIELD } from "@/lib/styles";
 
 // Lisa's moderation page. No accounts: she types her secret moderation key (it can be remembered on her own device),
 // and every request carries it to the server, which checks it against a salted hash.
@@ -17,8 +18,6 @@ export const Route = createFileRoute("/guestbook/admin")({
 });
 
 const STORE = "nf-guestbook-key";
-const FIELD =
-  "w-full rounded-xl border border-border bg-background px-4 py-2.5 text-cream placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none";
 const BTN = "rounded-full px-4 py-1.5 text-sm font-semibold transition disabled:opacity-50";
 type Tab = "pending" | "approved" | "hidden";
 type Action = "approve" | "hide" | "pending" | "delete" | "reply";
@@ -72,7 +71,7 @@ function KeyForm({ onKey, error }: { onKey: (key: string, remember: boolean) => 
     <form onSubmit={onSubmit} className="mt-8 max-w-md space-y-4 rounded-2xl border border-gold/25 bg-card p-6">
       <label className="block">
         <span className="text-sm text-muted-foreground">Moderation key</span>
-        <input name="key" type="password" required minLength={16} autoComplete="current-password" className={`mt-1 ${FIELD}`} />
+        <input name="key" type="password" required minLength={16} autoComplete="current-password" className={`mt-1 ${FORM_FIELD}`} />
       </label>
       <label className="flex items-center gap-2 text-sm text-muted-foreground">
         <input type="checkbox" name="remember" defaultChecked className="h-4 w-4 accent-pink" />
@@ -198,8 +197,8 @@ function ChangeKey({ keyValue, onChanged }: { keyValue: string; onChanged: (k: s
         </button>
       ) : (
         <form onSubmit={onSubmit} className="max-w-md space-y-3">
-          <input name="new" type="password" required minLength={16} autoComplete="new-password" placeholder="New key (16+ characters)" className={FIELD} />
-          <input name="again" type="password" required minLength={16} autoComplete="new-password" placeholder="New key again" className={FIELD} />
+          <input name="new" type="password" required minLength={16} autoComplete="new-password" placeholder="New key (16+ characters)" className={FORM_FIELD} />
+          <input name="again" type="password" required minLength={16} autoComplete="new-password" placeholder="New key again" className={FORM_FIELD} />
           <button type="submit" className={`${BTN} border border-gold text-gold hover:bg-gold/10`}>Save new key</button>
           {msg && <p className="text-sm text-muted-foreground">{msg}</p>}
         </form>
@@ -252,7 +251,7 @@ function AdminNote({ note, busy, act }: { note: ModeratedNote; busy: string | nu
       <div className="mt-4">
         <label className="block">
           <span className="text-xs text-muted-foreground">Your reply (shown under the note, optional)</span>
-          <textarea value={reply} onChange={(e) => setReply(e.target.value)} maxLength={600} rows={2} className={`mt-1 ${FIELD}`} />
+          <textarea value={reply} onChange={(e) => setReply(e.target.value)} maxLength={600} rows={2} className={`mt-1 ${FORM_FIELD}`} />
         </label>
         {reply !== (note.reply ?? "") && (
           <button type="button" disabled={!!busy} onClick={() => act(note.id, "reply", reply)} className={`${BTN} mt-2 border border-gold text-gold hover:bg-gold/10`}>

@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { HAS_LINK, looksLikeBot, tooBusy } from "@/lib/form-guard";
 import { guestbookPage } from "@/lib/pages";
 
 // The guestbook. Visitors' notes wait as "pending" until Lisa approves them on /guestbook/admin.
@@ -39,8 +40,6 @@ export const listGuestbook = createServerFn({ method: "GET" }).handler(async ():
   }
 });
 
-const LINK = /(https?:\/\/|www\.|\.(com|net|org|ru|xyz|top|info|biz)\b)/i;
-
 const signSchema = z.object({
   name: z.string().trim().min(1, "Please add your name or nickname.").max(60),
   place: z.string().trim().max(60).optional().transform((v) => v || null),
@@ -69,20 +68,14 @@ export const signGuestbook = createServerFn({ method: "POST" })
   })
   .handler(async ({ data }): Promise<SignResult> => {
     // Bots fill hidden fields and submit within a second or two: accept quietly, store nothing.
-    if (data.website || data.elapsed < 3000) return { ok: true, message: "Thank you!" };
-    if (LINK.test(data.message) || LINK.test(data.name) || LINK.test(data.place ?? "")) {
+    if (looksLikeBot(data.website, data.elapsed, 3000)) return { ok: true, message: "Thank you!" };
+    if (HAS_LINK.test(data.message) || HAS_LINK.test(data.name) || HAS_LINK.test(data.place ?? "")) {
       return { ok: false, message: "Links can't go in the guestbook - just words, please!" };
     }
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const since = new Date(Date.now() - 10 * 60 * 1000).toISOString();
-    const { count } = await supabaseAdmin
-      .from("guestbook_entries")
-      .select("id", { count: "exact", head: true })
-      .eq("status", "pending")
-      .gte("created_at", since);
-    if ((count ?? 0) >= 25) {
+    if (await tooBusy("guestbook_entries")) {
       return { ok: false, message: "The guestbook is very busy right now - please try again in a little while!" };
     }
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.from("guestbook_entries").insert({
       name: data.name,
       place: data.place,

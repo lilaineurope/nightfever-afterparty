@@ -5,12 +5,14 @@ import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { BOOK_SHELVES, SPOTIFY_PLAYLIST_URL, bookClub, clubsMentioned, listenLinks, type CollectionItem } from "@/data/collections";
-import { episodes, episodeById, episodePath } from "@/data/episodes";
+import { episodes, episodeById, episodePath, stageName } from "@/data/episodes";
 import { episodePortraits } from "@/components/episode-block";
 import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl } from "@/data/episode-spotify";
 import { YEARS } from "@/data/jukebox-years";
 import { NO_EMBED, YOUTUBE } from "@/data/jukebox-videos";
 import { EntityLink } from "@/components/entity-link";
+import { seededRandom } from "@/lib/random";
+import { toSeconds } from "@/lib/time";
 
 /** The rest of an Afterparty's YouTube playlist (Lisa, 28 Oct 2026): the people, clubs, nights, films and TV from the
  * episode, each tied to its reference (A–Z card + timestamp). One JSON per episode, loaded only when it is picked. */
@@ -72,28 +74,18 @@ export function stripLabel(it: CollectionItem): { title: string; sub: string } {
 }
 
 const released = (m: Moment) => Date.parse(episodeById(m.episodeId).released) || 0;
-const secs = (t: string) => t.split(":").reduce((n, x) => n * 60 + (Number(x) || 0), 0);
 /** The first time it came up on the show: earliest episode, earliest minute. */
 export const firstMoment = (it: CollectionItem): Moment | undefined =>
-  [...it.moments].filter((m) => m.time && m.time !== "On camera").sort((a, b) => released(a) - released(b) || secs(a.time) - secs(b.time))[0] ?? it.moments[0];
+  [...it.moments].filter((m) => m.time && m.time !== "On camera").sort((a, b) => released(a) - released(b) || toSeconds(a.time) - toSeconds(b.time))[0] ?? it.moments[0];
 
 
-function rng(seed: number) {
-  let t = seed >>> 0;
-  return () => {
-    t = (t + 0x6d2b79f5) >>> 0;
-    let x = Math.imul(t ^ (t >>> 15), 1 | t);
-    x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x;
-    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 /** Video of the day: same for everyone all day (Stockholm), no repeats until every video has had its day. */
 export function videoOfTheDay(pool: CollectionItem[], date = new Date()): CollectionItem {
   const day = date.toLocaleDateString("sv-SE", { timeZone: "Europe/Stockholm" });
   const days = Math.floor(Date.parse(`${day}T00:00:00Z`) / 86_400_000);
   const order = pool.map((_, i) => i);
-  const rand = rng(Math.floor(days / pool.length) * 7919 + pool.length + 54);
+  const rand = seededRandom(Math.floor(days / pool.length) * 7919 + pool.length + 54);
   for (let i = order.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
     [order[i], order[j]] = [order[j]!, order[i]!];
@@ -101,7 +93,6 @@ export function videoOfTheDay(pool: CollectionItem[], date = new Date()): Collec
   return pool[order[days % pool.length]!]!;
 }
 
-const guestName = (g: string) => g.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia");
 
 function newestMusicEpisode(items: CollectionItem[]): string {
   const ids = new Set(items.flatMap((i) => i.moments.map((m) => m.episodeId)));
@@ -196,14 +187,14 @@ export function JukeboxMachine({
   }, [items]);
 
   const epMoment = (it: CollectionItem, ep: string) =>
-    it.moments.filter((m) => m.episodeId === ep).sort((a, b) => secs(a.time) - secs(b.time))[0];
+    it.moments.filter((m) => m.episodeId === ep).sort((a, b) => toSeconds(a.time) - toSeconds(b.time))[0];
 
   const list = useMemo(() => {
     const l = items;
     if (filter === "episodes") {
       if (!episodeId) return [];
       // An episode's songs in the order they come up in the interview.
-      return items.filter((i) => i.moments.some((m) => m.episodeId === episodeId)).sort((a, b) => secs(epMoment(a, episodeId)?.time ?? "") - secs(epMoment(b, episodeId)?.time ?? ""));
+      return items.filter((i) => i.moments.some((m) => m.episodeId === episodeId)).sort((a, b) => toSeconds(epMoment(a, episodeId)?.time ?? "") - toSeconds(epMoment(b, episodeId)?.time ?? ""));
     }
     return l;
   }, [items, filter, episodeId]);
@@ -257,7 +248,7 @@ export function JukeboxMachine({
         const clip = rest.find((c) => normName(c.name) === n) ?? (n.length >= 6 ? rest.find((c) => normName(c.title).includes(n)) : undefined);
         return { it, m: at(it)!, clip };
       })
-      .sort((a, b) => secs(a.m.time) - secs(b.m.time));
+      .sort((a, b) => toSeconds(a.m.time) - toSeconds(b.m.time));
   }, [filter, episodeId, rest]);
   /** A list in sections - music, clubs, films & TV, people, fashion, events, publications - each ranked by YouTube views. */
   const mkSections = (songs: CollectionItem[], cl: Clip[], pb: { it: CollectionItem; m: Moment; clip?: Clip | undefined }[], cats: (c: Clip) => EpCat[]) => {
@@ -293,7 +284,7 @@ export function JukeboxMachine({
     const order = new Map(episodes.map((e, i) => [e.id, i]));
     const pb = bookClub
       .map((it) => {
-        const m = [...it.moments].sort((a, b) => (order.get(a.episodeId) ?? 99) - (order.get(b.episodeId) ?? 99) || secs(a.time) - secs(b.time))[0];
+        const m = [...it.moments].sort((a, b) => (order.get(a.episodeId) ?? 99) - (order.get(b.episodeId) ?? 99) || toSeconds(a.time) - toSeconds(b.time))[0];
         const n = normName(it.name);
         const clip = cl.find((c) => normName(c.name) === n) ?? (n.length >= 6 ? cl.find((c) => normName(c.title).includes(n)) : undefined);
         return m ? { it, m, clip } : null;
@@ -395,7 +386,7 @@ export function JukeboxMachine({
     const vw = viewsRef.current;
     const songs = items
       .filter((i) => i.moments.some((m) => m.episodeId === id))
-      .sort((a, b) => (vw[videoId(b) ?? ""] ?? -1) - (vw[videoId(a) ?? ""] ?? -1) || secs(epMoment(a, id)?.time ?? "") - secs(epMoment(b, id)?.time ?? ""));
+      .sort((a, b) => (vw[videoId(b) ?? ""] ?? -1) - (vw[videoId(a) ?? ""] ?? -1) || toSeconds(epMoment(a, id)?.time ?? "") - toSeconds(epMoment(b, id)?.time ?? ""));
     listRef.current = songs;
     const first = songs.find((x) => canPlay(x, "video")) ?? songs.find((x) => x.spotify);
     if (first) play(first, canPlay(first, "video") ? "video" : "sound");
@@ -404,7 +395,7 @@ export function JukeboxMachine({
   // A shared Afterparty link cues that Afterparty's first song on the screen instead of today's video.
   const cued = useMemo(() => {
     if (!initialEpisode) return undefined;
-    const songs = items.filter((i) => i.moments.some((m) => m.episodeId === initialEpisode)).sort((a, b) => secs(epMoment(a, initialEpisode)?.time ?? "") - secs(epMoment(b, initialEpisode)?.time ?? ""));
+    const songs = items.filter((i) => i.moments.some((m) => m.episodeId === initialEpisode)).sort((a, b) => toSeconds(epMoment(a, initialEpisode)?.time ?? "") - toSeconds(epMoment(b, initialEpisode)?.time ?? ""));
     return songs.find((x) => embeddable(x)) ?? songs.find((x) => x.spotify);
   }, [initialEpisode, items]);
   const idleItem = cued ?? today;
@@ -538,7 +529,7 @@ export function JukeboxMachine({
                 <SoundScreen item={now.item} onEnd={(it) => next(it, "sound")} />
               ) : (
                 <button type="button" className="jbx-idle" onClick={() => play(idleItem, (mode === "sound" || !embeddable(idleItem)) && idleItem.spotify ? "sound" : "video")} aria-label={`Play ${label.title}`}>
-                  <span className="jbx-np">{cued && ep ? `${guestName(ep.guest)}’s AFTERPARTY PLAYLIST` : <>TODAY&rsquo;S VIDEO · A NEW ONE EVERY DAY</>}</span>
+                  <span className="jbx-np">{cued && ep ? `${stageName(ep.guest)}’s AFTERPARTY PLAYLIST` : <>TODAY&rsquo;S VIDEO · A NEW ONE EVERY DAY</>}</span>
                   <span className="jbx-play" aria-hidden="true">▶</span>
                   <span className="jbx-st">{label.title}</span>
                   <span className="jbx-sa">{label.sub}</span>
@@ -553,7 +544,7 @@ export function JukeboxMachine({
                   </p>
                   {clip.time && clip.ep && (
                     <p className="jbx-drop">
-                      dropped in {guestName(episodeById(clip.ep).guest)}&rsquo;s episode, S{episodeById(clip.ep).season}E{episodeById(clip.ep).episode}{" "}
+                      dropped in {stageName(episodeById(clip.ep).guest)}&rsquo;s episode, S{episodeById(clip.ep).season}E{episodeById(clip.ep).episode}{" "}
                       <Timestamp episodeId={clip.ep} time={clip.time} className="jbx-ts" />
                     </p>
                   )}
@@ -608,7 +599,7 @@ export function JukeboxMachine({
               <button key={e.id} type="button" className={`jbx-pol${episodeId === e.id ? " on" : ""}`} aria-pressed={episodeId === e.id} onClick={() => pickEpisode(e.id)} title={`Play the songs from ${e.guest}'s Afterparty`}>
                 {episodePortraits[e.id] && <img src={episodePortraits[e.id]} alt="" loading="lazy" />}
                 <span>S{e.season}E{e.episode}</span>
-                <b>{guestName(e.guest)}</b>
+                <b>{stageName(e.guest)}</b>
               </button>
             ))}
           </div>
@@ -624,7 +615,7 @@ export function JukeboxMachine({
             )}
             <div>
               <p className="jbx-np dark">THE AFTERPARTY PLAYLIST</p>
-              <h2 className="jbx-ep-name">{guestName(ep.guest)}</h2>
+              <h2 className="jbx-ep-name">{stageName(ep.guest)}</h2>
               <p className="jbx-ep-note">
                 Everything from the episode you can play here - music first, then the clubs, films &amp; TV, people, fashion, events and publications, the most watched on top. Take it with you:
               </p>
@@ -633,7 +624,7 @@ export function JukeboxMachine({
                   The Afterparty
                   <span className="jbx-count" title={`${ep.references} references and ${ep.mentions} mentions`}>{ep.references + ep.mentions}</span> →
                 </Link>
-                <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${guestName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
+                <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${stageName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
               </div>
               <div className="jbx-ep-links jbx-ep-lists">
                 {episodeSpotifyUrl(ep.id) && (

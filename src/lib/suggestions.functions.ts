@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { HAS_LINK, looksLikeBot, tooBusy } from "@/lib/form-guard";
 
 // "Who to interview next" - visitors' suggestions (Lisa, 27 Oct 2026).
 // A suggestion is stored as "pending" in interview_suggestions; the visitor's browser emails Lisa a heads-up with a
@@ -41,8 +42,6 @@ export const listFanPicks = createServerFn({ method: "GET" }).handler(async (): 
   }
 });
 
-const LINK = /(https?:\/\/|www\.|\.(com|net|org|ru|xyz|top|info|biz)\b)/i;
-
 const suggestSchema = z.object({
   who: z.string().trim().min(2, "Who should they interview?").max(80),
   why: z.string().trim().max(200).optional().transform((v) => v || null),
@@ -60,18 +59,12 @@ export const suggestGuest = createServerFn({ method: "POST" })
   })
   .handler(async ({ data }): Promise<{ ok: boolean; id?: string; message: string }> => {
     // Bots fill hidden fields and submit within a second or two: accept quietly, store nothing.
-    if (data.website || data.elapsed < 2000) return { ok: true, message: "Thank you!" };
-    if (LINK.test(data.who) || LINK.test(data.why ?? "") || LINK.test(data.from ?? "")) {
+    if (looksLikeBot(data.website, data.elapsed, 2000)) return { ok: true, message: "Thank you!" };
+    if (HAS_LINK.test(data.who) || HAS_LINK.test(data.why ?? "") || HAS_LINK.test(data.from ?? "")) {
       return { ok: false, message: "Just a name and a few words, please - no links!" };
     }
+    if (await tooBusy("interview_suggestions")) return { ok: false, message: "Lots of suggestions right now - please try again in a little while!" };
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const since = new Date(Date.now() - 10 * 60 * 1000).toISOString();
-    const { count } = await supabaseAdmin
-      .from("interview_suggestions")
-      .select("id", { count: "exact", head: true })
-      .eq("status", "pending")
-      .gte("created_at", since);
-    if ((count ?? 0) >= 25) return { ok: false, message: "Lots of suggestions right now - please try again in a little while!" };
     const { data: row, error } = await supabaseAdmin
       .from("interview_suggestions")
       .insert({ who: data.who, why: data.why, from_name: data.from })

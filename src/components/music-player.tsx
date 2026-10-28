@@ -7,12 +7,6 @@ import { jukebox, listenLinks } from "@/data/collections";
 // (ids are never guessed) get Spotify and YouTube search links instead.
 const bySlug = new Map(jukebox.map((j) => [j.slug, j]));
 const PLAYABLE_SHELVES = new Set(["songs", "artists", "stage"]);
-
-export function hasMusicPlayer(slug: string) {
-  const j = bySlug.get(slug);
-  return !!j && PLAYABLE_SHELVES.has(j.shelf);
-}
-
 export function MusicPlayer({ slug }: { slug: string }) {
   const [open, setOpen] = useState(false);
   const j = bySlug.get(slug);

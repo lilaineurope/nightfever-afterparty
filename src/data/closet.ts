@@ -94,7 +94,12 @@ function tagsFor(r: Ref, who?: string): string[] {
 const refs: (Ref & { colours?: string[] })[] = (() => {
   const seen = new Set<Ref>();
   const all: (Ref & { colours?: string[] })[] = [];
-  for (const e of entities) for (const r of e.refs) if (!seen.has(r)) (seen.add(r), all.push(r));
+  for (const e of entities)
+    for (const r of e.refs)
+      if (!seen.has(r)) {
+        seen.add(r);
+        all.push(r);
+      }
   return all;
 })();
 

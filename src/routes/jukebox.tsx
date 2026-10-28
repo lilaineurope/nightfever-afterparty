@@ -3,7 +3,7 @@ import { JukeboxMachine } from "@/components/jukebox-machine";
 import { SiteFooter } from "@/components/site-footer";
 import { SPOTIFY_PLAYLIST_URL, jukebox } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
-import { episodes } from "@/data/episodes";
+import { episodes, stageName } from "@/data/episodes";
 
 const description = `Every song, record, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie at the Mudd Club to Warm Leatherette, each with the moment it comes up. Press play!`;
 
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/jukebox")({
     ...(() => {
       const ep = loaderData?.afterparty ? episodes.find((e) => e.id === loaderData.afterparty) : undefined;
       if (!ep) return pageHead({ path: "/jukebox", title: "Night Fever Jukebox – every song & band the guests mention", description, image: "/og/jukebox.jpg" });
-      const guest = ep.guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia");
+      const guest = stageName(ep.guest);
       const n = jukebox.filter((j) => j.moments.some((m) => m.episodeId === ep.id)).length;
       const head = pageHead({
         path: "/jukebox",

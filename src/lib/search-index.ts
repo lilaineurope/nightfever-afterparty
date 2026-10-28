@@ -86,5 +86,3 @@ export function search(q: string, limit = 40): SearchHit[] {
   }
   return scored.sort((a, b) => b.score - a.score || a.hit.title.localeCompare(b.hit.title)).slice(0, limit).map((s) => s.hit);
 }
-
-export const totalSearchable = items.length;

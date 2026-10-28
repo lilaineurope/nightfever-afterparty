@@ -53,15 +53,6 @@ export const episodeEntities: EpisodeEntity[] = entities
   .filter((row): row is EpisodeEntity => row !== null)
   .sort(byStrength);
 
-/** How many timestamped names sit in one category ("All" counts every name). */
-export const categoryCounts: Record<string, number> = (() => {
-  const out: Record<string, number> = { All: episodeEntities.length };
-  for (const row of episodeEntities) {
-    for (const c of row.categories) out[c] = (out[c] ?? 0) + 1;
-  }
-  return out;
-})();
-
 const byMentions = (a: EpisodePerson, b: EpisodePerson) =>
   b.mentions - a.mentions || b.episodeIds.length - a.episodeIds.length || a.name.localeCompare(b.name);
 

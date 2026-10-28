@@ -3,6 +3,7 @@ import { Timestamp } from "@/components/episode-player";
 import { episodePortraits } from "@/components/episode-block";
 import { episodes, episodePath } from "@/data/episodes";
 import allQuotes from "@/data/quotes-all.json";
+import { seededRandom } from "@/lib/random";
 
 // Quote of the day (Lisa, 24 Oct 2026): a random quote from the quotes spreadsheet (5 per guest, "Night Fever Afterparty
 // quotes.xlsx"), a new one every day, under the intro on Home - with the guest, a play button for the exact moment and a
@@ -12,22 +13,13 @@ import allQuotes from "@/data/quotes-all.json";
 type Q = { episode: string; time: string; quote: string; who?: string };
 
 // Small seeded random number generator, so every visitor gets the same shuffle.
-function rng(seed: number) {
-  let t = seed >>> 0;
-  return () => {
-    t = (t + 0x6d2b79f5) >>> 0;
-    let x = Math.imul(t ^ (t >>> 15), 1 | t);
-    x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x;
-    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 function todaysQuote(pool: Q[]): Q {
   const day = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Stockholm" }); // YYYY-MM-DD
   const days = Math.floor(Date.parse(`${day}T00:00:00Z`) / 86_400_000);
   const round = Math.floor(days / pool.length);
   const order = pool.map((_, i) => i);
-  const rand = rng(round * 7919 + pool.length);
+  const rand = seededRandom(round * 7919 + pool.length);
   for (let i = order.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
     [order[i], order[j]] = [order[j]!, order[i]!];

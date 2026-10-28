@@ -571,7 +571,6 @@ export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e
   a.season - b.season || a.episode - b.episode,
 );
 
-export const latestEpisode: Episode = s06e01;
 
 /** Look an episode up by its route id, for the episode pages themselves. */
 /** Afterparty number (Lisa, 23 Oct 2026): the order the Afterparties went up on the fan page - S06E01 James St. James is
@@ -580,10 +579,16 @@ export const latestEpisode: Episode = s06e01;
 const afterpartyOrder = [...episodes]
   .sort((a, b) => a.afterpartyPublished.localeCompare(b.afterpartyPublished) || a.season - b.season || a.episode - b.episode)
   .map((ep) => ep.id);
+/** The show's seasons (the season filters on the Afterparty and Guests pages). */
+export const SEASONS = [1, 2, 3, 4, 5, 6];
+/** The name a guest goes by: "Jenny Dembrow aka Jenny Talia" -> "Jenny Talia". */
+export const stageName = (guest: string) => guest.replace(/ aka .*/, "").replace(/^Jenny Dembrow$/, "Jenny Talia");
+/** "s01e02" -> "S1 E2" */
+export const episodeCode = (id: string) => `S${Number(id.slice(1, 3))} E${Number(id.slice(4, 6))}`;
 export const afterpartyNumber = (id: string): number => afterpartyOrder.indexOf(id) + 1;
 
 export const episodeById = (id: string): Episode =>
-  episodes.find((e) => e.id === id) ?? latestEpisode;
+  episodes.find((e) => e.id === id) ?? s06e01;
 
 export function episodePath(
   id: Episode["id"],

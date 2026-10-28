@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { Timestamp } from "@/components/episode-player";
 import { episodePortraits } from "@/components/episode-block";
-import { episodes, episodePath, type Episode } from "@/data/episodes";
+import { episodes, episodePath, type Episode, episodeCode } from "@/data/episodes";
 import { entityFor } from "@/data/entities";
 import { GUEST_LINES } from "@/data/guest-lines";
 
@@ -26,7 +26,6 @@ export const Route = createFileRoute("/trail")({
 
 const START = "s06e01";
 const STORE = "nf-trail-v1";
-const short = (id: string) => `S${Number(id.slice(1, 3))} E${Number(id.slice(4, 6))}`;
 
 type Drop = { to: Episode; time: string; context: string };
 
@@ -177,7 +176,7 @@ function TrailPage() {
         <div className="mx-auto grid max-w-5xl gap-6 rounded-2xl border border-gold/40 bg-card p-6 md:grid-cols-[220px_1fr]">
           <div>
             <img src={episodePortraits[at]} alt={current.guest} className="w-full rounded-sm bg-cream p-2 pb-8 shadow" />
-            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold">You're in {short(at)}</p>
+            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold">You're in {episodeCode(at)}</p>
             <h2 className="mt-1 text-2xl font-bold text-cream">{current.guest}</h2>
             <p className="mt-1 text-sm text-muted-foreground">{GUEST_LINES[at]}</p>
             <Link to={episodePath(at as Episode["id"])} className="mt-3 inline-block text-sm text-pink underline underline-offset-2">
@@ -256,7 +255,7 @@ function TrailPage() {
                   {lost.map((e) => (
                     <li key={e.id}>
                       <button type="button" onClick={() => open(e.id, true)} className="rounded-full border border-gold/60 px-3 py-1 text-xs text-gold hover:bg-gold/10">
-                        {short(e.id)} · {e.guest}
+                        {episodeCode(e.id)} · {e.guest}
                       </button>
                     </li>
                   ))}
