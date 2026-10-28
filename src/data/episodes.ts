@@ -133,6 +133,7 @@ const s01e03: Episode = {
   references: edelsteinRefs.length,
   mentions: edelsteinRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...edelsteinRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLAknZ8rbAhR4",
 };
 
 const s02e03: Episode = {
@@ -152,6 +153,7 @@ const s02e03: Episode = {
   references: bartschRefs.length,
   mentions: bartschRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...bartschRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLK2eT8Odqysw",
 };
 
 const s03e01: Episode = {
@@ -250,6 +252,7 @@ const s01e07: Episode = {
   references: piperRefs.length,
   mentions: piperRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...piperRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEVw6ON78TZM",
 };
 
 const s06e03: Episode = {
@@ -327,6 +330,7 @@ const s02e08: Episode = {
   references: signorileRefs.length,
   mentions: signorileRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...signorileRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLBdv5CNDx8Wg",
 };
 
 const s05e03: Episode = {
@@ -383,6 +387,7 @@ const s02e06: Episode = {
   references: schmidtRefs.length,
   mentions: schmidtRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...schmidtRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLaWjcrYbPf7Y",
 };
 
 const s01e04: Episode = {
@@ -401,6 +406,7 @@ const s01e04: Episode = {
   references: gatienRefs.length,
   mentions: gatienRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...gatienRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLXKM8jtNUvYs",
 };
 
 const s02e04: Episode = {
@@ -419,6 +425,7 @@ const s02e04: Episode = {
   references: haskellRefs.length,
   mentions: haskellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...haskellRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEN9ytk00s2o",
 };
 
 const s06e07: Episode = {
@@ -456,6 +463,7 @@ const s01e10: Episode = {
   references: ariasRefs.length,
   mentions: ariasRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: [...ariasRefs].sort((a, b) => b.mentions - a.mentions).slice(0, 3).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLHwtitorQnoQ",
 };
 
 const s03e08: Episode = {
