@@ -5,7 +5,7 @@ import { clubsMentioned } from "@/data/collections";
 import { pageHead } from "@/lib/seo";
 
 // Clubkid Culture (Lisa, 29 Oct 2026): the three club playlists and every club mentioned on Night Fever, moved here from the Jukebox.
-// Not linked yet - Lisa sees it first (UNLINKED_PAGES in src/lib/pages.ts, sitemap: false).
+// Live in the background (Lisa, 29 Oct 2026): not in the menu, search or sitemap (UNLINKED_PAGES in src/lib/pages.ts, sitemap: false).
 export const Route = createFileRoute("/clubkid-culture")({
   staticData: { sitemap: false },
   component: ClubkidCulturePage,
