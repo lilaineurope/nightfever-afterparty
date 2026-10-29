@@ -185,6 +185,8 @@ const SPOTIFY: Record<string, string> = {
   "Champagne (Amanda Lepore)": "spotify:track:1KArrl4IXmxGxIvcWLhws4",
   "Madonna – 'Borderline'": "spotify:track:55vHakozxvDmLT7smkEYCN",
   "Madonna – 'Lucky Star'": "spotify:track:5ldD98ZX90b0w8dClRLCka",
+  "Madonna – 'Holiday'": "spotify:track:7arHM2KZ0KzIZXFVDRGClI",
+  "Madonna – 'Burning Up'": "spotify:track:48YZhmKL3aZKhQUfpvkelu",
   "Whitney Houston – 'I Wanna Dance with Somebody'": "spotify:track:2tUBqZG2AbRi7Q0BIrVrEj",
   "Tina Turner – Foreign Affair": "spotify:album:3hgAoHSmany3EiKL0Aqh3G",
   "Tina Turner – 'Proud Mary'": "spotify:track:4ppxp8rJB8eOhM9TFm6dK2",

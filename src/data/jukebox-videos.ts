@@ -82,6 +82,8 @@ export const YOUTUBE: Record<string, string> = {
   "Liza Minnelli – 'Losing My Mind'": "ruaZarDQfXE",
   "London punk": "oavQDISzCjo",
   "Madonna – 'Borderline'": "rSaC-YbSDpo",
+  "Madonna – 'Burning Up'": "pufec0Hps00",
+  "Madonna – 'Holiday'": "ltSpd7Rh_sM",
   "Madonna – 'Lucky Star'": "ThHz9wlBeLU",
   "Madonna – 'Who's That Girl'": "r0qDBYiOBrc",
   "Merengue": "fautemcgU48",

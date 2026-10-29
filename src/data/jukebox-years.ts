@@ -135,6 +135,8 @@ export const YEARS: Record<string, number> = {
   "Liza Minnelli – 'Losing My Mind'": 1989,
   "Madonna – 'Borderline'": 1984,
   "Madonna – 'Lucky Star'": 1983,
+  "Madonna – 'Holiday'": 1983,
+  "Madonna – 'Burning Up'": 1983,
   "Madonna – 'Who's That Girl'": 1987,
   "Merengue": 1850,
   "Motörhead – 'Ace of Spades'": 1980,
