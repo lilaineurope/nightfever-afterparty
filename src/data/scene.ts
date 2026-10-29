@@ -553,13 +553,31 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s02e07", label: "S2 E7", guest: "Jenny Dembrow aka Jenny Talia", refs: s02e07 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
+// Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
+// Timeline's headlines (Michael Alig - Lisa, 28 Oct 2026: no extra space; the 1996 crime is in the curated events).
+const HOSTS = ["James St. James", "Fenton Bailey", "Randy Barbato"];
+const SKIP_MOMENT = new Set([
+  "s01e04|Saturday Night Fever",
+  "s02e01|Instagram",
+  "s02e07|Instagram",
+  "s06e07|Instagram",
+  "s05e04|Divine Thing (probably)",
+  "s02e07|Michael Alig",
+  "s06e01|Andre 'Angel' Melendez",
+]);
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {
-    if (r.category !== "Event" && r.category !== "Club" && r.category !== "Location") return [];
-    if (r.time === "On camera") return [];
-    // Ignore years that are only part of a party's name (e.g. "Disco 2000").
-    const clean = (t: string) => t.replace(/Disco 2000/gi, "");
-    const m = clean(r.context).match(YEAR) ?? clean(r.name).match(YEAR);
+    if (r.time === "On camera" || r.category === "Mood") return [];
+    if (SKIP_MOMENT.has(`${ep.id}|${r.name}`)) return [];
+    // The guest's and the hosts' own rows describe careers, not moments (their milestones are curated separately).
+    if (r.category === "Person" && (r.name === ep.guest || HOSTS.includes(r.name))) return [];
+    const isPlace = r.category === "Event" || r.category === "Club" || r.category === "Location";
+    // Ignore years that are only part of a party's or club's name (e.g. "Disco 2000", "2001 Odyssey").
+    const clean = (t: string) => t.replace(/Disco 2000|2001 Odyssey|2001: A Space Odyssey/gi, "");
+    // Clubs, events and places may take their year from the name; everything else (books, films, songs, people,
+    // papers - added 29 Oct 2026, Lisa) only when the line itself dates the moment, so a film's release year
+    // in its title never becomes a scene moment.
+    const m = isPlace ? (clean(r.context).match(YEAR) ?? clean(r.name).match(YEAR)) : clean(r.context).match(YEAR);
     if (!m) return [];
     const year = Number(m[1]);
     // A guest association is not evidence of a location. Keep event locations
