@@ -25,6 +25,7 @@ import visageRefs from "./s02e01.json";
 import waltRefs from "./s01e06.json";
 import jennyRefs from "./s02e07.json";
 import connieRefs from "./s02e05.json";
+import missGuyRefs from "./s03e10.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -587,7 +588,25 @@ const s02e05: Episode = {
   top: topNames(connieRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05].sort((a, b) =>
+const s03e10: Episode = {
+  id: "s03e10",
+  season: 3,
+  episode: 10,
+  guest: "Miss Guy",
+  released: "2023-08-17",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-310",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO5904367636.mp3",
+  runtime: "48:33",
+  afterpartyPublished: "2026-11-04",
+  blurb:
+    "Miss Guy, Toilet Boys singer and Squeezebox DJ! Debbie Harry and a paper KISS jacket, a Malcolm McLaren party, Boy Bar on the first night in New York, Matthew Kasten's shows from Doris Day to Cherry Bomb, a day job at Pat Field's - and Squeezebox at Don Hill's.",
+  references: missGuyRefs.length,
+  mentions: missGuyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(missGuyRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 

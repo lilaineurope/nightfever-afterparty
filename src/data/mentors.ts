@@ -40,6 +40,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "David Glamamore", mentee: "Connie Fleming", episode: "s02e05", time: "00:08:37", line: "Took Connie to Boy Bar and introduced her to Matthew" },
   { mentor: "Steven Meisel", mentee: "Connie Fleming", episode: "s02e05", time: "00:28:39", line: "Spotted her at the Patricia Field ball and booked her first big shoot" },
   { mentor: "Perfidia", mentee: "Zaldy", episode: "s02e05", time: "00:16:12", line: "Found Zaldy and shaped him into a Miss Boy Bar, Connie says" },
+  { mentor: "Matthew (Boy Bar)", mentee: "Miss Guy", episode: "s03e10", time: "00:26:06", line: "Asked Miss Guy to do a first show at Boy Bar and styled it" },
+  { mentor: "Patricia Field", mentee: "Miss Guy", episode: "s03e10", time: "00:10:44", line: "Gave Miss Guy a day job and early words of encouragement, Guy says" },
+  { mentor: "Patricia Field", mentee: "Lauren Pine", episode: "s03e10", time: "00:10:44", line: "Took Lauren under her wing at the store, Miss Guy says" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

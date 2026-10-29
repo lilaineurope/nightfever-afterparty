@@ -14,6 +14,7 @@ export const EPISODE_SPOTIFY: Record<string, string> = {
   s02e05: "3zGwT7I00IkyGowpFx6Gmk",
   s02e06: "4QCYA09ofHX8Xxi0TIyjZO",
   s02e07: "3hPV2D3Di6plssfl6pqKzO",
+  s03e10: "3TNTCK4ATLqRAqS2fytRm2",
   s02e08: "2mBImW88RId8Pa1gsQA6M3",
   s03e06: "2JRQhCoEc4igZULztw0XKp",
   s03e08: "1X8BiB95TgVE8jIFxqfvyW",
@@ -35,7 +36,7 @@ export const JUKEBOX_YOUTUBE_URL = "https://www.youtube.com/playlist?list=PLBsKZ
  *  Update the numbers whenever a playlist changes. */
 export const SPOTIFY_SONGS: Record<string, number> = {
   s01e01: 4, s01e02: 6, s01e04: 9, s01e06: 3, s01e07: 4, s01e10: 5, s02e01: 11, s02e03: 6, s02e04: 3, s02e05: 5, s02e06: 11, s02e07: 2,
-  s02e08: 3, s03e06: 3, s03e08: 17, s04e04: 3, s04e08: 3, s04e10: 12, s05e03: 2, s05e04: 31, s06e01: 6, s06e03: 12, s06e07: 4,
+  s02e08: 3, s03e06: 3, s03e08: 17, s03e10: 30, s04e04: 3, s04e08: 3, s04e10: 12, s05e03: 2, s05e04: 31, s06e01: 6, s06e03: 12, s06e07: 4,
 };
 export const YOUTUBE_VIDEOS: Record<string, number> = {
   s01e01: 46, s01e02: 116, s01e03: 76, s01e04: 43, s01e06: 55, s01e07: 50, s01e10: 68, s02e01: 76, s02e03: 64, s02e04: 36, s02e05: 84,

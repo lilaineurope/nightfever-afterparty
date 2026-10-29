@@ -86,6 +86,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s01e06: "the Limelight, Michael Alig & the club kids",
   s02e07: "Michael Alig, the club kids & Calvin Klein",
   s02e05: "Boy Bar, Mugler & New York's toughest door",
+  s03e10: "Squeezebox, Boy Bar & Debbie Harry",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

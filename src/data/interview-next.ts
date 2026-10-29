@@ -43,6 +43,12 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s01e06",
     time: "00:41:20",
   },
+  {
+    name: "Kembra Pfahler",
+    why: "Randy, when Kembra's name comes up among the New York bands, says they've got to get her on the show.",
+    episodeId: "s03e10",
+    time: "00:43:45",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
@@ -112,5 +118,11 @@ export const COME_BACK: InterviewTip[] = [
     why: "The hosts say it feels like it should be a two-parter - there's still a lot of uptown, downtown to explore.",
     episodeId: "s06e08",
     time: "00:59:37",
+  },
+  {
+    name: "Miss Guy",
+    why: "Randy, as the hour runs out, says they could go on and on and will have to do a part two.",
+    episodeId: "s03e10",
+    time: "00:47:35",
   },
 ];

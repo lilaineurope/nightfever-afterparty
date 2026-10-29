@@ -526,4 +526,10 @@ export const LOCATIONS: Located[] = [
   { name: "Otis College of Art and Design", lat: 34.0585, lng: -118.2795, area: "Westlake, Los Angeles" },
   { name: "MacArthur Park", lat: 34.0577, lng: -118.277, area: "Westlake, Los Angeles" },
   { name: "The O2 Arena", lat: 51.503, lng: 0.0032, area: "Greenwich, London" },
+  { name: "United Kingdom", lat: 54.0, lng: -2.0, area: "United Kingdom" },
+  { name: "Southern California", lat: 34.05, lng: -118.25, area: "California" },
+  { name: "Melrose Avenue", lat: 34.0837, lng: -118.3614, area: "Los Angeles" },
+  { name: "Mondrian Los Angeles", lat: 34.0956, lng: -118.3726, area: "West Hollywood" },
+  { name: "Peanuts", lat: 34.0907, lng: -118.3612, area: "West Hollywood" },
+  { name: "San Diego", lat: 32.7157, lng: -117.1611, area: "California" },
 ];
