@@ -1,10 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
-import { Timestamp } from "@/components/episode-player";
-import { EntityText } from "@/components/entity-text";
+import { MomentsBox } from "@/components/moments-box";
 import { SiteFooter } from "@/components/site-footer";
-import { linkPlace } from "@/lib/link-label";
-import { episodePath } from "@/data/episodes";
 import stacks from "@/assets/library-stacks.webp";
 import stacksPhone from "@/assets/library-stacks-phone.webp";
 import { BOOK_SHELVES, bookClub, findBookLink, type CollectionItem } from "@/data/collections";
@@ -165,31 +162,15 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
 function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }) {
   const cover = coverFor(item.name);
   return (
-    <div className="border-2 border-gold bg-card p-5 shadow-[6px_6px_0_var(--color-gold)] sm:p-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h3 className="text-2xl font-bold uppercase text-cream">
-          <Link to="/explore/$slug" params={{ slug: item.slug }} className="hover:text-pink">{item.name}</Link>
-        </h3>
-        <button type="button" onClick={onClose} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
-      </div>
-      <p className="mt-1 text-xs text-muted-foreground">
-        {item.mentions > 0 ? `${item.mentions} mention${item.mentions === 1 ? "" : "s"}` : "implied"} · {afterparties(episodesOf(item))}
-        {cover && <> · {cover.credit}</>}
-      </p>
-      <ul className="mt-4 space-y-2">
-        {item.moments.map((m) => (
-          <li key={m.episodeId + m.time} className="text-sm text-muted-foreground">
-            <Link to={episodePath(m.episodeId as never)} className="font-medium text-gold hover:text-pink">{m.code} · {m.guest}</Link>
-            {m.time && m.time !== "On camera" && <>{" · "}<Timestamp episodeId={m.episodeId} time={m.time} className="text-xs" /></>}
-            {" - "}<EntityText text={m.context} />
-          </li>
-        ))}
-      </ul>
-      <div className="mt-4 flex flex-wrap gap-4 text-xs">
-        <Link to="/explore/$slug" params={{ slug: item.slug }} className="text-gold hover:text-pink">Its A–Z card →</Link>
-        {item.link && <a href={item.link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(item.link)} ↗</a>}
-        {item.shelf === "books" && <a href={findBookLink(item.name)} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Find a copy on Open Library ↗</a>}
-      </div>
-    </div>
+    <MomentsBox
+      name={item.name}
+      slug={item.slug}
+      mentions={item.mentions}
+      moments={item.moments}
+      link={item.link || undefined}
+      note={cover?.credit}
+      extra={item.shelf === "books" ? <a href={findBookLink(item.name)} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Find a copy on Open Library ↗</a> : undefined}
+      onClose={onClose}
+    />
   );
 }

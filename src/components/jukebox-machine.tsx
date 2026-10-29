@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Timestamp, openEpisodePlayer, pauseEpisode } from "@/components/episode-player";
 import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
@@ -10,6 +10,8 @@ import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl }
 import { YEARS } from "@/data/jukebox-years";
 import { NO_EMBED, YOUTUBE } from "@/data/jukebox-videos";
 import { EntityLink } from "@/components/entity-link";
+import { EntityBox, plainClick } from "@/components/moments-box";
+import { entityBySlug, entityFor } from "@/data/entities";
 import { seededRandom } from "@/lib/random";
 import { toSeconds } from "@/lib/time";
 
@@ -152,6 +154,7 @@ export function JukeboxMachine({
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
   const [episodeId, setEpisodeId] = useState<string>(() => initialEpisode || newestMusicEpisode(items));
   const [mode, setMode] = useState<Kind>("video");
+  const [openKey, setOpenKey] = useState<string | null>(null);
   const [now, setNow] = useState<{ item: CollectionItem; kind: Kind } | null>(null);
   /** A video from the rest of the Afterparty playlist on the screen (instead of a song). */
   const [clip, setClip] = useState<Clip | null>(null);
@@ -409,7 +412,38 @@ export function JukeboxMachine({
   const chip = (on: boolean) => `jbx-chip${on ? " on" : ""}`;
 
   /** One strip on an Afterparty list: a song, a video, or a publication. */
+  // Tap a name on a strip and its moments open in a box right under the row, like the Library covers (Lisa, 29 Oct 2026);
+  // cmd/ctrl-click still opens the A–Z card.
+  const nameLink = (slug: string, key: string, label: ReactNode) => (
+    <Link
+      to="/explore/$slug"
+      params={{ slug }}
+      className="jbx-name"
+      aria-expanded={openKey === key}
+      onClick={(ev) => {
+        if (!plainClick(ev)) return;
+        ev.preventDefault();
+        setOpenKey((k) => (k === key ? null : key));
+      }}
+    >
+      {label}
+    </Link>
+  );
+  const entityOf = (e: Entry) => (e.kind === "song" || e.kind === "pub" ? entityBySlug[e.it.slug] : entityFor(e.c.name));
   const entryStrip = (e: Entry, ep: { id: string; season: number; episode: number }) => {
+    const ent = entityOf(e);
+    return (
+      <Fragment key={e.key}>
+        {entryStripRow(e, ep)}
+        {openKey === e.key && ent && (
+          <li className="jbx-detail">
+            <EntityBox entity={ent} onClose={() => setOpenKey(null)} />
+          </li>
+        )}
+      </Fragment>
+    );
+  };
+  const entryStripRow = (e: Entry, ep: { id: string; season: number; episode: number }) => {
     const code = `S${ep.season}E${ep.episode}`;
     const seen = e.views > 0 ? ` · ${fmtViews(e.views)} views` : "";
     if (e.kind === "song") {
@@ -432,7 +466,7 @@ export function JukeboxMachine({
             </a>
           )}
           <div className="jbx-tt">
-            <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{l.title}</Link>
+            {nameLink(it.slug, e.key, l.title)}
             <i>
               {l.sub}
               {YEARS[it.name] ? ` · ${YEARS[it.name]! < 1900 ? "19th century" : YEARS[it.name]}` : ""}
@@ -465,7 +499,7 @@ export function JukeboxMachine({
             </Link>
           )}
           <div className="jbx-tt">
-            <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-name">{it.name}</Link>
+            {nameLink(it.slug, e.key, it.name)}
             <i>
               {shelf}
               {e.m.context ? ` · ${e.m.context}` : ""}
@@ -493,7 +527,7 @@ export function JukeboxMachine({
           </button>
         )}
         <div className="jbx-tt">
-          <EntityLink name={c.name} className="jbx-name" />
+          {entityFor(c.name) ? nameLink(entityFor(c.name)!.slug, e.key, c.name) : <EntityLink name={c.name} className="jbx-name" />}
           <i>
             {c.cat === "Person" && restCats.get(c)?.includes("music") ? "Musician" : c.cat === "Mood" ? "Look" : c.cat} · {c.title}
           </i>

@@ -484,6 +484,12 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .lib-item:nth-child(3n) .lib-cv { transform: rotate(-1.4deg); }
 .lib-item:nth-child(3n + 1) .lib-cv { transform: rotate(1deg); }
 .lib-detail { grid-column: 1 / -1; }
+/* Tap-to-open boxes on A–Z and the Jukebox (Lisa, 29 Oct 2026), same box as the Library */
+.az-detail { display: block; margin: 6px 0 16px; }
+a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important; box-shadow: 4px 5px 0 var(--color-pink); }
+.jbx-rack { grid-auto-flow: row dense; }
+.jbx-detail { grid-column: 1 / -1; list-style: none; }
+.jbx-name[aria-expanded="true"] { color: var(--pink); }
 .lib-hit { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; color: inherit; }
 .lib-hit:hover .lib-cv, .lib-hit[aria-expanded="true"] .lib-cv { transform: rotate(0) translateY(-4px); box-shadow: 8px 10px 0 var(--color-pink); }
 .lib-cv { position: relative; display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 3 / 4; overflow: hidden; border: 3px solid var(--color-gold); box-shadow: 6px 6px 0 var(--color-gold); padding: 14px; transition: transform .15s, box-shadow .15s; }

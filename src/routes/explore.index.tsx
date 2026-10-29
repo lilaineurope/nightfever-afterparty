@@ -1,8 +1,9 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState, type CSSProperties } from "react";
+import { Fragment, useMemo, useState, type CSSProperties } from "react";
 import { CATEGORIES, categoryMentions, entities, totalMentions, type Entity } from "../data/entities";
 import { SiteFooter } from "@/components/site-footer";
+import { EntityBox, plainClick } from "@/components/moments-box";
 import letterpress from "@/assets/explore-letterpress.webp";
 import letterpressPhone from "@/assets/explore-letterpress-phone.webp";
 
@@ -32,6 +33,9 @@ const kindOf = (e: Entity) => KIND[e.category] ?? "az-paper";
 function ExplorePage() {
   const [cat, setCat] = useState<string>("All");
   const [open, setOpen] = useState<Record<string, boolean>>({});
+  // Tap a sticker and its moments open in a box right under it, like the Library covers (Lisa, 29 Oct 2026);
+  // cmd/ctrl-click still opens the card itself.
+  const [sel, setSel] = useState<string | null>(null);
   const byLetter = useMemo(() => {
     const shown = entities.filter((e) =>
       cat === "All" ? true : cat === "Fashion" ? e.refs.some((r) => r.fashion) : e.category === cat,
@@ -58,7 +62,7 @@ function ExplorePage() {
           <br />
           <span className="timeline-strip timeline-strip-pink">A–Z</span>
         </h1>
-        <p className="timeline-tag">Every name dropped on Night Fever - the bigger, the more it&rsquo;s dropped.</p>
+        <p className="timeline-tag">Every name dropped on Night Fever - the bigger, the more it&rsquo;s dropped. Tap a name for every moment.</p>
       </section>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -99,17 +103,29 @@ function ExplorePage() {
               <h2 className="az-big">{l}</h2>
               <div>
                 {show.map(({ e, m }) => (
-                  <Link
-                    key={e.slug}
-                    to="/explore/$slug"
-                    params={{ slug: e.slug }}
-                    className={`az-st az-s${sizeOf(e, m)} ${kindOf(e)}`}
-                    title={`${e.guest ? "Night Fever guest" : e.category} · ${m} ${m === 1 ? "mention" : "mentions"}`}
-                  >
-                    <i>{e.guest ? "Guest" : e.category}</i>
-                    {e.name}
-                    <small>{m}</small>
-                  </Link>
+                  <Fragment key={e.slug}>
+                    <Link
+                      to="/explore/$slug"
+                      params={{ slug: e.slug }}
+                      className={`az-st az-s${sizeOf(e, m)} ${kindOf(e)}`}
+                      title={`${e.guest ? "Night Fever guest" : e.category} · ${m} ${m === 1 ? "mention" : "mentions"}`}
+                      aria-expanded={sel === e.slug}
+                      onClick={(ev) => {
+                        if (!plainClick(ev)) return;
+                        ev.preventDefault();
+                        setSel((s) => (s === e.slug ? null : e.slug));
+                      }}
+                    >
+                      <i>{e.guest ? "Guest" : e.category}</i>
+                      {e.name}
+                      <small>{m}</small>
+                    </Link>
+                    {sel === e.slug && (
+                      <div className="az-detail">
+                        <EntityBox entity={e} onClose={() => setSel(null)} />
+                      </div>
+                    )}
+                  </Fragment>
                 ))}
                 {rest.length > 0 && main.length > 0 && (
                   <button type="button" className="az-more" onClick={() => setOpen((o) => ({ ...o, [l]: !o[l] }))}>
