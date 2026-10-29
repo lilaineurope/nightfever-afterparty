@@ -459,3 +459,10 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
   .jbx-ep-name { font-size: 19px; }
   .jbx-pol { flex-basis: 88px; }
 }
+
+/* Timeline skyline (Lisa, 29 Oct 2026): starts under the intro; the padding leaves the skyline clear above the decade buttons
+   (34.4% of the width = the sky part of the picture), then the pixel fade runs on behind the moments. */
+.timeline-sky { background: var(--sky-phone) center top / 220% auto no-repeat; padding-top: 75.6%; }
+@media (min-width: 640px) {
+  .timeline-sky { background-image: var(--sky); background-size: 100% auto; padding-top: 34.4%; }
+}

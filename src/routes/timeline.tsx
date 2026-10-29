@@ -1,13 +1,15 @@
 import { pageHead } from "@/lib/seo";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useEffect, useState } from "react";
+import { useMemo, useEffect, useState, type CSSProperties } from "react";
 import { EntityLink } from "../components/entity-link";
 import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import skyline from "@/assets/timeline-skyline.webp";
+import skylinePhone from "@/assets/timeline-skyline-phone.webp";
 
 // "<N> years of one long night" counts itself (Lisa, 28 Oct 2026): from the earliest moment on the Timeline to today, in tens.
 const WORDS: Record<number, string> = { 40: "Forty", 50: "Fifty", 60: "Sixty", 70: "Seventy", 80: "Eighty", 90: "Ninety", 100: "A hundred" };
@@ -52,7 +54,7 @@ function TimelinePage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="relative px-6 pb-12 pt-14">
+      <section className="relative px-6 pb-6 pt-14">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
             {spanWord()} years of{" "}
@@ -66,6 +68,12 @@ function TimelinePage() {
         </div>
       </section>
 
+      {/* New York skyline header (Lisa, 29 Oct 2026, "S1"): photocopy halftone night sky, pink polaroid sticker edge along the
+          skyline, fading in pixels into pale pink behind the moments. Made by scripts/timeline-skyline (no outside pictures). */}
+      <div
+        className="timeline-sky"
+        style={{ "--sky": `url(${skyline})`, "--sky-phone": `url(${skylinePhone})` } as CSSProperties}
+      >
       <section className="px-6">
         <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2">
           {["all", ...decades].map((d) => (
@@ -92,9 +100,9 @@ function TimelinePage() {
             <li
               key={e.id}
               id={`ev-${e.id}`}
-              className={`relative scroll-mt-28 transition-colors ${target === e.id ? "-ml-3 bg-pink/10 py-3 pl-3 outline outline-2 outline-pink" : ""}`}
+              className={`relative scroll-mt-28 border-2 border-gold bg-card px-5 py-4 shadow-[5px_5px_0_var(--color-gold)] transition-colors ${target === e.id ? "outline outline-4 outline-offset-2 outline-pink" : ""}`}
             >
-              <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full bg-gold" />
+              <span className="absolute -left-[33px] top-5 h-3 w-3 rounded-full bg-gold" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
                 <Decades text={e.when} />
                 {e.place && (<> &middot; <EntityLink name={e.place.split(",")[0] ?? e.place} className="hover:text-gold">{e.place}</EntityLink></>)}
@@ -147,8 +155,10 @@ function TimelinePage() {
           ))}
         </ol>
       </section>
+      </div>
 
-      <SiteFooter />    </main>
+      <SiteFooter />
+    </main>
   );
 }
 

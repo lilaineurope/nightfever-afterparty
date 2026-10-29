@@ -14,7 +14,7 @@ const GROUPS: Group[] = [
     blurb: "Where the pages are made, stored and put online.",
     tools: [
       { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups, guestbook notes and interview suggestions in its built-in database (Lovable Cloud)." },
-      { name: "Claude", href: "https://claude.ai", what: "My co-pilot for everything behind the scenes: writes the code, researches every name and place, checks the links, transcribes the episodes and builds the reference sheets." },
+      { name: "Claude", href: "https://claude.ai", what: "My co-pilot for everything behind the scenes: writes the code, researches every name and place, checks the links, transcribes the episodes, builds the reference sheets and draws the photocopied New York skyline on the Timeline in code." },
       { name: "GitHub", href: "https://github.com", what: "Stores the site's code; every change syncs straight into Lovable." },
       { name: "Archivo Black, IBM Plex Mono and Special Elite", href: "https://fontsource.org", what: "The flyer fonts - headlines (Archivo Black), the typewriter text everywhere (Special Elite), and timestamps and small data (IBM Plex Mono). Open licences (SIL OFL and Apache), served from this site, not from a font service." },
       { name: "Covered By Your Grace", href: "https://fontsource.org/fonts/covered-by-your-grace", what: "The pink pencil handwriting of the guest quotes on the Afterparty page - an invented hand, not the guests' own. Open licence (SIL OFL), served from this site, not from a font service." },
