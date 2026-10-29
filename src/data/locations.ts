@@ -36,7 +36,6 @@ export const LOCATIONS: Located[] = [
   { name: "Provocateur (New York)", lat: 40.7396, lng: -74.0063, area: "Meatpacking" },
   { name: "Radio City Music Hall", lat: 40.76, lng: -73.98, area: "Midtown" },
   { name: "Music Building", lat: 40.7549, lng: -73.9909, area: "Garment District" },
-  { name: "Congo Bill's (Danceteria)", lat: 40.7412, lng: -73.9922, area: "Flatiron" },
   { name: "Les Bains Douches", lat: 48.8635, lng: 2.3519, area: "Paris" },
   { name: "Le Palace", lat: 48.8718, lng: 2.3428, area: "Paris" },
   { name: "Le Queen (Paris)", lat: 48.8711, lng: 2.3015, area: "Paris" },

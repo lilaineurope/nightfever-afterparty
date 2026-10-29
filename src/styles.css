@@ -567,3 +567,8 @@ a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-for
 /* Guestbook header (Lisa, 29 Oct 2026): no tagline, title close to the menu and the form right under it. */
 .gb-head { padding-top: 36px; padding-bottom: 28px; }
 @media (min-width: 640px) { .gb-head { padding-top: calc(100vw * 90 / 1920); height: auto; padding-bottom: 36px; } }
+/* Clubkid Culture club list: the tapped club's box spans all the columns (Lisa, 30 Oct 2026). */
+.jbx-clublist li.jbx-clubdetail { column-span: all; display: block; border: 0; padding: 12px 0 16px; }
+.jbx-clublist a[aria-expanded="true"] { color: var(--pink); font-weight: bold; }
+.jbx-clublist .jbx-clubdetail li { display: block; border: 0; padding: 0; break-inside: auto; }
+.jbx-clublist .jbx-clubdetail a:hover { text-decoration: none; }
