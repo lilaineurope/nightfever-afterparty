@@ -8,6 +8,8 @@ import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import { EntityBox, plainClick } from "@/components/moments-box";
+import { entityBySlug, entityFor } from "@/data/entities";
 import skyline from "@/assets/timeline-skyline.webp";
 import skylinePhone from "@/assets/timeline-skyline-phone.webp";
 
@@ -30,6 +32,9 @@ function TimelinePage() {
   const [decade, setDecade] = useState<string>("all");
   // Year chips elsewhere (episode pages) link to /timeline#ev-<event id>: show every decade, jump there, mark it (Lisa, 23 Oct 2026)
   const [target, setTarget] = useState<string | null>(null);
+  // Tap a name chip and its moments open in a box right under the chips, like the Library covers (Lisa, 29 Oct 2026);
+  // the chips stay links to the A–Z card (cmd/ctrl-click opens the card).
+  const [open, setOpen] = useState<string | null>(null);
   useEffect(() => {
     const jump = () => {
       const id = window.location.hash.startsWith("#ev-") ? decodeURIComponent(window.location.hash.slice(4)) : null;
@@ -123,31 +128,57 @@ function TimelinePage() {
                     key={slug}
                     to="/explore/$slug"
                     params={{ slug }}
-                    className="rounded-full border border-gold/40 px-3 py-1 text-xs font-medium text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
+                    aria-expanded={open === `${e.id}|${slug}`}
+                    onClick={(ev) => {
+                      if (!plainClick(ev) || !entityBySlug[slug]) return;
+                      ev.preventDefault();
+                      setOpen((o) => (o === `${e.id}|${slug}` ? null : `${e.id}|${slug}`));
+                    }}
+                    className="tl-chip rounded-full border border-gold/40 px-3 py-1 text-xs font-medium text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                   >
                     {guestBySlug[slug]?.name ?? slug}
                   </Link>
                 ))}
-                {e.figures.map((f) =>
-                  f === "World of Wonder" ? (
-                    <a
+                {e.figures.map((f) => {
+                  if (f === "World of Wonder")
+                    return (
+                      <a
+                        key={f}
+                        href={WOW_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
+                      >
+                        {f}
+                      </a>
+                    );
+                  const ent = entityFor(f);
+                  const cls = "tl-chip rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
+                  if (!ent) return <EntityLink key={f} name={f} className={cls} />;
+                  const key = `${e.id}|${ent.slug}`;
+                  return (
+                    <Link
                       key={f}
-                      href={WOW_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full border border-gold/40 bg-secondary px-3 py-1 text-xs text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
+                      to="/explore/$slug"
+                      params={{ slug: ent.slug }}
+                      aria-expanded={open === key}
+                      onClick={(ev) => {
+                        if (!plainClick(ev)) return;
+                        ev.preventDefault();
+                        setOpen((o) => (o === key ? null : key));
+                      }}
+                      className={cls}
                     >
                       {f}
-                    </a>
-                  ) : (
-                    <EntityLink
-                      key={f}
-                      name={f}
-                      className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
-                    />
-                  ),
-                )}
+                    </Link>
+                  );
+                })}
               </div>
+              {open?.startsWith(`${e.id}|`) && entityBySlug[open.slice(e.id.length + 1)] && (
+                <div className="mt-4">
+                  <EntityBox entity={entityBySlug[open.slice(e.id.length + 1)]!} onClose={() => setOpen(null)} />
+                </div>
+              )}
             </li>
           ))}
         </ol>
