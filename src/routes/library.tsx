@@ -116,7 +116,7 @@ function LibraryPage() {
         ))}
 
         <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
-          The Library fills itself from my episode indexes, so every new Afterparty adds its reading. Book covers come from Open Library, a few article and issue scans from public archives (credited on each card), and all stay
+          The Library fills itself from my episode indexes, so every new Afterparty adds its reading. Book covers come from Open Library, the other covers and article scans from archives, galleries, booksellers and dealer listings (each credited on its card), and all stay
           their publishers&rsquo; work - shown small, only so you can spot the book; the magazine and newspaper mastheads are public-domain logos
           from Wikimedia Commons, printed in our photocopy colours. All pictures are kept on this site, so opening the Library never contacts
           another service. Covers without a picture are typed, the downtown way.

@@ -51,6 +51,7 @@ const GROUPS: Group[] = [
       { name: "Open Library", href: "https://openlibrary.org", what: "The book covers in the Library (copied once and kept on this site, so your browser never contacts Open Library) and its \"Find a copy\" links." },
       { name: "Wikimedia Commons", href: "https://commons.wikimedia.org", what: "The public-domain magazine and newspaper mastheads in the Library, copied once and kept on this site." },
       { name: "Public archives", href: "https://umsi580.lsait.lsa.umich.edu/s/stand_up_be_counted/item/1306", what: "A few article and issue scans in the Library (such as Venus Envy from the Village Voice, via the University of Michigan's Stand Up and Be Counted archive) - copied once, credited on the item's card." },
+      { name: "Galleries, booksellers and dealer listings", href: "https://gallery98.org", what: "Most of the other magazine covers, front pages and book covers in the Library (Gallery 98, the FIT Library, the RISD picture collection, Atomic Books, Artbook, eBay and dealer photos and more) - captured once at card size and kept on this site, so opening the Library never contacts them; each card names its source." },
     ],
   },
   {
