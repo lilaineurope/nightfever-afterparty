@@ -44,10 +44,6 @@ function ExplorePage() {
     }
     return out;
   }, [cat]);
-  const chip = (c: string) =>
-    `rounded-full border px-3 py-1 text-xs font-medium transition ${
-      cat === c ? "border-gold bg-gold text-gold-foreground" : "border-border bg-secondary text-secondary-foreground hover:text-pink"
-    }`;
 
   return (
     <main
@@ -68,9 +64,15 @@ function ExplorePage() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-wrap justify-center gap-2">
           {["All", ...CATEGORIES].map((c) => (
-            <button key={c} type="button" className={chip(c)} aria-pressed={cat === c} onClick={() => setCat(c)}>
-              {c === "All" ? <span className="uppercase">Everything</span> : c}
-              <span className="ml-1 opacity-70">{categoryMentions[c] ?? 0}</span>
+            <button
+              key={c}
+              type="button"
+              className={`az-st az-cat ${c === "All" ? "az-ink" : (KIND[c] ?? "az-paper")}`}
+              aria-pressed={cat === c}
+              onClick={() => setCat(c)}
+            >
+              {c === "All" ? "Everything" : c}
+              <small>{categoryMentions[c] ?? 0}</small>
             </button>
           ))}
         </div>

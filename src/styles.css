@@ -548,3 +548,7 @@ a.az-st:hover { transform: rotate(0) translateY(-2px) !important; box-shadow: 4p
 @media (max-width: 639px) { .az-bar { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .az-bar a, .az-bar span { flex: 0 0 auto; } }
 .az-st i { font-style: normal; font-family: var(--font-mono-body); font-size: 9px; letter-spacing: .08em; margin-right: 6px; opacity: .75; vertical-align: middle; }
 .az-s3 i, .az-s4 i { font-size: 10px; }
+/* A–Z category filters as square sticker boxes in the category's colour (Lisa, 29 Oct 2026); the picked one is lifted with a pink shadow. */
+.az-cat { font-size: 12px; cursor: pointer; }
+.az-cat[aria-pressed="true"] { transform: translateY(-3px) rotate(-1.5deg); box-shadow: 4px 5px 0 var(--color-pink); outline: 3px solid #111; outline-offset: 1px; }
+.az-cat:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 var(--color-pink); }
