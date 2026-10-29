@@ -502,8 +502,8 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 /* Jukebox disco-ball header (Lisa, 29 Oct 2026): the background starts at the top of the page; the padding lets the tiles
    show above the jukebox cabinet, then the pixel fade runs on behind it. */
 .jukebox-sky { background: var(--sky-phone) center top / 220% auto no-repeat, var(--background); }
-.jukebox-sky > section:first-child { padding-top: 52.8vw; }
+.jukebox-sky > section:first-child { padding-top: 10vw; }
 @media (min-width: 640px) {
   .jukebox-sky { background-image: var(--sky); background-size: 100% auto; }
-  .jukebox-sky > section:first-child { padding-top: 24%; }
+  .jukebox-sky > section:first-child { padding-top: 4%; }
 }
