@@ -556,8 +556,3 @@ a.az-st:hover { transform: rotate(0) translateY(-2px) !important; box-shadow: 4p
    stand out on the header picture; selected = black (global aria-pressed rule). */
 .season-chip { border: 2px solid #111; background: #f4f1ea; color: #111; padding: 6px 16px; font-size: 14px; font-weight: 600; box-shadow: 3px 3px 0 #111; }
 .season-chip[aria-pressed="true"] .text-pink { color: #fff; }
-/* Library polaroid strip (Lisa, 29 Oct 2026): pick one Afterparty's reading; first card = everything. */
-.lib-pols { border-top: 0; margin-top: 0; }
-.lib-all { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: #111; color: #fff; border-color: #111; }
-.lib-all b { font-size: 13px; }
-.lib-all span { opacity: .8; }

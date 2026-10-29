@@ -11,7 +11,6 @@ export type CollectionItem = {
   shelf: string;
   link: string;
   mentions: number;
-  firstRelease: number; // earliest episode release, for "newest first"
   moments: { episodeId: string; code: string; guest: string; time: string; context: string }[];
   /** Spotify URI (spotify:track:… / album / artist) for the Jukebox player, when one exists */
   spotify?: string | undefined;
@@ -33,7 +32,6 @@ function toItem(e: Entity, shelf: string, cats: string[]): CollectionItem {
     shelf,
     link: e.link ?? "",
     mentions: refs.reduce((n, r) => n + r.mentions, 0),
-    firstRelease: Math.min(...moments.map((m) => Date.parse(episodeById(m.episodeId).released) || Infinity)),
     moments,
   };
 }

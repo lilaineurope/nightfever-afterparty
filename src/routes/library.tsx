@@ -4,8 +4,7 @@ import { Timestamp } from "@/components/episode-player";
 import { EntityText } from "@/components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 import { linkPlace } from "@/lib/link-label";
-import { episodePath, episodes, stageName } from "@/data/episodes";
-import { episodePortraits } from "@/components/episode-block";
+import { episodePath } from "@/data/episodes";
 import stacks from "@/assets/library-stacks.webp";
 import stacksPhone from "@/assets/library-stacks-phone.webp";
 import { BOOK_SHELVES, bookClub, findBookLink, type CollectionItem } from "@/data/collections";
@@ -45,38 +44,17 @@ export const Route = createFileRoute("/library")({
 const KIND: Record<string, string> = { books: "Books", magazines: "Magazines", newspapers: "Newspapers", columns: "Columns" };
 const episodesOf = (it: CollectionItem) => new Set(it.moments.map((m) => m.episodeId)).size;
 const afterparties = (n: number) => `${n} ${n === 1 ? "Afterparty" : "Afterparties"}`;
-const CHIP = "rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground transition";
+const CHIP = "season-chip rounded-full";
 const sortName = (s: string) => s.replace(/^['‘"“]|^the\s+/i, "");
-// "Newest Afterparty" (Lisa, 29 Oct 2026 - the old "Newest episode" sorted by broadcast date and barely moved anything):
-// a title ranks by the newest Afterparty on this site that mentions it.
-const apDate = Object.fromEntries(episodes.map((e) => [e.id, e.afterpartyPublished]));
-const newestAp = (it: CollectionItem) => it.moments.reduce((d, m) => ((apDate[m.episodeId] ?? "") > d ? apDate[m.episodeId] ?? "" : d), "");
-// Polaroid strip: every Afterparty with reading, newest first.
-const libEpisodes = [...episodes]
-  .filter((e) => bookClub.some((b) => b.moments.some((m) => m.episodeId === e.id)))
-  .sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished));
-type View = "shelves" | "afterparties";
+// Per-Afterparty sorting and views were tried and parked (Lisa, 29 Oct 2026: "no to afterparty category for library yet").
 
 function LibraryPage() {
   const [shelf, setShelf] = useState("all");
-  const [sort, setSort] = useState<"mentions" | "az" | "episode">("mentions");
+  const [sort, setSort] = useState<"mentions" | "az">("mentions");
   const [open, setOpen] = useState<string | null>(null);
-  const [ep, setEp] = useState<string | null>(null);
-  const [view, setView] = useState<View>("shelves");
-  const pool = useMemo(() => (ep ? bookClub.filter((b) => b.moments.some((m) => m.episodeId === ep)) : bookClub), [ep]);
-  const counts = useMemo(() => Object.fromEntries(BOOK_SHELVES.map((s) => [s.key, pool.filter((i) => i.shelf === s.key).length])), [pool]);
-  const sorted = useMemo(() => {
-    if (sort === "az") return [...pool].sort((a, b) => sortName(a.name).localeCompare(sortName(b.name)));
-    if (sort === "episode") return [...pool].sort((a, b) => newestAp(b).localeCompare(newestAp(a)) || b.mentions - a.mentions);
-    return pool;
-  }, [sort, pool]);
-  const shelved = sorted.filter((i) => shelf === "all" || i.shelf === shelf);
-  const sections =
-    view === "afterparties" && !ep
-      ? libEpisodes
-          .map((e) => ({ key: e.id, label: `${stageName(e.guest)} · S${e.season}E${e.episode}`, items: shelved.filter((i) => i.moments.some((m) => m.episodeId === e.id)) }))
-          .filter((s) => s.items.length)
-      : BOOK_SHELVES.filter((s) => shelf === "all" || s.key === shelf).map((s) => ({ ...s, items: sorted.filter((i) => i.shelf === s.key) }));
+  const counts = useMemo(() => Object.fromEntries(BOOK_SHELVES.map((s) => [s.key, bookClub.filter((i) => i.shelf === s.key).length])), []);
+  const sorted = useMemo(() => (sort === "az" ? [...bookClub].sort((a, b) => sortName(a.name).localeCompare(sortName(b.name))) : bookClub), [sort]);
+  const sections = BOOK_SHELVES.filter((s) => shelf === "all" || s.key === shelf).map((s) => ({ ...s, items: sorted.filter((i) => i.shelf === s.key) }));
   const toggle = (slug: string) => setOpen((o) => (o === slug ? null : slug));
 
   return (
@@ -96,24 +74,10 @@ function LibraryPage() {
       </section>
 
       <div className="mx-auto max-w-6xl px-6 pb-16">
-        <div className="jbx-pols lib-pols" role="group" aria-label="Show one Afterparty's reading">
-          <button type="button" className={`jbx-pol lib-all${ep === null ? " on" : ""}`} aria-pressed={ep === null} onClick={() => setEp(null)}>
-            <b>Every Afterparty</b>
-            <span>{libEpisodes.length} Afterparties</span>
-          </button>
-          {libEpisodes.map((e) => (
-            <button key={e.id} type="button" className={`jbx-pol${ep === e.id ? " on" : ""}`} aria-pressed={ep === e.id} onClick={() => setEp(ep === e.id ? null : e.id)} title={`The reading from ${stageName(e.guest)}'s Afterparty`}>
-              {episodePortraits[e.id] && <img src={episodePortraits[e.id]} alt="" loading="lazy" />}
-              <span>S{e.season}E{e.episode}</span>
-              <b>{stageName(e.guest)}</b>
-            </button>
-          ))}
-        </div>
-
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-b-2 border-gold pb-5">
           <div className="flex flex-wrap gap-2">
             <button type="button" className={CHIP} aria-pressed={shelf === "all"} onClick={() => setShelf("all")}>
-              <span className="uppercase">Everything</span> <span className="ml-1 text-pink">{pool.length}</span>
+              <span className="uppercase">Everything</span> <span className="ml-1 text-pink">{bookClub.length}</span>
             </button>
             {BOOK_SHELVES.map((s) => (
               <button key={s.key} type="button" className={CHIP} aria-pressed={shelf === s.key} onClick={() => setShelf(s.key)}>
@@ -125,14 +89,6 @@ function LibraryPage() {
             <span>Sort:</span>
             <button type="button" className={CHIP} aria-pressed={sort === "mentions"} onClick={() => setSort("mentions")}>Most dropped</button>
             <button type="button" className={CHIP} aria-pressed={sort === "az"} onClick={() => setSort("az")}>A–Z</button>
-            <button type="button" className={CHIP} aria-pressed={sort === "episode"} onClick={() => setSort("episode")}>Newest Afterparty</button>
-            {!ep && (
-              <>
-                <span className="ml-2">Show:</span>
-                <button type="button" className={CHIP} aria-pressed={view === "shelves"} onClick={() => setView("shelves")}>By shelf</button>
-                <button type="button" className={CHIP} aria-pressed={view === "afterparties"} onClick={() => setView("afterparties")}>By Afterparty</button>
-              </>
-            )}
           </div>
         </div>
 
