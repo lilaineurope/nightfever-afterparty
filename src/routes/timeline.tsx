@@ -53,27 +53,24 @@ function TimelinePage() {
   );
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="relative px-6 pb-6 pt-14">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            {spanWord()} years of{" "}
-            <span className="text-pink text-glow-pink">one long night</span>
+    <main
+      className="timeline-sky min-h-screen bg-background text-foreground"
+      style={{ "--sky": `url(${skyline})`, "--sky-phone": `url(${skylinePhone})` } as CSSProperties}
+    >
+      {/* New York skyline header (Lisa, 29 Oct 2026, "S1" then "T3"): the photocopied night sky starts at the top of the page and
+          fades in pixels upwards and downwards; the headline sits on black and pink flyer strips sinking into the skyline, one
+          tagline on a paper strip. Made by scripts/timeline-skyline (no outside pictures). */}
+      <section className="timeline-head relative px-4">
+        <div className="timeline-head-in">
+          <h1 className="timeline-title">
+            <span className="timeline-strip timeline-strip-ink">{spanWord()} years of</span>
+            <br />
+            <span className="timeline-strip timeline-strip-pink">one long night</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/85">
-            The doors that opened, the records that broke, the scandals that
-            closed rooms for good - and which of the guests was standing there
-            when it happened! Pick a decade and dive in.
-          </p>
+          <p className="timeline-tag">The places, the drama, the releases. All there.</p>
         </div>
       </section>
 
-      {/* New York skyline header (Lisa, 29 Oct 2026, "S1"): photocopy halftone night sky, pink polaroid sticker edge along the
-          skyline, fading in pixels into pale pink behind the moments. Made by scripts/timeline-skyline (no outside pictures). */}
-      <div
-        className="timeline-sky"
-        style={{ "--sky": `url(${skyline})`, "--sky-phone": `url(${skylinePhone})` } as CSSProperties}
-      >
       <section className="px-6">
         <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2">
           {["all", ...decades].map((d) => (
@@ -155,7 +152,6 @@ function TimelinePage() {
           ))}
         </ol>
       </section>
-      </div>
 
       <SiteFooter />
     </main>
