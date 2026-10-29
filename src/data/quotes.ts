@@ -29,6 +29,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s02e01: { quote: "Dorothy clicked her heels three times and ended up in Kansas. I clicked my heels three times and ended up on Christopher Street.", time: "00:11:50" }, // Michelle Visage
   s01e06: { quote: "Punk gave me my skeleton and the club kids gave me my flesh.", time: "00:09:20" }, // Waltpaper
   s02e05: { quote: "I remember taking the D train over the Williamsburg Bridge, and the city would be all lit up like a Versace dress.", time: "00:03:51" }, // Connie Fleming
-  s03e10: { quote: "Getting dressed up, putting some effort into your appearance really went a long way in those days.", time: "00:34:20" }, // Miss Guy
+  s03e10: { quote: "For me, music magazines were my lifesaver my whole life. I would save my allowance to buy every new rock magazine.", time: "00:14:41" }, // Miss Guy
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
