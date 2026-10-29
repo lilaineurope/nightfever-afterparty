@@ -13,7 +13,7 @@ export const Route = createFileRoute("/explore/")({
 });
 
 // Everything A–Z as sticker strips (Lisa, 29 Oct 2026, option "Z4"): every name is a flyer sticker, sized in four steps by how
-// often it's dropped and coloured by kind; letters A–Z with a sticky letter bar; the category chips filter as before.
+// often it's dropped; each sticker carries its own category (the same categories as the chips - Lisa: "use the old categories"); letters A–Z with a sticky letter bar; the category chips filter as before.
 // Names dropped once or less stay behind "+ N more" per letter. Michael Alig never gets the big sizes (Lisa, 28 Oct 2026).
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split("");
 const letterOf = (name: string) => {
@@ -74,12 +74,6 @@ function ExplorePage() {
             </button>
           ))}
         </div>
-        <p className="mt-4 flex flex-wrap justify-center gap-2 font-mono text-[11px]" aria-label="Colour key">
-          <span className="az-st az-s1 az-ink">People</span>
-          <span className="az-st az-s1 az-pink">Clubs &amp; events</span>
-          <span className="az-st az-s1 az-yellow">Music, film &amp; TV</span>
-          <span className="az-st az-s1 az-paper">Places, looks &amp; print</span>
-        </p>
       </div>
 
       <nav className="az-bar" aria-label="Jump to a letter">
@@ -110,6 +104,7 @@ function ExplorePage() {
                     className={`az-st az-s${sizeOf(e, m)} ${kindOf(e)}`}
                     title={`${e.guest ? "Night Fever guest" : e.category} · ${m} ${m === 1 ? "mention" : "mentions"}`}
                   >
+                    <i>{e.guest ? "Guest" : e.category}</i>
                     {e.name}
                     <small>{m}</small>
                   </Link>

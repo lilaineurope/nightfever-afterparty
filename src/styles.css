@@ -546,3 +546,5 @@ a.az-st:hover { transform: rotate(0) translateY(-2px) !important; box-shadow: 4p
 .az-more { font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .az-more:hover { color: var(--color-pink); }
 @media (max-width: 639px) { .az-bar { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .az-bar a, .az-bar span { flex: 0 0 auto; } }
+.az-st i { font-style: normal; font-family: var(--font-mono-body); font-size: 9px; letter-spacing: .08em; margin-right: 6px; opacity: .75; vertical-align: middle; }
+.az-s3 i, .az-s4 i { font-size: 10px; }
