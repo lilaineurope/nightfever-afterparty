@@ -1,6 +1,8 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
+import tablePic from "@/assets/afterparty-table.webp";
+import tablePhone from "@/assets/afterparty-table-phone.webp";
 import { episodes, SEASONS } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
 import { LegalLinks } from "@/components/legal-links";
@@ -26,26 +28,19 @@ function EpisodesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <section className="relative px-6 pb-16 pt-14">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-pink">
-            Afterparty
-          </p>
-          <h1 className="mt-4 text-[2.5rem] font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            Every episode - <span className="text-gold">unpacked &amp; timestamped</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-cream/90 sm:text-lg">
-            I kept hitting pause - so you don't have to! Every episode gets its
-            own index: every name, club, song, book and look the guests drop,
-            counted and linked to the exact minute you hear it. Pick an episode,
-            grab a drink and dive in!
-          </p>
-          <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold/80">
-            Newest Afterparty first
-          </p>
-        </div>
+    <main
+      className="page-sky min-h-screen bg-background text-foreground"
+      style={{ "--sky": `url(${tablePic})`, "--sky-phone": `url(${tablePhone})` } as CSSProperties}
+    >
+      {/* Header (Lisa, 29 Oct 2026, "A1"): the table after the party - a Gemini picture in the photocopy halftone, fading after
+          the tagline (scripts/page-headers/fade.py), with the flyer strips. */}
+      <section className="page-head px-4 text-center">
+        <h1 className="timeline-title">
+          <span className="timeline-strip timeline-strip-ink">Every episode</span>
+          <br />
+          <span className="timeline-strip timeline-strip-pink">unpacked &amp; timestamped</span>
+        </h1>
+        <p className="timeline-tag">Every name, club, song, book and look - to the minute you hear it. Newest Afterparty first.</p>
       </section>
 
       {/* Episode list */}
@@ -58,13 +53,9 @@ function EpisodesPage() {
               <button key={s ?? "all"} type="button" aria-pressed={on} disabled={count === 0}
                 onClick={() => setSeason(s)}
                 title={count === 0 ? "No Afterparty for this season yet" : undefined}
-                className={`rounded-full border px-4 py-1.5 text-sm transition ${
-                  on
-                    ? "border-gold bg-gold text-gold-foreground"
-                    : "border-border text-muted-foreground hover:border-pink hover:text-pink"
-                } disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted-foreground`}>
-                {s === null ? <span className="uppercase">Everything</span> : `Season ${s}`}
-                <span className={`ml-1.5 text-xs ${on ? "" : "text-pink"}`}>{count}</span>
+                className={`az-st az-cat ${s === null ? "az-ink" : ["az-pink", "az-yellow", "az-paper"][(s - 1) % 3]} disabled:cursor-not-allowed disabled:opacity-40`}>
+                {s === null ? "Everything" : `Season ${s}`}
+                <small>{count}</small>
               </button>
             );
           })}
@@ -76,6 +67,7 @@ function EpisodesPage() {
         </div>
       </section>
 
-      <SiteFooter />    </main>
+      <SiteFooter />
+    </main>
   );
 }

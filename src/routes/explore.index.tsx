@@ -47,12 +47,12 @@ function ExplorePage() {
 
   return (
     <main
-      className="az-sky min-h-screen bg-background text-foreground"
+      className="page-sky min-h-screen bg-background text-foreground"
       style={{ "--sky": `url(${letterpress})`, "--sky-phone": `url(${letterpressPhone})` } as CSSProperties}
     >
       {/* Letterpress header (Lisa, 29 Oct 2026): a Gemini type-case picture in the photocopy halftone, fading after the tagline.
           Made with scripts/page-headers/fade.py. */}
-      <section className="az-head px-4 text-center">
+      <section className="page-head px-4 text-center">
         <h1 className="timeline-title">
           <span className="timeline-strip timeline-strip-ink">Everything</span>
           <br />

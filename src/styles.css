@@ -518,11 +518,11 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 }
 /* Everything A–Z sticker strips (Lisa, 29 Oct 2026, "Z4"): letterpress header picture, sticky letter bar under the menu,
    every name a flyer sticker in four sizes, coloured by kind. */
-.az-sky { background: var(--sky-phone) center top / 220% auto no-repeat, var(--background); }
-.az-head { padding-top: calc(220vw * 150 / 1920); padding-bottom: 28px; }
+.page-sky { background: var(--sky-phone) center top / 220% auto no-repeat, var(--background); }
+.page-head { padding-top: calc(220vw * 150 / 1920); padding-bottom: 28px; }
 @media (min-width: 640px) {
-  .az-sky { background-image: var(--sky); background-size: 100% auto; }
-  .az-head { padding-top: calc(100vw * 170 / 1920); height: calc(100vw * 760 / 1920); }
+  .page-sky { background-image: var(--sky); background-size: 100% auto; }
+  .page-head { padding-top: calc(100vw * 170 / 1920); height: calc(100vw * 760 / 1920); }
 }
 .az-bar { position: sticky; top: 55px; z-index: 40; display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; margin-top: 22px; padding: 10px 8px; background: var(--background); border-top: 3px solid var(--color-gold); border-bottom: 3px solid var(--color-gold); }
 .az-bar a, .az-bar span { display: grid; place-items: center; width: 32px; height: 32px; border: 2px solid var(--color-gold); background: #f4f1ea; color: #111; font-family: var(--font-flyer); font-size: 17px; }
