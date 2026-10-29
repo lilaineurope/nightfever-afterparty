@@ -24,6 +24,7 @@ import zaldyRefs from "./s04e04.json";
 import visageRefs from "./s02e01.json";
 import waltRefs from "./s01e06.json";
 import jennyRefs from "./s02e07.json";
+import connieRefs from "./s02e05.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -567,7 +568,25 @@ const s02e07: Episode = {
   top: topNames(jennyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07].sort((a, b) =>
+const s02e05: Episode = {
+  id: "s02e05",
+  season: 2,
+  episode: 5,
+  guest: "Connie Fleming",
+  released: "2022-09-05",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-205",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO1744907754.mp3",
+  runtime: "1:17:43",
+  afterpartyPublished: "2026-11-03",
+  blurb:
+    "Connie Fleming, Boy Bar beauty and Mugler supermodel! The D train over the Williamsburg Bridge, Madonna in the Funhouse DJ booth, a Mr. Blackwell dress at the Antique Boutique, Boy Bar from fawn to star, International Chrysis's lessons, Tracey Africa, Mugler's red cowgirl look - and New York's toughest door.",
+  references: connieRefs.length,
+  mentions: connieRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(connieRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -592,7 +611,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -644,6 +663,8 @@ export function episodePath(
       return "/episodes/s01e06";
     case "s02e07":
       return "/episodes/s02e07";
+    case "s02e05":
+      return "/episodes/s02e05";
     default:
       return "/episodes/s06e01";
   }

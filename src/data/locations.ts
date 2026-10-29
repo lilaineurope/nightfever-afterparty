@@ -5,6 +5,19 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Avenue B", lat: 40.7243, lng: -73.98, area: "East Village" },
+  { name: "Bronx", lat: 40.8448, lng: -73.8648, area: "Bronx" },
+  { name: "Jamaica", lat: 18.1096, lng: -77.2975, area: "Jamaica" },
+  { name: "Funhouse", lat: 40.7505, lng: -74.0045, area: "Chelsea" },
+  { name: "Cooper Union", lat: 40.7291, lng: -73.9907, area: "East Village" },
+  { name: "Antique Boutique", lat: 40.7286, lng: -73.9936, area: "NoHo" },
+  { name: "Jersey City", lat: 40.7178, lng: -74.0431, area: "New Jersey" },
+  { name: "Alamogordo", lat: 32.8995, lng: -105.9603, area: "New Mexico" },
+  { name: "Vinyl", lat: 40.7213, lng: -74.009, area: "Tribeca" },
+  { name: "El Morocco", lat: 40.7585, lng: -73.97, area: "Midtown East" },
+  { name: "Delmonico's", lat: 40.7051, lng: -74.0102, area: "Financial District" },
+  { name: "Le Bain", lat: 40.7409, lng: -74.008, area: "Meatpacking" },
+  { name: "Queens", lat: 40.7282, lng: -73.7949, area: "Queens" },
   { name: "Brazil", lat: -14.235, lng: -51.9253, area: "Brazil" },
   { name: "São Paulo", lat: -23.5505, lng: -46.6333, area: "Brazil" },
   { name: "Germany", lat: 51.1657, lng: 10.4515, area: "Germany" },

@@ -31,6 +31,7 @@ import zaldyPortrait from "@/assets/polaroid-zaldy.jpg";
 import visagePortrait from "@/assets/polaroid-michelle-visage.jpg";
 import waltpaperPortrait from "@/assets/polaroid-waltpaper.jpg";
 import jennyPortrait from "@/assets/polaroid-jenny-talia.jpg";
+import conniePortrait from "@/assets/polaroid-connie-fleming.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -59,6 +60,7 @@ export const episodePortraits: Record<string, string> = {
   s02e01: visagePortrait,
   s01e06: waltpaperPortrait,
   s02e07: jennyPortrait,
+  s02e05: conniePortrait,
 };
 
 

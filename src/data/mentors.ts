@@ -35,6 +35,11 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Michael Alig", mentee: "Waltpaper", episode: "s01e06", time: "00:16:33", line: "Walt's mentor once they bonded at the Limelight" },
   { mentor: "Michael Alig", mentee: "Jenny Dembrow aka Jenny Talia", episode: "s02e07", time: "00:02:04", line: "Took Jenny into his band of revelers" },
   { mentor: "Michael Alig", mentee: "Richie Rich", episode: "s04e08", time: "00:06:37", line: "Took Richie under his wing" },
+  { mentor: "International Chrysis", mentee: "Connie Fleming", episode: "s02e05", time: "00:19:35", line: "Connie's early mentor: taught her about being a trans woman and a professional" },
+  { mentor: "Matthew (Boy Bar)", mentee: "Connie Fleming", episode: "s02e05", time: "00:12:34", line: "Put Connie in the Boy Bar shows and pushed her on stage" },
+  { mentor: "David Glamamore", mentee: "Connie Fleming", episode: "s02e05", time: "00:08:37", line: "Took Connie to Boy Bar and introduced her to Matthew" },
+  { mentor: "Steven Meisel", mentee: "Connie Fleming", episode: "s02e05", time: "00:28:39", line: "Spotted her at the Patricia Field ball and booked her first big shoot" },
+  { mentor: "Perfidia", mentee: "Zaldy", episode: "s02e05", time: "00:16:12", line: "Found Zaldy and shaped him into a Miss Boy Bar, Connie says" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
