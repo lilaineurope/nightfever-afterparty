@@ -4,6 +4,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { SPOTIFY_PLAYLIST_URL, jukebox } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 import { episodes, stageName } from "@/data/episodes";
+import type { CSSProperties } from "react";
+import disco from "@/assets/jukebox-disco.webp";
+import discoPhone from "@/assets/jukebox-disco-phone.webp";
 
 const description = `Every song, record, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie at the Mudd Club to Warm Leatherette, each with the moment it comes up. Press play!`;
 
@@ -60,8 +63,13 @@ function JukeboxPage() {
   const { afterparty, show } = Route.useSearch();
   const navigate = useNavigate({ from: "/jukebox" });
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="px-4 pb-16 pt-10 sm:px-6">
+    <main
+      className="jukebox-sky min-h-screen bg-background text-foreground"
+      style={{ "--sky": `url(${disco})`, "--sky-phone": `url(${discoPhone})` } as CSSProperties}
+    >
+      {/* Disco-ball close-up header (Lisa, 29 Oct 2026): the mirror tiles fill the header as the pattern, photocopied like the
+          Timeline and the polaroids, fading out in pixels behind the list. Made by scripts/jukebox-disco from a Gemini picture. */}
+      <section className="px-4 pb-16 sm:px-6">
         <JukeboxMachine items={jukebox} initialEpisode={afterparty} initialFilter={show} onPickEpisode={(id) => void navigate({ search: id ? { afterparty: id } : {}, replace: true, resetScroll: false })} />
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
           Every song, record, band and sound that comes up in the interviews - the playlist of the night, Afterparty by Afterparty. The screen shows a
