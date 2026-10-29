@@ -152,7 +152,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
             </div>
             <div className="flex flex-wrap gap-2">
               {[...cats, "Fashion", ...(refs.some((r) => isOtherShowGuest(r.name, thisEpisode.guest)) ? [NIGHT_FEVER] : [])].map((c) => (
-                <Button variant="outline" aria-pressed={cat === c} key={c} className={btn(cat === c)} onClick={() => setCat(c)}>{c}</Button>
+                <Button variant="outline" aria-pressed={cat === c} key={c} className={btn(cat === c)} onClick={() => setCat(c)}>{c === "All" ? <><span className="uppercase">Everything</span><span className="ml-1.5 opacity-70">{refs.length}</span></> : c}</Button>
               ))}
             </div>
           </div>

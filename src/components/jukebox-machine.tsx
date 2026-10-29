@@ -101,7 +101,7 @@ function newestMusicEpisode(items: CollectionItem[]): string {
 type EpCat = "all" | "music" | "clubs" | "people" | "fashion" | "pubs" | "films" | "events";
 // Lisa, 28 Oct 2026: Music, Clubs, Films & TV, People, Fashion, Events, Publications - each ranked by popularity.
 const EP_CATS: { id: EpCat; label: string }[] = [
-  { id: "all", label: "All" },
+  { id: "all", label: "EVERYTHING" },
   { id: "music", label: "Music" },
   { id: "clubs", label: "Clubs" },
   { id: "films", label: "Films & TV" },

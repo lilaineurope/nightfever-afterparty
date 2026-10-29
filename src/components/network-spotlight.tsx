@@ -122,7 +122,7 @@ export function NetworkSpotlight() {
             onClick={() => setCat(c)}
             className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground transition"
           >
-            {c}
+            {c === "All" ? <span className="uppercase">Everything</span> : c}
           </button>
         ))}
       </div>

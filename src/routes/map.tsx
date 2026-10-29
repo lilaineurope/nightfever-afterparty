@@ -201,7 +201,7 @@ function MapPage() {
                 cat === c ? "border-pink bg-pink/15 text-pink" : "border-border text-card-foreground/80 hover:border-gold/50"
               }`}
             >
-              {c} <span className="text-muted-foreground">{n}</span>
+              {c === "All" ? <span className="uppercase">Everything</span> : c} <span className="text-muted-foreground">{n}</span>
             </button>
           ))}
         </div>
