@@ -44,7 +44,7 @@ function ExplorePage() {
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {["All", ...CATEGORIES].map((c) => (
             <button key={c} type="button" className={chip(c)} aria-pressed={cat === c} onClick={() => setCat(c)}>
-              {c}
+              {c === "All" ? <span className="uppercase">Everything</span> : c}
               <span className="ml-1 opacity-70">{categoryMentions[c] ?? 0}</span>
             </button>
           ))}
