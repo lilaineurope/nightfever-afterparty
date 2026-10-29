@@ -1,5 +1,5 @@
-# Page header pictures (Jukebox, Library, A–Z - Lisa, 29 Oct 2026): a Gemini photo turned into the pink/black photocopy halftone with pixel fades.
-# PHOTO=<gemini.jpeg> OUT=out.png [TOPFADE=260] [START=0.42 EXT=500 LEN=520] python3 scripts/page-headers/fade.py
+# Page header pictures (Jukebox, Library, A–Z, Afterparty - Lisa, 29 Oct 2026): a Gemini photo turned into the pink/black photocopy halftone with pixel fades.
+# PHOTO=<gemini.jpeg> OUT=out.png [TOPFADE=260 TOPLEN=680] [START=0.42 EXT=500 LEN=520] python3 scripts/page-headers/fade.py
 import os
 import importlib.util, sys, os, numpy as np, cv2
 from PIL import Image
@@ -25,7 +25,11 @@ dots=pb.screen(np.clip(1-T**1.1,0,1).astype(np.float32),10,45)
 m=np.clip(T/0.55,0,1); m=m*m*(3-2*m); a=1-m*(1-dots)
 TOP=int(os.environ.get('TOPFADE','0'))
 if TOP:
-    rows=np.arange(HH,dtype=np.float32); u=np.clip(rows/TOP,0,1); u=(u*u*(3-2*u))[:,None]*np.ones((1,W),np.float32)
-    up=pb.screen(u.astype(np.float32),12,45); a=a*np.where(u<1,up,1)
+    # smoother top (Lisa, 29 Oct 2026): the picture first rises out of the paper over a longer stretch - tiny pale dots that
+    # grow slowly (smootherstep, finer screen), and the colour eases in from the page's paper.
+    TF=int(os.environ.get('TOPLEN',str(TOP+420)))
+    rows=np.arange(HH,dtype=np.float32); u=np.clip(rows/TF,0,1); u=(u*u*u*(u*(u*6-15)+10))[:,None]*np.ones((1,W),np.float32)
+    up=pb.screen(u.astype(np.float32),9,45); a=a*np.where(u<0.999,np.clip(up*0.85+u*0.15,0,1),1)
+    paper=np.array([228,223,213],np.float32); kk=(1-np.clip(u*1.25,0,1))[...,None]; col=col*(1-kk)+paper*kk
 Image.fromarray(np.dstack([np.clip(col,0,255),np.clip(a,0,1)*255]).astype(np.uint8),'RGBA').save(OUT)
 print(W,HH)
