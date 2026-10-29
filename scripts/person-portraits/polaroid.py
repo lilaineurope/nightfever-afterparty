@@ -2,8 +2,8 @@
 
 Background (Lisa's pick "1 big dots"): an extreme close-up of a few mirror tiles from the Jukebox disco ball
 (disco-ball-source.jpg, a Gemini picture), slightly soft, printed with BIG black halftone dots on paper with hard contrast,
-the ball's own pink lights as pink dots. Every person gets a different part of the ball and a different angle
-(picked from the person's name, so it is the same every time it is rebuilt).
+the ball's own pink lights as pink dots. Every person now uses the SAME locked background (STANDARD_BG, Lisa 29 Oct 2026);
+the part of the ball and the angle are picked from a name, so it is the same every time it is rebuilt.
 Portrait: a retouched studio portrait (black and white, one colour element), cut out with the pink sticker edge and four
 torn scraps, then the instant-print frame (scripts/polaroid-frame.py).
 
@@ -17,6 +17,9 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
 spec = importlib.util.spec_from_file_location("pb", os.path.join(ROOT, "scripts", "polaroid-box.py")); pb = importlib.util.module_from_spec(spec); spec.loader.exec_module(pb)
 B = 1024
+# Lisa, 29 Oct 2026: ONE background for every person from now on - the disco-ball close-up first made for Randy Barbato
+# (same tiles, same angle). Only Andy Warhol keeps his own Brillo-box background.
+STANDARD_BG = "Randy Barbato"
 
 
 def background(name):
@@ -47,10 +50,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("name"); ap.add_argument("portrait"); ap.add_argument("out"); ap.add_argument("framed")
     ap.add_argument("--labels", default=""); ap.add_argument("--code", default=""); ap.add_argument("--line", default="")
-    ap.add_argument("--bg-name", default="", help="use the disco-ball angle of another person (e.g. to give two people the same background)")
+    ap.add_argument("--bg-name", default="", help="override the standard background (default: the locked one, STANDARD_BG)")
     ap.add_argument("--zoom", type=float, default=1.0); ap.add_argument("--head", type=float, default=0.07); ap.add_argument("--seed", type=int, default=5)
     o = ap.parse_args()
-    bg = background(o.bg_name or o.name)
+    bg = background(o.bg_name or STANDARD_BG)
     rgb, a = pb.cutout(Image.open(o.portrait), False)
     can, ca = pb.place(rgb, a, B, B, o.head, 0.5, 0.0, o.zoom, True)
     out = pb.sticker(bg, can, ca, 24)
