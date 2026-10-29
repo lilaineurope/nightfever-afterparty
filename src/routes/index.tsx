@@ -57,7 +57,7 @@ function Index() {
       {/* Hero: stacked headline NIGHT / FEVER / AFTERPARTY, the last word in a pink-on-black box with a collage shadow - no picture beside it */}
       <section className="mx-auto max-w-6xl px-6 pb-6 pt-10">
         <div className="@container min-w-0">
-          <p className="font-type text-lg">tonight · and every night since 1977 ·</p>
+          <p className="font-type text-lg">Clubkid Culture Archive</p>
           <h1 className="mt-3 text-[clamp(2.4rem,13cqw,8.5rem)] leading-[0.86] tracking-[-0.02em]">
             Night
             <br />

@@ -159,7 +159,7 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    /* All normal text in the typewriter face (Special Elite), like "tonight and every night since 1977" */
+    /* All normal text in the typewriter face (Special Elite), like the home line "Clubkid Culture Archive" */
     font-family: var(--font-type);
     font-feature-settings: "liga" 1, "calt" 1;
   }
