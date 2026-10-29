@@ -562,3 +562,8 @@ a.az-st:hover { transform: rotate(0) translateY(-2px) !important; box-shadow: 4p
    stand out on the header picture; selected = black (global aria-pressed rule). */
 .season-chip { border: 2px solid #111; background: #f4f1ea; color: #111; padding: 6px 16px; font-size: 14px; font-weight: 600; box-shadow: 3px 3px 0 #111; }
 .season-chip[aria-pressed="true"] .text-pink { color: #fff; }
+/* Timeline name chips open their moments box (Lisa, 29 Oct 2026): the open chip stays pink. */
+a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-foreground); border-color: var(--pink); }
+/* Guestbook header (Lisa, 29 Oct 2026): no tagline, title close to the menu and the form right under it. */
+.gb-head { padding-top: 36px; padding-bottom: 28px; }
+@media (min-width: 640px) { .gb-head { padding-top: calc(100vw * 90 / 1920); height: auto; padding-bottom: 36px; } }

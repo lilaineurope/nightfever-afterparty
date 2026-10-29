@@ -1,6 +1,8 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import guestbookDoor from "@/assets/guestbook-door.webp";
+import guestbookDoorPhone from "@/assets/guestbook-door-phone.webp";
 import { useServerFn } from "@tanstack/react-start";
 import { SiteFooter } from "@/components/site-footer";
 import { listGuestbook, signGuestbook, type GuestbookNote } from "@/lib/guestbook.functions";
@@ -28,17 +30,18 @@ const MAX = 1000;
 function GuestbookPage() {
   const notes = Route.useLoaderData();
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="relative px-6 pb-12 pt-14">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            Sign the <span className="text-pink text-glow-pink">guestbook</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Were you there? Which episode had you screaming? Which club do you still dream about? Leave a note for the
-            Afterparty - I read every one before it goes up!
-          </p>
-        </div>
+    <main
+      className="page-sky min-h-screen bg-background text-foreground"
+      style={{ "--sky": `url(${guestbookDoor})`, "--sky-phone": `url(${guestbookDoorPhone})` } as CSSProperties}
+    >
+      {/* Guestbook header (Lisa, 29 Oct 2026: "need a nice header for guestbook page"): a Gemini picture of a club door's guest
+          book - scribbled signatures, lipstick kisses, the velvet rope - in the photocopy halftone, made with scripts/page-headers/fade.py. */}
+      <section className="page-head gb-head px-4 text-center">
+        <h1 className="timeline-title">
+          <span className="timeline-strip timeline-strip-ink">Sign the</span>
+          <br />
+          <span className="timeline-strip timeline-strip-pink">guestbook</span>
+        </h1>
       </section>
 
       <section className="relative z-10 -mt-6 px-6 pb-16">
