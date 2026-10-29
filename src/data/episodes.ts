@@ -595,6 +595,7 @@ const s03e10: Episode = {
   guest: "Miss Guy",
   released: "2023-08-17",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-310",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLGaFYF8C5Tg8",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO5904367636.mp3",
   runtime: "48:33",
