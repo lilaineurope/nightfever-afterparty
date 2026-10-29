@@ -53,9 +53,9 @@ function EpisodesPage() {
               <button key={s ?? "all"} type="button" aria-pressed={on} disabled={count === 0}
                 onClick={() => setSeason(s)}
                 title={count === 0 ? "No Afterparty for this season yet" : undefined}
-                className={`az-st az-cat ${s === null ? "az-ink" : ["az-pink", "az-yellow", "az-paper"][(s - 1) % 3]} disabled:cursor-not-allowed disabled:opacity-40`}>
-                {s === null ? "Everything" : `Season ${s}`}
-                <small>{count}</small>
+                className="season-chip rounded-full disabled:cursor-not-allowed disabled:opacity-40">
+                {s === null ? <span className="uppercase">Everything</span> : `Season ${s}`}
+                <span className="ml-1.5 text-xs text-pink">{count}</span>
               </button>
             );
           })}

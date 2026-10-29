@@ -181,8 +181,10 @@ export function JukeboxMachine({
   failedRef.current = failed;
 
   const musicEpisodes = useMemo(() => {
+    // Every Afterparty with songs OR its own video picks (Makos and Norwich name no songs but have videos) - Lisa, 29 Oct 2026:
+    // the AFTERPARTIES count must match the Afterparty page.
     const ids = new Set(items.flatMap((i) => i.moments.map((m) => m.episodeId)));
-    return episodes.filter((e) => ids.has(e.id)).sort((a, b) => a.season - b.season || a.episode - b.episode);
+    return episodes.filter((e) => ids.has(e.id) || `../data/episode-videos/${e.id}.json` in clipFiles).sort((a, b) => a.season - b.season || a.episode - b.episode);
   }, [items]);
 
   const epMoment = (it: CollectionItem, ep: string) =>

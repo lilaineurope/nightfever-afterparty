@@ -552,3 +552,7 @@ a.az-st:hover { transform: rotate(0) translateY(-2px) !important; box-shadow: 4p
 .az-cat { font-size: 12px; cursor: pointer; }
 .az-cat[aria-pressed="true"] { transform: translateY(-3px) rotate(-1.5deg); box-shadow: 4px 5px 0 var(--color-pink); outline: 3px solid #111; outline-offset: 1px; }
 .az-cat:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 var(--color-pink); }
+/* Afterparty season pills (Lisa, 29 Oct 2026): rounded as before, but solid paper with an ink border and offset shadow so they
+   stand out on the header picture; selected = black (global aria-pressed rule). */
+.season-chip { border: 2px solid #111; background: #f4f1ea; color: #111; padding: 6px 16px; font-size: 14px; font-weight: 600; box-shadow: 3px 3px 0 #111; }
+.season-chip[aria-pressed="true"] .text-pink { color: #fff; }
