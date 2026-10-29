@@ -235,7 +235,7 @@ export function JukeboxMachine({
     return s;
   }, [items]);
   const restCats = useMemo(() => new Map(rest.map((c) => [c, clipCats(c, musicNames)])), [rest, musicNames]);
-  /** Publications (Lisa, 28 Oct 2026): the episode's books, magazines, newspapers and columns - from the Book Club - with a video when the playlist has one. */
+  /** Publications (Lisa, 28 Oct 2026): the episode's books, magazines, newspapers and columns - from the Library - with a video when the playlist has one. */
   const pubs = useMemo(() => {
     if (filter !== "episodes" || !episodeId) return [];
     const at = (it: CollectionItem) => it.moments.find((m) => m.episodeId === episodeId);

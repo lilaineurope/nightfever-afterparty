@@ -54,7 +54,7 @@ function TermsPage() {
             Terms &amp; Conditions
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 27 October 2026. The house rules for my site - written
+            Last updated: 29 October 2026. The house rules for my site - written
             for people, not for lawyers!
           </p>
         </div>
@@ -177,6 +177,14 @@ function TermsPage() {
               reference index on this site are the original work of Lisa Lang and
               may not be republished wholesale without permission. Short quotes
               with a link back are fine.
+            </p>
+            <p>
+              The book covers in the Library belong to their publishers and
+              artists; they are shown small, only so you can recognise each
+              book, and come from the Open Library catalogue. The magazine and
+              newspaper mastheads are public-domain logos from Wikimedia Commons
+              and remain the trademarks of their titles. Owners who would rather
+              not see their cover here can ask for it to come down (section 6).
             </p>
             <p>
               The Wardrobe&rsquo;s &ldquo;Clueless Style&rdquo; is an

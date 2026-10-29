@@ -48,7 +48,8 @@ const GROUPS: Group[] = [
     tools: [
       { name: "Google Maps", href: "https://maps.google.com", what: "Draws the Map page with every club and location the guests name." },
       { name: "Wikipedia", href: "https://www.wikipedia.org", what: "Most of the \"Read more\" links on the cards." },
-      { name: "Open Library", href: "https://openlibrary.org", what: "The \"Find a copy\" links in the Book Club." },
+      { name: "Open Library", href: "https://openlibrary.org", what: "The book covers in the Library (copied once and kept on this site, so your browser never contacts Open Library) and its \"Find a copy\" links." },
+      { name: "Wikimedia Commons", href: "https://commons.wikimedia.org", what: "The public-domain magazine and newspaper mastheads in the Library, copied once and kept on this site." },
     ],
   },
   {

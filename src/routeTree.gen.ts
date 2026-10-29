@@ -18,6 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as GuestsRouteImport } from './routes/guests'
 import { Route as JukeboxRouteImport } from './routes/jukebox'
+import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as NetworkRouteImport } from './routes/network'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -107,6 +108,11 @@ const GuestsRoute = GuestsRouteImport.update({
 const JukeboxRoute = JukeboxRouteImport.update({
   id: '/jukebox',
   path: '/jukebox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -345,6 +351,7 @@ export interface FileRoutesByFullPath {
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
+  '/library': typeof LibraryRoute
   '/map': typeof MapRoute
   '/network': typeof NetworkRoute
   '/privacy': typeof PrivacyRoute
@@ -401,6 +408,7 @@ export interface FileRoutesByTo {
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
+  '/library': typeof LibraryRoute
   '/map': typeof MapRoute
   '/network': typeof NetworkRoute
   '/privacy': typeof PrivacyRoute
@@ -458,6 +466,7 @@ export interface FileRoutesById {
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
   '/jukebox': typeof JukeboxRoute
+  '/library': typeof LibraryRoute
   '/map': typeof MapRoute
   '/network': typeof NetworkRoute
   '/privacy': typeof PrivacyRoute
@@ -516,6 +525,7 @@ export interface FileRouteTypes {
     | '/games'
     | '/guests'
     | '/jukebox'
+    | '/library'
     | '/map'
     | '/network'
     | '/privacy'
@@ -572,6 +582,7 @@ export interface FileRouteTypes {
     | '/games'
     | '/guests'
     | '/jukebox'
+    | '/library'
     | '/map'
     | '/network'
     | '/privacy'
@@ -628,6 +639,7 @@ export interface FileRouteTypes {
     | '/games'
     | '/guests'
     | '/jukebox'
+    | '/library'
     | '/map'
     | '/network'
     | '/privacy'
@@ -685,6 +697,7 @@ export interface RootRouteChildren {
   GamesRoute: typeof GamesRoute
   GuestsRoute: typeof GuestsRoute
   JukeboxRoute: typeof JukeboxRoute
+  LibraryRoute: typeof LibraryRoute
   MapRoute: typeof MapRoute
   NetworkRoute: typeof NetworkRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -795,6 +808,13 @@ declare module '@tanstack/react-router' {
       path: '/jukebox'
       fullPath: '/jukebox'
       preLoaderRoute: typeof JukeboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -1125,6 +1145,7 @@ const rootRouteChildren: RootRouteChildren = {
   GamesRoute: GamesRoute,
   GuestsRoute: GuestsRoute,
   JukeboxRoute: JukeboxRoute,
+  LibraryRoute: LibraryRoute,
   MapRoute: MapRoute,
   NetworkRoute: NetworkRoute,
   PrivacyRoute: PrivacyRoute,

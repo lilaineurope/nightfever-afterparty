@@ -7,6 +7,7 @@ export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
   { to: "/timeline", label: "Timeline" },
   { to: "/jukebox", label: "Jukebox" },
+  { to: "/library", label: "Library" }, // the Book Club, renamed and back on the menu (Lisa, 29 Oct 2026)
   { to: "/explore", label: "A–Z" }, // back on the top menu (Lisa, 28 Oct 2026)
   { to: "/guestbook", label: "Guestbook" },
 ] as const;
@@ -24,7 +25,6 @@ export const UNLINKED_PAGES = [
 
 /** Pages outside the top menu (footer and elsewhere). */
 export const OTHER_PAGES = [
-  { to: "/book-club", label: "Book Club" }, // off the top menu (Lisa, 29 Oct 2026) - still in search, sitemap, the dropdowns and the home tile
   { to: "/network", label: "Network" }, // off the top menu until the mentor reset (Lisa, 27 Oct 2026) - still in search, sitemap and the home cards
   { to: "/map", label: "Map" }, // off the top menu while Lisa reworks it (27 Oct 2026) - still in search, sitemap and the home cards
   { to: "/guests", label: "Guests" },
@@ -56,5 +56,9 @@ export const GUESTBOOK_PAGES: SitePage[] = ALL_PAGES.filter(
 );
 
 // Older guestbook entries may name an unlinked page - still show its name, just not as a choice.
-export const guestbookPage = (to: string | null | undefined) =>
-  GUESTBOOK_PAGES.find((p) => p.to === to) ?? (UNLINKED_PAGES as readonly SitePage[]).find((p) => p.to === to);
+// Renamed pages: older entries keep their old address and show the new name.
+const RENAMED: Record<string, string> = { "/book-club": "/library", "/connections": "/network" };
+export const guestbookPage = (to: string | null | undefined) => {
+  const t = (to && RENAMED[to]) || to;
+  return GUESTBOOK_PAGES.find((p) => p.to === t) ?? (UNLINKED_PAGES as readonly SitePage[]).find((p) => p.to === t);
+};

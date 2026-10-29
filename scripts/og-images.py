@@ -53,7 +53,7 @@ PG={"home":("hero-people.jpg","NIGHT FEVER FAN PAGE","Every name, place and stor
 "explore":("explore-header.jpg","NIGHT FEVER FAN PAGE","Everything A–Z","Every person, club, song and look"),
 "guests":("guests-header.jpg","NIGHT FEVER FAN PAGE","The guests","Nightlife legends of the 70s, 80s, 90s and beyond"),
 "timeline":("timeline-header.jpg","NIGHT FEVER FAN PAGE","The Timeline","New York nightlife, decade by decade"),
-"book-club":("book-club-header.jpg","NIGHT FEVER FAN PAGE","The Book Club","Every book and magazine the guests mention"),
+"library":("book-club-header.jpg","NIGHT FEVER FAN PAGE","The Library","Every book and magazine the guests mention"),
 "jukebox":("jukebox-header.jpg","NIGHT FEVER FAN PAGE","The Jukebox","Every song and band the guests mention"),
 "guestbook":("guestbook-header.jpg","NIGHT FEVER FAN PAGE","The Guestbook","Leave a note for the Afterparty"),
 "wardrobe":("wardrobe-header.jpg","NIGHT FEVER FAN PAGE","The Wardrobe","Dress like the guests - 700 looks from the stories")}

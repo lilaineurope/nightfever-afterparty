@@ -1,4 +1,4 @@
-// Book Club and Jukebox: every book, magazine, song, band and sound named in the published episode indexes.
+// Library (bookClub) and Jukebox: every book, magazine, song, band and sound named in the published episode indexes.
 // Built from entities.ts, so a new Afterparty episode fills both pages automatically.
 import { entities, type Entity, type Ref } from "./entities";
 import { episodeById } from "./episodes";
@@ -40,7 +40,7 @@ function toItem(e: Entity, shelf: string, cats: string[]): CollectionItem {
 
 const byMentions = (a: CollectionItem, b: CollectionItem) => b.mentions - a.mentions || a.name.localeCompare(b.name);
 
-// ---------- Book Club ----------
+// ---------- Library (was the Book Club) ----------
 export const BOOK_SHELVES: Shelf[] = [
   { key: "books", label: "Books" },
   { key: "magazines", label: "Magazines" },
