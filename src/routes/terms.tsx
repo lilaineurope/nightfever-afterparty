@@ -181,7 +181,7 @@ function TermsPage() {
             <p>
               The book covers in the Library belong to their publishers and
               artists; they are shown small, only so you can recognise each
-              book, and come from the Open Library catalogue. The magazine and
+              book, and come from the Open Library catalogue or, for a few articles and issues, from public archives that share them (each named on its card). The magazine and
               newspaper mastheads are public-domain logos from Wikimedia Commons
               and remain the trademarks of their titles. Owners who would rather
               not see their cover here can ask for it to come down (section 6).

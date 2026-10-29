@@ -5,9 +5,11 @@
 const files = import.meta.glob("../assets/library/*.webp", { eager: true, import: "default" }) as Record<string, string>;
 const url = (file: string) => files[`../assets/library/${file}`] ?? "";
 
+// kind "book" = a photo of the real thing (book cover, magazine cover or article scan); "mast" = a masthead logo on a printed cover.
 export type Cover = { kind: "book" | "mast"; file: string; credit: string };
 
 const COVERS: Record<string, Cover> = {
+  "Venus Envy (Donald Suggs, Village Voice)": { kind: "book", file: "col-venus-envy.webp", credit: "The Village Voice, 1988 - scan from the Stand Up and Be Counted archive (University of Michigan), contributed by Carmen Xtravaganza" },
   "Disco Bloodbath / Party Monster (James St. James)": { kind: "book", file: "book-disco-bloodbath-party-monster-james-st-james.webp", credit: "Cover via Open Library" },
   "Doll Parts": { kind: "book", file: "book-doll-parts.webp", credit: "Cover via Open Library" },
   "Queer in America": { kind: "book", file: "book-queer-in-america.webp", credit: "Cover via Open Library" },

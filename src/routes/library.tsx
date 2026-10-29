@@ -86,9 +86,8 @@ function LibraryPage() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-            <span>Sort:</span>
-            <button type="button" className={CHIP} aria-pressed={sort === "mentions"} onClick={() => setSort("mentions")}>Most dropped</button>
-            <button type="button" className={CHIP} aria-pressed={sort === "az"} onClick={() => setSort("az")}>A–Z</button>
+            <span>Most dropped first ·</span>
+            <button type="button" className={CHIP} aria-pressed={sort === "az"} onClick={() => setSort(sort === "az" ? "mentions" : "az")}>A–Z</button>
           </div>
         </div>
 
@@ -117,7 +116,7 @@ function LibraryPage() {
         ))}
 
         <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
-          The Library fills itself from my episode indexes, so every new Afterparty adds its reading. Book covers come from Open Library and stay
+          The Library fills itself from my episode indexes, so every new Afterparty adds its reading. Book covers come from Open Library, a few article and issue scans from public archives (credited on each card), and all stay
           their publishers&rsquo; work - shown small, only so you can spot the book; the magazine and newspaper mastheads are public-domain logos
           from Wikimedia Commons, printed in our photocopy colours. All pictures are kept on this site, so opening the Library never contacts
           another service. Covers without a picture are typed, the downtown way.
