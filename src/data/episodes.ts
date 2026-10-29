@@ -575,6 +575,7 @@ const s02e05: Episode = {
   guest: "Connie Fleming",
   released: "2022-09-05",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-205",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLBW-Xjbjn2Nc",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO1744907754.mp3",
   runtime: "1:17:43",
