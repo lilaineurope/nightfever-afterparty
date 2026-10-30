@@ -1,3 +1,4 @@
+import { CLUB_TICKETS } from "@/data/club-tickets";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Timestamp, openEpisodePlayer, pauseEpisode } from "@/components/episode-player";
@@ -995,12 +996,23 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
 
 /** The dark panel at the top of a club night (like an Afterparty's): what the playlist is, where the songs come from, and its playlists. */
 function ClubNightPanel({ night }: { night: ClubNight }) {
+  const ticket = CLUB_TICKETS[night.slug];
   return (
     <div className="jbx-ep jbx-clubhead">
-      <div className="jbx-ep-ticket" aria-hidden="true">
-        <span>Admit one</span>
-        <b>{night.club}</b>
-      </div>
+      {ticket ? (
+        // The real ticket instead of the typed admit-one box (Lisa, 30 Oct 2026), with its source named under it.
+        <figure className="jbx-ep-photo">
+          <img src={ticket.src} alt={ticket.alt} width={800} height={310} loading="lazy" />
+          <figcaption>
+            <a href={ticket.href} target="_blank" rel="noopener noreferrer">{ticket.credit} ↗</a>
+          </figcaption>
+        </figure>
+      ) : (
+        <div className="jbx-ep-ticket" aria-hidden="true">
+          <span>Admit one</span>
+          <b>{night.club}</b>
+        </div>
+      )}
       <div>
         <p className="jbx-np dark">A NIGHT AT</p>
         <h2 className="jbx-ep-name">{night.club}</h2>

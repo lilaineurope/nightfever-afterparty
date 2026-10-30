@@ -5,6 +5,8 @@ import { entityBySlug } from "@/data/entities";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { clubsMentioned } from "@/data/collections";
 import { LOCATIONS } from "@/data/locations";
+import { CLUB_TICKETS } from "@/data/club-tickets";
+import type { CSSProperties } from "react";
 
 // Inside the Clubs (Lisa, 30 Oct 2026, was Clubkid Culture): a wall of club flyers as the header, then every club ever mentioned on
 // Night Fever street by street (New York neighbourhood by neighbourhood, then London, Paris, Los Angeles and the rest); the three club
@@ -83,7 +85,11 @@ export function ClubsShelf() {
       <p className="cc-sub">Three clubs so far with a night you can play from start to finish - what was really played there, from DJ lists, recorded sets and live shows, every song with its source.</p>
       <ul className="cc-tickets">
         {CLUB_NIGHTS.map((c, i) => (
-          <li key={c.slug} className={`cc-ticket cc-t${i % 3}`}>
+          <li
+            key={c.slug}
+            className={`cc-ticket cc-t${i % 3}${CLUB_TICKETS[c.slug] ? " cc-photo" : ""}`}
+            style={CLUB_TICKETS[c.slug] ? ({ "--ticket": `url(${CLUB_TICKETS[c.slug]!.src})` } as CSSProperties) : undefined}
+          >
             <Link to="/jukebox" search={{ club: c.slug }} className="cc-ticket-main">
               <span className="cc-admit">Admit one · a night at</span>
               <b>{c.club}</b>
@@ -101,6 +107,11 @@ export function ClubsShelf() {
               {c.playlistId && <a href={playlistUrl(c.playlistId)} target="_blank" rel="noopener noreferrer">Spotify ↗</a>}
               {c.youtubePlaylist && <a href={c.youtubePlaylist} target="_blank" rel="noopener noreferrer">YouTube ↗</a>}
             </span>
+            {CLUB_TICKETS[c.slug] && (
+              <a className="cc-credit" href={CLUB_TICKETS[c.slug]!.href} target="_blank" rel="noopener noreferrer">
+                {CLUB_TICKETS[c.slug]!.credit} ↗
+              </a>
+            )}
           </li>
         ))}
       </ul>

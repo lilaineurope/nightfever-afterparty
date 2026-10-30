@@ -54,7 +54,7 @@ function TermsPage() {
             Terms &amp; Conditions
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 29 October 2026. The house rules for my site - written
+            Last updated: 30 October 2026. The house rules for my site - written
             for people, not for lawyers!
           </p>
         </div>
@@ -184,7 +184,7 @@ function TermsPage() {
               title, and come from the Open Library catalogue, from public archives, galleries and booksellers that show them, or from photos in dealers' listings (each source named on its card). The magazine and
               newspaper mastheads are logos from Wikimedia Commons
               and remain the trademarks of their titles. Owners who would rather
-              not see their cover here can ask for it to come down (section 6).
+              not see their cover here can ask for it to come down (section 6). The same goes for the photos of original club tickets on Inside the Clubs and the Jukebox club nights: they belong to the clubs' designers and the collections that show them, are shown small for identification, name their source, and come down on request.
             </p>
             <p>
               The Wardrobe&rsquo;s &ldquo;Clueless Style&rdquo; is an
