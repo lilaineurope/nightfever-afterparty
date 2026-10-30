@@ -20,7 +20,7 @@ const atAGlance = [
   "Nothing is ever sold or shared with advertisers.",
   "The Afterparty newsletter stores your address only if you tick the consent box.",
   "Every newsletter email carries a one-click unsubscribe link.",
-  "Guestbook notes show only the name, place, favourites and note you choose to share, after I've read them - and come down whenever you ask.",
+  "Guestbook notes show only the name, place and note you choose to share, after I've read them - and come down whenever you ask.",
 ];
 
 function Section({
@@ -55,7 +55,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 28 October 2026. Here's what happens to your data when
+            Last updated: 30 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -201,8 +201,8 @@ function PrivacyPage() {
             </p>
             <p>
               <strong className="text-cream">Guestbook.</strong> If you sign the
-              guestbook, the name or nickname, the optional place, favourite
-              episode and favourite page, and the note you write are stored in the site&rsquo;s
+              guestbook, the name or nickname, the optional place and the note you
+              write are stored in the site&rsquo;s
               database together with the time you sent it. No email address is
               asked for. Every note waits until I have read it, and only
               approved notes are shown publicly on the guestbook page. A copy of

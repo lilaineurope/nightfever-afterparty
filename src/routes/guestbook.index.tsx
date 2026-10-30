@@ -6,10 +6,10 @@ import guestbookDoorPhone from "@/assets/guestbook-door-phone.webp";
 import { useServerFn } from "@tanstack/react-start";
 import { SiteFooter } from "@/components/site-footer";
 import { listGuestbook, signGuestbook, type GuestbookNote } from "@/lib/guestbook.functions";
-import { SHOW_EPISODES, showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
+import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 import { episodePath } from "@/data/episodes";
 import { sendToInbox } from "@/lib/web3forms";
-import { GUESTBOOK_PAGES, guestbookPage } from "@/lib/pages";
+import { guestbookPage } from "@/lib/pages";
 import { FORM_FIELD } from "@/lib/styles";
 
 export const Route = createFileRoute("/guestbook/")({
@@ -137,8 +137,8 @@ function SignForm() {
     const fields = {
       name: String(form.get("name") ?? ""),
       place: String(form.get("place") ?? ""),
-      episode: String(form.get("episode") ?? ""),
-      page: String(form.get("page") ?? ""),
+      episode: "",
+      page: "",
       message: String(form.get("message") ?? ""),
     };
     setState({ status: "sending" });
@@ -154,8 +154,6 @@ function SignForm() {
           subject: "New guestbook note waiting for you",
           name: fields.name,
           place: fields.place,
-          episode: fields.episode,
-          page: guestbookPage(fields.page)?.label ?? "",
           message: `${fields.message}\n\nApprove or hide it at ${window.location.origin}/guestbook/admin`,
         });
       }
@@ -188,34 +186,7 @@ function SignForm() {
           <input name="place" maxLength={60} placeholder="e.g. Berlin" className={`mt-1 ${FORM_FIELD}`} />
         </label>
       </div>
-      <label className="block">
-        <span className="text-sm text-muted-foreground">Favourite episode (optional)</span>
-        <span className="relative mt-1 block">
-          <select name="episode" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FORM_FIELD}`}>
-            <option value="">Pick one if you like</option>
-            {SHOW_EPISODES.map((e) => (
-              <option key={e.code} value={e.code}>
-                {episodeLabel(e)}
-              </option>
-            ))}
-          </select>
-          <svg aria-hidden="true" viewBox="0 0 20 20" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gold" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l5 5 5-5" /></svg>
-        </span>
-      </label>
-      <label className="block">
-        <span className="text-sm text-muted-foreground">Favourite page on this site (optional)</span>
-        <span className="relative mt-1 block">
-          <select name="page" defaultValue="" className={`appearance-none pr-10 [color-scheme:light] ${FORM_FIELD}`}>
-            <option value="">Pick one if you like</option>
-            {GUESTBOOK_PAGES.map((p) => (
-              <option key={p.to} value={p.to}>
-                {p.label}
-              </option>
-            ))}
-          </select>
-          <svg aria-hidden="true" viewBox="0 0 20 20" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gold" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l5 5 5-5" /></svg>
-        </span>
-      </label>
+      {/* Just name, where you're from and the note (Lisa, 30 Oct 2026: the favourite episode / page dropdowns were taken out). */}
       <label className="block">
         <span className="flex justify-between text-sm text-muted-foreground">
           <span>Your note</span>
