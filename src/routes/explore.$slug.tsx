@@ -116,12 +116,12 @@ function EntityPage() {
   const perEpisode = mentionsByEpisode(e);
 
   return (
-    <main
-      className="page-sky min-h-screen bg-background text-foreground"
-      style={{ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties}
-    >
+    <main className="min-h-screen bg-background text-foreground">
       {/* A–Z card header (Lisa, 30 Oct 2026, "tiles 4"): the disco-ball mirror tiles of the people polaroids as big pink/black dots, behind flyer strips. */}
-      <section className="card-head px-4">
+      <section
+        className="card-head px-4"
+        style={{ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties}
+      >
         <div className="mx-auto max-w-4xl">
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">

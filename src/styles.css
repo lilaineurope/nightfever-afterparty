@@ -636,8 +636,10 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .cc-sign small { font-family: var(--font-mono-body); font-size: 10px; color: var(--color-pink); letter-spacing: .08em; margin-top: 2px; }
 @media (max-width: 639px) { .cc-f3 { font-size: 26px; } .cc-f4 { font-size: 36px; } .cc-ticket { grid-template-columns: 1fr 46px; } }
 /* A–Z card header (Lisa, 30 Oct 2026): halftone picture behind flyer strips. */
-.card-head { padding-top: calc(220vw * 60 / 1920); padding-bottom: 40px; min-height: calc(220vw * 640 / 1920); }
-@media (min-width: 640px) { .card-head { padding-top: calc(100vw * 70 / 1920); min-height: calc(100vw * 640 / 1920); } }
+/* The dots live only in the header and have faded out by its bottom edge, so the card's text below always sits on plain paper
+   (Lisa, 30 Oct 2026: text was unreadable on the dots). */
+.card-head { background: var(--sky-phone) center top / 220% auto no-repeat; padding-top: calc(220vw * 60 / 1920); padding-bottom: 40px; min-height: calc(220vw * 720 / 1920); }
+@media (min-width: 640px) { .card-head { background-image: var(--sky); background-size: 100% auto; padding-top: calc(100vw * 70 / 1920); min-height: calc(100vw * 720 / 1920); } }
 .card-back { display: inline-block; background: #f4f1ea; color: #111; border: 2px solid #111; padding: 3px 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; }
 .card-back:hover { background: var(--color-pink); color: #fff; }
 .card-title { margin: 10px 0 0; font-family: var(--font-flyer); font-size: clamp(30px, 6vw, 60px); line-height: 1.15; text-transform: uppercase; }
