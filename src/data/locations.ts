@@ -66,7 +66,6 @@ export const LOCATIONS: Located[] = [
   { name: "Plato's Retreat", lat: 40.7541, lng: -74.0012, area: "Hudson Yards" },
   { name: "Kiev (restaurant)", lat: 40.7283, lng: -73.9875, area: "East Village" },
   { name: "Empire Diner", lat: 40.7457, lng: -74.0045, area: "Chelsea" },
-  { name: "Mike Todd Room", lat: 40.7335, lng: -73.9884, area: "Union Square" },
   { name: "Brooklyn", lat: 40.6782, lng: -73.9442, area: "Brooklyn" },
   { name: "Ojai", lat: 34.448, lng: -119.2429, area: "California" },
   { name: "Hollywood", lat: 34.0928, lng: -118.3287, area: "Los Angeles" },
