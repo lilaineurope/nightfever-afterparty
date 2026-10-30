@@ -1,3 +1,6 @@
+import type { CSSProperties } from "react";
+import cardSky from "@/assets/card-pink.webp";
+import cardSkyPhone from "@/assets/card-pink-phone.webp";
 import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { ClubNightPlaylist } from "@/components/club-night";
@@ -100,6 +103,10 @@ function EntityNotFound() {
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 
+const KIND: Record<string, string> = {
+  Person: "az-ink", Organisation: "az-ink", Podcast: "az-ink", Club: "az-pink", Event: "az-pink", Music: "az-yellow", Film: "az-yellow", TV: "az-yellow",
+};
+
 function EntityPage() {
   const { slug } = Route.useLoaderData();
   const e = entityBySlug[slug]!;
@@ -109,22 +116,28 @@ function EntityPage() {
   const perEpisode = mentionsByEpisode(e);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="disco-grid px-6 pb-12 pt-16">
+    <main
+      className="page-sky min-h-screen bg-background text-foreground"
+      style={{ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties}
+    >
+      {/* A–Z card header (Lisa, 30 Oct 2026, "tiles 4"): the disco-ball mirror tiles of the people polaroids as big pink/black dots, behind flyer strips. */}
+      <section className="card-head px-4">
         <div className="mx-auto max-w-4xl">
-          <Link to="/explore" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
-            &larr; Everything A–Z
-          </Link>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-            {g ? `Night Fever guest · ${g.episode}` : e.category}
+          <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
+          <p className="mt-5">
+            <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : e.category}</span>
           </p>
-          <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow">{e.name}</h1>
-          {g && <p className="mt-4 text-lg text-muted-foreground"><EntityText text={g.tagline} /></p>}
+          <h1 className="card-title">
+            <span className="timeline-strip timeline-strip-ink">{e.name}</span>
+          </h1>
+          {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
           {e.link && !(g && e.link.includes("wowpresentsplus")) && (
-            <a href={e.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm text-gold underline underline-offset-4 hover:text-pink">
-              Read more {linkPlace(e.link)} &rarr;
-            </a>
+            <p className="mt-4">
+              <a href={e.link} target="_blank" rel="noopener noreferrer" className="card-more">
+                Read more {linkPlace(e.link)} &rarr;
+              </a>
+            </p>
           )}
         </div>
       </section>
