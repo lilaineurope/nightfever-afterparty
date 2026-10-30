@@ -17,6 +17,7 @@ import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as GuestsRouteImport } from './routes/guests'
+import { Route as InsideTheClubsRouteImport } from './routes/inside-the-clubs'
 import { Route as JukeboxRouteImport } from './routes/jukebox'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MapRouteImport } from './routes/map'
@@ -105,6 +106,11 @@ const GamesRoute = GamesRouteImport.update({
 const GuestsRoute = GuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsideTheClubsRoute = InsideTheClubsRouteImport.update({
+  id: '/inside-the-clubs',
+  path: '/inside-the-clubs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JukeboxRoute = JukeboxRouteImport.update({
@@ -362,6 +368,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
+  '/inside-the-clubs': typeof InsideTheClubsRoute
   '/jukebox': typeof JukeboxRoute
   '/library': typeof LibraryRoute
   '/map': typeof MapRoute
@@ -421,6 +428,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
+  '/inside-the-clubs': typeof InsideTheClubsRoute
   '/jukebox': typeof JukeboxRoute
   '/library': typeof LibraryRoute
   '/map': typeof MapRoute
@@ -481,6 +489,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
+  '/inside-the-clubs': typeof InsideTheClubsRoute
   '/jukebox': typeof JukeboxRoute
   '/library': typeof LibraryRoute
   '/map': typeof MapRoute
@@ -542,6 +551,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/games'
     | '/guests'
+    | '/inside-the-clubs'
     | '/jukebox'
     | '/library'
     | '/map'
@@ -601,6 +611,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/games'
     | '/guests'
+    | '/inside-the-clubs'
     | '/jukebox'
     | '/library'
     | '/map'
@@ -660,6 +671,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/games'
     | '/guests'
+    | '/inside-the-clubs'
     | '/jukebox'
     | '/library'
     | '/map'
@@ -720,6 +732,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GamesRoute: typeof GamesRoute
   GuestsRoute: typeof GuestsRoute
+  InsideTheClubsRoute: typeof InsideTheClubsRoute
   JukeboxRoute: typeof JukeboxRoute
   LibraryRoute: typeof LibraryRoute
   MapRoute: typeof MapRoute
@@ -827,6 +840,13 @@ declare module '@tanstack/react-router' {
       path: '/guests'
       fullPath: '/guests'
       preLoaderRoute: typeof GuestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inside-the-clubs': {
+      id: '/inside-the-clubs'
+      path: '/inside-the-clubs'
+      fullPath: '/inside-the-clubs'
+      preLoaderRoute: typeof InsideTheClubsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/jukebox': {
@@ -1184,6 +1204,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GamesRoute: GamesRoute,
   GuestsRoute: GuestsRoute,
+  InsideTheClubsRoute: InsideTheClubsRoute,
   JukeboxRoute: JukeboxRoute,
   LibraryRoute: LibraryRoute,
   MapRoute: MapRoute,

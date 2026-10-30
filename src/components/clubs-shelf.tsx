@@ -6,9 +6,9 @@ import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { clubsMentioned } from "@/data/collections";
 import { LOCATIONS } from "@/data/locations";
 
-// Clubkid Culture redesign (Lisa, 30 Oct 2026): a wall of club flyers as the header, the three club nights as tickets that open
-// in the Jukebox, then every club on Night Fever street by street - New York neighbourhood by neighbourhood, then London, Paris,
-// Los Angeles and the rest. Each club is a sticker sized by its mentions; a tap opens its moments right under the block
+// Inside the Clubs (Lisa, 30 Oct 2026, was Clubkid Culture): a wall of club flyers as the header, then every club ever mentioned on
+// Night Fever street by street (New York neighbourhood by neighbourhood, then London, Paris, Los Angeles and the rest), then the
+// three club nights as tickets that open in the Jukebox. Each club is a sticker sized by its mentions; a tap opens its moments right under the block
 // (cmd/ctrl-click opens the A–Z card). Areas come from src/data/locations.ts - a club without coordinates lands in "Address unknown".
 
 type Club = (typeof clubsMentioned)[number];
@@ -54,7 +54,7 @@ export const clubBlocks: Block[] = (() => {
   return [...m.values()].sort((a, b) => order.indexOf(a.city) - order.indexOf(b.city) || b.weight - a.weight);
 })();
 
-/** The flyer wall behind the Clubkid Culture title: every club's name pasted up, biggest first, mixed by a fixed shuffle. */
+/** The flyer wall behind the Inside the Clubs title: every club's name pasted up, biggest first, mixed by a fixed shuffle. */
 export function ClubWall() {
   const names = [...clubsMentioned]
     .map((c, i) => ({ c, k: (i * 7919) % 157 }))
@@ -79,36 +79,12 @@ export function ClubsShelf() {
   let lastCity = "";
   return (
     <div className="cc-body">
-      <h2 className="cc-h2">Three nights you can hear</h2>
-      <p className="cc-sub">What was really played there - from DJ lists, recorded sets and live shows, every song with its source.</p>
-      <ul className="cc-tickets">
-        {CLUB_NIGHTS.map((c, i) => (
-          <li key={c.slug} className={`cc-ticket cc-t${i % 3}`}>
-            <Link to="/jukebox" search={{ club: c.slug }} className="cc-ticket-main">
-              <span className="cc-admit">Admit one · a night at</span>
-              <b>{c.club}</b>
-              <span className="cc-sounded">sounded like this</span>
-              <span className="cc-first">
-                {c.songs.slice(0, 3).map((s) => (
-                  <span key={s.spotify ?? s.title}>
-                    {s.title} <em>· {s.artist}</em>
-                  </span>
-                ))}
-              </span>
-              <span className="cc-play">▶ {c.songs.length} songs on the Jukebox</span>
-            </Link>
-            <span className="cc-stub">
-              {c.playlistId && <a href={playlistUrl(c.playlistId)} target="_blank" rel="noopener noreferrer">Spotify ↗</a>}
-              {c.youtubePlaylist && <a href={c.youtubePlaylist} target="_blank" rel="noopener noreferrer">YouTube ↗</a>}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <h2 className="cc-h2">Street by street <small>{clubsMentioned.length} clubs</small></h2>
+      <h2 className="cc-h2">Every club, street by street <small>{clubsMentioned.length} clubs</small></h2>
       <p className="cc-sub">
-        Every club the guests mention, where it stood. The bigger the sticker, the more it&rsquo;s dropped - tap one for every moment.{" "}
-        <Link to="/jukebox" search={{ show: "clubs" }} className="text-gold">Watch the clubs on video in the Jukebox &rarr;</Link>
+        Every club ever mentioned in the Afterparties, where it stood. The bigger the sticker, the more it&rsquo;s dropped. Tap a club to
+        step inside: every moment it comes up on the show, timestamped, with its own card. ♫ means you can hear a whole night there on the
+        Jukebox.{" "}
+        <Link to="/jukebox" search={{ show: "clubs" }} className="text-gold">Watch the clubs on video &rarr;</Link>
       </p>
       {clubBlocks.map((b) => {
         const head = b.city !== lastCity && b.city !== b.area ? b.city : null;
@@ -152,6 +128,32 @@ export function ClubsShelf() {
           </Fragment>
         );
       })}
+      <h2 className="cc-h2">Hear a whole night</h2>
+      <p className="cc-sub">Three clubs so far with a night you can play from start to finish - what was really played there, from DJ lists, recorded sets and live shows, every song with its source.</p>
+      <ul className="cc-tickets">
+        {CLUB_NIGHTS.map((c, i) => (
+          <li key={c.slug} className={`cc-ticket cc-t${i % 3}`}>
+            <Link to="/jukebox" search={{ club: c.slug }} className="cc-ticket-main">
+              <span className="cc-admit">Admit one · a night at</span>
+              <b>{c.club}</b>
+              <span className="cc-sounded">sounded like this</span>
+              <span className="cc-first">
+                {c.songs.slice(0, 3).map((s) => (
+                  <span key={s.spotify ?? s.title}>
+                    {s.title} <em>· {s.artist}</em>
+                  </span>
+                ))}
+              </span>
+              <span className="cc-play">▶ {c.songs.length} songs on the Jukebox</span>
+            </Link>
+            <span className="cc-stub">
+              {c.playlistId && <a href={playlistUrl(c.playlistId)} target="_blank" rel="noopener noreferrer">Spotify ↗</a>}
+              {c.youtubePlaylist && <a href={c.youtubePlaylist} target="_blank" rel="noopener noreferrer">YouTube ↗</a>}
+            </span>
+          </li>
+        ))}
+      </ul>
+
     </div>
   );
 }

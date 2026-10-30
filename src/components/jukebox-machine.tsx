@@ -677,7 +677,7 @@ export function JukeboxMachine({
           <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => setFilter("all")}>EVERYTHING <small>{allSections.reduce((n, x) => n + x.entries.length, 0) || items.length}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
           <button type="button" className={chip(filter === "club")} aria-pressed={filter === "club"} onClick={() => setFilter("club")}>CLUB NIGHTS <small>{CLUB_NIGHTS.length}</small></button>
-          {/* The categories cover every Afterparty (Lisa, 28 Oct 2026); Clubs = the club videos only (29 Oct - the club playlists moved to Clubkid Culture). */}
+          {/* The categories cover every Afterparty (Lisa, 28 Oct 2026); Clubs = the club videos only (29 Oct - the club playlists moved to Inside the Clubs). */}
           {EP_CATS.filter((k) => k.id !== "all").map((k) => (
             <button key={k.id} type="button" className={chip(filter === "cat" && topCat === k.id)} aria-pressed={filter === "cat" && topCat === k.id} onClick={() => { setFilter("cat"); setTopCat(k.id); }}>
               {k.label} <small>{catTotal(k.id) || "…"}</small>

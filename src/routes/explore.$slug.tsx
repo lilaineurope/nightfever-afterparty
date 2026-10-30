@@ -8,7 +8,7 @@ import { clubNightFor } from "@/data/club-nights";
 import { MusicPlayer } from "@/components/music-player";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { entityBySlug, episodeShort, isThinCard, mentionsByEpisode, relatedTo, totalMentions } from "../data/entities";
+import { entityBySlug, episodeShort, isThinCard, relatedTo } from "../data/entities";
 import { namedOn } from "@/lib/name-links";
 import { abs, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodeById, episodePath, episodes } from "../data/episodes";
@@ -112,8 +112,6 @@ function EntityPage() {
   const e = entityBySlug[slug]!;
   const g = e.guest;
   const related = relatedTo(e);
-  const allMentions = totalMentions(e);
-  const perEpisode = mentionsByEpisode(e);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -181,18 +179,8 @@ function EntityPage() {
 
         {e.refs.length > 0 && (
           <section>
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h2 className={h}>In the episodes</h2>
-              <p className="text-xs text-muted-foreground">
-                {allMentions === 0 ? "No counted mentions yet" : `${allMentions} mentions across all episodes`}
-                {perEpisode.length > 0 && (
-                  <span className="text-gold">
-                    {" - "}
-                    {perEpisode.map((p) => `${episodeShort(p.episode)} ${p.count}`).join(" · ")}
-                  </span>
-                )}
-              </p>
-            </div>
+            {/* No per-episode count line under the heading (Lisa, 30 Oct 2026): each box below already says its mentions. */}
+            <h2 className={h}>In the episodes</h2>
             <ul className="mt-4 space-y-3">
               {e.refs.map((r) => {
                 const episode = episodeById(r.episode ?? "s06e01");

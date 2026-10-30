@@ -18,7 +18,7 @@ const isMusicEpisode = (id: string) => episodes.some((e) => e.id === id) && juke
 
 export const Route = createFileRoute("/jukebox")({
   staticData: { sitemap: true },
-  // /jukebox?show=clubs opens on the Clubs button (the club videos; linked from Clubkid Culture).
+  // /jukebox?show=clubs opens on the Clubs button (the club videos; linked from Inside the Clubs).
   validateSearch: (s: Record<string, unknown>): Search =>
     typeof s["afterparty"] === "string" && isMusicEpisode(s["afterparty"] as string)
       ? { afterparty: s["afterparty"] as string }
