@@ -572,3 +572,31 @@ a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-for
 .jbx-clublist a[aria-expanded="true"] { color: var(--pink); font-weight: bold; }
 .jbx-clublist .jbx-clubdetail li { display: block; border: 0; padding: 0; break-inside: auto; }
 .jbx-clublist .jbx-clubdetail a:hover { text-decoration: none; }
+/* Club nights in the Jukebox (Lisa, 30 Oct 2026): a ticket per club, the dark panel with the club's note, and song strips that show why each song is here and its sources. */
+.jbx-clubpick { display: flex; gap: 12px; overflow-x: auto; padding: 16px 4px 10px; margin-top: 14px; border-top: 1px dashed #bdb6a8; }
+.jbx-clubtag { flex: 0 0 auto; min-width: 150px; text-align: left; font-family: inherit; color: #111; background: #fff; border: 2px dashed #111; padding: 8px 12px 9px; cursor: pointer; box-shadow: 3px 3px 0 rgba(0,0,0,.18); }
+.jbx-clubtag:nth-child(even) { transform: rotate(1.2deg); }
+.jbx-clubtag:nth-child(odd) { transform: rotate(-1deg); }
+.jbx-clubtag:hover, .jbx-clubtag:focus-visible { transform: rotate(0) translateY(-3px); }
+.jbx-clubtag.on { background: var(--pink); color: #fff; border-color: #111; transform: rotate(0); }
+.jbx-clubtag span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; opacity: .8; }
+.jbx-clubtag b { display: block; font-family: var(--font-flyer); font-weight: 400; font-size: 17px; line-height: 1.05; text-transform: uppercase; }
+.jbx-clubtag small { display: block; font-size: 11px; margin-top: 3px; opacity: .75; }
+.jbx-clubhead { grid-template-columns: 150px 1fr; }
+.jbx-ep-ticket { align-self: start; background: var(--pink); color: #fff; padding: 14px 10px; transform: rotate(-3deg); border: 2px dashed #fff; text-align: center; box-shadow: 3px 4px 0 rgba(0,0,0,.4); }
+.jbx-ep-ticket span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; }
+.jbx-ep-ticket b { display: block; font-family: var(--font-flyer); font-weight: 400; font-size: 20px; line-height: 1; text-transform: uppercase; margin-top: 6px; }
+.jbx-clubsongs .jbx-tt i { white-space: normal; }
+.jbx-clubtitle { font-family: var(--font-flyer); text-transform: uppercase; }
+.jbx-kind { display: inline-block; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; border: 1.5px solid #111; padding: 0 5px; line-height: 1.5; }
+.jbx-kind.k-live { background: #111; color: #fff; }
+.jbx-kind.k-dj-artist { border-style: dashed; }
+.jbx-kind.k-about { background: var(--pink); border-color: var(--pink); color: #fff; }
+.jbx-why { white-space: normal; }
+a.jbx-srckey { display: inline-block; min-width: 18px; text-align: center; margin-left: 3px; border: 1.5px solid var(--pink); color: var(--pink); font-weight: bold; font-size: 10.5px; line-height: 1.5; }
+a.jbx-srckey:hover { background: var(--pink); color: #fff; }
+.jbx-srcs ul { list-style: none; padding: 0; margin: 10px 0 0; font-size: 13px; columns: 2; column-gap: 24px; }
+.jbx-srcs li { break-inside: avoid; padding: 3px 0; }
+.jbx-srcs b { display: inline-block; min-width: 20px; text-align: center; border: 1.5px solid var(--pink); color: var(--pink); font-size: 11px; margin-right: 6px; }
+.jbx-srcs a { color: #111; text-decoration: underline; text-decoration-color: var(--pink); }
+@media (max-width: 640px) { .jbx-clubhead { grid-template-columns: 1fr; } .jbx-ep-ticket { justify-self: start; } .jbx-srcs ul { columns: 1; } }

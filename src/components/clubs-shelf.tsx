@@ -17,7 +17,7 @@ export function ClubsShelf() {
         {CLUB_NIGHTS.map((c) => (
           <li key={c.slug}>
             <p className="jbx-np">CLUB PLAYLIST · {c.songs.length} SONGS</p>
-            <Link to="/explore/$slug" params={{ slug: c.slug }} className="jbx-clubname">{c.club}</Link>
+            <Link to="/jukebox" search={{ club: c.slug }} className="jbx-clubname">{c.club}</Link>
             <ul>
               {c.songs.slice(0, 4).map((s) => (
                 <li key={s.spotify ?? s.title}>
@@ -27,7 +27,7 @@ export function ClubsShelf() {
               <li><span>+ {c.songs.length - 4} more</span></li>
             </ul>
             <div className="jbx-clublinks">
-              <Link to="/explore/$slug" params={{ slug: c.slug }}>Songs &amp; sources →</Link>
+              <Link to="/jukebox" search={{ club: c.slug }}>Play it on the Jukebox →</Link>
               {c.playlistId && (
                 <a href={playlistUrl(c.playlistId)} target="_blank" rel="noopener noreferrer">Spotify ↗</a>
               )}

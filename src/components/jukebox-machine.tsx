@@ -14,6 +14,7 @@ import { EntityBox, plainClick } from "@/components/moments-box";
 import { entityBySlug, entityFor } from "@/data/entities";
 import { seededRandom } from "@/lib/random";
 import { toSeconds } from "@/lib/time";
+import { CLUB_NIGHTS, KIND_LABEL as CLUB_KIND, playlistUrl, type ClubNight, type ClubSong } from "@/data/club-nights";
 
 /** The rest of an Afterparty's YouTube playlist (Lisa, 28 Oct 2026): the people, clubs, nights, films and TV from the
  * episode, each tied to its reference (A–Z card + timestamp). One JSON per episode, loaded only when it is picked. */
@@ -57,7 +58,19 @@ const FASHION_TITLE = /fashion|runway|couture|catwalk|collection|designer|stylis
 type Kind = "video" | "sound";
 type Moment = CollectionItem["moments"][number];
 /** EVERYTHING ("all"), AFTERPARTIES ("episodes"), Clubs, or one category across every Afterparty ("cat"). */
-type Filter = "all" | "episodes" | "cat";
+type Filter = "all" | "episodes" | "cat" | "club";
+
+/** A club night's song as a jukebox item (for the Spotify player). */
+const clubItem = (c: ClubNight, s: ClubSong, i: number): CollectionItem => ({
+  slug: `club:${c.slug}:${i}`,
+  name: `${s.artist} – '${s.title}'`,
+  shelf: "songs",
+  link: "",
+  mentions: 0,
+  moments: [],
+  spotify: s.spotify ? `spotify:track:${s.spotify}` : undefined,
+});
+const songClip = (s: ClubSong): Clip => ({ id: s.video!, name: s.title, cat: "Music", time: null, title: s.artist, channel: "" });
 
 const KIND_LABEL: Record<string, string> = { songs: "Record", artists: "Artist", sounds: "Sound & scene", stage: "Musical" };
 
@@ -138,6 +151,8 @@ export function JukeboxMachine({
   initialEpisode,
   onPickEpisode,
   initialFilter,
+  initialClub,
+  onPickClub,
 }: {
   items: CollectionItem[];
   /** From a shared link (/jukebox?afterparty=s05e04): open on that Afterparty and cue its first song. */
@@ -145,12 +160,27 @@ export function JukeboxMachine({
   onPickEpisode?: (id: string) => void;
   /** /jukebox?show=clubs opens on the Clubs button. */
   initialFilter?: "clubs" | undefined;
+  /** /jukebox?club=paradise-garage: "A night at <club> sounded like this" (Lisa, 30 Oct 2026). */
+  initialClub?: string | undefined;
+  onPickClub?: (slug: string | undefined) => void;
 }) {
   const pool = useMemo(() => items.filter(embeddable), [items]);
   const today = useMemo(() => videoOfTheDay(pool), [pool]);
 
   // Lisa, 28 Oct 2026: for now just two buttons - Afterparties (the default) and Clubs; more come back one by one.
-  const [filter, setFilter] = useState<Filter>(initialFilter === "clubs" ? "cat" : "episodes");
+  const [filter, setFilterRaw] = useState<Filter>(initialClub ? "club" : initialFilter === "clubs" ? "cat" : "episodes");
+  // A club night (Lisa, 30 Oct 2026): the club's documented songs as jukebox strips, each with why it is here and its sources.
+  const [clubSlug, setClubSlug] = useState<string>(() => initialClub || CLUB_NIGHTS[0]!.slug);
+  const club = filter === "club" ? CLUB_NIGHTS.find((c) => c.slug === clubSlug) : undefined;
+  const setFilter = (f: Filter) => {
+    setFilterRaw(f);
+    onPickClub?.(f === "club" ? clubSlug : undefined);
+  };
+  const pickClub = (slug: string) => {
+    setClubSlug(slug);
+    setFilterRaw("club");
+    onPickClub?.(slug);
+  };
   // Opens on the newest Afterparty with music (nothing plays until a button is pressed).
   const [episodeId, setEpisodeId] = useState<string>(() => initialEpisode || newestMusicEpisode(items));
   const [mode, setMode] = useState<Kind>("video");
@@ -193,7 +223,12 @@ export function JukeboxMachine({
   const epMoment = (it: CollectionItem, ep: string) =>
     it.moments.filter((m) => m.episodeId === ep).sort((a, b) => toSeconds(a.time) - toSeconds(b.time))[0];
 
+  const clubItems = useMemo(() => {
+    const c = CLUB_NIGHTS.find((x) => x.slug === clubSlug);
+    return c ? c.songs.map((s, i) => clubItem(c, s, i)) : [];
+  }, [clubSlug]);
   const list = useMemo(() => {
+    if (filter === "club") return clubItems;
     const l = items;
     if (filter === "episodes") {
       if (!episodeId) return [];
@@ -201,7 +236,7 @@ export function JukeboxMachine({
       return items.filter((i) => i.moments.some((m) => m.episodeId === episodeId)).sort((a, b) => toSeconds(epMoment(a, episodeId)?.time ?? "") - toSeconds(epMoment(b, episodeId)?.time ?? ""));
     }
     return l;
-  }, [items, filter, episodeId]);
+  }, [items, filter, episodeId, clubItems]);
   // Show the chosen polaroid in the row (it scrolls sideways) without moving the page.
   useEffect(() => {
     const row = polsRef.current;
@@ -228,6 +263,24 @@ export function JukeboxMachine({
     setNow(null);
     setClip(c);
     toScreen();
+  };
+  /** The club night's videos, made once so the jukebox can move on down the list: its songs, then the footage filmed inside. */
+  const clubClips = useMemo(() => {
+    const c = CLUB_NIGHTS.find((x) => x.slug === clubSlug);
+    if (!c) return { songs: [] as (Clip | null)[], footage: [] as Clip[] };
+    return {
+      songs: c.songs.map((s) => (s.video ? songClip(s) : null)),
+      footage: (c.footage ?? []).map((f) => ({ id: f.id, name: f.title, cat: "Club", time: null, title: c.club, channel: "" }) as Clip),
+    };
+  }, [clubSlug]);
+  const clubQueue = useMemo(() => [...clubClips.songs.filter((x): x is Clip => !!x), ...clubClips.footage], [clubClips]);
+  const playClubSong = (i: number) => {
+    const c = CLUB_NIGHTS.find((x) => x.slug === clubSlug);
+    const s = c?.songs[i];
+    if (!s) return;
+    const v = clubClips.songs[i];
+    if (v && (mode === "video" || !s.spotify) && !failedRef.current.has(`clip:${v.id}`)) playClip(v, clubQueue);
+    else if (s.spotify) play(clubItems[i]!, "sound");
   };
   const musicNames = useMemo(() => {
     const s = new Set<string>();
@@ -562,6 +615,13 @@ export function JukeboxMachine({
                 <VideoScreen key={now.item.slug} vid={videoId(now.item)!} title={stripLabel(now.item).title} onEnd={() => next(now.item, "video")} onFail={() => fail(now.item)} />
               ) : now?.kind === "sound" ? (
                 <SoundScreen item={now.item} onEnd={(it) => next(it, "sound")} />
+              ) : club ? (
+                <button type="button" className="jbx-idle" onClick={() => playClubSong(0)} aria-label={`Play a night at ${club.club}`}>
+                  <span className="jbx-np">A NIGHT AT {club.club.toUpperCase()} SOUNDED LIKE THIS</span>
+                  <span className="jbx-play" aria-hidden="true">▶</span>
+                  <span className="jbx-st">{club.songs[0]?.title}</span>
+                  <span className="jbx-sa">{club.songs[0]?.artist}</span>
+                </button>
               ) : (
                 <button type="button" className="jbx-idle" onClick={() => play(idleItem, (mode === "sound" || !embeddable(idleItem)) && idleItem.spotify ? "sound" : "video")} aria-label={`Play ${label.title}`}>
                   <span className="jbx-np">{cued && ep ? `${stageName(ep.guest)}’s AFTERPARTY PLAYLIST` : <>TODAY&rsquo;S VIDEO · A NEW ONE EVERY DAY</>}</span>
@@ -589,7 +649,7 @@ export function JukeboxMachine({
                   NOW PLAYING · {now.kind === "video" ? "VIDEO" : "SOUND ONLY"} · <b>{label.title}</b> - {label.sub}
                 </p>
               )}
-              {!clip && shownAt && (
+              {!clip && shownAt && !(club && !now) && (
                 <p className="jbx-drop">
                   dropped {shownItem.mentions || 1}× on Night Fever · {ep && shownAt.episodeId === ep.id ? "in" : "first by"} {shownAt.guest}, {shownAt.code}{" "}
                   <Timestamp episodeId={shownAt.episodeId} time={shownAt.time} className="jbx-ts" />
@@ -616,6 +676,7 @@ export function JukeboxMachine({
         <div className="jbx-chips">
           <button type="button" className={chip(filter === "all")} aria-pressed={filter === "all"} onClick={() => setFilter("all")}>EVERYTHING <small>{allSections.reduce((n, x) => n + x.entries.length, 0) || items.length}</small></button>
           <button type="button" className={chip(filter === "episodes")} aria-pressed={filter === "episodes"} onClick={() => setFilter("episodes")}>AFTERPARTIES <small>{musicEpisodes.length}</small></button>
+          <button type="button" className={chip(filter === "club")} aria-pressed={filter === "club"} onClick={() => setFilter("club")}>CLUB NIGHTS <small>{CLUB_NIGHTS.length}</small></button>
           {/* The categories cover every Afterparty (Lisa, 28 Oct 2026); Clubs = the club videos only (29 Oct - the club playlists moved to Clubkid Culture). */}
           {EP_CATS.filter((k) => k.id !== "all").map((k) => (
             <button key={k.id} type="button" className={chip(filter === "cat" && topCat === k.id)} aria-pressed={filter === "cat" && topCat === k.id} onClick={() => { setFilter("cat"); setTopCat(k.id); }}>
@@ -634,6 +695,108 @@ export function JukeboxMachine({
               </button>
             ))}
           </div>
+        )}
+
+        {filter === "club" && (
+          <div className="jbx-clubpick" role="group" aria-label="Pick a club night">
+            {CLUB_NIGHTS.map((c) => (
+              <button key={c.slug} type="button" className={`jbx-clubtag${clubSlug === c.slug ? " on" : ""}`} aria-pressed={clubSlug === c.slug} onClick={() => pickClub(c.slug)} title={`A night at ${c.club}`}>
+                <span>A night at</span>
+                <b>{c.club}</b>
+                <small>{c.songs.length} songs</small>
+              </button>
+            ))}
+          </div>
+        )}
+        {club && <ClubNightPanel night={club} />}
+        {club && (
+          <>
+            <section className="jbx-sec">
+              <h3 className="jbx-rest-h">The songs <small>{club.songs.length} · in the order they came out</small></h3>
+              <ol className="jbx-rack jbx-rest jbx-clubsongs">
+                {club.songs.map((s, i) => {
+                  const v = clubClips.songs[i];
+                  const hot = (!!v && clip?.id === v.id) || (!clip && now?.item.slug === clubItems[i]?.slug);
+                  const canVideo = !!v && !failed.has(`clip:${v.id}`);
+                  const byKey = Object.fromEntries(club.sources.map((x) => [x.key, x]));
+                  return (
+                    <li key={`${s.title}-${i}`} className={`jbx-strip${hot ? " hot" : ""}`}>
+                      {canVideo || s.spotify ? (
+                        <button type="button" className="jbx-big" onClick={() => playClubSong(i)} aria-label={`Play ${s.title}`} title={canVideo && mode === "video" ? "Play the video" : "Play the song"}>
+                          <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+                          {!(canVideo && mode === "video") && <small>audio</small>}
+                        </button>
+                      ) : (
+                        <a className="jbx-big off" href={s.youtube ? `https://www.youtube.com/watch?v=${s.youtube}` : `https://www.youtube.com/results?search_query=${encodeURIComponent(`${s.artist} ${s.title}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Find ${s.title} on YouTube`}>
+                          <span aria-hidden="true">↗</span>
+                          <small>YouTube</small>
+                        </a>
+                      )}
+                      <div className="jbx-tt">
+                        <span className="jbx-name jbx-clubtitle">{s.title}</span>
+                        <i>
+                          {s.artist} · {s.year} · <span className={`jbx-kind k-${s.kind}`}>{CLUB_KIND[s.kind]}</span>
+                        </i>
+                        <small className="jbx-why">
+                          {s.why ? `${s.why} · ` : ""}source{s.sources.length > 1 ? "s" : ""}{" "}
+                          {s.sources.map((k) => (
+                            <a key={k} href={byKey[k]?.href} target="_blank" rel="noopener noreferrer" title={byKey[k]?.label} className="jbx-srckey">
+                              {k}
+                            </a>
+                          ))}
+                          {s.guest && (
+                            <>
+                              {" · "}
+                              <Link to="/explore/$slug" params={{ slug: s.guest.slug }} className="jbx-ts">Night Fever guest: {s.guest.label} →</Link>
+                            </>
+                          )}
+                        </small>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
+            {clubClips.footage.length > 0 && (
+              <section className="jbx-sec">
+                <h3 className="jbx-rest-h">On film <small>{clubClips.footage.length} · inside the club, and songs named after it</small></h3>
+                <ol className="jbx-rack jbx-rest">
+                  {clubClips.footage.map((f) => {
+                    const hot = clip?.id === f.id;
+                    return (
+                      <li key={f.id} className={`jbx-strip${hot ? " hot" : ""}`}>
+                        {failed.has(`clip:${f.id}`) ? (
+                          <a className="jbx-big off" href={`https://www.youtube.com/watch?v=${f.id}`} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${f.name} on YouTube`}>
+                            <span aria-hidden="true">↗</span>
+                            <small>YouTube</small>
+                          </a>
+                        ) : (
+                          <button type="button" className="jbx-big" onClick={() => playClip(f, clubQueue)} aria-label={`Play the video: ${f.name}`} title="Play the video">
+                            <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
+                          </button>
+                        )}
+                        <div className="jbx-tt">
+                          <span className="jbx-name jbx-clubtitle">{f.name}</span>
+                          <i>{club.club} on film</i>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </section>
+            )}
+            <section className="jbx-sec jbx-srcs">
+              <h3 className="jbx-rest-h">Sources <small>{club.sources.length}</small></h3>
+              <ul>
+                {club.sources.map((x) => (
+                  <li key={x.key}>
+                    <b>{x.key}</b>{" "}
+                    <a href={x.href} target="_blank" rel="noopener noreferrer">{x.label} ↗</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </>
         )}
 
         {ep && (
@@ -687,7 +850,11 @@ export function JukeboxMachine({
         )}
       </div>
       <p className="jbx-foot">
-        ▶ plays the video on the jukebox screen - or the song from Spotify when there&rsquo;s no video · the timestamp plays the moment it&rsquo;s dropped on the show.
+        {club ? (
+          <>▶ plays the video on the jukebox screen - or the song from Spotify when there&rsquo;s no video · the pink letters open the source that puts the song in the club.</>
+        ) : (
+          <>▶ plays the video on the jukebox screen - or the song from Spotify when there&rsquo;s no video · the timestamp plays the moment it&rsquo;s dropped on the show.</>
+        )}
         <br />
         Take it with you: the Jukebox on{" "}
         <a href={SPOTIFY_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">
@@ -822,6 +989,42 @@ function SoundScreen({ item, onEnd }: { item: CollectionItem; onEnd: (it: Collec
       <span className="jbx-sa">{l.sub}</span>
       <div ref={holder} className="jbx-spotify" />
       <span className="jbx-small">Not logged in to Spotify? You&rsquo;ll hear 30-second previews - log in for full songs.</span>
+    </div>
+  );
+}
+
+/** The dark panel at the top of a club night (like an Afterparty's): what the playlist is, where the songs come from, and its playlists. */
+function ClubNightPanel({ night }: { night: ClubNight }) {
+  return (
+    <div className="jbx-ep jbx-clubhead">
+      <div className="jbx-ep-ticket" aria-hidden="true">
+        <span>Admit one</span>
+        <b>{night.club}</b>
+      </div>
+      <div>
+        <p className="jbx-np dark">A NIGHT AT</p>
+        <h2 className="jbx-ep-name">{night.club}</h2>
+        <p className="jbx-np dark">SOUNDED LIKE THIS</p>
+        <p className="jbx-ep-note">{night.note}</p>
+        <div className="jbx-ep-links jbx-ep-top">
+          <Link to="/explore/$slug" params={{ slug: night.slug }}>
+            {night.club} on A–Z →
+          </Link>
+          <ShareButton className="jbx-share" path={`/jukebox?club=${night.slug}`} title={`A night at ${night.club} sounded like this – Night Fever Jukebox`} />
+        </div>
+        <div className="jbx-ep-links jbx-ep-lists">
+          {night.playlistId && (
+            <a href={playlistUrl(night.playlistId)} target="_blank" rel="noopener noreferrer">
+              ♫ Spotify playlist<span className="jbx-count" title={`${night.songs.length} songs`}>{night.songs.length}</span> ↗
+            </a>
+          )}
+          {night.youtubePlaylist && (
+            <a href={night.youtubePlaylist} target="_blank" rel="noopener noreferrer">
+              ▶ YouTube playlist ↗
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
