@@ -7,6 +7,7 @@ export const PAGES = [
   { to: "/episodes", label: "Afterparty" },
   { to: "/timeline", label: "Timeline" },
   { to: "/jukebox", label: "Jukebox" },
+  { to: "/inside-the-clubs", label: "Clubs" }, // Inside the Clubs, on the menu next to the Jukebox (Lisa, 30 Oct 2026)
   { to: "/library", label: "Library" }, // the Book Club, renamed and back on the menu (Lisa, 29 Oct 2026)
   { to: "/explore", label: "A–Z" }, // back on the top menu (Lisa, 28 Oct 2026)
   { to: "/guestbook", label: "Guestbook" },
@@ -20,7 +21,6 @@ export const UNLINKED_PAGES = [
   { to: "/quiz", label: "Pub Quiz" },
   { to: "/games", label: "Games" }, // ideas board (Lisa, 24 Oct 2026)
   { to: "/trail", label: "Follow the Names" }, // playable draft of the discovery game (Lisa, 24 Oct 2026)
-  { to: "/inside-the-clubs", label: "Inside the Clubs" }, // was Clubkid Culture (renamed 30 Oct 2026); live in the background, not linked (Lisa, 29 Oct 2026)
 ] as const;
 
 /** Pages outside the top menu (footer and elsewhere). */

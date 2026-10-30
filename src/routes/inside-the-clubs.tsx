@@ -6,9 +6,9 @@ import { pageHead } from "@/lib/seo";
 
 // Inside the Clubs (Lisa, 30 Oct 2026 - was Clubkid Culture): every club ever mentioned on Night Fever, and you can go inside and
 // experience each one (its moments, timestamps and A–Z card; the three club nights play on the Jukebox).
-// Live in the background: not in the menu, search or sitemap (UNLINKED_PAGES in src/lib/pages.ts, sitemap: false).
+// On the top menu as "Clubs", next to the Jukebox (Lisa, 30 Oct 2026) - in search and the sitemap too.
 export const Route = createFileRoute("/inside-the-clubs")({
-  staticData: { sitemap: false },
+  staticData: { sitemap: true },
   component: InsideTheClubsPage,
   head: () =>
     pageHead({
