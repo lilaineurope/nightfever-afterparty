@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ClubsShelf } from "@/components/clubs-shelf";
+import { createFileRoute } from "@tanstack/react-router";
+import { ClubWall, ClubsShelf } from "@/components/clubs-shelf";
 import { SiteFooter } from "@/components/site-footer";
 import { clubsMentioned } from "@/data/collections";
 import { pageHead } from "@/lib/seo";
@@ -21,27 +21,20 @@ export const Route = createFileRoute("/clubkid-culture")({
 function ClubkidCulturePage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="relative px-6 pb-8 pt-14">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            Clubkid <span className="text-pink text-glow-pink">Culture</span>
+      {/* Header (Lisa, 30 Oct 2026): a wall of club flyers - every club's name pasted up - in the photocopy halftone. */}
+      <section className="cc-head">
+        <ClubWall />
+        <div className="cc-head-in">
+          <h1 className="timeline-title">
+            <span className="timeline-strip timeline-strip-ink">Clubkid</span>
+            <br />
+            <span className="timeline-strip timeline-strip-pink">Culture</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The clubs that keep coming up on Night Fever - {clubsMentioned.length} of them, from the Mudd Club to the Limelight. Three have their
-            own playlist of what was really played there - built only from documented DJ lists, recorded sets, club albums and live
-            shows, with every song&rsquo;s source on the club&rsquo;s page. Tap a club and dive in!
-          </p>
-          <p className="mt-4">
-            <Link to="/jukebox" search={{ show: "clubs" }} className="text-gold">
-              Watch the clubs on video in the Jukebox &rarr;
-            </Link>
-          </p>
+          <p className="timeline-tag">{clubsMentioned.length} clubs dropped on Night Fever - and three nights you can still hear.</p>
         </div>
       </section>
-      <section className="px-6 pb-16">
-        <div className="jbx">
-          <ClubsShelf />
-        </div>
+      <section className="px-4 pb-16 sm:px-6">
+        <ClubsShelf />
       </section>
       <SiteFooter />
     </main>
