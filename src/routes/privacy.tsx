@@ -15,7 +15,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 const atAGlance = [
-  "No advertising trackers are loaded on this site. Visits are counted anonymously with GoatCounter, without cookies.",
+  "No advertising trackers are loaded on this site. Visits are counted anonymously with GoatCounter and Plausible (hosted in the EU), without cookies.",
   "No cookies are set for tracking, profiling or personalisation.",
   "Nothing is ever sold or shared with advertisers.",
   "The Afterparty newsletter stores your address only if you tick the consent box.",
@@ -55,7 +55,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 30 October 2026. Here's what happens to your data when
+            Last updated: 31 October 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -157,6 +157,16 @@ function PrivacyPage() {
               interest in knowing which parts of the site are read.
             </p>
             <p>
+              <strong className="text-cream">Plausible.</strong> To learn how the
+              site is used - how long a page is read, where visits start and
+              end, and which outside links are clicked - visits are also measured
+              with Plausible Analytics (Plausible Insights OÜ, Estonia; data
+              stored in the EU). It sets no cookies and stores no IP address:
+              visitors are counted with a daily-changing anonymous hash, so it
+              cannot recognise you across days or sites. Legal basis: legitimate
+              interest in improving the site.
+            </p>
+            <p>
               <strong className="text-cream">Contact form.</strong> If you send
               a message through the contact page, your name, email address and
               message are delivered to my inbox by Web3Forms, a form-delivery
@@ -233,7 +243,7 @@ function PrivacyPage() {
               This site loads no advertising networks, no social-media pixels and
               no cross-site trackers, and it sets no cookies for measurement or
               personalisation. The only measurement is the cookie-free
-              GoatCounter visit count described above. Only strictly necessary
+              GoatCounter and Plausible statistics described above. Only strictly necessary
               technical storage used by the hosting platform to deliver the page
               is involved, which does not require consent under the ePrivacy
               rules.
@@ -277,7 +287,7 @@ function PrivacyPage() {
             <p>
               The hosting platform that publishes this site acts as a data
               processor for the technical logs above, under its own terms and
-              privacy documentation. GoatCounter processes the anonymous visit
+              privacy documentation. GoatCounter and Plausible (EU-hosted) process the anonymous visit
               statistics described above, Web3Forms delivers contact-form
               messages, interview suggestions and guestbook alerts to my inbox, Forward Email
               passes on emails sent to the site&rsquo;s address to my inbox (it does not

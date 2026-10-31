@@ -10,11 +10,16 @@ import { useRouter } from "@tanstack/react-router";
 const GOATCOUNTER_CODE = "lilaineurope";
 const COUNTED_HOSTS = ["nightfever-afterparty.lovable.app", "nightfever-afterparty.com", "www.nightfever-afterparty.com"];
 const SKIP_KEY = "skipgc";
+/** Plausible (Lisa, 31 Oct 2026): EU-hosted, cookie-free analytics - time on page, entry/exit pages, outbound clicks.
+ *  Her site script from plausible.io; it follows the router's page changes itself. Skipped for ?me browsers like GoatCounter. */
+const PLAUSIBLE_SRC = "https://plausible.io/js/pa-fB-Vi6hBVUM32aTz6o8YA.js";
+type PlausibleFn = ((...a: unknown[]) => void) & { q?: unknown[][]; o?: unknown; init?: (o?: unknown) => void };
 
 type GoatCounter = { count?: (vars: { path: string }) => void; no_onload?: boolean };
 declare global {
   interface Window {
     goatcounter?: GoatCounter;
+    plausible?: PlausibleFn;
   }
 }
 
@@ -54,6 +59,17 @@ export function SiteStats() {
     }
 
     if (!GOATCOUNTER_CODE || !COUNTED_HOSTS.includes(window.location.hostname) || readSkip()) return;
+
+    if (!window.plausible) {
+      const p: PlausibleFn = Object.assign((...a: unknown[]) => { (p.q = p.q || []).push(a); }, {});
+      p.init = (o?: unknown) => { p.o = o || {}; };
+      window.plausible = p;
+      window.plausible.init?.();
+      const ps = document.createElement("script");
+      ps.async = true;
+      ps.src = PLAUSIBLE_SRC;
+      document.head.appendChild(ps);
+    }
 
     const count = () => {
       if (readSkip()) return;
