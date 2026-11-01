@@ -88,7 +88,7 @@ export function ClubsShelf() {
           <li
             key={c.slug}
             className={`cc-ticket cc-t${i % 3}${CLUB_TICKETS[c.slug] ? " cc-photo" : ""}`}
-            style={CLUB_TICKETS[c.slug] ? ({ "--ticket": `url(${CLUB_TICKETS[c.slug]!.src})` } as CSSProperties) : undefined}
+            style={CLUB_TICKETS[c.slug] ? ({ "--ticket": `url(${CLUB_TICKETS[c.slug]!.src})`, "--ticket-pos": CLUB_TICKETS[c.slug]!.pos ?? "center" } as CSSProperties) : undefined}
           >
             <Link to="/jukebox" search={{ club: c.slug }} className="cc-ticket-main">
               <span className="cc-admit">Admit one · a night at</span>
