@@ -13,6 +13,7 @@
  * The transcript stays on Lisa's computer and is never committed.
  */
 import { MENTOR_LINKS } from "../src/data/mentors";
+import { cardPath } from "../src/lib/card-link";
 import { readFileSync } from "node:fs";
 import { entities, entityFor } from "../src/data/entities";
 import { COME_BACK, NEW_FACES } from "../src/data/interview-next";
@@ -55,7 +56,7 @@ for (const e of entities) {
   // first-name-only people ("Jerry", "Bailey (Susanne's son)") and "The X" single words match too much
   if (COMMON.test(name) || (single && (name.length < 5 || /\(|^The /.test(e.name)))) continue;
   const c = countIn(masked, name);
-  if (c > 0) { console.log(`   ${String(c).padStart(3)}  ${e.name}  [${e.category}]  /explore/${e.slug}`); n++; }
+  if (c > 0) { console.log(`   ${String(c).padStart(3)}  ${e.name}  [${e.category}]  ${cardPath(e.slug)}`); n++; }
 }
 if (!n) console.log("   none");
 

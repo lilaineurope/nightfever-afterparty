@@ -71,7 +71,7 @@ export function MomentsBox({
         </ul>
       )}
       <div className="mt-4 flex flex-wrap gap-4 text-xs">
-        <Link {...cardTo(slug)} className="text-gold hover:text-pink">Its A–Z card →</Link>
+        <Link {...cardTo(slug)} className="text-gold hover:text-pink">{cardTo(slug).to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
         {link && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
         {extra}
       </div>
