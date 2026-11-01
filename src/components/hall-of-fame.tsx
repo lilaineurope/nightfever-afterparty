@@ -2,7 +2,8 @@ import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { entityFor, totalMentions } from "@/data/entities";
-import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME } from "@/data/mentors";
+import { MENTOR_LINKS } from "@/data/mentors";
+import { rankedMentors } from "@/lib/mentor-rank";
 import { episodeById, stageName } from "@/data/episodes";
 import { MomentsBox, plainClick, type Moment } from "@/components/moments-box";
 
@@ -10,20 +11,7 @@ import { MomentsBox, plainClick, type Moment } from "@/components/moments-box";
 // their wing, as the guests tell it - ranked by how many people they mentored, then by how often they come up across every Afterparty.
 const short = (n: string) => stageName(n).replace(/ \(as heard\)$/, "");
 
-const mentors = (() => {
-  const by = new Map<string, typeof MENTOR_LINKS>();
-  for (const l of MENTOR_LINKS) {
-    if (NOT_IN_HALL_OF_FAME.has(l.mentor)) continue;
-    by.set(l.mentor, [...(by.get(l.mentor) ?? []), l]);
-  }
-  return [...by.entries()]
-    .map(([name, links]) => {
-      const e = entityFor(name);
-      return { name, links, slug: e?.slug, link: e?.link, mentions: e ? totalMentions(e) : 0 };
-    })
-    .sort((a, b) => b.links.length - a.links.length || b.mentions - a.mentions || a.name.localeCompare(b.name))
-    .slice(0, 10);
-})();
+const mentors = rankedMentors.slice(0, 10);
 
 // Tap a name and a box opens under the names, like the Library covers (Lisa, 29 Oct 2026): who they took under their wing,
 // each moment with its episode and playable timestamp; the name stays a link to the A–Z card (cmd/ctrl-click opens it).

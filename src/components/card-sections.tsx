@@ -7,7 +7,9 @@ import { MusicPlayer } from "@/components/music-player";
 import { Timestamp } from "@/components/episode-player";
 import { entityBySlug, entityFor, episodeShort, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
-import { episodeById, episodePath } from "@/data/episodes";
+import { episodeById, episodePath, episodes } from "@/data/episodes";
+import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME } from "@/data/mentors";
+import { rankedMentors } from "@/lib/mentor-rank";
 import { cardTo } from "@/lib/card-link";
 import { EntityText } from "@/components/entity-text";
 import { EntityLink } from "@/components/entity-link";
@@ -220,8 +222,18 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
       .map((ev) => ({ key: ev.id, sort: ev.year, when: ev.when, title: ev.title, text: ev.text, place: ev.place, chips: [...ev.people, ...bySlug(ev.figures)] })),
   ].sort((a, b) => a.sort - b.sort);
 
-  const others = e.refs.filter((r) => r.episode && r.episode !== episode);
-  const named = namedOn(e);
+  const order = (id?: string) => episodes.findIndex((x) => x.id === id);
+  const elsewhere = [
+    ...e.refs.filter((r) => r.episode && r.episode !== episode).map((r) => ({ r, via: undefined as Entity | undefined })),
+    ...namedOn(e).filter((x) => x.ref.episode && x.ref.episode !== episode).map((x) => ({ r: x.ref, via: x.entity })),
+  ].sort((a, b) => order(a.r.episode) - order(b.r.episode) || (a.via ? 1 : 0) - (b.via ? 1 : 0));
+  const isMe = (n: string) => entityFor(n.replace(/ \(as heard\)$/, ""))?.slug === e.slug;
+  const asMentor = rankedMentors.findIndex((m) => isMe(m.name));
+  const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
+  const mentors = MENTOR_LINKS.filter((l) => isMe(l.mentee) && !NOT_IN_HALL_OF_FAME.has(l.mentor));
+  const mentor = mentees.length || mentors.length
+    ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0 }
+    : undefined;
   const rooms = toChips([...bySlug(g.scenes), ...relatedTo(e).map((x) => x.slug)]);
 
   return (
@@ -264,30 +276,49 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
             <TapChips group="linked" items={toChips(g.linkedTo)} open={open} setOpen={setOpen} />
           </div>
         )}
-        {others.length > 0 && (
+        {mentor && (
           <div>
+            {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people taken under their wing and mentions - with the
+                rank among all mentors; who took this guest under their wing too. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
+            <h3 className={h}>Mentor score</h3>
+            {mentor.rank > 0 && (
+              <p className="mt-3 text-sm text-card-foreground">
+                <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
+                {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
+                {" · "}{mentor.rank <= 10 ? <Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame #{mentor.rank}</Link> : `#${mentor.rank} of ${rankedMentors.length} mentors`}
+              </p>
+            )}
+            {[...mentor.mentees.map((l) => ({ l, who: l.mentee, label: "Took under their wing" })), ...mentor.mentors.map((l) => ({ l, who: l.mentor, label: "Under the wing of" }))].map(({ l, who, label }) => {
+              const ep = episodeById(l.episode);
+              return (
+                <p key={`${l.mentor}-${l.mentee}-${l.episode}`} className="mt-2 text-sm text-muted-foreground">
+                  <span className="text-xs uppercase tracking-wider text-gold">{label}</span>{" "}
+                  <EntityLink name={who.replace(/ \(as heard\)$/, "")} className="font-semibold text-card-foreground hover:text-pink" />
+                  {" · "}<Link to={episodePath(ep.id)} className="text-gold hover:text-pink">S{ep.season}E{ep.episode}</Link>
+                  {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}{l.line}
+                </p>
+              );
+            })}
+          </div>
+        )}
+        {elsewhere.length > 0 && (
+          <div>
+            {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
+                the guest's own rows, then the other cards whose line names them (tap the name for its box). */}
             <h3 className={h}>In the other AFTERPARTIES</h3>
             <ul className="mt-3 space-y-3">
-              {others.map((r) => {
+              {elsewhere.map(({ r, via }) => {
                 const ep = episodeById(r.episode!);
                 return (
-                  <li key={`${r.episode}-${r.rank}`} className="text-sm text-muted-foreground">
+                  <li key={`${r.episode}-${via?.slug ?? "self"}-${r.rank}`} className="text-sm text-muted-foreground">
                     <Link to={episodePath(ep.id)} className="font-semibold text-gold hover:text-pink">S{ep.season}E{ep.episode} · {ep.guest}</Link>
                     {r.time !== "On camera" && <>{" · "}<Timestamp episodeId={ep.id} time={r.time} className="text-xs" /></>}
-                    {r.context && <>{" - "}<EntityText text={r.context} self={e.name} /></>}
+                    {via && <>{" · "}<EntityLink name={via.slug} className="font-semibold text-card-foreground hover:text-pink">{via.name}</EntityLink></>}
+                    {r.context && <>{" - "}<EntityText text={r.context} self={via?.name ?? e.name} /></>}
                   </li>
                 );
               })}
             </ul>
-          </div>
-        )}
-        {named.length > 0 && (
-          <div>
-            <h3 className={h}>Also named in these episodes</h3>
-            <TapChips group="named" items={[...new Map(named.map((x) => [x.entity.slug, x])).values()].map((x) => ({
-              slug: x.entity.slug,
-              label: <>{x.entity.name}{x.ref.episode && <span className="ml-1.5 opacity-70">{episodeShort(x.ref.episode)}</span>}</>,
-            }))} open={open} setOpen={setOpen} />
           </div>
         )}
       </div>
