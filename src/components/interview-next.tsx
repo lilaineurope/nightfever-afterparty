@@ -5,16 +5,51 @@ import { sendToInbox } from "@/lib/web3forms";
 import { listFanPicks, suggestGuest, type FanPick } from "@/lib/suggestions.functions";
 import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
 import { episodeById, episodePath } from "@/data/episodes";
-import { EntityLink } from "@/components/entity-link";
+import { entityFor } from "@/data/entities";
 import { Timestamp } from "@/components/episode-player";
+import { EntityBox, plainClick } from "@/components/moments-box";
 
-function Tip({ tip }: { tip: InterviewTip }) {
+// Tap a name and its box opens right under that name's row, like the Library covers and the Hall of Fame (Lisa, 1 Nov 2026).
+// The name stays a real link to its A–Z card (cmd/ctrl-click opens the card). One box open at a time, across both lists.
+type Opener = { open: string | null; toggle: (key: string) => void; close: () => void };
+
+const NAME_CLASS = "font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream hover:text-pink";
+
+function TapName({ name, id, opener }: { name: string; id: string; opener: Opener }) {
+  const e = entityFor(name);
+  if (!e) return <span className={NAME_CLASS}>{name}</span>;
+  return (
+    <Link
+      to="/explore/$slug"
+      params={{ slug: e.slug }}
+      aria-expanded={opener.open === id}
+      onClick={(ev) => {
+        if (!plainClick(ev)) return;
+        ev.preventDefault();
+        opener.toggle(id);
+      }}
+      className={`${NAME_CLASS} ${opener.open === id ? "text-pink" : ""}`}
+    >
+      {name}
+    </Link>
+  );
+}
+
+function TapBox({ name, id, opener }: { name: string; id: string; opener: Opener }) {
+  const e = entityFor(name);
+  if (opener.open !== id || !e) return null;
+  return (
+    <div className="mt-4">
+      <EntityBox entity={e} onClose={opener.close} />
+    </div>
+  );
+}
+
+function Tip({ tip, id, opener }: { tip: InterviewTip; id: string; opener: Opener }) {
   const ep = episodeById(tip.episodeId);
   return (
     <li className="border-t border-border pt-4 first:border-t-0 first:pt-0">
-      <EntityLink name={tip.name} className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream hover:text-pink">
-        {tip.name}
-      </EntityLink>
+      <TapName name={tip.name} id={id} opener={opener} />
       <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{tip.why}</p>
       <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
         <span className="bg-gold px-1.5 py-0.5 font-semibold uppercase tracking-wide text-gold-foreground">Suggested on the show</span>
@@ -24,6 +59,7 @@ function Tip({ tip }: { tip: InterviewTip }) {
         </Link>
         <Timestamp episodeId={ep.id} time={tip.time} className="text-xs" />
       </p>
+      <TapBox name={tip.name} id={id} opener={opener} />
     </li>
   );
 }
@@ -113,18 +149,17 @@ function YourChoice() {
 }
 
 /** A fan suggestion Lisa approved: part of the New faces list, tagged "Suggested by a fan". */
-function FanTip({ pick }: { pick: FanPick }) {
+function FanTip({ pick, id, opener }: { pick: FanPick; id: string; opener: Opener }) {
   return (
     <li className="border-t border-border pt-4 first:border-t-0 first:pt-0">
-      <EntityLink name={pick.who} className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream hover:text-pink">
-        {pick.who}
-      </EntityLink>
+      <TapName name={pick.who} id={id} opener={opener} />
       {pick.why && <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">&ldquo;{pick.why}&rdquo;</p>}
       <p className="mt-1.5 text-xs text-muted-foreground">
         <span className="bg-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink-foreground">
           {pick.count > 1 ? `Suggested by ${pick.count} fans` : "Suggested by a fan"}
         </span>
       </p>
+      <TapBox name={pick.who} id={id} opener={opener} />
     </li>
   );
 }
@@ -137,6 +172,8 @@ export function InterviewNext({ className = "" }: { className?: string }) {
   useEffect(() => {
     list().then(setPicks).catch(() => setPicks([]));
   }, [list]);
+  const [open, setOpen] = useState<string | null>(null);
+  const opener: Opener = { open, toggle: (k) => setOpen((o) => (o === k ? null : k)), close: () => setOpen(null) };
   return (
     <section aria-labelledby="interview-next" className={`px-6 py-14 ${className}`}>
       <div className="relative mx-auto max-w-5xl border-[3px] border-gold bg-card px-6 py-8 shadow-[8px_10px_0_var(--color-gold)] sm:px-10">
@@ -152,17 +189,17 @@ export function InterviewNext({ className = "" }: { className?: string }) {
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Who should James, Fenton and Randy have on next? Every name put forward on the show - with the episode and the
-          exact moment, tap &#9654; to hear it - and the ones suggested by you, the fans.
+          exact moment, tap &#9654; to hear it - and the ones suggested by you, the fans. Tap a name to see every time it comes up.
         </p>
         <div className="mt-8 grid gap-10 md:grid-cols-2">
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">New faces</h3>
             <ul className="mt-4 space-y-4">
               {NEW_FACES.map((t) => (
-                <Tip key={t.name} tip={t} />
+                <Tip key={t.name} tip={t} id={`new:${t.name}`} opener={opener} />
               ))}
               {picks.map((p) => (
-                <FanTip key={p.who} pick={p} />
+                <FanTip key={p.who} pick={p} id={`fan:${p.who}`} opener={opener} />
               ))}
             </ul>
             <YourChoice />
@@ -171,7 +208,7 @@ export function InterviewNext({ className = "" }: { className?: string }) {
             <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Back for a part two</h3>
             <ul className="mt-4 space-y-4">
               {COME_BACK.map((t) => (
-                <Tip key={t.name} tip={t} />
+                <Tip key={t.name} tip={t} id={`back:${t.name}`} opener={opener} />
               ))}
             </ul>
           </div>
