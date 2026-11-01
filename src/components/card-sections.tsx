@@ -222,7 +222,7 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
 
   const others = e.refs.filter((r) => r.episode && r.episode !== episode);
   const named = namedOn(e);
-  const gang = relatedTo(e);
+  const rooms = toChips([...bySlug(g.scenes), ...relatedTo(e).map((x) => x.slug)]);
 
   return (
     <section className="grid gap-8 border-2 border-gold bg-card p-6 shadow-[6px_8px_0_var(--color-gold)] md:grid-cols-2">
@@ -251,10 +251,11 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
             <p className="mt-3 text-sm text-card-foreground/80"><EntityText text={g.now} /></p>
           </div>
         )}
-        {g.scenes.length > 0 && (
+        {rooms.length > 0 && (
           <div>
-            <h3 className={h}>Scenes &amp; rooms</h3>
-            <TapChips group="scenes" items={toChips(bySlug(g.scenes))} open={open} setOpen={setOpen} />
+            {/* Scenes & rooms and the gang in one row (Lisa, 1 Nov 2026): her own scenes first, then everyone and everywhere around her. */}
+            <h3 className={h}>Scenes, rooms &amp; the gang</h3>
+            <TapChips group="rooms" items={rooms} open={open} setOpen={setOpen} />
           </div>
         )}
         {g.linkedTo.length > 0 && (
@@ -282,17 +283,11 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
         )}
         {named.length > 0 && (
           <div>
-            <h3 className={h}>Also named on these cards</h3>
+            <h3 className={h}>Also named in these episodes</h3>
             <TapChips group="named" items={[...new Map(named.map((x) => [x.entity.slug, x])).values()].map((x) => ({
               slug: x.entity.slug,
               label: <>{x.entity.name}{x.ref.episode && <span className="ml-1.5 opacity-70">{episodeShort(x.ref.episode)}</span>}</>,
             }))} open={open} setOpen={setOpen} />
-          </div>
-        )}
-        {gang.length > 0 && (
-          <div>
-            <h3 className={h}>In the same rooms (aka the gang)</h3>
-            <TapChips group="gang" items={gang.map((x) => ({ slug: x.slug, label: x.name }))} open={open} setOpen={setOpen} />
           </div>
         )}
       </div>
