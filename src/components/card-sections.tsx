@@ -205,10 +205,11 @@ function TapChips({ items, group, open, setOpen }: {
  *  their timeline merged with the scene timeline, what they are doing now, scenes & rooms, connections, the other
  *  AFTERPARTIES that name them, the cards that name them and the gang. Every name chip opens the Library-style box
  *  underneath (tap-to-open, src/components/moments-box.tsx). */
-export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
+export function GuestAboutBox({ e, episode, layout = "columns" }: { e: Entity; episode: string; layout?: "columns" | "stack" | "strips" }) {
   const g = e.guest;
   const [open, setOpen] = useState<string | null>(null);
   const [openRow, setOpenRow] = useState<string | null>(null);
+  const [strip, setStrip] = useState<string | null>(null);
   if (!g) return null;
   const toChips = (slugs: string[]) =>
     [...new Set(slugs)].filter((s) => s && s !== e.slug).map((s) => ({ slug: s, label: entityBySlug[s]?.name ?? s }));
@@ -237,8 +238,7 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
     ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0 }
     : undefined;
 
-  return (
-    <section className="grid gap-8 border-2 border-gold bg-card p-6 shadow-[6px_8px_0_var(--color-gold)] md:grid-cols-2">
+  const timelineBlock = (
       <div>
         <h3 className={h}>Timeline</h3>
         {/* One line per moment (Lisa, 1 Nov 2026); tap it and the Library-style box opens underneath with the whole story,
@@ -276,9 +276,9 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
           })}
         </ol>
       </div>
-      <div className="space-y-6">
-        {mentor && (
-          <div>
+  );
+  const mentorBlock = mentor ? (
+    <div>
             {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people taken under their wing and mentions - with the
                 rank among all mentors; who took this guest under their wing too. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
             <h3 className={h}>Mentor score</h3>
@@ -300,10 +300,10 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
                 </p>
               );
             })}
-          </div>
-        )}
-        {elsewhere.length > 0 && (
-          <div>
+    </div>
+  ) : null;
+  const othersBlock = elsewhere.length > 0 ? (
+    <div>
             {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
                 the guest's own rows, then the other cards whose line names them (tap the name for its box). */}
             <h3 className={h}>In the other AFTERPARTIES</h3>
@@ -343,9 +343,35 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
                 );
               })}
             </ul>
-          </div>
-        )}
+    </div>
+  ) : null;
+
+  if (layout === "strips") {
+    // Option C: three one-line strips; tap one and its part opens underneath (one at a time).
+    const parts = [
+      { key: "timeline", label: `Timeline · ${rows.length}`, block: timelineBlock },
+      ...(mentorBlock ? [{ key: "mentor", label: mentor!.rank > 0 ? `Mentor score · Hall of Fame #${mentor!.rank}` : `Mentor score · ${mentor!.mentors.length} mentor${mentor!.mentors.length === 1 ? "" : "s"}`, block: mentorBlock }] : []),
+      ...(othersBlock ? [{ key: "others", label: `In the other AFTERPARTIES · ${byEpisode.length}`, block: othersBlock }] : []),
+    ];
+    return (
+      <div className="text-left">
+        <div className="flex flex-wrap justify-center gap-2">
+          {parts.map((x) => (
+            <button key={x.key} type="button" aria-expanded={strip === x.key} onClick={() => setStrip(strip === x.key ? null : x.key)}
+              className={strip === x.key ? chipOn : chip}>{x.label}</button>
+          ))}
+        </div>
+        {parts.filter((x) => x.key === strip).map((x) => <div key={x.key} className="mt-6 [&>div>h3]:hidden">{x.block}</div>)}
       </div>
-    </section>
+    );
+  }
+  if (layout === "stack") {
+    return <div className="space-y-6 text-left">{timelineBlock}{mentorBlock}{othersBlock}</div>;
+  }
+  return (
+    <div className="grid gap-8 text-left md:grid-cols-2">
+      {timelineBlock}
+      <div className="space-y-6">{mentorBlock}{othersBlock}</div>
+    </div>
   );
 }
