@@ -13,6 +13,10 @@ const SKIP_KEY = "skipgc";
 /** Plausible (Lisa, 31 Oct 2026): EU-hosted, cookie-free analytics - time on page, entry/exit pages, outbound clicks.
  *  Her site script from plausible.io; it follows the router's page changes itself. Skipped for ?me browsers like GoatCounter. */
 const PLAUSIBLE_SRC = "https://plausible.io/js/pa-fB-Vi6hBVUM32aTz6o8YA.js";
+/** Pirsch (Lisa, 1 Nov 2026): EU (Germany), cookie-free analytics on test next to Plausible - pa.js tracks page views
+ *  (incl. the router's page changes), outbound links and downloads. Skipped for ?me browsers. */
+const PIRSCH_SRC = "https://api.pirsch.io/pa.js";
+const PIRSCH_CODE = "0oTfTXDr8A3tlF6FEEWiPRb7n7Uic5z6";
 type PlausibleFn = ((...a: unknown[]) => void) & { q?: unknown[][]; o?: unknown; init?: (o?: unknown) => void };
 
 type GoatCounter = { count?: (vars: { path: string }) => void; no_onload?: boolean };
@@ -69,6 +73,15 @@ export function SiteStats() {
       ps.async = true;
       ps.src = PLAUSIBLE_SRC;
       document.head.appendChild(ps);
+    }
+
+    if (!document.getElementById("pianjs")) {
+      const pi = document.createElement("script");
+      pi.defer = true;
+      pi.id = "pianjs";
+      pi.src = PIRSCH_SRC;
+      pi.setAttribute("data-code", PIRSCH_CODE);
+      document.head.appendChild(pi);
     }
 
     const count = () => {

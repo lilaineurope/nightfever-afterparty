@@ -70,6 +70,7 @@ const GROUPS: Group[] = [
       { name: "Forward Email", href: "https://forwardemail.net", what: "Passes on emails sent to hello@nightfever-afterparty.com to my own inbox, without keeping them." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Plausible", href: "https://plausible.io", what: "EU-hosted, cookie-free analytics: how long pages are read, where visits start and end, and which outside links are clicked - no personal data." },
+      { name: "Pirsch", href: "https://pirsch.io", what: "EU-hosted (Germany), cookie-free analytics, on test next to Plausible: page views, time on site, entry and exit pages, outbound clicks - no personal data." },
       { name: "Google Search Console", href: "https://search.google.com/search-console", what: "Tells Google which pages exist so they show up in search." },
       { name: "Bing Webmaster Tools", href: "https://www.bing.com/webmasters", what: "Does the same for Bing (and the search engines that use it, like DuckDuckGo)." },
       { name: "IndexNow", href: "https://www.indexnow.org", what: "Tells Bing and other search engines straight away when a page is new or has changed - just the page addresses, nothing about visitors." },
@@ -85,7 +86,7 @@ export const Route = createFileRoute("/under-the-hood")({
     pageHead({
       path: "/under-the-hood",
       title: "Under the hood | Night Fever fan page",
-      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, YouTube, Google Maps, GoatCounter, Plausible, Tipeee and more.",
+      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, YouTube, Google Maps, GoatCounter, Plausible, Pirsch, Tipeee and more.",
       image: "/og/home.jpg",
     }),
 });
