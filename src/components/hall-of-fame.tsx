@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { entityFor, totalMentions } from "@/data/entities";
@@ -71,8 +72,7 @@ export function HallOfFame() {
               >
                 {m.slug ? (
                   <Link
-                    to="/explore/$slug"
-                    params={{ slug: m.slug }}
+                    {...cardTo(m.slug)}
                     aria-expanded={open === m.name}
                     onClick={(ev) => {
                       if (!plainClick(ev)) return;
