@@ -208,18 +208,19 @@ function TapChips({ items, group, open, setOpen }: {
 export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
   const g = e.guest;
   const [open, setOpen] = useState<string | null>(null);
+  const [openRow, setOpenRow] = useState<string | null>(null);
   if (!g) return null;
   const toChips = (slugs: string[]) =>
     [...new Set(slugs)].filter((s) => s && s !== e.slug).map((s) => ({ slug: s, label: entityBySlug[s]?.name ?? s }));
   const bySlug = (names: string[]) => names.map((n) => entityFor(n)?.slug ?? n);
 
   // The guest's own timeline lines are already scene events ("guest-<slug>-n"); show them once, then the other moments.
-  type Row = { key: string; sort: number; when: string; title?: string; text: string; place?: string; chips: string[] };
+  type Row = { key: string; event: string | undefined; sort: number; when: string; title?: string; text: string; place?: string; chips: string[] };
   const rows: Row[] = [
-    ...g.timeline.map((t, i) => ({ key: `t${i}`, sort: yearOf(t.year), when: t.year, text: t.text, chips: [] })),
+    ...g.timeline.map((t, i) => ({ key: `t${i}`, event: e.events.some((ev) => ev.id === `guest-${g.slug}-${i}`) ? `guest-${g.slug}-${i}` : undefined, sort: yearOf(t.year), when: t.year, text: t.text, chips: [] })),
     ...e.events
       .filter((ev) => !ev.id.startsWith(`guest-${g.slug}-`))
-      .map((ev) => ({ key: ev.id, sort: ev.year, when: ev.when, title: ev.title, text: ev.text, place: ev.place, chips: [...ev.people, ...bySlug(ev.figures)] })),
+      .map((ev) => ({ key: ev.id, event: ev.id, sort: ev.year, when: ev.when, title: ev.title, text: ev.text, place: ev.place, chips: [...ev.people, ...bySlug(ev.figures)] })),
   ].sort((a, b) => a.sort - b.sort);
 
   const order = (id?: string) => episodes.findIndex((x) => x.id === id);
@@ -235,48 +236,47 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
   const mentor = mentees.length || mentors.length
     ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0 }
     : undefined;
-  const rooms = toChips([...bySlug(g.scenes), ...relatedTo(e).map((x) => x.slug)]);
 
   return (
     <section className="grid gap-8 border-2 border-gold bg-card p-6 shadow-[6px_8px_0_var(--color-gold)] md:grid-cols-2">
       <div>
         <h3 className={h}>Timeline</h3>
-        <ol className="mt-4 space-y-4 border-l border-gold/25 pl-5">
-          {rows.map((r) => (
-            <li key={r.key}>
-              <p className="text-sm font-semibold text-gold">
-                {r.when}
-                {r.place && <span className="ml-2 text-xs font-normal uppercase tracking-wider text-pink">{r.place}</span>}
-              </p>
-              {r.title && <p className="mt-1 text-sm font-semibold text-card-foreground">{r.title}</p>}
-              <p className="mt-1 text-sm text-card-foreground/80"><EntityText text={r.text} self={e.name} /></p>
-              {r.chips.filter((s) => s !== e.slug).length > 0 && (
-                <TapChips group={`tl-${r.key}`} items={toChips(r.chips)} open={open} setOpen={setOpen} />
-              )}
-            </li>
-          ))}
+        {/* One line per moment (Lisa, 1 Nov 2026); tap it and the Library-style box opens underneath with the whole story,
+            the names (each opens its own box) and the link to the Timeline. */}
+        <ol className="mt-4 space-y-1.5 border-l border-gold/25 pl-5">
+          {rows.map((r) => {
+            const on = openRow === r.key;
+            const line = r.title ?? r.text.replace(/\.$/, "");
+            return (
+              <li key={r.key} className="text-sm">
+                <button type="button" aria-expanded={on} onClick={() => setOpenRow(on ? null : r.key)}
+                  className={`text-left hover:text-pink ${on ? "text-pink" : "text-card-foreground"}`}>
+                  <span className="font-semibold text-gold">{r.when}</span>{" · "}{line}
+                </button>
+                {on && (
+                  <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
+                    <div className="flex flex-wrap items-baseline justify-between gap-3">
+                      <h4 className="text-xl font-bold uppercase text-cream">{line}</h4>
+                      <button type="button" onClick={() => setOpenRow(null)} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground">{r.when}{r.place && <> · {r.place}</>}</p>
+                    {r.title && <p className="mt-3 text-sm text-card-foreground/80"><EntityText text={r.text} self={e.name} /></p>}
+                    {r.chips.filter((c) => c !== e.slug).length > 0 && (
+                      <TapChips group={`tl-${r.key}`} items={toChips(r.chips)} open={open} setOpen={setOpen} />
+                    )}
+                    {r.event && (
+                      <p className="mt-4 text-xs">
+                        <Link to="/timeline" hash={`ev-${r.event}`} className="text-gold hover:text-pink">On the Timeline →</Link>
+                      </p>
+                    )}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ol>
       </div>
       <div className="space-y-6">
-        {g.now && (
-          <div>
-            <h3 className={h}>What they are doing now</h3>
-            <p className="mt-3 text-sm text-card-foreground/80"><EntityText text={g.now} /></p>
-          </div>
-        )}
-        {rooms.length > 0 && (
-          <div>
-            {/* Scenes & rooms and the gang in one row (Lisa, 1 Nov 2026): her own scenes first, then everyone and everywhere around her. */}
-            <h3 className={h}>Scenes, rooms &amp; the gang</h3>
-            <TapChips group="rooms" items={rooms} open={open} setOpen={setOpen} />
-          </div>
-        )}
-        {g.linkedTo.length > 0 && (
-          <div>
-            <h3 className={h}>Connected to</h3>
-            <TapChips group="linked" items={toChips(g.linkedTo)} open={open} setOpen={setOpen} />
-          </div>
-        )}
         {mentor && (
           <div>
             {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people taken under their wing and mentions - with the
