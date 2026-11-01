@@ -238,6 +238,12 @@ const SPOTIFY: Record<string, string> = {
   "The Donnas": "spotify:artist:2c0qomdZabcCyqTZ5M9msd",
   "Lunachicks": "spotify:artist:3p3KAZ6zqhFkkH5ZdTuS5X",
   "The Voluptuous Horror of Karen Black": "spotify:artist:7oEM4RIkeUW8iLC0gaFbi7",
+  // S05E01 Nell Campbell ('Do the Swim' is not on Spotify)
+  "The Rocky Horror Show": "spotify:album:418wNBNbazCcRpGCN7UvW1",
+  "'Science Fiction/Double Feature' (Rocky Horror)": "spotify:track:4JH4PS2JUaABFCMbEk9lqd",
+  "The Boswell Sisters": "spotify:artist:2mflSlnegn3rBmzsh08OcN",
+  "Guys and Dolls": "spotify:album:5Iof7q92ZmN6mWGhx0weG3",
+  "'Eddie's Teddy' (Rocky Horror)": "spotify:track:2xTwqmWsWkTPpYUU4qdEWA",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
