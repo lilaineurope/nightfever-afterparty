@@ -26,6 +26,7 @@ export const GUEST_LINES: Record<string, string> = {
   s02e07: "Club kid icon · Model and muse · Lower East Side Girls Club",
   s02e05: "Boy Bar beauty · Mugler supermodel · Door legend",
   s03e10: "Toilet Boys singer · Squeezebox DJ · Boy Bar star",
+  s05e01: "Rocky Horror's Columbia · the face of Nell's · tap-dancing star",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
   s06e01: "Club Kid legend, author and host of Night Fever",

@@ -218,4 +218,10 @@ export const YEARS: Record<string, number> = {
   "The Donnas": 1993,
   "Lunachicks": 1987,
   "The Voluptuous Horror of Karen Black": 1990,
+  "Little Nell – 'Do the Swim'": 1975,
+  "The Rocky Horror Show": 1973,
+  "'Science Fiction/Double Feature' (Rocky Horror)": 1973,
+  "The Boswell Sisters": 1925,
+  "Guys and Dolls": 1950,
+  "'Eddie's Teddy' (Rocky Horror)": 1973,
 };

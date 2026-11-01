@@ -217,6 +217,12 @@ export const YOUTUBE: Record<string, string> = {
   "The Donnas": "nCvRT2sy5FE",
   "Lunachicks": "8hj3FcFI2mc",
   "The Voluptuous Horror of Karen Black": "cegjBPyfGoM",
+  "Little Nell – 'Do the Swim'": "5VBDEZq8770",
+  "The Rocky Horror Show": "HhumDqCqXGU",
+  "'Science Fiction/Double Feature' (Rocky Horror)": "43a-NTtwGds",
+  "The Boswell Sisters": "77QPOSmyiz4",
+  "Guys and Dolls": "yI4cfgoawwA",
+  "'Eddie's Teddy' (Rocky Horror)": "9NZKjFl2xEU",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

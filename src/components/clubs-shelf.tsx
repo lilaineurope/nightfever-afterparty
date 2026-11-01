@@ -10,7 +10,7 @@ import { CLUB_TICKETS } from "@/data/club-tickets";
 import type { CSSProperties } from "react";
 
 // Inside the Clubs (Lisa, 30 Oct 2026, was Clubkid Culture): a wall of club flyers as the header, then every club ever mentioned on
-// Night Fever street by street (New York neighbourhood by neighbourhood, then London, Paris, Los Angeles and the rest); the three club
+// Night Fever street by street (New York neighbourhood by neighbourhood, then London, Paris, Los Angeles and the rest); the club
 // nights ("Hear a whole night") sit on top, as tickets that open in the Jukebox (Lisa, 30 Oct 2026). Each club is a sticker sized by its mentions; a tap opens its moments right under the block
 // (cmd/ctrl-click opens the A–Z card). Areas come from src/data/locations.ts - a club without coordinates lands in "Address unknown".
 
@@ -83,7 +83,7 @@ export function ClubsShelf() {
   return (
     <div className="cc-body">
       <h2 className="cc-h2">Hear a whole night</h2>
-      <p className="cc-sub">Three clubs so far with a night you can play from start to finish - what was really played there, from DJ lists, recorded sets and live shows, every song with its source.</p>
+      <p className="cc-sub">{CLUB_NIGHTS.length} clubs so far with a night you can play from start to finish - what was really played there, from DJ lists, recorded sets and live shows, every song with its source.</p>
       <ul className="cc-tickets">
         {CLUB_NIGHTS.map((c, i) => (
           <li

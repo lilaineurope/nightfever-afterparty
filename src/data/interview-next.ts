@@ -54,6 +54,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Nell Campbell",
+    why: "The hosts close by calling the episode just the trailer for 'Nell Campbell, the series' - and Nell says she says yes to everything.",
+    episodeId: "s05e01",
+    time: "00:49:39",
+  },
+  {
     name: "Waltpaper",
     why: "James closes: 'I'd like to have you back' - they could talk for another three hours.",
     episodeId: "s01e06",
@@ -108,7 +114,7 @@ export const COME_BACK: InterviewTip[] = [
     time: "01:00:44",
   },
   {
-    name: "Chi Chi Valenti",
+    name: "Chi Chi Valenti & Johnny Dynell",
     why: "Chi Chi and Johnny Dynell offer to come back and cover the 21st century next time.",
     episodeId: "s06e03",
     time: "01:01:44",

@@ -14,45 +14,15 @@ export type Database = {
   }
   public: {
     Tables: {
-      interview_suggestions: {
-        Row: {
-          approved_at: string | null
-          created_at: string
-          from_name: string | null
-          id: string
-          status: string
-          who: string
-          why: string | null
-        }
-        Insert: {
-          approved_at?: string | null
-          created_at?: string
-          from_name?: string | null
-          id?: string
-          status?: string
-          who: string
-          why?: string | null
-        }
-        Update: {
-          approved_at?: string | null
-          created_at?: string
-          from_name?: string | null
-          id?: string
-          status?: string
-          who?: string
-          why?: string | null
-        }
-        Relationships: []
-      }
       guestbook_entries: {
         Row: {
           approved_at: string | null
           created_at: string
           episode: string | null
-          page: string | null
           id: string
           message: string
           name: string
+          page: string | null
           place: string | null
           reply: string | null
           status: string
@@ -61,10 +31,10 @@ export type Database = {
           approved_at?: string | null
           created_at?: string
           episode?: string | null
-          page?: string | null
           id?: string
           message: string
           name: string
+          page?: string | null
           place?: string | null
           reply?: string | null
           status?: string
@@ -73,10 +43,10 @@ export type Database = {
           approved_at?: string | null
           created_at?: string
           episode?: string | null
-          page?: string | null
           id?: string
           message?: string
           name?: string
+          page?: string | null
           place?: string | null
           reply?: string | null
           status?: string
@@ -116,6 +86,36 @@ export type Database = {
           key_hash?: string
           key_salt?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      interview_suggestions: {
+        Row: {
+          approved_at: string | null
+          created_at: string
+          from_name: string | null
+          id: string
+          status: string
+          who: string
+          why: string | null
+        }
+        Insert: {
+          approved_at?: string | null
+          created_at?: string
+          from_name?: string | null
+          id?: string
+          status?: string
+          who: string
+          why?: string | null
+        }
+        Update: {
+          approved_at?: string | null
+          created_at?: string
+          from_name?: string | null
+          id?: string
+          status?: string
+          who?: string
+          why?: string | null
         }
         Relationships: []
       }
