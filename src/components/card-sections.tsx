@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { EntityBox, plainClick } from "@/components/moments-box";
+import { EntityBox, MomentsBox, plainClick } from "@/components/moments-box";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { clubNightFor } from "@/data/club-nights";
 import { MusicPlayer } from "@/components/music-player";
 import { Timestamp } from "@/components/episode-player";
-import { entityBySlug, entityFor, episodeShort, relatedTo, type Entity } from "@/data/entities";
+import { entityBySlug, entityFor, episodeShort, guestOfEpisode, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
 import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME } from "@/data/mentors";
@@ -227,6 +227,7 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
     ...e.refs.filter((r) => r.episode && r.episode !== episode).map((r) => ({ r, via: undefined as Entity | undefined })),
     ...namedOn(e).filter((x) => x.ref.episode && x.ref.episode !== episode).map((x) => ({ r: x.ref, via: x.entity })),
   ].sort((a, b) => order(a.r.episode) - order(b.r.episode) || (a.via ? 1 : 0) - (b.via ? 1 : 0));
+  const byEpisode = [...new Set(elsewhere.map((x) => x.r.episode!))].map((id) => ({ id, rows: elsewhere.filter((x) => x.r.episode === id) }));
   const isMe = (n: string) => entityFor(n.replace(/ \(as heard\)$/, ""))?.slug === e.slug;
   const asMentor = rankedMentors.findIndex((m) => isMe(m.name));
   const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
@@ -306,15 +307,38 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
             {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
                 the guest's own rows, then the other cards whose line names them (tap the name for its box). */}
             <h3 className={h}>In the other AFTERPARTIES</h3>
-            <ul className="mt-3 space-y-3">
-              {elsewhere.map(({ r, via }) => {
-                const ep = episodeById(r.episode!);
+            <ul className="mt-3 space-y-1.5">
+              {byEpisode.map(({ id, rows }) => {
+                const ep = episodeById(id);
+                const key = `ep:${id}`;
+                const host = guestOfEpisode(id);
+                const mentions = rows.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
                 return (
-                  <li key={`${r.episode}-${via?.slug ?? "self"}-${r.rank}`} className="text-sm text-muted-foreground">
-                    <Link to={episodePath(ep.id)} className="font-semibold text-gold hover:text-pink">S{ep.season}E{ep.episode} · {ep.guest}</Link>
-                    {r.time !== "On camera" && <>{" · "}<Timestamp episodeId={ep.id} time={r.time} className="text-xs" /></>}
-                    {via && <>{" · "}<EntityLink name={via.slug} className="font-semibold text-card-foreground hover:text-pink">{via.name}</EntityLink></>}
-                    {r.context && <>{" - "}<EntityText text={r.context} self={via?.name ?? e.name} /></>}
+                  <li key={id} className="text-sm">
+                    <Link to={episodePath(ep.id)} aria-expanded={open === key}
+                      onClick={(ev) => { if (!plainClick(ev)) return; ev.preventDefault(); setOpen(open === key ? null : key); }}
+                      className={`font-semibold hover:text-pink ${open === key ? "text-pink" : "text-gold"}`}>
+                      S{ep.season}E{ep.episode} · {ep.guest}
+                    </Link>
+                    <span className="text-xs text-muted-foreground">
+                      {" · "}{mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "named"}
+                      {rows.length > 1 && ` · ${rows.length} moments`}
+                    </span>
+                    {open === key && (
+                      <div className="mt-3">
+                        <MomentsBox
+                          name={`S${ep.season}E${ep.episode} · ${ep.guest}`}
+                          slug={host?.slug ?? e.slug}
+                          mentions={mentions}
+                          moments={rows.map(({ r, via }) => ({
+                            episodeId: ep.id, code: `S${ep.season}E${ep.episode}`, guest: ep.guest, time: r.time,
+                            context: via ? `${via.name}: ${r.context}` : r.context,
+                          }))}
+                          note={`${e.name} in this AFTERPARTY`}
+                          onClose={() => setOpen(null)}
+                        />
+                      </div>
+                    )}
                   </li>
                 );
               })}
