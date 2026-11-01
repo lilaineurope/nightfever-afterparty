@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { entityFor } from "../data/entities";
@@ -15,7 +16,7 @@ export function EntityLink({
   const e = entityFor(name);
   if (!e) return <span className={className}>{children ?? name}</span>;
   return (
-    <Link to="/explore/$slug" params={{ slug: e.slug }} className={className}>
+    <Link {...cardTo(e.slug)} className={className}>
       {children ?? name}
     </Link>
   );

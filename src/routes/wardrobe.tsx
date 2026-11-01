@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
@@ -360,7 +361,7 @@ function Source({ piece }: { piece: Piece }) {
     <p className={`relative truncate text-xs ${k.src}`}>
       {piece.who && <span className={`font-semibold ${k.who}`}>{piece.who} · </span>}
       {piece.lookSlug ? (
-        <Link to="/explore/$slug" params={{ slug: piece.lookSlug }} className={`underline decoration-dotted underline-offset-2 ${k.link}`}>{piece.look}</Link>
+        <Link {...cardTo(piece.lookSlug)} className={`underline decoration-dotted underline-offset-2 ${k.link}`}>{piece.look}</Link>
       ) : (
         piece.look
       )}

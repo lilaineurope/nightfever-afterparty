@@ -1,3 +1,4 @@
+import { cardPath } from "@/lib/card-link";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { JukeboxMachine } from "@/components/jukebox-machine";
 import { SiteFooter } from "@/components/site-footer";
@@ -64,7 +65,7 @@ export const Route = createFileRoute("/jukebox")({
         itemListElement: jukebox.slice(0, 50).map((m, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          item: { "@type": m.shelf === "songs" ? "MusicRecording" : m.shelf === "artists" ? "MusicGroup" : "Thing", name: m.name, url: abs(`/explore/${m.slug}`) },
+          item: { "@type": m.shelf === "songs" ? "MusicRecording" : m.shelf === "artists" ? "MusicGroup" : "Thing", name: m.name, url: abs(cardPath(m.slug)) },
         })),
       }),
     ],

@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { namedOnCount } from "@/lib/name-links";
-import { entityFor, totalMentions } from "@/data/entities";
+import { entityFor, guestOfEpisode, totalMentions } from "@/data/entities";
+import { CardSections, GuestBox } from "@/components/card-sections";
+import { cardTo } from "@/lib/card-link";
 import { episodeById, stageName } from "@/data/episodes";
 import { MoodSpectrum } from "@/components/mood-spectrum";
 import { SiteFooter } from "@/components/site-footer";
@@ -66,6 +68,8 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
 }) {
   useEpisodePlayer(id);
   const thisEpisode = episodeById(id);
+  // One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card lives on this page too.
+  const guestCard = guestOfEpisode(id);
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
@@ -133,6 +137,15 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
         </div>
       </section>
 
+      {guestCard?.guest && (
+        <section aria-labelledby="about-guest" className="px-6 pb-12">
+          <div className="mx-auto max-w-5xl">
+            <h2 id="about-guest" className="mb-6 text-3xl font-bold text-cream">About {title}</h2>
+            <GuestBox e={guestCard} />
+          </div>
+        </section>
+      )}
+
       <section aria-labelledby="episode-mood" className="px-6 pb-12">
         <div className="mx-auto max-w-5xl">
           <h2 id="episode-mood" className="text-3xl font-bold text-cream">Mood of the episode</h2>
@@ -194,7 +207,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
                   {(r.guest || r.events.length > 0) && (
                     <div className="mt-2 flex flex-wrap gap-2 text-xs">
                       {r.guest && (
-                        <Link to="/explore/$slug" params={{ slug: r.guest.slug }} className="rounded-full border border-pink/50 px-2.5 py-0.5 text-pink hover:bg-pink hover:text-pink-foreground">
+                        <Link {...cardTo(r.guest.slug)} className="rounded-full border border-pink/50 px-2.5 py-0.5 text-pink hover:bg-pink hover:text-pink-foreground">
                           A Night Fever guest &rarr;
                         </Link>
                       )}
@@ -226,6 +239,14 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
           </p>
         </div>
       </section>
+      {guestCard && (
+        <section aria-labelledby="guest-everywhere" className="px-6 pb-24">
+          <div className="mx-auto max-w-5xl space-y-12">
+            <h2 id="guest-everywhere" className="text-3xl font-bold text-cream">{title} across the AFTERPARTY</h2>
+            <CardSections e={guestCard} episode={id} />
+          </div>
+        </section>
+      )}
       <SiteFooter />
     </main>
   );

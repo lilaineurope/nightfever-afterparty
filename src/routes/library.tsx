@@ -1,3 +1,4 @@
+import { cardPath } from "@/lib/card-link";
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
 import { MomentsBox } from "@/components/moments-box";
@@ -30,7 +31,7 @@ export const Route = createFileRoute("/library")({
         itemListElement: bookClub.slice(0, 50).map((b, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          item: { "@type": b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(`/explore/${b.slug}`) },
+          item: { "@type": b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.slug)) },
         })),
       }),
     ],

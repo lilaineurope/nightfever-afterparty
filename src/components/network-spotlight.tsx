@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { episodes, episodePath } from "@/data/episodes";
@@ -242,8 +243,7 @@ export function NetworkSpotlight() {
                   {pair.shared.map((p: EpisodeEntity) => (
                     <li key={p.slug}>
                       <Link
-                        to="/explore/$slug"
-                        params={{ slug: p.slug }}
+                        {...cardTo(p.slug)}
                         className="inline-block rounded-full border border-gold/30 px-3 py-1 text-xs font-medium text-cream transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                       >
                         {p.name}

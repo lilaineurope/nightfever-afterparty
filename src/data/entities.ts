@@ -252,10 +252,24 @@ export const mentionsByEpisode = (e: Entity): { episode: string; count: number }
  * but left out of the sitemap and marked noindex so Google sees the rich cards instead. */
 /** Sitemap (Lisa, 27 Oct 2026): only guests' cards and names dropped in two or more episodes, so Google spends its
  *  visits on the strongest pages first. Every other card stays on the site, linked from its episodes. */
-export const inSitemap = (e: Entity): boolean => !!e.guest || new Set(e.refs.map((r) => r.episode)).size >= 2;
+export const inSitemap = (e: Entity): boolean => !afterpartyOf(e) && (!!e.guest || new Set(e.refs.map((r) => r.episode)).size >= 2);
 
 export const isThinCard = (e: Entity): boolean =>
   !e.guest &&
   new Set(e.refs.map((r) => r.episode)).size < 2 &&
   e.events.length === 0 &&
   e.inGuestStories.length === 0;
+
+/** One page per guest (Lisa, 1 Nov 2026): a guest whose AFTERPARTY is on the site has ONE page, the episode page.
+ *  Their A–Z card address forwards there and every name link goes straight there. Guests without an AFTERPARTY
+ *  yet keep their A–Z card until their episode is registered in episodes.ts. */
+export function afterpartyOf(e: Entity | undefined): NonNullable<Ref["episode"]> | undefined {
+  if (!e?.guest) return undefined;
+  const m = e.guest.episode.match(/Season (\d+), Episode (\d+)/);
+  if (!m) return undefined;
+  const id = `s${m[1]!.padStart(2, "0")}e${m[2]!.padStart(2, "0")}`;
+  return episodes.some((x) => x.id === id) ? (id as NonNullable<Ref["episode"]>) : undefined;
+}
+
+/** The guest card that belongs to an episode page (undefined for an episode without one). */
+export const guestOfEpisode = (id: string): Entity | undefined => entities.find((e) => afterpartyOf(e) === id);

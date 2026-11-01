@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -97,7 +98,7 @@ function QuizPage() {
                 {done && (
                   <p className="mt-3 text-sm text-muted-foreground">
                     {q.explain}{" "}
-                    <Link to="/explore/$slug" params={{ slug: q.slug }} className="text-gold underline underline-offset-2 hover:text-pink">
+                    <Link {...cardTo(q.slug)} className="text-gold underline underline-offset-2 hover:text-pink">
                       Dive into the card
                     </Link>
                   </p>

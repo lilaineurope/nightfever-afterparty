@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
 import { entityFor } from "@/data/entities";
@@ -37,7 +38,7 @@ export function EntityText({
         ) : (
           linkNames(part, selfSlug).map((seg, j) =>
             seg.slug ? (
-              <Link key={`${i}-${j}`} to="/explore/$slug" params={{ slug: seg.slug }} className={NAME_CLASS}>
+              <Link key={`${i}-${j}`} {...cardTo(seg.slug)} className={NAME_CLASS}>
                 {seg.text}
               </Link>
             ) : (

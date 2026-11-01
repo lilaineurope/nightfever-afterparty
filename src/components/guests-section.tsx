@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { guestBySlug, guests, WOW_URL } from "../data/guests";
@@ -155,8 +156,7 @@ export function GuestsSection() {
 
                         <div className="mt-3 flex flex-wrap gap-3">
                         <Link
-                          to="/explore/$slug"
-                          params={{ slug: guest.slug }}
+                          {...cardTo(guest.slug)}
                           className="inline-flex items-center gap-2 rounded-xl border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                         >
                           Their full card &rarr;

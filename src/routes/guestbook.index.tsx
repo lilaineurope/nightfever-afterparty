@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -97,7 +98,7 @@ function NoteCard({ note, tilt }: { note: GuestbookNote; tilt: number }) {
                 {episodeLabel(ep)}
               </Link>
             ) : (
-              <Link to="/explore/$slug" params={{ slug: ep.guestSlug }} className="text-gold underline decoration-gold/50 underline-offset-2 hover:text-pink">
+              <Link {...cardTo(ep.guestSlug)} className="text-gold underline decoration-gold/50 underline-offset-2 hover:text-pink">
                 {episodeLabel(ep)}
               </Link>
             )}

@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Timestamp } from "@/components/episode-player";
@@ -50,7 +51,7 @@ export function MomentsBox({
     <div className="moments-box border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)] sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h3 className="text-2xl font-bold uppercase text-cream">
-          <Link to="/explore/$slug" params={{ slug }} className="hover:text-pink">{name}</Link>
+          <Link {...cardTo(slug)} className="hover:text-pink">{name}</Link>
         </h3>
         <button type="button" onClick={onClose} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
       </div>
@@ -70,7 +71,7 @@ export function MomentsBox({
         </ul>
       )}
       <div className="mt-4 flex flex-wrap gap-4 text-xs">
-        <Link to="/explore/$slug" params={{ slug }} className="text-gold hover:text-pink">Its A–Z card →</Link>
+        <Link {...cardTo(slug)} className="text-gold hover:text-pink">Its A–Z card →</Link>
         {link && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
         {extra}
       </div>

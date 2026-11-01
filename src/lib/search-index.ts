@@ -1,7 +1,8 @@
 // Site-wide search index: every card in Everything A–Z, every Afterparty episode and every page.
 // Built from the same data the pages use (entities.ts, episodes.ts), so new episodes are searchable automatically.
 // Loaded lazily by SiteSearch the first time someone opens search, so it never weighs down page loads.
-import { entities, episodeShort } from "@/data/entities";
+import { afterpartyOf, entities, episodeShort, guestOfEpisode } from "@/data/entities";
+import { episodeById } from "@/data/episodes";
 import { episodes, episodePath } from "@/data/episodes";
 import { PAGES, OTHER_PAGES } from "@/lib/pages";
 
@@ -21,7 +22,8 @@ export const norm = (s: string) =>
 
 const items: Item[] = [
   ...[...PAGES, ...OTHER_PAGES].map((p) => ({ kind: "page" as const, title: p.label, sub: "Page", to: p.to, key: norm(p.label === "A–Z" ? "A–Z Everything A-Z" : p.label), texts: [] })),
-  ...episodes.map((e) => ({
+  // One page per guest (Lisa, 1 Nov 2026): an episode with a guest card is found through that card below, so it is one hit.
+  ...episodes.filter((e) => !guestOfEpisode(e.id)).map((e) => ({
     kind: "episode" as const,
     title: `${e.guest}`,
     sub: `Season ${e.season} · Episode ${e.episode} · Afterparty`,
@@ -31,14 +33,18 @@ const items: Item[] = [
   })),
   ...entities.map((en) => {
     const eps = [...new Set(en.refs.map((r) => r.episode).filter(Boolean))].map((id) => episodeShort(id as string));
+    const ap = afterpartyOf(en);
+    const own = ap ? episodeById(ap) : undefined;
     return {
-      kind: "card" as const,
+      kind: own ? ("episode" as const) : ("card" as const),
       title: en.name,
-      sub: [en.guest ? "Night Fever guest" : en.category, eps.length ? eps.join(", ") : ""].filter(Boolean).join(" · "),
-      to: "/explore/$slug",
-      params: { slug: en.slug },
-      key: norm([en.name, ...en.refs.map((r) => r.heard).filter((h) => h && h !== "—")].join(" | ")),
+      sub: own
+        ? `Season ${own.season} · Episode ${own.episode} · Afterparty`
+        : [en.guest ? "Night Fever guest" : en.category, eps.length ? eps.join(", ") : ""].filter(Boolean).join(" · "),
+      ...(own ? { to: episodePath(own.id) } : { to: "/explore/$slug", params: { slug: en.slug } }),
+      key: norm([en.name, ...(own ? [own.guest, `s${own.season}e${own.episode} season ${own.season} episode ${own.episode}`] : []), ...en.refs.map((r) => r.heard).filter((h) => h && h !== "—")].join(" | ")),
       texts: [
+        ...(own ? [{ text: own.blurb, norm: norm(own.blurb), label: `S${own.season}E${own.episode}` }] : []),
         ...en.refs.map((r) => ({ text: r.context, norm: norm(r.context), label: r.episode ? episodeShort(r.episode) : "" })),
         ...en.refs.filter((r) => r.fashion).map((r) => ({ text: r.fashion as string, norm: norm(r.fashion as string), label: "Fashion" })),
         ...en.events.map((ev) => ({ text: `${ev.year}: ${ev.title}`, norm: norm(`${ev.year} ${ev.title}`), label: "Timeline" })),

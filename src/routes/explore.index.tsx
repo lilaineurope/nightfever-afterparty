@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
@@ -105,8 +106,7 @@ function ExplorePage() {
                 {show.map(({ e, m }) => (
                   <Fragment key={e.slug}>
                     <Link
-                      to="/explore/$slug"
-                      params={{ slug: e.slug }}
+                      {...cardTo(e.slug)}
                       className={`az-st az-s${sizeOf(e, m)} ${kindOf(e)}`}
                       title={`${e.guest ? "Night Fever guest" : e.category} · ${m} ${m === 1 ? "mention" : "mentions"}`}
                       aria-expanded={sel === e.slug}

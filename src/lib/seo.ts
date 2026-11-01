@@ -1,6 +1,8 @@
 // Search and share settings in one place: full addresses, share pictures (public/og/*.jpg, 1200x630)
 // and structured data (schema.org JSON-LD) for Google. Episode pages call episodeHead(id).
 import { episodeById } from "@/data/episodes";
+import { guests } from "@/data/guests";
+import { GUEST_LINES } from "@/data/guest-lines";
 
 export const SITE = "https://nightfever-afterparty.com";
 export const SITE_NAME = "Night Fever fan page";
@@ -90,6 +92,17 @@ const EPISODE_TOPICS: Record<string, string> = {
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */
+/** The guest as a schema.org Person. Their A–Z card forwards to the episode page (one page per guest, Lisa 1 Nov 2026),
+ *  so the fuller Person from the card (description, jobTitle, image) lives here now. */
+function guestPerson(id: string, name: string) {
+  const m = id.match(/^s(\d+)e(\d+)$/);
+  const g = m ? guests.find((x) => x.episode.startsWith(`Season ${Number(m[1])}, Episode ${Number(m[2])}`) && !/\d/.test(x.episode.charAt(`Season ${Number(m[1])}, Episode ${Number(m[2])}`.length))) : undefined;
+  const person: Record<string, unknown> = { "@type": "Person", name: g?.name ?? name, image: abs(`/og/${id}.jpg`) };
+  if (g?.tagline) person["description"] = g.tagline;
+  if (GUEST_LINES[id]) person["jobTitle"] = GUEST_LINES[id];
+  return person;
+}
+
 export function episodeHead(id: string, references: number) {
   const ep = episodeById(id);
   const code = `S${ep.season}E${ep.episode}`;
@@ -107,7 +120,7 @@ export function episodeHead(id: string, references: number) {
     description: ep.blurb,
     url: ep.watchUrl,
     associatedMedia: { "@type": "MediaObject", contentUrl: ep.audioUrl },
-    actor: { "@type": "Person", name: ep.guest },
+    actor: guestPerson(id, ep.guest),
     partOfSeason: { "@type": "PodcastSeason", seasonNumber: ep.season },
     partOfSeries: { "@type": "PodcastSeries", name: "Night Fever", url: "https://www.wowpresentsplus.com/night-fever" },
   };

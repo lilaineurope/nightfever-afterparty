@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -225,7 +226,7 @@ function MapPage() {
               <ul className="mt-4 space-y-2">
                 {homeless.map((e) => (
                   <li key={e.slug} className="flex flex-wrap items-baseline gap-x-2">
-                    <Link to="/explore/$slug" params={{ slug: e.slug }} className="font-semibold text-gold hover:text-pink">
+                    <Link {...cardTo(e.slug)} className="font-semibold text-gold hover:text-pink">
                       {e.name}
                     </Link>
                     <span className="text-xs text-muted-foreground">
@@ -261,8 +262,7 @@ function MapPage() {
                       {shown.slice(0, 12).map((c) => (
                         <Link
                           key={c.slug}
-                          to="/explore/$slug"
-                          params={{ slug: c.slug }}
+                          {...cardTo(c.slug)}
                           className="rounded-full border border-border px-2.5 py-0.5 text-xs text-card-foreground/80 transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
                         >
                           {c.name} <span className="text-muted-foreground">· {c.category}</span>
@@ -272,8 +272,7 @@ function MapPage() {
                     </div>
                   )}
                   <Link
-                    to="/explore/$slug"
-                    params={{ slug: s.places[0]!.slug }}
+                    {...cardTo(s.places[0]!.slug)}
                     className="mt-3 inline-block text-xs text-gold underline underline-offset-2 hover:text-pink"
                   >
                     Dive into this place

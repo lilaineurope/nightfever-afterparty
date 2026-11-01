@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { bestInFashion, popularPlaces, type EpisodeEntity } from "@/data/episode-connections";
 
@@ -11,8 +12,7 @@ function Card({ item, note }: { item: EpisodeEntity; note?: string | undefined }
   return (
     <li>
       <Link
-        to="/explore/$slug"
-        params={{ slug: item.slug }}
+        {...cardTo(item.slug)}
         className="block h-full rounded-xl border border-border bg-card p-4 transition hover:border-gold/50"
       >
         <span className="block font-semibold text-gold">{item.name}</span>
@@ -91,8 +91,7 @@ export function TopTen({
           {items.slice(0, 10).map((p, i) => (
             <li key={p.slug}>
               <Link
-                to="/explore/$slug"
-                params={{ slug: p.slug }}
+                {...cardTo(p.slug)}
                 className="flex items-baseline gap-4 px-5 py-3 transition hover:bg-gold/5"
               >
                 <span className="w-7 shrink-0 text-right text-lg font-bold text-pink">{i + 1}</span>

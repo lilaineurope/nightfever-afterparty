@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { Timestamp } from "@/components/episode-player";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -126,8 +127,7 @@ function TimelinePage() {
                 {e.people.map((slug) => (
                   <Link
                     key={slug}
-                    to="/explore/$slug"
-                    params={{ slug }}
+                    {...cardTo(slug)}
                     aria-expanded={open === `${e.id}|${slug}`}
                     onClick={(ev) => {
                       if (!plainClick(ev) || !entityBySlug[slug]) return;
@@ -159,8 +159,7 @@ function TimelinePage() {
                   return (
                     <Link
                       key={f}
-                      to="/explore/$slug"
-                      params={{ slug: ent.slug }}
+                      {...cardTo(ent.slug)}
                       aria-expanded={open === key}
                       onClick={(ev) => {
                         if (!plainClick(ev)) return;

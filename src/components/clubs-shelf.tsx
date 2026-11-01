@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useState } from "react";
 import { EntityBox, plainClick } from "@/components/moments-box";
@@ -139,8 +140,7 @@ export function ClubsShelf() {
                 {b.clubs.map((c) => (
                   <Link
                     key={c.slug}
-                    to="/explore/$slug"
-                    params={{ slug: c.slug }}
+                    {...cardTo(c.slug)}
                     className={`az-st az-s${size(c.mentions)} ${NIGHTS.has(c.slug) ? "az-ink" : c.episodes > 1 ? "az-pink" : "az-paper"}`}
                     title={`${c.episodes} ${c.episodes === 1 ? "episode" : "episodes"} · ${c.mentions} ${c.mentions === 1 ? "mention" : "mentions"}`}
                     aria-expanded={open === c.slug}

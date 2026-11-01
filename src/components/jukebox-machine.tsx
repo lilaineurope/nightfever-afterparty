@@ -1,3 +1,4 @@
+import { cardTo } from "@/lib/card-link";
 import { CLUB_TICKETS } from "@/data/club-tickets";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
@@ -470,8 +471,7 @@ export function JukeboxMachine({
   // cmd/ctrl-click still opens the A–Z card.
   const nameLink = (slug: string, key: string, label: ReactNode) => (
     <Link
-      to="/explore/$slug"
-      params={{ slug }}
+      {...cardTo(slug)}
       className="jbx-name"
       aria-expanded={openKey === key}
       onClick={(ev) => {
@@ -547,7 +547,7 @@ export function JukeboxMachine({
               <span aria-hidden="true">{hot ? "♫" : "▶"}</span>
             </button>
           ) : (
-            <Link to="/explore/$slug" params={{ slug: it.slug }} className="jbx-big off" aria-label={`Read about ${it.name}`} title="No video - read about it on its card">
+            <Link {...cardTo(it.slug)} className="jbx-big off" aria-label={`Read about ${it.name}`} title="No video - read about it on its card">
               <span aria-hidden="true">→</span>
               <small>Read</small>
             </Link>
@@ -748,7 +748,7 @@ export function JukeboxMachine({
                           {s.guest && (
                             <>
                               {" · "}
-                              <Link to="/explore/$slug" params={{ slug: s.guest.slug }} className="jbx-ts">Night Fever guest: {s.guest.label} →</Link>
+                              <Link {...cardTo(s.guest.slug)} className="jbx-ts">Night Fever guest: {s.guest.label} →</Link>
                             </>
                           )}
                         </small>
@@ -1019,7 +1019,7 @@ function ClubNightPanel({ night }: { night: ClubNight }) {
         <p className="jbx-np dark">SOUNDED LIKE THIS</p>
         <p className="jbx-ep-note">{night.note}</p>
         <div className="jbx-ep-links jbx-ep-top">
-          <Link to="/explore/$slug" params={{ slug: night.slug }}>
+          <Link {...cardTo(night.slug)}>
             {night.club} on A–Z →
           </Link>
           <ShareButton className="jbx-share" path={`/jukebox?club=${night.slug}`} title={`A night at ${night.club} sounded like this – Night Fever Jukebox`} />

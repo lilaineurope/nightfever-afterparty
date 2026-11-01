@@ -3,18 +3,13 @@ import cardSky from "@/assets/card-pink.webp";
 import cardSkyPhone from "@/assets/card-pink-phone.webp";
 import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
-import { ClubNightPlaylist } from "@/components/club-night";
-import { clubNightFor } from "@/data/club-nights";
-import { MusicPlayer } from "@/components/music-player";
-import { Timestamp } from "@/components/episode-player";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { entityBySlug, episodeShort, isThinCard, relatedTo } from "../data/entities";
-import { namedOn } from "@/lib/name-links";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import { CardSections } from "@/components/card-sections";
+import { afterpartyOf, entityBySlug, episodeShort, isThinCard } from "../data/entities";
 import { abs, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
-import { episodeById, episodePath, episodes } from "../data/episodes";
+import { episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
-import { EntityLink } from "../components/entity-link";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -23,6 +18,9 @@ export const Route = createFileRoute("/explore/$slug")({
   loader: ({ params }) => {
     const e = entityBySlug[params.slug];
     if (!e) throw notFound();
+    // One page per guest (Lisa, 1 Nov 2026): a guest with an AFTERPARTY lives on the episode page; old links forward there.
+    const ep = afterpartyOf(e);
+    if (ep) throw redirect({ to: episodePath(ep), statusCode: 301 });
     const story = e.refs.find((r) => r.context)?.context ?? e.events[0]?.text ?? "";
     return {
       slug: e.slug,
@@ -100,9 +98,6 @@ function EntityNotFound() {
   );
 }
 
-const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
-const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
-
 const KIND: Record<string, string> = {
   Person: "az-ink", Organisation: "az-ink", Podcast: "az-ink", Club: "az-pink", Event: "az-pink", Music: "az-yellow", Film: "az-yellow", TV: "az-yellow",
 };
@@ -111,7 +106,6 @@ function EntityPage() {
   const { slug } = Route.useLoaderData();
   const e = entityBySlug[slug]!;
   const g = e.guest;
-  const related = relatedTo(e);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -141,125 +135,7 @@ function EntityPage() {
       </section>
 
       <div className="mx-auto max-w-4xl space-y-12 px-6 pb-20">
-        <MusicPlayer slug={e.slug} />
-        {clubNightFor(e.slug) && <ClubNightPlaylist night={clubNightFor(e.slug)!} />}
-        {g && (
-          <section className="grid gap-8 rounded-2xl border border-border bg-card p-6 md:grid-cols-2">
-            <div>
-              <h2 className={h}>Timeline</h2>
-              <ol className="mt-4 space-y-4 border-l border-gold/25 pl-5">
-                {g.timeline.map((t) => (
-                  <li key={t.year}>
-                    <p className="text-sm font-semibold text-gold">{t.year}</p>
-                    <p className="mt-1 text-sm text-card-foreground/80"><EntityText text={t.text} /></p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="space-y-6">
-              <div>
-                <h2 className={h}>What they are doing now</h2>
-                <p className="mt-3 text-sm text-card-foreground/80"><EntityText text={g.now} /></p>
-              </div>
-              <div>
-                <h2 className={h}>Scenes &amp; rooms</h2>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {g.scenes.map((s) => <EntityLink key={s} name={s} className={chip} />)}
-                </div>
-              </div>
-              <div>
-                <h2 className={h}>Connected to</h2>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {g.linkedTo.map((s) => <EntityLink key={s} name={s} className={chip}>{entityBySlug[s]?.name ?? s}</EntityLink>)}
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {e.refs.length > 0 && (
-          <section>
-            {/* No per-episode count line under the heading (Lisa, 30 Oct 2026): each box below already says its mentions. */}
-            <h2 className={h}>In the episodes</h2>
-            <ul className="mt-4 space-y-3">
-              {e.refs.map((r) => {
-                const episode = episodeById(r.episode ?? "s06e01");
-                return (
-                <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <Link to={episodePath(episode.id)} className="font-semibold text-gold hover:text-pink">
-                      S{episode.season}E{episode.episode} · {episode.guest}
-                    </Link>
-                    <span className="text-xs text-muted-foreground">
-                      {r.time === "On camera" ? "On camera" : <Timestamp episodeId={episode.id} time={r.time} />}
-                      {" · "}{r.mentions === 0 ? "—" : `${r.mentions} mention${r.mentions === 1 ? "" : "s"} in this episode`}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground"><EntityText text={r.context} self={e.name} /></p>
-                  {r.fashion && (
-                    <p className="mt-2 text-sm text-muted-foreground"><span className="mr-2 text-xs font-medium uppercase text-gold">Fashion</span><EntityText text={r.fashion} self={e.name} /></p>
-                  )}
-                </li>
-                );
-              })}
-            </ul>
-          </section>
-        )}
-
-        {e.events.length > 0 && (
-          <section>
-            <h2 className={h}>On the scene timeline</h2>
-            <ol className="mt-4 space-y-5 border-l border-gold/25 pl-5">
-              {e.events.map((ev) => (
-                <li key={ev.id}>
-                  <p className="text-xs uppercase tracking-wider text-pink">
-                    {ev.when} · <EntityLink name={ev.place.split(",")[0]!} className="hover:text-gold">{ev.place}</EntityLink>
-                  </p>
-                  <h3 className="mt-1 font-semibold text-gold">{ev.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground"><EntityText text={ev.text} /></p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {ev.people.map((p) => <EntityLink key={p} name={p} className={chip}>{entityBySlug[p]?.name ?? p}</EntityLink>)}
-                    {ev.figures.map((f) => <EntityLink key={f} name={f} className={chip} />)}
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-        )}
-
-        {namedOn(e).length > 0 && (
-          <section>
-            <h2 className={h}>Also named on these cards</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {namedOn(e).map((x) => (
-                <Link key={`${x.entity.slug}-${x.ref.episode}`} to="/explore/$slug" params={{ slug: x.entity.slug }} className={chip}>
-                  {x.entity.name}
-                  {x.ref.episode && <span className="ml-1.5 text-muted-foreground">{episodeShort(x.ref.episode)}</span>}
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {e.inGuestStories.length > 0 && (
-          <section>
-            <h2 className={h}>Pops up in the guests' stories</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {e.inGuestStories.map((x) => <EntityLink key={x.slug} name={x.slug} className={chip}>{x.name}</EntityLink>)}
-            </div>
-          </section>
-        )}
-
-        {related.length > 0 && (
-          <section>
-            <h2 className={h}>In the same rooms (aka the gang)</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {related.map((x) => (
-                <Link key={x.slug} to="/explore/$slug" params={{ slug: x.slug }} className={chip}>{x.name}</Link>
-              ))}
-            </div>
-          </section>
-        )}
+        <CardSections e={e} />
       </div>
           <SiteFooter />
 </main>
