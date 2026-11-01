@@ -24,6 +24,7 @@ export const YEARS: Record<string, number> = {
   "Devo": 1973,
   "Dexys Midnight Runners": 1978,
   "Dose": 2000,
+  "The Fans (Atlanta band)": 1975, // formed by Kevin Dunn and Alfredo Villar (Wikipedia: Kevin Dunn)
   "Duran Duran": 1978,
   "Electroclash": 2001,
   "Fischerspooner": 1998,
