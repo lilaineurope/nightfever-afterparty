@@ -108,7 +108,7 @@ export const COME_BACK: InterviewTip[] = [
     time: "01:00:44",
   },
   {
-    name: "Chi Chi Valenti",
+    name: "Chi Chi Valenti & Johnny Dynell",
     why: "Chi Chi and Johnny Dynell offer to come back and cover the 21st century next time.",
     episodeId: "s06e03",
     time: "01:01:44",
