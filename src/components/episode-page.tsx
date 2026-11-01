@@ -9,7 +9,7 @@ import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { namedOnCount } from "@/lib/name-links";
 import { entityFor, guestOfEpisode, totalMentions } from "@/data/entities";
-import { CardSections, GuestBox } from "@/components/card-sections";
+import { GuestAboutBox } from "@/components/card-sections";
 import { cardTo } from "@/lib/card-link";
 import { episodeById, stageName } from "@/data/episodes";
 import { MoodSpectrum } from "@/components/mood-spectrum";
@@ -141,7 +141,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
         <section aria-labelledby="about-guest" className="px-6 pb-12">
           <div className="mx-auto max-w-5xl">
             <h2 id="about-guest" className="mb-6 text-3xl font-bold text-cream">About {title}</h2>
-            <GuestBox e={guestCard} />
+            <GuestAboutBox e={guestCard} episode={id} />
           </div>
         </section>
       )}
@@ -239,14 +239,6 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
           </p>
         </div>
       </section>
-      {guestCard && (
-        <section aria-labelledby="guest-everywhere" className="px-6 pb-24">
-          <div className="mx-auto max-w-5xl space-y-12">
-            <h2 id="guest-everywhere" className="text-3xl font-bold text-cream">{title} across the AFTERPARTY</h2>
-            <CardSections e={guestCard} episode={id} />
-          </div>
-        </section>
-      )}
       <SiteFooter />
     </main>
   );
