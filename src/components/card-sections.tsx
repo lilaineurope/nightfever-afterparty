@@ -286,7 +286,7 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
         {label && <><span className="text-xs uppercase tracking-wider text-gold">{label}</span>{" "}</>}
         <EntityLink name={who.replace(/ \(as heard\)$/, "")} className="font-semibold text-card-foreground hover:text-pink" />
         {" · "}<Link to={episodePath(ep.id)} className="text-gold hover:text-pink">S{ep.season}E{ep.episode}</Link>
-        {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}{l.line}
+        {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={who.replace(/ \(as heard\)$/, "")} />
       </p>
     );
   };

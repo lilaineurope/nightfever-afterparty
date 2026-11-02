@@ -51,8 +51,7 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Patricia Field", mentee: "Miss Guy", episode: "s03e10", time: "00:10:44", line: "Gave Miss Guy a day job and early words of encouragement, Guy says" },
   { mentor: "Patricia Field", mentee: "Lauren Pine", episode: "s03e10", time: "00:10:44", line: "Took Lauren under her wing at the store, Miss Guy says" },
   { mentor: "Jim Sharman", mentee: "Nell Campbell", episode: "s05e01", time: "00:06:44", line: "Walked into the Knightsbridge cafe, saw her tap-dancing on a table and cast her in Rocky Horror on the spot" },
-  { mentor: "Keith McNally", mentee: "Nell Campbell", episode: "s05e01", time: "00:25:48", line: "With Lynn, put her in training as a hostess and maître d' at the Odeon and Cafe Luxembourg before Nell's opened" },
-  { mentor: "Lynn Wagenknecht", mentee: "Nell Campbell", episode: "s05e01", time: "00:25:56", line: "With Keith, put her in training as a hostess and maître d' at the Odeon and Cafe Luxembourg before Nell's opened" },
+  { mentor: "Keith McNally", mentee: "Nell Campbell", episode: "s05e01", time: "00:25:48", line: "With Lynn Wagenknecht, put her in training as a hostess and maître d' at the Odeon and Cafe Luxembourg before Nell's opened" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
