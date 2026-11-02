@@ -1,3 +1,4 @@
+import { formatDate } from "@/lib/time";
 import { Link } from "@tanstack/react-router";
 import { EntityLink } from "./entity-link";
 import { afterpartyNumber, episodePath, type Episode } from "@/data/episodes";
@@ -69,11 +70,6 @@ export const episodePortraits: Record<string, string> = {
 
 
 
-function formatDate(iso: string) {
-  return new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", {
-    day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
-  });
-}
 
 // Quote note: the guest's line in pink pencil handwriting (an invented hand - never the guest's own), name typed underneath
 function QuoteNote({ ep }: { ep: Episode }) {

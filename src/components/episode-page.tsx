@@ -16,7 +16,7 @@ import { MoodSpectrum } from "@/components/mood-spectrum";
 import { SiteFooter } from "@/components/site-footer";
 import { isOtherShowGuest } from "@/lib/show-guests";
 import { ShareButton } from "@/components/share-button";
-import { toSeconds } from "@/lib/time";
+import { formatDate, toSeconds } from "@/lib/time";
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
 export type Ref = {
@@ -124,7 +124,13 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season {thisEpisode.season} · Episode {thisEpisode.episode}</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">{title}</h1>
           {subtitle && <p className="mt-4 text-gold">{subtitle}</p>}
-          {released && <p className="mt-2 text-sm text-muted-foreground">{released}</p>}
+          {released && (
+            <p className="mt-2 text-sm text-muted-foreground">
+              {released}
+              {/* Next to the release line: the day this AFTERPARTY went up on the site (Lisa, 2 Nov 2026). */}
+              {" · "}AFTERPARTY launched {formatDate(thisEpisode.afterpartyPublished)}
+            </p>
+          )}
           <p className="mt-2 text-sm text-muted-foreground">
             {refs.length} references · {refs.reduce((total, r) => total + r.mentions, 0)} mentions
           </p>
