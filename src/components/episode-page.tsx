@@ -1,6 +1,6 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { guests } from "@/data/guests";
 import { sceneEvents } from "@/data/scene";
@@ -71,8 +71,6 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
   // One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card lives on this page too.
   const guestCard = guestOfEpisode(id);
   const about = guestCard?.guest ? guestCard : undefined;
-  // Preview switch while Lisa picks a layout: ?about=a (columns under the buttons), b (side column), c (tap strips).
-  const aboutLayout = new URLSearchParams(useLocation().searchStr).get("about") ?? "a";
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
@@ -118,7 +116,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
   return (
     <main className="episode-page min-h-screen bg-background text-foreground">
       <section className="relative px-6 pb-12 pt-14">
-        <div className={`relative z-10 mx-auto border-2 border-gold bg-card/92 px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10 ${about && aboutLayout === "b" ? "max-w-6xl md:grid md:grid-cols-[3fr_2fr] md:gap-10" : about ? "max-w-5xl" : "max-w-4xl"}`}>
+        <div className={`relative z-10 mx-auto border-2 border-gold bg-card/92 px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10 ${about ? "max-w-6xl md:grid md:grid-cols-[3fr_2fr] md:gap-10" : "max-w-4xl"}`}>
           <div>
           <Link to="/episodes" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
             &larr; More Afterparties
@@ -127,9 +125,10 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">{title}</h1>
           {subtitle && <p className="mt-4 text-gold">{subtitle}</p>}
           {released && <p className="mt-2 text-sm text-muted-foreground">{released}</p>}
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-            {refs.length} references and {refs.reduce((total, r) => total + r.mentions, 0)} mentions. {blurb}
+          <p className="mt-2 text-sm text-muted-foreground">
+            {refs.length} references · {refs.reduce((total, r) => total + r.mentions, 0)} mentions
           </p>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{blurb}</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link to="/jukebox" search={{ afterparty: id }}
               className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
@@ -138,10 +137,10 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
             <ShareButton path={`/episodes/${id}`} title={`${stageName(thisEpisode.guest)}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
           </div>
-          {/* One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card sits inside the AFTERPARTY header box. */}
+          {/* One page per guest (Lisa, 1 Nov 2026, option B): the guest's A–Z card is a side column inside the AFTERPARTY header box (below the buttons on phones). */}
           {about && (
-            <div id="about-guest" className={aboutLayout === "b" ? "mt-8 border-t-2 border-gold pt-6 md:mt-0 md:border-l-2 md:border-t-0 md:pl-8 md:pt-0" : "mt-8 border-t-2 border-gold pt-6"}>
-              <GuestAboutBox e={about} episode={id} layout={aboutLayout === "b" ? "stack" : aboutLayout === "c" ? "strips" : "columns"} />
+            <div id="about-guest" className="mt-8 border-t-2 border-gold pt-6 md:mt-0 md:border-l-2 md:border-t-0 md:pl-8 md:pt-0">
+              <GuestAboutBox e={about} episode={id} />
             </div>
           )}
         </div>
