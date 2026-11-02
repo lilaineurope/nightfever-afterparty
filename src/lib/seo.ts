@@ -90,6 +90,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s02e05: "Boy Bar, Mugler & New York's toughest door",
   s03e10: "Squeezebox, Boy Bar & Debbie Harry",
   s05e01: "Rocky Horror, Nell's & Kensington Market",
+  s02e11: "the Mudd Club, Steve Mass & Basquiat",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

@@ -55,6 +55,11 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Patricia Field", mentee: "Lauren Pine", episode: "s03e10", time: "00:10:44", line: "Took Lauren under her wing at the store, Miss Guy says" },
   { mentor: "Jim Sharman", mentee: "Nell Campbell", episode: "s05e01", time: "00:06:44", line: "Walked into the Knightsbridge cafe, saw her tap-dancing on a table and cast her in Rocky Horror on the spot" },
   { mentor: "Keith McNally", mentee: "Nell Campbell", episode: "s05e01", time: "00:25:48", line: "With Lynn Wagenknecht, put her in training as a hostess and maître d' at the Odeon and Cafe Luxembourg before Nell's opened" },
+  { mentor: "Steve Mass", mentee: "Eric Goode", episode: "s02e11", time: "00:17:10", line: "Gave Eric and Shawn their start with the Mudd Club basement room, Richard says" },
+  { mentor: "Steve Mass", mentee: "Shawn Hausman", episode: "s02e11", time: "00:17:10", line: "Gave Shawn and Eric their start with the Mudd Club basement room, Richard says" },
+  { mentor: "Steve Mass", mentee: "Anita Sarko", episode: "s02e11", time: "00:34:25", line: "Threw Anita into the Mudd Club DJ booth for half a night and hired her" },
+  { mentor: "Anita Sarko", mentee: "Chi Chi Valenti & Johnny Dynell", episode: "s02e11", time: "00:37:22", line: "Gave Johnny DJ lessons at the Mudd Club, where he got his start" },
+  { mentor: "Jim Fouratt", mentee: "Richard Boch", episode: "s02e11", time: "00:57:31", line: "Brought Richard on at the Peppermint Lounge after the Mudd Club" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

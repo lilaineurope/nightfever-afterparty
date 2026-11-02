@@ -29,6 +29,7 @@ import s02e07 from "./s02e07.json";
 import s02e05 from "./s02e05.json";
 import s03e10 from "./s03e10.json";
 import s05e01 from "./s05e01.json";
+import s02e11 from "./s02e11.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -557,6 +558,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s02e05", label: "S2 E5", guest: "Connie Fleming", refs: s02e05 as Ref[] },
   { id: "s03e10", label: "S3 E10", guest: "Miss Guy", refs: s03e10 as Ref[] },
   { id: "s05e01", label: "S5 E1", guest: "Nell Campbell", refs: s05e01 as Ref[] },
+  { id: "s02e11", label: "S2 E11", guest: "Richard Boch", refs: s02e11 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
@@ -570,6 +572,10 @@ const SKIP_MOMENT = new Set([
   "s05e04|Divine Thing (probably)",
   "s02e07|Michael Alig",
   "s06e01|Andre 'Angel' Melendez",
+  // S02E11: already curated moments on Richard Boch's card (the memoir, X at the Mudd Club); 2012 dates his book research.
+  "s02e11|The Mudd Club, the book (Richard Boch)",
+  "s02e11|X",
+  "s02e11|New York University",
 ]);
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {
