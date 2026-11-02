@@ -235,6 +235,7 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
     ...namedOn(e).filter((x) => x.ref.episode && x.ref.episode !== episode).map((x) => ({ r: x.ref, via: x.entity })),
   ].sort((a, b) => order(a.r.episode) - order(b.r.episode) || (a.via ? 1 : 0) - (b.via ? 1 : 0));
   const byEpisode = [...new Set(elsewhere.map((x) => x.r.episode!))].map((id) => ({ id, rows: elsewhere.filter((x) => x.r.episode === id) }));
+  const dropMentions = elsewhere.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
   const isMe = (n: string) => entityFor(n.replace(/ \(as heard\)$/, ""))?.slug === e.slug;
   const asMentor = rankedMentors.findIndex((m) => isMe(m.name));
   const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
@@ -344,7 +345,13 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
     <div>
             {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
                 the guest's own rows, then the other cards whose line names them (tap the name for its box). */}
-            <h3 className={h}>In the other AFTERPARTIES</h3>
+            {/* Top of the drop (Lisa, 2 Nov 2026): the heading, then one line with the guest's total mentions in the other
+                AFTERPARTIES and how many AFTERPARTIES drop them; the episode rows stay as they were. */}
+            <h3 className={h}>Top of the drop</h3>
+            <p className="mt-3 text-sm text-card-foreground">
+              <span className="font-semibold text-pink">{dropMentions} {dropMentions === 1 ? "mention" : "mentions"}</span>
+              {" · "}in {byEpisode.length} {byEpisode.length === 1 ? "AFTERPARTY" : "AFTERPARTIES"}
+            </p>
             <ul className="mt-3 space-y-1.5">
               {byEpisode.map(({ id, rows }) => {
                 const ep = episodeById(id);
