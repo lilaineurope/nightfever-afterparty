@@ -321,6 +321,7 @@ const mc: ClubNight = {
     { key: "L", label: "Red Bull Music Academy Daily: Interview with Johnny Dynell (2018)", href: "https://daily.redbullmusicacademy.com/2018/01/johnny-dynell-interview" },
     { key: "M", label: "Far Out: Talking Heads perform 'Psycho Killer' at the Mudd Club, 1979 (video)", href: "https://faroutmagazine.co.uk/talking-heads-david-byrne-psycho-killer-live-mudd-club-1979-video/" },
     { key: "N", label: "uDiscover Music: footage of Frank Zappa performing 'Mudd Club' at the club, 1980", href: "https://www.udiscovermusic.com/news/watch-rare-footage-of-frank-zappa-performing-mudd-club-live-in-1980/" },
+    { key: "O", label: "Night Fever S02E11 - Richard Boch (the Mudd Club doorman)", href: "https://nightfever-afterparty.com/episodes/s02e11" },
   ],
   songs: [
     { title: "Mudd Club", artist: "Frank Zappa", year: 1981, spotify: "3xVPi374fASF1J68VpcaLz", video: "dLo-ZLf_y-M", kind: "about", why: "Named after the club; Zappa also played it live there on 8 May 1980, and that show was filmed.", sources: ["I", "B", "C", "N"] },
@@ -359,6 +360,13 @@ const mc: ClubNight = {
     { title: "Don't Stop 'Til You Get Enough", artist: "Michael Jackson", year: 1979, spotify: "46eu3SBuFCXWsPT39Yg3tJ", video: "yURRmWtbTbo", kind: "dj-artist", why: "Johnny Dynell says he played Michael Jackson at the Mudd Club. Stand-in pick: the source names the artist, not the track.", sources: ["L"] },
     { title: "The Adventures of Grandmaster Flash on the Wheels of Steel", artist: "Grandmaster Flash", year: 1981, spotify: "1bepOZcfyEuQyhOQRQMnkO", video: "F3unhUrwp68", kind: "dj-artist", why: "Dynell says he played 'really early hip hop, like Grandmaster Flash' there. Stand-in pick: the source names the artist, not the track.", sources: ["L"] },
     { title: "Where Did Our Love Go", artist: "The Supremes", year: 1964, spotify: "69RH84na5iUNwrwxpgjC5j", video: "Jt_31gR18NA", kind: "dj-artist", why: "Boch recalls DJ David getting the crowd 'going Supremes crazy'. Stand-in pick: the source names the artist, not the track.", sources: ["J"] },
+    { title: "Broken English", artist: "Marianne Faithfull", year: 1979, spotify: "09r8CNc94rtWOPAi63cIjp", video: "p9eVhgxoj-c", kind: "live", why: "Just out when she played the club with the same band. Boch says she left after three songs with her voice gone, yet it became one of the club's legendary nights.", sources: ["O"] },
+    { title: "Los Angeles", artist: "X", year: 1980, spotify: "75a66iUfwKdJb5n9juvXRI", video: "BzUt98in4N4", kind: "live", why: "Boch calls X one of the greatest bands he ever heard when they played the club in June 1980. Stand-in pick: he names the band, not the song.", sources: ["O"] },
+    { title: "We Got the Beat", artist: "The Go-Go's", year: 1981, spotify: "5kz9GDBTX846OXwqWoyKzF", video: "f55KlPe81Yw", kind: "live", why: "The Go-Go's played the club before their record deal; Boch remembers them as mean girls. Stand-in pick: he names the band, not the song.", sources: ["O"] },
+    { title: "On the Way to Tetnus", artist: "The Young and the Useless", year: 1982, spotify: "3K3PczpYN11KE6cqQtqV2u", video: "04ndCXS0xzU", kind: "live", why: "Ad-Rock's band before the Beastie Boys, which played the club, per Boch. Stand-in pick: the source names the band, not the song.", sources: ["O"] },
+    { title: "Contort Yourself", artist: "James Chance and the Contortions", year: 1979, spotify: "1FxlwrXp98QA6qh2jYDCpt", video: "uCI24Lt9aNQ", kind: "about", why: "The club's co-founder Anya Phillips came from the Contortions circle, and Steve Mass ran with them at CBGB.", sources: ["O"] },
+    { title: "Jack the Ripper", artist: "The Raybeats", year: 1981, youtube: "xOwC6XAHIlQ", video: "xOwC6XAHIlQ", kind: "about", why: "Don Christensen's band after the Contortions, from the same downtown circle. Not on Spotify.", sources: ["O"] },
+    { title: "Fred vom Jupiter", artist: "Die Doraus & Die Marinas", year: 1981, spotify: "3hejIAfwp43LpIdbmWeZ6d", video: "jf3iWc6krj8", kind: "played", why: "Fenton Bailey remembers hearing a 'Planet Fred from Jupiter' at the club and never finding it again; this is most likely the song.", sources: ["O"] },
   ],
 };
 
