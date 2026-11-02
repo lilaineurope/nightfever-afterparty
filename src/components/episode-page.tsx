@@ -9,7 +9,7 @@ import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { namedOnCount } from "@/lib/name-links";
 import { entityFor, guestOfEpisode, totalMentions } from "@/data/entities";
-import { GuestAboutBox } from "@/components/card-sections";
+import { GuestAboutBox, headerColumns } from "@/components/card-sections";
 import { cardTo } from "@/lib/card-link";
 import { episodeById, stageName } from "@/data/episodes";
 import { MoodSpectrum } from "@/components/mood-spectrum";
@@ -74,6 +74,11 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   // One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card lives on this page too.
   const guestCard = guestOfEpisode(id);
   const about = guestCard?.guest ? guestCard : undefined;
+  // Mentor score and Top of the drop go under whichever column is shorter, so neither side ends in a blank (Lisa, 2 Nov 2026).
+  const columns = useMemo(
+    () => (about ? headerColumns(about, id, blurb ?? thisEpisode.blurb ?? "") : { left: [], right: [] }),
+    [about, id, blurb, thisEpisode.blurb],
+  );
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
 
@@ -144,18 +149,17 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
             </Link>
             <ShareButton path={`/episodes/${id}`} title={`${stageName(thisEpisode.guest)}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
-          {/* Mentor score and In the other AFTERPARTIES sit under the buttons, so the left box is as tall as the Timeline
-              on the right (Lisa, 2 Nov 2026). */}
-          {about && (
+          {/* Mentor score and Top of the drop: here or under the Timeline, whichever column is shorter (headerColumns). */}
+          {about && columns.left.length > 0 && (
             <div className="mt-8 border-t-2 border-gold pt-6 empty:hidden">
-              <GuestAboutBox e={about} episode={id} part="more" />
+              <GuestAboutBox e={about} episode={id} parts={columns.left} />
             </div>
           )}
           </div>
           {/* One page per guest (Lisa, 1 Nov 2026, option B): the guest's A–Z card is a side column inside the AFTERPARTY header box (below the buttons on phones). */}
           {about && (
             <div id="about-guest" className="ep-head-side relative mt-8 border-t-2 border-gold pt-6 md:mt-0 md:border-l-2 md:border-t-0 md:pl-8 md:pt-0">
-              <GuestAboutBox e={about} episode={id} part="timeline" />
+              <GuestAboutBox e={about} episode={id} parts={columns.right} />
             </div>
           )}
         </div>
