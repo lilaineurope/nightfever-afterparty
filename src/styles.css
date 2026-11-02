@@ -573,15 +573,23 @@ a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-for
 .jbx-clublist .jbx-clubdetail li { display: block; border: 0; padding: 0; break-inside: auto; }
 .jbx-clublist .jbx-clubdetail a:hover { text-decoration: none; }
 /* Club nights in the Jukebox (Lisa, 30 Oct 2026): a ticket per club, the dark panel with the club's note, and song strips that show why each song is here and its sources. */
-.jbx-clubpick { display: flex; gap: 12px; overflow-x: auto; padding: 16px 4px 10px; margin-top: 14px; border-top: 1px dashed #bdb6a8; }
-.jbx-clubtag { flex: 0 0 auto; min-width: 150px; text-align: left; font-family: inherit; color: #111; background: #fff; border: 2px dashed #111; padding: 8px 12px 9px; cursor: pointer; box-shadow: 3px 3px 0 rgba(0,0,0,.18); }
-.jbx-clubtag:nth-child(even) { transform: rotate(1.2deg); }
-.jbx-clubtag:nth-child(odd) { transform: rotate(-1deg); }
+.jbx-clubpick { display: flex; gap: 18px; overflow-x: auto; padding: 18px 8px 14px; margin-top: 14px; border-top: 1px dashed #bdb6a8; }
+/* Club tickets in the Jukebox (Lisa, 2 Nov 2026): the same ticket as on Inside the Clubs - pink and black, dashed inner edge, dotted tear-off stub. */
+.jbx-clubtag { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 30px; min-width: 190px; padding: 0; text-align: left; font-family: inherit; color: #fff; background: var(--color-pink); border: 0; cursor: pointer; box-shadow: 4px 5px 0 #111; transition: transform .15s; }
+.jbx-clubtag.jbx-ct1 { background: #111; }
+.jbx-clubtag.jbx-ct0 { transform: rotate(-1.5deg); } .jbx-clubtag.jbx-ct1 { transform: rotate(1deg); } .jbx-clubtag.jbx-ct2 { transform: rotate(-.6deg); }
 .jbx-clubtag:hover, .jbx-clubtag:focus-visible { transform: rotate(0) translateY(-3px); }
-.jbx-clubtag.on { background: var(--pink); color: #fff; border-color: #111; transform: rotate(0); }
-.jbx-clubtag span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; opacity: .8; }
-.jbx-clubtag b { display: block; font-family: var(--font-flyer); font-weight: 400; font-size: 17px; line-height: 1.05; text-transform: uppercase; }
-.jbx-clubtag small { display: block; font-size: 11px; margin-top: 3px; opacity: .75; }
+.jbx-ct-main { display: flex; flex-direction: column; gap: 2px; padding: 9px 12px 10px; margin: 5px 0 5px 5px; border: 2px dashed rgba(255,255,255,.75); }
+.jbx-ct-main span { font-size: 9.5px; text-transform: uppercase; letter-spacing: .16em; }
+.jbx-ct-main b { font-family: var(--font-flyer); font-weight: 400; font-size: 20px; line-height: 1; text-transform: uppercase; }
+.jbx-ct-main small { align-self: flex-start; margin-top: 5px; background: #fff; color: #111; padding: 1px 7px; font-family: var(--font-flyer); font-size: 11px; text-transform: uppercase; }
+.jbx-ct1 .jbx-ct-main small { background: var(--color-pink); color: #fff; }
+.jbx-ct-stub { display: flex; align-items: center; justify-content: center; margin: 5px 0; border-left: 3px dotted rgba(255,255,255,.8); writing-mode: vertical-rl; transform: rotate(180deg); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+/* The playing club: a gold "now playing" ticket. */
+.jbx-clubtag.on { background: #f6e06a; color: #111; transform: rotate(0) translateY(-3px); box-shadow: 4px 5px 0 var(--color-pink); }
+.jbx-clubtag.on .jbx-ct-main { border-color: rgba(17,17,17,.6); }
+.jbx-clubtag.on .jbx-ct-main small { background: #111; color: #fff; }
+.jbx-clubtag.on .jbx-ct-stub { border-left-color: rgba(17,17,17,.6); }
 .jbx-clubhead { grid-template-columns: 150px 1fr; }
 .jbx-ep-ticket { align-self: start; background: var(--pink); color: #fff; padding: 14px 10px; transform: rotate(-3deg); border: 2px dashed #fff; text-align: center; box-shadow: 3px 4px 0 rgba(0,0,0,.4); }
 .jbx-ep-ticket span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; }

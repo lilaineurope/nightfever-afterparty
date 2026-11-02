@@ -700,11 +700,14 @@ export function JukeboxMachine({
 
         {filter === "club" && (
           <div className="jbx-clubpick" role="group" aria-label="Pick a club night">
-            {CLUB_NIGHTS.map((c) => (
-              <button key={c.slug} type="button" className={`jbx-clubtag${clubSlug === c.slug ? " on" : ""}`} aria-pressed={clubSlug === c.slug} onClick={() => pickClub(c.slug)} title={`A night at ${c.club}`}>
-                <span>A night at</span>
-                <b>{c.club}</b>
-                <small>{c.songs.length} songs</small>
+            {CLUB_NIGHTS.map((c, i) => (
+              <button key={c.slug} type="button" className={`jbx-clubtag jbx-ct${i % 3}${clubSlug === c.slug ? " on" : ""}`} aria-pressed={clubSlug === c.slug} onClick={() => pickClub(c.slug)} title={`A night at ${c.club}`}>
+                <span className="jbx-ct-main">
+                  <span>Admit one · a night at</span>
+                  <b>{c.club}</b>
+                  <small>▶ {c.songs.length} songs</small>
+                </span>
+                <span className="jbx-ct-stub" aria-hidden="true">No. {String(i + 1).padStart(3, "0")}</span>
               </button>
             ))}
           </div>
