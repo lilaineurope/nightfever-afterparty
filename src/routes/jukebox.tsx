@@ -9,6 +9,7 @@ import { CLUB_NIGHTS } from "@/data/club-nights";
 import type { CSSProperties } from "react";
 import disco from "@/assets/jukebox-disco.webp";
 import discoPhone from "@/assets/jukebox-disco-phone.webp";
+import { JUKEBOX_CLUB_BACKGROUNDS } from "@/data/jukebox-club-backgrounds";
 
 const description = `Every song, record, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie at the Mudd Club to Warm Leatherette, each with the moment it comes up. Press play!`;
 
@@ -76,10 +77,12 @@ export const Route = createFileRoute("/jukebox")({
 function JukeboxPage() {
   const { afterparty, show, club } = Route.useSearch();
   const navigate = useNavigate({ from: "/jukebox" });
+  // A picked club swaps the disco ball for a picture from inside that club (Lisa, 2 Nov 2026).
+  const bg = club ? JUKEBOX_CLUB_BACKGROUNDS[club] : undefined;
   return (
     <main
       className="jukebox-sky min-h-screen bg-background text-foreground"
-      style={{ "--sky": `url(${disco})`, "--sky-phone": `url(${discoPhone})` } as CSSProperties}
+      style={{ "--sky": `url(${bg?.sky ?? disco})`, "--sky-phone": `url(${bg?.phone ?? discoPhone})` } as CSSProperties}
     >
       {/* Disco-ball close-up header (Lisa, 29 Oct 2026): the mirror tiles fill the header as the pattern, photocopied like the
           Timeline and the polaroids, fading out in pixels behind the list. Made by scripts/jukebox-disco from a Gemini picture. */}
@@ -95,6 +98,7 @@ function JukeboxPage() {
           </a>
           .
         </p>
+        {bg?.credit && <p className="mx-auto mt-3 max-w-2xl text-center text-xs text-muted-foreground">Background: {bg.credit}</p>}
       </section>
       <SiteFooter />
     </main>
