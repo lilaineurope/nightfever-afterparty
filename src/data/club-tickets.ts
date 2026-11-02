@@ -8,6 +8,11 @@ import palladium from "@/assets/club-tickets/palladium.webp";
 import palladiumJukebox from "@/assets/club-tickets/palladium-jukebox.webp";
 import tunnel from "@/assets/club-tickets/tunnel.webp";
 import club57 from "@/assets/club-tickets/club-57.webp";
+import club57Jukebox from "@/assets/club-tickets/club-57-jukebox.webp";
+import pyramidClub from "@/assets/club-tickets/pyramid-club.webp";
+import boyBar from "@/assets/club-tickets/boy-bar.webp";
+import boyBarJukebox from "@/assets/club-tickets/boy-bar-jukebox.webp";
+import nells from "@/assets/club-tickets/nell-s.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -85,6 +90,32 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     credit: "Original Club 57 flyer, early 1980s - 1stDibs",
     href: "https://www.1stdibs.com/art/prints-works-on-paper/unknown-original-club-57-flyer-ny-keith-haring-kenny-scharf-related/id-a_3573341",
   },
+  // Lisa's picks, 2 Nov 2026 ("yes to your picks").
+  "pyramid-club": {
+    src: pyramidClub,
+    w: 600,
+    h: 800,
+    pos: "center 20%",
+    alt: "\"Born to Be a Wild Night\" card for Wendy Wild's benefit at the Pyramid, with a list of performers including Brian Butterick, John Sex, Lady Bunny, Deee-Lite and Joey Arias",
+    credit: "\"Born to Be a Wild Night\" card, Pyramid, 1995 - Gallery 98",
+    href: "https://gallery98.org/2025/pyramid-cancer-benefit-invitation-wendy-wild-born-wild-night/",
+  },
+  "boy-bar": {
+    src: boyBar,
+    w: 800,
+    h: 224,
+    alt: "Card for Georges Piette's photograph opening party at Boybar, 15 St. Marks, 23 October 1984 - \"Admits 2\"",
+    credit: "Georges Piette opening card, Boybar, 1984 - Gallery 98",
+    href: "https://gallery98.org/2021/15-st-marks-georges-piette-boybar-opening-party-card-1984/",
+  },
+  "nell-s": {
+    src: nells,
+    w: 800,
+    h: 310,
+    alt: "A black key with a pink Nell's tag, drawn for the AFTERPARTY - Nell's mailed its regulars a key before it opened",
+    credit: "Nell's key, drawn for the AFTERPARTY",
+    href: "https://daily.redbullmusicacademy.com/2019/04/nightclubbing-nells-nyc",
+  },
 };
 
 /** A second picture for a club's Jukebox night, when Lisa picked two (1 Nov 2026). Without one the Jukebox shows the Clubs ticket picture. */
@@ -112,5 +143,21 @@ export const JUKEBOX_PICTURES: Record<string, ClubTicket> = {
     alt: "Roy Lichtenstein's brushstroke poster for the Palladium, 23 November 1985",
     credit: "Roy Lichtenstein poster, Palladium, 1985 - Gallery 98",
     href: "https://gallery98.org/2023/roy-lichtenstein-poster-palladium-1985/",
+  },
+  "boy-bar": {
+    src: boyBarJukebox,
+    w: 800,
+    h: 224,
+    alt: "Back of the Georges Piette opening card: his 1984 photograph of the bar at Boybar",
+    credit: "Georges Piette, boybar (detail), 1984 - Gallery 98",
+    href: "https://gallery98.org/2021/15-st-marks-georges-piette-boybar-opening-party-card-1984/",
+  },
+  "club-57": {
+    src: club57Jukebox,
+    w: 800,
+    h: 1050,
+    alt: "\"Got to Be Hip\" flyer for John Savas (later Johnny Dynell), disco performance and dance party at Club 57, 57 St. Mark's Place",
+    credit: "John Savas \"Got to Be Hip\" flyer, Club 57, 1979 - Gallery 98",
+    href: "https://gallery98.org/2024/john-savas-got-to-be-hip-flyer-club-57-1979/",
   },
 };
