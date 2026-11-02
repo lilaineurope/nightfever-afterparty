@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s01e03")({
       title="Lisa Edelstein"
       subtitle={"\"Lisa E.\", 80s it girl · actor, playwright and James's partner-in-crime"}
       released="Released 13 Sep 2021 · 1:08:34 on WOW and as a podcast"
-      blurb="James reads from his diaries - lunchboxes, drooping picture hats, a backwards Alaïa dress and the whole guest list of Warhol's memorial. Iconic!"
+      blurb="Lisa Edelstein and James on their 80s: lunchboxes, drooping picture hats, a backwards Alaïa dress, and James reading the guest list of Warhol's memorial from his diaries."
     />
   ),
 });

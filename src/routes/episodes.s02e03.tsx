@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s02e03")({
       title="Susanne Bartsch"
       subtitle="Empress of the Night · Love Ball founder, boutique owner and party host"
       released="Released 22 Aug 2022 · 1:01:34 on WOW and as a podcast"
-      blurb="From Swiss teen runaway to the Blitz, her SoHo stores, Savage, Bentley's, the Copa and the Love Balls - and a FIT show of 128 looks. Pure magic!"
+      blurb="Susanne Bartsch on running away from Switzerland, the Blitz, her SoHo stores, Savage, the Copa and the Love Balls."
     />
   ),
 });

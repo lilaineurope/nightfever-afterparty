@@ -54,7 +54,7 @@ const NIGHT_FEVER = "Night Fever";
 
 /** One Afterparty page (Lisa's episode index): header, mood boards and the full reference list. Every episode route renders this
  *  with its own data - add a new episode by copying one of the small route files, never by copying this page. */
-export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So exciting!" }: {
+export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   id: string;
   refs: Ref[];
   /** The guest's name as the page heading. */
@@ -124,17 +124,15 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season {thisEpisode.season} · Episode {thisEpisode.episode}</p>
           <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">{title}</h1>
           {subtitle && <p className="mt-4 text-gold">{subtitle}</p>}
-          {released && (
-            <p className="mt-2 text-sm text-muted-foreground">
-              {released}
-              {/* Next to the release line: the day this AFTERPARTY went up on the site (Lisa, 2 Nov 2026). */}
-              {" · "}AFTERPARTY launched {formatDate(thisEpisode.afterpartyPublished)}
-            </p>
-          )}
+          <p className="mt-2 text-sm text-muted-foreground">
+            {released ?? `Released ${formatDate(thisEpisode.released)} · ${thisEpisode.runtime}`}
+            {/* Next to the release line: the day this AFTERPARTY went up on the site (Lisa, 2 Nov 2026). */}
+            {" · "}AFTERPARTY launched {formatDate(thisEpisode.afterpartyPublished)}
+          </p>
           <p className="mt-2 text-sm text-muted-foreground">
             {refs.length} references · {refs.reduce((total, r) => total + r.mentions, 0)} mentions
           </p>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{blurb}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{blurb ?? thisEpisode.blurb}</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link to="/jukebox" search={{ afterparty: id }}
               className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">

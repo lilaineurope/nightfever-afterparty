@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s02e08")({
       title="Michelangelo Signorile"
       subtitle="Journalist and co-founder of OutWeek magazine · ACT UP · Queer in America"
       released="Released 26 Sep 2022 · 1:02:35 as a podcast"
-      blurb="James arrives with five pages of notes and a lightning round through Brooklyn, Staten Island and Syracuse. Then PR jobs found in the phone book, column planting at Mike Hall Associates and the gossip columns of Liz Smith, Suzy and Cindy Adams; the Gaultier lookalike contest at the Palladium, won - as James tells it - with a pair of fake Prince Charles ears; James turning Michelangelo away at The World's opening night; Suzygate; ACT UP and a first protest at Cardinal Ratzinger's speech; OutWeek, the Malcolm Forbes cover and the birth of outing; and a Martha Graham luncheon at Halston's where Lovey Howell stole the show. Wow!"
+      blurb="Michelangelo Signorile on PR jobs and gossip columns, the Palladium, ACT UP, OutWeek and the birth of outing."
     />
   ),
 });

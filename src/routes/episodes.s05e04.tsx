@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s05e04")({
       title="Nick Egan"
       subtitle="Graphic designer and music-video director · The Tea Set · Bow Wow Wow, Duran Duran, INXS"
       released="Released 9 Jul 2025 · 1:02:49 as a podcast"
-      blurb="From the Stray Cats' quiffs and sleeve tattoos - which, as Nick tells it, made tattoos youth culture - and his first rose-and-dagger on the Sunset Strip to art-school punk, The Tea Set and modelling in Vivienne Westwood's Buffalo collection, Bow Wow Wow and the See Jungle cover after Manet, Malcolm McLaren pairing square dance with hip-hop on Duck Rock and Buffalo Gals, his first videos as MTV took off, Marc Jacobs' grunge show and Sonic Youth's Sugar Kane in the Perry Ellis showroom, Duran Duran's Ordinary World at Huntington Gardens and INXS's Kick. Wow!"
+      blurb="Nick Egan on the Stray Cats and tattoos, art-school punk, Bow Wow Wow, Malcolm McLaren, his first MTV videos and covers for Duran Duran and INXS."
     />
   ),
 });

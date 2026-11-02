@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s01e07")({
       title="Rudolf Piper"
       subtitle="Club owner and promoter · Danceteria, the Tunnel, Mars · club designer in São Paulo"
       released="Released 11 Oct 2021 · 1:10:35 as a podcast"
-      blurb="From a 24-hour club six floors under a Berlin bunker and the one-night Pravda to Danceteria's floors, Madonna's first shows, Keith Haring's black-and-white floor, the Club Kids' basement at the Tunnel and a Liberace party with white pianos everywhere. Wow!"
+      blurb="Rudolf Piper on a club under a Berlin bunker, Danceteria, Madonna's first shows, Keith Haring's floor and the Club Kids' basement at the Tunnel."
     />
   ),
 });

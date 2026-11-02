@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s04e10")({
       title="Ann Magnuson"
       subtitle="Actress, performance artist and singer · Club 57 · Bongwater, Pulsallama"
       released="Released 4 Sep 2024 · 1:07:52 as a podcast"
-      blurb="Ann on running Club 57 under a Polish church on St. Mark's Place, New Wave Vaudeville with Klaus Nomi, her bands Pulsallama and Bongwater, and films from The Hunger to Desperately Seeking Susan."
+      blurb="Ann Magnuson on running Club 57 under a Polish church on St. Mark's Place, New Wave Vaudeville with Klaus Nomi, her bands Pulsallama and Bongwater, and films from The Hunger to Desperately Seeking Susan."
     />
   ),
 });

@@ -13,6 +13,7 @@ export const Route = createFileRoute("/episodes/s01e01")({
       id="s01e01"
       refs={refs}
       title="Dianne Brill"
+      blurb="Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Where it all started!"
     />
   ),
 });

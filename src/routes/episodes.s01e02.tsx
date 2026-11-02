@@ -13,6 +13,7 @@ export const Route = createFileRoute("/episodes/s01e02")({
       id="s01e02"
       refs={refs}
       title="Michael Musto"
+      blurb="Michael Musto on the Village Voice, Studio 54, outlaw parties, ACT UP and the Club Kids at the Limelight."
       subtitle="Village Voice nightlife columnist · La Dolce Musto"
       released="Released 6 Sep 2021 · 1:04:35"
     />

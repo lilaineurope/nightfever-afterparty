@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s03e06")({
       title="Eric Goode"
       subtitle="Area co-founder · club, restaurant and hotel owner · Tiger King producer · tortoise conservationist"
       released="Released 20 Jul 2023 · 57:09 as a podcast"
-      blurb="From Etch A Sketch drawings at the Mudd Club and a pig carcass at the Club With No Name to Area's ever-changing themes, Boy George's breakfast-in-bed birthday, MK's Dobermans, the Maritime Hotel and a lifelong love of tortoises. Wow!"
+      blurb="Eric Goode on the Mudd Club, the Club With No Name, Area's changing themes, the Maritime Hotel and a lifelong love of tortoises."
     />
   ),
 });

@@ -13,6 +13,7 @@ export const Route = createFileRoute("/episodes/s06e01")({
       id="s06e01"
       refs={refs}
       title="James St. James"
+      blurb="James St. James, the host, finally takes the guest chair: growing up, moving to New York and the club years he has been documenting ever since."
     />
   ),
 });

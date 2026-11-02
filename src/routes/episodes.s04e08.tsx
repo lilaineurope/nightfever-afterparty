@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s04e08")({
       title="Richie Rich"
       subtitle="Club kid, figure skater, singer and designer · Heatherette, Richerette"
       released="Released 21 Aug 2024 · 1:03:03 on WOW and as a podcast"
-      blurb="From the Ice Capades to the Style Summit, Hotel 17 and Heatherette - Miss Piggy front row, Paris in a studded bodysuit and Liza's glitter pants. Boom!"
+      blurb="Richie Rich on the Ice Capades, the Style Summit, Hotel 17 and Heatherette."
     />
   ),
 });

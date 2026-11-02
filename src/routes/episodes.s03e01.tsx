@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s03e01")({
       title="Patricia Field"
       subtitle="Store owner, stylist and costume designer · Sex and the City, The Devil Wears Prada"
       released="Released 15 Jun 2023 · 51:54 on WOW, 52:18 as a podcast"
-      blurb="Fenton was off on a secret assignment, so it's James and Randy in the chairs. So exciting!"
+      blurb="Patricia Field on her 8th Street store, the House of Field balls and dressing Carrie Bradshaw and Miranda Priestly. With James and Randy in the chairs."
     />
   ),
 });

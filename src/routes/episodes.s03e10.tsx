@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/s03e10")({
       title="Miss Guy"
       subtitle="Toilet Boys singer · Squeezebox DJ · Boy Bar star"
       released="Released 17 Aug 2023 · 48:33"
-      blurb="Fresh off a month on tour doing Debbie Harry's make-up, Miss Guy remembers the first meeting at Stephen Sprouse's Soho shop - in a tiny paper KISS fan-club jacket. A big brother's records (Parallel Lines, Devo, the B-52's), best friend Lauren Pine since fourth grade, and a Malcolm McLaren party that sends them both to New York. Boy Bar on their very first night, meeting James - a better version of Guy - and Matthew Kasten's Boy Bar shows, from Hooray for Hollywood to Cherry Bomb. Then the House of Field balls, a day job at Pat Field's, the Cat Club rock nights, Squeezebox at Don Hill's with Michael Schmidt, and the Toilet Boys - from opening for Debbie to arenas with the Red Hot Chili Peppers. Wow!"
+      blurb="Miss Guy on Debbie Harry's make-up, Boy Bar on the very first night, the House of Field balls, Squeezebox and the Toilet Boys."
     />
   ),
 });
