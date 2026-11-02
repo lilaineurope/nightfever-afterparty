@@ -11,6 +11,7 @@ import { episodeById, episodePath, episodes } from "@/data/episodes";
 import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME, type MentorLink } from "@/data/mentors";
 import { rankedMentors } from "@/lib/mentor-rank";
 import { DROP_HOST, dropRank, dropsOf } from "@/lib/drop-rank";
+import { HEADER_LAYOUT } from "@/data/header-layout";
 import { cardTo } from "@/lib/card-link";
 import { EntityText } from "@/components/entity-text";
 import { EntityLink } from "@/components/entity-link";
@@ -245,6 +246,9 @@ function guestAboutData(e: Entity, episode: string) {
  *  right column; Mentor score and Top of the drop each go under whichever column is shorter so far, measured in rough
  *  text lines (left: the header text and buttons; right: the Timeline, long lines wrapping). */
 export function headerColumns(e: Entity, episode: string, blurb: string): { left: AboutPart[]; right: AboutPart[] } {
+  // Lisa's own choice for this episode wins (src/data/header-layout.ts).
+  const set = HEADER_LAYOUT[episode];
+  if (set) return { left: [...set.left], right: [...set.right] };
   const { rows, byEpisode, mentor } = guestAboutData(e, episode);
   // Rough heights in pixels at desktop width, measured on the live layout (header text ~420px, a line ~26px).
   const lines = (chars: number, perLine: number) => Math.max(1, Math.ceil(chars / perLine));
@@ -253,13 +257,21 @@ export function headerColumns(e: Entity, episode: string, blurb: string): { left
   const sizes: [AboutPart, number][] = [];
   if (mentor) sizes.push(["mentor", (mentor.rank > 0 ? 50 + 26 * mentor.mentees.length : 0) + (mentor.mentors.length ? 50 + 26 * mentor.mentors.length : 0)]);
   if (byEpisode.length) sizes.push(["drop", 80 + 24 * byEpisode.length]);
-  const out = { left: [] as AboutPart[], right: ["timeline"] as AboutPart[] };
-  for (const [part, size] of sizes) {
-    // The first part on the left also adds the divider line under the buttons.
-    const addLeft = size + (out.left.length ? 24 : 60);
-    if (Math.max(left, right + size + 24) < Math.max(left + addLeft, right)) { out.right.push(part); right += size + 24; }
-    else { out.left.push(part); left += addLeft; }
+  // Try every way of sharing the parts out (each goes left or right) and keep the most even one, so the taller column is
+  // as short as it can be (Lisa, 2 Nov 2026: James's long drop list belongs on the left, his Mentor score on the right).
+  let best = { left: [] as AboutPart[], right: ["timeline"] as AboutPart[] };
+  let bestHeight = Infinity;
+  for (let mask = 0; mask < 1 << sizes.length; mask++) {
+    let l = left, r = right;
+    const pick = { left: [] as AboutPart[], right: ["timeline"] as AboutPart[] };
+    sizes.forEach(([part, size], i) => {
+      if (mask & (1 << i)) { pick.right.push(part); r += size + 24; }
+      else { l += size + (pick.left.length ? 24 : 60); pick.left.push(part); }
+    });
+    // Ties go to the arrangement with more on the left (the reading order Lisa approved first).
+    if (Math.max(l, r) < bestHeight) { best = pick; bestHeight = Math.max(l, r); }
   }
+  const out = best;
   return out;
 }
 
