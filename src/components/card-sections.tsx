@@ -207,7 +207,7 @@ function TapChips({ items, group, open, setOpen }: {
  *  AFTERPARTIES that name them, the cards that name them and the gang. Every name chip opens the Library-style box
  *  underneath (tap-to-open, src/components/moments-box.tsx). */
 /** Episode header parts (Lisa, 2 Nov 2026): the guest's Timeline, Mentor score / Under the wing of, and Top of the drop. */
-export type AboutPart = "timeline" | "mentor" | "drop";
+type AboutPart = "timeline" | "mentor" | "drop";
 
 /** Everything the guest's About parts show, worked out once (GuestAboutBox and headerColumns share it). */
 function guestAboutData(e: Entity, episode: string) {

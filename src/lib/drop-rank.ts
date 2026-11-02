@@ -19,7 +19,7 @@ export function dropsOf(e: Entity, episode: string) {
 }
 
 /** Every guest with an AFTERPARTY ranked by drops, then by AFTERPARTIES, then by name; the host is not ranked. */
-export const rankedDrops: { slug: string; name: string; episode: string; drops: number; afterparties: number }[] = episodes
+const rankedDrops: { slug: string; name: string; episode: string; drops: number; afterparties: number }[] = episodes
   .map((ep) => ({ ep, e: guestOfEpisode(ep.id) }))
   .filter((x): x is { ep: (typeof episodes)[number]; e: Entity } => !!x.e?.guest && x.e.slug !== DROP_HOST)
   .map(({ ep, e }) => ({ slug: e.slug, name: e.name, episode: ep.id, ...dropsOf(e, ep.id) }))
