@@ -55,6 +55,12 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s03e10",
     time: "00:43:45",
   },
+  {
+    name: "Chi Chi Valenti & Johnny Dynell",
+    why: "James, telling their Mudd Club love story: 'We have to get Chi Chi and Johnny on anyway.'",
+    episodeId: "s02e11",
+    time: "00:39:45",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
@@ -136,5 +142,11 @@ export const COME_BACK: InterviewTip[] = [
     why: "Randy, as the hour runs out, says they could go on and on and will have to do a part two.",
     episodeId: "s03e10",
     time: "00:47:35",
+  },
+  {
+    name: "Richard Boch",
+    why: "Fenton closes hoping to have Richard back - he senses they just scratched the surface - and Richard says he'd be honoured.",
+    episodeId: "s02e11",
+    time: "01:04:44",
   },
 ];
