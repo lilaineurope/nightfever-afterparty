@@ -15,3 +15,13 @@ test("every mentor link points at a real reference and card", () => {
     assert.ok(entityFor(l.mentor), `${l.mentor} has no A–Z card`);
   }
 });
+
+// Direction (Lisa, 2 Nov 2026): mentor = the one who took the other under their wing. A link can't point both ways or at itself.
+test("every mentor link points one way only", () => {
+  const key = (a: string, b: string) => `${a}|${b}`;
+  const all = new Set(MENTOR_LINKS.map((l) => key(l.mentor, l.mentee)));
+  for (const l of MENTOR_LINKS) {
+    assert.notEqual(l.mentor, l.mentee, `${l.mentor} is their own mentor`);
+    assert.ok(!all.has(key(l.mentee, l.mentor)), `${l.mentor} <-> ${l.mentee} points both ways - check who took whom under their wing`);
+  }
+});

@@ -8,7 +8,7 @@ import { Timestamp } from "@/components/episode-player";
 import { entityBySlug, entityFor, episodeShort, guestOfEpisode, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
-import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME } from "@/data/mentors";
+import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME, type MentorLink } from "@/data/mentors";
 import { rankedMentors } from "@/lib/mentor-rank";
 import { cardTo } from "@/lib/card-link";
 import { EntityText } from "@/components/entity-text";
@@ -276,29 +276,41 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
         </ol>
       </div>
   );
+  // Mentor direction (Lisa, 2 Nov 2026): the mentor score belongs to the one who took someone under their wing. So a page
+  // shows "Mentor score" only for people this guest mentored; the people who mentored this guest get their own heading,
+  // "Under the wing of", and count towards THEIR score, never this guest's.
+  const mentorRow = (l: MentorLink, who: string, label?: string) => {
+    const ep = episodeById(l.episode);
+    return (
+      <p key={`${l.mentor}-${l.mentee}-${l.episode}`} className="mt-2 text-sm text-muted-foreground">
+        {label && <><span className="text-xs uppercase tracking-wider text-gold">{label}</span>{" "}</>}
+        <EntityLink name={who.replace(/ \(as heard\)$/, "")} className="font-semibold text-card-foreground hover:text-pink" />
+        {" · "}<Link to={episodePath(ep.id)} className="text-gold hover:text-pink">S{ep.season}E{ep.episode}</Link>
+        {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}{l.line}
+      </p>
+    );
+  };
   const mentorBlock = mentor ? (
-    <div>
-            {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people taken under their wing and mentions - with the
-                rank among all mentors; who took this guest under their wing too. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
-            <h3 className={h}>Mentor score</h3>
-            {mentor.rank > 0 && (
-              <p className="mt-3 text-sm text-card-foreground">
-                <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
-                {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
-                {" · "}{mentor.rank <= 10 ? <Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame #{mentor.rank}</Link> : `#${mentor.rank} of ${rankedMentors.length} mentors`}
-              </p>
-            )}
-            {[...mentor.mentees.map((l) => ({ l, who: l.mentee, label: "Took under their wing" })), ...mentor.mentors.map((l) => ({ l, who: l.mentor, label: "Under the wing of" }))].map(({ l, who, label }) => {
-              const ep = episodeById(l.episode);
-              return (
-                <p key={`${l.mentor}-${l.mentee}-${l.episode}`} className="mt-2 text-sm text-muted-foreground">
-                  <span className="text-xs uppercase tracking-wider text-gold">{label}</span>{" "}
-                  <EntityLink name={who.replace(/ \(as heard\)$/, "")} className="font-semibold text-card-foreground hover:text-pink" />
-                  {" · "}<Link to={episodePath(ep.id)} className="text-gold hover:text-pink">S{ep.season}E{ep.episode}</Link>
-                  {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}{l.line}
-                </p>
-              );
-            })}
+    <div className="space-y-6">
+      {mentor.rank > 0 && (
+        <div>
+          {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people this guest took under their wing, and mentions -
+              with the rank among all mentors. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
+          <h3 className={h}>Mentor score</h3>
+          <p className="mt-3 text-sm text-card-foreground">
+            <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
+            {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
+            {" · "}{mentor.rank <= 10 ? <Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame #{mentor.rank}</Link> : `#${mentor.rank} of ${rankedMentors.length} mentors`}
+          </p>
+          {mentor.mentees.map((l) => mentorRow(l, l.mentee, "Took under their wing"))}
+        </div>
+      )}
+      {mentor.mentors.length > 0 && (
+        <div>
+          <h3 className={h}>Under the wing of</h3>
+          {mentor.mentors.map((l) => mentorRow(l, l.mentor))}
+        </div>
+      )}
     </div>
   ) : null;
   const othersBlock = elsewhere.length > 0 ? (
