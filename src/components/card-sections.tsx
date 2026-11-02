@@ -205,7 +205,13 @@ function TapChips({ items, group, open, setOpen }: {
  *  their timeline merged with the scene timeline, what they are doing now, scenes & rooms, connections, the other
  *  AFTERPARTIES that name them, the cards that name them and the gang. Every name chip opens the Library-style box
  *  underneath (tap-to-open, src/components/moments-box.tsx). */
-export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
+export function GuestAboutBox({ e, episode, part = "all" }: {
+  e: Entity;
+  episode: string;
+  /** Episode page (Lisa, 2 Nov 2026): "timeline" for the guest column, "more" (Mentor score + In the other AFTERPARTIES)
+   *  under the buttons in the left box, so both columns are about the same height. */
+  part?: "all" | "timeline" | "more";
+}) {
   const g = e.guest;
   const [open, setOpen] = useState<string | null>(null);
   const [openRow, setOpenRow] = useState<string | null>(null);
@@ -345,5 +351,12 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
     </div>
   ) : null;
 
-  return <div className="space-y-6 text-left">{timelineBlock}{mentorBlock}{othersBlock}</div>;
+  if (part === "more" && !mentorBlock && !othersBlock) return null;
+  return (
+    <div className="space-y-6 text-left">
+      {part !== "more" && timelineBlock}
+      {part !== "timeline" && mentorBlock}
+      {part !== "timeline" && othersBlock}
+    </div>
+  );
 }
