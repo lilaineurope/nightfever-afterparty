@@ -285,15 +285,36 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
   // Mentor direction (Lisa, 2 Nov 2026): the mentor score belongs to the one who took someone under their wing. So a page
   // shows "Mentor score" only for people this guest mentored; the people who mentored this guest get their own heading,
   // "Under the wing of", and count towards THEIR score, never this guest's.
+  // One line per mentor link (Lisa, 2 Nov 2026), like In the other AFTERPARTIES: "<label> <Name> · S5E1"; one tap opens
+  // a box underneath with the moment (timestamp and line), the name's own link and the episode.
   const mentorRow = (l: MentorLink, who: string, label?: string) => {
     const ep = episodeById(l.episode);
+    const name = who.replace(/ \(as heard\)$/, "");
+    const key = `mentor:${l.mentor}-${l.mentee}-${l.episode}`;
+    const on = open === key;
     return (
-      <p key={`${l.mentor}-${l.mentee}-${l.episode}`} className="mt-2 text-sm text-muted-foreground">
-        {label && <><span className="text-xs uppercase tracking-wider text-gold">{label}</span>{" "}</>}
-        <EntityLink name={who.replace(/ \(as heard\)$/, "")} className="font-semibold text-card-foreground hover:text-pink" />
-        {" · "}<Link to={episodePath(ep.id)} className="text-gold hover:text-pink">S{ep.season}E{ep.episode}</Link>
-        {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={who.replace(/ \(as heard\)$/, "")} />
-      </p>
+      <div key={key} className="mt-2 text-sm">
+        <button type="button" aria-expanded={on} onClick={() => setOpen(on ? null : key)}
+          className="group text-left">
+          {label && <><span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>{" "}</>}
+          <span className={`font-semibold text-pink ${on ? "underline" : "group-hover:underline"}`}>S{ep.season}E{ep.episode} · {name}</span>
+        </button>
+        {on && (
+          <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h4 className="text-xl font-bold uppercase text-cream">
+                <EntityLink name={name} className="hover:text-pink" />
+              </h4>
+              <button type="button" onClick={() => setOpen(null)} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
+            </div>
+            <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label ?? "Under the wing of"}</p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              <Link to={episodePath(ep.id)} className="font-medium text-gold hover:text-pink">S{ep.season}E{ep.episode} · {ep.guest}</Link>
+              {" · "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={name} />
+            </p>
+          </div>
+        )}
+      </div>
     );
   };
   const mentorBlock = mentor ? (
