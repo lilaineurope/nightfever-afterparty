@@ -10,6 +10,7 @@ import { namedOn } from "@/lib/name-links";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
 import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME, type MentorLink } from "@/data/mentors";
 import { rankedMentors } from "@/lib/mentor-rank";
+import { DROP_HOST, dropRank, dropsOf } from "@/lib/drop-rank";
 import { cardTo } from "@/lib/card-link";
 import { EntityText } from "@/components/entity-text";
 import { EntityLink } from "@/components/entity-link";
@@ -205,19 +206,12 @@ function TapChips({ items, group, open, setOpen }: {
  *  their timeline merged with the scene timeline, what they are doing now, scenes & rooms, connections, the other
  *  AFTERPARTIES that name them, the cards that name them and the gang. Every name chip opens the Library-style box
  *  underneath (tap-to-open, src/components/moments-box.tsx). */
-export function GuestAboutBox({ e, episode, part = "all" }: {
-  e: Entity;
-  episode: string;
-  /** Episode page (Lisa, 2 Nov 2026): "timeline" for the guest column, "more" (Mentor score + In the other AFTERPARTIES)
-   *  under the buttons in the left box, so both columns are about the same height. */
-  part?: "all" | "timeline" | "more";
-}) {
-  const g = e.guest;
-  const [open, setOpen] = useState<string | null>(null);
-  const [openRow, setOpenRow] = useState<string | null>(null);
-  if (!g) return null;
-  const toChips = (slugs: string[]) =>
-    [...new Set(slugs)].filter((s) => s && s !== e.slug).map((s) => ({ slug: s, label: entityBySlug[s]?.name ?? s }));
+/** Episode header parts (Lisa, 2 Nov 2026): the guest's Timeline, Mentor score / Under the wing of, and Top of the drop. */
+export type AboutPart = "timeline" | "mentor" | "drop";
+
+/** Everything the guest's About parts show, worked out once (GuestAboutBox and headerColumns share it). */
+function guestAboutData(e: Entity, episode: string) {
+  const g = e.guest!;
   const bySlug = (names: string[]) => names.map((n) => entityFor(n)?.slug ?? n);
 
   // The guest's own timeline lines are already scene events ("guest-<slug>-n"); show them once, then the other moments.
@@ -235,7 +229,7 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
     ...namedOn(e).filter((x) => x.ref.episode && x.ref.episode !== episode).map((x) => ({ r: x.ref, via: x.entity })),
   ].sort((a, b) => order(a.r.episode) - order(b.r.episode) || (a.via ? 1 : 0) - (b.via ? 1 : 0));
   const byEpisode = [...new Set(elsewhere.map((x) => x.r.episode!))].map((id) => ({ id, rows: elsewhere.filter((x) => x.r.episode === id) }));
-  const dropMentions = elsewhere.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
+  const dropMentions = dropsOf(e, episode).drops;
   const isMe = (n: string) => entityFor(n.replace(/ \(as heard\)$/, ""))?.slug === e.slug;
   const asMentor = rankedMentors.findIndex((m) => isMe(m.name));
   const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
@@ -244,6 +238,45 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
     ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0 }
     : undefined;
 
+  return { rows, elsewhere, byEpisode, dropMentions, mentor };
+}
+
+/** Which header column each part goes in (Lisa, 2 Nov 2026: "dynamic ... to avoid blanks"). The Timeline always opens the
+ *  right column; Mentor score and Top of the drop each go under whichever column is shorter so far, measured in rough
+ *  text lines (left: the header text and buttons; right: the Timeline, long lines wrapping). */
+export function headerColumns(e: Entity, episode: string, blurb: string): { left: AboutPart[]; right: AboutPart[] } {
+  const { rows, byEpisode, mentor } = guestAboutData(e, episode);
+  // Rough heights in pixels at desktop width, measured on the live layout (header text ~420px, a line ~26px).
+  const lines = (chars: number, perLine: number) => Math.max(1, Math.ceil(chars / perLine));
+  let left = 382 + 28 * lines(blurb.length, 62);
+  let right = 32 + rows.reduce((n, r) => n + 6 + 20 * lines(r.when.length + 3 + (r.title ?? r.text).length, 48), 0);
+  const sizes: [AboutPart, number][] = [];
+  if (mentor) sizes.push(["mentor", (mentor.rank > 0 ? 50 + 26 * mentor.mentees.length : 0) + (mentor.mentors.length ? 50 + 26 * mentor.mentors.length : 0)]);
+  if (byEpisode.length) sizes.push(["drop", 80 + 24 * byEpisode.length]);
+  const out = { left: [] as AboutPart[], right: ["timeline"] as AboutPart[] };
+  for (const [part, size] of sizes) {
+    // The first part on the left also adds the divider line under the buttons.
+    const addLeft = size + (out.left.length ? 24 : 60);
+    if (Math.max(left, right + size + 24) < Math.max(left + addLeft, right)) { out.right.push(part); right += size + 24; }
+    else { out.left.push(part); left += addLeft; }
+  }
+  return out;
+}
+
+export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop"] }: {
+  e: Entity;
+  episode: string;
+  /** Which parts to show, in this order (the episode header splits them over its two columns with headerColumns). */
+  parts?: AboutPart[];
+}) {
+  const g = e.guest;
+  const [open, setOpen] = useState<string | null>(null);
+  const [openRow, setOpenRow] = useState<string | null>(null);
+  if (!g) return null;
+  const toChips = (slugs: string[]) =>
+    [...new Set(slugs)].filter((s) => s && s !== e.slug).map((s) => ({ slug: s, label: entityBySlug[s]?.name ?? s }));
+  const { rows, elsewhere, byEpisode, dropMentions, mentor } = guestAboutData(e, episode);
+  const dropRanking = dropRank(e.slug);
   const timelineBlock = (
       <div>
         <h3 className={h}>Timeline</h3>
@@ -328,7 +361,10 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
           <p className="mt-3 text-sm text-card-foreground">
             <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
             {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
-            {" · "}{mentor.rank <= 10 ? <Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame #{mentor.rank}</Link> : `#${mentor.rank} of ${rankedMentors.length} mentors`}
+            {/* Score and rank on every mentor's page (Lisa, 2 Nov 2026): the score is the people taken under their wing,
+                mentions break ties; the rank is among all mentors, the top 10 being the Hall of Fame. */}
+            {" · "}<span className="font-semibold">#{mentor.rank} of {rankedMentors.length} mentors</span>
+            {mentor.rank <= 10 && <>{" · "}<Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame</Link></>}
           </p>
           {mentor.mentees.map((l) => mentorRow(l, l.mentee, "Took under their wing"))}
         </div>
@@ -351,6 +387,8 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
             <p className="mt-3 text-sm text-card-foreground">
               <span className="font-semibold text-pink">{dropMentions} {dropMentions === 1 ? "mention" : "mentions"}</span>
               {" · "}in {byEpisode.length} {byEpisode.length === 1 ? "AFTERPARTY" : "AFTERPARTIES"}
+              {/* Rank among all guests by drops, then AFTERPARTIES (src/lib/drop-rank.ts); the host is not ranked. */}
+              {" · "}<span className="font-semibold">{dropRanking ? `#${dropRanking.rank} of ${dropRanking.of} guests` : e.slug === DROP_HOST ? "the host, not ranked" : "not ranked"}</span>
             </p>
             <ul className="mt-3 space-y-1.5">
               {byEpisode.map(({ id, rows }) => {
@@ -391,12 +429,8 @@ export function GuestAboutBox({ e, episode, part = "all" }: {
     </div>
   ) : null;
 
-  if (part === "more" && !mentorBlock && !othersBlock) return null;
-  return (
-    <div className="space-y-6 text-left">
-      {part !== "more" && timelineBlock}
-      {part !== "timeline" && mentorBlock}
-      {part !== "timeline" && othersBlock}
-    </div>
-  );
+  const blocks = { timeline: timelineBlock, mentor: mentorBlock, drop: othersBlock };
+  const shown = parts.filter((p) => blocks[p]);
+  if (!shown.length) return null;
+  return <div className="space-y-6 text-left">{shown.map((p) => <div key={p}>{blocks[p]}</div>)}</div>;
 }
