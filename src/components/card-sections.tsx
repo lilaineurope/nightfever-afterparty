@@ -19,7 +19,7 @@ const chipOn = "rounded-full border border-pink bg-pink px-3 py-1 text-xs text-p
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 
 /** The guest's own box: their timeline, what they are doing now, scenes and connections. */
-export function GuestBox({ e }: { e: Entity }) {
+function GuestBox({ e }: { e: Entity }) {
   const g = e.guest;
   if (!g) return null;
   return (
