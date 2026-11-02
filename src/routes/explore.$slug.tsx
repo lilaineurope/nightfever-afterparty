@@ -12,6 +12,7 @@ import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
+import { PERSON_PORTRAITS } from "../data/person-portraits";
 
 export const Route = createFileRoute("/explore/$slug")({
   staticData: { sitemap: true },
@@ -106,15 +107,28 @@ function EntityPage() {
   const { slug } = Route.useLoaderData();
   const e = entityBySlug[slug]!;
   const g = e.guest;
+  const pic = g ? undefined : PERSON_PORTRAITS[e.slug];
 
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* A–Z card header (Lisa, 30 Oct 2026, "tiles 4"): the disco-ball mirror tiles of the people polaroids as big pink/black dots, behind flyer strips. */}
+      {/* People with a polaroid (Lisa, 2 Nov 2026, "combo 3"): their photo fills the header, the name sits on a taped card and the
+          polaroid is taped on the right with its credit. */}
       <section
-        className="card-head px-4"
-        style={{ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties}
+        className={pic ? "card-head card-head-photo px-4" : "card-head px-4"}
+        style={
+          (pic
+            ? ({ "--photo": `url(${pic.photo})`, "--focus": pic.focus } as CSSProperties)
+            : ({ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties))
+        }
       >
-        <div className="mx-auto max-w-4xl">
+        {pic && (
+          <figure className="card-polaroid">
+            <img src={pic.polaroid} alt={`${e.name} polaroid`} width={720} height={893} />
+            <figcaption>{pic.credit}</figcaption>
+          </figure>
+        )}
+        <div className={pic ? "card-namecard" : "mx-auto max-w-4xl"}>
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">
             <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : e.category}</span>
