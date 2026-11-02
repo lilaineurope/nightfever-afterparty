@@ -244,11 +244,19 @@ const SPOTIFY: Record<string, string> = {
   "The Boswell Sisters": "spotify:artist:2mflSlnegn3rBmzsh08OcN",
   "Guys and Dolls": "spotify:album:5Iof7q92ZmN6mWGhx0weG3",
   "'Eddie's Teddy' (Rocky Horror)": "spotify:track:2xTwqmWsWkTPpYUU4qdEWA",
+  // S02E11 Richard Boch ('The Raybeats' is not on Spotify; No Wave and Motown are sounds)
+  "James Chance and the Contortions": "spotify:track:1FxlwrXp98QA6qh2jYDCpt",
+  "Marianne Faithfull – Broken English": "spotify:track:09r8CNc94rtWOPAi63cIjp",
+  "The Go-Go's": "spotify:track:5kz9GDBTX846OXwqWoyKzF",
+  "X": "spotify:track:75a66iUfwKdJb5n9juvXRI",
+  "Einstein on the Beach": "spotify:track:14nEQOt0lZdpQQCoYjpqgy",
+  "Young and Useless": "spotify:track:3K3PczpYN11KE6cqQtqV2u",
+  "Planet Fred from Jupiter": "spotify:track:3hejIAfwp43LpIdbmWeZ6d",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
 export const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/4RGIXkJLnDLZvSIagpUU3p";
-const SOUNDS = /^(electroclash|goth|industrial music|glitter rock|london punk|nyc dance music|hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions)$/i;
+const SOUNDS = /^(electroclash|goth|industrial music|glitter rock|london punk|nyc dance music|hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions|no wave|motown)$/i;
 const STAGE = /^(jesus christ superstar|hedwig and the angry inch|flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball|hairspray|the music man)$/i;
 const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know|ghost cat|my hair looks fierce|champagne \(amanda lepore\))$/i;
 

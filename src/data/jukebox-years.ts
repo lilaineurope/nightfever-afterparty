@@ -225,4 +225,15 @@ export const YEARS: Record<string, number> = {
   "The Boswell Sisters": 1925,
   "Guys and Dolls": 1950,
   "'Eddie's Teddy' (Rocky Horror)": 1973,
+  // S02E11 Richard Boch (bands = year formed; Young and Useless = first record, 1982; Planet Fred = 'Fred vom Jupiter', 1981)
+  "James Chance and the Contortions": 1977,
+  "Marianne Faithfull – Broken English": 1979,
+  "The Raybeats": 1979,
+  "No Wave": 1978,
+  "The Go-Go's": 1978,
+  "X": 1977,
+  "Einstein on the Beach": 1976,
+  "Motown": 1959,
+  "Young and Useless": 1982,
+  "Planet Fred from Jupiter": 1981,
 };

@@ -639,6 +639,7 @@ const s02e11: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://traffic.megaphone.fm/APO7034041213.mp3",
   runtime: "1:05:09",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLd7ISLMKbqXI",
   afterpartyPublished: "2026-11-06",
   blurb:
     "Richard Boch, the Mudd Club's doorman! Bartending at the Ballroom on West Broadway, walking home past 77 White Street, Steve Mass calling \"no beards tonight\", Basquiat still SAMO and spray-painting the bathroom, Anita Sarko hired on the spot - and the Mudd Club in every club that came after.",
