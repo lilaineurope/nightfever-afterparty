@@ -14,6 +14,12 @@ export type InterviewTip = {
 /** New faces the guests suggested */
 export const NEW_FACES: InterviewTip[] = [
   {
+    name: "Arthur Weinstein",
+    why: "James, after Eric tells how Arthur wore a wire to bust corrupt cops, remembers reading a screenplay about it: 'We'll have to do a whole episode on it.'",
+    episodeId: "s03e06",
+    time: "00:14:07",
+  },
+  {
     name: "Colleen Weinstein",
     why: "Eric Goode, telling Arthur Weinstein stories: the show should definitely interview Colleen, Arthur's wife, who still lives at the Chelsea Hotel.",
     episodeId: "s03e06",
