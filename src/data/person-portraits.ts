@@ -21,6 +21,8 @@ import fentonPhoto from "@/assets/people/fenton-bailey-photo.webp";
 import fentonPolaroid from "@/assets/people/fenton-bailey-polaroid.webp";
 import nomiPhoto from "@/assets/people/klaus-nomi-photo.webp";
 import nomiPolaroid from "@/assets/people/klaus-nomi-polaroid.webp";
+import aileenPhoto from "@/assets/people/aileen-mehle-photo.webp";
+import aileenPolaroid from "@/assets/people/aileen-mehle-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -39,6 +41,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "randy-barbato": { photo: randyPhoto, polaroid: randyPolaroid, focus: "30%", credit: "Illustration made with Gemini from the show, not a photo" },
   "fenton-bailey": { photo: fentonPhoto, polaroid: fentonPolaroid, focus: "8%", credit: "Illustration made with Gemini, not a photo" },
   "klaus-nomi": { photo: nomiPhoto, polaroid: nomiPolaroid, focus: "10%", credit: 'Portrait after the linocut "New Yodel" by Anomaler Circus, 2022 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too)' },
+  "aileen-mehle": { photo: aileenPhoto, polaroid: aileenPolaroid, focus: "18%", credit: `Portrait after a White House photo by Susan Biddle, 1991 (public domain), ${STYLE}` },
   madonna: { photo: madonnaPhoto, polaroid: madonnaPolaroid, focus: "22%", credit: `Portrait after a Sire Records press photo, 1987 (public domain), ${STYLE}` },
   "malcolm-mclaren": { photo: mclarenPhoto, polaroid: mclarenPolaroid, focus: "58%", credit: `Portrait after a photo by Martyn Goodacre, 1992 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), ${STYLE}` },
   "keith-haring": { photo: haringPhoto, polaroid: haringPolaroid, focus: "20%", credit: `Portrait after a photo by Bernard Gotfryd, Palladium 1985 (public domain), ${STYLE}` },
