@@ -117,7 +117,7 @@ const s01e02: Episode = {
   audioUrl:
     "https://traffic.megaphone.fm/APO5000936966.mp3",
   runtime: "1:04:35",
-  afterpartyPublished: "2026-10-11",
+  afterpartyPublished: "2026-10-11T12:00",
   blurb:
     "The oldest club kid in the world! Village Voice legend Michael Musto on Studio 54, outlaw parties, ACT UP, the Club Kids - and, as he tells it, the vodka cranberry waiting for him at the Limelight.",
   references: mustoRefs.length,
