@@ -223,6 +223,17 @@ export const YOUTUBE: Record<string, string> = {
   "The Boswell Sisters": "77QPOSmyiz4",
   "Guys and Dolls": "yI4cfgoawwA",
   "'Eddie's Teddy' (Rocky Horror)": "9NZKjFl2xEU",
+  // S02E11 Richard Boch
+  "James Chance and the Contortions": "uCI24Lt9aNQ",
+  "Marianne Faithfull – Broken English": "p9eVhgxoj-c",
+  "The Raybeats": "xOwC6XAHIlQ",
+  "No Wave": "TarCRjG88w8",
+  "The Go-Go's": "f55KlPe81Yw",
+  "X": "BzUt98in4N4",
+  "Einstein on the Beach": "FowSeDVoV48",
+  "Motown": "nNx7i-H_qFU",
+  "Young and Useless": "04ndCXS0xzU",
+  "Planet Fred from Jupiter": "jf3iWc6krj8",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */
