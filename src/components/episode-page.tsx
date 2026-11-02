@@ -128,8 +128,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb = "So e
           {subtitle && <p className="mt-4 text-gold">{subtitle}</p>}
           {released && <p className="mt-2 text-sm text-muted-foreground">{released}</p>}
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-            Every name, club, book, song, night and look from the interview - {refs.length} references
-            and {refs.reduce((total, r) => total + r.mentions, 0)} mentions in this episode. {blurb}
+            {refs.length} references and {refs.reduce((total, r) => total + r.mentions, 0)} mentions. {blurb}
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link to="/jukebox" search={{ afterparty: id }}
