@@ -1,7 +1,7 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace } from "@/lib/link-label";
 import { Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { guests } from "@/data/guests";
 import { sceneEvents } from "@/data/scene";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { isOtherShowGuest } from "@/lib/show-guests";
 import { ShareButton } from "@/components/share-button";
 import { formatDate, toSeconds } from "@/lib/time";
+import { episodePortraits } from "@/components/episode-block";
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
 export type Ref = {
@@ -68,6 +69,8 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
 }) {
   useEpisodePlayer(id);
   const thisEpisode = episodeById(id);
+  // The guest's polaroid photo fills the header box, text on paper cards on top (Lisa, 2 Nov 2026, option B).
+  const photo = episodePortraits[id];
   // One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card lives on this page too.
   const guestCard = guestOfEpisode(id);
   const about = guestCard?.guest ? guestCard : undefined;
@@ -116,8 +119,9 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   return (
     <main className="episode-page min-h-screen bg-background text-foreground">
       <section className="relative px-6 pb-12 pt-14">
-        <div className={`relative z-10 mx-auto border-2 border-gold bg-card/92 px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10 ${about ? "max-w-6xl md:grid md:grid-cols-[3fr_2fr] md:gap-10" : "max-w-4xl"}`}>
-          <div>
+        <div className={`relative z-10 mx-auto overflow-hidden border-2 border-gold bg-card px-6 py-8 text-center shadow-[6px_8px_0_var(--color-gold)] sm:px-10 ${about ? "max-w-6xl md:grid md:grid-cols-[3fr_2fr] md:gap-10" : "max-w-4xl"} ${photo ? "ep-photo-head" : ""}`}
+          style={photo ? ({ "--ep-photo": `url(${photo})` } as CSSProperties) : undefined}>
+          <div className="ep-head-text relative">
           <Link to="/episodes" className="text-xs font-medium uppercase tracking-[0.2em] text-gold hover:text-pink">
             &larr; More Afterparties
           </Link>
@@ -140,11 +144,18 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
             </Link>
             <ShareButton path={`/episodes/${id}`} title={`${stageName(thisEpisode.guest)}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
+          {/* Mentor score and In the other AFTERPARTIES sit under the buttons, so the left box is as tall as the Timeline
+              on the right (Lisa, 2 Nov 2026). */}
+          {about && (
+            <div className="mt-8 border-t-2 border-gold pt-6 empty:hidden">
+              <GuestAboutBox e={about} episode={id} part="more" />
+            </div>
+          )}
           </div>
           {/* One page per guest (Lisa, 1 Nov 2026, option B): the guest's A–Z card is a side column inside the AFTERPARTY header box (below the buttons on phones). */}
           {about && (
-            <div id="about-guest" className="mt-8 border-t-2 border-gold pt-6 md:mt-0 md:border-l-2 md:border-t-0 md:pl-8 md:pt-0">
-              <GuestAboutBox e={about} episode={id} />
+            <div id="about-guest" className="ep-head-side relative mt-8 border-t-2 border-gold pt-6 md:mt-0 md:border-l-2 md:border-t-0 md:pl-8 md:pt-0">
+              <GuestAboutBox e={about} episode={id} part="timeline" />
             </div>
           )}
         </div>

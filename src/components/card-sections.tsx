@@ -8,7 +8,7 @@ import { Timestamp } from "@/components/episode-player";
 import { entityBySlug, entityFor, episodeShort, guestOfEpisode, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
-import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME } from "@/data/mentors";
+import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME, type MentorLink } from "@/data/mentors";
 import { rankedMentors } from "@/lib/mentor-rank";
 import { cardTo } from "@/lib/card-link";
 import { EntityText } from "@/components/entity-text";
@@ -205,7 +205,13 @@ function TapChips({ items, group, open, setOpen }: {
  *  their timeline merged with the scene timeline, what they are doing now, scenes & rooms, connections, the other
  *  AFTERPARTIES that name them, the cards that name them and the gang. Every name chip opens the Library-style box
  *  underneath (tap-to-open, src/components/moments-box.tsx). */
-export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
+export function GuestAboutBox({ e, episode, part = "all" }: {
+  e: Entity;
+  episode: string;
+  /** Episode page (Lisa, 2 Nov 2026): "timeline" for the guest column, "more" (Mentor score + In the other AFTERPARTIES)
+   *  under the buttons in the left box, so both columns are about the same height. */
+  part?: "all" | "timeline" | "more";
+}) {
   const g = e.guest;
   const [open, setOpen] = useState<string | null>(null);
   const [openRow, setOpenRow] = useState<string | null>(null);
@@ -229,6 +235,7 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
     ...namedOn(e).filter((x) => x.ref.episode && x.ref.episode !== episode).map((x) => ({ r: x.ref, via: x.entity })),
   ].sort((a, b) => order(a.r.episode) - order(b.r.episode) || (a.via ? 1 : 0) - (b.via ? 1 : 0));
   const byEpisode = [...new Set(elsewhere.map((x) => x.r.episode!))].map((id) => ({ id, rows: elsewhere.filter((x) => x.r.episode === id) }));
+  const dropMentions = elsewhere.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
   const isMe = (n: string) => entityFor(n.replace(/ \(as heard\)$/, ""))?.slug === e.slug;
   const asMentor = rankedMentors.findIndex((m) => isMe(m.name));
   const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
@@ -276,36 +283,75 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
         </ol>
       </div>
   );
+  // Mentor direction (Lisa, 2 Nov 2026): the mentor score belongs to the one who took someone under their wing. So a page
+  // shows "Mentor score" only for people this guest mentored; the people who mentored this guest get their own heading,
+  // "Under the wing of", and count towards THEIR score, never this guest's.
+  // One line per mentor link (Lisa, 2 Nov 2026), like In the other AFTERPARTIES: "<label> <Name> · S5E1"; one tap opens
+  // a box underneath with the moment (timestamp and line), the name's own link and the episode.
+  const mentorRow = (l: MentorLink, who: string, label?: string) => {
+    const ep = episodeById(l.episode);
+    const name = who.replace(/ \(as heard\)$/, "");
+    const key = `mentor:${l.mentor}-${l.mentee}-${l.episode}`;
+    const on = open === key;
+    return (
+      <div key={key} className="mt-2 text-sm">
+        <button type="button" aria-expanded={on} onClick={() => setOpen(on ? null : key)}
+          className="group text-left">
+          {label && <><span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>{" "}</>}
+          <span className={`font-semibold text-pink ${on ? "underline" : "group-hover:underline"}`}>S{ep.season}E{ep.episode} · {name}</span>
+        </button>
+        {on && (
+          <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h4 className="text-xl font-bold uppercase text-cream">
+                <EntityLink name={name} className="hover:text-pink" />
+              </h4>
+              <button type="button" onClick={() => setOpen(null)} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
+            </div>
+            <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label ?? "Under the wing of"}</p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              <Link to={episodePath(ep.id)} className="font-medium text-gold hover:text-pink">S{ep.season}E{ep.episode} · {ep.guest}</Link>
+              {" · "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={name} />
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  };
   const mentorBlock = mentor ? (
-    <div>
-            {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people taken under their wing and mentions - with the
-                rank among all mentors; who took this guest under their wing too. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
-            <h3 className={h}>Mentor score</h3>
-            {mentor.rank > 0 && (
-              <p className="mt-3 text-sm text-card-foreground">
-                <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
-                {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
-                {" · "}{mentor.rank <= 10 ? <Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame #{mentor.rank}</Link> : `#${mentor.rank} of ${rankedMentors.length} mentors`}
-              </p>
-            )}
-            {[...mentor.mentees.map((l) => ({ l, who: l.mentee, label: "Took under their wing" })), ...mentor.mentors.map((l) => ({ l, who: l.mentor, label: "Under the wing of" }))].map(({ l, who, label }) => {
-              const ep = episodeById(l.episode);
-              return (
-                <p key={`${l.mentor}-${l.mentee}-${l.episode}`} className="mt-2 text-sm text-muted-foreground">
-                  <span className="text-xs uppercase tracking-wider text-gold">{label}</span>{" "}
-                  <EntityLink name={who.replace(/ \(as heard\)$/, "")} className="font-semibold text-card-foreground hover:text-pink" />
-                  {" · "}<Link to={episodePath(ep.id)} className="text-gold hover:text-pink">S{ep.season}E{ep.episode}</Link>
-                  {" "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={who.replace(/ \(as heard\)$/, "")} />
-                </p>
-              );
-            })}
+    <div className="space-y-6">
+      {mentor.rank > 0 && (
+        <div>
+          {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people this guest took under their wing, and mentions -
+              with the rank among all mentors. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
+          <h3 className={h}>Mentor score</h3>
+          <p className="mt-3 text-sm text-card-foreground">
+            <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
+            {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
+            {" · "}{mentor.rank <= 10 ? <Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame #{mentor.rank}</Link> : `#${mentor.rank} of ${rankedMentors.length} mentors`}
+          </p>
+          {mentor.mentees.map((l) => mentorRow(l, l.mentee, "Took under their wing"))}
+        </div>
+      )}
+      {mentor.mentors.length > 0 && (
+        <div>
+          <h3 className={h}>Under the wing of</h3>
+          {mentor.mentors.map((l) => mentorRow(l, l.mentor))}
+        </div>
+      )}
     </div>
   ) : null;
   const othersBlock = elsewhere.length > 0 ? (
     <div>
             {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
                 the guest's own rows, then the other cards whose line names them (tap the name for its box). */}
-            <h3 className={h}>In the other AFTERPARTIES</h3>
+            {/* Top of the drop (Lisa, 2 Nov 2026): the heading, then one line with the guest's total mentions in the other
+                AFTERPARTIES and how many AFTERPARTIES drop them; the episode rows stay as they were. */}
+            <h3 className={h}>Top of the drop</h3>
+            <p className="mt-3 text-sm text-card-foreground">
+              <span className="font-semibold text-pink">{dropMentions} {dropMentions === 1 ? "mention" : "mentions"}</span>
+              {" · "}in {byEpisode.length} {byEpisode.length === 1 ? "AFTERPARTY" : "AFTERPARTIES"}
+            </p>
             <ul className="mt-3 space-y-1.5">
               {byEpisode.map(({ id, rows }) => {
                 const ep = episodeById(id);
@@ -345,5 +391,12 @@ export function GuestAboutBox({ e, episode }: { e: Entity; episode: string }) {
     </div>
   ) : null;
 
-  return <div className="space-y-6 text-left">{timelineBlock}{mentorBlock}{othersBlock}</div>;
+  if (part === "more" && !mentorBlock && !othersBlock) return null;
+  return (
+    <div className="space-y-6 text-left">
+      {part !== "more" && timelineBlock}
+      {part !== "timeline" && mentorBlock}
+      {part !== "timeline" && othersBlock}
+    </div>
+  );
 }

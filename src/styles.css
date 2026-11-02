@@ -667,3 +667,14 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .jbx-ep-photo figcaption { margin-top: 8px; font-size: 10px; letter-spacing: .03em; }
 .jbx-ep-photo figcaption a { color: #cfc9bd; }
 .jbx-ep-photo figcaption a:hover { color: var(--jy, #f6e06a); }
+
+/* Episode header box (Lisa, 2 Nov 2026, option B): the guest's polaroid photo fills the box at full strength,
+   the text and the guest column sit on paper cards on top so everything stays readable. */
+.ep-photo-head { background: var(--ep-photo) center top / cover no-repeat; padding-left: .75rem; padding-right: .75rem; }
+.ep-photo-head .ep-head-text, .ep-photo-head .ep-head-side { background: color-mix(in oklab, var(--card) 94%, transparent); border: 2px solid #111; padding: 1.5rem; box-shadow: 4px 5px 0 #111; }
+.ep-photo-head .ep-head-side { margin-top: 1.5rem; }
+@media (min-width: 768px) { .ep-photo-head .ep-head-side { margin-top: 0; } }
+@media (max-width: 639px) {
+  .ep-photo-head .ep-head-text, .ep-photo-head .ep-head-side { padding: 1.25rem .75rem; }
+  .ep-photo-head .ep-head-text h1 { font-size: 2.6rem; }
+}

@@ -3,6 +3,10 @@
 // by how many people they mentored (links), then by how often they are mentioned across all Afterparties (mentions).
 // EVERY new Afterparty: read `npx tsx scripts/check-episode.ts <id> <transcript>` section MENTORS (mentor, under his wing,
 // discovered, first job, taught, showed him how, introduced her to...) and add the real ones here - names exactly as their A–Z cards.
+// DIRECTION (Lisa, 2 Nov 2026): `mentor` is ALWAYS the one who took someone under their wing (taught, trained, discovered,
+// gave the first job, cast, introduced, pushed on stage); `mentee` is the one who was helped. Only the mentor gets the mentor
+// score and the Hall of Fame count; the mentee's page shows "Under the wing of <mentor>". Check it in the moment itself, never
+// by who the guest is: the guest is often the mentee (e.g. Keith McNally -> Nell Campbell, S5E1 00:25:48).
 // Michael Alig is left out of the Hall of Fame (Lisa, 28 Oct 2026: a controversial name - no extra space), though his links are kept.
 
 export type MentorLink = { mentor: string; mentee: string; episode: string; time: string; line: string };
