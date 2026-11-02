@@ -10,6 +10,7 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s02e05: { left: [], right: ["timeline", "mentor", "drop"] }, // Connie Fleming - Lisa OK'd (review 7-18)
   s02e06: { left: ["mentor"], right: ["timeline", "drop"] }, // Michael Schmidt - Lisa OK'd (review 7-18)
   s02e07: { left: [], right: ["timeline", "mentor", "drop"] }, // Jenny Talia - Lisa OK'd (review 7-18)
+  s02e11: { left: [], right: ["timeline", "mentor", "drop"] }, // Richard Boch - Lisa OK'd (2 Nov 2026)
   s02e08: { left: [], right: ["timeline", "mentor", "drop"] }, // Michelangelo Signorile - Lisa OK'd (review 7-18)
   s03e01: { left: ["mentor"], right: ["timeline", "drop"] }, // Patricia Field - Lisa OK'd (review 7-18)
   s03e06: { left: [], right: ["timeline", "mentor", "drop"] }, // Eric Goode - Lisa OK'd (review 7-18)
