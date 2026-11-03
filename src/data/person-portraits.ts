@@ -66,6 +66,8 @@ import mathuAndersenPhoto from "@/assets/people/mathu-andersen-photo.webp";
 import mathuAndersenPolaroid from "@/assets/people/mathu-andersen-polaroid.webp";
 import bernardZettePhoto from "@/assets/people/bernard-zette-photo.webp";
 import bernardZettePolaroid from "@/assets/people/bernard-zette-polaroid.webp";
+import brookeAstorPhoto from "@/assets/people/brooke-astor-photo.webp";
+import brookeAstorPolaroid from "@/assets/people/brooke-astor-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -112,4 +114,5 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "sister-dimension": { photo: sisterDimensionPhoto, polaroid: sisterDimensionPolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
   "mathu-andersen": { photo: mathuAndersenPhoto, polaroid: mathuAndersenPolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
   "bernard-zette": { photo: bernardZettePhoto, polaroid: bernardZettePolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
+  "brooke-astor": { photo: brookeAstorPhoto, polaroid: brookeAstorPolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
 };
