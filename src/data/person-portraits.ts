@@ -48,6 +48,8 @@ import jeanPaulGaultierPhoto from "@/assets/people/jean-paul-gaultier-photo.webp
 import jeanPaulGaultierPolaroid from "@/assets/people/jean-paul-gaultier-polaroid.webp";
 import marcJacobsPhoto from "@/assets/people/marc-jacobs-photo.webp";
 import marcJacobsPolaroid from "@/assets/people/marc-jacobs-polaroid.webp";
+import thierryMuglerPhoto from "@/assets/people/thierry-mugler-photo.webp";
+import thierryMuglerPolaroid from "@/assets/people/thierry-mugler-polaroid.webp";
 import edieSedgwickPhoto from "@/assets/people/edie-sedgwick-photo.webp";
 import edieSedgwickPolaroid from "@/assets/people/edie-sedgwick-polaroid.webp";
 import stephenSabanPhoto from "@/assets/people/stephen-saban-photo.webp";
@@ -104,7 +106,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "debbie-harry": { photo: debbieHarryPhoto, polaroid: debbieHarryPolaroid, focus: "64%", credit: `Portrait after a Chrysalis Records press photo, 1982 (public domain), ${STYLE}` },
   marilyn: { photo: marilynPhoto, polaroid: marilynPolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
   "jean-paul-gaultier": { photo: jeanPaulGaultierPhoto, polaroid: jeanPaulGaultierPolaroid, focus: "18%", credit: `Portrait after a photo by Netaction, 2015 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
-  "marc-jacobs": { photo: marcJacobsPhoto, polaroid: marcJacobsPolaroid, focus: "18%", credit: `Portrait after a photo by Harald Krichel, 2025 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
+  "marc-jacobs": { photo: marcJacobsPhoto, polaroid: marcJacobsPolaroid, focus: "25%", credit: `Portrait after a photo by Ståle Grut/NRKbeta, SXSW 2017 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), ${STYLE}` },
   "edie-sedgwick": { photo: edieSedgwickPhoto, polaroid: edieSedgwickPolaroid, focus: "18%", credit: `Portrait after a photo by Terry Stevenson, 1967 (public domain), ${STYLE}` },
   "stephen-saban": { photo: stephenSabanPhoto, polaroid: stephenSabanPolaroid, focus: "36%", credit: "Illustration made with Gemini, not a photo" },
   "vivienne-westwood": { photo: vivienneWestwoodPhoto, polaroid: vivienneWestwoodPolaroid, focus: "18%", credit: `Portrait after a photo by Mattia Passeri (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
@@ -115,4 +117,5 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "mathu-andersen": { photo: mathuAndersenPhoto, polaroid: mathuAndersenPolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
   "bernard-zette": { photo: bernardZettePhoto, polaroid: bernardZettePolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
   "brooke-astor": { photo: brookeAstorPhoto, polaroid: brookeAstorPolaroid, focus: "36%", credit: "Illustration made with Gemini, not a photo" },
+  "thierry-mugler": { photo: thierryMuglerPhoto, polaroid: thierryMuglerPolaroid, focus: "30%", credit: "Linocut-style print after a photo by StagiaireMGIMO, 2014 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too)" },
 };
