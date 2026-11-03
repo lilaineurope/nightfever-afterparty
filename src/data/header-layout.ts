@@ -14,6 +14,7 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s01e08: { left: [], right: ["timeline", "mentor", "drop"] }, // Luis "Xtravaganza" Camacho - Lisa: yes publish (3 Nov 2026)
   s02e08: { left: [], right: ["timeline", "mentor", "drop"] }, // Michelangelo Signorile - Lisa OK'd (review 7-18)
   s03e01: { left: ["mentor"], right: ["timeline", "drop"] }, // Patricia Field - Lisa OK'd (review 7-18)
+  s03e04: { left: [], right: ["timeline", "mentor", "drop"] }, // Man Parrish - Lisa: layout ok (3 Nov 2026)
   s03e06: { left: [], right: ["timeline", "mentor", "drop"] }, // Eric Goode - Lisa OK'd (review 7-18)
   s03e08: { left: [], right: ["timeline", "mentor", "drop"] }, // Larry Tee - Lisa OK'd (review 7-18)
   s03e10: { left: [], right: ["timeline", "mentor", "drop"] }, // Miss Guy - Lisa: looks great

@@ -31,6 +31,7 @@ import s03e10 from "./s03e10.json";
 import s05e01 from "./s05e01.json";
 import s02e11 from "./s02e11.json";
 import s01e08 from "./s01e08.json";
+import s03e04 from "./s03e04.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -561,6 +562,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s05e01", label: "S5 E1", guest: "Nell Campbell", refs: s05e01 as Ref[] },
   { id: "s02e11", label: "S2 E11", guest: "Richard Boch", refs: s02e11 as Ref[] },
   { id: "s01e08", label: "S1 E8", guest: "Luis \"Xtravaganza\" Camacho", refs: s01e08 as Ref[] },
+  { id: "s03e04", label: "S3 E4", guest: "Man Parrish", refs: s03e04 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
@@ -581,6 +583,8 @@ const SKIP_MOMENT = new Set([
   // S01E08: one 1987 story (Julie Jewels brings the club kids to the Harlem balls) - keep it once, on the Elks Lodge line.
   "s01e08|Julie Jewels",
   "s01e08|House of Pancakes",
+  // S03E04: the 1982 release is already a curated moment on Man Parrish's card ("Releases 'Hip Hop, Be Bop (Don't Stop)'").
+  "s03e04|Man Parrish – 'Hip Hop, Be Bop (Don't Stop)'",
 ]);
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {

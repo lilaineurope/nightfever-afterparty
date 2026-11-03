@@ -28,6 +28,7 @@ export const GUEST_LINES: Record<string, string> = {
   s03e10: "Toilet Boys singer · Squeezebox DJ · Boy Bar star",
   s05e01: "Rocky Horror's Columbia · the face of Nell's · tap-dancing star",
   s01e08: "House of Xtravaganza · Madonna's Vogue dancer · Truth or Dare",
+  s03e04: "Hip Hop, Be Bop · electro pioneer · Sunday nights at the Cock",
   s02e11: "Mudd Club doorman · artist and author of The Mudd Club",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
