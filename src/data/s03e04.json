@@ -1767,6 +1767,17 @@
  {
   "rank": 155,
   "mentions": 1,
+  "category": "Book",
+  "name": "Man Parrish Stories – Volume One (Man Parrish)",
+  "heard": "you got to write a book",
+  "time": "01:09:00",
+  "context": "\"You got to write a book\" - Man tried several times, then told his stories to a camera instead; they came out as a book in 2024 (Volume One: Incredible Stories From A Remarkable Life)",
+  "link": "https://www.google.com/search?q=%22Man+Parrish+Stories%22+Volume+One+book",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 156,
+  "mentions": 1,
   "category": "Location",
   "name": "Electric Lady Studios",
   "heard": "electric lady",
@@ -1776,7 +1787,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 156,
+  "rank": 157,
   "mentions": 1,
   "category": "Music",
   "name": "David Bowie – 'Young Americans'",
@@ -1787,7 +1798,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 157,
+  "rank": 158,
   "mentions": 1,
   "category": "Person",
   "name": "Luther Vandross",
@@ -1798,7 +1809,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 158,
+  "rank": 159,
   "mentions": 1,
   "category": "Organisation",
   "name": "FBI",
@@ -1809,7 +1820,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 159,
+  "rank": 160,
   "mentions": 1,
   "category": "Location",
   "name": "Florida",
@@ -1820,7 +1831,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 160,
+  "rank": 161,
   "mentions": 1,
   "category": "Person",
   "name": "RuPaul",
@@ -1831,7 +1842,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 161,
+  "rank": 162,
   "mentions": 1,
   "category": "Club",
   "name": "Pyramid Club",
@@ -1842,7 +1853,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 162,
+  "rank": 163,
   "mentions": 1,
   "category": "Person",
   "name": "Lady Bunny",
@@ -1853,7 +1864,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 163,
+  "rank": 164,
   "mentions": 0,
   "category": "Mood",
   "name": "Man's on-camera look (S03E04)",
@@ -1871,7 +1882,7 @@
   ]
  },
  {
-  "rank": 164,
+  "rank": 165,
   "mentions": 0,
   "category": "Mood",
   "name": "James's on-camera look (S03E04)",
@@ -1889,7 +1900,7 @@
   ]
  },
  {
-  "rank": 165,
+  "rank": 166,
   "mentions": 0,
   "category": "Mood",
   "name": "Fenton's on-camera look (S03E04)",
