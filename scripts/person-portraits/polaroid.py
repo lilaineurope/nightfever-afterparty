@@ -46,16 +46,37 @@ def background(name):
     return out * (1 - mk[..., None]) + np.array([22, 16, 18], np.float32) * mk[..., None]
 
 
+def touches_sides(ca, edge=0.10):
+    """True when the body reaches (within 10%) both side edges along the bottom of the photo."""
+    row = ca[-1] > 0; e = int(len(row) * edge)
+    return bool(row[:e].any() and row[-e:].any())
+
+
+def fill_place(rgb, a, zoom, head, fill=True):
+    """Lisa, 3 Nov 2026: shoulders must never just stop inside the picture. Grow the figure (up to 1.3x, so
+    the face never fills the polaroid) until the body reaches both side edges at the bottom of the photo.
+    If it still doesn't, the source picture is too narrow: it says so, and that person needs a wider picture."""
+    z = zoom
+    can, ca = pb.place(rgb, a, B, B, head, 0.5, 0.0, z, True)
+    while fill and not touches_sides(ca) and z < max(zoom, 1.3):
+        z = round(z + 0.04, 2)
+        can, ca = pb.place(rgb, a, B, B, head, 0.5, 0.0, z, True)
+    ok = touches_sides(ca)
+    print("  zoom used:", z, "| shoulders reach both edges:", ok, "" if ok or not fill else "-> NEEDS A WIDER PICTURE")
+    return can, ca
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("name"); ap.add_argument("portrait"); ap.add_argument("out"); ap.add_argument("framed")
     ap.add_argument("--labels", default=""); ap.add_argument("--code", default=""); ap.add_argument("--line", default="")
     ap.add_argument("--bg-name", default="", help="override the standard background (default: the locked one, STANDARD_BG)")
     ap.add_argument("--zoom", type=float, default=1.0); ap.add_argument("--head", type=float, default=0.07); ap.add_argument("--seed", type=int, default=5)
+    ap.add_argument("--no-fill", action="store_true", help="skip the shoulder rule (keep the zoom as given)")
     o = ap.parse_args()
     bg = background(o.bg_name or STANDARD_BG)
     rgb, a = pb.cutout(Image.open(o.portrait), False)
-    can, ca = pb.place(rgb, a, B, B, o.head, 0.5, 0.0, o.zoom, True)
+    can, ca = fill_place(rgb, a, o.zoom, o.head, not o.no_fill)
     out = pb.sticker(bg, can, ca, 24)
     labels = [l.strip() for l in o.labels.split("|") if l.strip()]
     out = pb.scraps(out, labels, np.random.default_rng(o.seed), [(0.025, 0.035), (0.99, 0.05), (0.02, 0.86), (0.99, 0.88)])
