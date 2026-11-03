@@ -31,6 +31,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s02e05: { quote: "I remember taking the D train over the Williamsburg Bridge, and the city would be all lit up like a Versace dress.", time: "00:03:51" }, // Connie Fleming
   s05e01: { quote: "I'm up for it. Always up. Always say yes to everything, gentlemen.", time: "00:29:10" }, // Nell Campbell
   s03e10: { quote: "For me, music magazines were my lifesaver my whole life. I would save my allowance to buy every new rock magazine.", time: "00:14:41" }, // Miss Guy
+  s01e08: { quote: "We didn't know that our stone that we threw into the lake would ripple out so far. It was a gift.", time: "00:42:20" }, // Luis "Xtravaganza" Camacho
   s02e11: { quote: "What also made it special was the fact that there was really nothing special about it.", time: "00:13:52" }, // Richard Boch
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };

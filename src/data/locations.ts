@@ -5,6 +5,12 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "LaGuardia High School", lat: 40.7737, lng: -73.9858, area: "Upper West Side" },
+  { name: "80 Varick Street", lat: 40.7233, lng: -74.0062, area: "Hudson Square" },
+  { name: "Liverpool", lat: 53.4084, lng: -2.9916, area: "England" },
+  { name: "Manchester", lat: 53.4808, lng: -2.2426, area: "England" },
+  { name: "France", lat: 46.2276, lng: 2.2137, area: "France" },
+  { name: "Dubai", lat: 25.2048, lng: 55.2708, area: "UAE" },
   { name: "Avenue B", lat: 40.7243, lng: -73.98, area: "East Village" },
   { name: "Bronx", lat: 40.8448, lng: -73.8648, area: "Bronx" },
   { name: "Jamaica", lat: 18.1096, lng: -77.2975, area: "Jamaica" },

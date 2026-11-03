@@ -149,4 +149,10 @@ export const COME_BACK: InterviewTip[] = [
     episodeId: "s02e11",
     time: "01:04:44",
   },
+  {
+    name: 'Luis "Xtravaganza" Camacho',
+    why: "James signs off saying they'll have to have Luis back, and Luis offers a post-90s wrap-up.",
+    episodeId: "s01e08",
+    time: "00:59:50",
+  },
 ];

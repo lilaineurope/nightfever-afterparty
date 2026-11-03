@@ -234,6 +234,10 @@ export const YOUTUBE: Record<string, string> = {
   "Motown": "nNx7i-H_qFU",
   "Young and Useless": "04ndCXS0xzU",
   "Planet Fred from Jupiter": "jf3iWc6krj8",
+  "Like a Virgin": "s__rX_WL100",
+  "Material Girl": "6p-lDYPR2P8",
+  "Mötley Crüe": "CmXWkMlKFkI",
+  "José & Luis – 'Queen's English'": "kv4nCDbdBV8",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */
