@@ -252,6 +252,9 @@ const SPOTIFY: Record<string, string> = {
   "Einstein on the Beach": "spotify:track:14nEQOt0lZdpQQCoYjpqgy",
   "Young and Useless": "spotify:track:3K3PczpYN11KE6cqQtqV2u",
   "Planet Fred from Jupiter": "spotify:track:3hejIAfwp43LpIdbmWeZ6d",
+  "Like a Virgin": "spotify:track:1ZPlNanZsJSPK5h9YZZFbZ",
+  "Material Girl": "spotify:track:7bkyXSi4GtVfD7itZRUR3e",
+  "Mötley Crüe": "spotify:artist:0cc6vw3VN8YlIcvr1v7tBL",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

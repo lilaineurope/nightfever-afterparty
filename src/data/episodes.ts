@@ -28,6 +28,7 @@ import connieRefs from "./s02e05.json";
 import missGuyRefs from "./s03e10.json";
 import nellRefs from "./s05e01.json";
 import bochRefs from "./s02e11.json";
+import luisRefs from "./s01e08.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -648,7 +649,26 @@ const s02e11: Episode = {
   top: topNames(bochRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11].sort((a, b) =>
+const s01e08: Episode = {
+  id: "s01e08",
+  season: 1,
+  episode: 8,
+  guest: "Luis \"Xtravaganza\" Camacho",
+  released: "2021-10-18",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:1/videos/night-fever-luis-camacho",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO2651060663.mp3",
+  runtime: "1:00:12",
+  afterpartyPublished: "2026-11-07",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLah-_tKqIyok",
+  blurb:
+    "Luis \"Xtravaganza\" Camacho, voguer and Madonna's Vogue dancer! Playing red light, green light, vogue on the Lincoln Center steps, walking his first ball in drag to get into the House of Xtravaganza, Mother Angie leading with her chestbone, the Sound Factory as home - and why Madonna doesn't owe him a thing.",
+  references: luisRefs.length,
+  mentions: luisRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(luisRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -673,7 +693,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -733,6 +753,8 @@ export function episodePath(
       return "/episodes/s05e01";
     case "s02e11":
       return "/episodes/s02e11";
+    case "s01e08":
+      return "/episodes/s01e08";
     default:
       return "/episodes/s06e01";
   }

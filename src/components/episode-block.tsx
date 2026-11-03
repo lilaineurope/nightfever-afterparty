@@ -36,6 +36,7 @@ import conniePortrait from "@/assets/polaroid-connie-fleming.jpg";
 import missGuyPortrait from "@/assets/polaroid-miss-guy.jpg";
 import nellPortrait from "@/assets/polaroid-nell-campbell.jpg";
 import bochPortrait from "@/assets/polaroid-richard-boch.jpg";
+import luisPortrait from "@/assets/polaroid-luis-camacho.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -68,6 +69,7 @@ export const episodePortraits: Record<string, string> = {
   s03e10: missGuyPortrait,
   s05e01: nellPortrait,
   s02e11: bochPortrait,
+  s01e08: luisPortrait,
 };
 
 

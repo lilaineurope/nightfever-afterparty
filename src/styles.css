@@ -700,4 +700,5 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 @media (max-width: 639px) {
   .ep-photo-head .ep-head-text, .ep-photo-head .ep-head-side { padding: 1.25rem .75rem; }
   .ep-photo-head .ep-head-text h1 { font-size: 2.6rem; }
+  .ep-photo-head .ep-head-text h1.ep-long-word { font-size: min(2.6rem, 7.4vw); }
 }

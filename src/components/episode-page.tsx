@@ -131,7 +131,8 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
             &larr; More Afterparties
           </Link>
           <p className="mt-6 text-sm uppercase tracking-[0.2em] text-pink">Season {thisEpisode.season} · Episode {thisEpisode.episode}</p>
-          <h1 className="mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">{title}</h1>
+          {/* A very long single word (e.g. "XTRAVAGANZA") gets ep-long-word, so it shrinks to fit the card on phones (styles.css). */}
+          <h1 className={`mt-2 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl ${Math.max(...title.split(/\s+/).map((w) => w.length)) > 10 ? "ep-long-word" : ""}`}>{title}</h1>
           {subtitle && <p className="mt-4 text-gold">{subtitle}</p>}
           <p className="mt-2 text-sm text-muted-foreground">
             {released ?? `Released ${formatDate(thisEpisode.released)} · ${thisEpisode.runtime}`}

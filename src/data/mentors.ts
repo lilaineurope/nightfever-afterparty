@@ -60,6 +60,8 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Steve Mass", mentee: "Anita Sarko", episode: "s02e11", time: "00:34:25", line: "Threw Anita into the Mudd Club DJ booth for half a night and hired her" },
   { mentor: "Anita Sarko", mentee: "Chi Chi Valenti & Johnny Dynell", episode: "s02e11", time: "00:37:22", line: "Gave Johnny DJ lessons at the Mudd Club, where he got his start" },
   { mentor: "Jim Fouratt", mentee: "Richard Boch", episode: "s02e11", time: "00:57:31", line: "Brought Richard on at the Peppermint Lounge after the Mudd Club" },
+  { mentor: "José Xtravaganza", mentee: 'Luis "Xtravaganza" Camacho', episode: "s01e08", time: "00:05:30", line: "Found the ballroom scene first and brought Luis along - then into the House of Xtravaganza, Luis says" },
+  { mentor: "Angie Xtravaganza", mentee: 'Luis "Xtravaganza" Camacho', episode: "s01e08", time: "00:10:06", line: "Mother of the house Luis joined; he says the kids followed her like ducklings" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

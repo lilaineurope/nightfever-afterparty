@@ -236,4 +236,8 @@ export const YEARS: Record<string, number> = {
   "Motown": 1959,
   "Young and Useless": 1982,
   "Planet Fred from Jupiter": 1981,
+  "Like a Virgin": 1984,
+  "Material Girl": 1985,
+  "Mötley Crüe": 1981,
+  "José & Luis – 'Queen's English'": 1993,
 };
