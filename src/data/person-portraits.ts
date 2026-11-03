@@ -71,6 +71,68 @@ import bernardZettePolaroid from "@/assets/people/bernard-zette-polaroid.webp";
 import brookeAstorPhoto from "@/assets/people/brooke-astor-photo.webp";
 import brookeAstorPolaroid from "@/assets/people/brooke-astor-polaroid.webp";
 
+// Night run, all remaining people (Lisa, 3 Nov 2026)
+import ladyBunnyPhoto from "@/assets/people/lady-bunny-photo.webp";
+import ladyBunnyPolaroid from "@/assets/people/lady-bunny-polaroid.webp";
+import julieJewelsPhoto from "@/assets/people/julie-jewels-photo.webp";
+import julieJewelsPolaroid from "@/assets/people/julie-jewels-polaroid.webp";
+import lahomaVanZandtPhoto from "@/assets/people/lahoma-van-zandt-photo.webp";
+import lahomaVanZandtPolaroid from "@/assets/people/lahoma-van-zandt-polaroid.webp";
+import haouiMontaugPhoto from "@/assets/people/haoui-montaug-photo.webp";
+import haouiMontaugPolaroid from "@/assets/people/haoui-montaug-polaroid.webp";
+import joseXtravaganzaPhoto from "@/assets/people/jose-xtravaganza-photo.webp";
+import joseXtravaganzaPolaroid from "@/assets/people/jose-xtravaganza-polaroid.webp";
+import tinaLHotskyPhoto from "@/assets/people/tina-l-hotsky-photo.webp";
+import tinaLHotskyPolaroid from "@/assets/people/tina-l-hotsky-polaroid.webp";
+import avisPendavisPhoto from "@/assets/people/avis-pendavis-photo.webp";
+import avisPendavisPolaroid from "@/assets/people/avis-pendavis-polaroid.webp";
+import patrickMcmullanPhoto from "@/assets/people/patrick-mcmullan-photo.webp";
+import patrickMcmullanPolaroid from "@/assets/people/patrick-mcmullan-polaroid.webp";
+import keniValentiPhoto from "@/assets/people/keni-valenti-photo.webp";
+import keniValentiPolaroid from "@/assets/people/keni-valenti-polaroid.webp";
+import angieXtravaganzaPhoto from "@/assets/people/angie-xtravaganza-photo.webp";
+import angieXtravaganzaPolaroid from "@/assets/people/angie-xtravaganza-polaroid.webp";
+import sherryVinePhoto from "@/assets/people/sherry-vine-photo.webp";
+import sherryVinePolaroid from "@/assets/people/sherry-vine-polaroid.webp";
+import arthurWeinsteinPhoto from "@/assets/people/arthur-weinstein-photo.webp";
+import arthurWeinsteinPolaroid from "@/assets/people/arthur-weinstein-polaroid.webp";
+import mrPearlPhoto from "@/assets/people/mr-pearl-photo.webp";
+import mrPearlPolaroid from "@/assets/people/mr-pearl-polaroid.webp";
+import djKeokiPhoto from "@/assets/people/dj-keoki-photo.webp";
+import djKeokiPolaroid from "@/assets/people/dj-keoki-polaroid.webp";
+import kennyScharfPhoto from "@/assets/people/kenny-scharf-photo.webp";
+import kennyScharfPolaroid from "@/assets/people/kenny-scharf-polaroid.webp";
+import desiMonsterPhoto from "@/assets/people/desi-monster-photo.webp";
+import desiMonsterPolaroid from "@/assets/people/desi-monster-polaroid.webp";
+import sylviaMilesPhoto from "@/assets/people/sylvia-miles-photo.webp";
+import sylviaMilesPolaroid from "@/assets/people/sylvia-miles-polaroid.webp";
+import internationalChrysisPhoto from "@/assets/people/international-chrysis-photo.webp";
+import internationalChrysisPolaroid from "@/assets/people/international-chrysis-polaroid.webp";
+import jennieLivingstonPhoto from "@/assets/people/jennie-livingston-photo.webp";
+import jennieLivingstonPolaroid from "@/assets/people/jennie-livingston-polaroid.webp";
+import davidGlamamorePhoto from "@/assets/people/david-glamamore-photo.webp";
+import davidGlamamorePolaroid from "@/assets/people/david-glamamore-polaroid.webp";
+import benjaminLiuPhoto from "@/assets/people/benjamin-liu-photo.webp";
+import benjaminLiuPolaroid from "@/assets/people/benjamin-liu-polaroid.webp";
+import cesarValentinoPhoto from "@/assets/people/cesar-valentino-photo.webp";
+import cesarValentinoPolaroid from "@/assets/people/cesar-valentino-polaroid.webp";
+import stanleyStrychackiPhoto from "@/assets/people/stanley-strychacki-photo.webp";
+import stanleyStrychackiPolaroid from "@/assets/people/stanley-strychacki-polaroid.webp";
+import rossBlecknerPhoto from "@/assets/people/ross-bleckner-photo.webp";
+import rossBlecknerPolaroid from "@/assets/people/ross-bleckner-polaroid.webp";
+import jimSharmanPhoto from "@/assets/people/jim-sharman-photo.webp";
+import jimSharmanPolaroid from "@/assets/people/jim-sharman-polaroid.webp";
+import graceJonesPhoto from "@/assets/people/grace-jones-photo.webp";
+import graceJonesPolaroid from "@/assets/people/grace-jones-polaroid.webp";
+import royCohnPhoto from "@/assets/people/roy-cohn-photo.webp";
+import royCohnPolaroid from "@/assets/people/roy-cohn-polaroid.webp";
+import blaineTrumpPhoto from "@/assets/people/blaine-trump-photo.webp";
+import blaineTrumpPolaroid from "@/assets/people/blaine-trump-polaroid.webp";
+import jayneWrightsmanPhoto from "@/assets/people/jayne-wrightsman-photo.webp";
+import jayneWrightsmanPolaroid from "@/assets/people/jayne-wrightsman-polaroid.webp";
+import rudyGiulianiPhoto from "@/assets/people/rudy-giuliani-photo.webp";
+import rudyGiulianiPolaroid from "@/assets/people/rudy-giuliani-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   polaroid: string;
@@ -118,4 +180,35 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "bernard-zette": { photo: bernardZettePhoto, polaroid: bernardZettePolaroid, focus: "18%", credit: "Illustration made with Gemini, not a photo" },
   "brooke-astor": { photo: brookeAstorPhoto, polaroid: brookeAstorPolaroid, focus: "36%", credit: "Illustration made with Gemini, not a photo" },
   "thierry-mugler": { photo: thierryMuglerPhoto, polaroid: thierryMuglerPolaroid, focus: "30%", credit: "Linocut-style print after a photo by StagiaireMGIMO, 2014 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too)" },
+  // Night run, all remaining people (Lisa, 3 Nov 2026)
+  "lady-bunny": { photo: ladyBunnyPhoto, polaroid: ladyBunnyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "julie-jewels": { photo: julieJewelsPhoto, polaroid: julieJewelsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "lahoma-van-zandt": { photo: lahomaVanZandtPhoto, polaroid: lahomaVanZandtPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "haoui-montaug": { photo: haouiMontaugPhoto, polaroid: haouiMontaugPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jose-xtravaganza": { photo: joseXtravaganzaPhoto, polaroid: joseXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "tina-l-hotsky": { photo: tinaLHotskyPhoto, polaroid: tinaLHotskyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "avis-pendavis": { photo: avisPendavisPhoto, polaroid: avisPendavisPolaroid, focus: "64%", credit: "Illustration made with Gemini, not a photo" },
+  "patrick-mcmullan": { photo: patrickMcmullanPhoto, polaroid: patrickMcmullanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "keni-valenti": { photo: keniValentiPhoto, polaroid: keniValentiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "angie-xtravaganza": { photo: angieXtravaganzaPhoto, polaroid: angieXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "sherry-vine": { photo: sherryVinePhoto, polaroid: sherryVinePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "arthur-weinstein": { photo: arthurWeinsteinPhoto, polaroid: arthurWeinsteinPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "mr-pearl": { photo: mrPearlPhoto, polaroid: mrPearlPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "dj-keoki": { photo: djKeokiPhoto, polaroid: djKeokiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "kenny-scharf": { photo: kennyScharfPhoto, polaroid: kennyScharfPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "desi-monster": { photo: desiMonsterPhoto, polaroid: desiMonsterPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "sylvia-miles": { photo: sylviaMilesPhoto, polaroid: sylviaMilesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "international-chrysis": { photo: internationalChrysisPhoto, polaroid: internationalChrysisPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jennie-livingston": { photo: jennieLivingstonPhoto, polaroid: jennieLivingstonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "david-glamamore": { photo: davidGlamamorePhoto, polaroid: davidGlamamorePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "benjamin-liu": { photo: benjaminLiuPhoto, polaroid: benjaminLiuPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "cesar-valentino": { photo: cesarValentinoPhoto, polaroid: cesarValentinoPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "stanley-strychacki": { photo: stanleyStrychackiPhoto, polaroid: stanleyStrychackiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "ross-bleckner": { photo: rossBlecknerPhoto, polaroid: rossBlecknerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jim-sharman": { photo: jimSharmanPhoto, polaroid: jimSharmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "grace-jones": { photo: graceJonesPhoto, polaroid: graceJonesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "roy-cohn": { photo: royCohnPhoto, polaroid: royCohnPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "blaine-trump": { photo: blaineTrumpPhoto, polaroid: blaineTrumpPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jayne-wrightsman": { photo: jayneWrightsmanPhoto, polaroid: jayneWrightsmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "rudy-giuliani": { photo: rudyGiulianiPhoto, polaroid: rudyGiulianiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };
