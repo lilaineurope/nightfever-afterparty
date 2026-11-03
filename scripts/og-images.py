@@ -41,6 +41,7 @@ EP={"s01e01":("episode-dianne-brill.jpg","Dianne Brill",1,1),"s01e02":("episode-
 "s05e01":("polaroid-nell-campbell.jpg","Nell Campbell",5,1),
 "s02e11":("polaroid-richard-boch.jpg","Richard Boch",2,11),
 "s01e08":("polaroid-luis-camacho.jpg","Luis \"Xtravaganza\" Camacho",1,8),
+"s03e04":("polaroid-man-parrish.jpg","Man Parrish",3,4),
 "s04e04":("polaroid-zaldy.jpg","Zaldy",4,4),
 "s02e01":("polaroid-michelle-visage.jpg","Michelle Visage",2,1),
 "s01e06":("polaroid-waltpaper.jpg","Waltpaper",1,6),

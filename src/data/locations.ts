@@ -5,6 +5,19 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "The Cock", lat: 40.7297, lng: -73.9809, area: "East Village" },
+  { name: "Vanguard Studios", lat: 40.7445, lng: -73.9968, area: "Chelsea" },
+  { name: "Gotham Comedy Club", lat: 40.7445, lng: -73.9968, area: "Chelsea" },
+  { name: "The Toilet", lat: 40.7408, lng: -74.0058, area: "Meatpacking District" },
+  { name: "Lee's Mardi Gras", lat: 40.7408, lng: -74.0056, area: "Meatpacking District" },
+  { name: "The Lure", lat: 40.7404, lng: -74.0070, area: "Meatpacking District" },
+  { name: "Club 82", lat: 40.7262, lng: -73.9895, area: "East Village" },
+  { name: "Electric Lady Studios", lat: 40.7339, lng: -73.9988, area: "Greenwich Village" },
+  { name: "West Side Highway", lat: 40.7390, lng: -74.0103, area: "West Village" },
+  { name: "Boston", lat: 42.3601, lng: -71.0589, area: "Massachusetts" },
+  { name: "Muscle Shoals", lat: 34.7448, lng: -87.6675, area: "Alabama" },
+  { name: "Walt Disney World", lat: 28.3852, lng: -81.5639, area: "Florida" },
+  { name: "Earls Court", lat: 51.4914, lng: -0.1934, area: "London" },
   { name: "LaGuardia High School", lat: 40.7737, lng: -73.9858, area: "Upper West Side" },
   { name: "80 Varick Street", lat: 40.7233, lng: -74.0062, area: "Hudson Square" },
   { name: "Liverpool", lat: 53.4084, lng: -2.9916, area: "England" },

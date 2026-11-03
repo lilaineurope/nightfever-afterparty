@@ -92,6 +92,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s05e01: "Rocky Horror, Nell's & Kensington Market",
   s02e11: "the Mudd Club, Steve Mass & Basquiat",
   s01e08: "voguing, Madonna's Vogue & the House of Xtravaganza",
+  s03e04: "Hip Hop, Be Bop, Studio 54 & the Cock",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */
