@@ -132,6 +132,33 @@ import jayneWrightsmanPhoto from "@/assets/people/jayne-wrightsman-photo.webp";
 import jayneWrightsmanPolaroid from "@/assets/people/jayne-wrightsman-polaroid.webp";
 import rudyGiulianiPhoto from "@/assets/people/rudy-giuliani-photo.webp";
 import rudyGiulianiPolaroid from "@/assets/people/rudy-giuliani-polaroid.webp";
+// Free photos picked by Lisa for people Gemini refused (3 Nov 2026)
+import corneliaGuestPhoto from "@/assets/people/cornelia-guest-photo.webp";
+import corneliaGuestPolaroid from "@/assets/people/cornelia-guest-polaroid.webp";
+import iggyPopPhoto from "@/assets/people/iggy-pop-photo.webp";
+import iggyPopPolaroid from "@/assets/people/iggy-pop-polaroid.webp";
+import imeldaMarcosPhoto from "@/assets/people/imelda-marcos-photo.webp";
+import imeldaMarcosPolaroid from "@/assets/people/imelda-marcos-polaroid.webp";
+import joanRiversPhoto from "@/assets/people/joan-rivers-photo.webp";
+import joanRiversPolaroid from "@/assets/people/joan-rivers-polaroid.webp";
+import manRayPhoto from "@/assets/people/man-ray-photo.webp";
+import manRayPolaroid from "@/assets/people/man-ray-polaroid.webp";
+import michaelHutchencePhoto from "@/assets/people/michael-hutchence-photo.webp";
+import michaelHutchencePolaroid from "@/assets/people/michael-hutchence-polaroid.webp";
+import michaelJacksonPhoto from "@/assets/people/michael-jackson-photo.webp";
+import michaelJacksonPolaroid from "@/assets/people/michael-jackson-polaroid.webp";
+import naomiCampbellPhoto from "@/assets/people/naomi-campbell-photo.webp";
+import naomiCampbellPolaroid from "@/assets/people/naomi-campbell-polaroid.webp";
+import oprahWinfreyPhoto from "@/assets/people/oprah-winfrey-photo.webp";
+import oprahWinfreyPolaroid from "@/assets/people/oprah-winfrey-polaroid.webp";
+import parisHiltonPhoto from "@/assets/people/paris-hilton-photo.webp";
+import parisHiltonPolaroid from "@/assets/people/paris-hilton-polaroid.webp";
+import stevieNicksPhoto from "@/assets/people/stevie-nicks-photo.webp";
+import stevieNicksPolaroid from "@/assets/people/stevie-nicks-polaroid.webp";
+import tinaTurnerPhoto from "@/assets/people/tina-turner-photo.webp";
+import tinaTurnerPolaroid from "@/assets/people/tina-turner-polaroid.webp";
+import trumanCapotePhoto from "@/assets/people/truman-capote-photo.webp";
+import trumanCapotePolaroid from "@/assets/people/truman-capote-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -203,6 +230,20 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "david-glamamore": { photo: davidGlamamorePhoto, polaroid: davidGlamamorePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "benjamin-liu": { photo: benjaminLiuPhoto, polaroid: benjaminLiuPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "cesar-valentino": { photo: cesarValentinoPhoto, polaroid: cesarValentinoPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Free photos picked by Lisa for people Gemini refused (3 Nov 2026)
+  "cornelia-guest": { photo: corneliaGuestPhoto, polaroid: corneliaGuestPolaroid, focus: "28%", credit: "Portrait after a photo by Rubenstein, 2009 (CC BY 2.0), in our photocopy style" },
+  "iggy-pop": { photo: iggyPopPhoto, polaroid: iggyPopPolaroid, focus: "28%", credit: "Portrait after a photo by Aaron Rubin, 2017 (CC BY-SA 4.0), in our photocopy style" },
+  "imelda-marcos": { photo: imeldaMarcosPhoto, polaroid: imeldaMarcosPolaroid, focus: "28%", credit: "Portrait after a photo by Marion S. Trikosko, 1966 (public domain), in our photocopy style" },
+  "joan-rivers": { photo: joanRiversPhoto, polaroid: joanRiversPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2010 (CC BY 3.0), in our photocopy style" },
+  "man-ray": { photo: manRayPhoto, polaroid: manRayPolaroid, focus: "28%", credit: "Portrait after a photo by Carl Van Vechten, 1934 (public domain), in our photocopy style" },
+  "michael-hutchence": { photo: michaelHutchencePhoto, polaroid: michaelHutchencePolaroid, focus: "28%", credit: "Portrait after a photo by David.moreno72, 1994 (CC BY-SA 4.0), in our photocopy style" },
+  "michael-jackson": { photo: michaelJacksonPhoto, polaroid: michaelJacksonPolaroid, focus: "28%", credit: "Portrait after a photo by Epic Records, 1984 (public domain), in our photocopy style" },
+  "naomi-campbell": { photo: naomiCampbellPhoto, polaroid: naomiCampbellPolaroid, focus: "28%", credit: "Portrait after a photo by Jgro888 (CC BY-SA 2.5), in our photocopy style" },
+  "oprah-winfrey": { photo: oprahWinfreyPhoto, polaroid: oprahWinfreyPolaroid, focus: "28%", credit: "Portrait after a photo by John Mathew Smith/celebrity-photos.com, 1997 (CC BY-SA 2.0), in our photocopy style" },
+  "paris-hilton": { photo: parisHiltonPhoto, polaroid: parisHiltonPolaroid, focus: "28%", credit: "Portrait after a photo by Gilzetbase, 2019 (CC BY-SA 4.0), in our photocopy style" },
+  "stevie-nicks": { photo: stevieNicksPhoto, polaroid: stevieNicksPolaroid, focus: "28%", credit: "Portrait after a photo by Larry Richman, 2013 (CC BY-SA 2.0), in our photocopy style" },
+  "tina-turner": { photo: tinaTurnerPhoto, polaroid: tinaTurnerPolaroid, focus: "28%", credit: "Portrait after a photo by Iris Schneider/LA Times, 1985 (CC BY 4.0), in our photocopy style" },
+  "truman-capote": { photo: trumanCapotePhoto, polaroid: trumanCapotePolaroid, focus: "28%", credit: "Portrait after a photo by Eric Koch for Anefo, 1968 (CC0), in our photocopy style" },
   "stanley-strychacki": { photo: stanleyStrychackiPhoto, polaroid: stanleyStrychackiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "ross-bleckner": { photo: rossBlecknerPhoto, polaroid: rossBlecknerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "jim-sharman": { photo: jimSharmanPhoto, polaroid: jimSharmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
