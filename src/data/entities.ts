@@ -108,11 +108,19 @@ const clean = (n: string) =>
     .trim()
     .toLowerCase();
 
-export const slugify = (n: string) =>
-  clean(n)
-    .normalize("NFKD")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+// Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
+const slugCache = new Map<string, string>();
+export const slugify = (n: string) => {
+  let s = slugCache.get(n);
+  if (s === undefined) {
+    s = clean(n)
+      .normalize("NFKD")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+    slugCache.set(n, s);
+  }
+  return s;
+};
 
 const byKey = new Map<string, Entity>();
 
@@ -172,23 +180,36 @@ for (const ev of sceneEvents) {
 for (const g of guests) for (const s of g.scenes) if (known(s)) add(s, CARD_CATEGORY[slugify(s)] ?? "Location");
 
 // Wire events and guest stories to every entity.
+// Each event's and guest's slugs and lower-case text are worked out once here, not once per entity:
+// doing it inside the entity loop took seconds and made the server time out while starting up.
+const eventIndex = sceneEvents.map((ev) => ({
+  ev,
+  slugs: new Set([...ev.figures.map(slugify), ...placesOf(ev.place).map(slugify)]),
+  text: (ev.title + " " + ev.text).toLowerCase(),
+}));
+const guestIndex = guests.map((g) => ({
+  g,
+  scenes: new Set(g.scenes.map(slugify)),
+  text: [g.now, ...g.timeline.map((t) => t.text)].join(" ").toLowerCase(),
+}));
 for (const e of byKey.values()) {
   const n = clean(e.name);
   const loose = n.length >= 5 ? n : null;
-  e.events = sceneEvents.filter(
-    (ev) =>
-      (e.guest && ev.people.includes(e.guest.slug)) ||
-      ev.figures.some((f) => slugify(f) === slugify(e.name)) ||
-      placesOf(ev.place).some((pl) => slugify(pl) === slugify(e.name)) ||
-      (!!loose && (ev.title + " " + ev.text).toLowerCase().includes(loose)),
-  );
-  e.inGuestStories = guests.filter(
-    (g) =>
-      g !== e.guest &&
-      (g.scenes.some((s) => slugify(s) === slugify(e.name)) ||
-        (!!loose &&
-          [g.now, ...g.timeline.map((t) => t.text)].join(" ").toLowerCase().includes(loose))),
-  );
+  const self = slugify(e.name);
+  e.events = eventIndex
+    .filter(
+      ({ ev, slugs, text }) =>
+        (e.guest && ev.people.includes(e.guest.slug)) ||
+        slugs.has(self) ||
+        (!!loose && text.includes(loose)),
+    )
+    .map((x) => x.ev);
+  e.inGuestStories = guestIndex
+    .filter(
+      ({ g, scenes, text }) =>
+        g !== e.guest && (scenes.has(self) || (!!loose && text.includes(loose))),
+    )
+    .map((x) => x.g);
 }
 
 export const entities: Entity[] = [...byKey.values()].sort((a, b) =>
