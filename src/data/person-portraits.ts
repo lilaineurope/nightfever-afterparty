@@ -190,6 +190,23 @@ import stevenMeiselPhoto from "@/assets/people/steven-meisel-photo.webp";
 import stevenMeiselPolaroid from "@/assets/people/steven-meisel-polaroid.webp";
 import traceyAfricaPhoto from "@/assets/people/tracey-africa-photo.webp";
 import traceyAfricaPolaroid from "@/assets/people/tracey-africa-polaroid.webp";
+// Daily run, batch 1: free photos (Lisa, 4 Nov 2026)
+import davidLettermanPhoto from "@/assets/people/david-letterman-photo.webp";
+import davidLettermanPolaroid from "@/assets/people/david-letterman-polaroid.webp";
+import merylStreepPhoto from "@/assets/people/meryl-streep-photo.webp";
+import merylStreepPolaroid from "@/assets/people/meryl-streep-polaroid.webp";
+import rosieODonnellPhoto from "@/assets/people/rosie-o-donnell-photo.webp";
+import rosieODonnellPolaroid from "@/assets/people/rosie-o-donnell-polaroid.webp";
+import anthonyPerkinsPhoto from "@/assets/people/anthony-perkins-photo.webp";
+import anthonyPerkinsPolaroid from "@/assets/people/anthony-perkins-polaroid.webp";
+import billieHolidayPhoto from "@/assets/people/billie-holiday-photo.webp";
+import billieHolidayPolaroid from "@/assets/people/billie-holiday-polaroid.webp";
+import leonardoDicaprioPhoto from "@/assets/people/leonardo-dicaprio-photo.webp";
+import leonardoDicaprioPolaroid from "@/assets/people/leonardo-dicaprio-polaroid.webp";
+import liberacePhoto from "@/assets/people/liberace-photo.webp";
+import liberacePolaroid from "@/assets/people/liberace-polaroid.webp";
+import sarahJessicaParkerPhoto from "@/assets/people/sarah-jessica-parker-photo.webp";
+import sarahJessicaParkerPolaroid from "@/assets/people/sarah-jessica-parker-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -299,4 +316,13 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "rebecca-weinberg": { photo: rebeccaWeinbergPhoto, polaroid: rebeccaWeinbergPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "steven-meisel": { photo: stevenMeiselPhoto, polaroid: stevenMeiselPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "tracey-africa": { photo: traceyAfricaPhoto, polaroid: traceyAfricaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Daily run, batch 1: free photos (Lisa, 4 Nov 2026)
+  "david-letterman": { photo: davidLettermanPhoto, polaroid: davidLettermanPolaroid, focus: "28%", credit: "Portrait after a US Navy photo for the Chairman of the Joint Chiefs of Staff, 2011 (CC BY 2.0), in our photocopy style" },
+  "meryl-streep": { photo: merylStreepPhoto, polaroid: merylStreepPolaroid, focus: "28%", credit: "Portrait after a photo by Neon Tommy, 2014 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "rosie-o-donnell": { photo: rosieODonnellPhoto, polaroid: rosieODonnellPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2008 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "anthony-perkins": { photo: anthonyPerkinsPhoto, polaroid: anthonyPerkinsPolaroid, focus: "28%", credit: "Portrait after a Paramount Pictures publicity photo, 1960 (public domain), in our photocopy style" },
+  "billie-holiday": { photo: billieHolidayPhoto, polaroid: billieHolidayPolaroid, focus: "28%", credit: "Portrait after a photo by William P. Gottlieb, 1947 (public domain), in our photocopy style" },
+  "leonardo-dicaprio": { photo: leonardoDicaprioPhoto, polaroid: leonardoDicaprioPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2007 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "liberace": { photo: liberacePhoto, polaroid: liberacePolaroid, focus: "28%", credit: "Portrait after a photo by Allan Warren, 1968 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "sarah-jessica-parker": { photo: sarahJessicaParkerPhoto, polaroid: sarahJessicaParkerPolaroid, focus: "28%", credit: "Portrait after a photo by Alan Light, 1999 (CC BY 2.0), in our photocopy style" },
 };
