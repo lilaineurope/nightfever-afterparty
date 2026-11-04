@@ -66,7 +66,7 @@ const GROUPS: Group[] = [
     title: "Visitors and search",
     blurb: "Counting visits without tracking you, and helping people find the site.",
     tools: [
-      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and alerts about new \"Who to interview next\" suggestions and guestbook notes to my inbox." },
+      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and alerts about new \"Who to interview next\" suggestions, \"Still to be made\" book and film ideas and guestbook notes to my inbox." },
       { name: "Forward Email", href: "https://forwardemail.net", what: "Passes on emails sent to hello@nightfever-afterparty.com to my own inbox, without keeping them." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Plausible", href: "https://plausible.io", what: "EU-hosted, cookie-free analytics: how long pages are read, where visits start and end, and which outside links are clicked - no personal data." },

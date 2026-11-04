@@ -10,6 +10,8 @@
  *  4. INTERVIEW TIPS  every line where someone says who the show should have on (a new face) or have back (a second
  *               round), plus what src/data/interview-next.ts already holds for this episode - read each hit in context
  *               and add the real ones (Lisa, 28 Oct 2026: always check, every episode)
+ *  6. STILL TO BE MADE  every line where someone says a book should be written or a film/documentary made - read
+ *               each hit in context and add the real ones to src/data/still-to-make.ts (Lisa, 4 Nov 2026: every episode)
  * The transcript stays on Lisa's computer and is never committed.
  */
 import { MENTOR_LINKS } from "../src/data/mentors";
@@ -17,6 +19,7 @@ import { cardPath } from "../src/lib/card-link";
 import { readFileSync } from "node:fs";
 import { entities, entityFor } from "../src/data/entities";
 import { COME_BACK, NEW_FACES } from "../src/data/interview-next";
+import { BOOKS_TO_WRITE, FILMS_TO_MAKE } from "../src/data/still-to-make";
 
 const [id, transcriptPath] = process.argv.slice(2);
 if (!id || !transcriptPath) {
@@ -103,3 +106,13 @@ for (const l of mlines) console.log("   " + l.trim().slice(0, 220));
 for (const r of rowHits) console.log(`   row: ${r.name} (${r.time}) - ${(r.context ?? "").slice(0, 160)}`);
 const haveM = MENTOR_LINKS.filter((m) => m.episode === id);
 console.log(`   already in mentors.ts for ${id}: ${haveM.length ? haveM.map((m) => `${m.mentor} -> ${m.mentee}`).join(", ") : "nothing yet"}\n`);
+
+// 6. Still to be made (Lisa, 4 Nov 2026): books that need to be written, films and documentaries that have to be made -
+// feeds the Library's "Still to be made" box (src/data/still-to-make.ts).
+const MAKE = /\b(write (a|the|your|his|her|their) (book|memoir|autobiography)|(writing|working on|planning) (a|the|my|his|her|their) (book|memoir|memoirs|autobiography)|the autobiography|memoirs? (called|about)|(need|needs|should|somebody|someone)\b[^.]{0,60}\b(book|documentary|doc|film|movie|series|biopic)|(documentary|film|movie|biopic|series) (about|on) (him|her|them|it|that|this|the)|(trying to get|get) (a|something|the) (film|movie|documentary)[^.]{0,30}(made|off the ground)|never (made|finished|published|came out)|(book|documentary|film|movie)[^.]{0,40}needs? to (happen|be (made|written))|in the works|screenplay|optioned|signed (with|a deal)[^.]{0,40}book|audiobook)\b/i;
+const slines = readFileSync(transcriptPath, "utf8").split("\n").filter((l) => /^\s*\[\d/.test(l) && MAKE.test(l));
+console.log("6. STILL TO BE MADE - lines to read in context (books to be written, films to be made -> src/data/still-to-make.ts):");
+if (!slines.length) console.log("   none found");
+for (const l of slines) console.log("   " + l.trim().slice(0, 220));
+const haveS = [...BOOKS_TO_WRITE, ...FILMS_TO_MAKE].filter((t) => t.episodeId === id);
+console.log(`   already in still-to-make.ts for ${id}: ${haveS.length ? haveS.map((t) => `${t.title} (${t.time ?? "no time"})`).join(", ") : "nothing yet"}\n`);
