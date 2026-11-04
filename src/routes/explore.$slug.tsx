@@ -57,7 +57,7 @@ export const Route = createFileRoute("/explore/$slug")({
       thing["deathDate"] = mem.died;
       if (mem.aka) thing["alternateName"] = mem.aka;
       thing["description"] = mem.story;
-      if (mem.wikidata && !thing["sameAs"]) thing["sameAs"] = mem.wikidata;
+      if (mem.wikidata) thing["sameAs"] = thing["sameAs"] ? [thing["sameAs"] as string, mem.wikidata] : mem.wikidata;
     }
     // Guests: a fuller Person (what they're known for, and the Night Fever episode they're interviewed in) - Lisa, 27 Oct 2026.
     if (d.guest) {
