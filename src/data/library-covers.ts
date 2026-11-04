@@ -28,6 +28,7 @@ const COVERS: Record<string, Cover> = {
   "Who's Who in America": { kind: "book", file: "book-who-s-who-in-america.webp", credit: "Cover via Open Library" },
   "Andy Warhol's Exposures": { kind: "book", file: "book-andy-warhol-s-exposures.webp", credit: "Cover via Open Library" },
   "Diva Rules": { kind: "book", file: "book-diva-rules.webp", credit: "Cover via Open Library" },
+  "Man Parrish Stories – Volume One (Man Parrish)": { kind: "book", file: "book-man-parrish-stories-volume-one.webp", credit: "Cover via the Amazon listing (Man Parrish, 2024)" },
   "Edie: An American Biography": { kind: "book", file: "book-edie-an-american-biography.webp", credit: "Cover via Open Library" },
   "Fiorucci, the Book (Eve Babitz)": { kind: "book", file: "book-fiorucci-the-book-eve-babitz.webp", credit: "Cover via Open Library" },
   "Fork on the Left, Knife in the Back": { kind: "book", file: "book-fork-on-the-left-knife-in-the-back.webp", credit: "Cover via Open Library" },
