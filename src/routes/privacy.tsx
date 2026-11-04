@@ -11,7 +11,7 @@ import { TEXT_LINK } from "@/lib/styles";
 export const Route = createFileRoute("/privacy")({
   staticData: { sitemap: true },
   component: PrivacyPage,
-  head: () => pageHead({ path: "/privacy", title: "Privacy Policy | Night Fever fan page", description: "How this fan-made Night Fever podcast index handles your data: no advertising trackers, cookie-free visit counting, what the host logs, and how to exercise your GDPR rights.", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/privacy", title: "Privacy Policy | Night Fever AFTERPARTY", description: "How this fan-made Night Fever index handles your data: no ad trackers, cookie-free visit counting, what the host logs and how to use your GDPR rights.", image: "/og/home.jpg" }),
 });
 
 const atAGlance = [

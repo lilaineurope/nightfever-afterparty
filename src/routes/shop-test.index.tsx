@@ -15,7 +15,7 @@ export const Route = createFileRoute("/shop-test/")({
   head: () =>
     pageHead({
       path: "/shop-test",
-      title: "Shop test | Night Fever fan page",
+      title: "Shop test | Night Fever AFTERPARTY",
       description: "Test page for the checkout - nothing is for sale.",
       noindex: true,
     }),

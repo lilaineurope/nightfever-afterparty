@@ -20,7 +20,7 @@ export const Route = createFileRoute("/guestbook/")({
   head: () =>
     pageHead({
       path: "/guestbook",
-      title: "Guestbook | Night Fever fan page",
+      title: "Guestbook | Night Fever AFTERPARTY",
       description: "Sign the Night Fever Afterparty guestbook! Leave a note about your favourite episode, a club you loved or a night you'll never forget.",
       image: "/og/guestbook.jpg",
     }),

@@ -2,7 +2,7 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
 import { Timestamp } from "@/components/episode-player";
-import { episodePortraits } from "@/components/episode-block";
+import { polaroidThumb } from "@/components/episode-block";
 import { episodes, episodePath, episodeCode } from "@/data/episodes";
 import { entityFor } from "@/data/entities";
 import { useMemo } from "react";
@@ -15,8 +15,8 @@ export const Route = createFileRoute("/games")({
   head: () =>
     pageHead({
       path: "/games",
-      title: "Games – the Night Fever Afterparty game ideas | Night Fever fan page",
-      description: "Ideas for turning the Night Fever fan page into a game: The Door, Follow the Names, James's Games, Six Degrees, Club Crawl, Dress for the Door and Name That Night.",
+      title: "Games – the Night Fever Afterparty game ideas | Night Fever AFTERPARTY",
+      description: "Ideas for turning the Night Fever fan page into a game: The Door, Follow the Names, James's Games, Six Degrees, Club Crawl and more.",
       image: "/og/home.jpg",
       noindex: true,
     }),
@@ -179,8 +179,8 @@ function LisasTrail() {
           {trail.map((s, i) => (
             <li key={s.id} className="flex items-start gap-3 border-t border-border pt-3 first:border-t-0 first:pt-0">
               <span className="w-6 shrink-0 pt-1 text-right text-sm font-semibold text-gold">{i + 1}</span>
-              {episodePortraits[s.id] ? (
-                <img src={episodePortraits[s.id]} alt="" loading="lazy" className="h-12 w-12 shrink-0 rounded-sm object-cover" />
+              {polaroidThumb(s.id, 240) ? (
+                <img src={polaroidThumb(s.id, 240)} alt="" loading="lazy" className="h-12 w-12 shrink-0 rounded-sm object-cover" />
               ) : (
                 <span className="h-12 w-12 shrink-0 rounded-sm bg-muted" />
               )}

@@ -15,7 +15,7 @@ const BAR_KAJA = "https://barkaja.org/";
 export const Route = createFileRoute("/about")({
   staticData: { sitemap: true },
   component: AboutPage,
-  head: () => pageHead({ path: "/about", title: "About | Night Fever fan page", description: "Night Fever is my happy place - I started writing down every name, place and story the guests drop, and turned it into this fan page with Lovable and Claude.", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/about", title: "About | Night Fever AFTERPARTY", description: "Night Fever is my happy place - I started writing down every name, place and story the guests drop, and turned it into this fan page with Lovable and Claude.", image: "/og/home.jpg" }),
 });
 
 function AboutPage() {

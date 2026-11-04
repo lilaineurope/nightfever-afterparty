@@ -14,7 +14,7 @@ export const Route = createFileRoute("/guestbook/admin")({
   staticData: { sitemap: false },
   component: AdminPage,
   head: () =>
-    pageHead({ path: "/guestbook/admin", title: "Guestbook moderation | Night Fever fan page", description: "Moderation for the Night Fever fan page guestbook.", noindex: true }),
+    pageHead({ path: "/guestbook/admin", title: "Guestbook moderation | Night Fever AFTERPARTY", description: "Moderation for the Night Fever fan page guestbook.", noindex: true }),
 });
 
 const STORE = "nf-guestbook-key";

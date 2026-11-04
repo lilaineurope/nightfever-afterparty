@@ -19,7 +19,7 @@ export const Route = createFileRoute("/shop-test/thanks")({
     return out;
   },
   component: ThanksPage,
-  head: () => pageHead({ path: "/shop-test/thanks", title: "Thank you | Night Fever fan page", description: "Test purchase.", noindex: true }),
+  head: () => pageHead({ path: "/shop-test/thanks", title: "Thank you | Night Fever AFTERPARTY", description: "Test purchase.", noindex: true }),
 });
 
 function ThanksPage() {

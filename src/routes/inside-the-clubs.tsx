@@ -14,7 +14,7 @@ export const Route = createFileRoute("/inside-the-clubs")({
     pageHead({
       path: "/inside-the-clubs",
       title: "Inside the Clubs – every club ever mentioned on Night Fever",
-      description: `All ${clubsMentioned.length} clubs ever mentioned on Night Fever, street by street - step inside each one: every moment it comes up on the show, timestamped, and the nights you can still hear.`,
+      description: `All ${clubsMentioned.length} clubs ever mentioned on Night Fever, street by street - step inside each one: every moment, timestamped, and the nights you can still hear.`,
       image: "/og/jukebox.jpg",
     }),
 });

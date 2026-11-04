@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
-import { episodePortraits } from "@/components/episode-block";
+import { polaroidThumb } from "@/components/episode-block";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { Memoriam } from "@/data/memoriam";
 
@@ -29,7 +29,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
             {m.said.map((s, i) => {
               const ep = episodeById(s.episode);
               const code = `S${ep.season}E${ep.episode}`;
-              const pol = episodePortraits[s.episode];
+              const pol = polaroidThumb(s.episode, 240);
               return (
                 <figure
                   key={`${s.episode}-${s.time}`}

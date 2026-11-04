@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): Search =>
     typeof s["about"] === "string" ? { about: (s["about"] as string).slice(0, 120) } : {},
   component: ContactPage,
-  head: () => pageHead({ path: "/contact", title: "Contact | Night Fever fan page", description: "Spotted something wrong, know where a lost club was, or just want to say hi? Send me a message!", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/contact", title: "Contact | Night Fever AFTERPARTY", description: "Spotted something wrong, know where a lost club was, or just want to say hi? Send me a message!", image: "/og/home.jpg" }),
 });
 
 // The pages a message can be about - built from the one page list (src/lib/pages.ts), so it never goes stale.

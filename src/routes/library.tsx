@@ -16,7 +16,7 @@ import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 const books = bookClub.filter((b) => b.shelf === "books").length;
 const press = bookClub.length - books;
-const description = `Every book, magazine, newspaper and column the Night Fever guests mention - ${books} books and ${press} papers and magazines, pinned up like a newsstand, each with the moment it comes up.`;
+const description = `Every book, magazine and column the Night Fever guests mention - ${books} books and ${press} papers and magazines, pinned up like a newsstand. Grab one!`;
 
 export const Route = createFileRoute("/library")({
   staticData: { sitemap: true },

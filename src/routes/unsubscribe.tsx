@@ -13,7 +13,7 @@ export const Route = createFileRoute("/unsubscribe")({
   validateSearch: (search) => ({
     token: typeof search["token"] === "string" ? search["token"] : undefined,
   }),
-  head: () => pageHead({ path: "/unsubscribe", title: "Unsubscribe | Night Fever fan page", description: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.", image: "/og/home.jpg", noindex: true }),
+  head: () => pageHead({ path: "/unsubscribe", title: "Unsubscribe | Night Fever AFTERPARTY", description: "Leaving the party? Remove your email address from my Night Fever Afterparty newsletter.", image: "/og/home.jpg", noindex: true }),
   component: UnsubscribePage,
 });
 

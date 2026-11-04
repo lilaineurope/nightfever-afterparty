@@ -17,7 +17,7 @@ export const Route = createFileRoute("/trail")({
   head: () =>
     pageHead({
       path: "/trail",
-      title: "Follow the Names – a Night Fever discovery game | Night Fever fan page",
+      title: "Follow the Names – a Night Fever discovery game | Night Fever AFTERPARTY",
       description: "Start with James St. James and follow the names the guests drop, one episode at a time. Collect every guest's polaroid.",
       image: "/og/home.jpg",
       noindex: true,

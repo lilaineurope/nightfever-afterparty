@@ -5,7 +5,8 @@ import { guests } from "@/data/guests";
 import { GUEST_LINES } from "@/data/guest-lines";
 
 export const SITE = "https://nightfever-afterparty.com";
-export const SITE_NAME = "Night Fever fan page";
+// The site's name (Lisa, 4 Nov 2026): "Night Fever AFTERPARTY - a fan page". Page titles end in the short "| Night Fever AFTERPARTY".
+export const SITE_NAME = "Night Fever AFTERPARTY - a fan page";
 
 export const abs = (path: string) => (path.startsWith("http") ? path : `${SITE}${path.startsWith("/") ? "" : "/"}${path}`);
 
@@ -45,6 +46,13 @@ export function pageHead({
     ],
     links: [{ rel: "canonical", href: abs(path) }],
   };
+}
+
+/** "2026-10-11T12:00" -> "2026-10-11"; undefined for a date still to come (some AFTERPARTY dates are set ahead for
+ *  ordering), so search engines never see a publish date in the future. */
+export function publishedDay(date: string): string | undefined {
+  const day = date.slice(0, 10);
+  return day <= new Date().toISOString().slice(0, 10) ? day : undefined;
 }
 
 export const jsonLd = (data: unknown) => ({ type: "application/ld+json", children: JSON.stringify(data) });
@@ -97,6 +105,20 @@ const EPISODE_TOPICS: Record<string, string> = {
   s05e10: "Manic Panic, Blondie & St. Marks Place punk",
 };
 
+/** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so
+ *  Google doesn't cut it: guest and show first, then as many topics as fit (SEO check, 4 Nov 2026). */
+export function episodeTitle(guest: string, code: string, topics?: string, max = 65): string {
+  const base = `${guest} – Night Fever ${code}`;
+  if (!topics) return base;
+  const items = topics.split(/, | & /);
+  for (let n = items.length; n > 0; n--) {
+    const list = n === 1 ? items[0] : `${items.slice(0, n - 1).join(", ")} & ${items[n - 1]}`;
+    const title = `${base}: ${list}`;
+    if (title.length <= max) return title;
+  }
+  return base;
+}
+
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */
 /** The guest as a schema.org Person. Their A–Z card forwards to the episode page (one page per guest, Lisa 1 Nov 2026),
  *  so the fuller Person from the card (description, jobTitle, image) lives here now. */
@@ -113,8 +135,8 @@ export function episodeHead(id: string, references: number) {
   const ep = episodeById(id);
   const code = `S${ep.season}E${ep.episode}`;
   const topics = EPISODE_TOPICS[id];
-  const title = `${ep.guest}${topics ? ` on ${topics}` : ""} – Night Fever ${code}`;
-  const description = `All ${references} names, clubs, places and looks from ${ep.guest}'s Night Fever interview (${code}) - each with a timestamp that plays the episode from that moment. Dive in!`;
+  const title = episodeTitle(ep.guest, code, topics);
+  const description = `All ${references} names, clubs, places and looks from ${ep.guest}'s Night Fever interview (${code}), each timestamped to play from that moment. Dive in!`;
   const path = `/episodes/${id}`;
   const head = pageHead({ path, title, description, image: `/og/${id}.jpg`, type: "article" });
   const episode = {
@@ -140,10 +162,48 @@ export function episodeHead(id: string, references: number) {
         url: abs(path),
         description,
         image: abs(`/og/${id}.jpg`),
+        // When the AFTERPARTY went up, so Google doesn't date the page by the podcast's air date (SEO check, 4 Nov 2026).
+        ...(publishedDay(ep.afterpartyPublished) ? { datePublished: publishedDay(ep.afterpartyPublished) } : {}),
         isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE },
         about: episode,
         mainEntity: episode,
       }),
     ],
   };
+}
+
+// Research notes in a story line ("No Wikipedia page; links to WOW", "Article not found online") explain where a
+// link goes - useful in the reference list, not in a search result. cardDescription() leaves them out.
+const NOTE = /\b(wikipedia|links? (is )?to|link goes to|not (found|confirmed) online|no page|page of (its|his|her|their) own|has no page)\b/i;
+
+/** Drop research notes and "Likewise"-style openers from a story line; "" when nothing readable is left. */
+export function cleanStory(story: string): string {
+  const parts = story
+    .replace(/^(likewise|ditto|same here|same)\b[\s.,:;–-]*/i, "")
+    .split(/(?<=[.;!?])\s+/)
+    .filter((part) => part.trim() && !NOTE.test(part));
+  const text = parts.join(" ").trim().replace(/[;,:\s–-]+$/, "");
+  if (!text) return "";
+  const sentence = text.charAt(0).toUpperCase() + text.slice(1);
+  return /[.!?…]$/.test(sentence) ? sentence : `${sentence}.`;
+}
+
+/** Cut to at most `max` characters, at the end of a sentence when one fits, else at a word with "…". */
+export function clip(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const end = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("! "), cut.lastIndexOf("? "));
+  if (end >= max * 0.5) return cut.slice(0, end + 1);
+  const clause = cut.lastIndexOf("; ");
+  if (clause >= max * 0.5) return `${cut.slice(0, clause)}.`;
+  return cut.slice(0, max - 1).replace(/[\s,;:–-]+\S*$/, "") + "…";
+}
+
+/** Search description for an A–Z card: a clean story line plus where it comes up, about 155 characters at most. */
+export function cardDescription(name: string, story: string, episodeCodes: string[]): string {
+  const n = episodeCodes.length;
+  const where = n === 0 ? "" : n <= 3 ? ` Mentioned in Night Fever ${episodeCodes.join(", ")}.` : ` Mentioned in ${n} Night Fever episodes.`;
+  const clean = cleanStory(story);
+  const lead = clean ? `${name}: ${clean}` : `${name} in the Night Fever podcast - every story, night and connection.`;
+  return clip(lead, 158 - where.length) + where;
 }
