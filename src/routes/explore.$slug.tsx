@@ -13,6 +13,9 @@ import { GUEST_LINES } from "../data/guest-lines";
 import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 import { PERSON_PORTRAITS } from "../data/person-portraits";
+import { MEMORIAM } from "../data/memoriam";
+import { MemoriamSections } from "@/components/memoriam";
+import "@fontsource/covered-by-your-grace/400.css";
 
 export const Route = createFileRoute("/explore/$slug")({
   staticData: { sitemap: true },
@@ -48,6 +51,14 @@ export const Route = createFileRoute("/explore/$slug")({
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
     if (/wikipedia\.org|imdb\.com/.test(d.link)) thing["sameAs"] = d.link;
+    const mem = MEMORIAM[d.slug];
+    if (mem) {
+      thing["birthDate"] = mem.born;
+      thing["deathDate"] = mem.died;
+      if (mem.aka) thing["alternateName"] = mem.aka;
+      thing["description"] = mem.story;
+      if (mem.wikidata && !thing["sameAs"]) thing["sameAs"] = mem.wikidata;
+    }
     // Guests: a fuller Person (what they're known for, and the Night Fever episode they're interviewed in) - Lisa, 27 Oct 2026.
     if (d.guest) {
       thing["description"] = d.guest.tagline;
@@ -108,6 +119,8 @@ function EntityPage() {
   const e = entityBySlug[slug]!;
   const g = e.guest;
   const pic = g ? undefined : PERSON_PORTRAITS[e.slug];
+  // In memoriam (Lisa, 4 Nov 2026, option C): black IN MEMORIAM band, "aka" and dates on the name card, guest quotes wall below.
+  const mem = g ? undefined : MEMORIAM[e.slug];
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -115,13 +128,14 @@ function EntityPage() {
       {/* People with a polaroid (Lisa, 2 Nov 2026, "combo 3"): their photo fills the header, the name sits on a taped card and the
           polaroid is taped on the right with its credit. */}
       <section
-        className={pic ? "card-head card-head-photo px-4" : "card-head px-4"}
+        className={`${pic ? "card-head card-head-photo px-4" : "card-head px-4"}${mem ? " card-head-memoriam" : ""}`}
         style={
           (pic
             ? ({ "--photo": `url(${pic.photo})`, "--focus": pic.focus } as CSSProperties)
             : ({ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties))
         }
       >
+        {mem && <div aria-hidden="true" className="memoriam-band">In memoriam</div>}
         {pic && (
           <figure className="card-polaroid">
             <img src={pic.polaroid} alt={`${e.name} polaroid`} width={720} height={893} />
@@ -136,9 +150,17 @@ function EntityPage() {
           <h1 className="card-title">
             <span className="timeline-strip timeline-strip-ink">{e.name}</span>
           </h1>
+          {mem?.aka && <p className="memoriam-aka">aka {mem.aka}</p>}
+          {mem && <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died} · {mem.diedLine.replace(/^Died/, "died")}</p>}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
-          {e.link && !(g && e.link.includes("wowpresentsplus")) && (
+          {mem?.readMore ? (
+            <p className="mt-4">
+              <a href={mem.readMore.href} target="_blank" rel="noopener noreferrer" className="card-more">
+                Read more {mem.readMore.label} &rarr;
+              </a>
+            </p>
+          ) : e.link && !(g && e.link.includes("wowpresentsplus")) && (
             <p className="mt-4">
               <a href={e.link} target="_blank" rel="noopener noreferrer" className="card-more">
                 Read more {linkPlace(e.link)} &rarr;
@@ -148,7 +170,8 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-4xl space-y-12 px-6 pb-20">
+      <div className={`mx-auto ${mem ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+        {mem && <MemoriamSections m={mem} name={e.name} />}
         <CardSections e={e} />
       </div>
           <SiteFooter />
