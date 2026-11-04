@@ -258,4 +258,9 @@ export const YEARS: Record<string, number> = {
   "Man Parrish – 'Six Simple Synthesizers'": 1983,
   "Madonna – 'Everybody'": 1982,
   "David Bowie – 'Young Americans'": 1975,
+  "The Sic F*cks": 1977, // the sisters' band, playing CBGB in 1977
+  "Shrapnel": 1978, // Red Bank, NJ; Wikipedia says late 1970s - on WPIX's CBGB broadcasts by 1978
+  "Kajagoogoo": 1978, // formed as Art Nouveau in Leighton Buzzard (Wikipedia)
+  "Starbooty (RuPaul)": 1987, // the RuPaul Is: Starbooty films and soundtrack (Wikipedia: Starrbooty)
+  "Riot grrrl": 1991,
 };

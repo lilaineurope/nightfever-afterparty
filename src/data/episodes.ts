@@ -719,6 +719,7 @@ const s05e10: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/107124453/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-20%2F949fdd08-4637-3c60-9ba3-309e3f597e95.mp3",
   runtime: "52:15",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLMGLT6ERsSwU",
   afterpartyPublished: "2026-11-10",
   blurb:
     "Tish & Snooky, the Bronx sisters behind Manic Panic: backing vocals in the first Blondie, the Sic F*cks in nuns' habits, America's first punk boutique on St. Marks Place in 1977, hair dye smuggled home from England, the Mudd Club's opening-night fight, Fred Rothbell-Mista's New Jersey Nightingales - and a brand they built from $250 each.",
