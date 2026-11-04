@@ -587,8 +587,11 @@ const SKIP_MOMENT = new Set([
   "s01e08|House of Pancakes",
   // S03E04: the 1982 release is already a curated moment on Man Parrish's card ("Releases 'Hip Hop, Be Bop (Don't Stop)'").
   "s03e04|Man Parrish – 'Hip Hop, Be Bop (Don't Stop)'",
-  // S04E07: Phoebe's repeats the 1991 Manhattan Cable interview with Quentin Crisp - keep it once.
+  // S04E07: Phoebe's repeats the 1991 Manhattan Cable interview with Quentin Crisp - keep it once. Trey's card already
+  // has "Arrives in New York from Houston" (1980) and "Runs Straight to Hell" (1984).
   "s04e07|Phoebe's (Bowery diner)",
+  "s04e07|New York",
+  "s04e07|Straight to Hell night at the Pyramid",
 ]);
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {
