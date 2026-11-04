@@ -159,6 +159,37 @@ import tinaTurnerPhoto from "@/assets/people/tina-turner-photo.webp";
 import tinaTurnerPolaroid from "@/assets/people/tina-turner-polaroid.webp";
 import trumanCapotePhoto from "@/assets/people/truman-capote-photo.webp";
 import trumanCapotePolaroid from "@/assets/people/truman-capote-polaroid.webp";
+// Daily run, batch 1 (Lisa, 4 Nov 2026)
+import deanJohnsonPhoto from "@/assets/people/dean-johnson-photo.webp";
+import deanJohnsonPolaroid from "@/assets/people/dean-johnson-polaroid.webp";
+import egonVonFurstenbergPhoto from "@/assets/people/egon-von-furstenberg-photo.webp";
+import egonVonFurstenbergPolaroid from "@/assets/people/egon-von-furstenberg-polaroid.webp";
+import geraldoRiveraPhoto from "@/assets/people/geraldo-rivera-photo.webp";
+import geraldoRiveraPolaroid from "@/assets/people/geraldo-rivera-polaroid.webp";
+import jennaJamesonPhoto from "@/assets/people/jenna-jameson-photo.webp";
+import jennaJamesonPolaroid from "@/assets/people/jenna-jameson-polaroid.webp";
+import kennyKennyPhoto from "@/assets/people/kenny-kenny-photo.webp";
+import kennyKennyPolaroid from "@/assets/people/kenny-kenny-polaroid.webp";
+import thairinSmothersPhoto from "@/assets/people/thairin-smothers-photo.webp";
+import thairinSmothersPolaroid from "@/assets/people/thairin-smothers-polaroid.webp";
+import biancaJaggerPhoto from "@/assets/people/bianca-jagger-photo.webp";
+import biancaJaggerPolaroid from "@/assets/people/bianca-jagger-polaroid.webp";
+import cindyAdamsPhoto from "@/assets/people/cindy-adams-photo.webp";
+import cindyAdamsPolaroid from "@/assets/people/cindy-adams-polaroid.webp";
+import ericConradPhoto from "@/assets/people/eric-conrad-photo.webp";
+import ericConradPolaroid from "@/assets/people/eric-conrad-polaroid.webp";
+import idalisDeleoNPhoto from "@/assets/people/idalis-deleo-n-photo.webp";
+import idalisDeleoNPolaroid from "@/assets/people/idalis-deleo-n-polaroid.webp";
+import nickCavePhoto from "@/assets/people/nick-cave-photo.webp";
+import nickCavePolaroid from "@/assets/people/nick-cave-polaroid.webp";
+import pauleyPerrettePhoto from "@/assets/people/pauley-perrette-photo.webp";
+import pauleyPerrettePolaroid from "@/assets/people/pauley-perrette-polaroid.webp";
+import rebeccaWeinbergPhoto from "@/assets/people/rebecca-weinberg-photo.webp";
+import rebeccaWeinbergPolaroid from "@/assets/people/rebecca-weinberg-polaroid.webp";
+import stevenMeiselPhoto from "@/assets/people/steven-meisel-photo.webp";
+import stevenMeiselPolaroid from "@/assets/people/steven-meisel-polaroid.webp";
+import traceyAfricaPhoto from "@/assets/people/tracey-africa-photo.webp";
+import traceyAfricaPolaroid from "@/assets/people/tracey-africa-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -252,4 +283,20 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "blaine-trump": { photo: blaineTrumpPhoto, polaroid: blaineTrumpPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "jayne-wrightsman": { photo: jayneWrightsmanPhoto, polaroid: jayneWrightsmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "rudy-giuliani": { photo: rudyGiulianiPhoto, polaroid: rudyGiulianiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Daily run, batch 1 (Lisa, 4 Nov 2026)
+  "dean-johnson": { photo: deanJohnsonPhoto, polaroid: deanJohnsonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "egon-von-furstenberg": { photo: egonVonFurstenbergPhoto, polaroid: egonVonFurstenbergPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "geraldo-rivera": { photo: geraldoRiveraPhoto, polaroid: geraldoRiveraPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jenna-jameson": { photo: jennaJamesonPhoto, polaroid: jennaJamesonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "kenny-kenny": { photo: kennyKennyPhoto, polaroid: kennyKennyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "thairin-smothers": { photo: thairinSmothersPhoto, polaroid: thairinSmothersPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "bianca-jagger": { photo: biancaJaggerPhoto, polaroid: biancaJaggerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "cindy-adams": { photo: cindyAdamsPhoto, polaroid: cindyAdamsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "eric-conrad": { photo: ericConradPhoto, polaroid: ericConradPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "idalis-deleo-n": { photo: idalisDeleoNPhoto, polaroid: idalisDeleoNPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "nick-cave": { photo: nickCavePhoto, polaroid: nickCavePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "pauley-perrette": { photo: pauleyPerrettePhoto, polaroid: pauleyPerrettePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "rebecca-weinberg": { photo: rebeccaWeinbergPhoto, polaroid: rebeccaWeinbergPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "steven-meisel": { photo: stevenMeiselPhoto, polaroid: stevenMeiselPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "tracey-africa": { photo: traceyAfricaPhoto, polaroid: traceyAfricaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };
