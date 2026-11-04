@@ -14,6 +14,9 @@ import { EntityBox, plainClick } from "@/components/moments-box";
 // The name stays a real link to its A–Z card (cmd/ctrl-click opens the card). One box open at a time, across both lists.
 type Opener = { open: string | null; toggle: (key: string) => void; close: () => void };
 
+// Items sit in a two-column grid on wider screens (Lisa, 4 Nov 2026), so the top rule is dropped for the first row of each column.
+const ITEM_CLASS = "border-t border-border pt-4 first:border-t-0 first:pt-0 md:[&:nth-child(2)]:border-t-0 md:[&:nth-child(2)]:pt-0";
+
 const NAME_CLASS = "font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream hover:text-pink";
 
 function TapName({ name, id, opener }: { name: string; id: string; opener: Opener }) {
@@ -48,7 +51,7 @@ function TapBox({ name, id, opener }: { name: string; id: string; opener: Opener
 function Tip({ tip, id, opener }: { tip: InterviewTip; id: string; opener: Opener }) {
   const ep = episodeById(tip.episodeId);
   return (
-    <li className="border-t border-border pt-4 first:border-t-0 first:pt-0">
+    <li className={ITEM_CLASS}>
       <TapName name={tip.name} id={id} opener={opener} />
       <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{tip.why}</p>
       <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
@@ -151,7 +154,7 @@ function YourChoice() {
 /** A fan suggestion Lisa approved: part of the New faces list, tagged "Suggested by a fan". */
 function FanTip({ pick, id, opener }: { pick: FanPick; id: string; opener: Opener }) {
   return (
-    <li className="border-t border-border pt-4 first:border-t-0 first:pt-0">
+    <li className={ITEM_CLASS}>
       <TapName name={pick.who} id={id} opener={opener} />
       {pick.why && <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">&ldquo;{pick.why}&rdquo;</p>}
       <p className="mt-1.5 text-xs text-muted-foreground">
@@ -174,6 +177,12 @@ export function InterviewNext({ className = "" }: { className?: string }) {
   }, [list]);
   const [open, setOpen] = useState<string | null>(null);
   const opener: Opener = { open, toggle: (k) => setOpen((o) => (o === k ? null : k)), close: () => setOpen(null) };
+  // Two tabs instead of two side-by-side lists, and each list in two columns, so the box is shorter (Lisa, 4 Nov 2026).
+  const [tab, setTab] = useState<"new" | "back">("new");
+  const tabs = [
+    { key: "new" as const, label: "New faces", count: NEW_FACES.length + picks.length },
+    { key: "back" as const, label: "Back for a part two", count: COME_BACK.length },
+  ];
   return (
     <section aria-labelledby="interview-next" className={`px-6 py-14 ${className}`}>
       <div className="relative mx-auto max-w-5xl border-[3px] border-gold bg-card px-6 py-8 shadow-[8px_10px_0_var(--color-gold)] sm:px-10">
@@ -183,18 +192,40 @@ export function InterviewNext({ className = "" }: { className?: string }) {
         >
           book them!
         </span>
-        <p className="font-mono text-xs uppercase tracking-[0.24em] text-pink">Heard on the show</p>
-        <h2 id="interview-next" className="mt-2 text-3xl leading-[0.95] sm:text-[40px]">
+        <h2 id="interview-next" className="text-3xl leading-[0.95] sm:text-[40px]">
           Who to interview next
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Who should James, Fenton and Randy have on next? Every name put forward on the show - with the episode and the
           exact moment, tap &#9654; to hear it - and the ones suggested by you, the fans. Tap a name to see every time it comes up.
         </p>
-        <div className="mt-8 grid gap-10 md:grid-cols-2">
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">New faces</h3>
-            <ul className="mt-4 space-y-4">
+        <div role="tablist" aria-label="Who to interview next" className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2">
+          {tabs.map((t) => {
+            const on = tab === t.key;
+            return (
+              <button
+                key={t.key}
+                type="button"
+                role="tab"
+                id={`in-tab-${t.key}`}
+                aria-selected={on}
+                aria-controls={`in-panel-${t.key}`}
+                onClick={() => {
+                  setTab(t.key);
+                  setOpen(null);
+                }}
+                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
+                  on ? "border-gold bg-pink text-pink-foreground" : "border-transparent text-pink hover:border-gold"
+                }`}
+              >
+                {t.label} <span className={on ? "opacity-80" : "text-muted-foreground"}>({t.count})</span>
+              </button>
+            );
+          })}
+        </div>
+        {tab === "new" ? (
+          <div role="tabpanel" id="in-panel-new" aria-labelledby="in-tab-new" className="mt-6">
+            <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {NEW_FACES.map((t) => (
                 <Tip key={t.name} tip={t} id={`new:${t.name}`} opener={opener} />
               ))}
@@ -204,15 +235,15 @@ export function InterviewNext({ className = "" }: { className?: string }) {
             </ul>
             <YourChoice />
           </div>
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Back for a part two</h3>
-            <ul className="mt-4 space-y-4">
+        ) : (
+          <div role="tabpanel" id="in-panel-back" aria-labelledby="in-tab-back" className="mt-6">
+            <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {COME_BACK.map((t) => (
                 <Tip key={t.name} tip={t} id={`back:${t.name}`} opener={opener} />
               ))}
             </ul>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
