@@ -33,6 +33,7 @@ import s02e11 from "./s02e11.json";
 import s01e08 from "./s01e08.json";
 import s03e04 from "./s03e04.json";
 import s04e07 from "./s04e07.json";
+import s05e10 from "./s05e10.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -565,6 +566,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s01e08", label: "S1 E8", guest: "Luis \"Xtravaganza\" Camacho", refs: s01e08 as Ref[] },
   { id: "s03e04", label: "S3 E4", guest: "Man Parrish", refs: s03e04 as Ref[] },
   { id: "s04e07", label: "S4 E7", guest: "Trey Speegle", refs: s04e07 as Ref[] },
+  { id: "s05e10", label: "S5 E10", guest: "Tish & Snooky", refs: s05e10 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
@@ -592,6 +594,13 @@ const SKIP_MOMENT = new Set([
   "s04e07|Phoebe's (Bowery diner)",
   "s04e07|New York",
   "s04e07|Straight to Hell night at the Pyramid",
+  // S05E10: the 7 July 1977 opening is already curated ("Manic Panic opens on St Marks Place") and on Tish & Snooky's card;
+  // Atlantic City repeats the 1984 Nightingales booking; "New York" only dates the sisters singing in dives.
+  "s05e10|Manic Panic",
+  "s05e10|Manic Panic opens (7 July 1977)",
+  "s05e10|St. Marks Place",
+  "s05e10|New York",
+  "s05e10|Atlantic City",
 ]);
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {

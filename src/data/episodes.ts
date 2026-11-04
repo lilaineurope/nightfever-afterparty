@@ -31,6 +31,7 @@ import bochRefs from "./s02e11.json";
 import luisRefs from "./s01e08.json";
 import manRefs from "./s03e04.json";
 import treyRefs from "./s04e07.json";
+import tishSnookyRefs from "./s05e10.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -708,7 +709,26 @@ const s04e07: Episode = {
   top: topNames(treyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07].sort((a, b) =>
+const s05e10: Episode = {
+  id: "s05e10",
+  season: 5,
+  episode: 10,
+  guest: "Tish & Snooky",
+  released: "2025-08-20",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-510",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://anchor.fm/s/68428444/podcast/play/107124453/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-20%2F949fdd08-4637-3c60-9ba3-309e3f597e95.mp3",
+  runtime: "52:15",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLMGLT6ERsSwU",
+  afterpartyPublished: "2026-11-10",
+  blurb:
+    "Tish & Snooky, the Bronx sisters behind Manic Panic: backing vocals in the first Blondie, the Sic F*cks in nuns' habits, America's first punk boutique on St. Marks Place in 1977, hair dye smuggled home from England, the Mudd Club's opening-night fight, Fred Rothbell-Mista's New Jersey Nightingales - and a brand they built from $250 each.",
+  references: tishSnookyRefs.length,
+  mentions: tishSnookyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(tishSnookyRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -733,7 +753,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -799,6 +819,8 @@ export function episodePath(
       return "/episodes/s03e04";
     case "s04e07":
       return "/episodes/s04e07";
+    case "s05e10":
+      return "/episodes/s05e10";
     default:
       return "/episodes/s06e01";
   }

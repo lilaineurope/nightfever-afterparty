@@ -256,6 +256,11 @@ export const YOUTUBE: Record<string, string> = {
   "Man Parrish – 'Six Simple Synthesizers'": "dFK5Uayh2lw",
   "Madonna – 'Everybody'": "cOqr_x_9fMc",
   "David Bowie – 'Young Americans'": "iO6OvHxD_m8",
+  "The Sic F*cks": "sYb7x6xJlHo",
+  "Shrapnel": "AVC7bBWl8P0",
+  "Kajagoogoo": "rkpG4XApJ28",
+  "Starbooty (RuPaul)": "sQxGCzudWnY",
+  "Riot grrrl": "tAbhaguKARw",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

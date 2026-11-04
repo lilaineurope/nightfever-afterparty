@@ -33,6 +33,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s03e10: { quote: "For me, music magazines were my lifesaver my whole life. I would save my allowance to buy every new rock magazine.", time: "00:14:41" }, // Miss Guy
   s01e08: { quote: "We didn't know that our stone that we threw into the lake would ripple out so far. It was a gift.", time: "00:42:20" }, // Luis "Xtravaganza" Camacho
   s04e07: { quote: "If you hung out for any more than 20 minutes, you were on stage, you had a wig on backwards, you were on the bar.", time: "00:14:53" }, // Trey Speegle - Lisa picked (4 Nov 2026)
+  s05e10: { quote: "I wasn't knocked out, I'm OK! And all I could do was keep pulling my dress down: is my dress down? Is my dress down?", time: "00:32:38" }, // Tish & Snooky - Lisa: yes go ahead (4 Nov 2026)
   s03e04: { quote: "I realized there was such a rainbow of sexuality out there. So that's what Hellfire taught me.", time: "00:46:38" }, // Man Parrish
   s02e11: { quote: "What also made it special was the fact that there was really nothing special about it.", time: "00:13:52" }, // Richard Boch
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
