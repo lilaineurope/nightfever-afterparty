@@ -13,6 +13,8 @@ import pyramidClub from "@/assets/club-tickets/pyramid-club.webp";
 import boyBar from "@/assets/club-tickets/boy-bar.webp";
 import boyBarJukebox from "@/assets/club-tickets/boy-bar-jukebox.webp";
 import nells from "@/assets/club-tickets/nell-s.webp";
+import paradiseGarage from "@/assets/club-tickets/paradise-garage.webp";
+import studio54 from "@/assets/club-tickets/studio-54.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -115,6 +117,25 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     alt: "A black key with a pink Nell's tag, drawn for the AFTERPARTY - Nell's mailed its regulars a key before it opened",
     credit: "Nell's key, drawn for the AFTERPARTY",
     href: "https://daily.redbullmusicacademy.com/2019/04/nightclubbing-nells-nyc",
+  },
+  // Picked 4 Nov 2026 (thread "Find Paradise Garage and Studio 54 backgrounds"): the last two clubs without a ticket picture.
+  "paradise-garage": {
+    src: paradiseGarage,
+    w: 560,
+    h: 1418,
+    pos: "center 88%",
+    alt: "Paradise Garage car stub and claim check, 84 King Street: Vito and Roman present the Charivari Christmas Party, Wednesday 12 December 1984",
+    credit: "Car stub invite, Paradise Garage, 12 Dec 1984 - Gallery 98",
+    href: "https://gallery98.org/2019/paradise-garage-car-stub-invite-card-1984/",
+  },
+  "studio-54": {
+    src: studio54,
+    w: 800,
+    h: 514,
+    pos: "left center",
+    alt: "Studio 54 admission pass: the silver and gold Studio 54 logo on a black card",
+    credit: "Studio 54 admission pass - Gallery 98",
+    href: "https://gallery98.org/2023/studio-54-admission-pass-double-sided-card-grants-the-holder-complimentary-entrance-to-studio-54/",
   },
 };
 
