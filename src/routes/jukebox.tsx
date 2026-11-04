@@ -11,7 +11,7 @@ import disco from "@/assets/jukebox-disco.webp";
 import discoPhone from "@/assets/jukebox-disco-phone.webp";
 import { JUKEBOX_CLUB_BACKGROUNDS } from "@/data/jukebox-club-backgrounds";
 
-const description = `Every song, record, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie at the Mudd Club to Warm Leatherette, each with the moment it comes up. Press play!`;
+const description = `Every song, band and sound the Night Fever guests mention - ${jukebox.length} tracks and acts, from Blondie to Warm Leatherette, each with its moment. Press play!`;
 
 // Shareable links (Lisa, 28 Oct 2026): tapping a polaroid puts the Afterparty in the address, /jukebox?afterparty=s05e04,
 // so the link opens the Jukebox on that Afterparty's playlist (and a shared link shows the guest's share picture).

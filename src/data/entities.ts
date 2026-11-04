@@ -283,9 +283,11 @@ export const mentionsByEpisode = (e: Entity): { episode: string; count: number }
 
 /** A card that appears in only one episode with nothing else around it: kept for visitors,
  * but left out of the sitemap and marked noindex so Google sees the rich cards instead. */
-/** Sitemap (Lisa, 27 Oct 2026): only guests' cards and names dropped in two or more episodes, so Google spends its
- *  visits on the strongest pages first. Every other card stays on the site, linked from its episodes. */
-export const inSitemap = (e: Entity): boolean => !afterpartyOf(e) && (!!e.guest || new Set(e.refs.map((r) => r.episode)).size >= 2);
+/** Sitemap (Lisa, 27 Oct 2026): thin cards stay out, so Google spends its visits on the strongest pages first.
+ *  Every other card stays on the site, linked from its episodes. */
+// Every card Google may index goes in the sitemap (SEO check, 4 Nov 2026): the same line as the noindex rule, so a
+// one-episode card with timeline moments or guest stories (Voguing, Rocky Horror) is listed too. Thin cards stay out.
+export const inSitemap = (e: Entity): boolean => !afterpartyOf(e) && !isThinCard(e);
 
 export const isThinCard = (e: Entity): boolean =>
   !e.guest &&

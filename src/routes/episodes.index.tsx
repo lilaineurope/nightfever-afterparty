@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
   staticData: { sitemap: true },
-  head: () => pageHead({ path: "/episodes", title: "Night Fever Afterparty – every episode's names, clubs & looks", description: "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!", image: "/og/episodes.jpg" }),
+  head: () => pageHead({ path: "/episodes", title: "Night Fever AFTERPARTY – every episode's names, clubs & looks", description: "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!", image: "/og/episodes.jpg" }),
   component: EpisodesPage,
 });
 

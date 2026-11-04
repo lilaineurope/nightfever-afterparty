@@ -11,7 +11,7 @@ import { TEXT_LINK } from "@/lib/styles";
 export const Route = createFileRoute("/terms")({
   staticData: { sitemap: true },
   component: TermsPage,
-  head: () => pageHead({ path: "/terms", title: "Terms & Conditions | Night Fever fan page", description: "The rules of this fan-made Night Fever podcast index: what it is, what it isn't, who owns what, how to ask for a correction, and how the data behind it may be reused.", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/terms", title: "Terms & Conditions | Night Fever AFTERPARTY", description: "The rules of this fan-made Night Fever index: what it is and isn't, who owns what, how to ask for a correction and how the data may be reused.", image: "/og/home.jpg" }),
 });
 
 const quickFacts = [

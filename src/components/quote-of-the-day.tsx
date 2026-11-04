@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
-import { episodePortraits } from "@/components/episode-block";
+import { polaroidThumb } from "@/components/episode-block";
 import { episodes, episodePath } from "@/data/episodes";
 import allQuotes from "@/data/quotes-all.json";
 import { seededRandom } from "@/lib/random";
@@ -33,7 +33,7 @@ export function QuoteOfTheDay() {
   if (!pool.length) return null;
   const q = todaysQuote(pool);
   const ep = episodes.find((e) => e.id === q.episode)!;
-  const photo = episodePortraits[ep.id];
+  const photo = polaroidThumb(ep.id, 240);
   return (
     <figure className="mt-10 flex max-w-[1000px] items-center gap-5 sm:gap-7">
       {photo && (

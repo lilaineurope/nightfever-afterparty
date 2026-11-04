@@ -6,7 +6,7 @@ import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { CardSections } from "@/components/card-sections";
 import { afterpartyOf, entityBySlug, episodeShort, isThinCard } from "../data/entities";
-import { abs, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
+import { abs, cardDescription, cleanStory, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
@@ -25,7 +25,9 @@ export const Route = createFileRoute("/explore/$slug")({
     // One page per guest (Lisa, 1 Nov 2026): a guest with an AFTERPARTY lives on the episode page; old links forward there.
     const ep = afterpartyOf(e);
     if (ep) throw redirect({ to: episodePath(ep), statusCode: 301 });
-    const story = e.refs.find((r) => r.context)?.context ?? e.events[0]?.text ?? "";
+    // The first story line that still says something once research notes are left out ("Likewise" alone doesn't).
+    const lines = [...e.refs.map((r) => r.context), ...e.events.map((ev) => ev.text)].filter((t): t is string => !!t);
+    const story = lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
     return {
       slug: e.slug,
       name: e.name,
@@ -41,11 +43,9 @@ export const Route = createFileRoute("/explore/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
     const d = loaderData;
-    const title = `${d.name} - ${d.category} | Night Fever fan page`;
-    const eps = d.episodes.length ? ` Mentioned in Night Fever ${d.episodes.join(", ")}.` : "";
-    const base = d.story ? `${d.name}: ${d.story}` : `Every story, night and connection around ${d.name} from the Night Fever podcast.`;
-    const short = base.length > 150 ? base.slice(0, 147).replace(/\s+\S*$/, "") + "…" : base;
-    const description = (/[.!?…]$/.test(short) ? short : `${short}.`) + eps;
+    const title = `${d.name} - ${d.category} | Night Fever AFTERPARTY`;
+    // Clean story line + "Mentioned in N Night Fever episodes" (SEO check, 4 Nov 2026): no research notes, no long code lists.
+    const description = cardDescription(d.name, d.story, d.episodes);
     const path = `/explore/${d.slug}`;
     const head = pageHead({ path, title, description, image: "/og/explore.jpg", type: "article", noindex: d.thin });
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };

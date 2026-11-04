@@ -16,7 +16,7 @@ import afterpartyFill from "@/assets/home-afterparty-fill.webp";
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   component: Index,
-  head: () => pageHead({ path: "/", title: "Night Fever podcast fan page – NYC nightlife names, clubs & stories", description: "My fan page for Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato. The campy, glamorous history of New York nightlife - unpacked and timestamped!", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/", title: "Night Fever podcast fan page – NYC nightlife names, clubs & stories", description: "My fan page for Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato - New York nightlife, unpacked and timestamped!", image: "/og/home.jpg" }),
 });
 
 const hosts = [

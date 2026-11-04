@@ -78,6 +78,20 @@ export const episodePortraits: Record<string, string> = {
   s05e10: tishSnookyPortrait,
 };
 
+// Small WebP copies of the polaroids (scripts/polaroid-thumbs.py): 512px for the polaroid boxes, 240px for the tiny ones.
+// The full 1024px JPEG stays only where the photo fills the episode page header - so lists stay light on phones.
+const FULL_POLAROIDS = import.meta.glob("../assets/polaroid-*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const POLAROID_THUMBS = import.meta.glob("../assets/polaroid-thumbs/*.webp", { eager: true, import: "default" }) as Record<string, string>;
+
+/** The guest's polaroid at a small size (falls back to the full photo if the thumbnail hasn't been made yet). */
+export function polaroidThumb(id: string, size: 512 | 240): string | undefined {
+  const full = episodePortraits[id];
+  if (!full) return undefined;
+  const key = Object.keys(FULL_POLAROIDS).find((k) => FULL_POLAROIDS[k] === full);
+  const name = key?.split("/").pop()?.replace(/\.jpg$/, "");
+  return (name && POLAROID_THUMBS[`../assets/polaroid-thumbs/${name}-${size}.webp`]) || full;
+}
+
 
 
 
@@ -171,12 +185,12 @@ function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
   tilt?: string;
   className?: string;
 }) {
-  const photo = episodePortraits[ep.id];
+  const photo = polaroidThumb(ep.id, 512);
   const line = guestLine(ep.id);
   return (
     <div className={`polaroid ${tilt} ${className}`}>
       <span className="polaroid-photo">
-        {photo && <img src={photo} alt={ep.guest} width={1024} height={1024} loading="lazy" />}
+        {photo && <img src={photo} alt={ep.guest} width={512} height={512} loading="lazy" />}
       </span>
       <span className="mt-3.5 flex items-baseline justify-between text-xs uppercase">
         <span>

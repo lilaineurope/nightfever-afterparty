@@ -85,8 +85,8 @@ export const Route = createFileRoute("/under-the-hood")({
   head: () =>
     pageHead({
       path: "/under-the-hood",
-      title: "Under the hood | Night Fever fan page",
-      description: "Every tool and service used to make and run my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, YouTube, Google Maps, GoatCounter, Plausible, Pirsch, Tipeee and more.",
+      title: "Under the hood | Night Fever AFTERPARTY",
+      description: "Every tool and service behind my Night Fever fan page - Lovable, Claude, Gemini, Copilot, Spotify, YouTube, Google Maps, GoatCounter, Tipeee and more.",
       image: "/og/home.jpg",
     }),
 });

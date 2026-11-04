@@ -26,7 +26,7 @@ const spanWord = () => {
 export const Route = createFileRoute("/timeline")({
   staticData: { sitemap: true },
   component: TimelinePage,
-  head: () => pageHead({ path: "/timeline", title: "New York nightlife timeline, decade by decade | Night Fever fan page", description: "The nightlife scene behind Night Fever, year by year - CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race. Grab a drink!", image: "/og/timeline.jpg" }),
+  head: () => pageHead({ path: "/timeline", title: "New York nightlife timeline, decade by decade | Night Fever AFTERPARTY", description: "The nightlife scene behind Night Fever, year by year - CBGB, Studio 54, Danceteria, Limelight, Wigstock, Drag Race. Grab a drink!", image: "/og/timeline.jpg" }),
 });
 
 function TimelinePage() {

@@ -85,21 +85,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "google-site-verification", content: "D1N8TQwOz9IS3c8V40Mwe8r72YsHRgNF2sxzCSOvN5Y" },
       // Search Console property for the own domain https://nightfever-afterparty.com/ (27 Oct 2026) - keep both tags
       { name: "google-site-verification", content: "OSmYxOhIBmHN5GpMphTNxkQz4bBQpsoNDsKShQOGQ1k" },
-      { title: "Night Fever fan page | every name, place and story" },
+      { title: "Night Fever AFTERPARTY - a fan page | every name, place and story" },
       {
         name: "description",
         content:
           "My fan-made index of the Night Fever podcast by World of Wonder - timelines, a connection map and a timestamped list of every name, place, song and story. Dive in!",
       },
       { name: "author", content: "Lisa Lang" },
-      { property: "og:title", content: "Night Fever fan page" },
+      { property: "og:title", content: "Night Fever AFTERPARTY - a fan page" },
       {
         property: "og:description",
         content:
           "Every name, place, song and story dropped in the Night Fever interviews - indexed, timestamped and connected!",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Night Fever fan page" },
+      { property: "og:site_name", content: "Night Fever AFTERPARTY - a fan page" },
       { property: "og:image", content: "https://nightfever-afterparty.com/og/home.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -112,8 +112,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Night Fever fan page",
-          alternateName: "Night Fever Afterparty",
+          // Site name in Google results (Lisa, 4 Nov 2026): "Night Fever AFTERPARTY - a fan page", so it isn't mistaken for the show.
+          name: "Night Fever AFTERPARTY - a fan page",
+          alternateName: ["Night Fever AFTERPARTY", "Night Fever fan page"],
           url: "https://nightfever-afterparty.com/",
           description:
             "An unofficial fan-made index of the Night Fever podcast by World of Wonder: every name, club, place and look the guests mention, timestamped and connected.",

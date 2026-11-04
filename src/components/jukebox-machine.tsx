@@ -7,7 +7,7 @@ import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
 import { BOOK_SHELVES, SPOTIFY_PLAYLIST_URL, bookClub, listenLinks, type CollectionItem } from "@/data/collections";
 import { episodes, episodeById, episodePath, stageName } from "@/data/episodes";
-import { episodePortraits } from "@/components/episode-block";
+import { episodePortraits, polaroidThumb } from "@/components/episode-block";
 import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl } from "@/data/episode-spotify";
 import { YEARS } from "@/data/jukebox-years";
 import { NO_EMBED, YOUTUBE } from "@/data/jukebox-videos";
@@ -690,7 +690,7 @@ export function JukeboxMachine({
           <div ref={polsRef} className="jbx-pols" role="group" aria-label="Pick an Afterparty">
             {musicEpisodes.map((e) => (
               <button key={e.id} type="button" className={`jbx-pol${episodeId === e.id ? " on" : ""}`} aria-pressed={episodeId === e.id} onClick={() => pickEpisode(e.id)} title={`Play the songs from ${e.guest}'s Afterparty`}>
-                {episodePortraits[e.id] && <img src={episodePortraits[e.id]} alt="" loading="lazy" />}
+                {episodePortraits[e.id] && <img src={polaroidThumb(e.id, 240)} alt="" loading="lazy" />}
                 <span>S{e.season}E{e.episode}</span>
                 <b>{stageName(e.guest)}</b>
               </button>
@@ -807,7 +807,7 @@ export function JukeboxMachine({
           <div className="jbx-ep">
             {episodePortraits[ep.id] && (
               <Link to={episodePath(ep.id)} className="jbx-ep-pol" aria-label={`${ep.guest}'s Afterparty`}>
-                <img src={episodePortraits[ep.id]} alt="" />
+                <img src={polaroidThumb(ep.id, 240)} alt="" />
                 <span>S{ep.season}E{ep.episode}</span>
               </Link>
             )}

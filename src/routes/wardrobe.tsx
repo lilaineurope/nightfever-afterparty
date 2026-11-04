@@ -19,7 +19,7 @@ export const Route = createFileRoute("/wardrobe")({
   head: () =>
     pageHead({
       path: "/wardrobe",
-      title: "The Wardrobe – dress like the Night Fever guests | Night Fever fan page",
+      title: "The Wardrobe – dress like the Night Fever guests | Night Fever AFTERPARTY",
       description: "Dress yourself from 700 looks in Night Fever's stories - by episode, guest, designer, club, place or colour mood. Afterparty Style or Clueless Style!",
       image: "/og/wardrobe.jpg",
     }),

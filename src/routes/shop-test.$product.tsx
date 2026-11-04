@@ -36,7 +36,7 @@ export const Route = createFileRoute("/shop-test/$product")({
   head: ({ params }) =>
     pageHead({
       path: `/shop-test/${params.product}`,
-      title: `${PRODUCTS[params.product as Key]?.title ?? "Product"} - samples, tests & docs | Night Fever fan page`,
+      title: `${PRODUCTS[params.product as Key]?.title ?? "Product"} - samples, tests & docs | Night Fever AFTERPARTY`,
       description: "Sample data, tests and documentation.",
       noindex: true,
     }),
