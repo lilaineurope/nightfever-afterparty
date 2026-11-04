@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { sendToInbox } from "@/lib/web3forms";
 import { cardTo } from "@/lib/card-link";
 import { episodeById, episodePath } from "@/data/episodes";
 import {
@@ -65,8 +66,142 @@ function Item({ it }: { it: StillToMake }) {
   );
 }
 
+/** "What do you want to be made?" (Lisa, 4 Nov 2026): visitors suggest a book or film. It goes to Lisa's inbox only
+ *  (Web3Forms, like the guestbook), nothing is shown on the site, and the visitor's name stays with Lisa. */
+function SuggestOne() {
+  const [kind, setKind] = useState<"Book" | "Film">("Book");
+  const [what, setWhat] = useState("");
+  const [why, setWhy] = useState("");
+  const [from, setFrom] = useState("");
+  const [trap, setTrap] = useState("");
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const opened = useRef(Date.now());
+  const field =
+    "w-full border-2 border-gold bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink";
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!what.trim()) return;
+    // Bots fill the hidden field or send within a second or two; drop those quietly.
+    if (trap || Date.now() - opened.current < 2500) return setState("sent");
+    setState("sending");
+    const ok = await sendToInbox({
+      subject: `Still to be made (${kind.toLowerCase()}): ${what.trim()}`,
+      kind,
+      suggestion: what.trim(),
+      why: why.trim() || "(no reason given)",
+      from: from.trim() || "(no name given)",
+    });
+    setState(ok ? "sent" : "error");
+    if (ok) {
+      setWhat("");
+      setWhy("");
+      setFrom("");
+    }
+  };
+  return (
+    <div className="mt-8 border-t-2 border-gold pt-6">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
+        What do you want to be made?
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-card-foreground/85">
+        Which downtown story needs a book or a film? Tell me - the best ones go up here.
+      </p>
+      {state === "sent" ? (
+        <p className="mt-4 border-2 border-pink p-3 text-sm font-semibold text-pink">
+          Thank you - your idea is on its way to me!
+        </p>
+      ) : (
+        <form onSubmit={submit} className="mt-4 space-y-2">
+          <div className="flex gap-2" role="radiogroup" aria-label="A book or a film?">
+            {(["Book", "Film"] as const).map((k) => (
+              <button
+                key={k}
+                type="button"
+                role="radio"
+                aria-checked={kind === k}
+                onClick={() => setKind(k)}
+                className="season-chip rounded-full"
+                aria-pressed={kind === k}
+              >
+                {k === "Book" ? "A book" : "A film"}
+              </button>
+            ))}
+          </div>
+          <label htmlFor="stm-what" className="sr-only">
+            What should be made?
+          </label>
+          <input
+            id="stm-what"
+            required
+            maxLength={120}
+            value={what}
+            onChange={(e) => setWhat(e.target.value)}
+            placeholder={
+              kind === "Book" ? "Which book should be written?" : "Which film should be made?"
+            }
+            className={field}
+          />
+          <label htmlFor="stm-why" className="sr-only">
+            Why? (optional)
+          </label>
+          <input
+            id="stm-why"
+            maxLength={300}
+            value={why}
+            onChange={(e) => setWhy(e.target.value)}
+            placeholder="Why? (optional)"
+            className={field}
+          />
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <label htmlFor="stm-from" className="sr-only">
+              Your name (optional)
+            </label>
+            <input
+              id="stm-from"
+              maxLength={60}
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
+              placeholder="Your name (optional)"
+              className={`${field} sm:flex-1`}
+            />
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={trap}
+              onChange={(e) => setTrap(e.target.value)}
+              className="hidden"
+            />
+            <button
+              type="submit"
+              disabled={state === "sending"}
+              className="whitespace-nowrap border-2 border-pink bg-pink px-4 py-2 text-xs font-semibold uppercase text-pink-foreground transition hover:bg-card hover:text-cream disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+            >
+              {state === "sending" ? "Sending…" : "Suggest!"}
+            </button>
+          </div>
+          {state === "error" && (
+            <p className="text-xs text-destructive">
+              That didn&rsquo;t go through - please try again.
+            </p>
+          )}
+          <p className="text-xs text-muted-foreground">
+            I read every idea first. If I pick yours, it joins the list above - your name never
+            does. See the{" "}
+            <Link to="/privacy" className="text-gold">
+              Privacy Policy
+            </Link>
+            .
+          </p>
+        </form>
+      )}
+    </div>
+  );
+}
+
 export function StillToMakeBox({ className = "" }: { className?: string }) {
-  // Folded shut by default: only the title shows until it is tapped (Lisa, 4 Nov 2026: "click-and-expand box").
+  // Folded shut by default (Lisa, 4 Nov 2026: "click-and-expand box"): title, intro and tabs show, the list opens on a tap.
   const [expanded, setExpanded] = useState(false);
   const [tab, setTab] = useState<"books" | "films">("books");
   const tabs = [
@@ -100,61 +235,60 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
             </span>
           </button>
         </h2>
-        {!expanded && (
-          <p className="mt-3 text-sm text-muted-foreground">
-            {BOOKS_TO_WRITE.filter((i) => i.made !== "made").length} books to be written and{" "}
-            {FILMS_TO_MAKE.filter((i) => i.made !== "made").length} films to be made - tap to open.
-          </p>
-        )}
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          The books that need to be written and the films that have to be made - every one the
+          guests and hosts call for on the show, with the exact moment (tap &#9654; to hear it) and
+          whether anyone has made it since.
+        </p>
+        <div
+          role="tablist"
+          aria-label="Still to be made"
+          className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2"
+        >
+          {tabs.map((t) => {
+            // While the box is shut no tab is lit; tapping a tab opens the box on that list.
+            const on = expanded && tab === t.key;
+            const open = t.items.filter((i) => i.made !== "made").length;
+            return (
+              <button
+                key={t.key}
+                type="button"
+                role="tab"
+                id={`stm-tab-${t.key}`}
+                aria-selected={on}
+                aria-controls="still-to-make-body"
+                aria-expanded={on}
+                onClick={() => {
+                  if (on) return setExpanded(false);
+                  setTab(t.key);
+                  setExpanded(true);
+                }}
+                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
+                  on
+                    ? "border-gold bg-pink text-pink-foreground"
+                    : "border-transparent text-pink hover:border-gold"
+                }`}
+              >
+                <span className="sm:hidden">{t.short}</span>
+                <span className="hidden sm:inline">{t.label}</span>{" "}
+                <span className={on ? "opacity-80" : "text-muted-foreground"}>({open})</span>
+              </button>
+            );
+          })}
+        </div>
         {expanded && (
-          <div id="still-to-make-body">
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              The books that need to be written and the films that have to be made - every one the
-              guests and hosts call for on the show, with the exact moment (tap &#9654; to hear it)
-              and whether anyone has made it since.
-            </p>
-            <div
-              role="tablist"
-              aria-label="Still to be made"
-              className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2"
-            >
-              {tabs.map((t) => {
-                const on = tab === t.key;
-                const open = t.items.filter((i) => i.made !== "made").length;
-                return (
-                  <button
-                    key={t.key}
-                    type="button"
-                    role="tab"
-                    id={`stm-tab-${t.key}`}
-                    aria-selected={on}
-                    aria-controls={`stm-panel-${t.key}`}
-                    onClick={() => setTab(t.key)}
-                    className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
-                      on
-                        ? "border-gold bg-pink text-pink-foreground"
-                        : "border-transparent text-pink hover:border-gold"
-                    }`}
-                  >
-                    <span className="sm:hidden">{t.short}</span>
-                    <span className="hidden sm:inline">{t.label}</span>{" "}
-                    <span className={on ? "opacity-80" : "text-muted-foreground"}>({open})</span>
-                  </button>
-                );
-              })}
-            </div>
-            <div
-              role="tabpanel"
-              id={`stm-panel-${tab}`}
-              aria-labelledby={`stm-tab-${tab}`}
-              className="mt-6"
-            >
-              <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
-                {items.map((it) => (
-                  <Item key={it.title} it={it} />
-                ))}
-              </ul>
-            </div>
+          <div
+            role="tabpanel"
+            id="still-to-make-body"
+            aria-labelledby={`stm-tab-${tab}`}
+            className="mt-6"
+          >
+            <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+              {items.map((it) => (
+                <Item key={it.title} it={it} />
+              ))}
+            </ul>
+            <SuggestOne />
           </div>
         )}
       </div>
