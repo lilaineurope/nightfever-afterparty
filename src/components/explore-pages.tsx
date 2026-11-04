@@ -1,19 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import { jukebox } from "@/data/collections";
+import { bookClub, clubsMentioned, jukebox } from "@/data/collections";
 import { entities } from "@/data/entities";
 import { sceneEvents } from "@/data/scene";
 
-// Home page "More to explore" (Lisa, 29 Oct 2026): three tiles - A–Z, Jukebox, Timeline - with live counts from the same data the pages use.
+// Home page "More to explore" (Lisa, 4 Nov 2026): six tiles in this order - Timeline, Jukebox, Clubs, Library, A–Z, Guestbook -
+// with live counts from the same data the pages use. Three across on desktop, so the grid is an even 3 x 2.
 const CARDS = [
-  { to: "/explore", key: "explore", title: "A–Z", count: `${entities.length} Names` },
-  { to: "/jukebox", key: "jukebox", title: "Jukebox", count: `${jukebox.length} Songs & Acts` },
   { to: "/timeline", key: "timeline", title: "Timeline", count: `${sceneEvents.length} Moments` },
+  { to: "/jukebox", key: "jukebox", title: "Jukebox", count: `${jukebox.length} Songs & Acts` },
+  { to: "/inside-the-clubs", key: "clubs", title: "Clubs", count: `${clubsMentioned.length} Clubs` },
+  { to: "/library", key: "library", title: "Library", count: `${bookClub.length} Books & Magazines` },
+  { to: "/explore", key: "explore", title: "A–Z", count: `${entities.length} Names` },
+  { to: "/guestbook", key: "guestbook", title: "Guestbook", count: "Sign it!" },
 ];
 
-// Xerox Flyer tiles: a heavy black-ruled grid of type-only tiles, flooded pink, black or paper.
+// Xerox Flyer tiles: a heavy black-ruled grid of type-only tiles, flooded pink, black or paper. The fills are set so no two
+// tiles of the same colour touch - side by side, above each other, or one after another when the tiles stack on phones.
 const FILL: Record<string, string> = {
-  explore: "bg-pink text-pink-foreground",
   jukebox: "bg-gold text-gold-foreground",
+  clubs: "bg-pink text-pink-foreground",
+  library: "bg-gold text-gold-foreground",
+  explore: "bg-pink text-pink-foreground",
 };
 
 export function ExplorePages() {
