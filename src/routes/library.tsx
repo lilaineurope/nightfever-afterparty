@@ -2,6 +2,7 @@ import { cardPath } from "@/lib/card-link";
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
 import { MomentsBox } from "@/components/moments-box";
+import { StillToMakeBox } from "@/components/still-to-make";
 import { SiteFooter } from "@/components/site-footer";
 import stacks from "@/assets/library-stacks.webp";
 import stacksPhone from "@/assets/library-stacks-phone.webp";
@@ -72,6 +73,8 @@ function LibraryPage() {
       </section>
 
       <div className="mx-auto max-w-6xl px-6 pb-16">
+        {/* "Still to be made" (Lisa, 4 Nov 2026): the books and films the guests say should exist, as a box above the shelves. */}
+        <StillToMakeBox className="mb-14 mt-10" />
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-b-2 border-gold pb-5">
           <div className="flex flex-wrap gap-2">
             <button type="button" className={CHIP} aria-pressed={shelf === "all"} onClick={() => setShelf("all")}>

@@ -195,6 +195,15 @@ function PrivacyPage() {
               basis: your consent in sending it.
             </p>
             <p>
+              <strong className="text-cream">Book and film ideas.</strong> If
+              you use the &ldquo;What do you want to be made?&rdquo; form in the
+              Library&rsquo;s &ldquo;Still to be made&rdquo; box, your idea, the
+              optional reason and the optional name you give are sent to my
+              inbox by Web3Forms. Nothing is stored on this site. If I pick your
+              idea it joins the list (the idea, never your name). Legal basis:
+              your consent in sending it.
+            </p>
+            <p>
               <strong className="text-cream">Episode player.</strong> Nothing
               plays or loads until you press play or tap a timestamp. Then your
               browser streams the episode straight from the show&rsquo;s own
@@ -297,7 +306,7 @@ function PrivacyPage() {
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter, Plausible and Pirsch (both EU-hosted) process the anonymous visit
               statistics described above, Web3Forms delivers contact-form
-              messages, interview suggestions and guestbook alerts to my inbox, Forward Email
+              messages, interview suggestions, book and film ideas and guestbook alerts to my inbox, Forward Email
               passes on emails sent to the site&rsquo;s address to my inbox (it does not
               keep them), the hosting
               platform&rsquo;s built-in database keeps newsletter sign-ups,
