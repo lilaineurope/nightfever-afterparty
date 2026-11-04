@@ -66,6 +66,8 @@ function Item({ it }: { it: StillToMake }) {
 }
 
 export function StillToMakeBox({ className = "" }: { className?: string }) {
+  // Folded shut by default: only the title shows until it is tapped (Lisa, 4 Nov 2026: "click-and-expand box").
+  const [expanded, setExpanded] = useState(false);
   const [tab, setTab] = useState<"books" | "films">("books");
   const tabs = [
     { key: "books" as const, label: "Books to be written", short: "Books", items: BOOKS_TO_WRITE },
@@ -82,55 +84,79 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
           someone make it!
         </span>
         <h2 id="still-to-make" className="text-3xl leading-[0.95] sm:text-[40px]">
-          Still to be made
+          <button
+            type="button"
+            aria-expanded={expanded}
+            aria-controls="still-to-make-body"
+            onClick={() => setExpanded((e) => !e)}
+            className="group flex w-full items-center justify-between gap-4 text-left uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
+          >
+            <span className="group-hover:text-pink">Still to be made</span>
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-gold text-2xl leading-none transition group-hover:bg-pink group-hover:text-pink-foreground"
+            >
+              {expanded ? "\u2212" : "+"}
+            </span>
+          </button>
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          The books that need to be written and the films that have to be made - every one the
-          guests and hosts call for on the show, with the exact moment (tap &#9654; to hear it) and
-          whether anyone has made it since.
-        </p>
-        <div
-          role="tablist"
-          aria-label="Still to be made"
-          className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2"
-        >
-          {tabs.map((t) => {
-            const on = tab === t.key;
-            const open = t.items.filter((i) => i.made !== "made").length;
-            return (
-              <button
-                key={t.key}
-                type="button"
-                role="tab"
-                id={`stm-tab-${t.key}`}
-                aria-selected={on}
-                aria-controls={`stm-panel-${t.key}`}
-                onClick={() => setTab(t.key)}
-                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
-                  on
-                    ? "border-gold bg-pink text-pink-foreground"
-                    : "border-transparent text-pink hover:border-gold"
-                }`}
-              >
-                <span className="sm:hidden">{t.short}</span>
-                <span className="hidden sm:inline">{t.label}</span>{" "}
-                <span className={on ? "opacity-80" : "text-muted-foreground"}>({open})</span>
-              </button>
-            );
-          })}
-        </div>
-        <div
-          role="tabpanel"
-          id={`stm-panel-${tab}`}
-          aria-labelledby={`stm-tab-${tab}`}
-          className="mt-6"
-        >
-          <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
-            {items.map((it) => (
-              <Item key={it.title} it={it} />
-            ))}
-          </ul>
-        </div>
+        {!expanded && (
+          <p className="mt-3 text-sm text-muted-foreground">
+            {BOOKS_TO_WRITE.filter((i) => i.made !== "made").length} books to be written and{" "}
+            {FILMS_TO_MAKE.filter((i) => i.made !== "made").length} films to be made - tap to open.
+          </p>
+        )}
+        {expanded && (
+          <div id="still-to-make-body">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              The books that need to be written and the films that have to be made - every one the
+              guests and hosts call for on the show, with the exact moment (tap &#9654; to hear it)
+              and whether anyone has made it since.
+            </p>
+            <div
+              role="tablist"
+              aria-label="Still to be made"
+              className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2"
+            >
+              {tabs.map((t) => {
+                const on = tab === t.key;
+                const open = t.items.filter((i) => i.made !== "made").length;
+                return (
+                  <button
+                    key={t.key}
+                    type="button"
+                    role="tab"
+                    id={`stm-tab-${t.key}`}
+                    aria-selected={on}
+                    aria-controls={`stm-panel-${t.key}`}
+                    onClick={() => setTab(t.key)}
+                    className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
+                      on
+                        ? "border-gold bg-pink text-pink-foreground"
+                        : "border-transparent text-pink hover:border-gold"
+                    }`}
+                  >
+                    <span className="sm:hidden">{t.short}</span>
+                    <span className="hidden sm:inline">{t.label}</span>{" "}
+                    <span className={on ? "opacity-80" : "text-muted-foreground"}>({open})</span>
+                  </button>
+                );
+              })}
+            </div>
+            <div
+              role="tabpanel"
+              id={`stm-panel-${tab}`}
+              aria-labelledby={`stm-tab-${tab}`}
+              className="mt-6"
+            >
+              <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+                {items.map((it) => (
+                  <Item key={it.title} it={it} />
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
