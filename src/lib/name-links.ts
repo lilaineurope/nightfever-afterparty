@@ -33,9 +33,18 @@ const linkable: { text: string; slug: string }[] = (() => {
   return [...out.entries()].map(([text, slug]) => ({ text, slug })).sort((a, b) => b.text.length - a.text.length);
 })();
 
-const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const RX = new RegExp(`(?<![\\w-])(${linkable.map((l) => esc(l.text)).join("|")})(?![\\w-])`, "g");
-const slugOfText = new Map(linkable.map((l) => [l.text, l.slug]));
+// Names grouped by their first two letters, longest first. linkNames walks the text once and only tries the
+// names that start with the letters in front of it. (One giant regex of every name did the same job but took
+// most of a second on the server and helped make it time out while starting up.)
+const byStart = new Map<string, { text: string; slug: string }[]>();
+for (const l of linkable) {
+  const key = l.text.slice(0, 2);
+  const list = byStart.get(key) ?? [];
+  list.push(l); // linkable is already longest first
+  byStart.set(key, list);
+}
+// A name only counts as a whole word: no letter, digit, "_" or "-" right before or after it.
+const isWordChar = (c: string | undefined) => !!c && /[\w-]/.test(c);
 
 export type Segment = { text: string; slug?: string };
 
@@ -45,13 +54,25 @@ export function linkNames(text: string, selfSlug?: string): Segment[] {
   const out: Segment[] = [];
   const seen = new Set<string>();
   let last = 0;
-  for (const m of text.matchAll(RX)) {
-    const slug = slugOfText.get(m[1]!);
-    if (!slug || slug === selfSlug || seen.has(slug)) continue;
-    seen.add(slug);
-    if (m.index! > last) out.push({ text: text.slice(last, m.index) });
-    out.push({ text: m[1]!, slug });
-    last = m.index! + m[1]!.length;
+  let i = 0;
+  while (i < text.length) {
+    const found = isWordChar(text[i - 1])
+      ? undefined
+      : byStart
+          .get(text.slice(i, i + 2))
+          ?.find((l) => text.startsWith(l.text, i) && !isWordChar(text[i + l.text.length]));
+    if (!found) {
+      i++;
+      continue;
+    }
+    const { slug } = found;
+    if (slug !== selfSlug && !seen.has(slug)) {
+      seen.add(slug);
+      if (i > last) out.push({ text: text.slice(last, i) });
+      out.push({ text: found.text, slug });
+      last = i + found.text.length;
+    }
+    i += found.text.length;
   }
   if (last < text.length) out.push({ text: text.slice(last) });
   return out;
