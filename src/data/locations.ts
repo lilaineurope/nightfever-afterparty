@@ -579,4 +579,16 @@ export const LOCATIONS: Located[] = [
   { name: "Lucky Strike (restaurant)", lat: 40.7222, lng: -74.0033, area: "SoHo" },
   { name: "Minetta Tavern", lat: 40.7301, lng: -74.0005, area: "Greenwich Village" },
   { name: "Pastis", lat: 40.7398, lng: -74.0063, area: "Meatpacking" },
+  // S05E10 Tish & Snooky
+  { name: "Manic Panic store, St. Marks Place", lat: 40.7290, lng: -73.9879, area: "East Village" },
+  { name: "St. Marks Place", lat: 40.7272, lng: -73.9857, area: "East Village" },
+  { name: "Bronx Psychiatric Center", lat: 40.8517, lng: -73.8437, area: "Bronx" },
+  { name: "Studio 10", lat: 40.7253, lng: -73.9927, area: "NoHo" },
+  { name: "Bleecker Street", lat: 40.7287, lng: -74.0006, area: "Greenwich Village" },
+  { name: "Reade Street shoe warehouse", lat: 40.7154, lng: -74.0058, area: "Tribeca" },
+  { name: "Bouwerie Lane Theatre", lat: 40.7255, lng: -73.9923, area: "Bowery" },
+  { name: "One University Place", lat: 40.7327, lng: -73.9949, area: "Greenwich Village" },
+  { name: "Atlantic City", lat: 39.3643, lng: -74.4229, area: "New Jersey" },
+  { name: "Oxford", lat: 51.7548, lng: -1.2544, area: "England" },
+  { name: "Argentina", lat: -34.6037, lng: -58.3816, area: "Argentina" },
 ];

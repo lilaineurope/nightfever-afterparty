@@ -180,7 +180,7 @@ export const coreGuests: Guest[] = [
     slug: "tish-and-snooky",
     name: "Tish & Snooky",
     tagline: "Blondie's backing singers - and the sisters who invented Manic Panic!",
-    episode: "Episode aired 20 August 2025",
+    episode: "Season 5, Episode 10 - 20 August 2025",
     episodeUrl: SHOW_URL,
     timeline: [
       {

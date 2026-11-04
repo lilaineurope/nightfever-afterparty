@@ -161,4 +161,10 @@ export const COME_BACK: InterviewTip[] = [
     episodeId: "s04e07",
     time: "01:02:01",
   },
+  {
+    name: "Tish & Snooky",
+    why: "James signs off saying they only got halfway into the 90s, so they'll have to have the sisters back for the 90s to now.",
+    episodeId: "s05e10",
+    time: "00:51:21",
+  },
 ];

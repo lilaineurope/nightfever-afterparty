@@ -94,6 +94,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s01e08: "voguing, Madonna's Vogue & the House of Xtravaganza",
   s03e04: "Hip Hop, Be Bop, Studio 54 & the Cock",
   s04e07: "the Pyramid Club, Danceteria & 80s Polaroids",
+  s05e10: "Manic Panic, Blondie & St. Marks Place punk",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */
