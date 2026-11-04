@@ -11,7 +11,7 @@ import {
 } from "@/data/still-to-make";
 import { Timestamp } from "@/components/episode-player";
 
-// "Still to be made" box on the Library page (Lisa, 4 Nov 2026: "add it to the library page as a box first"): the books
+// "Still to be made" box on the Library page, headline "Publish this" (Lisa, 4 Nov 2026 evening; box first added that morning): the books
 // and films the guests and hosts say should exist, in two tabs, laid out like "Who to interview next".
 
 const ITEM_CLASS =
@@ -226,7 +226,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
             onClick={() => setExpanded((e) => !e)}
             className="group flex w-full items-center justify-between gap-4 text-left uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
           >
-            <span className="group-hover:text-pink">Still to be made</span>
+            <span className="group-hover:text-pink">Publish this</span>
             <span
               aria-hidden="true"
               className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-gold text-2xl leading-none transition group-hover:bg-pink group-hover:text-pink-foreground"
@@ -242,7 +242,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
         </p>
         <div
           role="tablist"
-          aria-label="Still to be made"
+          aria-label="Publish this"
           className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2"
         >
           {tabs.map((t) => {
