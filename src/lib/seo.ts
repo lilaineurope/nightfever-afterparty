@@ -93,6 +93,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s02e11: "the Mudd Club, Steve Mass & Basquiat",
   s01e08: "voguing, Madonna's Vogue & the House of Xtravaganza",
   s03e04: "Hip Hop, Be Bop, Studio 54 & the Cock",
+  s04e07: "the Pyramid Club, Danceteria & 80s Polaroids",
 };
 
 /** Head for an episode reference page: keyword title, share picture and PodcastEpisode structured data. */

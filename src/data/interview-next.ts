@@ -155,4 +155,10 @@ export const COME_BACK: InterviewTip[] = [
     episodeId: "s01e08",
     time: "00:59:50",
   },
+  {
+    name: "Trey Speegle",
+    why: "The hosts sign off saying they could do a part two, part three, part four - the Trey Speegle Chronicles.",
+    episodeId: "s04e07",
+    time: "01:02:01",
+  },
 ];

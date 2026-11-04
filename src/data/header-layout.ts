@@ -19,6 +19,7 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s03e08: { left: [], right: ["timeline", "mentor", "drop"] }, // Larry Tee - Lisa OK'd (review 7-18)
   s03e10: { left: [], right: ["timeline", "mentor", "drop"] }, // Miss Guy - Lisa: looks great
   s04e04: { left: [], right: ["timeline", "mentor", "drop"] }, // Zaldy - Lisa OK'd (review 19-24)
+  s04e07: { left: ["drop"], right: ["timeline", "mentor"] }, // Trey Speegle - Lisa: ok to layout (4 Nov 2026)
   s04e08: { left: [], right: ["timeline", "mentor", "drop"] }, // Richie Rich - Lisa OK'd (review 19-24)
   s04e10: { left: [], right: ["timeline", "mentor", "drop"] }, // Ann Magnuson - Lisa: looks great
   s05e01: { left: ["mentor"], right: ["timeline", "drop"] }, // Nell Campbell - Lisa OK'd (review 19-24)

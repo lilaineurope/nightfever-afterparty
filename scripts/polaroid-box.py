@@ -83,9 +83,9 @@ def scraps(out, labels, rng, spots=None, scale=1.0):
     return np.asarray(im.convert("RGB"), np.float32)
 
 
-def cutout(img, composite):
+def cutout(img, composite, model="isnet-general-use"):
     from rembg import remove, new_session
-    sess = new_session("isnet-general-use")
+    sess = new_session(model)
     rgb = np.asarray(img.convert("RGB"))
     a = (np.asarray(remove(img.convert("RGB"), session=sess, post_process_mask=True))[..., 3] > 128).astype(np.uint8)
     if composite:  # drop the old pink sticker edge and gold flecks so the old collage never comes along
@@ -175,6 +175,7 @@ def main():
     ap.add_argument("--crop", default=""); ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--accent-red", action="store_true"); ap.add_argument("--composite", action="store_true")
     ap.add_argument("--head", type=float, default=0.06); ap.add_argument("--zoom", type=float, default=1.25, help="figure size (1 = head to waist fits the box)"); ap.add_argument("--ring", type=int, default=24); ap.add_argument("--no-align", action="store_true", help="never line clean cuts up with the edge")
+    ap.add_argument("--model", default="isnet-general-use", help="rembg model; u2net_human_seg keeps a white shirt on a light backdrop (S04E07 Trey Speegle)")
     ap.add_argument("--width", type=float, default=0.0, help="figure width as a share of the box (0 = fit by height)")
     ap.add_argument("--labels", default="", help="scrap labels separated by | (default: top references from src/data/<id>.json)")
     ap.add_argument("--header", default="", help="WxH for a wide episode header (portrait on the right) instead of the square box")
@@ -204,7 +205,7 @@ def main():
         if l and len(l) <= 22 and not any(h in l for h in hosts) and l not in NEVER_ON_POLAROID and l not in clean: clean.append(l)
     labels = clean[:4]
 
-    rgb, a = cutout(Image.open(o.portrait), o.composite)
+    rgb, a = cutout(Image.open(o.portrait), o.composite, o.model)
     if o.accent_red: rgb = accent_red(rgb)
     if o.header:
         can, ca = place(rgb, a, W, H, o.head, o.cx or 0.8, o.width)

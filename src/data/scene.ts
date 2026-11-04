@@ -32,6 +32,7 @@ import s05e01 from "./s05e01.json";
 import s02e11 from "./s02e11.json";
 import s01e08 from "./s01e08.json";
 import s03e04 from "./s03e04.json";
+import s04e07 from "./s04e07.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -563,6 +564,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s02e11", label: "S2 E11", guest: "Richard Boch", refs: s02e11 as Ref[] },
   { id: "s01e08", label: "S1 E8", guest: "Luis \"Xtravaganza\" Camacho", refs: s01e08 as Ref[] },
   { id: "s03e04", label: "S3 E4", guest: "Man Parrish", refs: s03e04 as Ref[] },
+  { id: "s04e07", label: "S4 E7", guest: "Trey Speegle", refs: s04e07 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
@@ -585,6 +587,11 @@ const SKIP_MOMENT = new Set([
   "s01e08|House of Pancakes",
   // S03E04: the 1982 release is already a curated moment on Man Parrish's card ("Releases 'Hip Hop, Be Bop (Don't Stop)'").
   "s03e04|Man Parrish – 'Hip Hop, Be Bop (Don't Stop)'",
+  // S04E07: Phoebe's repeats the 1991 Manhattan Cable interview with Quentin Crisp - keep it once. Trey's card already
+  // has "Arrives in New York from Houston" (1980) and "Runs Straight to Hell" (1984).
+  "s04e07|Phoebe's (Bowery diner)",
+  "s04e07|New York",
+  "s04e07|Straight to Hell night at the Pyramid",
 ]);
 const afterpartyMoments: SceneEvent[] = afterpartyIndexes.flatMap((ep) =>
   ep.refs.flatMap((r, i) => {
