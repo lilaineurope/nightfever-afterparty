@@ -700,6 +700,7 @@ const s04e07: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1582386230.mp3",
   runtime: "1:03:04",
   afterpartyPublished: "2026-11-09",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLUMsrhG_L7lQ",
   blurb:
     "Trey Speegle, the artist behind 80s Polaroids: art director at 19 in Houston, Vogue at 21, Straight to Hell at the Pyramid with John Waters and Quentin Crisp, Bad Boy nights at Danceteria with go-go boys from the Gaiety - and the story behind the Andy Warhol memorial poster.",
   references: treyRefs.length,
