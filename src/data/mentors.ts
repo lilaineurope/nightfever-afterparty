@@ -62,6 +62,10 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Jim Fouratt", mentee: "Richard Boch", episode: "s02e11", time: "00:57:31", line: "Brought Richard on at the Peppermint Lounge after the Mudd Club" },
   { mentor: "Christopher Makos", mentee: "Man Parrish", episode: "s03e04", time: "00:09:27", line: "Told broke young Manny he could model, took his pictures and brought them to the Factory for Interview, Man says" },
   { mentor: "Joe Gage", mentee: "Man Parrish", episode: "s03e04", time: "00:02:54", line: "Asked Man for music for his film - 'Heatstroke', the track that started his record career" },
+  { mentor: "Kezia Keeble", mentee: "Trey Speegle", episode: "s04e07", time: "00:05:39", line: "Told Trey, then a teenage art director in Houston, that he had to come to New York to work in magazines, Trey says" },
+  { mentor: "Paul Cavaco", mentee: "Trey Speegle", episode: "s04e07", time: "00:06:07", line: "Called Trey about a job at GQ - he didn't get it, but it got him to New York" },
+  { mentor: "Rudolf Piper", mentee: "Trey Speegle", episode: "s04e07", time: "00:23:00", line: "Gave Trey a monthly Bad Boy night at Danceteria" },
+  { mentor: "Trey Speegle", mentee: "The Fabulous Pop Tarts", episode: "s04e07", time: "00:01:12", line: "Gave Fenton and Randy their first - and, Randy says, last - DJ gig, at Straight to Hell at the Pyramid" },
   { mentor: "José Xtravaganza", mentee: 'Luis "Xtravaganza" Camacho', episode: "s01e08", time: "00:05:30", line: "Found the ballroom scene first and brought Luis along - then into the House of Xtravaganza, Luis says" },
   { mentor: "Angie Xtravaganza", mentee: 'Luis "Xtravaganza" Camacho', episode: "s01e08", time: "00:10:06", line: "Mother of the house Luis joined; he says the kids followed her like ducklings" },
 ];

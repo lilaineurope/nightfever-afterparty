@@ -5,6 +5,17 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Christodora House", lat: 40.7262, lng: -73.9803, area: "East Village" },
+  { name: "Charlie Parker Residence", lat: 40.7266, lng: -73.9800, area: "East Village" },
+  { name: "Tony Shafrazi Gallery", lat: 40.7255, lng: -73.9989, area: "SoHo" },
+  { name: "Bond International Casino", lat: 40.7579, lng: -73.9857, area: "Times Square" },
+  { name: "Quentin Crisp's room on East Third Street", lat: 40.7247, lng: -73.9897, area: "East Village" },
+  { name: "Far Rockaway", lat: 40.6054, lng: -73.7558, area: "Queens" },
+  { name: "Holly Solomon Gallery", lat: 40.7628, lng: -73.9741, area: "Midtown" },
+  { name: "Howl! Happening", lat: 40.7243, lng: -73.9905, area: "East Village" },
+  { name: "Phoebe's (Bowery diner)", lat: 40.7255, lng: -73.9918, area: "Bowery" },
+  { name: "33 Bleecker (Bill Stelling's gallery)", lat: 40.7257, lng: -73.9944, area: "NoHo" },
+  { name: "Pop Shop", lat: 40.7246, lng: -73.9958, area: "SoHo" },
   { name: "The Cock", lat: 40.7297, lng: -73.9809, area: "East Village" },
   { name: "Vanguard Studios", lat: 40.7445, lng: -73.9968, area: "Chelsea" },
   { name: "Gotham Comedy Club", lat: 40.7445, lng: -73.9968, area: "Chelsea" },
