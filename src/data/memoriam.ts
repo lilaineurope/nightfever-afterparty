@@ -21,6 +21,9 @@ export type Memoriam = {
   rooms: string[]; // clubs, nights, places
   said: MemoriamQuote[];
   memorial?: { label: string; href: string };
+  // "Read more" on the name card instead of the Google search, when there is no Wikipedia article (Lisa, 4 Nov 2026).
+  readMore?: { label: string; href: string };
+  wikidata?: string; // for the page markup (sameAs)
 };
 
 export const MEMORIAM: Record<string, Memoriam> = {
@@ -51,5 +54,8 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s02e03", who: "Fenton Bailey", time: "00:27:27", quote: "Bobby Bradley and Brian." },
     ],
     memorial: { label: "brianbutterick.org", href: "https://brianbutterick.org/" },
+    // No Wikipedia article for him (checked 4 Nov 2026), so the name card links his memorial site.
+    readMore: { label: "on his memorial site", href: "https://brianbutterick.org/" },
+    wikidata: "https://www.wikidata.org/wiki/Q81233089",
   },
 };

@@ -57,6 +57,7 @@ export const Route = createFileRoute("/explore/$slug")({
       thing["deathDate"] = mem.died;
       if (mem.aka) thing["alternateName"] = mem.aka;
       thing["description"] = mem.story;
+      if (mem.wikidata && !thing["sameAs"]) thing["sameAs"] = mem.wikidata;
     }
     // Guests: a fuller Person (what they're known for, and the Night Fever episode they're interviewed in) - Lisa, 27 Oct 2026.
     if (d.guest) {
@@ -153,7 +154,13 @@ function EntityPage() {
           {mem && <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died} · {mem.diedLine.replace(/^Died/, "died")}</p>}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
-          {e.link && !(g && e.link.includes("wowpresentsplus")) && (
+          {mem?.readMore ? (
+            <p className="mt-4">
+              <a href={mem.readMore.href} target="_blank" rel="noopener noreferrer" className="card-more">
+                Read more {mem.readMore.label} &rarr;
+              </a>
+            </p>
+          ) : e.link && !(g && e.link.includes("wowpresentsplus")) && (
             <p className="mt-4">
               <a href={e.link} target="_blank" rel="noopener noreferrer" className="card-more">
                 Read more {linkPlace(e.link)} &rarr;
