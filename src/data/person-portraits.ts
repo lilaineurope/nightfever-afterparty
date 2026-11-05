@@ -193,6 +193,8 @@ import traceyAfricaPolaroid from "@/assets/people/tracey-africa-polaroid.webp";
 // Daily run, batch 1: James Revson (Lisa, 4 Nov 2026)
 import jamesRevsonPhoto from "@/assets/people/james-revson-photo.webp";
 import jamesRevsonPolaroid from "@/assets/people/james-revson-polaroid.webp";
+import angelPhoto from "@/assets/people/andre-angel-melendez-photo.webp";
+import angelPolaroid from "@/assets/people/andre-angel-melendez-polaroid.webp";
 // In memoriam: Brian Butterick (Lisa, 4 Nov 2026)
 import brianButterickPhoto from "@/assets/people/brian-butterick-photo.webp";
 import brianButterickPolaroid from "@/assets/people/brian-butterick-polaroid.webp";
@@ -325,6 +327,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   // Daily run, batch 1: free photos (Lisa, 4 Nov 2026)
   "brian-butterick": { photo: brianButterickPhoto, polaroid: brianButterickPolaroid, focus: "52%", credit: "Illustration made with Gemini, not a photo" },
   "james-revson": { photo: jamesRevsonPhoto, polaroid: jamesRevsonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "andre-angel-melendez": { photo: angelPhoto, polaroid: angelPolaroid, focus: "25%", credit: "Illustration made with Gemini after the photo on the 1996 missing posters, not a photo" },
   "david-letterman": { photo: davidLettermanPhoto, polaroid: davidLettermanPolaroid, focus: "28%", credit: "Portrait after a US Navy photo for the Chairman of the Joint Chiefs of Staff, 2011 (CC BY 2.0), in our photocopy style" },
   "meryl-streep": { photo: merylStreepPhoto, polaroid: merylStreepPolaroid, focus: "28%", credit: "Portrait after a photo by Neon Tommy, 2014 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
   "rosie-o-donnell": { photo: rosieODonnellPhoto, polaroid: rosieODonnellPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2008 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
