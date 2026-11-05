@@ -25,7 +25,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
       {m.said.length > 0 && (
         <section>
           <h2 className={`${h} text-center`}>Remembered by the guests</h2>
-          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3"}>
             {m.said.map((s, i) => {
               const ep = episodeById(s.episode);
               const code = `S${ep.season}E${ep.episode}`;
