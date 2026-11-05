@@ -71,6 +71,10 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Trey Speegle", mentee: "The Fabulous Pop Tarts", episode: "s04e07", time: "00:01:12", line: "Gave Fenton and Randy their first - and, Randy says, last - DJ gig, at Straight to Hell at the Pyramid" },
   { mentor: "José Xtravaganza", mentee: 'Luis "Xtravaganza" Camacho', episode: "s01e08", time: "00:05:30", line: "Found the ballroom scene first and brought Luis along - then into the House of Xtravaganza, Luis says" },
   { mentor: "Angie Xtravaganza", mentee: 'Luis "Xtravaganza" Camacho', episode: "s01e08", time: "00:10:06", line: "Mother of the house Luis joined; he says the kids followed her like ducklings" },
+  { mentor: "Susan Seidelman", mentee: "Madonna", episode: "s04e09", time: "00:00:52", line: "Cast the struggling up-and-comer as Susan in Desperately Seeking Susan instead of an actress" },
+  { mentor: "Susan Seidelman", mentee: "Susan Berman", episode: "s04e09", time: "00:07:16", line: "Cast her as Wren in Smithereens, her first film" },
+  { mentor: "Susan Seidelman", mentee: "Ron Nyswaner", episode: "s04e09", time: "00:25:50", line: "Found the Columbia student with one phone call and brought him in on Smithereens' dialogue" },
+  { mentor: "Gilles Jacob", mentee: "Susan Seidelman", episode: "s04e09", time: "00:15:58", line: "Moved Smithereens from the Directors' Fortnight into the Cannes competition" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

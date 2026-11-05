@@ -31,6 +31,7 @@ export const GUEST_LINES: Record<string, string> = {
   s03e04: "Hip Hop, Be Bop · electro pioneer · Sunday nights at the Cock",
   s04e07: "80s Polaroids · Straight to Hell at the Pyramid · Bad Boy at Danceteria",
   s05e10: "Manic Panic · Blondie backing singers · the Sic F*cks",
+  s04e09: "Smithereens · Desperately Seeking Susan · the Sex and the City pilot",
   s02e11: "Mudd Club doorman · artist and author of The Mudd Club",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
