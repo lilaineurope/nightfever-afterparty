@@ -150,8 +150,13 @@ function EntityPage() {
           <h1 className="card-title">
             <span className="timeline-strip timeline-strip-ink">{e.name}</span>
           </h1>
-          {mem?.aka && <p className="memoriam-aka">aka {mem.aka}</p>}
-          {mem && <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died} · {mem.diedLine.replace(/^Died/, "died")}</p>}
+          {/* No polaroid yet: aka + dates sit on a small taped paper card so they stay readable over the dots (5 Nov 2026). */}
+          {mem && (
+            <div className={pic ? undefined : "memoriam-meta"}>
+              {mem.aka && <p className="memoriam-aka">aka {mem.aka}</p>}
+              <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died} · {mem.diedLine.replace(/^Died/, "died")}</p>
+            </div>
+          )}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
           {mem?.readMore ? (

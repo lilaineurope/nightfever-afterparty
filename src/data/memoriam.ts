@@ -15,6 +15,7 @@ export type Memoriam = {
   died: string;
   diedLine: string; // "Died 30 January 2019 in New York, aged 62"
   aka?: string;
+  first?: string; // name used in "<first>'s story" when the first name isn't what people call them (Angel Melendez)
   story: string;
   timeline: [string, string][];
   liftedUp: string[]; // people they gave a start
@@ -469,7 +470,7 @@ export const MEMORIAM: Record<string, Memoriam> = {
     born: "1971",
     died: "1996",
     diedLine: "Died 17 March 1996 in New York, aged 24",
-    aka: "Angel",
+    first: "Angel",
     story:
       "Came to New York from Colombia at eight and found a family in the clubs, where he became Angel, known for the white feathered wings he wore. He was killed at 24, and his brother Johnny kept asking until the city listened.",
     timeline: [
