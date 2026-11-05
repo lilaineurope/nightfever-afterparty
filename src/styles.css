@@ -649,13 +649,14 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .card-head { background: var(--sky-phone) center top / 220% auto no-repeat; padding-top: calc(220vw * 60 / 1920); padding-bottom: 40px; min-height: calc(220vw * 720 / 1920); }
 @media (min-width: 640px) { .card-head { background-image: var(--sky); background-size: 100% auto; padding-top: calc(100vw * 70 / 1920); min-height: calc(100vw * 720 / 1920); } }
 /* Person polaroids on the A–Z page (Lisa, 2 Nov 2026, "combo 3"): photo header + taped name card + taped polaroid. */
-.card-head.card-head-photo { position: relative; background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,0) 60%), var(--photo) center var(--focus, 22%) / cover no-repeat; border-bottom: 2px solid #111; padding: 385px 16px 48px; min-height: 0; }
+.card-head.card-head-photo { position: relative; background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,0) 60%), var(--photo) center var(--focus, 22%) / cover no-repeat; border-bottom: 2px solid #111; padding: 385px 16px 48px; padding-top: max(385px, calc(min(52%, 360px) * 1.24 + 120px)); min-height: 0; }
+/* Below 900px the polaroid sits above the name card: the top padding grows with the polaroid (its height is 1.24 x its width,
+   plus tape, credit and a gap) so it never hangs over the card text (Lisa, 5 Nov 2026). */
 .card-namecard { position: relative; background: color-mix(in oklab, var(--card) 95%, transparent); border: 2px solid #111; box-shadow: 5px 6px 0 #111; padding: 26px 22px 22px; transform: rotate(-1.5deg); }
 .card-namecard::before { content: ""; position: absolute; top: -16px; left: 40%; width: 120px; height: 30px; background: rgba(240,230,200,.88); transform: rotate(3deg); box-shadow: 0 1px 2px rgba(0,0,0,.25); }
 .card-head-photo + div { padding-top: 40px; }
-/* In memoriam A–Z pages (Lisa, 4 Nov 2026): black corner band + "aka" line on the name card. */
-.memoriam-band { position: absolute; z-index: 6; top: 30px; left: -64px; width: 260px; transform: rotate(-35deg); background: #111; color: #f4f1ea; text-align: center; padding: 6px 0; font: 600 12px/1 var(--font-type); letter-spacing: .25em; text-transform: uppercase; box-shadow: 0 2px 0 rgba(0,0,0,.25); pointer-events: none; }
-.card-head-memoriam { overflow: hidden; }
+/* In memoriam A–Z pages (Lisa, 4 Nov 2026): black IN MEMORIAM band + "aka" line on the name card (band moved off the photo corner 5 Nov 2026). */
+.memoriam-band { background: #111; color: #f4f1ea; font: 600 13px/1.6 var(--font-type); letter-spacing: .22em; }
 .memoriam-meta { display: inline-block; margin-top: 14px; padding: 2px 14px 10px; background: #f6f0ea; border: 2px solid #111; box-shadow: 4px 4px 0 #111; transform: rotate(-1deg); }
 .memoriam-meta .text-muted-foreground { color: #333; }
 .memoriam-meta .memoriam-aka { margin-top: 8px; }

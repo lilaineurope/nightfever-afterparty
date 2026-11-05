@@ -119,7 +119,7 @@ function EntityPage() {
   const e = entityBySlug[slug]!;
   const g = e.guest;
   const pic = g ? undefined : PERSON_PORTRAITS[e.slug];
-  // In memoriam (Lisa, 4 Nov 2026, option C): black IN MEMORIAM band, "aka" and dates on the name card, guest quotes wall below.
+  // In memoriam (Lisa, 4 Nov 2026, option C): black IN MEMORIAM band (on the name card since 5 Nov), "aka" and dates on the name card, guest quotes wall below.
   const mem = g ? undefined : MEMORIAM[e.slug];
 
   return (
@@ -128,14 +128,13 @@ function EntityPage() {
       {/* People with a polaroid (Lisa, 2 Nov 2026, "combo 3"): their photo fills the header, the name sits on a taped card and the
           polaroid is taped on the right with its credit. */}
       <section
-        className={`${pic ? "card-head card-head-photo px-4" : "card-head px-4"}${mem ? " card-head-memoriam" : ""}`}
+        className={`${pic ? "card-head card-head-photo px-4" : "card-head px-4"}`}
         style={
           (pic
             ? ({ "--photo": `url(${pic.photo})`, "--focus": pic.focus } as CSSProperties)
             : ({ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties))
         }
       >
-        {mem && <div aria-hidden="true" className="memoriam-band">In memoriam</div>}
         {pic && (
           <figure className="card-polaroid">
             <img src={pic.polaroid} alt={`${e.name} polaroid`} width={720} height={893} />
@@ -145,6 +144,9 @@ function EntityPage() {
         <div className={pic ? "card-namecard" : "mx-auto max-w-4xl"}>
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">
+            {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
+                the top menu and covered the stickers in the photo. Pictures never cover text, text never covers pictures' text. */}
+            {mem && <span className="az-st az-s2 memoriam-band">In memoriam</span>}
             <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : e.category}</span>
           </p>
           <h1 className="card-title">
