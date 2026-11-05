@@ -206,6 +206,7 @@ const dt: ClubNight = {
     { id: "VhGBGXb7G6o", title: "Danceteria: The 1980s NYC Club That Made Madonna" },
     { id: "D3zkX-Am4o4", title: "Madonna - Danceteria" },
     { id: "P4kE8CNvoOw", title: "Soft Cell - Danceteria" },
+    { id: "xyiG9P_Vc7A", title: "Desperately Seeking Susan (1985) - the Into the Groove scene, shot at Danceteria" },
   ],
   sources: [
     { key: "K", label: "Mark Kamins interview (Red Bull Music Academy, 2014)", href: "https://daily.redbullmusicacademy.com/2014/02/mark-kamins-interview" },
@@ -221,6 +222,7 @@ const dt: ClubNight = {
     { key: "E", label: "New York Dance Stand from Danceteria, 1983, with Dianne Brill (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=TueeQKzdB6s" },
     { key: "X", label: "Natasha's fashion show at Danceteria, 1984 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=rM2JfP0f2aQ" },
     { key: "V", label: "Danceteria, 1980s New York clubbing - Nelson Sullivan / Kinolibrary (YouTube - a viewer's track ID)", href: "https://www.youtube.com/watch?v=8TgoJwcdzSE" },
+    { key: "I", label: "Into the Groove - Wikipedia", href: "https://en.wikipedia.org/wiki/Into_the_Groove" },
   ],
   songs: [
     { title: "Everybody", artist: "Madonna", year: 1982, spotify: "4sFGkok98Cu0gu52fD48Xr", video: "cOqr_x_9fMc", kind: "played", why: "Mark Kamins played her demo at the club; she first performed it there on 18 Dec 1982", sources: ["W", "K"] },
@@ -256,6 +258,7 @@ const dt: ClubNight = {
     { title: "Jukebox (Don't Put Another Dime)", artist: "The Flirts", year: 1982, spotify: "4ELCfn46P7TLfPSEkf2nbo", video: "Gf8hvcopfkY", kind: "played", why: "Plays at Natasha's fashion show at the club in 1984 (YouTube's song recognition)", sources: ["X"] },
     { title: "White Wedding", artist: "Billy Idol", year: 1982, spotify: "24kNjskAjp7GBtP0MPEiC6", video: "AAZQaYKZMTI", kind: "played", why: "Plays at Natasha's fashion show at the club in 1984 (YouTube's song recognition)", sources: ["X"] },
     { title: "Funkbox Party", artist: "The Masterdon Committee", year: 1982, spotify: "6078HP47Q6H6LcQN9nKLxX", video: "r_OxZKktwQc", kind: "played", why: "A viewer identifies it in Nelson Sullivan's footage from inside the club", sources: ["V"] },
+    { title: "Into the Groove", artist: "Madonna", year: 1985, spotify: "09DXOIotVDH6ehrY8ecbmA", video: "52iW3lcpK5M", kind: "about", why: "Madonna brought the demo to the Desperately Seeking Susan shoot at Danceteria as music for the extras; it stayed in the film, Susan Seidelman says", sources: ["I"] },
   ],
 };
 
