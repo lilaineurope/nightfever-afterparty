@@ -598,6 +598,9 @@ const SKIP_MOMENT = new Set([
   "s04e07|Straight to Hell night at the Pyramid",
   // S05E10: the 7 July 1977 opening is already curated ("Manic Panic opens on St Marks Place") and on Tish & Snooky's card;
   // Atlantic City repeats the 1984 Nightingales booking; "New York" only dates the sisters singing in dives.
+  // S04E09: Billy is a private person (Susan's prom date); the towel fashion show repeats the Continental Baths line.
+  "s04e09|Billy, Susan's prom date",
+  "s04e09|Continental Baths towel fashion show",
   "s05e10|Manic Panic",
   "s05e10|Manic Panic opens (7 July 1977)",
   "s05e10|St. Marks Place",

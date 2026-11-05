@@ -1887,5 +1887,77 @@
   "context": "The naked late-night talk show Susan remembers on Channel J (Dan Landers' show; not named on air)",
   "link": "https://en.wikipedia.org/wiki/Channel_J",
   "status": "Partly confirmed"
+ },
+ {
+  "rank": 164,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Susan's on-camera look (S04E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Long golden-blonde hair, round dark tortoiseshell glasses, gold hoop earrings and a black V-neck top, in front of white built-in bookshelves in her New Jersey country house",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-409",
+  "status": "Confirmed",
+  "fashion": "Tortoiseshell glasses, gold hoops, black top",
+  "colours": [
+   "blonde #D9B98A",
+   "tortoiseshell #3B2A20",
+   "gold hoop #C9A44C",
+   "top black #1C1C1E"
+  ]
+ },
+ {
+  "rank": 165,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S04E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Oversized dark red-brown glasses, a dangling black earring and a black knit with a shaggy silver-grey fur collar, in front of his bookcase and the Buster Crabbe poster",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-409",
+  "status": "Confirmed",
+  "fashion": "Oversized glasses, silver fur collar",
+  "colours": [
+   "frame red-brown #6E2B1F",
+   "knit black #141414",
+   "fur silver #A9A9AE",
+   "poster gold #C9A86A"
+  ]
+ },
+ {
+  "rank": 166,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S04E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Blue-grey hoodie with a multicoloured striped placket and thin rimless glasses, in front of sunflower wallpaper, caps and a Brillo box",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-409",
+  "status": "Confirmed",
+  "fashion": "Blue-grey hoodie, rimless glasses",
+  "colours": [
+   "hoodie blue #5F7FA6",
+   "stripe orange #D97B3A",
+   "sunflower gold #D9A441",
+   "curtain brown #6B3E26"
+  ]
+ },
+ {
+  "rank": 167,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S04E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Navy patterned button-down shirt and black-rimmed glasses, in a bright office",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-409",
+  "status": "Confirmed",
+  "fashion": "Navy patterned shirt, black glasses",
+  "colours": [
+   "shirt navy #2B4A7A",
+   "pattern white #E8EEF5",
+   "frames black #1A1A1A",
+   "wall mint #CFE3DE"
+  ]
  }
 ]
