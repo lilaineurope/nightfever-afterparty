@@ -216,6 +216,52 @@ import liberacePolaroid from "@/assets/people/liberace-polaroid.webp";
 import sarahJessicaParkerPhoto from "@/assets/people/sarah-jessica-parker-photo.webp";
 import sarahJessicaParkerPolaroid from "@/assets/people/sarah-jessica-parker-polaroid.webp";
 
+// Daily run, batch 2 (Lisa, 5 Nov 2026): Gemini illustrations and free photos
+import beauregardHoustonMontgomeryPhoto from "@/assets/people/beauregard-houston-montgomery-photo.webp";
+import beauregardHoustonMontgomeryPolaroid from "@/assets/people/beauregard-houston-montgomery-polaroid.webp";
+import bobbyBradleyPhoto from "@/assets/people/bobby-bradley-photo.webp";
+import bobbyBradleyPolaroid from "@/assets/people/bobby-bradley-polaroid.webp";
+import jeffreyStrouthPhoto from "@/assets/people/jeffrey-strouth-photo.webp";
+import jeffreyStrouthPolaroid from "@/assets/people/jeffrey-strouth-polaroid.webp";
+import lanceLoudPhoto from "@/assets/people/lance-loud-photo.webp";
+import lanceLoudPolaroid from "@/assets/people/lance-loud-polaroid.webp";
+import daniloPhoto from "@/assets/people/danilo-photo.webp";
+import daniloPolaroid from "@/assets/people/danilo-polaroid.webp";
+import fredRothbellMistaPhoto from "@/assets/people/fred-rothbell-mista-photo.webp";
+import fredRothbellMistaPolaroid from "@/assets/people/fred-rothbell-mista-polaroid.webp";
+import cynthiaHeimelPhoto from "@/assets/people/cynthia-heimel-photo.webp";
+import cynthiaHeimelPolaroid from "@/assets/people/cynthia-heimel-polaroid.webp";
+import christopherCompPhoto from "@/assets/people/christopher-comp-photo.webp";
+import christopherCompPolaroid from "@/assets/people/christopher-comp-polaroid.webp";
+import azzedineAlaiAPhoto from "@/assets/people/azzedine-alai-a-photo.webp";
+import azzedineAlaiAPolaroid from "@/assets/people/azzedine-alai-a-polaroid.webp";
+import britneySpearsPhoto from "@/assets/people/britney-spears-photo.webp";
+import britneySpearsPolaroid from "@/assets/people/britney-spears-polaroid.webp";
+import chloeSevignyPhoto from "@/assets/people/chloe-sevigny-photo.webp";
+import chloeSevignyPolaroid from "@/assets/people/chloe-sevigny-polaroid.webp";
+import eugeniaSheppardPhoto from "@/assets/people/eugenia-sheppard-photo.webp";
+import eugeniaSheppardPolaroid from "@/assets/people/eugenia-sheppard-polaroid.webp";
+import jayneMansfieldPhoto from "@/assets/people/jayne-mansfield-photo.webp";
+import jayneMansfieldPolaroid from "@/assets/people/jayne-mansfield-polaroid.webp";
+import robertMapplethorpePhoto from "@/assets/people/robert-mapplethorpe-photo.webp";
+import robertMapplethorpePolaroid from "@/assets/people/robert-mapplethorpe-polaroid.webp";
+import salvadorDaliPhoto from "@/assets/people/salvador-dali-photo.webp";
+import salvadorDaliPolaroid from "@/assets/people/salvador-dali-polaroid.webp";
+import tennesseeWilliamsPhoto from "@/assets/people/tennessee-williams-photo.webp";
+import tennesseeWilliamsPolaroid from "@/assets/people/tennessee-williams-polaroid.webp";
+import annaWintourPhoto from "@/assets/people/anna-wintour-photo.webp";
+import annaWintourPolaroid from "@/assets/people/anna-wintour-polaroid.webp";
+import bettiePagePhoto from "@/assets/people/bettie-page-photo.webp";
+import bettiePagePolaroid from "@/assets/people/bettie-page-polaroid.webp";
+import calvinKleinPhoto from "@/assets/people/calvin-klein-photo.webp";
+import calvinKleinPolaroid from "@/assets/people/calvin-klein-polaroid.webp";
+import davidHockneyPhoto from "@/assets/people/david-hockney-photo.webp";
+import davidHockneyPolaroid from "@/assets/people/david-hockney-polaroid.webp";
+import dianaVreelandPhoto from "@/assets/people/diana-vreeland-photo.webp";
+import dianaVreelandPolaroid from "@/assets/people/diana-vreeland-polaroid.webp";
+import divinePhoto from "@/assets/people/divine-photo.webp";
+import divinePolaroid from "@/assets/people/divine-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   polaroid: string;
@@ -336,4 +382,27 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "leonardo-dicaprio": { photo: leonardoDicaprioPhoto, polaroid: leonardoDicaprioPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2007 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "liberace": { photo: liberacePhoto, polaroid: liberacePolaroid, focus: "28%", credit: "Portrait after a photo by Allan Warren, 1968 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "sarah-jessica-parker": { photo: sarahJessicaParkerPhoto, polaroid: sarahJessicaParkerPolaroid, focus: "28%", credit: "Portrait after a photo by Alan Light, 1999 (CC BY 2.0), in our photocopy style" },
+  // Daily run, batch 2 (Lisa, 5 Nov 2026)
+  "beauregard-houston-montgomery": { photo: beauregardHoustonMontgomeryPhoto, polaroid: beauregardHoustonMontgomeryPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "bobby-bradley": { photo: bobbyBradleyPhoto, polaroid: bobbyBradleyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jeffrey-strouth": { photo: jeffreyStrouthPhoto, polaroid: jeffreyStrouthPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "lance-loud": { photo: lanceLoudPhoto, polaroid: lanceLoudPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  danilo: { photo: daniloPhoto, polaroid: daniloPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "fred-rothbell-mista": { photo: fredRothbellMistaPhoto, polaroid: fredRothbellMistaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "cynthia-heimel": { photo: cynthiaHeimelPhoto, polaroid: cynthiaHeimelPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "christopher-comp": { photo: christopherCompPhoto, polaroid: christopherCompPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "azzedine-alai-a": { photo: azzedineAlaiAPhoto, polaroid: azzedineAlaiAPolaroid, focus: "28%", credit: "Portrait after a photo from the 1950s (public domain), in our photocopy style" },
+  "britney-spears": { photo: britneySpearsPhoto, polaroid: britneySpearsPolaroid, focus: "28%", credit: "Portrait after a photo by Glenn Francis, 2013 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "chloe-sevigny": { photo: chloeSevignyPhoto, polaroid: chloeSevignyPolaroid, focus: "28%", credit: "Portrait after a photo by Greg2600, 2017 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "eugenia-sheppard": { photo: eugeniaSheppardPhoto, polaroid: eugeniaSheppardPolaroid, focus: "28%", credit: "Portrait after her college yearbook photo, 1921 (public domain), in our photocopy style" },
+  "jayne-mansfield": { photo: jayneMansfieldPhoto, polaroid: jayneMansfieldPolaroid, focus: "28%", credit: "Portrait after a 20th Century Fox publicity photo for Kiss Them for Me, 1957 (public domain), in our photocopy style" },
+  "robert-mapplethorpe": { photo: robertMapplethorpePhoto, polaroid: robertMapplethorpePolaroid, focus: "28%", credit: "Portrait after Robert Mapplethorpe's self-portrait, 1980 (CC BY 2.0), in our photocopy style" },
+  "salvador-dali": { photo: salvadorDaliPhoto, polaroid: salvadorDaliPolaroid, focus: "28%", credit: "Portrait after a photo by Roger Higgins, New York World-Telegram, 1965 (public domain), in our photocopy style" },
+  "tennessee-williams": { photo: tennesseeWilliamsPhoto, polaroid: tennesseeWilliamsPolaroid, focus: "28%", credit: "Portrait after a photo by Orlando Fernandez, New York World-Telegram, 1965 (public domain), in our photocopy style" },
+  "anna-wintour": { photo: annaWintourPhoto, polaroid: annaWintourPolaroid, focus: "28%", credit: "Portrait after a photo by the British Embassy in Washington, 2024 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "bettie-page": { photo: bettiePagePhoto, polaroid: bettiePagePolaroid, focus: "28%", credit: "Portrait after a CMG Worldwide photo, 1950s (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "calvin-klein": { photo: calvinKleinPhoto, polaroid: calvinKleinPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2011 (CC BY 3.0), in our photocopy style" },
+  "david-hockney": { photo: davidHockneyPhoto, polaroid: davidHockneyPolaroid, focus: "28%", credit: "Portrait after a UPI photo, Washington Square Park 1977 (public domain), in our photocopy style" },
+  "diana-vreeland": { photo: dianaVreelandPhoto, polaroid: dianaVreelandPolaroid, focus: "28%", credit: "Portrait after a photo by Lynn Gilbert, 1978 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  divine: { photo: divinePhoto, polaroid: divinePolaroid, focus: "28%", credit: "Portrait after a Streetsound magazine cover photo (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
 };
