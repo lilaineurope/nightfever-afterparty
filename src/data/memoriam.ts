@@ -482,8 +482,6 @@ export const MEMORIAM: Record<string, Memoriam> = {
     said: [
       { episode: "s06e03", who: "Johnny Dynell", time: "00:49:07", quote: "The one who was killed was one of our kids, you know, and he would come there." },
       { episode: "s01e02", who: "Michael Musto", time: "00:33:36", quote: "I asked around, I found out the buzz, and I put something about a missing person." },
-      { episode: "s01e02", who: "Michael Musto", time: "00:35:21", quote: "Another horror of Angel's death is not just the loss of life. It fed into the Giuliani crackdowns." },
-      { episode: "s06e01", who: "James St. James", time: "00:42:09", quote: "I look back on that now, and I think that he had already had the seeds in his mind that he was going to kill Angel." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q4754838",
   },
