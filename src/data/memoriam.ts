@@ -21,6 +21,9 @@ export type Memoriam = {
   liftedUp: string[]; // people they gave a start
   rooms: string[]; // clubs, nights, places
   said: MemoriamQuote[];
+  // Lisa, 5 Nov 2026 (Angel): when the guests hardly describe the person, a few short quotes from family and friends
+  // outside the podcast, each with its source, in their own "Remembered by family and friends" box.
+  family?: { who: string; role: string; quote: string; source: string; href: string }[];
   memorial?: { label: string; href: string };
   // "Read more" on the name card instead of the Google search, when there is no Wikipedia article (Lisa, 4 Nov 2026).
   readMore?: { label: string; href: string };
@@ -481,9 +484,10 @@ export const MEMORIAM: Record<string, Memoriam> = {
     rooms: ["Limelight", "Club Kids"],
     said: [
       { episode: "s06e03", who: "Johnny Dynell", time: "00:49:07", quote: "The one who was killed was one of our kids, you know, and he would come there." },
-      { episode: "s01e02", who: "Michael Musto", time: "00:33:36", quote: "I asked around, I found out the buzz, and I put something about a missing person." },
-      { episode: "s01e02", who: "Michael Musto", time: "00:35:21", quote: "Another horror of Angel's death is not just the loss of life. It fed into the Giuliani crackdowns." },
-      { episode: "s06e01", who: "James St. James", time: "00:42:09", quote: "I look back on that now, and I think that he had already had the seeds in his mind that he was going to kill Angel." },
+    ],
+    family: [
+      { who: "Johnny Melendez", role: "his brother", quote: "He was a quiet boy, very shy.", source: "The Village Voice, via Oxygen", href: "https://www.oxygen.com/new-york-homicide/crime-news/nyc-club-kid-murder-victim-andre-angel-melendez" },
+      { who: "Wilson Cruz", role: "played him in Party Monster", quote: "He longed to find a place where he belonged and where he felt safe to express who he was.", source: "OUTinPerth", href: "https://www.outinperth.com/wilson-cruz-remembers-andre-angel-melendez/" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q4754838",
   },

@@ -25,7 +25,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
       {m.said.length > 0 && (
         <section>
           <h2 className={`${h} text-center`}>Remembered by the guests</h2>
-          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3"}>
             {m.said.map((s, i) => {
               const ep = episodeById(s.episode);
               const code = `S${ep.season}E${ep.episode}`;
@@ -58,6 +58,30 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
                 </figure>
               );
             })}
+          </div>
+        </section>
+      )}
+
+      {m.family && m.family.length > 0 && (
+        <section>
+          <h2 className={`${h} text-center`}>Remembered by family and friends</h2>
+          <p className="mt-2 text-center text-xs text-muted-foreground">Not from the podcast - each note says where it was said.</p>
+          <div className="mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2">
+            {m.family.map((f, i) => (
+              <figure
+                key={f.who}
+                className="relative border-2 border-[#111] bg-[#fbf7ef] p-5 pt-8 text-[#111] shadow-[5px_6px_0_#111]"
+                style={{ transform: `rotate(${TILT[(i + 3) % TILT.length]}deg)` }}
+              >
+                <span aria-hidden="true" className="absolute -top-4 left-1/2 h-7 w-24 -translate-x-1/2 -rotate-2 bg-[rgba(240,230,200,.9)] shadow" />
+                <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">&ldquo;{f.quote}&rdquo;</blockquote>
+                <figcaption className="mt-4 text-xs">
+                  <span className="font-semibold">{f.who}</span>, <span className="text-[#555]">{f.role}</span>
+                  <br />
+                  <a href={f.href} target="_blank" rel="noopener noreferrer" className="text-[#555] underline hover:text-pink">{f.source}</a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
       )}
