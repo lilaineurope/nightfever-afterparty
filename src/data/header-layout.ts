@@ -26,5 +26,6 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s05e03: { left: [], right: ["timeline", "drop"] }, // Amanda Lepore - Lisa OK'd (review 19-24)
   s05e04: { left: [], right: ["timeline", "drop"] }, // Nick Egan - Lisa OK'd (review 19-24)
   s05e10: { left: ["mentor"], right: ["timeline", "drop"] }, // Tish & Snooky - Lisa: yes to polaroid and layout (4 Nov 2026)
+  s04e09: { left: [], right: ["timeline", "mentor", "drop"] }, // Susan Seidelman - Lisa: ok layout (5 Nov 2026)
   s06e01: { left: ["drop"], right: ["timeline", "mentor"] }, // James St. James - Lisa: Top of the drop left, Mentor score right
 };
