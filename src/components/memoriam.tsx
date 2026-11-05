@@ -40,7 +40,11 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
                   {pol && (
                     <img src={pol} alt="" loading="lazy" className="absolute -right-4 -top-6 w-16 rotate-6 border-2 border-[#111] shadow-[3px_3px_0_#111]" />
                   )}
-                  <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">&ldquo;{s.quote}&rdquo;</blockquote>
+                  <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">
+                    {/* Lisa, 5 Nov 2026: pictures must never sit on text - the first lines wrap around the guest polaroid */}
+                    {pol && <span aria-hidden="true" className="float-right -mr-2 ml-2 h-11 w-14" />}
+                    &ldquo;{s.quote}&rdquo;
+                  </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                     <span className="font-semibold">
                       {s.who}

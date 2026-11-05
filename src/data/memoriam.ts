@@ -107,11 +107,11 @@ export const MEMORIAM: Record<string, Memoriam> = {
     rooms: ["SEX", "Area"],
     said: [
       { episode: "s05e04", who: "Nick Egan", time: "00:17:57", quote: "If you spent any time in London, Malcolm was like a kind of a god. He was a cultural god." },
-      { episode: "s05e04", who: "Nick Egan", time: "00:18:17", quote: "He'd come up with an idea, and within a month, everyone was listening to it, dancing to it, dressing to it." },
       { episode: "s05e04", who: "Nick Egan", time: "00:24:55", quote: "Trevor Horn asked him if he had a demo, and Malcolm didn't. He just gave him this Honduran merengue 78 and said, that's the demo." },
       { episode: "s03e06", who: "Eric Goode", time: "00:29:35", quote: "I loved Malcolm to the day he died." },
       { episode: "s06e03", who: "Johnny Dynell", time: "00:38:39", quote: "I wrote to him and said, you really got to come to New York. You got to see this scene. This whole ballroom thing, voguing. It's so you." },
       { episode: "s06e03", who: "Chi Chi Valenti", time: "00:40:03", quote: "I have deep respect for Malcolm's work. I think he's completely brilliant." },
+      { episode: "s03e06", who: "James St. James", time: "00:29:24", quote: "Another one of my absolute favorite parties of all time is the Malcolm McLaren Fans party." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q325377",
   },
@@ -163,9 +163,9 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s01e10", who: "Joey Arias", time: "00:16:37", quote: "That first week, I met Klaus, who's a baker and an opera singer." },
       { episode: "s04e10", who: "Ann Magnuson", time: "00:21:29", quote: "We went right up to this guy and said, who are you? Because you're the most interesting person here. And it was Klaus Nomi, Klaus Sperber." },
       { episode: "s04e10", who: "Ann Magnuson", time: "00:22:00", quote: "He jumped up on this snow mound and started singing opera, lit by the street light." },
-      { episode: "s01e10", who: "Joey Arias", time: "00:19:49", quote: "They told Klaus, your name is on the poster. So Klaus was writing: Klaus, Emini, Omni, Omni, Nomi. No me?" },
       { episode: "s03e04", who: "Man Parrish", time: "00:37:09", quote: "Klaus was a sweetheart." },
       { episode: "s01e10", who: "Joey Arias", time: "01:00:08", quote: "I promised Klaus I would watch after the legacy. I have everything of Klaus." },
+      { episode: "s03e04", who: "Man Parrish", time: "00:32:50", quote: "The curtain opens and there's Klaus. He couldn't even afford a smoke machine. He got a smoke bomb from the joke shop." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q57774",
   },
@@ -188,7 +188,6 @@ export const MEMORIAM: Record<string, Memoriam> = {
     said: [
       { episode: "s02e04", who: "Nikki Haskell", time: "00:12:14", quote: "Ivana and I hit it off immediately. We became new best friends in like five seconds. Actually, we were wearing the same outfit." },
       { episode: "s02e04", who: "Nikki Haskell", time: "00:16:42", quote: "When Ivana first came to town, she didn't know anything or anyone, and I introduced her to everyone." },
-      { episode: "s02e04", who: "Nikki Haskell", time: "00:36:57", quote: "For 10 summers, I was with Ivana on the boat with the kids." },
       { episode: "s01e02", who: "Michael Musto", time: "00:37:40", quote: "I cottoned to Ivana. I thought she was interesting." },
       { episode: "s01e02", who: "James St. James", time: "00:37:45", quote: "I still have a soft spot for Ivana. She had terrible taste in men, but God bless her. I loved her to death." },
       { episode: "s06e08", who: "James St. James", time: "00:44:01", quote: "We loved Ivana, she was adorable." },
@@ -322,7 +321,6 @@ export const MEMORIAM: Record<string, Memoriam> = {
     rooms: ["Taboo", "Kinky Gerlinky", "Love Ball", "Wigstock"],
     said: [
       { episode: "s02e03", who: "Susanne Bartsch", time: "00:17:06", quote: "Leigh was just really funny. He was very sarcastic, hysterical. His jokes were so dry." },
-      { episode: "s02e03", who: "Susanne Bartsch", time: "00:17:15", quote: "Him and Trojan were the ultimate magic to me." },
       { episode: "s02e03", who: "Susanne Bartsch", time: "00:17:40", quote: "Leigh was outrageous, really outrageous. And the more outrageous he could be, the happier he was." },
       { episode: "s01e10", who: "Joey Arias", time: "00:54:03", quote: "Leigh Bowery, who's the godfather, the saint to all this world." },
       { episode: "s02e01", who: "Michelle Visage", time: "00:32:21", quote: "I would see Leigh Bowery all the time at Susanne's parties." },
@@ -407,7 +405,6 @@ export const MEMORIAM: Record<string, Memoriam> = {
     said: [
       { episode: "s06e08", who: "James St. James", time: "00:22:46", quote: "When he died, he left her a hundred million and said, your job is to spread it around and be Glinda the Good Witch of New York City. Which she was." },
       { episode: "s06e08", who: "William Norwich", time: "00:22:05", quote: "The hierarchy, the beehive, has always existed, and there's always been the queen. And Mrs. Astor found herself at the top of it." },
-      { episode: "s06e08", who: "William Norwich", time: "00:24:47", quote: "Mrs. Astor, as the queen bee whose job it was to get the honey into the hive, started to entertain and welcome people. But she made jokes about herself." },
       { episode: "s06e08", who: "William Norwich", time: "00:26:00", quote: "She never said call me Brooke. So I would say Mrs. Astor, Mrs. Astor." },
       { episode: "s01e02", who: "James St. James", time: "01:01:14", quote: "I got kicked out of Mortimer's, and Brooke Astor was there. She was my idol." },
     ],
@@ -432,7 +429,6 @@ export const MEMORIAM: Record<string, Memoriam> = {
     rooms: ["The Factory", "Max's Kansas City"],
     said: [
       { episode: "s06e01", who: "James St. James", time: "00:03:44", quote: "I was obsessed with Edie Sedgwick. I was obsessed with the idea of It Girls. And I thought, well, why can't there be It Boys?" },
-      { episode: "s06e01", who: "James St. James", time: "00:05:01", quote: "The book Edie came out, and that was like a holy grail for me." },
       { episode: "s01e03", who: "James St. James", time: "00:06:30", quote: "I was looking for someone to be Edie to my Andy." },
       { episode: "s01e03", who: "Lisa Edelstein", time: "00:00:06", quote: "I'm happy to be compared to Edie, because she was amazing." },
       { episode: "s01e10", who: "Joey Arias", time: "00:00:01", quote: "Ann looked at me and said, I should be Edie. Why don't we do the Andy and Edie show, based on Sonny and Cher?" },
@@ -486,8 +482,8 @@ export const MEMORIAM: Record<string, Memoriam> = {
     said: [
       { episode: "s06e03", who: "Johnny Dynell", time: "00:49:07", quote: "The one who was killed was one of our kids, you know, and he would come there." },
       { episode: "s01e02", who: "Michael Musto", time: "00:33:36", quote: "I asked around, I found out the buzz, and I put something about a missing person." },
-      { episode: "s01e02", who: "Michael Musto", time: "00:34:46", quote: "It's a Hispanic gay drug dealer who's missing. That doesn't make it your top priority if you're a policeman." },
       { episode: "s01e02", who: "Michael Musto", time: "00:35:21", quote: "Another horror of Angel's death is not just the loss of life. It fed into the Giuliani crackdowns." },
+      { episode: "s06e01", who: "James St. James", time: "00:42:09", quote: "I look back on that now, and I think that he had already had the seeds in his mind that he was going to kill Angel." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q4754838",
   },
@@ -510,10 +506,9 @@ export const MEMORIAM: Record<string, Memoriam> = {
     rooms: ["Studio 54", "Midnight Cowboy"],
     said: [
       { episode: "s01e02", who: "Michael Musto", time: "00:09:07", quote: "Nobody worked a room like Sylvia, and she knew everyone. She introduced me to Bob Colacello. As a result, I started writing for Interview." },
-      { episode: "s01e02", who: "Michael Musto", time: "00:07:15", quote: "I had interviewed Sylvia Miles, the two-time Oscar-nominated actress, as she always reminded you." },
       { episode: "s01e02", who: "Michael Musto", time: "00:48:50", quote: "She didn't like the review he gave her. So she saw him at a restaurant and she threw a plate of spaghetti on him." },
       { episode: "s01e02", who: "James St. James", time: "00:48:09", quote: "Her whole life was about being in the press and going out. Put me in your movie, get me on your guest list." },
-      { episode: "s01e02", who: "Michael Musto", time: "00:47:03", quote: "Sylvia said to her friends, I want out of here. I don't want to die here. And they busted her out and she died at home. And I think that's so cool." },
+      { episode: "s01e02", who: "James St. James", time: "00:47:38", quote: "He said, I know, Sylvia, you didn't get the Oscar. And she said, all of that is gone. I just want to be happy again for one day." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q259434",
   },
@@ -566,7 +561,6 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s01e03", who: "Lisa Edelstein", time: "00:53:41", quote: "Haoui totally took me out." },
       { episode: "s01e03", who: "James St. James", time: "00:53:45", quote: "Haoui Montaug was a doorman at Studio 54, Palladium, Tunnel, Paradise Garage, Danceteria. He also was a writer for Paper and Details. And he really had like a chosen family around him." },
       { episode: "s02e06", who: "Michael Schmidt", time: "00:16:59", quote: "Haoui Montaug introduced me to Vicki Sarge and all these people, and they hired me." },
-      { episode: "s02e06", who: "James St. James", time: "00:04:29", quote: "Haoui and Anita come and join us. We are a row of freaks in the dark, dingy dungeon." },
       { episode: "s06e01", who: "James St. James", time: "00:20:13", quote: "It would be Divine, Martha Graham, Andy Warhol, Philip Glass and Haoui Montaug. How did I even know who Haoui Montaug was?" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q14946791",
@@ -601,3 +595,13 @@ export const MEMORIAM: Record<string, Memoriam> = {
     wikidata: "https://www.wikidata.org/wiki/Q6257352",
   },
 };
+
+// Lisa, 5 Nov 2026: never more than 2 quotes from the same person on one In memoriam page.
+for (const [slug, m] of Object.entries(MEMORIAM)) {
+  const count: Record<string, number> = {};
+  for (const q of m.said) {
+    const n = (count[q.who] ?? 0) + 1;
+    count[q.who] = n;
+    if (n > 2 && import.meta.env.DEV) throw new Error(`In memoriam ${slug}: more than 2 quotes from ${q.who}`);
+  }
+}
