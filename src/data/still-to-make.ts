@@ -1,5 +1,5 @@
 // "Still to be made" (Lisa, 4 Nov 2026): every book and film the guests and hosts say on air should be written or
-// made, with the episode and the moment it was said, and whether it has been made since (checked 4 Nov 2026).
+// made, with the episode and the moment it was said, and whether it has been made since (checked 4 Nov 2026; every transcript read in full 5 Nov 2026).
 // Shown as a box on the Library page (src/components/still-to-make.tsx). Times from a full transcript are exact; the
 // rest come from the episode index and point to where the subject comes up. Check every new Afterparty for new ones.
 
@@ -31,8 +31,9 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
   },
   {
     title: "Ann Magnuson's memoir",
-    why: "Randy can't wait for it.",
+    why: "Ann says she is slowly writing it, and Randy can't wait to read it.",
     episodeId: "s04e10",
+    time: "00:54:55",
     made: "not yet",
     status: "Not published yet.",
   },
@@ -49,7 +50,7 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     title: "A book of Suzy's columns",
     why: "James dreams of editing a collection of Aileen Mehle's society columns.",
     episodeId: "s06e08",
-    time: "00:05:59",
+    time: "00:17:24",
     made: "not yet",
     status: "No collection yet.",
   },
@@ -89,9 +90,25 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     title: "Doll Parts, the audiobook",
     why: "Amanda has never read her own memoir, but says she will record the audiobook.",
     episodeId: "s05e03",
-    time: "00:01:26",
+    time: "00:16:11",
     made: "not yet",
     status: "No audiobook yet.",
+  },
+  {
+    title: "Rudolf Piper's night stories, in English",
+    why: "Rudolf has finished a book of his night stories in Portuguese, The Rise and Fall of the Megadiscotheques. The hosts: 'we need to get that to a New York publisher.'",
+    episodeId: "s01e07",
+    time: "01:07:39",
+    made: "not yet",
+    status: "No English edition yet.",
+  },
+  {
+    title: "Connie Fleming's book",
+    why: "Connie keeps one story back: 'I shall save that for my book.'",
+    episodeId: "s02e05",
+    time: "00:19:30",
+    made: "not yet",
+    status: "Not published yet.",
   },
   {
     title: "Man Parrish's book",
@@ -109,7 +126,7 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     title: "Michael Musto, the documentary",
     why: "The hosts picture a multi-part documentary about Musto's life, made for Netflix.",
     episodeId: "s01e02",
-    time: "01:04:00",
+    time: "01:03:53",
     made: "not yet",
     status: "Not made - Musto wrote in 2025 that two film teams took it on and both dropped it.",
     source: {
@@ -119,7 +136,7 @@ export const FILMS_TO_MAKE: StillToMake[] = [
   },
   {
     title: "Joey Arias's life story",
-    why: "Joey's documentary of his life opens with a baby stolen near Area 51 - with Ruben Toledo as art director.",
+    why: "Joey's documentary of his life opens with a baby stolen near Area 51 - with Ruben Toledo as art director. Asked about a book, Joey says: the movie will say it all.",
     episodeId: "s01e10",
     time: "00:26:26",
     made: "in the works",
@@ -137,8 +154,25 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     title: "Amanda's dominatrix stories, the series",
     why: "Randy says her stories play like a scripted anthology series.",
     episodeId: "s05e03",
+    time: "01:04:59",
     made: "not yet",
     status: "Not made.",
+  },
+  {
+    title: "Mr. Pearl, the documentary",
+    why: "James: there needs to be a documentary about the corset-maker Mr. Pearl - or a biopic.",
+    episodeId: "s02e03",
+    time: "00:53:07",
+    made: "not yet",
+    status: "No film yet.",
+  },
+  {
+    title: "Zaldy's archive",
+    why: "James: Zaldy's archive needs a gallery or FIT show, a book or a documentary. Zaldy says SCAD has asked him for a one-man show.",
+    episodeId: "s04e04",
+    time: "00:33:34",
+    made: "in the works",
+    status: "A SCAD show was offered - no book or film yet.",
   },
   {
     title: "Early New York electro",
@@ -176,7 +210,7 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     title: "The South Beach boardwalk, Staten Island",
     why: "Fenton wants to make a documentary about the boardwalk of Michelangelo's teenage years.",
     episodeId: "s02e08",
-    time: "00:04:01",
+    time: "00:04:38",
     made: "not yet",
     status: "Not made.",
   },
