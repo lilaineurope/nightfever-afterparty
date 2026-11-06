@@ -41,6 +41,7 @@ import manPortrait from "@/assets/polaroid-man-parrish.jpg";
 import treyPortrait from "@/assets/polaroid-trey-speegle.jpg";
 import tishSnookyPortrait from "@/assets/polaroid-tish-and-snooky.jpg";
 import seidelmanPortrait from "@/assets/polaroid-susan-seidelman.jpg";
+import erniePortrait from "@/assets/polaroid-ernie-glam.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -78,6 +79,7 @@ export const episodePortraits: Record<string, string> = {
   s04e07: treyPortrait,
   s05e10: tishSnookyPortrait,
   s04e09: seidelmanPortrait,
+  s01e05: erniePortrait,
 };
 
 // Small WebP copies of the polaroids (scripts/polaroid-thumbs.py): 512px for the polaroid boxes, 240px for the tiny ones.

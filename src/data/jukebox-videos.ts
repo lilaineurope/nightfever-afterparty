@@ -97,7 +97,7 @@ export const YOUTUBE: Record<string, string> = {
   "NYC dance music": "8ApuznGVRJQ",
   "Need You Tonight": "w-rv2BQa2OU",
   "New Romantic": "eGlsCT4lAM0",
-  "New Wave": "tMX4h63hx1c",
+  "New Wave": "SsX9G6eTgM8",
   "New York Dolls": "nrdqX_auyPc",
   "Nirvana – Nevermind": "hTWKbfoikeg",
   "Now Explosion": "8jTfnW9F52g",
