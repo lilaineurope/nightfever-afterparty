@@ -66,6 +66,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Ernie Glam",
+    why: "A co-host closes: they have to do another Night Fever with Ernie - and James promises a special 'Night Fever: the Joy' episode.",
+    episodeId: "s01e05",
+    time: "00:56:23",
+  },
+  {
     name: "Nell Campbell",
     why: "The hosts close by calling the episode just the trailer for 'Nell Campbell, the series' - and Nell says she says yes to everything.",
     episodeId: "s05e01",

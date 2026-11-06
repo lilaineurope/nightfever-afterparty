@@ -74,6 +74,7 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Susan Seidelman", mentee: "Madonna", episode: "s04e09", time: "00:00:52", line: "Cast the struggling up-and-comer as Susan in Desperately Seeking Susan instead of an actress" },
   { mentor: "Susan Seidelman", mentee: "Susan Berman", episode: "s04e09", time: "00:07:16", line: "Cast her as Wren in Smithereens, her first film" },
   { mentor: "Susan Seidelman", mentee: "Ron Nyswaner", episode: "s04e09", time: "00:25:50", line: "Found the Columbia student with one phone call and brought him in on Smithereens' dialogue" },
+  { mentor: "Michael Alig", mentee: "Ernie Glam", episode: "s01e05", time: "00:14:58", line: "Hired Ernie at his parties for about five years - his biggest fan, Ernie says - and then at Project X" },
   { mentor: "Gilles Jacob", mentee: "Susan Seidelman", episode: "s04e09", time: "00:15:58", line: "Moved Smithereens from the Directors' Fortnight into the Cannes competition" },
 ];
 

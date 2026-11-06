@@ -104,6 +104,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s04e07: "the Pyramid Club, Danceteria & 80s Polaroids",
   s05e10: "Manic Panic, Blondie & St. Marks Place punk",
   s04e09: "Desperately Seeking Susan, Smithereens & Madonna",
+  s01e05: "Club Kids, Disco 2000 & Michael Alig",
 };
 
 /** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so

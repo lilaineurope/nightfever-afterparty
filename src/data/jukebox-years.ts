@@ -137,6 +137,7 @@ export const YEARS: Record<string, number> = {
   "Madonna – 'Borderline'": 1984,
   "Madonna – 'Lucky Star'": 1983,
   "Madonna – 'Into the Groove'": 1985,
+  "Acid house": 1987,
   "Richard Hell and the Voidoids": 1976,
   "'Baby Let Me Bang Your Box'": 1954,
   "Madonna – 'Holiday'": 1983,

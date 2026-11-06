@@ -5,6 +5,12 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "University of Pennsylvania", lat: 39.9522, lng: -75.1932, area: "Pennsylvania" },
+  { name: "Sacramento", lat: 38.5816, lng: -121.4944, area: "California" },
+  { name: "Coxsackie Correctional Facility", lat: 42.3604, lng: -73.8318, area: "Upstate New York" },
+  { name: "Upper Manhattan", lat: 40.8448, lng: -73.9375, area: "Upper Manhattan" },
+  { name: "East Germany", lat: 52.5170, lng: 13.4550, area: "Germany" },
+  { name: "Europe", lat: 50.1109, lng: 8.6821, area: "Europe" },
   { name: "Cinemabilia", lat: 40.7357, lng: -73.9954, area: "Greenwich Village" },
   { name: "Philadelphia", lat: 39.9526, lng: -75.1652, area: "Pennsylvania" },
   { name: "Yale University", lat: 41.3163, lng: -72.9223, area: "Connecticut" },
