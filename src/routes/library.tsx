@@ -32,7 +32,7 @@ export const Route = createFileRoute("/library")({
         itemListElement: bookClub.slice(0, 50).map((b, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          item: { "@type": b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.slug)) },
+          item: { "@type": b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) },
         })),
       }),
     ],
@@ -132,7 +132,13 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
   const cover = coverFor(item.name);
   const foot = (
     <span className="lib-foot">
-      <b>{item.mentions > 0 ? `${item.mentions}×` : "–"}</b>dropped in {afterparties(episodesOf(item))}
+      {item.by ? (
+        <>by {item.by.name}</>
+      ) : (
+        <>
+          <b>{item.mentions > 0 ? `${item.mentions}×` : "–"}</b>dropped in {afterparties(episodesOf(item))}
+        </>
+      )}
     </span>
   );
   if (cover?.kind === "book")
@@ -168,12 +174,17 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
   return (
     <MomentsBox
       name={item.name}
-      slug={item.slug}
+      slug={item.by?.slug ?? item.slug}
       mentions={item.mentions}
       moments={item.moments}
       link={item.link || undefined}
       note={cover?.credit}
-      extra={item.shelf === "books" ? <a href={findBookLink(item.name)} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Find a copy on Open Library ↗</a> : undefined}
+      summary={item.by ? <>Not dropped in an episode · written by {item.by.name} in 1978, with Camille Duhé</> : undefined}
+      extra={
+        item.shelf === "books" ? (
+          <a href={findBookLink(item.name)} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Find a copy on Open Library ↗</a>
+        ) : undefined
+      }
       onClose={onClose}
     />
   );
