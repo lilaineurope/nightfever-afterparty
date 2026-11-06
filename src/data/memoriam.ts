@@ -25,6 +25,7 @@ export type Memoriam = {
   // "Read more" on the name card instead of the Google search, when there is no Wikipedia article (Lisa, 4 Nov 2026).
   readMore?: { label: string; href: string };
   wikidata?: string; // for the page markup (sameAs)
+  watch?: { title: string; youtube: string; note?: string }[]; // YouTube links (Lisa, 6 Nov 2026)
 };
 
 export const MEMORIAM: Record<string, Memoriam> = {
@@ -832,12 +833,12 @@ export const MEMORIAM: Record<string, Memoriam> = {
     died: "2001",
     diedLine: "Died 22 December 2001 in Los Angeles, aged 50",
     story:
-      "The first openly gay man on American TV, in the 1973 PBS series An American Family. He moved to New York, sang with The Mumps at Max's and CBGB, and wrote for Interview, Details and The Advocate.",
+      "The first openly gay man on American TV, in the 1973 PBS series An American Family. He moved to New York, sang with his band Mumps at Max's and CBGB, and wrote for Interview, Details and The Advocate.",
     timeline: [
       ["1951", "Born in La Jolla, California, and grows up in Santa Barbara"],
       ["1973", "An American Family airs on PBS"],
       ["1970s", "Lives at the Chelsea Hotel with Kristian Hoffman"],
-      ["1970s", "Forms The Mumps with Hoffman, playing Max's Kansas City and CBGB"],
+      ["1970s", "Forms the band Mumps with Hoffman, playing Max's Kansas City and CBGB"],
       ["1978", "In the New Wave Vaudeville show, and brings Man Parrish in"],
       ["1980s", "Writes for Interview, Details and The Advocate"],
       ["2001", "Dies in Los Angeles, aged 50"],
@@ -851,6 +852,12 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s03e04", who: "Man Parrish", time: "00:30:45", quote: "So Lance calls me up and says, they're doing the New Wave Vaudeville, put on a show at Irving Plaza. And I said, disco is dead. Why don't we do a disco version of Anarchy in the UK?" },
       { episode: "s03e04", who: "Man Parrish", time: "00:29:14", quote: "With Lance, it was also a cuddle. Somebody a broken person could hold and hug, because as fucked up as we were, we still needed a touch." },
       { episode: "s05e06", who: "Christopher Makos", time: "00:06:37", quote: "And then, of course, I met Lance Loud in New York. I took his sister Michele to her prom." },
+    ],
+    watch: [
+      { title: "Lance Loud! A Death in An American Family", youtube: "l0b5PB4UN1I", note: "PBS documentary, 2003" },
+      { title: "Anton Perich Presents: Lance Loud and the Mumps", youtube: "NAqQvpjhe2I", note: "1978, downtown cable TV" },
+      { title: "Mumps - Anyone But You", youtube: "0AKoeyfjBRQ", note: "Lance sings" },
+      { title: "Lance Loud on The Dick Cavett Show", youtube: "3958r7GC2ao", note: "after An American Family" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q6483460",
   },

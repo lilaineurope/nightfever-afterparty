@@ -14,6 +14,8 @@ export type CollectionItem = {
   moments: { episodeId: string; code: string; guest: string; time: string; context: string }[];
   /** Spotify URI (spotify:track:… / album / artist) for the Jukebox player, when one exists */
   spotify?: string | undefined;
+  /** A book no guest drops but that belongs to someone on the site: its name links to their A–Z page instead of a card of its own. */
+  by?: { slug: string; name: string } | undefined;
 };
 
 const hasCat = (e: Entity, cats: string[]) => cats.includes(e.category) || e.refs.some((r) => cats.includes(r.category));
@@ -56,13 +58,28 @@ function pressShelf(name: string): string {
   return NEWSPAPER.test(name) ? "newspapers" : "magazines";
 }
 
-export const bookClub: CollectionItem[] = entities
-  .filter((e) => hasCat(e, ["Book", "Publication"]))
-  .map((e) => {
-    const isBook = e.category === "Book" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
-    return toItem(e, isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
-  })
-  .sort(byMentions);
+// Books written by people on the site that no guest names (Lisa, 6 Nov 2026: "add the power look to library").
+const WRITTEN_BY: CollectionItem[] = [
+  {
+    slug: "the-power-look",
+    name: "The Power Look (Egon von Furstenberg)",
+    shelf: "books",
+    link: "https://en.wikipedia.org/wiki/Prince_Egon_von_F%C3%BCrstenberg",
+    mentions: 0,
+    moments: [],
+    by: { slug: "egon-von-furstenberg", name: "Egon von Furstenberg" },
+  },
+];
+
+export const bookClub: CollectionItem[] = [
+  ...entities
+    .filter((e) => hasCat(e, ["Book", "Publication"]))
+    .map((e) => {
+      const isBook = e.category === "Book" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
+      return toItem(e, isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
+    }),
+  ...WRITTEN_BY,
+].sort(byMentions);
 
 // ---------- Jukebox ----------
 // Official Spotify IDs, checked against Spotify search results (never guessed).

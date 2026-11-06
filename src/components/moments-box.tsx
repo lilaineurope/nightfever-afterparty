@@ -33,6 +33,7 @@ export function MomentsBox({
   link,
   note,
   extra,
+  summary,
   onClose,
 }: {
   name: string;
@@ -44,6 +45,8 @@ export function MomentsBox({
   note?: ReactNode | undefined;
   /** Extra links at the bottom (e.g. "Find a copy on Open Library"). */
   extra?: ReactNode | undefined;
+  /** Replaces the mentions line, for a book no guest names (Lisa, 6 Nov 2026). */
+  summary?: ReactNode | undefined;
   onClose: () => void;
 }) {
   const eps = new Set(moments.map((m) => m.episodeId)).size;
@@ -56,8 +59,12 @@ export function MomentsBox({
         <button type="button" onClick={onClose} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
       </div>
       <p className="mt-1 text-xs text-muted-foreground">
-        {mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "implied"} · {afterparties(eps)}
-        {note && <> · {note}</>}
+        {summary ?? (
+          <>
+            {mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "implied"} · {afterparties(eps)}
+            {note && <> · {note}</>}
+          </>
+        )}
       </p>
       {moments.length > 0 && (
         <ul className="mt-4 space-y-2">
@@ -71,7 +78,7 @@ export function MomentsBox({
         </ul>
       )}
       <div className="mt-4 flex flex-wrap gap-4 text-xs">
-        <Link {...cardTo(slug)} className="text-gold hover:text-pink">{cardTo(slug).to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
+        <Link {...cardTo(slug)} className="text-gold hover:text-pink">{summary ? "Their A–Z page →" : cardTo(slug).to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
         {link && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
         {extra}
       </div>

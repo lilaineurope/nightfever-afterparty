@@ -86,6 +86,7 @@ export const YOUTUBE: Record<string, string> = {
   "Madonna – 'Holiday'": "ltSpd7Rh_sM",
   "Madonna – 'Lucky Star'": "ThHz9wlBeLU",
   "Madonna – 'Into the Groove'": "52iW3lcpK5M",
+  "Mumps (band)": "0AKoeyfjBRQ", // "Anyone But You", Lance Loud singing (Lisa, 6 Nov 2026)
   "Richard Hell and the Voidoids": "v9FkQLjOSZ8",
   "'Baby Let Me Bang Your Box'": "8DjNYYfxFtA",
   "Madonna – 'Who's That Girl'": "r0qDBYiOBrc",

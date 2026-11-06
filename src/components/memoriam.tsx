@@ -86,6 +86,22 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
               <div className="mt-3 flex flex-wrap gap-2">{m.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
             </>
           )}
+          {m.watch && m.watch.length > 0 && (
+            <>
+              <h2 className={`${h} mt-6`}>Watch {first}</h2>
+              {/* Plain links to YouTube (Lisa, 6 Nov 2026) - nothing loads from YouTube on this page */}
+              <ul className="mt-3 space-y-2">
+                {m.watch.map((v) => (
+                  <li key={v.youtube} className="text-sm">
+                    <a href={`https://www.youtube.com/watch?v=${v.youtube}`} target="_blank" rel="noopener noreferrer" className="text-pink underline hover:text-gold">
+                      ▶ {v.title}
+                    </a>
+                    {v.note && <span className="text-card-foreground/70"> · {v.note}</span>}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           <h2 className={`${h} mt-6`}>Leave a note</h2>
           <p className="mt-3 text-sm text-card-foreground/80">
             <Link to="/guestbook" className="text-pink underline hover:text-gold">Sign the AFTERPARTY Guestbook</Link> for {first}
