@@ -262,6 +262,50 @@ import dianaVreelandPolaroid from "@/assets/people/diana-vreeland-polaroid.webp"
 import divinePhoto from "@/assets/people/divine-photo.webp";
 import divinePolaroid from "@/assets/people/divine-polaroid.webp";
 
+// Daily run, batch 3 (Lisa, 7 Nov 2026): Gemini illustrations and free photos
+import jenGatienPhoto from "@/assets/people/jen-gatien-photo.webp";
+import jenGatienPolaroid from "@/assets/people/jen-gatien-polaroid.webp";
+import judithPeabodyPhoto from "@/assets/people/judith-peabody-photo.webp";
+import judithPeabodyPolaroid from "@/assets/people/judith-peabody-polaroid.webp";
+import kabukiStarshinePhoto from "@/assets/people/kabuki-starshine-photo.webp";
+import kabukiStarshinePolaroid from "@/assets/people/kabuki-starshine-polaroid.webp";
+import perfidiaPhoto from "@/assets/people/perfidia-photo.webp";
+import perfidiaPolaroid from "@/assets/people/perfidia-polaroid.webp";
+import stephenSprousePhoto from "@/assets/people/stephen-sprouse-photo.webp";
+import stephenSprousePolaroid from "@/assets/people/stephen-sprouse-polaroid.webp";
+import antonioLopezPhoto from "@/assets/people/antonio-lopez-photo.webp";
+import antonioLopezPolaroid from "@/assets/people/antonio-lopez-polaroid.webp";
+import astroEarlPhoto from "@/assets/people/astro-earl-photo.webp";
+import astroEarlPolaroid from "@/assets/people/astro-earl-polaroid.webp";
+import basilTwistPhoto from "@/assets/people/basil-twist-photo.webp";
+import basilTwistPolaroid from "@/assets/people/basil-twist-polaroid.webp";
+import bobColacelloPhoto from "@/assets/people/bob-colacello-photo.webp";
+import bobColacelloPolaroid from "@/assets/people/bob-colacello-polaroid.webp";
+import gretaGarboPhoto from "@/assets/people/greta-garbo-photo.webp";
+import gretaGarboPolaroid from "@/assets/people/greta-garbo-polaroid.webp";
+import jacquelineKennedyOnassisPhoto from "@/assets/people/jacqueline-kennedy-onassis-photo.webp";
+import jacquelineKennedyOnassisPolaroid from "@/assets/people/jacqueline-kennedy-onassis-polaroid.webp";
+import johnWatersPhoto from "@/assets/people/john-waters-photo.webp";
+import johnWatersPolaroid from "@/assets/people/john-waters-polaroid.webp";
+import kateMossPhoto from "@/assets/people/kate-moss-photo.webp";
+import kateMossPolaroid from "@/assets/people/kate-moss-polaroid.webp";
+import kellyOsbournePhoto from "@/assets/people/kelly-osbourne-photo.webp";
+import kellyOsbournePolaroid from "@/assets/people/kelly-osbourne-polaroid.webp";
+import lilNasXPhoto from "@/assets/people/lil-nas-x-photo.webp";
+import lilNasXPolaroid from "@/assets/people/lil-nas-x-polaroid.webp";
+import marthaGrahamPhoto from "@/assets/people/martha-graham-photo.webp";
+import marthaGrahamPolaroid from "@/assets/people/martha-graham-polaroid.webp";
+import richardLewisPhoto from "@/assets/people/richard-lewis-photo.webp";
+import richardLewisPolaroid from "@/assets/people/richard-lewis-polaroid.webp";
+import sadePhoto from "@/assets/people/sade-photo.webp";
+import sadePolaroid from "@/assets/people/sade-polaroid.webp";
+import andreLeonTalleyPhoto from "@/assets/people/andre-leon-talley-photo.webp";
+import andreLeonTalleyPolaroid from "@/assets/people/andre-leon-talley-polaroid.webp";
+import beyoncePhoto from "@/assets/people/beyonce-photo.webp";
+import beyoncePolaroid from "@/assets/people/beyonce-polaroid.webp";
+import donnaDouglasPhoto from "@/assets/people/donna-douglas-photo.webp";
+import donnaDouglasPolaroid from "@/assets/people/donna-douglas-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   polaroid: string;
@@ -405,4 +449,26 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "david-hockney": { photo: davidHockneyPhoto, polaroid: davidHockneyPolaroid, focus: "28%", credit: "Portrait after a UPI photo, Washington Square Park 1977 (public domain), in our photocopy style" },
   "diana-vreeland": { photo: dianaVreelandPhoto, polaroid: dianaVreelandPolaroid, focus: "28%", credit: "Portrait after a photo by Lynn Gilbert, 1978 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   divine: { photo: divinePhoto, polaroid: divinePolaroid, focus: "28%", credit: "Portrait after a Streetsound magazine cover photo (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  // Daily run, batch 3 (Lisa, 7 Nov 2026)
+  "jen-gatien": { photo: jenGatienPhoto, polaroid: jenGatienPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "judith-peabody": { photo: judithPeabodyPhoto, polaroid: judithPeabodyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "kabuki-starshine": { photo: kabukiStarshinePhoto, polaroid: kabukiStarshinePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  perfidia: { photo: perfidiaPhoto, polaroid: perfidiaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "stephen-sprouse": { photo: stephenSprousePhoto, polaroid: stephenSprousePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "antonio-lopez": { photo: antonioLopezPhoto, polaroid: antonioLopezPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "astro-earl": { photo: astroEarlPhoto, polaroid: astroEarlPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "basil-twist": { photo: basilTwistPhoto, polaroid: basilTwistPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "bob-colacello": { photo: bobColacelloPhoto, polaroid: bobColacelloPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "greta-garbo": { photo: gretaGarboPhoto, polaroid: gretaGarboPolaroid, focus: "28%", credit: "Portrait after a photo by Clarence Sinclair Bull, 1930 (public domain), in our photocopy style" },
+  "jacqueline-kennedy-onassis": { photo: jacquelineKennedyOnassisPhoto, polaroid: jacquelineKennedyOnassisPolaroid, focus: "28%", credit: "Portrait after a photo by Mark Shaw, 1961 (public domain), in our photocopy style" },
+  "john-waters": { photo: johnWatersPhoto, polaroid: johnWatersPolaroid, focus: "28%", credit: "Portrait after a photo by PEN American Center, 2014 (CC BY 2.0), in our photocopy style" },
+  "kate-moss": { photo: kateMossPhoto, polaroid: kateMossPolaroid, focus: "28%", credit: "Portrait after a photo by Crooked House Films, 2019 (CC BY 3.0), in our photocopy style" },
+  "kelly-osbourne": { photo: kellyOsbournePhoto, polaroid: kellyOsbournePolaroid, focus: "28%", credit: "Portrait after a photo by Eva Rinaldi, 2016 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "lil-nas-x": { photo: lilNasXPhoto, polaroid: lilNasXPolaroid, focus: "28%", credit: "Portrait after a photo by Fabebk, 2019 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "martha-graham": { photo: marthaGrahamPhoto, polaroid: marthaGrahamPolaroid, focus: "28%", credit: "Portrait after a photo by Yousuf Karsh, 1948 (public domain), in our photocopy style" },
+  "richard-lewis": { photo: richardLewisPhoto, polaroid: richardLewisPolaroid, focus: "28%", credit: "Portrait after a photo by AllinLewis, 2015 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  sade: { photo: sadePhoto, polaroid: sadePolaroid, focus: "28%", credit: "Portrait after a photo by Nick Souza for the News-Pilot, 1985 (public domain), in our photocopy style" },
+  "andre-leon-talley": { photo: andreLeonTalleyPhoto, polaroid: andreLeonTalleyPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2009 (CC BY 3.0), in our photocopy style" },
+  beyonce: { photo: beyoncePhoto, polaroid: beyoncePolaroid, focus: "28%", credit: "Portrait after a photo by Andrew H. Walker, 2011 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "donna-douglas": { photo: donnaDouglasPhoto, polaroid: donnaDouglasPolaroid, focus: "28%", credit: "Portrait after a photo by CBS Television, 1963 (public domain), in our photocopy style" },
 };
