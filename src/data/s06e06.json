@@ -2420,5 +2420,59 @@
   "context": "James will be out there soon - drinks and dinner planned",
   "link": "https://en.wikipedia.org/wiki/Los_Angeles",
   "status": "Confirmed"
+ },
+ {
+  "rank": 212,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Lincoln's on-camera look (S06E06)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Short swept-up light brown hair and a navy knit polo, open at the neck, in a cream pre-war living room with built-in shelves of leather-bound books, red candles on the mantel and a carved wooden column",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-606",
+  "status": "Confirmed",
+  "fashion": "Navy knit polo",
+  "colours": [
+   "polo navy #121B2C",
+   "hair ash brown #81776C",
+   "candle red #8D4D40",
+   "leather books #372515"
+  ]
+ },
+ {
+  "rank": 213,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S06E06)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald, dark tortoiseshell glasses and an ivory lace blouse with a ruffled collar, a big purple stone ring, in front of packed bookshelves with a silver microphone",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-606",
+  "status": "Confirmed",
+  "fashion": "Ivory lace ruffle blouse, tortoiseshell glasses, purple ring",
+  "colours": [
+   "lace ivory #D1C9BD",
+   "frames tortoise #57342C",
+   "ring purple #786570",
+   "books brown #433122"
+  ]
+ },
+ {
+  "rank": 214,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S06E06)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Rimless glasses, a navy jumper with a blue scarf at the neck, in a room with mustard patterned wallpaper, brown curtains and bookshelves",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-606",
+  "status": "Confirmed",
+  "fashion": "Navy jumper, blue scarf",
+  "colours": [
+   "jumper navy #2D3B6A",
+   "scarf blue #425987",
+   "curtain olive #737460",
+   "wallpaper mustard #B8862F"
+  ]
  }
 ]
