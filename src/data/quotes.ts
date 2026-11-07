@@ -35,7 +35,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s04e07: { quote: "If you hung out for any more than 20 minutes, you were on stage, you had a wig on backwards, you were on the bar.", time: "00:14:53" }, // Trey Speegle - Lisa picked (4 Nov 2026)
   s05e10: { quote: "I wasn't knocked out, I'm OK! And all I could do was keep pulling my dress down: is my dress down? Is my dress down?", time: "00:32:38" }, // Tish & Snooky - Lisa: yes go ahead (4 Nov 2026)
   s01e05: { quote: "I learned how to be visually loud, but I hadn't learned how to be vocally loud.", time: "00:28:04" }, // Ernie Glam - Lisa picked (6 Nov 2026)
-  s06e06: { quote: "That was always something I would keep my eyes for, because I'm like, okay, what's the temperature on the shoes here?", time: "00:46:22" }, // Lincoln Palsgrove IV - Claude's pick, waiting for Lisa
+  s06e06: { quote: "You knew everyone was gonna be at XYZ place on that specific night. And I think that generated a trust and a closeness.", time: "01:05:49" }, // Lincoln Palsgrove IV - Lisa: quote 5 (7 Nov 2026)
   s04e09: { quote: "Heartbreak is wonderful, because if you can turn it around and say I'm gonna take all this anger and all this energy and throw it into something, you can turn lemons into lemonade.", time: "00:14:03" }, // Susan Seidelman - Lisa: quote 2 (5 Nov 2026)
   s03e04: { quote: "I realized there was such a rainbow of sexuality out there. So that's what Hellfire taught me.", time: "00:46:38" }, // Man Parrish
   s02e11: { quote: "What also made it special was the fact that there was really nothing special about it.", time: "00:13:52" }, // Richard Boch
