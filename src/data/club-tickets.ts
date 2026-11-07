@@ -102,13 +102,16 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     credit: "\"Born to Be a Wild Night\" card, Pyramid, 1995 - Gallery 98",
     href: "https://gallery98.org/2025/pyramid-cancer-benefit-invitation-wendy-wild-born-wild-night/",
   },
+  // Jillian Jonas photo, 7 Nov 2026: Village Preservation and Jillian Jonas approved ONE Boy Bar photo on the Clubs page (6 Nov),
+  // credited to her and Village Preservation with a link to their post. Not for the Jukebox or anywhere else on the site.
   "boy-bar": {
     src: boyBar,
     w: 800,
-    h: 224,
-    alt: "Card for Georges Piette's photograph opening party at Boybar, 15 St. Marks, 23 October 1984 - \"Admits 2\"",
-    credit: "Georges Piette opening card, Boybar, 1984 - Gallery 98",
-    href: "https://gallery98.org/2021/15-st-marks-georges-piette-boybar-opening-party-card-1984/",
+    h: 518,
+    pos: "center 45%",
+    alt: "The Harlem Women's Contingent on stage at Boy Bar, 15 St. Marks Place, 26 May 1994: Flotilla DeBarge, Aphro-dite, Raven O and a fellow performer in flowered dresses in front of a leopard-print wall",
+    credit: "Photo: Jillian Jonas / Village Preservation, Boy Bar, 1994",
+    href: "https://urbanarchive.org/o/villagepreservation/post/d2def65d-c4c9-4a6f-9250-0346c7ee984d",
   },
   "nell-s": {
     src: nells,
