@@ -97,6 +97,7 @@ const COVERS: Record<string, Cover> = {
   "Penthouse Forum": { kind: "mast", file: "mast-penthouse-forum.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Brides": { kind: "mast", file: "mast-brides.webp", credit: "Masthead: Wikimedia Commons, CC0" },
   // Columns shown with the paper or magazine they ran in, like Uptown, Downtown with the Daily News.
+  "'Bring On the Night' (New York Post, 1990)": { kind: "mast", file: "mast-new-york-post.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // Lisa: A (7 Nov 2026)
   "'The Death of Downtown' (Michael Musto)": { kind: "mast", file: "mast-village-voice.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "New York magazine – 'Club Kids'": { kind: "mast", file: "mast-new-york-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "'Diary of a Mad Queen' (column)": { kind: "book", file: "mag-outweek.webp", credit: "OutWeek no. 1, June 1989 - via The Paris Review / the OutWeek archive" },
