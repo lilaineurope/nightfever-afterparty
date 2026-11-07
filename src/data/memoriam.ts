@@ -854,7 +854,7 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s05e06", who: "Christopher Makos", time: "00:06:37", quote: "And then, of course, I met Lance Loud in New York. I took his sister Michele to her prom." },
     ],
     watch: [
-      { title: "Lance Loud! A Death in An American Family", youtube: "l0b5PB4UN1I", note: "PBS documentary, 2003" },
+      { title: "Lance Loud! A Death in An American Family", youtube: "p7Qums4VOUw", note: "PBS documentary, 2003" },
       { title: "Anton Perich Presents: Lance Loud and the Mumps", youtube: "NAqQvpjhe2I", note: "1978, downtown cable TV" },
       { title: "Mumps - Anyone But You", youtube: "0AKoeyfjBRQ", note: "Lance sings" },
       { title: "Lance Loud on The Dick Cavett Show", youtube: "3958r7GC2ao", note: "after An American Family" },
