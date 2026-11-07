@@ -66,6 +66,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Lincoln Palsgrove IV",
+    why: "James closes: they'll have to have Lincoln back on, as there were stories they didn't get to tell.",
+    episodeId: "s06e06",
+    time: "01:09:19",
+  },
+  {
     name: "Ernie Glam",
     why: "A co-host closes: they have to do another Night Fever with Ernie - and James promises a special 'Night Fever: the Joy' episode.",
     episodeId: "s01e05",

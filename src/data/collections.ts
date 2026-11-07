@@ -115,6 +115,8 @@ const SPOTIFY: Record<string, string> = {
   "Village People": "spotify:artist:0dCKce6tJJdHvlWnDMwzPW",
   "Duran Duran": "spotify:artist:0lZoBs4Pzo7R89JM9lxwoT",
   "Frankie Goes to Hollywood": "spotify:artist:1mZu3rO7qSD09GdDpePHhY",
+  "Frankie Goes to Hollywood – 'Two Tribes'": "spotify:track:5NN5MQyE3Lo91zAEHpGa7S",
+  "Buddy Holly": "spotify:artist:3wYyutjgII8LJVVOLrGI0D",
   "Kraftwerk": "spotify:artist:0dmPX6ovclgOy8WWJaFEUU",
   "Led Zeppelin": "spotify:artist:36QJpDe2go2KgaRleHCDTp",
   "ABC": "spotify:artist:2s79xe5F6eUQkjwjww27Fh",
@@ -300,7 +302,7 @@ const SPOTIFY: Record<string, string> = {
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
 export const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/4RGIXkJLnDLZvSIagpUU3p";
-const SOUNDS = /^(electroclash|goth|industrial music|glitter rock|london punk|nyc dance music|hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions|no wave|motown|riot grrrl|acid house)$/i;
+const SOUNDS = /^(electroclash|goth|industrial music|glitter rock|london punk|nyc dance music|hip-hop|disco|jazz|house music|punk|new romantic|samba|the charleston|theremin|new wave|reggae|grunge|square dance|world music|merengue|rockabilly|john peel sessions|no wave|motown|riot grrrl|acid house|latin freestyle|show tunes)$/i;
 const STAGE = /^(jesus christ superstar|hedwig and the angry inch|flora the red menace|victor\/victoria.*|positive me|cats: the jellicle ball|hairspray|the music man)$/i;
 const SONG = /['‘’"“”]|–|^(fade to grey|the lady in red|too funky|warm leatherette|bedtime stories|presence.*|elements of vogue|deep in vogue|vogue \(madonna song\)|silent night \(stevie nicks\)|fans \(malcolm mclaren\)|duck rock|buffalo gals|the wedding album|ordinary world|sugar kane|your cassette pet|back in time for tea|see jungle!.*|blah-blah-blah|divine thing.*|i want candy|kick|need you tonight|rapture|real wild child|searching \(inxs\)|searching for the young soul rebels|video killed the radio star|white lines \(duran duran\)|white man in hammersmith palais|you oughta know|ghost cat|my hair looks fierce|champagne \(amanda lepore\)|starbooty \(rupaul\))$/i;
 

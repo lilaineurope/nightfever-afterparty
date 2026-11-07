@@ -33,6 +33,7 @@ export const GUEST_LINES: Record<string, string> = {
   s05e10: "Manic Panic · Blondie backing singers · the Sic F*cks",
   s04e09: "Smithereens · Desperately Seeking Susan · Sex and the City",
   s01e05: "Original Club Kid · Clara the Carefree Chicken · Peeew!",
+  s06e06: "Doorman and party promoter · the World, Red Zone, the Roxy",
   s02e11: "Mudd Club doorman · artist and author of The Mudd Club",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",

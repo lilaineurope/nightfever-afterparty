@@ -76,6 +76,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Susan Seidelman", mentee: "Ron Nyswaner", episode: "s04e09", time: "00:25:50", line: "Found the Columbia student with one phone call and brought him in on Smithereens' dialogue" },
   { mentor: "Michael Alig", mentee: "Ernie Glam", episode: "s01e05", time: "00:14:58", line: "Hired Ernie at his parties for about five years - his biggest fan, Ernie says - and then at Project X" },
   { mentor: "Gilles Jacob", mentee: "Susan Seidelman", episode: "s04e09", time: "00:15:58", line: "Moved Smithereens from the Directors' Fortnight into the Cannes competition" },
+  { mentor: "Steve Lewis", mentee: "Lincoln Palsgrove IV", episode: "s06e06", time: "00:25:38", line: "Trained Lincoln on the job at the World door - his rules for mixing a room" },
+  { mentor: "Steve Lewis", mentee: "James St. James", episode: "s06e06", time: "00:25:38", line: "Taught James his rules for running the World's door" },
+  { mentor: "Lincoln Palsgrove IV", mentee: "Michelle Visage", episode: "s06e06", time: "00:31:45", line: "Introduced Michelle to RuPaul on the Red Zone dance floor" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

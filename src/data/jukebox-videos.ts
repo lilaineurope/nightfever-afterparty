@@ -2,6 +2,10 @@
 // Most come from the episode AFTERPARTY playlists on YouTube; the rest are the official video or the best upload found.
 // Sounds and scenes get a short documentary or archive clip. A name without a video gets a YouTube search link instead. Nothing loads from YouTube until a visitor presses ▶.
 export const YOUTUBE: Record<string, string> = {
+  "Frankie Goes to Hollywood – 'Two Tribes'": "pO1HC8pHZw0",
+  "Buddy Holly": "9mDGcxbAusg",
+  "Latin freestyle": "SGi3AvfFfuA",
+  "Show tunes": "-6S5caRGpK4",
   "'America' (West Side Story)": "_e2igZexpMs",
   "'Dancing in the Dark' video – Bruce Springsteen": "129kuDCQtHs",
   "'Heart of Glass' – Blondie": "WGU_4-5RaxU",

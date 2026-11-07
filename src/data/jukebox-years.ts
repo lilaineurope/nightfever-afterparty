@@ -2,6 +2,10 @@
 // A song or record = the year that version came out; a band or artist = the year they formed or first performed;
 // a sound or scene = the year it took off; a musical = its first staging. Checked against Wikipedia and other sources.
 export const YEARS: Record<string, number> = {
+  "Frankie Goes to Hollywood – 'Two Tribes'": 1984,
+  "Buddy Holly": 1957,
+  "Latin freestyle": 1983,
+  "Show tunes": 1927,
   "A Flock of Seagulls": 1979,
   "ABC": 1980,
   "AC/DC": 1973,

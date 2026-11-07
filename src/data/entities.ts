@@ -34,6 +34,7 @@ import refs407Json from "./s04e07.json";
 import refs510Json from "./s05e10.json";
 import refs409Json from "./s04e09.json";
 import refs105Json from "./s01e05.json";
+import refs606Json from "./s06e06.json";
 import { episodes } from "./episodes";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
@@ -51,7 +52,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06";
 };
 
 export type Entity = {
@@ -102,6 +103,7 @@ const refs: Ref[] = [
   ...(refs510Json as Ref[]).map((r) => ({ ...r, episode: "s05e10" as const })),
   ...(refs409Json as Ref[]).map((r) => ({ ...r, episode: "s04e09" as const })),
   ...(refs105Json as Ref[]).map((r) => ({ ...r, episode: "s01e05" as const })),
+  ...(refs606Json as Ref[]).map((r) => ({ ...r, episode: "s06e06" as const })),
 ];
 
 // Bracketed asides are dropped so "Danceteria (probably)" joins "Danceteria", but an episode code such as
