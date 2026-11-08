@@ -119,6 +119,15 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     status: "Made: Man Parrish Stories – Volume One (2024).",
     source: { label: "In the Library", card: "man-parrish-stories-volume-one" },
   },
+  {
+    title: "A My Comrade anthology",
+    why: "James asks Linda whether she'd collect My Comrade the way Pansy Beat did; yes, she says, but edited and better printed, and Fenton calls it a great idea one day.",
+    episodeId: "s02e09",
+    time: "00:38:26",
+    made: "made",
+    status: "Made - The My Comrade Anthology, pages picked by Linda, came out from Boo-Hooray.",
+    source: { label: "Art Metropole", href: "https://artmetropole.com/shop/15424" },
+  },
 ];
 
 export const FILMS_TO_MAKE: StillToMake[] = [
@@ -221,5 +230,13 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     time: "00:17:41",
     made: "not yet",
     status: "Not made.",
+  },
+  {
+    title: "Edelweiss and the Midtown trans scene",
+    why: "When Linda brings up Edelweiss, James says they need a whole episode on it - and on the whole Midtown scene, which Linda says was barely photographed.",
+    episodeId: "s02e09",
+    time: "00:49:41",
+    made: "not yet",
+    status: "No Night Fever episode or film about it yet.",
   },
 ];

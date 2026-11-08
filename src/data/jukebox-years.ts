@@ -3,6 +3,7 @@
 // a sound or scene = the year it took off; a musical = its first staging. Checked against Wikipedia and other sources.
 export const YEARS: Record<string, number> = {
   "Frankie Goes to Hollywood – 'Two Tribes'": 1984,
+  "The B-52's – 'Love Shack'": 1989,
   "Buddy Holly": 1957,
   "Latin freestyle": 1983,
   "Show tunes": 1927,

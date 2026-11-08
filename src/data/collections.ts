@@ -116,6 +116,7 @@ const SPOTIFY: Record<string, string> = {
   "Duran Duran": "spotify:artist:0lZoBs4Pzo7R89JM9lxwoT",
   "Frankie Goes to Hollywood": "spotify:artist:1mZu3rO7qSD09GdDpePHhY",
   "Frankie Goes to Hollywood – 'Two Tribes'": "spotify:track:5NN5MQyE3Lo91zAEHpGa7S",
+  "The B-52's – 'Love Shack'": "spotify:track:4W4wYHtsrgDiivRASVOINL",
   "Buddy Holly": "spotify:artist:3wYyutjgII8LJVVOLrGI0D",
   "Kraftwerk": "spotify:artist:0dmPX6ovclgOy8WWJaFEUU",
   "Led Zeppelin": "spotify:artist:36QJpDe2go2KgaRleHCDTp",
