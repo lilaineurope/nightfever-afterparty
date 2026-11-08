@@ -346,6 +346,42 @@ import reGinePolaroid from "@/assets/people/re-gine-polaroid.webp";
 import marilynMonroePhoto from "@/assets/people/marilyn-monroe-photo.webp";
 import marilynMonroePolaroid from "@/assets/people/marilyn-monroe-polaroid.webp";
 
+import howiePyroPhoto from "@/assets/people/howie-pyro-photo.webp";
+import howiePyroPolaroid from "@/assets/people/howie-pyro-polaroid.webp";
+import irisLovePhoto from "@/assets/people/iris-love-photo.webp";
+import irisLovePolaroid from "@/assets/people/iris-love-polaroid.webp";
+import davidWojnarowiczPhoto from "@/assets/people/david-wojnarowicz-photo.webp";
+import davidWojnarowiczPolaroid from "@/assets/people/david-wojnarowicz-polaroid.webp";
+import fabriceSimonPhoto from "@/assets/people/fabrice-simon-photo.webp";
+import fabriceSimonPolaroid from "@/assets/people/fabrice-simon-polaroid.webp";
+import fredHughesPhoto from "@/assets/people/fred-hughes-photo.webp";
+import fredHughesPolaroid from "@/assets/people/fred-hughes-polaroid.webp";
+import alaskaThunderfuckPhoto from "@/assets/people/alaska-thunderfuck-photo.webp";
+import alaskaThunderfuckPolaroid from "@/assets/people/alaska-thunderfuck-polaroid.webp";
+import alecMapaPhoto from "@/assets/people/alec-mapa-photo.webp";
+import alecMapaPolaroid from "@/assets/people/alec-mapa-polaroid.webp";
+import andreWalkerPhoto from "@/assets/people/andre-walker-photo.webp";
+import andreWalkerPolaroid from "@/assets/people/andre-walker-polaroid.webp";
+import annabellaLwinPhoto from "@/assets/people/annabella-lwin-photo.webp";
+import annabellaLwinPolaroid from "@/assets/people/annabella-lwin-polaroid.webp";
+import allanCarrPhoto from "@/assets/people/allan-carr-photo.webp";
+import allanCarrPolaroid from "@/assets/people/allan-carr-polaroid.webp";
+import steveStrangePhoto from "@/assets/people/steve-strange-photo.webp";
+import steveStrangePolaroid from "@/assets/people/steve-strange-polaroid.webp";
+import candyDarlingPhoto from "@/assets/people/candy-darling-photo.webp";
+import candyDarlingPolaroid from "@/assets/people/candy-darling-polaroid.webp";
+import frankieKnucklesPhoto from "@/assets/people/frankie-knuckles-photo.webp";
+import frankieKnucklesPolaroid from "@/assets/people/frankie-knuckles-polaroid.webp";
+import dianaRossPhoto from "@/assets/people/diana-ross-photo.webp";
+import dianaRossPolaroid from "@/assets/people/diana-ross-polaroid.webp";
+import christianLacroixPhoto from "@/assets/people/christian-lacroix-photo.webp";
+import christianLacroixPolaroid from "@/assets/people/christian-lacroix-polaroid.webp";
+import dionneWarwickPhoto from "@/assets/people/dionne-warwick-photo.webp";
+import dionneWarwickPolaroid from "@/assets/people/dionne-warwick-polaroid.webp";
+import donJohnsonPhoto from "@/assets/people/don-johnson-photo.webp";
+import donJohnsonPolaroid from "@/assets/people/don-johnson-polaroid.webp";
+import donnaKaranPhoto from "@/assets/people/donna-karan-photo.webp";
+import donnaKaranPolaroid from "@/assets/people/donna-karan-polaroid.webp";
 export type PersonPortrait = {
   photo: string;
   polaroid: string;
@@ -531,4 +567,22 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "phil-donahue": { photo: philDonahuePhoto, polaroid: philDonahuePolaroid, focus: "28%", credit: "Portrait after a photo by Edward Kimmel, 2015 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
   "re-gine": { photo: reGinePhoto, polaroid: reGinePolaroid, focus: "28%", credit: "Portrait after a photo by Georges Biard, 1997 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "marilyn-monroe": { photo: marilynMonroePhoto, polaroid: marilynMonroePolaroid, focus: "28%", credit: "Portrait after a photo by Los Angeles Times, 1953 (CC BY 4.0), in our photocopy style" },
+  "howie-pyro": { photo: howiePyroPhoto, polaroid: howiePyroPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "iris-love": { photo: irisLovePhoto, polaroid: irisLovePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "david-wojnarowicz": { photo: davidWojnarowiczPhoto, polaroid: davidWojnarowiczPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "fabrice-simon": { photo: fabriceSimonPhoto, polaroid: fabriceSimonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "fred-hughes": { photo: fredHughesPhoto, polaroid: fredHughesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "alaska-thunderfuck": { photo: alaskaThunderfuckPhoto, polaroid: alaskaThunderfuckPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "alec-mapa": { photo: alecMapaPhoto, polaroid: alecMapaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "andre-walker": { photo: andreWalkerPhoto, polaroid: andreWalkerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "annabella-lwin": { photo: annabellaLwinPhoto, polaroid: annabellaLwinPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "allan-carr": { photo: allanCarrPhoto, polaroid: allanCarrPolaroid, focus: "28%", credit: "Portrait after a photo by Alan Light, 1989 (CC BY 2.0), in our photocopy style" },
+  "steve-strange": { photo: steveStrangePhoto, polaroid: steveStrangePolaroid, focus: "28%", credit: "Portrait after a photo by Andrewhurley1969, 2014 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "candy-darling": { photo: candyDarlingPhoto, polaroid: candyDarlingPolaroid, focus: "28%", credit: "Portrait after a film still by Theodore Gershuny, 1972 (public domain), in our photocopy style" },
+  "frankie-knuckles": { photo: frankieKnucklesPhoto, polaroid: frankieKnucklesPolaroid, focus: "28%", credit: "Portrait after a photo by HaeB, 2012 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "diana-ross": { photo: dianaRossPhoto, polaroid: dianaRossPolaroid, focus: "28%", credit: "Portrait after a photo by Motown Records, 1976 (public domain), in our photocopy style" },
+  "christian-lacroix": { photo: christianLacroixPhoto, polaroid: christianLacroixPolaroid, focus: "28%", credit: "Portrait after a photo by ActuaLitté, 2018 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "dionne-warwick": { photo: dionneWarwickPhoto, polaroid: dionneWarwickPolaroid, focus: "28%", credit: "Portrait after a photo by Allan Warren, 1973 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "don-johnson": { photo: donJohnsonPhoto, polaroid: donJohnsonPolaroid, focus: "28%", credit: "Portrait after a photo by PH1 Doty, US Navy, 1986 (public domain), in our photocopy style" },
+  "donna-karan": { photo: donnaKaranPhoto, polaroid: donnaKaranPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2012 (CC BY 3.0), in our photocopy style" },
 };
