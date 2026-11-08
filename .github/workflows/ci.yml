@@ -1,0 +1,45 @@
+# Checks every pull request and every push to main: data tests, lint and a production build.
+# It only checks. It never deploys - Lovable still publishes the site.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      # bun.lock is written by Lovable and points at Lovable's private package cache.
+      # Fetch the same versions from the public npm registry instead; the integrity
+      # hashes in bun.lock still have to match, so the packages are byte-identical.
+      # (Only this CI copy is changed - the file in the repo stays as Lovable wrote it.)
+      - name: Point bun.lock at the public npm registry
+        run: sed -i -E 's#https://europe-west[0-9]+-npm\.pkg\.dev/lovable-core-prod/sandbox-npm-cache/#https://registry.npmjs.org/#g' bun.lock
+
+      - run: bun install --frozen-lockfile
+
+      - name: Data tests
+        run: bun run test
+
+      # Lint does not block yet: the code has ~3,500 old Prettier formatting errors.
+      # Problems still show up in the run log.
+      - name: Lint (not blocking)
+        run: bun run lint
+        continue-on-error: true
+
+      - name: Build
+        run: bun run build
