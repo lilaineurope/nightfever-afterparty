@@ -805,6 +805,7 @@ const s02e09: Episode = {
   references: simpsonRefs.length,
   mentions: simpsonRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: topNames(simpsonRefs).map(({ name, mentions }) => ({ name, mentions })),
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCPc4wjvZ9xw",
 };
 
 export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09].sort((a, b) =>

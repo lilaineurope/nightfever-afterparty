@@ -94,7 +94,7 @@ dict(cat="Event", name="Pyramid float at the Pride parade", re=r"float", heard="
 dict(cat="Event", name="The Anna Banana party at Red Zone", re=r"Anna Banana", heard="Anna Banana",
      ctx="James had to fill a Thursday at Red Zone, so Michael invented an it-girl from Miami and had Linda play her - easy money, Linda says", link=G("Linda Simpson Anna Banana Red Zone"), status="Not found online"),
 dict(cat="Event", name="The Drag Explosion slideshow", re=r"slideshow|slide ?show", heard="slideshow",
-     ctx="Linda's narrated slideshow of her 1987-1995 photos, shown in New York since 2015, she says: the scene in the East Village, the clubs, the media, RuPaul, then the collapse", link="https://www.dragexplosion.com"),
+     ctx="Linda's narrated slideshow, first shown in 2015 as James tells it, of her photos from the late 80s to the mid 90s: the scene in the East Village, the clubs, the media, RuPaul, then the collapse", link="https://www.dragexplosion.com"),
 dict(cat="Event", name="My Comrade release parties", re=r"release parties", heard="release parties", ctx="Linda's first parties, thrown in drag for each new issue of My Comrade", link=G("My Comrade zine release party Linda Simpson")),
 dict(cat="Event", name="Giuliani's nightlife crackdown", re=r"Giuliani", heard="the Giuliani administration", ctx="One of the two reasons the drag explosion ended, Linda says - clubs closed and the work dried up"),
 dict(cat="Event", name="Village Halloween Parade", re=r"Halloween", heard="a Halloween parade", ctx="Where Linda first did drag, James has read", link=W("Village_Halloween_Parade")),
