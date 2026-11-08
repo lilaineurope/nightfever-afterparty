@@ -39,5 +39,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s04e09: { quote: "Heartbreak is wonderful, because if you can turn it around and say I'm gonna take all this anger and all this energy and throw it into something, you can turn lemons into lemonade.", time: "00:14:03" }, // Susan Seidelman - Lisa: quote 2 (5 Nov 2026)
   s03e04: { quote: "I realized there was such a rainbow of sexuality out there. So that's what Hellfire taught me.", time: "00:46:38" }, // Man Parrish
   s02e11: { quote: "What also made it special was the fact that there was really nothing special about it.", time: "00:13:52" }, // Richard Boch
+  s02e09: { quote: "You have to be divorced from the scene for a while in order to really appreciate what you had.", time: "00:54:55" }, // Linda Simpson
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };

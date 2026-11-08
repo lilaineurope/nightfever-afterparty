@@ -23,7 +23,7 @@ const EPISODE_FILES: Record<string, Row[]> = Object.fromEntries(
 // Pairs checked by hand and confirmed as different people/places/things.
 const DISTINCT = new Set(
   [
-    ["baby-rue", "boy-bar"], ["bailey", "bebe-buell"], ["bern", "brian-eno"], ["dean-johnson", "don-johnson"],
+    ["baby-rue", "boy-bar"], ["bailey", "bebe-buell"], ["bern", "brian-eno"], ["dean-johnson", "don-johnson"], ["dany-johnson", "dean-johnson"], ["dany-johnson", "don-johnson"],
     ["leo", "lila"], ["mk", "mokai"], ["nice", "nico"], ["paper", "pierre"], ["paris", "piers"], ["rome", "romeo"],
     ["soho", "sushi"], ["astro-earl", "australia"], ["hawaii", "howie"], ["carlyle", "carol"],
     ["jay-z", "jazz"], ["nas", "nasa"], ["paper", "peru"], ["peru", "pierre"],

@@ -3,6 +3,7 @@
 // Sounds and scenes get a short documentary or archive clip. A name without a video gets a YouTube search link instead. Nothing loads from YouTube until a visitor presses ▶.
 export const YOUTUBE: Record<string, string> = {
   "Frankie Goes to Hollywood – 'Two Tribes'": "pO1HC8pHZw0",
+  "The B-52's – 'Love Shack'": "9SOryJvTAGs",
   "Buddy Holly": "9mDGcxbAusg",
   "Latin freestyle": "SGi3AvfFfuA",
   "Show tunes": "-6S5caRGpK4",

@@ -79,6 +79,11 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Steve Lewis", mentee: "Lincoln Palsgrove IV", episode: "s06e06", time: "00:25:38", line: "Trained Lincoln on the job at the World door - his rules for mixing a room" },
   { mentor: "Steve Lewis", mentee: "James St. James", episode: "s06e06", time: "00:25:38", line: "Taught James his rules for running the World's door" },
   { mentor: "Lincoln Palsgrove IV", mentee: "Michelle Visage", episode: "s06e06", time: "00:31:45", line: "Introduced Michelle to RuPaul on the Red Zone dance floor" },
+  { mentor: "Tabboo!", mentee: "Linda Simpson", episode: "s02e09", time: "00:17:49", line: "Linda's mentor, James says - he took up her Pride float idea and gave her the name Linda" },
+  { mentor: "Page", mentee: "Linda Simpson", episode: "s02e09", time: "00:49:25", line: "Introduced Linda to the Midtown trans scene at Edelweiss and Sally's" },
+  { mentor: "Linda Simpson", mentee: "Thairin Smothers", episode: "s02e09", time: "00:52:56", line: "Recommended Thairin to Fenton and Randy for the Party Monster documentary" },
+  { mentor: "Fenton Bailey", mentee: "Thairin Smothers", episode: "s02e09", time: "00:53:17", line: "Brought Thairin out to World of Wonder in LA - a framework and professionalism, Linda says" },
+  { mentor: "Randy Barbato", mentee: "Thairin Smothers", episode: "s02e09", time: "00:53:17", line: "Brought Thairin out to World of Wonder in LA - a framework and professionalism, Linda says" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
