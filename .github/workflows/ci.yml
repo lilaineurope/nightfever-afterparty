@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
 
@@ -37,9 +37,12 @@ jobs:
 
       # Lint does not block yet: the code has ~3,500 old Prettier formatting errors.
       # Problems still show up in the run log.
+      # Lint and build still run when the data tests fail, so one run shows everything.
       - name: Lint (not blocking)
+        if: ${{ !cancelled() }}
         run: bun run lint
         continue-on-error: true
 
       - name: Build
+        if: ${{ !cancelled() }}
         run: bun run build
