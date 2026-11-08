@@ -1436,6 +1436,17 @@
  {
   "rank": 125,
   "mentions": 1,
+  "category": "Music",
+  "name": "Mumps (band)",
+  "heard": "the Mumps",
+  "time": "00:29:48",
+  "context": "James asks if this is Lance Loud's time in Mumps, Lance's band with Kristian Hoffman, at Max's and CBGB",
+  "link": "https://en.wikipedia.org/wiki/Mumps_(rock_band)",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 126,
+  "mentions": 1,
   "category": "Location",
   "name": "Central Park",
   "heard": "Central Park",
@@ -1445,7 +1456,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 126,
+  "rank": 127,
   "mentions": 1,
   "category": "Person",
   "name": "Sid Vicious",
@@ -1456,7 +1467,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 127,
+  "rank": 128,
   "mentions": 1,
   "category": "Person",
   "name": "Nancy Spungen",
@@ -1467,7 +1478,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 128,
+  "rank": 129,
   "mentions": 1,
   "category": "Person",
   "name": "Giorgio Moroder",
@@ -1478,7 +1489,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 129,
+  "rank": 130,
   "mentions": 1,
   "category": "Music",
   "name": "Man Parrish – 'Six Simple Synthesizers'",
@@ -1489,7 +1500,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 130,
+  "rank": 131,
   "mentions": 1,
   "category": "Location",
   "name": "First Avenue",
@@ -1500,7 +1511,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 131,
+  "rank": 132,
   "mentions": 1,
   "category": "Location",
   "name": "Walt Disney World",
@@ -1511,7 +1522,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 132,
+  "rank": 133,
   "mentions": 1,
   "category": "Person",
   "name": "Jayne County",
@@ -1522,7 +1533,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 133,
+  "rank": 134,
   "mentions": 1,
   "category": "Club",
   "name": "The Tunnel",
@@ -1533,7 +1544,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 134,
+  "rank": 135,
   "mentions": 1,
   "category": "Location",
   "name": "14th Street",
@@ -1544,7 +1555,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 135,
+  "rank": 136,
   "mentions": 1,
   "category": "Club",
   "name": "The Mineshaft",
@@ -1555,7 +1566,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 136,
+  "rank": 137,
   "mentions": 1,
   "category": "Person",
   "name": "Annie Sprinkle",
@@ -1566,7 +1577,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 137,
+  "rank": 138,
   "mentions": 1,
   "category": "Location",
   "name": "New Jersey",
@@ -1577,7 +1588,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 138,
+  "rank": 139,
   "mentions": 1,
   "category": "Book",
   "name": "Hollywood Babylon",
@@ -1588,7 +1599,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 139,
+  "rank": 140,
   "mentions": 1,
   "category": "Film",
   "name": "Star Wars",
@@ -1599,7 +1610,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 140,
+  "rank": 141,
   "mentions": 1,
   "category": "Film",
   "name": "The Dark Crystal",
@@ -1610,7 +1621,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 141,
+  "rank": 142,
   "mentions": 1,
   "category": "Organisation",
   "name": "Cirque du Soleil",
@@ -1621,7 +1632,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 142,
+  "rank": 143,
   "mentions": 1,
   "category": "Person",
   "name": "Richard Long",
@@ -1632,7 +1643,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 143,
+  "rank": 144,
   "mentions": 1,
   "category": "Organisation",
   "name": "Sony",
@@ -1643,7 +1654,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 144,
+  "rank": 145,
   "mentions": 1,
   "category": "Music",
   "name": "Madonna – 'Everybody'",
@@ -1654,7 +1665,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 145,
+  "rank": 146,
   "mentions": 1,
   "category": "Club",
   "name": "Red Parrot",
@@ -1665,7 +1676,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 146,
+  "rank": 147,
   "mentions": 1,
   "category": "Location",
   "name": "The Hamptons",
@@ -1676,7 +1687,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 147,
+  "rank": 148,
   "mentions": 1,
   "category": "Location",
   "name": "Earls Court",
@@ -1687,7 +1698,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 148,
+  "rank": 149,
   "mentions": 1,
   "category": "Person",
   "name": "Christopher Ciccone",
@@ -1698,7 +1709,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 149,
+  "rank": 150,
   "mentions": 1,
   "category": "Location",
   "name": "Chicago",
@@ -1709,7 +1720,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 150,
+  "rank": 151,
   "mentions": 1,
   "category": "Book",
   "name": "Alice's Adventures in Wonderland",
@@ -1720,7 +1731,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 151,
+  "rank": 152,
   "mentions": 1,
   "category": "Person",
   "name": "Mike Ford",
@@ -1732,7 +1743,7 @@
   "fashion": "New outfits at the Cock door every week"
  },
  {
-  "rank": 152,
+  "rank": 153,
   "mentions": 1,
   "category": "Person",
   "name": "Johnny McGovern",
@@ -1743,7 +1754,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 153,
+  "rank": 154,
   "mentions": 1,
   "category": "Organisation",
   "name": "Armani",
@@ -1754,7 +1765,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 154,
+  "rank": 155,
   "mentions": 1,
   "category": "Person",
   "name": "Rudy Giuliani",
@@ -1765,7 +1776,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 155,
+  "rank": 156,
   "mentions": 1,
   "category": "Book",
   "name": "Man Parrish Stories – Volume One (Man Parrish)",
@@ -1776,7 +1787,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 156,
+  "rank": 157,
   "mentions": 1,
   "category": "Location",
   "name": "Electric Lady Studios",
@@ -1787,7 +1798,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 157,
+  "rank": 158,
   "mentions": 1,
   "category": "Music",
   "name": "David Bowie – 'Young Americans'",
@@ -1798,7 +1809,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 158,
+  "rank": 159,
   "mentions": 1,
   "category": "Person",
   "name": "Luther Vandross",
@@ -1809,7 +1820,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 159,
+  "rank": 160,
   "mentions": 1,
   "category": "Organisation",
   "name": "FBI",
@@ -1820,7 +1831,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 160,
+  "rank": 161,
   "mentions": 1,
   "category": "Location",
   "name": "Florida",
@@ -1831,7 +1842,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 161,
+  "rank": 162,
   "mentions": 1,
   "category": "Person",
   "name": "RuPaul",
@@ -1842,7 +1853,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 162,
+  "rank": 163,
   "mentions": 1,
   "category": "Club",
   "name": "Pyramid Club",
@@ -1853,7 +1864,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 163,
+  "rank": 164,
   "mentions": 1,
   "category": "Person",
   "name": "Lady Bunny",
@@ -1864,7 +1875,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 164,
+  "rank": 165,
   "mentions": 0,
   "category": "Mood",
   "name": "Man's on-camera look (S03E04)",
@@ -1882,7 +1893,7 @@
   ]
  },
  {
-  "rank": 165,
+  "rank": 166,
   "mentions": 0,
   "category": "Mood",
   "name": "James's on-camera look (S03E04)",
@@ -1900,7 +1911,7 @@
   ]
  },
  {
-  "rank": 166,
+  "rank": 167,
   "mentions": 0,
   "category": "Mood",
   "name": "Fenton's on-camera look (S03E04)",
@@ -1916,16 +1927,5 @@
    "sunflower yellow #E3B13C",
    "curtain red #8A2E22"
   ]
- },
- {
-  "rank": 167,
-  "mentions": 1,
-  "category": "Music",
-  "name": "Mumps (band)",
-  "heard": "the Mumps",
-  "time": "00:29:48",
-  "context": "James asks if this is Lance Loud's time in Mumps, Lance's band with Kristian Hoffman, at Max's and CBGB",
-  "link": "https://en.wikipedia.org/wiki/Mumps_(rock_band)",
-  "status": "Confirmed"
  }
 ]

@@ -1,4 +1,3 @@
-import { guests } from "./guests";
 import { moreGuests } from "./guests-more";
 import s01e01 from "./s01e01.json";
 import s01e02 from "./s01e02.json";
