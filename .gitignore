@@ -31,3 +31,6 @@ dist-ssr
 *.sln
 *.sw?
 __pycache__/
+
+# bun.lock is the only lock file (Lovable installs with bun)
+package-lock.json
