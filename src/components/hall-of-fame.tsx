@@ -1,7 +1,6 @@
 import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
-import { entityFor, totalMentions } from "@/data/entities";
 import { MENTOR_LINKS } from "@/data/mentors";
 import { rankedMentors } from "@/lib/mentor-rank";
 import { episodeById, stageName } from "@/data/episodes";

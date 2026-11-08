@@ -5,7 +5,6 @@ import tablePic from "@/assets/afterparty-table.webp";
 import tablePhone from "@/assets/afterparty-table-phone.webp";
 import { episodes, SEASONS } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
-import { LegalLinks } from "@/components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({

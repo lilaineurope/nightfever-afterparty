@@ -7,7 +7,6 @@ import { EntityLink } from "../components/entity-link";
 import { guestBySlug, WOW_URL } from "../data/guests";
 import { decades, sceneEvents } from "../data/scene";
 import { EntityText } from "../components/entity-text";
-import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 import { EntityBox, plainClick } from "@/components/moments-box";
 import { entityBySlug, entityFor } from "@/data/entities";

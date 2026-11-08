@@ -10,7 +10,6 @@ import { abs, cardDescription, cleanStory, jsonLd, pageHead, SITE, SITE_NAME } f
 import { episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
-import { LegalNote } from "../components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 import { PERSON_PORTRAITS } from "../data/person-portraits";
 import { MEMORIAM } from "../data/memoriam";

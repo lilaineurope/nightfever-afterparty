@@ -5,7 +5,6 @@ import { useServerFn } from "@tanstack/react-start";
 import {
   unsubscribeNewsletter,
 } from "@/lib/newsletter.functions";
-import { LegalLinks } from "@/components/legal-links";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/unsubscribe")({
