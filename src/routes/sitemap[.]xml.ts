@@ -1,3 +1,4 @@
+// The [.] in this file name is TanStack Router's escape for a literal dot, so the route is served at /sitemap.xml.
 import { createFileRoute } from "@tanstack/react-router";
 import { getRouterInstance } from "@tanstack/react-start";
 import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap";

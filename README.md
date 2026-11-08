@@ -6,25 +6,25 @@ For every episode I build an "afterparty": a timestamped index of every name, cl
 
 Not affiliated with World of Wonder. Listen to the podcast: https://creators.spotify.com/pod/profile/night-fever/
 
-This project was built with [Lovable](https://lovable.dev).
-
 **Live app**: https://nightfever-afterparty.com
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/bdfe98d8-ed89-4b39-835e-aa9801a97362).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Built with [Lovable](https://lovable.dev) ([editor](https://lovable.dev/projects/bdfe98d8-ed89-4b39-835e-aa9801a97362)). Changes pushed to `main` sync back into Lovable.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need [Bun](https://bun.sh) (`bun.lock` is the lock file).
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+git clone https://github.com/lilaineurope/nightfever-afterparty.git
+cd nightfever-afterparty
+bun install
+bun run dev
+```
+
+Checks (GitHub runs the same ones on every pull request and every push to `main`):
+
+```sh
+bun run test    # data checks in src/data/*.test.ts
+bun run lint
+bun run build
 ```
