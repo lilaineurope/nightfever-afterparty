@@ -504,6 +504,17 @@ const curatedEvents: SceneEvent[] = [
     people: ["tish-and-snooky", "nick-egan"],
     figures: ["Debbie Harry", "New York Times"],
   },
+  {
+    id: "renaissance-cunty",
+    year: 2022,
+    when: "July 2022",
+    title: "Beyoncé's Renaissance puts Kevin Aviance's 'Cunty' back on the dance floor",
+    text: "About fifteen seconds of his 1996 club hit open 'Pure/Honey'. Kevin says he only found out when the album came out - and cried when he heard Moi Renée at the end of the same track.",
+    place: "New York",
+    decade: "2020s",
+    people: ["kevin-aviance"],
+    figures: ["Beyoncé", "Moi Renee", "Renaissance (Beyoncé album)"],
+  },
 ];
 
 // Milestones from every WOW guest profile, so the timeline, A–Z, map and quiz
