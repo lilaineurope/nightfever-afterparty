@@ -139,6 +139,7 @@ const s54: ClubNight = {
     { key: "E", label: "Anton Perich Presents: Kenzo at Studio 54, 1977 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=v3b8Z71zoPE" },
     { key: "F", label: "Studio 54 Grease opening party, 1978 (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=MmxEsVit4u8" },
     { key: "G", label: "Inside Studio 54, 1980s - Nelson Sullivan (YouTube - song recognition)", href: "https://www.youtube.com/watch?v=5cOy3HykFdc" },
+    { key: "H", label: "Night Fever S03E03 - Kevin Aviance (Din Daa Daa, which he later covered)", href: "https://nightfever-afterparty.com/episodes/s03e03" },
   ],
   songs: [
     { title: "Devil's Gun", artist: "C.J. & Co.", year: 1977, spotify: "2Dhvk1foUg665791VnnQmK", video: "IMCLvlv7ocE", kind: "played", why: "Reported as the first record played on opening night, 26 April 1977", sources: ["C"] },
@@ -175,6 +176,7 @@ const s54: ClubNight = {
     { title: "Touch My Heart", artist: "Madleen Kane", year: 1978, youtube: "https://www.youtube.com/watch?v=FsnyTtsFjdc", video: "FsnyTtsFjdc", kind: "played", why: "Plays at the Grease opening party at the club in 1978 (YouTube's song recognition)", sources: ["F"] },
     { title: "Let's Start the Dance", artist: "Bohannon", year: 1978, spotify: "5kzro4mOcjwXuugRc6nzm7", video: "mls04iVmU9o", kind: "played", why: "Plays at the Grease opening party at the club in 1978 (YouTube's song recognition)", sources: ["F"] },
     { title: "Body", artist: "The Jacksons", year: 1984, spotify: "1B7rsWK4bD7UYhAVQq6Wbq", video: "-Gbf8vY4MgE", kind: "played", why: "Plays in Nelson Sullivan's footage from inside the club (YouTube's song recognition)", sources: ["G"] },
+    { title: "Din Daa Daa", artist: "George Kranz", year: 1983, spotify: "6IibbxjQER0Y1yKtS7wiQV", video: "thqPrIR2W8M", kind: "live", why: "Kevin Aviance says George Kranz performed it once at Studio 54 - the only time, as he tells it.", sources: ["H"], guest: { slug: "kevin-aviance", label: "Kevin Aviance" } },
   ],
 };
 
@@ -672,6 +674,7 @@ const py: ClubNight = {
     { key: "J", label: "PAPER: A Nearly Complete Oral History of the Pyramid Club", href: "https://www.papermag.com/pyramid-club-oral-history" },
     { key: "K", label: "Queerty: RuPaul's 'Sex Freak' (1985, FunTone USA)", href: "https://www.queerty.com/listen-before-becoming-the-cultural-juggernaut-he-is-today-rupaul-was-a-total-sex-freak-20230807/" },
     { key: "L", label: "Wikipedia: Pyramid Club (New York City)", href: "https://en.wikipedia.org/wiki/Pyramid_Club_(New_York_City)" },
+    { key: "M", label: "Night Fever S03E03 - Kevin Aviance (Din Daa Daa, which he later covered)", href: "https://nightfever-afterparty.com/episodes/s03e03" },
   ],
   songs: [
     { title: "School", artist: "Nirvana", year: 1989, spotify: "0EY1Z9UmZnYZyM7zHs6C0j", video: "DeoWhvsyOZ8", kind: "live", why: "Opened Nirvana's first New York show, 18 Jul 1989; also opened their 26 Apr 1990 return.", sources: ["A", "B", "C", "L"] },
@@ -700,6 +703,7 @@ const py: ClubNight = {
     { title: "Candy Says", artist: "Psychic TV", year: 1969, spotify: "58lljLKHimzE0xRoqX0lqR", video: "pfnPBvWcYvM", kind: "live", why: "Velvet Underground cover in the same 3 Nov 1988 set.", sources: ["I"] },
     { title: "Are You Experienced?", artist: "Psychic TV", year: 1967, video: "HgI6CMdlHM0", kind: "live", why: "Jimi Hendrix Experience cover in the same 3 Nov 1988 set.", sources: ["I"] },
     { title: "I Feel Love", artist: "Donna Summer", year: 1977, spotify: "1vCBk33l9HaWp5FOnhSGxk", video: "yEbaeLv-aOo", kind: "dj-artist", why: "Sister Dimension says bands were auditioned in a 'Disco Test' closet while Donna Summer played. Stand-in pick: the source names the artist, not the track.", sources: ["J"] },
+    { title: "Din Daa Daa", artist: "George Kranz", year: 1983, spotify: "6IibbxjQER0Y1yKtS7wiQV", video: "thqPrIR2W8M", kind: "played", why: "Fenton Bailey remembers it playing at the Pyramid, alongside 'Hip Hop, Be Bop (Don't Stop)' and 'Planet Rock'.", sources: ["M"] },
   ],
 };
 
