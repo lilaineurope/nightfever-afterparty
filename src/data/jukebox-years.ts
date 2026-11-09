@@ -2,6 +2,15 @@
 // A song or record = the year that version came out; a band or artist = the year they formed or first performed;
 // a sound or scene = the year it took off; a musical = its first staging. Checked against Wikipedia and other sources.
 export const YEARS: Record<string, number> = {
+  "Kevin Aviance – 'Cunty (The Feeling)'": 1996,
+  "Kevin Aviance – 'Din Da Da'": 1997,
+  "George Kranz – 'Din Daa Daa'": 1983,
+  "Kevin Aviance – 'Strut'": 2007,
+  "Kevin Aviance – 'Alive'": 2002,
+  "Renaissance (Beyoncé album)": 2022,
+  "Ram Jam – 'Black Betty'": 1977,
+  "Sounds of Blackness – 'The Pressure'": 1991,
+  "The Basement Boys": 1986,
   "Frankie Goes to Hollywood – 'Two Tribes'": 1984,
   "The B-52's – 'Love Shack'": 1989,
   "Buddy Holly": 1957,

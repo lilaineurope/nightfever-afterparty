@@ -84,6 +84,14 @@ export const bookClub: CollectionItem[] = [
 // ---------- Jukebox ----------
 // Official Spotify IDs, checked against Spotify search results (never guessed).
 const SPOTIFY: Record<string, string> = {
+  "Kevin Aviance – 'Cunty (The Feeling)'": "spotify:track:2GoXg6Whfawg0sExSwSN0Q",
+  "Kevin Aviance – 'Din Da Da'": "spotify:track:7z1OMaJEE5Djpc1QTGnUZz",
+  "George Kranz – 'Din Daa Daa'": "spotify:track:6IibbxjQER0Y1yKtS7wiQV",
+  "Kevin Aviance – 'Strut'": "spotify:track:19BzAVb5FkAEa0z5VoJU9K",
+  "Renaissance (Beyoncé album)": "spotify:track:4DByEumlGTZKSzuVEZ35eo",
+  "Ram Jam – 'Black Betty'": "spotify:track:6kooDsorCpWVMGc994XjWN",
+  "Sounds of Blackness – 'The Pressure'": "spotify:track:570dq1NUIQF4PmXcMyVKaF",
+  "The Basement Boys": "spotify:track:1SShxVVBeZBCY7WddnksPz",
   // S02E01 Michelle Visage
   "Seduction": "spotify:artist:66pXn4ZrPf6yzk5PHGkUZA",
   "The S.O.U.L. S.Y.S.T.E.M. – 'It's Gonna Be a Lovely Day'": "spotify:track:5A5Ej8R3QY9xb98dmVowmL",

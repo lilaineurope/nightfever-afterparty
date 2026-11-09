@@ -2,6 +2,15 @@
 // Most come from the episode AFTERPARTY playlists on YouTube; the rest are the official video or the best upload found.
 // Sounds and scenes get a short documentary or archive clip. A name without a video gets a YouTube search link instead. Nothing loads from YouTube until a visitor presses ▶.
 export const YOUTUBE: Record<string, string> = {
+  "Kevin Aviance – 'Cunty (The Feeling)'": "wMYGfvgYGUU",
+  "Kevin Aviance – 'Din Da Da'": "5l7_Zu2AQyQ",
+  "George Kranz – 'Din Daa Daa'": "thqPrIR2W8M",
+  "Kevin Aviance – 'Strut'": "ynw_MIgqC5k",
+  "Kevin Aviance – 'Alive'": "8ia-4Xor_7k",
+  "Renaissance (Beyoncé album)": "WM133A3vqLE",
+  "Ram Jam – 'Black Betty'": "I_2D8Eo15wE",
+  "Sounds of Blackness – 'The Pressure'": "Gjfs3rSIpIQ",
+  "The Basement Boys": "j7QmNGoHGGA",
   "Frankie Goes to Hollywood – 'Two Tribes'": "pO1HC8pHZw0",
   "The B-52's – 'Love Shack'": "9SOryJvTAGs",
   "Buddy Holly": "9mDGcxbAusg",
