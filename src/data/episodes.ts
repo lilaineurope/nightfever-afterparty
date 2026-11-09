@@ -36,6 +36,7 @@ import seidelmanRefs from "./s04e09.json";
 import glamRefs from "./s01e05.json";
 import palsgroveRefs from "./s06e06.json";
 import simpsonRefs from "./s02e09.json";
+import avianceRefs from "./s03e03.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -808,7 +809,25 @@ const s02e09: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCPc4wjvZ9xw",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09].sort((a, b) =>
+const s03e03: Episode = {
+  id: "s03e03",
+  season: 3,
+  episode: 3,
+  guest: "Kevin Aviance",
+  released: "2023-06-29",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-303",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO2960835454.mp3",
+  runtime: "52:18",
+  afterpartyPublished: "2026-11-15",
+  blurb:
+    "Kevin Aviance, drag performer and dance-music star of the House of Aviance: Mother Juan, DC and South Beach, the Sound Factory's runway, Madonna's Secret video, Cunty and Din Da Da, surviving the 2006 attack, and hearing himself on Beyoncé's Renaissance.",
+  references: avianceRefs.length,
+  mentions: avianceRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(avianceRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -833,7 +852,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -909,6 +928,8 @@ export function episodePath(
       return "/episodes/s06e06";
     case "s02e09":
       return "/episodes/s02e09";
+    case "s03e03":
+      return "/episodes/s03e03";
     default:
       return "/episodes/s06e01";
   }

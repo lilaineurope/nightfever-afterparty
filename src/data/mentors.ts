@@ -84,6 +84,7 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Linda Simpson", mentee: "Thairin Smothers", episode: "s02e09", time: "00:52:56", line: "Recommended Thairin to Fenton and Randy for the Party Monster documentary" },
   { mentor: "Fenton Bailey", mentee: "Thairin Smothers", episode: "s02e09", time: "00:53:17", line: "Brought Thairin out to World of Wonder in LA - a framework and professionalism, Linda says" },
   { mentor: "Randy Barbato", mentee: "Thairin Smothers", episode: "s02e09", time: "00:53:17", line: "Brought Thairin out to World of Wonder in LA - a framework and professionalism, Linda says" },
+  { mentor: "Juan Aviance", mentee: "Kevin Aviance", episode: "s03e03", time: "00:06:58", line: "Saw Kevin on the runway in DC, asked him into the House of Aviance and gave him its name - 'Juan discovered me', Kevin says" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

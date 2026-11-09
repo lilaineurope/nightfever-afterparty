@@ -40,5 +40,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s03e04: { quote: "I realized there was such a rainbow of sexuality out there. So that's what Hellfire taught me.", time: "00:46:38" }, // Man Parrish
   s02e11: { quote: "What also made it special was the fact that there was really nothing special about it.", time: "00:13:52" }, // Richard Boch
   s02e09: { quote: "Well, you had the vodka. I had the makeup.", time: "00:26:55" }, // Linda Simpson - Lisa: quote 3 (8 Nov 2026)
+  s03e03: { quote: "You can't kill drag out of you. You can't just say, turn it on, turn it off.", time: "00:40:06" }, // Kevin Aviance - quote 4, waiting for Lisa's pick
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
