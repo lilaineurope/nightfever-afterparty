@@ -78,6 +78,17 @@
  },
  {
   "rank": 8,
+  "mentions": 8,
+  "category": "Club",
+  "name": "Sound Factory",
+  "heard": "Sound Factory",
+  "time": "00:12:30",
+  "context": "Kevin went up from DC all the time before he moved, and James calls him its queen in the 90s: $20 in, no guest list, a pin-lit runway to the DJ booth, stadium seats, four speaker stacks and songs that lasted forever",
+  "link": "https://en.wikipedia.org/wiki/The_Sound_Factory_(nightclub)",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 9,
   "mentions": 7,
   "category": "Person",
   "name": "Kevin Aviance",
@@ -85,17 +96,6 @@
   "time": "00:01:19",
   "context": "Guest. Drag performer and dance-music star of the House of Aviance, from Richmond, Virginia by way of DC and South Beach to the Sound Factory; his 1996 'Cunty' was sampled on Beyoncé's Renaissance",
   "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-303",
-  "status": "Confirmed"
- },
- {
-  "rank": 9,
-  "mentions": 7,
-  "category": "Club",
-  "name": "Sound Factory",
-  "heard": "Sound Factory",
-  "time": "00:12:30",
-  "context": "Kevin went up from DC all the time before he moved, and James calls him its queen in the 90s: $20 in, no guest list, a pin-lit runway to the DJ booth, stadium seats, four speaker stacks and songs that lasted forever",
-  "link": "https://en.wikipedia.org/wiki/The_Sound_Factory_(nightclub)",
   "status": "Confirmed"
  },
  {
@@ -1103,5 +1103,82 @@
   "context": "Kevin's song at his fifth-grade drag contest, which he won",
   "link": "https://en.wikipedia.org/wiki/I_Will_Survive",
   "status": "Confirmed"
+ },
+ {
+  "rank": 97,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Kevin's on-camera look (S03E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald head, smoky silver eyeshadow, a plum lip and big hoop earrings, a red long-sleeved top with crossed halter straps and black lace gloves, in front of a purple satin curtain",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-303",
+  "status": "Confirmed",
+  "fashion": "Red halter-strap top, black lace gloves, hoop earrings",
+  "colours": [
+   "top red #C13B49",
+   "strap red #AD3538",
+   "curtain purple #55427F",
+   "eyeshadow silver #9A98A2",
+   "lip plum #5C2A33",
+   "hoop gold #BEA79A"
+  ]
+ },
+ {
+  "rank": 98,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S03E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald, thick black glasses and a white robe covered in Keith Haring-style dancing figures over a black T-shirt, in front of packed bookshelves with a big studio microphone",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-303",
+  "status": "Confirmed",
+  "fashion": "Keith Haring-print robe, black glasses",
+  "colours": [
+   "robe white #ECE8DE",
+   "figure pink #D8457E",
+   "figure blue #2D5BA8",
+   "figure green #3E9A4E",
+   "glasses black #111111"
+  ]
+ },
+ {
+  "rank": 99,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S03E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Dark-rimmed glasses and a brick-red corduroy shirt over a black T-shirt, in front of a Holy Terror poster and shelves with a Union Jack box",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-303",
+  "status": "Confirmed",
+  "fashion": "Brick-red shirt",
+  "colours": [
+   "shirt red #8E2F2B",
+   "shirt shadow #7D2B28",
+   "poster teal #9CC9B8",
+   "wall grey #C6C5C3",
+   "frames brown #3A3330"
+  ]
+ },
+ {
+  "rank": 100,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S03E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Rimless glasses and a charcoal zip-up hoodie, in a dark room with round dressing-room bulbs on the right",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-303",
+  "status": "Confirmed",
+  "fashion": "Charcoal zip-up hoodie",
+  "colours": [
+   "hoodie charcoal #2C3033",
+   "zip silver #A6B4BF",
+   "rims rose #A0777D",
+   "bulb white #E8ECEC",
+   "wall brown #211F13"
+  ]
  }
 ]
