@@ -382,6 +382,48 @@ import donJohnsonPhoto from "@/assets/people/don-johnson-photo.webp";
 import donJohnsonPolaroid from "@/assets/people/don-johnson-polaroid.webp";
 import donnaKaranPhoto from "@/assets/people/donna-karan-photo.webp";
 import donnaKaranPolaroid from "@/assets/people/donna-karan-polaroid.webp";
+import gayfrydSteinbergPhoto from "@/assets/people/gayfryd-steinberg-photo.webp";
+import gayfrydSteinbergPolaroid from "@/assets/people/gayfryd-steinberg-polaroid.webp";
+import morganWoodPhoto from "@/assets/people/morgan-wood-photo.webp";
+import morganWoodPolaroid from "@/assets/people/morgan-wood-polaroid.webp";
+import ravenOPhoto from "@/assets/people/raven-o-photo.webp";
+import ravenOPolaroid from "@/assets/people/raven-o-polaroid.webp";
+import michaelHolmanPhoto from "@/assets/people/michael-holman-photo.webp";
+import michaelHolmanPolaroid from "@/assets/people/michael-holman-polaroid.webp";
+import ferdinandMarcosPhoto from "@/assets/people/ferdinand-marcos-photo.webp";
+import ferdinandMarcosPolaroid from "@/assets/people/ferdinand-marcos-polaroid.webp";
+import francescoClementePhoto from "@/assets/people/francesco-clemente-photo.webp";
+import francescoClementePolaroid from "@/assets/people/francesco-clemente-polaroid.webp";
+import galaDaliPhoto from "@/assets/people/gala-dali-photo.webp";
+import galaDaliPolaroid from "@/assets/people/gala-dali-polaroid.webp";
+import georgeMichaelPhoto from "@/assets/people/george-michael-photo.webp";
+import georgeMichaelPolaroid from "@/assets/people/george-michael-polaroid.webp";
+import gloriaGaynorPhoto from "@/assets/people/gloria-gaynor-photo.webp";
+import gloriaGaynorPolaroid from "@/assets/people/gloria-gaynor-polaroid.webp";
+import hollandTaylorPhoto from "@/assets/people/holland-taylor-photo.webp";
+import hollandTaylorPolaroid from "@/assets/people/holland-taylor-polaroid.webp";
+import ianSchragerPhoto from "@/assets/people/ian-schrager-photo.webp";
+import ianSchragerPolaroid from "@/assets/people/ian-schrager-polaroid.webp";
+import joanCollinsPhoto from "@/assets/people/joan-collins-photo.webp";
+import joanCollinsPolaroid from "@/assets/people/joan-collins-polaroid.webp";
+import johnFKennedyJrPhoto from "@/assets/people/john-f-kennedy-jr-photo.webp";
+import johnFKennedyJrPolaroid from "@/assets/people/john-f-kennedy-jr-polaroid.webp";
+import ladyGagaPhoto from "@/assets/people/lady-gaga-photo.webp";
+import ladyGagaPolaroid from "@/assets/people/lady-gaga-polaroid.webp";
+import ladyMissKierPhoto from "@/assets/people/lady-miss-kier-photo.webp";
+import ladyMissKierPolaroid from "@/assets/people/lady-miss-kier-polaroid.webp";
+import larryKramerPhoto from "@/assets/people/larry-kramer-photo.webp";
+import larryKramerPolaroid from "@/assets/people/larry-kramer-polaroid.webp";
+import lindaEvansPhoto from "@/assets/people/linda-evans-photo.webp";
+import lindaEvansPolaroid from "@/assets/people/linda-evans-polaroid.webp";
+import marcShaimanPhoto from "@/assets/people/marc-shaiman-photo.webp";
+import marcShaimanPolaroid from "@/assets/people/marc-shaiman-polaroid.webp";
+import maureenDowdPhoto from "@/assets/people/maureen-dowd-photo.webp";
+import maureenDowdPolaroid from "@/assets/people/maureen-dowd-polaroid.webp";
+import natalieSchaferPhoto from "@/assets/people/natalie-schafer-photo.webp";
+import natalieSchaferPolaroid from "@/assets/people/natalie-schafer-polaroid.webp";
+import kimHastreiterPhoto from "@/assets/people/kim-hastreiter-photo.webp";
+import kimHastreiterPolaroid from "@/assets/people/kim-hastreiter-polaroid.webp";
 export type PersonPortrait = {
   photo: string;
   polaroid: string;
@@ -585,4 +627,25 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "dionne-warwick": { photo: dionneWarwickPhoto, polaroid: dionneWarwickPolaroid, focus: "28%", credit: "Portrait after a photo by Allan Warren, 1973 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "don-johnson": { photo: donJohnsonPhoto, polaroid: donJohnsonPolaroid, focus: "28%", credit: "Portrait after a photo by PH1 Doty, US Navy, 1986 (public domain), in our photocopy style" },
   "donna-karan": { photo: donnaKaranPhoto, polaroid: donnaKaranPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2012 (CC BY 3.0), in our photocopy style" },
+  "gayfryd-steinberg": { photo: gayfrydSteinbergPhoto, polaroid: gayfrydSteinbergPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "morgan-wood": { photo: morganWoodPhoto, polaroid: morganWoodPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "raven-o": { photo: ravenOPhoto, polaroid: ravenOPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "michael-holman": { photo: michaelHolmanPhoto, polaroid: michaelHolmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "ferdinand-marcos": { photo: ferdinandMarcosPhoto, polaroid: ferdinandMarcosPolaroid, focus: "28%", credit: "Portrait after a photo from the Philippine Presidential Museum and Library, c. 1965 (public domain), in our photocopy style" },
+  "francesco-clemente": { photo: francescoClementePhoto, polaroid: francescoClementePolaroid, focus: "28%", credit: "Portrait after a photo by Michael Avedon, 2013 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "gala-dali": { photo: galaDaliPhoto, polaroid: galaDaliPolaroid, focus: "28%", credit: "Portrait after a photo by Fen Labalme (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "george-michael": { photo: georgeMichaelPhoto, polaroid: georgeMichaelPolaroid, focus: "28%", credit: "Portrait after a photo from the University of Houston Digital Library, 1988 (public domain), in our photocopy style" },
+  "gloria-gaynor": { photo: gloriaGaynorPhoto, polaroid: gloriaGaynorPolaroid, focus: "28%", credit: "Portrait after a photo by Thomas Rodenbücher, 2012 (CC BY 2.0), in our photocopy style" },
+  "holland-taylor": { photo: hollandTaylorPhoto, polaroid: hollandTaylorPolaroid, focus: "28%", credit: "Portrait after a photo by Harry Langdon Studio, c. 1994 (CC BY 3.0), in our photocopy style" },
+  "ian-schrager": { photo: ianSchragerPhoto, polaroid: ianSchragerPolaroid, focus: "28%", credit: "Portrait after a photo by C2 Montréal, 2012 (CC BY 2.0), in our photocopy style" },
+  "joan-collins": { photo: joanCollinsPhoto, polaroid: joanCollinsPolaroid, focus: "28%", credit: "Portrait after a photo by Stephane Rolland, 2011 (public domain), in our photocopy style" },
+  "john-f-kennedy-jr": { photo: johnFKennedyJrPhoto, polaroid: johnFKennedyJrPolaroid, focus: "28%", credit: "Portrait after a photo by John Mathew Smith, 1990s (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "lady-gaga": { photo: ladyGagaPhoto, polaroid: ladyGagaPolaroid, focus: "28%", credit: "Portrait after a photo by joachim, 2019 (CC BY 3.0), in our photocopy style" },
+  "lady-miss-kier": { photo: ladyMissKierPhoto, polaroid: ladyMissKierPolaroid, focus: "28%", credit: "Portrait after a photo by Steven Menendez, 2005 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "larry-kramer": { photo: larryKramerPhoto, polaroid: larryKramerPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2010 (CC BY 2.0), in our photocopy style" },
+  "linda-evans": { photo: lindaEvansPhoto, polaroid: lindaEvansPolaroid, focus: "28%", credit: "Portrait after a photo by Linda Bisset, 1995 (CC BY 2.0), in our photocopy style" },
+  "marc-shaiman": { photo: marcShaimanPhoto, polaroid: marcShaimanPolaroid, focus: "28%", credit: "Portrait after a photo by Philip Romano, 2026 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "maureen-dowd": { photo: maureenDowdPhoto, polaroid: maureenDowdPolaroid, focus: "28%", credit: "Portrait after a photo by Frypie, 2024 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "natalie-schafer": { photo: natalieSchaferPhoto, polaroid: natalieSchaferPolaroid, focus: "28%", credit: "Portrait after a studio publicity photo, 1942 (public domain), in our photocopy style" },
+  "kim-hastreiter": { photo: kimHastreiterPhoto, polaroid: kimHastreiterPolaroid, focus: "28%", credit: "Portrait after a photo by Jmerlwhat, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
 };
