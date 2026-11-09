@@ -30,5 +30,6 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s01e05: { left: [], right: ["timeline", "drop"] }, // Ernie Glam - Lisa: ok for polaroid and layout (6 Nov 2026)
   s06e06: { left: ["drop"], right: ["timeline", "mentor"] },
   s02e09: { left: ["drop"], right: ["timeline", "mentor"] }, // Linda Simpson - Lisa: layout OK, publish (8 Nov 2026) // Lincoln Palsgrove IV - Lisa: okay layout and polaroid (7 Nov 2026)
+  s03e03: { left: ["mentor"], right: ["timeline", "drop"] }, // Kevin Aviance - Lisa: yes to layout (9 Nov 2026)
   s06e01: { left: ["drop"], right: ["timeline", "mentor"] }, // James St. James - Lisa: Top of the drop left, Mentor score right
 };
