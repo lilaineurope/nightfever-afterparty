@@ -1879,5 +1879,59 @@
   "context": "Bebe's publisher - order Rebel Soul through the link in her Instagram bio",
   "link": "https://hozacrecords.com",
   "status": "Confirmed"
+ },
+ {
+  "rank": 166,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Bebe's on-camera look (S04E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Long straight platinum-blonde hair, black rectangular glasses, a black top with a leopard-print scarf and a small silver heart pendant, turquoise earbuds - in a red sitting room with a Hank Williams Grand Ole Opry poster, an oval mirror and a Tiffany-style lamp",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-403",
+  "status": "Confirmed",
+  "fashion": "Leopard-print scarf, black top",
+  "colours": [
+   "platinum blonde #E6D9B8",
+   "leopard tan #B07A3E",
+   "top black #111111",
+   "Opry-room red #8E1B1E",
+   "earbud turquoise #6FD3D0"
+  ]
+ },
+ {
+  "rank": 167,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S04E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald, thick black rectangular glasses and a navy satin blouse with a black-and-gold chain-print scarf, in front of a grey curtain and a shelf with a red notebook and a soup-can mug",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-403",
+  "status": "Confirmed",
+  "fashion": "Navy satin blouse, chain-print scarf",
+  "colours": [
+   "navy satin #141A4A",
+   "chain gold #B8963E",
+   "glasses black #111111",
+   "curtain grey #7A6E78"
+  ]
+ },
+ {
+  "rank": 168,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S04E03)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Thin multicoloured-rim glasses and a powder-blue hoodie, in front of orange sunflower wallpaper, glass doors, hanging caps and bookshelves",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-403",
+  "status": "Confirmed",
+  "fashion": "Powder-blue hoodie",
+  "colours": [
+   "powder blue #8DB3DD",
+   "sunflower orange #D98A3A",
+   "wallpaper cream #E8CF9A"
+  ]
  }
 ]
