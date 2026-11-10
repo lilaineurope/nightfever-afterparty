@@ -66,6 +66,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Bebe Buell",
+    why: "James closes: they could do a whole series with Bebe - and Elvis Costello, Liv and Todd would each take a whole podcast of their own.",
+    episodeId: "s04e03",
+    time: "01:13:38",
+  },
+  {
     name: "Lincoln Palsgrove IV",
     why: "James closes: they'll have to have Lincoln back on, as there were stories they didn't get to tell.",
     episodeId: "s06e06",

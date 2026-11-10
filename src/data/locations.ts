@@ -5,6 +5,21 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Asbury Park", lat: 40.2204, lng: -74.0121, area: "New Jersey" },
+  { name: "Quantico, Virginia", lat: 38.5221, lng: -77.2936, area: "Virginia" },
+  { name: "Virginia", lat: 37.4316, lng: -78.6569, area: "Virginia" },
+  { name: "Georgetown", lat: 38.9097, lng: -77.0654, area: "Washington, D.C." },
+  { name: "St. Regis New York", lat: 40.7614, lng: -73.9745, area: "Midtown" },
+  { name: "Henri Bendel", lat: 40.7616, lng: -73.9746, area: "Midtown" },
+  { name: "Felt Forum", lat: 40.7505, lng: -73.9934, area: "Midtown" },
+  { name: "Second Avenue", lat: 40.7290, lng: -73.9870, area: "East Village" },
+  { name: "Horatio Street", lat: 40.7381, lng: -74.0055, area: "West Village" },
+  { name: "National Arts Club", lat: 40.7378, lng: -73.9869, area: "Gramercy" },
+  { name: "Warhol's Montauk estate", lat: 41.0480, lng: -71.8890, area: "Long Island" },
+  { name: "Woodstock", lat: 42.0409, lng: -74.1182, area: "New York State" },
+  { name: "Rainbow Bar and Grill", lat: 34.0902, lng: -118.3876, area: "Los Angeles" },
+  { name: "Newport, Rhode Island", lat: 41.4901, lng: -71.3128, area: "Rhode Island" },
+  { name: "Camp Lejeune", lat: 34.6840, lng: -77.3470, area: "North Carolina" },
   { name: "Tracks DC", lat: 38.8768, lng: -77.0058, area: "Washington, D.C." },
   { name: "Richmond, Virginia", lat: 37.5407, lng: -77.4360, area: "Virginia" },
   { name: "Maryland", lat: 39.0458, lng: -76.6413, area: "Maryland" },

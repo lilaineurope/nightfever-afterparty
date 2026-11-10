@@ -85,6 +85,10 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Fenton Bailey", mentee: "Thairin Smothers", episode: "s02e09", time: "00:53:17", line: "Brought Thairin out to World of Wonder in LA - a framework and professionalism, Linda says" },
   { mentor: "Randy Barbato", mentee: "Thairin Smothers", episode: "s02e09", time: "00:53:17", line: "Brought Thairin out to World of Wonder in LA - a framework and professionalism, Linda says" },
   { mentor: "Juan Aviance", mentee: "Kevin Aviance", episode: "s03e03", time: "00:06:58", line: "Saw Kevin on the runway in DC, asked him into the House of Aviance and gave him its name - 'Juan discovered me', Kevin says" },
+  { mentor: "Eileen Ford", mentee: "Bebe Buell", episode: "s04e03", time: "00:07:14", line: "Saw Bebe's senior yearbook photo and snapshots, called her mother and brought her to New York to model" },
+  { mentor: "Wilhelmina Cooper", mentee: "Bebe Buell", episode: "s04e03", time: "00:44:41", line: "Signed Bebe after Ford let her go and sent her to London, Paris and Milan for tear sheets" },
+  { mentor: "Clive Arrowsmith", mentee: "Bebe Buell", episode: "s04e03", time: "00:45:07", line: "The photographer who pushed Bebe to a level where she got beautiful campaigns, Bebe says" },
+  { mentor: "Don Hill", mentee: "Bebe Buell", episode: "s04e03", time: "01:08:14", line: "Told Bebe to get on stage again with the Squeezebox band - and she never looked back" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

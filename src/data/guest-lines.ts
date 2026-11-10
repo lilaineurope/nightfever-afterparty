@@ -36,6 +36,7 @@ export const GUEST_LINES: Record<string, string> = {
   s06e06: "Doorman and party promoter · the World, Red Zone, the Roxy",
   s02e09: "Drag queen and zine maker · My Comrade, The Drag Explosion",
   s03e03: "Drag performer and dance-music star · House of Aviance, Cunty, Din Da Da",
+  s04e03: "Model, singer and rock memoirist · Max's Kansas City, Rebel Heart, Rebel Soul",
   s02e11: "Mudd Club doorman · artist and author of The Mudd Club",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
