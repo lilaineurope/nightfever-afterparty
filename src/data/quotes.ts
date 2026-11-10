@@ -41,6 +41,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s02e11: { quote: "What also made it special was the fact that there was really nothing special about it.", time: "00:13:52" }, // Richard Boch
   s02e09: { quote: "Well, you had the vodka. I had the makeup.", time: "00:26:55" }, // Linda Simpson - Lisa: quote 3 (8 Nov 2026)
   s03e03: { quote: "That's when Junior came out of the booth and gave me flowers. And ever since that moment, I've always been a queen.", time: "00:17:57" }, // Kevin Aviance - Lisa: quote c (9 Nov 2026)
-  s04e03: { quote: "You know how I found it by myself the second time? I owe it all to drag queens.", time: "00:11:56" }, // Bebe Buell - box pick, waiting for Lisa
+  s04e03: { quote: "You know how I found it by myself the second time? I owe it all to drag queens.", time: "00:11:56" }, // Bebe Buell - Lisa: quote 2 (10 Nov 2026)
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
