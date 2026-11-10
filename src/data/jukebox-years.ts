@@ -2,6 +2,11 @@
 // A song or record = the year that version came out; a band or artist = the year they formed or first performed;
 // a sound or scene = the year it took off; a musical = its first staging. Checked against Wikipedia and other sources.
 export const YEARS: Record<string, number> = {
+  "Ziggy Stardust and the Spiders from Mars": 1972,
+  "The Gargoyles": 1985,
+  "The B-Sides": 1980,
+  "The Tubes": 1972,
+  "The Beatles": 1960,
   "Kevin Aviance – 'Cunty (The Feeling)'": 1996,
   "Kevin Aviance – 'Din Da Da'": 1997,
   "George Kranz – 'Din Daa Daa'": 1983,
