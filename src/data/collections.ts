@@ -84,6 +84,10 @@ export const bookClub: CollectionItem[] = [
 // ---------- Jukebox ----------
 // Official Spotify IDs, checked against Spotify search results (never guessed).
 const SPOTIFY: Record<string, string> = {
+  "Ziggy Stardust and the Spiders from Mars": "spotify:track:5IyL3XOaRPpTgxVjRIAxXU",
+  "The Gargoyles": "spotify:track:4fRkjBqHNZ0y5oLgsgQWmK",
+  "The Tubes": "spotify:track:2QdadVGqkAGPGJMnJWHIcR",
+  "The Beatles": "spotify:track:4pbG9SUmWIvsROVLF0zF9s",
   "Kevin Aviance – 'Cunty (The Feeling)'": "spotify:track:2GoXg6Whfawg0sExSwSN0Q",
   "Kevin Aviance – 'Din Da Da'": "spotify:track:7z1OMaJEE5Djpc1QTGnUZz",
   "George Kranz – 'Din Daa Daa'": "spotify:track:6IibbxjQER0Y1yKtS7wiQV",
