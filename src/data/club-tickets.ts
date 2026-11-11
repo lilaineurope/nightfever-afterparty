@@ -110,7 +110,7 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     h: 518,
     pos: "center 45%",
     alt: "The Harlem Women's Contingent on stage at Boy Bar, 15 St. Marks Place, 26 May 1994: Flotilla DeBarge, Aphro-dite, Raven O and a fellow performer in flowered dresses in front of a leopard-print wall",
-    credit: "Photo: Jillian Jonas / Village Preservation, Boy Bar, 1994",
+    credit: "Photo: Jillian Jonas, Boy Bar, 1994 · used with permission of Jillian Jonas and Village Preservation",
     href: "https://urbanarchive.org/o/villagepreservation/post/d2def65d-c4c9-4a6f-9250-0346c7ee984d",
   },
   "nell-s": {

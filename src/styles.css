@@ -691,7 +691,7 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .cc-photo .cc-play { background: #111; color: #fff; }
 .cc-photo .cc-stub { border-left-color: rgba(17,17,17,.6); }
 .cc-photo .cc-stub a { color: #111; }
-.cc-credit { grid-column: 1 / -1; display: block; height: 22px; line-height: 22px; padding: 0 8px; background: #111; color: #f4f1ea; font-size: 10px; letter-spacing: .04em; text-align: right; }
+.cc-credit { grid-column: 1 / -1; display: block; min-height: 22px; line-height: 13px; padding: 4.5px 8px; /* wraps when a credit needs two lines (permission credits, Lisa 11 Nov 2026) */ background: #111; color: #f4f1ea; font-size: 10px; letter-spacing: .04em; text-align: right; }
 .cc-credit:hover { color: var(--color-pink); }
 .jbx-ep-photo { align-self: start; margin: 0; width: 240px; max-width: 100%; transform: rotate(-3deg); }
 .jbx-ep-photo img { display: block; width: 100%; height: auto; box-shadow: 4px 5px 0 rgba(0,0,0,.45); }
