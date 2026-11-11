@@ -194,7 +194,7 @@
   "heard": "First Ladies of Disco",
   "time": "00:44:06",
   "context": "Martha's touring group for about 10 years, a rotating show - now with Norma Jean Wright and Linda Clifford; she and her manager named it after James Arena's book. They just finished their first tour",
-  "link": "https://www.google.com/search?q=First+Ladies+of+Disco+Martha+Wash",
+  "link": "https://en.wikipedia.org/wiki/First_Ladies_of_Disco",
   "status": "Confirmed"
  },
  {
@@ -1017,9 +1017,9 @@
   "name": "RuPaul – 'Can I Get an Amen'",
   "heard": "Can I Get an Amen",
   "time": "00:30:21",
-  "context": "Martha was on it, for RuPaul's album Born Naked in 2014, James says",
-  "link": "https://www.google.com/search?q=RuPaul+Can+I+Get+an+Amen+Martha+Wash",
-  "status": "Partly confirmed"
+  "context": "Martha sings on it, on RuPaul's 2014 album Born Naked, as James says",
+  "link": "https://en.wikipedia.org/wiki/Born_Naked",
+  "status": "Confirmed"
  },
  {
   "rank": 93,
@@ -1028,7 +1028,7 @@
   "name": "RuPaul – 'Born Naked'",
   "heard": "his own or naked",
   "time": "00:30:30",
-  "context": "RuPaul's 2014 album, unclear in the audio",
+  "context": "RuPaul's 2014 album with Can I Get an Amen on it (unclear in the audio: 'his own or naked')",
   "link": "https://en.wikipedia.org/wiki/Born_Naked",
   "status": "Confirmed"
  },
