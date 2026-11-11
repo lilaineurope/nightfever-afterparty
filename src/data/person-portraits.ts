@@ -424,6 +424,43 @@ import natalieSchaferPhoto from "@/assets/people/natalie-schafer-photo.webp";
 import natalieSchaferPolaroid from "@/assets/people/natalie-schafer-polaroid.webp";
 import kimHastreiterPhoto from "@/assets/people/kim-hastreiter-photo.webp";
 import kimHastreiterPolaroid from "@/assets/people/kim-hastreiter-polaroid.webp";
+import pepperLabeijaPhoto from "@/assets/people/pepper-labeija-photo.webp";
+import pepperLabeijaPolaroid from "@/assets/people/pepper-labeija-polaroid.webp";
+import cookieMuellerPhoto from "@/assets/people/cookie-mueller-photo.webp";
+import cookieMuellerPolaroid from "@/assets/people/cookie-mueller-polaroid.webp";
+import dorianCoreyPhoto from "@/assets/people/dorian-corey-photo.webp";
+import dorianCoreyPolaroid from "@/assets/people/dorian-corey-polaroid.webp";
+import jackieCurtisPhoto from "@/assets/people/jackie-curtis-photo.webp";
+import jackieCurtisPolaroid from "@/assets/people/jackie-curtis-polaroid.webp";
+import larryLevanPhoto from "@/assets/people/larry-levan-photo.webp";
+import larryLevanPolaroid from "@/assets/people/larry-levan-polaroid.webp";
+import marcusLeatherdalePhoto from "@/assets/people/marcus-leatherdale-photo.webp";
+import marcusLeatherdalePolaroid from "@/assets/people/marcus-leatherdale-polaroid.webp";
+import steveLewisPhoto from "@/assets/people/steve-lewis-photo.webp";
+import steveLewisPolaroid from "@/assets/people/steve-lewis-polaroid.webp";
+import traverRainsPhoto from "@/assets/people/traver-rains-photo.webp";
+import traverRainsPolaroid from "@/assets/people/traver-rains-polaroid.webp";
+import adelleLutzPhoto from "@/assets/people/adelle-lutz-photo.webp";
+import adelleLutzPolaroid from "@/assets/people/adelle-lutz-polaroid.webp";
+import seanLennonPhoto from "@/assets/people/sean-lennon-photo.webp";
+import seanLennonPolaroid from "@/assets/people/sean-lennon-polaroid.webp";
+import trevorHornPhoto from "@/assets/people/trevor-horn-photo.webp";
+import trevorHornPolaroid from "@/assets/people/trevor-horn-polaroid.webp";
+import annMargretPhoto from "@/assets/people/ann-margret-photo.webp";
+import annMargretPolaroid from "@/assets/people/ann-margret-polaroid.webp";
+import anneHechePhoto from "@/assets/people/anne-heche-photo.webp";
+import anneHechePolaroid from "@/assets/people/anne-heche-polaroid.webp";
+import andersonCooperPhoto from "@/assets/people/anderson-cooper-photo.webp";
+import andersonCooperPolaroid from "@/assets/people/anderson-cooper-polaroid.webp";
+import swiftyLazarPhoto from "@/assets/people/swifty-lazar-photo.webp";
+import swiftyLazarPolaroid from "@/assets/people/swifty-lazar-polaroid.webp";
+import steveAokiPhoto from "@/assets/people/steve-aoki-photo.webp";
+import steveAokiPolaroid from "@/assets/people/steve-aoki-polaroid.webp";
+import afrojackPhoto from "@/assets/people/afrojack-photo.webp";
+import afrojackPolaroid from "@/assets/people/afrojack-polaroid.webp";
+import scottWittmanPhoto from "@/assets/people/scott-wittman-photo.webp";
+import scottWittmanPolaroid from "@/assets/people/scott-wittman-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   polaroid: string;
@@ -648,4 +685,22 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "maureen-dowd": { photo: maureenDowdPhoto, polaroid: maureenDowdPolaroid, focus: "28%", credit: "Portrait after a photo by Frypie, 2024 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   "natalie-schafer": { photo: natalieSchaferPhoto, polaroid: natalieSchaferPolaroid, focus: "28%", credit: "Portrait after a studio publicity photo, 1942 (public domain), in our photocopy style" },
   "kim-hastreiter": { photo: kimHastreiterPhoto, polaroid: kimHastreiterPolaroid, focus: "28%", credit: "Portrait after a photo by Jmerlwhat, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "pepper-labeija": { photo: pepperLabeijaPhoto, polaroid: pepperLabeijaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "cookie-mueller": { photo: cookieMuellerPhoto, polaroid: cookieMuellerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "dorian-corey": { photo: dorianCoreyPhoto, polaroid: dorianCoreyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jackie-curtis": { photo: jackieCurtisPhoto, polaroid: jackieCurtisPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "larry-levan": { photo: larryLevanPhoto, polaroid: larryLevanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "marcus-leatherdale": { photo: marcusLeatherdalePhoto, polaroid: marcusLeatherdalePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "steve-lewis": { photo: steveLewisPhoto, polaroid: steveLewisPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "traver-rains": { photo: traverRainsPhoto, polaroid: traverRainsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "adelle-lutz": { photo: adelleLutzPhoto, polaroid: adelleLutzPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "sean-lennon": { photo: seanLennonPhoto, polaroid: seanLennonPolaroid, focus: "28%", credit: "Portrait after a photo by Kingkongphoto & www.celebrity-photos.com, 2010 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "trevor-horn": { photo: trevorHornPhoto, polaroid: trevorHornPolaroid, focus: "28%", credit: "Portrait after a photo by Bernard Gotfryd, 1984 (public domain), in our photocopy style" },
+  "ann-margret": { photo: annMargretPhoto, polaroid: annMargretPolaroid, focus: "28%", credit: "Portrait after a studio publicity photo, 1968 (public domain), in our photocopy style" },
+  "anne-heche": { photo: anneHechePhoto, polaroid: anneHechePolaroid, focus: "28%", credit: "Portrait after a photo by Mingle Media TV, 2014 (CC BY 2.0), in our photocopy style" },
+  "anderson-cooper": { photo: andersonCooperPhoto, polaroid: andersonCooperPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2018 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "swifty-lazar": { photo: swiftyLazarPhoto, polaroid: swiftyLazarPolaroid, focus: "28%", credit: "Portrait after a photo by Kathleen Ballard, Los Angeles Times, 1975 (CC BY 4.0), in our photocopy style" },
+  "steve-aoki": { photo: steveAokiPhoto, polaroid: steveAokiPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2026 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "afrojack": { photo: afrojackPhoto, polaroid: afrojackPolaroid, focus: "28%", credit: "Portrait after a photo by Michael Grech, 2011 (CC BY 2.0), in our photocopy style" },
+  "scott-wittman": { photo: scottWittmanPhoto, polaroid: scottWittmanPolaroid, focus: "28%", credit: "Portrait after a photo by Philip Romano, 2026 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
 };
