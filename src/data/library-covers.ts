@@ -108,6 +108,7 @@ const COVERS: Record<string, Cover> = {
   "Vogue magazine": { kind: "mast", file: "mast-vogue-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Rebel Heart": { kind: "book", file: "book-rebel-heart.webp", credit: "Cover via Open Library" },
   "Rebel Soul": { kind: "book", file: "book-rebel-soul.webp", credit: "Cover: HoZac Books (the publisher)" },
+  "First Ladies of Disco: 32 Stars Discuss the Era and Their Singing Careers": { kind: "book", file: "book-first-ladies-of-disco.webp", credit: "Cover via Open Library" },
   "Playboy": { kind: "mast", file: "mast-playboy.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Elle": { kind: "mast", file: "mast-elle.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Village Voice": { kind: "mast", file: "mast-village-voice.webp", credit: "Masthead: Wikimedia Commons, public domain" },
