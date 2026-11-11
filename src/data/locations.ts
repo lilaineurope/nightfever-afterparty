@@ -5,6 +5,17 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "The Palms (San Francisco)", lat: 37.7894, lng: -122.4202, area: "Polk Gulch" },
+  { name: "Polk Street", lat: 37.7920, lng: -122.4210, area: "Polk Gulch" },
+  { name: "Larkin Street", lat: 37.7850, lng: -122.4178, area: "Tenderloin" },
+  { name: "Elephant Walk", lat: 37.7609, lng: -122.4350, area: "Castro" },
+  { name: "The Castro", lat: 37.7609, lng: -122.4348, area: "Castro" },
+  { name: "The EndUp", lat: 37.7768, lng: -122.4031, area: "SoMa" },
+  { name: "The Stud", lat: 37.7712, lng: -122.4147, area: "SoMa" },
+  { name: "Catch One", lat: 34.0479, lng: -118.3238, area: "Los Angeles" },
+  { name: "Rich's (Houston)", lat: 29.7480, lng: -95.3717, area: "Houston" },
+  { name: "Beaumont", lat: 30.0802, lng: -94.1266, area: "Texas" },
+  { name: "The Copa (Fort Lauderdale)", lat: 26.0880, lng: -80.1370, area: "Fort Lauderdale" },
   { name: "Asbury Park", lat: 40.2204, lng: -74.0121, area: "New Jersey" },
   { name: "Quantico, Virginia", lat: 38.5221, lng: -77.2936, area: "Virginia" },
   { name: "Virginia", lat: 37.4316, lng: -78.6569, area: "Virginia" },

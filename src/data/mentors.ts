@@ -88,6 +88,8 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Eileen Ford", mentee: "Bebe Buell", episode: "s04e03", time: "00:07:14", line: "Saw Bebe's senior yearbook photo and snapshots, called her mother and brought her to New York to model" },
   { mentor: "Wilhelmina Cooper", mentee: "Bebe Buell", episode: "s04e03", time: "00:44:41", line: "Signed Bebe after Ford let her go and sent her to London, Paris and Milan for tear sheets" },
   { mentor: "Clive Arrowsmith", mentee: "Bebe Buell", episode: "s04e03", time: "00:45:07", line: "The photographer who pushed Bebe to a level where she got beautiful campaigns, Bebe says" },
+  { mentor: "Sylvester", mentee: "Martha Wash", episode: "s03e02", time: "00:04:02", line: "Hired Martha as his backing singer after an audition she went to without knowing it was his, and asked her to bring another singer - Izora" },
+  { mentor: "Harvey Fuqua", mentee: "Martha Wash", episode: "s03e02", time: "00:14:16", line: "Their producer, who suggested Martha and Izora record an album of their own - the start of Two Tons o' Fun" },
   { mentor: "Don Hill", mentee: "Bebe Buell", episode: "s04e03", time: "01:08:14", line: "Told Bebe to get on stage again with the Squeezebox band - and she never looked back" },
 ];
 

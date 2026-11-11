@@ -38,6 +38,7 @@ import palsgroveRefs from "./s06e06.json";
 import simpsonRefs from "./s02e09.json";
 import avianceRefs from "./s03e03.json";
 import buellRefs from "./s04e03.json";
+import washRefs from "./s03e02.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -848,7 +849,25 @@ const s04e03: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCwE6cwS0PK0",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03].sort((a, b) =>
+const s03e02: Episode = {
+  id: "s03e02",
+  season: 3,
+  episode: 2,
+  guest: "Martha Wash",
+  released: "2023-06-22",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-302",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO4556749622.mp3",
+  runtime: "49:06",
+  afterpartyPublished: "2026-11-17",
+  blurb:
+    "Martha Wash, the voice of the Weather Girls and dance music: auditioning for Sylvester, the Palms on Polk Street, nearly turning down It's Raining Men, finding her voice in Black Box's video, the lawsuits that changed credits, and Carry On.",
+  references: washRefs.length,
+  mentions: washRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(washRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -873,7 +892,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -953,6 +972,8 @@ export function episodePath(
       return "/episodes/s03e03";
     case "s04e03":
       return "/episodes/s04e03";
+    case "s03e02":
+      return "/episodes/s03e02";
     default:
       return "/episodes/s06e01";
   }

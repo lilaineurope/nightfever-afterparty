@@ -109,6 +109,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s02e09: "the Pyramid Club, My Comrade & The Drag Explosion",
   s03e03: "Cunty, the Sound Factory & Beyoncé's Renaissance",
   s04e03: "Max's Kansas City, Bowie, Iggy & Rebel Soul",
+  s03e02: "It's Raining Men, Sylvester & Black Box",
 };
 
 /** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so
