@@ -66,6 +66,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Jayne County",
+    why: "James closes: they have to have Jayne back for a part two - they only got as far as the 70s, with the 80s, 90s and 2000s still to go.",
+    episodeId: "s02e02",
+    time: "01:07:47",
+  },
+  {
     name: "Bebe Buell",
     why: "James closes: they could do a whole series with Bebe - and Elvis Costello, Liv and Todd would each take a whole podcast of their own.",
     episodeId: "s04e03",
