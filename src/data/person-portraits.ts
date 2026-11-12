@@ -460,6 +460,22 @@ import afrojackPhoto from "@/assets/people/afrojack-photo.webp";
 import afrojackPolaroid from "@/assets/people/afrojack-polaroid.webp";
 import scottWittmanPhoto from "@/assets/people/scott-wittman-photo.webp";
 import scottWittmanPolaroid from "@/assets/people/scott-wittman-polaroid.webp";
+import williNinjaPhoto from "@/assets/people/willi-ninja-photo.webp";
+import williNinjaPolaroid from "@/assets/people/willi-ninja-polaroid.webp";
+import wayBandyPhoto from "@/assets/people/way-bandy-photo.webp";
+import wayBandyPolaroid from "@/assets/people/way-bandy-polaroid.webp";
+import anyaPhillipsPhoto from "@/assets/people/anya-phillips-photo.webp";
+import anyaPhillipsPolaroid from "@/assets/people/anya-phillips-polaroid.webp";
+import arthurBellPhoto from "@/assets/people/arthur-bell-photo.webp";
+import arthurBellPolaroid from "@/assets/people/arthur-bell-polaroid.webp";
+import davidSchneidermanPhoto from "@/assets/people/david-schneiderman-photo.webp";
+import davidSchneidermanPolaroid from "@/assets/people/david-schneiderman-polaroid.webp";
+import donaldBaechlerPhoto from "@/assets/people/donald-baechler-photo.webp";
+import donaldBaechlerPolaroid from "@/assets/people/donald-baechler-polaroid.webp";
+import wendyWildPhoto from "@/assets/people/wendy-wild-photo.webp";
+import wendyWildPolaroid from "@/assets/people/wendy-wild-polaroid.webp";
+import richardFrankPhoto from "@/assets/people/richard-frank-photo.webp";
+import richardFrankPolaroid from "@/assets/people/richard-frank-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -703,4 +719,12 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "steve-aoki": { photo: steveAokiPhoto, polaroid: steveAokiPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2026 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "afrojack": { photo: afrojackPhoto, polaroid: afrojackPolaroid, focus: "28%", credit: "Portrait after a photo by Michael Grech, 2011 (CC BY 2.0), in our photocopy style" },
   "scott-wittman": { photo: scottWittmanPhoto, polaroid: scottWittmanPolaroid, focus: "28%", credit: "Portrait after a photo by Philip Romano, 2026 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "willi-ninja": { photo: williNinjaPhoto, polaroid: williNinjaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "way-bandy": { photo: wayBandyPhoto, polaroid: wayBandyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "anya-phillips": { photo: anyaPhillipsPhoto, polaroid: anyaPhillipsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "arthur-bell": { photo: arthurBellPhoto, polaroid: arthurBellPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "david-schneiderman": { photo: davidSchneidermanPhoto, polaroid: davidSchneidermanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "donald-baechler": { photo: donaldBaechlerPhoto, polaroid: donaldBaechlerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "wendy-wild": { photo: wendyWildPhoto, polaroid: wendyWildPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "richard-frank": { photo: richardFrankPhoto, polaroid: richardFrankPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };
