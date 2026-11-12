@@ -2,7 +2,7 @@
 // and scene timeline. Keys are the place names exactly as they appear in the data.
 // Vague or non-physical "places" (eras, TV channels, "Worldwide") are left out on purpose.
 
-export type Located = { name: string; lat: number; lng: number; area: string };
+export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
   { name: "Sheridan Square", lat: 40.7334, lng: -74.0027, area: "West Village" },
@@ -452,6 +452,8 @@ export const LOCATIONS: Located[] = [
   { name: "10th Street", lat: 40.7283, lng: -73.9842, area: "East Village" },
   { name: "Limbo Lounge", lat: 40.7246, lng: -73.9784, area: "East Village" },
   { name: "8BC", lat: 40.7239, lng: -73.9789, area: "East Village" },
+  // Brought home by Jillian Jonas via the contact form, 11 Nov 2026: "Bentleys was on 40th street ... midtown (now) east in the late 80s". Pin is approximate (East 40th Street).
+  { name: "Bentley's", lat: 40.7513, lng: -73.9800, area: "Midtown East", tip: "East 40th Street, late 80s (approximate) · location brought home by Jillian Jonas, thank you!" },
   { name: "King Tut's Wah Wah Hut", lat: 40.7262, lng: -73.9836, area: "East Village" },
   { name: "WOW Café Theatre", lat: 40.7266, lng: -73.9900, area: "East Village" },
   { name: "PS122", lat: 40.7286, lng: -73.9851, area: "East Village" },
