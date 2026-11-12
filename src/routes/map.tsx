@@ -20,6 +20,7 @@ type Spot = {
   area: string;
   places: Entity[];
   connected: Entity[];
+  tip?: string;
 };
 
 function buildSpots(): Spot[] {
@@ -34,6 +35,7 @@ function buildSpots(): Spot[] {
       byCoord.set(key, s);
     }
     if (!s.places.some((p) => p.slug === e.slug)) s.places.push(e);
+    if (l.tip) s.tip = l.tip;
   }
   const sec = (t: string) => {
     const p = t.split(":").map(Number);
@@ -256,6 +258,7 @@ function MapPage() {
                   <button onClick={() => focus(s)} className="text-left">
                     <p className="text-xs uppercase tracking-[0.2em] text-pink">{s.area}</p>
                     <p className="mt-1 font-semibold text-gold">{s.places.map((p) => p.name).join(" · ")}</p>
+                    {s.tip && <p className="mt-1 text-xs italic text-muted-foreground">{s.tip}</p>}
                   </button>
                   {shown.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1.5">
