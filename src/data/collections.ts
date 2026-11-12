@@ -84,6 +84,21 @@ export const bookClub: CollectionItem[] = [
 // ---------- Jukebox ----------
 // Official Spotify IDs, checked against Spotify search results (never guessed).
 const SPOTIFY: Record<string, string> = {
+  "Wayne County & the Electric Chairs – 'Toilet Love'": "spotify:track:5cMJ1JP9Ueq4DFHctW4WTz",
+  "The Police": "spotify:track:3EYOJ48Et32uATr9ZmLnAo",
+  "Mitch Ryder & the Detroit Wheels – 'Devil with a Blue Dress On'": "spotify:track:6HZjbhUFr568W1o7x6UNrf",
+  "Electric Chairs": "spotify:track:7zdRB9ipTsLYd8Lwfnoq09",
+  "Wayne County & the Electric Chairs – '(If You Don't Want to Fuck Me, Baby) Fuck Off'": "spotify:track:0xJVEvhlBWmPhmjwtfFFT9",
+  "Adam and the Ants": "spotify:track:61QIfqud4mdN8JgTgIlW9M",
+  "The Yardbirds": "spotify:track:5bC4y9Zhn6ng0MOzACCHkc",
+  "Jayne County & A.M. Taylor – 'I Don't Fit In Anywhere'": "spotify:track:4PLev9AirtcasR2C7zqxns",
+  "Sharon Needles – 'Hail Satan'": "spotify:track:4o98IU9UN802q7y4L6bJi7",
+  "David Bowie – Hunky Dory": "spotify:track:3ZE3wv8V3w2T2f7nOCjV0N",
+  "Mott the Hoople": "spotify:track:0WNGPpmWqzPnk0psUhJ3SX",
+  "Wayne County & the Backstreet Boys": "spotify:track:7IbXzduh3q7nCgM2rDJtCx",
+  "Siouxsie and the Banshees": "spotify:track:5bxBosfOC3upyOK9tjxZ35",
+  "Wayne County – 'Cream in My Jeans'": "spotify:track:5ym4PrlkauHlDq8XlTOuYn",
+  "The Shirelles – 'Boys'": "spotify:track:433tmwMXnqvqAhe4euAXMc",
   "Ziggy Stardust and the Spiders from Mars": "spotify:track:5IyL3XOaRPpTgxVjRIAxXU",
   "The Gargoyles": "spotify:track:4fRkjBqHNZ0y5oLgsgQWmK",
   "The Tubes": "spotify:track:2QdadVGqkAGPGJMnJWHIcR",

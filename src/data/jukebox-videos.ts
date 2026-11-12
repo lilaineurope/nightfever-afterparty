@@ -2,6 +2,21 @@
 // Most come from the episode AFTERPARTY playlists on YouTube; the rest are the official video or the best upload found.
 // Sounds and scenes get a short documentary or archive clip. A name without a video gets a YouTube search link instead. Nothing loads from YouTube until a visitor presses ▶.
 export const YOUTUBE: Record<string, string> = {
+  "Wayne County & the Electric Chairs – 'Toilet Love'": "_kIUPU1I_3o",
+  "The Police": "3T1c7GkzRQQ",
+  "Mitch Ryder & the Detroit Wheels – 'Devil with a Blue Dress On'": "y1PE_YsSNkQ",
+  "Electric Chairs": "UzL31fzym38",
+  "Wayne County & the Electric Chairs – '(If You Don't Want to Fuck Me, Baby) Fuck Off'": "kRFYMmSdRH0",
+  "Adam and the Ants": "4B2a6l6wM2k",
+  "The Yardbirds": "yKI7c9x2lbM",
+  "Jayne County & A.M. Taylor – 'I Don't Fit In Anywhere'": "pr9rhRiU38E",
+  "Sharon Needles – 'Hail Satan'": "IGRmCL9E_xE",
+  "David Bowie – Hunky Dory": "AZKcl4-tcuo",
+  "Mott the Hoople": "yNHdPPJGowY",
+  "Wayne County & the Backstreet Boys": "uP2Q9XpKayE",
+  "Siouxsie and the Banshees": "Y-l9GQJRl9Y",
+  "Wayne County – 'Cream in My Jeans'": "RsgaW0l6lEQ",
+  "The Shirelles – 'Boys'": "JnIhCCVmLEs",
   "Ziggy Stardust and the Spiders from Mars": "na8xgu-KLAk",
   "The Gargoyles": "vmQr4VI1K2Q",
   "The B-Sides": "-olWO-Av-dw",
