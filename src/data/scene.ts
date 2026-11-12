@@ -40,6 +40,7 @@ import s02e09 from "./s02e09.json";
 import s03e03 from "./s03e03.json";
 import s04e03 from "./s04e03.json";
 import s03e02 from "./s03e02.json";
+import s02e02 from "./s02e02.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -528,6 +529,17 @@ const curatedEvents: SceneEvent[] = [
     people: ["bebe-buell"],
     figures: ["Mick Jagger", "John Lennon", "May Pang"],
   },
+  {
+    id: "jayne-county-stonewall-night",
+    year: 1969,
+    when: "June 1969",
+    title: "Jayne County marches on Christopher Street on the Stonewall night",
+    text: "She arrived to find the doors locked and police doing 'sex searches', then marched back and forth between Sheridan Square and Greenwich Avenue with Jim Fouratt, shouting 'gay power' and singing to the police, Jayne says. She has no idea who threw the first stone.",
+    place: "Christopher Street, Greenwich Village",
+    decade: "1960s",
+    people: ["jayne-county"],
+    figures: ["Jim Fouratt"],
+  },
 ];
 
 // Milestones from every WOW guest profile, so the timeline, A–Z, map and quiz
@@ -602,6 +614,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s03e03", label: "S3 E3", guest: "Kevin Aviance", refs: s03e03 as Ref[] },
   { id: "s04e03", label: "S4 E3", guest: "Bebe Buell", refs: s04e03 as Ref[] },
   { id: "s03e02", label: "S3 E2", guest: "Martha Wash", refs: s03e02 as Ref[] },
+  { id: "s02e02", label: "S2 E2", guest: "Jayne County", refs: s02e02 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the

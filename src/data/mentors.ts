@@ -90,6 +90,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Clive Arrowsmith", mentee: "Bebe Buell", episode: "s04e03", time: "00:45:07", line: "The photographer who pushed Bebe to a level where she got beautiful campaigns, Bebe says" },
   { mentor: "Sylvester", mentee: "Martha Wash", episode: "s03e02", time: "00:04:02", line: "Hired Martha as his backing singer after an audition she went to without knowing it was his, and asked her to bring another singer - Izora" },
   { mentor: "Harvey Fuqua", mentee: "Martha Wash", episode: "s03e02", time: "00:14:16", line: "Their producer, who suggested Martha and Izora record an album of their own - the start of Two Tons o' Fun" },
+  { mentor: "Jackie Curtis", mentee: "Jayne County", episode: "s02e02", time: "00:41:51", line: "Jayne's big early influence: seeing Jackie sing in her plays, Jayne thought 'I could do that' and formed her first band with Jackie's two guitar players" },
+  { mentor: "Leee Black Childers", mentee: "Jayne County", episode: "s02e02", time: "00:16:07", line: "Took Jayne into his flat and along to the Factory - she met Andy through him" },
+  { mentor: "Siouxsie Sioux", mentee: "Jayne County", episode: "s02e02", time: "00:51:13", line: "A big supporter when Jayne began to transition: pulled her into a bathroom and showed her how she did her make-up" },
   { mentor: "Don Hill", mentee: "Bebe Buell", episode: "s04e03", time: "01:08:14", line: "Told Bebe to get on stage again with the Squeezebox band - and she never looked back" },
 ];
 

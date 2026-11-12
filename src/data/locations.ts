@@ -5,6 +5,15 @@
 export type Located = { name: string; lat: number; lng: number; area: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Sheridan Square", lat: 40.7334, lng: -74.0027, area: "West Village" },
+  { name: "Greenwich Avenue", lat: 40.7365, lng: -74.0010, area: "West Village" },
+  { name: "Women's House of Detention", lat: 40.7343, lng: -73.9993, area: "West Village" },
+  { name: "Mercer Arts Center", lat: 40.7272, lng: -73.9964, area: "Greenwich Village" },
+  { name: "The Roxy (London)", lat: 51.5145, lng: -0.1258, area: "London" },
+  { name: "El Sombrero (London)", lat: 51.5010, lng: -0.1924, area: "London" },
+  { name: "The Ritz London", lat: 51.5071, lng: -0.1416, area: "London" },
+  { name: "Rich's department store (Atlanta)", lat: 33.7537, lng: -84.3906, area: "Atlanta" },
+  { name: "Netherlands", lat: 52.1326, lng: 5.2913, area: "Netherlands" },
   { name: "The Palms (San Francisco)", lat: 37.7894, lng: -122.4202, area: "Polk Gulch" },
   { name: "Polk Street", lat: 37.7920, lng: -122.4210, area: "Polk Gulch" },
   { name: "Larkin Street", lat: 37.7850, lng: -122.4178, area: "Tenderloin" },

@@ -2,6 +2,22 @@
 // A song or record = the year that version came out; a band or artist = the year they formed or first performed;
 // a sound or scene = the year it took off; a musical = its first staging. Checked against Wikipedia and other sources.
 export const YEARS: Record<string, number> = {
+  "Wayne County & the Electric Chairs – 'Toilet Love'": 1978,
+  "The Police": 1977,
+  "Mitch Ryder & the Detroit Wheels – 'Devil with a Blue Dress On'": 1966,
+  "Queen Elizabeth (band)": 1972,
+  "Electric Chairs": 1977,
+  "Wayne County & the Electric Chairs – '(If You Don't Want to Fuck Me, Baby) Fuck Off'": 1978,
+  "Adam and the Ants": 1977,
+  "The Yardbirds": 1963,
+  "Jayne County & A.M. Taylor – 'I Don't Fit In Anywhere'": 2020,
+  "Sharon Needles – 'Hail Satan'": 2013,
+  "David Bowie – Hunky Dory": 1971,
+  "Mott the Hoople": 1969,
+  "Wayne County & the Backstreet Boys": 1974,
+  "Siouxsie and the Banshees": 1976,
+  "Wayne County – 'Cream in My Jeans'": 1976,
+  "The Shirelles – 'Boys'": 1960,
   "Ziggy Stardust and the Spiders from Mars": 1972,
   "The Gargoyles": 1985,
   "The B-Sides": 1980,
