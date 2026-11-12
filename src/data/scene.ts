@@ -529,6 +529,17 @@ const curatedEvents: SceneEvent[] = [
     people: ["bebe-buell"],
     figures: ["Mick Jagger", "John Lennon", "May Pang"],
   },
+  {
+    id: "jayne-county-stonewall-night",
+    year: 1969,
+    when: "June 1969",
+    title: "Jayne County marches on Christopher Street on the Stonewall night",
+    text: "She arrived to find the doors locked and police doing 'sex searches', then marched back and forth between Sheridan Square and Greenwich Avenue with Jim Fouratt, shouting 'gay power' and singing to the police, Jayne says. She has no idea who threw the first stone.",
+    place: "Christopher Street, Greenwich Village",
+    decade: "1960s",
+    people: ["jayne-county"],
+    figures: ["Jim Fouratt"],
+  },
 ];
 
 // Milestones from every WOW guest profile, so the timeline, A–Z, map and quiz
