@@ -476,6 +476,26 @@ import wendyWildPhoto from "@/assets/people/wendy-wild-photo.webp";
 import wendyWildPolaroid from "@/assets/people/wendy-wild-polaroid.webp";
 import richardFrankPhoto from "@/assets/people/richard-frank-photo.webp";
 import richardFrankPolaroid from "@/assets/people/richard-frank-polaroid.webp";
+import nicoPhoto from "@/assets/people/nico-photo.webp";
+import nicoPolaroid from "@/assets/people/nico-polaroid.webp";
+import anthonyHopkinsPhoto from "@/assets/people/anthony-hopkins-photo.webp";
+import anthonyHopkinsPolaroid from "@/assets/people/anthony-hopkins-polaroid.webp";
+import bernadettePetersPhoto from "@/assets/people/bernadette-peters-photo.webp";
+import bernadettePetersPolaroid from "@/assets/people/bernadette-peters-polaroid.webp";
+import beverlyJohnsonPhoto from "@/assets/people/beverly-johnson-photo.webp";
+import beverlyJohnsonPolaroid from "@/assets/people/beverly-johnson-polaroid.webp";
+import billyZanePhoto from "@/assets/people/billy-zane-photo.webp";
+import billyZanePolaroid from "@/assets/people/billy-zane-polaroid.webp";
+import biminiBonBoulashPhoto from "@/assets/people/bimini-bon-boulash-photo.webp";
+import biminiBonBoulashPolaroid from "@/assets/people/bimini-bon-boulash-polaroid.webp";
+import brookeShieldsPhoto from "@/assets/people/brooke-shields-photo.webp";
+import brookeShieldsPolaroid from "@/assets/people/brooke-shields-polaroid.webp";
+import candaceBushnellPhoto from "@/assets/people/candace-bushnell-photo.webp";
+import candaceBushnellPolaroid from "@/assets/people/candace-bushnell-polaroid.webp";
+import christyTurlingtonPhoto from "@/assets/people/christy-turlington-photo.webp";
+import christyTurlingtonPolaroid from "@/assets/people/christy-turlington-polaroid.webp";
+import benjaminBrafmanPhoto from "@/assets/people/benjamin-brafman-photo.webp";
+import benjaminBrafmanPolaroid from "@/assets/people/benjamin-brafman-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -727,4 +747,14 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "donald-baechler": { photo: donaldBaechlerPhoto, polaroid: donaldBaechlerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "wendy-wild": { photo: wendyWildPhoto, polaroid: wendyWildPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "richard-frank": { photo: richardFrankPhoto, polaroid: richardFrankPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "nico": { photo: nicoPhoto, polaroid: nicoPolaroid, focus: "28%", credit: "Portrait after a Verve Records publicity photo, 1966 (public domain), in our photocopy style" },
+  "anthony-hopkins": { photo: anthonyHopkinsPhoto, polaroid: anthonyHopkinsPolaroid, focus: "28%", credit: "Portrait after a photo by Elena Torre, 2009 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "bernadette-peters": { photo: bernadettePetersPhoto, polaroid: bernadettePetersPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2009 (CC BY 3.0), in our photocopy style" },
+  "beverly-johnson": { photo: beverlyJohnsonPhoto, polaroid: beverlyJohnsonPolaroid, focus: "28%", credit: "Portrait after a photo by Christopher Peterson, 2007 (CC BY 3.0), in our photocopy style" },
+  "billy-zane": { photo: billyZanePhoto, polaroid: billyZanePolaroid, focus: "28%", credit: "Portrait after a photo by Georges Biard, 2010 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "bimini-bon-boulash": { photo: biminiBonBoulashPhoto, polaroid: biminiBonBoulashPolaroid, focus: "28%", credit: "Portrait after a photo by Otto Colwill, 2021 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "brooke-shields": { photo: brookeShieldsPhoto, polaroid: brookeShieldsPolaroid, focus: "28%", credit: "Portrait after a photo by CW02 Ed Bailey, US Navy, 1991 (public domain), in our photocopy style" },
+  "candace-bushnell": { photo: candaceBushnellPhoto, polaroid: candaceBushnellPolaroid, focus: "28%", credit: "Portrait after a photo by Vbrunophotog, 2025 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "christy-turlington": { photo: christyTurlingtonPhoto, polaroid: christyTurlingtonPolaroid, focus: "28%", credit: "Portrait after a photo by lukeford.net, 2008 (CC BY-SA 2.5; our version is CC BY-SA 2.5 too), in our photocopy style" },
+  "benjamin-brafman": { photo: benjaminBrafmanPhoto, polaroid: benjaminBrafmanPolaroid, focus: "28%", credit: "Portrait after a photo by Lemoine11928, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
 };
