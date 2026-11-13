@@ -61,6 +61,12 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s02e11",
     time: "00:39:45",
   },
+  {
+    name: "Tony Zanetta",
+    why: "James says Tony Zanetta's name comes up again and again; a co-host says they've got to do a show with him, and James promises to get his contact from Cherry.",
+    episodeId: "s03e05",
+    time: "00:57:52",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
@@ -190,5 +196,11 @@ export const COME_BACK: InterviewTip[] = [
     why: "James signs off saying they only got halfway into the 90s, so they'll have to have the sisters back for the 90s to now.",
     episodeId: "s05e10",
     time: "00:51:21",
+  },
+  {
+    name: "Cherry Vanilla",
+    why: "James runs out of time with Vangelis and Rufus Wainwright still to come; a co-host says they need a whole season with her - they've only just started.",
+    episodeId: "s03e05",
+    time: "01:16:52",
   },
 ];

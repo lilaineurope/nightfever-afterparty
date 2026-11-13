@@ -347,6 +347,13 @@ const SPOTIFY: Record<string, string> = {
   "The Sic F*cks": "spotify:artist:3ARSq9UNFKyBEKN5U7pswC",
   "Shrapnel": "spotify:artist:36yzYgO43QJa5nGr5XEHZT",
   "Kajagoogoo": "spotify:artist:0f3kLT4wvi2mFHlHJgV8Hl",
+  // S03E05 Cherry Vanilla
+  "David Bowie – 'Andy Warhol'": "spotify:track:0SfYZJSWk4h00yzheOgeIQ",
+  "David Bowie – Let's Dance": "spotify:track:3ix6K4wZY29bCujrSznwFZ",
+  "Ohio Players – 'Skin Tight'": "spotify:track:3iRcwzyx4g9uue2PeG8hql",
+  "Johnny Thunders and the Heartbreakers": "spotify:track:4xr0wspxRzW8UC77Narvvo",
+  "The Slits": "spotify:track:1LDAUwOs1r5eO1CrVgad5p",
+  "'Dear Lady of Fatima'": "spotify:track:76s4tDACBv16GUpZTdPg3p",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

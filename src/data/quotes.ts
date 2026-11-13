@@ -44,5 +44,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s04e03: { quote: "You know how I found it by myself the second time? I owe it all to drag queens.", time: "00:11:56" }, // Bebe Buell - Lisa: quote 2 (10 Nov 2026)
   s03e02: { quote: "I said, you got to be kidding, you know, I don't think anybody's really going to buy this song.", time: "00:17:35" }, // Martha Wash - Lisa: quote a (11 Nov 2026)
   s02e02: { quote: "Don't throw away your garbage. Please don't throw away your garbage. I need it to make my next new outfit.", time: "00:55:58" }, // Jayne County - Lisa: quote d (12 Nov 2026)
+  s03e05: { quote: "Theater is the most giving, diplomatic, democratic, beautiful working atmosphere I've ever been in.", time: "01:06:35" }, // Cherry Vanilla - Lisa: quote d (13 Nov 2026)
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };

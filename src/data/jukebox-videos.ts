@@ -322,6 +322,13 @@ export const YOUTUBE: Record<string, string> = {
   "Kajagoogoo": "rkpG4XApJ28",
   "Starbooty (RuPaul)": "sQxGCzudWnY",
   "Riot grrrl": "tAbhaguKARw",
+  // S03E05 Cherry Vanilla
+  "David Bowie – 'Andy Warhol'": "n--Ro4-hNbo",
+  "David Bowie – Let's Dance": "VbD_kBJc_gI",
+  "Ohio Players – 'Skin Tight'": "qSfxt4_wJLY",
+  "Johnny Thunders and the Heartbreakers": "QJxroq4UYhk",
+  "The Slits": "hxThWrodzDg",
+  "'Dear Lady of Fatima'": "hnjuC0Zf4_s",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

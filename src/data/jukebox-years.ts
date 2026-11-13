@@ -324,4 +324,11 @@ export const YEARS: Record<string, number> = {
   "Kajagoogoo": 1978, // formed as Art Nouveau in Leighton Buzzard (Wikipedia)
   "Starbooty (RuPaul)": 1987, // the RuPaul Is: Starbooty films and soundtrack (Wikipedia: Starrbooty)
   "Riot grrrl": 1991,
+  // S03E05 Cherry Vanilla
+  "David Bowie – 'Andy Warhol'": 1971,
+  "David Bowie – Let's Dance": 1983,
+  "Ohio Players – 'Skin Tight'": 1974,
+  "Johnny Thunders and the Heartbreakers": 1975,
+  "The Slits": 1976,
+  "'Dear Lady of Fatima'": 1950,
 };
