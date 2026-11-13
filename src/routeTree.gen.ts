@@ -55,6 +55,7 @@ import { Route as EpisodesS03e01RouteImport } from './routes/episodes.s03e01'
 import { Route as EpisodesS03e02RouteImport } from './routes/episodes.s03e02'
 import { Route as EpisodesS03e03RouteImport } from './routes/episodes.s03e03'
 import { Route as EpisodesS03e04RouteImport } from './routes/episodes.s03e04'
+import { Route as EpisodesS03e05RouteImport } from './routes/episodes.s03e05'
 import { Route as EpisodesS03e06RouteImport } from './routes/episodes.s03e06'
 import { Route as EpisodesS03e08RouteImport } from './routes/episodes.s03e08'
 import { Route as EpisodesS03e10RouteImport } from './routes/episodes.s03e10'
@@ -312,6 +313,11 @@ const EpisodesS03e04Route = EpisodesS03e04RouteImport.update({
   path: '/episodes/s03e04',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpisodesS03e05Route = EpisodesS03e05RouteImport.update({
+  id: '/episodes/s03e05',
+  path: '/episodes/s03e05',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EpisodesS03e06Route = EpisodesS03e06RouteImport.update({
   id: '/episodes/s03e06',
   path: '/episodes/s03e06',
@@ -489,6 +495,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s03e02': typeof EpisodesS03e02Route
   '/episodes/s03e03': typeof EpisodesS03e03Route
   '/episodes/s03e04': typeof EpisodesS03e04Route
+  '/episodes/s03e05': typeof EpisodesS03e05Route
   '/episodes/s03e06': typeof EpisodesS03e06Route
   '/episodes/s03e08': typeof EpisodesS03e08Route
   '/episodes/s03e10': typeof EpisodesS03e10Route
@@ -563,6 +570,7 @@ export interface FileRoutesByTo {
   '/episodes/s03e02': typeof EpisodesS03e02Route
   '/episodes/s03e03': typeof EpisodesS03e03Route
   '/episodes/s03e04': typeof EpisodesS03e04Route
+  '/episodes/s03e05': typeof EpisodesS03e05Route
   '/episodes/s03e06': typeof EpisodesS03e06Route
   '/episodes/s03e08': typeof EpisodesS03e08Route
   '/episodes/s03e10': typeof EpisodesS03e10Route
@@ -638,6 +646,7 @@ export interface FileRoutesById {
   '/episodes/s03e02': typeof EpisodesS03e02Route
   '/episodes/s03e03': typeof EpisodesS03e03Route
   '/episodes/s03e04': typeof EpisodesS03e04Route
+  '/episodes/s03e05': typeof EpisodesS03e05Route
   '/episodes/s03e06': typeof EpisodesS03e06Route
   '/episodes/s03e08': typeof EpisodesS03e08Route
   '/episodes/s03e10': typeof EpisodesS03e10Route
@@ -714,6 +723,7 @@ export interface FileRouteTypes {
     | '/episodes/s03e02'
     | '/episodes/s03e03'
     | '/episodes/s03e04'
+    | '/episodes/s03e05'
     | '/episodes/s03e06'
     | '/episodes/s03e08'
     | '/episodes/s03e10'
@@ -788,6 +798,7 @@ export interface FileRouteTypes {
     | '/episodes/s03e02'
     | '/episodes/s03e03'
     | '/episodes/s03e04'
+    | '/episodes/s03e05'
     | '/episodes/s03e06'
     | '/episodes/s03e08'
     | '/episodes/s03e10'
@@ -862,6 +873,7 @@ export interface FileRouteTypes {
     | '/episodes/s03e02'
     | '/episodes/s03e03'
     | '/episodes/s03e04'
+    | '/episodes/s03e05'
     | '/episodes/s03e06'
     | '/episodes/s03e08'
     | '/episodes/s03e10'
@@ -937,6 +949,7 @@ export interface RootRouteChildren {
   EpisodesS03e02Route: typeof EpisodesS03e02Route
   EpisodesS03e03Route: typeof EpisodesS03e03Route
   EpisodesS03e04Route: typeof EpisodesS03e04Route
+  EpisodesS03e05Route: typeof EpisodesS03e05Route
   EpisodesS03e06Route: typeof EpisodesS03e06Route
   EpisodesS03e08Route: typeof EpisodesS03e08Route
   EpisodesS03e10Route: typeof EpisodesS03e10Route
@@ -1290,6 +1303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS03e04RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/episodes/s03e05': {
+      id: '/episodes/s03e05'
+      path: '/episodes/s03e05'
+      fullPath: '/episodes/s03e05'
+      preLoaderRoute: typeof EpisodesS03e05RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/episodes/s03e06': {
       id: '/episodes/s03e06'
       path: '/episodes/s03e06'
@@ -1521,6 +1541,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS03e02Route: EpisodesS03e02Route,
   EpisodesS03e03Route: EpisodesS03e03Route,
   EpisodesS03e04Route: EpisodesS03e04Route,
+  EpisodesS03e05Route: EpisodesS03e05Route,
   EpisodesS03e06Route: EpisodesS03e06Route,
   EpisodesS03e08Route: EpisodesS03e08Route,
   EpisodesS03e10Route: EpisodesS03e10Route,

@@ -540,6 +540,16 @@ const curatedEvents: SceneEvent[] = [
     decade: "1960s",
     people: ["jayne-county"],
     figures: ["Jim Fouratt"],
+  },  {
+    id: "cherry-vanilla-bowie-country-club",
+    year: 1971,
+    when: "September 1971",
+    title: "The Pork cast take a bow at David Bowie's Country Club gig in London",
+    text: "Cherry Vanilla, Jayne County and Leee Black Childers saw a Bowie poster on the way to Pork rehearsals and went out to the Country Club, where everyone sat on the floor. Bowie, Mick Ronson and Rick Wakeman played the Hunky Dory songs, and before 'Andy Warhol' Bowie asked the Pork actors to stand up and take a bow; Angie took them backstage, Cherry says.",
+    place: "The Country Club, London",
+    decade: "1970s",
+    people: ["cherry-vanilla", "jayne-county"],
+    figures: ["David Bowie", "Mick Ronson", "Rick Wakeman", "Angie Bowie", "Leee Black Childers"],
   },
 ];
 

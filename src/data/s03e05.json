@@ -23,17 +23,6 @@
  },
  {
   "rank": 3,
-  "mentions": 16,
-  "category": "Location",
-  "name": "New York",
-  "heard": "New York / Manhattan",
-  "time": "00:00:09",
-  "context": "Cherry's city from Queens and the Copa to Madison Avenue, Max's and Reno Sweeney's",
-  "link": "https://en.wikipedia.org/wiki/New_York_City",
-  "status": "Confirmed"
- },
- {
-  "rank": 4,
   "mentions": 14,
   "category": "Mood",
   "name": "LSD",
@@ -44,7 +33,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 5,
+  "rank": 4,
   "mentions": 13,
   "category": "Person",
   "name": "Jayne County",
@@ -55,18 +44,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 6,
+  "rank": 5,
   "mentions": 12,
-  "category": "Book",
-  "name": "Lick Me: How I Became Cherry Vanilla",
-  "heard": "Lick Me / my book",
-  "time": "00:01:00",
-  "context": "Cherry's memoir; James calls it probably his favourite rock and roll autobiography. She says her young editor had to be taught the history",
-  "link": "https://en.wikipedia.org/wiki/Cherry_Vanilla",
+  "category": "Location",
+  "name": "New York",
+  "heard": "New York",
+  "time": "00:00:09",
+  "context": "Cherry's city from Queens and the Copa to Madison Avenue, Max's and Reno Sweeney's",
+  "link": "https://en.wikipedia.org/wiki/New_York_City",
   "status": "Confirmed"
  },
  {
-  "rank": 7,
+  "rank": 6,
   "mentions": 12,
   "category": "Club",
   "name": "Copacabana",
@@ -78,7 +67,7 @@
   "fashion": "Strapless dresses, mink stoles, tuxedos"
  },
  {
-  "rank": 8,
+  "rank": 7,
   "mentions": 12,
   "category": "Location",
   "name": "London",
@@ -89,7 +78,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 9,
+  "rank": 8,
   "mentions": 11,
   "category": "Event",
   "name": "Pork",
@@ -100,7 +89,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 10,
+  "rank": 9,
   "mentions": 11,
   "category": "Person",
   "name": "Stewart Copeland",
@@ -111,7 +100,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 11,
+  "rank": 10,
   "mentions": 9,
   "category": "Music",
   "name": "Punk",
@@ -122,7 +111,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 12,
+  "rank": 11,
   "mentions": 9,
   "category": "Location",
   "name": "Madison Avenue",
@@ -133,7 +122,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 13,
+  "rank": 12,
   "mentions": 9,
   "category": "Club",
   "name": "Aux Puces",
@@ -144,7 +133,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 14,
+  "rank": 13,
   "mentions": 9,
   "category": "Person",
   "name": "Leee Black Childers",
@@ -155,7 +144,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 15,
+  "rank": 14,
   "mentions": 8,
   "category": "Person",
   "name": "Cherry Vanilla",
@@ -163,6 +152,17 @@
   "time": "00:01:00",
   "context": "Guest. Born Kathleen Dorritie in Woodside, Queens; Madison Avenue ad girl, DJ at Aux Puces, Warhol's Pork, David Bowie's publicist at MainMan and a punk singer in London. Her memoir is Lick Me",
   "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-305",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 15,
+  "mentions": 8,
+  "category": "Book",
+  "name": "Lick Me: How I Became Cherry Vanilla",
+  "heard": "Lick Me / my book",
+  "time": "00:01:00",
+  "context": "Cherry's memoir; James calls it probably his favourite rock and roll autobiography. She says her young editor had to be taught the history",
+  "link": "https://en.wikipedia.org/wiki/Cherry_Vanilla",
   "status": "Confirmed"
  },
  {
@@ -217,7 +217,7 @@
   "name": "Tony Zanetta",
   "heard": "Tony Zanetta / Tony Zneter / Tony Zineda",
   "time": "00:28:38",
-  "context": "In World with Cherry and part of MainMan; Cherry says he has the better memory and helped her check her book. Fenton says the show should have him on",
+  "context": "In World with Cherry and part of MainMan; Cherry says he has the better memory and helped her check her book. a co-host says the show should have him on",
   "link": "https://www.google.com/search?q=Tony+Zanetta+MainMan+Bowie",
   "status": "Confirmed"
  },
@@ -325,6 +325,17 @@
   "rank": 30,
   "mentions": 4,
   "category": "Location",
+  "name": "Manhattan",
+  "heard": "Manhattan",
+  "time": "00:00:33",
+  "context": "Where Cherry's mother worked and where she rented her one room; Larry Matthews was open 24 hours there",
+  "link": "https://en.wikipedia.org/wiki/Manhattan",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 31,
+  "mentions": 4,
+  "category": "Location",
   "name": "Larry Matthews",
   "heard": "Larry Matthews",
   "time": "00:06:07",
@@ -334,7 +345,7 @@
   "fashion": "Pastel hair"
  },
  {
-  "rank": 31,
+  "rank": 32,
   "mentions": 4,
   "category": "Club",
   "name": "Club 82",
@@ -344,17 +355,6 @@
   "link": "https://en.wikipedia.org/wiki/Club_82",
   "status": "Confirmed",
   "fashion": "Red dress trimmed with plastic tomatoes"
- },
- {
-  "rank": 32,
-  "mentions": 4,
-  "category": "Club",
-  "name": "Le Club",
-  "heard": "Le Club",
-  "time": "00:14:53",
-  "context": "Intimate French club near Sutton Place, down the street from her first apartment on 55th Street - the first discotheque she heard of, dinner and then a man playing records. Cherry says Donald Trump used to go there",
-  "link": "https://www.google.com/search?q=Le+Club+New+York+discotheque+1960s",
-  "status": "Confirmed"
  },
  {
   "rank": 33,
@@ -375,7 +375,7 @@
   "heard": "Mainman / main man",
   "time": "00:51:40",
   "context": "Bowie's management company where Cherry ran publicity; she says no management company has had so many famous characters on its staff",
-  "link": "https://en.wikipedia.org/wiki/MainMan",
+  "link": "https://www.google.com/search?q=MainMan+David+Bowie+management+company",
   "status": "Confirmed"
  },
  {
@@ -392,17 +392,6 @@
  {
   "rank": 36,
   "mentions": 4,
-  "category": "Music",
-  "name": "Sex Pistols – 'Anarchy in the UK'",
-  "heard": "Anarchy in the UK / I am an anti-Christ",
-  "time": "01:08:15",
-  "context": "The minute Cherry heard its opening line she sold everything and bought one-way tickets to London",
-  "link": "https://en.wikipedia.org/wiki/Anarchy_in_the_U.K.",
-  "status": "Confirmed"
- },
- {
-  "rank": 37,
-  "mentions": 4,
   "category": "Club",
   "name": "The Roxy (London)",
   "heard": "the Roxy",
@@ -412,7 +401,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 38,
+  "rank": 37,
   "mentions": 4,
   "category": "Person",
   "name": "Sting",
@@ -423,7 +412,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 39,
+  "rank": 38,
   "mentions": 3,
   "category": "Music",
   "name": "Ziggy Stardust and the Spiders from Mars",
@@ -434,18 +423,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 40,
+  "rank": 39,
   "mentions": 3,
   "category": "Mood",
   "name": "Mungo",
   "heard": "mungo / mongol",
   "time": "00:02:00",
   "context": "James's new favourite word: good, repairable things found in the trash. Cherry's father, a sanitation man, fixed the radios and record players he found and gave them as gifts",
-  "link": "https://en.wikipedia.org/wiki/Mungo_(slang)",
+  "link": "https://www.google.com/search?q=mungo+slang+New+York+trash+salvage",
   "status": "Confirmed"
  },
  {
-  "rank": 41,
+  "rank": 40,
   "mentions": 3,
   "category": "Person",
   "name": "Carmen Miranda",
@@ -457,7 +446,7 @@
   "fashion": "Turbans"
  },
  {
-  "rank": 42,
+  "rank": 41,
   "mentions": 3,
   "category": "Person",
   "name": "Copa Girls",
@@ -469,7 +458,7 @@
   "fashion": "Mint-green costumes and hair"
  },
  {
-  "rank": 43,
+  "rank": 42,
   "mentions": 3,
   "category": "Location",
   "name": "Davis Park",
@@ -480,7 +469,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 44,
+  "rank": 43,
   "mentions": 3,
   "category": "Location",
   "name": "Ocean Ridge (Fire Island)",
@@ -491,7 +480,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 45,
+  "rank": 44,
   "mentions": 3,
   "category": "Location",
   "name": "Greenwich Village",
@@ -502,7 +491,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 46,
+  "rank": 45,
   "mentions": 3,
   "category": "Mood",
   "name": "Tomato dress at Club 82",
@@ -519,6 +508,17 @@
   ]
  },
  {
+  "rank": 46,
+  "mentions": 3,
+  "category": "Club",
+  "name": "Le Club",
+  "heard": "Le Club",
+  "time": "00:14:53",
+  "context": "Intimate French club near Sutton Place, down the street from her first apartment on 55th Street - the first discotheque she heard of, dinner and then a man playing records. Cherry says Donald Trump used to go there",
+  "link": "https://www.google.com/search?q=Le+Club+New+York+discotheque+1960s",
+  "status": "Confirmed"
+ },
+ {
   "rank": 47,
   "mentions": 3,
   "category": "Mood",
@@ -526,7 +526,7 @@
   "heard": "long white flowing gown / white carpeted platforms",
   "time": "00:21:17",
   "context": "At the Cerebrum you took off your clothes and put on a long white flowing robe, then lay on white carpeted platforms under glowing orbs",
-  "link": "https://en.wikipedia.org/wiki/Cerebrum_(nightclub)",
+  "link": "https://www.google.com/search?q=Cerebrum+club+New+York+1968+Broome+Street",
   "status": "Confirmed",
   "fashion": "Long white robes",
   "colours": [
@@ -596,7 +596,7 @@
   "rank": 53,
   "mentions": 3,
   "category": "Event",
-  "name": "World (Birth of a Nation)",
+  "name": "World: Birth of a Nation",
   "heard": "The Birth of a Nation / Wayne County's World",
   "time": "00:29:51",
   "context": "Jayne County's play built entirely from song lyrics; Cherry's first play. As near as she can tell it was a male abortion ward on another planet. Audiences came back again and again, and Andy saw her in it",
@@ -688,6 +688,17 @@
  },
  {
   "rank": 61,
+  "mentions": 3,
+  "category": "Music",
+  "name": "Sex Pistols – 'Anarchy in the UK'",
+  "heard": "Anarchy in the UK / I am an anti-Christ",
+  "time": "01:08:15",
+  "context": "The minute Cherry heard its opening line she sold everything and bought one-way tickets to London",
+  "link": "https://en.wikipedia.org/wiki/Anarchy_in_the_U.K.",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 62,
   "mentions": 2,
   "category": "Location",
   "name": "Hotel Fourteen",
@@ -698,7 +709,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 62,
+  "rank": 63,
   "mentions": 2,
   "category": "Mood",
   "name": "Copa Girls' pastel hair",
@@ -715,7 +726,7 @@
   ]
  },
  {
-  "rank": 63,
+  "rank": 64,
   "mentions": 2,
   "category": "Mood",
   "name": "Copa glamour",
@@ -733,7 +744,7 @@
   ]
  },
  {
-  "rank": 64,
+  "rank": 65,
   "mentions": 2,
   "category": "TV",
   "name": "Mad Men",
@@ -744,7 +755,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 65,
+  "rank": 66,
   "mentions": 2,
   "category": "Organisation",
   "name": "Sullivan, Stauffer, Colwell & Bayles",
@@ -755,7 +766,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 66,
+  "rank": 67,
   "mentions": 2,
   "category": "Location",
   "name": "Cherry Grove",
@@ -766,7 +777,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 67,
+  "rank": 68,
   "mentions": 2,
   "category": "Club",
   "name": "The Bitter End",
@@ -777,7 +788,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 68,
+  "rank": 69,
   "mentions": 2,
   "category": "Location",
   "name": "Sutton Place",
@@ -788,19 +799,19 @@
   "status": "Confirmed"
  },
  {
-  "rank": 69,
+  "rank": 70,
   "mentions": 2,
   "category": "Club",
   "name": "Cafe Wha?",
   "heard": "Café Waa",
   "time": "00:16:04",
   "context": "Open in the daytime, so Cherry played hooky from high school there, drinking vanilla ice cream sodas with the musicians",
-  "link": "https://en.wikipedia.org/wiki/Caf%C3%A9_Wha%3F",
+  "link": "https://en.wikipedia.org/wiki/Cafe_Wha%3F",
   "status": "Confirmed",
   "fashion": "Vanilla ice cream sodas"
  },
  {
-  "rank": 70,
+  "rank": 71,
   "mentions": 2,
   "category": "Person",
   "name": "Nilo DePaul",
@@ -811,7 +822,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 71,
+  "rank": 72,
   "mentions": 2,
   "category": "Person",
   "name": "Jay Martin",
@@ -822,7 +833,7 @@
   "status": "Private person"
  },
  {
-  "rank": 72,
+  "rank": 73,
   "mentions": 2,
   "category": "Location",
   "name": "Upper East Side",
@@ -833,7 +844,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 73,
+  "rank": 74,
   "mentions": 2,
   "category": "Person",
   "name": "Rudolf Nureyev",
@@ -844,19 +855,19 @@
   "status": "Confirmed"
  },
  {
-  "rank": 74,
+  "rank": 75,
   "mentions": 2,
   "category": "Club",
   "name": "Cerebrum",
   "heard": "Cerebrum",
   "time": "00:21:07",
   "context": "A 'pleasure dome for trippers' with no alcohol: you swapped your clothes for a long white robe and lay on white carpeted platforms while beautiful staff brought tastes and toys, it rained, the stars came out and a parachute came down. Cherry would like someone to open one again",
-  "link": "https://en.wikipedia.org/wiki/Cerebrum_(nightclub)",
-  "status": "Partly confirmed",
+  "link": "https://www.boweryboyshistory.com/?p=1172",
+  "status": "Confirmed",
   "fashion": "Long white flowing robes"
  },
  {
-  "rank": 75,
+  "rank": 76,
   "mentions": 2,
   "category": "Person",
   "name": "David Taylor",
@@ -867,7 +878,7 @@
   "status": "Private person"
  },
  {
-  "rank": 76,
+  "rank": 77,
   "mentions": 2,
   "category": "Publication",
   "name": "Playboy",
@@ -878,7 +889,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 77,
+  "rank": 78,
   "mentions": 2,
   "category": "Mood",
   "name": "Ali MacGraw preppy to psychedelic",
@@ -895,7 +906,18 @@
   ]
  },
  {
-  "rank": 78,
+  "rank": 79,
+  "mentions": 2,
+  "category": "Location",
+  "name": "Park Avenue",
+  "heard": "Park Avenue",
+  "time": "00:36:54",
+  "context": "Max's was round the corner on Park Avenue South; and a mother's tea party on Park Avenue in the Pork dialogue",
+  "link": "https://en.wikipedia.org/wiki/Park_Avenue",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 80,
   "mentions": 2,
   "category": "Music",
   "name": "'Dear Lady of Fatima'",
@@ -906,7 +928,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 79,
+  "rank": 81,
   "mentions": 2,
   "category": "Event",
   "name": "David Bowie at the Country Club, London",
@@ -918,7 +940,7 @@
   "fashion": "Wide shiny trousers, yellow Mary Janes, floppy hat"
  },
  {
-  "rank": 80,
+  "rank": 82,
   "mentions": 2,
   "category": "Person",
   "name": "Mick Ronson",
@@ -929,7 +951,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 81,
+  "rank": 83,
   "mentions": 2,
   "category": "Club",
   "name": "Yours and Mine (King's Road)",
@@ -940,7 +962,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 82,
+  "rank": 84,
   "mentions": 2,
   "category": "Person",
   "name": "Lewis Friedman",
@@ -951,7 +973,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 83,
+  "rank": 85,
   "mentions": 2,
   "category": "Person",
   "name": "David Smith",
@@ -962,7 +984,7 @@
   "status": "Private person"
  },
  {
-  "rank": 84,
+  "rank": 86,
   "mentions": 2,
   "category": "Person",
   "name": "Louis Lepore",
@@ -973,7 +995,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 85,
+  "rank": 87,
   "mentions": 2,
   "category": "Location",
   "name": "Rattazzi's",
@@ -984,7 +1006,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 86,
+  "rank": 88,
   "mentions": 2,
   "category": "Music",
   "name": "Cherry Vanilla – 'Luna Tuna'",
@@ -995,10 +1017,10 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 87,
+  "rank": 89,
   "mentions": 2,
   "category": "Publication",
-  "name": "Punk (magazine)",
+  "name": "Punk Magazine",
   "heard": "a magazine called Punk",
   "time": "01:05:23",
   "context": "Cherry remembers there was a magazine called Punk",
@@ -1006,7 +1028,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 88,
+  "rank": 90,
   "mentions": 2,
   "category": "Music",
   "name": "The Slits",
@@ -1017,7 +1039,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 89,
+  "rank": 91,
   "mentions": 2,
   "category": "Person",
   "name": "Miles Copeland",
@@ -1028,7 +1050,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 90,
+  "rank": 92,
   "mentions": 2,
   "category": "Book",
   "name": "Freak Show (James St. James)",
@@ -1039,7 +1061,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 91,
+  "rank": 93,
   "mentions": 1,
   "category": "Person",
   "name": "Fenton Bailey",
@@ -1050,7 +1072,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 92,
+  "rank": 94,
   "mentions": 1,
   "category": "Person",
   "name": "Randy Barbato",
@@ -1061,7 +1083,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 93,
+  "rank": 95,
   "mentions": 1,
   "category": "Location",
   "name": "Woodside, Queens",
@@ -1072,7 +1094,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 94,
+  "rank": 96,
   "mentions": 1,
   "category": "Person",
   "name": "Martin and Lewis",
@@ -1083,7 +1105,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 95,
+  "rank": 97,
   "mentions": 1,
   "category": "Person",
   "name": "Jimmy Durante",
@@ -1094,7 +1116,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 96,
+  "rank": 98,
   "mentions": 1,
   "category": "Person",
   "name": "Eartha Kitt",
@@ -1105,7 +1127,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 97,
+  "rank": 99,
   "mentions": 1,
   "category": "Person",
   "name": "Tony Bennett",
@@ -1116,7 +1138,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 98,
+  "rank": 100,
   "mentions": 1,
   "category": "Organisation",
   "name": "Manic Panic",
@@ -1127,7 +1149,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 99,
+  "rank": 101,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Italy",
+  "heard": "Italy",
+  "time": "00:07:03",
+  "context": "Where the first Italians on her Queens street came from",
+  "link": "https://en.wikipedia.org/wiki/Italy",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 102,
   "mentions": 1,
   "category": "Person",
   "name": "Dean Martin",
@@ -1139,7 +1172,18 @@
   "fashion": "Black shiny hair"
  },
  {
-  "rank": 100,
+  "rank": 103,
+  "mentions": 1,
+  "category": "Location",
+  "name": "San Francisco",
+  "heard": "San Francisco",
+  "time": "00:08:17",
+  "context": "Where people assume the psychedelic era started",
+  "link": "https://en.wikipedia.org/wiki/San_Francisco",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 104,
   "mentions": 1,
   "category": "Location",
   "name": "Haight-Ashbury",
@@ -1150,7 +1194,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 101,
+  "rank": 105,
   "mentions": 1,
   "category": "Organisation",
   "name": "Noxzema",
@@ -1161,7 +1205,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 102,
+  "rank": 106,
   "mentions": 1,
   "category": "Organisation",
   "name": "Lipton",
@@ -1172,7 +1216,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 103,
+  "rank": 107,
   "mentions": 1,
   "category": "Event",
   "name": "AIDS crisis",
@@ -1183,18 +1227,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 104,
+  "rank": 108,
   "mentions": 1,
   "category": "Club",
   "name": "Cafe au Go Go",
   "heard": "Cafe Agogo",
   "time": "00:13:36",
   "context": "One of the Village clubs James lists from her book",
-  "link": "https://en.wikipedia.org/wiki/Cafe_au_Go_Go",
+  "link": "https://en.wikipedia.org/wiki/Cafe_Au_Go_Go",
   "status": "Confirmed"
  },
  {
-  "rank": 105,
+  "rank": 109,
   "mentions": 1,
   "category": "Person",
   "name": "Nina Simone",
@@ -1205,7 +1249,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 106,
+  "rank": 110,
+  "mentions": 1,
+  "category": "Location",
+  "name": "First Avenue",
+  "heard": "First Avenue",
+  "time": "00:14:59",
+  "context": "Cherry's first apartment was on 55th Street between Sutton Place and First Avenue",
+  "link": "https://en.wikipedia.org/wiki/First_Avenue_(Manhattan)",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 111,
   "mentions": 1,
   "category": "Person",
   "name": "Donald Trump",
@@ -1216,7 +1271,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 107,
+  "rank": 112,
   "mentions": 1,
   "category": "Person",
   "name": "John Hammond Jr.",
@@ -1227,7 +1282,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 108,
+  "rank": 113,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Paris",
+  "heard": "Paris",
+  "time": "00:17:49",
+  "context": "Nilo DePaul had been to design school there",
+  "link": "https://en.wikipedia.org/wiki/Paris",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 114,
   "mentions": 1,
   "category": "Person",
   "name": "Salvador Dalí",
@@ -1238,7 +1304,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 109,
+  "rank": 115,
   "mentions": 1,
   "category": "Person",
   "name": "Jackie Kennedy",
@@ -1249,7 +1315,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 110,
+  "rank": 116,
   "mentions": 1,
   "category": "Person",
   "name": "Franco Zeffirelli",
@@ -1260,7 +1326,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 111,
+  "rank": 117,
   "mentions": 1,
   "category": "Person",
   "name": "Francesco Scavullo",
@@ -1271,7 +1337,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 112,
+  "rank": 118,
   "mentions": 1,
   "category": "Person",
   "name": "Judy Garland",
@@ -1282,7 +1348,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 113,
+  "rank": 119,
   "mentions": 1,
   "category": "Person",
   "name": "Miles Davis",
@@ -1293,7 +1359,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 114,
+  "rank": 120,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Central Park",
+  "heard": "Central Park",
+  "time": "00:25:22",
+  "context": "One of the places Cherry handed out her Tiffany cards",
+  "link": "https://en.wikipedia.org/wiki/Central_Park",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 121,
   "mentions": 1,
   "category": "Person",
   "name": "Robert L. Green",
@@ -1304,7 +1381,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 115,
+  "rank": 122,
   "mentions": 1,
   "category": "Location",
   "name": "East Village",
@@ -1315,7 +1392,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 116,
+  "rank": 123,
   "mentions": 1,
   "category": "Location",
   "name": "Miss Betty Watson's dancing school",
@@ -1326,7 +1403,7 @@
   "status": "Private person"
  },
  {
-  "rank": 117,
+  "rank": 124,
   "mentions": 1,
   "category": "Film",
   "name": "Monterey Pop",
@@ -1337,7 +1414,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 118,
+  "rank": 125,
   "mentions": 1,
   "category": "Person",
   "name": "Candy Darling",
@@ -1348,7 +1425,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 119,
+  "rank": 126,
   "mentions": 1,
   "category": "Person",
   "name": "Jackie Curtis",
@@ -1359,7 +1436,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 120,
+  "rank": 127,
   "mentions": 1,
   "category": "Person",
   "name": "Jane Fonda",
@@ -1370,7 +1447,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 121,
+  "rank": 128,
   "mentions": 1,
   "category": "Person",
   "name": "Willem de Kooning",
@@ -1381,7 +1458,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 122,
+  "rank": 129,
   "mentions": 1,
   "category": "Person",
   "name": "Jackson Pollock",
@@ -1392,7 +1469,40 @@
   "status": "Confirmed"
  },
  {
-  "rank": 123,
+  "rank": 130,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Bowery",
+  "heard": "4th and Bowery",
+  "time": "00:33:49",
+  "context": "Phoebe's stood on 4th and Bowery, near the theatre",
+  "link": "https://en.wikipedia.org/wiki/Bowery",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 131,
+  "mentions": 1,
+  "category": "Location",
+  "name": "14th Street",
+  "heard": "14th Street",
+  "time": "00:36:49",
+  "context": "The Factory was at 14th Street and Fifth Avenue when Cherry auditioned",
+  "link": "https://en.wikipedia.org/wiki/14th_Street_(Manhattan)",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 132,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Fifth Avenue",
+  "heard": "Fifth Avenue",
+  "time": "00:36:49",
+  "context": "Where the Factory stood, at 14th Street",
+  "link": "https://en.wikipedia.org/wiki/Fifth_Avenue",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 133,
   "mentions": 1,
   "category": "Location",
   "name": "Union Square",
@@ -1403,7 +1513,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 124,
+  "rank": 134,
   "mentions": 1,
   "category": "Person",
   "name": "Joe Dallesandro",
@@ -1414,7 +1524,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 125,
+  "rank": 135,
   "mentions": 1,
   "category": "Person",
   "name": "Viva Valentino",
@@ -1425,7 +1535,7 @@
   "status": "Private person"
  },
  {
-  "rank": 126,
+  "rank": 136,
   "mentions": 1,
   "category": "Publication",
   "name": "Rolling Stone",
@@ -1436,7 +1546,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 127,
+  "rank": 137,
   "mentions": 1,
   "category": "Person",
   "name": "Lisa Robinson",
@@ -1447,7 +1557,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 128,
+  "rank": 138,
   "mentions": 1,
   "category": "Person",
   "name": "Rick Wakeman",
@@ -1458,7 +1568,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 129,
+  "rank": 139,
   "mentions": 1,
   "category": "Mood",
   "name": "Bowie at the Country Club",
@@ -1476,7 +1586,7 @@
   ]
  },
  {
-  "rank": 130,
+  "rank": 140,
   "mentions": 1,
   "category": "Music",
   "name": "David Bowie – Hunky Dory",
@@ -1487,7 +1597,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 131,
+  "rank": 141,
   "mentions": 1,
   "category": "Music",
   "name": "David Bowie – 'Andy Warhol'",
@@ -1498,7 +1608,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 132,
+  "rank": 142,
   "mentions": 1,
   "category": "Location",
   "name": "King's Road",
@@ -1509,7 +1619,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 133,
+  "rank": 143,
   "mentions": 1,
   "category": "Club",
   "name": "El Sombrero (London)",
@@ -1520,18 +1630,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 134,
+  "rank": 144,
   "mentions": 1,
   "category": "Music",
   "name": "David Bowie – Let's Dance",
   "heard": "Let's Dance",
   "time": "00:52:29",
   "context": "Cherry thinks Bowie's huge record sales only came with it or Young Americans",
-  "link": "https://en.wikipedia.org/wiki/Let%27s_Dance_(album)",
+  "link": "https://en.wikipedia.org/wiki/Let%27s_Dance_(David_Bowie_album)",
   "status": "Confirmed"
  },
  {
-  "rank": 135,
+  "rank": 145,
   "mentions": 1,
   "category": "Music",
   "name": "David Bowie – 'Young Americans'",
@@ -1542,7 +1652,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 136,
+  "rank": 146,
   "mentions": 1,
   "category": "Person",
   "name": "Dana Gillespie",
@@ -1553,7 +1663,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 137,
+  "rank": 147,
   "mentions": 1,
   "category": "Person",
   "name": "Jamie Andrews",
@@ -1564,7 +1674,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 138,
+  "rank": 148,
   "mentions": 1,
   "category": "Music",
   "name": "Ohio Players – 'Skin Tight'",
@@ -1575,7 +1685,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 139,
+  "rank": 149,
   "mentions": 1,
   "category": "Event",
   "name": "Newport Jazz Festival",
@@ -1586,7 +1696,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 140,
+  "rank": 150,
   "mentions": 1,
   "category": "Person",
   "name": "Bette Midler",
@@ -1597,7 +1707,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 141,
+  "rank": 151,
   "mentions": 1,
   "category": "Location",
   "name": "The Plaza Hotel",
@@ -1608,7 +1718,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 142,
+  "rank": 152,
   "mentions": 1,
   "category": "Person",
   "name": "Quentin Crisp",
@@ -1619,7 +1729,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 143,
+  "rank": 153,
   "mentions": 1,
   "category": "Person",
   "name": "Patti Smith",
@@ -1630,7 +1740,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 144,
+  "rank": 154,
   "mentions": 1,
   "category": "Book",
   "name": "Pop Tart (Cherry Vanilla)",
@@ -1641,7 +1751,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 145,
+  "rank": 155,
   "mentions": 1,
   "category": "Club",
   "name": "CBGB",
@@ -1652,7 +1762,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 146,
+  "rank": 156,
   "mentions": 1,
   "category": "Person",
   "name": "Debbie Harry",
@@ -1663,7 +1773,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 147,
+  "rank": 157,
+  "mentions": 1,
+  "category": "Music",
+  "name": "Sex Pistols",
+  "heard": "the Sex Pistols",
+  "time": "01:08:20",
+  "context": "Hearing Anarchy in the UK sent Cherry to London",
+  "link": "https://en.wikipedia.org/wiki/Sex_Pistols",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 158,
   "mentions": 1,
   "category": "Music",
   "name": "Johnny Thunders and the Heartbreakers",
@@ -1674,7 +1795,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 148,
+  "rank": 159,
   "mentions": 1,
   "category": "Person",
   "name": "Zecca Esquibel",
@@ -1685,7 +1806,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 149,
+  "rank": 160,
   "mentions": 1,
   "category": "Person",
   "name": "Henry Padovani",
@@ -1696,7 +1817,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 150,
+  "rank": 161,
   "mentions": 1,
   "category": "Person",
   "name": "Vangelis",
@@ -1707,7 +1828,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 151,
+  "rank": 162,
   "mentions": 1,
   "category": "Person",
   "name": "Rufus Wainwright",
@@ -1718,7 +1839,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 152,
+  "rank": 163,
   "mentions": 1,
   "category": "Organisation",
   "name": "Amazon",
@@ -1729,7 +1850,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 153,
+  "rank": 164,
   "mentions": 1,
   "category": "Organisation",
   "name": "Barnes & Noble",
@@ -1740,7 +1861,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 154,
+  "rank": 165,
   "mentions": 1,
   "category": "Book",
   "name": "Disco Bloodbath / Party Monster (James St. James)",
@@ -1751,7 +1872,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 155,
+  "rank": 166,
   "mentions": 1,
   "category": "Organisation",
   "name": "Netflix",
@@ -1760,5 +1881,78 @@
   "context": "Make it a Netflix series, an ongoing documentary - Cherry Vanilla Confessions",
   "link": "https://en.wikipedia.org/wiki/Netflix",
   "status": "Confirmed"
+ },
+ {
+  "rank": 167,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Cherry's on-camera look (S03E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Shoulder-length silver-white hair with a full fringe, a black jacket covered in a dense multicoloured floral print over a black-and-white striped top, in a grey room with a paper-flower bouquet, framed drawings and a wall pinned with photos, necklaces and a cross",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-305",
+  "status": "Confirmed",
+  "fashion": "Floral jacket over a Breton-striped top",
+  "colours": [
+   "hair silver #C0AAA0",
+   "jacket black #0B0B0C",
+   "floral rust #4B3823",
+   "stripe white #ECEBE6",
+   "wall grey #727875"
+  ]
+ },
+ {
+  "rank": 168,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S03E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald, thick black rectangular glasses, a chunky gold chain over a pale yellow-and-green tropical-print shirt, in front of floor-to-ceiling bookshelves with a blue tin robot",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-305",
+  "status": "Confirmed",
+  "fashion": "Tropical-print shirt, chunky gold chain",
+  "colours": [
+   "shirt yellow #ABB95E",
+   "shirt green-white #D3D3CD",
+   "chain gold #80654F",
+   "bookshelf brown #10100B"
+  ]
+ },
+ {
+  "rank": 169,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S03E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Thin multicoloured-rim glasses and a periwinkle-blue jumper with a pink trim, in front of orange curtains and seventies sunflower wallpaper, a Brillo box on the shelf",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-305",
+  "status": "Confirmed",
+  "fashion": "Periwinkle jumper, rainbow-rim glasses",
+  "colours": [
+   "jumper periwinkle #748ACD",
+   "trim pink #E7A3B4",
+   "curtain orange #907765",
+   "wallpaper mustard #BDAE80"
+  ]
+ },
+ {
+  "rank": 170,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S03E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Tortoiseshell glasses and a red, blue and green plaid shirt over a pink collar, in front of a framed Holy Terror poster and shelves of pink photo-booth boxes",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-305",
+  "status": "Confirmed",
+  "fashion": "Plaid shirt, tortoiseshell glasses",
+  "colours": [
+   "plaid navy #1A1A28",
+   "plaid blue #3D4A65",
+   "wall beige #B2A18F",
+   "poster teal #B5DBD3"
+  ]
  }
 ]
