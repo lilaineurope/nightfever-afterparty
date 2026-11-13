@@ -54,13 +54,13 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     ],
     portrait: { photo: cbgbPhoto, polaroid: cbgbPolaroid, focus: "4%", credit: CBGB_CREDIT },
     timelineEvent: "cbgb-opens",
-    // Jillian Jonas's audio documentary (Lisa, 13 Nov 2026) - asked in our reply; switch approved on once she says yes.
+    // Jillian Jonas's audio documentary (Lisa, 13 Nov 2026: "already add jilian's box") - shown from the start.
     listen: {
       title: "This Ain't No Disco, This IS CBGB",
       by: "Jillian Jonas",
       href: "https://www.youtube.com/@thisaintnodiscoauddoc",
       note: "CBGB's first wave, 1973-78, told by about a hundred people who were there. Made for WBAI by Jillian Jonas, who worked in the CBGB Record Canteen.",
-      approved: false,
+      approved: true,
     },
   },
 };
