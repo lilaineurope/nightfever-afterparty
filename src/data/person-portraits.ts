@@ -496,6 +496,44 @@ import christyTurlingtonPhoto from "@/assets/people/christy-turlington-photo.web
 import christyTurlingtonPolaroid from "@/assets/people/christy-turlington-polaroid.webp";
 import benjaminBrafmanPhoto from "@/assets/people/benjamin-brafman-photo.webp";
 import benjaminBrafmanPolaroid from "@/assets/people/benjamin-brafman-polaroid.webp";
+import armenRaPhoto from "@/assets/people/armen-ra-photo.webp";
+import armenRaPolaroid from "@/assets/people/armen-ra-polaroid.webp";
+import baronessSherryPhoto from "@/assets/people/baroness-sherry-photo.webp";
+import baronessSherryPolaroid from "@/assets/people/baroness-sherry-polaroid.webp";
+import clausVonBuLowPhoto from "@/assets/people/claus-von-bu-low-photo.webp";
+import clausVonBuLowPolaroid from "@/assets/people/claus-von-bu-low-polaroid.webp";
+import cliveDavisPhoto from "@/assets/people/clive-davis-photo.webp";
+import cliveDavisPolaroid from "@/assets/people/clive-davis-polaroid.webp";
+import cyndiLauperPhoto from "@/assets/people/cyndi-lauper-photo.webp";
+import cyndiLauperPolaroid from "@/assets/people/cyndi-lauper-polaroid.webp";
+import diahannCarrollPhoto from "@/assets/people/diahann-carroll-photo.webp";
+import diahannCarrollPolaroid from "@/assets/people/diahann-carroll-polaroid.webp";
+import ditaVonTeesePhoto from "@/assets/people/dita-von-teese-photo.webp";
+import ditaVonTeesePolaroid from "@/assets/people/dita-von-teese-polaroid.webp";
+import dolphLundgrenPhoto from "@/assets/people/dolph-lundgren-photo.webp";
+import dolphLundgrenPolaroid from "@/assets/people/dolph-lundgren-polaroid.webp";
+import dotsonRaderPhoto from "@/assets/people/dotson-rader-photo.webp";
+import dotsonRaderPolaroid from "@/assets/people/dotson-rader-polaroid.webp";
+import editDeakPhoto from "@/assets/people/edit-deak-photo.webp";
+import editDeakPolaroid from "@/assets/people/edit-deak-polaroid.webp";
+import elizabethTaylorPhoto from "@/assets/people/elizabeth-taylor-photo.webp";
+import elizabethTaylorPolaroid from "@/assets/people/elizabeth-taylor-polaroid.webp";
+import elvisPresleyPhoto from "@/assets/people/elvis-presley-photo.webp";
+import elvisPresleyPolaroid from "@/assets/people/elvis-presley-polaroid.webp";
+import federicoFelliniPhoto from "@/assets/people/federico-fellini-photo.webp";
+import federicoFelliniPolaroid from "@/assets/people/federico-fellini-polaroid.webp";
+import fiorelloLaGuardiaPhoto from "@/assets/people/fiorello-la-guardia-photo.webp";
+import fiorelloLaGuardiaPolaroid from "@/assets/people/fiorello-la-guardia-polaroid.webp";
+import garyCollinsPhoto from "@/assets/people/gary-collins-photo.webp";
+import garyCollinsPolaroid from "@/assets/people/gary-collins-polaroid.webp";
+import hennyGarfunkelPhoto from "@/assets/people/henny-garfunkel-photo.webp";
+import hennyGarfunkelPolaroid from "@/assets/people/henny-garfunkel-polaroid.webp";
+import jamieLeeCurtisPhoto from "@/assets/people/jamie-lee-curtis-photo.webp";
+import jamieLeeCurtisPolaroid from "@/assets/people/jamie-lee-curtis-polaroid.webp";
+import jenniferHollidayPhoto from "@/assets/people/jennifer-holliday-photo.webp";
+import jenniferHollidayPolaroid from "@/assets/people/jennifer-holliday-polaroid.webp";
+import jeremyScottPhoto from "@/assets/people/jeremy-scott-photo.webp";
+import jeremyScottPolaroid from "@/assets/people/jeremy-scott-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -757,4 +795,23 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "candace-bushnell": { photo: candaceBushnellPhoto, polaroid: candaceBushnellPolaroid, focus: "28%", credit: "Portrait after a photo by Vbrunophotog, 2025 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   "christy-turlington": { photo: christyTurlingtonPhoto, polaroid: christyTurlingtonPolaroid, focus: "28%", credit: "Portrait after a photo by lukeford.net, 2008 (CC BY-SA 2.5; our version is CC BY-SA 2.5 too), in our photocopy style" },
   "benjamin-brafman": { photo: benjaminBrafmanPhoto, polaroid: benjaminBrafmanPolaroid, focus: "28%", credit: "Portrait after a photo by Lemoine11928, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "armen-ra": { photo: armenRaPhoto, polaroid: armenRaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "baroness-sherry": { photo: baronessSherryPhoto, polaroid: baronessSherryPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "claus-von-bu-low": { photo: clausVonBuLowPhoto, polaroid: clausVonBuLowPolaroid, focus: "28%", credit: "Portrait after a TV still by Open Media Ltd. (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "clive-davis": { photo: cliveDavisPhoto, polaroid: cliveDavisPolaroid, focus: "28%", credit: "Portrait after a photo by Associated Press, 1980 (public domain), in our photocopy style" },
+  "cyndi-lauper": { photo: cyndiLauperPhoto, polaroid: cyndiLauperPolaroid, focus: "28%", credit: "Portrait after a photo by Toglenn, 1985 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "diahann-carroll": { photo: diahannCarrollPhoto, polaroid: diahannCarrollPolaroid, focus: "28%", credit: "Portrait after a photo by CBS Television, 1976 (public domain), in our photocopy style" },
+  "dita-von-teese": { photo: ditaVonTeesePhoto, polaroid: ditaVonTeesePolaroid, focus: "28%", credit: "Portrait after a photo by Georges Biard, 2009 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "dolph-lundgren": { photo: dolphLundgrenPhoto, polaroid: dolphLundgrenPolaroid, focus: "28%", credit: "Portrait after a photo by Georges Biard, 2012 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "dotson-rader": { photo: dotsonRaderPhoto, polaroid: dotsonRaderPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "edit-deak": { photo: editDeakPhoto, polaroid: editDeakPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "elizabeth-taylor": { photo: elizabethTaylorPhoto, polaroid: elizabethTaylorPolaroid, focus: "28%", credit: "Portrait after a 20th Century Fox publicity photo, 1963 (public domain), in our photocopy style" },
+  "elvis-presley": { photo: elvisPresleyPhoto, polaroid: elvisPresleyPolaroid, focus: "28%", credit: "Portrait after an uncredited 1958 magazine photo (public domain), in our photocopy style" },
+  "federico-fellini": { photo: federicoFelliniPhoto, polaroid: federicoFelliniPolaroid, focus: "28%", credit: "Portrait after a photo by Walter Albertin, World Telegram, 1965 (public domain), in our photocopy style" },
+  "fiorello-la-guardia": { photo: fiorelloLaGuardiaPhoto, polaroid: fiorelloLaGuardiaPolaroid, focus: "28%", credit: "Portrait after a photo by New York Times Studios, 1937 (public domain), in our photocopy style" },
+  "gary-collins": { photo: garyCollinsPhoto, polaroid: garyCollinsPolaroid, focus: "28%", credit: "Portrait after a photo by NBC Television, 1974 (public domain), in our photocopy style" },
+  "henny-garfunkel": { photo: hennyGarfunkelPhoto, polaroid: hennyGarfunkelPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jamie-lee-curtis": { photo: jamieLeeCurtisPhoto, polaroid: jamieLeeCurtisPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2015 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "jennifer-holliday": { photo: jenniferHollidayPhoto, polaroid: jenniferHollidayPolaroid, focus: "28%", credit: "Portrait after a photo by Greg Hernandez, 2007 (CC BY 2.0), in our photocopy style" },
+  "jeremy-scott": { photo: jeremyScottPhoto, polaroid: jeremyScottPolaroid, focus: "28%", credit: "Portrait after a photo by MEDIODESCOCIDO, 2015 (CC BY 2.0), in our photocopy style" },
 };
