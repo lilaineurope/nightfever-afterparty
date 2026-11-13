@@ -4,6 +4,7 @@ import { EntityLink } from "@/components/entity-link";
 import { polaroidThumb } from "@/components/episode-block";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { ClubProfile } from "@/data/club-profiles";
+import { clubNightFor } from "@/data/club-nights";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -11,7 +12,8 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name }: { c: ClubProfile; name: string }) {
+export function ClubProfileSections({ c, name, slug }: { c: ClubProfile; name: string; slug: string }) {
+  const night = clubNightFor(slug);
   return (
     <>
       <div className="pt-4 text-center">
@@ -72,6 +74,12 @@ export function ClubProfileSections({ c, name }: { c: ClubProfile; name: string 
             <a href={c.listen.href} target="_blank" rel="noopener noreferrer" className="inline-block border-2 border-[#111] bg-[#f6f0ea] px-4 py-2 text-sm font-semibold text-[#111] hover:bg-[#111] hover:text-[#f6f0ea]">
               Listen on YouTube &rarr;
             </a>
+            {/* The documentary also plays in the club's Jukebox ("On film") and opens its YouTube playlist (Lisa, 13 Nov 2026) */}
+            {night && (
+              <Link to="/jukebox" search={{ club: slug }} className="ml-3 mt-2 inline-block border-2 border-[#111] bg-[#111] px-4 py-2 text-sm font-semibold text-[#f6f0ea] hover:bg-[#f6f0ea] hover:text-[#111]">
+                Play it in the AFTERPARTY JUKEBOX &rarr;
+              </Link>
+            )}
           </p>
         </section>
       )}

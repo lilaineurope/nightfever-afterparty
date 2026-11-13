@@ -3,7 +3,7 @@
 // Keyed by the club's A–Z card slug. Add a club only when real sources exist; never guess a Spotify id.
 
 export type Source = { key: string; label: string; href: string };
-export type Kind = "played" | "live" | "dj-artist" | "about"; // about = tied to the club another way (names it, filmed there, the owner's own record)
+export type Kind = "played" | "live" | "dj-artist" | "about" | "stage"; // about = tied to the club another way (names it, filmed there, the owner's own record); stage = a band of the club's stage, song not tied to one show there
 export type ClubSong = {
   title: string;
   artist: string;
@@ -742,7 +742,96 @@ const nl: ClubNight = {
 };
 
 // Order (Lisa, 1 Nov 2026): the first three, then the most-mentioned clubs, then Nell's.
-export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl];
+// CBGB (Lisa, 13 Nov 2026, after Jillian Jonas's audio documentary): a rock club, so the songs are what was PERFORMED there -
+// sets taped and filmed at the club, the 1976 Live at CBGB's album, Patti Smith's closing night - plus bands of its stage.
+const cb: ClubNight = {
+  slug: "cbgb",
+  club: "CBGB",
+  playlistId: "6rvE8ROedhcH0x7tPh5gsL", // PRIVATE until Lisa says (13 Nov 2026) - make it public before this goes live
+  youtubePlaylist: "https://www.youtube.com/playlist?list=PLR2JP4vkdGSI", // PRIVATE until Lisa says
+  note:
+    "From CBGB's own stage (1973–2006): the 1976 album Live at CBGB's, recorded at the club; the Ramones' set lists from 1975; Talking Heads, Blondie, Richard Hell and the Dictators filmed there; the Dead Boys and Bad Brains live albums taped there; Patti Smith's closing night on 15 October 2006 - and more bands of the CBGB stage from Cherry Red's CBGB box set. For the story of the first wave, put on Jillian Jonas's audio documentary under On film. Not one exact night.",
+  footage: [
+    { id: "LDyvRW2RxJ0", title: "Night Fever S01E10 - Joey Arias (meets Debbie Harry at CBGB)" },
+    { id: "28lVEEGCEGw", title: "This Ain't No Disco: This Is CBGB - Episode 1: Pilot (Jillian Jonas)" },
+    { id: "8EVuxTaYsUU", title: "This Ain't No Disco: This Is CBGB - Episode 2: How It Began" },
+    { id: "J74BM-Y-SuU", title: "This Ain't No Disco: This Is CBGB - Episode 3, Part 1: The Club Opens" },
+    { id: "TkgTwnTI4bk", title: "This Ain't No Disco: This Is CBGB - Episode 3, Part 2: The Club Opens and Beyond" },
+    { id: "VPRBVPBELzE", title: "This Ain't No Disco: This Is CBGB - Episode 4: For Us It Was Oz" },
+    { id: "waucb2yzSX0", title: "1970s interview with CBGB's owner Hilly Kristal (Kinolibrary)" },
+    { id: "IwsVWZ-c8Eo", title: "Ramones - CBGB, 15 September 1974" },
+    { id: "LOnnKBxhiYk", title: "Blondie - A Girl Should Know Better, CBGB 1975" },
+    { id: "isR53TmHkPs", title: "Talking Heads - Live at CBGB, December 1975 (16mm film)" },
+    { id: "Q5l_mtfXvR4", title: "Blondie - X Offender, CBGB 1977" },
+    { id: "B55l1Atj-1o", title: "Richard Hell - Love Comes in Spurts, CBGB 1977 (Kinolibrary)" },
+    { id: "pE12qenJMt8", title: "The Dictators - CBGB promotional film, 1977" },
+    { id: "QOHOM1hVM-M", title: "Dead Boys - Live at CBGB's, 1977" },
+    { id: "NZ6e1fbtp1E", title: "The Mumps live at CBGB" },
+    { id: "kRIBGGVdywk", title: "CBGB's documentary, 1978 - Ramones, Blondie, Dead Boys" },
+    { id: "RgIhSxVxFy0", title: "Bad Brains - Live at CBGB, 1982" },
+    { id: "DiB3EV3jgzk", title: "Suicide live at CBGB, 27 September 1986" },
+    { id: "X40yIQNfO98", title: "CBGB's 20th anniversary, with Hilly Kristal (1993)" },
+    { id: "UXdGeWQGEKM", title: "Patti Smith live at CBGB, 15 October 2006 - the closing night" },
+  ],
+  sources: [
+    { key: "A", label: "setlist.fm: Patti Smith at CBGB, 15 Oct 2006 (the closing night)", href: "https://www.setlist.fm/setlist/patti-smith/2006/cbgb-new-york-ny-53c7fb15.html" },
+    { key: "B", label: "Wikipedia: CBGB", href: "https://en.wikipedia.org/wiki/CBGB" },
+    { key: "C", label: "johnnyramone.com: the Ramones at CBGB in 1975 (set lists of 14 Apr and 31 Jul)", href: "https://www.johnnyramone.com/1975" },
+    { key: "D", label: "Dangerous Minds: Talking Heads performing at CBGB in 1975 (film)", href: "https://dangerousminds.net/comments/zen_rockers_talking_heads_performing_at_cbgb_in_1975" },
+    { key: "E", label: "Blondie, X Offender at CBGB, 1977 (YouTube)", href: "https://www.youtube.com/watch?v=Q5l_mtfXvR4" },
+    { key: "F", label: "Kinolibrary: Richard Hell, Love Comes in Spurts at CBGB, 1977 (YouTube)", href: "https://www.youtube.com/watch?v=B55l1Atj-1o" },
+    { key: "G", label: "The Dictators, Two Tub Man live at CBGB, 1977 (YouTube)", href: "https://www.youtube.com/watch?v=VtW8B93IU44" },
+    { key: "H", label: "Live at CBGB's - The Home of Underground Rock (1976, recorded at the club)", href: "https://www.allmusic.com/album/live-at-cbgbs-atlantic--mw0000109483" },
+    { key: "I", label: "Wikipedia: Night of the Living Dead Boys (recorded at CBGB, March 1979)", href: "https://en.wikipedia.org/wiki/Night_of_the_Living_Dead_Boys" },
+    { key: "J", label: "Dead Boys, Ain't It Fun (Live at CBGBs 1978) (YouTube)", href: "https://www.youtube.com/watch?v=fUQbT9balrs" },
+    { key: "K", label: "Wikipedia: Bad Brains, Live at CBGB 1982", href: "https://en.wikipedia.org/wiki/Live_at_CBGB%27s_1982" },
+    { key: "L", label: "Cherry Red: CBGB - A New York City Soundtrack 1975-1986 (4-CD box, 2026; track list)", href: "https://bestclassicbands.com/cbgb-box-set-new-york-city-soundtrack-1975-1986-12-1-25/" },
+    { key: "M", label: "Night Fever S01E10 - Joey Arias (meets Debbie Harry at CBGB his first week, 00:15:55)", href: "https://nightfever-afterparty.com/episodes/s01e10" },
+    { key: "N", label: "Night Fever S02E11 - Richard Boch (the Contortions crowd at CBGB, 00:18:33)", href: "https://nightfever-afterparty.com/episodes/s02e11" },
+    { key: "O", label: "Rock's Backpages: Wayne County and Handsome Dick Manitoba (CBGB, 1976)", href: "https://rocksbackpages.com/Library/Article/wayne-county-and-handsome-dick-manitoba-war-of-the-gargantuas" },
+    { key: "P", label: "The Mumps live at CBGB (YouTube)", href: "https://www.youtube.com/watch?v=NZ6e1fbtp1E" },
+    { key: "Q", label: "Night Fever S03E10 - Miss Guy (Debbie Harry came to see the Toilet Boys at CBGB, 00:44:17)", href: "https://nightfever-afterparty.com/episodes/s03e10" },
+  ],
+  songs: [
+    { title: "Judy Is a Punk", artist: "Ramones", year: 1976, spotify: "0vGCxnTwYZFtOAW3oz28kd", video: "ynmHLMIOXIg", kind: "live", why: "In both Ramones sets at CBGB written down from 1975", sources: ["C"] },
+    { title: "Beat on the Brat", artist: "Ramones", year: 1976, spotify: "55mKuESqpfgqe0kooIkTH2", video: "unvFK9I3vgc", kind: "live", why: "Second song of the Ramones' CBGB set on 14 April 1975", sources: ["C", "L"] },
+    { title: "Blitzkrieg Bop", artist: "Ramones", year: 1976, spotify: "4KcH1ZRV2W1q7Flq0QqC76", video: "skdE0KAFCEA", kind: "live", why: "In the Ramones' CBGB set of 31 July 1975 - and chanted into Gloria on the closing night in 2006", sources: ["C", "A", "B"] },
+    { title: "53rd & 3rd", artist: "Ramones", year: 1976, spotify: "1KsSlsvm2hjzB1WWkryxIj", video: "xOGHjBPR7Sg", kind: "live", why: "In both Ramones sets at CBGB written down from 1975", sources: ["C"] },
+    { title: "Psycho Killer", artist: "Talking Heads", year: 1977, spotify: "7dSCxR4LqkmxoBrq9MzVSD", video: "CJ54eImz88w", kind: "live", why: "Talking Heads played their first show at CBGB in June 1975, opening for the Ramones; this is in the set filmed there that year", sources: ["D", "B"] },
+    { title: "Tentative Decisions", artist: "Talking Heads", year: 1977, spotify: "4mBytlVMXz6HVvaRi0XDgQ", video: "q99Rd7CFtNs", kind: "live", why: "In the Talking Heads set filmed at CBGB in 1975", sources: ["D"] },
+    { title: "All for the Love of Rock & Roll (live)", artist: "Tuff Darts", year: 1976, spotify: "5D1OEGq94TC3kyculDtVpE", video: "FHQZuUCYN1o", kind: "live", why: "Opens Live at CBGB's, recorded at the club in 1976", sources: ["H"] },
+    { title: "Let Me Dream If I Want To (live)", artist: "Mink DeVille", year: 1976, spotify: "3RkrnFl4CWwvtNtvt7RrvC", video: "axT00WpPrP8", kind: "live", why: "Recorded at the club for Live at CBGB's (1976)", sources: ["H"] },
+    { title: "Poe (live)", artist: "The Shirts", year: 1976, spotify: "6wGzbqVr3hs4zfkHMo27EB", video: "uRnj8e108IA", kind: "live", why: "Recorded at the club for Live at CBGB's (1976)", sources: ["H"] },
+    { title: "I Need a Million (live)", artist: "Laughing Dogs", year: 1976, spotify: "677ah6mnw9O86MpTOpRSCB", video: "9fOv7fgBQZ4", kind: "live", why: "Recorded at the club for Live at CBGB's (1976)", sources: ["H", "L"] },
+    { title: "We Deliver (live)", artist: "The Miamis", year: 1976, spotify: "127EceVyCe0keRhBQSxDyi", video: "znctI9GfcYg", kind: "live", why: "Recorded at the club for Live at CBGB's (1976)", sources: ["H", "L"] },
+    { title: "Everybody's Depraved (live)", artist: "Stuart's Hammer", year: 1976, spotify: "21i3eYoHQm5S9yYALA4Qqr", video: "OcTXeHTdy4M", kind: "live", why: "Recorded at the club for Live at CBGB's (1976)", sources: ["H", "L"] },
+    { title: "X Offender", artist: "Blondie", year: 1976, spotify: "2Yn7a6j6jWq9xzQFP2myDS", video: "PjvpLiS2gKA", kind: "live", why: "Filmed at CBGB in 1977. Joey Arias met Debbie Harry there his first week in New York, Blondie filming for German TV", sources: ["E", "M"], guest: { slug: "joey-arias", label: "Joey Arias" } },
+    { title: "Love Comes in Spurts", artist: "Richard Hell & the Voidoids", year: 1977, spotify: "3V5wxq5chMSfnHV1wugyYc", video: "5SLXy3yPJlE", kind: "live", why: "Filmed at CBGB in 1977", sources: ["F"] },
+    { title: "Two Tub Man", artist: "The Dictators", year: 1975, spotify: "6FKaUjnOKgsEKjNOZp6hy5", video: "KRB8D8U0zMk", kind: "live", why: "Filmed at CBGB in 1977; the Dictators played several nights in the club's last week in 2006", sources: ["G", "B"] },
+    { title: "Sonic Reducer (live)", artist: "Dead Boys", year: 1981, spotify: "3KHxX2rHLRMTgtN4QNbRUl", video: "tyJONvOtKVk", kind: "live", why: "From Night of the Living Dead Boys, taped at CBGB in 1979 - Patti Smith sang it there on the closing night too", sources: ["I", "A"] },
+    { title: "Ain't It Fun (live at CBGB)", artist: "Dead Boys", year: 1978, spotify: "6l7sX1vJCNwjQQy24lDabH", video: "fUQbT9balrs", kind: "live", why: "Taped at CBGB, the Dead Boys' home club", sources: ["J", "I"] },
+    { title: "Jailhouse Rock (live at CBGB, 1978)", artist: "James Chance & the Contortions", year: 1978, spotify: "7y6pdWfcTSmzfdSVYhDwXA", video: "XNry5C4PIrM", kind: "live", why: "Recorded at CBGB in 1978. Richard Boch says Steve Mass ran with the Contortions crowd there", sources: ["L", "N"], guest: { slug: "richard-boch", label: "Richard Boch" } },
+    { title: "Big Takeover (live)", artist: "Bad Brains", year: 1982, spotify: "7FoNW4J21dV4XQTssbs0hH", video: "wYTAGG9IAN8", kind: "live", why: "From Live at CBGB 1982, taped at the club over Christmas 1982 - the hardcore years", sources: ["K", "B"] },
+    { title: "Banned in D.C. (live)", artist: "Bad Brains", year: 1982, spotify: "0uW0c0nXXPLC0yLEcYtuP3", video: "XGzA8KXW3WI", kind: "live", why: "From Live at CBGB 1982", sources: ["K", "L"] },
+    { title: "Crocodile Tears", artist: "Mumps", year: 1977, spotify: "7g6E96nVzM4pKqJ3G8WAS9", video: "ume63Bf2mKU", kind: "stage", why: "Lance Loud's band with Kristian Hoffman, filmed live at CBGB", sources: ["L", "P"] },
+    { title: "(If You Don't Want to Fuck Me, Baby) Fuck Off", artist: "Wayne County & the Electric Chairs", year: 1978, spotify: "2VmLuyeyZfcaKmTj0xjoZS", video: "LJYnSMk9seE", kind: "stage", why: "Jayne County's band - in 1976 she hit Handsome Dick Manitoba with a mic stand on the CBGB stage", sources: ["L", "O"], guest: { slug: "jayne-county", label: "Jayne County" } },
+    { title: "Hard as a Rock", artist: "Cherry Vanilla", year: 1978, spotify: "3lwoNGprtaM7OHhoPedmc0", video: "EdLPWcJ3jks", kind: "stage", sources: ["L"], guest: { slug: "cherry-vanilla", label: "Cherry Vanilla" } },
+    { title: "Born to Lose", artist: "Johnny Thunders & the Heartbreakers", year: 1977, spotify: "150NSrON3DeZM1aLyz3MoM", video: "TlFsXoZkamw", kind: "stage", sources: ["L"] },
+    { title: "Ghost Rider", artist: "Suicide", year: 1977, spotify: "0sTMWWSms4Mt6vy33rdqgv", video: "Qn0_fDjvI_s", kind: "stage", sources: ["L"] },
+    { title: "Garbage Man", artist: "The Cramps", year: 1980, spotify: "6E0KGQ0xO5lFaKCamdKvFs", video: "QKYREsz6AlQ", kind: "stage", sources: ["L"] },
+    { title: "Egg Raid on Mojo", artist: "Beastie Boys", year: 1982, spotify: "1EEpmLoyTGPdJp2onlCyyn", video: "JDMRm2syA_o", kind: "stage", why: "From the Sunday hardcore matinees", sources: ["L", "B"] },
+    { title: "Another Day in the Life", artist: "Toilet Boys", year: 1998, spotify: "3Ry6wMXcLDas0LiOhiI1Mf", video: "RmXwQrPoAO0", kind: "stage", why: "Miss Guy's band - Debbie Harry came to see them at CBGB", sources: ["Q"], guest: { slug: "miss-guy", label: "Miss Guy" } },
+    { title: "Marquee Moon", artist: "Television", year: 1977, spotify: "7Me0vOSlJfaPY7Pc4GeItd", video: "g4myghLPLZc", kind: "live", why: "Television started CBGB's punk years in 1974; Richard Lloyd played it with Patti Smith on the closing night", sources: ["A", "B"] },
+    { title: "Piss Factory", artist: "Patti Smith", year: 1974, spotify: "5KLKSxNQQqg8hOaHVqEwuk", kind: "live", why: "The first song of the closing night, 15 October 2006", sources: ["A"] },
+    { title: "Redondo Beach", artist: "Patti Smith", year: 1975, spotify: "6zCBk93V8M7fPriZj9i4dd", video: "H4iksb1HG9E", kind: "live", why: "Closing night, with Flea on bass", sources: ["A"] },
+    { title: "Free Money", artist: "Patti Smith", year: 1975, spotify: "1wP1qnWy0cZWxnbWkzf9La", video: "U-ZJGfA0UxY", kind: "live", why: "Closing night, 2006", sources: ["A", "L"] },
+    { title: "Land", artist: "Patti Smith", year: 1975, spotify: "0KkXMzaRaXL8AyChkWbYCx", video: "cSk6jfln84A", kind: "live", why: "The first encore of the closing night", sources: ["A"] },
+    { title: "Gloria", artist: "Patti Smith", year: 1975, spotify: "272Z4tzaSMMcgrZ0R494S2", video: "bPO0bTaWcFQ", kind: "live", why: "Closing night encore, its chorus traded with the Ramones' Blitzkrieg Bop", sources: ["A", "B"] },
+    { title: "Elegie", artist: "Patti Smith", year: 1975, spotify: "2Vvck2UY0DMK6yjQkmwqff", video: "E1VDF3l4NzM", kind: "live", why: "The last song ever played at CBGB: Patti read out the names of the musicians who had played there and died", sources: ["A", "B"] },
+  ],
+};
+
+export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb];
 
 export const clubNightFor = (slug: string) => CLUB_NIGHTS.find((c) => c.slug === slug);
 export const playlistUrl = (id: string) => `https://open.spotify.com/playlist/${id}`;
@@ -752,4 +841,5 @@ export const KIND_LABEL: Record<Kind, string> = {
   live: "Performed there live",
   "dj-artist": "An artist the DJs played",
   about: "Tied to the club",
+  stage: "A band of its stage",
 };

@@ -599,6 +599,7 @@ a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-for
 .jbx-kind { display: inline-block; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; border: 1.5px solid #111; padding: 0 5px; line-height: 1.5; }
 .jbx-kind.k-live { background: #111; color: #fff; }
 .jbx-kind.k-dj-artist { border-style: dashed; }
+.jbx-kind.k-stage { border-style: dotted; }
 .jbx-kind.k-about { background: var(--pink); border-color: var(--pink); color: #fff; }
 .jbx-why { white-space: normal; }
 a.jbx-srckey { display: inline-block; min-width: 18px; text-align: center; margin-left: 3px; border: 1.5px solid var(--pink); color: var(--pink); font-weight: bold; font-size: 10.5px; line-height: 1.5; }

@@ -196,7 +196,7 @@ function EntityPage() {
 
       <div className={`mx-auto ${mem || club ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
-        {club && <ClubProfileSections c={club} name={e.name} />}
+        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} />}
         <CardSections e={e} />
       </div>
           <SiteFooter />
