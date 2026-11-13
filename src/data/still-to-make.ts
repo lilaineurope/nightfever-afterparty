@@ -239,4 +239,13 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     made: "not yet",
     status: "No Night Fever episode or film about it yet.",
   },
+  {
+    title: "Cherry Vanilla's story as a mini-series",
+    why: "Cherry hopes someone makes a film that gets the whole New York of her day right, from Cousin Brucie and the Copa to Max's back room; Fenton says her story is too vast for one film - it's a mini-series - and she signs off: make it a Netflix series, an ongoing documentary.",
+    episodeId: "s03e05",
+    time: "00:34:41",
+    made: "not yet",
+    status: "Not yet - her life is told in her memoir Lick Me; no film or series has been released.",
+    source: { label: "Lick Me", card: "lick-me-how-i-became-cherry-vanilla" },
+  },
 ];

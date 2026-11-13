@@ -94,6 +94,10 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Leee Black Childers", mentee: "Jayne County", episode: "s02e02", time: "00:16:07", line: "Took Jayne into his flat and along to the Factory - she met Andy through him" },
   { mentor: "Siouxsie Sioux", mentee: "Jayne County", episode: "s02e02", time: "00:51:13", line: "A big supporter when Jayne began to transition: pulled her into a bathroom and showed her how she did her make-up" },
   { mentor: "Don Hill", mentee: "Bebe Buell", episode: "s04e03", time: "01:08:14", line: "Told Bebe to get on stage again with the Squeezebox band - and she never looked back" },
+  { mentor: "Jay Martin", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:18:11", line: "The Aux Puces DJ let Cherry mind his turntables while he took a break, then started giving her his nights - and she became the club's DJ" },
+  { mentor: "David Taylor", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:26:39", line: "Came into Aux Puces one night and took Cherry downtown to audition for World, telling her they wanted characters, not actors" },
+  { mentor: "Tony Ingrassia", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:28:27", line: "Cast Cherry on the spot at the World audition - no audition needed - and later took her to the Factory to try out for Pork" },
+  { mentor: "Andy Warhol", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:39:47", line: "Saw her in World, then gave her the Brigid part in Pork's London run after she sang him a Catholic school hymn" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

@@ -671,4 +671,17 @@ export const LOCATIONS: Located[] = [
   { name: "Atlantic City", lat: 39.3643, lng: -74.4229, area: "New Jersey" },
   { name: "Oxford", lat: 51.7548, lng: -1.2544, area: "England" },
   { name: "Argentina", lat: -34.6037, lng: -58.3816, area: "Argentina" },
+  // S03E05 Cherry Vanilla
+  { name: "Fire Island", lat: 40.6480, lng: -73.1500, area: "Long Island" },
+  { name: "Fire Island Pines", lat: 40.6668, lng: -73.0687, area: "Long Island" },
+  { name: "Cherry Grove", lat: 40.6612, lng: -73.0937, area: "Long Island" },
+  { name: "Davis Park", lat: 40.6890, lng: -72.9665, area: "Long Island" },
+  { name: "Reno Sweeney", lat: 40.7372, lng: -73.9993, area: "Greenwich Village" },
+  { name: "Hotel Fourteen", lat: 40.7649, lng: -73.9720, area: "Upper East Side" },
+  { name: "The Bitter End", lat: 40.7286, lng: -74.0003, area: "Greenwich Village" },
+  { name: "Cafe Wha?", lat: 40.7301, lng: -74.0006, area: "Greenwich Village" },
+  { name: "Cafe au Go Go", lat: 40.7284, lng: -73.9996, area: "Greenwich Village" },
+  { name: "Cerebrum", lat: 40.7212, lng: -73.9993, area: "SoHo" },
+  { name: "Woodside, Queens", lat: 40.7454, lng: -73.9030, area: "Queens" },
+  { name: "The Roundhouse", lat: 51.5432, lng: -0.1519, area: "London" },
 ];

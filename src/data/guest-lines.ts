@@ -39,6 +39,7 @@ export const GUEST_LINES: Record<string, string> = {
   s04e03: "Model, singer and rock memoirist · Max's Kansas City, Rebel Heart, Rebel Soul",
   s03e02: "Singer and dance-music voice · The Weather Girls, Black Box, Carry On",
   s02e02: "Punk and glam rock pioneer · Warhol's Pork, Max's Kansas City, the Electric Chairs",
+  s03e05: "Punk singer, Warhol's Pork and Bowie's publicist · Aux Puces, MainMan, Lick Me",
   s02e11: "Mudd Club doorman · artist and author of The Mudd Club",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",
