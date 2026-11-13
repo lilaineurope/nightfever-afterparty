@@ -14,6 +14,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { PERSON_PORTRAITS } from "../data/person-portraits";
 import { MEMORIAM } from "../data/memoriam";
 import { MemoriamSections } from "@/components/memoriam";
+import { CLUB_PROFILES } from "../data/club-profiles";
+import { ClubProfileSections } from "@/components/club-profile";
 import "@fontsource/covered-by-your-grace/400.css";
 
 export const Route = createFileRoute("/explore/$slug")({
@@ -26,7 +28,8 @@ export const Route = createFileRoute("/explore/$slug")({
     if (ep) throw redirect({ to: episodePath(ep), statusCode: 301 });
     // The first story line that still says something once research notes are left out ("Likewise" alone doesn't).
     const lines = [...e.refs.map((r) => r.context), ...e.events.map((ev) => ev.text)].filter((t): t is string => !!t);
-    const story = lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
+    // A club page leads with its own story (Lisa, 13 Nov 2026) - CBGB's first line was a guest saying she skipped it.
+    const story = CLUB_PROFILES[e.slug]?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
     return {
       slug: e.slug,
       name: e.name,
@@ -50,6 +53,13 @@ export const Route = createFileRoute("/explore/$slug")({
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
     if (/wikipedia\.org|imdb\.com/.test(d.link)) thing["sameAs"] = d.link;
+    const club = CLUB_PROFILES[d.slug];
+    if (club) {
+      thing["description"] = club.story;
+      thing["address"] = { "@type": "PostalAddress", streetAddress: club.address, addressLocality: "New York", addressCountry: "US" };
+      thing["foundingDate"] = club.opened;
+      thing["dissolutionDate"] = club.closed;
+    }
     const mem = MEMORIAM[d.slug];
     if (mem) {
       thing["birthDate"] = mem.born;
@@ -117,7 +127,9 @@ function EntityPage() {
   const { slug } = Route.useLoaderData();
   const e = entityBySlug[slug]!;
   const g = e.guest;
-  const pic = g ? undefined : PERSON_PORTRAITS[e.slug];
+  // Club pages (Lisa, 13 Nov 2026) use the same header: the club photo fills it, its polaroid is taped on the right.
+  const club = g ? undefined : CLUB_PROFILES[e.slug];
+  const pic = g ? undefined : (PERSON_PORTRAITS[e.slug] ?? club?.portrait);
   // In memoriam (Lisa, 4 Nov 2026, option C): black IN MEMORIAM band (on the name card since 5 Nov), "aka" and dates on the name card, guest quotes wall below.
   const mem = g ? undefined : MEMORIAM[e.slug];
 
@@ -136,7 +148,7 @@ function EntityPage() {
       >
         {pic && (
           <figure className="card-polaroid">
-            <img src={pic.polaroid} alt={`${e.name} polaroid`} width={720} height={893} />
+            <img src={pic.polaroid} alt={club ? `${e.name}, ${club.address}` : `${e.name} polaroid`} width={720} height={893} />
             <figcaption>{pic.credit}</figcaption>
           </figure>
         )}
@@ -158,6 +170,12 @@ function EntityPage() {
               <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died} · {mem.diedLine.replace(/^Died/, "died")}</p>
             </div>
           )}
+          {club && (
+            <div className={pic ? undefined : "memoriam-meta"}>
+              {club.aka && <p className="memoriam-aka">{club.aka}</p>}
+              <p className="mt-2 text-sm text-muted-foreground">{club.address} · {club.opened} – {club.closed}</p>
+            </div>
+          )}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
           {mem?.readMore ? (
@@ -176,8 +194,9 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${mem ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${mem || club ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
+        {club && <ClubProfileSections c={club} name={e.name} />}
         <CardSections e={e} />
       </div>
           <SiteFooter />
