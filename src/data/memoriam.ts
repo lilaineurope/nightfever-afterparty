@@ -1846,6 +1846,31 @@ export const MEMORIAM: Record<string, Memoriam> = {
     ],
     wikidata: "https://www.wikidata.org/wiki/Q1239698",
   },
+  // Lisa, 14 Nov 2026: Whitney Houston gets an In memoriam page too. Facts: Wikipedia.
+  "whitney-houston": {
+    born: "1963",
+    died: "2012",
+    diedLine: "Died 11 February 2012 in Beverly Hills, aged 48",
+    story:
+      "The voice of the 80s and 90s, from I Wanna Dance with Somebody to I Will Always Love You. James St. James remembers her singing at the Limelight in its first days, with Clive Davis telling everyone she was the greatest thing they would ever see.",
+    timeline: [
+      ["1963", "Born in Newark, New Jersey, to the gospel singer Cissy Houston; Dionne Warwick is her cousin"],
+      ["Late 1970s", "Sings backing vocals for Chaka Khan and others, and starts modelling"],
+      ["1983", "Clive Davis signs her to Arista"],
+      ["1985", "Her first album, Whitney Houston, with Saving All My Love for You and Greatest Love of All"],
+      ["1987", "Whitney, and I Wanna Dance with Somebody"],
+      ["1992", "The Bodyguard, and I Will Always Love You"],
+      ["2012", "Dies in Beverly Hills, aged 48, the night before the Grammys"],
+    ],
+    liftedUp: [],
+    rooms: ["Limelight"],
+    said: [
+      { episode: "s01e04", who: "James St. James", time: "00:26:59", quote: "It was Whitney Houston. The first time she ever performed in public was at the Limelight. Do you remember that night?" },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:27:34", quote: "Her performance... I remember talking to Clive Davis about it. You can see this girl tonight, she's the greatest thing you'll ever see. She was really great." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:16:39", quote: "Necklaces and earrings, crystals strung on strips of suede. They were quite popular. Whitney Houston wears them in her biggest video, I Wanna Dance with Somebody." },
+    ],
+    wikidata: "https://www.wikidata.org/wiki/Q34389",
+  },
   // Batch 8 (13 Nov 2026). Facts: Wikipedia; Luciano Anselmino: Revolver Warhol Gallery.
   "ethyl-eichelberger": {
     born: "1945",
