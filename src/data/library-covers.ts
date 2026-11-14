@@ -157,7 +157,7 @@ const COVERS: Record<string, Cover> = {
   "More 80s Polaroids (Trey Speegle)": { kind: "book", file: "book-more-80s-polaroids.webp", credit: "Cover via Trey Speegle's RePop Shop (self-published)" },
   "Pop Tart (Cherry Vanilla)": { kind: "book", file: "book-pop-tart.webp", credit: "Pop Tart Compositions (Vanilla Paper, 1974) - dealer's photo (Boo-Hooray)" },
   "Fabulousity": { kind: "book", file: "book-fabulousity.webp", credit: "Wild Life Press, 2013 - cover via IDEA Books" },
-  "Pansy Beat": { kind: "book", file: "mag-pansy-beat.webp", credit: "The 2017 Pansy Beat anthology (Michael Economy) - cover via the Amazon listing" },
+  "Pansy Beat": { kind: "book", file: "mag-pansy-beat.webp", credit: "Pansy Beat 1989-1990, the box-set print (Michael Economy, 2017) - via Printed Matter" },
   "Creem": { kind: "book", file: "mag-creem.webp", credit: "Creem, July 1974 - Wikimedia Commons, public domain" },
   "Punk Magazine": { kind: "book", file: "mag-punk.webp", credit: "Punk no. 1, 1976, cover by John Holmstrom - via Gallery 98" },
   "Melody Maker": { kind: "book", file: "mag-melody-maker.webp", credit: "Melody Maker, 6 October 1973, with Wayne County on the front - a collector's scan via Pinterest" },
