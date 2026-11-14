@@ -93,7 +93,8 @@ export function ClubsShelf() {
           >
             <Link to="/jukebox" search={{ club: c.slug }} className="cc-ticket-main">
               <span className="cc-admit">Admit one · a night at</span>
-              <b>{c.club}</b>
+              {/* Long names get a smaller title so every ticket keeps the same height (Lisa, 14 Nov 2026) */}
+              <b className={c.club.length > 15 ? "cc-long" : undefined}>{c.club}</b>
               <span className="cc-sounded">sounded like this</span>
               <span className="cc-first">
                 {c.songs.slice(0, 3).map((s) => (

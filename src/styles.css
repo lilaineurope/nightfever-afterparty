@@ -623,8 +623,8 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .cc-h2 { margin: 40px 0 4px; font-family: var(--font-flyer); font-size: clamp(26px, 4vw, 40px); text-transform: uppercase; border-bottom: 3px solid var(--color-gold); padding-bottom: 6px; }
 .cc-h2 small { white-space: nowrap; font-family: var(--font-mono-body); font-size: 13px; color: var(--color-pink); margin-left: 8px; }
 .cc-sub { margin: 8px 0 18px; font-size: 14px; color: var(--muted-foreground); max-width: 46rem; }
-.cc-tickets { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 26px; list-style: none; padding: 8px 4px; margin: 0; }
-.cc-ticket { display: grid; grid-template-columns: 1fr 54px; background: var(--color-pink); color: #fff; box-shadow: 6px 7px 0 #111; transition: transform .15s; }
+.cc-tickets { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); grid-auto-rows: 1fr; gap: 26px; list-style: none; padding: 8px 4px; margin: 0; }
+.cc-ticket { display: grid; grid-template-columns: minmax(0, 1fr) 54px; min-width: 0; background: var(--color-pink); color: #fff; box-shadow: 6px 7px 0 #111; transition: transform .15s; }
 .cc-t0 { transform: rotate(-1.5deg); } .cc-t1 { transform: rotate(1deg); background: #111; } .cc-t2 { transform: rotate(-.6deg); }
 .cc-ticket:hover { transform: rotate(0) translateY(-3px); }
 .cc-ticket-main { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 2px dashed rgba(255,255,255,.75); margin: 6px 0 6px 6px; color: #fff; }
@@ -633,6 +633,10 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .cc-sounded { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #f6e06a; }
 .cc-first { display: flex; flex-direction: column; margin-top: 8px; font-size: 13px; }
 .cc-first em { font-style: normal; opacity: .75; }
+/* Every ticket the same height (Lisa, 14 Nov 2026): one line per song, a smaller title for long club names */
+.cc-ticket-main, .cc-first { min-width: 0; max-width: 100%; box-sizing: border-box; }
+.cc-first > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cc-ticket-main b.cc-long { font-size: clamp(22px, 2.4vw, 27px); }
 .cc-play { margin-top: 10px; align-self: flex-start; background: #fff; color: #111; padding: 4px 10px; font-family: var(--font-flyer); font-size: 13px; text-transform: uppercase; }
 .cc-t1 .cc-play { background: var(--color-pink); color: #fff; }
 .cc-stub { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 14px; border-left: 3px dotted rgba(255,255,255,.8); margin: 6px 0; }
