@@ -34,7 +34,7 @@ const CBGB_CREDIT =
 
 const MAXS_CREDIT =
   "Photos: Eden, Janine and Jim, 2008 (header, CC BY 2.0) and Don Rubbo with his sculpture at Max's, 1971 (polaroid, Rubbo, CC BY-SA 3.0), via Wikimedia Commons; our polaroid is CC BY-SA 3.0 too";
-const SOUND_FACTORY_CREDIT = "Photos: Leest3, the same room in its Twilo years (c. 2000), via Wikimedia Commons, public domain";
+const SOUND_FACTORY_CREDIT = "Photos: Leest3, the same room in its Twilo years (c. 2000), via Wikimedia Commons, public domain; our photocopy versions too";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -104,7 +104,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     timelineEvent: "maxs-upstairs",
   },
   // Sound Factory (Lisa, 14 Nov 2026). Facts: Wikipedia "The Sound Factory (nightclub)" and "Junior Vasquez", DJhistory's
-  // "The life and death of the Sound Factory" (checked 14 Nov 2026). Christina Visca's quotes join once S06E02 is on the site.
+  // "The life and death of the Sound Factory" (checked 14 Nov 2026), and co-founder Christina Visca's episode (S06E02).
   "sound-factory": {
     opened: "1989",
     closed: "1995",
@@ -125,9 +125,11 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     said: [
       { episode: "s03e03", who: "Kevin Aviance", time: "00:16:27", quote: "So Sound Factory, you walked in, you paid $20 to get in. There was no guest list." },
       { episode: "s03e03", who: "Kevin Aviance", time: "00:17:16", quote: "Sound Factory had the most incredible music... The songs would last forever and ever, and people would lose their mind." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:04:21", quote: "Sound Factory was home, you know, and it was a home away from home for so many of those kids." },
       { episode: "s01e08", who: 'Luis "Xtravaganza" Camacho', time: "00:54:36", quote: "Our home was, of course, Sound Factory. We were there before Junior even opened it up." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:13:03", quote: "Sound Factory was like, you know, going to church. And what's wrong with being social?" },
     ],
-    portrait: { photo: soundFactoryPhoto, polaroid: soundFactoryPolaroid, focus: "50%", credit: SOUND_FACTORY_CREDIT },
+    portrait: { photo: soundFactoryPhoto, polaroid: soundFactoryPolaroid, focus: "40%", credit: SOUND_FACTORY_CREDIT },
     timelineEvent: "sound-factory",
   },
 };

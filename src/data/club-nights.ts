@@ -916,7 +916,7 @@ const sf: ClubNight = {
     { key: "B", label: "The Ransom Note: a night at the Sound Factory, New York", href: "https://www.theransomnote.com/?p=4708" },
     { key: "C", label: "DJhistory: The life and death of the Sound Factory", href: "https://djhistory.com/read/the-life-and-death-of-the-sound-factory/" },
     { key: "D", label: "Night Fever S03E03 - Kevin Aviance (his show to The Pressure, Junior's flowers, the Basement Boys, 00:17:16)", href: "https://nightfever-afterparty.com/episodes/s03e03" },
-    { key: "E", label: "Night Fever S06E02 - Christina Visca (Grace Jones's Halloween concert, 1989, 00:29:43)", href: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-602" },
+    { key: "E", label: "Night Fever S06E02 - Christina Visca (Grace Jones's Halloween concert, 1989, 00:29:43)", href: "https://nightfever-afterparty.com/episodes/s06e02" },
     { key: "F", label: "Wikipedia: The Sound Factory (nightclub)", href: "https://en.wikipedia.org/wiki/The_Sound_Factory_(nightclub)" },
   ],
   songs: [
