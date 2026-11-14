@@ -15,6 +15,7 @@ import boyBarJukebox from "@/assets/club-tickets/boy-bar-jukebox.webp";
 import nells from "@/assets/club-tickets/nell-s.webp";
 import paradiseGarage from "@/assets/club-tickets/paradise-garage.webp";
 import studio54 from "@/assets/club-tickets/studio-54.webp";
+import cbgb from "@/assets/club-tickets/cbgb.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -33,6 +34,16 @@ export type ClubTicket = {
 };
 
 export const CLUB_TICKETS: Record<string, ClubTicket> = {
+  // CBGB (Lisa, 14 Nov 2026: "one ticket background"): the June 1976 Blondie flyer - CBGB's first wave, and Joey Arias met Debbie there.
+  cbgb: {
+    src: cbgb,
+    w: 800,
+    h: 621,
+    pos: "center 30%",
+    alt: "Hand-lettered flyer with a photo of Debbie Harry: \"Blondie at CBGB's June 17, 18, 19\", 1976",
+    credit: "Blondie at CBGB's flyer, June 1976 - Gallery 98",
+    href: "https://gallery98.org/2020/cbgbs-blondie-flyer-june-17-18-19-1976/",
+  },
   danceteria: {
     src: danceteria,
     alt: "An original Danceteria drink ticket, early 1980s",
