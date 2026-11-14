@@ -562,6 +562,26 @@ import markFleischmanPhoto from "@/assets/people/mark-fleischman-photo.webp";
 import markFleischmanPolaroid from "@/assets/people/mark-fleischman-polaroid.webp";
 import mrBlackwellPhoto from "@/assets/people/mr-blackwell-photo.webp";
 import mrBlackwellPolaroid from "@/assets/people/mr-blackwell-polaroid.webp";
+import julianLennonPhoto from "@/assets/people/julian-lennon-photo.webp";
+import julianLennonPolaroid from "@/assets/people/julian-lennon-polaroid.webp";
+import kariWuhrerPhoto from "@/assets/people/kari-wuhrer-photo.webp";
+import kariWuhrerPolaroid from "@/assets/people/kari-wuhrer-polaroid.webp";
+import kathyHiltonPhoto from "@/assets/people/kathy-hilton-photo.webp";
+import kathyHiltonPolaroid from "@/assets/people/kathy-hilton-polaroid.webp";
+import kimKardashianPhoto from "@/assets/people/kim-kardashian-photo.webp";
+import kimKardashianPolaroid from "@/assets/people/kim-kardashian-polaroid.webp";
+import louReedPhoto from "@/assets/people/lou-reed-photo.webp";
+import louReedPolaroid from "@/assets/people/lou-reed-polaroid.webp";
+import marcelDuchampPhoto from "@/assets/people/marcel-duchamp-photo.webp";
+import marcelDuchampPolaroid from "@/assets/people/marcel-duchamp-polaroid.webp";
+import markWahlbergPhoto from "@/assets/people/mark-wahlberg-photo.webp";
+import markWahlbergPolaroid from "@/assets/people/mark-wahlberg-polaroid.webp";
+import meatLoafPhoto from "@/assets/people/meat-loaf-photo.webp";
+import meatLoafPolaroid from "@/assets/people/meat-loaf-polaroid.webp";
+import michaelStipePhoto from "@/assets/people/michael-stipe-photo.webp";
+import michaelStipePolaroid from "@/assets/people/michael-stipe-polaroid.webp";
+import mickJaggerPhoto from "@/assets/people/mick-jagger-photo.webp";
+import mickJaggerPolaroid from "@/assets/people/mick-jagger-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -856,4 +876,14 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "laurie-pike": { photo: lauriePikePhoto, polaroid: lauriePikePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "mark-fleischman": { photo: markFleischmanPhoto, polaroid: markFleischmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "mr-blackwell": { photo: mrBlackwellPhoto, polaroid: mrBlackwellPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "julian-lennon": { photo: julianLennonPhoto, polaroid: julianLennonPolaroid, focus: "28%", credit: "Portrait after a photo by Deborah Anderson, 2013 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "kari-wuhrer": { photo: kariWuhrerPhoto, polaroid: kariWuhrerPolaroid, focus: "28%", credit: "Portrait after a photo by Rob DiCaterino, 2014 (CC BY 2.0), in our photocopy style" },
+  "kathy-hilton": { photo: kathyHiltonPhoto, polaroid: kathyHiltonPolaroid, focus: "28%", credit: "Portrait after a photo by Glenn Francis, 2008 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "kim-kardashian": { photo: kimKardashianPhoto, polaroid: kimKardashianPolaroid, focus: "28%", credit: "Portrait after a photo by Luke Ford, 2007 (CC BY-SA 2.5; our version is CC BY-SA 2.5 too), in our photocopy style" },
+  "lou-reed": { photo: louReedPhoto, polaroid: louReedPolaroid, focus: "28%", credit: "Portrait after a photo by Arista Records / Mick Rock, 1977 (public domain), in our photocopy style" },
+  "marcel-duchamp": { photo: marcelDuchampPhoto, polaroid: marcelDuchampPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer (public domain), in our photocopy style" },
+  "mark-wahlberg": { photo: markWahlbergPhoto, polaroid: markWahlbergPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2011 (CC BY 3.0), in our photocopy style" },
+  "meat-loaf": { photo: meatLoafPhoto, polaroid: meatLoafPolaroid, focus: "28%", credit: "Portrait after a photo by christopher simon, 2009 (CC BY 2.0), in our photocopy style" },
+  "michael-stipe": { photo: michaelStipePhoto, polaroid: michaelStipePolaroid, focus: "28%", credit: "Portrait after a photo by Kris Krug, 2008 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "mick-jagger": { photo: mickJaggerPhoto, polaroid: mickJaggerPolaroid, focus: "28%", credit: "Portrait after a photo by Jens-Kristian Søgaard, 1973 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
 };
