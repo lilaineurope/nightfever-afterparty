@@ -181,8 +181,8 @@ function TermsPage() {
             <p>
               The book, magazine and newspaper covers and article pages in the Library belong to their publishers and
               artists; they are shown small, only so you can recognise each
-              title, and come from the Open Library catalogue, from public archives, galleries and booksellers that show them, or from photos in dealers' listings (each source named on its card). The magazine and
-              newspaper mastheads are logos from Wikimedia Commons
+              title, and come from the Open Library catalogue, from public archives, the magazines' own archives, galleries and booksellers that show them, or from photos in dealers' listings and collectors' posts (each source named on its card). The magazine and
+              newspaper mastheads are logos from Wikimedia Commons (World of Wonder's from its own site)
               and remain the trademarks of their titles. Owners who would rather
               not see their cover here can ask for it to come down (section 6). The same goes for the photos of original club tickets on Inside the Clubs and the Jukebox club nights: they belong to the clubs' designers and the collections that show them, are shown small for identification, name their source, and come down on request.
             </p>
