@@ -26,7 +26,7 @@ export type ClubProfile = {
 };
 
 const CBGB_CREDIT =
-  "Photos: Adam Di Carlo, 2005 (header) and Romanontheprowl, 16 Oct 2006 (polaroid), via Wikimedia Commons, CC BY-SA 3.0; our versions are CC BY-SA 3.0 too";
+  "Photo: Adam Di Carlo, 2005, via Wikimedia Commons, CC BY-SA 3.0 (our version is CC BY-SA 3.0 too). Polaroid: The Erasers at CBGB flyer, May 1977 - Gallery 98";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
