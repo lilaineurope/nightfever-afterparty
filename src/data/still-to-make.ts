@@ -248,4 +248,13 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     status: "Not yet - her life is told in her memoir Lick Me; no film or series has been released.",
     source: { label: "Lick Me", card: "lick-me-how-i-became-cherry-vanilla" },
   },
+  {
+    title: "David's Friend as a feature film",
+    why: "Nora has more or less finished with her stage show about her best friend David Burns unless a producer comes along, and says there should be a feature film version - though she adds that films about the 80s and disco never quite translate.",
+    episodeId: "s06e05",
+    time: "00:40:41",
+    made: "not yet",
+    status: "Not yet - David's Friend has only been staged (in rep with The Village! and taped before the pandemic); no film announced.",
+    source: { label: "David's Friend", card: "david-s-friend" },
+  },
 ];

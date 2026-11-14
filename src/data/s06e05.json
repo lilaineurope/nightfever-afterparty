@@ -12,7 +12,7 @@
  },
  {
   "rank": 2,
-  "mentions": 21,
+  "mentions": 22,
   "category": "Location",
   "name": "New York",
   "heard": "New York",
@@ -84,7 +84,7 @@
   "heard": "Patasa",
   "time": "00:16:03",
   "context": "One of the It Girls of Studio 54, a trans model who worked for Stephen Burrows, James says; Nora remembers whole evenings spent asking whether Potassa was coming",
-  "link": "https://en.wikipedia.org/wiki/Potassa_de_la_Fayette",
+  "link": "https://www.google.com/search?q=Potassa+de+la+Fayette+Studio+54+model",
   "status": "Confirmed"
  },
  {
@@ -139,7 +139,7 @@
   "heard": "diaries / my diary",
   "time": "00:03:10",
   "context": "The diaries Nora kept for a couple of years after moving to New York in 1979; she sent some to James and reads entries on air - Mudd Club, Xenon, Magique, Bond's, the Roxy - and in one, from 1980, the scene already feels over",
-  "link": "",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Not found online"
  },
  {
@@ -438,7 +438,7 @@
   "heard": "Ninth Circle / night circle",
   "time": "00:27:09",
   "context": "Nora and David's neighbourhood bar on West 10th Street, with an amazing jukebox; pool tables downstairs, and upstairs Patrick McMullan, Danny Fields, Tom Ford and all their friends",
-  "link": "https://en.wikipedia.org/wiki/Ninth_Circle",
+  "link": "https://www.google.com/search?q=Ninth+Circle+bar+West+10th+Street+New+York",
   "status": "Confirmed"
  },
  {
@@ -449,7 +449,7 @@
   "heard": "Julius",
   "time": "00:27:38",
   "context": "Down the street from the Ninth Circle - an old man's bar then, Nora says, now one of the last old-school gay bars",
-  "link": "https://en.wikipedia.org/wiki/Julius%27",
+  "link": "https://en.wikipedia.org/wiki/Julius_(restaurant)",
   "status": "Confirmed"
  },
  {
@@ -561,6 +561,17 @@
  {
   "rank": 50,
   "mentions": 2,
+  "category": "Location",
+  "name": "London",
+  "heard": "London",
+  "time": "00:09:34",
+  "context": "Fenton and Randy took New York public access to London, Nora says - they'd never seen anything like it",
+  "link": "https://en.wikipedia.org/wiki/London",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 51,
+  "mentions": 2,
   "category": "Club",
   "name": "12-70 (Boston)",
   "heard": "the 1270 / the 12th",
@@ -570,7 +581,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 51,
+  "rank": 52,
   "mentions": 2,
   "category": "Location",
   "name": "Back Bay Fens",
@@ -581,18 +592,29 @@
   "status": "Confirmed"
  },
  {
-  "rank": 52,
+  "rank": 53,
   "mentions": 2,
   "category": "Event",
   "name": "Floating opium den party",
   "heard": "a floating opium den",
   "time": "00:20:06",
   "context": "As Nora tells it, a party she and friends threw in a floating opium den in an abandoned building run by the mob; at 18 they ended up riding in a limousine picking up drag queens while the drops were made",
-  "link": "",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Not found online"
  },
  {
-  "rank": 53,
+  "rank": 54,
+  "mentions": 2,
+  "category": "Location",
+  "name": "10th Street",
+  "heard": "West 10th Street / near 10th",
+  "time": "00:23:34",
+  "context": "The Ninth Circle was on West 10th Street, down the street from Julius'",
+  "link": "https://en.wikipedia.org/wiki/10th_Street_(Manhattan)",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 55,
   "mentions": 2,
   "category": "Club",
   "name": "Show Palace",
@@ -603,18 +625,18 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 54,
+  "rank": 56,
   "mentions": 2,
   "category": "Club",
   "name": "Pussycat Lounge",
   "heard": "the Pussycat",
   "time": "00:24:59",
   "context": "The strip club down by Wall Street where Nora ended up working; its owner's friends were starting Strippergram",
-  "link": "https://en.wikipedia.org/wiki/Pussycat_Lounge",
+  "link": "https://www.google.com/search?q=Pussycat+Lounge+Greenwich+Street+New+York+strip+club",
   "status": "Confirmed"
  },
  {
-  "rank": 55,
+  "rank": 57,
   "mentions": 2,
   "category": "Person",
   "name": "Elton John",
@@ -625,7 +647,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 56,
+  "rank": 58,
   "mentions": 2,
   "category": "Person",
   "name": "Rod Stewart",
@@ -636,7 +658,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 57,
+  "rank": 59,
   "mentions": 2,
   "category": "Location",
   "name": "East Village",
@@ -647,7 +669,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 58,
+  "rank": 60,
   "mentions": 2,
   "category": "Location",
   "name": "West Village",
@@ -658,7 +680,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 59,
+  "rank": 61,
   "mentions": 2,
   "category": "Location",
   "name": "Upstate New York",
@@ -669,7 +691,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 60,
+  "rank": 62,
   "mentions": 2,
   "category": "Person",
   "name": "Joey Arias",
@@ -680,7 +702,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 61,
+  "rank": 63,
   "mentions": 2,
   "category": "Location",
   "name": "Fales Library",
@@ -691,7 +713,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 62,
+  "rank": 64,
   "mentions": 2,
   "category": "Event",
   "name": "Candy Camera revival",
@@ -702,7 +724,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 63,
+  "rank": 65,
   "mentions": 2,
   "category": "Person",
   "name": "Sandra Bernhard",
@@ -713,7 +735,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 64,
+  "rank": 66,
   "mentions": 2,
   "category": "Person",
   "name": "Robin Byrd",
@@ -724,7 +746,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 65,
+  "rank": 67,
   "mentions": 2,
   "category": "Person",
   "name": "Calvin Klein",
@@ -735,7 +757,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 66,
+  "rank": 68,
   "mentions": 2,
   "category": "Book",
   "name": "Our Town",
@@ -746,7 +768,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 67,
+  "rank": 69,
   "mentions": 2,
   "category": "Person",
   "name": "John Cantwell",
@@ -757,7 +779,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 68,
+  "rank": 70,
   "mentions": 2,
   "category": "Location",
   "name": "Los Angeles",
@@ -768,7 +790,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 69,
+  "rank": 71,
   "mentions": 2,
   "category": "Person",
   "name": "David Ilku",
@@ -779,7 +801,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 70,
+  "rank": 72,
   "mentions": 2,
   "category": "Organisation",
   "name": "ChatGPT",
@@ -790,7 +812,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 71,
+  "rank": 73,
   "mentions": 1,
   "category": "Person",
   "name": "Dianne Brill",
@@ -801,7 +823,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 72,
+  "rank": 74,
   "mentions": 1,
   "category": "Organisation",
   "name": "Facebook",
@@ -812,7 +834,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 73,
+  "rank": 75,
   "mentions": 1,
   "category": "Location",
   "name": "Meatpacking District",
@@ -823,18 +845,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 74,
+  "rank": 76,
   "mentions": 1,
   "category": "Person",
   "name": "Craig Russell",
   "heard": "Craig Russell",
   "time": "00:05:05",
   "context": "The female impersonator 'did the town' with Nora's crowd in one 1980 diary entry",
-  "link": "https://en.wikipedia.org/wiki/Craig_Russell_(actor)",
+  "link": "https://en.wikipedia.org/wiki/Craig_Russell_(Canadian_actor)",
   "status": "Confirmed"
  },
  {
-  "rank": 75,
+  "rank": 77,
   "mentions": 1,
   "category": "Person",
   "name": "Brooke Shields",
@@ -845,7 +867,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 76,
+  "rank": 78,
   "mentions": 1,
   "category": "Club",
   "name": "Roxy",
@@ -856,7 +878,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 77,
+  "rank": 79,
   "mentions": 1,
   "category": "Mood",
   "name": "Space outfit at the roller disco",
@@ -874,7 +896,7 @@
   ]
  },
  {
-  "rank": 78,
+  "rank": 80,
   "mentions": 1,
   "category": "Club",
   "name": "Danceteria",
@@ -885,7 +907,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 79,
+  "rank": 81,
   "mentions": 1,
   "category": "Person",
   "name": "Peppo Vanini",
@@ -896,18 +918,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 80,
+  "rank": 82,
   "mentions": 1,
   "category": "Location",
   "name": "Boston Howard Johnson's rooftop",
   "heard": "the top of a Howard Johnson's",
   "time": "00:10:12",
   "context": "The first 'gay disco' Nora and her friend Francis found at 7 p.m. - not it",
-  "link": "",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Not found online"
  },
  {
-  "rank": 81,
+  "rank": 83,
   "mentions": 1,
   "category": "Club",
   "name": "Boston Boston",
@@ -918,7 +940,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 82,
+  "rank": 84,
   "mentions": 1,
   "category": "Location",
   "name": "Cambridge, Massachusetts",
@@ -929,7 +951,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 83,
+  "rank": 85,
   "mentions": 1,
   "category": "Location",
   "name": "School of the Museum of Fine Arts, Boston",
@@ -940,7 +962,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 84,
+  "rank": 86,
   "mentions": 1,
   "category": "Event",
   "name": "Drag Aid",
@@ -951,7 +973,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 85,
+  "rank": 87,
   "mentions": 1,
   "category": "Club",
   "name": "Palladium",
@@ -962,7 +984,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 86,
+  "rank": 88,
   "mentions": 1,
   "category": "Club",
   "name": "Limelight",
@@ -973,7 +995,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 87,
+  "rank": 89,
   "mentions": 1,
   "category": "Club",
   "name": "Area",
@@ -984,7 +1006,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 88,
+  "rank": 90,
   "mentions": 1,
   "category": "Person",
   "name": "Martin Burgoyne",
@@ -995,7 +1017,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 89,
+  "rank": 91,
   "mentions": 1,
   "category": "Person",
   "name": "Michael Schmidt",
@@ -1006,7 +1028,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 90,
+  "rank": 92,
   "mentions": 1,
   "category": "Mood",
   "name": "Richie's punk-rock drag",
@@ -1024,7 +1046,7 @@
   ]
  },
  {
-  "rank": 91,
+  "rank": 93,
   "mentions": 1,
   "category": "Person",
   "name": "Stephen Burrows",
@@ -1035,7 +1057,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 92,
+  "rank": 94,
   "mentions": 1,
   "category": "Club",
   "name": "New York, New York",
@@ -1046,18 +1068,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 93,
+  "rank": 95,
   "mentions": 1,
   "category": "Event",
   "name": "Nora's first night at Studio 54",
   "heard": "this limousine pulled up ... hop in",
   "time": "00:17:43",
   "context": "As Nora tells it, she and David stood on the corner strategising when a limo driver said hop in, drove them round to the front, held up two fingers and the crowd parted. Mark Benecke and Myra later told her on the radio it never happened - she says it did",
-  "link": "",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Confirmed"
  },
  {
-  "rank": 94,
+  "rank": 96,
   "mentions": 1,
   "category": "Mood",
   "name": "The limo driver's two fingers",
@@ -1074,7 +1096,7 @@
   ]
  },
  {
-  "rank": 95,
+  "rank": 97,
   "mentions": 1,
   "category": "Organisation",
   "name": "Studio 54 Radio",
@@ -1085,7 +1107,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 96,
+  "rank": 98,
   "mentions": 1,
   "category": "Location",
   "name": "Barnard College",
@@ -1096,7 +1118,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 97,
+  "rank": 99,
   "mentions": 1,
   "category": "Film",
   "name": "Downtown 81",
@@ -1107,7 +1129,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 98,
+  "rank": 100,
   "mentions": 1,
   "category": "Location",
   "name": "Harlem",
@@ -1118,7 +1140,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 99,
+  "rank": 101,
   "mentions": 1,
   "category": "Person",
   "name": "Bobby Bradley",
@@ -1129,7 +1151,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 100,
+  "rank": 102,
   "mentions": 1,
   "category": "Location",
   "name": "Thompson Street",
@@ -1140,7 +1162,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 101,
+  "rank": 103,
   "mentions": 1,
   "category": "Person",
   "name": "Perfidia",
@@ -1151,7 +1173,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 102,
+  "rank": 104,
   "mentions": 1,
   "category": "Person",
   "name": "International Chrysis",
@@ -1162,7 +1184,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 103,
+  "rank": 105,
   "mentions": 1,
   "category": "Person",
   "name": "Susanne Bartsch",
@@ -1173,7 +1195,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 104,
+  "rank": 106,
   "mentions": 1,
   "category": "Mood",
   "name": "Feathers and sequins in the hallway",
@@ -1191,7 +1213,18 @@
   ]
  },
  {
-  "rank": 105,
+  "rank": 107,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Houston Street",
+  "heard": "right off Houston",
+  "time": "00:23:37",
+  "context": "James's Thompson Street building was right off Houston",
+  "link": "https://en.wikipedia.org/wiki/Houston_Street",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 108,
   "mentions": 1,
   "category": "Person",
   "name": "Cookie Mueller",
@@ -1202,7 +1235,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 106,
+  "rank": 109,
   "mentions": 1,
   "category": "Location",
   "name": "Times Square",
@@ -1213,7 +1246,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 107,
+  "rank": 110,
   "mentions": 1,
   "category": "Location",
   "name": "Upper East Side",
@@ -1224,7 +1257,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 108,
+  "rank": 111,
   "mentions": 1,
   "category": "Person",
   "name": "Stephen Saban",
@@ -1235,7 +1268,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 109,
+  "rank": 112,
   "mentions": 1,
   "category": "Club",
   "name": "Billy's Topless",
@@ -1246,7 +1279,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 110,
+  "rank": 113,
   "mentions": 1,
   "category": "Mood",
   "name": "Strippergram job interview",
@@ -1264,7 +1297,7 @@
   ]
  },
  {
-  "rank": 111,
+  "rank": 114,
   "mentions": 1,
   "category": "Club",
   "name": "Rounds",
@@ -1275,18 +1308,18 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 112,
+  "rank": 115,
   "mentions": 1,
   "category": "Club",
   "name": "The Monster",
   "heard": "the monster",
   "time": "00:27:44",
   "context": "The other old-school gay bar still left, Nora says",
-  "link": "https://en.wikipedia.org/wiki/The_Monster_(bar)",
+  "link": "https://www.google.com/search?q=The+Monster+bar+Sheridan+Square+New+York",
   "status": "Confirmed"
  },
  {
-  "rank": 113,
+  "rank": 116,
   "mentions": 1,
   "category": "Person",
   "name": "Danny Fields",
@@ -1297,7 +1330,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 114,
+  "rank": 117,
   "mentions": 1,
   "category": "Person",
   "name": "Tom Ford",
@@ -1308,7 +1341,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 115,
+  "rank": 118,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Park Avenue",
+  "heard": "Park Avenue",
+  "time": "00:30:22",
+  "context": "Nora waitressed at a restaurant there after college, while David moved into the East Village scene",
+  "link": "https://en.wikipedia.org/wiki/Park_Avenue",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 119,
   "mentions": 1,
   "category": "Person",
   "name": "Hapi Phace",
@@ -1319,7 +1363,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 116,
+  "rank": 120,
   "mentions": 1,
   "category": "Person",
   "name": "Anita Sarko",
@@ -1330,7 +1374,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 117,
+  "rank": 121,
   "mentions": 1,
   "category": "Event",
   "name": "New York Stories nights",
@@ -1341,7 +1385,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 118,
+  "rank": 122,
   "mentions": 1,
   "category": "Publication",
   "name": "The New York Times",
@@ -1352,7 +1396,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 119,
+  "rank": 123,
   "mentions": 1,
   "category": "Person",
   "name": "Joe Westmoreland",
@@ -1363,7 +1407,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 120,
+  "rank": 124,
   "mentions": 1,
   "category": "Book",
   "name": "Tramps Like Us (Joe Westmoreland)",
@@ -1374,7 +1418,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 121,
+  "rank": 125,
   "mentions": 1,
   "category": "Person",
   "name": "Charles Atlas",
@@ -1385,7 +1429,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 122,
+  "rank": 126,
   "mentions": 1,
   "category": "Location",
   "name": "West Side Highway",
@@ -1396,7 +1440,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 123,
+  "rank": 127,
   "mentions": 1,
   "category": "Club",
   "name": "The Tunnel",
@@ -1407,7 +1451,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 124,
+  "rank": 128,
   "mentions": 1,
   "category": "Mood",
   "name": "Dancing on the lip of a volcano",
@@ -1424,7 +1468,7 @@
   ]
  },
  {
-  "rank": 125,
+  "rank": 129,
   "mentions": 1,
   "category": "Person",
   "name": "Donald Trump",
@@ -1435,7 +1479,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 126,
+  "rank": 130,
   "mentions": 1,
   "category": "Location",
   "name": "California",
@@ -1446,7 +1490,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 127,
+  "rank": 131,
   "mentions": 1,
   "category": "Film",
   "name": "Party Monster (2003)",
@@ -1457,7 +1501,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 128,
+  "rank": 132,
   "mentions": 1,
   "category": "Mood",
   "name": "Lou Maletta's leather",
@@ -1474,7 +1518,18 @@
   ]
  },
  {
-  "rank": 129,
+  "rank": 133,
+  "mentions": 1,
+  "category": "Location",
+  "name": "Germany",
+  "heard": "Germany",
+  "time": "00:45:39",
+  "context": "One of the themes of Candy Camera, alongside domination",
+  "link": "https://en.wikipedia.org/wiki/Germany",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 134,
   "mentions": 1,
   "category": "Person",
   "name": "Matthew (Boy Bar)",
@@ -1485,7 +1540,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 130,
+  "rank": 135,
   "mentions": 1,
   "category": "Person",
   "name": "RuPaul",
@@ -1496,7 +1551,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 131,
+  "rank": 136,
   "mentions": 1,
   "category": "Person",
   "name": "Charles Busch",
@@ -1507,7 +1562,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 132,
+  "rank": 137,
   "mentions": 1,
   "category": "Person",
   "name": "Jennifer Coolidge",
@@ -1518,7 +1573,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 133,
+  "rank": 138,
   "mentions": 1,
   "category": "Person",
   "name": "Julie Halston",
@@ -1529,7 +1584,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 134,
+  "rank": 139,
   "mentions": 1,
   "category": "TV",
   "name": "Gay USA",
@@ -1540,7 +1595,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 135,
+  "rank": 140,
   "mentions": 1,
   "category": "Person",
   "name": "Ann Northrop",
@@ -1551,7 +1606,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 136,
+  "rank": 141,
   "mentions": 1,
   "category": "Organisation",
   "name": "Vimeo",
@@ -1562,7 +1617,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 137,
+  "rank": 142,
   "mentions": 1,
   "category": "Location",
   "name": "La MaMa",
@@ -1573,7 +1628,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 138,
+  "rank": 143,
   "mentions": 1,
   "category": "Club",
   "name": "Cavern Club",
@@ -1584,7 +1639,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 139,
+  "rank": 144,
   "mentions": 1,
   "category": "Location",
   "name": "Casita del Campo",
@@ -1595,7 +1650,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 140,
+  "rank": 145,
   "mentions": 1,
   "category": "TV",
   "name": "Manhattan Cable",
@@ -1606,7 +1661,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 141,
+  "rank": 146,
+  "mentions": 1,
+  "category": "Organisation",
+  "name": "YouTube",
+  "heard": "YouTube",
+  "time": "00:49:55",
+  "context": "Fenton: public access was kind of like YouTube - random nuttiness of people needing to perform",
+  "link": "https://en.wikipedia.org/wiki/YouTube",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 147,
   "mentions": 1,
   "category": "Event",
   "name": "Sundance Film Festival",
@@ -1617,7 +1683,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 142,
+  "rank": 148,
   "mentions": 1,
   "category": "Person",
   "name": "Al Goldstein",
@@ -1628,7 +1694,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 143,
+  "rank": 149,
   "mentions": 1,
   "category": "Organisation",
   "name": "HBO",
@@ -1639,7 +1705,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 144,
+  "rank": 150,
   "mentions": 1,
   "category": "Film",
   "name": "Calvin Klein documentary",
@@ -1650,7 +1716,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 145,
+  "rank": 151,
   "mentions": 1,
   "category": "Location",
   "name": "Dixon Place",
@@ -1661,7 +1727,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 146,
+  "rank": 152,
   "mentions": 1,
   "category": "Location",
   "name": "SoHo Playhouse",
@@ -1672,18 +1738,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 147,
+  "rank": 153,
   "mentions": 1,
   "category": "Location",
   "name": "World of Wonder storefront (Hollywood Boulevard)",
   "heard": "the window on Hollywood Boulevard",
   "time": "00:53:56",
   "context": "Nora was on WOW's last radio show 'in the window' before COVID, talking about David's Friend",
-  "link": "",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Confirmed"
  },
  {
-  "rank": 148,
+  "rank": 154,
   "mentions": 1,
   "category": "Location",
   "name": "Bedford-Stuyvesant",
@@ -1694,7 +1760,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 149,
+  "rank": 155,
   "mentions": 1,
   "category": "Location",
   "name": "Joe's Pub",
@@ -1705,7 +1771,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 150,
+  "rank": 156,
   "mentions": 1,
   "category": "Person",
   "name": "Terrence Michael",
@@ -1716,7 +1782,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 151,
+  "rank": 157,
   "mentions": 1,
   "category": "Event",
   "name": "Denim on Denim",
@@ -1727,7 +1793,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 152,
+  "rank": 158,
   "mentions": 1,
   "category": "Person",
   "name": "Linda Simpson",
@@ -1738,7 +1804,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 153,
+  "rank": 159,
   "mentions": 1,
   "category": "Location",
   "name": "The Odeon",
@@ -1749,7 +1815,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 154,
+  "rank": 160,
   "mentions": 1,
   "category": "Person",
   "name": "Bianca Jagger",
@@ -1760,7 +1826,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 155,
+  "rank": 161,
   "mentions": 1,
   "category": "Location",
   "name": "Maui",
@@ -1771,7 +1837,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 156,
+  "rank": 162,
   "mentions": 1,
   "category": "Person",
   "name": "Varla Jean Merman",
@@ -1782,18 +1848,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 157,
+  "rank": 163,
   "mentions": 1,
   "category": "Person",
   "name": "Coco Peru",
   "heard": "Coco Prue",
   "time": "00:56:55",
   "context": "Also performed in Maui and stayed with the family",
-  "link": "https://en.wikipedia.org/wiki/Coco_Peru",
+  "link": "https://en.wikipedia.org/wiki/Miss_Coco_Peru",
   "status": "Confirmed"
  },
  {
-  "rank": 158,
+  "rank": 164,
   "mentions": 1,
   "category": "Person",
   "name": "Dina Martina",
@@ -1804,18 +1870,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 159,
+  "rank": 165,
   "mentions": 1,
   "category": "Event",
   "name": "Retro Retouch (Unitard sketch)",
   "heard": "retro retouch",
   "time": "00:57:32",
   "context": "Nora's Unitard sketch about friends who can't stop talking about the 70s and 80s: Mike zaps them back and they're the cockroaches complaining someone stole the stereo",
-  "link": "",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Not found online"
  },
  {
-  "rank": 160,
+  "rank": 166,
   "mentions": 0,
   "category": "Mood",
   "name": "Nora's on-camera look (S06E05)",
@@ -1834,7 +1900,7 @@
   ]
  },
  {
-  "rank": 161,
+  "rank": 167,
   "mentions": 0,
   "category": "Mood",
   "name": "James's on-camera look (S06E05)",
@@ -1853,7 +1919,7 @@
   ]
  },
  {
-  "rank": 162,
+  "rank": 168,
   "mentions": 0,
   "category": "Mood",
   "name": "Fenton's on-camera look (S06E05)",
@@ -1872,7 +1938,7 @@
   ]
  },
  {
-  "rank": 163,
+  "rank": 169,
   "mentions": 0,
   "category": "Mood",
   "name": "Randy's on-camera look (S06E05)",

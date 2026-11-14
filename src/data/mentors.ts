@@ -100,6 +100,7 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Andy Warhol", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:39:47", line: "Saw her in World, then gave her the Brigid part in Pork's London run after she sang him a Catholic school hymn" },
   { mentor: "Peter Gatien", mentee: "Christina Visca", episode: "s06e02", time: "00:11:59", line: "Tapped Christina on the shoulder outside the Limelight and told her she should give parties in his club; she later managed Club USA and the Tunnel for him" },
   { mentor: "Christina Visca", mentee: "Junior Vasquez", episode: "s06e02", time: "00:19:10", line: "Gave the aspiring DJ his chance at her party the Space after the Garage closed; from then on, she says, they never separated" },
+  { mentor: "Lou Maletta", mentee: "Nora Burns", episode: "s06e05", time: "00:44:05", line: "Gave Nora her own public-access show, Candy Camera - made for free in his studio with his crew, every two weeks from about 1992 to 1996" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
