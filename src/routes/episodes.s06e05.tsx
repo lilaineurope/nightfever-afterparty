@@ -13,9 +13,9 @@ export const Route = createFileRoute("/episodes/s06e05")({
       id="s06e05"
       refs={refs}
       title="Nora Burns"
-      subtitle="Writer, performer and comedian · Unitard and the Nellie Olesons · Host of Candy Camera · David's Friend and The Village!"
+      subtitle="Writer, performer and comedian · Unitard and the Nellie Olesons · Host of Candied Camera · David's Friend and The Village!"
       released="Released 16 Sep 2026 · 59:01 as a podcast"
-      blurb="Nora Burns on her 1980 diaries, Studio 54 by limo, David Burns, strippergrams, her cable show Candy Camera and the disco musical The Village!"
+      blurb="Nora Burns on her 1980 diaries, Studio 54 by limo, David Burns, strippergrams, her cable show Candied Camera and the disco musical The Village!"
     />
   ),
 });

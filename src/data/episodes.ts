@@ -941,7 +941,7 @@ const s06e05: Episode = {
   runtime: "59:01",
   afterpartyPublished: "2026-11-21",
   blurb:
-    "Nora Burns on her 1980 diaries, Studio 54 by limo, David Burns, strippergrams, her cable show Candy Camera and the disco musical The Village!",
+    "Nora Burns on her 1980 diaries, Studio 54 by limo, David Burns, strippergrams, her cable show Candied Camera and the disco musical The Village!",
   references: burnsRefs.length,
   mentions: burnsRefs.reduce((sum, ref) => sum + ref.mentions, 0),
   top: topNames(burnsRefs).map(({ name, mentions }) => ({ name, mentions })),
