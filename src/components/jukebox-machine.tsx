@@ -1022,8 +1022,9 @@ function ClubNightPanel({ night }: { night: ClubNight }) {
         <p className="jbx-np dark">SOUNDED LIKE THIS</p>
         <p className="jbx-ep-note">{night.note}</p>
         <div className="jbx-ep-links jbx-ep-top">
-          <Link {...cardTo(night.slug)}>
-            {night.club} on A–Z →
+          {/* "Read more" (Lisa, 14 Nov 2026) for every club night, instead of "<Club> on A–Z" */}
+          <Link {...cardTo(night.slug)} aria-label={`Read more about ${night.club}`}>
+            Read more →
           </Link>
           <ShareButton className="jbx-share" path={`/jukebox?club=${night.slug}`} title={`A night at ${night.club} sounded like this – Night Fever Jukebox`} />
         </div>
