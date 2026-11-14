@@ -193,6 +193,7 @@ export const YEARS: Record<string, number> = {
   "Liza Minnelli – 'Losing My Mind'": 1989,
   "Madonna – 'Borderline'": 1984,
   "Madonna – 'Lucky Star'": 1983,
+  "Madonna – 'Confessions on a Dance Floor'": 2005,
   "Madonna – 'Into the Groove'": 1985,
   "Acid house": 1987,
   "Richard Hell and the Voidoids": 1976,

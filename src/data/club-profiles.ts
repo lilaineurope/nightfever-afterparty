@@ -30,7 +30,7 @@ export type ClubProfile = {
 };
 
 const CBGB_CREDIT =
-  "Photos: Adam Di Carlo, 2005 (header) and Romanontheprowl, 16 Oct 2006 (polaroid), via Wikimedia Commons, CC BY-SA 3.0; our versions are CC BY-SA 3.0 too";
+  "Photo: Adam Di Carlo, 2005, via Wikimedia Commons, CC BY-SA 3.0 (our version is CC BY-SA 3.0 too). Polaroid: The Erasers at CBGB flyer, May 1977 - Gallery 98";
 
 const MAXS_CREDIT =
   "Photos: Eden, Janine and Jim, 2008 (header, CC BY 2.0) and Don Rubbo with his sculpture at Max's, 1971 (polaroid, Rubbo, CC BY-SA 3.0), via Wikimedia Commons; our polaroid is CC BY-SA 3.0 too";

@@ -141,6 +141,7 @@ export const YOUTUBE: Record<string, string> = {
   "Madonna – 'Burning Up'": "pufec0Hps00",
   "Madonna – 'Holiday'": "ltSpd7Rh_sM",
   "Madonna – 'Lucky Star'": "ThHz9wlBeLU",
+  "Madonna – 'Confessions on a Dance Floor'": "EDwb9jOVRtU",
   "Madonna – 'Into the Groove'": "52iW3lcpK5M",
   "Acid house": "igNBeo3QSqc",
   "Mumps (band)": "0AKoeyfjBRQ", // "Anyone But You", Lance Loud singing (Lisa, 6 Nov 2026)

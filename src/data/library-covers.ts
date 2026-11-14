@@ -152,6 +152,26 @@ const COVERS: Record<string, Cover> = {
   "Visionaire": { kind: "mast", file: "mast-visionaire.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Vogue Italia": { kind: "mast", file: "mast-vogue-italia.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Wallpaper": { kind: "mast", file: "mast-wallpaper.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  // Round 4 (14 Nov 2026): the last typed covers checked again - Lisa: "picks" from the 14 Nov contact sheet.
+  "80s Polaroids (Trey Speegle)": { kind: "book", file: "book-80s-polaroids.webp", credit: "Cover via Trey Speegle's RePop Shop (self-published, 2021)" },
+  "More 80s Polaroids (Trey Speegle)": { kind: "book", file: "book-more-80s-polaroids.webp", credit: "Cover via Trey Speegle's RePop Shop (self-published)" },
+  "Pop Tart (Cherry Vanilla)": { kind: "book", file: "book-pop-tart.webp", credit: "Pop Tart Compositions (Vanilla Paper, 1974) - dealer's photo (Boo-Hooray)" },
+  "Fabulousity": { kind: "book", file: "book-fabulousity.webp", credit: "Wild Life Press, 2013 - cover via IDEA Books" },
+  "Pansy Beat": { kind: "book", file: "mag-pansy-beat.webp", credit: "Pansy Beat 1989-1990, the box-set print (Michael Economy, 2017) - via Printed Matter" },
+  "Creem": { kind: "book", file: "mag-creem.webp", credit: "Creem, July 1974 - Wikimedia Commons, public domain" },
+  "Punk Magazine": { kind: "book", file: "mag-punk.webp", credit: "Punk no. 1, 1976, cover by John Holmstrom - via Gallery 98" },
+  "Melody Maker": { kind: "book", file: "mag-melody-maker.webp", credit: "Melody Maker, 6 October 1973, with Wayne County on the front - a collector's scan via Pinterest" },
+  "HX Magazine": { kind: "book", file: "mag-hx.webp", credit: "HX no. 772, 23 June 2006 (Kevin Aviance) - via HX's own Instagram archive, @homoxtra" },
+  "Blueboy": { kind: "book", file: "mag-blueboy.webp", credit: "Blueboy, January 1978 - via Wikipedia" },
+  "Nightlife (magazine)": { kind: "book", file: "mag-nightlife.webp", credit: "New York's Nightlife, October 1985 - seller's photo (eBay), mailing label blurred" },
+  "Time Out New York": { kind: "book", file: "mag-time-out-new-york.webp", credit: "Time Out New York no. 128, March 1998 - seller's photo (eBay)" },
+  "Houston City magazine": { kind: "book", file: "mag-houston-city.webp", credit: "Houston City, May 1986 - via Pinterest" },
+  "Texas Monthly": { kind: "book", file: "mag-texas-monthly.webp", credit: "Texas Monthly no. 1, February 1973 - from Texas Monthly's own issue archive" },
+  "Harper's & Queen": { kind: "book", file: "mag-harpers-queen.webp", credit: "Harper's & Queen, 1979, cover by Clive Arrowsmith - dealer's photo (Magazine Canteen)" },
+  "Club Kid cards": { kind: "book", file: "mag-club-kid-cards.webp", credit: "Richie Rich's Superstars of Disco 2000 card - via Pinterest" },
+  "Daily Mail": { kind: "mast", file: "mast-daily-mail.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "The WOW Report": { kind: "mast", file: "mast-world-of-wonder.webp", credit: "Logo: World of Wonder (worldofwonder.net)" },
+  "A Touch of Crass": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // a Daily News piece, like Uptown, Downtown
 };
 
 export const coverFor = (name: string): (Cover & { src: string }) | undefined => {
