@@ -582,6 +582,34 @@ import michaelStipePhoto from "@/assets/people/michael-stipe-photo.webp";
 import michaelStipePolaroid from "@/assets/people/michael-stipe-polaroid.webp";
 import mickJaggerPhoto from "@/assets/people/mick-jagger-photo.webp";
 import mickJaggerPolaroid from "@/assets/people/mick-jagger-polaroid.webp";
+import pattiAstorPhoto from "@/assets/people/patti-astor-photo.webp";
+import pattiAstorPolaroid from "@/assets/people/patti-astor-polaroid.webp";
+import tinaChowPhoto from "@/assets/people/tina-chow-photo.webp";
+import tinaChowPolaroid from "@/assets/people/tina-chow-polaroid.webp";
+import hillyKristalPhoto from "@/assets/people/hilly-kristal-photo.webp";
+import hillyKristalPolaroid from "@/assets/people/hilly-kristal-polaroid.webp";
+import markKaminsPhoto from "@/assets/people/mark-kamins-photo.webp";
+import markKaminsPolaroid from "@/assets/people/mark-kamins-polaroid.webp";
+import octavioAguilarPhoto from "@/assets/people/octavio-aguilar-photo.webp";
+import octavioAguilarPolaroid from "@/assets/people/octavio-aguilar-polaroid.webp";
+import pTBarnumPhoto from "@/assets/people/p-t-barnum-photo.webp";
+import pTBarnumPolaroid from "@/assets/people/p-t-barnum-polaroid.webp";
+import pattiWilsonPhoto from "@/assets/people/patti-wilson-photo.webp";
+import pattiWilsonPolaroid from "@/assets/people/patti-wilson-polaroid.webp";
+import paulReubensPhoto from "@/assets/people/paul-reubens-photo.webp";
+import paulReubensPolaroid from "@/assets/people/paul-reubens-polaroid.webp";
+import peterAllenPhoto from "@/assets/people/peter-allen-photo.webp";
+import peterAllenPolaroid from "@/assets/people/peter-allen-polaroid.webp";
+import raquelWelchPhoto from "@/assets/people/raquel-welch-photo.webp";
+import raquelWelchPolaroid from "@/assets/people/raquel-welch-polaroid.webp";
+import rihannaPhoto from "@/assets/people/rihanna-photo.webp";
+import rihannaPolaroid from "@/assets/people/rihanna-polaroid.webp";
+import robertEvansPhoto from "@/assets/people/robert-evans-photo.webp";
+import robertEvansPolaroid from "@/assets/people/robert-evans-polaroid.webp";
+import roddyMcdowallPhoto from "@/assets/people/roddy-mcdowall-photo.webp";
+import roddyMcdowallPolaroid from "@/assets/people/roddy-mcdowall-polaroid.webp";
+import ronaldReaganPhoto from "@/assets/people/ronald-reagan-photo.webp";
+import ronaldReaganPolaroid from "@/assets/people/ronald-reagan-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -886,4 +914,18 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "meat-loaf": { photo: meatLoafPhoto, polaroid: meatLoafPolaroid, focus: "28%", credit: "Portrait after a photo by christopher simon, 2009 (CC BY 2.0), in our photocopy style" },
   "michael-stipe": { photo: michaelStipePhoto, polaroid: michaelStipePolaroid, focus: "28%", credit: "Portrait after a photo by Kris Krug, 2008 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
   "mick-jagger": { photo: mickJaggerPhoto, polaroid: mickJaggerPolaroid, focus: "28%", credit: "Portrait after a photo by Jens-Kristian Søgaard, 1973 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "patti-astor": { photo: pattiAstorPhoto, polaroid: pattiAstorPolaroid, focus: "28%", credit: "Portrait after a photo by Anita Rosenberg (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "tina-chow": { photo: tinaChowPhoto, polaroid: tinaChowPolaroid, focus: "28%", credit: "Portrait after a photo by Bernard Gotfryd, 1987 (public domain), in our photocopy style" },
+  "hilly-kristal": { photo: hillyKristalPhoto, polaroid: hillyKristalPolaroid, focus: "28%", credit: "Portrait after a photo by Charliesamuels, 1991 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "mark-kamins": { photo: markKaminsPhoto, polaroid: markKaminsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "octavio-aguilar": { photo: octavioAguilarPhoto, polaroid: octavioAguilarPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "p-t-barnum": { photo: pTBarnumPhoto, polaroid: pTBarnumPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer, 1851 (public domain), in our photocopy style" },
+  "patti-wilson": { photo: pattiWilsonPhoto, polaroid: pattiWilsonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "paul-reubens": { photo: paulReubensPhoto, polaroid: paulReubensPolaroid, focus: "28%", credit: "Portrait after a photo by The Palmetto Scoop, 2008 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "peter-allen": { photo: peterAllenPhoto, polaroid: peterAllenPolaroid, focus: "28%", credit: "Portrait after a photo by Premier Talent Associates, 1967 (public domain), in our photocopy style" },
+  "raquel-welch": { photo: raquelWelchPhoto, polaroid: raquelWelchPolaroid, focus: "28%", credit: "Portrait after a photo by Alan Light, 1987 (CC BY 2.0), in our photocopy style" },
+  "rihanna": { photo: rihannaPhoto, polaroid: rihannaPolaroid, focus: "28%", credit: "Portrait after a photo by oouinouin, 2010 (CC BY 2.0), in our photocopy style" },
+  "robert-evans": { photo: robertEvansPhoto, polaroid: robertEvansPolaroid, focus: "28%", credit: "Portrait after a photo by NBC Television, 1981 (public domain), in our photocopy style" },
+  "roddy-mcdowall": { photo: roddyMcdowallPhoto, polaroid: roddyMcdowallPolaroid, focus: "28%", credit: "Portrait after a photo by Friedman-Abeles, New York, 1960 (public domain), in our photocopy style" },
+  "ronald-reagan": { photo: ronaldReaganPhoto, polaroid: ronaldReaganPolaroid, focus: "28%", credit: "Portrait after a photo by Pete Souza (White House), 1985 (public domain), in our photocopy style" },
 };
