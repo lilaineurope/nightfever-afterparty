@@ -16,6 +16,8 @@ import nells from "@/assets/club-tickets/nell-s.webp";
 import paradiseGarage from "@/assets/club-tickets/paradise-garage.webp";
 import studio54 from "@/assets/club-tickets/studio-54.webp";
 import cbgb from "@/assets/club-tickets/cbgb.webp";
+import maxs from "@/assets/club-tickets/max-s-kansas-city.webp";
+import soundFactory from "@/assets/club-tickets/sound-factory.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -43,6 +45,26 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     alt: "Hand-lettered flyer with a photo of Debbie Harry: \"Blondie at CBGB's June 17, 18, 19\", 1976",
     credit: "Blondie at CBGB's flyer, June 1976 - Gallery 98",
     href: "https://gallery98.org/2020/cbgbs-blondie-flyer-june-17-18-19-1976/",
+  },
+  // Max's Kansas City (Lisa, 14 Nov 2026): the Theoretical Girls flyer, three xeroxes pasted into one - punk-era Max's in big type.
+  "max-s-kansas-city": {
+    src: maxs,
+    w: 800,
+    h: 301,
+    alt: "Xerox flyer in huge black letters: \"Theoretical Girls - Max's - Wed. Jan. 31 - Midnite\", 1979",
+    credit: "Theoretical Girls at Max's flyer, 1979 - Gallery 98",
+    href: "https://gallery98.org/2021/maxs-kansas-city-theoretical-girls-three-xeroxes-combined-into-one-flyer-1979/",
+  },
+  // Sound Factory (Lisa, 14 Nov 2026): Keith Haring's own card for the Sound Factory Halloween party with Junior Vasquez, 1988 -
+  // 116 Crosby Street, the year before the club opened on West 27th Street.
+  "sound-factory": {
+    src: soundFactory,
+    w: 800,
+    h: 594,
+    pos: "center 35%",
+    alt: "Keith Haring's drawing of dancing skeletons: \"Keith Haring + Sound Factory invite you to a special costume party on Halloween\", 116 Crosby St, 31 October 1988",
+    credit: "Keith Haring + Sound Factory Halloween card, 1988 - Gallery 98",
+    href: "https://gallery98.org/2020/sound-factory-keith-haring-card-1988/",
   },
   danceteria: {
     src: danceteria,
