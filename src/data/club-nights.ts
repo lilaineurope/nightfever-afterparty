@@ -747,9 +747,8 @@ const nl: ClubNight = {
 const cb: ClubNight = {
   slug: "cbgb",
   club: "CBGB",
-  // Playlists still PRIVATE (Lisa, 13 Nov 2026) - once she makes them public, add:
-  // playlistId: "6rvE8ROedhcH0x7tPh5gsL",
-  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLR2JP4vkdGSI",
+  playlistId: "6rvE8ROedhcH0x7tPh5gsL", // public since 14 Nov 2026 (Lisa: "they can go public")
+  youtubePlaylist: "https://www.youtube.com/playlist?list=PLR2JP4vkdGSI", // public, Voting on, 14 Nov 2026
   note:
     "From CBGB's own stage (1973–2006): the 1976 album Live at CBGB's, recorded at the club; the Ramones' set lists from 1975; Talking Heads, Blondie, Richard Hell and the Dictators filmed there; the Dead Boys and Bad Brains live albums taped there; Patti Smith's closing night on 15 October 2006 - and more bands of the CBGB stage from Cherry Red's CBGB box set. For the story of the first wave, put on Jillian Jonas's audio documentary under On film. Not one exact night.",
   footage: [
