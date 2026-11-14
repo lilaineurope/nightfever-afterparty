@@ -610,6 +610,34 @@ import roddyMcdowallPhoto from "@/assets/people/roddy-mcdowall-photo.webp";
 import roddyMcdowallPolaroid from "@/assets/people/roddy-mcdowall-polaroid.webp";
 import ronaldReaganPhoto from "@/assets/people/ronald-reagan-photo.webp";
 import ronaldReaganPolaroid from "@/assets/people/ronald-reagan-polaroid.webp";
+import sergeBeckerPhoto from "@/assets/people/serge-becker-photo.webp";
+import sergeBeckerPolaroid from "@/assets/people/serge-becker-polaroid.webp";
+import sergioLeonePhoto from "@/assets/people/sergio-leone-photo.webp";
+import sergioLeonePolaroid from "@/assets/people/sergio-leone-polaroid.webp";
+import seymourSteinPhoto from "@/assets/people/seymour-stein-photo.webp";
+import seymourSteinPolaroid from "@/assets/people/seymour-stein-polaroid.webp";
+import sharonTatePhoto from "@/assets/people/sharon-tate-photo.webp";
+import sharonTatePolaroid from "@/assets/people/sharon-tate-polaroid.webp";
+import stevenKleinPhoto from "@/assets/people/steven-klein-photo.webp";
+import stevenKleinPolaroid from "@/assets/people/steven-klein-polaroid.webp";
+import taycePhoto from "@/assets/people/tayce-photo.webp";
+import taycePolaroid from "@/assets/people/tayce-polaroid.webp";
+import teenaMariePhoto from "@/assets/people/teena-marie-photo.webp";
+import teenaMariePolaroid from "@/assets/people/teena-marie-polaroid.webp";
+import snappleLadyPhoto from "@/assets/people/snapple-lady-photo.webp";
+import snappleLadyPolaroid from "@/assets/people/snapple-lady-polaroid.webp";
+import tonyBasilPhoto from "@/assets/people/tony-basil-photo.webp";
+import tonyBasilPolaroid from "@/assets/people/tony-basil-polaroid.webp";
+import valerieSteelePhoto from "@/assets/people/valerie-steele-photo.webp";
+import valerieSteelePolaroid from "@/assets/people/valerie-steele-polaroid.webp";
+import vincentGalloPhoto from "@/assets/people/vincent-gallo-photo.webp";
+import vincentGalloPolaroid from "@/assets/people/vincent-gallo-polaroid.webp";
+import whitneyHoustonPhoto from "@/assets/people/whitney-houston-photo.webp";
+import whitneyHoustonPolaroid from "@/assets/people/whitney-houston-polaroid.webp";
+import williamFBuckleyJrPhoto from "@/assets/people/william-f-buckley-jr-photo.webp";
+import williamFBuckleyJrPolaroid from "@/assets/people/william-f-buckley-jr-polaroid.webp";
+import yulBrynnerPhoto from "@/assets/people/yul-brynner-photo.webp";
+import yulBrynnerPolaroid from "@/assets/people/yul-brynner-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -928,4 +956,18 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "robert-evans": { photo: robertEvansPhoto, polaroid: robertEvansPolaroid, focus: "28%", credit: "Portrait after a photo by NBC Television, 1981 (public domain), in our photocopy style" },
   "roddy-mcdowall": { photo: roddyMcdowallPhoto, polaroid: roddyMcdowallPolaroid, focus: "28%", credit: "Portrait after a photo by Friedman-Abeles, New York, 1960 (public domain), in our photocopy style" },
   "ronald-reagan": { photo: ronaldReaganPhoto, polaroid: ronaldReaganPolaroid, focus: "28%", credit: "Portrait after a photo by Pete Souza (White House), 1985 (public domain), in our photocopy style" },
+  "serge-becker": { photo: sergeBeckerPhoto, polaroid: sergeBeckerPolaroid, focus: "28%", credit: "Portrait after a photo by Maximilianmaurer, 2020 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "sergio-leone": { photo: sergioLeonePhoto, polaroid: sergioLeonePolaroid, focus: "28%", credit: "Portrait after a photo by Obbino (CC BY 2.0), in our photocopy style" },
+  "seymour-stein": { photo: seymourSteinPhoto, polaroid: seymourSteinPolaroid, focus: "28%", credit: "Portrait after a photo by Joeyjojo86, 2013 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "sharon-tate": { photo: sharonTatePhoto, polaroid: sharonTatePolaroid, focus: "28%", credit: "Portrait after a photo by 20th Century Fox publicity (restored by Adam Cuerden), 1967 (public domain), in our photocopy style" },
+  "steven-klein": { photo: stevenKleinPhoto, polaroid: stevenKleinPolaroid, focus: "28%", credit: "Portrait after a photo by Djtwilonyc, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "tayce": { photo: taycePhoto, polaroid: taycePolaroid, focus: "28%", credit: "Portrait after a photo by Josiefraser, 2018 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "teena-marie": { photo: teenaMariePhoto, polaroid: teenaMariePolaroid, focus: "28%", credit: "Portrait after a photo by Epic Records, 1983 (public domain), in our photocopy style" },
+  "snapple-lady": { photo: snappleLadyPhoto, polaroid: snappleLadyPolaroid, focus: "28%", credit: "Portrait after a photo by annulla, 2007 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "tony-basil": { photo: tonyBasilPhoto, polaroid: tonyBasilPolaroid, focus: "28%", credit: "Portrait after a 1960 Las Vegas High School yearbook photo (public domain), in our photocopy style" },
+  "valerie-steele": { photo: valerieSteelePhoto, polaroid: valerieSteelePolaroid, focus: "28%", credit: "Portrait after a photo by Museum at FIT, 2019 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "vincent-gallo": { photo: vincentGalloPhoto, polaroid: vincentGalloPolaroid, focus: "28%", credit: "Portrait after a photo by Brooklyn Token, 2004 (CC BY 2.0), in our photocopy style" },
+  "whitney-houston": { photo: whitneyHoustonPhoto, polaroid: whitneyHoustonPolaroid, focus: "28%", credit: "Portrait after a photo by PH2 Mark Kettenhofen, US Navy, 1991 (public domain), in our photocopy style" },
+  "william-f-buckley-jr": { photo: williamFBuckleyJrPhoto, polaroid: williamFBuckleyJrPolaroid, focus: "28%", credit: "Portrait after a photo by SPC 5 Bert Goulait, US Military, 1985 (public domain), in our photocopy style" },
+  "yul-brynner": { photo: yulBrynnerPhoto, polaroid: yulBrynnerPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer, 1960 (public domain), in our photocopy style" },
 };
