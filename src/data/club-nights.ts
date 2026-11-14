@@ -835,7 +835,9 @@ const cb: ClubNight = {
 const mx: ClubNight = {
   slug: "max-s-kansas-city",
   club: "Max's Kansas City",
-  // Playlists PRIVATE until Lisa says (14 Nov 2026) - once public, add playlistId and youtubePlaylist.
+  // Playlists still PRIVATE (Lisa, 14 Nov 2026) - once she makes them public, add:
+  // playlistId: "1TIa2is46NaeuE4o7Z5lIO",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLOWq7Rq7K6ao",
   note:
     "From Max's own rooms (1965–1981): the Velvet Underground's last shows with Lou Reed, taped upstairs in the summer of 1970; the album of its bands, Max's Kansas City 1976; Sid Vicious and the Heartbreakers recorded live there in 1978; Jayne County's DJ booth (Bowie and Mott the Hoople); and the bands of its stage - Iggy, the Dolls, Springsteen with Bob Marley opening, Aerosmith's first New York show, Big Star, Patti Smith, Devo, the Cramps. Not one exact night.",
   footage: [
@@ -895,7 +897,9 @@ const mx: ClubNight = {
 const sf: ClubNight = {
   slug: "sound-factory",
   club: "Sound Factory",
-  // Playlists PRIVATE until Lisa says (14 Nov 2026) - once public, add playlistId and youtubePlaylist.
+  // Playlists still PRIVATE (Lisa, 14 Nov 2026) - once she makes them public, add:
+  // playlistId: "5gtVJgJZB28E8oomyuYRST",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLS1-AgXY1TD4",
   note:
     "The records of Junior Vasquez's Sound Factory (1989–1995): So Get Up, the club's theme; Sounds of Blackness's The Pressure, which Kevin Aviance performed to when Junior came out of the booth with flowers; the records named in DJhistory's and The Ransom Note's nights on the floor; Junior's own Sound Factory mixes - and the house producers who made records with the room in mind. Not one exact night: Junior's real sets are under On film.",
   footage: [
