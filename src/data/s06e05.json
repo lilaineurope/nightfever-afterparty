@@ -17,7 +17,7 @@
   "name": "New York",
   "heard": "New York",
   "time": "00:02:41",
-  "context": "Nora moved to New York in 1979 and has lived there since",
+  "context": "Nora moved to New York as a Barnard student and has lived there since",
   "link": "https://en.wikipedia.org/wiki/New_York_City",
   "status": "Confirmed"
  },
@@ -28,7 +28,7 @@
   "name": "Studio 54",
   "heard": "Studio 54 / studio / 54",
   "time": "00:05:22",
-  "context": "Nora waited for David before going: a limo driver offered them a ride, opened their door at the front and held up two fingers, and the crowd parted. A later diary line has a night ending at 54. Studio had closed by 1980, James notes",
+  "context": "Nora waited for David before going: a limo driver offered them a ride, opened their door at the front and held up two fingers, and the crowd parted. A later diary line has a night ending at 54. by the time of the diaries Studio had closed, James notes",
   "link": "https://en.wikipedia.org/wiki/Studio_54",
   "status": "Confirmed"
  },
@@ -127,7 +127,7 @@
   "name": "The Village! (disco musical)",
   "heard": "The Village / my disco musical",
   "time": "00:02:36",
-  "context": "Nora's disco musical, set in 1979 and loosely based on Our Town: a hustler who lives with a john, and all his friends, choreographed by her friend Robin. Delayed by the pandemic, it sold out at Dixon Place in 2022 and twice more, then ran a summer at the SoHo Playhouse. Nora plays a junkie who lies on the floor the whole show and calls it her favourite show she has ever done",
+  "context": "Nora's disco musical, set the year she moved to New York and loosely based on Our Town: a hustler who lives with a john, and all his friends, choreographed by her friend Robin. Delayed by the pandemic, it sold out at Dixon Place in 2022 and twice more, then ran a summer at the SoHo Playhouse. Nora plays a junkie who lies on the floor the whole show and calls it her favourite show she has ever done",
   "link": "https://www.google.com/search?q=%22The+Village%22+Nora+Burns+disco+musical",
   "status": "Confirmed"
  },
@@ -138,7 +138,7 @@
   "name": "Nora Burns's diaries (1980)",
   "heard": "diaries / my diary",
   "time": "00:03:10",
-  "context": "The diaries Nora kept for a couple of years after moving to New York in 1979; she sent some to James and reads entries on air - Mudd Club, Xenon, Magique, Bond's, the Roxy - and in one, from 1980, the scene already feels over",
+  "context": "The diaries Nora kept for a couple of years from 1980, soon after moving to New York; she sent some to James and reads entries on air - Mudd Club, Xenon, Magique, Bond's, the Roxy - and in one, from 1980, the scene already feels over",
   "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-605",
   "status": "Not found online"
  },
@@ -204,7 +204,7 @@
   "name": "David's Friend (Nora Burns)",
   "heard": "David's Friend",
   "time": "00:02:17",
-  "context": "Nora's acclaimed one-woman show about her best friend David Burns. James calls it a roller coaster: you laugh and dance, then it turns. Nora says David's death only really hit her around 2014, once she was older and had kids. She played it in rep with The Village! and taped it before the pandemic",
+  "context": "Nora's acclaimed one-woman show about her best friend David Burns. James calls it a roller coaster: you laugh and dance, then it turns. Nora says David's death only really hit her decades later, once she was older and had kids. She played it in rep with The Village! and taped it before the pandemic",
   "link": "https://www.google.com/search?q=%22David%27s+Friend%22+Nora+Burns",
   "status": "Confirmed"
  },
@@ -276,7 +276,7 @@
   "name": "Candy Camera",
   "heard": "Candy Camera / candid camera",
   "time": "00:00:54",
-  "context": "Nora's Manhattan public-access cable show, about 1992-96: drag queens, go-go boys and girls, guests and comedy sketches, a new theme every two weeks, made for free in Lou Maletta's studio. NYU's Fales Library turned out to hold about 35 of her roughly 50 episodes and digitised them for her",
+  "context": "Nora's Manhattan public-access cable show of the mid-90s: drag queens, go-go boys and girls, guests and comedy sketches, a new theme every two weeks, made for free in Lou Maletta's studio. NYU's Fales Library turned out to hold about 35 of her roughly 50 episodes and digitised them for her",
   "link": "https://www.google.com/search?q=%22Candy+Camera%22+Nora+Burns+public+access",
   "status": "Partly confirmed"
  },
@@ -338,7 +338,7 @@
   "name": "Daniel Rakowitz",
   "heard": "Daniel Rekowitz",
   "time": "00:01:33",
-  "context": "The East Village killer of 1989; a friend of Nora's who had been on her cable show had him as a neighbour, and one of the hosts later lived in the same apartment - for years tourists came to photograph the front door",
+  "context": "The East Village killer; a friend of Nora's who had been on her cable show had him as a neighbour, and one of the hosts later lived in the same apartment - for years tourists came to photograph the front door",
   "link": "https://en.wikipedia.org/wiki/Daniel_Rakowitz",
   "status": "Confirmed"
  },
@@ -1722,7 +1722,7 @@
   "name": "Dixon Place",
   "heard": "Dixon plays",
   "time": "00:52:50",
-  "context": "Where The Village! became a sold-out hit in 2022",
+  "context": "Where The Village! became a sold-out hit",
   "link": "https://en.wikipedia.org/wiki/Dixon_Place",
   "status": "Confirmed"
  },
