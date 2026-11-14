@@ -112,6 +112,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s03e02: "It's Raining Men, Sylvester & Black Box",
   s02e02: "Max's Kansas City, Warhol's Pork & Stonewall",
   s03e05: "Bowie, Warhol's Pork & Max's Kansas City",
+  s06e02: "the Sound Factory, Junior Vasquez & the Limelight",
 };
 
 /** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so
