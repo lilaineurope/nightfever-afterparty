@@ -564,6 +564,17 @@ const curatedEvents: SceneEvent[] = [
     people: ["christina-visca"],
     figures: ["Grace Jones", "Junior Vasquez"],
   },
+  {
+    id: "nora-burns-candy-camera",
+    year: 1992,
+    when: "1992-1996",
+    title: "Nora Burns's Candy Camera on public access",
+    text: "Lou Maletta lets Nora Burns make a show in his studio for free: Candy Camera, a new theme every two weeks with drag queens, go-go dancers, comedy sketches and guests like RuPaul, Michael Musto and Joey Arias, on Manhattan public-access cable until about 1996. Years later NYU's Fales Library turned up about 35 of the episodes in Lou's archive.",
+    place: "Manhattan public-access cable",
+    decade: "1990s",
+    people: ["nora-burns"],
+    figures: ["Lou Maletta", "RuPaul", "Michael Musto", "Joey Arias"],
+  },
 ];
 
 // Milestones from every WOW guest profile, so the timeline, A–Z, map and quiz
