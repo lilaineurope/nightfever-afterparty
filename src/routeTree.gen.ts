@@ -83,6 +83,8 @@ import { Route as GuestbookAdminRouteImport } from './routes/guestbook.admin'
 import { Route as ShopTestIndexRouteImport } from './routes/shop-test.index'
 import { Route as ShopTestProductRouteImport } from './routes/shop-test.$product'
 import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
+import { Route as SpotifyIndexRouteImport } from './routes/spotify.index'
+import { Route as SpotifySplatRouteImport } from './routes/spotify.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -454,6 +456,16 @@ const ShopTestThanksRoute = ShopTestThanksRouteImport.update({
   path: '/shop-test/thanks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpotifyIndexRoute = SpotifyIndexRouteImport.update({
+  id: '/spotify/',
+  path: '/spotify/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpotifySplatRoute = SpotifySplatRouteImport.update({
+  id: '/spotify/$',
+  path: '/spotify/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -526,10 +538,12 @@ export interface FileRoutesByFullPath {
   '/guestbook/admin': typeof GuestbookAdminRoute
   '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
+  '/spotify/$': typeof SpotifySplatRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
   '/guestbook/': typeof GuestbookIndexRoute
   '/shop-test/': typeof ShopTestIndexRoute
+  '/spotify/': typeof SpotifyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -602,10 +616,12 @@ export interface FileRoutesByTo {
   '/guestbook/admin': typeof GuestbookAdminRoute
   '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
+  '/spotify/$': typeof SpotifySplatRoute
   '/episodes': typeof EpisodesIndexRoute
   '/explore': typeof ExploreIndexRoute
   '/guestbook': typeof GuestbookIndexRoute
   '/shop-test': typeof ShopTestIndexRoute
+  '/spotify': typeof SpotifyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -679,10 +695,12 @@ export interface FileRoutesById {
   '/guestbook/admin': typeof GuestbookAdminRoute
   '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
+  '/spotify/$': typeof SpotifySplatRoute
   '/episodes/': typeof EpisodesIndexRoute
   '/explore/': typeof ExploreIndexRoute
   '/guestbook/': typeof GuestbookIndexRoute
   '/shop-test/': typeof ShopTestIndexRoute
+  '/spotify/': typeof SpotifyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -757,10 +775,12 @@ export interface FileRouteTypes {
     | '/guestbook/admin'
     | '/shop-test/$product'
     | '/shop-test/thanks'
+    | '/spotify/$'
     | '/episodes/'
     | '/explore/'
     | '/guestbook/'
     | '/shop-test/'
+    | '/spotify/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -833,10 +853,12 @@ export interface FileRouteTypes {
     | '/guestbook/admin'
     | '/shop-test/$product'
     | '/shop-test/thanks'
+    | '/spotify/$'
     | '/episodes'
     | '/explore'
     | '/guestbook'
     | '/shop-test'
+    | '/spotify'
   id:
     | '__root__'
     | '/'
@@ -909,10 +931,12 @@ export interface FileRouteTypes {
     | '/guestbook/admin'
     | '/shop-test/$product'
     | '/shop-test/thanks'
+    | '/spotify/$'
     | '/episodes/'
     | '/explore/'
     | '/guestbook/'
     | '/shop-test/'
+    | '/spotify/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -986,10 +1010,12 @@ export interface RootRouteChildren {
   GuestbookAdminRoute: typeof GuestbookAdminRoute
   ShopTestProductRoute: typeof ShopTestProductRoute
   ShopTestThanksRoute: typeof ShopTestThanksRoute
+  SpotifySplatRoute: typeof SpotifySplatRoute
   EpisodesIndexRoute: typeof EpisodesIndexRoute
   ExploreIndexRoute: typeof ExploreIndexRoute
   GuestbookIndexRoute: typeof GuestbookIndexRoute
   ShopTestIndexRoute: typeof ShopTestIndexRoute
+  SpotifyIndexRoute: typeof SpotifyIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1512,6 +1538,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopTestThanksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/spotify/': {
+      id: '/spotify/'
+      path: '/spotify'
+      fullPath: '/spotify/'
+      preLoaderRoute: typeof SpotifyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spotify/$': {
+      id: '/spotify/$'
+      path: '/spotify/$'
+      fullPath: '/spotify/$'
+      preLoaderRoute: typeof SpotifySplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1586,10 +1626,12 @@ const rootRouteChildren: RootRouteChildren = {
   GuestbookAdminRoute: GuestbookAdminRoute,
   ShopTestProductRoute: ShopTestProductRoute,
   ShopTestThanksRoute: ShopTestThanksRoute,
+  SpotifySplatRoute: SpotifySplatRoute,
   EpisodesIndexRoute: EpisodesIndexRoute,
   ExploreIndexRoute: ExploreIndexRoute,
   GuestbookIndexRoute: GuestbookIndexRoute,
   ShopTestIndexRoute: ShopTestIndexRoute,
+  SpotifyIndexRoute: SpotifyIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
