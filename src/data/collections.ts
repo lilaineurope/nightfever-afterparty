@@ -253,6 +253,7 @@ const SPOTIFY: Record<string, string> = {
   "Champagne (Amanda Lepore)": "spotify:track:1KArrl4IXmxGxIvcWLhws4",
   "Madonna – 'Borderline'": "spotify:track:55vHakozxvDmLT7smkEYCN",
   "Madonna – 'Lucky Star'": "spotify:track:5ldD98ZX90b0w8dClRLCka",
+  "Madonna – 'Confessions on a Dance Floor'": "spotify:track:3850dYVgOFIXJh5U4BFEWH",
   "Madonna – 'Into the Groove'": "spotify:track:09DXOIotVDH6ehrY8ecbmA",
   "Richard Hell and the Voidoids": "spotify:track:3HYQpVq7vGOZKaNHZn50uc",
   "'Baby Let Me Bang Your Box'": "spotify:track:6xCeqmcYfalPN4INRrsvus",

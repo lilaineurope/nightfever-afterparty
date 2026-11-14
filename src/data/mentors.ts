@@ -98,6 +98,8 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "David Taylor", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:26:39", line: "Came into Aux Puces one night and took Cherry downtown to audition for World, telling her they wanted characters, not actors" },
   { mentor: "Tony Ingrassia", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:28:27", line: "Cast Cherry on the spot at the World audition - no audition needed - and later took her to the Factory to try out for Pork" },
   { mentor: "Andy Warhol", mentee: "Cherry Vanilla", episode: "s03e05", time: "00:39:47", line: "Saw her in World, then gave her the Brigid part in Pork's London run after she sang him a Catholic school hymn" },
+  { mentor: "Peter Gatien", mentee: "Christina Visca", episode: "s06e02", time: "00:11:59", line: "Tapped Christina on the shoulder outside the Limelight and told her she should give parties in his club; she later managed Club USA and the Tunnel for him" },
+  { mentor: "Christina Visca", mentee: "Junior Vasquez", episode: "s06e02", time: "00:19:10", line: "Gave the aspiring DJ his chance at her party the Space after the Garage closed; from then on, she says, they never separated" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
