@@ -832,7 +832,115 @@ const cb: ClubNight = {
   ],
 };
 
-export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb];
+const mx: ClubNight = {
+  slug: "max-s-kansas-city",
+  club: "Max's Kansas City",
+  // Playlists still PRIVATE (Lisa, 14 Nov 2026) - once she makes them public, add:
+  // playlistId: "1TIa2is46NaeuE4o7Z5lIO",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLOWq7Rq7K6ao",
+  note:
+    "From Max's own rooms (1965–1981): the Velvet Underground's last shows with Lou Reed, taped upstairs in the summer of 1970; the album of its bands, Max's Kansas City 1976; Sid Vicious and the Heartbreakers recorded live there in 1978; Jayne County's DJ booth (Bowie and Mott the Hoople); and the bands of its stage - Iggy, the Dolls, Springsteen with Bob Marley opening, Aerosmith's first New York show, Big Star, Patti Smith, Devo, the Cramps. Not one exact night.",
+  footage: [
+    { id: "XL6qJj6kfXQ", title: "Night Fever S02E02 - Jayne County (the DJ at Max's)" },
+    { id: "OuyQfxo0ocs", title: "The only known 35mm footage from inside Max's Kansas City (narrated by David Weisman)" },
+    { id: "c8LwsCAUi9I", title: "The Velvet Underground - Live at Max's Kansas City, the story" },
+    { id: "hSSFn2vCLIc", title: "New York Dolls - live upstairs at Max's Kansas City, August 1973" },
+    { id: "wTbmbnZIRjU", title: "David Bowie introduces Devo - Max's Kansas City, 14 November 1977" },
+    { id: "b7Mp8zx9Pgs", title: "The Cramps - live at Max's Kansas City, 1977" },
+    { id: "dzRC6E1dRxA", title: "Sid Vicious live at Max's Kansas City, 30 September 1978" },
+    { id: "kH8TuI2uzvo", title: "Johnny Thunders and the Heartbreakers play Pipeline at Max's, 1979" },
+    { id: "K7FXzQFmNr4", title: "Interview with Peter Crowley, who booked Max's (WFMU)" },
+  ],
+  sources: [
+    { key: "A", label: "Wikipedia: Max's Kansas City", href: "https://en.wikipedia.org/wiki/Max%27s_Kansas_City" },
+    { key: "B", label: "Wikipedia: Live at Max's Kansas City (the Velvet Underground, taped 23 Aug 1970)", href: "https://en.wikipedia.org/wiki/Live_at_Max%27s_Kansas_City" },
+    { key: "C", label: "Max's Kansas City 1976 (Ram Records, the album of its bands - track list)", href: "https://www.45worlds.com/vinyl/album/ram1213" },
+    { key: "D", label: "Night Fever S02E02 - Jayne County (DJ at Max's: 'I played Bowie and Mott the Hoople', 00:34:41)", href: "https://nightfever-afterparty.com/episodes/s02e02" },
+    { key: "E", label: "Night Fever S04E03 - Bebe Buell (Iggy cuts himself on the Max's stage, 00:32:34)", href: "https://nightfever-afterparty.com/episodes/s04e03" },
+    { key: "F", label: "Night Fever S03E04 - Man Parrish (saw Aerosmith, the Cars and the Ramones at Max's, 00:26:24)", href: "https://nightfever-afterparty.com/episodes/s03e04" },
+    { key: "G", label: "Night Fever S06E03 - Chi Chi Valenti & Johnny Dynell (Alan Vega put Johnny in a band that played Max's, 00:31:18)", href: "https://nightfever-afterparty.com/episodes/s06e03" },
+    { key: "H", label: "New York Dolls live upstairs at Max's, August 1973 (YouTube)", href: "https://www.youtube.com/watch?v=hSSFn2vCLIc" },
+    { key: "I", label: "David Bowie introduces Devo at Max's, 14 Nov 1977 (YouTube)", href: "https://www.youtube.com/watch?v=wTbmbnZIRjU" },
+    { key: "J", label: "Wikipedia: Sid Sings (recorded at Max's, 1978)", href: "https://en.wikipedia.org/wiki/Sid_Sings" },
+    { key: "K", label: "Wikipedia: Live at Max's Kansas City (the Heartbreakers, recorded there in 1978)", href: "https://en.wikipedia.org/wiki/Live_at_Max%27s_Kansas_City_(Johnny_Thunders_album)" },
+    { key: "L", label: "The Cramps live at Max's Kansas City, 1977 (YouTube)", href: "https://www.youtube.com/watch?v=b7Mp8zx9Pgs" },
+    { key: "M", label: "Wikipedia: Mumps (band)", href: "https://en.wikipedia.org/wiki/Mumps_(band)" },
+  ],
+  songs: [
+    { title: "I'm Waiting for the Man (live at Max's)", artist: "The Velvet Underground", year: 1972, spotify: "3SFayZBTps4PWfSIc8Pil5", video: "SGaEDhX5d1c", kind: "live", why: "Taped upstairs at Max's on 23 August 1970, Lou Reed's last night with the band", sources: ["B", "A"] },
+    { title: "Sweet Jane (live at Max's)", artist: "The Velvet Underground", year: 1972, spotify: "6APdLo9mM1PecQW9LgnQ09", video: "ebiM6wd6sp8", kind: "live", why: "From Live at Max's Kansas City, summer 1970", sources: ["B"] },
+    { title: "Pale Blue Eyes (live at Max's)", artist: "The Velvet Underground", year: 1972, spotify: "7oZfTwcZEbjHn4NFNNye3Z", video: "bashZDeEl6Y", kind: "live", why: "From Live at Max's Kansas City, summer 1970", sources: ["B"] },
+    { title: "Femme Fatale (live at Max's)", artist: "The Velvet Underground", year: 1972, spotify: "5gVkLPUH6SbkwimLcgV1wW", video: "8eYhYBwUhUQ", kind: "live", why: "From Live at Max's Kansas City, summer 1970", sources: ["B"] },
+    { title: "All the Young Dudes", artist: "Mott the Hoople", year: 1972, spotify: "0WNGPpmWqzPnk0psUhJ3SX", video: "yNHdPPJGowY", kind: "dj-artist", why: "Jayne County, the DJ at Max's: 'I played Bowie and Mott the Hoople'", sources: ["D"], guest: { slug: "jayne-county", label: "Jayne County" } },
+    { title: "The Jean Genie", artist: "David Bowie", year: 1972, spotify: "6uZtMNTfU5u8w6fsnXeOdb", video: "kMYg_Ra4cr8", kind: "dj-artist", why: "Bowie was a Max's regular, and in Jayne County's DJ sets", sources: ["D", "A"], guest: { slug: "jayne-county", label: "Jayne County" } },
+    { title: "Search and Destroy (Bowie mix)", artist: "Iggy and the Stooges", year: 1973, spotify: "02JUaKfI1Grg2yoYRmyvF0", video: "LC9km8qnbOY", kind: "stage", why: "The Stooges played a run of shows at Max's in July and August 1973 - Bebe Buell saw Iggy cut himself on its stage", sources: ["A", "E"], guest: { slug: "bebe-buell", label: "Bebe Buell" } },
+    { title: "Personality Crisis", artist: "New York Dolls", year: 1973, spotify: "4AwKXevZmsTNa3KZVj3rzl", video: "ioixZtoTp00", kind: "stage", why: "The Dolls played upstairs at Max's - filmed there in August 1973", sources: ["H", "A"] },
+    { title: "Spirit in the Night", artist: "Bruce Springsteen", year: 1973, spotify: "2D9YnxyNwj7qqA1JLyKYPR", video: "hFEeqfqoTSY", kind: "stage", why: "Springsteen played Max's in 1972 and 1973, the year of this song", sources: ["A"] },
+    { title: "Stir It Up", artist: "Bob Marley & the Wailers", year: 1973, spotify: "1pZl2hgGAouilDmS4QDIif", video: "1hwL3S3Gtzs", kind: "stage", why: "The Wailers opened for Springsteen at Max's in 1973", sources: ["A"] },
+    { title: "Dream On", artist: "Aerosmith", year: 1973, spotify: "5Ih9gbqyxCzTJ43nuSuKnC", video: "89dGC8de0CA", kind: "stage", why: "Aerosmith played their first New York show at Max's; Man Parrish saw them there", sources: ["A", "F"], guest: { slug: "man-parrish", label: "Man Parrish" } },
+    { title: "Thirteen", artist: "Big Star", year: 1972, spotify: "3BQLTtpQOYGXQY2lT3ZZeU", video: "9tZT_FdAxpY", kind: "stage", why: "Big Star played two shows at Max's in December 1973", sources: ["A"] },
+    { title: "Piss Factory", artist: "Patti Smith", year: 1974, spotify: "5KLKSxNQQqg8hOaHVqEwuk", video: "rxJRLwbotFI", kind: "stage", why: "Patti Smith and Lenny Kaye played Max's as a duo on New Year's Day 1974, months before they recorded this", sources: ["A"] },
+    { title: "Max's Kansas City 1976", artist: "Wayne County & the Backstreet Boys", year: 1976, spotify: "7IbXzduh3q7nCgM2rDJtCx", video: "uP2Q9XpKayE", kind: "about", why: "Jayne County's roll call of the club, on its own 1976 album", sources: ["C", "D"], guest: { slug: "jayne-county", label: "Jayne County" } },
+    { title: "Shake Your Ashes", artist: "Cherry Vanilla", year: 1976, spotify: "1RZ5wjFSDyfvFtJe3q6E0c", video: "8CUneCRFpPw", kind: "about", why: "Cherry Vanilla on Max's Kansas City 1976, the album of its bands", sources: ["C"], guest: { slug: "cherry-vanilla", label: "Cherry Vanilla" } },
+    { title: "Rocket USA", artist: "Suicide", year: 1977, spotify: "2ZA9Sw1hq8mOaFzOiPyN71", video: "3GN1VkRX5co", kind: "about", why: "An early version is on Max's Kansas City 1976. Alan Vega put Johnny Dynell in a band that played Max's", sources: ["C", "G"], guest: { slug: "chi-chi-valenti-johnny-dynell", label: "Johnny Dynell" } },
+    { title: "Final Solution", artist: "Pere Ubu", year: 1976, spotify: "7dBXZDkTThkt9ef5XUBUFo", video: "mSD_R5FkjVM", kind: "about", why: "On Max's Kansas City 1976, the album of its bands", sources: ["C"] },
+    { title: "Rip Her to Shreds", artist: "Blondie", year: 1976, spotify: "23yUwzz4CQ8yzQ65ATN6Ds", video: "WHsH_XLn-Zk", kind: "stage", why: "Blondie played Max's regularly - and Debbie Harry had waited tables there", sources: ["A", "D"] },
+    { title: "Jocko Homo", artist: "Devo", year: 1977, spotify: "0uUpIC4d2caOdQJqaBVMhs", video: "M0Cktujzcyk", kind: "stage", why: "Devo played Max's in 1977; David Bowie introduced them as 'the band of the future'", sources: ["A", "I"] },
+    { title: "Just What I Needed", artist: "The Cars", year: 1978, spotify: "4alHo6RGd0D3OUbTPExTHN", video: "gvy2yqUHLLg", kind: "stage", why: "Man Parrish saw the Cars at Max's when they were still a Boston band", sources: ["F"], guest: { slug: "man-parrish", label: "Man Parrish" } },
+    { title: "Human Fly", artist: "The Cramps", year: 1978, spotify: "0ElRzK07sc9eszyk1ea9Ab", video: "WK5Xe1SK0r8", kind: "stage", why: "The Cramps played Max's regularly - filmed there in 1977", sources: ["A", "L"] },
+    { title: "Crocodile Tears", artist: "Mumps", year: 1977, spotify: "7g6E96nVzM4pKqJ3G8WAS9", video: "ume63Bf2mKU", kind: "stage", why: "Lance Loud's band, regulars at Max's", sources: ["A", "M"] },
+    { title: "My Way (live at Max's)", artist: "Sid Vicious", year: 1979, video: "0JQPjWB1K2c", kind: "live", why: "Sid Sings was recorded at his Max's shows in 1978 - his only solo gigs in America", sources: ["J", "A"] },
+    { title: "M.I.A. (live at Max's)", artist: "Johnny Thunders & the Heartbreakers", year: 1979, spotify: "2j5IvlJnAgvvBPtRZN6VVU", video: "80vx7X0Rfdk", kind: "live", why: "Recorded at Max's - the Heartbreakers' live album was taped there in 1978", sources: ["K", "A"] },
+  ],
+};
+
+const sf: ClubNight = {
+  slug: "sound-factory",
+  club: "Sound Factory",
+  // Playlists still PRIVATE (Lisa, 14 Nov 2026) - once she makes them public, add:
+  // playlistId: "5gtVJgJZB28E8oomyuYRST",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLS1-AgXY1TD4",
+  note:
+    "The records of Junior Vasquez's Sound Factory (1989–1995): So Get Up, the club's theme; Sounds of Blackness's The Pressure, which Kevin Aviance performed to when Junior came out of the booth with flowers; the records named in DJhistory's and The Ransom Note's nights on the floor; Junior's own Sound Factory mixes - and the house producers who made records with the room in mind. Not one exact night: Junior's real sets are under On film.",
+  footage: [
+    { id: "GEACs9ab4Sc", title: "Night Fever S01E08 - Luis Xtravaganza Camacho ('Sound Factory was our home')" },
+    { id: "Lbpn2MizfQY", title: "1993 Original Sound Factory runway scene for MTV, 27th Street - Junior Vasquez" },
+    { id: "ZSErv7F-qN4", title: "Original Sound Factory 1992 - House of Runway, DJ Junior Vasquez" },
+    { id: "AoauLqqD9c8", title: "Runway at the Sound Factory - NYC 1993" },
+    { id: "L6FkLEC2Luc", title: "Junior Vasquez live at the Sound Factory, 15 March 1992" },
+    { id: "eYPpQw39lFc", title: "Junior Vasquez - Sound Factory, 5 January 1992" },
+    { id: "dI4V_bUnBoQ", title: "Sounds of the NY Underground - Junior Vasquez at the Sound Factory (taped 1994)" },
+  ],
+  sources: [
+    { key: "A", label: "Wikipedia: Junior Vasquez (So Get Up, his theme at the club)", href: "https://en.wikipedia.org/wiki/Junior_Vasquez" },
+    { key: "B", label: "The Ransom Note: a night at the Sound Factory, New York", href: "https://www.theransomnote.com/?p=4708" },
+    { key: "C", label: "DJhistory: The life and death of the Sound Factory", href: "https://djhistory.com/read/the-life-and-death-of-the-sound-factory/" },
+    { key: "D", label: "Night Fever S03E03 - Kevin Aviance (his show to The Pressure, Junior's flowers, the Basement Boys, 00:17:16)", href: "https://nightfever-afterparty.com/episodes/s03e03" },
+    { key: "E", label: "Night Fever S06E02 - Christina Visca (Grace Jones's Halloween concert, 1989, 00:29:43)", href: "https://nightfever-afterparty.com/episodes/s06e02" },
+    { key: "F", label: "Wikipedia: The Sound Factory (nightclub)", href: "https://en.wikipedia.org/wiki/The_Sound_Factory_(nightclub)" },
+  ],
+  songs: [
+    { title: "So Get Up (Junior's Factory Mix)", artist: "Underground Sound of Lisbon", year: 1993, spotify: "5Axveq9U8bOOcJwHzLssjU", video: "ICUS2ikRapY", kind: "played", why: "Junior played it and its a cappella again and again in late 1993 - it became his theme at the club", sources: ["A"] },
+    { title: "The Pressure Pt. 1", artist: "Sounds of Blackness", year: 1991, spotify: "570dq1NUIQF4PmXcMyVKaF", video: "Gjfs3rSIpIQ", kind: "played", why: "Kevin Aviance's show to The Pressure - Junior came out of the booth and gave him flowers. The Ransom Note heard it at 6am", sources: ["D", "B"], guest: { slug: "kevin-aviance", label: "Kevin Aviance" } },
+    { title: "Release Myself", artist: "Coral Way Chiefs", year: 1992, video: "VBoea-AYUNM", kind: "played", sources: ["B"] },
+    { title: "Some Lovin'", artist: "Liberty City", year: 1992, video: "GY0j-ZiqFxw", kind: "played", sources: ["B"] },
+    { title: "4 You", artist: "4th Measure Men", year: 1992, spotify: "6yrD26cPaTpwjWF6dxYjMt", video: "9xbQEZW97Ic", kind: "played", sources: ["B"] },
+    { title: "London Xpress", artist: "X-Press 2", year: 1993, spotify: "6a8MRu5veovjV4Gz4WMm4O", video: "UG70Y3cEUC8", kind: "played", why: "Its typewriter climax 'left the room in tatters'", sources: ["B", "C"] },
+    { title: "Stinkin' Thinkin' (Junior Style)", artist: "Happy Mondays", year: 1992, spotify: "71cl7MdDY6XfKNF77CEWts", video: "KLQ7Um-bWnY", kind: "played", why: "The Farley & Heller mix", sources: ["B"] },
+    { title: "Plastic Dreams", artist: "Jaydee", year: 1992, spotify: "5mES4lfufA5pVgj9JAHbUI", video: "WtAJGKxqzuc", kind: "played", why: "Its clanging notes 'would drop from the ceiling and devastate the place'", sources: ["C"] },
+    { title: "What Would We Do", artist: "DSK", year: 1991, spotify: "2lnq857jFxmu3xSMFXYDot", video: "Nl41ORNVxrw", kind: "dj-artist", why: "The Ransom Note names DSK among the US house of the night", sources: ["B"] },
+    { title: "Follow Me", artist: "Aly-Us", year: 1992, spotify: "5qfjyXMa3NEjGxYHV3h7m8", video: "T8yL2Lmzvn0", kind: "dj-artist", why: "The Ransom Note names Aly-Us among the US house of the night", sources: ["B"] },
+    { title: "It's Gonna Be a Lovely Day", artist: "S.O.U.L. S.Y.S.T.E.M.", year: 1992, spotify: "5A5Ej8R3QY9xb98dmVowmL", video: "wtQ6ca4mL7I", kind: "dj-artist", why: "The Ransom Note remembers a S.O.U.L. S.Y.S.T.E.M. moment on the floor", sources: ["B"] },
+    { title: "It's Over Now", artist: "Ultra Naté", year: 1989, spotify: "7HFlUBwGhfMXAdnX9w87fw", video: "qEnAelPzQ70", kind: "dj-artist", why: "A Basement Boys production - Kevin remembers the Basement Boys' records at the Sound Factory", sources: ["D"], guest: { slug: "kevin-aviance", label: "Kevin Aviance" } },
+    { title: "Love on Top of Love", artist: "Grace Jones", year: 1989, spotify: "7tXevNpGKZ428o7kxFXYAM", video: "DbTpBiXxGAA", kind: "stage", why: "Grace Jones gave a two-hour Halloween concert at the Sound Factory in 1989, the year of this single", sources: ["E"], guest: { slug: "christina-visca", label: "Christina Visca" } },
+    { title: "Percolator", artist: "Cajmere", year: 1992, spotify: "5JYbPUFjUn0i8BQy1C5JTs", video: "b-R0TC0DLVE", kind: "dj-artist", why: "DJhistory names Cajmere among the producers making records with the Sound Factory in mind", sources: ["C"] },
+    { title: "I Can't Get No Sleep", artist: "Masters at Work feat. India", year: 1993, spotify: "7GGhRv9fDiows4YvP5JTE5", video: "cS2-01pvAog", kind: "dj-artist", why: "DJhistory names Masters at Work among the producers making records with the Sound Factory in mind", sources: ["C"] },
+    { title: "Get Your Hands Off My Man (Junior's Sound Factory Mix)", artist: "Junior Vasquez", year: 1994, spotify: "30LYx32xA9g7l2NCCXd8UQ", video: "jLFp20aw0h0", kind: "about", why: "Junior's own record, in its Sound Factory mix", sources: ["A"] },
+    { title: "X (Sound Factory Mix)", artist: "Junior Vasquez", year: 1994, spotify: "2jX1nPqc2w5wSTbN3n0abJ", video: "WhuEptAgm5I", kind: "about", why: "Junior's own record, in its Sound Factory mix", sources: ["A"] },
+  ],
+};
+
+export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf];
 
 export const clubNightFor = (slug: string) => CLUB_NIGHTS.find((c) => c.slug === slug);
 export const playlistUrl = (id: string) => `https://open.spotify.com/playlist/${id}`;
