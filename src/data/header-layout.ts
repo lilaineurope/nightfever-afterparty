@@ -35,4 +35,5 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s03e02: { left: [], right: ["timeline", "mentor", "drop"] }, // Martha Wash - Lisa: yes to polaroid and layout (11 Nov 2026)
   s06e01: { left: ["drop"], right: ["timeline", "mentor"] }, // James St. James - Lisa: Top of the drop left, Mentor score right
   s06e02: { left: ["mentor", "drop"], right: ["timeline"] }, // Christina Visca - Lisa: layout ok, polaroid ok (14 Nov 2026)
+  s06e05: { left: ["drop"], right: ["timeline", "mentor"] }, // Nora Burns - proposed: Top of the drop left, Under the wing of under the Timeline (waiting for Lisa)
 };
