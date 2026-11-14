@@ -46,7 +46,7 @@ const SOUND_FACTORY_CREDIT = "Photos: Leest3, the same room in its Twilo years (
 
 const MUDD_CREDIT =
   "Photo: Wickkey, 2012, via Wikimedia Commons, CC BY-SA 3.0 (our version is CC BY-SA 3.0 too). Polaroid: The Curators Present Art at the Mudd flyer, 1980 - Gallery 98";
-const AREA_CREDIT = "Header: an Area night drawn for the AFTERPARTY. Polaroid: Area's Halloween invitation silk-screened on a bandana, 1984 - Gallery 98";
+const AREA_CREDIT = "Header: an Area night drawn for the AFTERPARTY. Polaroid: AREA Retrospective card, pictures from past themes, January 1985 - Gallery 98";
 const STUDIO_54_CREDIT =
   "Photos: Epicgenius, the room in 2026 (header, CC BY-SA 4.0, via Wikimedia Commons; our version is CC BY-SA 4.0 too) and William Armstrong's Statue of Liberty head made for Studio 54 (polaroid, public domain)";
 const LIMELIGHT_CREDIT = "Photo: Gryffindor, the church in 2007, via Wikimedia Commons, public domain. Polaroid: Queer Nation presents Voguing Superstars of Paris Is Burning at Limelight, card, 1991 - Gallery 98";
