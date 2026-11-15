@@ -73,7 +73,7 @@ export function Timestamp({ episodeId, time, className = "" }: { episodeId: stri
     <button
       type="button"
       onClick={() => playEpisodeAt(episodeId, toSeconds(time))}
-      title={`Play S${ep.season}E${ep.episode} from ${time}`}
+      title={`Play S${ep.season}E${ep.episode}${ep.part ?? ""} from ${time}`}
       className={`inline-flex items-center gap-1 self-start ${TS} transition hover:font-bold hover:[text-shadow:1px_1px_0_var(--color-cream)] focus-visible:font-bold focus-visible:[text-shadow:1px_1px_0_var(--color-cream)] ${className}`}
     >
       <span aria-hidden="true" className="text-[0.75em]">&#9654;</span>
@@ -170,7 +170,7 @@ export function EpisodePlayer() {
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 pt-1.5 text-xs text-muted-foreground">
           <span className="truncate">
             <span className="font-semibold text-pink">
-              S{ep.season}E{ep.episode} · {ep.guest}
+              S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
             </span>
             <span className="hidden sm:inline"> - tap any &#9654; timestamp to jump right to that moment</span>
           </span>

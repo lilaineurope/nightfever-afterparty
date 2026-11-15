@@ -43,8 +43,9 @@ import refs202Json from "./s02e02.json";
 import refs305Json from "./s03e05.json";
 import refs602Json from "./s06e02.json";
 import refs605Json from "./s06e05.json";
-import refs507Json from "./s05e07.json";
-import { episodes } from "./episodes";
+import refs507aJson from "./s05e07a.json";
+import refs507bJson from "./s05e07b.json";
+import { episodes, episodeIdOf } from "./episodes";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 
@@ -61,7 +62,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b";
 };
 
 export type Entity = {
@@ -121,7 +122,8 @@ const refs: Ref[] = [
   ...(refs305Json as Ref[]).map((r) => ({ ...r, episode: "s03e05" as const })),
   ...(refs602Json as Ref[]).map((r) => ({ ...r, episode: "s06e02" as const })),
   ...(refs605Json as Ref[]).map((r) => ({ ...r, episode: "s06e05" as const })),
-  ...(refs507Json as Ref[]).map((r) => ({ ...r, episode: "s05e07" as const })),
+  ...(refs507aJson as Ref[]).map((r) => ({ ...r, episode: "s05e07a" as const })),
+  ...(refs507bJson as Ref[]).map((r) => ({ ...r, episode: "s05e07b" as const })),
 ];
 
 // Bracketed asides are dropped so "Danceteria (probably)" joins "Danceteria", but an episode code such as
@@ -290,7 +292,7 @@ export const categoryMentions: Record<string, number> = (() => {
 /** "S6E1" style short label for an episode id. */
 export const episodeShort = (id: string): string => {
   const ep = episodes.find((x) => x.id === id);
-  return ep ? `S${ep.season}E${ep.episode}` : id;
+  return ep ? `S${ep.season}E${ep.episode}${ep.part ?? ""}` : id;
 };
 
 /** Mentions of one entity inside a single episode. */
@@ -324,9 +326,8 @@ export const isThinCard = (e: Entity): boolean =>
  *  yet keep their A–Z card until their episode is registered in episodes.ts. */
 export function afterpartyOf(e: Entity | undefined): NonNullable<Ref["episode"]> | undefined {
   if (!e?.guest) return undefined;
-  const m = e.guest.episode.match(/Season (\d+), Episode (\d+)/);
-  if (!m) return undefined;
-  const id = `s${m[1]!.padStart(2, "0")}e${m[2]!.padStart(2, "0")}`;
+  const id = episodeIdOf(e.guest.episode);
+  if (!id) return undefined;
   return episodes.some((x) => x.id === id) ? (id as NonNullable<Ref["episode"]>) : undefined;
 }
 

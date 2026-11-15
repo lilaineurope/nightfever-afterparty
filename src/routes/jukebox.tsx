@@ -50,7 +50,7 @@ export const Route = createFileRoute("/jukebox")({
       const head = pageHead({
         path: "/jukebox",
         title: `${guest}'s AFTERPARTY playlist – Night Fever Jukebox`,
-        description: `The ${n} songs and bands that come up in ${guest}'s Night Fever episode (S${ep.season}E${ep.episode}), in the order they're dropped - press play on the Night Fever Jukebox.`,
+        description: `The ${n} songs and bands that come up in ${guest}'s Night Fever episode (S${ep.season}E${ep.episode}${ep.part ?? ""}), in the order they're dropped - press play on the Night Fever Jukebox.`,
         image: `/og/${ep.id}.jpg`,
       });
       // The canonical stays /jukebox; the share card points at this Afterparty's link.

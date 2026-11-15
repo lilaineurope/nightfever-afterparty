@@ -103,7 +103,7 @@ const STORE = "nf-closet-style";
 const SHORT: Record<Slot, string> = { head: "HAIR & HATS", top: "TOPS & DRESSES", bottom: "SKIRTS & PANTS", feet: "SHOES", extra: "EXTRAS" };
 const epLabel = (id: string) => {
   const e = episodes.find((x) => x.id === id);
-  return e ? `S${String(e.season).padStart(2, "0")}E${String(e.episode).padStart(2, "0")}` : id.toUpperCase();
+  return e ? `S${String(e.season).padStart(2, "0")}E${String(e.episode).padStart(2, "0")}${e.part ?? ""}` : id.toUpperCase();
 };
 const rnd = (n: number) => Math.floor(Math.random() * n);
 

@@ -46,7 +46,7 @@ const signSchema = z.object({
   episode: z
     .string()
     .optional()
-    .transform((v) => (v && /^s\d\de\d\d$/.test(v) ? v : null)),
+    .transform((v) => (v && /^s\d\de\d\d[ab]?$/.test(v) ? v : null)),
   page: z
     .string()
     .optional()

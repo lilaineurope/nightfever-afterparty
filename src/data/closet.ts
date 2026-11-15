@@ -217,7 +217,7 @@ export function options(mode: Mode): Option[] {
   else if (mode !== "all") PIECES.forEach((p) => p.tags.forEach((t) => CAT_OF[bySlug.get(t)?.category ?? ""] === mode && add(t)));
   const label = (id: string) =>
     mode === "episode"
-      ? (() => { const e = episodes.find((x) => x.id === id)!; return `S${String(e.season).padStart(2, "0")}E${String(e.episode).padStart(2, "0")} · ${e.guest}`; })()
+      ? (() => { const e = episodes.find((x) => x.id === id)!; return `S${String(e.season).padStart(2, "0")}E${String(e.episode).padStart(2, "0")}${e.part ?? ""} · ${e.guest}`; })()
       : mode === "colour"
         ? COLOUR_MOODS.find((m) => m.id === id)!.label
         : mode === "designer"

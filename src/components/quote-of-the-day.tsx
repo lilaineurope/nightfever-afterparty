@@ -53,7 +53,7 @@ export function QuoteOfTheDay() {
           <span>- {q.who ?? ep.guest}</span>
           <Timestamp episodeId={ep.id} time={q.time} />
           <Link to={episodePath(ep.id)} className="text-gold underline-offset-2 hover:underline">
-            S{ep.season} E{ep.episode} Afterparty &rarr;
+            S{ep.season} E{ep.episode}{ep.part} Afterparty &rarr;
           </Link>
         </figcaption>
       </div>

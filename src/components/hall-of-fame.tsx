@@ -17,7 +17,7 @@ const mentors = rankedMentors.slice(0, 10);
 const momentsOfMentor = (links: typeof MENTOR_LINKS): Moment[] =>
   links.map((l) => {
     const ep = episodeById(l.episode);
-    return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}`, guest: ep.guest, time: l.time, context: `${short(l.mentee)}: ${l.line}` };
+    return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: l.time, context: `${short(l.mentee)}: ${l.line}` };
   });
 
 export function HallOfFame() {

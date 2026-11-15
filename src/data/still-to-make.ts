@@ -131,7 +131,7 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
   {
     title: "Meet Me at the Mailbox (Denise Stoughton)",
     why: "Really Denise is writing and self-publishing a book about Bainbridge Island's personalised mailboxes and the people behind them, raising the money as she goes - and Jenny Go-Getter offered to edit it for free.",
-    episodeId: "s05e07",
+    episodeId: "s05e07b",
     time: "00:54:06",
     made: "in the works",
     status: "In the works - working title Meet Me at the Mailbox: The Fabulous Mailboxes of Bainbridge Island; no release announced yet.",

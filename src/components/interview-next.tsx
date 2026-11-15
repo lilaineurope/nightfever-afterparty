@@ -58,7 +58,7 @@ function Tip({ tip, id, opener }: { tip: InterviewTip; id: string; opener: Opene
         <span className="bg-gold px-1.5 py-0.5 font-semibold uppercase tracking-wide text-gold-foreground">Suggested on the show</span>
         <span>Said in</span>
         <Link to={episodePath(ep.id)} className="text-gold">
-          S{ep.season}E{ep.episode} &middot; {ep.guest}
+          S{ep.season}E{ep.episode}{ep.part} &middot; {ep.guest}
         </Link>
         <Timestamp episodeId={ep.id} time={tip.time} className="text-xs" />
       </p>

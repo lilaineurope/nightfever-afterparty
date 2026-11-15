@@ -58,7 +58,7 @@ function Item({ it }: { it: StillToMake }) {
       <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
         <span>Said in</span>
         <Link to={episodePath(ep.id)} className="text-gold">
-          S{ep.season}E{ep.episode} &middot; {ep.guest}
+          S{ep.season}E{ep.episode}{ep.part} &middot; {ep.guest}
         </Link>
         {it.time && <Timestamp episodeId={ep.id} time={it.time} className="text-xs" />}
       </p>

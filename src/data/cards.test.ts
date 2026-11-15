@@ -16,7 +16,7 @@ type Row = { rank: number; mentions: number; category: string; name: string; tim
 const DIR = dirname(fileURLToPath(import.meta.url));
 const EPISODE_FILES: Record<string, Row[]> = Object.fromEntries(
   readdirSync(DIR)
-    .filter((f) => /^s\d\de\d\d\.json$/.test(f))
+    .filter((f) => /^s\d\de\d\d[ab]?\.json$/.test(f))
     .map((f) => [`./${f}`, JSON.parse(readFileSync(join(DIR, f), "utf8")) as Row[]]),
 );
 

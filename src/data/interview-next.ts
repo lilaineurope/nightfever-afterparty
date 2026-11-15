@@ -70,19 +70,19 @@ export const NEW_FACES: InterviewTip[] = [
   {
     name: "Christopher Amazing",
     why: "James, when Christopher says Christopher Amazing was his first New York roommate: 'We could do a whole episode about Christopher.'",
-    episodeId: "s05e07",
+    episodeId: "s05e07a",
     time: "00:06:50",
   },
   {
     name: "Jenny Go-Getter",
     why: "James, after Really Denise says her old party partner (now Jenny Banash, a young-adult novelist) offered to edit her book: 'We'll have to have her on the show.'",
-    episodeId: "s05e07",
+    episodeId: "s05e07b",
     time: "00:54:55",
   },
   {
     name: "Magenta",
     why: "James to Fenton, when Really Denise remembers the Tunnel kid: 'I think you wanted us to try and find Magenta.'",
-    episodeId: "s05e07",
+    episodeId: "s05e07b",
     time: "00:55:27",
   },
 ];
@@ -222,9 +222,9 @@ export const COME_BACK: InterviewTip[] = [
     time: "01:16:52",
   },
   {
-    name: "Christopher Comp & Really Denise",
+    name: "Really Denise",
     why: "James closes Really Denise's interview: they're going to have to have her back on the show again.",
-    episodeId: "s05e07",
+    episodeId: "s05e07b",
     time: "01:04:44",
   },
 ];

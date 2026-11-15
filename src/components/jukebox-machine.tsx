@@ -484,7 +484,7 @@ export function JukeboxMachine({
     </Link>
   );
   const entityOf = (e: Entry) => (e.kind === "song" || e.kind === "pub" ? entityBySlug[e.it.slug] : entityFor(e.c.name));
-  const entryStrip = (e: Entry, ep: { id: string; season: number; episode: number }) => {
+  const entryStrip = (e: Entry, ep: { id: string; season: number; episode: number; part?: string }) => {
     const ent = entityOf(e);
     return (
       <Fragment key={e.key}>
@@ -497,8 +497,8 @@ export function JukeboxMachine({
       </Fragment>
     );
   };
-  const entryStripRow = (e: Entry, ep: { id: string; season: number; episode: number }) => {
-    const code = `S${ep.season}E${ep.episode}`;
+  const entryStripRow = (e: Entry, ep: { id: string; season: number; episode: number; part?: string }) => {
+    const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
     const seen = e.views > 0 ? ` · ${fmtViews(e.views)} views` : "";
     if (e.kind === "song") {
       const it = e.it;
@@ -640,7 +640,7 @@ export function JukeboxMachine({
                   </p>
                   {clip.time && clip.ep && (
                     <p className="jbx-drop">
-                      dropped in {stageName(episodeById(clip.ep).guest)}&rsquo;s episode, S{episodeById(clip.ep).season}E{episodeById(clip.ep).episode}{" "}
+                      dropped in {stageName(episodeById(clip.ep).guest)}&rsquo;s episode, S{episodeById(clip.ep).season}E{episodeById(clip.ep).episode}{episodeById(clip.ep).part}{" "}
                       <Timestamp episodeId={clip.ep} time={clip.time} className="jbx-ts" />
                     </p>
                   )}
@@ -691,7 +691,7 @@ export function JukeboxMachine({
             {musicEpisodes.map((e) => (
               <button key={e.id} type="button" className={`jbx-pol${episodeId === e.id ? " on" : ""}`} aria-pressed={episodeId === e.id} onClick={() => pickEpisode(e.id)} title={`Play the songs from ${e.guest}'s Afterparty`}>
                 {episodePortraits[e.id] && <img src={polaroidThumb(e.id, 240)} alt="" loading="lazy" />}
-                <span>S{e.season}E{e.episode}</span>
+                <span>S{e.season}E{e.episode}{e.part}</span>
                 <b>{stageName(e.guest)}</b>
               </button>
             ))}
@@ -808,7 +808,7 @@ export function JukeboxMachine({
             {episodePortraits[ep.id] && (
               <Link to={episodePath(ep.id)} className="jbx-ep-pol" aria-label={`${ep.guest}'s Afterparty`}>
                 <img src={polaroidThumb(ep.id, 240)} alt="" />
-                <span>S{ep.season}E{ep.episode}</span>
+                <span>S{ep.season}E{ep.episode}{ep.part}</span>
               </Link>
             )}
             <div>

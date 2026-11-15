@@ -225,8 +225,13 @@
   "line": "Downtown comedian and writer · Unitard, Candied Camera, David's Friend"
  },
  {
-  "id": "s05e07",
-  "guest": "Christopher Comp & Really Denise",
-  "line": "Original Club Kids · Limelight party planner and Tunnel hostess"
+  "id": "s05e07a",
+  "guest": "Christopher Comp",
+  "line": "Second-wave club kid · Project X cover boy, Limelight party planner"
+ },
+ {
+  "id": "s05e07b",
+  "guest": "Really Denise",
+  "line": "Original Tunnel kid and hostess · Bainbridge Island's mailbox lady"
  }
 ]

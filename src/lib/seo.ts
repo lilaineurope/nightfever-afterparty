@@ -1,6 +1,6 @@
 // Search and share settings in one place: full addresses, share pictures (public/og/*.jpg, 1200x630)
 // and structured data (schema.org JSON-LD) for Google. Episode pages call episodeHead(id).
-import { episodeById } from "@/data/episodes";
+import { episodeById, episodeIdOf } from "@/data/episodes";
 import { guests } from "@/data/guests";
 import { GUEST_LINES } from "@/data/guest-lines";
 
@@ -114,7 +114,8 @@ const EPISODE_TOPICS: Record<string, string> = {
   s03e05: "Bowie, Warhol's Pork & Max's Kansas City",
   s06e02: "the Sound Factory, Junior Vasquez & the Limelight",
   s06e05: "Studio 54, Candied Camera & downtown comedy",
-  s05e07: "Club Kids, the Limelight & the Tunnel",
+  s05e07a: "Club Kids, the Limelight & Riverbank West",
+  s05e07b: "the Tunnel, outlaw parties & Bainbridge mailboxes",
 };
 
 /** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so
@@ -135,8 +136,7 @@ export function episodeTitle(guest: string, code: string, topics?: string, max =
 /** The guest as a schema.org Person. Their A–Z card forwards to the episode page (one page per guest, Lisa 1 Nov 2026),
  *  so the fuller Person from the card (description, jobTitle, image) lives here now. */
 function guestPerson(id: string, name: string) {
-  const m = id.match(/^s(\d+)e(\d+)$/);
-  const g = m ? guests.find((x) => x.episode.startsWith(`Season ${Number(m[1])}, Episode ${Number(m[2])}`) && !/\d/.test(x.episode.charAt(`Season ${Number(m[1])}, Episode ${Number(m[2])}`.length))) : undefined;
+  const g = guests.find((x) => episodeIdOf(x.episode) === id);
   const person: Record<string, unknown> = { "@type": "Person", name: g?.name ?? name, image: abs(`/og/${id}.jpg`) };
   if (g?.tagline) person["description"] = g.tagline;
   if (GUEST_LINES[id]) person["jobTitle"] = GUEST_LINES[id];
@@ -145,7 +145,7 @@ function guestPerson(id: string, name: string) {
 
 export function episodeHead(id: string, references: number) {
   const ep = episodeById(id);
-  const code = `S${ep.season}E${ep.episode}`;
+  const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
   const topics = EPISODE_TOPICS[id];
   const title = episodeTitle(ep.guest, code, topics);
   const description = `All ${references} names, clubs, places and looks from ${ep.guest}'s Night Fever interview (${code}), each timestamped to play from that moment. Dive in!`;

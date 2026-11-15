@@ -89,7 +89,7 @@ export function CardSections({ e }: { e: Entity }) {
                 <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <Link to={episodePath(ep.id)} className="font-semibold text-gold hover:text-pink">
-                      S{ep.season}E{ep.episode} · {ep.guest}
+                      S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
                     </Link>
                     <span className="text-xs text-muted-foreground">
                       {r.time === "On camera" ? "On camera" : <Timestamp episodeId={ep.id} time={r.time} />}
@@ -343,7 +343,7 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
         <button type="button" aria-expanded={on} onClick={() => setOpen(on ? null : key)}
           className="group text-left">
           {label && <><span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>{" "}</>}
-          <span className={`font-semibold text-pink ${on ? "underline" : "group-hover:underline"}`}>S{ep.season}E{ep.episode} · {name}</span>
+          <span className={`font-semibold text-pink ${on ? "underline" : "group-hover:underline"}`}>S{ep.season}E{ep.episode}{ep.part} · {name}</span>
         </button>
         {on && (
           <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
@@ -355,7 +355,7 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
             </div>
             <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label ?? "Under the wing of"}</p>
             <p className="mt-3 text-sm text-muted-foreground">
-              <Link to={episodePath(ep.id)} className="font-medium text-gold hover:text-pink">S{ep.season}E{ep.episode} · {ep.guest}</Link>
+              <Link to={episodePath(ep.id)} className="font-medium text-gold hover:text-pink">S{ep.season}E{ep.episode}{ep.part} · {ep.guest}</Link>
               {" · "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={name} />
             </p>
           </div>
@@ -413,7 +413,7 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
                     <Link to={episodePath(ep.id)} aria-expanded={open === key}
                       onClick={(ev) => { if (!plainClick(ev)) return; ev.preventDefault(); setOpen(open === key ? null : key); }}
                       className={`font-semibold hover:text-pink ${open === key ? "text-pink" : "text-gold"}`}>
-                      S{ep.season}E{ep.episode} · {ep.guest}
+                      S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
                     </Link>
                     <span className="text-xs text-muted-foreground">
                       {" · "}{mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "named"}
@@ -422,11 +422,11 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
                     {open === key && (
                       <div className="mt-3">
                         <MomentsBox
-                          name={`S${ep.season}E${ep.episode} · ${ep.guest}`}
+                          name={`S${ep.season}E${ep.episode}${ep.part ?? ""} · ${ep.guest}`}
                           slug={host?.slug ?? e.slug}
                           mentions={mentions}
                           moments={rows.map(({ r, via }) => ({
-                            episodeId: ep.id, code: `S${ep.season}E${ep.episode}`, guest: ep.guest, time: r.time,
+                            episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: r.time,
                             context: via ? `${via.name}: ${r.context}` : r.context,
                           }))}
                           note={`${e.name} in this AFTERPARTY`}

@@ -7,7 +7,7 @@ import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-route
 import { CardSections } from "@/components/card-sections";
 import { afterpartyOf, entityBySlug, episodeShort, isThinCard } from "../data/entities";
 import { abs, cardDescription, cleanStory, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
-import { episodePath, episodes } from "../data/episodes";
+import { episodeIdOf, episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
 import { SiteFooter } from "@/components/site-footer";
@@ -98,8 +98,7 @@ export const Route = createFileRoute("/explore/$slug")({
 
 /** "Season 1, Episode 6" -> the episode id, code, guest line and AFTERPARTY page (when there is one) for the Person markup. */
 function guestFacts(episode: string, tagline: string) {
-  const m = episode.match(/Season (\d+), Episode (\d+)/);
-  const id = m ? `s${(m[1] ?? "").padStart(2, "0")}e${(m[2] ?? "").padStart(2, "0")}` : "";
+  const id = episodeIdOf(episode);
   const ep = id ? episodes.find((x) => x.id === id) : undefined;
   return {
     id,

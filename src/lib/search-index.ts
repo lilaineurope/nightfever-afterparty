@@ -26,10 +26,10 @@ const items: Item[] = [
   ...episodes.filter((e) => !guestOfEpisode(e.id)).map((e) => ({
     kind: "episode" as const,
     title: `${e.guest}`,
-    sub: `Season ${e.season} · Episode ${e.episode} · Afterparty`,
+    sub: `Season ${e.season} · Episode ${e.episode}${e.part ?? ""} · Afterparty`,
     to: episodePath(e.id),
     key: norm(`${e.guest} s${e.season}e${e.episode} season ${e.season} episode ${e.episode}`),
-    texts: [{ text: e.blurb, norm: norm(e.blurb), label: `S${e.season}E${e.episode}` }],
+    texts: [{ text: e.blurb, norm: norm(e.blurb), label: `S${e.season}E${e.episode}${e.part ?? ""}` }],
   })),
   ...entities.map((en) => {
     const eps = [...new Set(en.refs.map((r) => r.episode).filter(Boolean))].map((id) => episodeShort(id as string));
@@ -39,12 +39,12 @@ const items: Item[] = [
       kind: own ? ("episode" as const) : ("card" as const),
       title: en.name,
       sub: own
-        ? `Season ${own.season} · Episode ${own.episode} · Afterparty`
+        ? `Season ${own.season} · Episode ${own.episode}${own.part ?? ""} · Afterparty`
         : [en.guest ? "Night Fever guest" : en.category, eps.length ? eps.join(", ") : ""].filter(Boolean).join(" · "),
       ...(own ? { to: episodePath(own.id) } : { to: "/explore/$slug", params: { slug: en.slug } }),
       key: norm([en.name, ...(own ? [own.guest, `s${own.season}e${own.episode} season ${own.season} episode ${own.episode}`] : []), ...en.refs.map((r) => r.heard).filter((h) => h && h !== "—")].join(" | ")),
       texts: [
-        ...(own ? [{ text: own.blurb, norm: norm(own.blurb), label: `S${own.season}E${own.episode}` }] : []),
+        ...(own ? [{ text: own.blurb, norm: norm(own.blurb), label: `S${own.season}E${own.episode}${own.part ?? ""}` }] : []),
         ...en.refs.map((r) => ({ text: r.context, norm: norm(r.context), label: r.episode ? episodeShort(r.episode) : "" })),
         ...en.refs.filter((r) => r.fashion).map((r) => ({ text: r.fashion as string, norm: norm(r.fashion as string), label: "Fashion" })),
         ...en.events.map((ev) => ({ text: `${ev.year}: ${ev.title}`, norm: norm(`${ev.year} ${ev.title}`), label: "Timeline" })),

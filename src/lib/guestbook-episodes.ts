@@ -1,5 +1,5 @@
 import { guests } from "@/data/guests";
-import { episodes } from "@/data/episodes";
+import { episodes, episodeIdOf } from "@/data/episodes";
 
 // Every Night Fever episode with a guest, for the guestbook's "favourite episode" picker.
 export type ShowEpisode = { code: string; label: string; guestSlug: string; afterparty: boolean };
@@ -7,9 +7,8 @@ export type ShowEpisode = { code: string; label: string; guestSlug: string; afte
 export const SHOW_EPISODES: ShowEpisode[] = (() => {
   const byCode = new Map<string, ShowEpisode>();
   for (const g of guests) {
-    const m = /Season\s+(\d+),\s*Episode\s+(\d+)/i.exec(g.episode);
-    if (!m) continue;
-    const code = `s${m[1]!.padStart(2, "0")}e${m[2]!.padStart(2, "0")}`;
+    const code = episodeIdOf(g.episode);
+    if (!code) continue;
     const prev = byCode.get(code);
     if (prev) {
       if (!prev.label.includes(g.name)) prev.label = `${prev.label} & ${g.name}`;

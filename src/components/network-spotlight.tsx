@@ -33,7 +33,7 @@ function starPoints(cx: number, cy: number, r: number) {
   return p.join(" ");
 }
 
-const code = (ep: Ep) => `S${ep.season}E${ep.episode}`;
+const code = (ep: Ep) => `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
 const newest = [...episodes].sort((a, b) => b.afterpartyPublished.localeCompare(a.afterpartyPublished))[0]!;
 
 export function NetworkSpotlight() {

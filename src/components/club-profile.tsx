@@ -30,7 +30,7 @@ export function ClubProfileSections({ c, name, slug }: { c: ClubProfile; name: s
           <div className={c.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : c.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3"}>
             {c.said.map((s, i) => {
               const ep = episodeById(s.episode);
-              const code = `S${ep.season}E${ep.episode}`;
+              const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
               const pol = polaroidThumb(s.episode, 240);
               return (
                 <figure

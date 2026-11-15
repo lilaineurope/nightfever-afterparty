@@ -26,7 +26,7 @@ function toItem(e: Entity, shelf: string, cats: string[]): CollectionItem {
     .filter((r) => r.episode)
     .map((r) => {
       const ep = episodeById(r.episode as string);
-      return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}`, guest: ep.guest, time: r.time, context: r.context };
+      return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: r.time, context: r.context };
     });
   return {
     slug: e.slug,

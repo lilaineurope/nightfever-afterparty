@@ -51,7 +51,8 @@ import jaynePortrait from "@/assets/polaroid-jayne-county.jpg";
 import cherryPortrait from "@/assets/polaroid-cherry-vanilla.jpg";
 import christinaPortrait from "@/assets/polaroid-christina-visca.jpg";
 import noraPortrait from "@/assets/polaroid-nora-burns.jpg";
-import compDenisePortrait from "@/assets/polaroid-christopher-comp-really-denise.jpg";
+import compPortrait from "@/assets/polaroid-christopher-comp.jpg";
+import denisePortrait from "@/assets/polaroid-really-denise.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -99,7 +100,8 @@ export const episodePortraits: Record<string, string> = {
   s03e05: cherryPortrait,
   s06e02: christinaPortrait,
   s06e05: noraPortrait,
-  s05e07: compDenisePortrait,
+  s05e07a: compPortrait,
+  s05e07b: denisePortrait,
 };
 
 // Small WebP copies of the polaroids (scripts/polaroid-thumbs.py): 512px for the polaroid boxes, 240px for the tiny ones.
@@ -218,7 +220,7 @@ function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
       </span>
       <span className="mt-3.5 flex items-baseline justify-between text-xs uppercase">
         <span>
-          S{ep.season} · E{ep.episode}
+          S{ep.season} · E{ep.episode}{ep.part}
         </span>
         {/* Afterparty number (Lisa, 23 Oct 2026): the order it went up on the fan page, James St. James = 1 -
             same font and size as the S · E line opposite */}
