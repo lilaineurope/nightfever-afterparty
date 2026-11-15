@@ -5,6 +5,11 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Save the Robots", lat: 40.7224, lng: -73.9815, area: "East Village" },
+  { name: "Club Cumming", lat: 40.7253, lng: -73.9829, area: "East Village" },
+  { name: "The Andy Warhol Museum", lat: 40.4484, lng: -80.0025, area: "Pennsylvania" },
+  { name: "Bainbridge Island", lat: 47.6262, lng: -122.5212, area: "Seattle area" },
+  { name: "Seattle", lat: 47.6062, lng: -122.3321, area: "Seattle area" },
   { name: "Sheridan Square", lat: 40.7334, lng: -74.0027, area: "West Village" },
   { name: "Greenwich Avenue", lat: 40.7365, lng: -74.0010, area: "West Village" },
   { name: "Women's House of Detention", lat: 40.7343, lng: -73.9993, area: "West Village" },

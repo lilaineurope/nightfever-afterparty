@@ -128,6 +128,15 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     status: "Made - The My Comrade Anthology, pages picked by Linda, came out from Boo-Hooray.",
     source: { label: "Art Metropole", href: "https://artmetropole.com/shop/15424" },
   },
+  {
+    title: "Meet Me at the Mailbox (Denise Stoughton)",
+    why: "Really Denise is writing and self-publishing a book about Bainbridge Island's personalised mailboxes and the people behind them, raising the money as she goes - and Jenny Go-Getter offered to edit it for free.",
+    episodeId: "s05e07",
+    time: "00:54:06",
+    made: "in the works",
+    status: "In the works - working title Meet Me at the Mailbox: The Fabulous Mailboxes of Bainbridge Island; no release announced yet.",
+    source: { label: "Meet Me at the Mailbox", card: "meet-me-at-the-mailbox" },
+  },
 ];
 
 export const FILMS_TO_MAKE: StillToMake[] = [

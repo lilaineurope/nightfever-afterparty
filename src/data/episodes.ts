@@ -43,6 +43,7 @@ import countyRefs from "./s02e02.json";
 import vanillaRefs from "./s03e05.json";
 import viscaRefs from "./s06e02.json";
 import burnsRefs from "./s06e05.json";
+import compDeniseRefs from "./s05e07.json";
 
 /** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
  * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
@@ -948,7 +949,25 @@ const s06e05: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLULpb2lCNCnU",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05].sort((a, b) =>
+const s05e07: Episode = {
+  id: "s05e07",
+  season: 5,
+  episode: 7,
+  guest: "Christopher Comp & Really Denise",
+  released: "2025-07-30",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-507",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://anchor.fm/s/68428444/podcast/play/106220603/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-30%2F21030ee8-1f4b-8fae-0adb-1cbe811e542e.mp3",
+  runtime: "1:05:14",
+  afterpartyPublished: "2026-11-22",
+  blurb:
+    "Christopher Comp on goth Pennsylvania, Riverbank West and the Limelight office; Really Denise on the Tunnel basement, the petting zoo party and Bainbridge's mailboxes",
+  references: compDeniseRefs.length,
+  mentions: compDeniseRefs.reduce((sum, ref) => sum + ref.mentions, 0),
+  top: topNames(compDeniseRefs).map(({ name, mentions }) => ({ name, mentions })),
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -973,7 +992,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -1063,6 +1082,8 @@ export function episodePath(
       return "/episodes/s06e02";
     case "s06e05":
       return "/episodes/s06e05";
+    case "s05e07":
+      return "/episodes/s05e07";
     default:
       return "/episodes/s06e01";
   }

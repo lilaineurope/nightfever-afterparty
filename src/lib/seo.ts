@@ -114,6 +114,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s03e05: "Bowie, Warhol's Pork & Max's Kansas City",
   s06e02: "the Sound Factory, Junior Vasquez & the Limelight",
   s06e05: "Studio 54, Candied Camera & downtown comedy",
+  s05e07: "Club Kids, the Limelight & the Tunnel",
 };
 
 /** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so

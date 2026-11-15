@@ -44,6 +44,7 @@ import s02e02 from "./s02e02.json";
 import s03e05 from "./s03e05.json";
 import s06e02 from "./s06e02.json";
 import s06e05 from "./s06e05.json";
+import s05e07 from "./s05e07.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -565,6 +566,17 @@ const curatedEvents: SceneEvent[] = [
     figures: ["Grace Jones", "Junior Vasquez"],
   },
   {
+    id: "really-denise-tunnel",
+    year: 1988,
+    when: "1988",
+    title: "Really Denise gets her name at the Tunnel",
+    text: "Denise, an FIT art student from upstate New York, takes a cocktail-waitress job at the Tunnel to get in; Michael Alig spots her outfit made of Slinkies and has Rudolf move her to the basement VIP room. Asked backstage at a Tunnel fashion show for her fabulous name, she says 'my name's really Denise' - and by 1988 Really Denise is on the party flyers, often next to Jenny Go-Getter.",
+    place: "The Tunnel",
+    decade: "1980s",
+    people: ["christopher-comp-really-denise"],
+    figures: ["Rudolf Piper", "Jenny Go-Getter"],
+  },
+  {
     id: "nora-burns-candy-camera",
     year: 1992,
     when: "1992-1996",
@@ -653,6 +665,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s03e05", label: "S3 E5", guest: "Cherry Vanilla", refs: s03e05 as Ref[] },
   { id: "s06e02", label: "S6 E2", guest: "Christina Visca", refs: s06e02 as Ref[] },
   { id: "s06e05", label: "S6 E5", guest: "Nora Burns", refs: s06e05 as Ref[] },
+  { id: "s05e07", label: "S5 E7", guest: "Christopher Comp & Really Denise", refs: s05e07 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
