@@ -47,5 +47,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s03e05: { quote: "Theater is the most giving, diplomatic, democratic, beautiful working atmosphere I've ever been in.", time: "01:06:35" }, // Cherry Vanilla - Lisa: quote d (13 Nov 2026)
   s06e02: { quote: "I just feel my whole life, most every friend I know, I met on a dance floor.", time: "00:44:07" }, // Christina Visca - Lisa: quote d (14 Nov 2026)
   s06e05: { quote: "The fag hag thing is so real. It's the best relationship there is.", time: "00:41:46" }, // Nora Burns - Lisa: quote d (14 Nov 2026)
+  s05e07: { quote: "I knew he wanted some kind of fabulous name like everyone else had. And I didn't. So I just said, well, my name's really Denise.", time: "00:37:38", who: "Really Denise" }, // Christopher Comp & Really Denise - proposed, waiting for Lisa
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
