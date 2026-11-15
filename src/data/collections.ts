@@ -84,6 +84,8 @@ export const bookClub: CollectionItem[] = [
 // ---------- Jukebox ----------
 // Official Spotify IDs, checked against Spotify search results (never guessed).
 const SPOTIFY: Record<string, string> = {
+  "Apotheosis – 'O Fortuna'": "spotify:track:1HhyFb7zgaUpdbCnJOWjZd",
+  "This Mortal Coil – 'Holocaust'": "spotify:track:09Yx0al0DYiDqpxUBl1Bnj",
   "Wayne County & the Electric Chairs – 'Toilet Love'": "spotify:track:5cMJ1JP9Ueq4DFHctW4WTz",
   "The Police": "spotify:track:3EYOJ48Et32uATr9ZmLnAo",
   "Mitch Ryder & the Detroit Wheels – 'Devil with a Blue Dress On'": "spotify:track:6HZjbhUFr568W1o7x6UNrf",

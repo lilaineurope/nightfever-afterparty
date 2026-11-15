@@ -2,6 +2,8 @@
 // Most come from the episode AFTERPARTY playlists on YouTube; the rest are the official video or the best upload found.
 // Sounds and scenes get a short documentary or archive clip. A name without a video gets a YouTube search link instead. Nothing loads from YouTube until a visitor presses ▶.
 export const YOUTUBE: Record<string, string> = {
+  "Apotheosis – 'O Fortuna'": "YLk8AMNCo24",
+  "This Mortal Coil – 'Holocaust'": "R_m6uPFJyiE",
   "Wayne County & the Electric Chairs – 'Toilet Love'": "_kIUPU1I_3o",
   "The Police": "3T1c7GkzRQQ",
   "Mitch Ryder & the Detroit Wheels – 'Devil with a Blue Dress On'": "y1PE_YsSNkQ",

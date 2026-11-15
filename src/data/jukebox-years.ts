@@ -2,6 +2,8 @@
 // A song or record = the year that version came out; a band or artist = the year they formed or first performed;
 // a sound or scene = the year it took off; a musical = its first staging. Checked against Wikipedia and other sources.
 export const YEARS: Record<string, number> = {
+  "Apotheosis – 'O Fortuna'": 1991,
+  "This Mortal Coil – 'Holocaust'": 1984,
   "Wayne County & the Electric Chairs – 'Toilet Love'": 1978,
   "The Police": 1977,
   "Mitch Ryder & the Detroit Wheels – 'Devil with a Blue Dress On'": 1966,

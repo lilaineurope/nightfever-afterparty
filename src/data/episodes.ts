@@ -960,6 +960,7 @@ const s05e07: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/106220603/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-30%2F21030ee8-1f4b-8fae-0adb-1cbe811e542e.mp3",
   runtime: "1:05:14",
   afterpartyPublished: "2026-11-22",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLLz4yt8gO8w4",
   blurb:
     "Christopher Comp on goth Pennsylvania, Riverbank West and the Limelight office; Really Denise on the Tunnel basement, the petting zoo party and Bainbridge's mailboxes",
   references: compDeniseRefs.length,
