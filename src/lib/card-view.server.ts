@@ -1,0 +1,155 @@
+// Server side of the A–Z card page (page weight, 16 Nov 2026): loads the whole A–Z, works out what one card shows and
+// every name -> card answer its links need, and sends just that (CardView, src/lib/card-view.ts). Only the server and
+// the server function in card-view.functions.ts load this file.
+import { notFound, redirect } from "@tanstack/react-router";
+import { afterpartyOf, entityBySlug, entityFor, episodeShort, isThinCard, linkCard, relatedTo, type Entity } from "@/data/entities";
+import { linkNames, namedOn } from "@/lib/name-links";
+import { jukebox } from "@/data/collections";
+import { clubNightFor } from "@/data/club-nights";
+import { MEMORIAM } from "@/data/memoriam";
+import { CLUB_PROFILES } from "@/data/club-profiles";
+import { PERSON_PORTRAITS } from "@/data/person-portraits";
+import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
+import { GUEST_LINES } from "@/data/guest-lines";
+import { cleanStory } from "@/lib/seo";
+import { showParts } from "@/components/show-text";
+import { textKey, type LinkCard, type LinkData, type Segment } from "@/lib/link-index";
+import type { CardView } from "@/lib/card-view";
+
+/** Every name -> card answer a card page asks for, recorded the way EntityLink and EntityText ask. */
+function linkRecorder() {
+  const data: LinkData = { names: {}, cards: {}, texts: {} };
+  const card = (slug: string) => {
+    if (data.cards[slug]) return;
+    const c: LinkCard | undefined = linkCard(entityBySlug[slug]);
+    if (c) data.cards[slug] = c;
+  };
+  /** <EntityLink name={n}> */
+  const name = (n: string) => {
+    if (n in data.names) return;
+    const e = entityFor(n);
+    data.names[n] = e?.slug ?? null;
+    if (e) card(e.slug);
+  };
+  /** <EntityText text={t} self={self}> */
+  const text = (t: string, self: string) => {
+    name(self);
+    const selfSlug = entityFor(self)?.slug ?? "";
+    for (const part of showParts(t)) {
+      if (part === "Night Fever" || part === "World of Wonder") continue;
+      const segs: Segment[] = linkNames(part, selfSlug);
+      // Text without a name to link needs no entry: the page shows it as it is (useLinks falls back to the plain text).
+      if (segs.some((s) => s.slug)) data.texts[textKey(part, selfSlug)] = segs;
+      for (const s of segs) if (s.slug) card(s.slug);
+    }
+  };
+  return { data, card, name, text };
+}
+
+/** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
+function cardView(e: Entity): CardView {
+  const g = e.guest;
+  const club = g ? null : (CLUB_PROFILES[e.slug] ?? null);
+  const mem = g ? null : (MEMORIAM[e.slug] ?? null);
+  const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? null);
+  const L = linkRecorder();
+
+  mem?.liftedUp.forEach(L.name);
+  mem?.rooms.forEach(L.name);
+  club?.stage.forEach(L.name);
+  club?.rooms.forEach(L.name);
+  if (g) {
+    g.scenes.forEach(L.name);
+    for (const s of g.linkedTo) {
+      L.name(s);
+      L.card(s);
+    }
+  }
+  for (const r of e.refs) {
+    L.text(r.context, e.name);
+    if (r.fashion) L.text(r.fashion, e.name);
+  }
+  for (const ev of e.events) {
+    L.name(ev.place.split(",")[0]!);
+    for (const p of ev.people) {
+      L.name(p);
+      L.card(p);
+    }
+    ev.figures.forEach(L.name);
+  }
+  const named = namedOn(e).map((x) => {
+    L.card(x.entity.slug);
+    return { slug: x.entity.slug, name: x.entity.name, episode: x.ref.episode, short: x.ref.episode ? episodeShort(x.ref.episode) : undefined };
+  });
+  const inGuestStories = e.inGuestStories.map((x) => {
+    L.name(x.slug);
+    return { slug: x.slug, name: x.name };
+  });
+  const related = relatedTo(e).map((x) => {
+    L.card(x.slug);
+    return { slug: x.slug, name: x.name };
+  });
+  const j = jukebox.find((x) => x.slug === e.slug);
+
+  return {
+    slug: e.slug,
+    name: e.name,
+    category: e.category,
+    link: e.link,
+    guest: g ? g.slug : null,
+    refs: e.refs,
+    events: e.events,
+    named,
+    inGuestStories,
+    related,
+    music: j ? { name: j.name, shelf: j.shelf, spotify: j.spotify } : null,
+    night: clubNightFor(e.slug) ?? null,
+    mem,
+    club,
+    pic,
+    links: L.data,
+  };
+}
+
+/** "Season 1, Episode 6" -> the episode id, code, guest line and AFTERPARTY page (when there is one) for the Person markup. */
+function guestFacts(episode: string, tagline: string) {
+  const id = episodeIdOf(episode);
+  const ep = id ? episodes.find((x) => x.id === id) : undefined;
+  return { id, code: id.toUpperCase(), tagline, line: GUEST_LINES[id] ?? null, path: ep ? episodePath(ep.id) : null };
+}
+
+/** The card page's loader data: the head's facts plus the CardView. Throws the redirects and the 404 the page had before. */
+export function cardPageData(slug: string) {
+  const e = entityBySlug[slug];
+  if (!e) {
+    // /explore/CBGB or /explore/Studio-54 (typed or shared with capitals) finds the card instead of a 404.
+    const lower = slug.toLowerCase();
+    if (lower !== slug && entityBySlug[lower]) throw redirect({ to: "/explore/$slug", params: { slug: lower }, statusCode: 301 });
+    throw notFound();
+  }
+  // One page per guest (Lisa, 1 Nov 2026): a guest with an AFTERPARTY lives on the episode page; old links forward there.
+  const ep = afterpartyOf(e);
+  if (ep) throw redirect({ to: episodePath(ep), statusCode: 301 });
+  // The first story line that still says something once research notes are left out ("Likewise" alone doesn't).
+  const lines = [...e.refs.map((r) => r.context), ...e.events.map((ev) => ev.text)].filter((t): t is string => !!t);
+  // A club page leads with its own story (Lisa, 13 Nov 2026) - CBGB's first line was a guest saying she skipped it.
+  const club = CLUB_PROFILES[e.slug];
+  const mem = MEMORIAM[e.slug];
+  const story = club?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
+  return {
+    slug: e.slug,
+    name: e.name,
+    category: e.guest ? "Night Fever guest" : e.category,
+    rawCategory: e.guest ? "Person" : e.category,
+    episodes: [...new Set(e.refs.map((r) => r.episode).filter(Boolean))].map((id) => episodeShort(id as string)),
+    story,
+    link: e.link ?? "",
+    thin: isThinCard(e),
+    guest: e.guest ? guestFacts(e.guest.episode, e.guest.tagline) : null,
+    // In memoriam and club pages (not guests) get their own head (SEO check, 16 Nov 2026): the facts it needs travel here.
+    club: !e.guest && club ? { story: club.story, address: club.address, opened: club.opened, closed: club.closed, portrait: !!club.portrait } : null,
+    mem: !e.guest && mem ? { born: mem.born, died: mem.died, aka: mem.aka ?? null, story: mem.story, wikidata: mem.wikidata ?? null } : null,
+    portrait: !!PERSON_PORTRAITS[e.slug],
+    view: cardView(e),
+  };
+}

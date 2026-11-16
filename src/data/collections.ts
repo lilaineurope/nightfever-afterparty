@@ -389,13 +389,7 @@ export const jukebox: CollectionItem[] = entities
   .sort(byMentions);
 
 /** Search links that let a visitor find the music or the book themselves; nothing is hosted here. */
-export const listenLinks = (name: string) => {
-  const q = encodeURIComponent(name.replace(/[‘’'"“”]/g, "").replace(/\s+–\s+/g, " "));
-  return {
-    spotify: `https://open.spotify.com/search/${q}`,
-    youtube: `https://www.youtube.com/results?search_query=${q}`,
-  };
-};
+export { listenLinks } from "../lib/listen-links";
 
 export const findBookLink = (name: string) =>
   `https://openlibrary.org/search?q=${encodeURIComponent(name.replace(/\s*\([^)]*\)/g, "").replace(/[‘’'"“”]/g, ""))}`;

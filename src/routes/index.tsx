@@ -9,6 +9,7 @@ import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 import { QuoteOfTheDay } from "@/components/quote-of-the-day";
 import afterpartyFill from "@/assets/home-afterparty-fill.webp";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },

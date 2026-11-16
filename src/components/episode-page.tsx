@@ -9,7 +9,7 @@ import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { namedOnCount } from "@/lib/name-links";
 import { entityFor, guestOfEpisode, totalMentions } from "@/data/entities";
-import { GuestAboutBox, headerColumns } from "@/components/card-sections";
+import { GuestAboutBox, headerColumns } from "@/components/guest-about";
 import { cardTo } from "@/lib/card-link";
 import { episodeById, stageName } from "@/data/episodes";
 import { MoodSpectrum } from "@/components/mood-spectrum";
@@ -17,7 +17,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { isOtherShowGuest } from "@/lib/show-guests";
 import { ShareButton } from "@/components/share-button";
 import { formatDate, toSeconds } from "@/lib/time";
-import { polaroidThumb } from "@/components/episode-block";
+import { polaroidThumb } from "@/lib/polaroids";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
 export type Ref = {

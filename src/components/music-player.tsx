@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { jukebox, listenLinks } from "@/data/collections";
+import { listenLinks } from "@/lib/listen-links";
 
 // Every song, record, band and artist card in Everything A–Z gets a player: Spotify's own embed, loaded only after the
 // visitor presses play (nothing from Spotify loads before that - same as the Jukebox). Cards without a real Spotify id
 // (ids are never guessed) get Spotify and YouTube search links instead.
-const bySlug = new Map(jukebox.map((j) => [j.slug, j]));
+// The card's own Jukebox entry comes from the server with the card (src/lib/card-view.server.ts), not the whole Jukebox.
 const PLAYABLE_SHELVES = new Set(["songs", "artists", "stage"]);
-export function MusicPlayer({ slug }: { slug: string }) {
+export function MusicPlayer({ item: j }: { item: { name: string; shelf: string; spotify?: string | undefined } | null }) {
   const [open, setOpen] = useState(false);
-  const j = bySlug.get(slug);
   if (!j || !PLAYABLE_SHELVES.has(j.shelf)) return null;
   const [, kind, id] = j.spotify?.split(":") ?? [];
   const search = listenLinks(j.name);

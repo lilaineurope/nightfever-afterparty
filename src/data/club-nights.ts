@@ -942,12 +942,5 @@ const sf: ClubNight = {
 export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf];
 
 export const clubNightFor = (slug: string) => CLUB_NIGHTS.find((c) => c.slug === slug);
-export const playlistUrl = (id: string) => `https://open.spotify.com/playlist/${id}`;
+export { KIND_LABEL, playlistUrl } from "./club-night-labels";
 export const trackUrl = (id: string) => `https://open.spotify.com/track/${id}`;
-export const KIND_LABEL: Record<Kind, string> = {
-  played: "Played there",
-  live: "Performed there live",
-  "dj-artist": "An artist the DJs played",
-  about: "Tied to the club",
-  stage: "A band of its stage",
-};

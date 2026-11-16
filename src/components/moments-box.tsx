@@ -6,6 +6,7 @@ import { EntityText } from "@/components/entity-text";
 import { linkPlace } from "@/lib/link-label";
 import { episodeById, episodePath } from "@/data/episodes";
 import { totalMentions, type Entity } from "@/data/entities";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 // The "tap it and a box opens underneath" panel (Lisa, 29 Oct 2026): first made for the Library covers, now shared by the
 // Library, Everything A–Z and the Jukebox strips - the name, how often it's dropped, every moment it comes up (episode,

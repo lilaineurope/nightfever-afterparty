@@ -1,0 +1,304 @@
+import { Link } from "@tanstack/react-router";
+import { useState, type ReactNode } from "react";
+import { EntityBox, MomentsBox, plainClick } from "@/components/moments-box";
+import { Timestamp } from "@/components/episode-player";
+import { entityBySlug, entityFor, guestOfEpisode, type Entity } from "@/data/entities";
+import { namedOn } from "@/lib/name-links";
+import { episodeById, episodePath, episodes } from "@/data/episodes";
+import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME, type MentorLink } from "@/data/mentors";
+import { rankedMentors } from "@/lib/mentor-rank";
+import { DROP_HOST, dropRank, dropsOf } from "@/lib/drop-rank";
+import { HEADER_LAYOUT } from "@/data/header-layout";
+import { cardTo } from "@/lib/card-link";
+import { EntityText } from "@/components/entity-text";
+import { EntityLink } from "@/components/entity-link";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
+
+// The guest's About box in the episode page header (GuestAboutBox, headerColumns) - split from card-sections.tsx so the
+// A–Z card page doesn't load the whole A–Z with it (page weight, 16 Nov 2026).
+
+const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
+const chipOn = "rounded-full border border-pink bg-pink px-3 py-1 text-xs text-pink-foreground transition";
+const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
+
+/** Rough year for sorting a guest timeline label ("1980s", "late 1970s", "2025"). */
+const yearOf = (label: string) => {
+  const m = label.match(/(\d{4})/);
+  if (!m) return 9999;
+  const y = Number(m[1]);
+  return /late/i.test(label) ? y + 7 : /mid/i.test(label) ? y + 5 : /early/i.test(label) ? y + 2 : y;
+};
+
+/** A row of name chips where a plain tap opens the Library-style box underneath (cmd/ctrl-click still follows the link). */
+function TapChips({ items, group, open, setOpen }: {
+  items: { slug: string; label: ReactNode }[];
+  group: string;
+  open: string | null;
+  setOpen: (v: string | null) => void;
+}) {
+  const opened = items.find((x) => open === `${group}:${x.slug}`);
+  const entity = opened ? entityBySlug[opened.slug] : undefined;
+  return (
+    <>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {items.map((x) => {
+          const key = `${group}:${x.slug}`;
+          return entityBySlug[x.slug] ? (
+            <Link key={key} {...cardTo(x.slug)} aria-expanded={open === key}
+              onClick={(ev) => { if (!plainClick(ev)) return; ev.preventDefault(); setOpen(open === key ? null : key); }}
+              className={open === key ? chipOn : chip}>
+              {x.label}
+            </Link>
+          ) : (
+            <span key={key} className={chip}>{x.label}</span>
+          );
+        })}
+      </div>
+      {entity && <div className="mt-4"><EntityBox entity={entity} onClose={() => setOpen(null)} /></div>}
+    </>
+  );
+}
+
+/** One page per guest (Lisa, 1 Nov 2026): everything from the guest's A–Z card in ONE box above the Mood of the episode -
+ *  their timeline merged with the scene timeline, what they are doing now, scenes & rooms, connections, the other
+ *  AFTERPARTIES that name them, the cards that name them and the gang. Every name chip opens the Library-style box
+ *  underneath (tap-to-open, src/components/moments-box.tsx). */
+/** Episode header parts (Lisa, 2 Nov 2026): the guest's Timeline, Mentor score / Under the wing of, and Top of the drop. */
+type AboutPart = "timeline" | "mentor" | "drop";
+
+/** Everything the guest's About parts show, worked out once (GuestAboutBox and headerColumns share it). */
+function guestAboutData(e: Entity, episode: string) {
+  const g = e.guest!;
+  const bySlug = (names: string[]) => names.map((n) => entityFor(n)?.slug ?? n);
+
+  // The guest's own timeline lines are already scene events ("guest-<slug>-n"); show them once, then the other moments.
+  type Row = { key: string; event: string | undefined; sort: number; when: string; title?: string; text: string; place?: string; chips: string[] };
+  const rows: Row[] = [
+    ...g.timeline.map((t, i) => ({ key: `t${i}`, event: e.events.some((ev) => ev.id === `guest-${g.slug}-${i}`) ? `guest-${g.slug}-${i}` : undefined, sort: yearOf(t.year), when: t.year, text: t.text, chips: [] })),
+    ...e.events
+      .filter((ev) => !ev.id.startsWith(`guest-${g.slug}-`))
+      .map((ev) => ({ key: ev.id, event: ev.id, sort: ev.year, when: ev.when, title: ev.title, text: ev.text, place: ev.place, chips: [...ev.people, ...bySlug(ev.figures)] })),
+  ].sort((a, b) => a.sort - b.sort);
+
+  const order = (id?: string) => episodes.findIndex((x) => x.id === id);
+  const elsewhere = [
+    ...e.refs.filter((r) => r.episode && r.episode !== episode).map((r) => ({ r, via: undefined as Entity | undefined })),
+    ...namedOn(e).filter((x) => x.ref.episode && x.ref.episode !== episode).map((x) => ({ r: x.ref, via: x.entity })),
+  ].sort((a, b) => order(a.r.episode) - order(b.r.episode) || (a.via ? 1 : 0) - (b.via ? 1 : 0));
+  const byEpisode = [...new Set(elsewhere.map((x) => x.r.episode!))].map((id) => ({ id, rows: elsewhere.filter((x) => x.r.episode === id) }));
+  const dropMentions = dropsOf(e, episode).drops;
+  const isMe = (n: string) => entityFor(n.replace(/ \(as heard\)$/, ""))?.slug === e.slug;
+  const asMentor = rankedMentors.findIndex((m) => isMe(m.name));
+  const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
+  const mentors = MENTOR_LINKS.filter((l) => isMe(l.mentee) && !NOT_IN_HALL_OF_FAME.has(l.mentor));
+  const mentor = mentees.length || mentors.length
+    ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0 }
+    : undefined;
+
+  return { rows, elsewhere, byEpisode, dropMentions, mentor };
+}
+
+/** Which header column each part goes in (Lisa, 2 Nov 2026: "dynamic ... to avoid blanks"). The Timeline always opens the
+ *  right column; Mentor score and Top of the drop each go under whichever column is shorter so far, measured in rough
+ *  text lines (left: the header text and buttons; right: the Timeline, long lines wrapping). */
+export function headerColumns(e: Entity, episode: string, blurb: string): { left: AboutPart[]; right: AboutPart[] } {
+  // Lisa's own choice for this episode wins (src/data/header-layout.ts).
+  const set = HEADER_LAYOUT[episode];
+  if (set) return { left: [...set.left], right: [...set.right] };
+  const { rows, byEpisode, mentor } = guestAboutData(e, episode);
+  // Rough heights in pixels at desktop width, measured on the live layout (header text ~420px, a line ~26px).
+  const lines = (chars: number, perLine: number) => Math.max(1, Math.ceil(chars / perLine));
+  let left = 382 + 28 * lines(blurb.length, 62);
+  let right = 32 + rows.reduce((n, r) => n + 6 + 20 * lines(r.when.length + 3 + (r.title ?? r.text).length, 48), 0);
+  const sizes: [AboutPart, number][] = [];
+  if (mentor) sizes.push(["mentor", (mentor.rank > 0 ? 50 + 26 * mentor.mentees.length : 0) + (mentor.mentors.length ? 50 + 26 * mentor.mentors.length : 0)]);
+  if (byEpisode.length) sizes.push(["drop", 80 + 24 * byEpisode.length]);
+  // Try every way of sharing the parts out (each goes left or right) and keep the most even one, so the taller column is
+  // as short as it can be (Lisa, 2 Nov 2026: James's long drop list belongs on the left, his Mentor score on the right).
+  let best = { left: [] as AboutPart[], right: ["timeline"] as AboutPart[] };
+  let bestHeight = Infinity;
+  for (let mask = 0; mask < 1 << sizes.length; mask++) {
+    let l = left, r = right;
+    const pick = { left: [] as AboutPart[], right: ["timeline"] as AboutPart[] };
+    sizes.forEach(([part, size], i) => {
+      if (mask & (1 << i)) { pick.right.push(part); r += size + 24; }
+      else { l += size + (pick.left.length ? 24 : 60); pick.left.push(part); }
+    });
+    // Ties go to the arrangement with more on the left (the reading order Lisa approved first).
+    if (Math.max(l, r) < bestHeight) { best = pick; bestHeight = Math.max(l, r); }
+  }
+  const out = best;
+  return out;
+}
+
+export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop"] }: {
+  e: Entity;
+  episode: string;
+  /** Which parts to show, in this order (the episode header splits them over its two columns with headerColumns). */
+  parts?: AboutPart[];
+}) {
+  const g = e.guest;
+  const [open, setOpen] = useState<string | null>(null);
+  const [openRow, setOpenRow] = useState<string | null>(null);
+  if (!g) return null;
+  const toChips = (slugs: string[]) =>
+    [...new Set(slugs)].filter((s) => s && s !== e.slug).map((s) => ({ slug: s, label: entityBySlug[s]?.name ?? s }));
+  const { rows, elsewhere, byEpisode, dropMentions, mentor } = guestAboutData(e, episode);
+  const dropRanking = dropRank(e.slug);
+  const timelineBlock = (
+      <div>
+        <h3 className={h}>Timeline</h3>
+        {/* One line per moment (Lisa, 1 Nov 2026); tap it and the Library-style box opens underneath with the whole story,
+            the names (each opens its own box) and the link to the Timeline. */}
+        <ol className="mt-4 space-y-1.5 border-l border-gold/25 pl-5">
+          {rows.map((r) => {
+            const on = openRow === r.key;
+            const line = r.title ?? r.text.replace(/\.$/, "");
+            return (
+              <li key={r.key} className="text-sm">
+                <button type="button" aria-expanded={on} onClick={() => setOpenRow(on ? null : r.key)}
+                  className={`text-left hover:text-pink ${on ? "text-pink" : "text-card-foreground"}`}>
+                  <span className="font-semibold text-gold">{r.when}</span>{" · "}{line}
+                </button>
+                {on && (
+                  <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
+                    <div className="flex flex-wrap items-baseline justify-between gap-3">
+                      <h4 className="text-xl font-bold uppercase text-cream">{line}</h4>
+                      <button type="button" onClick={() => setOpenRow(null)} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground">{r.when}{r.place && <> · {r.place}</>}</p>
+                    {r.title && <p className="mt-3 text-sm text-card-foreground/80"><EntityText text={r.text} self={e.name} /></p>}
+                    {r.chips.filter((c) => c !== e.slug).length > 0 && (
+                      <TapChips group={`tl-${r.key}`} items={toChips(r.chips)} open={open} setOpen={setOpen} />
+                    )}
+                    {r.event && (
+                      <p className="mt-4 text-xs">
+                        <Link to="/timeline" hash={`ev-${r.event}`} className="text-gold hover:text-pink">On the Timeline →</Link>
+                      </p>
+                    )}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+  );
+  // Mentor direction (Lisa, 2 Nov 2026): the mentor score belongs to the one who took someone under their wing. So a page
+  // shows "Mentor score" only for people this guest mentored; the people who mentored this guest get their own heading,
+  // "Under the wing of", and count towards THEIR score, never this guest's.
+  // One line per mentor link (Lisa, 2 Nov 2026), like In the other AFTERPARTIES: "<label> <Name> · S5E1"; one tap opens
+  // a box underneath with the moment (timestamp and line), the name's own link and the episode.
+  const mentorRow = (l: MentorLink, who: string, label?: string) => {
+    const ep = episodeById(l.episode);
+    const name = who.replace(/ \(as heard\)$/, "");
+    const key = `mentor:${l.mentor}-${l.mentee}-${l.episode}`;
+    const on = open === key;
+    return (
+      <div key={key} className="mt-2 text-sm">
+        <button type="button" aria-expanded={on} onClick={() => setOpen(on ? null : key)}
+          className="group text-left">
+          {label && <><span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>{" "}</>}
+          <span className={`font-semibold text-pink ${on ? "underline" : "group-hover:underline"}`}>S{ep.season}E{ep.episode}{ep.part} · {name}</span>
+        </button>
+        {on && (
+          <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h4 className="text-xl font-bold uppercase text-cream">
+                <EntityLink name={name} className="hover:text-pink" />
+              </h4>
+              <button type="button" onClick={() => setOpen(null)} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
+            </div>
+            <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label ?? "Under the wing of"}</p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              <Link to={episodePath(ep.id)} className="font-medium text-gold hover:text-pink">S{ep.season}E{ep.episode}{ep.part} · {ep.guest}</Link>
+              {" · "}<Timestamp episodeId={ep.id} time={l.time} className="text-xs" />{" - "}<EntityText text={l.line} self={name} />
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  };
+  const mentorBlock = mentor ? (
+    <div className="space-y-6">
+      {mentor.rank > 0 && (
+        <div>
+          {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people this guest took under their wing, and mentions -
+              with the rank among all mentors. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
+          <h3 className={h}>Mentor score</h3>
+          <p className="mt-3 text-sm text-card-foreground">
+            <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
+            {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
+            {/* Score and rank on every mentor's page (Lisa, 2 Nov 2026): the score is the people taken under their wing,
+                mentions break ties; the rank is among all mentors, the top 10 being the Hall of Fame. */}
+            {" · "}<span className="font-semibold">#{mentor.rank} of {rankedMentors.length} mentors</span>
+            {mentor.rank <= 10 && <>{" · "}<Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame</Link></>}
+          </p>
+          {mentor.mentees.map((l) => mentorRow(l, l.mentee, "Took under their wing"))}
+        </div>
+      )}
+      {mentor.mentors.length > 0 && (
+        <div>
+          <h3 className={h}>Under the wing of</h3>
+          {mentor.mentors.map((l) => mentorRow(l, l.mentor))}
+        </div>
+      )}
+    </div>
+  ) : null;
+  const othersBlock = elsewhere.length > 0 ? (
+    <div>
+            {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
+                the guest's own rows, then the other cards whose line names them (tap the name for its box). */}
+            {/* Top of the drop (Lisa, 2 Nov 2026): the heading, then one line with the guest's total mentions in the other
+                AFTERPARTIES and how many AFTERPARTIES drop them; the episode rows stay as they were. */}
+            <h3 className={h}>Top of the drop</h3>
+            <p className="mt-3 text-sm text-card-foreground">
+              <span className="font-semibold text-pink">{dropMentions} {dropMentions === 1 ? "mention" : "mentions"}</span>
+              {" · "}in {byEpisode.length} {byEpisode.length === 1 ? "AFTERPARTY" : "AFTERPARTIES"}
+              {/* Rank among all guests by drops, then AFTERPARTIES (src/lib/drop-rank.ts); the host is not ranked. */}
+              {" · "}<span className="font-semibold">{dropRanking ? `#${dropRanking.rank} of ${dropRanking.of} guests` : e.slug === DROP_HOST ? "the host, not ranked" : "not ranked"}</span>
+            </p>
+            <ul className="mt-3 space-y-1.5">
+              {byEpisode.map(({ id, rows }) => {
+                const ep = episodeById(id);
+                const key = `ep:${id}`;
+                const host = guestOfEpisode(id);
+                const mentions = rows.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
+                return (
+                  <li key={id} className="text-sm">
+                    <Link to={episodePath(ep.id)} aria-expanded={open === key}
+                      onClick={(ev) => { if (!plainClick(ev)) return; ev.preventDefault(); setOpen(open === key ? null : key); }}
+                      className={`font-semibold hover:text-pink ${open === key ? "text-pink" : "text-gold"}`}>
+                      S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
+                    </Link>
+                    <span className="text-xs text-muted-foreground">
+                      {" · "}{mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "named"}
+                      {rows.length > 1 && ` · ${rows.length} moments`}
+                    </span>
+                    {open === key && (
+                      <div className="mt-3">
+                        <MomentsBox
+                          name={`S${ep.season}E${ep.episode}${ep.part ?? ""} · ${ep.guest}`}
+                          slug={host?.slug ?? e.slug}
+                          mentions={mentions}
+                          moments={rows.map(({ r, via }) => ({
+                            episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: r.time,
+                            context: via ? `${via.name}: ${r.context}` : r.context,
+                          }))}
+                          note={`${e.name} in this AFTERPARTY`}
+                          onClose={() => setOpen(null)}
+                        />
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+    </div>
+  ) : null;
+
+  const blocks = { timeline: timelineBlock, mentor: mentorBlock, drop: othersBlock };
+  const shown = parts.filter((p) => blocks[p]);
+  if (!shown.length) return null;
+  return <div className="space-y-6 text-left">{shown.map((p) => <div key={p}>{blocks[p]}</div>)}</div>;
+}

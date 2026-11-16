@@ -1,9 +1,7 @@
-import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
-import { entityFor } from "@/data/entities";
-import { linkNames } from "@/lib/name-links";
-import { LINK_CLASS, ShowText } from "@/components/show-text";
+import { linkToSlug, useLinks } from "@/lib/link-index";
+import { LINK_CLASS, ShowText, showParts } from "@/components/show-text";
 
 const NAME_CLASS =
   "text-cream/90 underline decoration-pink/40 decoration-dotted underline-offset-2 transition hover:text-pink";
@@ -19,9 +17,10 @@ export function EntityText({
   className?: string;
   self?: string;
 }) {
+  const links = useLinks();
   if (self === undefined) return <ShowText text={text} className={className} />;
-  const parts = text.split(/(Night Fever|World of Wonder)/g);
-  const selfSlug = self !== undefined ? (entityFor(self)?.slug ?? "") : undefined;
+  const parts = showParts(text);
+  const selfSlug = links.cardForName(self)?.slug ?? "";
   return (
     <>
       {parts.map((part, i) =>
@@ -33,12 +32,10 @@ export function EntityText({
           <a key={i} href={WOW_URL} target="_blank" rel="noopener noreferrer" className={className}>
             World of Wonder
           </a>
-        ) : selfSlug === undefined ? (
-          part
         ) : (
-          linkNames(part, selfSlug).map((seg, j) =>
+          links.linkNames(part, selfSlug).map((seg, j) =>
             seg.slug ? (
-              <Link key={`${i}-${j}`} {...cardTo(seg.slug)} className={NAME_CLASS}>
+              <Link key={`${i}-${j}`} {...linkToSlug(links, seg.slug)} className={NAME_CLASS}>
                 {seg.text}
               </Link>
             ) : (

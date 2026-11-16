@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { KIND_LABEL, playlistUrl, type ClubNight } from "@/data/club-nights";
+import type { ClubNight } from "@/data/club-nights";
+import { KIND_LABEL, playlistUrl } from "@/data/club-night-labels";
 
 /** "A night at <club> sounded like this" on the club's A–Z card (Lisa, 30 Oct 2026): a taster - the club night itself lives in the
  *  Jukebox (/jukebox?club=<slug>), where every song plays with why it is here and its sources. */
