@@ -7,6 +7,7 @@ import { loadApi } from "@/components/jukebox-player";
 import { ShareButton } from "@/components/share-button";
 import { BOOK_SHELVES, SPOTIFY_PLAYLIST_URL, bookClub, listenLinks, type CollectionItem } from "@/data/collections";
 import { episodes, episodeById, episodePath, stageName } from "@/data/episodes";
+import { episodeStats } from "@/data/episode-stats";
 import { episodePortraits, polaroidThumb } from "@/components/episode-block";
 import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl } from "@/data/episode-spotify";
 import { YEARS } from "@/data/jukebox-years";
@@ -820,7 +821,7 @@ export function JukeboxMachine({
               <div className="jbx-ep-links jbx-ep-top">
                 <Link to={episodePath(ep.id)}>
                   The Afterparty
-                  <span className="jbx-count" title={`${ep.references} references and ${ep.mentions} mentions`}>{ep.references + ep.mentions}</span> →
+                  <span className="jbx-count" title={`${episodeStats(ep.id).references} references and ${episodeStats(ep.id).mentions} mentions`}>{episodeStats(ep.id).references + episodeStats(ep.id).mentions}</span> →
                 </Link>
                 <ShareButton className="jbx-share" path={`/jukebox?afterparty=${ep.id}`} title={`${stageName(ep.guest)}'s AFTERPARTY playlist – Night Fever Jukebox`} />
               </div>

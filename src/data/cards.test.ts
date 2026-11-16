@@ -5,6 +5,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { entities, entityFor, CATEGORIES } from "./entities";
 import { episodes } from "./episodes";
+import { episodeStats } from "./episode-stats";
+import { EPISODE_REFS } from "./episode-refs";
 import { guests } from "./guests";
 import { namedOn, namedOnCount } from "../lib/name-links";
 
@@ -103,12 +105,19 @@ describe("episodes: counted properly", () => {
     });
   }
 
+  test("every episode's rows are listed in episode-refs.ts", () => {
+    for (const ep of episodes) {
+      if (!EPISODE_FILES[`./${ep.id}.json`]) continue;
+      assert.ok(EPISODE_REFS.some(([id]) => id === ep.id), `${ep.id}: add its JSON import and a line to EPISODE_REFS in src/data/episode-refs.ts`);
+    }
+  });
+
   test("episode totals on boxes match their reference lists", () => {
     for (const ep of episodes) {
       const rows = EPISODE_FILES[`./${ep.id}.json`];
       if (!rows) continue;
-      assert.equal(ep.references, rows.length, `${ep.id} references`);
-      assert.equal(ep.mentions, rows.reduce((s, r) => s + r.mentions, 0), `${ep.id} mentions`);
+      assert.equal(episodeStats(ep.id).references, rows.length, `${ep.id} references`);
+      assert.equal(episodeStats(ep.id).mentions, rows.reduce((s, r) => s + r.mentions, 0), `${ep.id} mentions`);
     }
   });
 });

@@ -2,7 +2,7 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import portraitImage from "../assets/about-portrait-illustrated-2.jpg";
 import { NIGHT_FEVER_URL } from "../data/guests";
-import { EntityText } from "../components/entity-text";
+import { ShowText } from "@/components/show-text";
 import { SiteFooter } from "@/components/site-footer";
 import { INSTAGRAM_URL } from "@/lib/contact";
 import { TEXT_LINK } from "@/lib/styles";
@@ -118,7 +118,7 @@ function AboutPage() {
         <div className="mx-auto max-w-3xl rounded-3xl border border-gold/20 bg-card p-8 sm:p-12">
           <p className="leading-relaxed text-muted-foreground">
             This is a fan page. It isn't affiliated with{" "}
-            <EntityText text="World of Wonder" />
+            <ShowText text="World of Wonder" />
             , and it doesn't host audio - the listen buttons go to the show
             itself. If you spot something wrong or would like to add
             something, let me know -{" "}

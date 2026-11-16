@@ -10,11 +10,13 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/inside-the-clubs")({
   staticData: { sitemap: true },
   component: InsideTheClubsPage,
-  head: () =>
+  // The club list loads with the page (page weight, 16 Nov 2026); the head only needs how many there are.
+  loader: async () => ({ clubs: (await import("@/data/collections")).clubsMentioned.length }),
+  head: ({ loaderData }) =>
     pageHead({
       path: "/inside-the-clubs",
       title: "Inside the Clubs – every club ever mentioned on Night Fever",
-      description: `All ${clubsMentioned.length} clubs ever mentioned on Night Fever, street by street - step inside each one: every moment, timestamped, and the nights you can still hear.`,
+      description: `All ${loaderData?.clubs ?? 0} clubs ever mentioned on Night Fever, street by street - step inside each one: every moment, timestamped, and the nights you can still hear.`,
       image: "/og/jukebox.jpg",
     }),
 });

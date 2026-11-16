@@ -5,7 +5,7 @@ import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { CardSections } from "@/components/card-sections";
-import { afterpartyOf, entityBySlug, episodeShort, isThinCard } from "../data/entities";
+import { entityBySlug } from "../data/entities";
 import { abs, cardDescription, cleanStory, jsonLd, pageDescription, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodeIdOf, episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
@@ -21,7 +21,15 @@ import "@fontsource/covered-by-your-grace/400.css";
 
 export const Route = createFileRoute("/explore/$slug")({
   staticData: { sitemap: true },
-  loader: ({ params }) => {
+  // The card data loads with the card (page weight, 16 Nov 2026): the loader imports it on demand instead of every page
+  // carrying all of it, and hands the head the few club / In memoriam facts its markup needs.
+  loader: async ({ params }) => {
+    const [{ afterpartyOf, entityBySlug, episodeShort, isThinCard }, { CLUB_PROFILES }, { MEMORIAM }, { PERSON_PORTRAITS }] = await Promise.all([
+      import("../data/entities"),
+      import("../data/club-profiles"),
+      import("../data/memoriam"),
+      import("../data/person-portraits"),
+    ]);
     const e = entityBySlug[params.slug];
     if (!e) {
       // /explore/CBGB or /explore/Studio-54 (typed or shared with capitals) finds the card instead of a 404.
@@ -35,7 +43,9 @@ export const Route = createFileRoute("/explore/$slug")({
     // The first story line that still says something once research notes are left out ("Likewise" alone doesn't).
     const lines = [...e.refs.map((r) => r.context), ...e.events.map((ev) => ev.text)].filter((t): t is string => !!t);
     // A club page leads with its own story (Lisa, 13 Nov 2026) - CBGB's first line was a guest saying she skipped it.
-    const story = CLUB_PROFILES[e.slug]?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
+    const club = CLUB_PROFILES[e.slug];
+    const mem = MEMORIAM[e.slug];
+    const story = club?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
     return {
       slug: e.slug,
       name: e.name,
@@ -46,13 +56,17 @@ export const Route = createFileRoute("/explore/$slug")({
       link: e.link ?? "",
       thin: isThinCard(e),
       guest: e.guest ? guestFacts(e.guest.episode, e.guest.tagline) : null,
+      // In memoriam and club pages (not guests) get their own head (SEO check, 16 Nov 2026): the facts it needs travel here.
+      club: !e.guest && club ? { story: club.story, address: club.address, opened: club.opened, closed: club.closed, portrait: !!club.portrait } : null,
+      mem: !e.guest && mem ? { born: mem.born, died: mem.died, aka: mem.aka ?? null, story: mem.story, wikidata: mem.wikidata ?? null } : null,
+      portrait: !!PERSON_PORTRAITS[e.slug],
     };
   },
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
     const d = loaderData;
-    const club = d.guest ? undefined : CLUB_PROFILES[d.slug];
-    const mem = d.guest ? undefined : MEMORIAM[d.slug];
+    const club = d.club;
+    const mem = d.mem;
     // In memoriam and club pages are full pages, not cards (SEO check, 16 Nov 2026): the name with its years in the title,
     // their own story as the description, and their own share picture (public/og/explore/<slug>.jpg, scripts/og-cards.py).
     const years = mem ? `${mem.born}–${mem.died}` : club ? `${club.opened}–${club.closed}` : "";
@@ -65,7 +79,7 @@ export const Route = createFileRoute("/explore/$slug")({
     const description = mem || club ? pageDescription(d.name, mem?.story ?? d.story, d.episodes) : cardDescription(d.name, d.story, d.episodes);
     const path = `/explore/${d.slug}`;
     // Same rule as scripts/og-cards-data.ts: a share picture wherever the page has its header photo.
-    const image = (mem && PERSON_PORTRAITS[d.slug]) || club?.portrait ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
+    const image = (mem && d.portrait) || club?.portrait ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
     const head = pageHead({ path, title, description, image, type: "article", noindex: d.thin });
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };

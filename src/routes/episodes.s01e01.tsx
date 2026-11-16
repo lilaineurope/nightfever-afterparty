@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { episodeHead } from "@/lib/seo";
 import { EpisodePage, type Ref } from "@/components/episode-page";
-import refsRaw from "../data/s01e01.json";
+import { refsOf } from "@/data/episode-refs";
 
-const refs = refsRaw as Ref[];
+const refs: Ref[] = refsOf("s01e01");
 
 export const Route = createFileRoute("/episodes/s01e01")({
   staticData: { sitemap: true },
-  head: () => episodeHead("s01e01", refs.length),
+  // The reference count for the title loads with the episode data, not with every page (page weight, 16 Nov 2026).
+  loader: async () => (await import("@/data/episode-stats")).episodeStats("s01e01").references,
+  head: ({ loaderData }) => episodeHead("s01e01", loaderData ?? 0),
   component: () => (
     <EpisodePage
       id="s01e01"

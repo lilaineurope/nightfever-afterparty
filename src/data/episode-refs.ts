@@ -1,0 +1,107 @@
+// Every episode's reference list (the rows of src/data/<id>.json), in one place. A new AFTERPARTY adds its import and
+// one line to EPISODE_REFS below - nothing else. Only the pages that show references load this file (page weight, 16 Nov 2026):
+// the episode list in episodes.ts stays light, and episode-stats.ts counts the box totals from here.
+import type { Ref } from "./entities";
+import refsJson from "./s06e01.json";
+import refs01Json from "./s01e01.json";
+import refs02Json from "./s01e02.json";
+import refs103Json from "./s01e03.json";
+import refs203Json from "./s02e03.json";
+import refs301Json from "./s03e01.json";
+import refs306Json from "./s03e06.json";
+import refs107Json from "./s01e07.json";
+import refs408Json from "./s04e08.json";
+import refs506Json from "./s05e06.json";
+import refs603Json from "./s06e03.json";
+import refs504Json from "./s05e04.json";
+import refs410Json from "./s04e10.json";
+import refs208Json from "./s02e08.json";
+import refs503Json from "./s05e03.json";
+import refs608Json from "./s06e08.json";
+import refs206Json from "./s02e06.json";
+import refs104Json from "./s01e04.json";
+import refs204Json from "./s02e04.json";
+import refs607Json from "./s06e07.json";
+import refs110Json from "./s01e10.json";
+import refs308Json from "./s03e08.json";
+import refs404Json from "./s04e04.json";
+import refs201Json from "./s02e01.json";
+import refs106Json from "./s01e06.json";
+import refs207Json from "./s02e07.json";
+import refs205Json from "./s02e05.json";
+import refs310Json from "./s03e10.json";
+import refs501Json from "./s05e01.json";
+import refs211Json from "./s02e11.json";
+import refs108Json from "./s01e08.json";
+import refs304Json from "./s03e04.json";
+import refs407Json from "./s04e07.json";
+import refs510Json from "./s05e10.json";
+import refs409Json from "./s04e09.json";
+import refs105Json from "./s01e05.json";
+import refs606Json from "./s06e06.json";
+import refs209Json from "./s02e09.json";
+import refs303Json from "./s03e03.json";
+import refs403Json from "./s04e03.json";
+import refs302Json from "./s03e02.json";
+import refs202Json from "./s02e02.json";
+import refs305Json from "./s03e05.json";
+import refs602Json from "./s06e02.json";
+import refs605Json from "./s06e05.json";
+import refs507aJson from "./s05e07a.json";
+import refs507bJson from "./s05e07b.json";
+import refs109Json from "./s01e09.json";
+
+/** [episode id, its rows] in the order the A–Z cards collect them (the first one wins a shared name's spelling). */
+export const EPISODE_REFS: [NonNullable<Ref["episode"]>, Ref[]][] = [
+  ["s06e01", refsJson as Ref[]],
+  ["s01e01", refs01Json as Ref[]],
+  ["s01e02", refs02Json as Ref[]],
+  ["s01e03", refs103Json as Ref[]],
+  ["s02e03", refs203Json as Ref[]],
+  ["s03e01", refs301Json as Ref[]],
+  ["s03e06", refs306Json as Ref[]],
+  ["s01e07", refs107Json as Ref[]],
+  ["s04e08", refs408Json as Ref[]],
+  ["s05e06", refs506Json as Ref[]],
+  ["s06e03", refs603Json as Ref[]],
+  ["s05e04", refs504Json as Ref[]],
+  ["s04e10", refs410Json as Ref[]],
+  ["s02e08", refs208Json as Ref[]],
+  ["s05e03", refs503Json as Ref[]],
+  ["s06e08", refs608Json as Ref[]],
+  ["s02e06", refs206Json as Ref[]],
+  ["s01e04", refs104Json as Ref[]],
+  ["s02e04", refs204Json as Ref[]],
+  ["s06e07", refs607Json as Ref[]],
+  ["s01e10", refs110Json as Ref[]],
+  ["s03e08", refs308Json as Ref[]],
+  ["s04e04", refs404Json as Ref[]],
+  ["s02e01", refs201Json as Ref[]],
+  ["s01e06", refs106Json as Ref[]],
+  ["s02e07", refs207Json as Ref[]],
+  ["s02e05", refs205Json as Ref[]],
+  ["s03e10", refs310Json as Ref[]],
+  ["s05e01", refs501Json as Ref[]],
+  ["s02e11", refs211Json as Ref[]],
+  ["s01e08", refs108Json as Ref[]],
+  ["s03e04", refs304Json as Ref[]],
+  ["s04e07", refs407Json as Ref[]],
+  ["s05e10", refs510Json as Ref[]],
+  ["s04e09", refs409Json as Ref[]],
+  ["s01e05", refs105Json as Ref[]],
+  ["s06e06", refs606Json as Ref[]],
+  ["s02e09", refs209Json as Ref[]],
+  ["s03e03", refs303Json as Ref[]],
+  ["s04e03", refs403Json as Ref[]],
+  ["s03e02", refs302Json as Ref[]],
+  ["s02e02", refs202Json as Ref[]],
+  ["s03e05", refs305Json as Ref[]],
+  ["s06e02", refs602Json as Ref[]],
+  ["s06e05", refs605Json as Ref[]],
+  ["s05e07a", refs507aJson as Ref[]],
+  ["s05e07b", refs507bJson as Ref[]],
+  ["s01e09", refs109Json as Ref[]],
+];
+
+/** One episode's rows ([] for an unknown id). */
+export const refsOf = (id: string): Ref[] => EPISODE_REFS.find(([ep]) => ep === id)?.[1] ?? [];

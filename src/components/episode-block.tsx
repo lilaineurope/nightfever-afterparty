@@ -2,6 +2,7 @@ import { formatDate } from "@/lib/time";
 import { Link } from "@tanstack/react-router";
 import { EntityLink } from "./entity-link";
 import { afterpartyNumber, episodePath, type Episode } from "@/data/episodes";
+import { episodeStats } from "@/data/episode-stats";
 import { guestLine } from "@/data/guest-lines";
 import { episodeQuotes } from "@/data/quotes";
 import { Timestamp } from "@/components/episode-player";
@@ -166,7 +167,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                     {ep.blurb}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
-                    {ep.top.map((t) => (
+                    {episodeStats(ep.id).top.map((t) => (
                       // Each name chip opens that name's A-Z card (Lisa, 23 Oct 2026)
                       <EntityLink
                         key={t.name}
@@ -233,8 +234,8 @@ function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
       <Heading className="mt-0.5 block font-[family-name:var(--font-flyer)] text-[26px] uppercase leading-tight">{ep.guest}</Heading>
       {line && <span className="mt-1.5 block text-[13.5px] leading-snug text-cream/75">{line}</span>}
       <span className="mt-2 block text-[13px]">
-        <span className="bg-pink px-1 text-pink-foreground">{ep.references}</span> references ·{" "}
-        <span className="bg-highlight px-1 text-cream">{ep.mentions}</span> mentions
+        <span className="bg-pink px-1 text-pink-foreground">{episodeStats(ep.id).references}</span> references ·{" "}
+        <span className="bg-highlight px-1 text-cream">{episodeStats(ep.id).mentions}</span> mentions
       </span>
     </div>
   );

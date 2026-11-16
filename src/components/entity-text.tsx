@@ -3,9 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
 import { entityFor } from "@/data/entities";
 import { linkNames } from "@/lib/name-links";
+import { LINK_CLASS, ShowText } from "@/components/show-text";
 
-const LINK_CLASS =
-  "text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-pink";
 const NAME_CLASS =
   "text-cream/90 underline decoration-pink/40 decoration-dotted underline-offset-2 transition hover:text-pink";
 
@@ -20,6 +19,7 @@ export function EntityText({
   className?: string;
   self?: string;
 }) {
+  if (self === undefined) return <ShowText text={text} className={className} />;
   const parts = text.split(/(Night Fever|World of Wonder)/g);
   const selfSlug = self !== undefined ? (entityFor(self)?.slug ?? "") : undefined;
   return (
