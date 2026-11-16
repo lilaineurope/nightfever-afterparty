@@ -18,6 +18,16 @@ import studio54Photo from "@/assets/clubs/studio-54-photo.webp";
 import studio54Polaroid from "@/assets/clubs/studio-54-polaroid.webp";
 import limelightPhoto from "@/assets/clubs/limelight-photo.webp";
 import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
+import club57Photo from "@/assets/clubs/club-57-photo.webp";
+import club57Polaroid from "@/assets/clubs/club-57-polaroid.webp";
+import nellsPhoto from "@/assets/clubs/nell-s-photo.webp";
+import nellsPolaroid from "@/assets/clubs/nell-s-polaroid.webp";
+import pgPhoto from "@/assets/clubs/paradise-garage-photo.webp";
+import pgPolaroid from "@/assets/clubs/paradise-garage-polaroid.webp";
+import clubUsaPhoto from "@/assets/clubs/club-usa-photo.webp";
+import clubUsaPolaroid from "@/assets/clubs/club-usa-polaroid.webp";
+import roxyPhoto from "@/assets/clubs/roxy-photo.webp";
+import roxyPolaroid from "@/assets/clubs/roxy-polaroid.webp";
 import type { MemoriamQuote } from "./memoriam";
 import type { PersonPortrait } from "./person-portraits";
 
@@ -50,6 +60,12 @@ const AREA_CREDIT = "Header: an Area night drawn for the AFTERPARTY. Polaroid: A
 const STUDIO_54_CREDIT =
   "Photos: Epicgenius, the room in 2026 (header, CC BY-SA 4.0, via Wikimedia Commons; our version is CC BY-SA 4.0 too) and William Armstrong's Statue of Liberty head made for Studio 54 (polaroid, public domain)";
 const LIMELIGHT_CREDIT = "Photo: Gryffindor, the church in 2007, via Wikimedia Commons, public domain. Polaroid: Queer Nation presents Voguing Superstars of Paris Is Burning at Limelight, card, 1991 - Gallery 98";
+
+const CLUB_57_CREDIT = "Photo: Americasroof, 57 St. Mark's Place in 2009, via Wikimedia Commons, CC BY 3.0. Polaroid: Swingin' Singles Party card with John Sex and Wendy Wild, Club 57, 1982 - Gallery 98";
+const NELLS_CREDIT = "Header: a Nell's night drawn for the AFTERPARTY. Polaroid: the black key Nell's mailed to its regulars, drawn for the AFTERPARTY";
+const PARADISE_GARAGE_CREDIT = "Header: a Paradise Garage night drawn for the AFTERPARTY. Polaroid: Vito and Roman's car stub invitation, Paradise Garage, 1984 - Gallery 98";
+const CLUB_USA_CREDIT = "Header and polaroid: Ann Bennett and Roz Winter's Gender Bender card, Club USA, 1993 (blurred in the header) - Gallery 98";
+const ROXY_CREDIT = "Photo: Aloughman, the Roxy on West 18th Street, via Wikimedia Commons, public domain. Polaroid: Susanne Bartsch's New Year's Eve 2000 Fake Halloween Ball flyer, Roxy - Gallery 98";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -261,6 +277,140 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     ],
     portrait: { photo: limelightPhoto, polaroid: limelightPolaroid, focus: "35%", credit: LIMELIGHT_CREDIT },
     timelineEvent: "limelight",
+  },
+  // Batch 3 (Lisa, 16 Nov 2026: "keep building"). Facts: Wikipedia "Club 57 (nightclub)", "Nell's", "Paradise Garage",
+  // "The Roxy (New York City)" (checked 16 Nov 2026); Club USA has no Wikipedia page - Peter Gatien's, Eric Goode's and Christina
+  // Visca's episodes and a 1993 Gallery 98 card. Pictures: sources sheet, Round 9.
+  "club-57": {
+    opened: "1978",
+    closed: "1983",
+    address: "57 St. Mark's Place",
+    story:
+      "Stanley Strychacki opened it in the basement of the Holy Cross Polish National Church - a little Polish hall under a church, as Joey Arias puts it - and Ann Magnuson ran it. The School of Visual Arts kids made it their playground: Keith Haring, Kenny Scharf and John Sex, monster movies on Tuesdays, Lady Wrestling, Putt-Putt Reggae and Model World of Glue nights, all done on five cents. Johnny Dynell calls it kooky and kinky next to the dark Mudd Club, and the guests went to both.",
+    timeline: [
+      ["1978", "Stanley Strychacki opens Club 57 in the church basement at 57 St. Mark's Place"],
+      ["1979", "Ann Magnuson becomes its manager; Tuesday is Monster Movie Club"],
+      ["1979-81", "Theme nights: Lady Wrestling, Putt-Putt Reggae, Model World of Glue, a salute to NASA"],
+      ["1981", "Keith Haring curates his Black Light show there"],
+      ["Early 80s", "Holly Woodlawn plays Maria in A Sound of Muzak, with Michael Musto in three roles"],
+      ["1983", "Club 57 closes"],
+      ["2017-18", "MoMA shows Club 57: Film, Performance, and Art in the East Village"],
+    ],
+    stage: ["Ann Magnuson", "Stanley Strychacki", "Keith Haring", "Kenny Scharf", "John Sex", "Wendy Wild", "Pulsallama", "Joey Arias", "Michael Musto", "Holly Woodlawn", "Marc Shaiman", "Scott Wittman", "Klaus Nomi", "Tseng Kwong Chi", "Lypsinka", "Charles Busch", "Cyndi Lauper", "Madonna", "Dany Johnson"],
+    rooms: ["Mudd Club", "Pyramid Club", "Danceteria", "Area", "Max's Kansas City", "CBGB"],
+    said: [
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:37:29", quote: "It was all done on five cents, basically. And I just liked that. I like things that are not money driven and that require ingenuity. So Club 57 was a perfect place for that." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:58:01", quote: "At Club 57, we recreated a spaceship and had a salute to NASA where we all landed on the moon." },
+      { episode: "s01e10", who: "Joey Arias", time: "00:28:26", quote: "It opened up as a monster movie club, because we were all the neighborhood, so it was just the gang. It was a little shitty Polish hall underneath the church." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:29:54", quote: "57 was kooky and kinky and just like, you know, zippity doo-dah. It was really fun. Mudd was like heroin, it was black." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:55:54", quote: "This was when you had to be a real insider, like an outlaw party, and that's what Club 57 was all about. And then MoMA had an exhibit a couple years ago of Club 57, and like, what?" },
+      { episode: "s02e11", who: "Richard Boch", time: "00:55:23", quote: "Not to take anything away from Club 57, it was like the Mudd Club in the sense that it was sort of this petri dish, this incubator for a lot of talent." },
+    ],
+    portrait: { photo: club57Photo, polaroid: club57Polaroid, focus: "55%", credit: CLUB_57_CREDIT },
+  },
+  "nell-s": {
+    opened: "1986",
+    closed: "2004",
+    address: "246 West 14th Street",
+    story:
+      "Keith McNally and Lynn Wagenknecht of the Odeon asked their friend Nell Campbell, Columbia in The Rocky Horror Show, whether she wanted to do a nightclub. They took an old store on 14th Street and made it a shabby-grand English gentleman's club: overstuffed sofas, dinner, jazz upstairs, a dance floor downstairs, a black key mailed to the regulars. It held about 400 people, so the door was hard - Cher was turned away - and after the giant clubs it changed the whole scenario, as Rudolf Piper says. Jackie 60 started there.",
+    timeline: [
+      ["Fall 1986", "Nell Campbell, Keith McNally and Lynn Wagenknecht open Nell's on West 14th Street"],
+      ["Feb 1987", "Andy Warhol's last night out is at Nell's"],
+      ["Jun 1987", "Robert Mapplethorpe and Susan Sarandon host an amfAR dinner there"],
+      ["1990", "Chi Chi Valenti and Johnny Dynell's Jackie 60 starts with a few tables on Tuesdays"],
+      ["1990s", "Nell's turns into a jazz, reggae and hip-hop room; Biggie films Big Poppa there in 1995"],
+      ["30 May 2004", "Nell's closes"],
+    ],
+    stage: ["Nell Campbell", "Keith McNally", "Lynn Wagenknecht", "Andy Warhol", "Robert Mapplethorpe", "Susan Sarandon", "Jessica Rosenblum", "Chi Chi Valenti & Johnny Dynell", "Jackie 60", "Run-DMC", "Michael Musto"],
+    rooms: ["MK", "Area", "Palladium", "The Tunnel", "Studio 54", "Odeon"],
+    said: [
+      { episode: "s05e01", who: "Nell Campbell", time: "00:34:39", quote: "The joy of Nell's was the combination of uptown, downtown, arty, bankers, you know, the whole mix: rich, poor, gay, straight, cross-dressing." },
+      { episode: "s05e01", who: "Nell Campbell", time: "00:35:10", quote: "Well, famously, Cher was turned away at the door. And you know what? I bumped into her in Barney's three days later." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:35:30", quote: "A few weeks before Tunnel opened, Nell's opened. And Nell's changed the whole scenario, because the whole scenario was always big clubs like Palladium." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:29:14", quote: "It got fancier when Area opened and then later MK and Nell's. It got more sort of nightclubby and less about dancing." },
+      { episode: "s02e08", who: "Michelangelo Signorile", time: "00:41:03", quote: "It started to split. And that's how we sort of saw Nell's come on the scene, and it was much more sedate." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:31:53", quote: "Nell's was a product of suddenly, you know, there being straight clubs. Nell's was very much that." },
+    ],
+    portrait: { photo: nellsPhoto, polaroid: nellsPolaroid, focus: "50%", credit: NELLS_CREDIT },
+  },
+  "paradise-garage": {
+    opened: "1977",
+    closed: "1987",
+    address: "84 King Street",
+    story:
+      "Michael Brody built it in an old parking garage in SoHo around a sound system by Richard Long, and Larry Levan played there every weekend for ten years - the first club to put the DJ at the centre. Members only, mostly Black and Latino and gay, no alcohol, dancing till noon. The guests remember the garage door open on summer nights, meeting the ball kids there, and the closing weekend in September 1987, when people sat in the street afterwards.",
+    timeline: [
+      ["1977", "Michael Brody opens the 84 King Street Garage"],
+      ["Jan 1978", "After a year of work it officially opens as the Paradise Garage, Larry Levan in the booth"],
+      ["1978", "The main dance floor opens; the club holds 1,400"],
+      ["1984", "A rooftop lounge in the style of Fire Island Pines is added"],
+      ["Sep 1987", "The closing weekend; the lease ends on 1 October"],
+      ["1992", "Larry Levan dies at 38"],
+      ["2018", "The building is torn down for condominiums"],
+    ],
+    stage: ["Larry Levan", "Grace Jones", "Madonna", "Diana Ross", "Keith Haring", "Gwen Guthrie", "Boy George", "Christina Visca", "Luis \"Xtravaganza\" Camacho", "Patricia Field", "Chi Chi Valenti & Johnny Dynell", "Nick Egan"],
+    rooms: ["The Loft", "The Saint", "Studio 54", "Sound Factory", "Funhouse", "Mudd Club"],
+    said: [
+      { episode: "s06e08", who: "William Norwich", time: "00:03:11", quote: "The next one was Paradise Garage, which was a gay club. It was exquisite. In the summer, particularly, you'd open the garage door. I'd never seen anything like it in my life." },
+      { episode: "s01e08", who: "Luis \"Xtravaganza\" Camacho", time: "00:55:56", quote: "I went to Paradise Garage once, at the end. There was that big weekend when they were closing, and there was a big sit-in outside afterwards... So I lied to my mom that I was going somewhere else." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:05:00", quote: "First of all, I was a member of the Paradise Garage - you know, mostly Black and Hispanic." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:28:51", quote: "We had Heaven in England, but the Paradise Garage had some great music coming out of it, like Gwen Guthrie. So there was this like cultural perfect storm about to happen." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:20:01", quote: "This gorgeous, glorious French woman - she danced at Paradise Garage, she was a Paradise Garage girl, and she was also a modeling agent. She found me behind the counter and said I should model." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", quote: "I would meet the kids at the Garage years ago, the ball kids, and also on the pier." },
+    ],
+    portrait: { photo: pgPhoto, polaroid: pgPolaroid, focus: "50%", credit: PARADISE_GARAGE_CREDIT },
+  },
+  "club-usa": {
+    opened: "1992",
+    closed: "c. 1995",
+    address: "218 West 47th Street",
+    story:
+      "Peter Gatien's Times Square megaclub in an old theatre, the biggest of his empire: Eric Goode and Serge Becker built it, with a giant slide, a room by Thierry Mugler, one by Jean Paul Gaultier, furniture by H.R. Giger, Kenny Scharf - and a bar in the bathrooms. Fenton Bailey calls it the Club Kids' greatest creation. Christina Visca managed it with the Tunnel, Marc Berkley's Bump filled it with sweaty boys on Sundays, and the police came often.",
+    timeline: [
+      ["1992", "Peter Gatien opens Club USA in a Times Square theatre at 218 West 47th Street; 60 Minutes films the Club Kids before the opening"],
+      ["1993", "Gender Bender, Ann Bennett and Roz Winter's audio-visual night in the men's and women's bathroom"],
+      ["1994-95", "Christina Visca manages it alongside the Tunnel; Marc Berkley's Bump on Sundays"],
+      ["c. 1995", "Club USA closes as the raids on Gatien's clubs begin"],
+    ],
+    stage: ["Peter Gatien", "Eric Goode", "Serge Becker", "Thierry Mugler", "Jean Paul Gaultier", "H. R. Giger", "Kenny Scharf", "Club Kids", "Christina Visca", "Marc Berkley", "Richie Rich", "Waltpaper", "Kenny Kenny", "Lady Bunny", "Junior Vasquez"],
+    rooms: ["Limelight", "The Tunnel", "Palladium", "Sound Factory", "Roxy", "The World"],
+    said: [
+      { episode: "s01e04", who: "Peter Gatien", time: "00:42:20", quote: "When I opened Club USA, a captain from the local precinct came in and said, You know, Gatien, I'm happy you're here. Because any night I'm in a pissed-off mood, I know I can go in one of your places and torture you to death." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:37:10", quote: "We built USA. I put a bar in a bathroom for the first time ever - a bar in the men's and women's bathroom. We had a lot of fun with Peter Gatien's dollars." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:36:31", quote: "You had the Mugler room upstairs that Thierry Mugler designed. You had the Gaultier room. H.R. Giger designed some of the furniture... It was legendary, and it was gorgeous." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:39:37", quote: "Polly was a bartender, she had a shaved head... and she's like, to make money, I'm going to go to acting auditions. And she ended up being Pauley Perrette." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:55:56", quote: "Just totally sweaty people having the best times of their life." },
+      { episode: "s01e06", who: "Waltpaper", time: "00:48:52", quote: "I remember doing an interview for the pre-opening of Club USA. I think it was 60 Minutes. And we were all gathered in the stairwell." },
+    ],
+    portrait: { photo: clubUsaPhoto, polaroid: clubUsaPolaroid, focus: "30%", credit: CLUB_USA_CREDIT },
+    timelineEvent: "club-usa",
+  },
+  roxy: {
+    opened: "1978",
+    closed: "2007",
+    address: "515 West 18th Street",
+    story:
+      "A roller disco by the West Side Highway that turned into a club: in 1982 Kool Lady Blue brought hip-hop downtown on Friday nights with Afrika Bambaataa and the Rock Steady Crew, and Susanne Bartsch staged her first New London in New York show behind a curtain in a third of the room. In the early 90s Saturdays belonged first to the club kids' Locomotion, then to John Blair's muscle boys, with Lincoln Palsgrove IV on the door and Larry Tee as its big DJ.",
+    timeline: [
+      ["1978", "The Roxy opens as a roller disco at 515 West 18th Street"],
+      ["Jun 1982", "Kool Lady Blue turns it into a hip-hop club on Fridays - Afrika Bambaataa, the Rock Steady Crew"],
+      ["1983", "Knockout Night: it's dancing, it's skating"],
+      ["1985", "Gene DiNino buys the Roxy"],
+      ["Early 90s", "Saturday nights: Locomotion, then John Blair's muscle-boy party; Larry Tee is the big Roxy DJ"],
+      ["Mar 2007", "The Roxy closes"],
+    ],
+    stage: ["Afrika Bambaataa", "Rock Steady Crew", "Madonna", "Susanne Bartsch", "John Blair", "Lincoln Palsgrove IV", "Larry Tee", "Miss Guy", "Lady Bunny", "Patricia Field", "Peter Allen", "Nora Burns", "Linda Evangelista"],
+    rooms: ["Sound Factory", "Pyramid Club", "Disco 2000", "Limelight", "The World", "Red Zone"],
+    said: [
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:41:28", quote: "The Roxy is a very interesting spot, because it was one of the first instances where club life was starting to change en masse... It was a roller skating rink." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:42:45", quote: "I can remember vividly having to go down into a massive crowd and pull in Linda Evangelista... To have 400 people out front waiting to get in at midnight was no big deal." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:54:14", quote: "I was the big DJ at the Roxy, and then I just blew it all." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:12:03", quote: "The worst part of it is the Roxy is huge, as you know. I took a third of the Roxy, put up this curtain." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:08:35", quote: "Then we went to Roxy. Roller disco is fun! Poor Luwala, though, she kept falling and her space outfit fell off." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:25:59", quote: "He [Peter Allen] would be at the Roxy dancing around with his shirt off." },
+    ],
+    portrait: { photo: roxyPhoto, polaroid: roxyPolaroid, focus: "50%", credit: ROXY_CREDIT },
   },
 };
 
