@@ -208,12 +208,6 @@ export const mentionsIn = (e: Entity, episode: string): number =>
     .filter((r) => r.episode === episode)
     .reduce((sum, r) => sum + r.mentions, 0);
 
-/** How an entity's mentions split per episode (season/episode order, empty episodes dropped). */
-export const mentionsByEpisode = (e: Entity): { episode: string; count: number }[] =>
-  episodes
-    .map((ep) => ({ episode: ep.id, count: mentionsIn(e, ep.id) }))
-    .filter((x) => x.count > 0);
-
 /** A card that appears in only one episode with nothing else around it: kept for visitors,
  * but left out of the sitemap and marked noindex so Google sees the rich cards instead. */
 /** Sitemap (Lisa, 27 Oct 2026): thin cards stay out, so Google spends its visits on the strongest pages first.

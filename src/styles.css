@@ -361,7 +361,7 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .jbx-nowline { margin-top: 12px; min-height: 20px; display: grid; gap: 4px; }
 .jbx-drop { font-size: 13px; color: #fff; }
 .jbx .jbx-ts { color: var(--jy); font-weight: bold; }
-.jbx-strip .jbx-ts, .jbx-clubs .jbx-ts { color: #a0760a; }
+.jbx-strip .jbx-ts { color: #a0760a; }
 .jbx-mode { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 16px 0 4px; }
 .jbx-mode button { font-family: var(--font-flyer); font-size: 13px; text-transform: uppercase; padding: 9px 16px; border: 2px solid #fff; color: #fff; background: transparent; cursor: pointer; }
 .jbx-mode button:hover { border-color: var(--jy); color: var(--jy); }
@@ -387,27 +387,6 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
 .jbx-rest .jbx-tt i { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .jbx-foot { margin: 22px auto 0; font-size: 14px; text-align: center; line-height: 1.6; }
 .jbx-foot a { color: var(--pink); font-weight: bold; }
-.jbx-clubs { margin-top: 18px; }
-.jbx-clubcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; list-style: none; padding: 0; }
-.jbx-clubcards > li { background: #1d1a1c; color: #fff; border: 2px solid #111; border-top: 5px solid var(--pink); padding: 14px; display: flex; flex-direction: column; }
-.jbx-clubname { font-family: var(--font-flyer); font-size: 20px; text-transform: uppercase; color: #fff; margin-top: 4px; }
-.jbx-clubname:hover { color: var(--pink); }
-.jbx-clubcards ul { list-style: none; padding: 0; margin: 10px 0 0; font-size: 13px; flex: 1; }
-.jbx-clubcards ul span { opacity: .65; }
-.jbx-clublinks { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; font-size: 13px; font-weight: bold; }
-.jbx-clublinks a { color: var(--jy); }
-.jbx-clublinks a:hover { color: var(--pink); }
-.jbx-h2 { font-family: var(--font-flyer); text-transform: uppercase; font-size: 18px; margin: 26px 0 10px; text-align: center; }
-.jbx-h2 small { color: var(--pink); }
-.jbx-clublist { columns: 3; column-gap: 18px; list-style: none; padding: 0; font-size: 13.5px; }
-.jbx-clublist li { break-inside: avoid; padding: 4px 0; border-bottom: 1px dashed #d4cec2; display: flex; justify-content: space-between; gap: 8px; }
-.jbx-clublist li.chosen a { color: var(--pink); font-weight: bold; }
-.jbx-clublist a:hover { color: var(--pink); text-decoration: underline; }
-.jbx-clublist small { opacity: .6; white-space: nowrap; }
-@media (max-width: 760px) {
-  .jbx-clubcards { grid-template-columns: 1fr; }
-  .jbx-clublist { columns: 2; }
-}
 @media (max-width: 640px) {
   .jbx-rack { grid-template-columns: 1fr; }
   .jbx-dome { padding: 12px 12px 0; box-shadow: 5px 5px 0 #111; }
@@ -421,7 +400,6 @@ button[aria-pressed].rounded-full:is([aria-pressed="true"], :hover) *,
   .jbx-mode button { font-size: 11px; padding: 8px 10px; }
   .jbx-grill, .jbx-panel { box-shadow: 5px 5px 0 #111; }
   .jbx-panel { padding: 14px 10px 18px; }
-  .jbx-clublist { columns: 1; }
 }
 
 .jbx-big { width: 52px; height: 52px; display: grid; place-items: center; align-content: center; background: var(--pink); color: #fff; border: 2px solid var(--pink); font-size: 22px; line-height: 1; cursor: pointer; text-decoration: none; font-family: var(--font-flyer); }
@@ -567,11 +545,6 @@ a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-for
 /* Guestbook header (Lisa, 29 Oct 2026): no tagline, title close to the menu and the form right under it. */
 .gb-head { padding-top: 36px; padding-bottom: 28px; }
 @media (min-width: 640px) { .gb-head { padding-top: calc(100vw * 90 / 1920); height: auto; padding-bottom: 36px; } }
-/* Clubkid Culture club list: the tapped club's box spans all the columns (Lisa, 30 Oct 2026). */
-.jbx-clublist li.jbx-clubdetail { column-span: all; display: block; border: 0; padding: 12px 0 16px; }
-.jbx-clublist a[aria-expanded="true"] { color: var(--pink); font-weight: bold; }
-.jbx-clublist .jbx-clubdetail li { display: block; border: 0; padding: 0; break-inside: auto; }
-.jbx-clublist .jbx-clubdetail a:hover { text-decoration: none; }
 /* Club nights in the Jukebox (Lisa, 30 Oct 2026): a ticket per club, the dark panel with the club's note, and song strips that show why each song is here and its sources. */
 .jbx-clubpick { display: flex; gap: 18px; overflow-x: auto; padding: 18px 8px 14px; margin-top: 14px; border-top: 1px dashed #bdb6a8; }
 /* Club tickets in the Jukebox (Lisa, 2 Nov 2026): the same ticket as on Inside the Clubs - pink and black, dashed inner edge, dotted tear-off stub. */
@@ -594,7 +567,6 @@ a.tl-chip[aria-expanded="true"] { background: var(--pink); color: var(--pink-for
 .jbx-ep-ticket { align-self: start; background: var(--pink); color: #fff; padding: 14px 10px; transform: rotate(-3deg); border: 2px dashed #fff; text-align: center; box-shadow: 3px 4px 0 rgba(0,0,0,.4); }
 .jbx-ep-ticket span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; }
 .jbx-ep-ticket b { display: block; font-family: var(--font-flyer); font-weight: 400; font-size: 20px; line-height: 1; text-transform: uppercase; margin-top: 6px; }
-.jbx-clubsongs .jbx-tt i { white-space: normal; }
 .jbx-clubtitle { font-family: var(--font-flyer); text-transform: uppercase; }
 .jbx-kind { display: inline-block; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; border: 1.5px solid #111; padding: 0 5px; line-height: 1.5; }
 .jbx-kind.k-live { background: #111; color: #fff; }
