@@ -69,7 +69,7 @@ for k,(f,g,s,e) in EP.items():
         bg=cover(im).filter(ImageFilter.GaussianBlur(24)); p=im.convert("RGB").resize((H,H)); bg.paste(p,(W-H,0)); im=bg
     else: im=cover(im,0.6)
     label(im,f"NIGHT FEVER · SEASON {s} · EPISODE {e}",g,"Every name, place and look - timestamped").save(O+k+".jpg",quality=84,optimize=True,progressive=True)
-PG={"home":("hero-people.jpg","NIGHT FEVER FAN PAGE","Every name, place and story","The World of Wonder nightlife podcast, indexed"),
+PG={"home":("hero-people.jpg","NIGHT FEVER FAN PAGE","Every name, place and story","An archive of NYC club kid culture"),
 "episodes":("episodes-reference-collage-refined.jpg","NIGHT FEVER FAN PAGE","The Afterparty","Every episode, every reference"),
 "explore":("explore-header.jpg","NIGHT FEVER FAN PAGE","Everything A–Z","Every person, club, song and look"),
 "guests":("guests-header.jpg","NIGHT FEVER FAN PAGE","The guests","Nightlife legends of the 70s, 80s, 90s and beyond"),
