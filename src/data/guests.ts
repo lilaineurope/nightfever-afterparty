@@ -143,6 +143,7 @@ export const coreGuests: Guest[] = [
         year: "2016–2019",
         text: "Publishes the memoirs Porcelain and Then It Fell Apart.",
       },
+      { year: "2021", text: "The documentary Moby Doc tells his life story." },
     ],
     now: "Still making and producing music - and campaigning loudly for veganism and animal rights.",
     scenes: ["Mars", "Tunnel", "NYC dance floors"],
