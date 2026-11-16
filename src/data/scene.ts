@@ -575,7 +575,7 @@ const curatedEvents: SceneEvent[] = [
     place: "The Tunnel",
     decade: "1980s",
     people: ["really-denise"],
-    figures: ["Rudolf Piper", "Jenny Go-Getter"],
+    figures: ["Rudolf Piper", "Jenny Go-Getter (Jennifer Banash)"],
   },
   {
     id: "nora-burns-candy-camera",

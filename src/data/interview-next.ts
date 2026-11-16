@@ -74,7 +74,7 @@ export const NEW_FACES: InterviewTip[] = [
     time: "00:06:50",
   },
   {
-    name: "Jenny Go-Getter",
+    name: "Jenny Go-Getter (Jennifer Banash)",
     why: "James, after Really Denise says her old party partner (now Jenny Banash, a young-adult novelist) offered to edit her book: 'We'll have to have her on the show.'",
     episodeId: "s05e07b",
     time: "00:54:55",
