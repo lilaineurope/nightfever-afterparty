@@ -11,7 +11,8 @@ export function shortLinkTarget(source: ShortLinkSource, rest: string): string {
   const key = rest.toLowerCase().replace(/^\/+|\/+$/g, "");
   const tag = (campaign: string) => `utm_source=${source}&utm_medium=playlist&utm_campaign=${campaign}`;
   if (key === "" || key === "jukebox") return `/jukebox?${tag("jukebox")}`;
-  const ep = episodes.find((e) => e.id === key);
+  // An episode split into parts (s05e07 -> s05e07a/s05e07b, 16 Nov 2026) keeps its old short link: it opens part A.
+  const ep = episodes.find((e) => e.id === key) ?? episodes.find((e) => e.id === `${key}a`);
   if (ep) return `${episodePath(ep.id)}?${tag(ep.id)}`;
   const club = CLUB_NIGHTS.find((c) => c.slug === key || `club-${c.slug}` === key);
   if (club) return `/jukebox?club=${club.slug}&${tag(`club-${club.slug}`)}`;

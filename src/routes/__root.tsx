@@ -15,6 +15,7 @@ import { SiteStats } from "../components/site-stats";
 import { EpisodePlayer } from "../components/episode-player";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { isStaleBuildError, reloadForNewBuild, watchForNewBuild } from "../lib/stale-build";
 
 function NotFoundComponent() {
   return (
@@ -41,9 +42,12 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
+  const stale = isStaleBuildError(error);
   useEffect(() => {
+    // A page file from before the last publish: load the address again instead of showing the error (see stale-build.ts).
+    if (stale && reloadForNewBuild()) return;
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+  }, [error, stale]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -161,6 +165,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  // Open tabs survive a publish: when a link needs a page file that is gone, reload once (src/lib/stale-build.ts).
+  useEffect(() => watchForNewBuild(), []);
 
   return (
     <QueryClientProvider client={queryClient}>
