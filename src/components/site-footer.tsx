@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { NIGHT_FEVER_URL, WOW_URL } from "@/data/guests";
-import { EntityText } from "@/components/entity-text";
+import { ShowText } from "@/components/show-text";
 import { LegalNote } from "@/components/legal-links";
 import { TipBox } from "@/components/tip-box";
 import { ListenBox } from "@/components/listen-box";
@@ -47,7 +47,7 @@ export function SiteFooter() {
             </p>
           </nav>
           <p className="max-w-xl text-xs text-muted-foreground/60">
-            <EntityText text="Made by a fan - not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their owners." />
+            <ShowText text="Made by a fan - not affiliated with World of Wonder or the Night Fever podcast. All show content and trademarks belong to their owners." />
           </p>
           <p>
             <LegalNote align="left" />

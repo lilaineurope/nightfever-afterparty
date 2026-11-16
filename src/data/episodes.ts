@@ -1,56 +1,5 @@
-import jamesRefs from "./s06e01.json";
-import brillRefs from "./s01e01.json";
-import mustoRefs from "./s01e02.json";
-import fieldRefs from "./s03e01.json";
-import bartschRefs from "./s02e03.json";
-import edelsteinRefs from "./s01e03.json";
-import richieRefs from "./s04e08.json";
-import makosRefs from "./s05e06.json";
-import goodeRefs from "./s03e06.json";
-import piperRefs from "./s01e07.json";
-import valentiDynellRefs from "./s06e03.json";
-import eganRefs from "./s05e04.json";
-import magnusonRefs from "./s04e10.json";
-import signorileRefs from "./s02e08.json";
-import leporeRefs from "./s05e03.json";
-import norwichRefs from "./s06e08.json";
-import schmidtRefs from "./s02e06.json";
-import gatienRefs from "./s01e04.json";
-import haskellRefs from "./s02e04.json";
-import randallRefs from "./s06e07.json";
-import ariasRefs from "./s01e10.json";
-import teeRefs from "./s03e08.json";
-import zaldyRefs from "./s04e04.json";
-import visageRefs from "./s02e01.json";
-import waltRefs from "./s01e06.json";
-import jennyRefs from "./s02e07.json";
-import connieRefs from "./s02e05.json";
-import missGuyRefs from "./s03e10.json";
-import nellRefs from "./s05e01.json";
-import bochRefs from "./s02e11.json";
-import luisRefs from "./s01e08.json";
-import manRefs from "./s03e04.json";
-import treyRefs from "./s04e07.json";
-import tishSnookyRefs from "./s05e10.json";
-import seidelmanRefs from "./s04e09.json";
-import glamRefs from "./s01e05.json";
-import palsgroveRefs from "./s06e06.json";
-import simpsonRefs from "./s02e09.json";
-import avianceRefs from "./s03e03.json";
-import buellRefs from "./s04e03.json";
-import washRefs from "./s03e02.json";
-import countyRefs from "./s02e02.json";
-import vanillaRefs from "./s03e05.json";
-import viscaRefs from "./s06e02.json";
-import burnsRefs from "./s06e05.json";
-import mobyRefs from "./s01e09.json";
-import compRefs from "./s05e07a.json";
-import deniseRefs from "./s05e07b.json";
-
-/** The three most mentioned names on an Afterparty box. Michael Alig is a controversial name (Lisa, 28 Oct 2026): his mentions
- * stay in every list, but the boxes and polaroids give his space to the next name in rank. */
-const NOT_ON_THE_BOX = new Set(["Michael Alig"]);
-const topNames = (refs: { name: string; mentions: number }[]) => refs.filter((r) => !NOT_ON_THE_BOX.has(r.name)).sort((a, b) => b.mentions - a.mentions).slice(0, 3);
+// The episode list stays light (page weight, 16 Nov 2026): no reference rows here, so every page can use it. The box totals
+// (references, mentions, top names) are counted in episode-stats.ts, and the rows live in episode-refs.ts.
 
 export type Episode = {
   /** Route file id, also used for the URL-friendly path */
@@ -77,12 +26,6 @@ export type Episode = {
   afterpartyPublished: string;
   /** Short summary written from the public episode description */
   blurb: string;
-  /** How many names, places and works are tagged on the episode page */
-  references: number;
-  /** Total mentions across all tagged references */
-  mentions: number;
-  /** The most-mentioned names in the episode */
-  top: { name: string; mentions: number }[];
 };
 
 const s06e01: Episode = {
@@ -100,9 +43,6 @@ const s06e01: Episode = {
     afterpartyPublished: "2026-10-10",
     blurb:
       "The host finally takes the guest chair! James on growing up, moving to New York and the club years he has been documenting ever since - with Warhol and Michael Alig never far away.",
-    references: jamesRefs.length,
-    mentions: jamesRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-    top: topNames(jamesRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e01: Episode = {
@@ -121,9 +61,6 @@ const s01e01: Episode = {
     afterpartyPublished: "2026-10-11",
     blurb:
       "Where it all started - the very first episode! Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Pure glamour.",
-    references: brillRefs.length,
-    mentions: brillRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-    top: topNames(brillRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e02: Episode = {
@@ -141,9 +78,6 @@ const s01e02: Episode = {
   afterpartyPublished: "2026-10-11T12:00",
   blurb:
     "The oldest club kid in the world! Village Voice legend Michael Musto on Studio 54, outlaw parties, ACT UP, the Club Kids - and, as he tells it, the vodka cranberry waiting for him at the Limelight.",
-  references: mustoRefs.length,
-  mentions: mustoRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(mustoRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e03: Episode = {
@@ -160,9 +94,6 @@ const s01e03: Episode = {
   afterpartyPublished: "2026-10-15",
   blurb:
     "Lisa E., the it girl! James's NYU partner-in-crime on their plan to conquer the clubs, lunchboxes and drooping hats, Warhol's memorial - and the New York Times story that changed her life.",
-  references: edelsteinRefs.length,
-  mentions: edelsteinRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(edelsteinRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLAknZ8rbAhR4",
 };
 
@@ -180,9 +111,6 @@ const s02e03: Episode = {
   afterpartyPublished: "2026-10-14",
   blurb:
     "The Empress of the Night! Susanne Bartsch on running away to London, the Blitz, her SoHo stores, Savage, Bentley's and the Copa - and throwing the Love Balls that raised millions for AIDS.",
-  references: bartschRefs.length,
-  mentions: bartschRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(bartschRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLK2eT8Odqysw",
 };
 
@@ -201,9 +129,6 @@ const s03e01: Episode = {
   afterpartyPublished: "2026-10-13",
   blurb:
     "The fashion legend herself! Patricia Field on her 8th Street store, the House of Field balls, dressing Carrie Bradshaw and Miranda Priestly - and why the world needs way more personal style.",
-  references: fieldRefs.length,
-  mentions: fieldRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(fieldRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e08: Episode = {
@@ -221,9 +146,6 @@ const s04e08: Episode = {
   afterpartyPublished: "2026-10-16",
   blurb:
     "Boom! Richie Rich skates from the Ice Capades to the Style Summit, Hotel 17 and Susanne Bartsch's side - then Heatherette, with Miss Piggy front row and Paris in a studded bodysuit.",
-  references: richieRefs.length,
-  mentions: richieRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(richieRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e06: Episode = {
@@ -241,9 +163,6 @@ const s05e06: Episode = {
   afterpartyPublished: "2026-10-17",
   blurb:
     "Christopher Makos, Warhol's perfect companion! From a Catholic boy in El Monte to Tennessee Williams's typewriter, Tony Perkins on the Riviera, a weekend with Man Ray and Andy in drag.",
-  references: makosRefs.length,
-  mentions: makosRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(makosRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 /** Season and episode order, earliest first. */
@@ -261,9 +180,6 @@ const s03e06: Episode = {
   afterpartyPublished: "2026-10-18",
   blurb:
     "Eric Goode, the mind behind Area! From Etch A Sketch drawings at the Mudd Club and a pig carcass at the Club With No Name to Area's ever-changing themes, MK's Dobermans, the Maritime Hotel, Tiger King and a lifelong love of tortoises.",
-  references: goodeRefs.length,
-  mentions: goodeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(goodeRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e07: Episode = {
@@ -279,9 +195,6 @@ const s01e07: Episode = {
   afterpartyPublished: "2026-10-18T13:40", // same day as S03E06 but published later, so it lists first
   blurb:
     "Rudolf Piper, the club man behind Pravda, Danceteria, the Tunnel and Mars! From a 24-hour bunker club in Berlin and Keith Haring's black-and-white floor to Madonna's first shows, the Club Kids' basement, a Liberace party with white pianos everywhere and the clubs that followed in Paris, Miami and São Paulo.",
-  references: piperRefs.length,
-  mentions: piperRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(piperRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEVw6ON78TZM",
 };
 
@@ -300,9 +213,6 @@ const s06e03: Episode = {
   afterpartyPublished: "2026-10-19",
   blurb:
     "Chi Chi Valenti & Johnny Dynell, the couple who met at the Mudd Club! From Chi Chi on its door and Johnny's first DJ night there - without owning a single record - to Jackie 60's wild theme nights and Night of a Thousand Stevies, the House of Xtravaganza, Elements of Vogue and the balls coming downtown, and Click + Drag at Mother, the tightest door Chi Chi ever ran.",
-  references: valentiDynellRefs.length,
-  mentions: valentiDynellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(valentiDynellRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e04: Episode = {
@@ -320,9 +230,6 @@ const s05e04: Episode = {
   afterpartyPublished: "2026-10-20",
   blurb:
     "Nick Egan, the art-school punk who sang in The Tea Set! From modelling for Vivienne Westwood and steering Bow Wow Wow for Malcolm McLaren - the See Jungle cover included - to Duck Rock and Buffalo Gals, the Stray Cats making tattoos mainstream and his first videos as MTV took off, then Marc Jacobs' grunge show and Sonic Youth's Sugar Kane, Duran Duran's Ordinary World and INXS's Kick.",
-  references: eganRefs.length,
-  mentions: eganRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(eganRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e10: Episode = {
@@ -339,9 +246,6 @@ const s04e10: Episode = {
   afterpartyPublished: "2026-10-21",
   blurb:
     "Ann Magnuson, the West Virginia girl who managed Club 57! From childhood shows in Charleston and London punk watched from a safe distance to New York, New Wave Vaudeville and a year running Club 57 for Stanley Strychacki - the Monster Movie Club, Ladies Auxiliary proms and Klaus Nomi singing opera on a snow mound - then the Pyramid and Danceteria, Pulsallama, Bongwater and Vulcan Death Grip, The Hunger with Bowie, Desperately Seeking Susan, Making Mr. Right, Anything But Love, Ghost Cat and her own suRURALism.",
-  references: magnusonRefs.length,
-  mentions: magnusonRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(magnusonRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e08: Episode = {
@@ -357,9 +261,6 @@ const s02e08: Episode = {
   afterpartyPublished: "2026-10-22",
   blurb:
     "Michelangelo Signorile, from gossip-column planter to ACT UP and OutWeek! Mike Hall Associates and the columns of Liz Smith and Suzy, the Gaultier lookalike contest at the Palladium, being turned away from The World by James, Suzygate, a first protest at Cardinal Ratzinger's speech, the Malcolm Forbes cover and the birth of outing.",
-  references: signorileRefs.length,
-  mentions: signorileRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(signorileRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLBdv5CNDx8Wg",
 };
 
@@ -377,9 +278,6 @@ const s05e03: Episode = {
   afterpartyPublished: "2026-10-22T13:00",
   blurb:
     "Amanda Lepore, original Club Kid, LaChapelle muse and Doll Parts author! A fall on the stairs at The Building, the glitter-rock crowd in New Jersey, the Cave Canem opening, go-go dancing in the cage at Disco 2000, the Club Kids on The Joan Rivers Show, a Beverly Hillbillies barn party for Donna Douglas and diamonds glued under her nose.",
-  references: leporeRefs.length,
-  mentions: leporeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(leporeRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s06e08: Episode = {
@@ -396,9 +294,6 @@ const s06e08: Episode = {
   afterpartyPublished: "2026-10-23",
   blurb:
     "William Norwich, the Daily News uptown society columnist of the go-go 80s! Uptown versus Downtown with Dinah Prince, Suzy and the Cholly Knickerbockers, Brooke Astor's emeralds, Jayne Wrightsman's last interview, Blaine Trump's AIDS fundraising, Anna Wintour during the newspaper strike - and James escorted out of an East Hampton party.",
-  references: norwichRefs.length,
-  mentions: norwichRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(norwichRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e06: Episode = {
@@ -414,9 +309,6 @@ const s02e06: Episode = {
   afterpartyPublished: "2026-10-24",
   blurb:
     "Michael Schmidt, the chain-mail man! Meeting James at the Gaiety, Annie Flanders walking him into Area, a dress in a SoHo window that brought Cher calling, Tina Turner's crystal dress, Debbie Harry's razor-blade gown, a Palladium room with Iggy Pop in Braille, Squeezebox at Don Hill's - and Dita Von Teese in 3D print.",
-  references: schmidtRefs.length,
-  mentions: schmidtRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(schmidtRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLaWjcrYbPf7Y",
 };
 
@@ -433,9 +325,6 @@ const s01e04: Episode = {
   afterpartyPublished: "2026-10-25",
   blurb:
     "Peter Gatien, the Club King! Rush in Cornwall, sharks under the dance floor in Atlanta, an old church that became the Limelight, Whitney Houston singing, Disco 2000, Club USA's slide and the Tunnel's hip-hop Sundays - and, as Peter tells it, Giuliani's war on his clubs.",
-  references: gatienRefs.length,
-  mentions: gatienRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(gatienRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLXKM8jtNUvYs",
 };
 
@@ -452,9 +341,6 @@ const s02e04: Episode = {
   afterpartyPublished: "2026-10-26",
   blurb:
     "Nikki Haskell, the queen of the disco nap! The Daisy on Rodeo Drive, Le Club, a broker by day and dancing every night, Studio 54's opening night, The Nikki Haskell Show, Imelda Marcos in Manila - and the tapes nobody else has.",
-  references: haskellRefs.length,
-  mentions: haskellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(haskellRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEN9ytk00s2o",
 };
 
@@ -472,9 +358,6 @@ const s06e07: Episode = {
   afterpartyPublished: "2026-10-27",
   blurb:
     "Sally Randall, the face at the Palladium door! Opening night as the crowd rolled under the gates, Napoleon hats and long wigs, SVA with Keith and Kenny, a lip-sync Jesus Christ Superstar at Danceteria, the club crowd on Oprah - and why she turned down Letterman.",
-  references: randallRefs.length,
-  mentions: randallRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(randallRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e10: Episode = {
@@ -490,9 +373,6 @@ const s01e10: Episode = {
   afterpartyPublished: "2026-10-28",
   blurb:
     "Joey Arias, not a queen but a goddess! Fiorucci's star stylist, Klaus Nomi's soul brother, Bowie on Saturday Night Live, Club 57, the Andy and Edie show at Danceteria, a movie date with Warhol, Billie Holiday at the Limelight and Bar d'O.",
-  references: ariasRefs.length,
-  mentions: ariasRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(ariasRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLHwtitorQnoQ",
 };
 
@@ -510,9 +390,6 @@ const s03e08: Episode = {
   afterpartyPublished: "2026-10-29",
   blurb:
     "Larry Tee, superstar DJ! Up from Atlanta with RuPaul and Lahoma van Zandt, Celebrity Club in the Tunnel basement, Nelson Sullivan's townhouse, co-writing 'Supermodel', Liza dancing in his booth at Love Machine, naming Electroclash in Williamsburg - and Zuzii in London and Berlin.",
-  references: teeRefs.length,
-  mentions: teeRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(teeRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e04: Episode = {
@@ -529,9 +406,6 @@ const s04e04: Episode = {
   afterpartyPublished: "2026-10-30",
   blurb:
     "Zaldy, from the Tunnel basement to three Emmys! Dressing Ru for decades, Miss Boy Bar, twin looks with Mathu Andersen, the alien reveal that won the Love Ball, walking for Mugler, the Levi's taxi ad - and Michael Jackson's loafers in a Ziploc.",
-  references: zaldyRefs.length,
-  mentions: zaldyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(zaldyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e01: Episode = {
@@ -548,9 +422,6 @@ const s02e01: Episode = {
   afterpartyPublished: "2026-10-31",
   blurb:
     "Michelle Visage, from New Jersey teen clubs to Drag Race! A fake ID from her mother, voguing at the Underground and on the piers with the House of Magnifique, the Love Ball, the Seduction audition, meeting RuPaul at the Copa - and co-hosting The RuPaul Show.",
-  references: visageRefs.length,
-  mentions: visageRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(visageRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e06: Episode = {
@@ -567,9 +438,6 @@ const s01e06: Episode = {
   afterpartyPublished: "2026-11-01",
   blurb:
     "Waltpaper, from a punk Mohawk in Norfolk to the Limelight stage! Wigstock 1991, an art studio in the attic of The Building, the club kid houses, Michael Alig's mentoring, drag queens versus club kids, the House of Field - and the 90s turning darker.",
-  references: waltRefs.length,
-  mentions: waltRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(waltRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e07: Episode = {
@@ -586,9 +454,6 @@ const s02e07: Episode = {
   afterpartyPublished: "2026-11-02",
   blurb:
     "Jenny Talia, club kid icon and Queen of Manhattan! Her goodbye to Michael Alig, sneaking into The Building at 15, Phil Donahue in a gimp mask, Gaultier and Steven Meisel's Calvin Klein ad, the club kids in Paris with Gloria Gaynor - and from the club to the Lower East Side Girls Club.",
-  references: jennyRefs.length,
-  mentions: jennyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(jennyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e05: Episode = {
@@ -605,9 +470,6 @@ const s02e05: Episode = {
   afterpartyPublished: "2026-11-03",
   blurb:
     "Connie Fleming, Boy Bar beauty and Mugler supermodel! The D train over the Williamsburg Bridge, Madonna in the Funhouse DJ booth, a Mr. Blackwell dress at the Antique Boutique, Boy Bar from fawn to star, International Chrysis's lessons, Tracey Africa, Mugler's red cowgirl look - and New York's toughest door.",
-  references: connieRefs.length,
-  mentions: connieRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(connieRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s03e10: Episode = {
@@ -624,9 +486,6 @@ const s03e10: Episode = {
   afterpartyPublished: "2026-11-04",
   blurb:
     "Miss Guy, Toilet Boys singer and Squeezebox DJ! Debbie Harry and a paper KISS jacket, a Malcolm McLaren party, Boy Bar on the first night in New York, Matthew Kasten's shows from Doris Day to Cherry Bomb, a day job at Pat Field's - and Squeezebox at Don Hill's.",
-  references: missGuyRefs.length,
-  mentions: missGuyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(missGuyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e01: Episode = {
@@ -644,9 +503,6 @@ const s05e01: Episode = {
   afterpartyPublished: "2026-11-05",
   blurb:
     "Nell Campbell, Rocky Horror's Columbia and the face of Nell's! Tap-dancing on a Knightsbridge cafe table, Freddie Mercury across the stall at Kensington Market, Do the Swim in one take - and a nightclub on 14th Street she said yes to on the spot.",
-  references: nellRefs.length,
-  mentions: nellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(nellRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s02e11: Episode = {
@@ -663,9 +519,6 @@ const s02e11: Episode = {
   afterpartyPublished: "2026-11-06",
   blurb:
     "Richard Boch, the Mudd Club's doorman! Bartending at the Ballroom on West Broadway, walking home past 77 White Street, Steve Mass calling \"no beards tonight\", Basquiat still SAMO and spray-painting the bathroom, Anita Sarko hired on the spot - and the Mudd Club in every club that came after.",
-  references: bochRefs.length,
-  mentions: bochRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(bochRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e08: Episode = {
@@ -682,9 +535,6 @@ const s01e08: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLah-_tKqIyok",
   blurb:
     "Luis \"Xtravaganza\" Camacho, voguer and Madonna's Vogue dancer! Playing red light, green light, vogue on the Lincoln Center steps, walking his first ball in drag to get into the House of Xtravaganza, Mother Angie leading with her chestbone, the Sound Factory as home - and why Madonna doesn't owe him a thing.",
-  references: luisRefs.length,
-  mentions: luisRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(luisRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s03e04: Episode = {
@@ -701,9 +551,6 @@ const s03e04: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCwFgYVg0fEY",
   blurb:
     "Man Parrish, the electro pioneer behind Hip Hop, Be Bop! Sneaking into the Continental Baths to see Bette Midler, getting his name from Andy Warhol, a trapeze over Studio 54 with Madonna waiting backstage, the British papers calling him her lover - and 15 years of Sunday nights at the Cock.",
-  references: manRefs.length,
-  mentions: manRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(manRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e07: Episode = {
@@ -720,9 +567,6 @@ const s04e07: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLUMsrhG_L7lQ",
   blurb:
     "Trey Speegle, the artist behind 80s Polaroids: art director at 19 in Houston, Vogue at 21, Straight to Hell at the Pyramid with John Waters and Quentin Crisp, Bad Boy nights at Danceteria with go-go boys from the Gaiety - and the story behind the Andy Warhol memorial poster.",
-  references: treyRefs.length,
-  mentions: treyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(treyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e10: Episode = {
@@ -739,9 +583,6 @@ const s05e10: Episode = {
   afterpartyPublished: "2026-11-10",
   blurb:
     "Tish & Snooky, the Bronx sisters behind Manic Panic: backing vocals in the first Blondie, the Sic F*cks in nuns' habits, America's first punk boutique on St. Marks Place in 1977, hair dye smuggled home from England, the Mudd Club's opening-night fight, Fred Rothbell-Mista's New Jersey Nightingales - and a brand they built from $250 each.",
-  references: tishSnookyRefs.length,
-  mentions: tishSnookyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(tishSnookyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s04e09: Episode = {
@@ -758,9 +599,6 @@ const s04e09: Episode = {
   afterpartyPublished: "2026-11-11",
   blurb:
     "Susan Seidelman, the director who put the East Village on screen: Smithereens made with her grandmother's $12,000 and moved into the Cannes competition, Plato's Retreat out of curiosity, towels at the Continental Baths, casting Madonna in Desperately Seeking Susan and Into the Groove arriving as temp music at Danceteria, Making Mr. Right with Ann Magnuson, She-Devil with Meryl Streep and Roseanne, the Sex and the City pilot and her memoir Desperately Seeking Something.",
-  references: seidelmanRefs.length,
-  mentions: seidelmanRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(seidelmanRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e05: Episode = {
@@ -776,9 +614,6 @@ const s01e05: Episode = {
   afterpartyPublished: "2026-11-12",
   blurb:
     "Ernie Glam, original Club Kid and writer: workshopping his look in Philadelphia clubs, an LED smiley-face hat that won Michael Alig over, Clara the Carefree Chicken at Disco 2000, Berlin the week the Wall fell, and, as Ernie tells it, forgiving Michael and the years that followed.",
-  references: glamRefs.length,
-  mentions: glamRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(glamRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLSkpBNoDn7W0",
 };
 
@@ -795,9 +630,6 @@ const s06e06: Episode = {
   afterpartyPublished: "2026-11-13",
   blurb:
     "Lincoln Palsgrove IV, doorman and party promoter: the Palladium opening at 15, the World's door with James, introducing RuPaul to Michelle Visage at Red Zone, the Roxy's Saturday crowds, and judging a crowd by its shoes.",
-  references: palsgroveRefs.length,
-  mentions: palsgroveRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(palsgroveRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLP8VmOeR-JGI",
 };
 
@@ -814,9 +646,6 @@ const s02e09: Episode = {
   afterpartyPublished: "2026-11-14",
   blurb:
     "Linda Simpson, drag queen, zine maker and the scene's accidental historian: the Pyramid's punk drag, a name from Tabboo!, the zine My Comrade, Channel 69 on Wednesdays, bombing at Wigstock, and her snapshots that became The Drag Explosion.",
-  references: simpsonRefs.length,
-  mentions: simpsonRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(simpsonRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCPc4wjvZ9xw",
 };
 
@@ -833,9 +662,6 @@ const s03e03: Episode = {
   afterpartyPublished: "2026-11-15",
   blurb:
     "Kevin Aviance, drag performer and dance-music star of the House of Aviance: Mother Juan, DC and South Beach, the Sound Factory's runway, Madonna's Secret video, Cunty and Din Da Da, surviving the 2006 attack, and hearing himself on Beyoncé's Renaissance.",
-  references: avianceRefs.length,
-  mentions: avianceRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(avianceRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLFvGkMrif8fE",
 };
 
@@ -852,9 +678,6 @@ const s04e03: Episode = {
   afterpartyPublished: "2026-11-16",
   blurb:
     "Bebe Buell, model, Playmate, singer and rock memoirist: not a groupie, Max's back room, tea with Dalí and Capote, Bowie, Iggy and Jimmy Page, her 21st birthday at John Lennon's, raising Liv, and Squeezebox putting her back on stage.",
-  references: buellRefs.length,
-  mentions: buellRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(buellRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCwE6cwS0PK0",
 };
 
@@ -871,9 +694,6 @@ const s03e02: Episode = {
   afterpartyPublished: "2026-11-17",
   blurb:
     "Martha Wash, the voice of the Weather Girls and dance music: auditioning for Sylvester, the Palms on Polk Street, nearly turning down It's Raining Men, finding her voice in Black Box's video, the lawsuits that changed credits, and Carry On.",
-  references: washRefs.length,
-  mentions: washRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(washRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLbAeuvl9HuOc",
 };
 
@@ -890,9 +710,6 @@ const s02e02: Episode = {
   afterpartyPublished: "2026-11-18",
   blurb:
     "Jayne County on wrecking in Atlanta, crash pads and Leee Black Childers' flat, Warhol's Pork, DJing at Max's, Stonewall, touring with the Police and the Bowie years.",
-  references: countyRefs.length,
-  mentions: countyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(countyRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCXMHe455ALQ",
 };
 
@@ -909,9 +726,6 @@ const s03e05: Episode = {
   afterpartyPublished: "2026-11-19",
   blurb:
     "Cherry Vanilla on the Copa, Madison Avenue acid trips, DJing at Aux Puces, Warhol's Pork in London, Bowie's MainMan years and punk with Sting and Stewart Copeland.",
-  references: vanillaRefs.length,
-  mentions: vanillaRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(vanillaRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLJDtj-nrvsMM",
 };
 
@@ -928,9 +742,6 @@ const s06e02: Episode = {
   afterpartyPublished: "2026-11-20",
   blurb:
     "Christina Visca on the Limelight's Library, the Palladium door, Bassline and the Sound Factory with Junior Vasquez, Grace Jones's Halloween '89 and managing Club USA.",
-  references: viscaRefs.length,
-  mentions: viscaRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(viscaRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLB65aYXWXX0s",
 };
 
@@ -947,9 +758,6 @@ const s06e05: Episode = {
   afterpartyPublished: "2026-11-21",
   blurb:
     "Nora Burns on her 1980 diaries, Studio 54 by limo, David Burns, strippergrams, her cable show Candied Camera and the disco musical The Village!",
-  references: burnsRefs.length,
-  mentions: burnsRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(burnsRefs).map(({ name, mentions }) => ({ name, mentions })),
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLULpb2lCNCnU",
 };
 
@@ -968,9 +776,6 @@ const s05e07a: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLLz4yt8gO8w4",
   blurb:
     "Christopher Comp on goth Pennsylvania, the club kids on Geraldo, living with James at Riverbank West, planning Limelight parties and his crucifix night at the Palladium",
-  references: compRefs.length,
-  mentions: compRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(compRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s05e07b: Episode = {
@@ -988,9 +793,6 @@ const s05e07b: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLOFl95PxmhZA",
   blurb:
     "Really Denise on getting her name at the Tunnel, the petting zoo party with Jenny Go-Getter, the McDonald's outlaw party and Bainbridge Island's mailboxes",
-  references: deniseRefs.length,
-  mentions: deniseRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(deniseRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 const s01e09: Episode = {
@@ -1007,9 +809,6 @@ const s01e09: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLC3Hyv3Ji7MA",
   blurb:
     "Moby on his abandoned-factory squat, his first gig at Mars, Michael Alig's L train party, the Friday record-shop scrum, Go and his two memoirs",
-  references: mobyRefs.length,
-  mentions: mobyRefs.reduce((sum, ref) => sum + ref.mentions, 0),
-  top: topNames(mobyRefs).map(({ name, mentions }) => ({ name, mentions })),
 };
 
 export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09].sort((a, b) =>

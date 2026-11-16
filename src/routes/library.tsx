@@ -1,4 +1,3 @@
-import { cardPath } from "@/lib/card-link";
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
 import { MomentsBox } from "@/components/moments-box";
@@ -14,29 +13,37 @@ import { abs, jsonLd, pageHead } from "@/lib/seo";
 // newspaper and column the guests drop, pinned up like a downtown newsstand. Real covers where we have them
 // (src/data/library-covers.ts), typed photocopy covers for the rest. Tap a cover for every moment it comes up.
 
-const books = bookClub.filter((b) => b.shelf === "books").length;
-const press = bookClub.length - books;
-const description = `Every book, magazine and column the Night Fever guests mention - ${books} books and ${press} papers and magazines, pinned up like a newsstand. Grab one!`;
 
 export const Route = createFileRoute("/library")({
   staticData: { sitemap: true },
-  head: () => ({
-    ...pageHead({ path: "/library", title: "Night Fever Library – every book & magazine the guests mention", description, image: "/og/library.jpg" }),
-    scripts: [
-      jsonLd({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: "Night Fever Library",
-        url: abs("/library"),
-        numberOfItems: bookClub.length,
-        itemListElement: bookClub.slice(0, 50).map((b, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          item: { "@type": b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) },
-        })),
-      }),
-    ],
-  }),
+  // The shelf data loads with the Library (page weight, 16 Nov 2026); the head only needs the counts and the first 50 items.
+  loader: async () => {
+    const [{ bookClub }, { cardPath }] = await Promise.all([import("@/data/collections"), import("@/lib/card-link")]);
+    const books = bookClub.filter((b) => b.shelf === "books").length;
+    return {
+      books,
+      press: bookClub.length - books,
+      total: bookClub.length,
+      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) })),
+    };
+  },
+  head: ({ loaderData }) => {
+    const d = loaderData ?? { books: 0, press: 0, total: 0, first: [] };
+    const description = `Every book, magazine and column the Night Fever guests mention - ${d.books} books and ${d.press} papers and magazines, pinned up like a newsstand. Grab one!`;
+    return {
+      ...pageHead({ path: "/library", title: "Night Fever Library – every book & magazine the guests mention", description, image: "/og/library.jpg" }),
+      scripts: [
+        jsonLd({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Night Fever Library",
+          url: abs("/library"),
+          numberOfItems: d.total,
+          itemListElement: d.first.map((b, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": b.type, name: b.name, url: b.url } })),
+        }),
+      ],
+    };
+  },
   component: LibraryPage,
 });
 

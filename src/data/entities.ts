@@ -1,52 +1,5 @@
-import refsJson from "./s06e01.json";
-import refs01Json from "./s01e01.json";
-import refs02Json from "./s01e02.json";
-import refs301Json from "./s03e01.json";
-import refs203Json from "./s02e03.json";
-import refs103Json from "./s01e03.json";
-import refs408Json from "./s04e08.json";
-import refs506Json from "./s05e06.json";
-import refs306Json from "./s03e06.json";
-import refs107Json from "./s01e07.json";
-import refs603Json from "./s06e03.json";
-import refs504Json from "./s05e04.json";
-import refs410Json from "./s04e10.json";
-import refs208Json from "./s02e08.json";
-import refs503Json from "./s05e03.json";
-import refs608Json from "./s06e08.json";
-import refs206Json from "./s02e06.json";
-import refs104Json from "./s01e04.json";
-import refs204Json from "./s02e04.json";
-import refs607Json from "./s06e07.json";
-import refs110Json from "./s01e10.json";
-import refs308Json from "./s03e08.json";
-import refs404Json from "./s04e04.json";
-import refs201Json from "./s02e01.json";
-import refs106Json from "./s01e06.json";
-import refs207Json from "./s02e07.json";
-import refs205Json from "./s02e05.json";
-import refs310Json from "./s03e10.json";
-import refs501Json from "./s05e01.json";
-import refs211Json from "./s02e11.json";
-import refs108Json from "./s01e08.json";
-import refs304Json from "./s03e04.json";
-import refs407Json from "./s04e07.json";
-import refs510Json from "./s05e10.json";
-import refs409Json from "./s04e09.json";
-import refs105Json from "./s01e05.json";
-import refs606Json from "./s06e06.json";
-import refs209Json from "./s02e09.json";
-import refs303Json from "./s03e03.json";
-import refs403Json from "./s04e03.json";
-import refs302Json from "./s03e02.json";
-import refs202Json from "./s02e02.json";
-import refs305Json from "./s03e05.json";
-import refs602Json from "./s06e02.json";
-import refs605Json from "./s06e05.json";
-import refs507aJson from "./s05e07a.json";
-import refs507bJson from "./s05e07b.json";
-import refs109Json from "./s01e09.json";
 import { episodes, episodeIdOf } from "./episodes";
+import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 
@@ -77,56 +30,7 @@ export type Entity = {
   inGuestStories: Guest[]; // guests whose scenes/timeline mention it
 };
 
-const refs: Ref[] = [
-  ...(refsJson as Ref[]).map((r) => ({ ...r, episode: "s06e01" as const })),
-  ...(refs01Json as Ref[]).map((r) => ({ ...r, episode: "s01e01" as const })),
-  ...(refs02Json as Ref[]).map((r) => ({ ...r, episode: "s01e02" as const })),
-  ...(refs103Json as Ref[]).map((r) => ({ ...r, episode: "s01e03" as const })),
-  ...(refs203Json as Ref[]).map((r) => ({ ...r, episode: "s02e03" as const })),
-  ...(refs301Json as Ref[]).map((r) => ({ ...r, episode: "s03e01" as const })),
-  ...(refs306Json as Ref[]).map((r) => ({ ...r, episode: "s03e06" as const })),
-  ...(refs107Json as Ref[]).map((r) => ({ ...r, episode: "s01e07" as const })),
-  ...(refs408Json as Ref[]).map((r) => ({ ...r, episode: "s04e08" as const })),
-  ...(refs506Json as Ref[]).map((r) => ({ ...r, episode: "s05e06" as const })),
-  ...(refs603Json as Ref[]).map((r) => ({ ...r, episode: "s06e03" as const })),
-  ...(refs504Json as Ref[]).map((r) => ({ ...r, episode: "s05e04" as const })),
-  ...(refs410Json as Ref[]).map((r) => ({ ...r, episode: "s04e10" as const })),
-  ...(refs208Json as Ref[]).map((r) => ({ ...r, episode: "s02e08" as const })),
-  ...(refs503Json as Ref[]).map((r) => ({ ...r, episode: "s05e03" as const })),
-  ...(refs608Json as Ref[]).map((r) => ({ ...r, episode: "s06e08" as const })),
-  ...(refs206Json as Ref[]).map((r) => ({ ...r, episode: "s02e06" as const })),
-  ...(refs104Json as Ref[]).map((r) => ({ ...r, episode: "s01e04" as const })),
-  ...(refs204Json as Ref[]).map((r) => ({ ...r, episode: "s02e04" as const })),
-  ...(refs607Json as Ref[]).map((r) => ({ ...r, episode: "s06e07" as const })),
-  ...(refs110Json as Ref[]).map((r) => ({ ...r, episode: "s01e10" as const })),
-  ...(refs308Json as Ref[]).map((r) => ({ ...r, episode: "s03e08" as const })),
-  ...(refs404Json as Ref[]).map((r) => ({ ...r, episode: "s04e04" as const })),
-  ...(refs201Json as Ref[]).map((r) => ({ ...r, episode: "s02e01" as const })),
-  ...(refs106Json as Ref[]).map((r) => ({ ...r, episode: "s01e06" as const })),
-  ...(refs207Json as Ref[]).map((r) => ({ ...r, episode: "s02e07" as const })),
-  ...(refs205Json as Ref[]).map((r) => ({ ...r, episode: "s02e05" as const })),
-  ...(refs310Json as Ref[]).map((r) => ({ ...r, episode: "s03e10" as const })),
-  ...(refs501Json as Ref[]).map((r) => ({ ...r, episode: "s05e01" as const })),
-  ...(refs211Json as Ref[]).map((r) => ({ ...r, episode: "s02e11" as const })),
-  ...(refs108Json as Ref[]).map((r) => ({ ...r, episode: "s01e08" as const })),
-  ...(refs304Json as Ref[]).map((r) => ({ ...r, episode: "s03e04" as const })),
-  ...(refs407Json as Ref[]).map((r) => ({ ...r, episode: "s04e07" as const })),
-  ...(refs510Json as Ref[]).map((r) => ({ ...r, episode: "s05e10" as const })),
-  ...(refs409Json as Ref[]).map((r) => ({ ...r, episode: "s04e09" as const })),
-  ...(refs105Json as Ref[]).map((r) => ({ ...r, episode: "s01e05" as const })),
-  ...(refs606Json as Ref[]).map((r) => ({ ...r, episode: "s06e06" as const })),
-  ...(refs209Json as Ref[]).map((r) => ({ ...r, episode: "s02e09" as const })),
-  ...(refs303Json as Ref[]).map((r) => ({ ...r, episode: "s03e03" as const })),
-  ...(refs403Json as Ref[]).map((r) => ({ ...r, episode: "s04e03" as const })),
-  ...(refs302Json as Ref[]).map((r) => ({ ...r, episode: "s03e02" as const })),
-  ...(refs202Json as Ref[]).map((r) => ({ ...r, episode: "s02e02" as const })),
-  ...(refs305Json as Ref[]).map((r) => ({ ...r, episode: "s03e05" as const })),
-  ...(refs602Json as Ref[]).map((r) => ({ ...r, episode: "s06e02" as const })),
-  ...(refs605Json as Ref[]).map((r) => ({ ...r, episode: "s06e05" as const })),
-  ...(refs507aJson as Ref[]).map((r) => ({ ...r, episode: "s05e07a" as const })),
-  ...(refs507bJson as Ref[]).map((r) => ({ ...r, episode: "s05e07b" as const })),
-  ...(refs109Json as Ref[]).map((r) => ({ ...r, episode: "s01e09" as const })),
-];
+const refs: Ref[] = EPISODE_REFS.flatMap(([episode, rows]) => rows.map((r) => ({ ...r, episode })));
 
 // Bracketed asides are dropped so "Danceteria (probably)" joins "Danceteria", but an episode code such as
 // "(S01E07)" is kept, so each episode's on-camera look keeps its own card.

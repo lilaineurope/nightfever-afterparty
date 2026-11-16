@@ -1,52 +1,5 @@
+import { refsOf } from "./episode-refs";
 import { moreGuests } from "./guests-more";
-import s01e01 from "./s01e01.json";
-import s01e02 from "./s01e02.json";
-import s01e03 from "./s01e03.json";
-import s02e03 from "./s02e03.json";
-import s03e01 from "./s03e01.json";
-import s04e08 from "./s04e08.json";
-import s05e06 from "./s05e06.json";
-import s03e06 from "./s03e06.json";
-import s01e07 from "./s01e07.json";
-import s06e01 from "./s06e01.json";
-import s06e03 from "./s06e03.json";
-import s05e04 from "./s05e04.json";
-import s04e10 from "./s04e10.json";
-import s02e08 from "./s02e08.json";
-import s05e03 from "./s05e03.json";
-import s06e08 from "./s06e08.json";
-import s02e06 from "./s02e06.json";
-import s01e04 from "./s01e04.json";
-import s02e04 from "./s02e04.json";
-import s06e07 from "./s06e07.json";
-import s01e10 from "./s01e10.json";
-import s03e08 from "./s03e08.json";
-import s04e04 from "./s04e04.json";
-import s02e01 from "./s02e01.json";
-import s01e06 from "./s01e06.json";
-import s02e07 from "./s02e07.json";
-import s02e05 from "./s02e05.json";
-import s03e10 from "./s03e10.json";
-import s05e01 from "./s05e01.json";
-import s02e11 from "./s02e11.json";
-import s01e08 from "./s01e08.json";
-import s03e04 from "./s03e04.json";
-import s04e07 from "./s04e07.json";
-import s05e10 from "./s05e10.json";
-import s04e09 from "./s04e09.json";
-import s01e05 from "./s01e05.json";
-import s06e06 from "./s06e06.json";
-import s02e09 from "./s02e09.json";
-import s03e03 from "./s03e03.json";
-import s04e03 from "./s04e03.json";
-import s03e02 from "./s03e02.json";
-import s02e02 from "./s02e02.json";
-import s03e05 from "./s03e05.json";
-import s06e02 from "./s06e02.json";
-import s06e05 from "./s06e05.json";
-import s05e07a from "./s05e07a.json";
-import s05e07b from "./s05e07b.json";
-import s01e09 from "./s01e09.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -622,54 +575,54 @@ const guestMilestones: SceneEvent[] = moreGuests.flatMap((g) =>
 // works or person profiles are not evidence that an event happened there.
 type Ref = { name: string; heard?: string; context: string; time: string; category: string };
 const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[] }[] = [
-  { id: "s01e01", label: "S1 E1", guest: "Dianne Brill", refs: s01e01 as Ref[] },
-  { id: "s01e02", label: "S1 E2", guest: "Michael Musto", refs: s01e02 as Ref[] },
-  { id: "s01e03", label: "S1 E3", guest: "Lisa Edelstein", refs: s01e03 as Ref[] },
-  { id: "s02e03", label: "S2 E3", guest: "Susanne Bartsch", refs: s02e03 as Ref[] },
-  { id: "s03e01", label: "S3 E1", guest: "Patricia Field", refs: s03e01 as Ref[] },
-  { id: "s04e08", label: "S4 E8", guest: "Richie Rich", refs: s04e08 as Ref[] },
-  { id: "s05e06", label: "S5 E6", guest: "Christopher Makos", refs: s05e06 as Ref[] },
-  { id: "s03e06", label: "S3 E6", guest: "Eric Goode", refs: s03e06 as Ref[] },
-  { id: "s01e07", label: "S1 E7", guest: "Rudolf Piper", refs: s01e07 as Ref[] },
-  { id: "s06e01", label: "S6 E1", guest: "James St. James", refs: s06e01 as Ref[] },
-  { id: "s06e03", label: "S6 E3", guest: "Chi Chi Valenti & Johnny Dynell", refs: s06e03 as Ref[] },
-  { id: "s05e04", label: "S5 E4", guest: "Nick Egan", refs: s05e04 as Ref[] },
-  { id: "s04e10", label: "S4 E10", guest: "Ann Magnuson", refs: s04e10 as Ref[] },
-  { id: "s02e08", label: "S2 E8", guest: "Michelangelo Signorile", refs: s02e08 as Ref[] },
-  { id: "s05e03", label: "S5 E3", guest: "Amanda Lepore", refs: s05e03 as Ref[] },
-  { id: "s06e08", label: "S6 E8", guest: "William Norwich", refs: s06e08 as Ref[] },
-  { id: "s02e06", label: "S2 E6", guest: "Michael Schmidt", refs: s02e06 as Ref[] },
-  { id: "s01e04", label: "S1 E4", guest: "Peter Gatien", refs: s01e04 as Ref[] },
-  { id: "s02e04", label: "S2 E4", guest: "Nikki Haskell", refs: s02e04 as Ref[] },
-  { id: "s06e07", label: "S6 E7", guest: "Sally Randall", refs: s06e07 as Ref[] },
-  { id: "s01e10", label: "S1 E10", guest: "Joey Arias", refs: s01e10 as Ref[] },
-  { id: "s03e08", label: "S3 E8", guest: "Larry Tee", refs: s03e08 as Ref[] },
-  { id: "s04e04", label: "S4 E4", guest: "Zaldy", refs: s04e04 as Ref[] },
-  { id: "s02e01", label: "S2 E1", guest: "Michelle Visage", refs: s02e01 as Ref[] },
-  { id: "s01e06", label: "S1 E6", guest: "Waltpaper", refs: s01e06 as Ref[] },
-  { id: "s02e07", label: "S2 E7", guest: "Jenny Dembrow aka Jenny Talia", refs: s02e07 as Ref[] },
-  { id: "s02e05", label: "S2 E5", guest: "Connie Fleming", refs: s02e05 as Ref[] },
-  { id: "s03e10", label: "S3 E10", guest: "Miss Guy", refs: s03e10 as Ref[] },
-  { id: "s05e01", label: "S5 E1", guest: "Nell Campbell", refs: s05e01 as Ref[] },
-  { id: "s02e11", label: "S2 E11", guest: "Richard Boch", refs: s02e11 as Ref[] },
-  { id: "s01e08", label: "S1 E8", guest: "Luis \"Xtravaganza\" Camacho", refs: s01e08 as Ref[] },
-  { id: "s03e04", label: "S3 E4", guest: "Man Parrish", refs: s03e04 as Ref[] },
-  { id: "s04e07", label: "S4 E7", guest: "Trey Speegle", refs: s04e07 as Ref[] },
-  { id: "s05e10", label: "S5 E10", guest: "Tish & Snooky", refs: s05e10 as Ref[] },
-  { id: "s04e09", label: "S4 E9", guest: "Susan Seidelman", refs: s04e09 as Ref[] },
-  { id: "s01e05", label: "S1 E5", guest: "Ernie Glam", refs: s01e05 as Ref[] },
-  { id: "s06e06", label: "S6 E6", guest: "Lincoln Palsgrove IV", refs: s06e06 as Ref[] },
-  { id: "s02e09", label: "S2 E9", guest: "Linda Simpson", refs: s02e09 as Ref[] },
-  { id: "s03e03", label: "S3 E3", guest: "Kevin Aviance", refs: s03e03 as Ref[] },
-  { id: "s04e03", label: "S4 E3", guest: "Bebe Buell", refs: s04e03 as Ref[] },
-  { id: "s03e02", label: "S3 E2", guest: "Martha Wash", refs: s03e02 as Ref[] },
-  { id: "s02e02", label: "S2 E2", guest: "Jayne County", refs: s02e02 as Ref[] },
-  { id: "s03e05", label: "S3 E5", guest: "Cherry Vanilla", refs: s03e05 as Ref[] },
-  { id: "s06e02", label: "S6 E2", guest: "Christina Visca", refs: s06e02 as Ref[] },
-  { id: "s06e05", label: "S6 E5", guest: "Nora Burns", refs: s06e05 as Ref[] },
-  { id: "s05e07a", label: "S5 E7A", guest: "Christopher Comp", refs: s05e07a as Ref[] },
-  { id: "s05e07b", label: "S5 E7B", guest: "Really Denise", refs: s05e07b as Ref[] },
-  { id: "s01e09", label: "S1 E9", guest: "Moby", refs: s01e09 as Ref[] },
+  { id: "s01e01", label: "S1 E1", guest: "Dianne Brill", refs: refsOf("s01e01") },
+  { id: "s01e02", label: "S1 E2", guest: "Michael Musto", refs: refsOf("s01e02") },
+  { id: "s01e03", label: "S1 E3", guest: "Lisa Edelstein", refs: refsOf("s01e03") },
+  { id: "s02e03", label: "S2 E3", guest: "Susanne Bartsch", refs: refsOf("s02e03") },
+  { id: "s03e01", label: "S3 E1", guest: "Patricia Field", refs: refsOf("s03e01") },
+  { id: "s04e08", label: "S4 E8", guest: "Richie Rich", refs: refsOf("s04e08") },
+  { id: "s05e06", label: "S5 E6", guest: "Christopher Makos", refs: refsOf("s05e06") },
+  { id: "s03e06", label: "S3 E6", guest: "Eric Goode", refs: refsOf("s03e06") },
+  { id: "s01e07", label: "S1 E7", guest: "Rudolf Piper", refs: refsOf("s01e07") },
+  { id: "s06e01", label: "S6 E1", guest: "James St. James", refs: refsOf("s06e01") },
+  { id: "s06e03", label: "S6 E3", guest: "Chi Chi Valenti & Johnny Dynell", refs: refsOf("s06e03") },
+  { id: "s05e04", label: "S5 E4", guest: "Nick Egan", refs: refsOf("s05e04") },
+  { id: "s04e10", label: "S4 E10", guest: "Ann Magnuson", refs: refsOf("s04e10") },
+  { id: "s02e08", label: "S2 E8", guest: "Michelangelo Signorile", refs: refsOf("s02e08") },
+  { id: "s05e03", label: "S5 E3", guest: "Amanda Lepore", refs: refsOf("s05e03") },
+  { id: "s06e08", label: "S6 E8", guest: "William Norwich", refs: refsOf("s06e08") },
+  { id: "s02e06", label: "S2 E6", guest: "Michael Schmidt", refs: refsOf("s02e06") },
+  { id: "s01e04", label: "S1 E4", guest: "Peter Gatien", refs: refsOf("s01e04") },
+  { id: "s02e04", label: "S2 E4", guest: "Nikki Haskell", refs: refsOf("s02e04") },
+  { id: "s06e07", label: "S6 E7", guest: "Sally Randall", refs: refsOf("s06e07") },
+  { id: "s01e10", label: "S1 E10", guest: "Joey Arias", refs: refsOf("s01e10") },
+  { id: "s03e08", label: "S3 E8", guest: "Larry Tee", refs: refsOf("s03e08") },
+  { id: "s04e04", label: "S4 E4", guest: "Zaldy", refs: refsOf("s04e04") },
+  { id: "s02e01", label: "S2 E1", guest: "Michelle Visage", refs: refsOf("s02e01") },
+  { id: "s01e06", label: "S1 E6", guest: "Waltpaper", refs: refsOf("s01e06") },
+  { id: "s02e07", label: "S2 E7", guest: "Jenny Dembrow aka Jenny Talia", refs: refsOf("s02e07") },
+  { id: "s02e05", label: "S2 E5", guest: "Connie Fleming", refs: refsOf("s02e05") },
+  { id: "s03e10", label: "S3 E10", guest: "Miss Guy", refs: refsOf("s03e10") },
+  { id: "s05e01", label: "S5 E1", guest: "Nell Campbell", refs: refsOf("s05e01") },
+  { id: "s02e11", label: "S2 E11", guest: "Richard Boch", refs: refsOf("s02e11") },
+  { id: "s01e08", label: "S1 E8", guest: "Luis \"Xtravaganza\" Camacho", refs: refsOf("s01e08") },
+  { id: "s03e04", label: "S3 E4", guest: "Man Parrish", refs: refsOf("s03e04") },
+  { id: "s04e07", label: "S4 E7", guest: "Trey Speegle", refs: refsOf("s04e07") },
+  { id: "s05e10", label: "S5 E10", guest: "Tish & Snooky", refs: refsOf("s05e10") },
+  { id: "s04e09", label: "S4 E9", guest: "Susan Seidelman", refs: refsOf("s04e09") },
+  { id: "s01e05", label: "S1 E5", guest: "Ernie Glam", refs: refsOf("s01e05") },
+  { id: "s06e06", label: "S6 E6", guest: "Lincoln Palsgrove IV", refs: refsOf("s06e06") },
+  { id: "s02e09", label: "S2 E9", guest: "Linda Simpson", refs: refsOf("s02e09") },
+  { id: "s03e03", label: "S3 E3", guest: "Kevin Aviance", refs: refsOf("s03e03") },
+  { id: "s04e03", label: "S4 E3", guest: "Bebe Buell", refs: refsOf("s04e03") },
+  { id: "s03e02", label: "S3 E2", guest: "Martha Wash", refs: refsOf("s03e02") },
+  { id: "s02e02", label: "S2 E2", guest: "Jayne County", refs: refsOf("s02e02") },
+  { id: "s03e05", label: "S3 E5", guest: "Cherry Vanilla", refs: refsOf("s03e05") },
+  { id: "s06e02", label: "S6 E2", guest: "Christina Visca", refs: refsOf("s06e02") },
+  { id: "s06e05", label: "S6 E5", guest: "Nora Burns", refs: refsOf("s06e05") },
+  { id: "s05e07a", label: "S5 E7A", guest: "Christopher Comp", refs: refsOf("s05e07a") },
+  { id: "s05e07b", label: "S5 E7B", guest: "Really Denise", refs: refsOf("s05e07b") },
+  { id: "s01e09", label: "S1 E9", guest: "Moby", refs: refsOf("s01e09") },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the

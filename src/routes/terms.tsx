@@ -1,7 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
-import { EntityText } from "../components/entity-text";
+import { ShowText } from "@/components/show-text";
 import { SiteFooter } from "@/components/site-footer";
 
 import { CONTACT_EMAIL, CONTACT_MAILTO, INSTAGRAM_URL } from "@/lib/contact";
@@ -168,7 +168,7 @@ function TermsPage() {
             <p>
               The <em>Night Fever</em> name, artwork, audio, and everything
               belonging to{" "}
-              <EntityText text="World of Wonder" /> and the show&rsquo;s
+              <ShowText text="World of Wonder" /> and the show&rsquo;s
               contributors remain the property of their respective owners and are
               referenced here for identification and commentary only.
             </p>
@@ -292,7 +292,7 @@ function TermsPage() {
               About page
             </Link>
             .{" "}
-            <EntityText text="This is a fan page for the Night Fever podcast by World of Wonder." />
+            <ShowText text="This is a fan page for the Night Fever podcast by World of Wonder." />
           </p>
         </div>
       </section>

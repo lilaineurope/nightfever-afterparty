@@ -1,7 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { NIGHT_FEVER_URL, WOW_URL } from "../data/guests";
-import { EntityText } from "../components/entity-text";
+import { ShowText } from "@/components/show-text";
 import { SiteFooter } from "@/components/site-footer";
 
 import { CONTACT_EMAIL, CONTACT_MAILTO, INSTAGRAM_URL } from "@/lib/contact";
@@ -403,7 +403,7 @@ function PrivacyPage() {
               About page
             </Link>{" "}
             about how this index is researched.{" "}
-            <EntityText text="This page is a fan-made privacy notice for the Night Fever podcast by World of Wonder; it is not legal advice." />
+            <ShowText text="This page is a fan-made privacy notice for the Night Fever podcast by World of Wonder; it is not legal advice." />
           </p>
         </div>
       </section>
