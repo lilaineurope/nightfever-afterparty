@@ -22,7 +22,12 @@ export const Route = createFileRoute("/explore/$slug")({
   staticData: { sitemap: true },
   loader: ({ params }) => {
     const e = entityBySlug[params.slug];
-    if (!e) throw notFound();
+    if (!e) {
+      // /explore/CBGB or /explore/Studio-54 (typed or shared with capitals) finds the card instead of a 404.
+      const lower = params.slug.toLowerCase();
+      if (lower !== params.slug && entityBySlug[lower]) throw redirect({ to: "/explore/$slug", params: { slug: lower }, statusCode: 301 });
+      throw notFound();
+    }
     // One page per guest (Lisa, 1 Nov 2026): a guest with an AFTERPARTY lives on the episode page; old links forward there.
     const ep = afterpartyOf(e);
     if (ep) throw redirect({ to: episodePath(ep), statusCode: 301 });

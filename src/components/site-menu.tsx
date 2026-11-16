@@ -5,7 +5,8 @@ import { SiteSearch } from "@/components/site-search";
 // The page list lives in src/lib/pages.ts (shared with search, contact form and guestbook).
 export { PAGES } from "@/lib/pages";
 import { PAGES } from "@/lib/pages";
-import logoShadow from "@/assets/home-afterparty-fill.webp";
+// A small copy of the home collage (480px, ~40 KB): the menu shows it only as a 4px edge, and it loads on every page.
+import logoShadow from "@/assets/menu-logo-shadow.webp";
 
 export function SiteMenu() {
   const [open, setOpen] = useState(false);

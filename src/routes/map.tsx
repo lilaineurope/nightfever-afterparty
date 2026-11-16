@@ -89,6 +89,9 @@ function homelessPlaces(): Entity[] {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/** How many places the list draws at first, and how many more each time it is scrolled to the end. */
+const LIST_STEP = 40;
+
 function MapPage() {
   const spots = useMemo(buildSpots, []);
   const homeless = useMemo(homelessPlaces, []);
@@ -98,6 +101,10 @@ function MapPage() {
   const mapRef = useRef<any>(null);
   const markers = useRef<any[]>([]);
   const [ready, setReady] = useState(false);
+  // Speed (16 Nov 2026): the list held all ~640 places with ~7,000 links, a 2 MB page that took 1-2.5 s to build on
+  // every visit. It now starts with the first places and adds more as the list is scrolled (or a pin is tapped).
+  const [limit, setLimit] = useState(LIST_STEP);
+  useEffect(() => setLimit(LIST_STEP), [cat]);
 
   const chips = useMemo(() => {
     const out: [string, number][] = [["All", spots.length]];
@@ -166,7 +173,12 @@ function MapPage() {
       });
       m.addListener("click", () => {
         setActive(s.key);
-        document.getElementById(`spot-${s.key}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const at = visible.indexOf(s);
+        setLimit((l) => Math.max(l, at + 1));
+        // wait a frame so a place further down the list is drawn before scrolling to it
+        requestAnimationFrame(() =>
+          document.getElementById(`spot-${s.key}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+        );
       });
       return m;
     });
@@ -246,8 +258,14 @@ function MapPage() {
               </Link>
             </div>
           ) : (
-          <ol className="max-h-[640px] space-y-3 overflow-y-auto pr-1">
-            {visible.map((s) => {
+          <ol
+            className="max-h-[640px] space-y-3 overflow-y-auto pr-1"
+            onScroll={(ev) => {
+              const el = ev.currentTarget;
+              if (limit < visible.length && el.scrollTop + el.clientHeight > el.scrollHeight - 600) setLimit((l) => l + LIST_STEP);
+            }}
+          >
+            {visible.slice(0, limit).map((s) => {
               const shown = cat === "All" ? s.connected : s.connected.filter((c) => c.category === cat);
               return (
                 <li
@@ -283,6 +301,17 @@ function MapPage() {
                 </li>
               );
             })}
+            {limit < visible.length && (
+              <li className="text-center">
+                <button
+                  type="button"
+                  onClick={() => setLimit((l) => l + LIST_STEP)}
+                  className="rounded-full border border-border px-4 py-1.5 text-sm text-card-foreground/80 transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
+                >
+                  Show more places ({visible.length - limit} left)
+                </button>
+              </li>
+            )}
           </ol>
           )}
         </div>

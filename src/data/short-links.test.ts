@@ -29,3 +29,7 @@ test("every club night has a short Spotify address", () => {
 test("an unknown code still lands on the home page, tagged", () => {
   assert.equal(shortLinkTarget("spotify", "nope"), "/?utm_source=spotify&utm_medium=playlist&utm_campaign=unknown");
 });
+
+test("a split episode's old short link opens part A (S05E07, 16 Nov 2026)", () => {
+  assert.equal(shortLinkTarget("spotify", "s05e07"), shortLinkTarget("spotify", "s05e07a"));
+});
