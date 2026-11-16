@@ -53,6 +53,7 @@ import christinaPortrait from "@/assets/polaroid-christina-visca.jpg";
 import noraPortrait from "@/assets/polaroid-nora-burns.jpg";
 import compPortrait from "@/assets/polaroid-christopher-comp.jpg";
 import denisePortrait from "@/assets/polaroid-really-denise.jpg";
+import mobyPortrait from "@/assets/polaroid-moby.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -102,6 +103,7 @@ export const episodePortraits: Record<string, string> = {
   s06e05: noraPortrait,
   s05e07a: compPortrait,
   s05e07b: denisePortrait,
+  s01e09: mobyPortrait,
 };
 
 // Small WebP copies of the polaroids (scripts/polaroid-thumbs.py): 512px for the polaroid boxes, 240px for the tiny ones.
