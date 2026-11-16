@@ -1004,6 +1004,7 @@ const s01e09: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO3572293666.mp3",
   runtime: "1:04:38",
   afterpartyPublished: "2026-11-24",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLC3Hyv3Ji7MA",
   blurb:
     "Moby on his abandoned-factory squat, his first gig at Mars, Michael Alig's L train party, the Friday record-shop scrum, Go and his two memoirs",
   references: mobyRefs.length,
