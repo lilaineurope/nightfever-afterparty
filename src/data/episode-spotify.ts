@@ -41,6 +41,7 @@ export const EPISODE_SPOTIFY: Record<string, string> = {
   s02e02: "1mbK6RbHQsEFE5pyWhO5rK",
   s03e05: "6Qnjx3WmOTeMd53BvPSS3l",
   s05e07a: "0z45o4PyOCwhohEFPdtSM4",
+  s01e09: "0oX03jz0O0IXy96hvoXUuv",
 };
 export const episodeSpotifyUrl = (id: string) => (EPISODE_SPOTIFY[id] ? `https://open.spotify.com/playlist/${EPISODE_SPOTIFY[id]}` : undefined);
 
@@ -52,7 +53,7 @@ export const JUKEBOX_YOUTUBE_URL = "https://www.youtube.com/playlist?list=PLBsKZ
 export const SPOTIFY_SONGS: Record<string, number> = {
   s01e01: 4, s01e02: 6, s01e04: 9, s01e06: 3, s01e07: 4, s01e10: 5, s02e01: 11, s02e03: 6, s02e04: 3, s02e05: 5, s02e06: 11, s02e07: 2,
   s02e08: 3, s03e06: 3, s03e08: 17, s03e10: 30, s04e04: 3, s04e08: 3, s04e10: 12, s05e03: 2, s05e04: 31, s06e01: 6, s06e03: 12, s06e07: 4,
-  s05e01: 5, s02e11: 18, s01e08: 5, s03e04: 17, s04e07: 2, s05e10: 7, s04e09: 4, s06e06: 4, s02e09: 2, s03e03: 12, s04e03: 10, s03e02: 21, s02e02: 15, s03e05: 10, s05e07a: 2,
+  s05e01: 5, s02e11: 18, s01e08: 5, s03e04: 17, s04e07: 2, s05e10: 7, s04e09: 4, s06e06: 4, s02e09: 2, s03e03: 12, s04e03: 10, s03e02: 21, s02e02: 15, s03e05: 10, s05e07a: 2, s01e09: 14,
 };
 export const YOUTUBE_VIDEOS: Record<string, number> = {
   s01e01: 46, s01e02: 116, s01e03: 76, s01e04: 43, s01e06: 54, s01e07: 50, s01e10: 68, s02e01: 76, s02e03: 64, s02e04: 36, s02e05: 84,
