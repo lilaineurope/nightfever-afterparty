@@ -9,6 +9,9 @@ const url = (file: string) => files[`../assets/library/${file}`] ?? "";
 export type Cover = { kind: "book" | "mast"; file: string; credit: string };
 
 const COVERS: Record<string, Cover> = {
+  "Porcelain (Moby memoir)": { kind: "book", file: "book-porcelain-moby.webp", credit: "Cover via Open Library" },
+  "Then It Fell Apart (Moby memoir)": { kind: "book", file: "book-then-it-fell-apart.webp", credit: "Cover via Open Library" },
+  "Moby-Dick": { kind: "book", file: "book-moby-dick.webp", credit: "Cover via Open Library (Bill Sienkiewicz's graphic edition)" },
   "Man Enough to Be a Woman": { kind: "book", file: "book-man-enough-to-be-a-woman.webp", credit: "Cover via the Amazon listing (Jayne County, 2018)" },
   "Lick Me: How I Became Cherry Vanilla": { kind: "book", file: "book-lick-me-how-i-became-cherry-vanilla.webp", credit: "Cover via the Amazon listing (Cherry Vanilla, 2010)" },
   "Tramps Like Us (Joe Westmoreland)": { kind: "book", file: "book-tramps-like-us.webp", credit: "Cover via the Amazon listing (Joe Westmoreland, Farrar, Straus and Giroux, 2025)" },
