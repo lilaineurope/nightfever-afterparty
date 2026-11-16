@@ -1,6 +1,8 @@
 import { pageHead } from "@/lib/seo";
 import { InterviewNext } from "@/components/interview-next";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { getHomePage } from "@/lib/home-view.functions";
+import { LinkDataProvider } from "@/lib/link-index";
 import { episodes } from "../data/episodes";
 import { EpisodeCard } from "@/components/episode-block";
 import { HallOfFame } from "@/components/hall-of-fame";
@@ -9,16 +11,20 @@ import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 import { QuoteOfTheDay } from "@/components/quote-of-the-day";
 import afterpartyFill from "@/assets/home-afterparty-fill.webp";
-import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   component: Index,
+  // The Hall of Fame, interview tips, latest totals and counts come from the server, so the home page doesn't download
+  // the whole A–Z (page weight, 17 Nov 2026).
+  loader: () => getHomePage(),
   head: () => pageHead({ path: "/", title: "Night Fever AFTERPARTY – an archive of NYC club kid culture", description: "My fan-made archive of NYC club kid culture from Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato, timestamped!", image: "/og/home.jpg" }),
 });
 
 function Index() {
+  const home = Route.useLoaderData();
   return (
+    <LinkDataProvider value={home.links}>
     <main className="paper-home min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* Hero: stacked headline NIGHT / FEVER / AFTERPARTY, the last word in a pink-on-black box with a collage shadow - no picture beside it */}
       <section className="mx-auto max-w-6xl px-6 pb-6 pt-10">
@@ -75,7 +81,7 @@ function Index() {
               )
               .slice(0, 3)
               .map((ep, i) => (
-                <EpisodeCard key={ep.id} ep={ep} index={i} />
+                <EpisodeCard key={ep.id} ep={ep} stats={home.stats[ep.id]!} index={i} />
               ))}
           </div>
           <div className="mt-10 text-center">
@@ -84,17 +90,18 @@ function Index() {
               More Afterparties &rarr;
             </Link>
           </div>
-          <ExplorePages />
+          <ExplorePages counts={home.counts} />
         </div>
       </section>
 
-      <HallOfFame />
+      <HallOfFame mentors={home.mentors} />
 
       {/* Who to interview next - tips heard on the show (Lisa, 23 Oct 2026) */}
-      <InterviewNext />
+      <InterviewNext boxes={home.boxes} />
 
 
       {/* Footer */}
       <SiteFooter />    </main>
+    </LinkDataProvider>
   );
 }

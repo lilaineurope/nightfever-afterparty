@@ -5,6 +5,8 @@ import tablePic from "@/assets/afterparty-table.webp";
 import tablePhone from "@/assets/afterparty-table-phone.webp";
 import { episodes, SEASONS } from "@/data/episodes";
 import { EpisodeBlock } from "@/components/episode-block";
+import { episodeStats } from "@/data/episode-stats";
+import "@/lib/full-links"; // the boxes' top names link to their cards (src/lib/link-index.tsx)
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
@@ -61,7 +63,7 @@ function EpisodesPage() {
         </div>
         <div className="mx-auto flex max-w-5xl flex-col gap-6">
           {byAfterpartyPublishDate.filter((ep) => season === null || ep.season === season).map((ep) => (
-            <EpisodeBlock key={ep.id} ep={ep} showDates headingLevel={2} />
+            <EpisodeBlock key={ep.id} ep={ep} stats={episodeStats(ep.id)} showDates headingLevel={2} />
           ))}
         </div>
       </section>

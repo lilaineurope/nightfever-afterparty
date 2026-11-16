@@ -1,6 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { HAS_LINK, looksLikeBot, tooBusy } from "@/lib/form-guard";
+import type { LinkCard } from "@/lib/link-index";
+import type { BoxData } from "@/lib/home-view";
 
 // "Who to interview next" - visitors' suggestions (Lisa, 27 Oct 2026).
 // A suggestion is stored as "pending" in interview_suggestions; the visitor's browser emails Lisa a heads-up with a
@@ -8,7 +10,8 @@ import { HAS_LINK, looksLikeBot, tooBusy } from "@/lib/form-guard";
 // Don't approve (deleted for good). Visitors' names are never shown. The table has RLS on and no anon/authenticated
 // grants - only these validated server functions (service role) touch it; moderation needs Lisa's key.
 
-export type FanPick = { who: string; why: string | null; count: number };
+/** card and box: the name's A–Z card and its box, worked out here so the home page doesn't load the whole A–Z (17 Nov 2026). */
+export type FanPick = { who: string; why: string | null; count: number; card?: LinkCard | undefined; box?: BoxData | undefined };
 export type PendingSuggestion = { id: string; who: string; why: string | null; from_name: string | null; status: "pending" | "approved"; created_at: string };
 
 const norm = (s: string) => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
@@ -33,9 +36,13 @@ export const listFanPicks = createServerFn({ method: "GET" }).handler(async (): 
         if (!hit.why && r.why) hit.why = r.why;
       } else byName.set(k, { who: r.who.trim(), why: r.why, count: 1, order: i });
     });
+    const [{ entityFor, linkCard }, { boxOf }] = await Promise.all([import("@/data/entities"), import("@/lib/home-view.server")]);
     return [...byName.values()]
       .sort((a, b) => b.count - a.count || a.order - b.order)
-      .map(({ who, why, count }) => ({ who, why, count }));
+      .map(({ who, why, count }) => {
+        const e = entityFor(who);
+        return { who, why, count, card: linkCard(e), box: e ? boxOf(e) : undefined };
+      });
   } catch (e) {
     console.error("Fan picks failed:", e instanceof Error ? e.message : e);
     return [];

@@ -2,13 +2,12 @@ import { formatDate } from "@/lib/time";
 import { Link } from "@tanstack/react-router";
 import { EntityLink } from "./entity-link";
 import { afterpartyNumber, episodePath, type Episode } from "@/data/episodes";
-import { episodeStats } from "@/data/episode-stats";
+import type { EpisodeStats } from "@/data/episode-stats";
 import { guestLine } from "@/data/guest-lines";
 import { episodeQuotes } from "@/data/quotes";
 import { Timestamp } from "@/components/episode-player";
 import "@fontsource/covered-by-your-grace/400.css";
 import { episodePortraits, polaroidThumb } from "@/lib/polaroids";
-import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 export { episodePortraits, polaroidThumb };
 
@@ -34,8 +33,11 @@ function QuoteNote({ ep }: { ep: Episode }) {
   );
 }
 
-export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
+// The box totals come in as `stats` (episodeStats() on the Afterparty page, the server on the home page), so this file
+// doesn't load every episode's rows (page weight, 17 Nov 2026).
+export function EpisodeBlock({ ep, stats, showDates = false, headingLevel = 3 }: {
   ep: Episode;
+  stats: EpisodeStats;
   showDates?: boolean;
   headingLevel?: 2 | 3;
 }) {
@@ -45,7 +47,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                 className="grid overflow-hidden rounded-3xl border border-gold/25 bg-card md:grid-cols-[1fr_1.3fr]"
               >
                 <div className="flex items-center justify-center border-b border-border p-6 sm:p-10 md:border-b-0 md:border-r">
-                  <Polaroid ep={ep} Heading={Heading} tilt={ep.episode % 2 ? "-rotate-[1.5deg]" : "rotate-[1.5deg]"} className="w-full max-w-[400px]" />
+                  <Polaroid ep={ep} stats={stats} Heading={Heading} tilt={ep.episode % 2 ? "-rotate-[1.5deg]" : "rotate-[1.5deg]"} className="w-full max-w-[400px]" />
                 </div>
                 <div className="p-8">
                   {showDates && (
@@ -58,7 +60,7 @@ export function EpisodeBlock({ ep, showDates = false, headingLevel = 3 }: {
                     {ep.blurb}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
-                    {episodeStats(ep.id).top.map((t) => (
+                    {stats.top.map((t) => (
                       // Each name chip opens that name's A-Z card (Lisa, 23 Oct 2026)
                       <EntityLink
                         key={t.name}
@@ -99,8 +101,9 @@ const CARD_TILT = ["-rotate-1", "rotate-1", "-rotate-[0.5deg]"];
 
 /** The polaroid (Lisa, 22 Oct 2026): the guest's polaroid photo on an instant-print card, with the season line, name,
  *  the guest's description line, and references (pink) and mentions (marker yellow) written in the white strip. */
-function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
+function Polaroid({ ep, stats, Heading = "span", tilt = "", className = "" }: {
   ep: Episode;
+  stats: EpisodeStats;
   Heading?: "h2" | "h3" | "span";
   tilt?: string;
   className?: string;
@@ -125,21 +128,21 @@ function Polaroid({ ep, Heading = "span", tilt = "", className = "" }: {
       <Heading className="mt-0.5 block font-[family-name:var(--font-flyer)] text-[26px] uppercase leading-tight">{ep.guest}</Heading>
       {line && <span className="mt-1.5 block text-[13.5px] leading-snug text-cream/75">{line}</span>}
       <span className="mt-2 block text-[13px]">
-        <span className="bg-pink px-1 text-pink-foreground">{episodeStats(ep.id).references}</span> references ·{" "}
-        <span className="bg-highlight px-1 text-cream">{episodeStats(ep.id).mentions}</span> mentions
+        <span className="bg-pink px-1 text-pink-foreground">{stats.references}</span> references ·{" "}
+        <span className="bg-highlight px-1 text-cream">{stats.mentions}</span> mentions
       </span>
     </div>
   );
 }
 
 /** Home page "Latest Afterparties": the episode's polaroid; the whole card opens the episode. */
-export function EpisodeCard({ ep, index = 0 }: { ep: Episode; index?: number }) {
+export function EpisodeCard({ ep, stats, index = 0 }: { ep: Episode; stats: EpisodeStats; index?: number }) {
   return (
     <Link
       to={episodePath(ep.id)}
       className={`polaroid-link block transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${CARD_TILT[index % CARD_TILT.length]}`}
     >
-      <Polaroid ep={ep} />
+      <Polaroid ep={ep} stats={stats} />
     </Link>
   );
 }

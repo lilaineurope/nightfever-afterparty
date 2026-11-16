@@ -4,7 +4,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
 import { CATEGORIES, categoryMentions, entities, totalMentions, type Entity } from "../data/entities";
 import { SiteFooter } from "@/components/site-footer";
-import { EntityBox, plainClick } from "@/components/moments-box";
+import { EntityBox } from "@/components/entity-box";
+import { plainClick } from "@/components/moments-box";
 import letterpress from "@/assets/explore-letterpress.webp";
 import letterpressPhone from "@/assets/explore-letterpress-phone.webp";
 

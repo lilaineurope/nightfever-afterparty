@@ -1,8 +1,8 @@
-import { cardTo } from "@/lib/card-link";
+import { linkToSlug, useLinks } from "@/lib/link-index";
+import type { HomeView } from "@/lib/home-view";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
-import { MENTOR_LINKS } from "@/data/mentors";
-import { rankedMentors } from "@/lib/mentor-rank";
+import type { MentorLink } from "@/data/mentors";
 import { episodeById, stageName } from "@/data/episodes";
 import { MomentsBox, plainClick, type Moment } from "@/components/moments-box";
 
@@ -10,17 +10,17 @@ import { MomentsBox, plainClick, type Moment } from "@/components/moments-box";
 // their wing, as the guests tell it - ranked by how many people they mentored, then by how often they come up across every Afterparty.
 const short = (n: string) => stageName(n).replace(/ \(as heard\)$/, "");
 
-const mentors = rankedMentors.slice(0, 10);
-
 // Tap a name and a box opens under the names, like the Library covers (Lisa, 29 Oct 2026): who they took under their wing,
 // each moment with its episode and playable timestamp; the name stays a link to the A–Z card (cmd/ctrl-click opens it).
-const momentsOfMentor = (links: typeof MENTOR_LINKS): Moment[] =>
+const momentsOfMentor = (links: MentorLink[]): Moment[] =>
   links.map((l) => {
     const ep = episodeById(l.episode);
     return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: l.time, context: `${short(l.mentee)}: ${l.line}` };
   });
 
-export function HallOfFame() {
+// The top 10 come from the server with the home page (src/lib/home-view.server.ts, page weight 17 Nov 2026).
+export function HallOfFame({ mentors }: { mentors: HomeView["mentors"] }) {
+  const links = useLinks();
   const [open, setOpen] = useState<string | null>(null);
   // The box opens right under the line of the tapped name, like a Library cover opens under its row (Lisa, 1 Nov 2026):
   // find the last name on that line (same top edge), and put the box straight after it.
@@ -59,7 +59,7 @@ export function HallOfFame() {
               >
                 {m.slug ? (
                   <Link
-                    {...cardTo(m.slug)}
+                    {...linkToSlug(links, m.slug)}
                     aria-expanded={open === m.name}
                     onClick={(ev) => {
                       if (!plainClick(ev)) return;

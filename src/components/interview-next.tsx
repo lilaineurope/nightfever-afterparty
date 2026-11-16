@@ -1,4 +1,3 @@
-import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -6,9 +5,10 @@ import { sendToInbox } from "@/lib/web3forms";
 import { listFanPicks, suggestGuest, type FanPick } from "@/lib/suggestions.functions";
 import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
 import { episodeById, episodePath } from "@/data/episodes";
-import { entityFor } from "@/data/entities";
 import { Timestamp } from "@/components/episode-player";
-import { EntityBox, plainClick } from "@/components/moments-box";
+import { MomentsBox, plainClick } from "@/components/moments-box";
+import { LinkDataProvider, linkTo, useLinkData, useLinks, type LinkCard } from "@/lib/link-index";
+import type { BoxData } from "@/lib/home-view";
 
 // Tap a name and its box opens right under that name's row, like the Library covers and the Hall of Fame (Lisa, 1 Nov 2026).
 // The name stays a real link to its A–Z card (cmd/ctrl-click opens the card). One box open at a time, across both lists.
@@ -19,12 +19,13 @@ const ITEM_CLASS = "border-t border-border pt-4 first:border-t-0 first:pt-0 md:[
 
 const NAME_CLASS = "font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream hover:text-pink";
 
-function TapName({ name, id, opener }: { name: string; id: string; opener: Opener }) {
-  const e = entityFor(name);
-  if (!e) return <span className={NAME_CLASS}>{name}</span>;
+// Each name's card and box come from the server with the home page (src/lib/home-view.server.ts) or with the fan picks
+// (src/lib/suggestions.functions.ts), so the home page doesn't load the whole A–Z (page weight, 17 Nov 2026).
+function TapName({ name, card, id, opener }: { name: string; card: LinkCard | undefined; id: string; opener: Opener }) {
+  if (!card) return <span className={NAME_CLASS}>{name}</span>;
   return (
     <Link
-      {...cardTo(e.slug)}
+      {...linkTo(card)}
       aria-expanded={opener.open === id}
       onClick={(ev) => {
         if (!plainClick(ev)) return;
@@ -38,21 +39,21 @@ function TapName({ name, id, opener }: { name: string; id: string; opener: Opene
   );
 }
 
-function TapBox({ name, id, opener }: { name: string; id: string; opener: Opener }) {
-  const e = entityFor(name);
-  if (opener.open !== id || !e) return null;
+function TapBox({ box, id, opener }: { box: BoxData | undefined; id: string; opener: Opener }) {
+  if (opener.open !== id || !box) return null;
   return (
     <div className="mt-4">
-      <EntityBox entity={e} onClose={opener.close} />
+      <MomentsBox name={box.name} slug={box.slug} mentions={box.mentions} moments={box.moments} link={box.link} note={box.note} onClose={opener.close} />
     </div>
   );
 }
 
-function Tip({ tip, id, opener }: { tip: InterviewTip; id: string; opener: Opener }) {
+function Tip({ tip, box, id, opener }: { tip: InterviewTip; box: BoxData | undefined; id: string; opener: Opener }) {
+  const card = useLinks().cardForName(tip.name);
   const ep = episodeById(tip.episodeId);
   return (
     <li className={ITEM_CLASS}>
-      <TapName name={tip.name} id={id} opener={opener} />
+      <TapName name={tip.name} card={card} id={id} opener={opener} />
       <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{tip.why}</p>
       <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
         <span className="bg-gold px-1.5 py-0.5 font-semibold uppercase tracking-wide text-gold-foreground">Suggested on the show</span>
@@ -62,7 +63,7 @@ function Tip({ tip, id, opener }: { tip: InterviewTip; id: string; opener: Opene
         </Link>
         <Timestamp episodeId={ep.id} time={tip.time} className="text-xs" />
       </p>
-      <TapBox name={tip.name} id={id} opener={opener} />
+      <TapBox box={box} id={id} opener={opener} />
     </li>
   );
 }
@@ -153,22 +154,31 @@ function YourChoice() {
 
 /** A fan suggestion Lisa approved: part of the New faces list, tagged "Suggested by a fan". */
 function FanTip({ pick, id, opener }: { pick: FanPick; id: string; opener: Opener }) {
+  // The pick's own card joins this page's link answers, so its box links the same way.
+  const data = useLinkData();
+  const withCard = data && pick.card ? { ...data, cards: { ...data.cards, [pick.card.slug]: pick.card } } : data;
   return (
     <li className={ITEM_CLASS}>
-      <TapName name={pick.who} id={id} opener={opener} />
+      <TapName name={pick.who} card={pick.card} id={id} opener={opener} />
       {pick.why && <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">&ldquo;{pick.why}&rdquo;</p>}
       <p className="mt-1.5 text-xs text-muted-foreground">
         <span className="bg-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink-foreground">
           {pick.count > 1 ? `Suggested by ${pick.count} fans` : "Suggested by a fan"}
         </span>
       </p>
-      <TapBox name={pick.who} id={id} opener={opener} />
+      {withCard ? (
+        <LinkDataProvider value={withCard}>
+          <TapBox box={pick.box} id={id} opener={opener} />
+        </LinkDataProvider>
+      ) : (
+        <TapBox box={pick.box} id={id} opener={opener} />
+      )}
     </li>
   );
 }
 
 /** "Who to interview next" box (Lisa, 23 Oct 2026): every on-air tip for a future guest, with where it was said. */
-export function InterviewNext({ className = "" }: { className?: string }) {
+export function InterviewNext({ className = "", boxes }: { className?: string; boxes: Record<string, BoxData> }) {
   // Fans' suggestions that Lisa approved join the New faces list (src/lib/suggestions.functions.ts).
   const list = useServerFn(listFanPicks);
   const [picks, setPicks] = useState<FanPick[]>([]);
@@ -227,7 +237,7 @@ export function InterviewNext({ className = "" }: { className?: string }) {
           <div role="tabpanel" id="in-panel-new" aria-labelledby="in-tab-new" className="mt-6">
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {NEW_FACES.map((t) => (
-                <Tip key={t.name} tip={t} id={`new:${t.name}`} opener={opener} />
+                <Tip key={t.name} tip={t} box={boxes[t.name]} id={`new:${t.name}`} opener={opener} />
               ))}
               {picks.map((p) => (
                 <FanTip key={p.who} pick={p} id={`fan:${p.who}`} opener={opener} />
@@ -239,7 +249,7 @@ export function InterviewNext({ className = "" }: { className?: string }) {
           <div role="tabpanel" id="in-panel-back" aria-labelledby="in-tab-back" className="mt-6">
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {COME_BACK.map((t) => (
-                <Tip key={t.name} tip={t} id={`back:${t.name}`} opener={opener} />
+                <Tip key={t.name} tip={t} box={boxes[t.name]} id={`back:${t.name}`} opener={opener} />
               ))}
             </ul>
           </div>

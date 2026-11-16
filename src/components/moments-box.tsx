@@ -1,12 +1,11 @@
-import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Timestamp } from "@/components/episode-player";
 import { EntityText } from "@/components/entity-text";
 import { linkPlace } from "@/lib/link-label";
 import { episodeById, episodePath } from "@/data/episodes";
-import { totalMentions, type Entity } from "@/data/entities";
-import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
+import type { Entity } from "@/data/entities";
+import { linkToSlug, useLinks } from "@/lib/link-index";
 
 // The "tap it and a box opens underneath" panel (Lisa, 29 Oct 2026): first made for the Library covers, now shared by the
 // Library, Everything A–Z and the Jukebox strips - the name, how often it's dropped, every moment it comes up (episode,
@@ -50,12 +49,14 @@ export function MomentsBox({
   summary?: ReactNode | undefined;
   onClose: () => void;
 }) {
+  const links = useLinks();
+  const card = linkToSlug(links, slug);
   const eps = new Set(moments.map((m) => m.episodeId)).size;
   return (
     <div className="moments-box border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)] sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h3 className="text-2xl font-bold uppercase text-cream">
-          <Link {...cardTo(slug)} className="hover:text-pink">{name}</Link>
+          <Link {...card} className="hover:text-pink">{name}</Link>
         </h3>
         <button type="button" onClick={onClose} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
       </div>
@@ -79,27 +80,11 @@ export function MomentsBox({
         </ul>
       )}
       <div className="mt-4 flex flex-wrap gap-4 text-xs">
-        <Link {...cardTo(slug)} className="text-gold hover:text-pink">{summary ? "Their A–Z page →" : cardTo(slug).to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
+        <Link {...card} className="text-gold hover:text-pink">{summary ? "Their A–Z page →" : card.to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
         {link && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
         {extra}
       </div>
     </div>
-  );
-}
-
-/** The same box for any A–Z entity (Everything A–Z, Jukebox strips). */
-export function EntityBox({ entity, onClose }: { entity: Entity; onClose: () => void }) {
-  const guest = entity.guest;
-  return (
-    <MomentsBox
-      name={entity.name}
-      slug={entity.slug}
-      mentions={totalMentions(entity)}
-      moments={momentsOf(entity)}
-      link={entity.link}
-      note={guest ? "Night Fever guest" : entity.category}
-      onClose={onClose}
-    />
   );
 }
 
