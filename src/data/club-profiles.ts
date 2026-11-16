@@ -433,6 +433,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", quote: "I used to go to this club called Boy Bar on St. Mark's Place in the East Village, and I would go there every Thursday to watch the drag shows." },
     ],
     portrait: { photo: boyBarPhoto, polaroid: boyBarPolaroid, focus: "50%", credit: BOY_BAR_CREDIT },
+  },
   // Batch 3 (Lisa, 16 Nov 2026: "keep building"). Facts: Wikipedia "Club 57 (nightclub)", "Nell's", "Paradise Garage",
   // "The Roxy (New York City)" (checked 16 Nov 2026); Club USA has no Wikipedia page - Peter Gatien's, Eric Goode's and Christina
   // Visca's episodes and a 1993 Gallery 98 card. Pictures: sources sheet, Round 9.
