@@ -6,7 +6,7 @@ import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { CardSections } from "@/components/card-sections";
 import { afterpartyOf, entityBySlug, episodeShort, isThinCard } from "../data/entities";
-import { abs, cardDescription, cleanStory, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
+import { abs, cardDescription, cleanStory, jsonLd, pageDescription, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodeIdOf, episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/explore/$slug")({
         ? `${d.name} (${years}) – New York club | Night Fever AFTERPARTY`
         : `${d.name} - ${d.category} | Night Fever AFTERPARTY`;
     // Clean story line + "Mentioned in N Night Fever episodes" (SEO check, 4 Nov 2026): no research notes, no long code lists.
-    const description = cardDescription(years ? `${d.name} (${years})` : d.name, mem?.story ?? d.story, d.episodes);
+    const description = mem || club ? pageDescription(d.name, mem?.story ?? d.story, d.episodes) : cardDescription(d.name, d.story, d.episodes);
     const path = `/explore/${d.slug}`;
     // Same rule as scripts/og-cards-data.ts: a share picture wherever the page has its header photo.
     const image = (mem && PERSON_PORTRAITS[d.slug]) || club?.portrait ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
