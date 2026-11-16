@@ -36,4 +36,6 @@ export const HEADER_LAYOUT: Record<string, { left: ("mentor" | "drop")[]; right:
   s06e01: { left: ["drop"], right: ["timeline", "mentor"] }, // James St. James - Lisa: Top of the drop left, Mentor score right
   s06e02: { left: ["mentor", "drop"], right: ["timeline"] }, // Christina Visca - Lisa: layout ok, polaroid ok (14 Nov 2026)
   s06e05: { left: ["drop"], right: ["timeline", "mentor"] }, // Nora Burns - Lisa: publish (14 Nov 2026)
+  s05e07a: { left: [], right: ["timeline", "mentor", "drop"] }, // Christopher Comp - Lisa: ok layout (16 Nov 2026)
+  s05e07b: { left: [], right: ["timeline", "mentor", "drop"] }, // Really Denise - Lisa: ok layout (16 Nov 2026)
 };
