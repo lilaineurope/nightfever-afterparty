@@ -16,38 +16,6 @@ export const Route = createFileRoute("/")({
   head: () => pageHead({ path: "/", title: "Night Fever AFTERPARTY – an archive of NYC club kid culture", description: "My fan-made archive of NYC club kid culture from Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato - unpacked and timestamped!", image: "/og/home.jpg" }),
 });
 
-const hosts = [
-  {
-    name: "James St. James",
-    role: "Host",
-    bio: "Downtown legend, author and nightlife historian. He lived the stories most of us only read about!",
-  },
-  {
-    name: "Fenton Bailey",
-    role: "Co-Host",
-    bio: "Co-founder of World of Wonder - the producer who helped shape modern queer TV.",
-  },
-  {
-    name: "Randy Barbato",
-    role: "Co-Host",
-    bio: "Co-founder of World of Wonder and a longtime chronicler of pop culture and club life.",
-  },
-];
-
-const featuredGuests = [
-  "Dianne Brill",
-  "Michael Musto",
-  "Peter Gatien",
-  "Lisa Edelstein",
-  "Moby",
-  "Joey Arias",
-  "Tish & Snooky",
-  "Nick Egan",
-  "Christina Visca",
-];
-
-
-
 function Index() {
   return (
     <main className="paper-home min-h-screen overflow-x-hidden bg-background text-foreground">
