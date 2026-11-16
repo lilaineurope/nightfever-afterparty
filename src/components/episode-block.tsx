@@ -106,13 +106,13 @@ export const episodePortraits: Record<string, string> = {
   s01e09: mobyPortrait,
 };
 
-// Small WebP copies of the polaroids (scripts/polaroid-thumbs.py): 512px for the polaroid boxes, 240px for the tiny ones.
-// The full 1024px JPEG stays only where the photo fills the episode page header - so lists stay light on phones.
+// WebP copies of the polaroids (scripts/polaroid-thumbs.py): 1024px for the episode page header (SEO check 16 Nov 2026),
+// 512px for the polaroid boxes, 240px for the tiny ones. The 1024px JPEGs are the masters - so pages stay light on phones.
 const FULL_POLAROIDS = import.meta.glob("../assets/polaroid-*.jpg", { eager: true, import: "default" }) as Record<string, string>;
 const POLAROID_THUMBS = import.meta.glob("../assets/polaroid-thumbs/*.webp", { eager: true, import: "default" }) as Record<string, string>;
 
 /** The guest's polaroid at a small size (falls back to the full photo if the thumbnail hasn't been made yet). */
-export function polaroidThumb(id: string, size: 512 | 240): string | undefined {
+export function polaroidThumb(id: string, size: 1024 | 512 | 240): string | undefined {
   const full = episodePortraits[id];
   if (!full) return undefined;
   const key = Object.keys(FULL_POLAROIDS).find((k) => FULL_POLAROIDS[k] === full);

@@ -641,6 +641,8 @@ import yulBrynnerPolaroid from "@/assets/people/yul-brynner-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
+  /** Phone copy of the header photo (club pages, SEO check 16 Nov 2026): the middle 800 px at full size, so the dots look the same. */
+  phone?: string;
   polaroid: string;
   /** Credit line shown under the polaroid. */
   credit: string;

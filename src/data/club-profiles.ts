@@ -5,38 +5,55 @@
 // Quotes are cleaned-up lines from the episode transcripts; show Lisa new quotes before they go live.
 // Facts: Wikipedia "CBGB" (checked 13 Nov 2026). Photos: Wikimedia Commons, Category:CBGB (sources sheet in Lisa's folder).
 import cbgbPhoto from "@/assets/clubs/cbgb-photo.webp";
+import cbgbPhotoPhone from "@/assets/clubs/cbgb-photo-phone.webp";
 import cbgbPolaroid from "@/assets/clubs/cbgb-polaroid.webp";
 import maxsPhoto from "@/assets/clubs/max-s-kansas-city-photo.webp";
+import maxsPhotoPhone from "@/assets/clubs/max-s-kansas-city-photo-phone.webp";
 import maxsPolaroid from "@/assets/clubs/max-s-kansas-city-polaroid.webp";
 import soundFactoryPhoto from "@/assets/clubs/sound-factory-photo.webp";
+import soundFactoryPhotoPhone from "@/assets/clubs/sound-factory-photo-phone.webp";
 import soundFactoryPolaroid from "@/assets/clubs/sound-factory-polaroid.webp";
 import muddPhoto from "@/assets/clubs/mudd-club-photo.webp";
+import muddPhotoPhone from "@/assets/clubs/mudd-club-photo-phone.webp";
 import muddPolaroid from "@/assets/clubs/mudd-club-polaroid.webp";
 import areaPhoto from "@/assets/clubs/area-photo.webp";
+import areaPhotoPhone from "@/assets/clubs/area-photo-phone.webp";
 import areaPolaroid from "@/assets/clubs/area-polaroid.webp";
 import studio54Photo from "@/assets/clubs/studio-54-photo.webp";
+import studio54PhotoPhone from "@/assets/clubs/studio-54-photo-phone.webp";
 import studio54Polaroid from "@/assets/clubs/studio-54-polaroid.webp";
 import limelightPhoto from "@/assets/clubs/limelight-photo.webp";
+import limelightPhotoPhone from "@/assets/clubs/limelight-photo-phone.webp";
 import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
 import dancePhoto from "@/assets/clubs/danceteria-photo.webp";
+import dancePhotoPhone from "@/assets/clubs/danceteria-photo-phone.webp";
 import dancePolaroid from "@/assets/clubs/danceteria-polaroid.webp";
 import tunnelPhoto from "@/assets/clubs/tunnel-photo.webp";
+import tunnelPhotoPhone from "@/assets/clubs/tunnel-photo-phone.webp";
 import tunnelPolaroid from "@/assets/clubs/tunnel-polaroid.webp";
 import pyramidPhoto from "@/assets/clubs/pyramid-club-photo.webp";
+import pyramidPhotoPhone from "@/assets/clubs/pyramid-club-photo-phone.webp";
 import pyramidPolaroid from "@/assets/clubs/pyramid-club-polaroid.webp";
 import palladiumPhoto from "@/assets/clubs/palladium-photo.webp";
+import palladiumPhotoPhone from "@/assets/clubs/palladium-photo-phone.webp";
 import palladiumPolaroid from "@/assets/clubs/palladium-polaroid.webp";
 import boyBarPhoto from "@/assets/clubs/boy-bar-photo.webp";
+import boyBarPhotoPhone from "@/assets/clubs/boy-bar-photo-phone.webp";
 import boyBarPolaroid from "@/assets/clubs/boy-bar-polaroid.webp";
 import club57Photo from "@/assets/clubs/club-57-photo.webp";
+import club57PhotoPhone from "@/assets/clubs/club-57-photo-phone.webp";
 import club57Polaroid from "@/assets/clubs/club-57-polaroid.webp";
 import nellsPhoto from "@/assets/clubs/nell-s-photo.webp";
+import nellsPhotoPhone from "@/assets/clubs/nell-s-photo-phone.webp";
 import nellsPolaroid from "@/assets/clubs/nell-s-polaroid.webp";
 import pgPhoto from "@/assets/clubs/paradise-garage-photo.webp";
+import pgPhotoPhone from "@/assets/clubs/paradise-garage-photo-phone.webp";
 import pgPolaroid from "@/assets/clubs/paradise-garage-polaroid.webp";
 import clubUsaPhoto from "@/assets/clubs/club-usa-photo.webp";
+import clubUsaPhotoPhone from "@/assets/clubs/club-usa-photo-phone.webp";
 import clubUsaPolaroid from "@/assets/clubs/club-usa-polaroid.webp";
 import roxyPhoto from "@/assets/clubs/roxy-photo.webp";
+import roxyPhotoPhone from "@/assets/clubs/roxy-photo-phone.webp";
 import roxyPolaroid from "@/assets/clubs/roxy-polaroid.webp";
 import type { MemoriamQuote } from "./memoriam";
 import type { PersonPortrait } from "./person-portraits";
@@ -108,7 +125,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s05e10", who: "Tish & Snooky", time: "00:35:04", quote: "We were hanging out at Max's first... then CBGB. CBGB became the real haunt of almost everyone." },
       { episode: "s02e11", who: "Richard Boch", time: "00:12:26", quote: "CBGB's really was a place to go to see a band, as Max's was." },
     ],
-    portrait: { photo: cbgbPhoto, polaroid: cbgbPolaroid, focus: "4%", credit: CBGB_CREDIT },
+    portrait: { photo: cbgbPhoto, phone: cbgbPhotoPhone, polaroid: cbgbPolaroid, focus: "4%", credit: CBGB_CREDIT },
     timelineEvent: "cbgb-opens",
     // Jillian Jonas's audio documentary (Lisa, 13 Nov 2026: "already add jilian's box") - shown from the start.
     listen: {
@@ -148,7 +165,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s04e10", who: "Ann Magnuson", time: "00:20:36", quote: "We went to Max's Kansas City and CBGB all the time." },
       { episode: "s06e03", who: "Chi Chi Valenti", time: "00:04:39", quote: "They all converge at the Mudd Club... So Max's was a place that certainly fed in." },
     ],
-    portrait: { photo: maxsPhoto, polaroid: maxsPolaroid, focus: "30%", credit: MAXS_CREDIT },
+    portrait: { photo: maxsPhoto, phone: maxsPhotoPhone, polaroid: maxsPolaroid, focus: "30%", credit: MAXS_CREDIT },
     timelineEvent: "maxs-upstairs",
   },
   // Sound Factory (Lisa, 14 Nov 2026). Facts: Wikipedia "The Sound Factory (nightclub)" and "Junior Vasquez", DJhistory's
@@ -177,7 +194,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e08", who: 'Luis "Xtravaganza" Camacho', time: "00:54:36", quote: "Our home was, of course, Sound Factory. We were there before Junior even opened it up." },
       { episode: "s06e02", who: "Christina Visca", time: "00:13:03", quote: "Sound Factory was like, you know, going to church. And what's wrong with being social?" },
     ],
-    portrait: { photo: soundFactoryPhoto, polaroid: soundFactoryPolaroid, focus: "40%", credit: SOUND_FACTORY_CREDIT },
+    portrait: { photo: soundFactoryPhoto, phone: soundFactoryPhotoPhone, polaroid: soundFactoryPolaroid, focus: "40%", credit: SOUND_FACTORY_CREDIT },
     timelineEvent: "sound-factory",
   },
   // Batch 1 of the club pages for every Jukebox club (Lisa, 14 Nov 2026: "rebuild every club page like CBGB"), most-mentioned
@@ -207,7 +224,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e06", who: "Eric Goode", time: "00:01:45", quote: "I shopped at Canal Rubber and Canal Plastics and spent all day long trying to make outrageous outfits to get into Studio 54 and then the Mudd Club." },
       { episode: "s06e03", who: "Johnny Dynell", time: "00:28:50", quote: "The guys that did Area, they started at the Mudd. Pretty much New York clubs, the downtown clubs, everyone came out of the Mudd." },
     ],
-    portrait: { photo: muddPhoto, polaroid: muddPolaroid, focus: "60%", credit: MUDD_CREDIT },
+    portrait: { photo: muddPhoto, phone: muddPhotoPhone, polaroid: muddPolaroid, focus: "60%", credit: MUDD_CREDIT },
     timelineEvent: "mudd-club",
   },
   area: {
@@ -234,7 +251,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s04e07", who: "Trey Speegle", time: "00:37:42", quote: "Bunny and Zette performing at Area as a suburban housewife with an ironing board, or with a ball gag in S&M gear." },
       { episode: "s01e05", who: "Ernie Glam", time: "00:02:52", quote: "Some of the first clubs that I went to when I came to New York were Crisco Disco, Pyramid Club, and Area." },
     ],
-    portrait: { photo: areaPhoto, polaroid: areaPolaroid, focus: "50%", credit: AREA_CREDIT },
+    portrait: { photo: areaPhoto, phone: areaPhotoPhone, polaroid: areaPolaroid, focus: "50%", credit: AREA_CREDIT },
     timelineEvent: "area-opens",
   },
   "studio-54": {
@@ -262,7 +279,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e10", who: "Joey Arias", time: "00:57:56", quote: "I remember Antonio Lopez was one of the art directors for the opening. And we were part of the opening." },
       { episode: "s05e01", who: "Nell Campbell", time: "00:30:18", quote: "That of course was a giant discotheque in an old theater. Tons of people could fit into Studio 54. Whereas we were much smaller." },
     ],
-    portrait: { photo: studio54Photo, polaroid: studio54Polaroid, focus: "45%", credit: STUDIO_54_CREDIT },
+    portrait: { photo: studio54Photo, phone: studio54PhotoPhone, polaroid: studio54Polaroid, focus: "45%", credit: STUDIO_54_CREDIT },
     timelineEvent: "studio-54",
   },
   // Disco 2000 (Lisa via the coordinator, 14 Nov 2026) belongs on the Limelight page: it was the Club Kids' Wednesday there.
@@ -292,7 +309,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e09", who: "Linda Simpson", time: "00:26:02", quote: "Because I think Disco 2000 went later than we did, people would hop over from the Pyramid to the Limelight." },
       { episode: "s04e07", who: "Trey Speegle", time: "00:26:23", quote: "This guy had his bag, and out of the bag, a gun fell on the ground, like at my feet. And I looked up at him and he said, You didn't see that. And I said, I didn't see that." },
     ],
-    portrait: { photo: limelightPhoto, polaroid: limelightPolaroid, focus: "35%", credit: LIMELIGHT_CREDIT },
+    portrait: { photo: limelightPhoto, phone: limelightPhotoPhone, polaroid: limelightPolaroid, focus: "35%", credit: LIMELIGHT_CREDIT },
     timelineEvent: "limelight",
   },
   // Batch 2 (Lisa, 16 Nov 2026). Facts: Wikipedia "Danceteria", "Tunnel (New York nightclub)", "Pyramid Club (New York City)",
@@ -323,7 +340,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e02", who: "Christina Visca", time: "00:50:32", quote: "Oh, I went to Danceteria all the time. I lived in Chelsea almost my whole life. I loved it... I think we all saw Madonna perform there." },
       { episode: "s06e07", who: "Sally Randall", time: "00:26:24", quote: "My absolutely favorite memory of you was when I did Jesus Christ Superstar, the lip sync drag queen opera." },
     ],
-    portrait: { photo: dancePhoto, polaroid: dancePolaroid, focus: "50%", credit: DANCETERIA_CREDIT },
+    portrait: { photo: dancePhoto, phone: dancePhotoPhone, polaroid: dancePolaroid, focus: "50%", credit: DANCETERIA_CREDIT },
     timelineEvent: "danceteria",
   },
   tunnel: {
@@ -350,7 +367,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s05e07b", who: "Really Denise", time: "00:46:59", quote: "Do you remember the softball parties we used to have? Like, Tunnel would have a team. World would have a team." },
       { episode: "s06e02", who: "Christina Visca", time: "00:15:43", quote: "I also worked for Peter later on. I managed USA and the Tunnel in the big 90s." },
     ],
-    portrait: { photo: tunnelPhoto, polaroid: tunnelPolaroid, focus: "45%", credit: TUNNEL_CREDIT },
+    portrait: { photo: tunnelPhoto, phone: tunnelPhotoPhone, polaroid: tunnelPolaroid, focus: "45%", credit: TUNNEL_CREDIT },
     timelineEvent: "tunnel-reopens",
   },
   "pyramid-club": {
@@ -378,7 +395,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s04e09", who: "Susan Seidelman", time: "00:02:24", quote: "There was a great wall on St. Mark's Place that was fly-posted with posters for bands, for the Pyramid Club, for anyone who wanted to put a Xerox of themselves up." },
       { episode: "s03e10", who: "Miss Guy", time: "00:32:45", quote: "There was a journal entry from March of 89, at like 5:45 in the morning. And I wrote, Me and Bunny went to Pyramid, the Building and the Roxy tonight." },
     ],
-    portrait: { photo: pyramidPhoto, polaroid: pyramidPolaroid, focus: "45%", credit: PYRAMID_CREDIT },
+    portrait: { photo: pyramidPhoto, phone: pyramidPhotoPhone, polaroid: pyramidPolaroid, focus: "45%", credit: PYRAMID_CREDIT },
     timelineEvent: "pyramid",
   },
   palladium: {
@@ -406,7 +423,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e02", who: "Christina Visca", time: "00:44:36", quote: "I met most of the club kids when I was doing the door at Palladium. I would say 85, 86 is when you guys started coming around." },
       { episode: "s06e05", who: "Nora Burns", time: "00:13:46", quote: "He did this giant thing called Drag Aid, a drag queen AIDS benefit at Palladium... You had 50 drag queens who were supposed to go on between two and four." },
     ],
-    portrait: { photo: palladiumPhoto, polaroid: palladiumPolaroid, focus: "40%", credit: PALLADIUM_CREDIT },
+    portrait: { photo: palladiumPhoto, phone: palladiumPhotoPhone, polaroid: palladiumPolaroid, focus: "40%", credit: PALLADIUM_CREDIT },
     timelineEvent: "palladium",
   },
   "boy-bar": {
@@ -432,7 +449,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e05", who: "Nora Burns", time: "00:46:14", quote: "Matthew Kasten from Boy Bar would always call me and tell me the latest drag queen off the bus." },
       { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", quote: "I used to go to this club called Boy Bar on St. Mark's Place in the East Village, and I would go there every Thursday to watch the drag shows." },
     ],
-    portrait: { photo: boyBarPhoto, polaroid: boyBarPolaroid, focus: "50%", credit: BOY_BAR_CREDIT },
+    portrait: { photo: boyBarPhoto, phone: boyBarPhotoPhone, polaroid: boyBarPolaroid, focus: "50%", credit: BOY_BAR_CREDIT },
   },
   // Batch 3 (Lisa, 16 Nov 2026: "keep building"). Facts: Wikipedia "Club 57 (nightclub)", "Nell's", "Paradise Garage",
   // "The Roxy (New York City)" (checked 16 Nov 2026); Club USA has no Wikipedia page - Peter Gatien's, Eric Goode's and Christina
@@ -462,7 +479,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e02", who: "Michael Musto", time: "00:55:54", quote: "This was when you had to be a real insider, like an outlaw party, and that's what Club 57 was all about. And then MoMA had an exhibit a couple years ago of Club 57, and like, what?" },
       { episode: "s02e11", who: "Richard Boch", time: "00:55:23", quote: "Not to take anything away from Club 57, it was like the Mudd Club in the sense that it was sort of this petri dish, this incubator for a lot of talent." },
     ],
-    portrait: { photo: club57Photo, polaroid: club57Polaroid, focus: "55%", credit: CLUB_57_CREDIT },
+    portrait: { photo: club57Photo, phone: club57PhotoPhone, polaroid: club57Polaroid, focus: "55%", credit: CLUB_57_CREDIT },
   },
   "nell-s": {
     opened: "1986",
@@ -488,7 +505,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e08", who: "Michelangelo Signorile", time: "00:41:03", quote: "It started to split. And that's how we sort of saw Nell's come on the scene, and it was much more sedate." },
       { episode: "s03e06", who: "Eric Goode", time: "00:31:53", quote: "Nell's was a product of suddenly, you know, there being straight clubs. Nell's was very much that." },
     ],
-    portrait: { photo: nellsPhoto, polaroid: nellsPolaroid, focus: "50%", credit: NELLS_CREDIT },
+    portrait: { photo: nellsPhoto, phone: nellsPhotoPhone, polaroid: nellsPolaroid, focus: "50%", credit: NELLS_CREDIT },
   },
   "paradise-garage": {
     opened: "1977",
@@ -515,7 +532,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e07", who: "Jenny Talia", time: "00:20:01", quote: "This gorgeous, glorious French woman - she danced at Paradise Garage, she was a Paradise Garage girl, and she was also a modeling agent. She found me behind the counter and said I should model." },
       { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", quote: "I would meet the kids at the Garage years ago, the ball kids, and also on the pier." },
     ],
-    portrait: { photo: pgPhoto, polaroid: pgPolaroid, focus: "50%", credit: PARADISE_GARAGE_CREDIT },
+    portrait: { photo: pgPhoto, phone: pgPhotoPhone, polaroid: pgPolaroid, focus: "50%", credit: PARADISE_GARAGE_CREDIT },
   },
   "club-usa": {
     opened: "1992",
@@ -539,7 +556,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e04", who: "Peter Gatien", time: "00:55:56", quote: "Just totally sweaty people having the best times of their life." },
       { episode: "s01e06", who: "Waltpaper", time: "00:48:52", quote: "I remember doing an interview for the pre-opening of Club USA. I think it was 60 Minutes. And we were all gathered in the stairwell." },
     ],
-    portrait: { photo: clubUsaPhoto, polaroid: clubUsaPolaroid, focus: "30%", credit: CLUB_USA_CREDIT },
+    portrait: { photo: clubUsaPhoto, phone: clubUsaPhotoPhone, polaroid: clubUsaPolaroid, focus: "30%", credit: CLUB_USA_CREDIT },
     timelineEvent: "club-usa",
   },
   roxy: {
@@ -566,7 +583,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e05", who: "Nora Burns", time: "00:08:35", quote: "Then we went to Roxy. Roller disco is fun! Poor Luwala, though, she kept falling and her space outfit fell off." },
       { episode: "s01e02", who: "Michael Musto", time: "00:25:59", quote: "He [Peter Allen] would be at the Roxy dancing around with his shirt off." },
     ],
-    portrait: { photo: roxyPhoto, polaroid: roxyPolaroid, focus: "50%", credit: ROXY_CREDIT },
+    portrait: { photo: roxyPhoto, phone: roxyPhotoPhone, polaroid: roxyPolaroid, focus: "50%", credit: ROXY_CREDIT },
   },
 };
 

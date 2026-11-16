@@ -13,7 +13,7 @@ import afterpartyFill from "@/assets/home-afterparty-fill.webp";
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   component: Index,
-  head: () => pageHead({ path: "/", title: "Night Fever AFTERPARTY – an archive of NYC club kid culture", description: "My fan-made archive of NYC club kid culture from Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato - unpacked and timestamped!", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/", title: "Night Fever AFTERPARTY – an archive of NYC club kid culture", description: "My fan-made archive of NYC club kid culture from Night Fever, the World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato, timestamped!", image: "/og/home.jpg" }),
 });
 
 const hosts = [

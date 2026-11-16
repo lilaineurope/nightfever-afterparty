@@ -654,7 +654,10 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .card-head { background: var(--sky-phone) center top / 220% auto no-repeat; padding-top: calc(220vw * 60 / 1920); padding-bottom: 40px; min-height: calc(220vw * 720 / 1920); }
 @media (min-width: 640px) { .card-head { background-image: var(--sky); background-size: 100% auto; padding-top: calc(100vw * 70 / 1920); min-height: calc(100vw * 720 / 1920); } }
 /* Person polaroids on the A–Z page (Lisa, 2 Nov 2026, "combo 3"): photo header + taped name card + taped polaroid. */
-.card-head.card-head-photo { position: relative; background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,0) 60%), var(--photo) center var(--focus, 22%) / cover no-repeat; border-bottom: 2px solid #111; padding: 385px 16px 48px; padding-top: max(385px, calc(min(52%, 360px) * 1.24 + 120px)); min-height: 0; }
+/* Phones get the phone copy of the header photo when there is one (club pages, SEO check 16 Nov 2026). */
+.card-head.card-head-photo { --photo-now: var(--photo-phone, var(--photo)); }
+@media (min-width: 640px) { .card-head.card-head-photo { --photo-now: var(--photo); } }
+.card-head.card-head-photo { position: relative; background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,0) 60%), var(--photo-now) center var(--focus, 22%) / cover no-repeat; border-bottom: 2px solid #111; padding: 385px 16px 48px; padding-top: max(385px, calc(min(52%, 360px) * 1.24 + 120px)); min-height: 0; }
 /* Below 900px the polaroid sits above the name card: the top padding grows with the polaroid (its height is 1.24 x its width,
    plus tape, credit and a gap) so it never hangs over the card text (Lisa, 5 Nov 2026). */
 .card-namecard { position: relative; background: color-mix(in oklab, var(--card) 95%, transparent); border: 2px solid #111; box-shadow: 5px 6px 0 #111; padding: 26px 22px 22px; transform: rotate(-1.5deg); }

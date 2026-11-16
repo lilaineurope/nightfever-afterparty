@@ -218,5 +218,24 @@ export function cardDescription(name: string, story: string, episodeCodes: strin
   const where = n === 0 ? "" : n <= 3 ? ` Mentioned in Night Fever ${episodeCodes.join(", ")}.` : ` Mentioned in ${n} Night Fever episodes.`;
   const clean = cleanStory(story);
   const lead = clean ? `${name}: ${clean}` : `${name} in the Night Fever podcast - every story, night and connection.`;
-  return clip(lead, 158 - where.length) + where;
+  const withWhere = clip(lead, 158 - where.length) + where;
+  // A line cut mid-sentence ("…") reads worse in a search result than a whole sentence without the episode count
+  // (SEO check, 16 Nov 2026), so drop the count when that lets the sentence end properly.
+  if (!withWhere.includes("…")) return withWhere;
+  const whole = clip(lead, 158);
+  return whole.includes("…") ? withWhere : whole;
+}
+
+/** Search description for an In memoriam or club page (SEO check, 16 Nov 2026): the whole first sentence of its own story -
+ *  these are written long, and a whole sentence that Google shortens itself reads better than one cut here with "…" -
+ *  plus where it comes up when that still fits in about 158 characters. */
+export function pageDescription(name: string, story: string, episodeCodes: string[]): string {
+  const clean = cleanStory(story);
+  if (!clean) return cardDescription(name, story, episodeCodes);
+  const first = clean.split(/(?<=[.!?])\s+/)[0]!;
+  const lead = `${name}: ${first}`;
+  if (lead.length > 230) return cardDescription(name, story, episodeCodes);
+  const n = episodeCodes.length;
+  const where = n === 0 ? "" : n <= 3 ? ` Mentioned in Night Fever ${episodeCodes.join(", ")}.` : ` Mentioned in ${n} Night Fever episodes.`;
+  return lead.length + where.length <= 158 ? lead + where : lead;
 }

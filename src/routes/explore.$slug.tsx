@@ -6,7 +6,7 @@ import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { CardSections } from "@/components/card-sections";
 import { afterpartyOf, entityBySlug, episodeShort, isThinCard } from "../data/entities";
-import { abs, cardDescription, cleanStory, jsonLd, pageHead, SITE, SITE_NAME } from "@/lib/seo";
+import { abs, cardDescription, cleanStory, jsonLd, pageDescription, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { episodeIdOf, episodePath, episodes } from "../data/episodes";
 import { EntityText } from "../components/entity-text";
 import { GUEST_LINES } from "../data/guest-lines";
@@ -17,6 +17,7 @@ import { MemoriamSections } from "@/components/memoriam";
 import { CLUB_PROFILES } from "../data/club-profiles";
 import { ClubProfileSections } from "@/components/club-profile";
 import "@fontsource/covered-by-your-grace/400.css";
+
 
 export const Route = createFileRoute("/explore/$slug")({
   staticData: { sitemap: true },
@@ -50,22 +51,31 @@ export const Route = createFileRoute("/explore/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
     const d = loaderData;
-    const title = `${d.name} - ${d.category} | Night Fever AFTERPARTY`;
+    const club = d.guest ? undefined : CLUB_PROFILES[d.slug];
+    const mem = d.guest ? undefined : MEMORIAM[d.slug];
+    // In memoriam and club pages are full pages, not cards (SEO check, 16 Nov 2026): the name with its years in the title,
+    // their own story as the description, and their own share picture (public/og/explore/<slug>.jpg, scripts/og-cards.py).
+    const years = mem ? `${mem.born}–${mem.died}` : club ? `${club.opened}–${club.closed}` : "";
+    const title = mem
+      ? `${d.name} (${years}) – in memoriam | Night Fever AFTERPARTY`
+      : club
+        ? `${d.name} (${years}) – New York club | Night Fever AFTERPARTY`
+        : `${d.name} - ${d.category} | Night Fever AFTERPARTY`;
     // Clean story line + "Mentioned in N Night Fever episodes" (SEO check, 4 Nov 2026): no research notes, no long code lists.
-    const description = cardDescription(d.name, d.story, d.episodes);
+    const description = mem || club ? pageDescription(d.name, mem?.story ?? d.story, d.episodes) : cardDescription(d.name, d.story, d.episodes);
     const path = `/explore/${d.slug}`;
-    const head = pageHead({ path, title, description, image: "/og/explore.jpg", type: "article", noindex: d.thin });
+    // Same rule as scripts/og-cards-data.ts: a share picture wherever the page has its header photo.
+    const image = (mem && PERSON_PORTRAITS[d.slug]) || club?.portrait ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
+    const head = pageHead({ path, title, description, image, type: "article", noindex: d.thin });
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
     if (/wikipedia\.org|imdb\.com/.test(d.link)) thing["sameAs"] = d.link;
-    const club = CLUB_PROFILES[d.slug];
     if (club) {
       thing["description"] = club.story;
       thing["address"] = { "@type": "PostalAddress", streetAddress: club.address, addressLocality: "New York", addressCountry: "US" };
       thing["foundingDate"] = club.opened;
       thing["dissolutionDate"] = club.closed;
     }
-    const mem = MEMORIAM[d.slug];
     if (mem) {
       thing["birthDate"] = mem.born;
       thing["deathDate"] = mem.died;
@@ -91,6 +101,7 @@ export const Route = createFileRoute("/explore/$slug")({
           name: title,
           url: abs(path),
           description,
+          ...(image !== "/og/explore.jpg" ? { image: abs(image) } : {}),
           isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE },
           about: thing,
         }),
@@ -146,7 +157,7 @@ function EntityPage() {
         className={`${pic ? "card-head card-head-photo px-4" : "card-head px-4"}`}
         style={
           (pic
-            ? ({ "--photo": `url(${pic.photo})`, "--focus": pic.focus } as CSSProperties)
+            ? ({ "--photo": `url(${pic.photo})`, "--photo-phone": `url(${pic.phone ?? pic.photo})`, "--focus": pic.focus } as CSSProperties)
             : ({ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties))
         }
       >
