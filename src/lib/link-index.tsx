@@ -31,6 +31,9 @@ export function registerFullLinks(f: Partial<Full>) {
 export const textKey = (text: string, selfSlug?: string) => `${selfSlug ?? ""}|${text}`;
 
 const LinkDataContext = createContext<LinkData | null>(null);
+/** This page's own answers, or null where the full A–Z is used. */
+export const useLinkData = () => useContext(LinkDataContext);
+
 export function LinkDataProvider({ value, children }: { value: LinkData; children: ReactNode }) {
   return <LinkDataContext.Provider value={value}>{children}</LinkDataContext.Provider>;
 }

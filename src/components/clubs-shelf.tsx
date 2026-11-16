@@ -1,7 +1,8 @@
 import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import { Fragment, useState } from "react";
-import { EntityBox, plainClick } from "@/components/moments-box";
+import { EntityBox } from "@/components/entity-box";
+import { plainClick } from "@/components/moments-box";
 import { entityBySlug } from "@/data/entities";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { clubsMentioned } from "@/data/collections";

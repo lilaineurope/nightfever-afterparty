@@ -1,16 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { bookClub, clubsMentioned, jukebox } from "@/data/collections";
-import { entities } from "@/data/entities";
-import { sceneEvents } from "@/data/scene";
+import type { HomeView } from "@/lib/home-view";
 
 // Home page "More to explore" (Lisa, 4 Nov 2026): six tiles in this order - Timeline, Jukebox, Clubs, Library, A–Z, Guestbook -
 // with live counts from the same data the pages use. Three across on desktop, so the grid is an even 3 x 2.
-const CARDS = [
-  { to: "/timeline", key: "timeline", title: "Timeline", count: `${sceneEvents.length} Moments` },
-  { to: "/jukebox", key: "jukebox", title: "Jukebox", count: `${jukebox.length} Songs & Acts` },
-  { to: "/inside-the-clubs", key: "clubs", title: "Clubs", count: `${clubsMentioned.length} Clubs` },
-  { to: "/library", key: "library", title: "Library", count: `${bookClub.length} Books & Magazines` },
-  { to: "/explore", key: "explore", title: "A–Z", count: `${entities.length} Names` },
+// The counts come from the server with the home page (src/lib/home-view.server.ts, page weight 17 Nov 2026).
+const cardsFor = (n: HomeView["counts"]) => [
+  { to: "/timeline", key: "timeline", title: "Timeline", count: `${n.timeline} Moments` },
+  { to: "/jukebox", key: "jukebox", title: "Jukebox", count: `${n.jukebox} Songs & Acts` },
+  { to: "/inside-the-clubs", key: "clubs", title: "Clubs", count: `${n.clubs} Clubs` },
+  { to: "/library", key: "library", title: "Library", count: `${n.library} Books & Magazines` },
+  { to: "/explore", key: "explore", title: "A–Z", count: `${n.explore} Names` },
   { to: "/guestbook", key: "guestbook", title: "Guestbook", count: "Sign it!" },
 ];
 
@@ -23,14 +22,14 @@ const FILL: Record<string, string> = {
   explore: "bg-pink text-pink-foreground",
 };
 
-export function ExplorePages() {
+export function ExplorePages({ counts }: { counts: HomeView["counts"] }) {
   return (
     <section aria-labelledby="explore-pages" className="mt-16">
       <h2 id="explore-pages" className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">
         More to explore
       </h2>
       <ul className="mt-6 grid grid-cols-1 gap-[3px] border-[3px] border-gold bg-gold sm:grid-cols-3">
-        {CARDS.map((c) => (
+        {cardsFor(counts).map((c) => (
           <li key={c.key} className="flex">
             <Link
               to={c.to}

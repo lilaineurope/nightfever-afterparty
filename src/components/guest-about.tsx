@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { EntityBox, MomentsBox, plainClick } from "@/components/moments-box";
+import { EntityBox } from "@/components/entity-box";
+import { MomentsBox, plainClick } from "@/components/moments-box";
 import { Timestamp } from "@/components/episode-player";
 import { entityBySlug, entityFor, guestOfEpisode, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";

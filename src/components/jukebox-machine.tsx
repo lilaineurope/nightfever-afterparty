@@ -13,7 +13,8 @@ import { JUKEBOX_YOUTUBE_URL, SPOTIFY_SONGS, YOUTUBE_VIDEOS, episodeSpotifyUrl }
 import { YEARS } from "@/data/jukebox-years";
 import { NO_EMBED, YOUTUBE } from "@/data/jukebox-videos";
 import { EntityLink } from "@/components/entity-link";
-import { EntityBox, plainClick } from "@/components/moments-box";
+import { EntityBox } from "@/components/entity-box";
+import { plainClick } from "@/components/moments-box";
 import { entityBySlug, entityFor } from "@/data/entities";
 import { seededRandom } from "@/lib/random";
 import { toSeconds } from "@/lib/time";
