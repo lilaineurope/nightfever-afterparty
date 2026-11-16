@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
-import { polaroidThumb } from "@/components/episode-block";
+import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { Memoriam } from "@/data/memoriam";
 

@@ -1,4 +1,5 @@
 import { entities, entityFor, type Entity, type Ref } from "../data/entities";
+import { registerFullLinks } from "./link-index";
 
 // Cross-connects the cards: a known name written inside another card's text (context or fashion note)
 // becomes a link to its own card, and every card lists the other cards that name it.
@@ -100,3 +101,6 @@ export const namedOnCount = (name: string): number => {
   const e = entityFor(name);
   return e ? (namedOnIndex.get(e.slug)?.length ?? 0) : 0;
 };
+
+// EntityText's name links on every page that loads the A–Z (src/lib/link-index.tsx).
+registerFullLinks({ linkNames });

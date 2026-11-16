@@ -1,7 +1,6 @@
-import { cardTo } from "@/lib/card-link";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { entityFor } from "../data/entities";
+import { linkTo, useLinks } from "@/lib/link-index";
 
 /** Links any name/place/title to its single overview card; plain text if unknown. */
 export function EntityLink({
@@ -13,10 +12,10 @@ export function EntityLink({
   className?: string;
   children?: ReactNode;
 }) {
-  const e = entityFor(name);
-  if (!e) return <span className={className}>{children ?? name}</span>;
+  const card = useLinks().cardForName(name);
+  if (!card) return <span className={className}>{children ?? name}</span>;
   return (
-    <Link {...cardTo(e.slug)} className={className}>
+    <Link {...linkTo(card)} className={className}>
       {children ?? name}
     </Link>
   );

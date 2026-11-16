@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
-import { polaroidThumb } from "@/components/episode-block";
+import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { ClubProfile } from "@/data/club-profiles";
-import { clubNightFor } from "@/data/club-nights";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -12,8 +11,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug }: { c: ClubProfile; name: string; slug: string }) {
-  const night = clubNightFor(slug);
+export function ClubProfileSections({ c, name, slug, night }: { c: ClubProfile; name: string; slug: string; night: boolean }) {
   return (
     <>
       <div className="pt-4 text-center">

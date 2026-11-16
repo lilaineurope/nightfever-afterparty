@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
-import { polaroidThumb } from "@/components/episode-block";
+import { polaroidThumb } from "@/lib/polaroids";
 import { episodes, episodePath } from "@/data/episodes";
 import allQuotes from "@/data/quotes-all.json";
 import { seededRandom } from "@/lib/random";

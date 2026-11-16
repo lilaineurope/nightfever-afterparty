@@ -18,6 +18,7 @@ import { entityBySlug, entityFor } from "@/data/entities";
 import { seededRandom } from "@/lib/random";
 import { toSeconds } from "@/lib/time";
 import { CLUB_NIGHTS, KIND_LABEL as CLUB_KIND, playlistUrl, type ClubNight, type ClubSong } from "@/data/club-nights";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /** The rest of an Afterparty's YouTube playlist (Lisa, 28 Oct 2026): the people, clubs, nights, films and TV from the
  * episode, each tied to its reference (A–Z card + timestamp). One JSON per episode, loaded only when it is picked. */

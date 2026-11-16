@@ -2,6 +2,7 @@ import { Timestamp } from "@/components/episode-player";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { EntityText } from "./entity-text";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 type MoodEntry = {
   rank: number;

@@ -1,4 +1,5 @@
-import { episodes, episodeIdOf } from "./episodes";
+import { episodes, episodeIdOf, episodePath } from "./episodes";
+import { registerFullLinks, type LinkCard } from "../lib/link-index";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
@@ -239,3 +240,11 @@ export function afterpartyOf(e: Entity | undefined): NonNullable<Ref["episode"]>
 
 /** The guest card that belongs to an episode page (undefined for an episode without one). */
 export const guestOfEpisode = (id: string): Entity | undefined => entities.find((e) => afterpartyOf(e) === id);
+
+// The full name -> card lookups for EntityLink and EntityText on every page that loads the A–Z (src/lib/link-index.tsx).
+export const linkCard = (e: Entity | undefined): LinkCard | undefined => {
+  if (!e) return undefined;
+  const ep = afterpartyOf(e);
+  return { slug: e.slug, name: e.name, to: ep ? episodePath(ep) : `/explore/${e.slug}` };
+};
+registerFullLinks({ cardForName: (name) => linkCard(entityFor(name)), cardForSlug: (slug) => linkCard(entityBySlug[slug]) });

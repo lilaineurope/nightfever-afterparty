@@ -3,65 +3,24 @@ import cardSky from "@/assets/card-pink.webp";
 import cardSkyPhone from "@/assets/card-pink-phone.webp";
 import { linkPlace } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
-import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CardSections } from "@/components/card-sections";
-import { entityBySlug } from "../data/entities";
-import { abs, cardDescription, cleanStory, jsonLd, pageDescription, pageHead, SITE, SITE_NAME } from "@/lib/seo";
-import { episodeIdOf, episodePath, episodes } from "../data/episodes";
+import { abs, cardDescription, jsonLd, pageDescription, pageHead, SITE, SITE_NAME } from "@/lib/seo";
 import { EntityText } from "../components/entity-text";
-import { GUEST_LINES } from "../data/guest-lines";
 import { SiteFooter } from "@/components/site-footer";
-import { PERSON_PORTRAITS } from "../data/person-portraits";
-import { MEMORIAM } from "../data/memoriam";
 import { MemoriamSections } from "@/components/memoriam";
-import { CLUB_PROFILES } from "../data/club-profiles";
 import { ClubProfileSections } from "@/components/club-profile";
+import { guestBySlug } from "@/data/guests";
+import { getCardPage } from "@/lib/card-view.functions";
+import { LinkDataProvider } from "@/lib/link-index";
 import "@fontsource/covered-by-your-grace/400.css";
 
 
 export const Route = createFileRoute("/explore/$slug")({
   staticData: { sitemap: true },
-  // The card data loads with the card (page weight, 16 Nov 2026): the loader imports it on demand instead of every page
-  // carrying all of it, and hands the head the few club / In memoriam facts its markup needs.
-  loader: async ({ params }) => {
-    const [{ afterpartyOf, entityBySlug, episodeShort, isThinCard }, { CLUB_PROFILES }, { MEMORIAM }, { PERSON_PORTRAITS }] = await Promise.all([
-      import("../data/entities"),
-      import("../data/club-profiles"),
-      import("../data/memoriam"),
-      import("../data/person-portraits"),
-    ]);
-    const e = entityBySlug[params.slug];
-    if (!e) {
-      // /explore/CBGB or /explore/Studio-54 (typed or shared with capitals) finds the card instead of a 404.
-      const lower = params.slug.toLowerCase();
-      if (lower !== params.slug && entityBySlug[lower]) throw redirect({ to: "/explore/$slug", params: { slug: lower }, statusCode: 301 });
-      throw notFound();
-    }
-    // One page per guest (Lisa, 1 Nov 2026): a guest with an AFTERPARTY lives on the episode page; old links forward there.
-    const ep = afterpartyOf(e);
-    if (ep) throw redirect({ to: episodePath(ep), statusCode: 301 });
-    // The first story line that still says something once research notes are left out ("Likewise" alone doesn't).
-    const lines = [...e.refs.map((r) => r.context), ...e.events.map((ev) => ev.text)].filter((t): t is string => !!t);
-    // A club page leads with its own story (Lisa, 13 Nov 2026) - CBGB's first line was a guest saying she skipped it.
-    const club = CLUB_PROFILES[e.slug];
-    const mem = MEMORIAM[e.slug];
-    const story = club?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
-    return {
-      slug: e.slug,
-      name: e.name,
-      category: e.guest ? "Night Fever guest" : e.category,
-      rawCategory: e.guest ? "Person" : e.category,
-      episodes: [...new Set(e.refs.map((r) => r.episode).filter(Boolean))].map((id) => episodeShort(id as string)),
-      story,
-      link: e.link ?? "",
-      thin: isThinCard(e),
-      guest: e.guest ? guestFacts(e.guest.episode, e.guest.tagline) : null,
-      // In memoriam and club pages (not guests) get their own head (SEO check, 16 Nov 2026): the facts it needs travel here.
-      club: !e.guest && club ? { story: club.story, address: club.address, opened: club.opened, closed: club.closed, portrait: !!club.portrait } : null,
-      mem: !e.guest && mem ? { born: mem.born, died: mem.died, aka: mem.aka ?? null, story: mem.story, wikidata: mem.wikidata ?? null } : null,
-      portrait: !!PERSON_PORTRAITS[e.slug],
-    };
-  },
+  // The server works out the card and sends only what this page shows (page weight, 16 Nov 2026): the whole A–Z never
+  // reaches the browser for a card. Redirects (capitals, guests with an AFTERPARTY) and the 404 come from the server too.
+  loader: ({ params }) => getCardPage({ data: params.slug }),
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
     const d = loaderData;
@@ -126,19 +85,6 @@ export const Route = createFileRoute("/explore/$slug")({
   component: EntityPage,
 });
 
-/** "Season 1, Episode 6" -> the episode id, code, guest line and AFTERPARTY page (when there is one) for the Person markup. */
-function guestFacts(episode: string, tagline: string) {
-  const id = episodeIdOf(episode);
-  const ep = id ? episodes.find((x) => x.id === id) : undefined;
-  return {
-    id,
-    code: id.toUpperCase(),
-    tagline,
-    line: GUEST_LINES[id] ?? null,
-    path: ep ? episodePath(ep.id) : null,
-  };
-}
-
 function EntityNotFound() {
   return (
     <main className="min-h-screen bg-background px-6 py-24 text-center">
@@ -153,16 +99,16 @@ const KIND: Record<string, string> = {
 };
 
 function EntityPage() {
-  const { slug } = Route.useLoaderData();
-  const e = entityBySlug[slug]!;
-  const g = e.guest;
+  const { view: e } = Route.useLoaderData();
+  const g = e.guest ? guestBySlug[e.guest] : undefined;
   // Club pages (Lisa, 13 Nov 2026) use the same header: the club photo fills it, its polaroid is taped on the right.
-  const club = g ? undefined : CLUB_PROFILES[e.slug];
-  const pic = g ? undefined : (PERSON_PORTRAITS[e.slug] ?? club?.portrait);
+  const club = e.club ?? undefined;
+  const pic = e.pic ?? undefined;
   // In memoriam (Lisa, 4 Nov 2026, option C): black IN MEMORIAM band (on the name card since 5 Nov), "aka" and dates on the name card, guest quotes wall below.
-  const mem = g ? undefined : MEMORIAM[e.slug];
+  const mem = e.mem ?? undefined;
 
   return (
+    <LinkDataProvider value={e.links}>
     <main className="min-h-screen bg-background text-foreground">
       {/* A–Z card header (Lisa, 30 Oct 2026, "tiles 4"): the disco-ball mirror tiles of the people polaroids as big pink/black dots, behind flyer strips. */}
       {/* People with a polaroid (Lisa, 2 Nov 2026, "combo 3"): their photo fills the header, the name sits on a taped card and the
@@ -225,10 +171,11 @@ function EntityPage() {
 
       <div className={`mx-auto ${mem || club ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
-        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} />}
-        <CardSections e={e} />
+        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} />}
+        <CardSections v={e} />
       </div>
           <SiteFooter />
 </main>
+    </LinkDataProvider>
   );
 }

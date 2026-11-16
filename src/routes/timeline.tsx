@@ -12,6 +12,7 @@ import { EntityBox, plainClick } from "@/components/moments-box";
 import { entityBySlug, entityFor } from "@/data/entities";
 import skyline from "@/assets/timeline-skyline.webp";
 import skylinePhone from "@/assets/timeline-skyline-phone.webp";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 // "<N> years of one long night" counts itself (Lisa, 28 Oct 2026): from the earliest moment on the Timeline to today, in tens.
 const WORDS: Record<number, string> = { 40: "Forty", 50: "Fifty", 60: "Sixty", 70: "Seventy", 80: "Eighty", 90: "Ninety", 100: "A hundred" };

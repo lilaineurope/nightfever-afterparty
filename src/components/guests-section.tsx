@@ -6,6 +6,7 @@ import { EntityLink } from "./entity-link";
 import { EntityText } from "./entity-text";
 import { GuestEpisodeLinks } from "./guest-episode-links";
 import { SEASONS } from "@/data/episodes";
+import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /**
  * The guest half of the scene story: the expandable guest cards. Rendered on
