@@ -49,6 +49,6 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s06e05: { quote: "The fag hag thing is so real. It's the best relationship there is.", time: "00:41:46" }, // Nora Burns - Lisa: quote d (14 Nov 2026)
   s05e07a: { quote: "You have something really beautiful to offer that we haven't seen yet. And I'm hungry. I want to see it. Feed me.", time: "00:36:03" }, // Christopher Comp - Lisa: A5 (16 Nov 2026)
   s05e07b: { quote: "That scene was very cutting edge and it was very liberating for someone like me to like go out half naked.", time: "00:51:24" }, // Really Denise - Lisa: B3 (16 Nov 2026)
-  s01e09: { quote: "Do you know where this culture comes from? This is gay culture, we are just the claim jumpers on it.", time: "00:38:32" }, // Moby - proposed D, waiting for Lisa
+  s01e09: { quote: "Do you know where this culture comes from? This is gay culture, we are just the claim jumpers on it.", time: "00:38:32" }, // Moby - Lisa: publish (16 Nov 2026), proposed D
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
