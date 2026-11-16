@@ -96,6 +96,7 @@ const COVERS: Record<string, Cover> = {
   "News of the World": { kind: "book", file: "news-news-of-the-world-1843.webp", credit: "The first issue, 1 October 1843 - Wikimedia Commons, public domain" },
   "Straight to Hell (magazine)": { kind: "book", file: "mag-straight-to-hell.webp", credit: "Straight to Hell issue 2 (1973, reprint) - dealer's photo (After 8 Books)" },
   "Variety": { kind: "mast", file: "mast-variety.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "The Seattle Times": { kind: "mast", file: "mast-seattle-times.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "The Hollywood Reporter": { kind: "mast", file: "mast-the-hollywood-reporter.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Penthouse Forum": { kind: "mast", file: "mast-penthouse-forum.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Brides": { kind: "mast", file: "mast-brides.webp", credit: "Masthead: Wikimedia Commons, CC0" },
