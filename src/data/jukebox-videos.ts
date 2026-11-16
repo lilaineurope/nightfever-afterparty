@@ -332,6 +332,19 @@ export const YOUTUBE: Record<string, string> = {
   "Johnny Thunders and the Heartbreakers": "QJxroq4UYhk",
   "The Slits": "hxThWrodzDg",
   "'Dear Lady of Fatima'": "hnjuC0Zf4_s",
+  "Go (Moby song)": "NLCHARjjrws",
+  "'Porcelain' – Moby": "13EifDb4GYs",
+  "A Night at Studio 54": "6MBX-BfqtJI",
+  "Raze – 'Break 4 Love'": "0eJwAjKIcSI",
+  "Doug Lazy – 'Let It Roll'": "mcB4vwbXd6M",
+  "Strafe – 'Set It Off'": "3kX9JoOUORE",
+  "Laid Back – 'White Horse'": "mlYJf6CJXV8",
+  "Book of Love – 'Boy'": "0vcjJKNq9EM",
+  "Dominatrix – 'The Dominatrix Sleeps Tonight'": "BNPXjkX_KtU",
+  "Mission of Burma": "PpTKcv-SmR0",
+  "Bad Brains": "gnWKhq8l_5c",
+  "Scraping Foetus off the Wheel": "V1EFSqXD38U",
+  "'Tomorrow Never Knows' – The Beatles": "m4BuziKGMy4",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

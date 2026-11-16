@@ -357,6 +357,19 @@ const SPOTIFY: Record<string, string> = {
   "Johnny Thunders and the Heartbreakers": "spotify:track:4xr0wspxRzW8UC77Narvvo",
   "The Slits": "spotify:track:1LDAUwOs1r5eO1CrVgad5p",
   "'Dear Lady of Fatima'": "spotify:track:76s4tDACBv16GUpZTdPg3p",
+  "Go (Moby song)": "spotify:track:0e8C9dPERvvARURkNOFrrC",
+  "'Porcelain' – Moby": "spotify:track:6EXi6ZqTITKGtVBKqbphjL",
+  "A Night at Studio 54": "spotify:album:21oeEL8L23wBnRZin1mQia",
+  "Raze – 'Break 4 Love'": "spotify:track:39ZNe2jOyPJ8kGnoWY4FUo",
+  "Doug Lazy – 'Let It Roll'": "spotify:track:1NwyIhIisC5rwamWKJSLa5",
+  "Strafe – 'Set It Off'": "spotify:track:1AWdTY4hPU1U5q5ceJ26yg",
+  "Laid Back – 'White Horse'": "spotify:track:3FeQweSLSbVkLcPDZuTiGX",
+  "Book of Love – 'Boy'": "spotify:track:4FQhTIpf3bnxGsCr0dHhtr",
+  "Dominatrix – 'The Dominatrix Sleeps Tonight'": "spotify:track:7DUEzDiIu9coETNwPoE90E",
+  "Mission of Burma": "spotify:track:3bSKHihztyH9D1ZyQsoqzI",
+  "Bad Brains": "spotify:track:0YnP5BtP6lTwQV8gLOzaov",
+  "Scraping Foetus off the Wheel": "spotify:track:0mrRm6hVWag7Qv6DqAfmJl",
+  "'Tomorrow Never Knows' – The Beatles": "spotify:track:00oZhqZIQfL9P5CjOP6JsO",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */
