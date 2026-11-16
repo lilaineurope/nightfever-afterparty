@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/quiz")({
   staticData: { sitemap: false }, // unlinked for now (Lisa, 22 Oct 2026) - see UNLINKED_PAGES in src/lib/pages.ts
   component: QuizPage,
-  head: () => pageHead({ path: "/quiz", title: "Night Fever pub quiz – New York nightlife trivia", description: "Make a fresh Night Fever pub quiz from every name, place and story in my published episode indexes - answers and timestamps included!", image: "/og/home.jpg" }),
+  head: () => pageHead({ path: "/quiz", title: "Night Fever pub quiz – NYC club kid culture trivia", description: "Make a fresh Night Fever pub quiz from every name, place and story in my published episode indexes - answers and timestamps included!", image: "/og/home.jpg" }),
 });
 
 function QuizPage() {
