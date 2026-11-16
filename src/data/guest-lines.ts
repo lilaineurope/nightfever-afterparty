@@ -44,6 +44,7 @@ export const GUEST_LINES: Record<string, string> = {
   s06e05: "Downtown comedian and writer · Unitard, Candied Camera, David's Friend",
   s05e07a: "Second-wave club kid · Project X cover boy, Limelight party planner",
   s05e07b: "Original Tunnel kid and hostess · Bainbridge Island's mailbox lady",
+  s01e09: "Electronica's bald vegan DJ · Mars, Go, Play and two memoirs",
   s02e11: "Mudd Club doorman · artist and author of The Mudd Club",
   s05e04: "Graphic designer and music-video director · Bow Wow Wow, Duran Duran, INXS",
   s05e06: "Photographer and artist · Andy Warhol's best friend and travelling companion",

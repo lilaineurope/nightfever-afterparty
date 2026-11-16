@@ -101,6 +101,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Peter Gatien", mentee: "Christina Visca", episode: "s06e02", time: "00:11:59", line: "Tapped Christina on the shoulder outside the Limelight and told her she should give parties in his club; she later managed Club USA and the Tunnel for him" },
   { mentor: "Christina Visca", mentee: "Junior Vasquez", episode: "s06e02", time: "00:19:10", line: "Gave the aspiring DJ his chance at her party the Space after the Garage closed; from then on, she says, they never separated" },
   { mentor: "Lou Maletta", mentee: "Nora Burns", episode: "s06e05", time: "00:44:05", line: "Gave Nora her own public-access show, Candied Camera - made for free in his studio with his crew, every two weeks from about 1992 to 1996" },
+  { mentor: "Yuki (Mars investor)", mentee: "Moby", episode: "s01e09", time: "00:17:58", line: "Called Moby back about his demo tape and gave him his first big gig at Mars" },
+  { mentor: "Michael Alig", mentee: "Moby", episode: "s01e09", time: "00:07:04", line: "Took the new Limelight DJ into Peter Gatien's office and introduced him" },
+  { mentor: "Mark Kamins", mentee: "Madonna", episode: "s01e09", time: "00:22:14", line: "Discovered Madonna at Danceteria, Moby notes" },
   { mentor: "Michael Alig", mentee: "Christopher Comp", episode: "s05e07a", time: "00:18:33", line: "Christopher calls him a mentor: he gave him and Pebbles jobs and taught him to promote parties in the Limelight and Club USA offices, writing the invitation copy" },
 ];
 

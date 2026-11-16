@@ -85,6 +85,12 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s05e07b",
     time: "00:55:27",
   },
+  {
+    name: "Chi Chi Valenti & Johnny Dynell",
+    why: "Moby, remembering them living across the street from him on 14th Street: they still look fantastic - 'we're gonna have to get them on the show as well at some point.'",
+    episodeId: "s01e09",
+    time: "00:58:45",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
@@ -226,5 +232,11 @@ export const COME_BACK: InterviewTip[] = [
     why: "James closes Really Denise's interview: they're going to have to have her back on the show again.",
     episodeId: "s05e07b",
     time: "01:04:44",
+  },
+  {
+    name: "Moby",
+    why: "James closes: he has another 13 pages of questions to pepper Moby with sometime - and Moby says he would love to do it again and again.",
+    episodeId: "s01e09",
+    time: "01:03:39",
   },
 ];

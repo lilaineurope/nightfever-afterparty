@@ -116,6 +116,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s06e05: "Studio 54, Candied Camera & downtown comedy",
   s05e07a: "Club Kids, the Limelight & Riverbank West",
   s05e07b: "the Tunnel, outlaw parties & Bainbridge mailboxes",
+  s01e09: "Mars, the Limelight & DJing in 90s New York",
 };
 
 /** "Susanne Bartsch – Night Fever S2E3: the Blitz, Savage & the Love Balls", kept within about 65 characters so

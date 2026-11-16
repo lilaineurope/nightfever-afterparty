@@ -46,6 +46,7 @@ import s06e02 from "./s06e02.json";
 import s06e05 from "./s06e05.json";
 import s05e07a from "./s05e07a.json";
 import s05e07b from "./s05e07b.json";
+import s01e09 from "./s01e09.json";
 
 // The wider scene: real events, venues and people, 1970s -> today.
 // `people` are guest slugs; `figures` are other real names from the scene.
@@ -668,6 +669,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s06e05", label: "S6 E5", guest: "Nora Burns", refs: s06e05 as Ref[] },
   { id: "s05e07a", label: "S5 E7A", guest: "Christopher Comp", refs: s05e07a as Ref[] },
   { id: "s05e07b", label: "S5 E7B", guest: "Really Denise", refs: s05e07b as Ref[] },
+  { id: "s01e09", label: "S1 E9", guest: "Moby", refs: s01e09 as Ref[] },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the
