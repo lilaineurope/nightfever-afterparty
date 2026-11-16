@@ -18,6 +18,16 @@ import studio54Photo from "@/assets/clubs/studio-54-photo.webp";
 import studio54Polaroid from "@/assets/clubs/studio-54-polaroid.webp";
 import limelightPhoto from "@/assets/clubs/limelight-photo.webp";
 import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
+import dancePhoto from "@/assets/clubs/danceteria-photo.webp";
+import dancePolaroid from "@/assets/clubs/danceteria-polaroid.webp";
+import tunnelPhoto from "@/assets/clubs/tunnel-photo.webp";
+import tunnelPolaroid from "@/assets/clubs/tunnel-polaroid.webp";
+import pyramidPhoto from "@/assets/clubs/pyramid-club-photo.webp";
+import pyramidPolaroid from "@/assets/clubs/pyramid-club-polaroid.webp";
+import palladiumPhoto from "@/assets/clubs/palladium-photo.webp";
+import palladiumPolaroid from "@/assets/clubs/palladium-polaroid.webp";
+import boyBarPhoto from "@/assets/clubs/boy-bar-photo.webp";
+import boyBarPolaroid from "@/assets/clubs/boy-bar-polaroid.webp";
 import type { MemoriamQuote } from "./memoriam";
 import type { PersonPortrait } from "./person-portraits";
 
@@ -50,6 +60,14 @@ const AREA_CREDIT = "Header: an Area night drawn for the AFTERPARTY. Polaroid: A
 const STUDIO_54_CREDIT =
   "Photos: Epicgenius, the room in 2026 (header, CC BY-SA 4.0, via Wikimedia Commons; our version is CC BY-SA 4.0 too) and William Armstrong's Statue of Liberty head made for Studio 54 (polaroid, public domain)";
 const LIMELIGHT_CREDIT = "Photo: Gryffindor, the church in 2007, via Wikimedia Commons, public domain. Polaroid: Queer Nation presents Voguing Superstars of Paris Is Burning at Limelight, card, 1991 - Gallery 98";
+
+const DANCETERIA_CREDIT = "Header: a Danceteria night drawn for the AFTERPARTY. Polaroid: Jim Fouratt and Rudolf's opening invitation, 252 West 37th Street, May 1980 - Gallery 98";
+const TUNNEL_CREDIT =
+  "Photo: Beyond My Ken, the Terminal Stores building in 2011, via Wikimedia Commons, CC BY-SA 4.0 (our version is CC BY-SA 4.0 too). Polaroid: John Sex's Disco Superfly card, Tunnel, 1988 - Gallery 98";
+const PYRAMID_CREDIT = "Photo: Americasroof, 101 Avenue A in 2009, via Wikimedia Commons, CC BY 3.0. Polaroid: Girlstown every Tuesday card, Pyramid - Gallery 98";
+const PALLADIUM_CREDIT =
+  "Photo: Bernard Gotfryd, Keith Haring painting the Palladium backdrop, May 1985, Library of Congress via Wikimedia Commons, public domain. Polaroid: Liberace party card, Palladium, 1986 - Gallery 98";
+const BOY_BAR_CREDIT = "Header: a Boy Bar night drawn for the AFTERPARTY. Polaroid: Georges Piette photograph opening party card, Boybar, 15 St. Marks, 1984 - Gallery 98";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -261,6 +279,145 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     ],
     portrait: { photo: limelightPhoto, polaroid: limelightPolaroid, focus: "35%", credit: LIMELIGHT_CREDIT },
     timelineEvent: "limelight",
+  },
+  // Batch 2 (Lisa, 16 Nov 2026). Facts: Wikipedia "Danceteria", "Tunnel (New York nightclub)", "Pyramid Club (New York City)",
+  // "Palladium (New York City)" (checked 16 Nov 2026), Gallery 98 cards, Village Preservation (Jillian Jonas) and the guests'
+  // episodes. Pictures: sources sheet, Round 8.
+  danceteria: {
+    opened: "1980",
+    closed: "1986",
+    address: "30 West 21st Street",
+    story:
+      "Rudolf Piper and Jim Fouratt opened it as an after-hours club on West 37th Street - named, Rudolf says, when they walked past a cafeteria and someone wanted a dancing area instead. After a liquor raid it came back on four floors of a 21st Street loft building: a dance floor, a video lounge, the Congo Bill room and a bar on the roof. Ruth Polsky booked the new bands, Haoui Montaug ran No Entiendes, Madonna sang her first song on its stage, and Keith Haring cleared the tables.",
+    timeline: [
+      ["May 1980", "Rudolf Piper and Jim Fouratt open the first Danceteria at 252 West 37th Street, with a video lounge"],
+      ["Oct 1980", "A liquor raid: 35 staff arrested, and the club is shut down"],
+      ["1982", "It reopens on four floors of 30 West 21st Street - Congo Bill on the fourth, Wuthering Heights on the roof"],
+      ["1982", "Madonna's first show, Everybody, at Haoui Montaug's No Entiendes night"],
+      ["1983-84", "Ruth Polsky books the new wave - New Order, the Smiths, the Beastie Boys, Sade"],
+      ["1985", "Desperately Seeking Susan films its disco scene there; Sally Randall stages a lip-sync Jesus Christ Superstar"],
+      ["1986", "The 21st Street Danceteria closes"],
+    ],
+    stage: ["Rudolf Piper", "Jim Fouratt", "Haoui Montaug", "Madonna", "Keith Haring", "Jean-Michel Basquiat", "Ann Magnuson", "Joey Arias", "Pulsallama", "Sally Randall", "Trey Speegle", "Mark Kamins", "Sean Cassette", "Karen Finley", "Beastie Boys", "LL Cool J", "RuPaul", "Martin Burgoyne"],
+    rooms: ["Mudd Club", "Studio 54", "Club 57", "Pyramid Club", "Area", "Palladium", "Peppermint Lounge", "The Ritz"],
+    said: [
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:53:39", quote: "We passed in front of a cafeteria and somebody said, Oh, I don't want a cafeteria, I want a dancing area. And I said, This is the name, this is the name." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:11:17", quote: "The second Danceteria was on 21st Street, but the first one was on 37th Street. It was illegal. Keith Haring was a busboy. You couldn't buy drinks directly. You had to buy a drink ticket." },
+      { episode: "s01e10", who: "Joey Arias", time: "00:40:39", quote: "We did the Andy Edie Show at Danceteria, the Congo Bill room. We put up all tinfoil and silver balloons and television monitors. And we came out singing I Got You Babe." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "01:01:57", quote: "Ann Magnuson came and said, I want to make an accordion show inside the elevator. I said, Great... It was the first elevator in the world that had live music in it." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:50:32", quote: "Oh, I went to Danceteria all the time. I lived in Chelsea almost my whole life. I loved it... I think we all saw Madonna perform there." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:26:24", quote: "My absolutely favorite memory of you was when I did Jesus Christ Superstar, the lip sync drag queen opera." },
+    ],
+    portrait: { photo: dancePhoto, polaroid: dancePolaroid, focus: "50%", credit: DANCETERIA_CREDIT },
+    timelineEvent: "danceteria",
+  },
+  tunnel: {
+    opened: "1986",
+    closed: "2001",
+    address: "220 Twelfth Avenue",
+    story:
+      "A long, narrow club in an old freight warehouse by the Hudson, named for its main room - railroad tracks still ran through a sunken part of the dance floor. Rudolf Piper ran it in the early years, and in its basement the Club Kids were born: Larry Tee, Lady Bunny and friends throwing parties in what Larry calls a dump room. Peter Gatien took it over in 1992; Sunday nights belonged to hip-hop, the weekend to house, with Junior Vasquez in the booth after the Sound Factory closed.",
+    timeline: [
+      ["1986", "Tunnel opens in the Terminal Stores warehouse at 220 Twelfth Avenue, train tracks still in the floor"],
+      ["1987", "Rudolf Piper's years: the Club Kids start in the basement, Larry Tee's Celebrity Club among the first parties"],
+      ["1992", "Peter Gatien takes over the club"],
+      ["1990s", "Sunday nights become New York's hip-hop showcase - Peter Gatien remembers Nas and Lil' Kim on its stage"],
+      ["1995", "Junior Vasquez plays there after the Sound Factory closes"],
+      ["2001", "Tunnel closes"],
+    ],
+    stage: ["Rudolf Piper", "Peter Gatien", "Club Kids", "Larry Tee", "Lady Bunny", "Amanda Lepore", "RuPaul", "John Sex", "Kenny Scharf", "Chi Chi Valenti & Johnny Dynell", "Junior Vasquez", "Danny Tenaglia", "Funkmaster Flex", "Christina Visca", "Really Denise", "Nina Hagen"],
+    rooms: ["Limelight", "Club USA", "Palladium", "Sound Factory", "Roxy", "The World", "Twilo", "Nell's"],
+    said: [
+      { episode: "s01e04", who: "Peter Gatien", time: "00:53:20", quote: "If you got to be on stage at Tunnel Sunday nights, you had bragging rights. You were big dog in the neighborhood." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:17:54", quote: "In the basement. And it was a dump room. It really wasn't a place where you would put a big party. But they liked the energy that we had." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:12:46", quote: "In the back of Tunnel, Lady Bunny did a game show. And my mother was one of the contestants, and my mother won." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:16:57", quote: "It was a New Year show at Tunnel, and she signed my head in Arabic... I was just like, wow, Nina Hagen is signing my head in Arabic." },
+      { episode: "s05e07b", who: "Really Denise", time: "00:46:59", quote: "Do you remember the softball parties we used to have? Like, Tunnel would have a team. World would have a team." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:15:43", quote: "I also worked for Peter later on. I managed USA and the Tunnel in the big 90s." },
+    ],
+    portrait: { photo: tunnelPhoto, polaroid: tunnelPolaroid, focus: "45%", credit: TUNNEL_CREDIT },
+    timelineEvent: "tunnel-reopens",
+  },
+  "pyramid-club": {
+    opened: "1979",
+    closed: "2020",
+    address: "101 Avenue A",
+    story:
+      "A small bar on Avenue A with a pyramid over the door that became the home of East Village drag: not pageant drag but punk, witty, pop-culture drag, as Linda Simpson puts it. RuPaul played his first New York show there, Lady Bunny started Wigstock from it, and the stage belonged to Hattie Hathaway, John Sex, Wendy Wild, Ann Magnuson and later Linda's own parties. You had to make an effort to get there - which was the point.",
+    timeline: [
+      ["1979", "The Pyramid Cocktail Lounge opens at 101 Avenue A"],
+      ["1982", "RuPaul plays his first New York show there; John Jesurun starts his serial play Chang in a Void Moon"],
+      ["1985", "Pyramid performer Lady Bunny hosts the first Wigstock in Tompkins Square Park"],
+      ["Mid-80s", "Whispers, the Sunday gay party, is the night to be at the Pyramid"],
+      ["1990", "Linda Simpson and DJ Danny Johnson start their Wednesday party, Bunny hosting"],
+      ["1992-95", "ANOHNI's Blacklips Performance Cult plays every Monday at midnight"],
+      ["2020", "The Pyramid closes during the pandemic"],
+    ],
+    stage: ["Linda Simpson", "Lady Bunny", "RuPaul", "Lypsinka", "Brian Butterick", "John Sex", "Wendy Wild", "Ann Magnuson", "Tina L'Hotsky", "Taylor Mead", "John Kelly", "Trey Speegle", "Waltpaper", "Miss Guy", "Chi Chi Valenti & Johnny Dynell", "Keith Haring", "Jean-Michel Basquiat"],
+    rooms: ["Boy Bar", "Club 57", "Danceteria", "Mudd Club", "Limelight", "Disco 2000", "Roxy", "Wigstock"],
+    said: [
+      { episode: "s02e09", who: "Linda Simpson", time: "00:11:29", quote: "It had like a punkish quality in that it was taking a genre that was stale and shaking it up... There wasn't anything like that happening anywhere else in the world." },
+      { episode: "s02e09", who: "Linda Simpson", time: "00:16:51", quote: "It seemed very insider-y. You either got the humor or you didn't. And first of all, you had to make an effort to get there, because it was way the hell over on Avenue A." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:04:28", quote: "When I did Straight to Hell at the Pyramid, John Waters was one of the first people to do the show." },
+      { episode: "s01e06", who: "Waltpaper", time: "00:18:32", quote: "We were like, oh my God, Diahann Carroll's here. And it took me a while... after I met Linda Simpson and saw Rube perform at Pyramid. I was like, oh, it's not Diahann Carroll." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:02:24", quote: "There was a great wall on St. Mark's Place that was fly-posted with posters for bands, for the Pyramid Club, for anyone who wanted to put a Xerox of themselves up." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:32:45", quote: "There was a journal entry from March of 89, at like 5:45 in the morning. And I wrote, Me and Bunny went to Pyramid, the Building and the Roxy tonight." },
+    ],
+    portrait: { photo: pyramidPhoto, polaroid: pyramidPolaroid, focus: "45%", credit: PYRAMID_CREDIT },
+    timelineEvent: "pyramid",
+  },
+  palladium: {
+    opened: "1985",
+    closed: "1997",
+    address: "126 East 14th Street",
+    story:
+      "After prison and Studio 54, Steve Rubell and Ian Schrager took over a 1927 movie palace on 14th Street and had Arata Isozaki build a club inside it. Keith Haring painted the backdrop, Basquiat and Francesco Clemente made art for the Mike Todd Room, Andy Warhol designed the drink tickets - Eric Goode calls it a bigger, better Area. Sally Randall and Christina Visca worked its door, and for the teenagers who got in it was Babylon. Peter Gatien ran it from 1992 until NYU bought it.",
+    timeline: [
+      ["1927", "Thomas Lamb's Academy of Music opens as a movie palace"],
+      ["1976", "Renamed the Palladium, it becomes a rock concert hall"],
+      ["May 1985", "Steve Rubell and Ian Schrager open the club, with Arata Isozaki's interior and Keith Haring's backdrop"],
+      ["Sep 1985", "Azzedine Alaïa shows his collection there"],
+      ["Oct 1986", "Rudolf Piper's party for Liberace, white pianos all over the club"],
+      ["1992", "Peter Gatien takes over"],
+      ["Aug 1997", "The Palladium closes; NYU tears it down for a dormitory"],
+    ],
+    stage: ["Steve Rubell", "Ian Schrager", "Arata Isozaki", "Keith Haring", "Jean-Michel Basquiat", "Francesco Clemente", "Kenny Scharf", "Andy Warhol", "Rudolf Piper", "Sally Randall", "Christina Visca", "Lincoln Palsgrove IV", "Jennifer Rubell", "Martha Plimpton", "Liberace", "Michael Musto", "Dianne Brill", "Madonna", "Boy George", "Peter Gatien"],
+    rooms: ["Area", "Studio 54", "Danceteria", "Limelight", "The Tunnel", "Club USA", "Nell's"],
+    said: [
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:09:57", quote: "I can remember the Mike Todd Room like it was yesterday because it was just like Babylon, seeing all of the people in this huge space. I've never experienced anything like it." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:22:49", quote: "He did the Mike Todd Room with Jean-Michel Basquiat, and the Keith Haring on the dance floor, and the Kenny Scharf, and the Francesco Clemente. He set a bigger, better mousetrap." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:40:24", quote: "Especially at Palladium, you did have to have your social graces, because you weren't just letting in downtown kids." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "01:05:14", quote: "We rented eight or ten white pianos, with the pianists dressed in white tuxedos, playing all over the club. And only two thousand people came. Would you not go to a Liberace party?" },
+      { episode: "s06e02", who: "Christina Visca", time: "00:44:36", quote: "I met most of the club kids when I was doing the door at Palladium. I would say 85, 86 is when you guys started coming around." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:13:46", quote: "He did this giant thing called Drag Aid, a drag queen AIDS benefit at Palladium... You had 50 drag queens who were supposed to go on between two and four." },
+    ],
+    portrait: { photo: palladiumPhoto, polaroid: palladiumPolaroid, focus: "40%", credit: PALLADIUM_CREDIT },
+    timelineEvent: "palladium",
+  },
+  "boy-bar": {
+    opened: "1984",
+    closed: "c. 1995",
+    address: "15 St. Marks Place",
+    story:
+      "A gay bar on St. Marks Place whose little upstairs stage became a school for drag supermodels. Matthew Kasten made the Boy Bar Beauties into a polished ensemble with house rules - no wonky shoes, no wonky hair - and shared wigs, outfits and hairdressers. Connie Fleming, Miss Guy and Zaldy all took its crown or its stage, Johnny Dynell played the records, and on Thursdays the East Village came to watch. Jillian Jonas was its house photographer in the 90s.",
+    timeline: [
+      ["Oct 1984", "Boybar opens at 15 St. Marks Place with a Georges Piette photograph party"],
+      ["Mid-80s", "Matthew Kasten starts the Boy Bar Beauties shows; Connie Fleming is pushed onto the stage at her first one"],
+      ["Late 80s", "Thursday drag shows draw the East Village - Ernie Glam and Miss Guy watch every week"],
+      ["1990s", "Miss Boy Bar crowns go to Shannon, Perfidia, Zaldy and more"],
+      ["15 Sep 1994", "Boy Bar reopens; Jillian Jonas photographs its shows all year"],
+    ],
+    stage: ["Connie Fleming", "Miss Guy", "Zaldy", "Lady Bunny", "Lypsinka", "Sherry Vine", "Raven O", "Varla Jean Merman", "Coco Peru", "International Chrysis", "Kevin Aviance", "Chi Chi Valenti & Johnny Dynell", "Ernie Glam", "Nora Burns"],
+    rooms: ["Pyramid Club", "Club 57", "Wigstock", "Limelight", "The Tunnel"],
+    said: [
+      { episode: "s02e05", who: "Connie Fleming", time: "00:13:19", quote: "'But you're going to be in the shows.' And the train pulled off... I went to the first rehearsal. I was super, super, super nervous and ran downstairs, threw up a little bit, I think, and then ran back up." },
+      { episode: "s02e05", who: "Connie Fleming", time: "00:17:00", quote: "I think shoes had to match the outfit or go with the outfit or have an element of the outfit. No wonky hair." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:33:55", quote: "I never hesitated to walk down to Boy Bar from the Chelsea Hotel, where I was living for a while, in high heels, and walk home at the end of the night." },
+      { episode: "s04e04", who: "Zaldy", time: "00:23:46", quote: "I don't see myself as a performer... Being forced on that stage was really nerve-wracking. I just remember how nervous I was, but I did do it. And I ended up winning." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:46:14", quote: "Matthew Kasten from Boy Bar would always call me and tell me the latest drag queen off the bus." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", quote: "I used to go to this club called Boy Bar on St. Mark's Place in the East Village, and I would go there every Thursday to watch the drag shows." },
+    ],
+    portrait: { photo: boyBarPhoto, polaroid: boyBarPolaroid, focus: "50%", credit: BOY_BAR_CREDIT },
   },
 };
 
