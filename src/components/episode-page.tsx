@@ -17,7 +17,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { isOtherShowGuest } from "@/lib/show-guests";
 import { ShareButton } from "@/components/share-button";
 import { formatDate, toSeconds } from "@/lib/time";
-import { episodePortraits } from "@/components/episode-block";
+import { polaroidThumb } from "@/components/episode-block";
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
 export type Ref = {
@@ -70,7 +70,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   useEpisodePlayer(id);
   const thisEpisode = episodeById(id);
   // The guest's polaroid photo fills the header box, text on paper cards on top (Lisa, 2 Nov 2026, option B).
-  const photo = episodePortraits[id];
+  const photo = polaroidThumb(id, 1024);
   // One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card lives on this page too.
   const guestCard = guestOfEpisode(id);
   const about = guestCard?.guest ? guestCard : undefined;

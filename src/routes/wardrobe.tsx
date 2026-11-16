@@ -22,6 +22,7 @@ export const Route = createFileRoute("/wardrobe")({
       title: "The Wardrobe – dress like the Night Fever guests | Night Fever AFTERPARTY",
       description: "Dress yourself from 700 looks in Night Fever's stories - by episode, guest, designer, club, place or colour mood. Afterparty Style or Clueless Style!",
       image: "/og/wardrobe.jpg",
+      noindex: true, // unlinked for now, so kept out of Google too (SEO check, 16 Nov 2026)
     }),
 });
 
