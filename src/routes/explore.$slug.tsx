@@ -157,7 +157,7 @@ function EntityPage() {
         className={`${pic ? "card-head card-head-photo px-4" : "card-head px-4"}`}
         style={
           (pic
-            ? ({ "--photo": `url(${pic.photo})`, "--focus": pic.focus } as CSSProperties)
+            ? ({ "--photo": `url(${pic.photo})`, "--photo-phone": `url(${pic.phone ?? pic.photo})`, "--focus": pic.focus } as CSSProperties)
             : ({ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties))
         }
       >
