@@ -218,5 +218,10 @@ export function cardDescription(name: string, story: string, episodeCodes: strin
   const where = n === 0 ? "" : n <= 3 ? ` Mentioned in Night Fever ${episodeCodes.join(", ")}.` : ` Mentioned in ${n} Night Fever episodes.`;
   const clean = cleanStory(story);
   const lead = clean ? `${name}: ${clean}` : `${name} in the Night Fever podcast - every story, night and connection.`;
-  return clip(lead, 158 - where.length) + where;
+  const withWhere = clip(lead, 158 - where.length) + where;
+  // A line cut mid-sentence ("…") reads worse in a search result than a whole sentence without the episode count
+  // (SEO check, 16 Nov 2026), so drop the count when that lets the sentence end properly.
+  if (!withWhere.includes("…")) return withWhere;
+  const whole = clip(lead, 158);
+  return whole.includes("…") ? withWhere : whole;
 }
