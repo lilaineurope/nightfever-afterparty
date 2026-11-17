@@ -25,6 +25,21 @@ import studio54Polaroid from "@/assets/clubs/studio-54-polaroid.webp";
 import limelightPhoto from "@/assets/clubs/limelight-photo.webp";
 import limelightPhotoPhone from "@/assets/clubs/limelight-photo-phone.webp";
 import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
+import worldPhoto from "@/assets/clubs/world-photo.webp";
+import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
+import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
+import copaPhoto from "@/assets/clubs/copacabana-photo.webp";
+import copaPhotoPhone from "@/assets/clubs/copacabana-photo-phone.webp";
+import copaPolaroid from "@/assets/clubs/copacabana-polaroid.webp";
+import mkPhoto from "@/assets/clubs/mk-photo.webp";
+import mkPhotoPhone from "@/assets/clubs/mk-photo-phone.webp";
+import mkPolaroid from "@/assets/clubs/mk-polaroid.webp";
+import pepperPhoto from "@/assets/clubs/peppermint-lounge-photo.webp";
+import pepperPhotoPhone from "@/assets/clubs/peppermint-lounge-photo-phone.webp";
+import pepperPolaroid from "@/assets/clubs/peppermint-lounge-polaroid.webp";
+import jackiePhoto from "@/assets/clubs/jackie-60-photo.webp";
+import jackiePhotoPhone from "@/assets/clubs/jackie-60-photo-phone.webp";
+import jackiePolaroid from "@/assets/clubs/jackie-60-polaroid.webp";
 import dancePhoto from "@/assets/clubs/danceteria-photo.webp";
 import dancePhotoPhone from "@/assets/clubs/danceteria-photo-phone.webp";
 import dancePolaroid from "@/assets/clubs/danceteria-polaroid.webp";
@@ -100,6 +115,12 @@ const NELLS_CREDIT = "Header: a Nell's night drawn for the AFTERPARTY. Polaroid:
 const PARADISE_GARAGE_CREDIT = "Header: a Paradise Garage night drawn for the AFTERPARTY. Polaroid: Vito and Roman's car stub invitation, Paradise Garage, 1984 - Gallery 98";
 const CLUB_USA_CREDIT = "Header and polaroid: Ann Bennett and Roz Winter's Gender Bender card, Club USA, 1993 (blurred in the header) - Gallery 98";
 const ROXY_CREDIT = "Photo: Aloughman, the Roxy on West 18th Street, via Wikimedia Commons, public domain. Polaroid: Susanne Bartsch's New Year's Eve 2000 Fake Halloween Ball flyer, Roxy - Gallery 98";
+
+const WORLD_CREDIT = "Photo: a card for Oh Jackie Oh! at the World, with Jackie Curtis and Taylor Mead - Gallery 98. Polaroid: Haoui Montaug's No Entiendes sixth anniversary flyer, the World - Gallery 98";
+const COPACABANA_CREDIT = "Header: one of Susanne Bartsch's Copa nights, drawn for the AFTERPARTY. Polaroid: Cy Walter at the piano at the Copacabana, 1949, photo by Jack Wasserman (The Cy Walter Collection), via Wikimedia Commons, CC BY-SA 4.0";
+const MK_CREDIT = "Header and polaroid: MK drawn for the AFTERPARTY - no photo of MK is free to use";
+const PEPPERMINT_CREDIT = "Photo: M. Azzara, Joey and the Twisters at the Peppermint Lounge, c. 1962, via Wikimedia Commons, public domain. Polaroid: the Raybeats at the Peppermint Lounge flyer, 1981 - Gallery 98";
+const JACKIE_60_CREDIT = "Header: a Jackie 60 Tuesday drawn for the AFTERPARTY. Polaroid: All-Star Poetry Burlesque flyer, Jackie 60, 432 West 14th Street - Gallery 98";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -584,6 +605,134 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e02", who: "Michael Musto", time: "00:25:59", quote: "He [Peter Allen] would be at the Roxy dancing around with his shirt off." },
     ],
     portrait: { photo: roxyPhoto, phone: roxyPhotoPhone, polaroid: roxyPolaroid, focus: "50%", credit: ROXY_CREDIT },
+  },
+  // Batch 4 (Lisa, 18 Nov 2026: "next batch") - the first clubs without a Jukebox night. Facts: Wikipedia "The World (nightclub)",
+  // "Copacabana (nightclub)", "Peppermint Lounge", "Jackie 60"; MK from Queer Happened Here and Vanity Fair (May 1988) via search,
+  // checked 18 Nov 2026. Pictures: sources sheet, Round 10.
+  world: {
+    opened: "Mid-80s",
+    closed: "1991",
+    address: "254 East 2nd Street",
+    story:
+      "An old catering hall and theatre on East 2nd Street, out by Avenue C, with a chandeliered ballroom - the Crystal Room - and a balcony. It opened and closed as it liked, mostly outside the law, and drew everyone: artists, Prince and Madonna, banjee boys, the voguing houses and the first Club Kids. Frankie Knuckles and David Morales played house there before house was everywhere. Michelle Visage went every weekend, Lincoln Palsgrove IV and James St. James worked its door. It ended in June 1991, when co-owner Steven Venizelos was shot in the balcony.",
+    timeline: [
+      ["Mid-80s", "The World opens in a former catering hall and theatre at 254 East 2nd Street"],
+      ["1987", "Lincoln Palsgrove IV works the rope to the Crystal Room; Frankie Knuckles DJs in the early days"],
+      ["1988", "Devo film their Disco Dancer video there"],
+      ["Late 80s", "Weekends at the World, then on to Robots - the Club Kids, the It Twins and the voguing houses"],
+      ["1990-91", "Christina and Junior Take Over the World, a short-lived night under new management"],
+      ["27 Jun 1991", "Co-owner Steven Venizelos is found shot in the balcony; the World closes for good"],
+    ],
+    stage: ["Frankie Knuckles", "David Morales", "Larry Tee", "Lady Bunny", "Dean Johnson", "Kenny Kenny", "The It Twins", "Michelle Visage", "Lincoln Palsgrove IV", "James St. James", "Christina Visca", "Junior Vasquez", "Haoui Montaug", "Anita Sarko", "Jackie Curtis", "Taylor Mead", "Stephen Sprouse", "Madonna", "RuPaul", "Keith Haring"],
+    rooms: ["Robots", "Red Zone", "Roxy", "Pyramid Club", "Area", "Palladium", "Webster Hall"],
+    said: [
+      { episode: "s02e01", who: "Michelle Visage", time: "00:28:41", quote: "I was at the World every weekend... We'd go to the World and then we'd go to Robots. Kenny Kenny and I were like buddy-buddy. I knew the It Twins, I knew Michael, all the legends." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:16:47", quote: "I was doing the door to the Crystal Room at the World in 87. I think Eve somehow had the concept that I wasn't quite old enough - I shouldn't put this kid out at the front door." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:56:18", quote: "I remember meeting Frankie Knuckles, because he DJed at the World in the early days when it opened. And I thought, my God, this house music is just going to be everything." },
+      { episode: "s06e01", who: "James St. James", time: "00:26:24", quote: "And then from there I went on to do the door of the World." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:22:02", quote: "There were other scenes, like the club kids scene at the Makeup Room at the World, the party that Peter A and Rain Voltaire used to do. That party wasn't dark." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:33:16", quote: "It was very short-lived. It was called Christina and Junior Take Over the World. It's a nightclub, it's the World, it's Avenue C, Second Street. It's me and Junior!" },
+    ],
+    portrait: { photo: worldPhoto, phone: worldPhotoPhone, polaroid: worldPolaroid, focus: "40%", credit: WORLD_CREDIT },
+  },
+  copacabana: {
+    opened: "1940",
+    closed: "1992",
+    address: "10 East 60th Street",
+    story:
+      "The supper club by Central Park that Frank Costello's money opened in 1940: Brazilian palm trees, Chinese food, the Copa Girls, Martin and Lewis, Sinatra. Cherry Vanilla remembers it from the 1950s by its smell - expensive perfume and the kitchen. In the late 80s Susanne Bartsch rented its two floors once a month and filled the old mafia home with hookers, go-go boys, Brazilian samba dancers and the Club Kids, RuPaul on the mic and Sister Dimension on the decks. Leaving at six in the morning, opposite the Pierre, felt like Jackie Kennedy, move over.",
+    timeline: [
+      ["10 Nov 1940", "The Copacabana opens at 10 East 60th Street, Monte Proser out front, Frank Costello behind him"],
+      ["1940s-50s", "Martin and Lewis make their New York debut there; the Copa Girls, Brazilian decor, Chinese food"],
+      ["1978", "Barry Manilow's Copacabana makes it a song"],
+      ["Late 80s", "Susanne Bartsch's monthly Copa parties - the Village People open the first night, RuPaul is the MC"],
+      ["1992", "The Copacabana leaves East 60th Street; it lives on at other addresses"],
+    ],
+    stage: ["Susanne Bartsch", "RuPaul", "Sister Dimension (Alan Mace)", "Village People", "Andy Warhol", "Michelle Visage", "Cherry Vanilla", "Christopher Comp", "Barry Manilow"],
+    rooms: ["Studio 54", "Peppermint Lounge", "Roxy", "Limelight", "Bentley's"],
+    said: [
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:34:59", quote: "I went to see it and I fell in love... The Copa was so glamorous. And it was a mafia home. Upstairs by the banquettes they had all these compartments where you could put money and pass it on to the next booth." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:35:52", quote: "I brought in everything, from the hookers to the go-go boys to the Brazilians, all the Brazilian samba culture, and then the club kids, of course... Coming out at six in the morning by the hotel and the park - Jackie Kennedy, move over." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:04:40", quote: "There was a mixture of expensive perfume, not cheap perfume, and the Copa food - they cooked a combination of Chinese and French food... It was the 1950s, so a lot of women were in strapless dresses." },
+      { episode: "s05e07a", who: "Christopher Comp", time: "00:09:16", quote: "The first party I went to was Susanne Bartsch's Copacabana party... And RuPaul was the first club kid person that I ever met on that trip." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:29:20", quote: "She walked back into an unused dressing room at the Copa. And RuPaul had two drinks in her hand, busted into the room... I think that was the first time we exchanged words." },
+    ],
+    portrait: { photo: copaPhoto, phone: copaPhotoPhone, polaroid: copaPolaroid, focus: "50%", credit: COPACABANA_CREDIT },
+  },
+  mk: {
+    opened: "1988",
+    closed: "1990",
+    address: "204 Fifth Avenue",
+    story:
+      "After Area, Eric Goode and Serge Becker took over an old neoclassical bank on Fifth Avenue at 25th Street and made it a supper club - Lincoln Palsgrove IV calls it their answer to Nell's, a gentleman's club for the art and Bret Easton Ellis crowd. Andy Warhol wanted to be a partner; after he died, Fred Hughes came in instead. Keith Haring had his last birthday party there. Eric remembers it as a club that opened under the shadow of all the funerals, at the end of the 80s.",
+    timeline: [
+      ["1987", "Andy Warhol wants to invest in MK, and dies before it opens; Fred Hughes becomes a partner in his place"],
+      ["Mar 1988", "Eric Goode and Serge Becker open MK in an old bank at 204 Fifth Avenue"],
+      ["1988-89", "Dinner upstairs, dancing in the vault; Lincoln Palsgrove IV works there"],
+      ["May 1989", "Keith Haring's last birthday party is at MK"],
+      ["1990", "MK closes"],
+    ],
+    stage: ["Eric Goode", "Serge Becker", "Andy Warhol", "Fred Hughes", "Keith Haring", "Jean-Michel Basquiat", "Lincoln Palsgrove IV", "Bret Easton Ellis", "Jay McInerney", "Trey Speegle"],
+    rooms: ["Area", "Nell's", "Club USA", "Palladium", "Limelight"],
+    said: [
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:50:13", quote: "I did work at MK, which was on like 25th Street in an old bank, and it was an amazing space. It was really his answer to Nell's. It was like a gentleman's club. It was very art focused." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:34:30", quote: "Andy wanted to invest in MK and be a partner in MK. And of course, he died in 1987... I threw Keith's last birthday party at MK. It just felt like the end of the 80s." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:46:33", quote: "Throughout most of my career, Area, MK, we were not druggy... We were these kind of clean-cut kids from California that didn't know what we were doing." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:29:14", quote: "It got fancier when Area opened and then later MK and Nell's. It got more sort of nightclubby and less about dancing." },
+    ],
+    portrait: { photo: mkPhoto, phone: mkPhotoPhone, polaroid: mkPolaroid, focus: "50%", credit: MK_CREDIT },
+  },
+  "peppermint-lounge": {
+    opened: "1958",
+    closed: "1985",
+    address: "128 West 45th Street",
+    story:
+      "A small bar off Times Square where Joey Dee and the Starliters started the Twist in 1961, and Jackie Kennedy, Garbo and Sinatra came to do it. It was run by the mob, closed in 1965, and came back in November 1980 as a new wave club - Rudolf Piper and Jim Fouratt sparked it - with the Go-Go's, the Cramps, the Raybeats and Grandmaster Flash on its stage. Richard Boch worked its door for six months and calls it a money laundry for the Midtown mob, with great music. In 1982 it moved to Fifth Avenue.",
+    timeline: [
+      ["1958", "The Peppermint Lounge opens at 128 West 45th Street"],
+      ["1961", "Joey Dee and the Starliters' Peppermint Twist starts a craze; Jackie Kennedy brings it to the White House"],
+      ["Dec 1965", "It loses its liquor licence and closes"],
+      ["Nov 1980", "The name comes back for a new wave club in the same room, sparked by Rudolf Piper and Jim Fouratt"],
+      ["Mar 1981", "Yoko Ono delivers Walking on Thin Ice there in person"],
+      ["1982", "The Peppermint Lounge moves downtown to 100 Fifth Avenue"],
+      ["1985", "It closes"],
+    ],
+    stage: ["Rudolf Piper", "Jim Fouratt", "Richard Boch", "The Go-Go's", "The Raybeats", "Grandmaster Flash", "Afrika Bambaataa", "Yoko Ono", "Susan Seidelman", "Trey Speegle"],
+    rooms: ["Studio 54", "Danceteria", "Mudd Club", "Copacabana", "The Ritz"],
+    said: [
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:30:42", quote: "Peppermint Lounge was at the old Knickerbocker Hotel, which then had a gay club called G.G. Barnum's. I'm sure you didn't go there, because it's before your time." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:57:31", quote: "The Peppermint Lounge at that point was basically a money laundering place for the Midtown mob... That's what it was when it was the G.G. Barnum's Room prior to that." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:57:58", quote: "There was some great music that came through the Peppermint Lounge when I was there. And I only lasted six months." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:18:58", quote: "In 1980 or 81, for a couple of months, the Peppermint Lounge got groovy. They put a trapeze above the dance floor, so there would be trapeze artists doing their trapeze stuff." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:08:17", quote: "He was going to give me a birthday party at Peppermint Lounge uptown." },
+    ],
+    portrait: { photo: pepperPhoto, phone: pepperPhotoPhone, polaroid: pepperPolaroid, focus: "35%", credit: PEPPERMINT_CREDIT },
+  },
+  "jackie-60": {
+    opened: "1990",
+    closed: "1999",
+    address: "432 West 14th Street",
+    aka: "Tuesdays, later at Mother",
+    story:
+      "Chi Chi Valenti and Johnny Dynell's Tuesday night, made with Kitty Boots and Richard Move and later Hattie Hathaway: a few tables at Nell's when nobody went out on Tuesdays, then a room at 14th and Washington in the Meatpacking District that they bought in 1994 and called Mother. A theme every week on a thirty-dollar budget - the Stevie Nicks night became an annual - for dominant women, poets, gay men, lesbians, fetish-dressers and everyone who loved them.",
+    timeline: [
+      ["1990", "Jackie 60 starts with a few tables at Nell's on Tuesday nights"],
+      ["1990", "It moves to 14th Street and Washington, in the Meatpacking District"],
+      ["1990s", "A new theme every Tuesday; the Stevie Nicks night with Dean Johnson becomes an annual"],
+      ["1994", "Chi Chi and Johnny buy Bar Room 432 and rename it Mother"],
+      ["c. 1995", "Hattie Hathaway joins as the fourth producer"],
+      ["28 Dec 1999", "Mother closes"],
+    ],
+    stage: ["Chi Chi Valenti & Johnny Dynell", "Kitty Boots", "Richard Move", "Brian Butterick", "Joey Arias", "Dean Johnson", "Miss Guy", "Richard Hell", "Stevie Nicks"],
+    rooms: ["Nell's", "Squeezebox", "Pyramid Club", "Mudd Club", "Boy Bar"],
+    said: [
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:50:15", quote: "Jackie 60 was weekly on Tuesdays, and there were four producers... Some of these nights we would put together for, say, $30, really. When it began, it was just a few tables at Nell's on a Tuesday night when absolutely no one was there." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:55:57", quote: "I ran into Dean Johnson, Joey Arias and several other people from the whole drag performance scene, and they were all Stevie fans... We should do this Stevie Nicks night. And it just really caught on and became an annual." },
+      { episode: "s01e10", who: "Joey Arias", time: "00:50:30", quote: "It became, you know, that we'd go to Jackie 60 and meet people there." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:32:12", quote: "That was at the very beginning, when it was at Nell's. And I slipped in it and fell on the stage. I think there's photos somewhere." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:27:23", quote: "Johnny started Jackie 60... New York had it bigger, but it wasn't as integrated as it was in London. It was much more segregated, until people like Johnny started to bring it together." },
+    ],
+    portrait: { photo: jackiePhoto, phone: jackiePhotoPhone, polaroid: jackiePolaroid, focus: "50%", credit: JACKIE_60_CREDIT },
   },
 };
 
