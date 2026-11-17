@@ -22,6 +22,14 @@ export type StillToMake = {
 
 export const BOOKS_TO_WRITE: StillToMake[] = [
   {
+    title: "Mickey Boardman's memoir",
+    why: "Mickey says the nurse's line at his birth would make a great start to a book, and James says his Salamanca life lesson should be the title of his autobiography.",
+    episodeId: "s04e02",
+    time: "00:10:13",
+    made: "not yet",
+    status: "Not written yet - his writing so far is his Paper columns.",
+  },
+  {
     title: "Trey Speegle's autobiography",
     why: "Randy: 'You need to write a book… the autobiography.' Trey would build it from his WOW Report pieces and his thick scrapbooks of invitations, Polaroids and tear sheets - 'the first draft of history'.",
     episodeId: "s04e07",

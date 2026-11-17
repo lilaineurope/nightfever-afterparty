@@ -104,6 +104,10 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Yuki (Mars investor)", mentee: "Moby", episode: "s01e09", time: "00:17:58", line: "Called Moby back about his demo tape and gave him his first big gig at Mars" },
   { mentor: "Michael Alig", mentee: "Moby", episode: "s01e09", time: "00:07:04", line: "Took the new Limelight DJ into Peter Gatien's office and introduced him" },
   { mentor: "Mark Kamins", mentee: "Madonna", episode: "s01e09", time: "00:22:14", line: "Discovered Madonna at Danceteria, Moby notes" },
+  { mentor: "Wendy Gabriel", mentee: "Mickey Boardman", episode: "s04e02", time: "00:18:09", line: "Gave the Parsons student his Paper internship and talked him into writing his first interview" },
+  { mentor: "Kim Hastreiter", mentee: "Mickey Boardman", episode: "s04e02", time: "00:01:51", line: "Paper's co-founder - 'if Kim was the mom, I was the son', Mickey says" },
+  { mentor: "Mickey Boardman", mentee: "Drew Elliott", episode: "s04e02", time: "00:44:53", line: "Drew started as a Paper intern - Mickey's 'grandson' to Kim's mom" },
+  { mentor: "Lauren Ezersky", mentee: "Lynn Yaeger", episode: "s04e02", time: "00:36:27", line: "Befriended Lynn when she knew no one at Fashion Week and introduced her to Mickey" },
   { mentor: "Michael Alig", mentee: "Christopher Comp", episode: "s05e07a", time: "00:18:33", line: "Christopher calls him a mentor: he gave him and Pebbles jobs and taught him to promote parties in the Limelight and Club USA offices, writing the invitation copy" },
 ];
 

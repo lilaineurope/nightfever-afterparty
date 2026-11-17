@@ -5,6 +5,23 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Salamanca", lat: 40.9701, lng: -5.6635, area: "Spain" },
+  { name: "Madrid", lat: 40.4168, lng: -3.7038, area: "Spain" },
+  { name: "Toledo, Spain", lat: 39.8628, lng: -4.0273, area: "Spain" },
+  { name: "Daytona Beach", lat: 29.2108, lng: -81.0228, area: "Florida" },
+  { name: "Middlebury College", lat: 44.0081, lng: -73.1770, area: "Vermont" },
+  { name: "Skokie, Illinois", lat: 42.0324, lng: -87.7416, area: "Chicago area" },
+  { name: "Hanover Park, Illinois", lat: 41.9995, lng: -88.1451, area: "Chicago area" },
+  { name: "Hoffman Estates High School", lat: 42.0533, lng: -88.0868, area: "Chicago area" },
+  { name: "Purdue University", lat: 40.4237, lng: -86.9212, area: "Indiana" },
+  { name: "Mott Street", lat: 40.7220, lng: -73.9950, area: "Nolita" },
+  { name: "Nolita", lat: 40.7230, lng: -73.9955, area: "Nolita" },
+  { name: "MacDougal Street", lat: 40.7302, lng: -74.0005, area: "Greenwich Village" },
+  { name: "The Peninsula New York", lat: 40.7616, lng: -73.9752, area: "Midtown" },
+  { name: "Gracie Square Hospital", lat: 40.7701, lng: -73.9504, area: "Upper East Side" },
+  { name: "Silver Hill Hospital", lat: 41.1471, lng: -73.4766, area: "Connecticut" },
+  { name: "Supper Club (New York)", lat: 40.7593, lng: -73.9862, area: "Times Square", tip: "The Supper Club on West 47th Street, as Mickey Boardman remembers Paper's 10th anniversary party" },
+  { name: "Screaming Mimi's", lat: 40.7389, lng: -74.0020, area: "Chelsea" },
   { name: "Congo Bill's", lat: 40.7411, lng: -73.9918, area: "Flatiron" },
   { name: "Vinyl Mania", lat: 40.7299, lng: -74.0040, area: "West Village" },
   { name: "Dance Tracks", lat: 40.7243, lng: -73.9875, area: "East Village" },

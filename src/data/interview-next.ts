@@ -91,6 +91,42 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s01e09",
     time: "00:58:45",
   },
+  {
+    name: "Lauren Ezersky",
+    why: "James, after Mickey tells how Lauren befriended Lynn at Fashion Week: they have to have both Lauren and Lynn on the show.",
+    episodeId: "s04e02",
+    time: "00:36:29",
+  },
+  {
+    name: "Lynn Yaeger",
+    why: "James: they have to have both Lauren and Lynn on the show.",
+    episodeId: "s04e02",
+    time: "00:36:29",
+  },
+  {
+    name: "Erich Conrad",
+    why: "Mickey adds Eric to James's list of people to have on.",
+    episodeId: "s04e02",
+    time: "00:36:34",
+  },
+  {
+    name: "Kim Hastreiter",
+    why: "Mickey: they could do a whole episode on Paper - get David and Kim on the show, and Drew as well, to talk about its ups and downs.",
+    episodeId: "s04e02",
+    time: "01:04:43",
+  },
+  {
+    name: "David Hershkovits",
+    why: "Same - Mickey wants Paper's co-founders David and Kim on the show.",
+    episodeId: "s04e02",
+    time: "01:04:43",
+  },
+  {
+    name: "Drew Elliott",
+    why: "Same - 'and Drew as well', Mickey adds.",
+    episodeId: "s04e02",
+    time: "01:04:43",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
