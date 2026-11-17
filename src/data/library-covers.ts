@@ -103,10 +103,12 @@ const COVERS: Record<string, Cover> = {
   "The Hollywood Reporter": { kind: "mast", file: "mast-the-hollywood-reporter.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Penthouse Forum": { kind: "mast", file: "mast-penthouse-forum.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Brides": { kind: "mast", file: "mast-brides.webp", credit: "Masthead: Wikimedia Commons, CC0" },
+  "Playgirl": { kind: "mast", file: "mast-playgirl.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // Lisa: covers ok (17 Nov 2026)
   // Columns shown with the paper or magazine they ran in, like Uptown, Downtown with the Daily News.
   "'Bring On the Night' (New York Post, 1990)": { kind: "mast", file: "mast-new-york-post.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // Lisa: A (7 Nov 2026)
   "'The Death of Downtown' (Michael Musto)": { kind: "mast", file: "mast-village-voice.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "New York magazine – 'Club Kids'": { kind: "mast", file: "mast-new-york-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "Fat and All That (Paper column)": { kind: "book", file: "mag-paper.webp", credit: "Paper, November 1992 - via Gallery 98" }, // Mickey Boardman's Paper column, shown with Paper
   "'Diary of a Mad Queen' (column)": { kind: "book", file: "mag-outweek.webp", credit: "OutWeek no. 1, June 1989 - via The Paris Review / the OutWeek archive" },
   "Ms. Lonely Hearts": { kind: "book", file: "news-soho-weekly-news.webp", credit: "SoHo News, spring 1981 - dealer's photo (Napoleon Exhibit)" },
   "The Social Circus (Sunday column)": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" },
