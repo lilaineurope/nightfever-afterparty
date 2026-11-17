@@ -1512,6 +1512,17 @@
  {
   "rank": 134,
   "mentions": 1,
+  "category": "Music",
+  "name": "(Theme from) Valley of the Dolls",
+  "heard": "Dion warwick playing in the background",
+  "time": "00:27:39",
+  "context": "Dionne Warwick's song plays as Barbara Parkins rides the train at the end of the film - the drama little Mickey wanted for himself",
+  "link": "https://en.wikipedia.org/wiki/(Theme_from)_Valley_of_the_Dolls",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 135,
+  "mentions": 1,
   "category": "Location",
   "name": "California",
   "heard": "California",
@@ -1521,7 +1532,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 135,
+  "rank": 136,
   "mentions": 1,
   "category": "Location",
   "name": "Wall Street",
@@ -1532,7 +1543,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 136,
+  "rank": 137,
   "mentions": 1,
   "category": "Location",
   "name": "Rikers Island",
@@ -1543,7 +1554,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 137,
+  "rank": 138,
   "mentions": 1,
   "category": "Location",
   "name": "West Village",
@@ -1554,7 +1565,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 138,
+  "rank": 139,
   "mentions": 1,
   "category": "Location",
   "name": "Connecticut",
@@ -1565,7 +1576,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 139,
+  "rank": 140,
   "mentions": 1,
   "category": "Location",
   "name": "Washington Institute (rehab)",
@@ -1576,7 +1587,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 140,
+  "rank": 141,
   "mentions": 1,
   "category": "Location",
   "name": "Gracie Square Hospital",
@@ -1587,7 +1598,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 141,
+  "rank": 142,
   "mentions": 1,
   "category": "Club",
   "name": "Supper Club (New York)",
@@ -1598,7 +1609,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 142,
+  "rank": 143,
   "mentions": 1,
   "category": "Publication",
   "name": "The Village Voice",
@@ -1609,7 +1620,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 143,
+  "rank": 144,
   "mentions": 1,
   "category": "Film",
   "name": "The Baby (1973 film)",
@@ -1620,7 +1631,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 144,
+  "rank": 145,
   "mentions": 1,
   "category": "Person",
   "name": "Ruth Roman",
@@ -1631,7 +1642,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 145,
+  "rank": 146,
   "mentions": 1,
   "category": "Person",
   "name": "Anjanette Comer",
@@ -1642,7 +1653,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 146,
+  "rank": 147,
   "mentions": 1,
   "category": "Film",
   "name": "Norman, Is That You?",
@@ -1653,7 +1664,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 147,
+  "rank": 148,
   "mentions": 1,
   "category": "Person",
   "name": "Bette Davis",
@@ -1664,7 +1675,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 148,
+  "rank": 149,
   "mentions": 1,
   "category": "Person",
   "name": "Ariel Foxman",
@@ -1675,7 +1686,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 149,
+  "rank": 150,
   "mentions": 1,
   "category": "Person",
   "name": "Olivia Newton-John",
@@ -1686,7 +1697,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 150,
+  "rank": 151,
   "mentions": 1,
   "category": "Person",
   "name": "Adele",
@@ -1697,7 +1708,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 151,
+  "rank": 152,
   "mentions": 1,
   "category": "Person",
   "name": "Mariah Carey",
@@ -1708,7 +1719,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 152,
+  "rank": 153,
   "mentions": 1,
   "category": "TV",
   "name": "Donny & Marie",
@@ -1719,7 +1730,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 153,
+  "rank": 154,
   "mentions": 1,
   "category": "TV",
   "name": "Watch What Happens Live with Andy Cohen",
@@ -1730,7 +1741,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 154,
+  "rank": 155,
   "mentions": 1,
   "category": "Location",
   "name": "Hoffman Estates High School",
@@ -1741,7 +1752,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 155,
+  "rank": 156,
   "mentions": 1,
   "category": "Organisation",
   "name": "Fannie May",
@@ -1752,7 +1763,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 156,
+  "rank": 157,
   "mentions": 1,
   "category": "Person",
   "name": "Michelle Pfeiffer",
@@ -1763,7 +1774,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 157,
+  "rank": 158,
   "mentions": 1,
   "category": "Film",
   "name": "Grease 2",
@@ -1774,7 +1785,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 158,
+  "rank": 159,
   "mentions": 1,
   "category": "Person",
   "name": "Kirsten Dunst",
@@ -1785,7 +1796,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 159,
+  "rank": 160,
   "mentions": 1,
   "category": "Person",
   "name": "Jake Gyllenhaal",
@@ -1796,7 +1807,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 160,
+  "rank": 161,
   "mentions": 1,
   "category": "Film",
   "name": "Road House",
@@ -1807,7 +1818,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 161,
+  "rank": 162,
   "mentions": 1,
   "category": "Person",
   "name": "Patrick Swayze",
@@ -1818,7 +1829,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 162,
+  "rank": 163,
   "mentions": 1,
   "category": "Person",
   "name": "John Taylor",
@@ -1829,7 +1840,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 163,
+  "rank": 164,
   "mentions": 1,
   "category": "Person",
   "name": "Yasmin Le Bon",
@@ -1840,7 +1851,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 164,
+  "rank": 165,
   "mentions": 1,
   "category": "Person",
   "name": "Naomi Campbell",
@@ -1851,7 +1862,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 165,
+  "rank": 166,
   "mentions": 1,
   "category": "Person",
   "name": "Kate Moss",
@@ -1862,7 +1873,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 166,
+  "rank": 167,
   "mentions": 1,
   "category": "Person",
   "name": "Grace Jones",
@@ -1873,7 +1884,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 167,
+  "rank": 168,
   "mentions": 1,
   "category": "Person",
   "name": "Khloé Kardashian",
@@ -1884,7 +1895,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 168,
+  "rank": 169,
   "mentions": 1,
   "category": "Organisation",
   "name": "The Audience (company)",
@@ -1895,7 +1906,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 169,
+  "rank": 170,
   "mentions": 1,
   "category": "Event",
   "name": "Art Basel Miami Beach",
@@ -1906,7 +1917,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 170,
+  "rank": 171,
   "mentions": 1,
   "category": "Location",
   "name": "Paris",
@@ -1917,7 +1928,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 171,
+  "rank": 172,
   "mentions": 1,
   "category": "Organisation",
   "name": "Balmain",
@@ -1928,7 +1939,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 172,
+  "rank": 173,
   "mentions": 1,
   "category": "Person",
   "name": "Kanye West",
@@ -1939,7 +1950,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 173,
+  "rank": 174,
   "mentions": 1,
   "category": "Person",
   "name": "Ben Stiller",
@@ -1950,7 +1961,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 174,
+  "rank": 175,
   "mentions": 1,
   "category": "Person",
   "name": "Harry Hansen (trainer)",
@@ -1961,7 +1972,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 175,
+  "rank": 176,
   "mentions": 1,
   "category": "Publication",
   "name": "Fat and All That (Paper column)",
@@ -1972,7 +1983,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 176,
+  "rank": 177,
   "mentions": 1,
   "category": "Person",
   "name": "John Fluevog",
@@ -1984,7 +1995,7 @@
   "fashion": "John Fluevog shoes"
  },
  {
-  "rank": 177,
+  "rank": 178,
   "mentions": 1,
   "category": "Location",
   "name": "Screaming Mimi's",
@@ -1996,7 +2007,7 @@
   "fashion": "Screaming Mimi's scarves"
  },
  {
-  "rank": 178,
+  "rank": 179,
   "mentions": 1,
   "category": "Club",
   "name": "The Monster",
@@ -2007,7 +2018,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 179,
+  "rank": 180,
   "mentions": 1,
   "category": "Person",
   "name": "Michael Alig",
@@ -2018,7 +2029,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 180,
+  "rank": 181,
   "mentions": 1,
   "category": "Person",
   "name": "Waltpaper",
@@ -2029,7 +2040,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 181,
+  "rank": 182,
   "mentions": 1,
   "category": "Person",
   "name": "Desi Monster",
@@ -2040,7 +2051,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 182,
+  "rank": 183,
   "mentions": 1,
   "category": "Location",
   "name": "Hollywood",
@@ -2051,7 +2062,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 183,
+  "rank": 184,
   "mentions": 1,
   "category": "Organisation",
   "name": "Bauhaus",
@@ -2062,7 +2073,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 184,
+  "rank": 185,
   "mentions": 1,
   "category": "Person",
   "name": "Ann Magnuson",
@@ -2073,7 +2084,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 185,
+  "rank": 186,
   "mentions": 1,
   "category": "Person",
   "name": "Victor Kiriakis",
@@ -2084,7 +2095,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 186,
+  "rank": 187,
   "mentions": 1,
   "category": "Person",
   "name": "Morgan Fairchild",
@@ -2095,7 +2106,18 @@
   "status": "Confirmed"
  },
  {
-  "rank": 187,
+  "rank": 188,
+  "mentions": 1,
+  "category": "Music",
+  "name": "Movin' On Up (The Jeffersons theme)",
+  "heard": "the theme from The Jeffersons",
+  "time": "01:08:23",
+  "context": "Mickey picks Willona as BFF partly because she sang The Jeffersons theme - Ja'Net DuBois, who played her, co-wrote and sang it",
+  "link": "https://en.wikipedia.org/wiki/Ja%27Net_DuBois",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 189,
   "mentions": 1,
   "category": "Person",
   "name": "Queen Elizabeth The Queen Mother",
@@ -2106,7 +2128,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 188,
+  "rank": 190,
   "mentions": 1,
   "category": "Person",
   "name": "Queen Mary",
@@ -2117,7 +2139,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 189,
+  "rank": 191,
   "mentions": 1,
   "category": "Organisation",
   "name": "Schiaparelli",
@@ -2129,7 +2151,7 @@
   "fashion": "Oversized Schiaparelli brooch"
  },
  {
-  "rank": 190,
+  "rank": 192,
   "mentions": 1,
   "category": "Person",
   "name": "Elsa Peretti",
@@ -2141,7 +2163,7 @@
   "fashion": "Elsa Peretti bone cuff"
  },
  {
-  "rank": 191,
+  "rank": 193,
   "mentions": 1,
   "category": "Organisation",
   "name": "Gucci",
@@ -2153,7 +2175,7 @@
   "fashion": "Sparkly Gucci platforms"
  },
  {
-  "rank": 192,
+  "rank": 194,
   "mentions": 1,
   "category": "Person",
   "name": "Prince George, Duke of Kent",
@@ -2164,7 +2186,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 193,
+  "rank": 195,
   "mentions": 0,
   "category": "Mood",
   "name": "Mickey's on-camera look (S04E02)",
@@ -2183,7 +2205,7 @@
   ]
  },
  {
-  "rank": 194,
+  "rank": 196,
   "mentions": 0,
   "category": "Mood",
   "name": "James's on-camera look (S04E02)",
@@ -2202,7 +2224,7 @@
   ]
  },
  {
-  "rank": 195,
+  "rank": 197,
   "mentions": 0,
   "category": "Mood",
   "name": "Fenton's on-camera look (S04E02)",
@@ -2221,7 +2243,7 @@
   ]
  },
  {
-  "rank": 196,
+  "rank": 198,
   "mentions": 0,
   "category": "Mood",
   "name": "Randy's on-camera look (S04E02)",

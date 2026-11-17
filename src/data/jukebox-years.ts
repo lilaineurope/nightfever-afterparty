@@ -85,6 +85,8 @@ export const YEARS: Record<string, number> = {
   "Dose": 2000,
   "The Fans (Atlanta band)": 1975, // formed by Kevin Dunn and Alfredo Villar (Wikipedia: Kevin Dunn)
   "Duran Duran": 1978,
+  "(Theme from) Valley of the Dolls": 1967,
+  "Movin' On Up (The Jeffersons theme)": 1975,
   "Electroclash": 2001,
   "Fischerspooner": 1998,
   "Frankie Goes to Hollywood": 1980,
