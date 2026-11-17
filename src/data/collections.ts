@@ -164,7 +164,7 @@ const SPOTIFY: Record<string, string> = {
   "Victor/Victoria (Broadway)": "spotify:album:2d8srwInH3rMaj3G6Pim4D",
   "Village People": "spotify:artist:0dCKce6tJJdHvlWnDMwzPW",
   "Duran Duran": "spotify:artist:0lZoBs4Pzo7R89JM9lxwoT",
-  "Theme from Valley of the Dolls": "spotify:track:021O8FvrwW2EJB8220tgXo",
+  "Theme from Valley of the Dolls": "spotify:track:021O8Fvrww2EJB8220tgXo",
   "Frankie Goes to Hollywood": "spotify:artist:1mZu3rO7qSD09GdDpePHhY",
   "Frankie Goes to Hollywood – 'Two Tribes'": "spotify:track:5NN5MQyE3Lo91zAEHpGa7S",
   "The B-52's – 'Love Shack'": "spotify:track:4W4wYHtsrgDiivRASVOINL",

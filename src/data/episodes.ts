@@ -822,6 +822,7 @@ const s04e02: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO6075025647.mp3",
   runtime: "1:11:55",
   afterpartyPublished: "2026-11-25",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLdK6xhYa8aJI",
   blurb:
     "Mickey Boardman on going from Parsons drop-out to Paper's Mr. Mickey, Wigstock, Michael Musto's bad movie club, Break the Internet with Kim Kardashian and getting sober",
 };
