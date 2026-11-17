@@ -101,7 +101,7 @@ export const YOUTUBE: Record<string, string> = {
   "Divine Thing (probably)": "YLMWmP6ta04",
   "Duck Rock": "IDL73P6Hess",
   "Duran Duran": "oJL-lCzEXgI",
-  "(Theme from) Valley of the Dolls": "GUO8UC1gSBg",
+  "Theme from Valley of the Dolls": "GUO8UC1gSBg",
   "Movin' On Up (The Jeffersons theme)": "_-OnRQ4P0VY",
   "Electroclash": "-NdyyGZdOEE",
   "Elements of Vogue": "tErHZRur39k",
