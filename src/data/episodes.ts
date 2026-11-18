@@ -854,6 +854,7 @@ const s04e05: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO4510664262.mp3",
   runtime: "49:18",
   afterpartyPublished: "2026-11-27",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLY-Yh2JSGKho",
   blurb:
     "Dustin Pittman on Max's back room, meeting Andy at the Factory, The Sterile Cuckoo with Liza and half a century of shooting New York after dark",
 };
