@@ -5,6 +5,10 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "The Mercer Hotel", lat: 40.7247, lng: -73.9984, area: "SoHo" },
+  { name: "Northeastern University", lat: 42.3398, lng: -71.0892, area: "Boston" },
+  { name: "Seventh Avenue", lat: 40.7527, lng: -73.9897, area: "Garment District" },
+  { name: "Worlds End (shop)", lat: 51.4823, lng: -0.1806, area: "London" },
   { name: "Salamanca", lat: 40.9701, lng: -5.6635, area: "Spain" },
   { name: "Madrid", lat: 40.4168, lng: -3.7038, area: "Spain" },
   { name: "Toledo, Spain", lat: 39.8628, lng: -4.0273, area: "Spain" },

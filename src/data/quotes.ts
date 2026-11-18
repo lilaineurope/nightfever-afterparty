@@ -50,6 +50,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s05e07a: { quote: "You have something really beautiful to offer that we haven't seen yet. And I'm hungry. I want to see it. Feed me.", time: "00:36:03" }, // Christopher Comp - Lisa: A5 (16 Nov 2026)
   s05e07b: { quote: "That scene was very cutting edge and it was very liberating for someone like me to like go out half naked.", time: "00:51:24" }, // Really Denise - Lisa: B3 (16 Nov 2026)
   s04e02: { quote: "I'm so gay I couldn't blend if I wanted to.", time: "00:12:34" }, // Mickey Boardman - quote A, Claude's pick when Lisa said publish (17 Nov 2026)
+  s04e06: { quote: "Your coat is like your car. Like in Los Angeles, you guys drive your cars. Me and my coat is my car.", time: "00:02:02" }, // Lauren Ezersky - quote A, Claude's proposal (18 Nov 2026)
   s01e09: { quote: "Sometimes I would feel more of a connection to the past than to the present. Like the present seemed like the dream and the past seemed real.", time: "00:46:56" }, // Moby - Lisa: quote e (16 Nov 2026)
   s02e07: { quote: "We were the creatures of the night, walking pieces of art who use shock and awe to garner fame and drink tickets.", time: "00:03:06" }, // Jenny Talia
 };
