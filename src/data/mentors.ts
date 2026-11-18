@@ -107,6 +107,7 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Wendy Gabriel", mentee: "Mickey Boardman", episode: "s04e02", time: "00:18:09", line: "Gave the Parsons student his Paper internship and talked him into writing his first interview" },
   { mentor: "Kim Hastreiter", mentee: "Mickey Boardman", episode: "s04e02", time: "00:01:51", line: "Paper's co-founder - 'if Kim was the mom, I was the son', Mickey says" },
   { mentor: "Mickey Boardman", mentee: "Drew Elliott", episode: "s04e02", time: "00:44:53", line: "Drew started as a Paper intern - Mickey's 'grandson' to Kim's mom" },
+  { mentor: "Kim Hastreiter", mentee: "Lauren Ezersky", episode: "s04e06", time: "00:23:52", line: "Gave Lauren her Paper column: 'go do Donna Karan' - and printed it" },
   { mentor: "Lauren Ezersky", mentee: "Lynn Yaeger", episode: "s04e02", time: "00:36:27", line: "Befriended Lynn when she knew no one at Fashion Week and introduced her to Mickey" },
   { mentor: "Michael Alig", mentee: "Christopher Comp", episode: "s05e07a", time: "00:18:33", line: "Christopher calls him a mentor: he gave him and Pebbles jobs and taught him to promote parties in the Limelight and Club USA offices, writing the invitation copy" },
 ];

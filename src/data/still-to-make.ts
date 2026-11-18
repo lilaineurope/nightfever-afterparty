@@ -149,6 +149,15 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
 
 export const FILMS_TO_MAKE: StillToMake[] = [
   {
+    title: "Behind the Velvet Ropes, the new version",
+    why: "Lauren says people still ask her to put the show back on the air, and she still has to make a new version - just like the old one, running around talking to the new crew.",
+    episodeId: "s04e06",
+    time: "00:28:48",
+    made: "not yet",
+    status: "Not made yet - about 60 of the old episodes are on YouTube.",
+    source: { label: "Behind the Velvet Ropes", card: "behind-the-velvet-ropes" },
+  },
+  {
     title: "Michael Musto, the documentary",
     why: "The hosts picture a multi-part documentary about Musto's life, made for Netflix.",
     episodeId: "s01e02",

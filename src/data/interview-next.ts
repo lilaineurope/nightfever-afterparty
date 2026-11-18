@@ -104,6 +104,12 @@ export const NEW_FACES: InterviewTip[] = [
     time: "00:36:29",
   },
   {
+    name: "Lynn Yaeger",
+    why: "Lauren: Lynn has been a real original since day one - 'you should have her on your show.'",
+    episodeId: "s04e06",
+    time: "00:12:18",
+  },
+  {
     name: "Erich Conrad",
     why: "Mickey adds Eric to James's list of people to have on.",
     episodeId: "s04e02",
