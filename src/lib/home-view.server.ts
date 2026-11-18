@@ -40,7 +40,7 @@ export function homeView(): HomeView {
     L.name(p.name);
     const e = entityFor(p.name);
     if (e) boxes[p.name] = boxOf(e);
-    const done = p.list === "new" ? interviewedOn(p.name) : undefined;
+    const done = p.suggested ? interviewedOn(p.name) : undefined;
     if (done) interviewed[p.key] = done;
   }
   return {

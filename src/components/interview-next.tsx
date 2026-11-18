@@ -63,12 +63,12 @@ function SaidIn({ tip, badge }: { tip: InterviewTip; badge?: string | undefined 
   );
 }
 
-/** "Already interviewed" (Lisa, 18 Nov 2026): a New face who has been on the show since, with a link to that episode -
- *  its AFTERPARTY page, or WOW Presents Plus while it has none yet. */
+/** "Suggested and interviewed" (Lisa, 18 Nov 2026): someone put forward on the show (or by fans) who has been a guest
+ *  since, with a link to that episode - its AFTERPARTY page, or WOW Presents Plus while it has none yet. */
 function AlreadyInterviewed({ done }: { done: Interviewed }) {
   return (
-    <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-      <span className="border border-cream/70 px-1.5 py-0.5 font-semibold uppercase tracking-wide text-cream">Already interviewed</span>
+    <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+      <span>Interviewed in</span>
       {done.afterparty ? (
         <Link to={episodePath(done.episodeId)} className="text-gold">
           {done.code} &middot; {done.guest} &middot; AFTERPARTY
@@ -101,13 +101,15 @@ function Person({
   const card = useLinks().cardForName(person.name);
   const id = `${person.list}:${person.key}`;
   const n = person.said.length;
+  // Someone suggested who has been on the show since: "Suggested and interviewed" (Lisa, 18 Nov 2026).
+  const badge = `Suggested${n > 1 ? ` ${n} times` : ""}${done ? " and interviewed" : " on the show"}`;
   return (
     <li className={ITEM_CLASS}>
       <TapName name={person.name} card={card} id={id} opener={opener} />
       {person.said.map((tip, i) => (
         <div key={`${tip.episodeId}-${tip.time}`} className={i > 0 ? "mt-3" : undefined}>
           <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{tip.why}</p>
-          <SaidIn tip={tip} badge={i === 0 ? (n > 1 ? `Suggested ${n} times on the show` : "Suggested on the show") : undefined} />
+          <SaidIn tip={tip} badge={i === 0 ? badge : undefined} />
         </div>
       ))}
       {fans > 0 && (
@@ -215,7 +217,10 @@ function FanTip({ pick, id, opener }: { pick: FanPick; id: string; opener: Opene
       <TapName name={pick.who} card={pick.card} id={id} opener={opener} />
       {pick.why && <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">&ldquo;{pick.why}&rdquo;</p>}
       <p className="mt-1.5 text-xs text-muted-foreground">
-        <span className="bg-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink-foreground">{fanBadge(pick.count)}</span>
+        <span className="bg-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink-foreground">
+          {fanBadge(pick.count)}
+          {pick.interviewed ? " and interviewed" : ""}
+        </span>
       </p>
       {pick.interviewed && <AlreadyInterviewed done={pick.interviewed} />}
       {withCard ? (
@@ -253,7 +258,7 @@ export function InterviewNext({
   const onAir = new Set([...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack].map((p) => p.key));
   const fansFor = (key: string) => picks.find((p) => p.key === key)?.count ?? 0;
   const fanOnly = picks.filter((p) => !onAir.has(p.key));
-  // Already-interviewed names go to the end of New faces: the top of the list is people still to book.
+  // Suggested-and-interviewed names go to the end of New faces: the top of the list is people still to book.
   const newFaces = [
     ...INTERVIEW_PEOPLE.newFaces.filter((p) => !interviewed[p.key]).map((p) => ({ kind: "air" as const, p })),
     ...fanOnly.filter((f) => !f.interviewed).map((f) => ({ kind: "fan" as const, f })),
@@ -321,7 +326,7 @@ export function InterviewNext({
           <div role="tabpanel" id="in-panel-back" aria-labelledby="in-tab-back" className="mt-6">
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {INTERVIEW_PEOPLE.comeBack.map((p) => (
-                <Person key={p.key} person={p} box={boxes[p.name]} done={undefined} fans={fansFor(p.key)} opener={opener} />
+                <Person key={p.key} person={p} box={boxes[p.name]} done={interviewed[p.key]} fans={fansFor(p.key)} opener={opener} />
               ))}
             </ul>
           </div>

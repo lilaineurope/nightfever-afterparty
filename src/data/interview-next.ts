@@ -298,13 +298,15 @@ export type InterviewPerson = {
   name: string;
   key: string;
   list: "new" | "back";
-  /** Every moment the name was put forward: the "have them back" moment first, then the rest oldest episode first */
+  /** true when at least one moment is a "get them on" tip (a New-face row) - such a person can later be labelled
+   *  "Suggested and interviewed" */
+  suggested: boolean;
+  /** Every moment the name was put forward, oldest episode first */
   said: InterviewTip[];
 };
 
-const isBack = (t: InterviewTip) => (COME_BACK.includes(t) ? 0 : 1);
-const byEpisode = (a: InterviewTip, b: InterviewTip) =>
-  isBack(a) - isBack(b) || a.episodeId.localeCompare(b.episodeId) || a.time.localeCompare(b.time);
+// Oldest episode first, so a story reads in order: suggested, suggested again, interviewed and asked back.
+const byEpisode = (a: InterviewTip, b: InterviewTip) => a.episodeId.localeCompare(b.episodeId) || a.time.localeCompare(b.time);
 
 function fold(): { newFaces: InterviewPerson[]; comeBack: InterviewPerson[] } {
   const back = new Set(COME_BACK.map((t) => nameKey(t.name)));
@@ -313,8 +315,11 @@ function fold(): { newFaces: InterviewPerson[]; comeBack: InterviewPerson[] } {
   for (const t of [...COME_BACK, ...NEW_FACES]) {
     const key = nameKey(t.name);
     const hit = people.get(key);
-    if (hit) hit.said.push(t);
-    else people.set(key, { name: t.name, key, list: back.has(key) ? "back" : "new", said: [t] });
+    const suggested = NEW_FACES.includes(t);
+    if (hit) {
+      hit.said.push(t);
+      hit.suggested ||= suggested;
+    } else people.set(key, { name: t.name, key, list: back.has(key) ? "back" : "new", suggested, said: [t] });
   }
   const all = [...people.values()];
   for (const p of all) p.said.sort(byEpisode);

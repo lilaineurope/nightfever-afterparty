@@ -1,4 +1,4 @@
-// "Already interviewed" (Lisa, 18 Nov 2026): a name on "Who to interview next" that has already been a Night Fever guest
+// "Suggested and interviewed" (Lisa, 18 Nov 2026): a name on "Who to interview next" that has already been a Night Fever guest
 // is labelled, with a link to their AFTERPARTY page - or to the episode on WOW Presents Plus while it has no AFTERPARTY
 // yet. Worked out from the guest list (every Night Fever guest, Seasons 1-6: guests.ts + guests-more.ts) and the
 // AFTERPARTY list (episodes.ts), so it updates itself when a new episode is built. Server only (the guest list is big).

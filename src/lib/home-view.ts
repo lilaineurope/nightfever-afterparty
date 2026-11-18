@@ -18,7 +18,7 @@ export type HomeView = {
   mentors: { name: string; links: MentorLink[]; slug: string | undefined; link: string | undefined; mentions: number }[];
   /** "Who to interview next": each tip name's box */
   boxes: Record<string, BoxData>;
-  /** "Who to interview next": the New faces already interviewed on the show, by person key (18 Nov 2026) */
+  /** "Who to interview next": people suggested on the show who have since been interviewed, by person key (18 Nov 2026) */
   interviewed: Record<string, Interviewed>;
   links: LinkData;
 };

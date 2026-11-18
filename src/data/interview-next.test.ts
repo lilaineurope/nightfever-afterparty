@@ -44,7 +44,7 @@ test("one person, one spelling: no name is part of another name on the list", ()
 test("Chi Chi & Johnny: one entry, back for a part two, with every moment", () => {
   const p = INTERVIEW_PEOPLE.comeBack.find((x) => x.name === "Chi Chi Valenti & Johnny Dynell");
   assert.ok(p);
-  assert.deepEqual(p.said.map((t) => t.episodeId), ["s06e03", "s01e09", "s02e11"]);
+  assert.deepEqual(p.said.map((t) => t.episodeId), ["s01e09", "s02e11", "s06e03"]);
   assert.ok(!INTERVIEW_PEOPLE.newFaces.some((x) => x.key === p.key));
 });
 
