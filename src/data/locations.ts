@@ -5,6 +5,22 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Bethesda Fountain", lat: 40.774, lng: -73.9708, area: "Central Park" },
+  { name: "Adirondack Mountains", lat: 44.1, lng: -73.92, area: "Upstate New York" },
+  { name: "Clinton, New York", lat: 43.0484, lng: -75.3785, area: "Upstate New York" },
+  { name: "Hamilton College", lat: 43.0526, lng: -75.4052, area: "Clinton, New York" },
+  { name: "Bridgehampton", lat: 40.9379, lng: -72.3009, area: "The Hamptons" },
+  { name: "Roxy Hotel (Tribeca)", lat: 40.7194, lng: -74.0053, area: "Tribeca" },
+  { name: "Caffe Reggio", lat: 40.7302, lng: -74.0003, area: "Greenwich Village" },
+  { name: "Eighth Street Bookshop", lat: 40.733, lng: -73.9985, area: "Greenwich Village" },
+  { name: "St. Mark's Church in-the-Bowery", lat: 40.73, lng: -73.9867, area: "East Village" },
+  { name: "Yiddish theatre, Second Avenue", lat: 40.7313, lng: -73.9867, area: "East Village" },
+  { name: "Slugger Ann's", lat: 40.7316, lng: -73.9872, area: "East Village", tip: "Across Second Avenue from the Yiddish theatre, as Dustin tells it" },
+  { name: "Le Cirque", lat: 40.7667, lng: -73.9682, area: "Upper East Side" },
+  { name: "Olympic Tower", lat: 40.759, lng: -73.9763, area: "Midtown" },
+  { name: "Sixth Avenue", lat: 40.7326, lng: -73.9993, area: "Greenwich Village" },
+  { name: "Trudy Heller's", lat: 40.7337, lng: -73.999, area: "Greenwich Village" },
+  { name: "860 Broadway", lat: 40.7365, lng: -73.9904, area: "Union Square" },
   { name: "The Mercer Hotel", lat: 40.7247, lng: -73.9984, area: "SoHo" },
   { name: "Northeastern University", lat: 42.3398, lng: -71.0892, area: "Boston" },
   { name: "Seventh Avenue", lat: 40.7527, lng: -73.9897, area: "Garment District" },

@@ -145,6 +145,15 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     status: "In the works - working title Meet Me at the Mailbox: The Fabulous Mailboxes of Bainbridge Island; no release announced yet.",
     source: { label: "Meet Me at the Mailbox", card: "meet-me-at-the-mailbox" },
   },
+  {
+    title: "Dustin Pittman's underground 70s pictures",
+    why: "When Dustin talks about photographing the trucks in the Meatpacking District and the light in the old boathouses on the piers, the hosts say that is a whole other book - not his celebrity book.",
+    episodeId: "s04e05",
+    time: "00:34:24",
+    made: "not yet",
+    status: "Not as a book of its own - his New York After Dark (Rizzoli, 2024) covers the nightlife at large.",
+    source: { label: "Dustin Pittman: New York After Dark", card: "dustin-pittman-new-york-after-dark" },
+  },
 ];
 
 export const FILMS_TO_MAKE: StillToMake[] = [
@@ -282,5 +291,13 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     made: "not yet",
     status: "Not yet - David's Friend has only been staged (in rep with The Village! and taped before the pandemic); no film announced.",
     source: { label: "David's Friend", card: "david-s-friend" },
+  },
+  {
+    title: "Dustin Pittman's underground films and footage",
+    why: "Fenton and Randy ask where they can see the improvised film Dustin shot with Taylor Mead in Bridgehampton - he says he still has it - and Randy says he should put his footage of Jackie Curtis going over her lines on YouTube.",
+    episodeId: "s04e05",
+    time: "00:29:09",
+    made: "not yet",
+    status: "Not online that we can find.",
   },
 ];

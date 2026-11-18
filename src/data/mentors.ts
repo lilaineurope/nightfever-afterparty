@@ -109,6 +109,8 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Mickey Boardman", mentee: "Drew Elliott", episode: "s04e02", time: "00:44:53", line: "Drew started as a Paper intern - Mickey's 'grandson' to Kim's mom" },
   { mentor: "Kim Hastreiter", mentee: "Lauren Ezersky", episode: "s04e06", time: "00:23:52", line: "Gave Lauren her Paper column: 'go do Donna Karan' - and printed it" },
   { mentor: "Lauren Ezersky", mentee: "Lynn Yaeger", episode: "s04e02", time: "00:36:27", line: "Befriended Lynn when she knew no one at Fashion Week and introduced her to Mickey" },
+  { mentor: "Ingrid Superstar", mentee: "Dustin Pittman", episode: "s04e05", time: "00:19:18", line: "Bumped into Dustin at Bethesda Fountain and dragged him to the Factory, where he met Andy" },
+  { mentor: "Liza Minnelli", mentee: "Dustin Pittman", episode: "s04e05", time: "00:14:47", line: "Told the teenage production assistant on The Sterile Cuckoo to think about film school or New York" },
   { mentor: "Michael Alig", mentee: "Christopher Comp", episode: "s05e07a", time: "00:18:33", line: "Christopher calls him a mentor: he gave him and Pebbles jobs and taught him to promote parties in the Limelight and Club USA offices, writing the invitation copy" },
 ];
 
