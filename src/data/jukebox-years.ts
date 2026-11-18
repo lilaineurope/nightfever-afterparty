@@ -107,6 +107,8 @@ export const YEARS: Record<string, number> = {
   "The Velvet Underground": 1964,
   "The Velvet Underground – 'Heroin'": 1967,
   "The Velvet Underground – 'Sweet Jane'": 1970,
+  "Thelma Houston – 'Don't Leave Me This Way'": 1976,
+  "Grace Jones – 'That's the Trouble'": 1976,
   "Now Explosion": 1983,
   "Oasis": 1991,
   "Pearl Jam": 1990,

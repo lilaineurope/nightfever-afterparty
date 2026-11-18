@@ -163,6 +163,8 @@ export const YOUTUBE: Record<string, string> = {
   "The Velvet Underground": "KR7Lv8XZtkk",
   "The Velvet Underground – 'Heroin'": "foptT2bsKww",
   "The Velvet Underground – 'Sweet Jane'": "jLW8VKWvWuA",
+  "Thelma Houston – 'Don't Leave Me This Way'": "8sAbzZjXLy8",
+  "Grace Jones – 'That's the Trouble'": "dbWUc0KguKw",
   "Nirvana – Nevermind": "hTWKbfoikeg",
   "Now Explosion": "8jTfnW9F52g",
   "Oasis": "7hCykIuvUts",

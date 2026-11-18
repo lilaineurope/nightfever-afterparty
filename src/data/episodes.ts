@@ -870,6 +870,7 @@ const s02e10: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1115742838.mp3",
   runtime: "1:14:41",
   afterpartyPublished: "2026-11-28",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLQ-qB_NRzTlc",
   blurb:
     "Brian Belovitch on the Gilded Grape, Fellini's pink carpet, Antonio Lopez, army-wife days in Germany and the life of Tish Gervais",
 };

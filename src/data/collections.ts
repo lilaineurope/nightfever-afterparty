@@ -176,6 +176,8 @@ const SPOTIFY: Record<string, string> = {
   "The Velvet Underground": "spotify:artist:1nJvji2KIlWSseXRSlNYsC",
   "The Velvet Underground – 'Heroin'": "spotify:track:5by3w3NXvwDpV9FBSOR35u",
   "The Velvet Underground – 'Sweet Jane'": "spotify:track:2LAZn3ygMkecVRmyXvGjHO",
+  "Thelma Houston – 'Don't Leave Me This Way'": "spotify:track:51qi5dgc9CsotM87GmRkAX",
+  "Grace Jones – 'That's the Trouble'": "spotify:track:0fs30ctZgJe8xg1Amdg3BX",
   "Tears for Fears": "spotify:artist:4bthk9UfsYUYdcFyqxmSUU",
   "The Temptations": "spotify:artist:3RwQ26hR2tJtA8F9p2n7jG",
   "The Who": "spotify:artist:67ea9eGLXYMsO2eYQRui3w",
