@@ -3,6 +3,8 @@ import { z } from "zod";
 import { HAS_LINK, looksLikeBot, tooBusy } from "@/lib/form-guard";
 import type { LinkCard } from "@/lib/link-index";
 import type { BoxData } from "@/lib/home-view";
+import type { Interviewed } from "@/lib/interviewed.server";
+import { nameKey } from "@/data/interview-next";
 
 // "Who to interview next" - visitors' suggestions (Lisa, 27 Oct 2026).
 // A suggestion is stored as "pending" in interview_suggestions; the visitor's browser emails Lisa a heads-up with a
@@ -11,10 +13,18 @@ import type { BoxData } from "@/lib/home-view";
 // grants - only these validated server functions (service role) touch it; moderation needs Lisa's key.
 
 /** card and box: the name's A–Z card and its box, worked out here so the home page doesn't load the whole A–Z (17 Nov 2026). */
-export type FanPick = { who: string; why: string | null; count: number; card?: LinkCard | undefined; box?: BoxData | undefined };
+/** key: the same person key as the on-air list, so a fan pick of a name already on it joins that entry (18 Nov 2026);
+ *  interviewed: set when the name has already been a Night Fever guest. */
+export type FanPick = {
+  who: string;
+  key: string;
+  why: string | null;
+  count: number;
+  card?: LinkCard | undefined;
+  box?: BoxData | undefined;
+  interviewed?: Interviewed | undefined;
+};
 export type PendingSuggestion = { id: string; who: string; why: string | null; from_name: string | null; status: "pending" | "approved"; created_at: string };
-
-const norm = (s: string) => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
 /** Public: approved suggestions, one entry per person (most suggested first), never the visitor's name. */
 export const listFanPicks = createServerFn({ method: "GET" }).handler(async (): Promise<FanPick[]> => {
@@ -27,21 +37,25 @@ export const listFanPicks = createServerFn({ method: "GET" }).handler(async (): 
       .order("approved_at", { ascending: true })
       .limit(500);
     if (error) throw new Error(error.message);
-    const byName = new Map<string, FanPick & { order: number }>();
+    const byName = new Map<string, { who: string; why: string | null; count: number; order: number }>();
     data.forEach((r, i) => {
-      const k = norm(r.who);
+      const k = nameKey(r.who);
       const hit = byName.get(k);
       if (hit) {
         hit.count++;
         if (!hit.why && r.why) hit.why = r.why;
       } else byName.set(k, { who: r.who.trim(), why: r.why, count: 1, order: i });
     });
-    const [{ entityFor, linkCard }, { boxOf }] = await Promise.all([import("@/data/entities"), import("@/lib/home-view.server")]);
-    return [...byName.values()]
-      .sort((a, b) => b.count - a.count || a.order - b.order)
-      .map(({ who, why, count }) => {
+    const [{ entityFor, linkCard }, { boxOf }, { interviewedOn }] = await Promise.all([
+      import("@/data/entities"),
+      import("@/lib/home-view.server"),
+      import("@/lib/interviewed.server"),
+    ]);
+    return [...byName.entries()]
+      .sort(([, a], [, b]) => b.count - a.count || a.order - b.order)
+      .map(([key, { who, why, count }]) => {
         const e = entityFor(who);
-        return { who, why, count, card: linkCard(e), box: e ? boxOf(e) : undefined };
+        return { who, key, why, count, card: linkCard(e), box: e ? boxOf(e) : undefined, interviewed: interviewedOn(who) };
       });
   } catch (e) {
     console.error("Fan picks failed:", e instanceof Error ? e.message : e);

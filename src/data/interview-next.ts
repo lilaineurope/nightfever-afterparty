@@ -282,3 +282,60 @@ export const COME_BACK: InterviewTip[] = [
     time: "01:03:39",
   },
 ];
+
+// One entry per person (Lisa, 18 Nov 2026): a name said in several episodes - or in both lists - used to show up once per
+// row. Keep adding one row per moment above (same A–Z card name each time); interviewPeople() folds the rows into one
+// entry per person, with every moment it was said. Anyone the hosts asked back goes under "Back for a part two" with
+// their earlier "get them on" moments too. Whether a New face has already been on the show is worked out from the
+// guest list (src/lib/interviewed.server.ts), so a new episode never needs a hand edit here.
+
+/** Same person, whatever the spelling of quotes, dots, accents or spaces. */
+export const nameKey = (name: string) =>
+  name
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/["'‘’“”.]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+export type InterviewPerson = {
+  /** The A–Z card name (from the person's first row) */
+  name: string;
+  key: string;
+  list: "new" | "back";
+  /** true when at least one moment is a "get them on" tip (a New-face row) - such a person can later be labelled
+   *  "Suggested and interviewed" */
+  suggested: boolean;
+  /** Every moment the name was put forward, oldest episode first */
+  said: InterviewTip[];
+};
+
+// Oldest episode first, so a story reads in order: suggested, suggested again, interviewed and asked back.
+const byEpisode = (a: InterviewTip, b: InterviewTip) => a.episodeId.localeCompare(b.episodeId) || a.time.localeCompare(b.time);
+
+function fold(): { newFaces: InterviewPerson[]; comeBack: InterviewPerson[] } {
+  const back = new Set(COME_BACK.map((t) => nameKey(t.name)));
+  const people = new Map<string, InterviewPerson>();
+  // Come-back rows first, so a person keeps their place in that list; New-face rows in their own order after.
+  for (const t of [...COME_BACK, ...NEW_FACES]) {
+    const key = nameKey(t.name);
+    const hit = people.get(key);
+    const suggested = NEW_FACES.includes(t);
+    if (hit) {
+      hit.said.push(t);
+      hit.suggested ||= suggested;
+    } else people.set(key, { name: t.name, key, list: back.has(key) ? "back" : "new", suggested, said: [t] });
+  }
+  const all = [...people.values()];
+  for (const p of all) p.said.sort(byEpisode);
+  // New faces keep the order of their first row in NEW_FACES.
+  const firstNew = (p: InterviewPerson) => NEW_FACES.findIndex((t) => nameKey(t.name) === p.key);
+  return {
+    newFaces: all.filter((p) => p.list === "new").sort((a, b) => firstNew(a) - firstNew(b)),
+    comeBack: all.filter((p) => p.list === "back"),
+  };
+}
+
+/** The two lists the home page shows: one entry per person. */
+export const INTERVIEW_PEOPLE = fold();

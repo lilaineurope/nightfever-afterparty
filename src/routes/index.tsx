@@ -97,7 +97,7 @@ function Index() {
       <HallOfFame mentors={home.mentors} />
 
       {/* Who to interview next - tips heard on the show (Lisa, 23 Oct 2026) */}
-      <InterviewNext boxes={home.boxes} />
+      <InterviewNext boxes={home.boxes} interviewed={home.interviewed} />
 
 
       {/* Footer */}

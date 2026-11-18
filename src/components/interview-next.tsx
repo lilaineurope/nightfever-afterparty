@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendToInbox } from "@/lib/web3forms";
 import { listFanPicks, suggestGuest, type FanPick } from "@/lib/suggestions.functions";
-import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
+import { INTERVIEW_PEOPLE, type InterviewPerson, type InterviewTip } from "@/data/interview-next";
+import type { Interviewed } from "@/lib/interviewed.server";
 import { episodeById, episodePath } from "@/data/episodes";
 import { Timestamp } from "@/components/episode-player";
 import { MomentsBox, plainClick } from "@/components/moments-box";
@@ -48,21 +49,75 @@ function TapBox({ box, id, opener }: { box: BoxData | undefined; id: string; ope
   );
 }
 
-function Tip({ tip, box, id, opener }: { tip: InterviewTip; box: BoxData | undefined; id: string; opener: Opener }) {
-  const card = useLinks().cardForName(tip.name);
+function SaidIn({ tip, badge }: { tip: InterviewTip; badge?: string | undefined }) {
   const ep = episodeById(tip.episodeId);
   return (
-    <li className={ITEM_CLASS}>
-      <TapName name={tip.name} card={card} id={id} opener={opener} />
-      <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{tip.why}</p>
-      <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-        <span className="bg-gold px-1.5 py-0.5 font-semibold uppercase tracking-wide text-gold-foreground">Suggested on the show</span>
-        <span>Said in</span>
-        <Link to={episodePath(ep.id)} className="text-gold">
-          S{ep.season}E{ep.episode}{ep.part} &middot; {ep.guest}
+    <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+      {badge && <span className="bg-gold px-1.5 py-0.5 font-semibold uppercase tracking-wide text-gold-foreground">{badge}</span>}
+      <span>Said in</span>
+      <Link to={episodePath(ep.id)} className="text-gold">
+        S{ep.season}E{ep.episode}{ep.part} &middot; {ep.guest}
+      </Link>
+      <Timestamp episodeId={ep.id} time={tip.time} className="text-xs" />
+    </p>
+  );
+}
+
+/** "Suggested and interviewed" (Lisa, 18 Nov 2026): someone put forward on the show (or by fans) who has been a guest
+ *  since, with a link to that episode - its AFTERPARTY page, or WOW Presents Plus while it has none yet. */
+function AlreadyInterviewed({ done }: { done: Interviewed }) {
+  return (
+    <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+      <span>Interviewed in</span>
+      {done.afterparty ? (
+        <Link to={episodePath(done.episodeId)} className="text-gold">
+          {done.code} &middot; {done.guest} &middot; AFTERPARTY
         </Link>
-        <Timestamp episodeId={ep.id} time={tip.time} className="text-xs" />
-      </p>
+      ) : (
+        <a href={done.href} target="_blank" rel="noopener noreferrer" className="text-gold">
+          {done.code} &middot; {done.guest} on WOW Presents Plus &#8599;
+        </a>
+      )}
+    </p>
+  );
+}
+
+const fanBadge = (count: number) => (count > 1 ? `Suggested by ${count} fans` : "Suggested by a fan");
+
+/** One person, with every moment their name was put forward on the show (one entry per person - Lisa, 18 Nov 2026). */
+function Person({
+  person,
+  box,
+  done,
+  fans,
+  opener,
+}: {
+  person: InterviewPerson;
+  box: BoxData | undefined;
+  done: Interviewed | undefined;
+  fans: number;
+  opener: Opener;
+}) {
+  const card = useLinks().cardForName(person.name);
+  const id = `${person.list}:${person.key}`;
+  const n = person.said.length;
+  // Someone suggested who has been on the show since: "Suggested and interviewed" (Lisa, 18 Nov 2026).
+  const badge = `Suggested${n > 1 ? ` ${n} times` : ""}${done ? " and interviewed" : " on the show"}`;
+  return (
+    <li className={ITEM_CLASS}>
+      <TapName name={person.name} card={card} id={id} opener={opener} />
+      {person.said.map((tip, i) => (
+        <div key={`${tip.episodeId}-${tip.time}`} className={i > 0 ? "mt-3" : undefined}>
+          <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{tip.why}</p>
+          <SaidIn tip={tip} badge={i === 0 ? badge : undefined} />
+        </div>
+      ))}
+      {fans > 0 && (
+        <p className="mt-2 text-xs text-muted-foreground">
+          <span className="bg-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink-foreground">Also {fanBadge(fans).toLowerCase()}</span>
+        </p>
+      )}
+      {done && <AlreadyInterviewed done={done} />}
       <TapBox box={box} id={id} opener={opener} />
     </li>
   );
@@ -163,9 +218,11 @@ function FanTip({ pick, id, opener }: { pick: FanPick; id: string; opener: Opene
       {pick.why && <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">&ldquo;{pick.why}&rdquo;</p>}
       <p className="mt-1.5 text-xs text-muted-foreground">
         <span className="bg-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink-foreground">
-          {pick.count > 1 ? `Suggested by ${pick.count} fans` : "Suggested by a fan"}
+          {fanBadge(pick.count)}
+          {pick.interviewed ? " and interviewed" : ""}
         </span>
       </p>
+      {pick.interviewed && <AlreadyInterviewed done={pick.interviewed} />}
       {withCard ? (
         <LinkDataProvider value={withCard}>
           <TapBox box={pick.box} id={id} opener={opener} />
@@ -178,7 +235,15 @@ function FanTip({ pick, id, opener }: { pick: FanPick; id: string; opener: Opene
 }
 
 /** "Who to interview next" box (Lisa, 23 Oct 2026): every on-air tip for a future guest, with where it was said. */
-export function InterviewNext({ className = "", boxes }: { className?: string; boxes: Record<string, BoxData> }) {
+export function InterviewNext({
+  className = "",
+  boxes,
+  interviewed,
+}: {
+  className?: string;
+  boxes: Record<string, BoxData>;
+  interviewed: Record<string, Interviewed>;
+}) {
   // Fans' suggestions that Lisa approved join the New faces list (src/lib/suggestions.functions.ts).
   const list = useServerFn(listFanPicks);
   const [picks, setPicks] = useState<FanPick[]>([]);
@@ -189,9 +254,20 @@ export function InterviewNext({ className = "", boxes }: { className?: string; b
   const opener: Opener = { open, toggle: (k) => setOpen((o) => (o === k ? null : k)), close: () => setOpen(null) };
   // Two tabs instead of two side-by-side lists, and each list in two columns, so the box is shorter (Lisa, 4 Nov 2026).
   const [tab, setTab] = useState<"new" | "back">("new");
+  // A fan pick of a name already on the list joins that entry instead of showing twice (18 Nov 2026).
+  const onAir = new Set([...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack].map((p) => p.key));
+  const fansFor = (key: string) => picks.find((p) => p.key === key)?.count ?? 0;
+  const fanOnly = picks.filter((p) => !onAir.has(p.key));
+  // Suggested-and-interviewed names go to the end of New faces: the top of the list is people still to book.
+  const newFaces = [
+    ...INTERVIEW_PEOPLE.newFaces.filter((p) => !interviewed[p.key]).map((p) => ({ kind: "air" as const, p })),
+    ...fanOnly.filter((f) => !f.interviewed).map((f) => ({ kind: "fan" as const, f })),
+    ...INTERVIEW_PEOPLE.newFaces.filter((p) => interviewed[p.key]).map((p) => ({ kind: "air" as const, p })),
+    ...fanOnly.filter((f) => f.interviewed).map((f) => ({ kind: "fan" as const, f })),
+  ];
   const tabs = [
-    { key: "new" as const, label: "New faces", count: NEW_FACES.length + picks.length },
-    { key: "back" as const, label: "Back for a part two", count: COME_BACK.length },
+    { key: "new" as const, label: "New faces", count: newFaces.length },
+    { key: "back" as const, label: "Back for a part two", count: INTERVIEW_PEOPLE.comeBack.length },
   ];
   return (
     <section aria-labelledby="interview-next" className={`px-6 py-14 ${className}`}>
@@ -236,20 +312,21 @@ export function InterviewNext({ className = "", boxes }: { className?: string; b
         {tab === "new" ? (
           <div role="tabpanel" id="in-panel-new" aria-labelledby="in-tab-new" className="mt-6">
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
-              {NEW_FACES.map((t) => (
-                <Tip key={t.name} tip={t} box={boxes[t.name]} id={`new:${t.name}`} opener={opener} />
-              ))}
-              {picks.map((p) => (
-                <FanTip key={p.who} pick={p} id={`fan:${p.who}`} opener={opener} />
-              ))}
+              {newFaces.map((row) =>
+                row.kind === "air" ? (
+                  <Person key={row.p.key} person={row.p} box={boxes[row.p.name]} done={interviewed[row.p.key]} fans={fansFor(row.p.key)} opener={opener} />
+                ) : (
+                  <FanTip key={row.f.key} pick={row.f} id={`fan:${row.f.key}`} opener={opener} />
+                ),
+              )}
             </ul>
             <YourChoice />
           </div>
         ) : (
           <div role="tabpanel" id="in-panel-back" aria-labelledby="in-tab-back" className="mt-6">
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
-              {COME_BACK.map((t) => (
-                <Tip key={t.name} tip={t} box={boxes[t.name]} id={`back:${t.name}`} opener={opener} />
+              {INTERVIEW_PEOPLE.comeBack.map((p) => (
+                <Person key={p.key} person={p} box={boxes[p.name]} done={interviewed[p.key]} fans={fansFor(p.key)} opener={opener} />
               ))}
             </ul>
           </div>
