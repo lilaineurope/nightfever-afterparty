@@ -838,6 +838,7 @@ const s04e06: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO8016283024.mp3",
   runtime: "51:10",
   afterpartyPublished: "2026-11-26",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLPEUr_i2Tp6M",
   blurb:
     "Lauren Ezersky on Behind the Velvet Ropes, interviewing McQueen in bed, opening night at Studio 54, Le Jardin and why your coat is your car",
 };
