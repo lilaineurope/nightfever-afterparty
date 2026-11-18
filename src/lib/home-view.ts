@@ -2,6 +2,7 @@ import type { EpisodeStats } from "@/data/episode-stats";
 import type { MentorLink } from "@/data/mentors";
 import type { Moment } from "@/components/moments-box";
 import type { LinkData } from "@/lib/link-index";
+import type { Interviewed } from "@/lib/interviewed.server";
 
 /** A MomentsBox's contents worked out on the server (an A–Z entity's box: EntityBox). */
 export type BoxData = { name: string; slug: string; mentions: number; moments: Moment[]; link?: string | undefined; note: string };
@@ -17,5 +18,7 @@ export type HomeView = {
   mentors: { name: string; links: MentorLink[]; slug: string | undefined; link: string | undefined; mentions: number }[];
   /** "Who to interview next": each tip name's box */
   boxes: Record<string, BoxData>;
+  /** "Who to interview next": the New faces already interviewed on the show, by person key (18 Nov 2026) */
+  interviewed: Record<string, Interviewed>;
   links: LinkData;
 };

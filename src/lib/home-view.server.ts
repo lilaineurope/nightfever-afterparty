@@ -5,7 +5,8 @@ import { entityFor, totalMentions, entities, type Entity } from "@/data/entities
 import { episodes } from "@/data/episodes";
 import { episodeStats } from "@/data/episode-stats";
 import { rankedMentors } from "@/lib/mentor-rank";
-import { COME_BACK, NEW_FACES } from "@/data/interview-next";
+import { INTERVIEW_PEOPLE } from "@/data/interview-next";
+import { interviewedOn, type Interviewed } from "@/lib/interviewed.server";
 import { bookClub, clubsMentioned, jukebox } from "@/data/collections";
 import { sceneEvents } from "@/data/scene";
 import { momentsOf } from "@/components/moments-box";
@@ -34,16 +35,20 @@ export function homeView(): HomeView {
   const mentors = rankedMentors.slice(0, 10);
   for (const m of mentors) if (m.slug) L.card(m.slug);
   const boxes: Record<string, BoxData> = {};
-  for (const t of [...NEW_FACES, ...COME_BACK]) {
-    L.name(t.name);
-    const e = entityFor(t.name);
-    if (e) boxes[t.name] = boxOf(e);
+  const interviewed: Record<string, Interviewed> = {};
+  for (const p of [...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack]) {
+    L.name(p.name);
+    const e = entityFor(p.name);
+    if (e) boxes[p.name] = boxOf(e);
+    const done = p.list === "new" ? interviewedOn(p.name) : undefined;
+    if (done) interviewed[p.key] = done;
   }
   return {
     counts: { timeline: sceneEvents.length, jukebox: jukebox.length, clubs: clubsMentioned.length, library: bookClub.length, explore: entities.length },
     stats,
     mentors,
     boxes,
+    interviewed,
     links: L.data,
   };
 }
