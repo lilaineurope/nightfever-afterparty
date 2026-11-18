@@ -35,7 +35,7 @@
   "name": "James St. James",
   "heard": "James",
   "time": "00:00:09",
-  "context": "Host; asks Lauren for interview tips and lets slip he has not been inside a nightclub this century, as Fenton puts it",
+  "context": "Host; asks Lauren for interview tips and loves the Behind the Velvet Ropes opening titles - 90s New York street style and a sudden glimpse of the Twin Towers",
   "link": "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-601",
   "status": "Confirmed"
  },
@@ -58,7 +58,7 @@
   "name": "Randy Barbato",
   "heard": "Randy Barbado / Randy",
   "time": "00:00:17",
-  "context": "Co-host, joining from Pacoima on a top-secret job; says everyone in the World of Wonder office was excited Lauren was coming on and that he still watches Behind the Velvet Ropes on YouTube",
+  "context": "Co-host; Lauren asks if he remembers that Behind the Velvet Ropes started out as a nightclub show",
   "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
   "status": "Confirmed"
  },
@@ -114,7 +114,7 @@
   "name": "Fenton Bailey",
   "heard": "Fenton",
   "time": "00:00:17",
-  "context": "Co-host; says he and Randy were big fans of Behind the Velvet Ropes and that it inspired Manhattan Cable, and that Quaaludes never made it to England",
+  "context": "Co-host; tells Lauren everyone in the World of Wonder office was excited she was coming on, says he and Randy were big fans of Behind the Velvet Ropes and that it inspired Manhattan Cable, and that Quaaludes never made it to England",
   "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
   "status": "Confirmed"
  },
@@ -159,7 +159,7 @@
   "name": "World of Wonder (WOW)",
   "heard": "World of Wonder / the office",
   "time": "00:00:17",
-  "context": "Fenton and Randy's company; Randy invites Lauren to come by the office in LA and play",
+  "context": "Fenton and Randy's company: everyone in the office was excited Lauren was coming on, and the hosts invite her to drop by when she is in LA",
   "link": "https://en.wikipedia.org/wiki/World_of_Wonder_(company)",
   "status": "Confirmed"
  },
@@ -193,7 +193,7 @@
   "name": "Quaaludes",
   "heard": "quaaludes",
   "time": "00:21:34",
-  "context": "Lauren preferred Quaaludes or downs to coke because she's hyper anyway; Fenton's biggest regret is never having taken one - they didn't have them in England - and Randy remembers them from his teens",
+  "context": "Lauren preferred Quaaludes or downs to coke because she's hyper anyway; Fenton's biggest regret is never having taken one - they didn't have them in England - and one of the hosts remembers them from his teens",
   "link": "",
   "status": "Confirmed"
  },
@@ -394,7 +394,7 @@
   "name": "Pacoima",
   "heard": "Pacoima",
   "time": "00:00:27",
-  "context": "Randy is live from Pacoima - what he's doing there is top secret",
+  "context": "One of the hosts is live from Pacoima - what he's doing there is top secret",
   "link": "https://en.wikipedia.org/wiki/Pacoima,_Los_Angeles",
   "status": "Confirmed"
  },
@@ -702,7 +702,7 @@
   "name": "Vogue magazine",
   "heard": "Vogue",
   "time": "00:02:47",
-  "context": "Randy quotes Vogue calling Lauren the most unjaded fashion journalist out there",
+  "context": "Fenton quotes Vogue calling Lauren the most unjaded fashion journalist out there",
   "link": "https://en.wikipedia.org/wiki/Vogue_(magazine)",
   "status": "Confirmed"
  },
@@ -1124,7 +1124,7 @@
   "name": "Seventh Avenue",
   "heard": "7th Avenue",
   "time": "00:28:05",
-  "context": "The racks rolling down the street are what Randy pictures from Behind the Velvet Ropes",
+  "context": "The racks rolling down the street are what one of the hosts pictures from Behind the Velvet Ropes",
   "link": "https://en.wikipedia.org/wiki/Seventh_Avenue_(Manhattan)",
   "status": "Confirmed"
  },
@@ -1292,5 +1292,62 @@
   "context": "Fenton says that's why RuPaul has DragCon - he's still selling",
   "link": "https://en.wikipedia.org/wiki/RuPaul%27s_DragCon_LA",
   "status": "Confirmed"
+ },
+ {
+  "rank": 114,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Lauren's on-camera look (S04E06)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Platinum hair swept up, a black satin slip dress with thin straps, a gold chain necklace, gold drop earrings and rings, sitting in a carved gilt armchair at home - walls hung salon-style with gilt-framed oil paintings and a crystal chandelier in the hall behind her",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-406",
+  "status": "Confirmed",
+  "fashion": "Black satin slip dress, gold chain, gold drop earrings",
+  "colours": [
+   "platinum hair #C8A798",
+   "satin black #3B3537",
+   "gold chain #B4968B",
+   "gilt frame #8C7151",
+   "chandelier glow #E7C9A6"
+  ]
+ },
+ {
+  "rank": 115,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S04E06)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "A pale blue satin mock-neck top and tortoiseshell glasses, in front of his floor-to-ceiling bookshelves with a round wall clock and a Buster Crabbe poster",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-406",
+  "status": "Confirmed",
+  "fashion": "Pale blue satin mock-neck top, tortoiseshell glasses",
+  "colours": [
+   "satin blue #879092",
+   "shadow blue #636F7D",
+   "bookshelf brown #382C15",
+   "poster sepia #5C4E33",
+   "clock face #6E5F4A"
+  ]
+ },
+ {
+  "rank": 116,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S04E06)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Rimless glasses and a sky-blue sweater with a grey hood, in front of brown striped curtains between orange sunflower wallpaper and bookshelves, with Brillo boxes on the top shelf",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-406",
+  "status": "Confirmed",
+  "fashion": "Sky-blue hooded sweater, rimless glasses",
+  "colours": [
+   "sweater blue #8AB3E9",
+   "hood grey #4F5B7D",
+   "sunflower wallpaper #B59768",
+   "curtain brown #72442B",
+   "paper bag #BBBAB0"
+  ]
  }
 ]
