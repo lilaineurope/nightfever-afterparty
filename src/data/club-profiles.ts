@@ -25,6 +25,21 @@ import studio54Polaroid from "@/assets/clubs/studio-54-polaroid.webp";
 import limelightPhoto from "@/assets/clubs/limelight-photo.webp";
 import limelightPhotoPhone from "@/assets/clubs/limelight-photo-phone.webp";
 import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
+import redZonePhoto from "@/assets/clubs/red-zone-photo.webp";
+import redZonePhotoPhone from "@/assets/clubs/red-zone-photo-phone.webp";
+import redZonePolaroid from "@/assets/clubs/red-zone-polaroid.webp";
+import squeezePhoto from "@/assets/clubs/squeezebox-photo.webp";
+import squeezePhotoPhone from "@/assets/clubs/squeezebox-photo-phone.webp";
+import squeezePolaroid from "@/assets/clubs/squeezebox-polaroid.webp";
+import marsPhoto from "@/assets/clubs/mars-photo.webp";
+import marsPhotoPhone from "@/assets/clubs/mars-photo-phone.webp";
+import marsPolaroid from "@/assets/clubs/mars-polaroid.webp";
+import robotsPhoto from "@/assets/clubs/robots-photo.webp";
+import robotsPhotoPhone from "@/assets/clubs/robots-photo-phone.webp";
+import robotsPolaroid from "@/assets/clubs/robots-polaroid.webp";
+import xenonPhoto from "@/assets/clubs/xenon-photo.webp";
+import xenonPhotoPhone from "@/assets/clubs/xenon-photo-phone.webp";
+import xenonPolaroid from "@/assets/clubs/xenon-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -121,6 +136,12 @@ const COPACABANA_CREDIT = "Header: one of Susanne Bartsch's Copa nights, drawn f
 const MK_CREDIT = "Header and polaroid: MK drawn for the AFTERPARTY - no photo of MK is free to use";
 const PEPPERMINT_CREDIT = "Photo: M. Azzara, Joey and the Twisters at the Peppermint Lounge, c. 1962, via Wikimedia Commons, public domain. Polaroid: the Raybeats at the Peppermint Lounge flyer, 1981 - Gallery 98";
 const JACKIE_60_CREDIT = "Header: a Jackie 60 Tuesday drawn for the AFTERPARTY. Polaroid: All-Star Poetry Burlesque flyer, Jackie 60, 432 West 14th Street - Gallery 98";
+
+const RED_ZONE_CREDIT = "Header and polaroid: a Red Zone night drawn for the AFTERPARTY - no photo of Red Zone is free to use";
+const SQUEEZEBOX_CREDIT = "Header: a Squeezebox night drawn for the AFTERPARTY. Polaroid: the stage at Don Hill's in 2010, photo by kimm613, via Wikimedia Commons, CC BY-SA 2.0";
+const MARS_CREDIT = "Header and polaroid: a night at Mars drawn for the AFTERPARTY - no photo of Mars is free to use";
+const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPARTY. Polaroid: Save the Robots after-hours Saturdays card - Gallery 98";
+const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -733,6 +754,125 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s05e04", who: "Nick Egan", time: "00:27:23", quote: "Johnny started Jackie 60... New York had it bigger, but it wasn't as integrated as it was in London. It was much more segregated, until people like Johnny started to bring it together." },
     ],
     portrait: { photo: jackiePhoto, phone: jackiePhotoPhone, polaroid: jackiePolaroid, focus: "50%", credit: JACKIE_60_CREDIT },
+  },
+  // Batch 5 (Lisa, 18 Nov 2026: "yes start"). Facts: Wikipedia "Save the Robots" and "Xenon (nightclub)"; Squeezebox from Red Bull
+  // Music Academy's oral history and the Village Voice's Don Hill obituary; Red Zone and Mars have no Wikipedia page and no
+  // reliable dates online, so their pages lean on the guests' own stories (checked 18 Nov 2026). Pictures: sources sheet, Round 11.
+  "red-zone": {
+    opened: "Late 80s",
+    closed: "90s",
+    address: "the West Side",
+    story:
+      "A big West Side club in a former garage, open on weekends, with a restaurant and VIP room up the stairs and a raised stage on the dance floor. It was where the voguers and the Club Kids met - Luis Xtravaganza Camacho remembers everyone becoming family there - and where the House of Ecstasy held a ball. James St. James worked there, Lincoln Palsgrove IV and Kenny Kenny did the door, Michael Alig hosted parties, and one midweek night Lincoln introduced RuPaul to Michelle Visage on its dance floor.",
+    timeline: [
+      ["Late 80s", "Red Zone opens on the West Side in a former garage, weekends only"],
+      ["Late 80s", "Ernie Glam shows up in his LED smiley hat - the era of acid house"],
+      ["1989", "The House of Ecstasy ball; voguers and Club Kids share the floor"],
+      ["Early 90s", "A midweek night with a raised stage, the Lincoln Lounge - where Lincoln introduces RuPaul to Michelle Visage"],
+    ],
+    stage: ["James St. James", "Lincoln Palsgrove IV", "Kenny Kenny", "Ernie Glam", "RuPaul", "Michelle Visage", "Luis \"Xtravaganza\" Camacho", "Linda Simpson", "Really Denise", "Club Kids"],
+    rooms: ["The World", "The Tunnel", "Limelight", "Roxy", "Robots", "Sound Factory"],
+    said: [
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:30:55", quote: "I was doing the door first at the bottom of the stairs up to the restaurant, to the VIP room... Red Zone wasn't every night. It was like the weekends." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:31:30", quote: "I'll never forget, because Ru talks about it on his podcast: that was one of those nights I introduced Michelle and RuPaul on the dance floor of Red Zone. And Ru was like, who is that?" },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:08:41", quote: "When he was hosting a party at the Red Zone, I had started experimenting with LED lights and soldering guns... I figured out how to make a smile, because that was the era of acid house." },
+      { episode: "s05e07b", who: "Really Denise", time: "00:39:10", quote: "It was Tunnel, the World, Limelight, Red Zone, the Building, Roxy." },
+    ],
+    portrait: { photo: redZonePhoto, phone: redZonePhotoPhone, polaroid: redZonePolaroid, focus: "50%", credit: RED_ZONE_CREDIT },
+  },
+  squeezebox: {
+    opened: "1994",
+    closed: "2000s",
+    address: "Don Hill's, 511 Greenwich Street",
+    story:
+      "A Friday night at Don Hill's rock club on the edge of SoHo, started in April 1994 by Michael Schmidt, Miss Guy, Mistress Formika and Pat Briggs: drag queens singing live with a punk band, local rock bands opening for them, go-go dancers of every kind, gay and straight together. Nobody could get a cab there and nobody complained about the noise. Debbie Harry and John Waters came early - John Waters still calls it the greatest club in New York history - and it gave Bebe Buell her stage back.",
+    timeline: [
+      ["15 Apr 1994", "Squeezebox opens at Don Hill's, 511 Greenwich Street"],
+      ["Summer 1994", "On fire: Debbie Harry, John Waters, Joan Jett and Jayne County come down"],
+      ["Mid-90s", "The Squeezebox band backs drag queens singing live; Bebe Buell joins them on stage"],
+      ["2001", "John Cameron Mitchell's Hedwig and the Angry Inch, born at Squeezebox, reaches the cinema"],
+    ],
+    stage: ["Michael Schmidt", "Miss Guy", "Mistress Formika", "Debbie Harry", "John Waters", "Joan Jett", "Jayne County", "Bebe Buell", "Lady Bunny"],
+    rooms: ["Pyramid Club", "Boy Bar", "Jackie 60", "Cat Club", "CBGB"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:52:54", quote: "You couldn't get a cab there. It was a no-man's land, which worked in our favor because there was nobody to complain about the noise... And Don Hill was so wonderful, he just let me do whatever the hell I wanted." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:57:20", quote: "John Waters, in his act to this day, still says Squeezebox was the greatest club in New York City history. He says that on stage." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:39:25", quote: "He gave us full freedom to do whatever we wanted and full support. And so we started Squeezebox in April of 94." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:40:20", quote: "Celebrities started coming. I think, you know, of course Debbie Harry was one of the first." },
+      { episode: "s04e03", who: "Bebe Buell", time: "01:09:20", quote: "And they repaired me, put me back together again, gave me my soul back. I owe my life to those guys. I owe my life to Don Hill." },
+    ],
+    portrait: { photo: squeezePhoto, phone: squeezePhotoPhone, polaroid: squeezePolaroid, focus: "50%", credit: SQUEEZEBOX_CREDIT },
+  },
+  mars: {
+    opened: "1988",
+    closed: "c. 1990",
+    address: "the Meatpacking District",
+    story:
+      "Rudolf Piper's five-floor club in a Meatpacking District warehouse by the river, just as hip-hop was taking over the city: Rudolf didn't like the music but knew the trend would go far. It banned Club Kids, hired an unknown Moby off a demo tape, had Chip Duckett's Sunday gay night and a basement where Willi Ninja would turn up. Rudolf also saw how the dealers took it over - a packet dropped onto the roof from next door - and calls it the beginning of what later happened at the Limelight.",
+    timeline: [
+      ["1988", "Rudolf Piper opens Mars on five floors of a Meatpacking District warehouse"],
+      ["1988", "Moby drops off a demo tape and a DJ resume; the booker Yuki calls him back"],
+      ["1988-89", "Willi Ninja vogues in the basement; Chip Duckett's Sunday nights"],
+      ["c. 1990", "Mars closes; for Rudolf it marks the end of his New York years"],
+    ],
+    stage: ["Rudolf Piper", "Moby", "Willi Ninja", "Chip Duckett", "Lady Bunny", "Mark Kamins", "Jenny Talia"],
+    rooms: ["Danceteria", "Palladium", "Limelight", "The Tunnel", "Quick", "Sound Factory"],
+    said: [
+      { episode: "s01e09", who: "Moby", time: "00:18:03", quote: "There's this new club opening called Mars and they're hiring. So I made a demo tape with house music on one side and hip-hop on the other, and I actually wrote out a resume of my DJ experience... and she laughed at me, understandably." },
+      { episode: "s01e09", who: "Moby", time: "00:20:26", quote: "Chip's Sunday nights at Mars were phenomenal... Nightlife was a refuge for so many people, almost literally and figuratively." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:42:04", quote: "While I was building Mars, hip-hop came. This was a new trend. And I felt that this new trend was gonna go far. I didn't like the music... but I thought, well, it's a new trend." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:07:58", quote: "Suddenly I see a guy coming from the rooftop of the building next door, and he dropped a packet onto the rooftop of Mars... And who was picking up that packet? My manager." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:04:47", quote: "I think I snuck out and went to Mars. So that was my first club experience. I think I had a cocktail and tried to smoke a cigarette." },
+    ],
+    portrait: { photo: marsPhoto, phone: marsPhotoPhone, polaroid: marsPolaroid, focus: "50%", credit: MARS_CREDIT },
+  },
+  robots: {
+    opened: "1983",
+    closed: "1993",
+    address: "25 Avenue B",
+    aka: "Save the Robots",
+    story:
+      "An illegal after-hours club in a storefront and basement on Avenue B: sand on the floor, only vodka, soda and fruit juice at the bar, nobody arriving before four in the morning and the party going on until eight. Shut for fire violations in 1984, it came back as a social club in January 1986 and became where every night ended - after the World, after Red Zone - for drag queens, Club Kids, bartenders off shift and the rest of downtown.",
+    timeline: [
+      ["1983", "Save the Robots opens illegally in a storefront and basement at 25 Avenue B"],
+      ["Mid-1984", "Closed for fire safety violations"],
+      ["Jan 1986", "Reopens with a social club licence; vodka, soda and juice only, 4 to 8 a.m."],
+      ["Late 80s", "The end of every night - the World, then Robots"],
+      ["1993", "The last year of Robots"],
+    ],
+    stage: ["Dean Johnson", "Lady Bunny", "Club Kids", "Michelle Visage", "Jenny Talia", "Richie Rich", "James St. James", "Michelangelo Signorile"],
+    rooms: ["The World", "Pyramid Club", "Red Zone", "Limelight", "The Tunnel"],
+    said: [
+      { episode: "s02e01", who: "Michelle Visage", time: "00:28:41", quote: "I was at the World every weekend... We'd go to the World and then we'd go to Robots." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:17:41", quote: "And then, until you finally made it to Save the Robots, it was like, you know." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:37:26", quote: "I remember going to Robots with you, and everybody would go in the sand looking for their stuff." },
+    ],
+    portrait: { photo: robotsPhoto, phone: robotsPhotoPhone, polaroid: robotsPolaroid, focus: "50%", credit: ROBOTS_CREDIT },
+  },
+  xenon: {
+    opened: "1978",
+    closed: "1984",
+    address: "124 West 43rd Street",
+    story:
+      "Howard Stein and Peppo Vanini opened it in the old Henry Miller's Theatre - xenon is element 54, a wink at Studio 54. The fashion crowd's disco: silver walls, rays of light from a giant X over the dance floor, dancers in swimsuits. Nikki Haskell threw her Christmas party there, it let FIT students in free on Thursdays so the room was full of good-looking people, and Nora Burns's 1980 diary goes there night after night - New York New York, Xenon, then on to Magique.",
+    timeline: [
+      ["Jun 1978", "Howard Stein and Peppo Vanini open Xenon in the former Henry Miller's Theatre"],
+      ["Oct 1978", "Everybody Hates Punk night - costume a must"],
+      ["1980", "Nora Burns's diary: the Kennedy party, five dollars and a limo to Magique"],
+      ["Early 80s", "Free for FIT students on Thursdays; Nikki Haskell's Christmas party"],
+      ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
+    ],
+    stage: ["Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Fiorucci"],
+    rooms: ["Studio 54", "Régine's", "Copacabana", "Danceteria", "Roxy"],
+    said: [
+      { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:48:10", quote: "And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:38", quote: "We gave a party at Xenon. It was the first time anybody had ever given a party because of all the newspapers and everything." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:06:14", quote: "I took $5 and went to Xenon, and then got into a limo with some actors and we went to Magique... Wednesday night with Bonds, Xenon, Magique, Xenon and Bonds again." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:16:33", quote: "Our evening would start at New York, New York... And then we'd move on to Xenon." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:22:38", quote: "Howard Stein is a guy from Xenon." },
+    ],
+    portrait: { photo: xenonPhoto, phone: xenonPhotoPhone, polaroid: xenonPolaroid, focus: "50%", credit: XENON_CREDIT },
   },
 };
 
