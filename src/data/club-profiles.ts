@@ -113,7 +113,7 @@ const BOY_BAR_CREDIT = "Header: a Boy Bar night drawn for the AFTERPARTY. Polaro
 const CLUB_57_CREDIT = "Photo: Americasroof, 57 St. Mark's Place in 2009, via Wikimedia Commons, CC BY 3.0. Polaroid: Swingin' Singles Party card with John Sex and Wendy Wild, Club 57, 1982 - Gallery 98";
 const NELLS_CREDIT = "Header: a Nell's night drawn for the AFTERPARTY. Polaroid: the black key Nell's mailed to its regulars, drawn for the AFTERPARTY";
 const PARADISE_GARAGE_CREDIT = "Header: a Paradise Garage night drawn for the AFTERPARTY. Polaroid: Vito and Roman's car stub invitation, Paradise Garage, 1984 - Gallery 98";
-const CLUB_USA_CREDIT = "Header and polaroid: Ann Bennett and Roz Winter's Gender Bender card, Club USA, 1993 (blurred in the header) - Gallery 98";
+const CLUB_USA_CREDIT = "Header: a Club USA night with its slide, drawn for the AFTERPARTY. Polaroid: Ann Bennett and Roz Winter's Gender Bender card, Club USA, 1993 - Gallery 98";
 const ROXY_CREDIT = "Photo: Aloughman, the Roxy on West 18th Street, via Wikimedia Commons, public domain. Polaroid: Susanne Bartsch's New Year's Eve 2000 Fake Halloween Ball flyer, Roxy - Gallery 98";
 
 const WORLD_CREDIT = "Photo: a card for Oh Jackie Oh! at the World, with Jackie Curtis and Taylor Mead - Gallery 98. Polaroid: Haoui Montaug's No Entiendes sixth anniversary flyer, the World - Gallery 98";
@@ -577,7 +577,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e04", who: "Peter Gatien", time: "00:55:56", quote: "Just totally sweaty people having the best times of their life." },
       { episode: "s01e06", who: "Waltpaper", time: "00:48:52", quote: "I remember doing an interview for the pre-opening of Club USA. I think it was 60 Minutes. And we were all gathered in the stairwell." },
     ],
-    portrait: { photo: clubUsaPhoto, phone: clubUsaPhotoPhone, polaroid: clubUsaPolaroid, focus: "30%", credit: CLUB_USA_CREDIT },
+    portrait: { photo: clubUsaPhoto, phone: clubUsaPhotoPhone, polaroid: clubUsaPolaroid, focus: "50%", credit: CLUB_USA_CREDIT },
     timelineEvent: "club-usa",
   },
   roxy: {
