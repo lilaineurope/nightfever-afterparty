@@ -112,6 +112,10 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Ingrid Superstar", mentee: "Dustin Pittman", episode: "s04e05", time: "00:19:18", line: "Bumped into Dustin at Bethesda Fountain and dragged him to the Factory, where he met Andy" },
   { mentor: "Liza Minnelli", mentee: "Dustin Pittman", episode: "s04e05", time: "00:14:47", line: "Told the teenage production assistant on The Sterile Cuckoo to think about film school or New York" },
   { mentor: "Michael Alig", mentee: "Christopher Comp", episode: "s05e07a", time: "00:18:33", line: "Christopher calls him a mentor: he gave him and Pebbles jobs and taught him to promote parties in the Limelight and Club USA offices, writing the invitation copy" },
+  { mentor: "Potassa de la Fayette", mentee: "Brian Belovitch", episode: "s02e10", time: "00:17:15", line: "The first of the mentors Brian says he found in the clubs" },
+  { mentor: "Antonio Lopez", mentee: "Brian Belovitch", episode: "s02e10", time: "00:34:05", line: "Spotted Tish dancing at Hurrah, drew her and sent her to Studio 54" },
+  { mentor: "Gabriel Rotello", mentee: "Brian Belovitch", episode: "s02e10", time: "00:52:16", line: "Put Tish on stage in his Downtown Dukes and Divas shows" },
+  { mentor: "Edith O'Hara", mentee: "Brian Belovitch", episode: "s02e10", time: "00:58:12", line: "Brian calls her one of his mentors - the first person who really cared about him" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
