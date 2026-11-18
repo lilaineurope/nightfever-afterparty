@@ -1845,5 +1845,24 @@
   "context": "Was trying to sell portraits to celebrities at the later Factory, Dustin says",
   "link": "https://en.wikipedia.org/wiki/Bob_Colacello",
   "status": "Confirmed"
+ },
+ {
+  "rank": 165,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Dustin's on-camera look (S04E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "A black baseball cap over straight blond hair, black rectangular glasses and a black T-shirt with white lettering, talking into a studio microphone at home - an Interview magazine poster in red on one wall and a framed collage of his rock and roll pictures on the other",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-405",
+  "status": "Confirmed",
+  "fashion": "Black baseball cap, black rectangular glasses, black T-shirt",
+  "colours": [
+   "cap black #0B0B0B",
+   "blond hair #AF9A7A",
+   "T-shirt charcoal #2A302F",
+   "poster red #83413B",
+   "collage rose #C6967E"
+  ]
  }
 ]
