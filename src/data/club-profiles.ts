@@ -25,6 +25,21 @@ import studio54Polaroid from "@/assets/clubs/studio-54-polaroid.webp";
 import limelightPhoto from "@/assets/clubs/limelight-photo.webp";
 import limelightPhotoPhone from "@/assets/clubs/limelight-photo-phone.webp";
 import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
+import grapePhoto from "@/assets/clubs/gilded-grape-photo.webp";
+import grapePhotoPhone from "@/assets/clubs/gilded-grape-photo-phone.webp";
+import grapePolaroid from "@/assets/clubs/gilded-grape-polaroid.webp";
+import quickPhoto from "@/assets/clubs/quick-photo.webp";
+import quickPhotoPhone from "@/assets/clubs/quick-photo-phone.webp";
+import quickPolaroid from "@/assets/clubs/quick-polaroid.webp";
+import buildingPhoto from "@/assets/clubs/building-photo.webp";
+import buildingPhotoPhone from "@/assets/clubs/building-photo-phone.webp";
+import buildingPolaroid from "@/assets/clubs/building-polaroid.webp";
+import hurrahPhoto from "@/assets/clubs/hurrah-photo.webp";
+import hurrahPhotoPhone from "@/assets/clubs/hurrah-photo-phone.webp";
+import hurrahPolaroid from "@/assets/clubs/hurrah-polaroid.webp";
+import c82Photo from "@/assets/clubs/club-82-photo.webp";
+import c82PhotoPhone from "@/assets/clubs/club-82-photo-phone.webp";
+import c82Polaroid from "@/assets/clubs/club-82-polaroid.webp";
 import redZonePhoto from "@/assets/clubs/red-zone-photo.webp";
 import redZonePhotoPhone from "@/assets/clubs/red-zone-photo-phone.webp";
 import redZonePolaroid from "@/assets/clubs/red-zone-polaroid.webp";
@@ -142,6 +157,12 @@ const SQUEEZEBOX_CREDIT = "Header: a Squeezebox night drawn for the AFTERPARTY. 
 const MARS_CREDIT = "Header and polaroid: a night at Mars drawn for the AFTERPARTY - no photo of Mars is free to use";
 const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPARTY. Polaroid: Save the Robots after-hours Saturdays card - Gallery 98";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
+
+const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
+const QUICK_CREDIT = "Header and polaroid: a night at Quick drawn for the AFTERPARTY - no photo of Quick is free to use";
+const BUILDING_CREDIT = "Header and polaroid: a night at the Building drawn for the AFTERPARTY - no photo of the Building is free to use";
+const HURRAH_CREDIT = "Header: a night at Hurrah drawn for the AFTERPARTY. Polaroid: Hurrah complimentary entry card - Gallery 98";
+const CLUB_82_CREDIT = "Header and polaroid: a night at the 82 Club drawn for the AFTERPARTY - no photo of the 82 Club is free to use";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -873,6 +894,123 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e07", who: "Rudolf Piper", time: "00:22:38", quote: "Howard Stein is a guy from Xenon." },
     ],
     portrait: { photo: xenonPhoto, phone: xenonPhotoPhone, polaroid: xenonPolaroid, focus: "50%", credit: XENON_CREDIT },
+  },
+  // Batch 6 (Lisa, 19 Nov 2026: "yes"). Facts: Wikipedia "Hurrah (nightclub)" and "Peppermint Lounge"; the Building from
+  // Standard Hotels, W Magazine and Vice (opened 1989 in a former Con Ed substation); the Gilded Grape, Quick and Club 82 from
+  // the guests' own stories (checked 19 Nov 2026). Pictures: sources sheet, Round 12.
+  "gilded-grape": {
+    opened: "Early 70s",
+    closed: "1977",
+    address: "Eighth Avenue at 45th Street",
+    story:
+      "A Midtown bar for trans women and drag queens on Eighth Avenue, under the Camelot apartment building, run - like the Peppermint Lounge - by the Midtown mob. Brian Belovitch practically lived there: girls worked the street outside, there was a free buffet if you bought a drink, drag shows and lip-syncs on the stage, pageants, fights over stolen husbands, and trans apartment buildings upstairs and around the corner. The name later moved up the street to the old Peppermint Lounge, which became G.G. Barnum's Room.",
+    timeline: [
+      ["Early 70s", "The Gilded Grape opens on Eighth Avenue at 45th Street, under the Camelot building"],
+      ["1976", "Brian Belovitch, newly arrived, makes it home; Joey Arias tours it with every other club in town"],
+      ["1977", "The Gilded Grape closes on Eighth Avenue"],
+      ["Jul 1978", "Its owners reopen the old Peppermint Lounge as G.G. Barnum's Room, with trapeze artists over the dance floor"],
+    ],
+    stage: ["Brian Belovitch", "Joey Arias", "Tish & Snooky", "Richard Boch"],
+    rooms: ["Peppermint Lounge", "Club 82", "Studio 54", "Max's Kansas City"],
+    said: [
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:20:00", quote: "I lived at the Gilded Grape. I mean, in fact, they had a buffet - they knew the girls were gonna come and work. So they had a free buffet. You could go in and have a meal if you bought a drink." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:22:28", quote: "There was always a younger, newer, prettier girl coming up... And then there was a DJ, there were drag shows, trans women doing lip-syncs. The script just writes itself." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:57:31", quote: "The Peppermint Lounge at that point was basically a money laundering place for the Midtown mob... That's what it was when it was the G.G. Barnum's Room prior to that. The Gilded Grape, all of those places." },
+    ],
+    portrait: { photo: grapePhoto, phone: grapePhotoPhone, polaroid: grapePolaroid, focus: "50%", credit: GILDED_GRAPE_CREDIT },
+  },
+  quick: {
+    opened: "c. 1990",
+    closed: "c. 1991",
+    address: "157 Hudson Street",
+    story:
+      "Rudolf Piper's club after Mars, in the old Area building on Hudson and Hubert Street. He picked the name because of how fast things moved - a quick moment, a quickie - and it lived up to it: it didn't succeed, and it pushed Rudolf to move on to other crowds and cities. Moby played there; Lincoln Palsgrove IV remembers it as one more short life for the Area room, which went on to other names.",
+    timeline: [
+      ["1987", "Area closes at 157 Hudson Street"],
+      ["c. 1990", "After Mars, Rudolf Piper opens Quick in the old Area space"],
+      ["c. 1990", "Moby plays there among his other clubs"],
+      ["c. 1990", "Quick closes; Rudolf moves on to Tatu, Aspen and LA"],
+    ],
+    stage: ["Rudolf Piper", "Moby", "Lincoln Palsgrove IV", "RuPaul"],
+    rooms: ["Area", "Mars", "Danceteria", "Palladium"],
+    said: [
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:46:25", quote: "Quick was quick, right? It was just after Mars. That club did not succeed. And that was one of the things that made me basically change crowds." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:47:33", quote: "I'm sort of a name fetishist... At the time I thought this was an interesting name, considering how fast things move. A quick moment, a quickie. The club was not successful." },
+      { episode: "s01e09", who: "Moby", time: "00:28:07", quote: "I always forget what to call it because it's been so many different things: Shelter, Area, B Squared, Quick. It was Quick for a while - that was Rudolf's place, basically, the club on Hubert Street." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:54:57", quote: "I think Quick was quick as well, because that had been the former Area." },
+    ],
+    portrait: { photo: quickPhoto, phone: quickPhotoPhone, polaroid: quickPolaroid, focus: "50%", credit: QUICK_CREDIT },
+  },
+  building: {
+    opened: "1989",
+    closed: "1991",
+    address: "a former Con Ed substation",
+    story:
+      "A big club in an old Con Ed electrical substation: raw industrial space, and a glass cube above the dance floor as the VIP room, where you could look out over the crowd. It mixed hip-hop - Q-Tip, Fab 5 Freddy, Naomi Campbell came through - with the Club Kids: Keoki's Groove Thing, Kenny Kenny and Lincoln Palsgrove IV on the door, Amanda Lepore go-go dancing on the stairs. Jenny Talia was turned away at the door, came back redone, and found her tribe inside.",
+    timeline: [
+      ["1989", "The Building opens in a former Con Ed substation"],
+      ["1989", "Keoki's Groove Thing; Waltpaper's first club job"],
+      ["1989", "Jenny Talia is turned away by Kenny Kenny, comes back, and finds her tribe in the glass cube"],
+      ["1991", "The Building closes after about two years"],
+    ],
+    stage: ["DJ Keoki", "Kenny Kenny", "Lincoln Palsgrove IV", "Jenny Talia", "Amanda Lepore", "Waltpaper", "Club Kids", "Miss Guy", "Really Denise"],
+    rooms: ["The World", "Red Zone", "Roxy", "Pyramid Club", "Limelight", "The Tunnel"],
+    said: [
+      { episode: "s02e07", who: "Jenny Talia", time: "00:05:12", quote: "Carlin and I went to the Building and we were rejected by Kenny Kenny. And then we went to Pat Field's, redid ourselves." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:09:00", quote: "It was such an incredible space, that kind of raw industrial. And that glass cube that was basically the VIP area - you could look out amongst the crowd and then just be in this kind of womb." },
+      { episode: "s05e03", who: "Amanda Lepore", time: "00:02:15", quote: "Back then I wore very spiky heels all the time, and they were pretty high, and I wouldn't hold on to the railing... and my heel got caught - the Building had metal stairs with holes in it." },
+      { episode: "s05e03", who: "Amanda Lepore", time: "00:47:44", quote: "I was really shy. And actually, at the Building, when I go-go danced there, they had Topless Night." },
+      { episode: "s01e06", who: "Waltpaper", time: "00:26:39", quote: "There were divisions even within the club kids - there were Keoki people and there were Michael people... My first job was at the Building, for Keoki's Groove Thing." },
+    ],
+    portrait: { photo: buildingPhoto, phone: buildingPhotoPhone, polaroid: buildingPolaroid, focus: "50%", credit: BUILDING_CREDIT },
+  },
+  hurrah: {
+    opened: "1976",
+    closed: "1981",
+    address: "36 West 62nd Street",
+    story:
+      "The first rock disco in New York, uptown by Lincoln Center, opened by Arthur Weinstein months before Studio 54: punk, new wave and no wave on the dance floor, the first music videos on monitors around the room a year before MTV, and Ruth Polsky booking the British bands' first American shows. Haoui Montaug worked the door, Divine played The Neon Woman there, Michael Musto's band made its debut - and for Nikki Haskell it was a little too downtown.",
+    timeline: [
+      ["Nov 1976", "Arthur Weinstein and partners open Hurrah at 36 West 62nd Street"],
+      ["Apr 1978", "Divine opens in Tom Eyen's The Neon Woman at Hurrah"],
+      ["Dec 1978", "Sid Vicious fights Todd Smith there and lands on Rikers Island"],
+      ["1980", "David Bowie films his Fashion video at Hurrah"],
+      ["Early 1981", "Hurrah closes"],
+    ],
+    stage: ["Arthur Weinstein", "Jim Fouratt", "Ruth Polsky", "Haoui Montaug", "Anita Sarko", "Divine", "David Bowie", "Michael Musto", "Nikki Haskell", "William Norwich", "Chi Chi Valenti & Johnny Dynell", "Lauren Ezersky"],
+    rooms: ["Studio 54", "Danceteria", "Mudd Club", "Peppermint Lounge", "The World"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:09:56", quote: "We debuted at Hurrah, this uptown nightclub, and we were doing great." },
+      { episode: "s06e08", who: "William Norwich", time: "00:04:07", quote: "And it goes on: Hurrah, seeing Divine and a pig in the crib... and the Egg Lady." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:49:08", quote: "Hurrah, it was a little bit too downtown for me." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:04:11", quote: "I was on a different axis, of like G.G. Barnum's and Hurrah and Flamingo - that trajectory of nightlife at the time." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:20:37", quote: "There was Area, which I loved... I pretty much went everywhere. Hurrah - there were just a lot of fun places to go." },
+    ],
+    portrait: { photo: hurrahPhoto, phone: hurrahPhotoPhone, polaroid: hurrahPolaroid, focus: "50%", credit: HURRAH_CREDIT },
+  },
+  "club-82": {
+    opened: "1950s",
+    closed: "1970s",
+    address: "82 East 4th Street",
+    aka: "the 82 Club",
+    story:
+      "A basement nightclub on East 4th Street that was New York's great drag cabaret: female impersonators and early trans women on stage and behind the bar, the Jewel Box Revue, and an uptown audience in furs. Cherry Vanilla went for her seventeenth birthday and thought it was the coolest ever - you banged your knockers on the table instead of clapping. In the 70s Jayne County brought Tish & Snooky there in somebody's van, and later the room went downstairs and darker.",
+    timeline: [
+      ["1950s", "The 82 Club opens in a basement at 82 East 4th Street"],
+      ["1950s-60s", "Female impersonators, the Jewel Box Revue, an uptown crowd at little tables"],
+      ["Early 60s", "Cherry Vanilla celebrates her 17th birthday there"],
+      ["70s", "Jayne County takes Tish & Snooky there; the room turns into a rock club"],
+    ],
+    stage: ["Cherry Vanilla", "Jayne County", "Tish & Snooky", "Brian Belovitch", "Man Parrish"],
+    rooms: ["The Gilded Grape", "Max's Kansas City", "CBGB", "Le Club"],
+    said: [
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:13:50", quote: "I went to the 82 Club for my, I think it was my 17th birthday... And the 82 Club then was staffed by transsexuals, I think a lot of early transsexuals, not just drag queens." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:14:36", quote: "Instead of applauding, you banged your knockers on the table... The 82 Club was like, wow, this is the coolest ever." },
+      { episode: "s05e10", who: "Tish & Snooky", time: "00:35:17", quote: "Jayne County brought us all there in somebody's van and turned us on to the 82 Club." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:27:58", quote: "She also was a male impersonator and worked at the Club 82, at the Jewel Box Revue on East 4th Street." },
+      { episode: "s03e04", who: "Man Parrish", time: "00:41:01", quote: "It used to be Club 82... it was the 82 Club, and it went downstairs." },
+    ],
+    portrait: { photo: c82Photo, phone: c82PhotoPhone, polaroid: c82Polaroid, focus: "50%", credit: CLUB_82_CREDIT },
   },
 };
 
