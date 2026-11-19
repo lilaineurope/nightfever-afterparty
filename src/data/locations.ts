@@ -197,7 +197,7 @@ export const LOCATIONS: Located[] = [
   { name: "Weimar Republic", lat: 52.52, lng: 13.405, area: "Germany" },
   { name: "Soviet Union", lat: 55.7558, lng: 37.6173, area: "USSR" },
   { name: "Berlin Wall", lat: 52.5163, lng: 13.3777, area: "Berlin" },
-  { name: "Mars (nightclub)", lat: 40.7405, lng: -74.0079, area: "Meatpacking" },
+  { name: "Mars", lat: 40.7405, lng: -74.0079, area: "Meatpacking" },
   { name: "Quick (club)", lat: 40.7213, lng: -74.0083, area: "Tribeca" },
   { name: "Peppermint Lounge", lat: 40.7575, lng: -73.985, area: "Times Square" },
   { name: "Knickerbocker Hotel (West 45th Street)", lat: 40.7574, lng: -73.9851, area: "Times Square" },
