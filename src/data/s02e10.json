@@ -2016,5 +2016,60 @@
    "wall mauve-grey #504B4F",
    "frame black #1E1C1C"
   ]
+ },
+ {
+  "rank": 180,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S02E10)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald head, teal-rimmed rectangular glasses, small pearl earrings and a white high-collared shirt, in front of floor-to-ceiling bookshelves with an Edgar Allan Poe portrait",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-210",
+  "status": "Confirmed",
+  "fashion": "Teal-rimmed glasses, pearl earrings, white high-collared shirt",
+  "colours": [
+   "glasses teal #2E6F7A",
+   "shirt white #ECEAE6",
+   "bookshelf oxblood #3F2524",
+   "shelf dark #241917"
+  ]
+ },
+ {
+  "rank": 181,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S02E10)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Navy baseball cap, dark rectangular glasses and a red and green plaid flannel shirt over a green T-shirt, in front of lamplit bookshelves with a brass pig and an Emmy",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-210",
+  "status": "Confirmed",
+  "fashion": "Navy cap, plaid flannel shirt",
+  "colours": [
+   "cap navy #23212B",
+   "plaid red #8E2F2B",
+   "tee green #3D696B",
+   "shelf wood #84594D",
+   "lamp glow #FEFEE9"
+  ]
+ },
+ {
+  "rank": 182,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S02E10)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Red and white striped T-shirt and rimless glasses with a red tint, between brown curtains and orange 70s sunflower wallpaper",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:2/videos/nf-210",
+  "status": "Confirmed",
+  "fashion": "Red and white striped T-shirt, rimless glasses",
+  "colours": [
+   "stripe red #D64B4B",
+   "stripe white #F1ECEA",
+   "wallpaper ochre #C98F4E",
+   "curtain brown #562B1C"
+  ]
  }
 ]
