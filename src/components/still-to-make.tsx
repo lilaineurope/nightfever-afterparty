@@ -262,7 +262,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
   )!.items;
   return (
     <section aria-labelledby="still-to-make" className={className}>
-      <div className="relative border-[3px] border-gold bg-card px-6 py-8 shadow-[8px_10px_0_var(--color-gold)] sm:px-10">
+      <div className="relative border-[3px] border-gold bg-card px-4 py-8 shadow-[8px_10px_0_var(--color-gold)] sm:px-10">
         <span
           aria-hidden="true"
           className="absolute -right-3 -top-5 rotate-[6deg] bg-pink px-4 py-1.5 font-[family-name:var(--font-flyer)] text-xl uppercase text-pink-foreground sm:-right-6"
@@ -314,7 +314,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
                   setTab(t.key);
                   setExpanded(true);
                 }}
-                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
+                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-1.5 py-2 text-[10px] font-semibold uppercase tracking-[0.04em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
                   on
                     ? "border-gold bg-pink text-pink-foreground"
                     : "border-transparent text-pink hover:border-gold"
