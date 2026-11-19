@@ -10,9 +10,11 @@ import {
   type StillToMake,
 } from "@/data/still-to-make";
 import { Timestamp } from "@/components/episode-player";
+import { coverFor } from "@/data/library-covers";
 
 // "Still to be made" box on the Library page, headline "Publish this" (Lisa, 4 Nov 2026 evening; box first added that morning): the books
-// and films the guests and hosts say should exist, in two tabs, laid out like "Who to interview next".
+// and films the guests and hosts say should exist, laid out like "Who to interview next". Three tabs (Lisa, 19 Nov 2026): Books to be
+// written and Films to be made hold what is still missing; anything made since moves to the "Made since" tab, books with their Library cover.
 
 const ITEM_CLASS =
   "border-t border-border pt-4 first:border-t-0 first:pt-0 md:[&:nth-child(2)]:border-t-0 md:[&:nth-child(2)]:pt-0";
@@ -25,43 +27,65 @@ const TAG: Record<MadeYet, { label: string; className: string }> = {
   made: { label: "Made since!", className: "border border-gold text-cream" },
 };
 
-function Item({ it }: { it: StillToMake }) {
+function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefined }) {
   const ep = episodeById(it.episodeId);
   const tag = TAG[it.made];
+  const cover = it.library ? coverFor(it.library) : undefined;
   return (
-    <li className={ITEM_CLASS}>
-      <p className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream">
-        {it.title}
-      </p>
-      <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{it.why}</p>
-      <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-        <span className={`px-1.5 py-0.5 font-semibold uppercase tracking-wide ${tag.className}`}>
-          {tag.label}
-        </span>
-        <span>{it.status}</span>
-        {it.source?.card && (
-          <Link {...cardTo(it.source.card)} className="text-gold hover:text-pink">
-            {it.source.label} →
+    <li className={`${ITEM_CLASS}${cover ? " flex gap-4" : ""}`}>
+      {cover && (
+        <img
+          src={cover.src}
+          alt={`Cover of ${it.library}`}
+          loading="lazy"
+          decoding="async"
+          className="h-28 w-auto shrink-0 self-start border-2 border-gold object-cover"
+        />
+      )}
+      <div className="min-w-0">
+        {kind && (
+          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-pink">
+            {kind}
+            {it.year ? ` \u00b7 ${it.year}` : ""}
+          </p>
+        )}
+        <p className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream">
+          {it.title}
+        </p>
+        {kind && it.madeAs && (
+          <p className="mt-0.5 text-sm font-semibold text-gold">Made as {it.madeAs}</p>
+        )}
+        <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">{it.why}</p>
+        <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+          <span className={`px-1.5 py-0.5 font-semibold uppercase tracking-wide ${tag.className}`}>
+            {tag.label}
+          </span>
+          <span>{it.status}</span>
+          {it.source?.card && (
+            <Link {...cardTo(it.source.card)} className="text-gold hover:text-pink">
+              {it.source.label} →
+            </Link>
+          )}
+          {it.source?.href && (
+            <a
+              href={it.source.href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-gold hover:text-pink"
+            >
+              {it.source.label} ↗
+            </a>
+          )}
+        </p>
+        <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+          <span>Said in</span>
+          <Link to={episodePath(ep.id)} className="text-gold">
+            S{ep.season}E{ep.episode}
+            {ep.part} &middot; {ep.guest}
           </Link>
-        )}
-        {it.source?.href && (
-          <a
-            href={it.source.href}
-            target="_blank"
-            rel="noreferrer"
-            className="text-gold hover:text-pink"
-          >
-            {it.source.label} ↗
-          </a>
-        )}
-      </p>
-      <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-        <span>Said in</span>
-        <Link to={episodePath(ep.id)} className="text-gold">
-          S{ep.season}E{ep.episode}{ep.part} &middot; {ep.guest}
-        </Link>
-        {it.time && <Timestamp episodeId={ep.id} time={it.time} className="text-xs" />}
-      </p>
+          {it.time && <Timestamp episodeId={ep.id} time={it.time} className="text-xs" />}
+        </p>
+      </div>
     </li>
   );
 }
@@ -203,12 +227,39 @@ function SuggestOne() {
 export function StillToMakeBox({ className = "" }: { className?: string }) {
   // Folded shut by default (Lisa, 4 Nov 2026: "click-and-expand box"): title, intro and tabs show, the list opens on a tap.
   const [expanded, setExpanded] = useState(false);
-  const [tab, setTab] = useState<"books" | "films">("books");
+  const [tab, setTab] = useState<"books" | "films" | "made">("books");
   const tabs = [
-    { key: "books" as const, label: "Books to be written", short: "Books", items: BOOKS_TO_WRITE },
-    { key: "films" as const, label: "Films to be made", short: "Films", items: FILMS_TO_MAKE },
+    {
+      key: "books" as const,
+      label: "Books to be written",
+      short: "Books",
+      items: BOOKS_TO_WRITE.filter((i) => i.made !== "made"),
+    },
+    {
+      key: "films" as const,
+      label: "Films to be made",
+      short: "Films",
+      items: FILMS_TO_MAKE.filter((i) => i.made !== "made"),
+    },
+    {
+      key: "made" as const,
+      label: "Made since",
+      short: "Made since",
+      items: [
+        ...BOOKS_TO_WRITE.filter((i) => i.made === "made").map((it) => ({
+          ...it,
+          kind: "Book" as const,
+        })),
+        ...FILMS_TO_MAKE.filter((i) => i.made === "made").map((it) => ({
+          ...it,
+          kind: "Film" as const,
+        })),
+      ],
+    },
   ];
-  const items = tab === "books" ? BOOKS_TO_WRITE : FILMS_TO_MAKE;
+  const items: (StillToMake & { kind?: "Book" | "Film" })[] = tabs.find(
+    (t) => t.key === tab,
+  )!.items;
   return (
     <section aria-labelledby="still-to-make" className={className}>
       <div className="relative border-[3px] border-gold bg-card px-6 py-8 shadow-[8px_10px_0_var(--color-gold)] sm:px-10">
@@ -237,8 +288,8 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           The books that need to be written and the films that have to be made - every one the
-          guests and hosts call for on the show, with the exact moment (tap &#9654; to hear it) and
-          whether anyone has made it since.
+          guests and hosts call for on the show, with the exact moment (tap &#9654; to hear it). The
+          ones somebody has made since move to Made since - I check the list every month.
         </p>
         <div
           role="tablist"
@@ -248,7 +299,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
           {tabs.map((t) => {
             // While the box is shut no tab is lit; tapping a tab opens the box on that list.
             const on = expanded && tab === t.key;
-            const open = t.items.filter((i) => i.made !== "made").length;
+            const open = t.items.length;
             return (
               <button
                 key={t.key}
@@ -285,7 +336,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
           >
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {items.map((it) => (
-                <Item key={it.title} it={it} />
+                <Item key={it.title} it={it} kind={it.kind} />
               ))}
             </ul>
             <SuggestOne />

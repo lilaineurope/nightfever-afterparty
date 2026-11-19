@@ -1,6 +1,7 @@
 // "Still to be made" (Lisa, 4 Nov 2026): every book and film the guests and hosts say on air should be written or
-// made, with the episode and the moment it was said, and whether it has been made since (checked 4 Nov 2026; every transcript read in full 5 Nov 2026).
-// Shown as a box on the Library page (src/components/still-to-make.tsx). Times from a full transcript are exact; the
+// made, with the episode and the moment it was said, and whether it has been made since (checked 4 Nov 2026; every transcript read in full 5 Nov 2026;
+// every item checked online again 19 Nov 2026). Shown as a box on the Library page (src/components/still-to-make.tsx); items marked "made" leave
+// the Books and Films tabs and sit in the "Made since" tab (Lisa, 19 Nov 2026). A monthly check looks for newly made ones. Times from a full transcript are exact; the
 // rest come from the episode index and point to where the subject comes up. Check every new Afterparty for new ones.
 
 export type MadeYet = "not yet" | "in the works" | "partly" | "lost" | "made";
@@ -18,6 +19,12 @@ export type StillToMake = {
   status: string;
   /** Where the status comes from, or the book's A–Z card */
   source?: { label: string; href?: string; card?: string };
+  /** Made books: the exact Library (A–Z) name, so the "Made since" tab shows the Library cover */
+  library?: string;
+  /** Made since: the year it came out */
+  year?: number;
+  /** Made since: what it was made as (the real title) */
+  madeAs?: string;
 };
 
 export const BOOKS_TO_WRITE: StillToMake[] = [
@@ -124,8 +131,11 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     episodeId: "s03e04",
     time: "01:09:00",
     made: "made",
-    status: "Made: Man Parrish Stories – Volume One (2024).",
+    status: "Made: Man Parrish Stories – Volume One (2024) - his YouTube stories, now in print.",
     source: { label: "In the Library", card: "man-parrish-stories-volume-one" },
+    library: "Man Parrish Stories – Volume One (Man Parrish)",
+    year: 2024,
+    madeAs: "Man Parrish Stories – Volume One",
   },
   {
     title: "A My Comrade anthology",
@@ -135,6 +145,8 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     made: "made",
     status: "Made - The My Comrade Anthology, pages picked by Linda, came out from Boo-Hooray.",
     source: { label: "Art Metropole", href: "https://artmetropole.com/shop/15424" },
+    library: "The My Comrade Anthology",
+    madeAs: "The My Comrade Anthology",
   },
   {
     title: "Meet Me at the Mailbox (Denise Stoughton)",
@@ -271,8 +283,11 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     why: "When Linda brings up Edelweiss, James says they need a whole episode on it - and on the whole Midtown scene, which Linda says was barely photographed.",
     episodeId: "s02e09",
     time: "00:49:41",
-    made: "not yet",
-    status: "No Night Fever episode or film about it yet.",
+    made: "made",
+    status: "Made since: Playing With Dolls, Pearl Martin's documentary on the trans clubs of the old Times Square red-light district - Edelweiss, the Gilded Grape, Sally's Hideaway, the Barnum Room - premiered at The Center in November 2023.",
+    source: { label: "Resident Advisor", href: "https://ra.co/news/79903" },
+    year: 2023,
+    madeAs: "Playing With Dolls (Pearl Martin)",
   },
   {
     title: "Cherry Vanilla's story as a mini-series",
@@ -315,7 +330,7 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     episodeId: "s02e10",
     time: "00:21:26",
     made: "not yet",
-    status: "Not made yet.",
+    status: "Not made yet as a sitcom - the club does appear in Pearl Martin's documentary Playing With Dolls (2023).",
     source: { label: "The Gilded Grape", card: "the-gilded-grape" },
   },
   {
