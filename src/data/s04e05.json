@@ -1864,5 +1864,62 @@
    "poster red #83413B",
    "collage rose #C6967E"
   ]
+ },
+ {
+  "rank": 166,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S04E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "A peach satin high-neck top with a long turquoise bead necklace and black-framed glasses, in front of his floor-to-ceiling bookshelves with gilt picture frames and a studio microphone",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-405",
+  "status": "Confirmed",
+  "fashion": "Peach satin high-neck top, turquoise bead necklace",
+  "colours": [
+   "peach satin #D6B49A",
+   "turquoise beads #6FA79A",
+   "bookshelf brown #34352C",
+   "frame black #1A1615",
+   "gilt frame #A08A5A"
+  ]
+ },
+ {
+  "rank": 167,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S04E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Rimless glasses, a grey cardigan and a striped scarf in red, green and blue, in a hotel room at the Chelsea with heavy grey velvet curtains and a warm wall lamp",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-405",
+  "status": "Confirmed",
+  "fashion": "Grey cardigan, striped scarf",
+  "colours": [
+   "curtain grey #2E2E2E",
+   "cardigan grey #4A4A4C",
+   "scarf red #B2635E",
+   "scarf blue #3E5A8C",
+   "lamp glow #E8B070"
+  ]
+ },
+ {
+  "rank": 168,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S04E05)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "A black baseball cap, black glasses and a red, blue and green plaid flannel shirt, in his dining room in front of a big picture of a jacaranda tree in purple bloom - the rain forest James sees",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-405",
+  "status": "Confirmed",
+  "fashion": "Black cap, plaid flannel shirt",
+  "colours": [
+   "cap black #0D0B10",
+   "jacaranda purple #9E86B8",
+   "plaid red #9B2B2E",
+   "plaid navy #2A3550",
+   "trunk brown #605848"
+  ]
  }
 ]
