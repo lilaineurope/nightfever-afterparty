@@ -53,6 +53,7 @@ import mickeyPortrait from "@/assets/polaroid-mickey-boardman.jpg";
 import laurenPortrait from "@/assets/polaroid-lauren-ezersky.jpg";
 import dustinPortrait from "@/assets/polaroid-dustin-pittman.jpg";
 import brianPortrait from "@/assets/polaroid-brian-belovitch.jpg";
+import domoniquePortrait from "@/assets/polaroid-domonique-echeverria.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -107,6 +108,7 @@ export const episodePortraits: Record<string, string> = {
   s04e06: laurenPortrait,
   s04e05: dustinPortrait,
   s02e10: brianPortrait,
+  s03e07: domoniquePortrait,
 };
 
 // WebP copies of the polaroids (scripts/polaroid-thumbs.py): 1024px for the episode page header (SEO check 16 Nov 2026),

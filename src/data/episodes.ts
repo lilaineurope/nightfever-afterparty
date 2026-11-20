@@ -886,6 +886,7 @@ const s03e07: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO7709111503.mp3",
   runtime: "44:20",
   afterpartyPublished: "2026-11-29",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLJ-4xOUn7NLw",
   blurb:
     "Domonique Echeverria on San Francisco's drag mothers, hosting New York in the twenty-tens, surviving and healing, and her site Universal Mother",
 };
