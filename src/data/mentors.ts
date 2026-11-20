@@ -116,6 +116,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Antonio Lopez", mentee: "Brian Belovitch", episode: "s02e10", time: "00:34:05", line: "Spotted Tish dancing at Hurrah, drew her and sent her to Studio 54" },
   { mentor: "Gabriel Rotello", mentee: "Brian Belovitch", episode: "s02e10", time: "00:52:16", line: "Put Tish on stage in his Downtown Dukes and Divas shows" },
   { mentor: "Edith O'Hara", mentee: "Brian Belovitch", episode: "s02e10", time: "00:58:12", line: "Brian calls her one of his mentors - the first person who really cared about him" },
+  { mentor: "Juanita MORE!", mentee: "Domonique Echeverria", episode: "s03e07", time: "00:02:13", line: "Domonique says she started out in San Francisco's drag scene as one of Juanita's children" },
+  { mentor: "David Glamamore", mentee: "Domonique Echeverria", episode: "s03e07", time: "00:02:13", line: "Her other drag parent in San Francisco, as Domonique tells it" },
+  { mentor: "James St. James", mentee: "Domonique Echeverria", episode: "s03e07", time: "00:07:15", line: "Cast her in his Transformations series after everyone told him to find Ryan and Domonique" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
