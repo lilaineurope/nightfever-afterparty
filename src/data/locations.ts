@@ -5,6 +5,10 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Tenderloin", lat: 37.7847, lng: -122.4145, area: "San Francisco" },
+  { name: "Mission District", lat: 37.7599, lng: -122.4148, area: "San Francisco" },
+  { name: "Aunt Charlie's Lounge", lat: 37.7829, lng: -122.4114, area: "Tenderloin", tip: "133 Turk Street" },
+  { name: "The Gangway", lat: 37.786, lng: -122.4182, area: "Tenderloin", tip: "841 Larkin Street" },
   { name: "Rhode Island", lat: 41.7, lng: -71.5, area: "New England" },
   { name: "Providence", lat: 41.824, lng: -71.4128, area: "Rhode Island" },
   { name: "Brown University", lat: 41.8268, lng: -71.4025, area: "Providence" },

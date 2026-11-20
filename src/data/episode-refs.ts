@@ -54,6 +54,7 @@ import refs402Json from "./s04e02.json";
 import refs406Json from "./s04e06.json";
 import refs405Json from "./s04e05.json";
 import refs210Json from "./s02e10.json";
+import refs307Json from "./s03e07.json";
 
 /** [episode id, its rows] in the order the A–Z cards collect them (the first one wins a shared name's spelling). */
 export const EPISODE_REFS: [NonNullable<Ref["episode"]>, Ref[]][] = [
@@ -109,6 +110,7 @@ export const EPISODE_REFS: [NonNullable<Ref["episode"]>, Ref[]][] = [
   ["s04e06", refs406Json as Ref[]],
   ["s04e05", refs405Json as Ref[]],
   ["s02e10", refs210Json as Ref[]],
+  ["s03e07", refs307Json as Ref[]],
 ];
 
 /** One episode's rows ([] for an unknown id). */

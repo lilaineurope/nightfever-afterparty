@@ -45,6 +45,7 @@ export const GUEST_LINES: Record<string, string> = {
   s05e07a: "Second-wave club kid · Project X cover boy, Limelight party planner",
   s05e07b: "Original Tunnel kid and hostess · Bainbridge Island's mailbox lady",
   s04e02: "Paper's Mr. Mickey · Break the Internet, Wigstock and the bad movie club",
+  s03e07: "Designer, party host and healer · San Francisco drag child, Universal Mother founder",
   s02e10: "Gender outlier and author of Trans Figured · the Gilded Grape, Antonio and Fellini",
   s04e05: "Scene photographer since 1968 · the Factory, Max's and New York After Dark",
   s04e06: "Fashion TV pioneer · Behind the Velvet Ropes and Paper's Lunch with Lauren",
