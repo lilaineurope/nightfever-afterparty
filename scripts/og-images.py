@@ -62,6 +62,7 @@ EP={"s01e01":("episode-dianne-brill.jpg","Dianne Brill",1,1),"s01e02":("episode-
 "s04e06":("polaroid-lauren-ezersky.jpg","Lauren Ezersky",4,6),
 "s04e05":("polaroid-dustin-pittman.jpg","Dustin Pittman",4,5),
 "s02e10":("polaroid-brian-belovitch.jpg","Brian Belovitch",2,10),
+"s03e07":("polaroid-domonique-echeverria.jpg","Domonique Echeverria",3,7),
 "s04e04":("polaroid-zaldy.jpg","Zaldy",4,4),
 "s02e01":("polaroid-michelle-visage.jpg","Michelle Visage",2,1),
 "s01e06":("polaroid-waltpaper.jpg","Waltpaper",1,6),
