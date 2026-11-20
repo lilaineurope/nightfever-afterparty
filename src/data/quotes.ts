@@ -50,7 +50,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s05e07a: { quote: "You have something really beautiful to offer that we haven't seen yet. And I'm hungry. I want to see it. Feed me.", time: "00:36:03" }, // Christopher Comp - Lisa: A5 (16 Nov 2026)
   s05e07b: { quote: "That scene was very cutting edge and it was very liberating for someone like me to like go out half naked.", time: "00:51:24" }, // Really Denise - Lisa: B3 (16 Nov 2026)
   s04e02: { quote: "I'm so gay I couldn't blend if I wanted to.", time: "00:12:34" }, // Mickey Boardman - quote A, Claude's pick when Lisa said publish (17 Nov 2026)
-  s03e07: { quote: "The love that I have for my people is the biggest, most potent elixir that anyone can give me.", time: "00:33:34" }, // Domonique Echeverria - quote C, Claude's proposal (20 Nov 2026)
+  s03e07: { quote: "The love that I have for my people is the biggest, most potent elixir that anyone can give me.", time: "00:33:34" }, // Domonique Echeverria - Lisa: quote c (20 Nov 2026)
   s02e10: { quote: "Boys should wear blue and girls should wear pink and just blow up the gender binary and just accept people. We would be so much happier.", time: "01:04:20" }, // Brian Belovitch - Lisa: quote d (18 Nov 2026)
   s04e05: { quote: "In those days, it's not what you wore, it's how you wore it.", time: "00:18:25" }, // Dustin Pittman - Lisa: quote b (18 Nov 2026)
   s04e06: { quote: "You've got to go back to go forward.", time: "00:10:40" }, // Lauren Ezersky - Lisa: quote c (18 Nov 2026)
