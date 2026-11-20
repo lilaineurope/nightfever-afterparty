@@ -4,6 +4,7 @@ import type { Memoriam } from "@/data/memoriam";
 import type { ClubProfile } from "@/data/club-profiles";
 import type { ClubNight } from "@/data/club-nights";
 import type { PersonPortrait } from "@/data/person-portraits";
+import type { PersonProfile } from "@/data/person-profiles";
 import type { LinkData } from "@/lib/link-index";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
@@ -28,6 +29,8 @@ export type CardView = {
   mem: Memoriam | null;
   club: ClubProfile | null;
   pic: PersonPortrait | null;
+  /** Person page (story, guest quotes, timeline) for living people the guests talk about - Lisa, 20 Nov 2026. */
+  profile: PersonProfile | null;
   /** Every name -> card answer the page needs for its links. */
   links: LinkData;
 };

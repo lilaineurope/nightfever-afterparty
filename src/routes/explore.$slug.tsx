@@ -10,6 +10,7 @@ import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
+import { PersonProfileSections } from "@/components/person-profile";
 import { guestBySlug } from "@/data/guests";
 import { getCardPage } from "@/lib/card-view.functions";
 import { LinkDataProvider } from "@/lib/link-index";
@@ -106,6 +107,8 @@ function EntityPage() {
   const pic = e.pic ?? undefined;
   // In memoriam (Lisa, 4 Nov 2026, option C): black IN MEMORIAM band (on the name card since 5 Nov), "aka" and dates on the name card, guest quotes wall below.
   const mem = e.mem ?? undefined;
+  // Person pages (Lisa, 20 Nov 2026): story, guest quotes and timeline for living people the guests talk about.
+  const profile = e.profile ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -169,9 +172,10 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${mem || club ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${mem || club || profile ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} />}
+        {profile && <PersonProfileSections m={profile} name={e.name} />}
         <CardSections v={e} />
       </div>
           <SiteFooter />
