@@ -22,7 +22,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
       {m.said.length > 0 && (
         <section>
           <h2 className={`${h} text-center`}>What the guests say</h2>
-          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 grid items-start gap-10 sm:grid-cols-2 lg:grid-cols-3"}>
+          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 grid grid-flow-row-dense items-start gap-10 sm:grid-cols-2 lg:grid-cols-3"}>
             {m.said.map((s, i) => {
               const ep = episodeById(s.episode);
               const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
@@ -30,7 +30,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
               return (
                 <figure
                   key={`${s.episode}-${s.time}`}
-                  className="relative border-2 border-[#111] bg-[#f6f0ea] p-5 pt-8 text-[#111] shadow-[5px_6px_0_#111]"
+                  className={`relative border-2 border-[#111] bg-[#f6f0ea] p-5 pt-8 text-[#111] shadow-[5px_6px_0_#111] ${s.quote.length > 220 ? "sm:col-span-2" : ""}`}
                   style={{ transform: `rotate(${TILT[i % TILT.length]}deg)` }}
                 >
                   <span aria-hidden="true" className="absolute -top-4 left-1/2 h-7 w-24 -translate-x-1/2 rotate-3 bg-[rgba(240,230,200,.9)] shadow" />
