@@ -1,6 +1,6 @@
 // "Still to be made" (Lisa, 4 Nov 2026): every book and film the guests and hosts say on air should be written or
 // made, with the episode and the moment it was said, and whether it has been made since (checked 4 Nov 2026; every transcript read in full 5 Nov 2026;
-// every item checked online again 19 Nov 2026). Shown as a box on the Library page (src/components/still-to-make.tsx); items marked "made" leave
+// every item checked online again 19 Nov 2026, the books once more on 20 Nov 2026). Shown as a box on the Library page (src/components/still-to-make.tsx); items marked "made" leave
 // the Books and Films tabs and sit in the "Made since" tab (Lisa, 19 Nov 2026). A monthly check looks for newly made ones. Times from a full transcript are exact; the
 // rest come from the episode index and point to where the subject comes up. Check every new Afterparty for new ones.
 
@@ -42,7 +42,7 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     episodeId: "s04e07",
     time: "01:02:01",
     made: "not yet",
-    status: "Not yet - his books so far are the two 80s Polaroids books.",
+    status: "Not yet - his books so far are the two 80s Polaroids books and 20 Years of Prints (2025).",
   },
   {
     title: "Ann Magnuson's memoir",
@@ -83,7 +83,7 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     episodeId: "s05e04",
     time: "00:21:03",
     made: "in the works",
-    status: "Signed with Rizzoli - no listing yet.",
+    status: "In the works as Auteurist - The Influence of Malcolm McLaren (Rizzoli) - no release date yet.",
   },
   {
     title: "Super Freak",
@@ -115,7 +115,7 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     episodeId: "s01e07",
     time: "01:07:39",
     made: "not yet",
-    status: "No English edition yet.",
+    status: "No English edition yet - his agency is offering it to publishers as After Hours: The Rise and Fall of the Nightclub.",
   },
   {
     title: "Connie Fleming's book",
@@ -162,9 +162,12 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     why: "When Dustin talks about photographing the trucks in the Meatpacking District and the light in the old boathouses on the piers, the hosts say that is a whole other book - not his celebrity book.",
     episodeId: "s04e05",
     time: "00:34:24",
-    made: "not yet",
-    status: "Not as a book of its own - his New York After Dark (Rizzoli, 2024) covers the nightlife at large.",
-    source: { label: "Dustin Pittman: New York After Dark", card: "dustin-pittman-new-york-after-dark" },
+    made: "made",
+    status: "Made since: Dustin Pittman: New York After Dark (Rizzoli, 2024) - his 70s and 80s pictures, from the piers and the Meatpacking District to the clubs.",
+    source: { label: "In the Library", card: "dustin-pittman-new-york-after-dark" },
+    library: "Dustin Pittman: New York After Dark",
+    year: 2024,
+    madeAs: "Dustin Pittman: New York After Dark",
   },
 ];
 
