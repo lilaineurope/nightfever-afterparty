@@ -37,7 +37,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s04e06", who: "Lauren Ezersky", time: "00:23:46", quote: "They said, go meet Kim Hastreiter, who owned Paper. She goes, go do Donna Karan. If you can do Donna Karan and I like it, I'll print it." },
       { episode: "s01e10", who: "Joey Arias", time: "00:09:05", quote: "My friend Bo Allen introduced me to Kim when I was in LA. He said, you're gonna meet this girl, she's going to CalArts. So I met her in '74, and we became great friends. When she was gonna graduate, I was getting ready to blow to New York, so I said, I'll drive cross-country with you. She had this big truck, and when she covered it up, it was a covered wagon. We drove to Las Vegas and went to all the casinos." },
       { episode: "s04e02", who: "Mickey Boardman", time: "00:44:50", quote: "I always think if Kim was the mom, I was the son, and Drew is the grandson." },
-      { episode: "s04e07", who: "Trey Speegle", time: "00:52:17", quote: "She was like, oh, you're one of the first people to help us. I was like, no, no, no. I was employee number one. It was the four of you and me." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:51:31", quote: "Kim Hastreiter and David Hershkovits were the editors, and my part was the giant foldout with the ads that went all the way around. Recently there was an article in the New York Times about the oral history of Paper, and Kim posted something on Facebook. I was kind of hinting, and she was like, oh, you're one of the first people to help us. I was like, no, no, no. I was employee number one. It was the four of you and me." },
     ],
   },
 };
