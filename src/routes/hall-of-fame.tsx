@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { pageHead } from "@/lib/seo";
+import { FanSuggestions } from "@/components/fan-suggestions";
 import { SiteFooter } from "@/components/site-footer";
 import { LinkDataProvider, linkToSlug, useLinks, type LinkData } from "@/lib/link-index";
 import { MomentsBox, plainClick } from "@/components/moments-box";
@@ -75,6 +76,8 @@ function HallOfFamePage() {
             <p className="min-w-0 max-w-md">Everyone from 11 to 100 wears the pink badge on their page, the top 10 the gold one. One badge per person.</p>
           </div>
         </section>
+
+        <FanSuggestions box="hall-of-fame" />
       </div>
       <SiteFooter />
     </main>
