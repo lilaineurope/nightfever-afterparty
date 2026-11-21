@@ -110,10 +110,11 @@ function HallOfFameRules() {
               <p className="text-sm text-muted-foreground"><b className="text-cream">Gold door stamp:</b> the Hall of Fame top 10. They get their family tree on their page.</p>
             </div>
             <div className="flex items-center gap-4 border-2 border-gold bg-card p-5">
-              <ConnectorBadge rank={1} />
+              <ConnectorBadge rank={11} />
               <p className="text-sm text-muted-foreground"><b className="text-cream">Pink door stamp:</b> the top 100 great connectors - the names dropped in the most AFTERPARTIES, as on the <Link to="/network" className="text-gold underline underline-offset-2 hover:text-pink">Network</Link>.</p>
             </div>
           </div>
+          <p className="text-sm text-muted-foreground">One badge per person: whoever is in the Hall of Fame top 10 wears the gold one, everyone else in the top 100 the pink one.</p>
         </section>
 
         <MentorTree t={v.example} title={`Example: ${v.example.name}`} badge={<HallOfFameBadge rank={v.example.rank} />} />

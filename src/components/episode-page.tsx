@@ -149,11 +149,11 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           <p className="mt-2 text-sm text-muted-foreground">
             {refs.length} references · {refs.reduce((total, r) => total + r.mentions, 0)} mentions
           </p>
-          {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for the top 100 great connectors. */}
+          {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for the top 100 great connectors - one badge per person, gold wins (Lisa 21 Nov). */}
           {(tree || connector) && (
             <p className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold uppercase tracking-wider text-cream">
               {tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={tree.rank} small /><a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a></span>}
-              {connector && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={connector} small /><Link to="/network" className="hover:text-pink">Great connector</Link></span>}
+              {connector && !tree && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={connector} small /><Link to="/network" className="hover:text-pink">Great connector</Link></span>}
             </p>
           )}
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{blurb ?? thisEpisode.blurb}</p>

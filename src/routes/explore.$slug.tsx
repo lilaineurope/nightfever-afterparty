@@ -143,11 +143,11 @@ function EntityPage() {
           <h1 className="card-title">
             <span className="timeline-strip timeline-strip-ink">{e.name}</span>
           </h1>
-          {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for the top 100 great connectors. */}
+          {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for the top 100 great connectors - one badge per person, gold wins (Lisa 21 Nov). */}
           {(e.tree || e.connector) && (
             <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-wider text-cream">
               {e.tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={e.tree.rank} small /><a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a></span>}
-              {e.connector && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={e.connector} small /><Link to="/network" className="hover:text-pink">Great connector</Link></span>}
+              {e.connector && !e.tree && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={e.connector} small /><Link to="/network" className="hover:text-pink">Great connector</Link></span>}
             </p>
           )}
           {/* No polaroid yet: aka + dates sit on a small taped paper card so they stay readable over the dots (5 Nov 2026). */}
