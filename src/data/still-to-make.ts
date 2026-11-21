@@ -126,6 +126,15 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     status: "Not published yet.",
   },
   {
+    title: "Connie's biography by David Glamamore",
+    why: "Connie says David Glamamore is writing her biography.",
+    episodeId: "s02e05",
+    time: "00:14:22",
+    made: "not yet",
+    status: "Not published yet - nothing announced (checked 21 Nov 2026).",
+    source: { label: "Connie's biography", card: "connie-s-biography" },
+  },
+  {
     title: "Man Parrish's book",
     why: "James: 'You got to write a book.' Man tells his stories to camera instead.",
     episodeId: "s03e04",

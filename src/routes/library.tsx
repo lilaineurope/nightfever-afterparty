@@ -24,7 +24,7 @@ export const Route = createFileRoute("/library")({
       books,
       press: bookClub.length - books,
       total: bookClub.length,
-      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) })),
+      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" || b.shelf === "diaries" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) })),
     };
   },
   head: ({ loaderData }) => {
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/library")({
   component: LibraryPage,
 });
 
-const KIND: Record<string, string> = { books: "Books", magazines: "Magazines", newspapers: "Newspapers", columns: "Columns" };
+const KIND: Record<string, string> = { books: "Books", magazines: "Magazines", newspapers: "Newspapers", columns: "Columns", diaries: "Diary" };
 const episodesOf = (it: CollectionItem) => new Set(it.moments.map((m) => m.episodeId)).size;
 const afterparties = (n: number) => `${n} ${n === 1 ? "Afterparty" : "Afterparties"}`;
 const CHIP = "season-chip rounded-full";
@@ -158,8 +158,8 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
         </span>
       </span>
     );
-  // Magazines alternate pink and black; newspapers are newsprint; columns are marker yellow; books without a cover are black.
-  const colour = item.shelf === "newspapers" ? "lib-news" : item.shelf === "columns" ? "lib-col" : item.shelf === "books" ? "lib-ink" : tint % 2 ? "lib-ink" : "lib-pink";
+  // Magazines alternate pink and black; newspapers are newsprint; columns are marker yellow; diaries are burgundy notebooks; books without a cover are black.
+  const colour = item.shelf === "newspapers" ? "lib-news" : item.shelf === "columns" ? "lib-col" : item.shelf === "diaries" ? "lib-diary" : item.shelf === "books" ? "lib-ink" : tint % 2 ? "lib-ink" : "lib-pink";
   return (
     <span className={`lib-cv lib-type ${colour}`}>
       <span className="lib-kind">{KIND[item.shelf]}</span>
