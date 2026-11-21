@@ -902,6 +902,7 @@ const s03e09: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO6796663616.mp3",
   runtime: "57:45",
   afterpartyPublished: "2026-11-30",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEik953ZYoGg",
   blurb:
     "Cat Marnell on post-9/11 clubs, Condé Nast beauty closets, xoJane, How to Murder Your Life and growing up on the Edie book",
 };
