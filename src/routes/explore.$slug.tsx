@@ -11,6 +11,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
 import { PersonProfileSections } from "@/components/person-profile";
+import { MentorTree } from "@/components/mentor-tree";
+import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { guestBySlug } from "@/data/guests";
 import { getCardPage } from "@/lib/card-view.functions";
 import { LinkDataProvider } from "@/lib/link-index";
@@ -141,6 +143,13 @@ function EntityPage() {
           <h1 className="card-title">
             <span className="timeline-strip timeline-strip-ink">{e.name}</span>
           </h1>
+          {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for the top 100 great connectors. */}
+          {(e.tree || e.connector) && (
+            <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-wider text-cream">
+              {e.tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={e.tree.rank} small /><a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a></span>}
+              {e.connector && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={e.connector} small /><Link to="/network" className="hover:text-pink">Great connector</Link></span>}
+            </p>
+          )}
           {/* No polaroid yet: aka + dates sit on a small taped paper card so they stay readable over the dots (5 Nov 2026). */}
           {mem && (
             <div className={pic ? undefined : "memoriam-meta"}>
@@ -176,6 +185,8 @@ function EntityPage() {
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
+        {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors only. */}
+        {e.tree && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} />}
         <CardSections v={e} />
       </div>
           <SiteFooter />

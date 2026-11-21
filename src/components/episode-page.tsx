@@ -18,6 +18,10 @@ import { isOtherShowGuest } from "@/lib/show-guests";
 import { ShareButton } from "@/components/share-button";
 import { formatDate, toSeconds } from "@/lib/time";
 import { polaroidThumb } from "@/lib/polaroids";
+import { mentorTreeOf } from "@/lib/mentor-rank";
+import { MentorTree } from "@/components/mentor-tree";
+import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
+import { connectorRank } from "@/lib/connector-rank";
 import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
@@ -75,6 +79,8 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   // One page per guest (Lisa, 1 Nov 2026): the guest's A–Z card lives on this page too.
   const guestCard = guestOfEpisode(id);
   const about = guestCard?.guest ? guestCard : undefined;
+  const tree = about ? mentorTreeOf(about.slug) : null;
+  const connector = about ? connectorRank(about.slug) : null;
   // Mentor score and Top of the drop go under whichever column is shorter, so neither side ends in a blank (Lisa, 2 Nov 2026).
   const columns = useMemo(
     () => (about ? headerColumns(about, id, blurb ?? thisEpisode.blurb ?? "") : { left: [], right: [] }),
@@ -143,6 +149,13 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           <p className="mt-2 text-sm text-muted-foreground">
             {refs.length} references · {refs.reduce((total, r) => total + r.mentions, 0)} mentions
           </p>
+          {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for the top 100 great connectors. */}
+          {(tree || connector) && (
+            <p className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold uppercase tracking-wider text-cream">
+              {tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={tree.rank} small /><a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a></span>}
+              {connector && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={connector} small /><Link to="/network" className="hover:text-pink">Great connector</Link></span>}
+            </p>
+          )}
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{blurb ?? thisEpisode.blurb}</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link to="/jukebox" search={{ afterparty: id }}
@@ -166,6 +179,15 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           )}
         </div>
       </section>
+
+      {/* Hall of Fame family tree (Lisa, 21 Nov 2026): only the top 10 mentors get one, under their AFTERPARTY header. */}
+      {tree && (
+        <section className="px-6 pb-14">
+          <div className="mx-auto max-w-6xl">
+            <MentorTree t={tree} badge={<HallOfFameBadge rank={tree.rank} />} />
+          </div>
+        </section>
+      )}
 
       <section aria-labelledby="episode-mood" className="px-6 pb-12">
         <div className="mx-auto max-w-5xl">
