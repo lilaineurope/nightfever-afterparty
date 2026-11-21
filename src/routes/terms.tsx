@@ -231,8 +231,9 @@ function TermsPage() {
 
           <Section title="7. Links out">
             <p>
-              Links to Spotify, Apple Podcasts, WOW Presents Plus, Instagram,
-              Wikipedia and other services leave this site. This page is not
+              Links to Spotify, Apple Podcasts, YouTube, WOW Presents Plus,
+              Instagram and the sources named in picture credits leave this
+              site. This page is not
               responsible for their content, their availability, or how they
               handle your data.
             </p>

@@ -1,5 +1,5 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
-import { linkPlace } from "@/lib/link-label";
+import { linkPlace, showsReadMore } from "@/lib/link-label";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState, type CSSProperties } from "react";
 import { guests } from "@/data/guests";
@@ -207,7 +207,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
                     ) : (
                       <span className="text-lg font-semibold text-cream">{r.name}</span>
                     )}
-                    {r.link && (
+                    {showsReadMore(r.link) && (
                       <a href={r.link} target="_blank" rel="noreferrer" aria-label={`Read about ${r.name} ${linkPlace(r.link)}`} title={`Read more ${linkPlace(r.link)}`}
                         className="text-xs text-muted-foreground hover:text-gold">↗</a>
                     )}
