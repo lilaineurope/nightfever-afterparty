@@ -396,6 +396,11 @@ const SPOTIFY: Record<string, string> = {
   "Bad Brains": "spotify:track:0YnP5BtP6lTwQV8gLOzaov",
   "Scraping Foetus off the Wheel": "spotify:track:0mrRm6hVWag7Qv6DqAfmJl",
   "'Tomorrow Never Knows' – The Beatles": "spotify:track:00oZhqZIQfL9P5CjOP6JsO",
+  // S03E09 Cat Marnell
+  "Nelly – 'Hot in Herre'": "spotify:track:04KTF78FFg8sOHC1BADqbY",
+  "Britney Spears – 'I'm a Slave 4 U'": "spotify:track:6ldwfK0yWgTAlmIfuQkTYN",
+  "N.E.R.D": "spotify:artist:5wPoxI5si3eJsYYwyXV4Wi",
+  "Clipse": "spotify:artist:2J257euzcjnDLipsyJH3F2",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

@@ -355,4 +355,9 @@ export const YEARS: Record<string, number> = {
   "Scraping Foetus off the Wheel": 1981,
   "'Tomorrow Never Knows' – The Beatles": 1966,
   "Evergreen (Steve Lewis's band)": 1990,
+  // S03E09 Cat Marnell
+  "Nelly – 'Hot in Herre'": 2002,
+  "Britney Spears – 'I'm a Slave 4 U'": 2001,
+  "N.E.R.D": 1999,
+  "Clipse": 1992,
 };
