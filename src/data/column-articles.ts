@@ -38,7 +38,8 @@ export type ColumnPage = {
   suggestKind: string;
 };
 
-// The scan opens straight at the column: the PDF pages follow the printed page numbers (checked on Nos. 77 and 89).
+// The scan opens straight at the column: the PDF page holding it, found from each scan's page tree (21 Nov 2026) - it can
+// differ from the printed page number where a scan has extra pages (No. 105: printed p. 108 is PDF page 110).
 const OW = (n: string, page: number) => `http://outweek.net/pdfs/ow_${n}.pdf#page=${page}`;
 const PM = (s: string) => `https://www.papermag.com/${s}`;
 
@@ -54,7 +55,7 @@ export const COLUMN_PAGES: Record<string, ColumnPage> = {
       "Every OutWeek from No. 36 to the last issue, No. 105, checked page by page. The columns ran without headlines (No. 95 is the one exception), so each line here is the column's subject in a few words.",
     articles: [
       { date: "19 Dec 1990", issue: "No. 77 · p. 47", ours: true, title: "The first column: caught on video in a bathroom stall at Larry Tee's Mindbender. \"My name, by the way, is James St. James.\"", source: OW("77", 47) },
-      { date: "16 Jan 1991", issue: "No. 81 · p. 46", ours: true, title: "A Special K trip that ends in hospital. \"Special K is the devil's candy.\"", source: OW("81", 46) },
+      { date: "16 Jan 1991", issue: "No. 81 · p. 46", ours: true, title: "A Special K trip that ends in hospital. \"Special K is the devil's candy.\"", source: OW("81", 44) },
       { date: "30 Jan 1991", issue: "No. 83 · p. 48", ours: true, title: "Taping The Joan Rivers Show's \"freaks\" episode with Leigh Bowery, Amanda and Ernie Glam, then a night in the Bronx", source: OW("83", 48) },
       { date: "13 Feb 1991", issue: "No. 85 · p. 59", ours: true, title: "\"Naked and hairless\" after the Epilady, and six years of stumbling through life drunk", source: OW("85", 59) },
       { date: "27 Feb 1991", issue: "No. 87 · p. 47", ours: true, title: "The club is pumping and the pretty boys run from the makeup: boredom, loneliness and the drug du jour", source: OW("87", 47) },
@@ -64,8 +65,8 @@ export const COLUMN_PAGES: Record<string, ColumnPage> = {
       { date: "24 Apr 1991", issue: "No. 95 · p. 53", title: "Love Is a Stranger in an Open Car", note: "A wild night in Miami Beach", source: OW("95", 53) },
       { date: "8 May 1991", issue: "No. 97 · p. 50", ours: true, title: "Scraps of paper from his lunchboxes, and \"I've fallen in love\"", source: OW("97", 50) },
       { date: "5 Jun 1991", issue: "No. 101 · p. 50", ours: true, title: "His cat warns him never to fall for a straight man, so he turns himself into a girl", source: OW("101", 50) },
-      { date: "19 Jun 1991", issue: "No. 103 · p. 51", ours: true, title: "A giggling TV newswoman, Trudi out of the closet, and the straight boy's Caesar haircut at the Building", source: OW("103", 51) },
-      { date: "3 Jul 1991", issue: "No. 105 · p. 108", ours: true, title: "Cockroaches glued to a wig, a KFC bucket for a purse and a TriBeCa loft party", note: "OutWeek's last issue", source: OW("105", 108) },
+      { date: "19 Jun 1991", issue: "No. 103 · p. 51", ours: true, title: "A giggling TV newswoman, Trudi out of the closet, and the straight boy's Caesar haircut at the Building", source: OW("103", 53) },
+      { date: "3 Jul 1991", issue: "No. 105 · p. 108", ours: true, title: "Cockroaches glued to a wig, a KFC bucket for a purse and a TriBeCa loft party", note: "OutWeek's last issue", source: OW("105", 110) },
     ],
   },
   "fat-and-all-that": {
