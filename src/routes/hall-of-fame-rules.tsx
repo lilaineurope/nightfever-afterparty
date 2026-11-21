@@ -107,7 +107,7 @@ function HallOfFameRules() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex items-center gap-4 border-2 border-gold bg-card p-5">
               <HallOfFameBadge rank={1} />
-              <p className="text-sm text-muted-foreground"><b className="text-cream">Gold door stamp:</b> the Hall of Fame top 10. They get their family tree on their page.</p>
+              <p className="text-sm text-muted-foreground"><b className="text-cream">Gold door stamp:</b> the Hall of Fame top 10.</p>
             </div>
             <div className="flex items-center gap-4 border-2 border-gold bg-card p-5">
               <ConnectorBadge rank={11} />

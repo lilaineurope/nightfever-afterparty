@@ -20,6 +20,7 @@ import { formatDate, toSeconds } from "@/lib/time";
 import { polaroidThumb } from "@/lib/polaroids";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { MentorTree } from "@/components/mentor-tree";
+import { TREE_ON_PAGE } from "@/lib/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { connectorRank } from "@/lib/connector-rank";
 import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
@@ -152,7 +153,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for places 11-100 of the top 100 (great connectors, src/lib/connector-rank.ts) - one badge per person. */}
           {(tree || connector) && (
             <p className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold uppercase tracking-wider text-cream">
-              {tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={tree.rank} small /><a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a></span>}
+              {tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={tree.rank} small />{TREE_ON_PAGE.has(about!.slug) ? <a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a> : <Link to="/hall-of-fame" className="hover:text-pink">Hall of Fame</Link>}</span>}
               {connector && !tree && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={connector} small /><Link to="/hall-of-fame" hash="top-100" className="hover:text-pink">Great connector</Link></span>}
             </p>
           )}
@@ -180,8 +181,9 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
         </div>
       </section>
 
-      {/* Hall of Fame family tree (Lisa, 21 Nov 2026): only the top 10 mentors get one, under their AFTERPARTY header. */}
-      {tree && (
+      {/* Hall of Fame family tree (Lisa, 21 Nov 2026): only the top 10 mentors get one, under their AFTERPARTY header;
+          for now only the pages in TREE_ON_PAGE show it. */}
+      {tree && TREE_ON_PAGE.has(about!.slug) && (
         <section className="px-6 pb-14">
           <div className="mx-auto max-w-6xl">
             <MentorTree t={tree} badge={<HallOfFameBadge rank={tree.rank} />} foldable />
