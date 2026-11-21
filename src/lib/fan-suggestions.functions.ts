@@ -72,7 +72,9 @@ export const suggestFanIdea = createServerFn({ method: "POST" })
   .handler(async ({ data }): Promise<{ ok: boolean; id?: string; message: string }> => {
     // Bots fill hidden fields and submit within a second or two: accept quietly, store nothing.
     if (looksLikeBot(data.website, data.elapsed, 2000)) return { ok: true, message: "Thank you!" };
-    if ([data.what, data.why, data.from].some((t) => t && HAS_LINK.test(t))) {
+    // Column sources may carry one link in the "where" line; nowhere else takes links.
+    const linkable = FAN_BOX[data.box].allowLinks ? [data.what, data.from] : [data.what, data.why, data.from];
+    if (linkable.some((t) => t && HAS_LINK.test(t))) {
       return { ok: false, message: "Just a few words, please - no links!" };
     }
     // Only the kinds this box offers (Book / Film on the Library); anything else is dropped.

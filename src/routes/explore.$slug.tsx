@@ -12,6 +12,7 @@ import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
+import { ColumnIndex } from "@/components/column-index";
 import { MentorTree } from "@/components/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { guestBySlug } from "@/data/guests";
@@ -114,6 +115,8 @@ function EntityPage() {
   const profile = e.profile ?? undefined;
   // Diary pages (Lisa, 21 Nov 2026): every moment the diary comes up on the show, the readings highlighted.
   const diary = e.diary ?? undefined;
+  // Column pages (Lisa, 21 Nov 2026): every piece that ran under the column.
+  const column = e.column ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -189,6 +192,7 @@ function EntityPage() {
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
         {diary && <DiarySections d={diary} name={e.name} />}
+        {column && <ColumnIndex c={column} name={e.name} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors only. */}
         {e.tree && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
         <CardSections v={e} />
