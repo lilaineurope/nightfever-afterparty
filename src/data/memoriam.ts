@@ -14,6 +14,7 @@ export type Memoriam = {
   born: string;
   died: string;
   diedLine: string; // "Died 30 January 2019 in New York, aged 62"
+  convictedLine?: string; // on the name card between the dates and "died" (Michael Alig, Lisa 21 Nov 2026)
   aka?: string;
   first?: string; // name used in "<first>'s story" when the first name isn't what people call them (Angel Melendez)
   story: string;
@@ -2273,15 +2274,16 @@ export const MEMORIAM: Record<string, Memoriam> = {
     born: "1966",
     died: "2020",
     diedLine: "Died 24 December 2020 in New York, of a drug overdose, aged 54",
+    convictedLine: "convicted of first-degree manslaughter in 1997 for killing Angel Melendez",
     story:
-      "Came from Indiana to bus tables at Danceteria and Area, and turned a gang of dressed-up kids into the Club Kids: outlaw parties, Disco 2000 at the Limelight, the talk-show circuit. In March 1996 he killed Andre 'Angel' Melendez, and the next year he pleaded guilty to manslaughter.",
+      "Came from Indiana to bus tables at Danceteria and Area, and turned a gang of dressed-up kids into the Club Kids: outlaw parties, Disco 2000 at the Limelight, the talk-show circuit. In March 1996 he killed Andre 'Angel' Melendez, and the next year he pleaded guilty to first-degree manslaughter.",
     timeline: [
       ["1966", "Born in South Bend, Indiana"],
       ["1984", "Moves to New York for college, drops out, and buses tables at Danceteria, then at Area"],
       ["1980s", "Starts the Club Kids with outlaw parties in a McDonald's and on the L train, and Disco 2000 at the Limelight for Peter Gatien"],
       ["1990s", "Takes the Club Kids onto Geraldo, Donahue and Joan Rivers, and runs the Tunnel basement and Club USA nights"],
       ["1996", "Kills Angel Melendez in his apartment in March, with his roommate Robert 'Freeze' Riggs; they throw his body in the Hudson"],
-      ["1997", "Pleads guilty to manslaughter and is sentenced to 10 to 20 years"],
+      ["1997", "Pleads guilty to first-degree manslaughter and is sentenced to 10 to 20 years"],
       ["2014", "Released from prison on parole"],
       ["2020", "Dies of a heroin overdose on Christmas Eve, aged 54"],
     ],

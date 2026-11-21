@@ -157,7 +157,7 @@ function EntityPage() {
           {mem && (
             <div className={pic ? undefined : "memoriam-meta"}>
               {mem.aka && <p className="memoriam-aka">aka {mem.aka}</p>}
-              <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died} · {mem.diedLine.replace(/^Died/, "died")}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died}{mem.convictedLine && <> · {mem.convictedLine}</>} · {mem.diedLine.replace(/^Died/, "died")}</p>
             </div>
           )}
           {club && (
