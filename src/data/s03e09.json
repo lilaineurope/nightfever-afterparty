@@ -1484,5 +1484,81 @@
   "context": "Where Cat was when COVID ended her three years of travel",
   "link": "https://en.wikipedia.org/wiki/Cairo",
   "status": "Confirmed"
+ },
+ {
+  "rank": 132,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Cat's on-camera look (S03E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Long platinum-blonde hair, winged eyeliner and coral lips, long silver spiral earrings and a one-shoulder grey-and-white marble-print dress, on a sofa at home under a big Bambi print",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-309",
+  "status": "Confirmed",
+  "fashion": "One-shoulder marble-print dress, silver spiral earrings",
+  "colours": [
+   "blonde #A9937E",
+   "lip coral #9F5D51",
+   "earring silver #E3DCD5",
+   "print grey #837870",
+   "print charcoal #474039",
+   "Bambi fawn #CA9F6B"
+  ]
+ },
+ {
+  "rank": 133,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S03E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Bald head, chunky black glasses, a beaded cord at his ear and a black-and-white patterned wrap, in front of his floor-to-ceiling bookshelves and a Buster Crabbe Billy the Kid poster",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-309",
+  "status": "Confirmed",
+  "fashion": "Black-and-white patterned wrap, chunky black glasses",
+  "colours": [
+   "wrap black #1E1C1B",
+   "wrap white #8B8C85",
+   "glasses black #141214",
+   "shelf wood #3A2122",
+   "skin #CA9D90"
+  ]
+ },
+ {
+  "rank": 134,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S03E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Light blue-grey striped T-shirt and thin tortoiseshell glasses, against seventies orange flower wallpaper, brown curtains and shelves with a Brillo box",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-309",
+  "status": "Confirmed",
+  "fashion": "Striped T-shirt, tortoiseshell glasses",
+  "colours": [
+   "stripe grey #D5D5D6",
+   "wallpaper orange #BF8232",
+   "curtain brown #78542D",
+   "skin #F5CDA4"
+  ]
+ },
+ {
+  "rank": 135,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S03E09)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Grey baseball cap, dark glasses, a pink henley under a red, green and blue plaid shirt, with a lanyard - sitting in a grey trailer before he has to leave early",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:3/videos/nf-309",
+  "status": "Confirmed",
+  "fashion": "Plaid shirt over a pink henley, baseball cap",
+  "colours": [
+   "cap grey #3B3A38",
+   "henley pink #D09AA1",
+   "plaid rust #AB6E5B",
+   "plaid blue #3F5D7A",
+   "trailer grey #897869"
+  ]
  }
 ]
