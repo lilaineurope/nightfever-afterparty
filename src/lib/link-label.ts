@@ -8,7 +8,8 @@ export function linkPlace(url: string): string {
   }
   if (host.endsWith("wikipedia.org")) return "on Wikipedia";
   if (host.endsWith("wowpresentsplus.com")) return "on WOW Presents Plus";
-  if (host.endsWith("worldofwonder.com") || host.endsWith("worldofwonder.net")) return "on World of Wonder";
+  if (host.endsWith("worldofwonder.com") || host.endsWith("worldofwonder.net"))
+    return "on World of Wonder";
   if (host.endsWith("imdb.com")) return "on IMDb";
   // Library scans (Lisa, 29 Oct 2026): the University of Michigan "Stand Up and Be Counted" ballroom archive
   if (host === "umsi580.lsait.lsa.umich.edu") return "in the University of Michigan archive";
@@ -29,7 +30,12 @@ export function showsReadMore(url: string | undefined): url is string {
   } catch {
     return false;
   }
-  if (host.endsWith("wowpresentsplus.com") || host.endsWith("worldofwonder.com") || host.endsWith("worldofwonder.net")) return true;
+  if (
+    host.endsWith("wowpresentsplus.com") ||
+    host.endsWith("worldofwonder.com") ||
+    host.endsWith("worldofwonder.net")
+  )
+    return true;
   if (host === "open.spotify.com" && url.includes("/playlist/")) return true;
   if (host.endsWith("youtube.com") && url.includes("/playlist")) return true;
   return false;
