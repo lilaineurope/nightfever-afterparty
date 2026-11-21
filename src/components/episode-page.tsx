@@ -184,7 +184,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
       {tree && (
         <section className="px-6 pb-14">
           <div className="mx-auto max-w-6xl">
-            <MentorTree t={tree} badge={<HallOfFameBadge rank={tree.rank} />} />
+            <MentorTree t={tree} badge={<HallOfFameBadge rank={tree.rank} />} foldable />
           </div>
         </section>
       )}

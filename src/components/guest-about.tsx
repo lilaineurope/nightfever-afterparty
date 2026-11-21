@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { EntityBox } from "@/components/entity-box";
 import { MomentsBox, plainClick } from "@/components/moments-box";
 import { Timestamp } from "@/components/episode-player";
@@ -57,6 +57,66 @@ function TapChips({ items, group, open, setOpen }: {
         })}
       </div>
       {entity && <div className="mt-4"><EntityBox entity={entity} onClose={() => setOpen(null)} /></div>}
+    </>
+  );
+}
+
+/** Top of the drop rows, cut short (Lisa, 21 Nov 2026, S6E1): on a wide screen the list stops level with the end of the
+ *  right header column (for James St. James: the bottom of "Under the wing of"); on a phone, where the columns stack, it
+ *  shows the first PHONE_ROWS. The rest sit behind a "more" line that opens a Library-style box underneath. */
+const PHONE_ROWS = 10;
+const MIN_ROWS = 5;
+function DropList({ rows }: { rows: { key: string; node: ReactNode }[] }) {
+  const ref = useRef<HTMLUListElement>(null);
+  const [fit, setFit] = useState(PHONE_ROWS);
+  const [more, setMore] = useState(false);
+  useEffect(() => {
+    const ul = ref.current;
+    if (!ul) return;
+    const measure = () => {
+      // Leave it alone while a box is open in the list (its height is not a row's height).
+      if (ul.querySelector('[aria-expanded="true"]')) return;
+      if (!window.matchMedia("(min-width: 768px)").matches) return setFit(PHONE_ROWS);
+      // Wide screen: only a list in the left column is cut, level with the end of the right column. A list under the
+      // Timeline in the right column is the long column by design, so it stays whole.
+      const side = ul.closest(".ep-head-text")?.parentElement?.querySelector(".ep-head-side");
+      const end = (side?.lastElementChild ?? side)?.getBoundingClientRect().bottom;
+      const first = ul.querySelector("li");
+      if (!end || !first) return setFit(Infinity);
+      const row = first.getBoundingClientRect().height + 6; // space-y-1.5
+      // Room for the rows plus the "more" line, down to the end of the other column.
+      setFit(Math.max(MIN_ROWS, Math.floor((end - ul.getBoundingClientRect().top + 6) / row) - 1));
+    };
+    measure();
+    void document.fonts?.ready.then(measure);
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+  // One hidden row is not worth a "more" line: it takes the same room.
+  const cut = rows.length > fit + 1 ? fit : rows.length;
+  const rest = rows.slice(cut);
+  return (
+    <>
+      <ul ref={ref} className="mt-3 space-y-1.5">
+        {rows.slice(0, cut).map((r) => r.node)}
+        {rest.length > 0 && (
+          <li className="text-sm">
+            <button type="button" aria-expanded={more} onClick={() => setMore(!more)}
+              className={`font-semibold text-pink hover:underline ${more ? "underline" : ""}`}>
+              More… <span className="text-xs font-normal text-muted-foreground">· {rest.length} more {rest.length === 1 ? "AFTERPARTY" : "AFTERPARTIES"}</span>
+            </button>
+          </li>
+        )}
+      </ul>
+      {more && rest.length > 0 && (
+        <div className="moments-box mt-3 border-2 border-gold bg-card p-5 text-left shadow-[6px_6px_0_var(--color-gold)]">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h4 className="text-xl font-bold uppercase text-cream">More AFTERPARTIES</h4>
+            <button type="button" onClick={() => setMore(false)} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-pink">Close ✕</button>
+          </div>
+          <ul className="mt-3 space-y-1.5">{rest.map((r) => r.node)}</ul>
+        </div>
+      )}
     </>
   );
 }
@@ -248,6 +308,40 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
       )}
     </div>
   ) : null;
+  const dropRow = ({ id, rows }: (typeof byEpisode)[number]) => {
+    const ep = episodeById(id);
+    const key = `ep:${id}`;
+    const host = guestOfEpisode(id);
+    const mentions = rows.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
+    return (
+      <li key={id} className="text-sm">
+        <Link to={episodePath(ep.id)} aria-expanded={open === key}
+          onClick={(ev) => { if (!plainClick(ev)) return; ev.preventDefault(); setOpen(open === key ? null : key); }}
+          className={`font-semibold hover:text-pink ${open === key ? "text-pink" : "text-gold"}`}>
+          S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
+        </Link>
+        <span className="text-xs text-muted-foreground">
+          {" · "}{mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "named"}
+          {rows.length > 1 && ` · ${rows.length} moments`}
+        </span>
+        {open === key && (
+          <div className="mt-3">
+            <MomentsBox
+              name={`S${ep.season}E${ep.episode}${ep.part ?? ""} · ${ep.guest}`}
+              slug={host?.slug ?? e.slug}
+              mentions={mentions}
+              moments={rows.map(({ r, via }) => ({
+                episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: r.time,
+                context: via ? `${via.name}: ${r.context}` : r.context,
+              }))}
+              note={`${e.name} in this AFTERPARTY`}
+              onClose={() => setOpen(null)}
+            />
+          </div>
+        )}
+      </li>
+    );
+  };
   const othersBlock = elsewhere.length > 0 ? (
     <div>
             {/* "In the other AFTERPARTIES" and "Also named in these episodes" in one list (Lisa, 1 Nov 2026), episode by episode:
@@ -261,42 +355,9 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
               {/* Rank among all guests by drops, then AFTERPARTIES (src/lib/drop-rank.ts); the host is not ranked. */}
               {" · "}<span className="font-semibold">{dropRanking ? `#${dropRanking.rank} of ${dropRanking.of} guests` : e.slug === DROP_HOST ? "the host, not ranked" : "not ranked"}</span>
             </p>
-            <ul className="mt-3 space-y-1.5">
-              {byEpisode.map(({ id, rows }) => {
-                const ep = episodeById(id);
-                const key = `ep:${id}`;
-                const host = guestOfEpisode(id);
-                const mentions = rows.filter((x) => !x.via).reduce((n, x) => n + x.r.mentions, 0);
-                return (
-                  <li key={id} className="text-sm">
-                    <Link to={episodePath(ep.id)} aria-expanded={open === key}
-                      onClick={(ev) => { if (!plainClick(ev)) return; ev.preventDefault(); setOpen(open === key ? null : key); }}
-                      className={`font-semibold hover:text-pink ${open === key ? "text-pink" : "text-gold"}`}>
-                      S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
-                    </Link>
-                    <span className="text-xs text-muted-foreground">
-                      {" · "}{mentions > 0 ? `${mentions} mention${mentions === 1 ? "" : "s"}` : "named"}
-                      {rows.length > 1 && ` · ${rows.length} moments`}
-                    </span>
-                    {open === key && (
-                      <div className="mt-3">
-                        <MomentsBox
-                          name={`S${ep.season}E${ep.episode}${ep.part ?? ""} · ${ep.guest}`}
-                          slug={host?.slug ?? e.slug}
-                          mentions={mentions}
-                          moments={rows.map(({ r, via }) => ({
-                            episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: r.time,
-                            context: via ? `${via.name}: ${r.context}` : r.context,
-                          }))}
-                          note={`${e.name} in this AFTERPARTY`}
-                          onClose={() => setOpen(null)}
-                        />
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+            {/* Short list (Lisa, 21 Nov 2026): the episode rows stop level with the bottom of the right header column (on
+                S6E1 the end of "Under the wing of"); the rest sit behind a "more" line that opens a box underneath. */}
+            <DropList rows={byEpisode.map((x) => ({ key: x.id, node: dropRow(x) }))} />
     </div>
   ) : null;
 

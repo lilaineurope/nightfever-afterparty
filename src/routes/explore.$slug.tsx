@@ -190,7 +190,7 @@ function EntityPage() {
         {profile && <PersonProfileSections m={profile} name={e.name} />}
         {diary && <DiarySections d={diary} name={e.name} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors only. */}
-        {e.tree && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} />}
+        {e.tree && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
         <CardSections v={e} />
       </div>
           <SiteFooter />
