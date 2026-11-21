@@ -7,7 +7,8 @@ import { entityBySlug, entityFor, guestOfEpisode, type Entity } from "@/data/ent
 import { namedOn } from "@/lib/name-links";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
 import { MENTOR_LINKS, NOT_IN_HALL_OF_FAME, type MentorLink } from "@/data/mentors";
-import { rankedMentors } from "@/lib/mentor-rank";
+import { rankedMentors, HALL_OF_FAME_SIZE } from "@/lib/mentor-rank";
+import { KIND_LABEL, points } from "@/lib/mentor-tree";
 import { DROP_HOST, dropRank, dropsOf } from "@/lib/drop-rank";
 import { HEADER_LAYOUT } from "@/data/header-layout";
 import { cardTo } from "@/lib/card-link";
@@ -93,7 +94,7 @@ function guestAboutData(e: Entity, episode: string) {
   const mentees = asMentor >= 0 ? rankedMentors[asMentor]!.links : [];
   const mentors = MENTOR_LINKS.filter((l) => isMe(l.mentee) && !NOT_IN_HALL_OF_FAME.has(l.mentor));
   const mentor = mentees.length || mentors.length
-    ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0 }
+    ? { rank: asMentor + 1, mentees, mentors, mentions: asMentor >= 0 ? rankedMentors[asMentor]!.mentions : 0, m: asMentor >= 0 ? rankedMentors[asMentor] : undefined }
     : undefined;
 
   return { rows, elsewhere, byEpisode, dropMentions, mentor };
@@ -227,15 +228,16 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
           {/* Mentor score (Lisa, 1 Nov 2026): the Hall of Fame count - people this guest took under their wing, and mentions -
               with the rank among all mentors. Michael Alig stays out (NOT_IN_HALL_OF_FAME). */}
           <h3 className={h}>Mentor score</h3>
+          {/* Mentor score (Lisa, 21 Nov 2026): points for the people helped (lifted 3, stood by 2, opened a door 1), voices
+              (others who tell it) and the family tree - src/lib/mentor-rank.ts, explained on /hall-of-fame-rules. */}
           <p className="mt-3 text-sm text-card-foreground">
-            <span className="font-semibold text-pink">{mentor.mentees.length} {mentor.mentees.length === 1 ? "mentee" : "mentees"}</span>
-            {" · "}{mentor.mentions} {mentor.mentions === 1 ? "mention" : "mentions"}
-            {/* Score and rank on every mentor's page (Lisa, 2 Nov 2026): the score is the people taken under their wing,
-                mentions break ties; the rank is among all mentors, the top 10 being the Hall of Fame. */}
-            {" · "}<span className="font-semibold">#{mentor.rank} of {rankedMentors.length} mentors</span>
-            {mentor.rank <= 10 && <>{" · "}<Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame</Link></>}
+            <span className="font-semibold text-pink">{points(mentor.m!.score)} points</span>
+            {" · "}{mentor.m!.people.length} helped · {mentor.m!.voices.length} {mentor.m!.voices.length === 1 ? "voice" : "voices"}
+            {" · "}<span className="font-semibold">#{mentor.rank} of {rankedMentors.length}</span>
+            {mentor.rank <= HALL_OF_FAME_SIZE && <>{" · "}<Link to="/hall-of-fame" className="text-gold hover:text-pink">Hall of Fame</Link></>}
+            {" · "}<Link to="/hall-of-fame-rules" className="text-gold hover:text-pink">How it's worked out</Link>
           </p>
-          {mentor.mentees.map((l) => mentorRow(l, l.mentee, "Took under their wing"))}
+          {mentor.mentees.map((l) => mentorRow(l, l.mentee, KIND_LABEL[l.kind ?? "lifted"]))}
         </div>
       )}
       {mentor.mentors.length > 0 && (

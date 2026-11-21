@@ -31,6 +31,8 @@ export const OTHER_PAGES = [
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
   { to: "/under-the-hood", label: "Under the hood" },
+  { to: "/hall-of-fame", label: "Hall of Fame" }, // the top 100, top 10 first (Lisa, 21 Nov 2026)
+  { to: "/hall-of-fame-rules", label: "How the Hall of Fame works" }, // Lisa, 21 Nov 2026 - linked from the Hall of Fame and Under the hood
   { to: "/privacy", label: "Privacy Policy" },
   { to: "/terms", label: "Terms & Conditions" },
 ] as const;
@@ -52,7 +54,7 @@ export const CONTACT_TOPICS: string[] = [
 
 /** Guestbook: "Favourite page" - the pages fans enjoy (not the contact form or the legal pages). */
 export const GUESTBOOK_PAGES: SitePage[] = ALL_PAGES.filter(
-  (p) => !["/contact", "/privacy", "/terms", "/under-the-hood", "/guestbook"].includes(p.to),
+  (p) => !["/contact", "/privacy", "/terms", "/under-the-hood", "/hall-of-fame-rules", "/guestbook"].includes(p.to),
 );
 
 // Older guestbook entries may name an unlinked page - still show its name, just not as a choice.

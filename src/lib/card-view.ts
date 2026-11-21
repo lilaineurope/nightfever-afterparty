@@ -9,6 +9,8 @@ import type { LinkData } from "@/lib/link-index";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
  *  doesn't download the whole A–Z (page weight, 16 Nov 2026). Types only - this file loads nothing. */
+import type { MentorTreeData } from "@/lib/mentor-tree";
+
 export type CardView = {
   slug: string;
   name: string;
@@ -31,6 +33,10 @@ export type CardView = {
   pic: PersonPortrait | null;
   /** Person page (story, guest quotes, timeline) for living people the guests talk about - Lisa, 20 Nov 2026. */
   profile: PersonProfile | null;
+  /** Hall of Fame family tree - top 10 mentors only (Lisa, 21 Nov 2026, src/lib/mentor-rank.ts). */
+  tree: MentorTreeData | null;
+  /** Rank among the top 100 great connectors (pink badge), or null. */
+  connector: number | null;
   /** Every name -> card answer the page needs for its links. */
   links: LinkData;
 };

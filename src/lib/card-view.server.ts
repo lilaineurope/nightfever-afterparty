@@ -15,6 +15,8 @@ import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
 import type { CardView } from "@/lib/card-view";
+import { mentorTreeOf } from "@/lib/mentor-rank";
+import { connectorRank } from "@/lib/connector-rank";
 
 /** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
 function cardView(e: Entity): CardView {
@@ -63,6 +65,14 @@ function cardView(e: Entity): CardView {
     return { slug: x.slug, name: x.name };
   });
   const j = jukebox.find((x) => x.slug === e.slug);
+  const tree = mentorTreeOf(e.slug);
+  if (tree) {
+    L.name(tree.name);
+    for (const k of tree.kids) {
+      L.name(k.name.replace(/ \(as heard\)$/, ""));
+      for (const g of k.grand) L.name(g.name.replace(/ \(as heard\)$/, ""));
+    }
+  }
 
   return {
     slug: e.slug,
@@ -81,6 +91,8 @@ function cardView(e: Entity): CardView {
     club,
     pic,
     profile,
+    tree,
+    connector: connectorRank(e.slug),
     links: L.data,
   };
 }

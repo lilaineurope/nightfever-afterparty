@@ -5,9 +5,11 @@ import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import type { MentorLink } from "@/data/mentors";
 import { episodeById, stageName } from "@/data/episodes";
 import { MomentsBox, plainClick, type Moment } from "@/components/moments-box";
+import { KIND_LABEL, points } from "@/lib/mentor-tree";
 
-// Hall of Fame (Lisa, 28 Oct 2026; replaces "The names everyone drops"): the top 10 mentors of the scene - who took whom under
-// their wing, as the guests tell it - ranked by how many people they mentored, then by how often they come up across every Afterparty.
+// Hall of Fame (Lisa, 28 Oct 2026; replaces "The names everyone drops"): the top 10 mentors of the scene, as the guests tell it.
+// Scored since 21 Nov 2026 (Lisa) by the people they lifted, stood by and opened doors for, the voices who tell it and their
+// family tree - src/lib/mentor-rank.ts; the rules are explained on /hall-of-fame-rules ("How this is calculated").
 const short = (n: string) => stageName(n).replace(/ \(as heard\)$/, "");
 
 // Tap a name and a box opens under the names, like the Library covers (Lisa, 29 Oct 2026): who they took under their wing,
@@ -15,7 +17,7 @@ const short = (n: string) => stageName(n).replace(/ \(as heard\)$/, "");
 const momentsOfMentor = (links: MentorLink[]): Moment[] =>
   links.map((l) => {
     const ep = episodeById(l.episode);
-    return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: l.time, context: `${short(l.mentee)}: ${l.line}` };
+    return { episodeId: ep.id, code: `S${ep.season}E${ep.episode}${ep.part ?? ""}`, guest: ep.guest, time: l.time, context: `${KIND_LABEL[l.kind ?? "lifted"]} ${short(l.mentee)}: ${l.line}` };
   });
 
 // The top 10 come from the server with the home page (src/lib/home-view.server.ts, page weight 17 Nov 2026).
@@ -45,7 +47,9 @@ export function HallOfFame({ mentors }: { mentors: HomeView["mentors"] }) {
       <div className="mx-auto max-w-6xl">
         <h2 id="hall-of-fame" className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Hall of Fame</h2>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-          The top 10 mentors of the scene - the people who took the guests under their wing, as they tell it on the show. Tap a name to see who they took under their wing.
+          The top 10 mentors of the scene - the people who lifted others, stood by them and opened doors for them, as the guests tell it on the show. Tap a name to see who they helped.{" "}
+          <Link to="/hall-of-fame" className="whitespace-nowrap font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:text-pink">The whole top 100 →</Link>{" "}
+          <Link to="/hall-of-fame-rules" className="whitespace-nowrap font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:text-pink">How this is calculated →</Link>
         </p>
         <div className="mt-5 flex flex-wrap items-baseline font-[family-name:var(--font-flyer)] text-2xl uppercase leading-[1.5] sm:text-[30px]">
           {mentors.map((m, i) => (
@@ -55,7 +59,7 @@ export function HallOfFame({ mentors }: { mentors: HomeView["mentors"] }) {
                   items.current[i] = el;
                 }}
                 className="min-w-0"
-                title={`Mentor to ${m.links.map((l) => short(l.mentee)).join(", ")}`}
+                title={`Helped ${m.people.map((p) => short(p.name)).join(", ")}`}
               >
                 {m.slug ? (
                   <Link
@@ -74,7 +78,7 @@ export function HallOfFame({ mentors }: { mentors: HomeView["mentors"] }) {
                   <span className="sm:whitespace-nowrap">{short(m.name)}</span>
                 )}
                 <sup className="ml-1 font-[family-name:var(--font-mono-body)] text-[11px] normal-case tracking-normal text-pink">
-                  {m.links.length} {m.links.length === 1 ? "mentee" : "mentees"} · {m.mentions} {m.mentions === 1 ? "mention" : "mentions"}
+                  {points(m.score)} points · {m.people.length} helped
                 </sup>
                 {i < mentors.length - 1 && <span className="whitespace-pre text-pink"> / </span>}
               </span>
@@ -86,7 +90,7 @@ export function HallOfFame({ mentors }: { mentors: HomeView["mentors"] }) {
                     mentions={sel.mentions}
                     moments={momentsOfMentor(sel.links)}
                     link={sel.link}
-                    note={<>Mentor to {sel.links.map((l) => short(l.mentee)).join(", ")}</>}
+                    note={<>{points(sel.score)} points · helped {sel.people.map((p) => short(p.name)).join(", ")}</>}
                     onClose={() => setOpen(null)}
                   />
                 </div>
