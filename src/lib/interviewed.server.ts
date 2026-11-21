@@ -15,6 +15,8 @@ export type Interviewed = {
   href: string;
   /** true: href is the site's own AFTERPARTY page; false: the episode on WOW Presents Plus */
   afterparty: boolean;
+  /** When the episode came out ("2024-08-07"), known for episodes with an AFTERPARTY page */
+  released?: string | undefined;
 };
 
 /** Every way a guest's name can be written: the full name, each half of a duo ("Chi Chi Valenti & Johnny Dynell"),
@@ -54,5 +56,6 @@ export function interviewedOn(name: string): Interviewed | undefined {
     guest: built?.guest ?? hit.guest,
     href: built ? `/episodes/${built.id}` : hit.watchUrl,
     afterparty: !!built,
+    released: built?.released,
   };
 }
