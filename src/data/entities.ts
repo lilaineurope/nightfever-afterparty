@@ -47,6 +47,8 @@ const clean = (n: string) =>
 // (Lisa, 21 Nov 2026: "double ups in magazines eg paper"). The old address forwards to the card (card-view.server.ts).
 export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
+  // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
+  "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
 };
 
 // Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
