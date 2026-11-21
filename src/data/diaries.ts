@@ -473,6 +473,15 @@ export const DIARY_PAGES: Record<string, DiaryPage> = {
         ],
       },
       {
+        episode: "s03e09",
+        time: "00:26:10",
+        title: "Everything about the entire world",
+        lines: [
+          { who: "Fenton Bailey", text: "Also like James St. James, I might add, who studied everybody before you went to New York." },
+          { who: J, text: "Yep. I mean, Warhol Diaries taught me everything about the entire world." },
+        ],
+      },
+      {
         episode: "s04e05",
         time: "00:47:16",
         title: "Everybody's got their own Andy",

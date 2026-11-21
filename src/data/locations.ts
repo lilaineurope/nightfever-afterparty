@@ -5,6 +5,20 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Pangaea (New York)", lat: 40.729, lng: -73.992, area: "NoHo", tip: "On Lafayette Street, Cat Marnell says" },
+  { name: "Bethesda, Maryland", lat: 38.9847, lng: -77.0947, area: "Maryland" },
+  { name: "Lafayette Street", lat: 40.7265, lng: -73.995, area: "NoHo" },
+  { name: "Cortlandt Alley", lat: 40.7178, lng: -74.002, area: "Tribeca" },
+  { name: "New York Film Academy", lat: 40.7366, lng: -73.9888, area: "Union Square" },
+  { name: "American Academy of Dramatic Arts", lat: 40.7462, lng: -73.9846, area: "Murray Hill", tip: "120 Madison Avenue" },
+  { name: "Lot 61", lat: 40.7477, lng: -74.0072, area: "Chelsea", tip: "550 West 21st Street" },
+  { name: "Butter (New York)", lat: 40.729, lng: -73.9918, area: "NoHo", tip: "415 Lafayette Street" },
+  { name: "Spa (New York)", lat: 40.7333, lng: -73.9895, area: "East Village", tip: "76 East 13th Street" },
+  { name: "Bungalow 8", lat: 40.7517, lng: -74.0045, area: "Chelsea", tip: "515 West 27th Street" },
+  { name: "Le Baron (New York)", lat: 40.7143, lng: -73.9988, area: "Chinatown", tip: "32 Mulberry Street" },
+  { name: "Mexico City", lat: 19.4326, lng: -99.1332, area: "Mexico" },
+  { name: "Thailand", lat: 15.87, lng: 100.9925, area: "Asia" },
+  { name: "Cairo", lat: 30.0444, lng: 31.2357, area: "Egypt" },
   { name: "Tenderloin", lat: 37.7847, lng: -122.4145, area: "San Francisco" },
   { name: "Mission District", lat: 37.7599, lng: -122.4148, area: "San Francisco" },
   { name: "Aunt Charlie's Lounge", lat: 37.7829, lng: -122.4114, area: "Tenderloin", tip: "133 Turk Street" },
