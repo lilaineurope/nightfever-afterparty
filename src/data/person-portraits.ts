@@ -640,6 +640,8 @@ import yulBrynnerPhoto from "@/assets/people/yul-brynner-photo.webp";
 import yulBrynnerPolaroid from "@/assets/people/yul-brynner-polaroid.webp";
 import billyBeyondPhoto from "@/assets/people/billy-beyond-photo.webp";
 import billyBeyondPolaroid from "@/assets/people/billy-beyond-polaroid.webp";
+import steveMassPhoto from "@/assets/people/steve-mass-photo.webp";
+import steveMassPolaroid from "@/assets/people/steve-mass-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -975,4 +977,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "william-f-buckley-jr": { photo: williamFBuckleyJrPhoto, polaroid: williamFBuckleyJrPolaroid, focus: "28%", credit: "Portrait after a photo by SPC 5 Bert Goulait, US Military, 1985 (public domain), in our photocopy style" },
   "yul-brynner": { photo: yulBrynnerPhoto, polaroid: yulBrynnerPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer, 1960 (public domain), in our photocopy style" },
   "billy-beyond": { photo: billyBeyondPhoto, polaroid: billyBeyondPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Steve Mass (Lisa, 21 Nov 2026: "let's do steve mass page"; no free photo exists, she picked a realistic Gemini portrait)
+  "steve-mass": { photo: steveMassPhoto, polaroid: steveMassPolaroid, focus: "20%", credit: "Illustration made with Gemini, not a photo" },
 };
