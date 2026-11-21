@@ -23,6 +23,8 @@ export type LibraryItemView = {
   connections: Connection[];
   shelfMates: ShelfMate[];
   trailers: Trailer[];
-  /** Books only: what the "Find me, borrow me" and "Buy me" boxes search for. */
+  /** Books only: "Who made me" - the publishing team beyond author and publisher (src/data/book-credits.ts). */
+  credits: { role: string; name: string; slug?: string | undefined }[];
+  /** Books only: what the "Find me, borrow me" and "Find me, buy me" boxes search for. */
   find: { isbn: string | null; query: string; inPrint: boolean | null } | null;
 };

@@ -152,13 +152,17 @@ export function FanSuggestions({
               disabled={state === "sending"}
               className="whitespace-nowrap border-2 border-pink bg-pink px-4 py-2 text-xs font-semibold uppercase text-pink-foreground transition hover:bg-card hover:text-cream disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
             >
-              {state === "sending" ? "Sending…" : "Suggest!"}
+              {state === "sending" ? "Sending…" : (cfg.submitLabel ?? "Suggest!")}
             </button>
           </div>
           {state === "error" && <p className="text-xs text-destructive">{problem || "That didn’t go through - please try again."}</p>}
           <p className="text-xs text-muted-foreground">
-            I read every suggestion first.{" "}
-            {cfg.listApproved === false ? "If I use yours, it goes into the list above" : "If I pick yours, it shows up here"} - your name never does. See the{" "}
+            {cfg.footnote ?? (
+              <>
+                I read every suggestion first. {cfg.listApproved === false ? "If I use yours, it goes into the list above" : "If I pick yours, it shows up here"} - your name never does.
+              </>
+            )}{" "}
+            See the{" "}
             <Link to="/privacy" className="text-gold">Privacy Policy</Link>.
           </p>
         </form>

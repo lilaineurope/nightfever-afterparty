@@ -256,7 +256,7 @@ function PrivacyPage() {
               The Wardrobe remembers which style you picked (Afterparty or
               Clueless) in your browser&rsquo;s own storage, so it opens the
               same way next time. The &ldquo;Find me, borrow me&rdquo; and
-              &ldquo;Buy me&rdquo; boxes on a Library book&rsquo;s page guess
+              &ldquo;Find me, buy me&rdquo; boxes on a Library book&rsquo;s page guess
               your country from your browser&rsquo;s own clock and language
               (nothing is looked up and nothing is sent), and remember the
               country you pick there the same way. It never leaves your device, is not a cookie,
@@ -309,7 +309,7 @@ function PrivacyPage() {
             </p>
             <p>
               The same goes for the buttons in a Library book&rsquo;s
-              &ldquo;Find me, borrow me&rdquo; and &ldquo;Buy me&rdquo; boxes
+              &ldquo;Find me, borrow me&rdquo; and &ldquo;Find me, buy me&rdquo; boxes
               (WorldCat, Libris, Adlibris, Bokus, Bookshop.org, AbeBooks): each
               is a plain link that opens a search for that book on the other
               site, carrying only the book&rsquo;s ISBN or title. They are not

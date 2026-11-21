@@ -22,6 +22,10 @@ export type FanBoxConfig = {
   allowLinks?: boolean;
   /** false: approved ideas are not listed under the form (a source goes into the page's own list instead). */
   listApproved?: boolean;
+  /** The small print under the form, when the usual "If I pick yours, it shows up here" doesn't fit. */
+  footnote?: string;
+  /** The button's words (default "Suggest!"). */
+  submitLabel?: string;
 };
 
 export const FAN_BOX: Record<FanBox, FanBoxConfig> = {
@@ -96,6 +100,8 @@ export const FAN_BOX: Record<FanBox, FanBoxConfig> = {
     whyPlaceholder: "Which edition or issue, and its story",
     thanks: "Thank you - your copy's story is on its way to me!",
     listApproved: false,
+    footnote: "Only I read these - nothing from this box is shown on the site, and your name never is.",
+    submitLabel: "Send it!",
   },
 };
 

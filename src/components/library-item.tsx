@@ -10,7 +10,7 @@ import type { LibraryItemView, Trailer } from "@/lib/library-item";
 
 // Library item pages (Lisa, 21 Nov 2026 - "yes to everything"): the extra boxes a book, magazine, newspaper, column, diary,
 // film or TV card gets under its header - who dropped it (their polaroids), what the guests said about it, the trailer
-// Jukebox, its connections, "Find me, borrow me" (WorldCat, Libris, our own Stockholm check), "Buy me" and the other
+// Jukebox, its connections, "Find me, borrow me" (WorldCat, Libris, our own Stockholm check), "Find me, buy me" and the other
 // Library items from the same Afterparties. The cover and the facts sit in the header (src/routes/explore.$slug.tsx).
 // Outside links: only the find/borrow/buy boxes link out (Lisa asked for them), each says where it goes (↗).
 
@@ -62,6 +62,38 @@ function GuestQuotes({ v }: { v: LibraryItemView }) {
           </li>
         ))}
       </ul>
+    </section>
+  );
+}
+
+/** "Who made me" (Lisa, 21 Nov 2026): the publishing team behind a book - author and publisher from the stocktake, and the
+ *  other roles (editor, photographer, foreword, designer, distributor...) only where src/data/book-credits.ts confirms them.
+ *  Sits next to the trailer Jukebox. */
+function WhoMadeMe({ v, name }: { v: LibraryItemView; name: string }) {
+  const links = useLinks();
+  const f = v.facts;
+  if (v.shelf !== "books" || (!f && v.credits.length === 0)) return null;
+  const rows: { role: string; body: React.ReactNode; key: string }[] = [];
+  if (f?.author) rows.push({ key: "author", role: "Written by", body: <EntityText text={f.author} self={name} /> });
+  if (f?.publisher) rows.push({ key: "publisher", role: "Published by", body: <>{f.publisher}{f.year ? <span className="text-muted-foreground"> · {f.year}</span> : null}</> });
+  for (const c of v.credits)
+    rows.push({ key: c.role + c.name, role: c.role, body: c.slug ? <Link {...linkToSlug(links, c.slug)} className="diary-chip">{c.name} →</Link> : c.name });
+  if (f?.isbn) rows.push({ key: "isbn", role: "ISBN", body: <span className="font-mono text-xs">{f.isbn}</span> });
+  return (
+    <section className="lit-box lit-made-by" aria-labelledby="who-made-me">
+      <h2 id="who-made-me" className={h}>Who made me</h2>
+      <dl className="lit-credits mt-4">
+        {rows.map((r) => (
+          <div key={r.key}>
+            <dt>{r.role}</dt>
+            <dd>{r.body}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-4 text-xs text-muted-foreground">
+        Only the names we could confirm from the book and its library records. Know who else worked on it - the editor, the
+        photographer, the designer? Tell me in &ldquo;Got a copy?&rdquo; below.
+      </p>
     </section>
   );
 }
@@ -217,7 +249,7 @@ function FindBorrow({ v, place, onPick }: { v: LibraryItemView; place: Place; on
   );
 }
 
-/** Buy me: bookshops for where you are (Bookshop.org supports local bookshops in the US and UK), and secondhand copies. */
+/** Find me, buy me: bookshops for where you are (Bookshop.org supports local bookshops in the US and UK), and secondhand copies. */
 function BuyMe({ v, place, onPick }: { v: LibraryItemView; place: Place; onPick: (p: Place) => void }) {
   const f = v.find;
   if (!f) return null;
@@ -233,7 +265,7 @@ function BuyMe({ v, place, onPick }: { v: LibraryItemView; place: Place; onPick:
   shops.push({ name: "AbeBooks", note: f.inPrint === false ? "out of print - secondhand copies" : "secondhand and first editions", href: f.isbn ? `https://www.abebooks.com/servlet/SearchResults?isbn=${f.isbn}` : `https://www.abebooks.com/servlet/SearchResults?kw=${q}` });
   return (
     <section className="lit-box lit-buy" aria-labelledby="buy-me">
-      <h2 id="buy-me" className={h}>Buy me</h2>
+      <h2 id="buy-me" className={h}>Find me, buy me</h2>
       <div className="mt-3"><PlacePicker place={place} onPick={onPick} /></div>
       {shops.map((s) => (
         <a key={s.name} {...out} className="lit-btn" href={s.href}>
@@ -291,14 +323,21 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} />
       <GuestQuotes v={v} />
-      <TrailerJukebox trailers={v.trailers} name={name} />
+      {v.trailers.length > 0 || v.shelf === "books" ? (
+        <div className="lit-two lit-two-jbx">
+          <TrailerJukebox trailers={v.trailers} name={name} />
+          <WhoMadeMe v={v} name={name} />
+        </div>
+      ) : null}
       {(v.connections.length > 0 || v.find) && (
         <div className="lit-two">
-          <Connections v={v} />
+          <div className="lit-stack">
+            <Connections v={v} />
+            <BuyMe v={v} place={place} onPick={setPlace} />
+          </div>
           <FindBorrow v={v} place={place} onPick={setPlace} />
         </div>
       )}
-      <BuyMe v={v} place={place} onPick={setPlace} />
       <ShelfMates v={v} />
       {v.shelf !== "film" && v.shelf !== "tv" && <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" />}
     </>

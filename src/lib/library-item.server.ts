@@ -7,6 +7,7 @@ import { COLUMN_PAPER, ON_SCREEN } from "@/data/library-links";
 import { BOOKS_TO_WRITE } from "@/data/still-to-make";
 import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
+import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
 import type { Connection, DroppedBy, LibraryItemView, ShelfMate, Trailer } from "@/lib/library-item";
@@ -127,6 +128,11 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
     connections: connections(e, shelf),
     shelfMates: item ? shelfMates(e, dropped) : [],
     trailers,
+    credits: shelf === "books"
+      ? [...(BOOK_CREDITS[e.slug] ?? [])]
+          .sort((a, b) => CREDIT_ORDER.indexOf(a.role) - CREDIT_ORDER.indexOf(b.role))
+          .map((c) => ({ role: c.role, name: c.name, slug: entityFor(c.name)?.slug }))
+      : [],
     find: shelf === "books" ? { isbn: facts?.isbn ?? null, query: [facts?.title ?? e.name.replace(/\s*\(.*\)$/, ""), facts?.author].filter(Boolean).join(" "), inPrint: facts ? facts.inPrint : null } : null,
   };
 }
