@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import cardSky from "@/assets/card-pink.webp";
 import cardSkyPhone from "@/assets/card-pink-phone.webp";
-import { linkPlace } from "@/lib/link-label";
+import { linkPlace, showsReadMore } from "@/lib/link-label";
 import { GuestEpisodeLinks } from "@/components/guest-episode-links";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CardSections } from "@/components/card-sections";
@@ -156,13 +156,13 @@ function EntityPage() {
           )}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
-          {mem?.readMore ? (
+          {mem?.readMore && showsReadMore(mem.readMore.href) ? (
             <p className="mt-4">
               <a href={mem.readMore.href} target="_blank" rel="noopener noreferrer" className="card-more">
                 Read more {mem.readMore.label} &rarr;
               </a>
             </p>
-          ) : e.link && !(g && e.link.includes("wowpresentsplus")) && (
+          ) : showsReadMore(e.link) && !(g && e.link.includes("wowpresentsplus")) && (
             <p className="mt-4">
               <a href={e.link} target="_blank" rel="noopener noreferrer" className="card-more">
                 Read more {linkPlace(e.link)} &rarr;
