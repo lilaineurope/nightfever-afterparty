@@ -50,9 +50,14 @@ export const BOOK_SHELVES: Shelf[] = [
 
 // Lisa, 23 Oct 2026: magazines, newspapers and columns are separate shelves.
 // Columns & articles: a single piece or a named column - quoted titles, "Magazine – 'Story'", or a column/piece named in brackets after its writer.
-const COLUMN = /^'|\s[–-]\s'|^(Page Six|Ms\. Lonely Hearts|Nations|Venus Envy)\b/;
-const NEWSPAPER = /\b(Times|Post|News|Daily|Journal|Chronicle|Inquirer|Newsday|Voice|Spectator|Dispatch)\b/;
+// Lisa, 21 Nov 2026: a column named "(Paper column)" or "(Sunday column)" sat on Magazines under its magazine's cover,
+// so Paper and the Daily News showed twice there - they go on Columns & articles, like Page Six.
+const COLUMN = /^'|\s[–-]\s'|\bcolumn\)$|^(Page Six|Ms\. Lonely Hearts|Nations|Venus Envy|A Touch of Crass)\b/;
+const NEWSPAPER = /\b(Times|Post|News|Daily|Journal|Chronicle|Inquirer|Newsday|Voice|Spectator|Dispatch|Tribune)\b/;
+// A book a guest names as a publication (the Bettie Page book was on Magazines).
+const BOOK = /\bbook$/i;
 function pressShelf(name: string): string {
+  if (BOOK.test(name)) return "books";
   if (COLUMN.test(name)) return "columns";
   if (/\bmagazine\b/i.test(name)) return "magazines";
   return NEWSPAPER.test(name) ? "newspapers" : "magazines";
