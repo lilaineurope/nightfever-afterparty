@@ -480,4 +480,27 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s05e03", who: "Amanda Lepore", time: "00:49:37", quote: "He ran into Naomi Campbell and she said, oh my God, you're naked." },
     ],
   },
+  "steve-mass": {
+    story:
+      "Founder and owner of the Mudd Club, who let teenagers' ideas happen, put Chi Chi on the door and Johnny in the DJ booth, and changed the door rules from his office intercom.",
+    timeline: [
+      ["70s", "Part of the CBGB crowd around James Chance and Anya Phillips"],
+      ["1978", "Opens the Mudd Club on White Street, with Anya Phillips and Diego Cortez as his muses"],
+      ["Late 70s", "Makes Chi Chi Valenti the door and Johnny Dynell, who owns no records, the DJ"],
+      ["Early 80s", "Eric Goode builds a Grecian grotto in the basement; Eric and Serge Becker get their start"],
+      ["1983", "The Mudd Club closes"],
+      ["80s", "Opens a bowling-alley club with Eric Goode as the Mudd Club fades"],
+    ],
+    liftedUp: ["Johnny Dynell", "Chi Chi Valenti", "Eric Goode", "Serge Becker", "Richard Boch"],
+    rooms: ["Mudd Club", "CBGB"],
+    said: [
+      { episode: "s02e11", who: "Richard Boch", time: "00:18:13", quote: "What was great about Steve was he allowed so much to happen. If one of these kids, Howie Pyro, Phoebe Fitch, any of these people, presented Steve with an idea, Steve would go, oh, yeah, let's do that." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:19:04", quote: "Steve being a wild man, it was all up here. It wasn't in a physical kind of way. I can honestly say I've never seen Steve on a dance floor." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:05:56", quote: "I had never DJ'd. I didn't even own any records, nothing. And Steve Mass, the owner, was like, okay, you can be the DJ. That was that kind of punk mentality." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:20:33", quote: "I wanted to be the cigarette girl, because that to me was going to be the best job. And Steve Mass actually said, no, it's not dominant enough. You have to work the door." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:21:33", quote: "Steve calling us on the intercom from his office going like, no fat people tonight, or no black leather jackets. You know, random." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:06:52", quote: "I designed the Grecian grotto in the basement of the Mudd Club, and it was terrible. It was so hideous. And Steve Mass loved it." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:45:24", quote: "Even Steve Mass at the Mudd Club, weirdo as he was, he had some charisma. Something he had that people felt." },
+    ],
+  },
 };
