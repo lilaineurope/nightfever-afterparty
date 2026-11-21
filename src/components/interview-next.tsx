@@ -7,6 +7,7 @@ import { INTERVIEW_PEOPLE, type InterviewPerson, type InterviewTip } from "@/dat
 import type { Interviewed } from "@/lib/interviewed.server";
 import { episodeById, episodePath } from "@/data/episodes";
 import { Timestamp } from "@/components/episode-player";
+import { formatDate } from "@/lib/time";
 import { MomentsBox, plainClick } from "@/components/moments-box";
 import { LinkDataProvider, linkTo, useLinkData, useLinks, type LinkCard } from "@/lib/link-index";
 import type { BoxData } from "@/lib/home-view";
@@ -66,9 +67,10 @@ function SaidIn({ tip, badge }: { tip: InterviewTip; badge?: string | undefined 
 /** "Suggested and interviewed" (Lisa, 18 Nov 2026): someone put forward on the show (or by fans) who has been a guest
  *  since, with a link to that episode - its AFTERPARTY page, or WOW Presents Plus while it has none yet. */
 function AlreadyInterviewed({ done }: { done: Interviewed }) {
+  // Plain inline text, so the release date runs on after the link instead of dropping to its own line.
   return (
-    <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-      <span>Interviewed in</span>
+    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+      Interviewed in{" "}
       {done.afterparty ? (
         <Link to={episodePath(done.episodeId)} className="text-gold">
           {done.code} &middot; {done.guest} &middot; AFTERPARTY
@@ -77,6 +79,12 @@ function AlreadyInterviewed({ done }: { done: Interviewed }) {
         <a href={done.href} target="_blank" rel="noopener noreferrer" className="text-gold">
           {done.code} &middot; {done.guest} on WOW Presents Plus &#8599;
         </a>
+      )}
+      {done.released && (
+        <>
+          {" "}
+          &middot; <span className="whitespace-nowrap">out {formatDate(done.released)}</span>
+        </>
       )}
     </p>
   );
@@ -253,21 +261,43 @@ export function InterviewNext({
   const [open, setOpen] = useState<string | null>(null);
   const opener: Opener = { open, toggle: (k) => setOpen((o) => (o === k ? null : k)), close: () => setOpen(null) };
   // Two tabs instead of two side-by-side lists, and each list in two columns, so the box is shorter (Lisa, 4 Nov 2026).
-  const [tab, setTab] = useState<"new" | "back">("new");
+  const [tab, setTab] = useState<"new" | "back" | "since">("new");
   // A fan pick of a name already on the list joins that entry instead of showing twice (18 Nov 2026).
   const onAir = new Set([...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack].map((p) => p.key));
   const fansFor = (key: string) => picks.find((p) => p.key === key)?.count ?? 0;
   const fanOnly = picks.filter((p) => !onAir.has(p.key));
-  // Suggested-and-interviewed names go to the end of New faces: the top of the list is people still to book.
+  // "Interviewed since" tab (Lisa, 21 Nov 2026), like the Library's "Made since": a name put forward on the show (or by
+  // fans) who has been a guest since leaves New faces and moves here, with the episode, its date and its AFTERPARTY page.
+  // "Since" means the interview came after the first time the name was put forward.
+  const since = (p: InterviewPerson) => {
+    const done = interviewed[p.key];
+    return !!done && done.episodeId > p.said[0]!.episodeId;
+  };
   const newFaces = [
-    ...INTERVIEW_PEOPLE.newFaces.filter((p) => !interviewed[p.key]).map((p) => ({ kind: "air" as const, p })),
+    ...INTERVIEW_PEOPLE.newFaces.filter((p) => !since(p)).map((p) => ({ kind: "air" as const, p })),
     ...fanOnly.filter((f) => !f.interviewed).map((f) => ({ kind: "fan" as const, f })),
-    ...INTERVIEW_PEOPLE.newFaces.filter((p) => interviewed[p.key]).map((p) => ({ kind: "air" as const, p })),
+  ];
+  // People asked back for a part two stay on that tab too - they are still to book again.
+  const doneSince = [
+    ...[...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack]
+      .filter(since)
+      .map((p) => ({ kind: "air" as const, p })),
     ...fanOnly.filter((f) => f.interviewed).map((f) => ({ kind: "fan" as const, f })),
   ];
   const tabs = [
-    { key: "new" as const, label: "New faces", count: newFaces.length },
-    { key: "back" as const, label: "Back for a part two", count: INTERVIEW_PEOPLE.comeBack.length },
+    { key: "new" as const, label: "New faces", short: "New faces", count: newFaces.length },
+    {
+      key: "back" as const,
+      label: "Back for a part two",
+      short: "Part two",
+      count: INTERVIEW_PEOPLE.comeBack.length,
+    },
+    {
+      key: "since" as const,
+      label: "Interviewed since",
+      short: "Interviewed",
+      count: doneSince.length,
+    },
   ];
   return (
     <section aria-labelledby="interview-next" className={`px-6 py-14 ${className}`}>
@@ -285,7 +315,7 @@ export function InterviewNext({
           Who should James, Fenton and Randy have on next? Every name put forward on the show - with the episode and the
           exact moment, tap &#9654; to hear it - and the ones suggested by you, the fans. Tap a name to see every time it comes up.
         </p>
-        <div role="tablist" aria-label="Who to interview next" className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2">
+        <div role="tablist" aria-label="Who to interview next" className="mt-8 flex gap-0.5 border-b-2 border-gold sm:gap-2">
           {tabs.map((t) => {
             const on = tab === t.key;
             return (
@@ -300,11 +330,13 @@ export function InterviewNext({
                   setTab(t.key);
                   setOpen(null);
                 }}
-                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
+                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-1 py-2 text-[10px] font-semibold uppercase tracking-normal sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
                   on ? "border-gold bg-pink text-pink-foreground" : "border-transparent text-pink hover:border-gold"
                 }`}
               >
-                {t.label} <span className={on ? "opacity-80" : "text-muted-foreground"}>({t.count})</span>
+                <span className="sm:hidden">{t.short}</span>
+                <span className="hidden sm:inline">{t.label}</span>{" "}
+                <span className={on ? "opacity-80" : "text-muted-foreground"}>({t.count})</span>
               </button>
             );
           })}
@@ -322,12 +354,35 @@ export function InterviewNext({
             </ul>
             <YourChoice />
           </div>
-        ) : (
+        ) : tab === "back" ? (
           <div role="tabpanel" id="in-panel-back" aria-labelledby="in-tab-back" className="mt-6">
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {INTERVIEW_PEOPLE.comeBack.map((p) => (
                 <Person key={p.key} person={p} box={boxes[p.name]} done={interviewed[p.key]} fans={fansFor(p.key)} opener={opener} />
               ))}
+            </ul>
+          </div>
+        ) : (
+          <div role="tabpanel" id="in-panel-since" aria-labelledby="in-tab-since" className="mt-6">
+            <p className="mb-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Put forward on the show - and then they came on. Tap the episode to read their
+              AFTERPARTY.
+            </p>
+            <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+              {doneSince.map((row) =>
+                row.kind === "air" ? (
+                  <Person
+                    key={row.p.key}
+                    person={row.p}
+                    box={boxes[row.p.name]}
+                    done={interviewed[row.p.key]}
+                    fans={fansFor(row.p.key)}
+                    opener={opener}
+                  />
+                ) : (
+                  <FanTip key={row.f.key} pick={row.f} id={`fan:${row.f.key}`} opener={opener} />
+                ),
+              )}
             </ul>
           </div>
         )}
