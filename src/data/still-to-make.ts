@@ -25,6 +25,9 @@ export type StillToMake = {
   year?: number;
   /** Made since: what it was made as (the real title) */
   madeAs?: string;
+  /** Our own idea, sent in through the box rather than said on air: shows an "AFTERPARTY idea" tag, and the episode line reads
+   * "The story starts in" instead of "Said in" (Lisa, 21 Nov 2026) */
+  idea?: true;
 };
 
 export const BOOKS_TO_WRITE: StillToMake[] = [
@@ -353,5 +356,15 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     made: "partly",
     status: "Partly - a short film by Rhys Ernst in his We've Been Around series (2016); no full-length documentary yet.",
     source: { label: "Essence: the story of Lucy Hicks Anderson", href: "https://www.essence.com/2016/03/01/learn-inspiring-true-story-black-trans-pioneer-lucy-hicks-anderson" },
+  },
+  {
+    // Lisa's own suggestion through the Films box (19 Nov 2026), added 21 Nov 2026 on her word: "put that into the film tab".
+    title: "The making of World of Wonder",
+    why: "How Fenton and Randy - with James at their side since the club days - went from NYU film school and the Pop Tarts to a record label, Manhattan Cable, RuPaul and a whole media empire. In James's own episode the three tell the start of it.",
+    episodeId: "s06e01",
+    time: "00:44:20",
+    made: "not yet",
+    status: "Not made yet - WOW's story has only been told in interviews and profiles, never in a film of its own.",
+    idea: true,
   },
 ];
