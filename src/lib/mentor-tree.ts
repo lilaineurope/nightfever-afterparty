@@ -38,9 +38,21 @@ export type HallOfFameRulesView = {
 };
 
 /** /hall-of-fame (Lisa, 21 Nov 2026): the top 10 first, then places 11-100 (src/lib/hall-of-fame.server.ts). */
+export type HofMoment = { episodeId: string; code: string; guest: string; time: string; context: string };
 export type HallOfFameView = {
-  top: { rank: number; name: string; score: number; voices: number; helped: string[] }[];
-  rest: { rank: number; name: string; episodes: number; mentions: number }[];
+  top: {
+    rank: number; name: string; slug: string; score: number; voices: number; helped: string[]; mentions: number;
+    /** Square portrait (the guest's polaroid photo or the person portrait), if there is one. */
+    pic: string | null;
+    guest: boolean;
+    link: string | undefined;
+    /** Every help moment, for the box that opens under the card. */
+    moments: HofMoment[];
+  }[];
+  rest: { rank: number; name: string; slug: string; episodes: number; mentions: number; guest: boolean }[];
   of: number;
   links: import("@/lib/link-index").LinkData;
 };
+
+/** One name's moments, fetched when its box opens (places 11-100). */
+export type HofMomentsView = { moments: HofMoment[]; mentions: number; link: string | undefined; links: import("@/lib/link-index").LinkData };
