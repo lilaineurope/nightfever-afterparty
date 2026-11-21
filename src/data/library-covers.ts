@@ -75,6 +75,7 @@ const COVERS: Record<string, Cover> = {
   "Page Six (New York Post)": { kind: "book", file: "col-page-six.webp", credit: "A Page Six page from 1977 - via Wikipedia" },
   "Nations (Chi Chi Valenti, Details)": { kind: "book", file: "col-nations-details.webp", credit: "Details, September 1988 (the issue before Nations) - via Gallery 98" },
   "Out magazine – 'The Glass Closet'": { kind: "book", file: "col-out-glass-closet.webp", credit: "Out, 2007 - the Glass Closet cover, via out.com" },
+  "Out (magazine)": { kind: "book", file: "col-out-glass-closet.webp", credit: "Out, 2007 - the Glass Closet cover, via out.com" }, // Lisa: out cover okay (S03E07, 20 Nov 2026)
   "'The Night of the Iguana' (Stephen Saban)": { kind: "book", file: "col-night-of-the-iguana.webp", credit: "Details, December 1988/January 1989, from Saban's years there - via WFMU" },
   "We Started a Nightclub (Pyramid book)": { kind: "book", file: "book-we-started-a-nightclub.webp", credit: "Cover via Atomic Books" },
   "April Ashley's Odyssey": { kind: "book", file: "book-april-ashleys-odyssey.webp", credit: "Arena paperback cover via Fable" },
@@ -107,7 +108,7 @@ const COVERS: Record<string, Cover> = {
   // Columns shown with the paper or magazine they ran in, like Uptown, Downtown with the Daily News.
   // Every photo cover shows ONCE in the Library (Lisa, 21 Nov 2026: "double ups in magazines eg paper"): a column whose only
   // picture is its magazine's cover (Fat and All That and Lunch with Lauren in Paper, Diary of a Mad Queen in OutWeek,
-  // Ms. Lonely Hearts in the SoHo News) gets a typed yellow cover, and Out keeps the Glass Closet cover for that article only.
+  // Ms. Lonely Hearts in the SoHo News) gets a typed yellow cover (Out magazine keeps the Glass Closet cover too: Lisa OK'd it, 20 Nov 2026).
   "'Bring On the Night' (New York Post, 1990)": { kind: "mast", file: "mast-new-york-post.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // Lisa: A (7 Nov 2026)
   "'The Death of Downtown' (Michael Musto)": { kind: "mast", file: "mast-village-voice.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "New York magazine – 'Club Kids'": { kind: "mast", file: "mast-new-york-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
