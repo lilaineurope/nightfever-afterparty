@@ -54,7 +54,7 @@ function TermsPage() {
             Terms &amp; Conditions
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 30 October 2026. The house rules for my site - written
+            Last updated: 21 November 2026. The house rules for my site - written
             for people, not for lawyers!
           </p>
         </div>
@@ -181,10 +181,15 @@ function TermsPage() {
             <p>
               The book, magazine and newspaper covers and article pages in the Library belong to their publishers and
               artists; they are shown small, only so you can recognise each
-              title, and come from the Open Library catalogue, from public archives, the magazines' own archives, galleries and booksellers that show them, or from photos in dealers' listings and collectors' posts (each source named on its card). The magazine and
+              title, and come from the Open Library catalogue, from public archives, the magazines' own archives, galleries and booksellers that show them, or from photos in dealers' listings and collectors' posts (each source named on its card). On a title's own page the cover is shown a little bigger in the header and in the page's share picture, again with its source, to identify the title. The magazine and
               newspaper mastheads are logos from Wikimedia Commons (World of Wonder's from its own site)
               and remain the trademarks of their titles. Owners who would rather
               not see their cover here can ask for it to come down (section 6). The same goes for the photos of original club tickets on Inside the Clubs and the Jukebox club nights: they belong to the clubs' designers and the collections that show them, are shown small for identification, name their source, and come down on request.
+            </p>
+            <p>
+              The &ldquo;Find me, borrow me&rdquo; and &ldquo;Buy me&rdquo; buttons on a Library book&rsquo;s page are plain
+              links to library catalogues and bookshops. The site sells nothing through them and earns nothing from them; what
+              those sites show, and anything you buy there, is between you and them.
             </p>
             <p>
               The Wardrobe&rsquo;s &ldquo;Clueless Style&rdquo; is an

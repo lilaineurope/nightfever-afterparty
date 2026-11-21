@@ -20,6 +20,7 @@ import { linkRecorder } from "@/lib/link-recorder.server";
 import type { CardView } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
+import { libraryItemView } from "@/lib/library-item.server";
 
 /** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
 function cardView(e: Entity): CardView {
@@ -79,6 +80,14 @@ function cardView(e: Entity): CardView {
     L.card(x.slug);
     return { slug: x.slug, name: x.name };
   });
+  // Library item pages (Lisa, 21 Nov 2026): cover, facts, who dropped it, connections, trailers, find/borrow/buy.
+  const item = g ? null : libraryItemView(e);
+  if (item) {
+    if (item.facts?.author) L.text(item.facts.author, e.name);
+    if (item.madeSince) L.text(item.madeSince.why, e.name);
+    for (const c of item.connections) L.card(c.slug);
+    for (const m of item.shelfMates) L.card(m.slug);
+  }
   const j = jukebox.find((x) => x.slug === e.slug);
   const tree = mentorTreeOf(e.slug);
   if (tree) {
@@ -109,6 +118,7 @@ function cardView(e: Entity): CardView {
     diary,
     column,
     tree,
+    item,
     connector: connectorRank(e.slug),
     links: L.data,
   };

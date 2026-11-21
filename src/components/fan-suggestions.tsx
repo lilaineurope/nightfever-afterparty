@@ -20,9 +20,12 @@ export function FanSuggestions({
   kind: fixedKind,
   variant = "panel",
   className = "",
+  about,
 }: {
   box: FanBox;
   kind?: string;
+  /** The thing the idea is about, set by the page (Got a copy?: the Library item) - the "what" field is then hidden and the story is asked for. */
+  about?: string;
   variant?: "inset" | "panel";
   className?: string;
 }) {
@@ -32,7 +35,7 @@ export function FanSuggestions({
   const [ideas, setIdeas] = useState<FanIdea[]>([]);
   const [pickedKind, setKind] = useState(cfg.kinds?.[0]?.value ?? "");
   const kind = fixedKind ?? pickedKind;
-  const [what, setWhat] = useState("");
+  const [typed, setWhat] = useState("");
   const [why, setWhy] = useState("");
   const [from, setFrom] = useState("");
   const [trap, setTrap] = useState("");
@@ -51,7 +54,8 @@ export function FanSuggestions({
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!what.trim()) return;
+    const what = about ? about.slice(0, 120) : typed;
+    if (!what.trim() || (about && !why.trim())) return;
     setState("sending");
     setProblem("");
     try {
@@ -131,10 +135,14 @@ export function FanSuggestions({
               ))}
             </div>
           )}
-          <label htmlFor={`${id}-what`} className="sr-only">{kindCfg?.placeholder ?? cfg.placeholder}</label>
-          <input id={`${id}-what`} required maxLength={120} value={what} onChange={(e) => setWhat(e.target.value)} placeholder={kindCfg?.placeholder ?? cfg.placeholder} className={FIELD} />
+          {!about && (
+            <>
+              <label htmlFor={`${id}-what`} className="sr-only">{kindCfg?.placeholder ?? cfg.placeholder}</label>
+              <input id={`${id}-what`} required maxLength={120} value={typed} onChange={(e) => setWhat(e.target.value)} placeholder={kindCfg?.placeholder ?? cfg.placeholder} className={FIELD} />
+            </>
+          )}
           <label htmlFor={`${id}-why`} className="sr-only">{cfg.whyPlaceholder}</label>
-          <input id={`${id}-why`} maxLength={300} value={why} onChange={(e) => setWhy(e.target.value)} placeholder={cfg.whyPlaceholder} className={FIELD} />
+          <input id={`${id}-why`} required={!!about} maxLength={300} value={why} onChange={(e) => setWhy(e.target.value)} placeholder={cfg.whyPlaceholder} className={FIELD} />
           <div className="flex flex-col gap-2 sm:flex-row">
             <label htmlFor={`${id}-from`} className="sr-only">Your name (optional)</label>
             <input id={`${id}-from`} maxLength={60} value={from} onChange={(e) => setFrom(e.target.value)} placeholder="Your name (optional)" className={`${FIELD} sm:flex-1`} />

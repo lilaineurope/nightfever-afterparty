@@ -4,7 +4,7 @@
 // never with the visitor's name. Who to interview next keeps its own table (interview_suggestions, src/lib/suggestions.functions.ts).
 // A new box: add it here AND to the box check on the fan_suggestions table (Lovable Cloud), then put <FanSuggestions box=…/> on its page.
 
-export const FAN_BOXES = ["library", "jukebox", "hall-of-fame", "clubs", "columns"] as const;
+export const FAN_BOXES = ["library", "jukebox", "hall-of-fame", "clubs", "columns", "copies"] as const;
 export type FanBox = (typeof FAN_BOXES)[number];
 
 export type FanBoxConfig = {
@@ -83,6 +83,18 @@ export const FAN_BOX: Record<FanBox, FanBoxConfig> = {
     whyPlaceholder: "Where can it be read? (a link, an archive, your own copy)",
     thanks: "Thank you - your source is on its way to me!",
     allowLinks: true,
+    listApproved: false,
+  },
+  // "Got a copy?" on every Library item page (Lisa, 21 Nov 2026): a fan who owns the book, magazine or paper tells which
+  // edition or issue and its story. The page sets the item ("what", via `about`); Lisa reads them, nothing is listed.
+  copies: {
+    page: "Library · Got a copy?",
+    path: "/library",
+    heading: "Got a copy?",
+    intro: "Is this one on your shelf, in a box or in your drawer? Tell me which edition or issue, and how it came to you.",
+    placeholder: "What you have",
+    whyPlaceholder: "Which edition or issue, and its story",
+    thanks: "Thank you - your copy's story is on its way to me!",
     listApproved: false,
   },
 };

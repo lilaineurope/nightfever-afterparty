@@ -1,0 +1,28 @@
+// Library item pages (Lisa, 21 Nov 2026: "for everything in the library, is there anything else we can add to the items'
+// individual pages?" - yes to all of it): what a book, magazine, newspaper, column, diary, film or TV card shows on top of
+// the usual card. Worked out on the server (src/lib/library-item.server.ts), drawn by src/components/library-item.tsx.
+// Types only - this file loads nothing.
+import type { BookFacts } from "@/data/library-facts";
+
+export type DroppedBy = { episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; mentions: number };
+export type ShelfMate = { slug: string; name: string; cover?: string | undefined; shelf: string; eps: string[] };
+export type Trailer = { id: string; title: string; label: string; episodeId: string; short: string };
+export type Connection = { label: string; slug: string; name: string; note?: string | undefined; cover?: string | undefined };
+export type ItemQuote = { episodeId: string; short: string; who: string; time: string; quote: string; polaroid?: string | undefined };
+
+export type LibraryItemView = {
+  /** books | magazines | newspapers | columns | diaries | film | tv */
+  shelf: string;
+  /** The real cover (photo) or masthead, taped into the header. */
+  cover: { src: string; credit: string; mast: boolean } | null;
+  facts: (BookFacts & { authorGuest?: { name: string; episodeId: string; short: string; polaroid?: string | undefined } | undefined }) | null;
+  /** A book a guest wished for on air that came out since (Publish this, src/data/still-to-make.ts). */
+  madeSince: { episodeId: string; short: string; time?: string | undefined; why: string; year?: number | undefined } | null;
+  dropped: DroppedBy[];
+  quotes: ItemQuote[];
+  connections: Connection[];
+  shelfMates: ShelfMate[];
+  trailers: Trailer[];
+  /** Books only: what the "Find me, borrow me" and "Buy me" boxes search for. */
+  find: { isbn: string | null; query: string; inPrint: boolean | null } | null;
+};

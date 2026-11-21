@@ -8,6 +8,7 @@ import type { PersonProfile } from "@/data/person-profiles";
 import type { DiaryPage } from "@/data/diaries";
 import type { ColumnPage } from "@/data/column-articles";
 import type { LinkData } from "@/lib/link-index";
+import type { LibraryItemView } from "@/lib/library-item";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
  *  doesn't download the whole A–Z (page weight, 16 Nov 2026). Types only - this file loads nothing. */
@@ -41,6 +42,8 @@ export type CardView = {
   column: ColumnPage | null;
   /** Hall of Fame family tree - top 10 mentors only (Lisa, 21 Nov 2026, src/lib/mentor-rank.ts). */
   tree: MentorTreeData | null;
+  /** Library item page extras (books, magazines, newspapers, columns, diaries, films, TV - Lisa, 21 Nov 2026). */
+  item: LibraryItemView | null;
   /** Rank among the top 100 great connectors (pink badge), or null. */
   connector: number | null;
   /** Every name -> card answer the page needs for its links. */
