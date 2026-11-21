@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ClubWall, ClubsShelf } from "@/components/clubs-shelf";
 import { SiteFooter } from "@/components/site-footer";
+import { FanSuggestions } from "@/components/fan-suggestions";
 import { clubsMentioned } from "@/data/collections";
 import { pageHead } from "@/lib/seo";
 
@@ -38,6 +39,7 @@ function InsideTheClubsPage() {
       </section>
       <section className="px-4 pb-16 sm:px-6">
         <ClubsShelf />
+        <FanSuggestions box="clubs" className="mt-16" />
       </section>
       <SiteFooter />
     </main>

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
-import { sendToInbox } from "@/lib/web3forms";
+import { useState } from "react";
+import { FanSuggestions } from "@/components/fan-suggestions";
 import { cardTo } from "@/lib/card-link";
 import { episodeById, episodePath } from "@/data/episodes";
 import {
@@ -87,140 +87,6 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
         </p>
       </div>
     </li>
-  );
-}
-
-/** "What do you want to be made?" (Lisa, 4 Nov 2026): visitors suggest a book or film. It goes to Lisa's inbox only
- *  (Web3Forms, like the guestbook), nothing is shown on the site, and the visitor's name stays with Lisa. */
-function SuggestOne() {
-  const [kind, setKind] = useState<"Book" | "Film">("Book");
-  const [what, setWhat] = useState("");
-  const [why, setWhy] = useState("");
-  const [from, setFrom] = useState("");
-  const [trap, setTrap] = useState("");
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const opened = useRef(Date.now());
-  const field =
-    "w-full border-2 border-gold bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink";
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!what.trim()) return;
-    // Bots fill the hidden field or send within a second or two; drop those quietly.
-    if (trap || Date.now() - opened.current < 2500) return setState("sent");
-    setState("sending");
-    const ok = await sendToInbox({
-      subject: `Still to be made (${kind.toLowerCase()}): ${what.trim()}`,
-      kind,
-      suggestion: what.trim(),
-      why: why.trim() || "(no reason given)",
-      from: from.trim() || "(no name given)",
-    });
-    setState(ok ? "sent" : "error");
-    if (ok) {
-      setWhat("");
-      setWhy("");
-      setFrom("");
-    }
-  };
-  return (
-    <div className="mt-8 border-t-2 border-gold pt-6">
-      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
-        What do you want to be made?
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-card-foreground/85">
-        Which downtown story needs a book or a film? Tell me - the best ones go up here.
-      </p>
-      {state === "sent" ? (
-        <p className="mt-4 border-2 border-pink p-3 text-sm font-semibold text-pink">
-          Thank you - your idea is on its way to me!
-        </p>
-      ) : (
-        <form onSubmit={submit} className="mt-4 space-y-2">
-          <div className="flex gap-2" role="radiogroup" aria-label="A book or a film?">
-            {(["Book", "Film"] as const).map((k) => (
-              <button
-                key={k}
-                type="button"
-                role="radio"
-                aria-checked={kind === k}
-                onClick={() => setKind(k)}
-                className="season-chip rounded-full"
-                aria-pressed={kind === k}
-              >
-                {k === "Book" ? "A book" : "A film"}
-              </button>
-            ))}
-          </div>
-          <label htmlFor="stm-what" className="sr-only">
-            What should be made?
-          </label>
-          <input
-            id="stm-what"
-            required
-            maxLength={120}
-            value={what}
-            onChange={(e) => setWhat(e.target.value)}
-            placeholder={
-              kind === "Book" ? "Which book should be written?" : "Which film should be made?"
-            }
-            className={field}
-          />
-          <label htmlFor="stm-why" className="sr-only">
-            Why? (optional)
-          </label>
-          <input
-            id="stm-why"
-            maxLength={300}
-            value={why}
-            onChange={(e) => setWhy(e.target.value)}
-            placeholder="Why? (optional)"
-            className={field}
-          />
-          <div className="flex flex-col gap-2 sm:flex-row">
-            <label htmlFor="stm-from" className="sr-only">
-              Your name (optional)
-            </label>
-            <input
-              id="stm-from"
-              maxLength={60}
-              value={from}
-              onChange={(e) => setFrom(e.target.value)}
-              placeholder="Your name (optional)"
-              className={`${field} sm:flex-1`}
-            />
-            <input
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              value={trap}
-              onChange={(e) => setTrap(e.target.value)}
-              className="hidden"
-            />
-            <button
-              type="submit"
-              disabled={state === "sending"}
-              className="whitespace-nowrap border-2 border-pink bg-pink px-4 py-2 text-xs font-semibold uppercase text-pink-foreground transition hover:bg-card hover:text-cream disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink"
-            >
-              {state === "sending" ? "Sending…" : "Suggest!"}
-            </button>
-          </div>
-          {state === "error" && (
-            <p className="text-xs text-destructive">
-              That didn&rsquo;t go through - please try again.
-            </p>
-          )}
-          <p className="text-xs text-muted-foreground">
-            I read every idea first. If I pick yours, it joins the list above - your name never
-            does. See the{" "}
-            <Link to="/privacy" className="text-gold">
-              Privacy Policy
-            </Link>
-            .
-          </p>
-        </form>
-      )}
-    </div>
   );
 }
 
@@ -339,7 +205,7 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
                 <Item key={it.title} it={it} kind={it.kind} />
               ))}
             </ul>
-            <SuggestOne />
+            <FanSuggestions box="library" variant="inset" />
           </div>
         )}
       </div>

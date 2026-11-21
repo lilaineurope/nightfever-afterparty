@@ -1,9 +1,11 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { adminListGuestbook, changeGuestbookKey, moderateGuestbook, type ModeratedNote } from "@/lib/guestbook.functions";
 import { adminListSuggestions, moderateSuggestion, type PendingSuggestion } from "@/lib/suggestions.functions";
+import { adminListFanIdeas, moderateFanIdea, type ModeratedFanIdea } from "@/lib/fan-suggestions.functions";
+import { FAN_BOX, FAN_BOXES } from "@/lib/fan-suggestions";
 import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 import { guestbookPage } from "@/lib/pages";
 import { FORM_FIELD } from "@/lib/styles";
@@ -44,7 +46,7 @@ function AdminPage() {
   return (
     <main className="min-h-screen bg-background px-6 pb-24 pt-24 text-foreground">
       <div className="mx-auto max-w-4xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook &amp; interview suggestions</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook &amp; fan suggestions</p>
         <h1 className="mt-3 text-4xl font-bold text-cream">Moderation</h1>
         {key === null ? (
           <p className="mt-8 text-muted-foreground">Loading...</p>
@@ -137,6 +139,7 @@ function Moderation({ keyValue, onForget, onChanged }: { keyValue: string; onFor
   return (
     <div className="mt-8">
       <Suggestions keyValue={keyValue} />
+      <FanIdeas keyValue={keyValue} />
       <h2 className="mb-4 mt-12 text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook notes</h2>
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap gap-2" role="tablist">
@@ -361,6 +364,128 @@ function Suggestions({ keyValue }: { keyValue: string }) {
           </ul>
         </details>
       )}
+    </section>
+  );
+}
+
+/** The fan suggestion boxes on Library, Jukebox, Hall of Fame and Inside the Clubs (src/lib/fan-suggestions.ts). The email
+ *  link opens this page with ?fan=<id>: that one is shown first, highlighted. Approve = on its page straight away;
+ *  Don't approve = deleted for good. */
+function FanIdeas({ keyValue }: { keyValue: string }) {
+  const list = useServerFn(adminListFanIdeas);
+  const moderate = useServerFn(moderateFanIdea);
+  const [rows, setRows] = useState<ModeratedFanIdea[] | null>(null);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const [done, setDone] = useState("");
+  const [focus, setFocus] = useState<string | null>(null);
+  useEffect(() => {
+    try {
+      setFocus(new URLSearchParams(window.location.search).get("fan"));
+    } catch {
+      /* no query string */
+    }
+  }, []);
+  const load = useCallback(async () => {
+    try {
+      setRows(await list({ data: { key: keyValue } }));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not load the fan suggestions.");
+    }
+  }, [list, keyValue]);
+  useEffect(() => {
+    void load();
+  }, [load]);
+  // Opened from an email: scroll this section into view once it has loaded.
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (focus && rows) ref.current?.scrollIntoView({ block: "start" });
+  }, [focus, rows]);
+
+  async function act(row: ModeratedFanIdea, action: "approve" | "reject") {
+    setBusy(row.id + action);
+    setError("");
+    try {
+      await moderate({ data: { key: keyValue, id: row.id, action } });
+      const page = FAN_BOX[row.box].page;
+      setDone(
+        action === "approve"
+          ? `${row.what} is on ${page} now.`
+          : row.status === "approved"
+            ? `${row.what} is off ${page} and deleted.`
+            : `${row.what} was not approved and has been deleted.`,
+      );
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "That didn't work.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  if (!rows) return <p className="mt-12 text-muted-foreground">{error || "Loading fan suggestions..."}</p>;
+  const pending = rows.filter((r) => r.status === "pending").sort((a, b) => Number(b.id === focus) - Number(a.id === focus));
+  const approved = rows.filter((r) => r.status === "approved");
+  const asked = focus && !rows.some((r) => r.id === focus);
+
+  return (
+    <section ref={ref} aria-labelledby="fan-h" className="mt-12">
+      <h2 id="fan-h" className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Fan suggestions - Library, Jukebox, Hall of Fame, Clubs</h2>
+      {done && <p className="mt-4 border-2 border-pink p-3 text-sm font-semibold text-pink">{done}</p>}
+      {asked && !done && <p className="mt-4 text-sm text-muted-foreground">That suggestion has already been handled.</p>}
+      {error && <p className="mt-4 text-sm text-pink">{error}</p>}
+      {pending.length === 0 ? (
+        <p className="mt-4 text-muted-foreground">No fan suggestions waiting.</p>
+      ) : (
+        <ul className="mt-4 space-y-4">
+          {pending.map((r) => (
+            <li key={r.id} className={`rounded-2xl border bg-card p-5 ${r.id === focus ? "border-pink shadow-[0_0_0_2px_var(--color-pink)]" : "border-gold/25"}`}>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                {FAN_BOX[r.box].page}
+                {r.kind ? ` · ${r.kind}` : ""}
+              </p>
+              <p className="mt-1 text-xl font-bold text-cream">{r.what}</p>
+              {r.why && <p className="mt-1 text-cream/90">&ldquo;{r.why}&rdquo;</p>}
+              <p className="mt-2 text-sm text-muted-foreground">
+                From {r.from_name || "(no name given)"} · {new Date(r.created_at).toLocaleString("en-GB")} · the name is never shown on the site
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button type="button" disabled={!!busy} onClick={() => act(r, "approve")} className={`${BTN} bg-pink px-6 py-2.5 text-pink-foreground hover:opacity-90`}>
+                  {busy === r.id + "approve" ? "..." : "Approve"}
+                </button>
+                <button type="button" disabled={!!busy} onClick={() => act(r, "reject")} className={`${BTN} border border-border px-6 py-2.5 text-cream hover:border-gold`}>
+                  {busy === r.id + "reject" ? "..." : "Don't approve"}
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {FAN_BOXES.map((box) => {
+        const on = approved.filter((r) => r.box === box);
+        if (!on.length) return null;
+        return (
+          <details key={box} className="mt-6">
+            <summary className="cursor-pointer text-sm text-muted-foreground hover:text-pink">
+              On {FAN_BOX[box].page} ({on.length})
+            </summary>
+            <ul className="mt-3 space-y-2">
+              {on.map((r) => (
+                <li key={r.id} className="flex flex-wrap items-center gap-3 text-sm">
+                  <span className="text-cream">
+                    {r.what}
+                    {r.kind ? ` (${r.kind.toLowerCase()})` : ""}
+                  </span>
+                  {r.why && <span className="text-muted-foreground">&ldquo;{r.why}&rdquo;</span>}
+                  <button type="button" disabled={!!busy} onClick={() => act(r, "reject")} className="text-xs text-muted-foreground underline underline-offset-2 hover:text-pink">
+                    {busy === r.id + "reject" ? "..." : "Take it off"}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </details>
+        );
+      })}
     </section>
   );
 }

@@ -55,7 +55,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 1 November 2026. Here's what happens to your data when
+            Last updated: 21 November 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -195,13 +195,16 @@ function PrivacyPage() {
               basis: your consent in sending it.
             </p>
             <p>
-              <strong className="text-cream">Book and film ideas.</strong> If
-              you use the &ldquo;What do you want to be made?&rdquo; form in the
-              Library&rsquo;s &ldquo;Still to be made&rdquo; box, your idea, the
-              optional reason and the optional name you give are sent to my
-              inbox by Web3Forms. Nothing is stored on this site. If I pick your
-              idea it joins the list (the idea, never your name). Legal basis:
-              your consent in sending it.
+              <strong className="text-cream">Book, film, song, club and Hall of Fame ideas.</strong> If
+              you use a suggestion form on the Library (&ldquo;What do you want
+              to be made?&rdquo;), the Jukebox, the Hall of Fame or Inside the
+              Clubs, your idea, the optional reason and the optional name you
+              give are saved in the site&rsquo;s database, and Web3Forms sends me
+              a note about it. I read every idea: the ones I pick are shown on
+              that page under &ldquo;Suggested by you, the fans&rdquo; (the idea
+              and the reason, never your name), the others are deleted. Ask me
+              any time to take yours down. Legal basis: your consent in sending
+              it.
             </p>
             <p>
               <strong className="text-cream">Episode player.</strong> Nothing
@@ -306,11 +309,11 @@ function PrivacyPage() {
               processor for the technical logs above, under its own terms and
               privacy documentation. GoatCounter, Plausible and Pirsch (both EU-hosted) process the anonymous visit
               statistics described above, Web3Forms delivers contact-form
-              messages, interview suggestions, book and film ideas and guestbook alerts to my inbox, Forward Email
+              messages and alerts about new suggestions and guestbook notes to my inbox, Forward Email
               passes on emails sent to the site&rsquo;s address to my inbox (it does not
               keep them), the hosting
               platform&rsquo;s built-in database keeps newsletter sign-ups,
-              guestbook notes and interview suggestions, and when you press play the show&rsquo;s own
+              guestbook notes and fan suggestions, and when you press play the show&rsquo;s own
               podcast host streams the episode to you. When pages change, the site tells search engines
               which addresses to look at again (IndexNow, read by Bing and others) - that message
               holds page addresses only, never anything about visitors. No data is sold, rented or brokered. If a
@@ -325,9 +328,10 @@ function PrivacyPage() {
               needs them for security and operation, after which they are
               deleted. Error reports are kept only long enough to diagnose the
               fault. Visit statistics are kept as anonymous page counts.
-              Because the contact and suggestion forms store nothing, there
-              is nothing to delete there. Guestbook notes are kept while they are shown and
-              deleted when you ask or when I take them down.
+              The contact form stores nothing on the site, so there is nothing
+              to delete there. Guestbook notes and suggestions are kept while
+              they are shown and deleted when you ask or when I take them down;
+              suggestions I don't pick are deleted when I read them.
             </p>
           </Section>
 

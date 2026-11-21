@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { JukeboxMachine } from "@/components/jukebox-machine";
 import { SiteFooter } from "@/components/site-footer";
+import { FanSuggestions } from "@/components/fan-suggestions";
 import { SPOTIFY_PLAYLIST_URL, jukebox } from "@/data/collections";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 import { episodes, stageName } from "@/data/episodes";
@@ -101,6 +102,7 @@ function JukeboxPage() {
           .
         </p>
         {bg?.credit && <p className="mx-auto mt-3 max-w-2xl text-center text-xs text-muted-foreground">Background: {bg.credit}</p>}
+        <FanSuggestions box="jukebox" className="mt-12" />
       </section>
       <SiteFooter />
     </main>
