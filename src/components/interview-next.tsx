@@ -67,9 +67,10 @@ function SaidIn({ tip, badge }: { tip: InterviewTip; badge?: string | undefined 
 /** "Suggested and interviewed" (Lisa, 18 Nov 2026): someone put forward on the show (or by fans) who has been a guest
  *  since, with a link to that episode - its AFTERPARTY page, or WOW Presents Plus while it has none yet. */
 function AlreadyInterviewed({ done }: { done: Interviewed }) {
+  // Plain inline text, so the release date runs on after the link instead of dropping to its own line.
   return (
-    <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-      <span>Interviewed in</span>
+    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+      Interviewed in{" "}
       {done.afterparty ? (
         <Link to={episodePath(done.episodeId)} className="text-gold">
           {done.code} &middot; {done.guest} &middot; AFTERPARTY
@@ -79,7 +80,12 @@ function AlreadyInterviewed({ done }: { done: Interviewed }) {
           {done.code} &middot; {done.guest} on WOW Presents Plus &#8599;
         </a>
       )}
-      {done.released && <span>&middot; out {formatDate(done.released)}</span>}
+      {done.released && (
+        <>
+          {" "}
+          &middot; <span className="whitespace-nowrap">out {formatDate(done.released)}</span>
+        </>
+      )}
     </p>
   );
 }
@@ -309,7 +315,7 @@ export function InterviewNext({
           Who should James, Fenton and Randy have on next? Every name put forward on the show - with the episode and the
           exact moment, tap &#9654; to hear it - and the ones suggested by you, the fans. Tap a name to see every time it comes up.
         </p>
-        <div role="tablist" aria-label="Who to interview next" className="mt-8 flex gap-1 border-b-2 border-gold sm:gap-2">
+        <div role="tablist" aria-label="Who to interview next" className="mt-8 flex gap-0.5 border-b-2 border-gold sm:gap-2">
           {tabs.map((t) => {
             const on = tab === t.key;
             return (
@@ -324,7 +330,7 @@ export function InterviewNext({
                   setTab(t.key);
                   setOpen(null);
                 }}
-                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-1.5 py-2 text-[10px] font-semibold uppercase tracking-[0.04em] sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
+                className={`-mb-[2px] whitespace-nowrap border-2 border-b-0 px-1 py-2 text-[10px] font-semibold uppercase tracking-normal sm:px-3 sm:text-xs sm:tracking-[0.2em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink ${
                   on ? "border-gold bg-pink text-pink-foreground" : "border-transparent text-pink hover:border-gold"
                 }`}
               >
