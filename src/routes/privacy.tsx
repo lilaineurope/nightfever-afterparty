@@ -285,8 +285,8 @@ function PrivacyPage() {
           <Section title="4. Links to other sites">
             <p>
               When you click &ldquo;Listen on Spotify&rdquo;, an Apple Podcasts
-              link, a World of Wonder link, an Instagram link or a Wikipedia
-              link, you leave this site and that service&rsquo;s own privacy
+              link, a World of Wonder link, an Instagram link or a picture
+              credit link, you leave this site and that service&rsquo;s own privacy
               policy applies from that moment. This page has no influence over
               what they do with your data.
             </p>

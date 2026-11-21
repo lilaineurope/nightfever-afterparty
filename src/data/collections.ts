@@ -46,7 +46,22 @@ export const BOOK_SHELVES: Shelf[] = [
   { key: "magazines", label: "Magazines" },
   { key: "newspapers", label: "Newspapers" },
   { key: "columns", label: "Columns & articles" },
+  { key: "diaries", label: "Diaries" },
 ];
+
+// Lisa, 21 Nov 2026: diaries the guests kept get their own shelf, not Books.
+// Journals count too - only for books, so The Wall Street Journal stays a newspaper.
+const DIARIES = /\b(diary|diaries|journals?)\b/i;
+// Lisa, 21 Nov 2026: a book that isn't published yet stays off the Library shelves - it lives in
+// "Books to be written" (src/data/still-to-make.ts) until it comes out. Its A–Z card stays.
+export const UNPUBLISHED_BOOKS = new Set([
+  "Meet Me at the Mailbox (Denise Stoughton)",
+  "Connie's biography (by David Glamamore)",
+  "Nick Egan's Duck Rock book (Rizzoli)",
+  "Queen of the Mudd (Tina L'Hotsky)",
+  "Super Freak (unpublished)",
+  "After Hours: The Rise and Fall of the Mega Discotheque (Rudolf Piper)",
+]);
 
 // Lisa, 23 Oct 2026: magazines, newspapers and columns are separate shelves.
 // Columns & articles: a single piece or a named column - quoted titles, "Magazine – 'Story'", or a column/piece named in brackets after its writer.
@@ -78,10 +93,10 @@ const WRITTEN_BY: CollectionItem[] = [
 
 export const bookClub: CollectionItem[] = [
   ...entities
-    .filter((e) => hasCat(e, ["Book", "Publication"]))
+    .filter((e) => hasCat(e, ["Book", "Publication"]) && !UNPUBLISHED_BOOKS.has(e.name))
     .map((e) => {
       const isBook = e.category === "Book" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
-      return toItem(e, isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
+      return toItem(e, isBook && DIARIES.test(e.name) ? "diaries" : isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
     }),
   ...WRITTEN_BY,
 ].sort(byMentions);
@@ -401,9 +416,6 @@ export const jukebox: CollectionItem[] = entities
 
 /** Search links that let a visitor find the music or the book themselves; nothing is hosted here. */
 export { listenLinks } from "../lib/listen-links";
-
-export const findBookLink = (name: string) =>
-  `https://openlibrary.org/search?q=${encodeURIComponent(name.replace(/\s*\([^)]*\)/g, "").replace(/[‘’'"“”]/g, ""))}`;
 
 /** Every club the guests mention (Lisa, 28 Oct 2026: the Jukebox's Clubs button lists them all under the three club playlists). */
 export const clubsMentioned = entities

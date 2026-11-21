@@ -541,7 +541,7 @@ export function JukeboxMachine({
     if (e.kind === "pub") {
       const it = e.it;
       const c = e.c;
-      const shelf = BOOK_SHELVES.find((x) => x.key === it.shelf)?.label.replace(/s$/, "").replace("Columns & article", "Column or article") ?? "Publication";
+      const shelf = BOOK_SHELVES.find((x) => x.key === it.shelf)?.label.replace(/s$/, "").replace("Columns & article", "Column or article").replace("Diarie", "Diary") ?? "Publication";
       const hot = !!c && clip?.id === c.id;
       return (
         <li key={e.key} className={`jbx-strip${hot ? " hot" : ""}`}>

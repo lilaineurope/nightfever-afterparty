@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Timestamp } from "@/components/episode-player";
 import { EntityText } from "@/components/entity-text";
-import { linkPlace } from "@/lib/link-label";
+import { linkPlace, showsReadMore } from "@/lib/link-label";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { Entity } from "@/data/entities";
 import { linkToSlug, useLinks } from "@/lib/link-index";
@@ -81,7 +81,7 @@ export function MomentsBox({
       )}
       <div className="mt-4 flex flex-wrap gap-4 text-xs">
         <Link {...card} className="text-gold hover:text-pink">{summary ? "Their A–Z page →" : card.to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
-        {link && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
+        {showsReadMore(link) && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
         {extra}
       </div>
     </div>
