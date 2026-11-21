@@ -352,6 +352,11 @@ export const YOUTUBE: Record<string, string> = {
   "Bad Brains": "gnWKhq8l_5c",
   "Scraping Foetus off the Wheel": "V1EFSqXD38U",
   "'Tomorrow Never Knows' – The Beatles": "m4BuziKGMy4",
+  // S03E09 Cat Marnell
+  "Nelly – 'Hot in Herre'": "GeZZr_p6vB8",
+  "Britney Spears – 'I'm a Slave 4 U'": "Mzybwwf2HoQ",
+  "N.E.R.D": "I_uDcCZDrxg",
+  "Clipse": "TjWAWcx4xdE",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */
