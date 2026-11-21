@@ -19,10 +19,15 @@ const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 /** Who dropped it: each Afterparty that names it - the guest's polaroid, what was said and the moment to play. It replaces the
  *  card's plain "In the episodes" list on Library item pages (Lisa, 21 Nov 2026: one lonely polaroid looked too messy). */
 const DROPPED_SHOWN = 6;
+// Lisa, 21 Nov 2026 ("if we have situations like this - merge the box, do it for all library pages"): a guest who dropped it
+// and is also quoted gets one box - their quote sits inside their "Who dropped it" box, not on a separate quote wall.
+// Guests with a quote come first, so their words are above the fold.
+const quotesOf = (v: LibraryItemView, episodeId: string) => v.quotes.filter((q) => q.episodeId === episodeId);
 function DroppedBy({ v, name }: { v: LibraryItemView; name: string }) {
   const [all, setAll] = useState(false);
   if (v.dropped.length === 0) return null;
-  const shown = all ? v.dropped : v.dropped.slice(0, DROPPED_SHOWN);
+  const ordered = [...v.dropped].sort((a, b) => Number(quotesOf(v, b.episodeId).length > 0) - Number(quotesOf(v, a.episodeId).length > 0));
+  const shown = all ? ordered : ordered.slice(0, DROPPED_SHOWN);
   return (
     <section aria-labelledby="dropped-by">
       <h2 id="dropped-by" className={h}>Who dropped it</h2>
@@ -38,6 +43,11 @@ function DroppedBy({ v, name }: { v: LibraryItemView; name: string }) {
                 {d.short}
                 {d.mentions > 1 && <> · {d.mentions} mentions</>}
               </p>
+              {quotesOf(v, d.episodeId).map((q) => (
+                <blockquote key={q.time} className="lit-drop-quote">
+                  {q.quote} <Timestamp episodeId={q.episodeId} time={q.time} />
+                </blockquote>
+              ))}
               {d.said.map((m, i) => (
                 <p key={i} className="lit-drop-said">
                   {m.time && m.time !== "On camera" && <><Timestamp episodeId={d.episodeId} time={m.time} />{" "}</>}
@@ -59,12 +69,15 @@ function DroppedBy({ v, name }: { v: LibraryItemView; name: string }) {
 
 /** What the guests said about it: their own words, each with their polaroid and the moment (src/data/item-quotes.ts). */
 function GuestQuotes({ v }: { v: LibraryItemView }) {
-  if (v.quotes.length === 0) return null;
+  // Quotes from a guest who dropped it already sit in their "Who dropped it" box.
+  const dropped = new Set(v.dropped.map((d) => d.episodeId));
+  const quotes = v.quotes.filter((q) => !dropped.has(q.episodeId));
+  if (quotes.length === 0) return null;
   return (
     <section aria-labelledby="guest-quotes">
       <h2 id="guest-quotes" className={h}>What the guests said about it</h2>
       <ul className="lit-quotes mt-5">
-        {v.quotes.map((q) => (
+        {quotes.map((q) => (
           <li key={q.episodeId + q.time} className="lit-quote">
             <blockquote>{q.quote}</blockquote>
             <p className="lit-quote-who">
@@ -455,8 +468,9 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
   };
   if (v.trailers.length > 0) put(<TrailerJukebox key="jbx" trailers={v.trailers} name={name} />, 9 + (v.trailers.length > 1 ? v.trailers.length * 1.2 : 0), 0);
   if (hasWhoMadeMe(v)) put(<WhoMadeMe key="who" v={v} name={name} />, 3 + (v.shelf === "books" ? 3 : (v.press?.team.length ?? 0) * 1.6 + 1), 1);
-  if (v.find || v.press?.buy) put(<BuyMe key="buy" v={v} here={here} onAsk={nearMe} />, 6);
+  // The taller box first, so the shorter one evens the columns out.
   if (v.find) put(<FindBorrow key="borrow" v={v} here={here} onAsk={nearMe} />, 8);
+  if (v.find || v.press?.buy) put(<BuyMe key="buy" v={v} here={here} onAsk={nearMe} />, 6);
   if (v.connections.length > 0) put(<Connections key="conn" v={v} />, 2 + v.connections.length * 1.3);
   const [left, right] = cols2;
   // Nothing on one side: let the other side's boxes sit next to each other instead.
