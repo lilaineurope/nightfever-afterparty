@@ -273,13 +273,25 @@ export function InterviewNext({
   ];
   // People asked back for a part two stay on that tab too - they are still to book again.
   const doneSince = [
-    ...[...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack].filter(since).map((p) => ({ kind: "air" as const, p })),
+    ...[...INTERVIEW_PEOPLE.newFaces, ...INTERVIEW_PEOPLE.comeBack]
+      .filter(since)
+      .map((p) => ({ kind: "air" as const, p })),
     ...fanOnly.filter((f) => f.interviewed).map((f) => ({ kind: "fan" as const, f })),
   ];
   const tabs = [
     { key: "new" as const, label: "New faces", short: "New faces", count: newFaces.length },
-    { key: "back" as const, label: "Back for a part two", short: "Part two", count: INTERVIEW_PEOPLE.comeBack.length },
-    { key: "since" as const, label: "Interviewed since", short: "Interviewed", count: doneSince.length },
+    {
+      key: "back" as const,
+      label: "Back for a part two",
+      short: "Part two",
+      count: INTERVIEW_PEOPLE.comeBack.length,
+    },
+    {
+      key: "since" as const,
+      label: "Interviewed since",
+      short: "Interviewed",
+      count: doneSince.length,
+    },
   ];
   return (
     <section aria-labelledby="interview-next" className={`px-6 py-14 ${className}`}>
@@ -347,12 +359,20 @@ export function InterviewNext({
         ) : (
           <div role="tabpanel" id="in-panel-since" aria-labelledby="in-tab-since" className="mt-6">
             <p className="mb-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Put forward on the show - and then they came on. Tap the episode to read their AFTERPARTY.
+              Put forward on the show - and then they came on. Tap the episode to read their
+              AFTERPARTY.
             </p>
             <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
               {doneSince.map((row) =>
                 row.kind === "air" ? (
-                  <Person key={row.p.key} person={row.p} box={boxes[row.p.name]} done={interviewed[row.p.key]} fans={fansFor(row.p.key)} opener={opener} />
+                  <Person
+                    key={row.p.key}
+                    person={row.p}
+                    box={boxes[row.p.name]}
+                    done={interviewed[row.p.key]}
+                    fans={fansFor(row.p.key)}
+                    opener={opener}
+                  />
                 ) : (
                   <FanTip key={row.f.key} pick={row.f} id={`fan:${row.f.key}`} opener={opener} />
                 ),
