@@ -488,6 +488,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       ["1978", "Opens the Mudd Club on White Street, with Anya Phillips and Diego Cortez as his muses"],
       ["Late 70s", "Makes Chi Chi Valenti the door and Johnny Dynell, who owns no records, the DJ"],
       ["Early 80s", "Eric Goode builds a Grecian grotto in the basement; Eric and Serge Becker get their start"],
+      ["1983", "The Mudd Club closes"],
       ["80s", "Opens a bowling-alley club with Eric Goode as the Mudd Club fades"],
     ],
     liftedUp: ["Johnny Dynell", "Chi Chi Valenti", "Eric Goode", "Serge Becker", "Richard Boch"],
