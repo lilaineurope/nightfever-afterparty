@@ -31,6 +31,7 @@ export const OTHER_PAGES = [
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
   { to: "/under-the-hood", label: "Under the hood" },
+  { to: "/hall-of-fame", label: "Hall of Fame" }, // the top 100, top 10 first (Lisa, 21 Nov 2026)
   { to: "/hall-of-fame-rules", label: "How the Hall of Fame works" }, // Lisa, 21 Nov 2026 - linked from the Hall of Fame and Under the hood
   { to: "/privacy", label: "Privacy Policy" },
   { to: "/terms", label: "Terms & Conditions" },

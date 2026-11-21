@@ -234,7 +234,7 @@ export function GuestAboutBox({ e, episode, parts = ["timeline", "mentor", "drop
             <span className="font-semibold text-pink">{points(mentor.m!.score)} points</span>
             {" · "}{mentor.m!.people.length} helped · {mentor.m!.voices.length} {mentor.m!.voices.length === 1 ? "voice" : "voices"}
             {" · "}<span className="font-semibold">#{mentor.rank} of {rankedMentors.length}</span>
-            {mentor.rank <= HALL_OF_FAME_SIZE && <>{" · "}<Link to="/" hash="hall-of-fame" className="text-gold hover:text-pink">Hall of Fame</Link></>}
+            {mentor.rank <= HALL_OF_FAME_SIZE && <>{" · "}<Link to="/hall-of-fame" className="text-gold hover:text-pink">Hall of Fame</Link></>}
             {" · "}<Link to="/hall-of-fame-rules" className="text-gold hover:text-pink">How it's worked out</Link>
           </p>
           {mentor.mentees.map((l) => mentorRow(l, l.mentee, KIND_LABEL[l.kind ?? "lifted"]))}

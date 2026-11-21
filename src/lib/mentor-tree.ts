@@ -36,3 +36,11 @@ export type HallOfFameRulesView = {
   of: number;
   links: import("@/lib/link-index").LinkData;
 };
+
+/** /hall-of-fame (Lisa, 21 Nov 2026): the top 10 first, then places 11-100 (src/lib/hall-of-fame.server.ts). */
+export type HallOfFameView = {
+  top: { rank: number; name: string; score: number; voices: number; helped: string[] }[];
+  rest: { rank: number; name: string; episodes: number; mentions: number }[];
+  of: number;
+  links: import("@/lib/link-index").LinkData;
+};

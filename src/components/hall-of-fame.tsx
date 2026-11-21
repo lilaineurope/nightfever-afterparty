@@ -48,6 +48,7 @@ export function HallOfFame({ mentors }: { mentors: HomeView["mentors"] }) {
         <h2 id="hall-of-fame" className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Hall of Fame</h2>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
           The top 10 mentors of the scene - the people who lifted others, stood by them and opened doors for them, as the guests tell it on the show. Tap a name to see who they helped.{" "}
+          <Link to="/hall-of-fame" className="whitespace-nowrap font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:text-pink">The whole top 100 →</Link>{" "}
           <Link to="/hall-of-fame-rules" className="whitespace-nowrap font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:text-pink">How this is calculated →</Link>
         </p>
         <div className="mt-5 flex flex-wrap items-baseline font-[family-name:var(--font-flyer)] text-2xl uppercase leading-[1.5] sm:text-[30px]">

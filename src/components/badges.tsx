@@ -55,21 +55,21 @@ function SmallSticker({ tone, text, label }: { tone: "gold" | "pink"; text: stri
   return <span role="img" aria-label={label} className={`badge-sticker badge-${tone}`}>{text}</span>;
 }
 
-/** Gold stamp: Hall of Fame top 10. Links to how it is worked out. */
+/** Gold stamp: Hall of Fame top 10. Links to the Hall of Fame page. */
 export function HallOfFameBadge({ rank, small }: { rank: number; small?: boolean }) {
   const label = `Hall of Fame top 10, number ${rank}`;
   return (
-    <Link to="/hall-of-fame-rules" title={label} className="inline-flex">
+    <Link to="/hall-of-fame" title={label} className="inline-flex">
       {small ? <SmallSticker tone="gold" text={`TOP 10 · #${rank}`} label={label} /> : <BigStamp ink={GOLD_INK} title="HALL OF FAME" line="TOP 10" rank={rank} seed={3} label={label} />}
     </Link>
   );
 }
 
-/** Pink stamp: top 100 great connectors. Links to the Network's Great Connectors. */
+/** Pink stamp: top 100 great connectors. Links to places 11-100 on the Hall of Fame page. */
 export function ConnectorBadge({ rank, small }: { rank: number; small?: boolean }) {
   const label = `Top 100 great connector, number ${rank}`;
   return (
-    <Link to="/network" title={label} className="inline-flex">
+    <Link to="/hall-of-fame" hash="top-100" title={label} className="inline-flex">
       {small ? <SmallSticker tone="pink" text={`TOP 100 · #${rank}`} label={label} /> : <BigStamp ink={PINK_INK} title="CONNECTOR" line="TOP 100" rank={rank} seed={9} label={label} />}
     </Link>
   );

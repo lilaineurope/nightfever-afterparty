@@ -40,7 +40,7 @@ function HallOfFameRules() {
     <main className="min-h-screen bg-background text-foreground">
       <section className="disco-grid px-6 pb-12 pt-24">
         <div className="mx-auto max-w-4xl text-center">
-          <Link to="/" hash="hall-of-fame" className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink">
+          <Link to="/hall-of-fame" className="text-xs font-medium uppercase tracking-[0.2em] text-gold transition hover:text-pink">
             &larr; Hall of Fame
           </Link>
           <h1 className="mt-6 text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
@@ -111,7 +111,7 @@ function HallOfFameRules() {
             </div>
             <div className="flex items-center gap-4 border-2 border-gold bg-card p-5">
               <ConnectorBadge rank={11} />
-              <p className="text-sm text-muted-foreground"><b className="text-cream">Pink door stamp:</b> the top 100 great connectors - the names dropped in the most AFTERPARTIES, as on the <Link to="/network" className="text-gold underline underline-offset-2 hover:text-pink">Network</Link>.</p>
+              <p className="text-sm text-muted-foreground"><b className="text-cream">Pink door stamp:</b> places 11 to 100 - the great connectors, the names dropped in the most AFTERPARTIES, as on the <Link to="/network" className="text-gold underline underline-offset-2 hover:text-pink">Network</Link>.</p>
             </div>
           </div>
           <p className="text-sm text-muted-foreground">One badge per person: whoever is in the Hall of Fame top 10 wears the gold one, everyone else in the top 100 the pink one.</p>
@@ -140,7 +140,7 @@ function HallOfFameRules() {
               </li>
             ))}
           </ol>
-          <p className="text-sm text-muted-foreground">{v.of} people have a score. Everyone in the top 10 shows on the <Link to="/" hash="hall-of-fame" className="text-gold underline underline-offset-2 hover:text-pink">Hall of Fame</Link>; the rest see their rank on their own page.</p>
+          <p className="text-sm text-muted-foreground">{v.of} people have a score. Everyone in the top 10 shows on the <Link to="/hall-of-fame" className="text-gold underline underline-offset-2 hover:text-pink">Hall of Fame</Link>; the rest see their rank on their own page.</p>
         </section>
 
         <p className="text-sm text-muted-foreground">

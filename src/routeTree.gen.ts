@@ -17,6 +17,7 @@ import { Route as ConnectionsRouteImport } from './routes/connections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as GuestsRouteImport } from './routes/guests'
+import { Route as HallOfFameRouteImport } from './routes/hall-of-fame'
 import { Route as HallOfFameRulesRouteImport } from './routes/hall-of-fame-rules'
 import { Route as InsideTheClubsRouteImport } from './routes/inside-the-clubs'
 import { Route as JukeboxRouteImport } from './routes/jukebox'
@@ -135,6 +136,11 @@ const GamesRoute = GamesRouteImport.update({
 const GuestsRoute = GuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HallOfFameRoute = HallOfFameRouteImport.update({
+  id: '/hall-of-fame',
+  path: '/hall-of-fame',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HallOfFameRulesRoute = HallOfFameRulesRouteImport.update({
@@ -542,6 +548,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
+  '/hall-of-fame': typeof HallOfFameRoute
   '/hall-of-fame-rules': typeof HallOfFameRulesRoute
   '/inside-the-clubs': typeof InsideTheClubsRoute
   '/jukebox': typeof JukeboxRoute
@@ -631,6 +638,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
+  '/hall-of-fame': typeof HallOfFameRoute
   '/hall-of-fame-rules': typeof HallOfFameRulesRoute
   '/inside-the-clubs': typeof InsideTheClubsRoute
   '/jukebox': typeof JukeboxRoute
@@ -721,6 +729,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/guests': typeof GuestsRoute
+  '/hall-of-fame': typeof HallOfFameRoute
   '/hall-of-fame-rules': typeof HallOfFameRulesRoute
   '/inside-the-clubs': typeof InsideTheClubsRoute
   '/jukebox': typeof JukeboxRoute
@@ -812,6 +821,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/games'
     | '/guests'
+    | '/hall-of-fame'
     | '/hall-of-fame-rules'
     | '/inside-the-clubs'
     | '/jukebox'
@@ -901,6 +911,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/games'
     | '/guests'
+    | '/hall-of-fame'
     | '/hall-of-fame-rules'
     | '/inside-the-clubs'
     | '/jukebox'
@@ -990,6 +1001,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/games'
     | '/guests'
+    | '/hall-of-fame'
     | '/hall-of-fame-rules'
     | '/inside-the-clubs'
     | '/jukebox'
@@ -1080,6 +1092,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GamesRoute: typeof GamesRoute
   GuestsRoute: typeof GuestsRoute
+  HallOfFameRoute: typeof HallOfFameRoute
   HallOfFameRulesRoute: typeof HallOfFameRulesRoute
   InsideTheClubsRoute: typeof InsideTheClubsRoute
   JukeboxRoute: typeof JukeboxRoute
@@ -1217,6 +1230,13 @@ declare module '@tanstack/react-router' {
       path: '/guests'
       fullPath: '/guests'
       preLoaderRoute: typeof GuestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hall-of-fame': {
+      id: '/hall-of-fame'
+      path: '/hall-of-fame'
+      fullPath: '/hall-of-fame'
+      preLoaderRoute: typeof HallOfFameRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hall-of-fame-rules': {
@@ -1784,6 +1804,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GamesRoute: GamesRoute,
   GuestsRoute: GuestsRoute,
+  HallOfFameRoute: HallOfFameRoute,
   HallOfFameRulesRoute: HallOfFameRulesRoute,
   InsideTheClubsRoute: InsideTheClubsRoute,
   JukeboxRoute: JukeboxRoute,
