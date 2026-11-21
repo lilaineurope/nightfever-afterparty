@@ -27,6 +27,10 @@ export type MentorTreeData = {
 export const KIND_LABEL: Record<MentorKind, string> = { lifted: "Lifted", stood: "Stood by", door: "Opened a door" };
 
 /** 16.5 -> "16½", 0.5 -> "½" */
+/** Whose page shows their family tree (Lisa, 21 Nov 2026: "on Kim's side it really works, on James's side it's too crowded").
+ *  The other top-10 trees are off for now; pictures of all ten are in the NightFever folder (Hall of Fame/Family trees). */
+export const TREE_ON_PAGE = new Set(["kim-hastreiter"]);
+
 export const points = (n: number) => (n % 1 ? `${Math.floor(n) || ""}½` : String(n));
 
 /** /hall-of-fame-rules: the top 10 and how each score adds up, plus the worked example's tree. */

@@ -14,6 +14,7 @@ import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
 import { MentorTree } from "@/components/mentor-tree";
+import { TREE_ON_PAGE } from "@/lib/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { guestBySlug } from "@/data/guests";
 import { getCardPage } from "@/lib/card-view.functions";
@@ -152,7 +153,7 @@ function EntityPage() {
           {/* Badges (Lisa, 21 Nov 2026): gold for the Hall of Fame top 10, pink for places 11-100 of the top 100 (great connectors, src/lib/connector-rank.ts) - one badge per person. */}
           {(e.tree || e.connector) && (
             <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-wider text-cream">
-              {e.tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={e.tree.rank} small /><a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a></span>}
+              {e.tree && <span className="inline-flex items-center gap-2"><HallOfFameBadge rank={e.tree.rank} small />{TREE_ON_PAGE.has(e.slug) ? <a href="#mentor-tree" className="hover:text-pink">Hall of Fame</a> : <Link to="/hall-of-fame" className="hover:text-pink">Hall of Fame</Link>}</span>}
               {e.connector && !e.tree && <span className="inline-flex items-center gap-2"><ConnectorBadge rank={e.connector} small /><Link to="/hall-of-fame" hash="top-100" className="hover:text-pink">Great connector</Link></span>}
             </p>
           )}
@@ -193,8 +194,8 @@ function EntityPage() {
         {profile && <PersonProfileSections m={profile} name={e.name} />}
         {diary && <DiarySections d={diary} name={e.name} />}
         {column && <ColumnIndex c={column} name={e.name} />}
-        {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors only. */}
-        {e.tree && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
+        {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors, for now only TREE_ON_PAGE. */}
+        {e.tree && TREE_ON_PAGE.has(e.slug) && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
         <CardSections v={e} />
       </div>
           <SiteFooter />
