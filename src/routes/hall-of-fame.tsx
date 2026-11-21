@@ -6,6 +6,9 @@ import { EntityLink } from "@/components/entity-link";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { getHallOfFame } from "@/lib/hall-of-fame.functions";
 import { points } from "@/lib/mentor-tree";
+import type { CSSProperties } from "react";
+import wall from "@/assets/hall-of-fame-wall.webp";
+import wallPhone from "@/assets/hall-of-fame-wall-phone.webp";
 
 // The Hall of Fame page (Lisa, 21 Nov 2026: "create the hall of fame website with top 10 on top"): one top 100 - the
 // Hall of Fame top 10 with their gold stamps first, then places 11-100, the great connectors, with the pink sticker.
@@ -28,22 +31,29 @@ function HallOfFamePage() {
   const v = Route.useLoaderData();
   return (
     <LinkDataProvider value={v.links}>
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="disco-grid px-6 pb-10 pt-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-balance text-5xl font-bold leading-[1] tracking-tight text-cream text-glow sm:text-6xl">
-            Hall of <span className="text-pink text-glow-pink">Fame</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The top 100 of the scene. On top, the 10 who lifted others the most: who gave them a start, stood by them and opened
-            doors for them, as the guests tell it on Night Fever. After them, the great connectors - the names dropped in the most
-            AFTERPARTIES.
-          </p>
-          <p className="mt-4 text-sm">
-            <Link to="/hall-of-fame-rules" className="font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:text-pink">How this is calculated →</Link>
-          </p>
-        </div>
+    <main
+      className="page-sky min-h-screen bg-background text-foreground"
+      style={{ "--sky": `url(${wall})`, "--sky-phone": `url(${wallPhone})` } as CSSProperties}
+    >
+      {/* Header (Lisa, 21 Nov 2026, "hall of fame needs a cover header image"): the top 10's polaroids as a wall, in the
+          photocopy halftone, fading into the page (scripts/page-headers/fade.py, src/assets/hall-of-fame-wall*.webp). */}
+      <section className="page-head px-4 text-center">
+        <h1 className="timeline-title">
+          <span className="timeline-strip timeline-strip-ink">The AFTERPARTY</span>
+          <br />
+          <span className="timeline-strip timeline-strip-pink">Hall of Fame</span>
+        </h1>
+        <p className="timeline-tag">The top 100 of the scene, as the guests tell it.</p>
       </section>
+      <div className="mx-4 mb-12 max-w-3xl border-2 border-cream bg-card p-5 text-center shadow-[6px_6px_0_0_#111] sm:mx-auto sm:p-6">
+        <p className="leading-relaxed text-cream sm:text-lg">
+          On top, the 10 who lifted others the most: who gave them a start, stood by them and opened doors for them, as the
+          guests tell it on Night Fever. After them, the great connectors - the names dropped in the most AFTERPARTIES.
+        </p>
+        <p className="mt-4 text-sm">
+          <Link to="/hall-of-fame-rules" className="font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:text-pink">How this is calculated →</Link>
+        </p>
+      </div>
 
       <div className="mx-auto max-w-6xl space-y-16 px-4 pb-16 sm:px-6">
         <section aria-labelledby="top-10" className="space-y-6">

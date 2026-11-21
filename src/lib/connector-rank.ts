@@ -11,8 +11,8 @@ import { rankedMentors, HALL_OF_FAME_SIZE } from "@/lib/mentor-rank";
 // Loads the A–Z: server, episode pages.
 export const CONNECTOR_BADGE_SIZE = 100;
 
-/** Names never in the Hall of Fame top 100 (Michael Alig, as in mentors.ts; Donald Trump - Lisa's "no go", like Alig). */
-const LEFT_OUT = new Set([...NOT_IN_HALL_OF_FAME, "Donald Trump"]);
+/** Names never in the Hall of Fame top 100 (Michael Alig, as in mentors.ts; Donald Trump - Lisa's "no go", like Alig; Angel Melendez and Rudy Giuliani - Lisa, 21 Nov 2026). */
+const LEFT_OUT = new Set([...NOT_IN_HALL_OF_FAME, "Donald Trump", "Andre 'Angel' Melendez", "Rudy Giuliani"]);
 
 const goldSlugs = new Set(rankedMentors.slice(0, HALL_OF_FAME_SIZE).map((m) => m.slug).filter(Boolean));
 
