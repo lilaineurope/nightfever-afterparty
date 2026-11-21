@@ -106,6 +106,7 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
   const list = trailers.filter((t) => !failed.includes(t.id));
   if (list.length === 0) return null;
   const pick = list[0]!;
+  const guestBox = list.every((t) => t.kind === "guest");
   const showing = now ?? pick;
   const next = (from: Trailer) => {
     const i = list.findIndex((t) => t.id === from.id);
@@ -113,16 +114,16 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
   };
   return (
     <section aria-labelledby="trailer-jukebox">
-      <h2 id="trailer-jukebox" className={h}>Watch the trailer</h2>
+      <h2 id="trailer-jukebox" className={h}>{guestBox ? "From the guest's Jukebox" : "Watch the trailer"}</h2>
       <div className="lit-jbx mt-6">
         <p className="lit-jbx-kicker">The Night Fever</p>
-        <p className="lit-jbx-title">Trail<b>er</b></p>
+        <p className="lit-jbx-title">{guestBox ? <>Juke<b>box</b></> : <>Trail<b>er</b></>}</p>
         <div className="lit-jbx-screen">
           {now ? (
             <VideoScreen vid={now.id} title={now.title} onEnd={() => next(now)} onFail={() => { setFailed((f) => [...f, now.id]); next(now); }} />
           ) : (
             <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play the trailer: ${pick.title}`}>
-              <span className="lit-jbx-k">{pick.label === name ? "The trailer" : "From page to screen"}</span>
+              <span className="lit-jbx-k">{pick.kind === "guest" ? `${pick.short} · who dropped it` : pick.label === name ? "The trailer" : "From page to screen"}</span>
               <span className="lit-jbx-play" aria-hidden>▶</span>
               <span className="lit-jbx-nm">{pick.label}</span>
               <span className="lit-jbx-sm">From our {pick.short} AFTERPARTY playlist</span>
@@ -135,7 +136,7 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
               <li key={t.id}>
                 <button type="button" aria-pressed={showing.id === t.id && !!now} onClick={() => setNow(t)}>
                   <i>A{i + 1}</i>
-                  <span>{t.title}</span>
+                  <span>{t.kind === "guest" ? `${t.label}: ${t.title}` : t.title}</span>
                 </button>
               </li>
             ))}

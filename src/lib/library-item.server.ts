@@ -1,5 +1,5 @@
 // Server side of the Library item pages (Lisa, 21 Nov 2026) - see src/lib/library-item.ts. Only card-view.server.ts loads it.
-import { afterpartyOf, entityFor, episodeShort, slugify, type Entity } from "@/data/entities";
+import { afterpartyOf, entityFor, episodeShort, guestOfEpisode, slugify, type Entity } from "@/data/entities";
 import { bookClub } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
 import { BOOK_FACTS } from "@/data/library-facts";
@@ -12,7 +12,7 @@ import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
 import type { Connection, DroppedBy, LibraryItemView, ShelfMate, Trailer } from "@/lib/library-item";
 
-type Clip = { id: string; name: string; cat: string; title: string };
+type Clip = { id: string; name: string; cat: string; title: string; of?: string };
 // Every video in the AFTERPARTY YouTube playlists (src/data/episode-videos), by the card it belongs to.
 const clipFiles = import.meta.glob<Clip[]>("../data/episode-videos/*.json", { eager: true, import: "default" });
 const TRAILER = /\btrailer\b/i;
@@ -26,6 +26,21 @@ for (const [path, clips] of Object.entries(clipFiles)) {
     const list = (trailersBySlug[slug] ??= []);
     if (!list.some((t) => t.id === c.id)) list.push({ id: c.id, title: c.title, label: c.name, episodeId, short: episodeShort(episodeId) });
   }
+}
+
+// The guest's own Jukebox (Lisa, 21 Nov 2026: "if there is no trailer for the book, use the jukebox for the guest"): their
+// Night Fever episode on YouTube where there is one, then the videos about them in our playlists.
+const allClips = Object.entries(clipFiles).flatMap(([path, clips]) => clips.map((c) => ({ ...c, file: path.split("/").pop()!.replace(/\.json$/, "") })));
+function guestJukebox(episodeId: string): Trailer[] {
+  const g = guestOfEpisode(episodeId);
+  const name = g ? g.name : stageName(episodeById(episodeId).guest);
+  const out: Trailer[] = [];
+  const add = (c: (typeof allClips)[number]) => {
+    if (!out.some((t) => t.id === c.id)) out.push({ id: c.id, title: c.title, label: name, episodeId, short: episodeShort(episodeId), kind: "guest" });
+  };
+  for (const c of allClips) if (c.cat === "Night Fever" && c.of === episodeId) add(c);
+  if (g) for (const c of allClips) if (c.cat === "Person" && entityFor(c.name)?.slug === g.slug) add(c);
+  return out;
 }
 
 const SCREEN = new Set(["Film", "TV"]);
@@ -116,6 +131,11 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
   const dropped = droppedBy(e);
   const trailers = [...(trailersBySlug[e.slug] ?? [])];
   for (const f of ON_SCREEN[e.name] ?? []) for (const t of trailersBySlug[entityFor(f.name)?.slug ?? ""] ?? []) if (!trailers.some((x) => x.id === t.id)) trailers.push(t);
+  // No trailer: the Jukebox plays the guests who dropped it instead - most mentions first, a few videos each.
+  if (trailers.length === 0)
+    for (const d of [...dropped].sort((a, b) => b.mentions - a.mentions)) {
+      for (const t of guestJukebox(d.episodeId).slice(0, 3)) if (trailers.length < 6 && !trailers.some((x) => x.id === t.id)) trailers.push(t);
+    }
   const quotes = (ITEM_QUOTES[e.slug] ?? []).map((q) => ({ ...q, episodeId: q.episode, short: episodeShort(q.episode), polaroid: guestPolaroid(q.episode) }));
   return {
     shelf,
