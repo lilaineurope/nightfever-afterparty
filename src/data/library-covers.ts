@@ -10,6 +10,11 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string };
 
 const COVERS: Record<string, Cover> = {
   "Porcelain (Moby memoir)": { kind: "book", file: "book-porcelain-moby.webp", credit: "Cover via Open Library" },
+  "How to Murder Your Life": { kind: "book", file: "book-how-to-murder-your-life.webp", credit: "Cover via Open Library (Ebury Press, 2017)" },
+  "The Rainbow Comes and Goes": { kind: "book", file: "book-the-rainbow-comes-and-goes.webp", credit: "Cover via Open Library (Hart-Davis, 1958)" },
+  "Nylon": { kind: "mast", file: "mast-nylon.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "Self magazine": { kind: "mast", file: "mast-self.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "Teen Vogue": { kind: "mast", file: "mast-teen-vogue.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Then It Fell Apart (Moby memoir)": { kind: "book", file: "book-then-it-fell-apart.webp", credit: "Cover via Open Library" },
   "Moby-Dick": { kind: "book", file: "book-moby-dick.webp", credit: "Cover via Open Library (Bill Sienkiewicz's graphic edition)" },
   "Man Enough to Be a Woman": { kind: "book", file: "book-man-enough-to-be-a-woman.webp", credit: "Cover via the Amazon listing (Jayne County, 2018)" },
