@@ -161,6 +161,18 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
       )}
     </span>
   );
+  // Lisa, 21 Nov 2026: the keeper's portrait fills the whole diary cover.
+  if (polaroid)
+    return (
+      <span className="lib-cv lib-book lib-diary-cover">
+        <img src={polaroid} alt={`${item.name} - cover with the keeper's portrait`} loading="lazy" decoding="async" />
+        <span className="lib-diary-tag">Diary</span>
+        <span className="lib-strip">
+          <span className="lib-nm">{item.name}</span>
+          {foot}
+        </span>
+      </span>
+    );
   if (cover?.kind === "book")
     return (
       <span className="lib-cv lib-book">
@@ -176,14 +188,7 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
   return (
     <span className={`lib-cv lib-type ${colour}`}>
       <span className="lib-kind">{KIND[item.shelf]}</span>
-      {polaroid ? (
-        <>
-          <span className="lib-pol">
-            <img src={polaroid} alt={`Polaroid of the diary's keeper - ${item.name}`} loading="lazy" decoding="async" />
-          </span>
-          <span className="lib-mast lib-mast-diary">{item.name}</span>
-        </>
-      ) : cover?.kind === "mast" ? (
+      {cover?.kind === "mast" ? (
         <>
           <img className="lib-logo" src={cover.src} alt={`${item.name} masthead`} loading="lazy" decoding="async" />
           <span className="lib-lines">The AFTERPARTY issue<br />{item.name}</span>
