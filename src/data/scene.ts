@@ -628,6 +628,7 @@ const afterpartyIndexes: { id: string; label: string; guest: string; refs: Ref[]
   { id: "s04e05", label: "S4 E5", guest: "Dustin Pittman", refs: refsOf("s04e05") },
   { id: "s02e10", label: "S2 E10", guest: "Brian Belovitch", refs: refsOf("s02e10") },
   { id: "s03e07", label: "S3 E7", guest: "Domonique Echeverria", refs: refsOf("s03e07") },
+  { id: "s03e09", label: "S3 E9", guest: "Cat Marnell", refs: refsOf("s03e09") },
 ];
 const YEAR = /\b(19[4-9]\d|20[0-2]\d)\b/;
 // Dated lines that are not scene moments (a year that dates a social-media post or a guess), or names kept off the

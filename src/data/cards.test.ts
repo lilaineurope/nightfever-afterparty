@@ -30,6 +30,7 @@ const DISTINCT = new Set(
     ["valentino", "viva-valentino"], ["soho", "sushi"], ["dean-martin", "dina-martina"], ["gay-usa", "go-go-s"], ["maui", "miami"], ["rebel-soul", "robbie-leslie"], ["tatou", "tea-at-toy"], ["astro-earl", "australia"], ["hawaii", "howie"], ["carlyle", "carol"],
     ["jay-z", "jazz"], ["nas", "nasa"], ["paper", "peru"], ["peru", "pierre"],
     ["bar-one", "bern"], ["bar-one", "brian-eno"], ["east-village", "east-village-eye"], ["daisy", "dose"], ["michael-jackson", "michael-jackson-one"], ["raven", "raven-o"], ["green-day", "grind"], ["tabboo", "taboo"], ["ran", "reno"], ["new-wave", "no-wave"], ["raybeats", "robots"], ["cars", "crass"], ["cock", "cookie"], ["tabboo", "tubi"], ["taboo", "tubi"],
+    ["cairo", "carrie"], ["gia", "go"], ["marco", "morocco"], ["spa", "spy"],
   ].map((p) => p.sort().join("|")),
 );
 

@@ -168,6 +168,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "James St. James", mentee: "DJ Andy Anderson", episode: "s06e07", time: "00:02:36", line: "Helped Andy get ready for his show at Danceteria, blowing up balloons", kind: "door", told: "James St. James" },
   { mentor: "Vito Bruno", mentee: "Sally Randall", episode: "s06e07", time: "00:20:01", line: "Ran Pizza a Go Go and hired Sally for one-off jobs", kind: "door" },
   { mentor: "Anthea Disney", mentee: "William Norwich", episode: "s06e08", time: "00:13:08", line: "Hired Billy at the Daily News and gave him a book and some blunt advice" },
+  { mentor: "Jessica McNally", mentee: "Cat Marnell", episode: "s03e09", time: "00:24:51", line: "Got Cat her first magazine job: an internship in the Vanity Fair fashion closet" },
+  { mentor: "Jean Godfrey-June", mentee: "Cat Marnell", episode: "s03e09", time: "00:28:15", line: "Hired Cat at Lucky - her boss and mentor, who valued creativity" },
+  { mentor: "Jane Pratt", mentee: "Cat Marnell", episode: "s03e09", time: "00:37:29", line: "Gave Cat her xoJane column and cast her in it, as Cat tells it" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */
