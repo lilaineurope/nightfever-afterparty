@@ -34,9 +34,8 @@ function cardView(e: Entity): CardView {
     ? { ...diaryPage, polaroid: diaryPage.keeperEpisode ? polaroidThumb(diaryPage.keeperEpisode, 512) : PERSON_PORTRAITS[slugify(diaryPage.keeper)]?.polaroid }
     : null;
   if (diary) L.name(diary.keeper);
-  // Column pages: the list without its sources - nothing on the page links off the site (21 Nov 2026).
-  const columnPage = g ? undefined : COLUMN_PAGES[e.slug];
-  const column = columnPage ? { ...columnPage, articles: columnPage.articles.map(({ source: _s, ...a }) => a) } : null;
+  // Column pages: every piece under the column, each linking to where it can be read (Lisa, 21 Nov 2026).
+  const column = g ? null : (COLUMN_PAGES[e.slug] ?? null);
   if (column) {
     L.name(column.writer.replace(/\s*\(.*\)$/, ""));
     for (const a of column.articles) L.text(a.title, e.name);

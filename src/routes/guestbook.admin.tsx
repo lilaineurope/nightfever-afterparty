@@ -430,7 +430,7 @@ function FanIdeas({ keyValue }: { keyValue: string }) {
 
   return (
     <section ref={ref} aria-labelledby="fan-h" className="mt-12">
-      <h2 id="fan-h" className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Fan suggestions - Library, Jukebox, Hall of Fame, Clubs</h2>
+      <h2 id="fan-h" className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Fan suggestions - Library, Jukebox, Hall of Fame, Clubs, column sources</h2>
       {done && <p className="mt-4 border-2 border-pink p-3 text-sm font-semibold text-pink">{done}</p>}
       {asked && !done && <p className="mt-4 text-sm text-muted-foreground">That suggestion has already been handled.</p>}
       {error && <p className="mt-4 text-sm text-pink">{error}</p>}

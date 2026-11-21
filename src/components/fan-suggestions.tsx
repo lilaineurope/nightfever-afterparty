@@ -40,12 +40,13 @@ export function FanSuggestions({
   const [problem, setProblem] = useState("");
   const opened = useRef(Date.now());
   useEffect(() => {
+    if (cfg.listApproved === false) return;
     list({ data: box })
       .then((all) => setIdeas(fixedKind ? all.filter((i) => i.kind === fixedKind) : all))
       .catch(() => setIdeas([]));
-  }, [list, box, fixedKind]);
+  }, [list, box, fixedKind, cfg.listApproved]);
 
-  const id = `fan-${box}${fixedKind ? `-${fixedKind.toLowerCase()}` : ""}`;
+  const id = `fan-${box}${fixedKind ? `-${fixedKind.toLowerCase().replace(/[^a-z0-9]+/g, "-")}` : ""}`;
   const kindCfg = cfg.kinds?.find((k) => k.value === kind);
 
   const submit = async (e: React.FormEvent) => {
@@ -148,7 +149,8 @@ export function FanSuggestions({
           </div>
           {state === "error" && <p className="text-xs text-destructive">{problem || "That didn’t go through - please try again."}</p>}
           <p className="text-xs text-muted-foreground">
-            I read every suggestion first. If I pick yours, it shows up here - your name never does. See the{" "}
+            I read every suggestion first.{" "}
+            {cfg.listApproved === false ? "If I use yours, it goes into the list above" : "If I pick yours, it shows up here"} - your name never does. See the{" "}
             <Link to="/privacy" className="text-gold">Privacy Policy</Link>.
           </p>
         </form>

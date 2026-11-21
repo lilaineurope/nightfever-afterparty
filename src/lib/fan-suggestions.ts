@@ -4,7 +4,7 @@
 // never with the visitor's name. Who to interview next keeps its own table (interview_suggestions, src/lib/suggestions.functions.ts).
 // A new box: add it here AND to the box check on the fan_suggestions table (Lovable Cloud), then put <FanSuggestions box=…/> on its page.
 
-export const FAN_BOXES = ["library", "jukebox", "hall-of-fame", "clubs"] as const;
+export const FAN_BOXES = ["library", "jukebox", "hall-of-fame", "clubs", "columns"] as const;
 export type FanBox = (typeof FAN_BOXES)[number];
 
 export type FanBoxConfig = {
@@ -18,6 +18,10 @@ export type FanBoxConfig = {
   placeholder: string;
   whyPlaceholder: string;
   thanks: string;
+  /** The "where" line may hold a link (a source someone can read) - every other box refuses links. */
+  allowLinks?: boolean;
+  /** false: approved ideas are not listed under the form (a source goes into the page's own list instead). */
+  listApproved?: boolean;
 };
 
 export const FAN_BOX: Record<FanBox, FanBoxConfig> = {
@@ -60,6 +64,26 @@ export const FAN_BOX: Record<FanBox, FanBoxConfig> = {
     placeholder: "Name of the club (and the city, if not New York)",
     whyPlaceholder: "Where was it, when, and what was the night like? (optional)",
     thanks: "Thank you - your club is on its way to me!",
+  },
+  // Column pages (Lisa, 21 Nov 2026: "add a Suggest Source form"): a fan who knows where a column can be read - a link, an
+  // archive, the issue in their drawer. The column is the kind (set by the page, no chips); Lisa adds good sources to
+  // src/data/column-articles.ts, so approved ones are not listed under the form.
+  columns: {
+    page: "Library · Column sources",
+    path: "/library",
+    heading: "Suggest a source",
+    intro: "Know where one of these columns can be read, or one that's missing here? A link, an archive or the issue in your drawer - tell me and I'll add it.",
+    kinds: [
+      { value: "Mad Queen", label: "Diary of a Mad Queen", placeholder: "Which column? (date, issue or what it's about)" },
+      { value: "Fat and All That", label: "Fat and All That", placeholder: "Which column? (date or headline)" },
+      { value: "Lunch with Lauren", label: "Lunch with Lauren", placeholder: "Which column? (who she lunched with, when)" },
+      { value: "Ms. Lonely Hearts", label: "Ms. Lonely Hearts", placeholder: "Which column? (date or what it's about)" },
+    ],
+    placeholder: "Which column?",
+    whyPlaceholder: "Where can it be read? (a link, an archive, your own copy)",
+    thanks: "Thank you - your source is on its way to me!",
+    allowLinks: true,
+    listApproved: false,
   },
 };
 

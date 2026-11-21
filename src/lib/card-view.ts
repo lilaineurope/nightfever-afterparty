@@ -37,7 +37,7 @@ export type CardView = {
   profile: PersonProfile | null;
   /** Diary page (Lisa, 21 Nov 2026): every moment the diary comes up, readings highlighted; polaroid = the keeper's. */
   diary: (DiaryPage & { polaroid?: string | undefined }) | null;
-  /** Column page (Lisa, 21 Nov 2026): every piece that ran under the column. Sources stay on the server. */
+  /** Column page (Lisa, 21 Nov 2026): every piece that ran under the column, each linking to where it can be read. */
   column: ColumnPage | null;
   /** Hall of Fame family tree - top 10 mentors only (Lisa, 21 Nov 2026, src/lib/mentor-rank.ts). */
   tree: MentorTreeData | null;
