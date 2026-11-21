@@ -60,6 +60,11 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
           <span className={`px-1.5 py-0.5 font-semibold uppercase tracking-wide ${tag.className}`}>
             {tag.label}
           </span>
+          {it.idea && (
+            <span className="border border-pink px-1.5 py-0.5 font-semibold uppercase tracking-wide text-pink">
+              AFTERPARTY idea
+            </span>
+          )}
           <span>{it.status}</span>
           {it.source?.card && (
             <Link {...cardTo(it.source.card)} className="text-gold hover:text-pink">
@@ -78,7 +83,7 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
           )}
         </p>
         <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-          <span>Said in</span>
+          <span>{it.idea ? "The story starts in" : "Said in"}</span>
           <Link to={episodePath(ep.id)} className="text-gold">
             S{ep.season}E{ep.episode}
             {ep.part} &middot; {ep.guest}
