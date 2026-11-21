@@ -9,6 +9,31 @@ const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
+/** The quote wall's columns, worked out here instead of CSS columns: Safari cut the boxes off at the top
+ *  when they sat in CSS columns (Lisa, 21 Nov 2026). Quotes stay in reading order, top to bottom, column by
+ *  column, split where the columns come out most even (a box counts as its text plus about 220 letters).
+ *  Below lg the column wrappers are display: contents, so phones and tablets get one column in order. */
+function columnsOf<T extends { quote: string }>(said: T[], n: number): { s: T; i: number }[][] {
+  const items = said.map((s, i) => ({ s, i }));
+  if (n <= 1 || said.length <= n) return n <= 1 ? [items] : items.map((x) => [x]);
+  const w = said.map((s) => s.quote.length + 220);
+  let best: number[] = [];
+  let bestMax = Infinity;
+  const walk = (start: number, left: number, cuts: number[]) => {
+    if (left === 1) {
+      const all = [...cuts, said.length];
+      let prev = 0, max = 0;
+      for (const end of all) { max = Math.max(max, w.slice(prev, end).reduce((a, b) => a + b, 0)); prev = end; }
+      if (max < bestMax) { bestMax = max; best = all; }
+      return;
+    }
+    for (let end = start + 1; end <= said.length - (left - 1); end++) walk(end, left - 1, [...cuts, end]);
+  };
+  walk(0, n, []);
+  let prev = 0;
+  return best.map((end) => { const col = items.slice(prev, end); prev = end; return col; });
+}
+
 /** Person pages (Lisa, 20 Nov 2026, Kim Hastreiter first): story, "What the guests say" wall, and their story box -
  *  the In memoriam layout for people who are still with us. Sits above the usual A–Z card sections. */
 export function PersonProfileSections({ m, name }: { m: PersonProfile; name: string }) {
@@ -22,8 +47,10 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
       {m.said.length > 0 && (
         <section>
           <h2 className={`${h} text-center`}>What the guests say</h2>
-          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 gap-10 sm:columns-2 lg:columns-3 [&>figure]:mb-12 sm:[&>figure]:inline-block [&>figure]:w-full [&>figure]:break-inside-avoid"}>
-            {m.said.map((s, i) => {
+          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mx-auto mt-10 flex max-w-xl flex-col gap-12 lg:max-w-none lg:flex-row lg:items-start lg:gap-10"}>
+            {columnsOf(m.said, m.said.length > 2 ? 3 : 1).map((col, c) => (
+            <div key={c} className={m.said.length > 2 ? "contents lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:gap-12" : "contents"}>
+            {col.map(({ s, i }) => {
               const ep = episodeById(s.episode);
               const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
               const pol = polaroidThumb(s.episode, 240);
@@ -55,6 +82,8 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
                 </figure>
               );
             })}
+            </div>
+            ))}
           </div>
         </section>
       )}
