@@ -75,6 +75,7 @@ const COVERS: Record<string, Cover> = {
   "Page Six (New York Post)": { kind: "book", file: "col-page-six.webp", credit: "A Page Six page from 1977 - via Wikipedia" },
   "Nations (Chi Chi Valenti, Details)": { kind: "book", file: "col-nations-details.webp", credit: "Details, September 1988 (the issue before Nations) - via Gallery 98" },
   "Out magazine – 'The Glass Closet'": { kind: "book", file: "col-out-glass-closet.webp", credit: "Out, 2007 - the Glass Closet cover, via out.com" },
+  "Egg Thoughts and Other Frances Songs (Russell Hoban)": { kind: "book", file: "book-egg-thoughts.webp", credit: "Egg Thoughts and Other Frances Songs, Harper & Row 1972 - cover by Lillian Hoban (Internet Archive scan)" }, // S06E01 badger book, found 21 Nov 2026
   "Out (magazine)": { kind: "book", file: "mag-out-rupaul-2017.webp", credit: "Out, October 2017 - RuPaul, the 25th anniversary issue - seller's photo (eBay)" }, // Lisa: cover C (21 Nov 2026)
   "'The Night of the Iguana' (Stephen Saban)": { kind: "book", file: "col-night-of-the-iguana.webp", credit: "Details, December 1988/January 1989, from Saban's years there - via WFMU" },
   "We Started a Nightclub (Pyramid book)": { kind: "book", file: "book-we-started-a-nightclub.webp", credit: "Cover via Atomic Books" },

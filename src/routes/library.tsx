@@ -7,6 +7,7 @@ import stacks from "@/assets/library-stacks.webp";
 import stacksPhone from "@/assets/library-stacks-phone.webp";
 import { BOOK_SHELVES, bookClub, findBookLink, type CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
+import { polaroidThumb } from "@/lib/polaroids";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 // The Library (Lisa, 29 Oct 2026 - was the Book Club at /book-club, which now redirects here): every book, magazine,
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/library")({
       books,
       press: bookClub.length - books,
       total: bookClub.length,
-      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) })),
+      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" || b.shelf === "diaries" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) })),
     };
   },
   head: ({ loaderData }) => {
@@ -47,7 +48,7 @@ export const Route = createFileRoute("/library")({
   component: LibraryPage,
 });
 
-const KIND: Record<string, string> = { books: "Books", magazines: "Magazines", newspapers: "Newspapers", columns: "Columns" };
+const KIND: Record<string, string> = { books: "Books", magazines: "Magazines", newspapers: "Newspapers", columns: "Columns", diaries: "Diary" };
 const episodesOf = (it: CollectionItem) => new Set(it.moments.map((m) => m.episodeId)).size;
 const afterparties = (n: number) => `${n} ${n === 1 ? "Afterparty" : "Afterparties"}`;
 const CHIP = "season-chip rounded-full";
@@ -135,8 +136,20 @@ function LibraryPage() {
   );
 }
 
+// Lisa, 21 Nov 2026: a diary's cover is the polaroid of the guest or host who kept it (their AFTERPARTY episode).
+const DIARY_KEEPER: Record<string, string> = {
+  "James St. James's diaries (1981–91)": "s06e01",
+  "Nora Burns's diaries (1980)": "s06e05",
+  "Miss Guy's journals (1989)": "s03e10",
+  "Richard Boch's journals": "s02e11",
+  "Ann Magnuson's journals": "s04e10",
+  "Mickey Boardman's journal": "s04e02",
+};
+
 function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
   const cover = coverFor(item.name);
+  const keeper = item.shelf === "diaries" ? DIARY_KEEPER[item.name] : undefined;
+  const polaroid = keeper ? polaroidThumb(keeper, 512) : undefined;
   const foot = (
     <span className="lib-foot">
       {item.by ? (
@@ -148,6 +161,18 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
       )}
     </span>
   );
+  // Lisa, 21 Nov 2026: the keeper's portrait fills the whole diary cover.
+  if (polaroid)
+    return (
+      <span className="lib-cv lib-book lib-diary-cover">
+        <img src={polaroid} alt={`${item.name} - cover with the keeper's portrait`} loading="lazy" decoding="async" />
+        <span className="lib-diary-tag">Diary</span>
+        <span className="lib-strip">
+          <span className="lib-nm">{item.name}</span>
+          {foot}
+        </span>
+      </span>
+    );
   if (cover?.kind === "book")
     return (
       <span className="lib-cv lib-book">
@@ -158,8 +183,8 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
         </span>
       </span>
     );
-  // Magazines alternate pink and black; newspapers are newsprint; columns are marker yellow; books without a cover are black.
-  const colour = item.shelf === "newspapers" ? "lib-news" : item.shelf === "columns" ? "lib-col" : item.shelf === "books" ? "lib-ink" : tint % 2 ? "lib-ink" : "lib-pink";
+  // Magazines alternate pink and black; newspapers are newsprint; columns are marker yellow; diaries are burgundy notebooks; books without a cover are black.
+  const colour = item.shelf === "newspapers" ? "lib-news" : item.shelf === "columns" ? "lib-col" : item.shelf === "diaries" ? "lib-diary" : item.shelf === "books" ? "lib-ink" : tint % 2 ? "lib-ink" : "lib-pink";
   return (
     <span className={`lib-cv lib-type ${colour}`}>
       <span className="lib-kind">{KIND[item.shelf]}</span>

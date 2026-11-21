@@ -528,6 +528,17 @@
  {
   "rank": 47,
   "mentions": 3,
+  "category": "Book",
+  "name": "James St. James's diaries (1981–91)",
+  "heard": "my diaries / diary",
+  "time": "00:16:19",
+  "context": "James's diaries have the drunken drives to Atlantic City in Lincoln's car after Robots, and Lincoln there every day when they worked the same club",
+  "link": "",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 48,
+  "mentions": 3,
   "category": "Publication",
   "name": "'Bring On the Night' (New York Post, 1990)",
   "heard": "Bring On The Night / New York Post",
@@ -537,7 +548,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 48,
+  "rank": 49,
   "mentions": 3,
   "category": "Person",
   "name": "Michelle Visage",
@@ -548,7 +559,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 49,
+  "rank": 50,
   "mentions": 3,
   "category": "Person",
   "name": "DJ Keoki",
@@ -559,7 +570,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 50,
+  "rank": 51,
   "mentions": 3,
   "category": "Mood",
   "name": "James's ratty heels, Docs and bare feet",
@@ -577,7 +588,7 @@
   ]
  },
  {
-  "rank": 51,
+  "rank": 52,
   "mentions": 3,
   "category": "Club",
   "name": "Club 1018",
@@ -588,7 +599,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 52,
+  "rank": 53,
   "mentions": 3,
   "category": "Person",
   "name": "Leigh Bowery",
@@ -599,7 +610,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 53,
+  "rank": 54,
   "mentions": 3,
   "category": "Club",
   "name": "Nell's",
@@ -610,7 +621,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 54,
+  "rank": 55,
   "mentions": 3,
   "category": "Mood",
   "name": "Bolido's Bolidismo furniture",
@@ -628,7 +639,7 @@
   ]
  },
  {
-  "rank": 55,
+  "rank": 56,
   "mentions": 3,
   "category": "Club",
   "name": "Bowery Bar",
@@ -639,7 +650,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 56,
+  "rank": 57,
   "mentions": 2,
   "category": "Organisation",
   "name": "World of Wonder",
@@ -650,7 +661,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 57,
+  "rank": 58,
   "mentions": 2,
   "category": "Club",
   "name": "Twilo",
@@ -661,7 +672,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 58,
+  "rank": 59,
   "mentions": 2,
   "category": "Club",
   "name": "The Building",
@@ -672,7 +683,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 59,
+  "rank": 60,
   "mentions": 2,
   "category": "Club",
   "name": "Studio 54",
@@ -683,7 +694,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 60,
+  "rank": 61,
   "mentions": 2,
   "category": "Club",
   "name": "Danceteria",
@@ -694,7 +705,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 61,
+  "rank": 62,
   "mentions": 2,
   "category": "Mood",
   "name": "The Sally Randall look",
@@ -712,7 +723,7 @@
   ]
  },
  {
-  "rank": 62,
+  "rank": 63,
   "mentions": 2,
   "category": "Person",
   "name": "Leslie (Karen Binns's partner)",
@@ -723,7 +734,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 63,
+  "rank": 64,
   "mentions": 2,
   "category": "Location",
   "name": "London",
@@ -734,7 +745,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 64,
+  "rank": 65,
   "mentions": 2,
   "category": "Person",
   "name": "Susan Ainsworth",
@@ -745,7 +756,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 65,
+  "rank": 66,
   "mentions": 2,
   "category": "Person",
   "name": "Julie Jules",
@@ -756,7 +767,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 66,
+  "rank": 67,
   "mentions": 2,
   "category": "Person",
   "name": "Michael Clancy (Area doorman)",
@@ -767,7 +778,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 67,
+  "rank": 68,
   "mentions": 2,
   "category": "Club",
   "name": "Area",
@@ -778,7 +789,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 68,
+  "rank": 69,
   "mentions": 2,
   "category": "Person",
   "name": "Gilbert Stafford",
@@ -789,7 +800,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 69,
+  "rank": 70,
   "mentions": 2,
   "category": "Person",
   "name": "Derek (Roxy doorman)",
@@ -800,7 +811,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 70,
+  "rank": 71,
   "mentions": 2,
   "category": "Person",
   "name": "Christina Visca",
@@ -811,7 +822,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 71,
+  "rank": 72,
   "mentions": 2,
   "category": "Event",
   "name": "Palladium opening night",
@@ -822,7 +833,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 72,
+  "rank": 73,
   "mentions": 2,
   "category": "Person",
   "name": "Martha Plimpton",
@@ -833,7 +844,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 73,
+  "rank": 74,
   "mentions": 2,
   "category": "Location",
   "name": "Upper East Side",
@@ -844,7 +855,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 74,
+  "rank": 75,
   "mentions": 2,
   "category": "Film",
   "name": "The Goonies",
@@ -855,7 +866,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 75,
+  "rank": 76,
   "mentions": 2,
   "category": "Location",
   "name": "Downtown Manhattan",
@@ -866,7 +877,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 76,
+  "rank": 77,
   "mentions": 2,
   "category": "Person",
   "name": "Really Denise",
@@ -877,7 +888,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 77,
+  "rank": 78,
   "mentions": 2,
   "category": "Organisation",
   "name": "Instagram",
@@ -888,7 +899,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 78,
+  "rank": 79,
   "mentions": 2,
   "category": "Organisation",
   "name": "Performa",
@@ -899,7 +910,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 79,
+  "rank": 80,
   "mentions": 2,
   "category": "Person",
   "name": "Vin Diesel",
@@ -910,7 +921,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 80,
+  "rank": 81,
   "mentions": 2,
   "category": "Club",
   "name": "Robots",
@@ -921,7 +932,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 81,
+  "rank": 82,
   "mentions": 2,
   "category": "Mood",
   "name": "Miss Guy's sunburn",
@@ -939,7 +950,7 @@
   ]
  },
  {
-  "rank": 82,
+  "rank": 83,
   "mentions": 2,
   "category": "Person",
   "name": "Stephen Sprouse",
@@ -951,7 +962,7 @@
   "fashion": "Sprouse, baggy pants and sneakers"
  },
  {
-  "rank": 83,
+  "rank": 84,
   "mentions": 2,
   "category": "Person",
   "name": "Frank Roccio",
@@ -962,7 +973,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 84,
+  "rank": 85,
   "mentions": 2,
   "category": "Person",
   "name": "Michael Alig",
@@ -973,7 +984,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 85,
+  "rank": 86,
   "mentions": 2,
   "category": "Club",
   "name": "The IT Club",
@@ -984,7 +995,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 86,
+  "rank": 87,
   "mentions": 2,
   "category": "Mood",
   "name": "James's pimp coat and Kangol hat",
@@ -1002,7 +1013,7 @@
   ]
  },
  {
-  "rank": 87,
+  "rank": 88,
   "mentions": 2,
   "category": "Event",
   "name": "Steve Lewis's door rules at the World",
@@ -1013,7 +1024,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 88,
+  "rank": 89,
   "mentions": 2,
   "category": "Event",
   "name": "Vogue balls / ballroom scene",
@@ -1024,7 +1035,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 89,
+  "rank": 90,
   "mentions": 2,
   "category": "Person",
   "name": "Miguel Magnifique",
@@ -1035,7 +1046,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 90,
+  "rank": 91,
   "mentions": 2,
   "category": "Location",
   "name": "Florida",
@@ -1046,7 +1057,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 91,
+  "rank": 92,
   "mentions": 2,
   "category": "Club",
   "name": "Splash",
@@ -1057,7 +1068,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 92,
+  "rank": 93,
   "mentions": 2,
   "category": "Club",
   "name": "Disco 2000",
@@ -1068,7 +1079,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 93,
+  "rank": 94,
   "mentions": 2,
   "category": "Mood",
   "name": "James's fluorescent scuba suit",
@@ -1086,7 +1097,7 @@
   ]
  },
  {
-  "rank": 94,
+  "rank": 95,
   "mentions": 2,
   "category": "Person",
   "name": "Debbie Gibson",
@@ -1097,7 +1108,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 95,
+  "rank": 96,
   "mentions": 2,
   "category": "Club",
   "name": "Limelight",
@@ -1108,7 +1119,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 96,
+  "rank": 97,
   "mentions": 2,
   "category": "Person",
   "name": "Moby",
@@ -1119,7 +1130,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 97,
+  "rank": 98,
   "mentions": 2,
   "category": "Location",
   "name": "Manhattan",
@@ -1130,7 +1141,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 98,
+  "rank": 99,
   "mentions": 2,
   "category": "Location",
   "name": "South Street Seaport",
@@ -1141,7 +1152,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 99,
+  "rank": 100,
   "mentions": 2,
   "category": "Location",
   "name": "White House",
@@ -1152,7 +1163,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 100,
+  "rank": 101,
   "mentions": 2,
   "category": "Event",
   "name": "Outlaw parties",
@@ -1163,7 +1174,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 101,
+  "rank": 102,
   "mentions": 2,
   "category": "Person",
   "name": "Eric Goode",
@@ -1174,7 +1185,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 102,
+  "rank": 103,
   "mentions": 1,
   "category": "Club",
   "name": "Stringfellows",
@@ -1185,7 +1196,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 103,
+  "rank": 104,
   "mentions": 1,
   "category": "Club",
   "name": "El Morocco",
@@ -1196,7 +1207,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 104,
+  "rank": 105,
   "mentions": 1,
   "category": "Club",
   "name": "Milk Bar",
@@ -1207,7 +1218,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 105,
+  "rank": 106,
   "mentions": 1,
   "category": "Club",
   "name": "Panty Girdle (Quick)",
@@ -1218,7 +1229,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 106,
+  "rank": 107,
   "mentions": 1,
   "category": "Club",
   "name": "Paradise Garage",
@@ -1229,7 +1240,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 107,
+  "rank": 108,
   "mentions": 1,
   "category": "Person",
   "name": "La Copia (as heard)",
@@ -1240,7 +1251,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 108,
+  "rank": 109,
   "mentions": 1,
   "category": "Club",
   "name": "Pyramid Club",
@@ -1251,7 +1262,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 109,
+  "rank": 110,
   "mentions": 1,
   "category": "Club",
   "name": "Copacabana",
@@ -1262,7 +1273,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 110,
+  "rank": 111,
   "mentions": 1,
   "category": "Club",
   "name": "Club under Indochine",
@@ -1273,7 +1284,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 111,
+  "rank": 112,
   "mentions": 1,
   "category": "Club",
   "name": "Madame Rosa's",
@@ -1284,7 +1295,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 112,
+  "rank": 113,
   "mentions": 1,
   "category": "Mood",
   "name": "Karen Binns's bleach-blonde hair",
@@ -1302,7 +1313,7 @@
   ]
  },
  {
-  "rank": 113,
+  "rank": 114,
   "mentions": 1,
   "category": "Person",
   "name": "Mark Benecke",
@@ -1313,7 +1324,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 114,
+  "rank": 115,
   "mentions": 1,
   "category": "Person",
   "name": "Myra Lewis (Princess Myra)",
@@ -1324,7 +1335,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 115,
+  "rank": 116,
   "mentions": 1,
   "category": "Organisation",
   "name": "House of Field",
@@ -1335,7 +1346,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 116,
+  "rank": 117,
   "mentions": 1,
   "category": "Person",
   "name": "Darryl Elmore",
@@ -1346,7 +1357,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 117,
+  "rank": 118,
   "mentions": 1,
   "category": "Mood",
   "name": "Tommy Starker as Tarzan",
@@ -1364,7 +1375,7 @@
   ]
  },
  {
-  "rank": 118,
+  "rank": 119,
   "mentions": 1,
   "category": "Location",
   "name": "Trinity School",
@@ -1375,7 +1386,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 119,
+  "rank": 120,
   "mentions": 1,
   "category": "Person",
   "name": "Joey Arias",
@@ -1386,7 +1397,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 120,
+  "rank": 121,
   "mentions": 1,
   "category": "Location",
   "name": "Fiorucci store, New York",
@@ -1397,7 +1408,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 121,
+  "rank": 122,
   "mentions": 1,
   "category": "Publication",
   "name": "Interview magazine",
@@ -1408,7 +1419,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 122,
+  "rank": 123,
   "mentions": 1,
   "category": "Person",
   "name": "Magenta",
@@ -1419,7 +1430,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 123,
+  "rank": 124,
   "mentions": 1,
   "category": "Person",
   "name": "Jenny Go-Getter (Jennifer Banash)",
@@ -1430,7 +1441,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 124,
+  "rank": 125,
   "mentions": 1,
   "category": "Person",
   "name": "Oliver Twisted",
@@ -1441,7 +1452,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 125,
+  "rank": 126,
   "mentions": 1,
   "category": "Person",
   "name": "Harley Quinn (Tunnel kid)",
@@ -1452,7 +1463,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 126,
+  "rank": 127,
   "mentions": 1,
   "category": "Person",
   "name": "Fuchsia Dahl",
@@ -1463,7 +1474,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 127,
+  "rank": 128,
   "mentions": 1,
   "category": "Person",
   "name": "Jean Paul Gaultier",
@@ -1475,7 +1486,7 @@
   "fashion": "Gaultier suits"
  },
  {
-  "rank": 128,
+  "rank": 129,
   "mentions": 1,
   "category": "Mood",
   "name": "Lincoln's Gaultier suits",
@@ -1493,7 +1504,7 @@
   ]
  },
  {
-  "rank": 129,
+  "rank": 130,
   "mentions": 1,
   "category": "Person",
   "name": "Issey Miyake",
@@ -1505,7 +1516,7 @@
   "fashion": "Issey Miyake"
  },
  {
-  "rank": 130,
+  "rank": 131,
   "mentions": 1,
   "category": "Location",
   "name": "If Boutique (SoHo)",
@@ -1516,7 +1527,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 131,
+  "rank": 132,
   "mentions": 1,
   "category": "Organisation",
   "name": "Charivari",
@@ -1527,7 +1538,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 132,
+  "rank": 133,
   "mentions": 1,
   "category": "Person",
   "name": "Steve Rubell",
@@ -1538,7 +1549,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 133,
+  "rank": 134,
   "mentions": 1,
   "category": "Person",
   "name": "David Knapp",
@@ -1549,7 +1560,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 134,
+  "rank": 135,
   "mentions": 1,
   "category": "Music",
   "name": "Show tunes",
@@ -1560,7 +1571,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 135,
+  "rank": 136,
   "mentions": 1,
   "category": "Person",
   "name": "Miss Guy",
@@ -1572,7 +1583,7 @@
   "fashion": "Sunburn as the look"
  },
  {
-  "rank": 136,
+  "rank": 137,
   "mentions": 1,
   "category": "Person",
   "name": "Madonna",
@@ -1583,7 +1594,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 137,
+  "rank": 138,
   "mentions": 1,
   "category": "Music",
   "name": "Madonna – 'Burning Up'",
@@ -1594,7 +1605,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 138,
+  "rank": 139,
   "mentions": 1,
   "category": "Location",
   "name": "The Delano",
@@ -1605,7 +1616,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 139,
+  "rank": 140,
   "mentions": 1,
   "category": "Location",
   "name": "Raleigh Hotel",
@@ -1616,7 +1627,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 140,
+  "rank": 141,
   "mentions": 1,
   "category": "Person",
   "name": "Tara Solomon",
@@ -1627,7 +1638,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 141,
+  "rank": 142,
   "mentions": 1,
   "category": "Location",
   "name": "Paris",
@@ -1638,7 +1649,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 142,
+  "rank": 143,
   "mentions": 1,
   "category": "Location",
   "name": "CuisinArt / CocoLoba Plantation (Anguilla)",
@@ -1649,7 +1660,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 143,
+  "rank": 144,
   "mentions": 1,
   "category": "Mood",
   "name": "Same shirt and shorts in Anguilla",
@@ -1667,7 +1678,7 @@
   ]
  },
  {
-  "rank": 144,
+  "rank": 145,
   "mentions": 1,
   "category": "Mood",
   "name": "James as 'boy James' at the World door",
@@ -1685,7 +1696,7 @@
   ]
  },
  {
-  "rank": 145,
+  "rank": 146,
   "mentions": 1,
   "category": "Person",
   "name": "Arthur Weinstein",
@@ -1696,7 +1707,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 146,
+  "rank": 147,
   "mentions": 1,
   "category": "Location",
   "name": "14th Street",
@@ -1707,7 +1718,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 147,
+  "rank": 148,
   "mentions": 1,
   "category": "Podcast",
   "name": "What's the Tee? (RuPaul's podcast)",
@@ -1718,7 +1729,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 148,
+  "rank": 149,
   "mentions": 1,
   "category": "Music",
   "name": "Vogue (Madonna song)",
@@ -1729,7 +1740,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 149,
+  "rank": 150,
   "mentions": 1,
   "category": "Film",
   "name": "Paris Is Burning",
@@ -1740,7 +1751,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 150,
+  "rank": 151,
   "mentions": 1,
   "category": "Organisation",
   "name": "House of Xtravaganza",
@@ -1751,7 +1762,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 151,
+  "rank": 152,
   "mentions": 1,
   "category": "Organisation",
   "name": "House of Magnifique",
@@ -1762,7 +1773,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 152,
+  "rank": 153,
   "mentions": 1,
   "category": "Person",
   "name": "Frankie Magnifique",
@@ -1773,7 +1784,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 153,
+  "rank": 154,
   "mentions": 1,
   "category": "TV",
   "name": "Vogue music video",
@@ -1784,7 +1795,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 154,
+  "rank": 155,
   "mentions": 1,
   "category": "Person",
   "name": "Aphrodita",
@@ -1795,7 +1806,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 155,
+  "rank": 156,
   "mentions": 1,
   "category": "Person",
   "name": "Barbara (Onyx's friend)",
@@ -1806,7 +1817,7 @@
   "status": "Private person"
  },
  {
-  "rank": 156,
+  "rank": 157,
   "mentions": 1,
   "category": "Person",
   "name": "David Lee Roth",
@@ -1817,7 +1828,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 157,
+  "rank": 158,
   "mentions": 1,
   "category": "Person",
   "name": "Michael Hutchence",
@@ -1828,7 +1839,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 158,
+  "rank": 159,
   "mentions": 1,
   "category": "Event",
   "name": "Locomotion (Roxy Saturdays)",
@@ -1839,7 +1850,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 159,
+  "rank": 160,
   "mentions": 1,
   "category": "Person",
   "name": "Gene DiNino",
@@ -1850,7 +1861,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 160,
+  "rank": 161,
   "mentions": 1,
   "category": "Person",
   "name": "John Blair",
@@ -1861,7 +1872,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 161,
+  "rank": 162,
   "mentions": 1,
   "category": "Club",
   "name": "Rawhide",
@@ -1872,7 +1883,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 162,
+  "rank": 163,
   "mentions": 1,
   "category": "Person",
   "name": "DJ Andy Anderson",
@@ -1883,7 +1894,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 163,
+  "rank": 164,
   "mentions": 1,
   "category": "Person",
   "name": "Linda Evangelista",
@@ -1894,7 +1905,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 164,
+  "rank": 165,
   "mentions": 1,
   "category": "Organisation",
   "name": "The fashion patrol",
@@ -1905,7 +1916,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 165,
+  "rank": 166,
   "mentions": 1,
   "category": "Person",
   "name": "Larry Tee",
@@ -1916,7 +1927,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 166,
+  "rank": 167,
   "mentions": 1,
   "category": "Person",
   "name": "Lahoma van Zandt (John Witherspoon)",
@@ -1927,7 +1938,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 167,
+  "rank": 168,
   "mentions": 1,
   "category": "Person",
   "name": "Goldie (club kid)",
@@ -1938,7 +1949,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 168,
+  "rank": 169,
   "mentions": 1,
   "category": "Location",
   "name": "West Hollywood",
@@ -1949,7 +1960,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 169,
+  "rank": 170,
   "mentions": 1,
   "category": "Music",
   "name": "Latin freestyle",
@@ -1960,7 +1971,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 170,
+  "rank": 171,
   "mentions": 1,
   "category": "Person",
   "name": "Patricia Field",
@@ -1971,7 +1982,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 171,
+  "rank": 172,
   "mentions": 1,
   "category": "Person",
   "name": "Rick Astley",
@@ -1982,7 +1993,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 172,
+  "rank": 173,
   "mentions": 1,
   "category": "Person",
   "name": "Peter Gatien",
@@ -1993,7 +2004,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 173,
+  "rank": 174,
   "mentions": 1,
   "category": "Club",
   "name": "Club USA",
@@ -2004,7 +2015,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 174,
+  "rank": 175,
   "mentions": 1,
   "category": "Person",
   "name": "Bret Easton Ellis",
@@ -2015,7 +2026,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 175,
+  "rank": 176,
   "mentions": 1,
   "category": "Person",
   "name": "Jay McInerney",
@@ -2026,7 +2037,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 176,
+  "rank": 177,
   "mentions": 1,
   "category": "Person",
   "name": "Nell Campbell",
@@ -2037,7 +2048,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 177,
+  "rank": 178,
   "mentions": 1,
   "category": "Film",
   "name": "2001: A Space Odyssey",
@@ -2048,7 +2059,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 178,
+  "rank": 179,
   "mentions": 1,
   "category": "Person",
   "name": "Sister Dimension (Alan Mace)",
@@ -2059,7 +2070,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 179,
+  "rank": 180,
   "mentions": 1,
   "category": "Person",
   "name": "Bella Bolski",
@@ -2070,7 +2081,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 180,
+  "rank": 181,
   "mentions": 1,
   "category": "Person",
   "name": "Vanessa Williams",
@@ -2081,7 +2092,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 181,
+  "rank": 182,
   "mentions": 1,
   "category": "Event",
   "name": "Miss America",
@@ -2092,7 +2103,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 182,
+  "rank": 183,
   "mentions": 1,
   "category": "Club",
   "name": "NASA raves (Shelter)",
@@ -2103,7 +2114,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 183,
+  "rank": 184,
   "mentions": 1,
   "category": "Club",
   "name": "Sound Factory",
@@ -2114,7 +2125,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 184,
+  "rank": 185,
   "mentions": 1,
   "category": "Person",
   "name": "Junior Vasquez",
@@ -2125,7 +2136,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 185,
+  "rank": 186,
   "mentions": 1,
   "category": "Person",
   "name": "Danny Tenaglia",
@@ -2136,7 +2147,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 186,
+  "rank": 187,
   "mentions": 1,
   "category": "Person",
   "name": "Frankie Knuckles",
@@ -2147,7 +2158,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 187,
+  "rank": 188,
   "mentions": 1,
   "category": "Music",
   "name": "House music",
@@ -2158,7 +2169,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 188,
+  "rank": 189,
   "mentions": 1,
   "category": "Person",
   "name": "Dianne Brill",
@@ -2169,7 +2180,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 189,
+  "rank": 190,
   "mentions": 1,
   "category": "Person",
   "name": "Michael Musto",
@@ -2180,7 +2191,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 190,
+  "rank": 191,
   "mentions": 1,
   "category": "Club",
   "name": "Mudd Club",
@@ -2191,7 +2202,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 191,
+  "rank": 192,
   "mentions": 1,
   "category": "Music",
   "name": "Buddy Holly",
@@ -2202,7 +2213,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 192,
+  "rank": 193,
   "mentions": 1,
   "category": "Person",
   "name": "Johann Sebastian Bach",
@@ -2213,7 +2224,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 193,
+  "rank": 194,
   "mentions": 1,
   "category": "Person",
   "name": "Chi Chi Valenti & Johnny Dynell",
@@ -2224,7 +2235,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 194,
+  "rank": 195,
   "mentions": 1,
   "category": "Location",
   "name": "Pier 17",
@@ -2235,7 +2246,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 195,
+  "rank": 196,
   "mentions": 1,
   "category": "Event",
   "name": "September 11 attacks",
@@ -2246,7 +2257,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 196,
+  "rank": 197,
   "mentions": 1,
   "category": "Event",
   "name": "Hurricane Sandy",
@@ -2257,7 +2268,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 197,
+  "rank": 198,
   "mentions": 1,
   "category": "Event",
   "name": "COVID-19 pandemic",
@@ -2268,7 +2279,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 198,
+  "rank": 199,
   "mentions": 1,
   "category": "Location",
   "name": "Williamsburg",
@@ -2279,7 +2290,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 199,
+  "rank": 200,
   "mentions": 1,
   "category": "Location",
   "name": "Bushwick",
@@ -2290,7 +2301,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 200,
+  "rank": 201,
   "mentions": 1,
   "category": "Person",
   "name": "Lady Fag",
@@ -2301,7 +2312,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 201,
+  "rank": 202,
   "mentions": 1,
   "category": "Person",
   "name": "Vito Bruno",
@@ -2312,7 +2323,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 202,
+  "rank": 203,
   "mentions": 1,
   "category": "Person",
   "name": "Lisa Edelstein",
@@ -2323,7 +2334,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 203,
+  "rank": 204,
   "mentions": 1,
   "category": "Club",
   "name": "Animal (Brooklyn bar)",
@@ -2334,7 +2345,7 @@
   "status": "Not found online"
  },
  {
-  "rank": 204,
+  "rank": 205,
   "mentions": 1,
   "category": "Location",
   "name": "Brooklyn",
@@ -2345,7 +2356,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 205,
+  "rank": 206,
   "mentions": 1,
   "category": "Person",
   "name": "Nora Burns",
@@ -2356,7 +2367,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 206,
+  "rank": 207,
   "mentions": 1,
   "category": "Music",
   "name": "Frankie Goes to Hollywood – 'Two Tribes'",
@@ -2367,7 +2378,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 207,
+  "rank": 208,
   "mentions": 1,
   "category": "Person",
   "name": "Erich Conrad",
@@ -2378,7 +2389,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 208,
+  "rank": 209,
   "mentions": 1,
   "category": "Person",
   "name": "Karl Lagerfeld",
@@ -2389,7 +2400,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 209,
+  "rank": 210,
   "mentions": 1,
   "category": "Person",
   "name": "Taylor Mead",
@@ -2400,7 +2411,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 210,
+  "rank": 211,
   "mentions": 1,
   "category": "Person",
   "name": "Anthony Haden-Guest",
@@ -2411,7 +2422,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 211,
+  "rank": 212,
   "mentions": 1,
   "category": "Location",
   "name": "Los Angeles",
@@ -2422,7 +2433,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 212,
+  "rank": 213,
   "mentions": 0,
   "category": "Mood",
   "name": "Lincoln's on-camera look (S06E06)",
@@ -2440,7 +2451,7 @@
   ]
  },
  {
-  "rank": 213,
+  "rank": 214,
   "mentions": 0,
   "category": "Mood",
   "name": "James's on-camera look (S06E06)",
@@ -2458,7 +2469,7 @@
   ]
  },
  {
-  "rank": 214,
+  "rank": 215,
   "mentions": 0,
   "category": "Mood",
   "name": "Fenton's on-camera look (S06E06)",
