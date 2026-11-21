@@ -480,7 +480,7 @@ a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important
 .lib-diary { background: #6b1e2e; color: #f4f1ea; }
 .lib-diary-cover { background: #6b1e2e; }
 .lib-diary-cover img { object-position: center 30%; }
-.lib-diary-cover .lib-strip { background: #6b1e2e; color: #f4f1ea; border-top-color: #f4f1ea; }
+.lib-diary-cover .lib-strip { background: linear-gradient(to bottom, transparent, rgba(60, 12, 24, .55) 35%, rgba(60, 12, 24, .8)); color: #fff; border-top: 0; padding-top: 26px; text-shadow: 0 1px 3px rgba(0, 0, 0, .9); }
 .lib-diary-tag { position: absolute; top: 10px; left: 10px; background: #6b1e2e; color: #f4f1ea; padding: 2px 7px; font-family: var(--font-mono-body); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
 .lib-diary-cover::after, .lib-diary::after { content: ""; position: absolute; top: 0; bottom: 0; right: 18px; width: 7px; background: #f4f1ea; opacity: .85; pointer-events: none; }
 .lib-kind { position: relative; font-family: var(--font-mono-body); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
