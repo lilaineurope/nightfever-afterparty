@@ -1,6 +1,6 @@
 // Person polaroids on the A–Z pages (Lisa, 2 Nov 2026, "combo 3"): the polaroid photo fills the header, the name sits on a
 // taped paper card, and the framed polaroid is taped on the right with its credit. Only people who are not guests;
-// never Michael Alig or Donald Trump. Sources and licences: People/People portraits - sources.xlsx in Lisa's folder.
+// never Donald Trump. Michael Alig: a sober, realistic one on his own page only (Lisa, 21 Nov 2026). Sources and licences: People/People portraits - sources.xlsx in Lisa's folder.
 import warholPhoto from "@/assets/people/andy-warhol-photo.webp";
 import warholPolaroid from "@/assets/people/andy-warhol-polaroid.webp";
 import rupaulPhoto from "@/assets/people/rupaul-photo.webp";
@@ -642,6 +642,8 @@ import billyBeyondPhoto from "@/assets/people/billy-beyond-photo.webp";
 import billyBeyondPolaroid from "@/assets/people/billy-beyond-polaroid.webp";
 import steveMassPhoto from "@/assets/people/steve-mass-photo.webp";
 import steveMassPolaroid from "@/assets/people/steve-mass-polaroid.webp";
+import michaelAligPhoto from "@/assets/people/michael-alig-photo.webp";
+import michaelAligPolaroid from "@/assets/people/michael-alig-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -979,4 +981,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "billy-beyond": { photo: billyBeyondPhoto, polaroid: billyBeyondPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   // Steve Mass (Lisa, 21 Nov 2026: "let's do steve mass page"; no free photo exists, she picked a realistic Gemini portrait, option B at the club door)
   "steve-mass": { photo: steveMassPhoto, polaroid: steveMassPolaroid, focus: "20%", credit: "Illustration made with Gemini, not a photo" },
+  // Lisa, 21 Nov 2026: "a sober realistic polaroid" - serious face, no glamour pose.
+  "michael-alig": { photo: michaelAligPhoto, polaroid: michaelAligPolaroid, focus: "22%", credit: "Illustration made with Gemini, not a photo" },
 };

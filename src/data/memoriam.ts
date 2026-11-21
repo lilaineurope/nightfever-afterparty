@@ -14,6 +14,7 @@ export type Memoriam = {
   born: string;
   died: string;
   diedLine: string; // "Died 30 January 2019 in New York, aged 62"
+  convictedLine?: string; // on the name card between the dates and "died" (Michael Alig, Lisa 21 Nov 2026)
   aka?: string;
   first?: string; // name used in "<first>'s story" when the first name isn't what people call them (Angel Melendez)
   story: string;
@@ -2266,6 +2267,39 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:21:46", quote: "She was of that class that Dorian Corey was from, and Pepper LaBeija was from, and, you know, Paris Dupree, all those girls. They were the old school, like pearls and feathers and big costumes, before butch queens started coming to the balls." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q22004135",
+  },
+  // Lisa, 21 Nov 2026: "there has to be a page for him also, we just have to face the reality" (before: no page).
+  // The page says plainly what he did. His own quotes wall keeps the usual rules; he stays out of the Hall of Fame.
+  "michael-alig": {
+    born: "1966",
+    died: "2020",
+    diedLine: "Died 24 December 2020 in New York, of a drug overdose, aged 54",
+    convictedLine: "convicted of first-degree manslaughter in 1997 for killing Angel Melendez",
+    story:
+      "Came from Indiana to bus tables at Danceteria and Area, and turned a gang of dressed-up kids into the Club Kids: outlaw parties, Disco 2000 at the Limelight, the talk-show circuit. In March 1996 he killed Andre 'Angel' Melendez, and the next year he pleaded guilty to first-degree manslaughter.",
+    timeline: [
+      ["1966", "Born in South Bend, Indiana"],
+      ["1984", "Moves to New York for college, drops out, and buses tables at Danceteria, then at Area"],
+      ["1980s", "Starts the Club Kids with outlaw parties in a McDonald's and on the L train, and Disco 2000 at the Limelight for Peter Gatien"],
+      ["1990s", "Takes the Club Kids onto Geraldo, Donahue and Joan Rivers, and runs the Tunnel basement and Club USA nights"],
+      ["1996", "Kills Angel Melendez in his apartment in March, with his roommate Robert 'Freeze' Riggs; they throw his body in the Hudson"],
+      ["1997", "Pleads guilty to first-degree manslaughter and is sentenced to 10 to 20 years"],
+      ["2014", "Released from prison on parole"],
+      ["2020", "Dies of a heroin overdose on Christmas Eve, aged 54"],
+    ],
+    liftedUp: ["Waltpaper", "Jenny Dembrow aka Jenny Talia", "Richie Rich", "Ernie Glam", "Christopher Comp", "Amanda Lepore"],
+    rooms: ["Danceteria", "Area", "Limelight", "Disco 2000", "The Tunnel", "Club USA", "Project X"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:32:51", quote: "To me, Michael Alig was amoral in many ways, but there were things we were all attracted to. The fact that he liked to shake things up, the fact that he wouldn't tolerate boredom." },
+      { episode: "s01e09", who: "Moby", time: "00:15:34", quote: "At that time it was just this sort of celebratory, everything felt weirdly exciting and joyful, and he was the architect of it." },
+      { episode: "s05e07b", who: "Really Denise", time: "00:49:34", quote: "There's two different Michael Aligs. There's the one that I knew and loved, who was still fun and hadn't gone off the deep end yet. And I really didn't know the other one." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "01:07:32", quote: "He was a powerful guy, even though it was in a really dark, sick way. But it was, to me, just danger, pure danger." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:48:46", quote: "I've been immersed in true crime culture my entire adult life. And nothing that I picked up from Michael would have let me think that he would have done that." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:49:07", quote: "I remember saying to Michael when it happened, Michael, did you kill him? And he's like, no, I didn't do it, I didn't kill him. But he did." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:03:30", quote: "Soon, though, the highest of the highs turned into the lowest of the lows. The Michael that I loved died the day that Angel was murdered." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:33:08", quote: "Michael said terrible things about Angel, and the things that Michael said were not true." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:40:22", quote: "I think it's a cautionary tale, Michael. All of us probably have had tendencies to go down that rabbit hole, but Michael went deeper than most. And it's a sad tale." },
+    ],
   },
 };
 
