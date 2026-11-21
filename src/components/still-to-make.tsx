@@ -205,7 +205,9 @@ export function StillToMakeBox({ className = "" }: { className?: string }) {
                 <Item key={it.title} it={it} kind={it.kind} />
               ))}
             </ul>
-            <FanSuggestions box="library" variant="inset" />
+            {tab !== "made" && (
+              <FanSuggestions key={tab} box="library" kind={tab === "films" ? "Film" : "Book"} variant="inset" />
+            )}
           </div>
         )}
       </div>

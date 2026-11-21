@@ -13,12 +13,25 @@ const FIELD =
 
 const fanBadge = (count: number) => (count > 1 ? `Suggested by ${count} fans` : "Suggested by a fan");
 
-export function FanSuggestions({ box, variant = "panel", className = "" }: { box: FanBox; variant?: "inset" | "panel"; className?: string }) {
+/** kind: a fixed kind for this spot (the Library's Books tab = Book, Films tab = Film; Lisa, 21 Nov 2026) - no choice chips, and only
+ *  that kind's approved ideas are listed. */
+export function FanSuggestions({
+  box,
+  kind: fixedKind,
+  variant = "panel",
+  className = "",
+}: {
+  box: FanBox;
+  kind?: string;
+  variant?: "inset" | "panel";
+  className?: string;
+}) {
   const cfg = FAN_BOX[box];
   const list = useServerFn(listFanIdeas);
   const suggest = useServerFn(suggestFanIdea);
   const [ideas, setIdeas] = useState<FanIdea[]>([]);
-  const [kind, setKind] = useState(cfg.kinds?.[0]?.value ?? "");
+  const [pickedKind, setKind] = useState(cfg.kinds?.[0]?.value ?? "");
+  const kind = fixedKind ?? pickedKind;
   const [what, setWhat] = useState("");
   const [why, setWhy] = useState("");
   const [from, setFrom] = useState("");
@@ -27,10 +40,12 @@ export function FanSuggestions({ box, variant = "panel", className = "" }: { box
   const [problem, setProblem] = useState("");
   const opened = useRef(Date.now());
   useEffect(() => {
-    list({ data: box }).then(setIdeas).catch(() => setIdeas([]));
-  }, [list, box]);
+    list({ data: box })
+      .then((all) => setIdeas(fixedKind ? all.filter((i) => i.kind === fixedKind) : all))
+      .catch(() => setIdeas([]));
+  }, [list, box, fixedKind]);
 
-  const id = `fan-${box}`;
+  const id = `fan-${box}${fixedKind ? `-${fixedKind.toLowerCase()}` : ""}`;
   const kindCfg = cfg.kinds?.find((k) => k.value === kind);
 
   const submit = async (e: React.FormEvent) => {
@@ -106,7 +121,7 @@ export function FanSuggestions({ box, variant = "panel", className = "" }: { box
         </div>
       ) : (
         <form onSubmit={submit} className="mt-4 max-w-3xl space-y-2">
-          {cfg.kinds && (
+          {cfg.kinds && !fixedKind && (
             <div className="flex gap-2" role="radiogroup" aria-label="What kind?">
               {cfg.kinds.map((k) => (
                 <button key={k.value} type="button" role="radio" aria-checked={kind === k.value} onClick={() => setKind(k.value)} className="season-chip rounded-full">
