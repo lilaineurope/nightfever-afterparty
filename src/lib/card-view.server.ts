@@ -9,6 +9,7 @@ import { clubNightFor } from "@/data/club-nights";
 import { MEMORIAM } from "@/data/memoriam";
 import { CLUB_PROFILES } from "@/data/club-profiles";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
+import { PERSON_PROFILES } from "@/data/person-profiles";
 import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
@@ -21,12 +22,15 @@ function cardView(e: Entity): CardView {
   const club = g ? null : (CLUB_PROFILES[e.slug] ?? null);
   const mem = g ? null : (MEMORIAM[e.slug] ?? null);
   const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? null);
+  const profile = g || club || mem ? null : (PERSON_PROFILES[e.slug] ?? null);
   const L = linkRecorder();
 
   mem?.liftedUp.forEach(L.name);
   mem?.rooms.forEach(L.name);
   club?.stage.forEach(L.name);
   club?.rooms.forEach(L.name);
+  profile?.liftedUp.forEach(L.name);
+  profile?.rooms.forEach(L.name);
   if (g) {
     g.scenes.forEach(L.name);
     for (const s of g.linkedTo) {
@@ -76,6 +80,7 @@ function cardView(e: Entity): CardView {
     mem,
     club,
     pic,
+    profile,
     links: L.data,
   };
 }
@@ -104,7 +109,8 @@ export function cardPageData(slug: string) {
   // A club page leads with its own story (Lisa, 13 Nov 2026) - CBGB's first line was a guest saying she skipped it.
   const club = CLUB_PROFILES[e.slug];
   const mem = MEMORIAM[e.slug];
-  const story = club?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
+  const profile = club || mem ? undefined : PERSON_PROFILES[e.slug];
+  const story = club?.story ?? profile?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
   return {
     slug: e.slug,
     name: e.name,
