@@ -2,7 +2,7 @@
 // every name -> card answer its links need, and sends just that (CardView, src/lib/card-view.ts). Only the server and
 // the server function in card-view.functions.ts load this file.
 import { notFound, redirect } from "@tanstack/react-router";
-import { afterpartyOf, entityBySlug, episodeShort, isThinCard, relatedTo, type Entity } from "@/data/entities";
+import { afterpartyOf, entityBySlug, SAME_AS, episodeShort, isThinCard, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
 import { jukebox } from "@/data/collections";
 import { clubNightFor } from "@/data/club-nights";
@@ -99,6 +99,9 @@ export function cardPageData(slug: string) {
     // /explore/CBGB or /explore/Studio-54 (typed or shared with capitals) finds the card instead of a 404.
     const lower = slug.toLowerCase();
     if (lower !== slug && entityBySlug[lower]) throw redirect({ to: "/explore/$slug", params: { slug: lower }, statusCode: 301 });
+    // A merged card ("Paper magazine" is now "Paper") keeps its old address working.
+    const merged = SAME_AS[lower];
+    if (merged && entityBySlug[merged]) throw redirect({ to: "/explore/$slug", params: { slug: merged }, statusCode: 301 });
     throw notFound();
   }
   // One page per guest (Lisa, 1 Nov 2026): a guest with an AFTERPARTY lives on the episode page; old links forward there.

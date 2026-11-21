@@ -43,6 +43,12 @@ const clean = (n: string) =>
     .trim()
     .toLowerCase();
 
+// The same thing named two ways in different episodes: one card, every episode's mentions kept on it
+// (Lisa, 21 Nov 2026: "double ups in magazines eg paper"). The old address forwards to the card (card-view.server.ts).
+export const SAME_AS: Record<string, string> = {
+  "paper-magazine": "paper",
+};
+
 // Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
 const slugCache = new Map<string, string>();
 export const slugify = (n: string) => {
@@ -52,6 +58,7 @@ export const slugify = (n: string) => {
       .normalize("NFKD")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
+    s = SAME_AS[s] ?? s;
     slugCache.set(n, s);
   }
   return s;
