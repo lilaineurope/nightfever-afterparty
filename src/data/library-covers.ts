@@ -78,6 +78,11 @@ const COVERS: Record<string, Cover> = {
   "Egg Thoughts and Other Frances Songs (Russell Hoban)": { kind: "book", file: "book-egg-thoughts.webp", credit: "Egg Thoughts and Other Frances Songs, Harper & Row 1972 - cover by Lillian Hoban (Internet Archive scan)" }, // S06E01 badger book, found 21 Nov 2026
   "Nightbirds (Michael Fazakerley)": { kind: "book", file: "book-nightbirds.webp", credit: "Nightbirds: Photos of NYC's Dynamic Club Culture Personalities 1986–1995, Michael Fazakerley - cover (PopLife Designs)" },
   "Our Town": { kind: "book", file: "book-our-town.webp", credit: "Our Town, Thornton Wilder - first edition jacket, Coward-McCann 1938 - seller's photo (eBay)" },
+  "FAD Magazine": { kind: "book", file: "mag-fad-1992.webp", credit: "FAD, Spring 1992 (#26, \"Cyber\") - seller's photo (eBay)" },
+  "Graffiti magazine (Canada)": { kind: "book", file: "mag-graffiti-1986-bowie.webp", credit: "Graffiti, 1986 (vol. 2 no. 7, David Bowie) - seller's photo (eBay)" },
+  "Psychology Today": { kind: "book", file: "mag-psychology-today-1974.webp", credit: "Psychology Today, October 1974 (\"Styles of Loving\") - seller's photo (eBay)" },
+  "New York Observer": { kind: "book", file: "news-new-york-observer-321-w44.webp", credit: "The New York Observer's office, 321 West 44th Street - photo Jim Henderson, CC0 (Wikimedia Commons)" },
+  "Blind magazine": { kind: "mast", file: "mast-blind-magazine.webp", credit: "Masthead: blind-magazine.com" },
   "Out (magazine)": { kind: "book", file: "mag-out-rupaul-2017.webp", credit: "Out, October 2017 - RuPaul, the 25th anniversary issue - seller's photo (eBay)" }, // Lisa: cover C (21 Nov 2026)
   "'The Night of the Iguana' (Stephen Saban)": { kind: "book", file: "col-night-of-the-iguana.webp", credit: "Details, December 1988/January 1989, from Saban's years there - via WFMU" },
   "We Started a Nightclub (Pyramid book)": { kind: "book", file: "book-we-started-a-nightclub.webp", credit: "Cover via Atomic Books" },

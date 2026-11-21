@@ -8,6 +8,10 @@ import stacksPhone from "@/assets/library-stacks-phone.webp";
 import { BOOK_SHELVES, bookClub, type CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
 import { polaroidThumb } from "@/lib/polaroids";
+import headPaper from "@/assets/library/col-head-paper.webp";
+import headOutweek from "@/assets/library/col-head-outweek.webp";
+import headSoho from "@/assets/library/col-head-soho-news.webp";
+import faceHeimel from "@/assets/library/col-face-cynthia-heimel.webp";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 // The Library (Lisa, 29 Oct 2026 - was the Book Club at /book-club, which now redirects here): every book, magazine,
@@ -146,10 +150,19 @@ const DIARY_KEEPER: Record<string, string> = {
   "Mickey Boardman's journal": "s04e02",
 };
 
+// Lisa, 21 Nov 2026: a column shows where it ran (masthead band) over the writer's polaroid (their AFTERPARTY episode).
+const COLUMN_IN: Record<string, { paper: string; head: string; writer?: string; face?: string }> = {
+  "Lunch with Lauren (Paper column)": { paper: "Paper", head: headPaper, writer: "s04e06" },
+  "Fat and All That (Paper column)": { paper: "Paper", head: headPaper, writer: "s04e02" },
+  "'Diary of a Mad Queen' (column)": { paper: "OutWeek", head: headOutweek, writer: "s06e01" },
+  "Ms. Lonely Hearts": { paper: "the SoHo News", head: headSoho, face: faceHeimel }, // Cynthia Heimel, from her In memoriam polaroid
+};
+
 function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
   const cover = coverFor(item.name);
   const keeper = item.shelf === "diaries" ? DIARY_KEEPER[item.name] : undefined;
   const polaroid = keeper ? polaroidThumb(keeper, 512) : undefined;
+  const column = item.shelf === "columns" ? COLUMN_IN[item.name] : undefined;
   const foot = (
     <span className="lib-foot">
       {item.by ? (
@@ -173,6 +186,22 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
         </span>
       </span>
     );
+  if (column) {
+    const face = column.face ?? (column.writer ? polaroidThumb(column.writer, 512) : undefined);
+    return (
+      <span className={`lib-cv lib-book lib-col-cover${face ? "" : " lib-col-noface"}`}>
+        {face && <img src={face} alt={`${item.name} - the writer's portrait`} loading="lazy" decoding="async" />}
+        <span className="lib-col-band">
+          <img src={column.head} alt={`${column.paper} masthead`} loading="lazy" decoding="async" />
+          <span>Column in {column.paper}</span>
+        </span>
+        <span className="lib-strip">
+          <span className="lib-nm">{item.name}</span>
+          {foot}
+        </span>
+      </span>
+    );
+  }
   if (cover?.kind === "book")
     return (
       <span className="lib-cv lib-book">
