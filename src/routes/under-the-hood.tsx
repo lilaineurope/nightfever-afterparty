@@ -110,6 +110,17 @@ function UnderTheHood() {
       </section>
 
       <div className="mx-auto max-w-5xl space-y-12 px-6 pb-16">
+        {/* How the rankings are worked out (Lisa, 21 Nov 2026). */}
+        <section aria-labelledby="g-how" className="border-2 border-gold bg-card p-6">
+          <h2 id="g-how" className="text-2xl font-bold tracking-tight text-cream">How the rankings are worked out</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            The Hall of Fame on the home page scores the people who lifted the scene - who gave others a start, stood by them and
+            opened doors - from the moments the guests tell on the show.
+          </p>
+          <Link to="/hall-of-fame-rules" className="mt-4 inline-block text-lg font-semibold text-gold underline decoration-gold/40 underline-offset-4 transition hover:text-pink">
+            How the Hall of Fame works →
+          </Link>
+        </section>
         {GROUPS.map((g) => (
           <section key={g.title} aria-labelledby={`g-${g.title}`}>
             <h2 id={`g-${g.title}`} className="text-2xl font-bold tracking-tight text-cream">{g.title}</h2>

@@ -97,10 +97,10 @@ const have = [...NEW_FACES, ...COME_BACK].filter((t) => t.episodeId === id);
 console.log(`   already in interview-next.ts for ${id}: ${have.length ? have.map((t) => `${t.name} (${t.time})`).join(", ") : "nothing yet"}\n`);
 
 // 5. Mentors (Lisa, 28 Oct 2026): who took whom under their wing - feeds the home page's Hall of Fame (src/data/mentors.ts).
-const MENTOR = /\b(mentor\w*|under (his|her|their|my) wing|took (me|him|her|them) in|discovered (me|him|her|them)|(my|his|her|their) first job|gave (me|him|her|them) (my|his|her|their|a) (first )?(job|break|start|chance)|taught (me|him|her|them)|showed (me|him|her|them) how|introduced (me|him|her|them) to|role model|gay mother|godmother|fairy godmother|big sister|protégé|protege|got (me|us|him|her|them) in(to)? everywhere|made (me|him|her) (his|her|their) assistant)\b/i;
+const MENTOR = /\b(mentor\w*|under (his|her|their|my) wing|took (me|him|her|them) in|discovered (me|him|her|them)|(my|his|her|their) first job|gave (me|him|her|them) (my|his|her|their|a) (first )?(job|break|start|chance)|taught (me|him|her|them)|showed (me|him|her|them) how|introduced (me|him|her|them) to|role model|gay mother|godmother|fairy godmother|big sister|protégé|protege|got (me|us|him|her|them) in(to)? everywhere|made (me|him|her) (his|her|their) assistant|helped (me|him|her|them|us)|supported (me|him|her|them|us)|look(ed)? after (me|him|her|them|us)|took care of (me|him|her|them|us)|hired (me|him|her|them|us)|booked (me|him|her|them|us)|intervention|rehab|raised (the )?money|fundraiser|champion\w*|believed in (me|him|her|them)|stood by (me|him|her|them)|gave (me|him|her|them) a (job|column|gig|place to stay)|put (me|him|her|them) on)\b/i;
 const mlines = readFileSync(transcriptPath, "utf8").split("\n").filter((l) => /^\s*\[\d/.test(l) && MENTOR.test(l));
 const rowHits = rows.filter((r) => r.category === "Person" && MENTOR.test(r.context ?? ""));
-console.log("5. MENTORS - lines and rows to read in context (add the real mentor -> mentee links to src/data/mentors.ts):");
+console.log("5. MENTORS AND HELP - lines and rows to read in context (add the real helper -> helped links to src/data/mentors.ts, with kind lifted/stood/door and told when someone else tells it):");
 if (!mlines.length && !rowHits.length) console.log("   none found");
 for (const l of mlines) console.log("   " + l.trim().slice(0, 220));
 for (const r of rowHits) console.log(`   row: ${r.name} (${r.time}) - ${(r.context ?? "").slice(0, 160)}`);
