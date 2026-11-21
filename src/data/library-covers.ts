@@ -76,6 +76,8 @@ const COVERS: Record<string, Cover> = {
   "Nations (Chi Chi Valenti, Details)": { kind: "book", file: "col-nations-details.webp", credit: "Details, September 1988 (the issue before Nations) - via Gallery 98" },
   "Out magazine – 'The Glass Closet'": { kind: "book", file: "col-out-glass-closet.webp", credit: "Out, 2007 - the Glass Closet cover, via out.com" },
   "Egg Thoughts and Other Frances Songs (Russell Hoban)": { kind: "book", file: "book-egg-thoughts.webp", credit: "Egg Thoughts and Other Frances Songs, Harper & Row 1972 - cover by Lillian Hoban (Internet Archive scan)" }, // S06E01 badger book, found 21 Nov 2026
+  "Nightbirds (Michael Fazakerley)": { kind: "book", file: "book-nightbirds.webp", credit: "Nightbirds: Photos of NYC's Dynamic Club Culture Personalities 1986–1995, Michael Fazakerley - cover (PopLife Designs)" },
+  "Our Town": { kind: "book", file: "book-our-town.webp", credit: "Our Town, Thornton Wilder - first edition jacket, Coward-McCann 1938 - seller's photo (eBay)" },
   "Out (magazine)": { kind: "book", file: "mag-out-rupaul-2017.webp", credit: "Out, October 2017 - RuPaul, the 25th anniversary issue - seller's photo (eBay)" }, // Lisa: cover C (21 Nov 2026)
   "'The Night of the Iguana' (Stephen Saban)": { kind: "book", file: "col-night-of-the-iguana.webp", credit: "Details, December 1988/January 1989, from Saban's years there - via WFMU" },
   "We Started a Nightclub (Pyramid book)": { kind: "book", file: "book-we-started-a-nightclub.webp", credit: "Cover via Atomic Books" },
