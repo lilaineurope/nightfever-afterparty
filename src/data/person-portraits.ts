@@ -866,7 +866,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "marc-shaiman": { photo: marcShaimanPhoto, polaroid: marcShaimanPolaroid, focus: "28%", credit: "Portrait after a photo by Philip Romano, 2026 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   "maureen-dowd": { photo: maureenDowdPhoto, polaroid: maureenDowdPolaroid, focus: "28%", credit: "Portrait after a photo by Frypie, 2024 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   "natalie-schafer": { photo: natalieSchaferPhoto, polaroid: natalieSchaferPolaroid, focus: "28%", credit: "Portrait after a studio publicity photo, 1942 (public domain), in our photocopy style" },
-  "kim-hastreiter": { photo: kimHastreiterPhoto, polaroid: kimHastreiterPolaroid, focus: "28%", credit: "Portrait after a photo by Jmerlwhat, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "kim-hastreiter": { photo: kimHastreiterPhoto, polaroid: kimHastreiterPolaroid, focus: "28%", credit: "Illustration made with Gemini, not a photo" },
   "pepper-labeija": { photo: pepperLabeijaPhoto, polaroid: pepperLabeijaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "cookie-mueller": { photo: cookieMuellerPhoto, polaroid: cookieMuellerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "dorian-corey": { photo: dorianCoreyPhoto, polaroid: dorianCoreyPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
