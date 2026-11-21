@@ -13,10 +13,13 @@ import { ClubProfileSections } from "@/components/club-profile";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
+import { LibraryItemSections } from "@/components/library-item";
+import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
 import { TREE_ON_PAGE } from "@/lib/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { guestBySlug } from "@/data/guests";
+import { episodePath } from "@/data/episodes";
 import { getCardPage } from "@/lib/card-view.functions";
 import { LinkDataProvider } from "@/lib/link-index";
 import "@fontsource/covered-by-your-grace/400.css";
@@ -44,7 +47,10 @@ export const Route = createFileRoute("/explore/$slug")({
     const description = mem || club ? pageDescription(d.name, mem?.story ?? d.story, d.episodes) : cardDescription(d.name, d.story, d.episodes);
     const path = `/explore/${d.slug}`;
     // Same rule as scripts/og-cards-data.ts: a share picture wherever the page has its header photo.
-    const image = (mem && d.portrait) || club?.portrait ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
+    // Library items with a real cover (Lisa, 21 Nov 2026) share their cover picture too.
+    const it0 = d.view.item;
+    const libraryPic = !!it0?.cover && libraryShareCover(it0.shelf, it0.cover.mast ? "mast" : "book");
+    const image = (mem && d.portrait) || club?.portrait || libraryPic ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
     const head = pageHead({ path, title, description, image, type: "article", noindex: d.thin });
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Diary: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
@@ -62,6 +68,15 @@ export const Route = createFileRoute("/explore/$slug")({
       thing["description"] = mem.story;
       if (mem.wikidata) thing["sameAs"] = thing["sameAs"] ? [thing["sameAs"] as string, mem.wikidata] : mem.wikidata;
     }
+    // Library items (Lisa, 21 Nov 2026): a book with its author, publisher, year, ISBN and cover.
+    const it = d.view.item;
+    if (it?.facts) {
+      if (it.facts.author) thing["author"] = { "@type": "Person", name: it.facts.author };
+      if (it.facts.publisher) thing["publisher"] = { "@type": "Organization", name: it.facts.publisher };
+      if (it.facts.year) thing["datePublished"] = String(it.facts.year);
+      if (it.facts.isbn) thing["isbn"] = it.facts.isbn;
+    }
+    if (it?.cover && !it.cover.mast) thing["image"] = abs(it.cover.src);
     // Guests: a fuller Person (what they're known for, and the Night Fever episode they're interviewed in) - Lisa, 27 Oct 2026.
     if (d.guest) {
       thing["description"] = d.guest.tagline;
@@ -118,6 +133,10 @@ function EntityPage() {
   const diary = e.diary ?? undefined;
   // Column pages (Lisa, 21 Nov 2026): every piece that ran under the column.
   const column = e.column ?? undefined;
+  // Library items (Lisa, 21 Nov 2026): the real cover taped into the header, the book's facts on the name card.
+  const item = e.item ?? undefined;
+  const cover = !pic ? item?.cover ?? undefined : undefined;
+  const facts = item?.facts ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -126,7 +145,7 @@ function EntityPage() {
       {/* People with a polaroid (Lisa, 2 Nov 2026, "combo 3"): their photo fills the header, the name sits on a taped card and the
           polaroid is taped on the right with its credit. */}
       <section
-        className={`${pic ? "card-head card-head-photo px-4" : "card-head px-4"}`}
+        className={`${pic ? "card-head card-head-photo px-4" : cover ? "card-head card-head-cover px-4" : "card-head px-4"}`}
         style={
           (pic
             ? ({ "--photo": `url(${pic.photo})`, "--photo-phone": `url(${pic.phone ?? pic.photo})`, "--focus": pic.focus } as CSSProperties)
@@ -139,7 +158,13 @@ function EntityPage() {
             <figcaption>{pic.credit}</figcaption>
           </figure>
         )}
-        <div className={pic ? "card-namecard" : "mx-auto max-w-4xl"}>
+        {cover && (
+          <figure className={`card-cover${cover.mast ? " card-cover-mast" : ""}`}>
+            <img src={cover.src} alt={cover.mast ? `${e.name} masthead` : `Cover of ${e.name}`} />
+            <figcaption>{cover.credit}</figcaption>
+          </figure>
+        )}
+        <div className={pic || cover ? "card-namecard" : "mx-auto max-w-4xl"}>
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">
             {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
@@ -170,6 +195,30 @@ function EntityPage() {
               <p className="mt-2 text-sm text-muted-foreground">{club.address} · {club.opened} – {club.closed}</p>
             </div>
           )}
+          {facts && (
+            <dl className="card-facts">
+              {facts.author && (
+                <>
+                  <dt>Written by</dt>
+                  <dd className="card-facts-by">
+                    {facts.authorGuest?.polaroid && <img src={facts.authorGuest.polaroid} alt="" width={240} height={240} />}
+                    <span>
+                      <EntityText text={facts.author} self={e.name} />
+                      {facts.authorGuest && <> · <Link to={episodePath(facts.authorGuest.episodeId as never)} className="font-semibold text-gold hover:text-pink">their AFTERPARTY ({facts.authorGuest.short}) →</Link></>}
+                    </span>
+                  </dd>
+                </>
+              )}
+              {(facts.year || facts.publisher) && (
+                <>
+                  <dt>First out</dt>
+                  <dd>{[facts.year, facts.publisher].filter(Boolean).join(" · ")}</dd>
+                </>
+              )}
+              <dt>Now</dt>
+              <dd>{facts.status}</dd>
+            </dl>
+          )}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
           {mem?.readMore && showsReadMore(mem.readMore.href) ? (
@@ -194,6 +243,7 @@ function EntityPage() {
         {profile && <PersonProfileSections m={profile} name={e.name} />}
         {diary && <DiarySections d={diary} name={e.name} />}
         {column && <ColumnIndex c={column} name={e.name} />}
+        {item && <LibraryItemSections v={item} name={e.name} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors, for now only TREE_ON_PAGE. */}
         {e.tree && TREE_ON_PAGE.has(e.slug) && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
         <CardSections v={e} />

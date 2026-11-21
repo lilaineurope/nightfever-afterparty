@@ -199,6 +199,15 @@ function PrivacyPage() {
               it.
             </p>
             <p>
+              <strong className="text-cream">Got a copy?</strong> The &ldquo;Got a
+              copy?&rdquo; box on a Library item&rsquo;s page saves the story you
+              write about your copy and the optional name you give, with the
+              title of the page, in the site&rsquo;s database, and Web3Forms sends
+              me a note about it. Only I read them - nothing from this box is
+              shown on the site. Ask me any time to delete yours. Legal basis:
+              your consent in sending it.
+            </p>
+            <p>
               <strong className="text-cream">Episode player.</strong> Nothing
               plays or loads until you press play or tap a timestamp. Then your
               browser streams the episode straight from the show&rsquo;s own
@@ -238,7 +247,11 @@ function PrivacyPage() {
               <strong className="text-cream">Remembered in your own browser.</strong>{" "}
               The Wardrobe remembers which style you picked (Afterparty or
               Clueless) in your browser&rsquo;s own storage, so it opens the
-              same way next time. It never leaves your device, is not a cookie,
+              same way next time. The &ldquo;Find me, borrow me&rdquo; and
+              &ldquo;Find me, buy me&rdquo; boxes on a Library book&rsquo;s page guess
+              your country from your browser&rsquo;s own clock and language
+              (nothing is looked up and nothing is sent), and remember the
+              country you pick there the same way. It never leaves your device, is not a cookie,
               is not used to recognise or track you, and you can clear it any
               time by clearing this site&rsquo;s data in your browser.
             </p>
@@ -273,7 +286,8 @@ function PrivacyPage() {
               (youtube-nocookie.com), and from then on YouTube&rsquo;s (Google&rsquo;s)
               privacy policy applies to that player. Before you press, nothing
               loads from YouTube - not even the picture. Everywhere else their
-              names appear only as ordinary links.
+              names appear only as ordinary links. The trailer Jukebox on Library
+              and film pages works exactly like the Jukebox&rsquo;s video buttons.
             </p>
           </Section>
 
@@ -284,6 +298,14 @@ function PrivacyPage() {
               credit link, you leave this site and that service&rsquo;s own privacy
               policy applies from that moment. This page has no influence over
               what they do with your data.
+            </p>
+            <p>
+              The same goes for the buttons in a Library book&rsquo;s
+              &ldquo;Find me, borrow me&rdquo; and &ldquo;Find me, buy me&rdquo; boxes
+              (WorldCat, Libris, Adlibris, Bokus, Bookshop.org, AbeBooks): each
+              is a plain link that opens a search for that book on the other
+              site, carrying only the book&rsquo;s ISBN or title. They are not
+              affiliate links and I earn nothing from them.
             </p>
             <p>
               Tips work the same way: the &ldquo;tip!&rdquo; button in the footer&rsquo;s tip box

@@ -1,4 +1,4 @@
-# Share pictures (1200x630) for the In memoriam and club pages (SEO check, 16 Nov 2026): the page's own halftone header
+# Share pictures (1200x630) for the In memoriam, club and Library item pages (covers: Lisa, 21 Nov 2026) (SEO check, 16 Nov 2026): the page's own halftone header
 # photo with its taped polaroid on the right, and the name + years on the left - so a shared link shows that page,
 # not the generic A-Z picture. Writes public/og/explore/<slug>.jpg.
 #   npx vite-node scripts/og-cards-data.ts > /tmp/og-cards.json && python3 scripts/og-cards.py /tmp/og-cards.json
@@ -38,7 +38,7 @@ def card(row):
     px = W - pol.width - 44
     im.alpha_composite(pol, (px, (H - pol.height) // 2))
     d = ImageDraw.Draw(im); room = px - 56 - 32
-    kicker = ("IN MEMORIAM" if row["kind"] == "memoriam" else "NEW YORK CLUB") + " · " + row["years"]
+    kicker = row["years"] if row["kind"] == "library" else ("IN MEMORIAM" if row["kind"] == "memoriam" else "NEW YORK CLUB") + " · " + row["years"]
     name = row["name"]; f = fit(d, name, 68, room); lines = [name]
     if d.textlength(name, font=f) > room or f.size < 46:  # long names go on two lines
         words = name.split(); half = (len(words) + 1) // 2

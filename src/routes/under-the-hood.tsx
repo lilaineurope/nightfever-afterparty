@@ -13,7 +13,7 @@ const GROUPS: Group[] = [
     title: "Building the site",
     blurb: "Where the pages are made, stored and put online.",
     tools: [
-      { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups, guestbook notes and fan suggestions (Who to interview next, Library, Jukebox, Hall of Fame, Clubs) in its built-in database (Lovable Cloud)." },
+      { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups, guestbook notes and fan suggestions (Who to interview next, Library, Jukebox, Hall of Fame, Clubs) in its built-in database (Lovable Cloud), plus the Library's \"Got a copy?\" stories." },
       { name: "Claude", href: "https://claude.ai", what: "My co-pilot for everything behind the scenes: writes the code, researches every name and place, checks the links, transcribes the episodes, builds the reference sheets and draws the photocopied New York skyline on the Timeline in code." },
       { name: "GitHub", href: "https://github.com", what: "Stores the site's code; every change syncs straight into Lovable." },
       { name: "Archivo Black, IBM Plex Mono and Special Elite", href: "https://fontsource.org", what: "The flyer fonts - headlines (Archivo Black), the typewriter text everywhere (Special Elite), and timestamps and small data (IBM Plex Mono). Open licences (SIL OFL and Apache), served from this site, not from a font service." },
@@ -37,7 +37,7 @@ const GROUPS: Group[] = [
     tools: [
       { name: "The Night Fever podcast feed", href: "https://creators.spotify.com", what: "The episode player streams each episode straight from the show's own podcast feed." },
       { name: "Spotify", href: "https://open.spotify.com", what: "Plays the Jukebox (club nights included) and the song and band cards (only after you press play), opens the listen links and hosts the Night Fever Afterparty Jukebox playlist." },
-      { name: "YouTube", href: "https://www.youtube.com", what: "Plays the Jukebox's music videos and its video of the day (only after you press play, through YouTube's privacy-enhanced player) and hosts the AFTERPARTY playlists." },
+      { name: "YouTube", href: "https://www.youtube.com", what: "Plays the Jukebox's music videos and its video of the day, and the trailers on Library and film pages (only after you press play, through YouTube's privacy-enhanced player), and hosts the AFTERPARTY playlists." },
       { name: "Apple Podcasts", href: "https://podcasts.apple.com", what: "Listen links for every episode." },
       { name: "WOW Presents Plus", href: "https://www.wowpresentsplus.com", what: "Where the watch links take you to see the episodes." },
     ],
@@ -49,6 +49,9 @@ const GROUPS: Group[] = [
       { name: "Google Maps", href: "https://maps.google.com", what: "Draws the Map page with every club and location the guests name." },
       { name: "Wikipedia", href: "https://www.wikipedia.org", what: "Background checks for the cards (names, dates, who is who). Since 21 Nov 2026 the cards no longer link out to it, so visitors stay on the AFTERPARTY." },
       { name: "Open Library", href: "https://openlibrary.org", what: "The book covers in the Library (copied once and kept on this site, so your browser never contacts Open Library)." },
+      { name: "WorldCat", href: "https://search.worldcat.org", what: "The world's library catalogue: the \"Find it in a library near you\" button on every Library book's page opens its search for that book (a plain link - thank you, WorldCat)." },
+      { name: "Libris", href: "https://libris.kb.se", what: "Sweden's national library catalogue: the \"Search all Swedish libraries\" button on a Library book's page opens its search for that book (a plain link)." },
+      { name: "Adlibris, Bokus, Bookshop.org and AbeBooks", href: "https://bookshop.org", what: "The bookshops in a Library book's \"Find me, buy me\" box (plain search links for that book, picked by your country; no affiliate links)." },
       { name: "Wikimedia Commons", href: "https://commons.wikimedia.org", what: "The public-domain magazine and newspaper mastheads in the Library, and the free-licence club photos on the club pages (CBGB, Max's Kansas City, Sound Factory), each credited on its page - copied once and kept on this site." },
       { name: "Public archives", href: "https://umsi580.lsait.lsa.umich.edu/s/stand_up_be_counted/item/1306", what: "A few article and issue scans in the Library (such as Venus Envy from the Village Voice, via the University of Michigan's Stand Up and Be Counted archive, and early My Comrade and Sister! covers from The Henry Ford's collections) - copied once, credited on the item's card." },
       { name: "Galleries, booksellers and dealer listings", href: "https://gallery98.org", what: "Most of the other magazine covers, front pages and book covers in the Library (Gallery 98, the FIT Library, the RISD picture collection, Atomic Books, Artbook, Trey Speegle's RePop Shop, HX's and Texas Monthly's own archives, eBay and dealer photos, collectors' posts on Pinterest and more) - captured once at card size and kept on this site, so opening the Library never contacts them; each card names its source. The same goes for the photos of original club tickets on Inside the Clubs and the Jukebox club nights (Danceteria's drink ticket from Gallery 98)." },
