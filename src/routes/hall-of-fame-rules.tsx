@@ -117,7 +117,7 @@ function HallOfFameRules() {
           <p className="text-sm text-muted-foreground">One badge per person: whoever is in the Hall of Fame top 10 wears the gold one, everyone else in the top 100 the pink one.</p>
         </section>
 
-        <MentorTree t={v.example} title={`Example: ${v.example.name}`} badge={<HallOfFameBadge rank={v.example.rank} />} />
+        <MentorTree t={v.example} title={`Example: ${v.example.name}`} badge={<HallOfFameBadge rank={v.example.rank} />} foldable />
 
         <section aria-labelledby="top" className="space-y-4">
           <h2 id="top" className={h2}>The top 10 today</h2>
