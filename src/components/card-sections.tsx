@@ -62,7 +62,7 @@ function GuestBox({ g }: { g: Guest | undefined }) {
 
 /** Everything an A–Z card shows under its header (/explore/<slug>). A guest with an AFTERPARTY gets GuestAboutBox on the
  *  episode page instead. */
-export function CardSections({ v }: { v: CardView }) {
+export function CardSections({ v, skipRefs = false }: { v: CardView; skipRefs?: boolean }) {
   const links = useLinks();
   const related = v.related;
   const refs = v.refs;
@@ -74,8 +74,9 @@ export function CardSections({ v }: { v: CardView }) {
       {v.night && <ClubNightPlaylist night={v.night} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
-      {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it. */}
-      {refs.length > 0 && !v.diary && (
+      {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it -
+          and a Library item page shows each moment in its "Who dropped it" box (Lisa, 21 Nov 2026: too messy twice). */}
+      {refs.length > 0 && !v.diary && !skipRefs && (
         <section>
           {/* No per-episode count line under the heading (Lisa, 30 Oct 2026): each box below already says its mentions. */}
           <h2 className={h}>In the episodes</h2>

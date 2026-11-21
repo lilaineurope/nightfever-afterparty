@@ -187,8 +187,8 @@ function TermsPage() {
               not see their cover here can ask for it to come down (section 6). The same goes for the photos of original club tickets on Inside the Clubs and the Jukebox club nights: they belong to the clubs' designers and the collections that show them, are shown small for identification, name their source, and come down on request.
             </p>
             <p>
-              The &ldquo;Find me, borrow me&rdquo; and &ldquo;Find me, buy me&rdquo; buttons on a Library book&rsquo;s page are plain
-              links to library catalogues and bookshops. The site sells nothing through them and earns nothing from them; what
+              The &ldquo;Find me, borrow me&rdquo; and &ldquo;Find me, buy me&rdquo; buttons on a Library item&rsquo;s page, and &ldquo;Find this issue&rdquo;
+              under a magazine&rsquo;s issues, are plain links to library catalogues, bookshops and secondhand marketplaces. The site sells nothing through them and earns nothing from them; what
               those sites show, and anything you buy there, is between you and them.
             </p>
             <p>

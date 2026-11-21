@@ -88,6 +88,7 @@ function cardView(e: Entity): CardView {
     for (const c of item.connections) L.card(c.slug);
     for (const m of item.shelfMates) L.card(m.slug);
     for (const c of item.credits) if (c.slug) L.card(c.slug);
+    for (const x of [...(item.press?.by ?? []), ...(item.press?.team ?? [])]) if (x.slug) L.card(x.slug);
   }
   const j = jukebox.find((x) => x.slug === e.slug);
   const tree = mentorTreeOf(e.slug);

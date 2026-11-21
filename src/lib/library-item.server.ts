@@ -8,9 +8,10 @@ import { BOOKS_TO_WRITE } from "@/data/still-to-make";
 import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
+import { PRESS } from "@/data/publication-facts";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
-import type { Connection, DroppedBy, LibraryItemView, ShelfMate, Trailer } from "@/lib/library-item";
+import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, Trailer } from "@/lib/library-item";
 
 type Clip = { id: string; name: string; cat: string; title: string; of?: string };
 // Every video in the AFTERPARTY YouTube playlists (src/data/episode-videos), by the card it belongs to.
@@ -59,10 +60,11 @@ function droppedBy(e: Entity): DroppedBy[] {
     const have = out.find((x) => x.episodeId === r.episode);
     if (have) {
       have.mentions += r.mentions;
+      if (r.context) have.said.push({ time: r.time, text: r.context });
       continue;
     }
     const ep = episodeById(r.episode);
-    out.push({ episodeId: ep.id, short: episodeShort(ep.id), guest: stageName(ep.guest), polaroid: guestPolaroid(ep.id), time: r.time, mentions: r.mentions });
+    out.push({ episodeId: ep.id, short: episodeShort(ep.id), guest: stageName(ep.guest), polaroid: guestPolaroid(ep.id), time: r.time, mentions: r.mentions, said: r.context ? [{ time: r.time, text: r.context }] : [] });
   }
   return out;
 }
@@ -121,6 +123,27 @@ function shelfMates(e: Entity, dropped: DroppedBy[]): ShelfMate[] {
     .map(({ b, shared }) => ({ slug: b.slug, name: b.name, cover: coverSrc(b.name), shelf: b.shelf, eps: shared.map(episodeShort) }));
 }
 
+const PRESS_SHELVES = new Set(["magazines", "newspapers"]);
+/** "Vogue magazine" -> "Vogue magazine"; "Straight to Hell (magazine)" -> "Straight to Hell magazine"; papers get "newspaper". */
+function backIssueQuery(name: string, shelf: string): string {
+  const base = name.replace(/\s*\((?:magazine)\)$/i, "").replace(/\s*\(.*\)$/, "").trim();
+  if (shelf === "newspapers") return /newspaper/i.test(base) ? base : `${base} newspaper`;
+  return /magazine|zine/i.test(base) ? base : `${base} magazine`;
+}
+
+function pressView(e: Entity, shelf: string): PressView | null {
+  if (!PRESS_SHELVES.has(shelf)) return null;
+  const p = PRESS[e.slug] ?? {};
+  return {
+    founded: p.founded ?? null,
+    by: (p.by ?? []).map((name) => ({ name, slug: entityFor(name)?.slug })),
+    ran: p.ran ?? null,
+    team: (p.team ?? []).map((t) => ({ role: t.role, name: t.name, slug: entityFor(t.name)?.slug, note: t.note, episodeId: t.episode, short: t.episode ? episodeShort(t.episode) : undefined, time: t.time })),
+    issues: (p.issues ?? []).map((i) => ({ what: i.what, date: i.date, episodeId: i.episode, short: episodeShort(i.episode), guest: stageName(episodeById(i.episode).guest), polaroid: guestPolaroid(i.episode), time: i.time, search: i.search })),
+    buy: p.online ? null : { query: p.query ?? backIssueQuery(e.name, shelf) },
+  };
+}
+
 export function libraryItemView(e: Entity): LibraryItemView | null {
   if (!isLibraryItem(e)) return null;
   const item = libraryBySlug[e.slug];
@@ -153,6 +176,7 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
           .sort((a, b) => CREDIT_ORDER.indexOf(a.role) - CREDIT_ORDER.indexOf(b.role))
           .map((c) => ({ role: c.role, name: c.name, slug: entityFor(c.name)?.slug }))
       : [],
+    press: pressView(e, shelf),
     find: shelf === "books" ? { isbn: facts?.isbn ?? null, query: [facts?.title ?? e.name.replace(/\s*\(.*\)$/, ""), facts?.author].filter(Boolean).join(" "), inPrint: facts ? facts.inPrint : null } : null,
   };
 }

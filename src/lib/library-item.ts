@@ -4,7 +4,7 @@
 // Types only - this file loads nothing.
 import type { BookFacts } from "@/data/library-facts";
 
-export type DroppedBy = { episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; mentions: number };
+export type DroppedBy = { episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; mentions: number; said: { time: string; text: string }[] };
 export type ShelfMate = { slug: string; name: string; cover?: string | undefined; shelf: string; eps: string[] };
 /** A trailer of the item, or (kind "guest") a video from the Jukebox of a guest who dropped it, when there is no trailer. */
 export type Trailer = { id: string; title: string; label: string; episodeId: string; short: string; kind?: "guest" | undefined };
@@ -28,4 +28,16 @@ export type LibraryItemView = {
   credits: { role: string; name: string; slug?: string | undefined }[];
   /** Books only: what the "Find me, borrow me" and "Find me, buy me" boxes search for. */
   find: { isbn: string | null; query: string; inPrint: boolean | null } | null;
+  /** Magazines and newspapers (src/data/publication-facts.ts): masthead, the issues the guests talk about, back issues to buy. */
+  press: PressView | null;
+};
+
+export type PressView = {
+  founded: string | null;
+  by: { name: string; slug?: string | undefined }[];
+  ran: string | null;
+  team: { role: string; name: string; slug?: string | undefined; note?: string | undefined; episodeId?: string | undefined; short?: string | undefined; time?: string | undefined }[];
+  issues: { what: string; date?: string | undefined; episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; search: string }[];
+  /** Back issues: what the "Find me, buy me" box searches for. null for a website. */
+  buy: { query: string } | null;
 };

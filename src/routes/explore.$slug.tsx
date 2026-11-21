@@ -246,7 +246,7 @@ function EntityPage() {
         {item && <LibraryItemSections v={item} name={e.name} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors, for now only TREE_ON_PAGE. */}
         {e.tree && TREE_ON_PAGE.has(e.slug) && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
-        <CardSections v={e} />
+        <CardSections v={e} skipRefs={!!item} />
       </div>
           <SiteFooter />
 </main>
