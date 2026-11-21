@@ -777,3 +777,27 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .badge-gold { background: linear-gradient(90deg, #c99a22, #f5d977 30%, #d2a32b 60%, #f0cf63); }
 .badge-pink { background: linear-gradient(90deg, #d0156f, #ff8ac0 30%, #e0177a 60%, #ff79b6); color: #fff; }
 .hof-tree-sw { background: repeating-linear-gradient(45deg, var(--gold) 0 2px, var(--card) 2px 6px); }
+
+/* Column pages (Lisa, 21 Nov 2026): every piece under the column, typed like a contents page on the columns' yellow. */
+.column-index { background: #f6e06a; color: #1a1a1a; padding: 22px 24px 18px; box-shadow: 0 10px 30px rgba(0,0,0,.35); transform: rotate(-.4deg); font-family: var(--font-type); }
+.column-index-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 3px solid #1a1a1a; padding-bottom: 10px; }
+.column-index-title { font-family: var(--font-flyer); text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: -.5px; margin: 0; }
+.column-index-stamp { font-family: var(--font-flyer); text-transform: uppercase; font-size: 13px; letter-spacing: .08em; border: 2px solid #1a1a1a; padding: 4px 10px; transform: rotate(2deg); }
+.column-index-stamp-open { color: #c2185b; border-color: #c2185b; }
+.column-index-how { margin: 8px 0 4px; font-size: 13px; opacity: .75; }
+.column-index-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.column-index-row { display: grid; grid-template-columns: 2.2em 9.5em 1fr; gap: 4px 12px; padding: 11px 0; border-bottom: 1px dashed rgba(26,26,26,.45); font-size: 15px; line-height: 1.45; }
+.column-index-no { font-family: var(--font-flyer); font-size: 13px; padding-top: 2px; }
+.column-index-when { font-size: 13px; }
+.column-index-issue { display: block; opacity: .7; }
+.column-index-headline { font-weight: 700; }
+.column-index-note { opacity: .7; font-size: 13.5px; }
+.column-index-name { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: #c2185b; text-underline-offset: 2px; }
+.column-index-name:hover { color: #c2185b; }
+.column-index-empty { margin: 14px 0 4px; font-size: 15px; }
+.column-index-about { margin: 14px 0 0; font-size: 13px; line-height: 1.5; opacity: .85; }
+@media (max-width: 640px) {
+  .column-index { padding: 18px 16px 14px; transform: none; }
+  .column-index-row { grid-template-columns: 2em 1fr; }
+  .column-index-text { grid-column: 2; }
+}

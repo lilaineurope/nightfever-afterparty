@@ -11,6 +11,7 @@ import { CLUB_PROFILES } from "@/data/club-profiles";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { PERSON_PROFILES } from "@/data/person-profiles";
 import { DIARY_PAGES } from "@/data/diaries";
+import { COLUMN_PAGES } from "@/data/column-articles";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
@@ -33,6 +34,14 @@ function cardView(e: Entity): CardView {
     ? { ...diaryPage, polaroid: diaryPage.keeperEpisode ? polaroidThumb(diaryPage.keeperEpisode, 512) : PERSON_PORTRAITS[slugify(diaryPage.keeper)]?.polaroid }
     : null;
   if (diary) L.name(diary.keeper);
+  // Column pages: the list without its sources - nothing on the page links off the site (21 Nov 2026).
+  const columnPage = g ? undefined : COLUMN_PAGES[e.slug];
+  const column = columnPage ? { ...columnPage, articles: columnPage.articles.map(({ source: _s, ...a }) => a) } : null;
+  if (column) {
+    L.name(column.writer.replace(/\s*\(.*\)$/, ""));
+    for (const a of column.articles) L.text(a.title, e.name);
+    L.text(column.about, e.name);
+  }
 
   mem?.liftedUp.forEach(L.name);
   mem?.rooms.forEach(L.name);
@@ -99,6 +108,7 @@ function cardView(e: Entity): CardView {
     pic,
     profile,
     diary,
+    column,
     tree,
     connector: connectorRank(e.slug),
     links: L.data,

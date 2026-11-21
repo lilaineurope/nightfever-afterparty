@@ -6,6 +6,7 @@ import type { ClubNight } from "@/data/club-nights";
 import type { PersonPortrait } from "@/data/person-portraits";
 import type { PersonProfile } from "@/data/person-profiles";
 import type { DiaryPage } from "@/data/diaries";
+import type { ColumnPage } from "@/data/column-articles";
 import type { LinkData } from "@/lib/link-index";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
@@ -36,6 +37,8 @@ export type CardView = {
   profile: PersonProfile | null;
   /** Diary page (Lisa, 21 Nov 2026): every moment the diary comes up, readings highlighted; polaroid = the keeper's. */
   diary: (DiaryPage & { polaroid?: string | undefined }) | null;
+  /** Column page (Lisa, 21 Nov 2026): every piece that ran under the column. Sources stay on the server. */
+  column: ColumnPage | null;
   /** Hall of Fame family tree - top 10 mentors only (Lisa, 21 Nov 2026, src/lib/mentor-rank.ts). */
   tree: MentorTreeData | null;
   /** Rank among the top 100 great connectors (pink badge), or null. */
