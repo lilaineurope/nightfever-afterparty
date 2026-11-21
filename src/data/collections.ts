@@ -417,9 +417,6 @@ export const jukebox: CollectionItem[] = entities
 /** Search links that let a visitor find the music or the book themselves; nothing is hosted here. */
 export { listenLinks } from "../lib/listen-links";
 
-export const findBookLink = (name: string) =>
-  `https://openlibrary.org/search?q=${encodeURIComponent(name.replace(/\s*\([^)]*\)/g, "").replace(/[‘’'"“”]/g, ""))}`;
-
 /** Every club the guests mention (Lisa, 28 Oct 2026: the Jukebox's Clubs button lists them all under the three club playlists). */
 export const clubsMentioned = entities
   .filter((e) => e.category === "Club")

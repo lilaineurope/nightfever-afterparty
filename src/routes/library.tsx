@@ -5,7 +5,7 @@ import { StillToMakeBox } from "@/components/still-to-make";
 import { SiteFooter } from "@/components/site-footer";
 import stacks from "@/assets/library-stacks.webp";
 import stacksPhone from "@/assets/library-stacks-phone.webp";
-import { BOOK_SHELVES, bookClub, findBookLink, type CollectionItem } from "@/data/collections";
+import { BOOK_SHELVES, bookClub, type CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
 import { polaroidThumb } from "@/lib/polaroids";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
@@ -212,11 +212,6 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
       link={item.link || undefined}
       note={cover?.credit}
       summary={item.by ? <>Not dropped in an episode · written by {item.by.name} in 1978, with Camille Duhé</> : undefined}
-      extra={
-        item.shelf === "books" ? (
-          <a href={findBookLink(item.name)} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Find a copy on Open Library ↗</a>
-        ) : undefined
-      }
       onClose={onClose}
     />
   );
