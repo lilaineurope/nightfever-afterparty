@@ -2,8 +2,8 @@ import { episodes, episodePath } from "./episodes";
 import { CLUB_NIGHTS } from "./club-nights";
 
 // Short addresses for platforms whose descriptions can't hold a clickable link (Spotify, Lisa 14 Nov 2026).
-// nightfever-afterparty.com/spotify/s01e04 forwards to the episode page with UTM tags, so Plausible shows
-// the visit under Sources > Campaigns. /spotify alone is the Jukebox; /spotify/<club slug> is that club's Jukebox.
+// nightfever-afterparty.com/spotify/s01e04 forwards to the episode page with UTM tags, so the visit shows
+// as a playlist campaign in the counters. /spotify alone is the Jukebox; /spotify/<club slug> is that club's Jukebox.
 export const SHORT_LINK_SOURCES = ["spotify"] as const;
 export type ShortLinkSource = (typeof SHORT_LINK_SOURCES)[number];
 

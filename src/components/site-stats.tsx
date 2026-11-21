@@ -10,20 +10,14 @@ import { useRouter } from "@tanstack/react-router";
 const GOATCOUNTER_CODE = "lilaineurope";
 const COUNTED_HOSTS = ["nightfever-afterparty.lovable.app", "nightfever-afterparty.com", "www.nightfever-afterparty.com"];
 const SKIP_KEY = "skipgc";
-/** Plausible (Lisa, 31 Oct 2026): EU-hosted, cookie-free analytics - time on page, entry/exit pages, outbound clicks.
- *  Her site script from plausible.io; it follows the router's page changes itself. Skipped for ?me browsers like GoatCounter. */
-const PLAUSIBLE_SRC = "https://plausible.io/js/pa-fB-Vi6hBVUM32aTz6o8YA.js";
-/** Pirsch (Lisa, 1 Nov 2026): EU (Germany), cookie-free analytics on test next to Plausible - pa.js tracks page views
- *  (incl. the router's page changes), outbound links and downloads. Skipped for ?me browsers. */
-const PIRSCH_SRC = "https://api.pirsch.io/pa.js";
-const PIRSCH_CODE = "0oTfTXDr8A3tlF6FEEWiPRb7n7Uic5z6";
-type PlausibleFn = ((...a: unknown[]) => void) & { q?: unknown[][]; o?: unknown; init?: (o?: unknown) => void };
+/** Cloudflare Web Analytics (Lisa, 21 Nov 2026): free, cookie-free extra next to GoatCounter. Plausible and Pirsch
+ *  were dropped when their trials ended. Loaded only when CLOUDFLARE_TOKEN is set; skipped for ?me browsers. */
+const CLOUDFLARE_TOKEN = "";
 
 type GoatCounter = { count?: (vars: { path: string }) => void; no_onload?: boolean };
 declare global {
   interface Window {
     goatcounter?: GoatCounter;
-    plausible?: PlausibleFn;
   }
 }
 
@@ -64,24 +58,13 @@ export function SiteStats() {
 
     if (!GOATCOUNTER_CODE || !COUNTED_HOSTS.includes(window.location.hostname) || readSkip()) return;
 
-    if (!window.plausible) {
-      const p: PlausibleFn = Object.assign((...a: unknown[]) => { (p.q = p.q || []).push(a); }, {});
-      p.init = (o?: unknown) => { p.o = o || {}; };
-      window.plausible = p;
-      window.plausible.init?.();
-      const ps = document.createElement("script");
-      ps.async = true;
-      ps.src = PLAUSIBLE_SRC;
-      document.head.appendChild(ps);
-    }
-
-    if (!document.getElementById("pianjs")) {
-      const pi = document.createElement("script");
-      pi.defer = true;
-      pi.id = "pianjs";
-      pi.src = PIRSCH_SRC;
-      pi.setAttribute("data-code", PIRSCH_CODE);
-      document.head.appendChild(pi);
+    if (CLOUDFLARE_TOKEN && !document.getElementById("cfbeacon")) {
+      const cf = document.createElement("script");
+      cf.defer = true;
+      cf.id = "cfbeacon";
+      cf.src = "https://static.cloudflareinsights.com/beacon.min.js";
+      cf.setAttribute("data-cf-beacon", JSON.stringify({ token: CLOUDFLARE_TOKEN, spa: true }));
+      document.head.appendChild(cf);
     }
 
     const count = () => {

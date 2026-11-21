@@ -15,7 +15,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 const atAGlance = [
-  "No advertising trackers are loaded on this site. Visits are counted anonymously with GoatCounter, Plausible and Pirsch (both hosted in the EU), without cookies.",
+  "No advertising trackers are loaded on this site. Visits are counted anonymously with GoatCounter and Cloudflare Web Analytics, without cookies.",
   "No cookies are set for tracking, profiling or personalisation.",
   "Nothing is ever sold or shared with advertisers.",
   "The Afterparty newsletter stores your address only if you tick the consent box.",
@@ -157,22 +157,14 @@ function PrivacyPage() {
               interest in knowing which parts of the site are read.
             </p>
             <p>
-              <strong className="text-cream">Plausible.</strong> To learn how the
-              site is used - how long a page is read, where visits start and
-              end, and which outside links are clicked - visits are also measured
-              with Plausible Analytics (Plausible Insights OÜ, Estonia; data
-              stored in the EU). It sets no cookies and stores no IP address:
-              visitors are counted with a daily-changing anonymous hash, so it
-              cannot recognise you across days or sites. Legal basis: legitimate
-              interest in improving the site.
-            </p>
-            <p>
-              <strong className="text-cream">Pirsch.</strong> For the same
-              purpose, and to compare the two, visits are also measured with
-              Pirsch Analytics (Emvi Software GmbH, Germany; data stored in the
-              EU). It sets no cookies and stores no IP address: visitors are
-              counted with a daily-changing anonymous fingerprint. Legal basis:
-              legitimate interest in improving the site.
+              <strong className="text-cream">Cloudflare Web Analytics.</strong> As
+              a second, free counter, visits are also measured with Cloudflare
+              Web Analytics (Cloudflare, Inc., USA; covered by the EU-US Data
+              Privacy Framework). It sets no cookies, uses no fingerprinting and
+              does not store your IP address. It records the page, the site you
+              came from, your browser and system type, country and how fast the
+              page loaded. Legal basis: legitimate interest in knowing which
+              parts of the site are read.
             </p>
             <p>
               <strong className="text-cream">Contact form.</strong> If you send
@@ -276,7 +268,7 @@ function PrivacyPage() {
               This site loads no advertising networks, no social-media pixels and
               no cross-site trackers, and it sets no cookies for measurement or
               personalisation. The only measurement is the cookie-free
-              GoatCounter, Plausible and Pirsch statistics described above. Only strictly necessary
+              GoatCounter and Cloudflare statistics described above. Only strictly necessary
               technical storage used by the hosting platform to deliver the page
               is involved, which does not require consent under the ePrivacy
               rules.
@@ -329,7 +321,7 @@ function PrivacyPage() {
             <p>
               The hosting platform that publishes this site acts as a data
               processor for the technical logs above, under its own terms and
-              privacy documentation. GoatCounter, Plausible and Pirsch (both EU-hosted) process the anonymous visit
+              privacy documentation. GoatCounter and Cloudflare Web Analytics process the anonymous visit
               statistics described above, Web3Forms delivers contact-form
               messages and alerts about new suggestions and guestbook notes to my inbox, Forward Email
               passes on emails sent to the site&rsquo;s address to my inbox (it does not

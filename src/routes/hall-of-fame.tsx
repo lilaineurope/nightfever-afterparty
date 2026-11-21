@@ -6,7 +6,7 @@ import { LinkDataProvider, linkToSlug, useLinks, type LinkData } from "@/lib/lin
 import { MomentsBox, plainClick } from "@/components/moments-box";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { getHallOfFame, getHallOfFameMoments } from "@/lib/hall-of-fame.functions";
-import { points, type HallOfFameView, type HofMomentsView } from "@/lib/mentor-tree";
+import { points, TREE_ON_PAGE, type HallOfFameView, type HofMomentsView } from "@/lib/mentor-tree";
 import { Fragment, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import wall from "@/assets/hall-of-fame-wall.webp";
 import wallPhone from "@/assets/hall-of-fame-wall-phone.webp";
@@ -163,7 +163,7 @@ function TopTen({ top }: { top: HallOfFameView["top"] }) {
                   moments={sel.moments}
                   link={sel.link}
                   note={<>#{sel.rank} in the Hall of Fame · {points(sel.score)} points · helped {sel.helped.join(", ")}</>}
-                  cardLabel={pageLabel(sel.name, sel.guest, true)}
+                  cardLabel={pageLabel(sel.name, sel.guest, TREE_ON_PAGE.has(sel.slug))}
                   onClose={() => setOpen(null)}
                 />
               </li>

@@ -2301,6 +2301,40 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s03e06", who: "Eric Goode", time: "00:40:22", quote: "I think it's a cautionary tale, Michael. All of us probably have had tendencies to go down that rabbit hole, but Michael went deeper than most. And it's a sad tale." },
     ],
   },
+  // Lisa, 21 Nov 2026: "i think stephen saban is dead, check". He died on 26 June 2018. Facts: New York Times obituary
+  // (Alex Williams, 20 Jul 2018, "Stephen Saban, Chronicler of New York Night Life, Dies at 72"). No Wikipedia article.
+  "stephen-saban": {
+    born: "1945",
+    died: "2018",
+    diedLine: "Died 26 June 2018 in Rhinebeck, New York, of pancreatic cancer, aged 72",
+    story:
+      "The nightlife columnist of the SoHo News and then of Details, which he helped Annie Flanders start in 1982. He was out every night, and getting into his column took a while: Michael Musto calls him his mentor, and Moby felt he was meeting the biggest movie star on the planet. In his later years he wrote the World of Wonder blog.",
+    timeline: [
+      ["1945", "Born on 17 December in Hertfordshire, England; the family later moves to Savannah, Georgia, and Fort Lauderdale"],
+      ["1970s", "Studies painting in Atlanta and Philadelphia, moves to New York and works as a graphic designer"],
+      ["1970s", "His nightlife column in the SoHo News becomes a must-read downtown"],
+      ["1981", "Writes up Eric Goode's illegal Club with No Name in The Night of the Iguana"],
+      ["1982", "The SoHo News closes, and he helps Annie Flanders start Details"],
+      ["1980s", "Writes the Details nightlife column; New York magazine calls him the Boswell of the night"],
+      ["1990s", "Leaves Details as it turns into a men's style magazine"],
+      ["Later", "Writes the blog for World of Wonder"],
+      ["2014", "Learns he has pancreatic cancer; RuPaul, Karen Finley and Dianne Brill raise money for him"],
+      ["2018", "Dies in a hospice in Rhinebeck, New York, aged 72"],
+    ],
+    liftedUp: ["Michael Musto", "Eric Goode", "Lisa Edelstein"],
+    rooms: ["Limelight", "The Library (Limelight)", "Mudd Club", "Palladium", "Club with No Name"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:42:27", quote: "Stephen Saban was a mentor to me, starting at the SoHo News." },
+      { episode: "s06e01", who: "James St. James", time: "00:28:51", quote: "Before Michael Musto and Stephen Saban, I thought that writers were sort of like mousy little boring people scribbling away in back rooms." },
+      { episode: "s01e09", who: "Moby", time: "00:51:13", quote: "My other heroes from back then, like Stephen Saban. I first met him at Indochine in '88 or '89, and I felt like I was meeting the biggest movie star on the planet." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:11:10", quote: "Thank God there was a guy named Stephen Saban who loved me and wrote about me in Details Magazine and the SoHo News. He wrote a story called The Night of the Iguana about that club." },
+      { episode: "s02e08", who: "Michelangelo Signorile", time: "00:18:09", quote: "Stephen Saban is never going to talk to you for a while, a long while, before you're even going to get in his column." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:10:03", quote: "Stephen Saban wrote in Details about that moment. They were screaming at Fellini, Mr. Fellini, look up, look up! And he goes, look up? I prefer to look down." },
+      { episode: "s05e03", who: "Amanda Lepore", time: "00:29:56", quote: "I remember Stephen Saban talked to me and he said, What do you want to do? And I said, Oh, I want to be a movie star." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:14:29", quote: "That VIP room upstairs... You could always find Saban there, and Musto. Sylvia Miles, all of those people were there mixing with the A-listers." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:48:08", quote: "Maureen Dowd had called Stephen Saban. She wanted to do a piece about the club scene and who was the it girl, and they had all recommended me." },
+    ],
+  },
 };
 
 // Lisa, 5 Nov 2026: never more than 2 quotes from the same person on one In memoriam page.
