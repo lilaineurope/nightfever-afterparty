@@ -478,6 +478,9 @@ a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important
 .lib-col { background: #f6e06a; color: #111; }
 /* Diaries (Lisa, 21 Nov 2026): a burgundy notebook with a cream elastic band. */
 .lib-diary { background: #6b1e2e; color: #f4f1ea; }
+.lib-pol { position: relative; z-index: 1; display: block; width: 64%; margin: 2px auto 8px; padding: 5px 5px 16px; background: #f4f1ea; transform: rotate(-3deg); box-shadow: 3px 4px 0 rgba(0,0,0,.45); }
+.lib-pol img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.lib-mast-diary { font-size: clamp(13px, 1.3vw, 16px); }
 .lib-diary::after { content: ""; position: absolute; top: 0; bottom: 0; right: 18px; width: 7px; background: #f4f1ea; opacity: .85; pointer-events: none; }
 .lib-kind { position: relative; font-family: var(--font-mono-body); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
 .lib-mast { position: relative; font-family: var(--font-flyer); font-size: clamp(18px, 2.1vw, 25px); line-height: .95; text-transform: uppercase; overflow-wrap: anywhere; }

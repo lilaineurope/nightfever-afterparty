@@ -7,6 +7,7 @@ import stacks from "@/assets/library-stacks.webp";
 import stacksPhone from "@/assets/library-stacks-phone.webp";
 import { BOOK_SHELVES, bookClub, findBookLink, type CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
+import { polaroidThumb } from "@/lib/polaroids";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 // The Library (Lisa, 29 Oct 2026 - was the Book Club at /book-club, which now redirects here): every book, magazine,
@@ -135,8 +136,20 @@ function LibraryPage() {
   );
 }
 
+// Lisa, 21 Nov 2026: a diary's cover is the polaroid of the guest or host who kept it (their AFTERPARTY episode).
+const DIARY_KEEPER: Record<string, string> = {
+  "James St. James's diaries (1981–91)": "s06e01",
+  "Nora Burns's diaries (1980)": "s06e05",
+  "Miss Guy's journals (1989)": "s03e10",
+  "Richard Boch's journals": "s02e11",
+  "Ann Magnuson's journals": "s04e10",
+  "Mickey Boardman's journal": "s04e02",
+};
+
 function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
   const cover = coverFor(item.name);
+  const keeper = item.shelf === "diaries" ? DIARY_KEEPER[item.name] : undefined;
+  const polaroid = keeper ? polaroidThumb(keeper, 512) : undefined;
   const foot = (
     <span className="lib-foot">
       {item.by ? (
@@ -163,7 +176,14 @@ function CoverCard({ item, tint }: { item: CollectionItem; tint: number }) {
   return (
     <span className={`lib-cv lib-type ${colour}`}>
       <span className="lib-kind">{KIND[item.shelf]}</span>
-      {cover?.kind === "mast" ? (
+      {polaroid ? (
+        <>
+          <span className="lib-pol">
+            <img src={polaroid} alt={`Polaroid of the diary's keeper - ${item.name}`} loading="lazy" decoding="async" />
+          </span>
+          <span className="lib-mast lib-mast-diary">{item.name}</span>
+        </>
+      ) : cover?.kind === "mast" ? (
         <>
           <img className="lib-logo" src={cover.src} alt={`${item.name} masthead`} loading="lazy" decoding="async" />
           <span className="lib-lines">The AFTERPARTY issue<br />{item.name}</span>
