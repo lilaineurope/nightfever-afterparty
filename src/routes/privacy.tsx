@@ -248,10 +248,14 @@ function PrivacyPage() {
               The Wardrobe remembers which style you picked (Afterparty or
               Clueless) in your browser&rsquo;s own storage, so it opens the
               same way next time. The &ldquo;Find me, borrow me&rdquo; and
-              &ldquo;Find me, buy me&rdquo; boxes on a Library book&rsquo;s page guess
+              &ldquo;Find me, buy me&rdquo; boxes on a Library item&rsquo;s page guess
               your country from your browser&rsquo;s own clock and language
-              (nothing is looked up and nothing is sent), and remember the
-              country you pick there the same way. It never leaves your device, is not a cookie,
+              (nothing is looked up and nothing is sent). If you press
+              &ldquo;Near me&rdquo;, your browser asks whether to share your
+              location; if you say yes, the position is used only inside your
+              browser to work out your country - it is never sent to me or
+              anyone else and never stored. Only the country is remembered,
+              the same way. It never leaves your device, is not a cookie,
               is not used to recognise or track you, and you can clear it any
               time by clearing this site&rsquo;s data in your browser.
             </p>

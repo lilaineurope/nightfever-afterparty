@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { ITEM_QUOTES } from "./item-quotes";
 import { BOOK_CREDITS } from "./book-credits";
+import { PRESS } from "./publication-facts";
 import { entityBySlug } from "./entities";
 import { EPISODE_REFS } from "./episode-refs";
 
@@ -28,5 +29,20 @@ test("book credits point at real A–Z cards and say where they were confirmed",
   for (const [slug, cs] of Object.entries(BOOK_CREDITS)) {
     assert.ok(entityBySlug[slug], `no A–Z card ${slug}`);
     for (const c of cs) assert.ok(c.source.length > 0, `${slug}: ${c.role} has no source`);
+  }
+});
+
+test("magazines and newspapers: real cards, real episodes and HH:MM:SS times (publication-facts)", () => {
+  for (const [slug, p] of Object.entries(PRESS)) {
+    assert.ok(entityBySlug[slug], `no A–Z card ${slug}`);
+    for (const t of p.team ?? []) {
+      if (t.episode) assert.ok((episodeIds as Set<string>).has(t.episode), `${slug}: unknown episode ${t.episode}`);
+      if (t.time) assert.match(t.time, /^\d\d:\d\d:\d\d$/, `${slug}: bad time ${t.time}`);
+    }
+    for (const i of p.issues ?? []) {
+      assert.ok((episodeIds as Set<string>).has(i.episode), `${slug}: unknown episode ${i.episode}`);
+      assert.match(i.time, /^\d\d:\d\d:\d\d$/, `${slug}: bad time ${i.time}`);
+      assert.ok(i.search.length > 3);
+    }
   }
 });
