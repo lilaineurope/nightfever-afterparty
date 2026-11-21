@@ -1,6 +1,6 @@
 // Library (bookClub) and Jukebox: every book, magazine, song, band and sound named in the published episode indexes.
 // Built from entities.ts, so a new Afterparty episode fills both pages automatically.
-import { entities, type Entity, type Ref } from "./entities";
+import { DIARY_NAME, entities, type Entity, type Ref } from "./entities";
 import { episodeById } from "./episodes";
 
 export type Shelf = { key: string; label: string };
@@ -51,7 +51,7 @@ export const BOOK_SHELVES: Shelf[] = [
 
 // Lisa, 21 Nov 2026: diaries the guests kept get their own shelf, not Books.
 // Journals count too - only for books, so The Wall Street Journal stays a newspaper.
-const DIARIES = /\b(diary|diaries|journals?)\b/i;
+const DIARIES = DIARY_NAME;
 // Lisa, 21 Nov 2026: a book that isn't published yet stays off the Library shelves - it lives in
 // "Books to be written" (src/data/still-to-make.ts) until it comes out. Its A–Z card stays.
 export const UNPUBLISHED_BOOKS = new Set([
@@ -95,7 +95,7 @@ export const bookClub: CollectionItem[] = [
   ...entities
     .filter((e) => hasCat(e, ["Book", "Publication"]) && !UNPUBLISHED_BOOKS.has(e.name))
     .map((e) => {
-      const isBook = e.category === "Book" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
+      const isBook = e.category === "Book" || e.category === "Diary" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
       return toItem(e, isBook && DIARIES.test(e.name) ? "diaries" : isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
     }),
   ...WRITTEN_BY,

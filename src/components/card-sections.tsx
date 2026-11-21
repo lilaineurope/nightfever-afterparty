@@ -74,7 +74,8 @@ export function CardSections({ v }: { v: CardView }) {
       {v.night && <ClubNightPlaylist night={v.night} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
-      {refs.length > 0 && (
+      {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it. */}
+      {refs.length > 0 && !v.diary && (
         <section>
           {/* No per-episode count line under the heading (Lisa, 30 Oct 2026): each box below already says its mentions. */}
           <h2 className={h}>In the episodes</h2>
