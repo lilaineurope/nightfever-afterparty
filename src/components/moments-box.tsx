@@ -34,6 +34,7 @@ export function MomentsBox({
   note,
   extra,
   summary,
+  cardLabel,
   onClose,
 }: {
   name: string;
@@ -47,6 +48,8 @@ export function MomentsBox({
   extra?: ReactNode | undefined;
   /** Replaces the mentions line, for a book no guest names (Lisa, 6 Nov 2026). */
   summary?: ReactNode | undefined;
+  /** Words for the link to their page (Hall of Fame, Lisa 21 Nov 2026: "connect to the actual people or guest page"). */
+  cardLabel?: string | undefined;
   onClose: () => void;
 }) {
   const links = useLinks();
@@ -79,8 +82,12 @@ export function MomentsBox({
           ))}
         </ul>
       )}
-      <div className="mt-4 flex flex-wrap gap-4 text-xs">
-        <Link {...card} className="text-gold hover:text-pink">{summary ? "Their A–Z page →" : card.to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
+      <div className="mt-4 flex flex-wrap items-center gap-4 text-xs">
+        {cardLabel ? (
+          <Link {...card} className="rounded-full bg-pink px-4 py-2 text-sm font-semibold text-pink-foreground hover:bg-cream">{cardLabel}</Link>
+        ) : (
+          <Link {...card} className="text-gold hover:text-pink">{summary ? "Their A–Z page →" : card.to === "/explore/$slug" ? "Its A–Z card →" : "Their AFTERPARTY →"}</Link>
+        )}
         {showsReadMore(link) && <a href={link} target="_blank" rel="noreferrer" className="text-gold hover:text-pink">Read more {linkPlace(link)} ↗</a>}
         {extra}
       </div>

@@ -56,11 +56,13 @@ function SmallSticker({ tone, text, label }: { tone: "gold" | "pink"; text: stri
 }
 
 /** Gold stamp: Hall of Fame top 10. Links to the Hall of Fame page. */
-export function HallOfFameBadge({ rank, small }: { rank: number; small?: boolean }) {
+export function HallOfFameBadge({ rank, small, plain }: { rank: number; small?: boolean; /** no link (inside a button) */ plain?: boolean }) {
   const label = `Hall of Fame top 10, number ${rank}`;
+  const badge = small ? <SmallSticker tone="gold" text={`TOP 10 · #${rank}`} label={label} /> : <BigStamp ink={GOLD_INK} title="HALL OF FAME" line="TOP 10" rank={rank} seed={3} label={label} />;
+  if (plain) return <span className="inline-flex">{badge}</span>;
   return (
     <Link to="/hall-of-fame" title={label} className="inline-flex">
-      {small ? <SmallSticker tone="gold" text={`TOP 10 · #${rank}`} label={label} /> : <BigStamp ink={GOLD_INK} title="HALL OF FAME" line="TOP 10" rank={rank} seed={3} label={label} />}
+      {badge}
     </Link>
   );
 }
