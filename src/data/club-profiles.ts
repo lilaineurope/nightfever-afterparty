@@ -1,6 +1,6 @@
 // Club pages (Lisa, 13 Nov 2026: "make cbgb its own page on afterparty, like we do with people"): a club the guests keep
 // coming back to gets a fuller A–Z page - the person-page header (photo + taped polaroid with its credit), dates, a short
-// story, "What the guests say" (quote notes with play-from timestamps, max 2 per person, like In memoriam), its story
+// story, "What the guests say" (quote notes with play-from timestamps, max 9, max 2 per person unless a wall has room left), its story
 // timeline, the people and bands of its stage, the rooms around it, and links to the map and the Timeline.
 // Quotes are cleaned-up lines from the episode transcripts; show Lisa new quotes before they go live.
 // Facts: Wikipedia "CBGB" (checked 13 Nov 2026). Photos: Wikimedia Commons, Category:CBGB (sources sheet in Lisa's folder).
@@ -187,6 +187,12 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e11", who: "Richard Boch", time: "00:07:42", quote: "I had been coming into the city to go to shows at CBGB, to see Television and Talking Heads and Ramones and Patti Smith." },
       { episode: "s05e10", who: "Tish & Snooky", time: "00:35:04", quote: "We were hanging out at Max's first... then CBGB. CBGB became the real haunt of almost everyone." },
       { episode: "s02e11", who: "Richard Boch", time: "00:12:26", quote: "CBGB's really was a place to go to see a band, as Max's was." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:07:27", quote: "Went straight to CBGB's. It was too crowded, so we couldn't get in." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:20:36", quote: "I got to New York and through this boyfriend I had, Peter Smith, I met a whole group of people, and he was quite the night crawler. And we went to Max's Kansas City and CBGB all the time." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:31:18", quote: "Alan Vega from Suicide was like, no, you got to be in a band, everyone's in a band. I didn't play any instruments or anything like that. He took me to a pawn shop, I bought a bass, and I was in a punk band and I was playing at CBGBs and Max's." },
+      { episode: "s05e10", who: "Tish & Snooky", time: "00:36:13", quote: "On Bleecker, right down the block from CBGB, it was this Yippie building, Yippie headquarters. It was totally hippies and Yippies, and there were signs on the wall saying, well, you could crash here for three days..." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:24:10", quote: "Tony Pastor's vaudeville house had just been down the street from CBGB... And he says, well, I want to do this vaudeville show with punk rock acts. And I said, that's great. Let me be part of it. Let me be the director." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:31:34", quote: "William S. Burroughs had been playing out at CBGBs, like he's a band - doing shows at CBGBs, doing readings." },
     ],
     portrait: { photo: cbgbPhoto, phone: cbgbPhotoPhone, polaroid: cbgbPolaroid, focus: "4%", credit: CBGB_CREDIT },
     timelineEvent: "cbgb-opens",
@@ -257,8 +263,11 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e03", who: "Kevin Aviance", time: "00:16:27", quote: "So Sound Factory, you walked in, you paid $20 to get in. There was no guest list." },
       { episode: "s03e03", who: "Kevin Aviance", time: "00:17:16", quote: "Sound Factory had the most incredible music... The songs would last forever and ever, and people would lose their mind." },
       { episode: "s06e02", who: "Christina Visca", time: "00:04:21", quote: "Sound Factory was home, you know, and it was a home away from home for so many of those kids." },
-      { episode: "s01e08", who: 'Luis "Xtravaganza" Camacho', time: "00:54:36", quote: "Our home was, of course, Sound Factory. We were there before Junior even opened it up." },
       { episode: "s06e02", who: "Christina Visca", time: "00:13:03", quote: "Sound Factory was like, you know, going to church. And what's wrong with being social?" },
+      { episode: "s01e08", who: 'Luis "Xtravaganza" Camacho', time: "00:54:36", quote: "Our home was, of course, Sound Factory. We were there before Junior even opened it up." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:06:22", quote: "That's why Sound Factory to me was really - I pat myself on the shoulder about that - it was just everybody. You want a mix of people, and that's what the 80s and early 90s were so good at." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:29:31", quote: "It was the first Halloween at Sound Factory, and Junior and I wanted to do Halloween. Our partners did not... Junior and I were like, how can we not do Halloween? We're the new hot club in town. So basically Junior and I rented the club from our partners." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:39:28", quote: "The years that he [Junior Vasquez] and I were at Sound Factory were really quite just incredible, groundbreaking, really." },
     ],
     portrait: { photo: soundFactoryPhoto, phone: soundFactoryPhotoPhone, polaroid: soundFactoryPolaroid, focus: "40%", credit: SOUND_FACTORY_CREDIT },
     timelineEvent: "sound-factory",
@@ -289,6 +298,9 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s04e10", who: "Ann Magnuson", time: "00:45:11", quote: "A lot of us from Club 57 would do things at the Mudd Club. And then people from the Mudd Club would do things at Club 57. These were like primal caves that we could all go into." },
       { episode: "s03e06", who: "Eric Goode", time: "00:01:45", quote: "I shopped at Canal Rubber and Canal Plastics and spent all day long trying to make outrageous outfits to get into Studio 54 and then the Mudd Club." },
       { episode: "s06e03", who: "Johnny Dynell", time: "00:28:50", quote: "The guys that did Area, they started at the Mudd. Pretty much New York clubs, the downtown clubs, everyone came out of the Mudd." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:53:58", quote: "Mudd Club was the anti-Studio 54 and it was every bit as exciting... It was like a new wave, posey kind of club. Everybody there was an indie filmmaker or a rocker." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:45:24", quote: "Even Steve Mass at the Mudd Club, weirdo as he was... he had some charisma." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:05:49", quote: "This drawing show at the Mudd Club that Keith [Haring] curated - I want to say that was in 1980 or 81. It's funny when you think back, it felt like such a small community." },
     ],
     portrait: { photo: muddPhoto, phone: muddPhotoPhone, polaroid: muddPolaroid, focus: "60%", credit: MUDD_CREDIT },
     timelineEvent: "mudd-club",
@@ -316,6 +328,9 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e06", who: "Eric Goode", time: "00:22:05", quote: "I felt like Steve Rubell was my head of PR, because he brought everyone down to Area: Farrah Fawcett and Andy Warhol and Ryan O'Neal and Liza Minnelli." },
       { episode: "s04e07", who: "Trey Speegle", time: "00:37:42", quote: "Bunny and Zette performing at Area as a suburban housewife with an ironing board, or with a ball gag in S&M gear." },
       { episode: "s01e05", who: "Ernie Glam", time: "00:02:52", quote: "Some of the first clubs that I went to when I came to New York were Crisco Disco, Pyramid Club, and Area." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:05:37", quote: "I remember seeing him [Michael Alig] there and then later on seeing him as a busboy at Area, and thinking, oh, well, you're not so cool." },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:29:14", quote: "It got fancier when Area opened, and then later MK and Nell's. It got more sort of nightclubby and less about dancing." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:58:54", quote: "Area opened about six months after Mudd closed... Eric was always kind to me when I went there." },
     ],
     portrait: { photo: areaPhoto, phone: areaPhotoPhone, polaroid: areaPolaroid, focus: "50%", credit: AREA_CREDIT },
     timelineEvent: "area-opens",
@@ -346,6 +361,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s05e01", who: "Nell Campbell", time: "00:30:18", quote: "That of course was a giant discotheque in an old theater. Tons of people could fit into Studio 54. Whereas we were much smaller." },
       { episode: "s04e06", who: "Lauren Ezersky", time: "00:12:48", quote: "I went to Studio 54. I was there opening night... Then the doors open and we all just ran in, and the music was great. It was just like, this place is amazing." },
       { episode: "s06e05", who: "Nora Burns", time: "00:17:11", quote: "This limousine pulled up and the driver was like, do you guys want to go to Studio 54? ... He opened our door, held up his fingers, two, and everyone sort of parted. And we walked in." },
+      { episode: "s01e10", who: "Joey Arias", time: "00:58:15", quote: "54 is blocked off... We were in the front, with Fiorucci, all the Italians. People squashing to get in. And when he opened the velvet rope, we were kind of the first ones walking in, and we just could not believe it. It was like the Palace of Versailles." },
     ],
     portrait: { photo: studio54Photo, phone: studio54PhotoPhone, polaroid: studio54Polaroid, focus: "45%", credit: STUDIO_54_CREDIT },
     timelineEvent: "studio-54",
@@ -378,6 +394,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s04e07", who: "Trey Speegle", time: "00:26:23", quote: "This guy had his bag, and out of the bag, a gun fell on the ground, like at my feet. And I looked up at him and he said, You didn't see that. And I said, I didn't see that." },
       { episode: "s05e07a", who: "Christopher Comp", time: "00:02:50", quote: "I have always been a behind-the-scenes kind of guy. I think that's why I fell into the role at Limelight with Michael Alig that I did - a lot of the planning and a lot of the office grunt work. But I got to be really creative in doing that." },
       { episode: "s01e09", who: "Moby", time: "00:07:02", quote: "I had just DJ'd for the first time at Limelight. And Michael took me to Peter Gatien's office... Michael said, Moby, this is Peter. Peter, this is Moby. He's a new DJ. And Peter just looked at me and went back to what he was doing." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:00:01", quote: "Once when I showed up at Limelight, Tom, the manager, on the walkie-talkie: Michael Musto's here, have his drink ready when he reaches the top of the stairs at the library." },
     ],
     portrait: { photo: limelightPhoto, phone: limelightPhotoPhone, polaroid: limelightPolaroid, focus: "35%", credit: LIMELIGHT_CREDIT },
     timelineEvent: "limelight",
@@ -410,6 +427,8 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e02", who: "Christina Visca", time: "00:50:32", quote: "Oh, I went to Danceteria all the time. I lived in Chelsea almost my whole life. I loved it... I think we all saw Madonna perform there." },
       { episode: "s06e07", who: "Sally Randall", time: "00:26:24", quote: "My absolutely favorite memory of you was when I did Jesus Christ Superstar, the lip sync drag queen opera." },
       { episode: "s01e09", who: "Moby", time: "00:49:11", quote: "In 1983, I went to Danceteria to see Mission of Burma and Bad Brains... then I walked upstairs and there was the hip-hop DJ, and then the gay DJ. It was the first time I'd been exposed to celebratory dance culture." },
+      { episode: "s01e01", who: "Dianne Brill", time: "00:17:29", quote: "I remember once there was a roof party, all white tablecloths and fancy dinner, on the roof of Danceteria, which was quite rough and you could actually fall over... And the elevator was going up to heaven and down to hell. They never worked." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:05:24", quote: "I recognized him [Michael Alig] from Danceteria, because I remember he used to do those... They weren't called hot body contests, they were called like bad boy nights." },
     ],
     portrait: { photo: dancePhoto, phone: dancePhotoPhone, polaroid: dancePolaroid, focus: "50%", credit: DANCETERIA_CREDIT },
     timelineEvent: "danceteria",
@@ -438,6 +457,8 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s05e07b", who: "Really Denise", time: "00:46:59", quote: "Do you remember the softball parties we used to have? Like, Tunnel would have a team. World would have a team." },
       { episode: "s06e02", who: "Christina Visca", time: "00:15:43", quote: "I also worked for Peter later on. I managed USA and the Tunnel in the big 90s." },
       { episode: "s05e07b", who: "Really Denise", time: "00:40:07", quote: "It was so hard to get into clubs. So I got a job at Tunnel as a cocktail waitress. That's how I figured I'm going to get in... I was cocktail waitressing on the platform where the upstairs DJ was." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:34:08", quote: "Around 1986, '87, Johnny was playing on the main dance floor of the Tunnel. The voguers were the first kind of children that came down to dance in the big club. Occasionally they would have a trophy with them... and they would be voguing outside Johnny's booth." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:39:18", quote: "Did you ever see that there was another tunnel below the Tunnel? ... Another tunnel exactly the same size as the tunnel we know, underneath the Tunnel." },
     ],
     portrait: { photo: tunnelPhoto, phone: tunnelPhotoPhone, polaroid: tunnelPolaroid, focus: "45%", credit: TUNNEL_CREDIT },
     timelineEvent: "tunnel-reopens",
@@ -466,6 +487,9 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e06", who: "Waltpaper", time: "00:18:32", quote: "We were like, oh my God, Diahann Carroll's here. And it took me a while... after I met Linda Simpson and saw Rube perform at Pyramid. I was like, oh, it's not Diahann Carroll." },
       { episode: "s04e09", who: "Susan Seidelman", time: "00:02:24", quote: "There was a great wall on St. Mark's Place that was fly-posted with posters for bands, for the Pyramid Club, for anyone who wanted to put a Xerox of themselves up." },
       { episode: "s03e10", who: "Miss Guy", time: "00:32:45", quote: "There was a journal entry from March of 89, at like 5:45 in the morning. And I wrote, Me and Bunny went to Pyramid, the Building and the Roxy tonight." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:23:16", quote: "I met Kestutis Nakas, who's one of the authors of the new Pyramid book. He was a young theater student at NYU, and I ended up being in his production of Titus Andronicus at the Pyramid a few years later." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:07:51", quote: "We were going up to the Pyramid Club a lot. So we kind of opened our own Pyramid Club, called the Celebrity Club, in Atlanta." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:42:43", quote: "I was the DJ at the Pyramid. I was the DJ at the Boy Bar. And I watched drag." },
     ],
     portrait: { photo: pyramidPhoto, phone: pyramidPhotoPhone, polaroid: pyramidPolaroid, focus: "45%", credit: PYRAMID_CREDIT },
     timelineEvent: "pyramid",
@@ -495,6 +519,8 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e02", who: "Christina Visca", time: "00:44:36", quote: "I met most of the club kids when I was doing the door at Palladium. I would say 85, 86 is when you guys started coming around." },
       { episode: "s06e05", who: "Nora Burns", time: "00:13:46", quote: "He did this giant thing called Drag Aid, a drag queen AIDS benefit at Palladium... You had 50 drag queens who were supposed to go on between two and four." },
       { episode: "s06e02", who: "Christina Visca", time: "00:37:58", quote: "Sometimes I would do the door for a private party at the Basquiat Room and in Palladium as well. So, you know, those were incredible years." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:26:38", quote: "I remember seeing James at clubs like Area and Palladium - this was like 1985 - and he was always jumping around, hopping, and he would wear his hair in these pigtails like Pippi Longstocking." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:14:20", quote: "We would go together to the Palladium with Jennifer [Rubell], and of course Jennifer had carte blanche being Steve's niece. We would just scooch up the 13th Street entrance and go right into the Mike Todd Room." },
     ],
     portrait: { photo: palladiumPhoto, phone: palladiumPhotoPhone, polaroid: palladiumPolaroid, focus: "40%", credit: PALLADIUM_CREDIT },
     timelineEvent: "palladium",
@@ -521,6 +547,9 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s04e04", who: "Zaldy", time: "00:23:46", quote: "I don't see myself as a performer... Being forced on that stage was really nerve-wracking. I just remember how nervous I was, but I did do it. And I ended up winning." },
       { episode: "s06e05", who: "Nora Burns", time: "00:46:14", quote: "Matthew Kasten from Boy Bar would always call me and tell me the latest drag queen off the bus." },
       { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", quote: "I used to go to this club called Boy Bar on St. Mark's Place in the East Village, and I would go there every Thursday to watch the drag shows." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:26:06", quote: "Every Thursday, I'd go to Boy Bar and watch the queens perform... So one night, Matthew Kasten came up to me at Boy Bar after the show and said, I like the way you look, you're always dressed up. Would you ever want to do a show here?" },
+      { episode: "s04e04", who: "Zaldy", time: "00:24:11", quote: "There was this amazing person, International Crisis, who I loved. And Crisis was like, oh, as the new Miss Boy Bar, your duties are on." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:42:43", quote: "I was the DJ at the Pyramid. I was the DJ at the Boy Bar. And I watched drag." },
     ],
     portrait: { photo: boyBarPhoto, phone: boyBarPhotoPhone, polaroid: boyBarPolaroid, focus: "50%", credit: BOY_BAR_CREDIT },
   },
@@ -551,6 +580,9 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e03", who: "Johnny Dynell", time: "00:29:54", quote: "57 was kooky and kinky and just like, you know, zippity doo-dah. It was really fun. Mudd was like heroin, it was black." },
       { episode: "s01e02", who: "Michael Musto", time: "00:55:54", quote: "This was when you had to be a real insider, like an outlaw party, and that's what Club 57 was all about. And then MoMA had an exhibit a couple years ago of Club 57, and like, what?" },
       { episode: "s02e11", who: "Richard Boch", time: "00:55:23", quote: "Not to take anything away from Club 57, it was like the Mudd Club in the sense that it was sort of this petri dish, this incubator for a lot of talent." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:55:24", quote: "I was in A Sound of Muzak by Marc Shaiman and Scott Wittman. Holly Woodlawn was Maria von Trapp at Club 57... I played a triple role. I was Sister Morphine, one of the nuns. I wanted to be Sister Sledge, but that was taken." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:18:10", quote: "We took a page out of the early, very funky theme nights that the Mudd Club did and Club 57 did. And then we just took it to a much higher level." },
+      { episode: "s01e10", who: "Joey Arias", time: "00:57:19", quote: "We never had phones at home. We just all hung out in the street. Club 57, the Mudd Club, Studio 54, or whatever." },
     ],
     portrait: { photo: club57Photo, phone: club57PhotoPhone, polaroid: club57Polaroid, focus: "55%", credit: CLUB_57_CREDIT },
   },
@@ -604,6 +636,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s05e04", who: "Nick Egan", time: "00:28:51", quote: "We had Heaven in England, but the Paradise Garage had some great music coming out of it, like Gwen Guthrie. So there was this like cultural perfect storm about to happen." },
       { episode: "s02e07", who: "Jenny Talia", time: "00:20:01", quote: "This gorgeous, glorious French woman - she danced at Paradise Garage, she was a Paradise Garage girl, and she was also a modeling agent. She found me behind the counter and said I should model." },
       { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", quote: "I would meet the kids at the Garage years ago, the ball kids, and also on the pier." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:12:33", quote: "The clubs were down here. The Paradise Garage was here, the Loft was here... The DJs were all playing here. It really was the center of the universe for a few years." },
     ],
     portrait: { photo: pgPhoto, phone: pgPhotoPhone, polaroid: pgPolaroid, focus: "50%", credit: PARADISE_GARAGE_CREDIT },
   },
@@ -629,6 +662,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e04", who: "Peter Gatien", time: "00:55:56", quote: "Just totally sweaty people having the best times of their life." },
       { episode: "s01e06", who: "Waltpaper", time: "00:48:52", quote: "I remember doing an interview for the pre-opening of Club USA. I think it was 60 Minutes. And we were all gathered in the stairwell." },
       { episode: "s04e02", who: "Mickey Boardman", time: "00:24:58", quote: "Jeffrey Fulvimari, remember that illustrator, who used to do these party invites for Club USA that I was obsessed with and would always save them all." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:00:07", quote: "When I opened up USA, a captain from the local precinct came in and said, you know, Gatien, I'm happy you're here and I'll tell you why. Any night I'm in a pissed-off mood, I know I can go to one of your places and torture you to death." },
     ],
     portrait: { photo: clubUsaPhoto, phone: clubUsaPhotoPhone, polaroid: clubUsaPolaroid, focus: "50%", credit: CLUB_USA_CREDIT },
     timelineEvent: "club-usa",
@@ -656,6 +690,8 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e03", who: "Susanne Bartsch", time: "00:12:03", quote: "The worst part of it is the Roxy is huge, as you know. I took a third of the Roxy, put up this curtain." },
       { episode: "s06e05", who: "Nora Burns", time: "00:08:35", quote: "Then we went to Roxy. Roller disco is fun! Poor Luwala, though, she kept falling and her space outfit fell off." },
       { episode: "s01e02", who: "Michael Musto", time: "00:25:59", quote: "He [Peter Allen] would be at the Roxy dancing around with his shirt off." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:31:20", quote: "By the time I got to Disco 2000, I didn't really know how to take being the big Roxy DJ to the next level of business." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:44:08", quote: "You had these club kids that were going to Roxy on Saturday, which kind of owned the space, and then all these big muscle guys came in and took over. So I think that led to the birth of Disco 2000." },
     ],
     portrait: { photo: roxyPhoto, phone: roxyPhotoPhone, polaroid: roxyPolaroid, focus: "50%", credit: ROXY_CREDIT },
   },
@@ -857,6 +893,8 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s01e07", who: "Rudolf Piper", time: "00:42:04", quote: "While I was building Mars, hip-hop came. This was a new trend. And I felt that this new trend was gonna go far. I didn't like the music... but I thought, well, it's a new trend." },
       { episode: "s01e07", who: "Rudolf Piper", time: "00:07:58", quote: "Suddenly I see a guy coming from the rooftop of the building next door, and he dropped a packet onto the rooftop of Mars... And who was picking up that packet? My manager." },
       { episode: "s02e07", who: "Jenny Talia", time: "00:04:47", quote: "I think I snuck out and went to Mars. So that was my first club experience. I think I had a cocktail and tried to smoke a cigarette." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:03:10", quote: "A lot of them were just beginning to come downtown. They would go to the World and they'd go to Mars and Tunnel." },
+      { episode: "s01e09", who: "Moby", time: "00:18:56", quote: "I listened to my answering machine and there was a message from Yuki asking me to call him about working at Mars. It still is the most exciting thing that's ever happened to me professionally." },
     ],
     portrait: { photo: marsPhoto, phone: marsPhotoPhone, polaroid: marsPolaroid, focus: "50%", credit: MARS_CREDIT },
   },
@@ -929,6 +967,8 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e10", who: "Brian Belovitch", time: "00:20:00", quote: "I lived at the Gilded Grape. I mean, in fact, they had a buffet - they knew the girls were gonna come and work. So they had a free buffet. You could go in and have a meal if you bought a drink." },
       { episode: "s02e10", who: "Brian Belovitch", time: "00:22:28", quote: "There was always a younger, newer, prettier girl coming up... And then there was a DJ, there were drag shows, trans women doing lip-syncs. The script just writes itself." },
       { episode: "s02e11", who: "Richard Boch", time: "00:57:31", quote: "The Peppermint Lounge at that point was basically a money laundering place for the Midtown mob... That's what it was when it was the G.G. Barnum's Room prior to that. The Gilded Grape, all of those places." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:14:10", quote: "I ended up hooking up with another trans woman who introduced me to the whole New York transgender scene, which was at the G.G., the Gilded Grape." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:19:04", quote: "The original Gilded Grape was on 8th Avenue and 45th Street, underneath the Camelot apartment buildings... Eventually, the Gilded Grape moved up the street to where the Peppermint Lounge was." },
     ],
     portrait: { photo: grapePhoto, phone: grapePhotoPhone, polaroid: grapePolaroid, focus: "50%", credit: GILDED_GRAPE_CREDIT },
   },
@@ -1027,8 +1067,14 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
   },
 };
 
-// Same guard as In memoriam (Lisa, 5 Nov 2026): never more than 2 quotes from the same person on one page.
+// Quote walls (Lisa, 21 Nov 2026): at most 9 boxes, as many different guests as possible, max 2 per guest.
+// Only when a wall still has room after every guest's quotes may the same guests fill it with more.
 for (const [slug, c] of Object.entries(CLUB_PROFILES)) {
-  const n: Record<string, number> = {};
-  for (const s of c.said) if ((n[s.who] = (n[s.who] ?? 0) + 1) > 2) throw new Error(`club-profiles: more than 2 quotes from ${s.who} on ${slug}`);
+  if (c.said.length > 9) throw new Error(`club-profiles: more than 9 quotes on ${slug}`);
+  const seen = new Set<string>();
+  for (const s of c.said) {
+    const k = `${s.episode} ${s.time}`;
+    if (seen.has(k)) throw new Error(`club-profiles: the same quote twice on ${slug} (${k})`);
+    seen.add(k);
+  }
 }
