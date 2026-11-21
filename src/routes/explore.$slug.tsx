@@ -11,6 +11,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
 import { PersonProfileSections } from "@/components/person-profile";
+import { DiarySections } from "@/components/diary";
 import { MentorTree } from "@/components/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { guestBySlug } from "@/data/guests";
@@ -43,7 +44,7 @@ export const Route = createFileRoute("/explore/$slug")({
     // Same rule as scripts/og-cards-data.ts: a share picture wherever the page has its header photo.
     const image = (mem && d.portrait) || club?.portrait ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
     const head = pageHead({ path, title, description, image, type: "article", noindex: d.thin });
-    const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
+    const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Diary: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
     if (/wikipedia\.org|imdb\.com/.test(d.link)) thing["sameAs"] = d.link;
     if (club) {
@@ -98,7 +99,7 @@ function EntityNotFound() {
 }
 
 const KIND: Record<string, string> = {
-  Person: "az-ink", Organisation: "az-ink", Podcast: "az-ink", Club: "az-pink", Event: "az-pink", Music: "az-yellow", Film: "az-yellow", TV: "az-yellow",
+  Person: "az-ink", Organisation: "az-ink", Podcast: "az-ink", Club: "az-pink", Event: "az-pink", Music: "az-yellow", Film: "az-yellow", TV: "az-yellow", Diary: "az-diary",
 };
 
 function EntityPage() {
@@ -111,6 +112,8 @@ function EntityPage() {
   const mem = e.mem ?? undefined;
   // Person pages (Lisa, 20 Nov 2026): story, guest quotes and timeline for living people the guests talk about.
   const profile = e.profile ?? undefined;
+  // Diary pages (Lisa, 21 Nov 2026): every moment the diary comes up on the show, the readings highlighted.
+  const diary = e.diary ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -181,10 +184,11 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${mem || club || profile ? "max-w-5xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${mem || club || profile ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
+        {diary && <DiarySections d={diary} name={e.name} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors only. */}
         {e.tree && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} />}
         <CardSections v={e} />

@@ -2,7 +2,7 @@
 // every name -> card answer its links need, and sends just that (CardView, src/lib/card-view.ts). Only the server and
 // the server function in card-view.functions.ts load this file.
 import { notFound, redirect } from "@tanstack/react-router";
-import { afterpartyOf, entityBySlug, SAME_AS, episodeShort, isThinCard, relatedTo, type Entity } from "@/data/entities";
+import { afterpartyOf, entityBySlug, SAME_AS, slugify, episodeShort, isThinCard, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
 import { jukebox } from "@/data/collections";
 import { clubNightFor } from "@/data/club-nights";
@@ -10,6 +10,8 @@ import { MEMORIAM } from "@/data/memoriam";
 import { CLUB_PROFILES } from "@/data/club-profiles";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { PERSON_PROFILES } from "@/data/person-profiles";
+import { DIARY_PAGES } from "@/data/diaries";
+import { polaroidThumb } from "@/lib/polaroids";
 import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
@@ -26,6 +28,11 @@ function cardView(e: Entity): CardView {
   const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? null);
   const profile = g || club || mem ? null : (PERSON_PROFILES[e.slug] ?? null);
   const L = linkRecorder();
+  const diaryPage = g ? undefined : DIARY_PAGES[e.slug];
+  const diary = diaryPage
+    ? { ...diaryPage, polaroid: diaryPage.keeperEpisode ? polaroidThumb(diaryPage.keeperEpisode, 512) : PERSON_PORTRAITS[slugify(diaryPage.keeper)]?.polaroid }
+    : null;
+  if (diary) L.name(diary.keeper);
 
   mem?.liftedUp.forEach(L.name);
   mem?.rooms.forEach(L.name);
@@ -91,6 +98,7 @@ function cardView(e: Entity): CardView {
     club,
     pic,
     profile,
+    diary,
     tree,
     connector: connectorRank(e.slug),
     links: L.data,
@@ -125,7 +133,7 @@ export function cardPageData(slug: string) {
   const club = CLUB_PROFILES[e.slug];
   const mem = MEMORIAM[e.slug];
   const profile = club || mem ? undefined : PERSON_PROFILES[e.slug];
-  const story = club?.story ?? profile?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
+  const story = club?.story ?? profile?.story ?? DIARY_PAGES[e.slug]?.story ?? lines.find((t) => cleanStory(t)) ?? lines[0] ?? "";
   return {
     slug: e.slug,
     name: e.name,

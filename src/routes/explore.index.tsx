@@ -28,7 +28,7 @@ const sizeOf = (e: Entity, m: number) => (NO_BIG.has(e.name) ? 1 : m >= 60 ? 4 :
 const KIND: Record<string, string> = {
   Person: "az-ink", Organisation: "az-ink", Podcast: "az-ink",
   Club: "az-pink", Event: "az-pink",
-  Music: "az-yellow", Film: "az-yellow", TV: "az-yellow",
+  Music: "az-yellow", Film: "az-yellow", TV: "az-yellow", Diary: "az-diary",
 };
 const kindOf = (e: Entity) => KIND[e.category] ?? "az-paper";
 

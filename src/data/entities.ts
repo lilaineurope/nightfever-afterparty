@@ -91,6 +91,11 @@ for (const r of refs) {
   const e = add(r.name, r.category, { link: r.link || undefined });
   e?.refs.push(r);
 }
+// Lisa, 21 Nov 2026: diaries and journals the guests kept are Diaries, not Books - their card says Diary, the A–Z has a
+// Diary chip. Only books: The Wall Street Journal stays a Publication, The Basketball Diaries stays a Film.
+export const DIARY_NAME = /\b(diary|diaries|journals?)\b/i;
+export const isDiary = (category: string, name: string) => category === "Book" && DIARY_NAME.test(name);
+for (const e of byKey.values()) if (isDiary(e.category, e.name)) e.category = "Diary";
 // Scene and guest-story labels that are not a place or a thing of their own - they get no card (the text still shows).
 const NOT_A_CARD = new Set(
   ["Worldwide", "Cinemas worldwide", "US daytime television", "Music video era", "NYC dance floors",
@@ -183,7 +188,7 @@ export function relatedTo(e: Entity): Entity[] {
 }
 
 export const CATEGORIES = [
-  "Person", "Music", "Organisation", "Mood", "Club", "Location", "Book", "Event",
+  "Person", "Music", "Organisation", "Mood", "Club", "Location", "Book", "Diary", "Event",
   "Publication", "Podcast", "TV", "Film", "Fashion",
 ] as const;
 
@@ -199,7 +204,8 @@ export const categoryMentions: Record<string, number> = (() => {
   for (const c of CATEGORIES) out[c] = 0;
   for (const r of refs) {
     out["All"] = (out["All"] ?? 0) + r.mentions;
-    out[r.category] = (out[r.category] ?? 0) + r.mentions;
+    const c = isDiary(r.category, r.name) ? "Diary" : r.category;
+    out[c] = (out[c] ?? 0) + r.mentions;
     if (r.fashion) out["Fashion"] = (out["Fashion"] ?? 0) + r.mentions;
   }
   return out;
