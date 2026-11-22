@@ -1,7 +1,7 @@
 [
   {
     "rank": 1,
-    "mentions": 93,
+    "mentions": 94,
     "category": "Club",
     "name": "Mudd Club",
     "heard": "Mud Club / Mud / mud cup",
@@ -1107,17 +1107,6 @@
   {
     "rank": 97,
     "mentions": 1,
-    "category": "Location",
-    "name": "77 White Street",
-    "heard": "77 White Street",
-    "time": "00:00:53",
-    "context": "The Mudd Club's address",
-    "link": "https://www.google.com/search?q=77+White+Street+Mudd+Club",
-    "status": "Confirmed"
-  },
-  {
-    "rank": 98,
-    "mentions": 1,
     "category": "Music",
     "name": "No Wave",
     "heard": "no wave",
@@ -1127,7 +1116,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 99,
+    "rank": 98,
     "mentions": 1,
     "category": "Book",
     "name": "The Andy Warhol Diaries",
@@ -1138,7 +1127,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 100,
+    "rank": 99,
     "mentions": 1,
     "category": "Person",
     "name": "Madonna",
@@ -1149,7 +1138,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 101,
+    "rank": 100,
     "mentions": 1,
     "category": "Music",
     "name": "Planet Fred from Jupiter",
@@ -1160,7 +1149,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 102,
+    "rank": 101,
     "mentions": 1,
     "category": "Location",
     "name": "Book Soup",
@@ -1171,7 +1160,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 103,
+    "rank": 102,
     "mentions": 1,
     "category": "Club",
     "name": "Village Gate",
@@ -1182,7 +1171,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 104,
+    "rank": 103,
     "mentions": 1,
     "category": "Location",
     "name": "Washington Square Park",
@@ -1193,7 +1182,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 105,
+    "rank": 104,
     "mentions": 1,
     "category": "Location",
     "name": "Christopher Street",
@@ -1204,7 +1193,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 106,
+    "rank": 105,
     "mentions": 1,
     "category": "Music",
     "name": "Television",
@@ -1215,7 +1204,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 107,
+    "rank": 106,
     "mentions": 1,
     "category": "Person",
     "name": "Patti Smith",
@@ -1226,7 +1215,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 108,
+    "rank": 107,
     "mentions": 1,
     "category": "Club",
     "name": "Reno Sweeney",
@@ -1237,7 +1226,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 109,
+    "rank": 108,
     "mentions": 1,
     "category": "Location",
     "name": "SoHo",
@@ -1248,7 +1237,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 110,
+    "rank": 109,
     "mentions": 1,
     "category": "Publication",
     "name": "The New York Times",
@@ -1259,7 +1248,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 111,
+    "rank": 110,
     "mentions": 1,
     "category": "Person",
     "name": "Joseph Papp",
@@ -1270,7 +1259,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 112,
+    "rank": 111,
     "mentions": 1,
     "category": "Person",
     "name": "Estelle Parsons",
@@ -1281,7 +1270,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 113,
+    "rank": 112,
     "mentions": 1,
     "category": "Club",
     "name": "The Mineshaft",
@@ -1292,7 +1281,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 114,
+    "rank": 113,
     "mentions": 1,
     "category": "Club",
     "name": "The Anvil",
@@ -1303,7 +1292,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 115,
+    "rank": 114,
     "mentions": 1,
     "category": "Person",
     "name": "Charles Strouse",
@@ -1314,7 +1303,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 116,
+    "rank": 115,
     "mentions": 1,
     "category": "Music",
     "name": "The B-52's",
@@ -1325,7 +1314,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 117,
+    "rank": 116,
     "mentions": 1,
     "category": "Location",
     "name": "Chinatown",
@@ -1336,7 +1325,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 118,
+    "rank": 117,
     "mentions": 1,
     "category": "Mood",
     "name": "Plexiglass bar over topographic maps",
@@ -1354,7 +1343,7 @@
     ]
   },
   {
-    "rank": 119,
+    "rank": 118,
     "mentions": 1,
     "category": "Person",
     "name": "William Coupon",
@@ -1365,7 +1354,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 120,
+    "rank": 119,
     "mentions": 1,
     "category": "Person",
     "name": "David Byrne",
@@ -1376,7 +1365,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 121,
+    "rank": 120,
     "mentions": 1,
     "category": "Person",
     "name": "Marcia Resnick",
@@ -1387,7 +1376,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 122,
+    "rank": 121,
     "mentions": 1,
     "category": "Person",
     "name": "Colette",
@@ -1398,7 +1387,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 123,
+    "rank": 122,
     "mentions": 1,
     "category": "Person",
     "name": "Hal Ludacer",
@@ -1409,7 +1398,7 @@
     "status": "Not found online"
   },
   {
-    "rank": 124,
+    "rank": 123,
     "mentions": 1,
     "category": "Person",
     "name": "Iggy Pop",
@@ -1420,7 +1409,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 125,
+    "rank": 124,
     "mentions": 1,
     "category": "Person",
     "name": "Mick Jagger",
@@ -1431,7 +1420,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 126,
+    "rank": 125,
     "mentions": 1,
     "category": "Person",
     "name": "Phoebe Fitch",
@@ -1442,7 +1431,7 @@
     "status": "Not found online"
   },
   {
-    "rank": 127,
+    "rank": 126,
     "mentions": 1,
     "category": "Person",
     "name": "James Chance",
@@ -1453,7 +1442,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 128,
+    "rank": 127,
     "mentions": 1,
     "category": "Event",
     "name": "AIDS crisis",
@@ -1464,7 +1453,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 129,
+    "rank": 128,
     "mentions": 1,
     "category": "Location",
     "name": "Cortlandt Alley",
@@ -1475,7 +1464,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 130,
+    "rank": 129,
     "mentions": 1,
     "category": "Person",
     "name": "Diego Cortez",
@@ -1486,7 +1475,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 131,
+    "rank": 130,
     "mentions": 1,
     "category": "Person",
     "name": "Julian Schnabel",
@@ -1497,7 +1486,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 132,
+    "rank": 131,
     "mentions": 1,
     "category": "Event",
     "name": "Talking Heads at the Mudd Club",
@@ -1508,7 +1497,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 133,
+    "rank": 132,
     "mentions": 1,
     "category": "TV",
     "name": "Saturday Night Live",
@@ -1519,7 +1508,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 134,
+    "rank": 133,
     "mentions": 1,
     "category": "Event",
     "name": "Marianne Faithfull at the Mudd Club",
@@ -1530,7 +1519,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 135,
+    "rank": 134,
     "mentions": 1,
     "category": "Person",
     "name": "Nico",
@@ -1541,7 +1530,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 136,
+    "rank": 135,
     "mentions": 1,
     "category": "Music",
     "name": "The Go-Go's",
@@ -1552,7 +1541,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 137,
+    "rank": 136,
     "mentions": 1,
     "category": "Location",
     "name": "Beverly Hills",
@@ -1563,7 +1552,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 138,
+    "rank": 137,
     "mentions": 1,
     "category": "Person",
     "name": "Kathy Valentine",
@@ -1574,7 +1563,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 139,
+    "rank": 138,
     "mentions": 1,
     "category": "Person",
     "name": "Smutty Smith",
@@ -1585,7 +1574,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 140,
+    "rank": 139,
     "mentions": 1,
     "category": "Person",
     "name": "John Belushi",
@@ -1596,7 +1585,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 141,
+    "rank": 140,
     "mentions": 1,
     "category": "Person",
     "name": "Dan Aykroyd",
@@ -1607,7 +1596,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 142,
+    "rank": 141,
     "mentions": 1,
     "category": "Club",
     "name": "Blues Brothers Bar",
@@ -1618,7 +1607,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 143,
+    "rank": 142,
     "mentions": 1,
     "category": "Location",
     "name": "Canal Street",
@@ -1629,7 +1618,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 144,
+    "rank": 143,
     "mentions": 1,
     "category": "Location",
     "name": "Hudson Street",
@@ -1640,7 +1629,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 145,
+    "rank": 144,
     "mentions": 1,
     "category": "Club",
     "name": "The Masque",
@@ -1651,7 +1640,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 146,
+    "rank": 145,
     "mentions": 1,
     "category": "Person",
     "name": "Exene Cervenka",
@@ -1662,7 +1651,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 147,
+    "rank": 146,
     "mentions": 1,
     "category": "Person",
     "name": "DJ Bonebrake",
@@ -1673,7 +1662,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 148,
+    "rank": 147,
     "mentions": 1,
     "category": "Music",
     "name": "X",
@@ -1684,7 +1673,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 149,
+    "rank": 148,
     "mentions": 1,
     "category": "Event",
     "name": "X at the Mudd Club (June 1980)",
@@ -1695,7 +1684,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 150,
+    "rank": 149,
     "mentions": 1,
     "category": "Music",
     "name": "The Psychedelic Furs",
@@ -1706,7 +1695,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 151,
+    "rank": 150,
     "mentions": 1,
     "category": "Music",
     "name": "Einstein on the Beach",
@@ -1717,7 +1706,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 152,
+    "rank": 151,
     "mentions": 1,
     "category": "Person",
     "name": "Don Christensen",
@@ -1728,7 +1717,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 153,
+    "rank": 152,
     "mentions": 1,
     "category": "Person",
     "name": "Peter Orlovsky",
@@ -1739,7 +1728,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 154,
+    "rank": 153,
     "mentions": 1,
     "category": "Person",
     "name": "Gregory Corso",
@@ -1750,7 +1739,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 155,
+    "rank": 154,
     "mentions": 1,
     "category": "Event",
     "name": "William Burroughs reading at the Mudd Club",
@@ -1761,7 +1750,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 156,
+    "rank": 155,
     "mentions": 1,
     "category": "Location",
     "name": "Detroit",
@@ -1772,7 +1761,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 157,
+    "rank": 156,
     "mentions": 1,
     "category": "Music",
     "name": "Roxy Music",
@@ -1783,7 +1772,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 158,
+    "rank": 157,
     "mentions": 1,
     "category": "Music",
     "name": "The Rolling Stones",
@@ -1794,7 +1783,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 159,
+    "rank": 158,
     "mentions": 1,
     "category": "Music",
     "name": "The Pretenders",
@@ -1805,7 +1794,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 160,
+    "rank": 159,
     "mentions": 1,
     "category": "Music",
     "name": "Motown",
@@ -1816,7 +1805,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 161,
+    "rank": 160,
     "mentions": 1,
     "category": "Person",
     "name": "Martin Luther King Jr.",
@@ -1827,7 +1816,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 162,
+    "rank": 161,
     "mentions": 1,
     "category": "Person",
     "name": "Johann Sebastian Bach",
@@ -1838,7 +1827,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 163,
+    "rank": 162,
     "mentions": 1,
     "category": "Person",
     "name": "Michael Holman",
@@ -1849,7 +1838,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 164,
+    "rank": 163,
     "mentions": 1,
     "category": "Location",
     "name": "Wooster Street",
@@ -1860,7 +1849,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 165,
+    "rank": 164,
     "mentions": 1,
     "category": "Person",
     "name": "Jerry Brandt",
@@ -1871,7 +1860,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 166,
+    "rank": 165,
     "mentions": 1,
     "category": "Person",
     "name": "Gary (Richard's roommate)",
@@ -1882,7 +1871,7 @@
     "status": "Private person"
   },
   {
-    "rank": 167,
+    "rank": 166,
     "mentions": 1,
     "category": "Person",
     "name": "Victor Hugo",
@@ -1893,7 +1882,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 168,
+    "rank": 167,
     "mentions": 1,
     "category": "Person",
     "name": "Halston",
@@ -1904,7 +1893,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 169,
+    "rank": 168,
     "mentions": 1,
     "category": "Person",
     "name": "Roy Cohn",
@@ -1915,7 +1904,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 170,
+    "rank": 169,
     "mentions": 1,
     "category": "Event",
     "name": "Victor Hugo's play at the Mudd Club",
@@ -1926,7 +1915,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 171,
+    "rank": 170,
     "mentions": 1,
     "category": "Person",
     "name": "Jackie Curtis",
@@ -1937,7 +1926,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 172,
+    "rank": 171,
     "mentions": 1,
     "category": "Person",
     "name": "Michael Overington",
@@ -1948,7 +1937,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 173,
+    "rank": 172,
     "mentions": 1,
     "category": "Person",
     "name": "Mark Benecke",
@@ -1959,7 +1948,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 174,
+    "rank": 173,
     "mentions": 1,
     "category": "Person",
     "name": "Lene Lovich",
@@ -1970,7 +1959,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 175,
+    "rank": 174,
     "mentions": 1,
     "category": "Person",
     "name": "Anita Pallenberg",
@@ -1981,7 +1970,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 176,
+    "rank": 175,
     "mentions": 1,
     "category": "Location",
     "name": "East 3rd Street",
@@ -1992,7 +1981,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 177,
+    "rank": 176,
     "mentions": 1,
     "category": "Person",
     "name": "Eric Mitchell",
@@ -2003,7 +1992,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 178,
+    "rank": 177,
     "mentions": 1,
     "category": "Person",
     "name": "John Lurie",
@@ -2014,7 +2003,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 179,
+    "rank": 178,
     "mentions": 1,
     "category": "Person",
     "name": "Haoui Montaug",
@@ -2025,7 +2014,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 180,
+    "rank": 179,
     "mentions": 1,
     "category": "Location",
     "name": "Bowery",
@@ -2036,7 +2025,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 181,
+    "rank": 180,
     "mentions": 1,
     "category": "Location",
     "name": "California",
@@ -2047,7 +2036,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 182,
+    "rank": 181,
     "mentions": 1,
     "category": "Book",
     "name": "Queen of the Mudd (Tina L'Hotsky)",
@@ -2058,7 +2047,7 @@
     "status": "Not found online"
   },
   {
-    "rank": 183,
+    "rank": 182,
     "mentions": 1,
     "category": "Club",
     "name": "Lower Manhattan Ocean Club",
@@ -2069,7 +2058,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 184,
+    "rank": 183,
     "mentions": 1,
     "category": "Person",
     "name": "Roy Lichtenstein",
@@ -2080,7 +2069,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 185,
+    "rank": 184,
     "mentions": 1,
     "category": "Person",
     "name": "Larry Rivers",
@@ -2091,7 +2080,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 186,
+    "rank": 185,
     "mentions": 1,
     "category": "Person",
     "name": "John Chamberlain",
@@ -2102,7 +2091,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 187,
+    "rank": 186,
     "mentions": 1,
     "category": "Person",
     "name": "David Bowie",
@@ -2113,7 +2102,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 188,
+    "rank": 187,
     "mentions": 1,
     "category": "Person",
     "name": "Abbie Hoffman",
@@ -2124,7 +2113,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 189,
+    "rank": 188,
     "mentions": 1,
     "category": "Person",
     "name": "Yvonne Sewall-Ruskin",
@@ -2135,7 +2124,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 190,
+    "rank": 189,
     "mentions": 1,
     "category": "Person",
     "name": "Kenny Scharf",
@@ -2146,7 +2135,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 191,
+    "rank": 190,
     "mentions": 1,
     "category": "Person",
     "name": "Kenneth Anger",
@@ -2157,7 +2146,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 192,
+    "rank": 191,
     "mentions": 1,
     "category": "Person",
     "name": "Joseph Beuys",
@@ -2168,7 +2157,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 193,
+    "rank": 192,
     "mentions": 1,
     "category": "Person",
     "name": "Brian Eno",
@@ -2179,7 +2168,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 194,
+    "rank": 193,
     "mentions": 1,
     "category": "Club",
     "name": "Bond International Casino",
@@ -2190,7 +2179,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 195,
+    "rank": 194,
     "mentions": 1,
     "category": "Event",
     "name": "The Clash at Bond's (1981)",
@@ -2201,7 +2190,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 196,
+    "rank": 195,
     "mentions": 1,
     "category": "Location",
     "name": "Walker Street",
@@ -2212,7 +2201,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 197,
+    "rank": 196,
     "mentions": 1,
     "category": "Person",
     "name": "Adam Horovitz",
@@ -2223,7 +2212,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 198,
+    "rank": 197,
     "mentions": 1,
     "category": "Location",
     "name": "Bronx",
@@ -2234,7 +2223,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 199,
+    "rank": 198,
     "mentions": 1,
     "category": "Music",
     "name": "Run-DMC",
@@ -2245,7 +2234,7 @@
     "status": "Confirmed"
   },
   {
-    "rank": 200,
+    "rank": 199,
     "mentions": 1,
     "category": "Music",
     "name": "Young and Useless",
@@ -2256,7 +2245,7 @@
     "status": "Partly confirmed"
   },
   {
-    "rank": 201,
+    "rank": 200,
     "mentions": 0,
     "category": "Mood",
     "name": "Richard's on-camera look (S02E11)",
@@ -2274,7 +2263,7 @@
     ]
   },
   {
-    "rank": 202,
+    "rank": 201,
     "mentions": 0,
     "category": "Mood",
     "name": "James's on-camera look (S02E11)",
@@ -2292,7 +2281,7 @@
     ]
   },
   {
-    "rank": 203,
+    "rank": 202,
     "mentions": 0,
     "category": "Mood",
     "name": "Fenton's on-camera look (S02E11)",
