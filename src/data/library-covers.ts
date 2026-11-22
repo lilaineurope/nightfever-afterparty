@@ -6,7 +6,9 @@ const files = import.meta.glob("../assets/library/*.webp", { eager: true, import
 const url = (file: string) => files[`../assets/library/${file}`] ?? "";
 
 // kind "book" = a photo of the real thing (book cover, magazine cover or article scan); "mast" = a masthead logo on a printed cover.
-export type Cover = { kind: "book" | "mast"; file: string; credit: string };
+// A masthead sits on paper on its page header, ink on newsprint (a black logo on the old black backing could not be read -
+// publication pages audit, 22 Nov 2026); `light` keeps a white or pale logo on black.
+export type Cover = { kind: "book" | "mast"; file: string; credit: string; light?: boolean };
 
 const COVERS: Record<string, Cover> = {
   "Porcelain (Moby memoir)": { kind: "book", file: "book-porcelain-moby.webp", credit: "Cover via Open Library" },
@@ -156,7 +158,7 @@ const COVERS: Record<string, Cover> = {
   "i-D": { kind: "mast", file: "mast-i-d.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Newsday": { kind: "mast", file: "mast-newsday.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "People magazine": { kind: "mast", file: "mast-people-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
-  "The Face": { kind: "mast", file: "mast-the-face.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "The Face": { kind: "mast", file: "mast-the-face.webp", credit: "Masthead: Wikimedia Commons, public domain", light: true },
   "Billboard": { kind: "mast", file: "mast-billboard.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Newsweek": { kind: "mast", file: "mast-newsweek.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Time (magazine)": { kind: "mast", file: "mast-time-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
@@ -212,12 +214,15 @@ const COVERS: Record<string, Cover> = {
   "The Correct Sadist": { kind: "book", file: "book-correct-sadist.webp", credit: "Cover via Open Library" },
   "D.V. (Diana Vreeland)": { kind: "book", file: "book-d-v.webp", credit: "Cover via Open Library" },
   "Dancing the Gay Lib Blues": { kind: "book", file: "book-dancing-the-gay-lib-blues.webp", credit: "Cover via Open Library" },
+  "Angelique's Descent": { kind: "book", file: "book-angelique-s-descent.webp", credit: "Cover via Open Library (HarperEntertainment, 1998)" },
+  "Marilyn: A Biography": { kind: "book", file: "book-marilyn-a-biography.webp", credit: "Cover via Open Library (Grosset & Dunlap, 1973)" },
+  "Vice": { kind: "mast", file: "mast-vice.webp", credit: "Logo: Wikimedia Commons, public domain (Vice Media)" },
   "Face It": { kind: "book", file: "book-face-it.webp", credit: "Cover via Open Library" },
   "Jailbait and Other Stories": { kind: "book", file: "book-jailbait-and-other-stories.webp", credit: "Cover via Open Library" },
   "Kings Don't Mean a Thing": { kind: "book", file: "book-kings-don-t-mean-a-thing.webp", credit: "Cover via Open Library" },
   "Natural Blonde": { kind: "book", file: "book-natural-blonde.webp", credit: "Cover via Open Library" },
   "Scary Kisses": { kind: "book", file: "book-scary-kisses.webp", credit: "Cover via Open Library" },
-  "Sex Tips for Girls": { kind: "book", file: "book-sex-tips-for-girls.webp", credit: "Cover via Open Library" },
+  "Sex Tips for Girls": { kind: "book", file: "book-sex-tips-for-girls.webp", credit: "Cover via Open Library (Simon & Schuster, 1986)" },
   "Sexual Ecology": { kind: "book", file: "book-sexual-ecology.webp", credit: "Cover via Open Library" },
   "Smash Cut": { kind: "book", file: "book-smash-cut.webp", credit: "Cover via Open Library" },
   "Walking Through Clear Water in a Pool Painted Black": { kind: "book", file: "book-walking-through-clear-water-in-a-pool-painted-black.webp", credit: "Cover via Open Library" },

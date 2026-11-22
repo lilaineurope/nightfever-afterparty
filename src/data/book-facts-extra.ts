@@ -7,7 +7,7 @@ export type ExtraFacts = { title: string; author: string; year: number | null; p
 
 export const BOOK_FACTS_EXTRA: Record<string, ExtraFacts> = {
   "how-to-murder-your-life": { title: "How to Murder Your Life", author: "Cat Marnell", year: 2017, publisher: "Simon & Schuster (US), Ebury Press (UK)" },
-  "self-tanner-for-your-soul": { title: "Self-Tanner for Your Soul", author: "Cat Marnell", year: null, publisher: "Audible Original (audiobook)" },
+  "self-tanner-for-the-soul": { title: "Self-Tanner for the Soul", author: "Cat Marnell", year: 2019, publisher: "Audible Original (audiobook)" },
   "marilyn-a-biography": { title: "Marilyn: A Biography", author: "Norman Mailer", year: 1973, publisher: "Grosset & Dunlap", isbn: "9780399514135" },
   "little-gloria-happy-at-last": { title: "Little Gloria... Happy at Last", author: "Barbara Goldsmith", year: 1980, publisher: "Knopf" },
   "duchess-of-windsor": { title: "The Duchess of Windsor", author: "Diana Mosley", year: 1980, publisher: "Sidgwick & Jackson", isbn: "9780283986284" },

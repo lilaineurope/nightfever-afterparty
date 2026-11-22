@@ -8,7 +8,7 @@ import { BOOKS_TO_WRITE } from "@/data/still-to-make";
 import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
-import { PRESS, PUBLISHERS } from "@/data/publication-facts";
+import { PRESS, PRESS_HISTORY, PUBLISHERS } from "@/data/publication-facts";
 import { WRITTEN_BY } from "@/data/written-by";
 import { BOOK_FACTS_EXTRA } from "@/data/book-facts-extra";
 import { episodeById, stageName } from "@/data/episodes";
@@ -203,10 +203,10 @@ function pressView(e: Entity, shelf: string): PressView | null {
   if (!PRESS_SHELVES.has(shelf)) return null;
   const p = PRESS[e.slug] ?? {};
   return {
-    founded: p.founded ?? null,
+    founded: p.founded ?? PRESS_HISTORY[e.slug]?.founded ?? null,
     publisher: PUBLISHERS[e.slug] ?? null,
     by: (p.by ?? []).map((name) => ({ name, slug: entityFor(name)?.slug })),
-    ran: p.ran ?? null,
+    ran: p.ran ?? PRESS_HISTORY[e.slug]?.ran ?? null,
     team: (p.team ?? []).map((t) => ({ role: t.role, name: t.name, slug: entityFor(t.name)?.slug, note: t.note, episodeId: t.episode, short: t.episode ? episodeShort(t.episode) : undefined, time: t.time })),
     issues: (p.issues ?? []).map((i) => ({ what: i.what, date: i.date, episodeId: i.episode, short: episodeShort(i.episode), guest: stageName(episodeById(i.episode).guest), polaroid: guestPolaroid(i.episode), time: i.time, search: i.search, page: i.page })),
     buy: p.online ? null : { query: p.query ?? backIssueQuery(e.name, shelf) },
@@ -240,7 +240,7 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
   return {
     shelf,
     // Diaries and columns already wear their keeper's or writer's polaroid on their own sections.
-    cover: c && shelf !== "diaries" ? { src: c.src, credit: c.credit, mast: c.kind === "mast" } : null,
+    cover: c && shelf !== "diaries" ? { src: c.src, credit: c.credit, mast: c.kind === "mast", light: !!c.light } : null,
     facts: facts ? { ...facts, authorGuest: authorGuest(facts.author) } : null,
     madeSince: made ? { episodeId: made.episodeId, short: episodeShort(made.episodeId), time: made.time, why: made.why, year: made.year } : null,
     dropped,

@@ -169,7 +169,7 @@ function EntityPage() {
           </figure>
         )}
         {cover && (
-          <figure className={`card-cover${cover.mast ? " card-cover-mast" : ""}`}>
+          <figure className={`card-cover${cover.mast ? (cover.light ? " card-cover-mast card-cover-mast-light" : " card-cover-mast") : ""}`}>
             <img src={cover.src} alt={cover.mast ? `${e.name} masthead` : `Cover of ${e.name}`} />
             <figcaption>{cover.credit}</figcaption>
           </figure>

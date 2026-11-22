@@ -55,7 +55,7 @@ export const MADE_BY: Record<string, Maker[]> = {
 
   // ---------- Books not in the stocktake ----------
   "How to Murder Your Life": [m("Cat Marnell", "Wrote it", 2017)],
-  "Self-Tanner for Your Soul": [m("Cat Marnell", "Wrote it")],
+  "Self-Tanner for the Soul": [m("Cat Marnell", "Wrote it")],
   "Marilyn: A Biography": [m("Marilyn Monroe", "About them")],
   "The Rainbow Comes and Goes": [m("Lady Diana Cooper", "Wrote it", 1958)],
   "Edie: An American Biography": [m("Edie Sedgwick", "About them")],

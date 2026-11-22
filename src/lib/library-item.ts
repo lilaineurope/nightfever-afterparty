@@ -26,7 +26,7 @@ export type LibraryItemView = {
   /** books | magazines | newspapers | columns | diaries | film | tv */
   shelf: string;
   /** The real cover (photo) or masthead, taped into the header. */
-  cover: { src: string; credit: string; mast: boolean } | null;
+  cover: { src: string; credit: string; mast: boolean; light?: boolean | undefined } | null;
   facts: (Omit<BookFacts, "stockholm"> & { stockholm: BookFacts["stockholm"] | null } & { authorGuest?: { name: string; episodeId: string; short: string; polaroid?: string | undefined } | undefined }) | null;
   /** A book a guest wished for on air that came out since (Publish this, src/data/still-to-make.ts). */
   madeSince: { episodeId: string; short: string; time?: string | undefined; why: string; year?: number | undefined } | null;

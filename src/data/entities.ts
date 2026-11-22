@@ -78,6 +78,8 @@ export const SAME_AS: Record<string, string> = {
   "power-look": "the-power-look",
   // Homo Xtra is HX's full name (S03E09, James) - one card with HX Magazine (publication pages audit, 22 Nov 2026).
   "homo-xtra": "hx-magazine",
+  // Cat Marnell's Audible book is "Self-Tanner for the Soul" (Audible, October 2019) - the S03E09 sheet had "Your".
+  "self-tanner-for-your-soul": "self-tanner-for-the-soul",
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
