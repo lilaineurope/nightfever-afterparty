@@ -142,6 +142,7 @@ const COVERS: Record<string, Cover> = {
   "The Village Voice": { kind: "mast", file: "mast-village-voice.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "The Drag Explosion": { kind: "book", file: "book-the-drag-explosion.webp", credit: "Cover via the Amazon listing (Linda Simpson, Domain, 2020)" },
   "My Comrade": { kind: "book", file: "mag-my-comrade.webp", credit: "My Comrade, Winter 1990 - scan from The Henry Ford collections" },
+  "Playing With Dolls (Pearl Martin)": { kind: "book", file: "film-playing-with-dolls.webp", credit: "Film poster via the FIT Library screening page (Pearl Martin, 2023)" },
   "The My Comrade Anthology": { kind: "book", file: "book-the-my-comrade-anthology.webp", credit: "Cover via the After 8 Books listing (Linda Simpson, published by Boo-Hooray)" },
   "Sister!": { kind: "book", file: "mag-sister.webp", credit: "Sister!, Winter 1990 - scan from The Henry Ford collections" },
   "New York Post": { kind: "mast", file: "mast-new-york-post.webp", credit: "Masthead: Wikimedia Commons, public domain" },
