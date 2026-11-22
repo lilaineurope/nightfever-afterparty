@@ -53,6 +53,7 @@ export const SAME_AS: Record<string, string> = {
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
   // Places (Lisa, 22 Nov 2026: "we have to make sure we have no double ups"). A club's street address is its club page,
   // the same place under two names is one card - so the map can never pin it twice.
+  "la-palais-de-beaute": "la-palace-de-beaute", // guests say "Palace" (Lisa, 22 Nov 2026)
   "315-bowery": "cbgb",
   "254-west-54th-street": "studio-54",
   "77-white-street": "mudd-club",
