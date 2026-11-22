@@ -6,7 +6,7 @@ import "@/lib/full-links"; // the box's links use the full A–Z (src/lib/link-i
 // whole A–Z for it (page weight, 17 Nov 2026).
 
 /** The same box for any A–Z entity (Everything A–Z, Jukebox strips). */
-export function EntityBox({ entity, onClose }: { entity: Entity; onClose: () => void }) {
+export function EntityBox({ entity, note, onClose }: { entity: Entity; note?: string; onClose: () => void }) {
   const guest = entity.guest;
   return (
     <MomentsBox
@@ -15,7 +15,7 @@ export function EntityBox({ entity, onClose }: { entity: Entity; onClose: () => 
       mentions={totalMentions(entity)}
       moments={momentsOf(entity)}
       link={entity.link}
-      note={guest ? "Night Fever guest" : entity.category}
+      note={guest ? "Night Fever guest" : (note ?? entity.category)}
       onClose={onClose}
     />
   );

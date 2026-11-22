@@ -10,10 +10,12 @@ import { EntityText } from "../components/entity-text";
 import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
+import { ClubPartsSections } from "@/components/club-parts";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
 import { LibraryItemSections } from "@/components/library-item";
+import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
 import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
 import { TREE_ON_PAGE } from "@/lib/mentor-tree";
@@ -61,6 +63,9 @@ export const Route = createFileRoute("/explore/$slug")({
       thing["foundingDate"] = club.opened;
       thing["dissolutionDate"] = club.closed;
     }
+    // Place pages (Lisa, 22 Nov 2026): the pin as GeoCoordinates.
+    const geo = d.view.place?.geo;
+    if (geo) thing["geo"] = { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng };
     if (mem) {
       thing["birthDate"] = mem.born;
       thing["deathDate"] = mem.died;
@@ -137,6 +142,9 @@ function EntityPage() {
   const item = e.item ?? undefined;
   const cover = !pic ? item?.cover ?? undefined : undefined;
   const facts = item?.facts ?? undefined;
+  // Place pages (Lisa, 22 Nov 2026, mockup C): the drawn map fills the header, the name card sits on it.
+  const place = e.place ?? undefined;
+  const placeMap = place?.map ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -145,13 +153,14 @@ function EntityPage() {
       {/* People with a polaroid (Lisa, 2 Nov 2026, "combo 3"): their photo fills the header, the name sits on a taped card and the
           polaroid is taped on the right with its credit. */}
       <section
-        className={`${pic ? "card-head card-head-photo px-4" : cover ? "card-head card-head-cover px-4" : "card-head px-4"}`}
+        className={`${pic ? "card-head card-head-photo px-4" : cover ? "card-head card-head-cover px-4" : placeMap ? "card-head card-head-place px-4" : "card-head px-4"}`}
         style={
-          (pic
+          placeMap ? undefined : (pic
             ? ({ "--photo": `url(${pic.photo})`, "--photo-phone": `url(${pic.phone ?? pic.photo})`, "--focus": pic.focus } as CSSProperties)
             : ({ "--sky": `url(${cardSky})`, "--sky-phone": `url(${cardSkyPhone})` } as CSSProperties))
         }
       >
+        {placeMap && <PlaceMapDrawing m={placeMap} name={e.name} />}
         {pic && (
           <figure className="card-polaroid">
             <img src={pic.polaroid} alt={club ? `${e.name}, ${club.address}` : `${e.name} polaroid`} width={720} height={893} />
@@ -164,7 +173,7 @@ function EntityPage() {
             <figcaption>{cover.credit}</figcaption>
           </figure>
         )}
-        <div className={pic || cover ? "card-namecard" : "mx-auto max-w-4xl"}>
+        <div className={pic || cover || placeMap ? "card-namecard" : "mx-auto max-w-4xl"}>
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">
             {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
@@ -194,6 +203,15 @@ function EntityPage() {
               {club.aka && <p className="memoriam-aka">{club.aka}</p>}
               <p className="mt-2 text-sm text-muted-foreground">{club.address} · {club.opened} – {club.closed}</p>
             </div>
+          )}
+          {place && (
+            <p className={placeMap ? "mt-3 text-sm text-muted-foreground" : "memoriam-meta mt-3 text-sm text-muted-foreground"}>
+              {[place.tip, place.area].filter(Boolean).join(" · ")}
+              <span className="mt-2 block text-xs font-semibold uppercase tracking-wider text-pink">
+                {place.who.length} episode{place.who.length === 1 ? "" : "s"} · {place.mentions} mention{place.mentions === 1 ? "" : "s"}
+                {placeMap ? <> · <Link to="/map" className="hover:text-gold">Open the big map &rarr;</Link></> : <> · <Link to="/contact" search={{ about: "Bring us home" }} className="hover:text-gold">No pin yet - bring it home &rarr;</Link></>}
+              </span>
+            </p>
           )}
           {facts && (
             <dl className="card-facts">
@@ -237,16 +255,17 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${mem || club || profile ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${mem || club || profile || place ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
-        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} />}
+        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
         {diary && <DiarySections d={diary} name={e.name} />}
         {column && <ColumnIndex c={column} name={e.name} />}
         {item && <LibraryItemSections v={item} name={e.name} />}
+        {place && <PlaceSections p={place} name={e.name} events={e.events} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors, for now only TREE_ON_PAGE. */}
         {e.tree && TREE_ON_PAGE.has(e.slug) && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
-        <CardSections v={e} skipRefs={!!item} />
+        <CardSections v={e} skipRefs={!!item || !!place} skipEvents={!!place} />
       </div>
           <SiteFooter />
 </main>

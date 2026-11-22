@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
@@ -11,7 +12,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night }: { c: ClubProfile; name: string; slug: string; night: boolean }) {
+export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubProfile; name: string; slug: string; night: boolean; parts?: ReactNode }) {
   return (
     <>
       <div className="pt-4 text-center">
@@ -61,6 +62,9 @@ export function ClubProfileSections({ c, name, slug, night }: { c: ClubProfile; 
           </div>
         </section>
       )}
+
+      {/* The club's theme nights and parties, right after the quotes (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
+      {parts}
 
       {c.listen?.approved && (
         <section className="mx-auto max-w-3xl border-2 border-[#111] bg-pink p-6 text-pink-foreground shadow-[6px_7px_0_#111]">
