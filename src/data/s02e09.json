@@ -1356,6 +1356,17 @@
  {
   "rank": 121,
   "mentions": 1,
+  "category": "Film",
+  "name": "Playing With Dolls (Pearl Martin)",
+  "heard": "a whole episode on it",
+  "time": "00:49:41",
+  "context": "James wants a whole episode on Edelweiss and the Midtown trans scene; Pearl Martin made it since - her documentary on the trans clubs of the old Times Square red-light district (Edelweiss, the Gilded Grape, Sally's Hideaway, the Barnum Room) premiered at The Center in November 2023",
+  "link": "",
+  "status": "Confirmed"
+ },
+ {
+  "rank": 122,
+  "mentions": 1,
   "category": "Person",
   "name": "Antonio Banderas",
   "heard": "Antonio Banderas",
@@ -1365,7 +1376,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 122,
+  "rank": 123,
   "mentions": 1,
   "category": "Film",
   "name": "Jonathan Demme's Philadelphia",
@@ -1376,7 +1387,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 123,
+  "rank": 124,
   "mentions": 1,
   "category": "Location",
   "name": "Spain",
@@ -1387,7 +1398,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 124,
+  "rank": 125,
   "mentions": 1,
   "category": "Location",
   "name": "Southern California",
@@ -1398,7 +1409,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 125,
+  "rank": 126,
   "mentions": 1,
   "category": "Location",
   "name": "Times Square",
@@ -1409,7 +1420,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 126,
+  "rank": 127,
   "mentions": 1,
   "category": "Location",
   "name": "Tribeca",
@@ -1420,7 +1431,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 127,
+  "rank": 128,
   "mentions": 1,
   "category": "Location",
   "name": "White Street",
@@ -1431,7 +1442,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 128,
+  "rank": 129,
   "mentions": 1,
   "category": "Location",
   "name": "SoHo",
@@ -1442,7 +1453,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 129,
+  "rank": 130,
   "mentions": 1,
   "category": "Person",
   "name": "Susanne Bartsch",
@@ -1453,7 +1464,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 130,
+  "rank": 131,
   "mentions": 1,
   "category": "Person",
   "name": "Thierry Mugler",
@@ -1464,7 +1475,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 131,
+  "rank": 132,
   "mentions": 1,
   "category": "Person",
   "name": "Todd Oldham",
@@ -1475,7 +1486,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 132,
+  "rank": 133,
   "mentions": 1,
   "category": "TV",
   "name": "Geraldo",
@@ -1486,7 +1497,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 133,
+  "rank": 134,
   "mentions": 1,
   "category": "Person",
   "name": "Lypsinka",
@@ -1497,7 +1508,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 134,
+  "rank": 135,
   "mentions": 1,
   "category": "Person",
   "name": "Charles Busch",
@@ -1508,7 +1519,7 @@
   "status": "Partly confirmed"
  },
  {
-  "rank": 135,
+  "rank": 136,
   "mentions": 1,
   "category": "Film",
   "name": "Priscilla, Queen of the Desert",
@@ -1519,7 +1530,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 136,
+  "rank": 137,
   "mentions": 1,
   "category": "Event",
   "name": "Giuliani's nightlife crackdown",
@@ -1530,7 +1541,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 137,
+  "rank": 138,
   "mentions": 1,
   "category": "Person",
   "name": "Alexander the Great",
@@ -1541,7 +1552,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 138,
+  "rank": 139,
   "mentions": 1,
   "category": "Person",
   "name": "Florence Nightingale",
@@ -1552,7 +1563,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 139,
+  "rank": 140,
   "mentions": 1,
   "category": "Location",
   "name": "California",
@@ -1563,7 +1574,7 @@
   "status": "Confirmed"
  },
  {
-  "rank": 140,
+  "rank": 141,
   "mentions": 0,
   "category": "Mood",
   "name": "Linda's on-camera look (S02E09)",
@@ -1582,7 +1593,7 @@
   ]
  },
  {
-  "rank": 141,
+  "rank": 142,
   "mentions": 0,
   "category": "Mood",
   "name": "James's on-camera look (S02E09)",
@@ -1601,7 +1612,7 @@
   ]
  },
  {
-  "rank": 142,
+  "rank": 143,
   "mentions": 0,
   "category": "Mood",
   "name": "Fenton's on-camera look (S02E09)",
@@ -1619,7 +1630,7 @@
   ]
  },
  {
-  "rank": 143,
+  "rank": 144,
   "mentions": 0,
   "category": "Mood",
   "name": "Randy's on-camera look (S02E09)",

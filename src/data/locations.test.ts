@@ -20,12 +20,9 @@ const CLUB_ADDRESS: Record<string, string> = {};
 // one card per place, one pin per card, and a club's street address is its club page, never a place of its own.
 //   npx tsx --test src/data/*.test.ts
 
-// Club nights and rooms that are folded into their club page by the club-parts work keep their old pins until then.
-const PENDING_CLUB_PARTS = new Set(["Limelight library", "Industrial Night at the Limelight"]);
-
 describe("map pins: no doubles", () => {
   test("every pin belongs to a card", () => {
-    const lost = LOCATIONS.filter((l) => !entityFor(l.name) && !PENDING_CLUB_PARTS.has(l.name)).map((l) => l.name);
+    const lost = LOCATIONS.filter((l) => !entityFor(l.name)).map((l) => l.name);
     assert.deepEqual(lost, [], `pins with no card: ${lost.join(", ")}`);
   });
 

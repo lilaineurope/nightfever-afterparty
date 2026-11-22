@@ -65,7 +65,8 @@ function GuestBox({ g }: { g: Guest | undefined }) {
 export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: CardView; skipRefs?: boolean; skipEvents?: boolean }) {
   const links = useLinks();
   const related = v.related;
-  const refs = v.refs;
+  // A club page shows its theme nights and parties in their own boxes above (club-parts.tsx), not again here.
+  const refs = v.parts ? v.refs.filter((r) => !v.parts!.names.includes(r.name)) : v.refs;
   const named = v.named;
 
   return (

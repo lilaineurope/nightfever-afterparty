@@ -556,8 +556,6 @@ a.az-st:hover { transform: rotate(0) translateY(-2px) !important; box-shadow: 4p
 .az-yellow { background: #f6e06a; color: #111; }
 .az-paper { background: #f4f1ea; color: #111; }
 .az-diary { background: #6b1e2e; color: #f4f1ea; } /* Diaries, burgundy like the Library shelf (Lisa, 21 Nov 2026) */
-.az-more { font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
-.az-more:hover { color: var(--color-pink); }
 @media (max-width: 639px) { .az-bar { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .az-bar a, .az-bar span { flex: 0 0 auto; } }
 .az-st i { font-style: normal; font-family: var(--font-mono-body); font-size: 9px; letter-spacing: .08em; margin-right: 6px; opacity: .75; vertical-align: middle; }
 .az-s3 i, .az-s4 i { font-size: 10px; }
@@ -778,6 +776,8 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-issue-mast { font: clamp(17px, 5vw, 24px)/1 var(--font-flyer); text-transform: uppercase; border-bottom: 2px solid currentColor; padding-bottom: 6px; }
 .lit-issue-date { margin-top: 5px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
 .lit-issue-line { margin-top: auto; font: clamp(12px, 3.6vw, 15px)/1.2 var(--font-flyer); text-transform: uppercase; }
+.lit-issue-link:hover { background: #111; }
+.lit-issue-open { margin-top: 10px; font: 11px/1.2 var(--font-flyer); text-transform: uppercase; letter-spacing: .08em; background: #fff; color: #111; align-self: flex-start; padding: 3px 7px; border: 2px solid #111; }
 .lit-issue-who { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 12px; }
 .lit-issue-who img { width: 44px; height: 44px; object-fit: cover; border: 2px solid #111; background: #fff; padding: 2px; transform: rotate(-4deg); flex: none; }
 .lit-issue-find { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--color-pink); }
@@ -978,3 +978,50 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .column-index-read { display: inline-block; margin-left: 8px; font-family: var(--font-flyer); text-transform: uppercase; font-size: 10.5px; letter-spacing: .06em; border: 1.5px solid #1a1a1a; padding: 1px 6px; white-space: nowrap; vertical-align: 1px; }
 /* A long book title stays readable on the narrower name card next to the cover (Library item pages, 21 Nov 2026). */
 .card-head-cover .card-title { font-size: clamp(28px, 4.4vw, 44px); }
+/* Issue pages (Lisa, 22 Nov 2026, mockup A "the cover story"): src/routes/issues.$slug.tsx. Quote wall reuses .lit-quotes. */
+.iss-crumb { font: 12px/1.4 var(--font-flyer); letter-spacing: .14em; text-transform: uppercase; }
+.iss-crumb:hover { color: var(--color-pink); }
+.iss-hero { display: grid; gap: 34px; margin-top: 22px; align-items: start; }
+@media (min-width: 860px) { .iss-hero { grid-template-columns: minmax(300px, 400px) 1fr; gap: 48px; } }
+.iss-cover-wrap { margin: 0; max-width: 420px; }
+.iss-cover { position: relative; border: 3px solid #111; box-shadow: 8px 8px 0 #111; background: #000; transform: rotate(-1.2deg); }
+.iss-cover img { display: block; width: 100%; height: auto; }
+.iss-tape { position: absolute; z-index: 1; top: -12px; left: 50%; width: 110px; height: 28px; transform: translateX(-50%) rotate(-3deg); background: rgba(240, 230, 190, .78); box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+.iss-credit { margin-top: 14px; font: 11px/1.45 var(--font-mono-body); color: var(--muted-foreground); }
+.iss-kicker { font: 12px/1.4 var(--font-flyer); letter-spacing: .22em; text-transform: uppercase; color: var(--color-pink); }
+.iss-title { margin: 8px 0 0; font: clamp(36px, 7vw, 56px)/1.02 var(--font-flyer); text-transform: uppercase; letter-spacing: -1px; max-width: 12ch; }
+.iss-title span { background: #111; color: #fff; padding: 0 10px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.iss-intro { margin: 18px 0 22px; font-size: 17px; line-height: 1.5; }
+.iss-facts { border-top: 3px solid #111; margin: 0; }
+.iss-facts > div { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 9px 0; border-bottom: 1px dashed #b9b2a3; }
+@media (min-width: 560px) { .iss-facts > div { grid-template-columns: 150px 1fr; gap: 12px; } }
+.iss-facts dt { font: 11px/1.7 var(--font-flyer); letter-spacing: .14em; text-transform: uppercase; color: var(--muted-foreground); }
+.iss-facts dd { margin: 0; font-size: 15px; }
+.iss-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.iss-btn { display: inline-block; border: 2px solid #111; background: #fff3a6; padding: 5px 14px; box-shadow: 3px 3px 0 #111; font: 13px/1.4 var(--font-flyer); text-transform: uppercase; }
+.iss-btn-w { background: #fff; }
+.iss-btn:hover { background: var(--color-pink); color: #fff; }
+.iss-sec { margin-top: 52px; }
+.iss-h { font: clamp(17px, 3vw, 22px)/1.1 var(--font-flyer); letter-spacing: .12em; text-transform: uppercase; color: var(--color-pink); }
+.iss-who { font-weight: 700; color: var(--color-pink); font-size: 14px; }
+.iss-chain { display: grid; gap: 26px; margin-top: 22px; padding: 0; list-style: none; }
+@media (min-width: 860px) { .iss-chain { grid-template-columns: repeat(5, 1fr); } }
+.iss-link { position: relative; background: #fff; border: 2px solid #111; box-shadow: 4px 4px 0 #111; padding: 14px; }
+.iss-link:not(:last-child)::after { content: "\2193"; position: absolute; left: 50%; bottom: -25px; transform: translateX(-50%); font: 20px/1 var(--font-flyer); color: var(--color-pink); }
+@media (min-width: 860px) { .iss-link:not(:last-child)::after { content: "\2192"; left: auto; right: -23px; top: 40%; bottom: auto; transform: none; } }
+.iss-link-m { font: 14px/1.1 var(--font-flyer); text-transform: uppercase; border-bottom: 2px solid currentColor; padding-bottom: 6px; margin-bottom: 8px; }
+.iss-link-t { font-size: 13px; line-height: 1.4; }
+.iss-link-first { background: var(--color-pink); color: #fff; }
+.iss-link-dropped { background: #f4f1ea; }
+.iss-link-dropped .iss-link-m { text-decoration: line-through; text-decoration-color: var(--color-pink); text-decoration-thickness: 3px; }
+.iss-small { margin-top: 12px; font-size: 12px; color: var(--muted-foreground); }
+.iss-inside { display: grid; gap: 18px; margin-top: 22px; }
+@media (min-width: 760px) { .iss-inside { grid-template-columns: repeat(3, 1fr); } }
+.iss-box { background: #fff; border: 2px solid #111; box-shadow: 5px 5px 0 #111; padding: 16px 18px; }
+.iss-box h3 { font: 15px/1.15 var(--font-flyer); text-transform: uppercase; margin: 0 0 6px; }
+.iss-box p { font-size: 13.5px; line-height: 1.45; }
+.iss-note { margin-top: 22px; border-left: 6px solid var(--color-pink); background: #fff; padding: 12px 16px; font-size: 14px; }
+.iss-people { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.iss-chip { display: inline-flex; align-items: center; gap: 8px; border: 2px solid #111; background: #fff; padding: 4px 10px 4px 4px; font-size: 14px; }
+.iss-chip img { width: 30px; height: 30px; object-fit: cover; border: 1px solid #111; }
+.iss-chip:hover { background: var(--color-pink); color: #fff; }

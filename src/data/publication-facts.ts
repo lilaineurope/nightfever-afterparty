@@ -24,6 +24,8 @@ export type PressIssue = {
   time: string;
   /** Search words for that exact issue on eBay (title + date or cover star). */
   search: string;
+  /** Its own issue page (src/data/issues.ts, /issues/<page>): the typed cover links there. */
+  page?: string;
 };
 
 export type PressFacts = {
@@ -160,7 +162,7 @@ export const PRESS: Record<string, PressFacts> = {
       { role: "Helped found and edit it", name: "Michelangelo Signorile", episode: "s02e08", time: "00:41:35" },
       { role: "Columnist", name: "James St. James", episode: "s06e01", time: "00:33:23" },
     ],
-    issues: [{ what: "The Malcolm Forbes cover that made headlines everywhere", date: "March 1990", episode: "s02e08", time: "00:41:35", search: "OutWeek Malcolm Forbes 1990" }],
+    issues: [{ what: "The Malcolm Forbes cover that made headlines everywhere", date: "March 1990", episode: "s02e08", time: "00:46:01", search: "OutWeek Malcolm Forbes 1990", page: "outweek-no-38" }],
   },
   "rolling-stone": {
     founded: "1967",

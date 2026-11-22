@@ -8,6 +8,7 @@ import { jukebox } from "@/data/collections";
 import { clubNightFor } from "@/data/club-nights";
 import { MEMORIAM } from "@/data/memoriam";
 import { CLUB_PROFILES } from "@/data/club-profiles";
+import { CLUB_PARTS } from "@/data/club-parts";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { PERSON_PROFILES } from "@/data/person-profiles";
 import { DIARY_PAGES } from "@/data/diaries";
@@ -17,13 +18,30 @@ import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
-import type { CardView } from "@/lib/card-view";
+import type { CardView, ClubPartsView } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView } from "@/lib/library-item.server";
 import { placeView } from "@/lib/place-view.server";
 import { worksOf } from "@/lib/works";
 import { coverFor } from "@/data/library-covers";
+
+/** A club's theme nights and parties (src/data/club-parts.ts) with their episode rows, biggest first inside a tile. */
+function clubPartsView(e: Entity): ClubPartsView | null {
+  const p = CLUB_PARTS[e.slug];
+  if (!p) return null;
+  const rowsOf = (names: string[]) =>
+    e.refs.filter((r) => names.includes(r.name)).sort((a, b) => b.mentions - a.mentions);
+  const groups = p.groups
+    .map((g) => ({
+      heading: g.heading,
+      intro: rowsOf(g.intro ?? []),
+      parts: g.parts.map((x) => ({ title: x.title, refs: rowsOf(x.names) })).filter((x) => x.refs.length > 0),
+    }))
+    .filter((g) => g.parts.length > 0 || g.intro.length > 0);
+  const names = p.groups.flatMap((g) => [...(g.intro ?? []), ...g.parts.flatMap((x) => x.names)]);
+  return { groups, looks: p.looks ?? [], names };
+}
 
 /** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
 function cardView(e: Entity): CardView {
@@ -50,6 +68,8 @@ function cardView(e: Entity): CardView {
   mem?.rooms.forEach(L.name);
   club?.stage.forEach(L.name);
   club?.rooms.forEach(L.name);
+  const parts = g ? null : clubPartsView(e);
+  parts?.looks.forEach(L.name);
   profile?.liftedUp.forEach(L.name);
   profile?.rooms.forEach(L.name);
   if (g) {
@@ -127,6 +147,7 @@ function cardView(e: Entity): CardView {
     night: clubNightFor(e.slug) ?? null,
     mem,
     club,
+    parts,
     pic,
     profile,
     diary,
