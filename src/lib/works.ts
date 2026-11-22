@@ -8,8 +8,8 @@
 //   - books still to be written that have been made since (still-to-make.ts, "made")
 //   - everything else - films, TV, podcasts, music: made-by.ts
 // Shown on A–Z person pages (card-view.server.ts -> src/components/their-work.tsx) and on guests' AFTERPARTY pages.
-import { entities, entityFor, slugify, type Entity } from "@/data/entities";
-import { bookClub } from "@/data/collections";
+import { afterpartyOf, entities, entityFor, slugify, type Entity } from "@/data/entities";
+import { bookClub, type CollectionItem } from "@/data/collections";
 import { BOOK_FACTS } from "@/data/library-facts";
 import { BOOK_CREDITS } from "@/data/book-credits";
 import { DIARY_PAGES } from "@/data/diaries";
@@ -183,6 +183,18 @@ export function worksOf(personSlugOrName: string, coverOf?: (name: string) => st
   const list = [...(INDEX.get(slug)?.values() ?? [])].map((w) => ({ ...w, roles: [...w.roles], cover: w.slug && coverOf ? coverOf(w.coverName ?? w.name) : undefined }));
   const yr = (w: PersonWork) => Number(w.year?.match(/\d{4}/)?.[0] ?? 9999);
   return list.sort((a, b) => Number(!!a.offShow) - Number(!!b.offShow) || KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind) || yr(a) - yr(b) || a.name.localeCompare(b.name));
+}
+
+/** A guest's own Library (Lisa, 22 Nov 2026, "Visit <name>'s Library"): what they made, then the books, magazines and
+ *  columns dropped on their AFTERPARTY that they didn't make themselves, most dropped there first. */
+export function libraryOf(personSlug: string, coverOf?: (name: string) => string | undefined): { works: PersonWork[]; picks: CollectionItem[]; episode?: string | undefined } {
+  const works = worksOf(personSlug, coverOf);
+  const e = entities.find((x) => x.slug === personSlug);
+  const episode = e ? afterpartyOf(e) : undefined;
+  const mine = new Set(works.map((w) => w.slug).filter(Boolean));
+  const inEp = (b: CollectionItem) => b.moments.filter((m) => m.episodeId === episode).length;
+  const picks = episode ? bookClub.filter((b) => !mine.has(b.slug) && inEp(b) > 0).sort((a, b) => inEp(b) - inEp(a) || b.mentions - a.mentions) : [];
+  return { works, picks, episode };
 }
 
 /** Every person the site knows made something (for the check in works.test.ts and the gap list). */

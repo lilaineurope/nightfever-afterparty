@@ -23,9 +23,7 @@ import { MentorTree } from "@/components/mentor-tree";
 import { TREE_ON_PAGE } from "@/lib/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { connectorRank } from "@/lib/connector-rank";
-import { worksOf } from "@/lib/works";
-import { coverFor } from "@/data/library-covers";
-import { TheirWork } from "@/components/their-work";
+import { libraryOf } from "@/lib/works";
 import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
@@ -85,8 +83,9 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   const about = guestCard?.guest ? guestCard : undefined;
   const tree = about ? mentorTreeOf(about.slug) : null;
   const connector = about ? connectorRank(about.slug) : null;
-  // "<guest>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under the header.
-  const works = useMemo(() => (about ? worksOf(about.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : []), [about]);
+  // "Visit <guest>'s Library" (Lisa, 22 Nov 2026, option B): what they made and what was dropped on this AFTERPARTY, on
+  // their own Library page (src/routes/library_.$slug.tsx), from a button next to the Jukebox.
+  const hasLibrary = useMemo(() => (about ? (({ works, picks }) => works.length + picks.length > 0)(libraryOf(about.slug)) : false), [about]);
   // Mentor score and Top of the drop go under whichever column is shorter, so neither side ends in a blank (Lisa, 2 Nov 2026).
   const columns = useMemo(
     () => (about ? headerColumns(about, id, blurb ?? thisEpisode.blurb ?? "") : { left: [], right: [] }),
@@ -168,6 +167,12 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
               className="inline-block rounded-full bg-pink text-pink-foreground border-2 border-pink transition hover:bg-card hover:border-cream hover:text-cream px-6 py-3 font-semibold">
               Turn on the AFTERPARTY JUKEBOX
             </Link>
+            {hasLibrary && (
+              <Link to="/library/$slug" params={{ slug: about!.slug }}
+                className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
+                Visit {stageName(thisEpisode.guest)}'s Library
+              </Link>
+            )}
             <ShareButton path={`/episodes/${id}`} title={`${stageName(thisEpisode.guest)}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
           {/* Mentor score and Top of the drop: here or under the Timeline, whichever column is shorter (headerColumns). */}
@@ -185,14 +190,6 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           )}
         </div>
       </section>
-
-      {works.length > 0 && (
-        <section className="px-6 pb-14">
-          <div className="mx-auto max-w-5xl">
-            <TheirWork works={works} first={stageName(thisEpisode.guest)} />
-          </div>
-        </section>
-      )}
 
       {/* Hall of Fame family tree (Lisa, 21 Nov 2026): only the top 10 mentors get one, under their AFTERPARTY header;
           for now only the pages in TREE_ON_PAGE show it. */}
