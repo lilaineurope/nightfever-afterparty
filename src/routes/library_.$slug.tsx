@@ -13,6 +13,9 @@ import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { polaroidThumb } from "@/lib/polaroids";
 import { libraryOf, type PersonWork } from "@/lib/works";
 import { pageHead } from "@/lib/seo";
+import { Item as IdeaItem } from "@/components/still-to-make";
+import { Timestamp } from "@/components/episode-player";
+import { entityFor } from "@/data/entities";
 
 // A guest's own Library (Lisa, 22 Nov 2026: "visit Lauren's library and then show the library page with her selections",
 // option B): the "Visit <name>'s Library" button in the AFTERPARTY header opens this page. First shelf: what they made
@@ -24,8 +27,8 @@ export const Route = createFileRoute("/library_/$slug")({
   loader: ({ params }) => {
     const e = entityBySlug[params.slug];
     if (!e || e.category !== "Person") throw notFound();
-    const { works, picks } = libraryOf(e.slug);
-    if (!works.length && !picks.length) throw notFound();
+    const { works, picks, ideas, tips } = libraryOf(e.slug);
+    if (!works.length && !picks.length && !ideas.length && !tips.length) throw notFound();
     return { slug: e.slug, name: e.name, made: works.length, picks: picks.length };
   },
   head: ({ loaderData }) => {
@@ -65,7 +68,7 @@ function Tile({ w }: { w: PersonWork }) {
 function GuestLibrary() {
   const { slug } = Route.useLoaderData();
   const e = entityBySlug[slug]!;
-  const { works, picks, episode } = useMemo(
+  const { works, picks, ideas, tips, episode } = useMemo(
     () => libraryOf(slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)),
     [slug],
   );
@@ -86,8 +89,9 @@ function GuestLibrary() {
           <span className="timeline-strip timeline-strip-pink">Library</span>
         </h1>
         <p className="timeline-tag">
-          What {name} made{picks.length ? ", and what was dropped on the AFTERPARTY" : ""}. Tap a
-          cover for its page.
+          What {name} made{picks.length ? ", what was dropped on the AFTERPARTY" : ""}
+          {ideas.length + tips.length ? " and what it says should come next" : ""}. Tap a cover for
+          its page.
         </p>
         <p className="mt-4">
           {episode ? (
@@ -149,6 +153,57 @@ function GuestLibrary() {
                 </li>
               ))}
             </ul>
+          </section>
+        )}
+        {ideas.length + tips.length > 0 && (
+          <section aria-labelledby="shelf-ideas">
+            <h2 id="shelf-ideas" className={H2}>
+              Suggested on {name}'s AFTERPARTY{" "}
+              <span className="text-pink">{ideas.length + tips.length}</span>
+            </h2>
+            {ideas.length > 0 && (
+              <>
+                <h3 className="their-work-group">Still to be written or made</h3>
+                <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+                  {ideas.map((it) => (
+                    <IdeaItem key={it.title} it={it} kind={it.kind} />
+                  ))}
+                </ul>
+              </>
+            )}
+            {tips.length > 0 && (
+              <>
+                <h3 className="their-work-group">Who to interview next</h3>
+                <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+                  {tips.map((t) => {
+                    const card = entityFor(t.name);
+                    return (
+                      <li key={t.name + t.time}>
+                        <p className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream">
+                          {card ? (
+                            <Link
+                              to="/explore/$slug"
+                              params={{ slug: card.slug }}
+                              className="transition-colors hover:text-pink"
+                            >
+                              {t.name}
+                            </Link>
+                          ) : (
+                            t.name
+                          )}
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed text-card-foreground/85">
+                          {t.why}
+                        </p>
+                        {episode && (
+                          <Timestamp episodeId={episode} time={t.time} className="mt-1 text-xs" />
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
           </section>
         )}
         <p className="mt-12 text-xs leading-relaxed text-muted-foreground">

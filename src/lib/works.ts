@@ -16,6 +16,8 @@ import { DIARY_PAGES } from "@/data/diaries";
 import { COLUMN_PAGES } from "@/data/column-articles";
 import { PRESS } from "@/data/publication-facts";
 import { MADE_BY, OTHER_WORKS, type MadeRole } from "@/data/made-by";
+import { BOOKS_TO_WRITE, FILMS_TO_MAKE, type StillToMake } from "@/data/still-to-make";
+import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
 
 export type WorkKind = "Book" | "Diary" | "Magazine" | "Paper" | "Column" | "Film" | "TV" | "Podcast" | "Music" | "Club" | "Play";
 
@@ -187,14 +189,23 @@ export function worksOf(personSlugOrName: string, coverOf?: (name: string) => st
 
 /** A guest's own Library (Lisa, 22 Nov 2026, "Visit <name>'s Library"): what they made, then the books, magazines and
  *  columns dropped on their AFTERPARTY that they didn't make themselves, most dropped there first. */
-export function libraryOf(personSlug: string, coverOf?: (name: string) => string | undefined): { works: PersonWork[]; picks: CollectionItem[]; episode?: string | undefined } {
+export function libraryOf(
+  personSlug: string,
+  coverOf?: (name: string) => string | undefined,
+): { works: PersonWork[]; picks: CollectionItem[]; ideas: (StillToMake & { kind: "Book" | "Film" })[]; tips: InterviewTip[]; episode?: string | undefined } {
   const works = worksOf(personSlug, coverOf);
   const e = entities.find((x) => x.slug === personSlug);
   const episode = e ? afterpartyOf(e) : undefined;
   const mine = new Set(works.map((w) => w.slug).filter(Boolean));
   const inEp = (b: CollectionItem) => b.moments.filter((m) => m.episodeId === episode).length;
   const picks = episode ? bookClub.filter((b) => !mine.has(b.slug) && inEp(b) > 0).sort((a, b) => inEp(b) - inEp(a) || b.mentions - a.mentions) : [];
-  return { works, picks, episode };
+  // Suggestions made on their AFTERPARTY (Lisa, 22 Nov 2026, "plus her suggestions ... same for all guests"): the books and
+  // films it says should be written or made (still-to-make.ts), and who the show should have on next (interview-next.ts).
+  const ideas = episode
+    ? [...BOOKS_TO_WRITE.map((i) => ({ ...i, kind: "Book" as const })), ...FILMS_TO_MAKE.map((i) => ({ ...i, kind: "Film" as const }))].filter((i) => i.episodeId === episode)
+    : [];
+  const tips = episode ? [...NEW_FACES, ...COME_BACK].filter((t) => t.episodeId === episode) : [];
+  return { works, picks, ideas, tips, episode };
 }
 
 /** Every person the site knows made something (for the check in works.test.ts and the gap list). */
