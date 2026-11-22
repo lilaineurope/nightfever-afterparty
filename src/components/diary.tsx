@@ -81,7 +81,8 @@ export function DiarySections({ d, name }: { d: NonNullable<CardView["diary"]>; 
 
       <section>
         <h2 className={h}>Everything said about it on the show</h2>
-        <ol className="mt-5 space-y-8">
+        {/* Two columns on a wide screen (Front page, Lisa 22 Nov 2026: no white space) - each moment stays whole. */}
+        <ol className="diary-moments mt-5">
           {d.moments.map((m) => {
             const ep = episodeById(m.episode);
             const r = isRead(m);

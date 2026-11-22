@@ -748,12 +748,9 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .card-facts-by { display: flex; align-items: center; gap: 10px; }
 .card-facts-by img { width: 46px; height: 46px; object-fit: cover; border: 2px solid #111; transform: rotate(-4deg); flex: none; }
 /* The boxes under the header (src/components/library-item.tsx). */
-/* Who dropped it (Lisa, 21 Nov 2026: "too messy"): each guest's polaroid with what they said, one or two to a row. */
-.lit-dropped { display: grid; gap: 18px; }
-@media (min-width: 760px) { .lit-dropped-2 { grid-template-columns: 1fr 1fr; } }
+/* Who dropped it (Lisa, 21 Nov 2026: "too messy"): each guest's polaroid with what they said - see the Front page below. */
 .lit-drop { display: grid; grid-template-columns: 96px 1fr; gap: 18px; align-items: start; background: #fff; border: 2px solid #111; box-shadow: 5px 5px 0 #111; padding: 14px 16px; }
 .lit-pol { display: block; background: #fff; border: 2px solid #111; padding: 4px 4px 12px; box-shadow: 3px 3px 0 #111; transform: rotate(-3deg); }
-.lit-drop:nth-child(even) .lit-pol { transform: rotate(3deg); }
 .lit-pol img, .lit-pol-blank { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid #111; }
 .lit-pol-blank { display: flex; align-items: center; justify-content: center; background: #111; color: #fff; font-family: var(--font-flyer); }
 .lit-pol:hover { box-shadow: 4px 4px 0 var(--color-pink); }
@@ -782,9 +779,6 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-issue-who img { width: 44px; height: 44px; object-fit: cover; border: 2px solid #111; background: #fff; padding: 2px; transform: rotate(-4deg); flex: none; }
 .lit-issue-find { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--color-pink); }
 .lit-issue-find:hover { text-decoration: underline; }
-/* Two columns that stack their own boxes, so a short box never leaves a hole next to a tall one. */
-.lit-cols { display: grid; gap: 28px; align-items: start; }
-@media (min-width: 760px) { .lit-cols { grid-template-columns: 1fr 1fr; } .lit-cols:has(> :only-child) { grid-template-columns: 1fr; } }
 .lit-chips { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
 .lit-credit-note { display: block; margin-top: 3px; font-size: 12px; color: var(--muted-foreground); }
 /* "Near me" (Lisa, 21 Nov 2026): one button for both find boxes. */
@@ -823,14 +817,11 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-jbx-sel i { font: normal 12px/1.4 var(--font-flyer); background: #f4f1ea; color: #111; padding: 1px 6px; }
 .lit-jbx-fine { margin-top: 12px; color: #aaa; font-size: 11px; line-height: 1.4; }
 .lit-jbx-grille { height: 16px; margin: 16px -24px 0; background: repeating-linear-gradient(90deg, #999 0 3px, #666 3px 6px); }
-.lit-two { display: grid; gap: 28px; align-items: start; }
-@media (min-width: 760px) { .lit-two { grid-template-columns: 1fr 1fr; } }
 .lit-box { background: var(--card); border: 2px solid #111; box-shadow: 6px 6px 0 #111; padding: 20px 22px; }
 .lit-credits { display: grid; gap: 10px; }
 .lit-credits > div { display: grid; grid-template-columns: 9.5em 1fr; gap: 10px; align-items: baseline; border-bottom: 1px dashed rgba(17,17,17,.25); padding-bottom: 8px; }
 .lit-credits dt { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-foreground); }
 .lit-credits dd { margin: 0; font-size: 14px; }
-.lit-stack { display: grid; gap: 28px; align-content: start; }
 .lit-conn-cover { width: 44px; height: 62px; object-fit: cover; border: 2px solid #111; flex: none; }
 .lit-btn { display: block; margin-top: 10px; border: 2px solid #111; background: #fff; color: #111; padding: 7px 12px; font-size: 14px; transition: transform .12s; }
 .lit-btn small { color: var(--muted-foreground); }
@@ -1031,3 +1022,67 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .nf-map .leaflet-tile-pane { filter: grayscale(1) sepia(0.35) brightness(1.04) contrast(0.9); }
 .nf-map .leaflet-control-attribution { background: rgba(246, 240, 234, 0.85); font-size: 10px; }
 .nf-map .leaflet-tooltip { border: 2px solid #111; border-radius: 0; box-shadow: 3px 3px 0 #111; background: #f6f0ea; color: #111; font-weight: 700; }
+/* Library item pages - the Front page (Lisa, 22 Nov 2026, mockup A, "apply it to all pages"): full-width bands under a
+   newspaper dateline, flat newsprint boxes with thin column rules, so nothing leaves a hole next to something taller. */
+.lit-front { display: grid; gap: 56px; }
+.lit-front > * { min-width: 0; }
+.lit-dateline { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 0; border-top: 4px double #111; border-bottom: 4px double #111; padding: 8px 0; font: 12px/1.4 var(--font-flyer); letter-spacing: .14em; text-transform: uppercase; }
+.lit-dateline span + span::before { content: "•"; margin: 0 14px; color: var(--color-pink); }
+@media (max-width: 640px) { .lit-dateline { letter-spacing: .08em; font-size: 11px; } .lit-dateline span + span::before { margin: 0 8px; } }
+.lit-front h2 { display: flex; align-items: center; gap: 14px; color: #111; font-family: var(--font-flyer); font-size: 15px; font-weight: normal; letter-spacing: .12em; }
+.lit-front h2::after { content: ""; flex: 1; border-top: 2px solid #111; }
+/* Who dropped it: up to three columns that end about level (dealt in library-item.tsx), a rule between them. On a phone the
+   columns melt into one list in the original order (each box carries its place as `order`). */
+.lit-wall { display: flex; flex-direction: column; gap: 20px; }
+.lit-wall-col { display: contents; }
+@media (min-width: 1040px) {
+  .lit-wall { display: grid; gap: 0; align-items: start; }
+  .lit-wall-2 { grid-template-columns: 1fr 1fr; }
+  .lit-wall-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .lit-wall-col { display: grid; gap: 20px; align-content: start; padding-right: 34px; }
+  .lit-wall-col:last-child { padding-right: 0; }
+  .lit-wall-col + .lit-wall-col { border-left: 1px solid #111; padding-left: 34px; }
+  .lit-wall-col .lit-drop { order: 0 !important; }
+  .lit-wall-col .lit-drop:last-child { border-bottom: 0; }
+}
+.lit-drop { background: transparent; border: 0; box-shadow: none; padding: 0 0 20px; border-bottom: 1px solid rgba(17,17,17,.35); grid-template-columns: 84px 1fr; }
+.lit-wall-col .lit-drop:nth-child(even) .lit-pol { transform: rotate(3deg); }
+/* The wide Jukebox: screen on the left, the track list on the right. */
+.lit-jbx { max-width: none; border-radius: 22px; padding: 26px 28px 0; display: grid; gap: 0 32px; }
+.lit-jbx::before { inset: 0 0 auto 0; height: 7px; border: 0; border-radius: 0; -webkit-mask: none; mask: none; background: linear-gradient(90deg, var(--color-pink), #f2c14e, var(--color-pink)); }
+.lit-jbx .lit-jbx-kicker { margin-top: 4px; }
+.lit-jbx .lit-jbx-sel { margin-top: 0; }
+.lit-jbx .lit-jbx-grille { grid-column: 1 / -1; margin: 22px -28px 0; }
+@media (min-width: 860px) {
+  .lit-jbx { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; }
+  .lit-jbx-r { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+}
+@media (max-width: 859px) { .lit-jbx { padding: 22px 18px 0; } .lit-jbx .lit-jbx-grille { margin: 18px -18px 0; } .lit-jbx-r { margin-top: 16px; } }
+/* The small boxes side by side in one row, all the same height, a rule between them. */
+.lit-row { display: grid; align-items: stretch; border-top: 2px solid #111; border-bottom: 2px solid #111; }
+@media (min-width: 760px) { .lit-row-2, .lit-row-3, .lit-row-4 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1040px) { .lit-row-3 { grid-template-columns: 1fr 1fr 1fr; } .lit-row-4 { grid-template-columns: repeat(4, 1fr); } }
+.lit-row > .lit-box { margin: 0; background: transparent; border: 0; box-shadow: none; padding: 18px 26px 22px; }
+.lit-row > .lit-box + .lit-box { border-left: 1px solid #111; }
+@media (min-width: 760px) and (max-width: 1039px) { .lit-row-3 > .lit-box:nth-child(3), .lit-row-4 > .lit-box:nth-child(3) { border-left: 0; } .lit-row-3 > .lit-box:nth-child(n+3), .lit-row-4 > .lit-box:nth-child(n+3) { border-top: 1px solid #111; } }
+@media (max-width: 759px) { .lit-row > .lit-box { padding-left: 0; padding-right: 0; } .lit-row > .lit-box + .lit-box { border-left: 0; border-top: 1px solid #111; } }
+@media (min-width: 760px) { .lit-row > .lit-box:first-child { padding-left: 0; } .lit-row > .lit-box:last-child { padding-right: 0; } }
+.lit-copy-box .lit-copy, .lit-copy-band .lit-copy { border: 0 !important; padding: 0 !important; margin: 0 !important; }
+.lit-copy-band { border-top: 2px solid #111; border-bottom: 2px solid #111; padding: 22px 0; }
+.lit-copy-band form { max-width: none; }
+.lit-front .lit-shelf { gap: 22px; }
+/* One or two issues sit next to the shelf instead of a row of their own. */
+.lit-shelves { display: grid; gap: 40px; }
+@media (min-width: 900px) {
+  .lit-shelves { grid-template-columns: auto minmax(0, 1fr); }
+  .lit-shelves .lit-issues { grid-template-columns: repeat(auto-fill, 200px); }
+  .lit-shelves > section + section { border-left: 1px solid #111; padding-left: 40px; }
+}
+/* Diary moments: one column on a phone, two on a wide screen, each moment whole (Front page, 22 Nov 2026). */
+.diary-moments { columns: 1; column-gap: 28px; }
+.diary-moments > li { break-inside: avoid; margin-bottom: 32px; }
+@media (min-width: 1040px) { .diary-moments { columns: 2; } }
+.lit-jbx-info { display: grid; gap: 8px; align-content: center; }
+.lit-jbx-info-nm { font: 22px/1.15 var(--font-flyer); text-transform: uppercase; }
+.lit-jbx-open { justify-self: start; margin-top: 8px; background: var(--color-pink); color: #fff; border: 2px solid #f4f1ea; padding: 6px 12px; font: 12px/1.4 var(--font-flyer); text-transform: uppercase; letter-spacing: .04em; }
+.lit-jbx-open:hover { background: #f4f1ea; color: #111; }
