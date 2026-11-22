@@ -1,0 +1,45 @@
+import { describe, test } from "node:test";
+import assert from "node:assert/strict";
+import { entityFor, entityBySlug, slugify } from "./entities";
+import { LOCATIONS } from "./locations";
+import { CLUB_PROFILES } from "./club-profiles";
+
+// "We have to make sure we have no double ups" (Lisa, 22 Nov 2026, location pages + map relaunch):
+// one card per place, one pin per card, and a club's street address is its club page, never a place of its own.
+//   npx tsx --test src/data/*.test.ts
+
+// Club nights and rooms that are folded into their club page by the club-parts work keep their old pins until then.
+const PENDING_CLUB_PARTS = new Set(["Limelight library", "Industrial Night at the Limelight"]);
+
+describe("map pins: no doubles", () => {
+  test("every pin belongs to a card", () => {
+    const lost = LOCATIONS.filter((l) => !entityFor(l.name) && !PENDING_CLUB_PARTS.has(l.name)).map((l) => l.name);
+    assert.deepEqual(lost, [], `pins with no card: ${lost.join(", ")}`);
+  });
+
+  test("no card is pinned twice", () => {
+    const seen = new Map<string, string>();
+    const twice: string[] = [];
+    for (const l of LOCATIONS) {
+      const slug = entityFor(l.name)?.slug;
+      if (!slug) continue;
+      if (seen.has(slug)) twice.push(`${l.name} = ${seen.get(slug)}`);
+      else seen.set(slug, l.name);
+    }
+    assert.deepEqual(twice, [], `pinned twice: ${twice.join("; ")}`);
+  });
+
+  test("a club's address is its club page, not a card of its own", () => {
+    for (const [slug, c] of Object.entries(CLUB_PROFILES)) {
+      if (!/^\d/.test(c.address)) continue; // "the Meatpacking District" is a neighbourhood, not a street address
+      const card = entityBySlug[slugify(c.address)];
+      // Several clubs can share a building (Area, then Quick, at 157 Hudson Street): the address may lead to any of them.
+      assert.ok(!card || card.slug in CLUB_PROFILES, `"${c.address}" is its own card (${card?.slug}) - point it at ${slug}`);
+    }
+  });
+
+  test("the London Roxy is not the New York Roxy", () => {
+    assert.equal(entityFor("The Roxy (London)")?.slug, "roxy-london");
+    assert.equal(entityFor("The Roxy")?.slug, "roxy");
+  });
+});
