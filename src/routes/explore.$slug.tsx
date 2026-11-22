@@ -14,8 +14,8 @@ import { ClubPartsSections } from "@/components/club-parts";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
-import { LibraryItemSections } from "@/components/library-item";
 import { TheirWork } from "@/components/their-work";
+import { LibraryItemSections } from "@/components/library-item";
 import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
 import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
@@ -238,6 +238,20 @@ function EntityPage() {
               <dd>{facts.status}</dd>
             </dl>
           )}
+          {/* A newspaper's or magazine's facts on the name card, like a book's (Front page, Lisa 22 Nov 2026). */}
+          {item && !facts && item.press && (
+            <dl className="card-facts">
+              {item.press.founded && (
+                <>
+                  <dt>Founded</dt>
+                  <dd>{[item.press.founded, item.press.by.map((b) => b.name).join(" and ")].filter(Boolean).join(" · ")}</dd>
+                </>
+              )}
+              {item.press.ran && (<><dt>Ran</dt><dd>{item.press.ran}</dd></>)}
+              <dt>On the show</dt>
+              <dd>{(() => { const m = item.dropped.reduce((n, d) => n + d.mentions, 0); return `${m} mention${m === 1 ? "" : "s"} in ${item.dropped.length} Afterpart${item.dropped.length === 1 ? "y" : "ies"}`; })()}</dd>
+            </dl>
+          )}
           {g && <p className="timeline-tag card-tag"><EntityText text={g.tagline} /></p>}
           {g && <GuestEpisodeLinks guest={g} className="mt-6" />}
           {mem?.readMore && showsReadMore(mem.readMore.href) ? (
@@ -256,7 +270,7 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${mem || club || profile || place ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
