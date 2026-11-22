@@ -5,6 +5,21 @@
 export type Located = { name: string; lat: number; lng: number; area: string; /** Who told us where it was, shown on the map card. */ tip?: string };
 
 export const LOCATIONS: Located[] = [
+  { name: "Cadaqués", lat: 42.2888, lng: 3.2779, area: "Catalonia" },
+  { name: "Port Lligat", lat: 42.2925, lng: 3.2853, area: "Cadaqués", tip: "Dalí's house on the bay" },
+  { name: "Figueres", lat: 42.2666, lng: 2.9616, area: "Catalonia" },
+  { name: "Púbol", lat: 41.9989, lng: 3.0039, area: "Catalonia", tip: "Gala's castle" },
+  { name: "Dublin", lat: 53.3498, lng: -6.2603, area: "Ireland" },
+  { name: "Claridge's", lat: 51.5126, lng: -0.1477, area: "Mayfair", tip: "Brook Street" },
+  { name: "British Museum", lat: 51.5194, lng: -0.127, area: "Bloomsbury" },
+  { name: "Guildhall School of Music and Drama", lat: 51.52, lng: -0.0925, area: "Barbican" },
+  { name: "Central Saint Martins", lat: 51.5355, lng: -0.1252, area: "King's Cross", tip: "Granary Square" },
+  { name: "Chatsworth House", lat: 53.227, lng: -1.6115, area: "Derbyshire" },
+  { name: "Kuwait", lat: 29.3759, lng: 47.9774, area: "Middle East" },
+  { name: "New Guinea", lat: -5.5, lng: 141, area: "Oceania" },
+  { name: "Performance Space New York", lat: 40.7287, lng: -73.9845, area: "East Village", tip: "150 First Avenue" },
+  { name: "The Magic Shop", lat: 40.7224, lng: -73.9978, area: "SoHo", tip: "49 Crosby Street" },
+  { name: "Crosby Street", lat: 40.7225, lng: -73.9975, area: "SoHo" },
   { name: "Pangaea (New York)", lat: 40.729, lng: -73.992, area: "NoHo", tip: "On Lafayette Street, Cat Marnell says" },
   { name: "Bethesda, Maryland", lat: 38.9847, lng: -77.0947, area: "Maryland" },
   { name: "Lafayette Street", lat: 40.7265, lng: -73.995, area: "NoHo" },

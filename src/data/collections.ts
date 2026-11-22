@@ -401,6 +401,16 @@ const SPOTIFY: Record<string, string> = {
   "Britney Spears – 'I'm a Slave 4 U'": "spotify:track:6ldwfK0yWgTAlmIfuQkTYN",
   "N.E.R.D": "spotify:artist:5wPoxI5si3eJsYYwyXV4Wi",
   "Clipse": "spotify:artist:2J257euzcjnDLipsyJH3F2",
+  // S04E01 Daphne Guinness
+  "Daphne Guinness – 'Time'": "spotify:track:12fDDRk9yya5aIsJcjElp5",
+  "Daphne Guinness – Optimist in Black": "spotify:album:0Okhog8SWvnAkT6Om5Udnb",
+  "Daphne Guinness – 'Volcano'": "spotify:track:3fhmCBbGzcq2RuYuGesdaa",
+  "Daphne Guinness – Sleep": "spotify:album:0uKbYdUR5GU98FlUxXbG5G",
+  "Daphne Guinness – 'Mishima'": "spotify:track:1Sqwge4XCPRLjDfCDmOV8e",
+  "Daphne Guinness – 'Hip Neck Spine'": "spotify:track:6FP7D54OppYLLUXefd7byB",
+  "The Kinks": "spotify:artist:1SQRv42e4PjEYfPhS0Tk9E",
+  "Berlin (band)": "spotify:artist:2aS6jYh7ysTL1ZUsHneNgM",
+  "S'Express": "spotify:artist:2PvqyOwynRF4BveaU6IA7S",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

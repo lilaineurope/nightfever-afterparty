@@ -22,6 +22,7 @@ export type Credit = { role: CreditRole; name: string; source: string };
 
 export const BOOK_CREDITS: Record<string, Credit[]> = {
   nightbirds: [{ role: "Foreword by", name: "Ernie Glam", source: "Ernie Glam on the show, S01E05 00:01:45" }],
+  "hons-and-rebels": [{ role: "Introduction by", name: "Christopher Hitchens", source: "New York Review Books Classics edition, 2004" }],
 };
 
 /** The order the roles are shown in. */

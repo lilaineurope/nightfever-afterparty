@@ -1,4 +1,4 @@
-import { entities, entityFor, type Entity, type Ref } from "../data/entities";
+import { entities, entityFor, OWN_CARD, type Entity, type Ref } from "../data/entities";
 import { registerFullLinks } from "./link-index";
 
 // Cross-connects the cards: a known name written inside another card's text (context or fashion note)
@@ -21,6 +21,7 @@ const linkable: { text: string; slug: string }[] = (() => {
   for (const e of entities) {
     if (SKIP_CATS.has(e.category)) continue;
     if (/\(S\d{2}E\d{2}\)/i.test(e.name)) continue;
+    if (OWN_CARD.has(e.name)) continue; // "Berlin" in a text stays the city's link
     const names = new Set<string>([e.name.replace(/\s*\([^)]*\)/g, "").trim()]);
     for (const n of names) {
       if (!n || !/^[A-Z0-9]/.test(n)) continue;

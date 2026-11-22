@@ -357,6 +357,16 @@ export const YOUTUBE: Record<string, string> = {
   "Britney Spears – 'I'm a Slave 4 U'": "Mzybwwf2HoQ",
   "N.E.R.D": "I_uDcCZDrxg",
   "Clipse": "TjWAWcx4xdE",
+  // S04E01 Daphne Guinness
+  "Daphne Guinness – 'Time'": "TMJNrSlZ6q8",
+  "Daphne Guinness – Optimist in Black": "_N-WxAcVVIs",
+  "Daphne Guinness – 'Volcano'": "FDY1Dut4xSA",
+  "Daphne Guinness – Sleep": "07SWggjneDg",
+  "Daphne Guinness – 'Mishima'": "lPlVqxB-TWg",
+  "Daphne Guinness – 'Hip Neck Spine'": "CLpUilmRXoA",
+  "The Kinks": "fTTsY-oz6Go",
+  "Berlin (band)": "Bx51eegLTY8",
+  "S'Express": "IpeRShWMdYM",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */
