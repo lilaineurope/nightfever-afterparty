@@ -101,12 +101,12 @@ declare global {
   }
 }
 
-// Free tiles: OpenStreetMap data drawn by CARTO (light, no labels clutter), tinted to the paper look in src/styles.css
-// (.nf-map). The Google Maps key only worked on lovable.app, not on nightfever-afterparty.com.
+// Free tiles: the OpenStreetMap tile server (no key, credit shown), turned to the paper look in src/styles.css (.nf-map).
+// The Google Maps key only worked on lovable.app, not on nightfever-afterparty.com; CARTO tiles now need a key too.
 const LEAFLET = "https://unpkg.com/leaflet@1.9.4/dist/leaflet";
-const TILES = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+const TILES = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 const CREDIT =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const BRING_HOME = "Bring us home";
 
@@ -177,9 +177,7 @@ function MapPage() {
         [40.735, -73.99],
         13,
       );
-      L.tileLayer(TILES, { attribution: CREDIT, subdomains: "abcd", maxZoom: 19 }).addTo(
-        mapRef.current,
-      );
+      L.tileLayer(TILES, { attribution: CREDIT, maxZoom: 19 }).addTo(mapRef.current);
       setReady(true);
     };
     if (window.L) return init();
