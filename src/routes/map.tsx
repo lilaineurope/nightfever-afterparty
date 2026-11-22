@@ -5,7 +5,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
 import { entities, entityFor, isPlace, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
-import { episodePath, episodes } from "@/data/episodes";
+import { episodeById, episodePath, episodes } from "@/data/episodes";
+import { Timestamp } from "@/components/episode-player";
 import { SiteFooter } from "@/components/site-footer";
 
 // Episodes with their own AFTERPARTY page (the rest stay plain text in the map boxes).
@@ -373,7 +374,12 @@ function MapPage() {
                   .flatMap((p) =>
                     p.refs
                       .filter((r) => r.episode && r.context)
-                      .map((r) => ({ ep: r.episode!, context: r.context, mentions: r.mentions })),
+                      .map((r) => ({
+                        ep: r.episode!,
+                        context: r.context,
+                        mentions: r.mentions,
+                        time: r.time,
+                      })),
                   )
                   .sort((x, y) => y.mentions - x.mentions)
                   .filter((x, i, all) => all.findIndex((y) => y.ep === x.ep) === i)
@@ -455,21 +461,24 @@ function MapPage() {
                           <ul className="mt-3 space-y-2">
                             {lines.map((l) => (
                               <li key={l.ep} className="text-[13px] leading-snug">
-                                {/* Each episode line opens its AFTERPARTY page, black to pink (Lisa, 22 Nov 2026). */}
-                                {BUILT.has(l.ep) ? (
-                                  <Link
-                                    to={episodePath(l.ep as never)}
-                                    className="text-[#111] transition-colors hover:text-pink focus-visible:text-pink"
-                                  >
-                                    <span className="font-semibold">{episodeShort(l.ep)}</span> ·{" "}
-                                    {l.context}
-                                  </Link>
-                                ) : (
-                                  <>
-                                    <span className="font-semibold">{episodeShort(l.ep)}</span> ·{" "}
-                                    {l.context}
-                                  </>
-                                )}
+                                {/* Like every other "In the episodes" list (Lisa, 22 Nov 2026): the episode opens its
+                                    AFTERPARTY page (black to pink), the time plays the episode from that moment. */}
+                                <div className="flex flex-wrap items-baseline gap-x-2">
+                                  {BUILT.has(l.ep) ? (
+                                    <Link
+                                      to={episodePath(l.ep as never)}
+                                      className="font-semibold text-[#111] transition-colors hover:text-pink focus-visible:text-pink"
+                                    >
+                                      {episodeShort(l.ep)} · {episodeById(l.ep).guest}
+                                    </Link>
+                                  ) : (
+                                    <span className="font-semibold">{episodeShort(l.ep)}</span>
+                                  )}
+                                  {l.time && l.time !== "On camera" && (
+                                    <Timestamp episodeId={l.ep} time={l.time} className="text-xs" />
+                                  )}
+                                </div>
+                                <p className="mt-0.5">{l.context}</p>
                               </li>
                             ))}
                           </ul>
