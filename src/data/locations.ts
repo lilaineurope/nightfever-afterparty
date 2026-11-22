@@ -689,7 +689,7 @@ export const LOCATIONS: Located[] = [
   { name: "Amsterdam", lat: 52.3676, lng: 4.9041, area: "Amsterdam" },
   // S03E08 Larry Tee
   { name: "Celebrity Club", lat: 40.7516, lng: -74.0071, area: "Chelsea" },
-  { name: "La Palais de Beauté", lat: 40.7359, lng: -73.9911, area: "Union Square" },
+  { name: "La Palace de Beauté", lat: 40.7359, lng: -73.9911, area: "Union Square" },
   { name: "Williamsburg", lat: 40.7081, lng: -73.9571, area: "Brooklyn" },
   { name: "Silver Lake", lat: 34.0869, lng: -118.2702, area: "Los Angeles" },
   { name: "Tennessee", lat: 35.86, lng: -86.66, area: "Tennessee" },
