@@ -23,6 +23,8 @@ import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView } from "@/lib/library-item.server";
 import { placeView } from "@/lib/place-view.server";
+import { worksOf } from "@/lib/works";
+import { coverFor } from "@/data/library-covers";
 
 /** A club's theme nights and parties (src/data/club-parts.ts) with their episode rows, biggest first inside a tile. */
 function clubPartsView(e: Entity): ClubPartsView | null {
@@ -117,6 +119,9 @@ function cardView(e: Entity): CardView {
     for (const n of place.near) L.card(n.slug);
     for (const p of place.map?.pins ?? []) L.card(p.slug);
   }
+  // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
+  const works = e.category === "Person" ? worksOf(e.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : [];
+  for (const w of works) if (w.slug) L.card(w.slug);
   const j = jukebox.find((x) => x.slug === e.slug);
   const tree = mentorTreeOf(e.slug);
   if (tree) {
@@ -150,6 +155,7 @@ function cardView(e: Entity): CardView {
     tree,
     item,
     place,
+    works,
     connector: connectorRank(e.slug),
     links: L.data,
   };

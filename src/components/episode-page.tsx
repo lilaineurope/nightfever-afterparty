@@ -23,6 +23,9 @@ import { MentorTree } from "@/components/mentor-tree";
 import { TREE_ON_PAGE } from "@/lib/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { connectorRank } from "@/lib/connector-rank";
+import { worksOf } from "@/lib/works";
+import { coverFor } from "@/data/library-covers";
+import { TheirWork } from "@/components/their-work";
 import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
@@ -82,6 +85,8 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   const about = guestCard?.guest ? guestCard : undefined;
   const tree = about ? mentorTreeOf(about.slug) : null;
   const connector = about ? connectorRank(about.slug) : null;
+  // "<guest>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under the header.
+  const works = useMemo(() => (about ? worksOf(about.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : []), [about]);
   // Mentor score and Top of the drop go under whichever column is shorter, so neither side ends in a blank (Lisa, 2 Nov 2026).
   const columns = useMemo(
     () => (about ? headerColumns(about, id, blurb ?? thisEpisode.blurb ?? "") : { left: [], right: [] }),
@@ -180,6 +185,14 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           )}
         </div>
       </section>
+
+      {works.length > 0 && (
+        <section className="px-6 pb-14">
+          <div className="mx-auto max-w-5xl">
+            <TheirWork works={works} first={stageName(thisEpisode.guest)} />
+          </div>
+        </section>
+      )}
 
       {/* Hall of Fame family tree (Lisa, 21 Nov 2026): only the top 10 mentors get one, under their AFTERPARTY header;
           for now only the pages in TREE_ON_PAGE show it. */}

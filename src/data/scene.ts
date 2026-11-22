@@ -269,6 +269,17 @@ const curatedEvents: SceneEvent[] = [
     figures: ["Junior Vasquez", "Richard Grant"],
   },
   {
+    id: "outweek-forbes",
+    year: 1990,
+    when: "18 March 1990",
+    title: "OutWeek puts Malcolm Forbes on its cover",
+    text: "Three weeks after the publisher's death, Michelangelo Signorile's story \"The Secret Gay Life of Malcolm Forbes\" starts the fight over outing. James St. James writes in furious and ends up with a column of his own.",
+    place: "OutWeek, New York",
+    decade: "1990s",
+    people: ["michelangelo-signorile", "james-st-james"],
+    figures: ["Malcolm Forbes", "Gabriel Rotello"],
+  },
+  {
     id: "deee-lite",
     year: 1990,
     when: "1990",

@@ -15,6 +15,7 @@ import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
 import { LibraryItemSections } from "@/components/library-item";
+import { TheirWork } from "@/components/their-work";
 import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
 import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
@@ -259,6 +260,8 @@ function EntityPage() {
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
+        {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
+        <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />
         {diary && <DiarySections d={diary} name={e.name} />}
         {column && <ColumnIndex c={column} name={e.name} />}
         {item && <LibraryItemSections v={item} name={e.name} />}
