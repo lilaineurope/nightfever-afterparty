@@ -39,7 +39,7 @@ export type PressView = {
   by: { name: string; slug?: string | undefined }[];
   ran: string | null;
   team: { role: string; name: string; slug?: string | undefined; note?: string | undefined; episodeId?: string | undefined; short?: string | undefined; time?: string | undefined }[];
-  issues: { what: string; date?: string | undefined; episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; search: string }[];
+  issues: { what: string; date?: string | undefined; episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; search: string; page?: string | undefined }[];
   /** Back issues: what the "Find me, buy me" box searches for. null for a website. */
   buy: { query: string } | null;
 };
