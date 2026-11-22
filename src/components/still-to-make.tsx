@@ -11,6 +11,14 @@ import {
 } from "@/data/still-to-make";
 import { Timestamp } from "@/components/episode-player";
 import { coverFor } from "@/data/library-covers";
+import { entityFor } from "@/data/entities";
+
+/** The Library item page a made item links to (Lisa, 22 Nov 2026: "make the headlines clickable and connect to their pages"):
+ *  its A–Z card, else the card of its Library name. Undefined while it has no page of its own. */
+function pageOf(it: StillToMake): string | undefined {
+  if (it.source?.card) return it.source.card;
+  return it.library ? entityFor(it.library)?.slug : undefined;
+}
 
 // "Still to be made" box on the Library page, headline "Publish this" (Lisa, 4 Nov 2026 evening; box first added that morning): the books
 // and films the guests and hosts say should exist, laid out like "Who to interview next". Three tabs (Lisa, 19 Nov 2026): Books to be
@@ -31,17 +39,32 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
   const ep = episodeById(it.episodeId);
   const tag = TAG[it.made];
   const cover = it.library ? coverFor(it.library) : undefined;
+  // Only the Made since tab links its headlines and covers to the item page.
+  const page = kind ? pageOf(it) : undefined;
+  const coverImg = cover && (
+    <img
+      src={cover.src}
+      alt={`Cover of ${it.library}`}
+      loading="lazy"
+      decoding="async"
+      className="h-28 w-auto border-2 border-gold object-cover"
+    />
+  );
   return (
     <li className={`${ITEM_CLASS}${cover ? " flex gap-4" : ""}`}>
-      {cover && (
-        <img
-          src={cover.src}
-          alt={`Cover of ${it.library}`}
-          loading="lazy"
-          decoding="async"
-          className="h-28 w-auto shrink-0 self-start border-2 border-gold object-cover"
-        />
-      )}
+      {coverImg &&
+        (page ? (
+          <Link
+            {...cardTo(page)}
+            tabIndex={-1}
+            aria-hidden="true"
+            className="shrink-0 self-start transition hover:-rotate-2"
+          >
+            {coverImg}
+          </Link>
+        ) : (
+          <div className="shrink-0 self-start">{coverImg}</div>
+        ))}
       <div className="min-w-0">
         {kind && (
           <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-pink">
@@ -50,7 +73,16 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
           </p>
         )}
         <p className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight text-cream">
-          {it.title}
+          {page ? (
+            <Link
+              {...cardTo(page)}
+              className="underline decoration-gold decoration-2 underline-offset-4 hover:text-pink hover:decoration-pink"
+            >
+              {it.title}
+            </Link>
+          ) : (
+            it.title
+          )}
         </p>
         {kind && it.madeAs && (
           <p className="mt-0.5 text-sm font-semibold text-gold">Made as {it.madeAs}</p>
@@ -66,7 +98,7 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
             </span>
           )}
           <span>{it.status}</span>
-          {it.source?.card && (
+          {it.source?.card && it.source.card !== page && (
             <Link {...cardTo(it.source.card)} className="text-gold hover:text-pink">
               {it.source.label} →
             </Link>
