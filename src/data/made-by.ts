@@ -316,7 +316,6 @@ export const MADE_BY: Record<string, Maker[]> = {
   "The Gargoyles": [m("Bebe Buell", "In the band")],
   "Dose": [m("Larry Tee", "In the band")],
   "Now Explosion": [m("Larry Tee", "In the band")],
-  "The Fans (Atlanta band)": [m("Larry Tee", "In the band")],
   "The Tea Set": [m("Nick Egan", "In the band")],
   "Back in Time for Tea": [m("Nick Egan", "In the band")],
   "Man 2 Man": [m("Man Parrish", "In the band")],
