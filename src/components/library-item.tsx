@@ -171,11 +171,21 @@ function IssueShelf({ v, name }: { v: LibraryItemView; name: string }) {
       <ul className="lit-issues mt-5">
         {issues.map((i) => (
           <li key={i.what} className="lit-issue">
-            <div className={`lit-issue-cover lit-typed-${v.shelf}`}>
-              <span className="lit-issue-mast">{mast}</span>
-              {i.date && <span className="lit-issue-date">{i.date}</span>}
-              <span className="lit-issue-line">{i.what}</span>
-            </div>
+            {i.page ? (
+              // Its own issue page (Lisa, 22 Nov 2026): the real cover there, the typed card links to it.
+              <Link to="/issues/$slug" params={{ slug: i.page }} className={`lit-issue-cover lit-typed-${v.shelf} lit-issue-link`} aria-label={`${mast}, ${i.date ?? ""}: ${i.what} - its own page`}>
+                <span className="lit-issue-mast">{mast}</span>
+                {i.date && <span className="lit-issue-date">{i.date}</span>}
+                <span className="lit-issue-line">{i.what}</span>
+                <span className="lit-issue-open">The whole story &rarr;</span>
+              </Link>
+            ) : (
+              <div className={`lit-issue-cover lit-typed-${v.shelf}`}>
+                <span className="lit-issue-mast">{mast}</span>
+                {i.date && <span className="lit-issue-date">{i.date}</span>}
+                <span className="lit-issue-line">{i.what}</span>
+              </div>
+            )}
             <p className="lit-issue-who">
               {i.polaroid && <img src={i.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
               <span>

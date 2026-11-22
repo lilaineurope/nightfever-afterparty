@@ -156,7 +156,7 @@ function pressView(e: Entity, shelf: string): PressView | null {
     by: (p.by ?? []).map((name) => ({ name, slug: entityFor(name)?.slug })),
     ran: p.ran ?? null,
     team: (p.team ?? []).map((t) => ({ role: t.role, name: t.name, slug: entityFor(t.name)?.slug, note: t.note, episodeId: t.episode, short: t.episode ? episodeShort(t.episode) : undefined, time: t.time })),
-    issues: (p.issues ?? []).map((i) => ({ what: i.what, date: i.date, episodeId: i.episode, short: episodeShort(i.episode), guest: stageName(episodeById(i.episode).guest), polaroid: guestPolaroid(i.episode), time: i.time, search: i.search })),
+    issues: (p.issues ?? []).map((i) => ({ what: i.what, date: i.date, episodeId: i.episode, short: episodeShort(i.episode), guest: stageName(episodeById(i.episode).guest), polaroid: guestPolaroid(i.episode), time: i.time, search: i.search, page: i.page })),
     buy: p.online ? null : { query: p.query ?? backIssueQuery(e.name, shelf) },
   };
 }
