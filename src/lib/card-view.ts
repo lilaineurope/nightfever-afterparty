@@ -3,6 +3,13 @@ import type { SceneEvent } from "@/data/scene";
 import type { Memoriam } from "@/data/memoriam";
 import type { ClubProfile } from "@/data/club-profiles";
 import type { ClubNight } from "@/data/club-nights";
+
+export type ClubPartsView = {
+  groups: { heading: string; intro: Ref[]; parts: { title: string; refs: Ref[] }[] }[];
+  looks: string[];
+  /** Row names shown in the groups, so "In the episodes" leaves them out */
+  names: string[];
+};
 import type { PersonPortrait } from "@/data/person-portraits";
 import type { PersonProfile } from "@/data/person-profiles";
 import type { DiaryPage } from "@/data/diaries";
@@ -33,6 +40,8 @@ export type CardView = {
   night: ClubNight | null;
   mem: Memoriam | null;
   club: ClubProfile | null;
+  /** The club's theme nights and parties, folded in from their own cards (Lisa, 22 Nov 2026, src/data/club-parts.ts). */
+  parts: ClubPartsView | null;
   pic: PersonPortrait | null;
   /** Person page (story, guest quotes, timeline) for living people the guests talk about - Lisa, 20 Nov 2026. */
   profile: PersonProfile | null;
