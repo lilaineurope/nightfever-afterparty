@@ -11,6 +11,13 @@ const url = (file: string) => files[`../assets/library/${file}`] ?? "";
 export type Cover = { kind: "book" | "mast"; file: string; credit: string; light?: boolean };
 
 const COVERS: Record<string, Cover> = {
+  // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  "Glitter and Concrete": { kind: "book", file: "book-glitter-and-concrete.webp", credit: "Cover via Open Library (Hanover Square Press, 2023)" },
+  "Just One of the Boys": { kind: "book", file: "book-just-one-of-the-boys.webp", credit: "Cover via Open Library (University of Illinois Press, 2018)" },
+  "The Changing Room": { kind: "book", file: "book-the-changing-room.webp", credit: "Cover via Open Library (Routledge, 2000)" },
+  "Camp: The Story of the Attitude That Conquered the World": { kind: "book", file: "book-camp-paul-baker.webp", credit: "Cover via Open Library (Footnote Press, 2023)" },
+  "The Big Sea": { kind: "book", file: "book-the-big-sea.webp", credit: "Cover via Open Library (Hill and Wang edition)" },
+  "Munsey's Magazine": { kind: "book", file: "mag-munseys-magazine.webp", credit: "Munsey's Magazine, May 1911 - Wikimedia Commons, public domain" },
   "Porcelain (Moby memoir)": { kind: "book", file: "book-porcelain-moby.webp", credit: "Cover via Open Library" },
   "How to Murder Your Life": { kind: "book", file: "book-how-to-murder-your-life.webp", credit: "Cover via Open Library (Ebury Press, 2017)" },
   "The Rainbow Comes and Goes": { kind: "book", file: "book-the-rainbow-comes-and-goes.webp", credit: "Cover via Open Library (Hart-Davis, 1958)" },
