@@ -76,7 +76,7 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
           {page ? (
             <Link
               {...cardTo(page)}
-              className="underline decoration-gold decoration-2 underline-offset-4 hover:text-pink hover:decoration-pink"
+              className="transition-colors hover:text-pink focus-visible:text-pink focus-visible:outline-none"
             >
               {it.title}
             </Link>
