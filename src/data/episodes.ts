@@ -934,6 +934,7 @@ const s04e11: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/88709230/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-6-1%2Fb7f05a16-3027-40a3-668f-9673cb26839b.mp3",
   runtime: "1:06:10",
   afterpartyPublished: "2026-12-02",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLbSM0YiYGwiQ",
   blurb:
     "Elyssa Maxx Goodman on Julian Eltinge, Bert Savoy, the Pansy Craze, Harlem's drag balls and the 1845 masquerade law",
 };
