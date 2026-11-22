@@ -204,6 +204,23 @@ const COVERS: Record<string, Cover> = {
   "The Pursuit of Love": { kind: "book", file: "book-the-pursuit-of-love.webp", credit: "Cover via Open Library (Penguin, 2010)" },
   "Hons and Rebels": { kind: "book", file: "book-hons-and-rebels.webp", credit: "Cover via Open Library (New York Review Books, 2004)" },
   "Tatler": { kind: "mast", file: "mast-tatler.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  // Books no guest has dropped yet, with their own page (src/data/written-by.ts) - Open Library first (Lisa, 22 Nov 2026).
+  "A Low Life in High Heels": { kind: "book", file: "book-a-low-life-in-high-heels.webp", credit: "Cover via Open Library" },
+  "Blitzed!": { kind: "book", file: "book-blitzed.webp", credit: "Cover via Open Library" },
+  "City Poet": { kind: "book", file: "book-city-poet.webp", credit: "Cover via Open Library" },
+  "Close to the Knives": { kind: "book", file: "book-close-to-the-knives.webp", credit: "Cover via Open Library" },
+  "The Correct Sadist": { kind: "book", file: "book-correct-sadist.webp", credit: "Cover via Open Library" },
+  "D.V. (Diana Vreeland)": { kind: "book", file: "book-d-v.webp", credit: "Cover via Open Library" },
+  "Dancing the Gay Lib Blues": { kind: "book", file: "book-dancing-the-gay-lib-blues.webp", credit: "Cover via Open Library" },
+  "Face It": { kind: "book", file: "book-face-it.webp", credit: "Cover via Open Library" },
+  "Jailbait and Other Stories": { kind: "book", file: "book-jailbait-and-other-stories.webp", credit: "Cover via Open Library" },
+  "Kings Don't Mean a Thing": { kind: "book", file: "book-kings-don-t-mean-a-thing.webp", credit: "Cover via Open Library" },
+  "Natural Blonde": { kind: "book", file: "book-natural-blonde.webp", credit: "Cover via Open Library" },
+  "Scary Kisses": { kind: "book", file: "book-scary-kisses.webp", credit: "Cover via Open Library" },
+  "Sex Tips for Girls": { kind: "book", file: "book-sex-tips-for-girls.webp", credit: "Cover via Open Library" },
+  "Sexual Ecology": { kind: "book", file: "book-sexual-ecology.webp", credit: "Cover via Open Library" },
+  "Smash Cut": { kind: "book", file: "book-smash-cut.webp", credit: "Cover via Open Library" },
+  "Walking Through Clear Water in a Pool Painted Black": { kind: "book", file: "book-walking-through-clear-water-in-a-pool-painted-black.webp", credit: "Cover via Open Library" },
 };
 
 export const coverFor = (name: string): (Cover & { src: string }) | undefined => {

@@ -18,6 +18,7 @@ import { COLUMN_PAGES } from "@/data/column-articles";
 import { PRESS } from "@/data/publication-facts";
 import { MADE_BY, OTHER_WORKS, type MadeRole } from "@/data/made-by";
 import { WRITTEN_BY } from "@/data/written-by";
+import { BOOK_FACTS_EXTRA } from "@/data/book-facts-extra";
 import { BOOKS_TO_WRITE, FILMS_TO_MAKE, type StillToMake } from "@/data/still-to-make";
 import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
 
@@ -153,6 +154,11 @@ function build(): Index {
   for (const [slug, credits] of Object.entries(BOOK_CREDITS)) {
     if (!libraryBySlug.has(slug)) continue;
     for (const c of credits) if (c.role !== "Imprint" && c.role !== "Printed by" && c.role !== "Distributed by") add(c.name, { slug, name: slug }, c.role.replace(/ by$| with$/, ""));
+  }
+  // Books the stocktake has no row for yet (src/data/book-facts-extra.ts).
+  for (const [slug, f] of Object.entries(BOOK_FACTS_EXTRA)) {
+    if (!libraryBySlug.has(slug) || BOOK_FACTS[slug]) continue;
+    for (const a of authorsIn(f.author)) add(a.name, { slug, name: f.title }, a.role, f.year ?? undefined);
   }
   // Books no guest has dropped yet, with their own page (src/data/written-by.ts).
   for (const w of WRITTEN_BY) {

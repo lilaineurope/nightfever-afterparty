@@ -10,6 +10,7 @@ import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
 import { PRESS, PUBLISHERS } from "@/data/publication-facts";
 import { WRITTEN_BY } from "@/data/written-by";
+import { BOOK_FACTS_EXTRA } from "@/data/book-facts-extra";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
@@ -71,6 +72,9 @@ const libraryBySlug = Object.fromEntries(bookClub.map((b) => [b.slug, b]));
 const writtenBy = Object.fromEntries(WRITTEN_BY.map((w) => [slugify(w.name), w]));
 function writtenByFacts(slug: string): LibraryItemView["facts"] {
   const w = writtenBy[slug];
+  const x = BOOK_FACTS_EXTRA[slug];
+  // A Library book the stocktake has no row for yet (src/data/book-facts-extra.ts): author, year and publisher only.
+  if (!w && x) return { title: x.title, author: x.author, year: x.year, publisher: x.publisher, isbn: x.isbn ?? null, inPrint: true, status: "", stockholm: null, checked: null };
   if (!w) return null;
   return {
     title: w.title,
