@@ -85,7 +85,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   const connector = about ? connectorRank(about.slug) : null;
   // "Visit <guest>'s Library" (Lisa, 22 Nov 2026, option B): what they made and what was dropped on this AFTERPARTY, on
   // their own Library page (src/routes/library_.$slug.tsx), from a button next to the Jukebox.
-  const hasLibrary = useMemo(() => (about ? (({ works, picks }) => works.length + picks.length > 0)(libraryOf(about.slug)) : false), [about]);
+  const hasLibrary = useMemo(() => (about ? (({ works, picks, ideas, tips }) => works.length + picks.length + ideas.length + tips.length > 0)(libraryOf(about.slug)) : false), [about]);
   // Mentor score and Top of the drop go under whichever column is shorter, so neither side ends in a blank (Lisa, 2 Nov 2026).
   const columns = useMemo(
     () => (about ? headerColumns(about, id, blurb ?? thisEpisode.blurb ?? "") : { left: [], right: [] }),

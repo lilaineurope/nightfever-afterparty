@@ -35,7 +35,7 @@ const TAG: Record<MadeYet, { label: string; className: string }> = {
   made: { label: "Made since!", className: "border border-gold text-cream" },
 };
 
-function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefined }) {
+export function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefined }) {
   const ep = episodeById(it.episodeId);
   const tag = TAG[it.made];
   const cover = it.library ? coverFor(it.library) : undefined;
