@@ -3,14 +3,17 @@
  *  around it, a strip of the guests who talk about it, their moments as taped boxes, "Around the corner" with walking
  *  distances and its Timeline moments. Worked out on the server (src/lib/place-view.server.ts). Types only. */
 
-/** `label` is false when the name would sit on another pin's name - the dot stays, its name shows on hover. */
-export type PlacePin = { x: number; y: number; slug: string; name: string; club: boolean; label: boolean };
+/** `label` is false when the name would sit on another pin's name - the dot stays, its name shows on hover. `left`: the
+ *  name sits left of the dot (no room on the right). */
+export type PlacePin = { x: number; y: number; slug: string; name: string; club: boolean; label: boolean; left: boolean };
 
 export type PlaceMap = {
-  /** viewBox size; the drawing is cropped to the header, the place sits right of the name card. */
+  /** viewBox size; the drawing is anchored right and cropped on the left (narrow screens, the name card). */
   w: number;
   h: number;
   self: { x: number; y: number };
+  /** The name by the place's own pin: cut at the first comma when long, null when even that runs off the edge. */
+  selfName: string | null;
   pins: PlacePin[];
   /** Manhattan street grid (streets ~80 m, avenues ~260 m apart), drawn turned like the island; null outside New York. */
   grid: { street: number; avenue: number } | null;
