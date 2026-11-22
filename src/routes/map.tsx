@@ -96,14 +96,17 @@ function buildSpots(): Spot[] {
 
 declare global {
   interface Window {
-    __nfInitMap?: () => void;
-    google?: any;
+    // Leaflet, loaded from a CDN on this page only (free map tiles, no key: Lisa, 22 Nov 2026).
+    L?: any;
   }
 }
 
-const KEY = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"] as string | undefined;
-const CHANNEL = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"] as
-  string | undefined;
+// Free tiles: OpenStreetMap data drawn by CARTO (light, no labels clutter), tinted to the paper look in src/styles.css
+// (.nf-map). The Google Maps key only worked on lovable.app, not on nightfever-afterparty.com.
+const LEAFLET = "https://unpkg.com/leaflet@1.9.4/dist/leaflet";
+const TILES = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+const CREDIT =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
 const BRING_HOME = "Bring us home";
 
@@ -130,34 +133,6 @@ const inLayer = (s: Spot, l: Layer) =>
         : l === "World"
           ? s.world
           : false;
-
-// The paper look of the place pages (src/styles.css .place-*): cream paper, white streets, grey-blue water, no shop pins.
-const PAPER = [
-  { elementType: "geometry", stylers: [{ color: "#ece6da" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#6f6656" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#ece6da" }] },
-  { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#cfd6d6" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
-  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#f6f0ea" }] },
-  {
-    featureType: "landscape.man_made",
-    elementType: "geometry.stroke",
-    stylers: [{ visibility: "off" }],
-  },
-  { featureType: "poi", stylers: [{ visibility: "off" }] },
-  {
-    featureType: "poi.park",
-    elementType: "geometry",
-    stylers: [{ visibility: "on" }, { color: "#dfe3cf" }],
-  },
-  { featureType: "transit", stylers: [{ visibility: "off" }] },
-  {
-    featureType: "administrative",
-    elementType: "geometry.stroke",
-    stylers: [{ color: "#b9ae9a" }],
-  },
-];
 
 const chip = (on: boolean) =>
   `rounded-full border-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
@@ -194,62 +169,67 @@ function MapPage() {
     ).length;
 
   useEffect(() => {
-    if (!KEY || !mapEl.current) return;
+    if (!mapEl.current) return;
     const init = () => {
-      if (!mapEl.current || !window.google?.maps) return;
-      mapRef.current = new window.google.maps.Map(mapEl.current, {
-        center: { lat: 40.735, lng: -73.99 },
-        zoom: 13,
-        clickableIcons: false,
-        mapTypeControl: false,
-        streetViewControl: false,
-        styles: PAPER,
-      });
+      if (!mapEl.current || !window.L || mapRef.current) return;
+      const L = window.L;
+      mapRef.current = L.map(mapEl.current, { zoomControl: true, worldCopyJump: true }).setView(
+        [40.735, -73.99],
+        13,
+      );
+      L.tileLayer(TILES, { attribution: CREDIT, subdomains: "abcd", maxZoom: 19 }).addTo(
+        mapRef.current,
+      );
       setReady(true);
     };
-    if (window.google?.maps) return init();
-    window.__nfInitMap = init;
-    const s = document.createElement("script");
-    s.src = `https://maps.googleapis.com/maps/api/js?key=${KEY}&loading=async&callback=__nfInitMap${CHANNEL ? `&channel=${CHANNEL}` : ""}`;
-    s.async = true;
-    document.head.appendChild(s);
+    if (window.L) return init();
+    if (!document.querySelector(`link[href="${LEAFLET}.css"]`)) {
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = `${LEAFLET}.css`;
+      document.head.appendChild(css);
+    }
+    const js = document.createElement("script");
+    js.src = `${LEAFLET}.js`;
+    js.async = true;
+    js.onload = init;
+    document.head.appendChild(js);
   }, []);
 
   // World shows the whole world; the other layers go back to downtown New York.
   useEffect(() => {
     if (!ready || layer === BRING_HOME) return;
-    const g = window.google.maps;
     if (layer === "World" && visible.length) {
-      const b = new g.LatLngBounds();
-      visible.forEach((s) => b.extend({ lat: s.lat, lng: s.lng }));
-      mapRef.current.fitBounds(b, 40);
+      mapRef.current.fitBounds(
+        visible.map((s) => [s.lat, s.lng]),
+        { padding: [30, 30] },
+      );
     } else {
-      mapRef.current.setCenter({ lat: 40.735, lng: -73.99 });
-      mapRef.current.setZoom(13);
+      mapRef.current.setView([40.735, -73.99], 13);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, layer]);
 
   useEffect(() => {
     if (!ready) return;
-    markers.current.forEach((m) => m.setMap(null));
-    markers.current = visible.map((s) => {
+    const L = window.L;
+    markers.current.forEach((m) => m.remove());
+    // Biggest first, so small pins sit on top and stay clickable; the picked pin last of all.
+    const order = [...visible].sort(
+      (a, b) => Number(a.key === active) - Number(b.key === active) || b.mentions - a.mentions,
+    );
+    markers.current = order.map((s) => {
       const on = s.key === active;
-      const m = new window.google.maps.Marker({
-        position: { lat: s.lat, lng: s.lng },
-        map: mapRef.current,
-        title: s.places.map((p) => p.name).join(" / "),
-        zIndex: on ? 1000 : s.club ? 2 : 1,
-        icon: {
-          path: window.google.maps.SymbolPath.CIRCLE,
-          scale: on ? 9 : 4 + Math.min(Math.log2(1 + s.mentions), 5),
-          fillColor: on ? "#e6007e" : s.club ? "#111111" : "#f6f0ea",
-          fillOpacity: 1,
-          strokeColor: "#111111",
-          strokeWeight: 2,
-        },
-      });
-      m.addListener("click", () => {
+      const m = L.circleMarker([s.lat, s.lng], {
+        radius: on ? 9 : 4 + Math.min(Math.log2(1 + s.mentions), 5),
+        color: "#111111",
+        weight: 2,
+        fillColor: on ? "#e6007e" : s.club ? "#111111" : "#f6f0ea",
+        fillOpacity: 1,
+      })
+        .bindTooltip(s.places.map((p) => p.name).join(" / "), { direction: "top", offset: [0, -6] })
+        .addTo(mapRef.current);
+      m.on("click", () => {
         setActive(s.key);
         const at = visible.indexOf(s);
         setLimit((l) => Math.max(l, at + 1));
@@ -266,8 +246,7 @@ function MapPage() {
 
   const focus = (s: Spot) => {
     setActive(s.key);
-    mapRef.current?.panTo({ lat: s.lat, lng: s.lng });
-    if (mapRef.current && mapRef.current.getZoom() < 14) mapRef.current.setZoom(14);
+    mapRef.current?.setView([s.lat, s.lng], Math.max(mapRef.current.getZoom(), 15));
   };
 
   return (
@@ -331,14 +310,11 @@ function MapPage() {
       <section className="px-4 pb-20">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.5fr_1fr]">
           <div className="h-[460px] overflow-hidden border-2 border-[#111] bg-[#ece6da] shadow-[5px_6px_0_#111] lg:h-[640px]">
-            {KEY ? (
-              <div ref={mapEl} className="h-full w-full" aria-label="Map of Night Fever places" />
-            ) : (
-              <div className="flex h-full items-center justify-center p-8 text-center text-muted-foreground">
-                The interactive map switches on once Google Maps is connected. Until then, all the
-                places are listed right here!
-              </div>
-            )}
+            <div
+              ref={mapEl}
+              className="nf-map h-full w-full"
+              aria-label="Map of Night Fever places"
+            />
           </div>
           {layer === BRING_HOME ? (
             <div className="place-box max-h-[640px] overflow-y-auto">

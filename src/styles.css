@@ -964,3 +964,9 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .column-index-read { display: inline-block; margin-left: 8px; font-family: var(--font-flyer); text-transform: uppercase; font-size: 10.5px; letter-spacing: .06em; border: 1.5px solid #1a1a1a; padding: 1px 6px; white-space: nowrap; vertical-align: 1px; }
 /* A long book title stays readable on the narrower name card next to the cover (Library item pages, 21 Nov 2026). */
 .card-head-cover .card-title { font-size: clamp(28px, 4.4vw, 44px); }
+
+/* Big map (/map, Lisa 22 Nov 2026 option A): free OpenStreetMap tiles tinted to the paper of the place pages. */
+.nf-map { background: #ece6da; font-family: var(--font-mono-body); }
+.nf-map .leaflet-tile-pane { filter: sepia(0.28) saturate(0.7) brightness(1.02) contrast(0.95); }
+.nf-map .leaflet-control-attribution { background: rgba(246, 240, 234, 0.85); font-size: 10px; }
+.nf-map .leaflet-tooltip { border: 2px solid #111; border-radius: 0; box-shadow: 3px 3px 0 #111; background: #f6f0ea; color: #111; font-weight: 700; }
