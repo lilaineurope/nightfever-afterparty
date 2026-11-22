@@ -6,7 +6,7 @@ import { VideoScreen } from "@/components/video-screen";
 import { FanSuggestions } from "@/components/fan-suggestions";
 import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
-import type { LibraryItemView, Trailer } from "@/lib/library-item";
+import type { DroppedBy as DroppedByT, LibraryItemView, Trailer } from "@/lib/library-item";
 
 // Library item pages (Lisa, 21 Nov 2026 - "yes to everything"): the extra boxes a book, magazine, newspaper, column, diary,
 // film or TV card gets under its header - who dropped it (their polaroids), what the guests said about it, the trailer
@@ -18,46 +18,67 @@ const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 
 /** Who dropped it: each Afterparty that names it - the guest's polaroid, what was said and the moment to play. It replaces the
  *  card's plain "In the episodes" list on Library item pages (Lisa, 21 Nov 2026: one lonely polaroid looked too messy). */
-const DROPPED_SHOWN = 6;
+// Front page (Lisa, 22 Nov 2026, mockup A): the boxes are dealt into up to three columns that end about level, with a rule
+// between them like a newspaper front page - nine show before "Show all".
+const DROPPED_SHOWN = 9;
 // Lisa, 21 Nov 2026 ("if we have situations like this - merge the box, do it for all library pages"): a guest who dropped it
 // and is also quoted gets one box - their quote sits inside their "Who dropped it" box, not on a separate quote wall.
 // Guests with a quote come first, so their words are above the fold.
 const quotesOf = (v: LibraryItemView, episodeId: string) => v.quotes.filter((q) => q.episodeId === episodeId);
+/** Deal the boxes into columns by a rough height (lines of text at a column's width), so the columns end about level. Each
+ *  box keeps its place in the list (`at`), so a phone - one column - shows them in the original order. */
+function dealColumns(list: DroppedByT[], n: number, quoteLen: (id: string) => number): { d: DroppedByT; at: number }[][] {
+  const cols: { d: DroppedByT; at: number }[][] = Array.from({ length: Math.min(n, list.length) }, () => []);
+  const tall = cols.map(() => 0);
+  const lines = (chars: number, perLine: number) => (chars ? Math.ceil(chars / perLine) : 0);
+  list.forEach((d, at) => {
+    const est = 110 + (d.guest.length > 16 ? 20 : 0) + lines(quoteLen(d.episodeId), 30) * 22 + d.said.reduce((t, m) => t + lines(m.text.length + 9, 38) * 18, 0);
+    const i = tall.indexOf(Math.min(...tall));
+    cols[i]!.push({ d, at });
+    tall[i]! += Math.max(est, 140) + 22;
+  });
+  return cols;
+}
 function DroppedBy({ v, name }: { v: LibraryItemView; name: string }) {
   const [all, setAll] = useState(false);
   if (v.dropped.length === 0) return null;
   const ordered = [...v.dropped].sort((a, b) => Number(quotesOf(v, b.episodeId).length > 0) - Number(quotesOf(v, a.episodeId).length > 0));
   const shown = all ? ordered : ordered.slice(0, DROPPED_SHOWN);
+  const cols = dealColumns(shown, 3, (id) => quotesOf(v, id).reduce((t, q) => t + q.quote.length + 9, 0));
   return (
     <section aria-labelledby="dropped-by">
       <h2 id="dropped-by" className={h}>Who dropped it</h2>
-      <ul className={`lit-dropped mt-5${v.dropped.length > 1 ? " lit-dropped-2" : ""}`}>
-        {shown.map((d) => (
-          <li key={d.episodeId} className="lit-drop">
-            <Link to={episodePath(d.episodeId as never)} className="lit-pol" aria-label={`${d.guest}, ${d.short}`}>
-              {d.polaroid ? <img src={d.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" /> : <span className="lit-pol-blank">{d.short}</span>}
-            </Link>
-            <div className="min-w-0">
-              <Link to={episodePath(d.episodeId as never)} className="lit-drop-who">{d.guest}</Link>
-              <p className="lit-drop-line">
-                {d.short}
-                {d.mentions > 1 && <> · {d.mentions} mentions</>}
-              </p>
-              {quotesOf(v, d.episodeId).map((q) => (
-                <blockquote key={q.time} className="lit-drop-quote">
-                  {q.quote} <Timestamp episodeId={q.episodeId} time={q.time} />
-                </blockquote>
-              ))}
-              {d.said.map((m, i) => (
-                <p key={i} className="lit-drop-said">
-                  {m.time && m.time !== "On camera" && <><Timestamp episodeId={d.episodeId} time={m.time} />{" "}</>}
-                  <EntityText text={m.text} self={name} />
-                </p>
-              ))}
-            </div>
-          </li>
+      <div className={`lit-wall lit-wall-${cols.length} mt-5`}>
+        {cols.map((col, ci) => (
+          <ul key={ci} className="lit-wall-col">
+            {col.map(({ d, at }) => (
+              <li key={d.episodeId} className="lit-drop" style={{ order: at }}>
+                <Link to={episodePath(d.episodeId as never)} className="lit-pol" aria-label={`${d.guest}, ${d.short}`}>
+                  {d.polaroid ? <img src={d.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" /> : <span className="lit-pol-blank">{d.short}</span>}
+                </Link>
+                <div className="min-w-0">
+                  <Link to={episodePath(d.episodeId as never)} className="lit-drop-who">{d.guest}</Link>
+                  <p className="lit-drop-line">
+                    {d.short}
+                    {d.mentions > 1 && <> · {d.mentions} mentions</>}
+                  </p>
+                  {quotesOf(v, d.episodeId).map((q) => (
+                    <blockquote key={q.time} className="lit-drop-quote">
+                      {q.quote} <Timestamp episodeId={q.episodeId} time={q.time} />
+                    </blockquote>
+                  ))}
+                  {d.said.map((m, i) => (
+                    <p key={i} className="lit-drop-said">
+                      {m.time && m.time !== "On camera" && <><Timestamp episodeId={d.episodeId} time={m.time} />{" "}</>}
+                      <EntityText text={m.text} self={name} />
+                    </p>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
         ))}
-      </ul>
+      </div>
       {v.dropped.length > DROPPED_SHOWN && (
         <button type="button" className="lit-more" onClick={() => setAll((a) => !a)} aria-expanded={all}>
           {all ? "Show fewer" : `Show all ${v.dropped.length} Afterparties`}
@@ -101,8 +122,7 @@ function GuestQuotes({ v }: { v: LibraryItemView }) {
  *  in their own words on the show (src/data/publication-facts.ts). */
 function hasWhoMadeMe(v: LibraryItemView): boolean {
   if (v.shelf === "books") return !!v.facts || v.credits.length > 0;
-  const p = v.press;
-  return !!p && (!!p.founded || p.by.length > 0 || p.team.length > 0);
+  return (v.press?.team.length ?? 0) > 0;
 }
 function WhoMadeMe({ v, name }: { v: LibraryItemView; name: string }) {
   const links = useLinks();
@@ -118,9 +138,7 @@ function WhoMadeMe({ v, name }: { v: LibraryItemView; name: string }) {
     for (const c of v.credits) rows.push({ key: c.role + c.name, role: c.role, body: chip(c) });
     if (f?.isbn) rows.push({ key: "isbn", role: "ISBN", body: <span className="font-mono text-xs">{f.isbn}</span> });
   } else if (p) {
-    if (p.by.length) rows.push({ key: "by", role: "Founded by", body: <span className="lit-chips">{p.by.map(chip)}{p.founded && <span className="text-muted-foreground">{p.founded}</span>}</span> });
-    else if (p.founded) rows.push({ key: "founded", role: "First out", body: p.founded });
-    if (p.ran) rows.push({ key: "ran", role: "Ran", body: p.ran });
+    // Who founded it and when sit on the name card in the header (src/routes/explore.$slug.tsx) - here only the people.
     for (const t of p.team)
       rows.push({
         key: t.role + t.name,
@@ -153,7 +171,7 @@ function WhoMadeMe({ v, name }: { v: LibraryItemView; name: string }) {
       <p className="mt-4 text-xs text-muted-foreground">
         {v.shelf === "books"
           ? <>Only the names we could confirm from the book and its library records. Know who else worked on it - the editor, the photographer, the designer? Tell me in &ldquo;Got a copy?&rdquo; below.</>
-          : <>Founders from its own history; the rest in the guests&rsquo; own words on the show. Worked there yourself? Tell me in &ldquo;Got a copy?&rdquo; below.</>}
+          : <>In the guests&rsquo; own words on the show. Worked there yourself? Tell me in &ldquo;Got a copy?&rdquo; below.</>}
       </p>
     </section>
   );
@@ -202,8 +220,9 @@ function IssueShelf({ v, name }: { v: LibraryItemView; name: string }) {
   );
 }
 
-/** The trailer Jukebox: a little jukebox cabinet that plays the trailers from our AFTERPARTY YouTube playlists. Only shows
- *  when there is a trailer; nothing loads from YouTube until a visitor presses play. */
+/** The trailer Jukebox: a jukebox cabinet that plays the trailers from our AFTERPARTY YouTube playlists - screen on the left,
+ *  the track list on the right, the full width of the page (Front page, 22 Nov 2026). Only shows when there is a trailer;
+ *  nothing loads from YouTube until a visitor presses play. */
 function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string }) {
   const [now, setNow] = useState<Trailer | null>(null);
   const [failed, setFailed] = useState<string[]>([]);
@@ -224,6 +243,7 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
     <section aria-labelledby="trailer-jukebox">
       <h2 id="trailer-jukebox" className={h}>{filmBox ? "On film" : guestBox ? "From the guest's Jukebox" : clipBox ? "Watch the clip" : "Watch the trailer"}</h2>
       <div className="lit-jbx mt-6">
+        <div className="lit-jbx-l">
         <p className="lit-jbx-kicker">The Night Fever</p>
         <p className="lit-jbx-title">{filmBox ? <>On fil<b>m</b></> : guestBox ? <>Juke<b>box</b></> : clipBox ? <>Cl<b>ip</b></> : <>Trail<b>er</b></>}</p>
         <div className="lit-jbx-screen">
@@ -238,6 +258,8 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
             </button>
           )}
         </div>
+        </div>
+        <div className="lit-jbx-r">
         {list.length > 1 && (
           <ol className="lit-jbx-sel">
             {list.map((t, i) => (
@@ -250,7 +272,17 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
             ))}
           </ol>
         )}
+        {list.length === 1 && (
+          // One video: the right side says what is on and opens that Afterparty's whole Jukebox.
+          <div className="lit-jbx-info">
+            <p className="lit-jbx-k">{pick.kind === "guest" ? "From the guest's Jukebox" : pick.kind === "clip" ? "The clip" : pick.kind === "about" ? "On film" : "The trailer"}</p>
+            <p className="lit-jbx-info-nm">{pick.title}</p>
+            <p className="lit-jbx-sm">From our {pick.short} AFTERPARTY playlist</p>
+            <Link to="/jukebox" search={{ afterparty: pick.episodeId }} className="lit-jbx-open">Turn on the {pick.short} AFTERPARTY Jukebox &rarr;</Link>
+          </div>
+        )}
         <p className="lit-jbx-fine">Plays from YouTube, loaded only when you press ▶ - same as the Jukebox.</p>
+        </div>
         <div className="lit-jbx-grille" aria-hidden />
       </div>
     </section>
@@ -470,38 +502,62 @@ function MadeSince({ v, name }: { v: LibraryItemView; name: string }) {
 
 /** The page under the header (Lisa, 21 Nov 2026: "too messy and empty spaces"): full-width rows for who dropped it, the quotes
  *  and the issues, then two columns that each stack their own boxes, so a short box never leaves a hole next to a tall one. */
+const SHELF_LABEL: Record<string, string> = { books: "Book", magazines: "Magazine", newspapers: "Newspaper", columns: "Column", diaries: "Diary", film: "Film", tv: "TV show" };
+
+/** The front-page dateline under the header: what it is, when it started, and how much the show talks about it. */
+function Dateline({ v }: { v: LibraryItemView }) {
+  const mentions = v.dropped.reduce((n, d) => n + d.mentions, 0);
+  const year = v.press?.founded ? `Est. ${v.press.founded}` : v.facts?.year ? `First out ${v.facts.year}` : null;
+  const bits = [
+    SHELF_LABEL[v.shelf] ?? null,
+    year,
+    mentions ? `${mentions} mention${mentions === 1 ? "" : "s"} on the show` : null,
+    v.dropped.length ? `${v.dropped.length} Afterpart${v.dropped.length === 1 ? "y" : "ies"}` : null,
+    v.trailers.length ? `${v.trailers.length} video${v.trailers.length === 1 ? "" : "s"}` : null,
+  ].filter((b): b is string => !!b);
+  if (bits.length < 2) return null;
+  return (
+    <p className="lit-dateline">
+      {bits.map((b) => <span key={b}>{b}</span>)}
+    </p>
+  );
+}
+
+/** The page under the header - the Front page (Lisa, 22 Nov 2026: "not organized enough and white space" - she picked mockup
+ *  A, "apply it to all pages"). Full-width bands, so a short box never leaves a hole next to a tall one: the dateline, who
+ *  dropped it in level columns, the wide Jukebox, the small boxes side by side in one row (all the same height), the shelves
+ *  and "Got a copy?". With fewer than three small boxes "Got a copy?" joins their row; one or two issues sit next to the shelf. */
 export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: string }) {
   const [here, nearMe] = usePlace();
-  // Each box goes to the shorter column, by a rough height (the Jukebox grows with its track list).
-  const cols2: [React.ReactNode[], React.ReactNode[]] = [[], []];
-  const tall: [number, number] = [0, 0];
-  const put = (node: React.ReactNode, height: number, side?: 0 | 1) => {
-    const i = side ?? (tall[0] <= tall[1] ? 0 : 1);
-    cols2[i].push(node);
-    tall[i] += height + 1;
-  };
-  if (v.trailers.length > 0) put(<TrailerJukebox key="jbx" trailers={v.trailers} name={name} />, 9 + (v.trailers.length > 1 ? v.trailers.length * 1.2 : 0), 0);
-  if (hasWhoMadeMe(v)) put(<WhoMadeMe key="who" v={v} name={name} />, 3 + (v.shelf === "books" ? 3 : (v.press?.team.length ?? 0) * 1.6 + 1), 1);
-  // The taller box first, so the shorter one evens the columns out.
-  if (v.find) put(<FindBorrow key="borrow" v={v} here={here} onAsk={nearMe} />, 8);
-  if (v.find || v.press?.buy) put(<BuyMe key="buy" v={v} here={here} onAsk={nearMe} />, 6);
-  if (v.connections.length > 0) put(<Connections key="conn" v={v} />, 2 + v.connections.length * 1.3);
-  const [left, right] = cols2;
-  // Nothing on one side: let the other side's boxes sit next to each other instead.
-  const cols = left.length && right.length ? [left, right] : (left.length ? left : right).map((b) => [b]);
+  const boxes = [
+    hasWhoMadeMe(v) ? <WhoMadeMe key="who" v={v} name={name} /> : null,
+    v.find || v.press?.buy ? <BuyMe key="buy" v={v} here={here} onAsk={nearMe} /> : null,
+    v.find ? <FindBorrow key="borrow" v={v} here={here} onAsk={nearMe} /> : null,
+    v.connections.length > 0 ? <Connections key="conn" v={v} /> : null,
+  ].filter(Boolean);
+  const copy = v.shelf !== "film" && v.shelf !== "tv" ? <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" /> : null;
+  const copyInRow = !!copy && boxes.length < 3;
+  const row = copyInRow ? [...boxes, <div key="copy" className="lit-box lit-copy-box">{copy}</div>] : boxes;
+  const issues = v.press?.issues.length ?? 0;
+  const fewIssues = issues > 0 && issues <= 2 && v.shelfMates.length > 0;
   return (
-    <>
+    <div className="lit-front">
+      <Dateline v={v} />
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} name={name} />
       <GuestQuotes v={v} />
-      <IssueShelf v={v} name={name} />
-      {cols.length > 0 && (
-        <div className="lit-cols">
-          {cols.map((c, i) => <div key={i} className="lit-stack">{c}</div>)}
+      {!fewIssues && <IssueShelf v={v} name={name} />}
+      {v.trailers.length > 0 && <TrailerJukebox trailers={v.trailers} name={name} />}
+      {row.length > 0 && <div className={`lit-row lit-row-${row.length}`}>{row}</div>}
+      {fewIssues ? (
+        <div className="lit-shelves">
+          <IssueShelf v={v} name={name} />
+          <ShelfMates v={v} />
         </div>
+      ) : (
+        <ShelfMates v={v} />
       )}
-      <ShelfMates v={v} />
-      {v.shelf !== "film" && v.shelf !== "tv" && <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" />}
-    </>
+      {copy && !copyInRow && <div className="lit-copy-band">{copy}</div>}
+    </div>
   );
 }
