@@ -4,6 +4,7 @@ import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 import { PART_NAMES } from "./club-parts";
+import { WRITTEN_BY } from "./written-by";
 
 // One overview card per name, place, book, song, look... Every page links here.
 
@@ -73,6 +74,12 @@ export const SAME_AS: Record<string, string> = {
   "save-the-robots": "robots",
   "christopher-street-piers": "piers",
   "downtown-manhattan": "lower-manhattan",
+  // Egon von Furstenberg's book kept its first address when it got its own card (src/data/written-by.ts, 22 Nov 2026).
+  "power-look": "the-power-look",
+  // Homo Xtra is HX's full name (S03E09, James) - one card with HX Magazine (publication pages audit, 22 Nov 2026).
+  "homo-xtra": "hx-magazine",
+  // Cat Marnell's Audible book is "Self-Tanner for the Soul" (Audible, October 2019) - the S03E09 sheet had "Your".
+  "self-tanner-for-your-soul": "self-tanner-for-the-soul",
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
@@ -164,6 +171,9 @@ for (const ev of sceneEvents) {
   for (const pl of placesOf(ev.place)) add(pl, CARD_CATEGORY[slugify(pl)] ?? "Location");
 }
 for (const g of guests) for (const s of g.scenes) if (known(s)) add(s, CARD_CATEGORY[slugify(s)] ?? "Location");
+// Books by people on the site that no guest has dropped yet get a Book card and Library page of their own (Lisa, 22 Nov
+// 2026, src/data/written-by.ts). A guest who drops one later adds their episode row to the same card.
+for (const w of WRITTEN_BY) add(w.name, "Book");
 
 // Wire events and guest stories to every entity.
 // Each event's and guest's slugs and lower-case text are worked out once here, not once per entity:

@@ -169,12 +169,13 @@ function EntityPage() {
           </figure>
         )}
         {cover && (
-          <figure className={`card-cover${cover.mast ? " card-cover-mast" : ""}`}>
+          <figure className={`card-cover${cover.mast ? (cover.light ? " card-cover-mast card-cover-mast-light" : " card-cover-mast") : ""}`}>
             <img src={cover.src} alt={cover.mast ? `${e.name} masthead` : `Cover of ${e.name}`} />
             <figcaption>{cover.credit}</figcaption>
           </figure>
         )}
-        <div className={pic || cover || placeMap ? "card-namecard" : "mx-auto max-w-4xl"}>
+        {/* A book with facts but no picture yet keeps its facts on the paper name card, so they stay readable over the dots. */}
+        <div className={pic || cover || placeMap || facts ? "card-namecard" : "mx-auto max-w-4xl"}>
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">
             {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
@@ -234,8 +235,12 @@ function EntityPage() {
                   <dd>{[facts.year, facts.publisher].filter(Boolean).join(" · ")}</dd>
                 </>
               )}
-              <dt>Now</dt>
-              <dd>{facts.status}</dd>
+              {facts.status && (
+                <>
+                  <dt>Now</dt>
+                  <dd>{facts.status}</dd>
+                </>
+              )}
             </dl>
           )}
           {/* A newspaper's or magazine's facts on the name card, like a book's (Front page, Lisa 22 Nov 2026). */}
@@ -248,6 +253,7 @@ function EntityPage() {
                 </>
               )}
               {item.press.ran && (<><dt>Ran</dt><dd>{item.press.ran}</dd></>)}
+              {item.press.publisher && (<><dt>Published by</dt><dd>{item.press.publisher}</dd></>)}
               <dt>On the show</dt>
               <dd>{(() => { const m = item.dropped.reduce((n, d) => n + d.mentions, 0); return `${m} mention${m === 1 ? "" : "s"} in ${item.dropped.length} Afterpart${item.dropped.length === 1 ? "y" : "ies"}`; })()}</dd>
             </dl>

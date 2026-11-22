@@ -55,7 +55,7 @@ export const MADE_BY: Record<string, Maker[]> = {
 
   // ---------- Books not in the stocktake ----------
   "How to Murder Your Life": [m("Cat Marnell", "Wrote it", 2017)],
-  "Self-Tanner for Your Soul": [m("Cat Marnell", "Wrote it")],
+  "Self-Tanner for the Soul": [m("Cat Marnell", "Wrote it")],
   "Marilyn: A Biography": [m("Marilyn Monroe", "About them")],
   "The Rainbow Comes and Goes": [m("Lady Diana Cooper", "Wrote it", 1958)],
   "Edie: An American Biography": [m("Edie Sedgwick", "About them")],
@@ -464,27 +464,10 @@ for (const [who, paper, role, year] of WROTE_FOR) (MADE_BY[paper] ??= []).push(m
 export type OtherWork = { title: string; kind: "Book" | "Film" | "TV" | "Music" | "Magazine" | "Play" | "Club"; role: MadeRole; year?: number | undefined };
 
 export const OTHER_WORKS: Record<string, OtherWork[]> = {
-  "Gabriel Rotello": [{ title: "Sexual Ecology", kind: "Book", role: "Wrote it", year: 1997 }],
   "Elyssa Maxx Goodman": [{ title: "Glitter and Concrete", kind: "Book", role: "Wrote it", year: 2023 }],
-  "Debbie Harry": [{ title: "Face It", kind: "Book", role: "Wrote it", year: 2019 }],
-  "Liz Smith": [{ title: "Natural Blonde", kind: "Book", role: "Wrote it", year: 2000 }],
-  "Brooke Astor": [{ title: "Footprints", kind: "Book", role: "Wrote it", year: 1980 }],
-  "Holly Woodlawn": [{ title: "A Low Life in High Heels", kind: "Book", role: "Wrote it", year: 1991 }],
-  "Steve Strange": [{ title: "Blitzed!", kind: "Book", role: "Wrote it", year: 2002 }],
-  "David Wojnarowicz": [{ title: "Close to the Knives", kind: "Book", role: "Wrote it", year: 1991 }],
-  "Cookie Mueller": [{ title: "Walking Through Clear Water in a Pool Painted Black", kind: "Book", role: "Wrote it", year: 1990 }],
-  "Arthur Bell": [
-    { title: "Dancing the Gay Lib Blues", kind: "Book", role: "Wrote it", year: 1971 },
-    { title: "Kings Don't Mean a Thing", kind: "Book", role: "Wrote it", year: 1978 },
-  ],
   "Cynthia Heimel": [
-    { title: "Sex Tips for Girls", kind: "Book", role: "Wrote it", year: 1983 },
     { title: "A Girl's Guide to Chaos", kind: "Play", role: "Wrote it", year: 1986 },
   ],
-  "Diana Vreeland": [{ title: "D.V.", kind: "Book", role: "Wrote it", year: 1984 }],
-  "Terence Sellers": [{ title: "The Correct Sadist", kind: "Book", role: "Wrote it", year: 1983 }],
-  "Marcus Leatherdale": [{ title: "New York 1983", kind: "Book", role: "Photographs", year: 1983 }],
-  "Lara Parker": [{ title: "Angelique's Descent", kind: "Book", role: "Wrote it", year: 1998 }],
   "Klaus Nomi": [
     { title: "Klaus Nomi", kind: "Music", role: "Made it", year: 1981 },
     { title: "Simple Man", kind: "Music", role: "Made it", year: 1982 },
@@ -529,14 +512,6 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Dean Johnson": [{ title: "The Velvet Mafia", kind: "Music", role: "In the band" }],
   // Lisa 22 Nov 2026: fill in the people whose pages had no work yet. Facts: their Wikipedia pages (checked 22 Nov) and
   // the site's own guest and memoriam notes.
-  "Brad Gooch": [
-    { title: "Jailbait and Other Stories", kind: "Book", role: "Wrote it", year: 1984 },
-    { title: "Scary Kisses", kind: "Book", role: "Wrote it", year: 1990 },
-    { title: "City Poet: The Life and Times of Frank O'Hara", kind: "Book", role: "Wrote it", year: 1993 },
-    { title: "The Golden Age of Promiscuity", kind: "Book", role: "Wrote it", year: 1996 },
-    { title: "Smash Cut: A Memoir of Howard & Art & the '70s & the '80s", kind: "Book", role: "Wrote it", year: 2015 },
-    { title: "Radiant: The Life and Line of Keith Haring", kind: "Book", role: "Wrote it", year: 2024 },
-  ],
   "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2019 }],
   "Screamin' Rachael Cain": [
     { title: "Screamin' Rachael – 'My Main Man'", kind: "Music", role: "Sang it" },

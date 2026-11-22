@@ -145,7 +145,7 @@ function GuestLibrary() {
                 <li key={it.slug} className="lib-item">
                   <Link
                     to="/explore/$slug"
-                    params={{ slug: it.by?.slug ?? it.slug }}
+                    params={{ slug: it.slug }}
                     className="lib-hit"
                   >
                     <CoverCard item={it} tint={i} />
