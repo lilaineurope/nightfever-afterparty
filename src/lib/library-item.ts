@@ -6,8 +6,9 @@ import type { BookFacts } from "@/data/library-facts";
 
 export type DroppedBy = { episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; mentions: number; said: { time: string; text: string }[] };
 export type ShelfMate = { slug: string; name: string; cover?: string | undefined; shelf: string; eps: string[] };
-/** A trailer of the item, or (kind "guest") a video from the Jukebox of a guest who dropped it, when there is no trailer. */
-export type Trailer = { id: string; title: string; label: string; episodeId: string; short: string; kind?: "guest" | undefined };
+/** A trailer of the item, (kind "clip") a film or TV show's own clip from our playlists, or (kind "guest") a video from the
+ *  Jukebox of a guest who dropped it, when there is neither. */
+export type Trailer = { id: string; title: string; label: string; episodeId: string; short: string; kind?: "guest" | "clip" | undefined };
 export type Connection = { label: string; slug: string; name: string; note?: string | undefined; cover?: string | undefined };
 export type ItemQuote = { episodeId: string; short: string; who: string; time: string; quote: string; polaroid?: string | undefined };
 
