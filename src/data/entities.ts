@@ -3,6 +3,7 @@ import { registerFullLinks, type LinkCard } from "../lib/link-index";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
+import { PART_NAMES } from "./club-parts";
 
 // One overview card per name, place, book, song, look... Every page links here.
 
@@ -74,15 +75,17 @@ export const SAME_AS: Record<string, string> = {
 // place: the London Roxy is not the New York Roxy (Lisa, 22 Nov 2026).
 const KEEP_BRACKET = new Set(["the roxy (london)"]);
 
+// A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
+// forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
+const baseSlug = (n: string) => clean(n).normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+for (const [name, club] of PART_NAMES) SAME_AS[baseSlug(name)] = club;
+
 // Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
 const slugCache = new Map<string, string>();
 export const slugify = (n: string) => {
   let s = slugCache.get(n);
   if (s === undefined) {
-    s = clean(n)
-      .normalize("NFKD")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "");
+    s = baseSlug(n);
     s = SAME_AS[s] ?? s;
     slugCache.set(n, s);
   }
@@ -90,6 +93,7 @@ export const slugify = (n: string) => {
 };
 
 const byKey = new Map<string, Entity>();
+const borrowedName = new Set<string>();
 
 function add(name: string, category: string, extra: { guest?: Guest; link?: string | undefined } = {}) {
   const key = slugify(name);
@@ -98,6 +102,12 @@ function add(name: string, category: string, extra: { guest?: Guest; link?: stri
   if (!e) {
     e = { slug: key, name, category, refs: [], events: [], inGuestStories: [] };
     byKey.set(key, e);
+    // Made from a row that folds into another card ("Area theme nights and invitations"): the card's own name wins later.
+    if (baseSlug(name) !== key) borrowedName.add(key);
+  } else if (borrowedName.has(key) && baseSlug(name) === key) {
+    e.name = name;
+    e.category = category;
+    borrowedName.delete(key);
   }
   if (extra.guest) {
     e.guest = extra.guest;
