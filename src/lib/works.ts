@@ -1,7 +1,8 @@
 // "<first>'s work" (Lisa, 22 Nov 2026: Gabriel Rotello's page should show OutWeek, and every person's own books, papers,
 // films, TV, podcasts and music should show on their page). One list per person, put together from every place the site
 // already knows who made what - so a new book in the stocktake or a new founder in publication-facts shows up by itself:
-//   - books: the author in the Library stocktake (library-facts.ts) and the publishing team (book-credits.ts)
+//   - books: the author in the Library stocktake (library-facts.ts), the publishing team (book-credits.ts) and the books
+//     no guest has dropped yet (written-by.ts)
 //   - diaries and journals: their keeper (diaries.ts)
 //   - columns: their writer (column-articles.ts)
 //   - magazines and papers: founders and the people who worked there (publication-facts.ts)
@@ -16,6 +17,7 @@ import { DIARY_PAGES } from "@/data/diaries";
 import { COLUMN_PAGES } from "@/data/column-articles";
 import { PRESS } from "@/data/publication-facts";
 import { MADE_BY, OTHER_WORKS, type MadeRole } from "@/data/made-by";
+import { WRITTEN_BY } from "@/data/written-by";
 import { BOOKS_TO_WRITE, FILMS_TO_MAKE, type StillToMake } from "@/data/still-to-make";
 import { COME_BACK, NEW_FACES, type InterviewTip } from "@/data/interview-next";
 
@@ -151,6 +153,11 @@ function build(): Index {
   for (const [slug, credits] of Object.entries(BOOK_CREDITS)) {
     if (!libraryBySlug.has(slug)) continue;
     for (const c of credits) if (c.role !== "Imprint" && c.role !== "Printed by" && c.role !== "Distributed by") add(c.name, { slug, name: slug }, c.role.replace(/ by$| with$/, ""));
+  }
+  // Books no guest has dropped yet, with their own page (src/data/written-by.ts).
+  for (const w of WRITTEN_BY) {
+    const slug = slugify(w.name);
+    if (libraryBySlug.has(slug)) add(w.by, { slug, name: w.name }, w.role, w.year);
   }
   // Diaries and journals: the keeper.
   for (const [slug, d] of Object.entries(DIARY_PAGES)) if (libraryBySlug.has(slug)) add(d.keeper, { slug, name: slug }, "Kept it");

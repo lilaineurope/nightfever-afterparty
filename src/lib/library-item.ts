@@ -5,11 +5,20 @@
 import type { BookFacts } from "@/data/library-facts";
 
 export type DroppedBy = { episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; mentions: number; said: { time: string; text: string }[] };
+export type WriterView = {
+  name: string;
+  slug?: string | undefined;
+  /** Their own AFTERPARTY, when they are a guest with one. */
+  episodeId?: string | undefined;
+  polaroid?: string | undefined;
+  role?: string | undefined;
+  moments: { episodeId: string; short: string; guest: string; time: string; context: string; mentions: number }[];
+};
 export type ShelfMate = { slug: string; name: string; cover?: string | undefined; shelf: string; eps: string[] };
 /** A trailer of the item, (kind "clip") a film or TV show's own clip from our playlists, (kind "about") a film or video
  *  about a book or magazine from our playlists - it plays first, or (kind "guest") a video from the Jukebox of a guest who
- *  dropped it, when there is no trailer. */
-export type Trailer = { id: string; title: string; label: string; episodeId: string; short: string; kind?: "guest" | "clip" | "about" | undefined };
+ *  dropped it, when there is no trailer, or (kind "writer") a video of the writer of a book no guest has dropped yet. */
+export type Trailer = { id: string; title: string; label: string; episodeId: string; short: string; kind?: "guest" | "clip" | "about" | "writer" | undefined };
 export type Connection = { label: string; slug: string; name: string; note?: string | undefined; cover?: string | undefined };
 export type ItemQuote = { episodeId: string; short: string; who: string; time: string; quote: string; polaroid?: string | undefined };
 
@@ -18,10 +27,12 @@ export type LibraryItemView = {
   shelf: string;
   /** The real cover (photo) or masthead, taped into the header. */
   cover: { src: string; credit: string; mast: boolean } | null;
-  facts: (BookFacts & { authorGuest?: { name: string; episodeId: string; short: string; polaroid?: string | undefined } | undefined }) | null;
+  facts: (Omit<BookFacts, "stockholm"> & { stockholm: BookFacts["stockholm"] | null } & { authorGuest?: { name: string; episodeId: string; short: string; polaroid?: string | undefined } | undefined }) | null;
   /** A book a guest wished for on air that came out since (Publish this, src/data/still-to-make.ts). */
   madeSince: { episodeId: string; short: string; time?: string | undefined; why: string; year?: number | undefined } | null;
   dropped: DroppedBy[];
+  /** A book no guest has dropped yet (src/data/written-by.ts): its writer and where they come up on the show. */
+  writer: WriterView | null;
   quotes: ItemQuote[];
   connections: Connection[];
   shelfMates: ShelfMate[];

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/library")({
       books,
       press: bookClub.length - books,
       total: bookClub.length,
-      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" || b.shelf === "diaries" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.by?.slug ?? b.slug)) })),
+      first: bookClub.slice(0, 50).map((b) => ({ type: b.shelf === "books" || b.shelf === "diaries" ? "Book" : b.shelf === "columns" ? "Article" : "Periodical", name: b.name, url: abs(cardPath(b.slug)) })),
     };
   },
   head: ({ loaderData }) => {
@@ -138,12 +138,12 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
   return (
     <MomentsBox
       name={item.name}
-      slug={item.by?.slug ?? item.slug}
+      slug={item.slug}
       mentions={item.mentions}
       moments={item.moments}
       link={item.link || undefined}
       note={cover?.credit}
-      summary={item.by ? <>Not dropped in an episode · written by {item.by.name} in 1978, with Camille Duhé</> : undefined}
+      summary={item.by ? <>Not dropped in an episode yet · by {item.by.name}</> : undefined}
       onClose={onClose}
     />
   );

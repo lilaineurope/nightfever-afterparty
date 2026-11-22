@@ -88,6 +88,61 @@ function DroppedBy({ v, name }: { v: LibraryItemView; name: string }) {
   );
 }
 
+/** A book no guest has dropped yet (src/data/written-by.ts, Lisa 22 Nov 2026): instead of "Who dropped it", where its writer
+ *  comes up on the show - each line like every other "In the episodes" list: "S6E3 · Guest" opens the AFTERPARTY (black to
+ *  pink), the yellow time plays the episode from that moment, what was said underneath. */
+const WRITER_SHOWN = 9;
+function WriterOnShow({ v }: { v: LibraryItemView }) {
+  const [all, setAll] = useState(false);
+  const w = v.writer;
+  if (!w) return null;
+  const shown = all ? w.moments : w.moments.slice(0, WRITER_SHOWN);
+  const who = w.episodeId ? (
+    <Link to={episodePath(w.episodeId as never)} className="lit-drop-who">{w.name}</Link>
+  ) : w.slug ? (
+    <Link to="/explore/$slug" params={{ slug: w.slug }} className="lit-drop-who">{w.name}</Link>
+  ) : (
+    <span className="lit-drop-who">{w.name}</span>
+  );
+  return (
+    <section aria-labelledby="writer-on-show">
+      <h2 id="writer-on-show" className={h}>Not dropped on the show yet</h2>
+      <div className="lit-writer mt-5">
+        {w.polaroid && <img src={w.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" className="lit-writer-pol" />}
+        <div className="min-w-0">
+          <p className="lit-drop-line">{w.role === "Photographs" ? "Photographed by" : "Written by"}</p>
+          {who}
+          <p className="lit-drop-line">
+            {w.moments.length > 0
+              ? <>comes up in {new Set(w.moments.map((m) => m.episodeId)).size} Afterpart{new Set(w.moments.map((m) => m.episodeId)).size === 1 ? "y" : "ies"}:</>
+              : <>No guest has talked about this book or its writer yet.</>}
+          </p>
+        </div>
+      </div>
+      {shown.length > 0 && (
+        <ul className="lit-writer-lines mt-4">
+          {shown.map((m) => (
+            <li key={m.episodeId + m.time}>
+              <div className="flex flex-wrap items-baseline gap-x-2">
+                <Link to={episodePath(m.episodeId as never)} className="font-semibold text-[#111] transition-colors hover:text-pink focus-visible:text-pink">
+                  {m.short} · {m.guest}
+                </Link>
+                {m.time && m.time !== "On camera" && <Timestamp episodeId={m.episodeId} time={m.time} className="text-xs" />}
+              </div>
+              {m.context && <p className="mt-0.5"><EntityText text={m.context} /></p>}
+            </li>
+          ))}
+        </ul>
+      )}
+      {w.moments.length > WRITER_SHOWN && (
+        <button type="button" className="lit-more" onClick={() => setAll((a) => !a)} aria-expanded={all}>
+          {all ? "Show fewer" : `Show all ${w.moments.length} moments`}
+        </button>
+      )}
+    </section>
+  );
+}
+
 /** What the guests said about it: their own words, each with their polaroid and the moment (src/data/item-quotes.ts). */
 function GuestQuotes({ v }: { v: LibraryItemView }) {
   // Quotes from a guest who dropped it already sit in their "Who dropped it" box.
@@ -229,7 +284,8 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
   const list = trailers.filter((t) => !failed.includes(t.id));
   if (list.length === 0) return null;
   const pick = list[0]!;
-  const guestBox = list.every((t) => t.kind === "guest");
+  const writerBox = list.every((t) => t.kind === "writer");
+  const guestBox = writerBox || list.every((t) => t.kind === "guest");
   // No trailer, but the show's own clip (Lisa, 22 Nov 2026: Candied Camera): "Watch the clip".
   const clipBox = !guestBox && list.every((t) => t.kind === "clip" || t.kind === "guest");
   // A film about the book or magazine plays first (Lisa, 22 Nov 2026: Edie: Girl on Fire on the Edie page): "On film".
@@ -241,7 +297,7 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
   };
   return (
     <section aria-labelledby="trailer-jukebox">
-      <h2 id="trailer-jukebox" className={h}>{filmBox ? "On film" : guestBox ? "From the guest's Jukebox" : clipBox ? "Watch the clip" : "Watch the trailer"}</h2>
+      <h2 id="trailer-jukebox" className={h}>{filmBox ? "On film" : writerBox ? "From the writer's Jukebox" : guestBox ? "From the guest's Jukebox" : clipBox ? "Watch the clip" : "Watch the trailer"}</h2>
       <div className="lit-jbx mt-6">
         <div className="lit-jbx-l">
         <p className="lit-jbx-kicker">The Night Fever</p>
@@ -250,8 +306,8 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
           {now ? (
             <VideoScreen vid={now.id} title={now.title} onEnd={() => next(now)} onFail={() => { setFailed((f) => [...f, now.id]); next(now); }} />
           ) : (
-            <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play ${pick.kind === "guest" || pick.kind === "about" ? "the video" : pick.kind === "clip" ? "the clip" : "the trailer"}: ${pick.title}`}>
-              <span className="lit-jbx-k">{pick.kind === "guest" ? `${pick.short} · who dropped it` : pick.kind === "about" ? "Watch first" : pick.kind === "clip" ? "The clip" : pick.label === name ? "The trailer" : "From page to screen"}</span>
+            <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play ${pick.kind === "guest" || pick.kind === "writer" || pick.kind === "about" ? "the video" : pick.kind === "clip" ? "the clip" : "the trailer"}: ${pick.title}`}>
+              <span className="lit-jbx-k">{pick.kind === "writer" ? "The writer" : pick.kind === "guest" ? `${pick.short} · who dropped it` : pick.kind === "about" ? "Watch first" : pick.kind === "clip" ? "The clip" : pick.label === name ? "The trailer" : "From page to screen"}</span>
               <span className="lit-jbx-play" aria-hidden>▶</span>
               <span className="lit-jbx-nm">{pick.kind === "about" ? pick.title : pick.label}</span>
               <span className="lit-jbx-sm">From our {pick.short} AFTERPARTY playlist</span>
@@ -266,7 +322,7 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
               <li key={t.id}>
                 <button type="button" aria-pressed={showing.id === t.id && !!now} onClick={() => setNow(t)}>
                   <i>A{i + 1}</i>
-                  <span>{t.kind === "guest" ? `${t.label}: ${t.title}` : t.title}</span>
+                  <span>{t.kind === "guest" || t.kind === "writer" ? `${t.label}: ${t.title}` : t.title}</span>
                 </button>
               </li>
             ))}
@@ -513,6 +569,7 @@ function Dateline({ v }: { v: LibraryItemView }) {
     year,
     mentions ? `${mentions} mention${mentions === 1 ? "" : "s"} on the show` : null,
     v.dropped.length ? `${v.dropped.length} Afterpart${v.dropped.length === 1 ? "y" : "ies"}` : null,
+    v.writer ? "Not dropped on the show yet" : null,
     v.trailers.length ? `${v.trailers.length} video${v.trailers.length === 1 ? "" : "s"}` : null,
   ].filter((b): b is string => !!b);
   if (bits.length < 2) return null;
@@ -545,6 +602,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       <Dateline v={v} />
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} name={name} />
+      <WriterOnShow v={v} />
       <GuestQuotes v={v} />
       {!fewIssues && <IssueShelf v={v} name={name} />}
       {v.trailers.length > 0 && <TrailerJukebox trailers={v.trailers} name={name} />}

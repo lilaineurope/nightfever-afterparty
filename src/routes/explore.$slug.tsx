@@ -174,7 +174,8 @@ function EntityPage() {
             <figcaption>{cover.credit}</figcaption>
           </figure>
         )}
-        <div className={pic || cover || placeMap ? "card-namecard" : "mx-auto max-w-4xl"}>
+        {/* A book with facts but no picture yet keeps its facts on the paper name card, so they stay readable over the dots. */}
+        <div className={pic || cover || placeMap || facts ? "card-namecard" : "mx-auto max-w-4xl"}>
           <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
           <p className="mt-5">
             {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
@@ -234,8 +235,12 @@ function EntityPage() {
                   <dd>{[facts.year, facts.publisher].filter(Boolean).join(" · ")}</dd>
                 </>
               )}
-              <dt>Now</dt>
-              <dd>{facts.status}</dd>
+              {facts.status && (
+                <>
+                  <dt>Now</dt>
+                  <dd>{facts.status}</dd>
+                </>
+              )}
             </dl>
           )}
           {/* A newspaper's or magazine's facts on the name card, like a book's (Front page, Lisa 22 Nov 2026). */}

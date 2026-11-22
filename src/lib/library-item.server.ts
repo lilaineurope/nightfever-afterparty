@@ -9,9 +9,11 @@ import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
 import { PRESS } from "@/data/publication-facts";
+import { WRITTEN_BY } from "@/data/written-by";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
-import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, Trailer } from "@/lib/library-item";
+import { PERSON_PORTRAITS } from "@/data/person-portraits";
+import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, Trailer, WriterView } from "@/lib/library-item";
 
 type Clip = { id: string; name: string; cat: string; title: string; of?: string; first?: boolean };
 // Every video in the AFTERPARTY YouTube playlists (src/data/episode-videos), by the card it belongs to.
@@ -63,6 +65,50 @@ function guestJukebox(episodeId: string): Trailer[] {
 }
 
 const libraryBySlug = Object.fromEntries(bookClub.map((b) => [b.slug, b]));
+
+// Books no guest has dropped yet (src/data/written-by.ts, Lisa 22 Nov 2026): their facts come from there until the book is
+// in the Library stocktake, and their page shows where the writer comes up in the episodes instead of "Who dropped it".
+const writtenBy = Object.fromEntries(WRITTEN_BY.map((w) => [slugify(w.name), w]));
+function writtenByFacts(slug: string): LibraryItemView["facts"] {
+  const w = writtenBy[slug];
+  if (!w) return null;
+  return {
+    title: w.title,
+    author: [w.by, w.with].filter(Boolean).join(" "),
+    year: w.year,
+    publisher: w.publisher,
+    isbn: w.isbn ?? null,
+    inPrint: w.inPrint ?? true,
+    status: w.inPrint === true ? "In print" : w.inPrint === false ? "Out of print" : "",
+    // Not checked in the Stockholm libraries yet: the borrow box shows no Stockholm list rather than a guess.
+    stockholm: null,
+    checked: null,
+  };
+}
+
+/** Where the writer of a book no guest has dropped comes up on the show: every episode row that names them (episode,
+ *  play time, what was said), and their videos from our playlists for the Jukebox. */
+function writerView(e: Entity, dropped: DroppedBy[]): WriterView | null {
+  const w = writtenBy[e.slug];
+  if (!w || dropped.length > 0) return null;
+  const p = entityFor(w.by);
+  if (!p) return { name: w.by, moments: [] };
+  const ep = afterpartyOf(p);
+  const moments = p.refs
+    .filter((r) => r.episode)
+    .map((r) => ({ episodeId: r.episode as string, short: episodeShort(r.episode as string), guest: stageName(episodeById(r.episode as string).guest), time: r.time, context: r.context, mentions: r.mentions }))
+    .sort((a, b) => a.episodeId.localeCompare(b.episodeId) || a.time.localeCompare(b.time));
+  return { name: p.name, slug: p.slug, episodeId: ep, polaroid: ep ? guestPolaroid(ep) : PERSON_PORTRAITS[p.slug]?.polaroid, role: w.role, moments };
+}
+
+/** The writer's own videos in our playlists (the clips filed under their name). */
+function writerJukebox(slug: string, name: string): Trailer[] {
+  const out: Trailer[] = [];
+  for (const c of allClips)
+    if (c.cat === "Person" && entityFor(c.name)?.slug === slug && !out.some((t) => t.id === c.id))
+      out.push({ id: c.id, title: c.title, label: name, episodeId: c.file, short: episodeShort(c.file), kind: "writer" });
+  return out.slice(0, 6);
+}
 const guestPolaroid = (episodeId: string) => polaroidThumb(episodeId, 240);
 
 /** The card is a Library item (any shelf) or a film / TV card. */
@@ -119,11 +165,12 @@ function connections(e: Entity, shelf: string): Connection[] {
   }
   for (const col of bookClub.filter((b) => b.shelf === "columns")) if (paperOf(col.name) && entityFor(paperOf(col.name)!)?.slug === e.slug) add("Column in it", col.name);
   // More by the same writer: their other books and their diaries.
-  const facts = BOOK_FACTS[e.slug];
+  const facts = BOOK_FACTS[e.slug] ?? writtenByFacts(e.slug);
   const authors = (facts?.author ?? DIARY_PAGES[e.slug]?.keeper ?? "").split(/\s+(?:with|and|&)\s+|,\s*/).map((a) => a.trim()).filter(Boolean);
   if (authors.length) {
     for (const [slug, f] of Object.entries(BOOK_FACTS)) if (slug !== e.slug && authors.some((a) => f.author?.includes(a)) && libraryBySlug[slug]) add("Also by them", libraryBySlug[slug]!.name);
     for (const [slug, d] of Object.entries(DIARY_PAGES)) if (slug !== e.slug && authors.includes(d.keeper) && libraryBySlug[slug]) add("Also by them", libraryBySlug[slug]!.name);
+    for (const [slug, w] of Object.entries(writtenBy)) if (slug !== e.slug && !BOOK_FACTS[slug] && authors.includes(w.by) && libraryBySlug[slug]) add("Also by them", libraryBySlug[slug]!.name);
   }
   return out;
 }
@@ -166,7 +213,7 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
   const item = libraryBySlug[e.slug];
   const shelf = item?.shelf ?? (e.category === "TV" ? "tv" : "film");
   const c = coverFor(e.name);
-  const facts = BOOK_FACTS[e.slug];
+  const facts = BOOK_FACTS[e.slug] ?? writtenByFacts(e.slug);
   const made = BOOKS_TO_WRITE.find((b) => b.made === "made" && b.library && entityFor(b.library)?.slug === e.slug);
   const dropped = droppedBy(e);
   const trailers = [...(trailersBySlug[e.slug] ?? [])];
@@ -181,6 +228,8 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
       for (const t of guestJukebox(d.episodeId).slice(0, 3))
         if (trailers.length + about.length < 6 && !trailers.some((x) => x.id === t.id) && !about.some((x) => x.id === t.id)) trailers.push(t);
     }
+  const writer = writerView(e, dropped);
+  if (writer?.slug && trailers.length === 0) trailers.push(...writerJukebox(writer.slug, writer.name));
   trailers.unshift(...about);
   const quotes = (ITEM_QUOTES[e.slug] ?? []).map((q) => ({ ...q, episodeId: q.episode, short: episodeShort(q.episode), polaroid: guestPolaroid(q.episode) }));
   return {
@@ -190,6 +239,7 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
     facts: facts ? { ...facts, authorGuest: authorGuest(facts.author) } : null,
     madeSince: made ? { episodeId: made.episodeId, short: episodeShort(made.episodeId), time: made.time, why: made.why, year: made.year } : null,
     dropped,
+    writer,
     quotes,
     connections: connections(e, shelf),
     shelfMates: item ? shelfMates(e, dropped) : [],

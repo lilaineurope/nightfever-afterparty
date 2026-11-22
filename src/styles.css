@@ -768,6 +768,11 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-drop-quote { margin: 10px 0 0; font-size: 15px; line-height: 1.45; }
 .lit-drop-quote::before { content: "\201C"; font-family: var(--font-flyer); color: var(--color-pink); font-size: 34px; line-height: 0; vertical-align: -12px; margin-right: 4px; }
 .lit-drop-quote + .lit-drop-said, .lit-drop-quote ~ .lit-drop-said { font-size: 12px; color: var(--muted-foreground); }
+/* A book no guest has dropped yet: its writer and where they come up on the show (src/data/written-by.ts, 22 Nov 2026). */
+.lit-writer { display: flex; align-items: center; gap: 16px; }
+.lit-writer-pol { width: 96px; height: 96px; object-fit: cover; border: 6px solid #fff; border-bottom-width: 18px; box-shadow: 2px 3px 0 rgba(0,0,0,.25); transform: rotate(-2deg); flex: none; }
+.lit-writer-lines { columns: 3 240px; column-gap: 28px; column-rule: 1px solid #111; font-size: 13px; line-height: 1.35; }
+.lit-writer-lines li { break-inside: avoid; margin-bottom: 12px; }
 .lit-more { margin-top: 18px; border: 2px solid #111; background: #fff; padding: 6px 14px; box-shadow: 3px 3px 0 #111; font: 12px/1.4 var(--font-flyer); text-transform: uppercase; cursor: pointer; }
 .lit-more:hover { background: var(--color-pink); color: #fff; }
 /* The issues they talk about: typed covers with the cover line. */

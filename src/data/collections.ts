@@ -1,7 +1,8 @@
 // Library (bookClub) and Jukebox: every book, magazine, song, band and sound named in the published episode indexes.
 // Built from entities.ts, so a new Afterparty episode fills both pages automatically.
-import { DIARY_NAME, entities, type Entity, type Ref } from "./entities";
+import { DIARY_NAME, entities, entityFor, slugify, type Entity, type Ref } from "./entities";
 import { episodeById } from "./episodes";
+import { WRITTEN_BY } from "./written-by";
 
 export type Shelf = { key: string; label: string };
 
@@ -14,7 +15,7 @@ export type CollectionItem = {
   moments: { episodeId: string; code: string; guest: string; time: string; context: string }[];
   /** Spotify URI (spotify:track:… / album / artist) for the Jukebox player, when one exists */
   spotify?: string | undefined;
-  /** A book no guest drops but that belongs to someone on the site: its name links to their A–Z page instead of a card of its own. */
+  /** A book no guest has dropped yet, by someone on the site (src/data/written-by.ts): its cover says "by <name>". */
   by?: { slug: string; name: string } | undefined;
 };
 
@@ -78,27 +79,25 @@ function pressShelf(name: string): string {
   return NEWSPAPER.test(name) ? "newspapers" : "magazines";
 }
 
-// Books written by people on the site that no guest names (Lisa, 6 Nov 2026: "add the power look to library").
-const WRITTEN_BY: CollectionItem[] = [
-  {
-    slug: "the-power-look",
-    name: "The Power Look (Egon von Furstenberg)",
-    shelf: "books",
-    link: "https://en.wikipedia.org/wiki/Prince_Egon_von_F%C3%BCrstenberg",
-    mentions: 0,
-    moments: [],
-    by: { slug: "egon-von-furstenberg", name: "Egon von Furstenberg" },
-  },
-];
+// Books written by people on the site that no guest names (Lisa, 6 Nov 2026: "add the power look to library"; 22 Nov 2026:
+// every one of them gets its own page) - src/data/written-by.ts makes their cards, here they get "by <name>".
+const writtenBy = new Map(WRITTEN_BY.map((w) => [slugify(w.name), w]));
+function byOf(e: Entity, mentions: number): CollectionItem["by"] {
+  const w = mentions === 0 ? writtenBy.get(e.slug) : undefined;
+  if (!w) return undefined;
+  const p = entityFor(w.by);
+  return { slug: p?.slug ?? slugify(w.by), name: w.by };
+}
 
 export const bookClub: CollectionItem[] = [
   ...entities
     .filter((e) => hasCat(e, ["Book", "Publication"]) && !UNPUBLISHED_BOOKS.has(e.name))
     .map((e) => {
       const isBook = e.category === "Book" || e.category === "Diary" || (e.refs.some((r) => r.category === "Book") && !e.refs.some((r) => r.category === "Publication"));
-      return toItem(e, isBook && DIARIES.test(e.name) ? "diaries" : isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
+      const item = toItem(e, isBook && DIARIES.test(e.name) ? "diaries" : isBook ? "books" : pressShelf(e.name), ["Book", "Publication"]);
+      const by = byOf(e, item.mentions);
+      return by ? { ...item, by } : item;
     }),
-  ...WRITTEN_BY,
 ].sort(byMentions);
 
 // ---------- Jukebox ----------
