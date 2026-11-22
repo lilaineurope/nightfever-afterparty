@@ -360,4 +360,14 @@ export const YEARS: Record<string, number> = {
   "Britney Spears – 'I'm a Slave 4 U'": 2001,
   "N.E.R.D": 1999,
   "Clipse": 1992,
+  // S04E01 Daphne Guinness
+  "Daphne Guinness – 'Time'": 2024,
+  "Daphne Guinness – Optimist in Black": 2016,
+  "Daphne Guinness – 'Volcano'": 2024,
+  "Daphne Guinness – Sleep": 2024,
+  "Daphne Guinness – 'Mishima'": 2024,
+  "Daphne Guinness – 'Hip Neck Spine'": 2024,
+  "The Kinks": 1963,
+  "Berlin (band)": 1978,
+  "S'Express": 1988,
 };

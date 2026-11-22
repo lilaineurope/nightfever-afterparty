@@ -907,7 +907,22 @@ const s03e09: Episode = {
     "Cat Marnell on post-9/11 clubs, Condé Nast beauty closets, xoJane, How to Murder Your Life and growing up on the Edie book",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09].sort((a, b) =>
+const s04e01: Episode = {
+  id: "s04e01",
+  season: 4,
+  episode: 1,
+  guest: "Daphne Guinness",
+  released: "2024-07-03",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-401",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://traffic.megaphone.fm/APO8462312118.mp3",
+  runtime: "1:04:35",
+  afterpartyPublished: "2026-12-01",
+  blurb:
+    "Daphne Guinness on an Irish Guinness childhood, summers with Dalí in Cadaqués, Isabella Blow and McQueen, couture as philosophy and making records with Tony Visconti",
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -938,7 +953,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07a" | "/episodes/s05e07b" | "/episodes/s01e09" | "/episodes/s04e02" | "/episodes/s04e06" | "/episodes/s04e05" | "/episodes/s02e10" | "/episodes/s03e07" | "/episodes/s03e09" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07a" | "/episodes/s05e07b" | "/episodes/s01e09" | "/episodes/s04e02" | "/episodes/s04e06" | "/episodes/s04e05" | "/episodes/s02e10" | "/episodes/s03e07" | "/episodes/s03e09" | "/episodes/s04e01" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -1042,6 +1057,8 @@ export function episodePath(
       return "/episodes/s03e07";
     case "s03e09":
       return "/episodes/s03e09";
+    case "s04e01":
+      return "/episodes/s04e01";
     case "s05e07a":
       return "/episodes/s05e07a";
     case "s05e07b":

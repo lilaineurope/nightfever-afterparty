@@ -181,6 +181,14 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     year: 2024,
     madeAs: "Dustin Pittman: New York After Dark",
   },
+  {
+    title: "Daphne Guinness's autobiography",
+    why: "James says there are two or three autobiographies in Daphne; she says she has started hers, writing it out longhand, with no publisher yet.",
+    episodeId: "s04e01",
+    time: "00:40:18",
+    made: "in the works",
+    status: "Started, handwritten, no publisher announced (checked 22 Nov 2026).",
+  },
 ];
 
 export const FILMS_TO_MAKE: StillToMake[] = [
