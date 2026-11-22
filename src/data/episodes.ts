@@ -923,7 +923,6 @@ const s04e01: Episode = {
     "Daphne Guinness on an Irish Guinness childhood, summers with Dalí in Cadaqués, Isabella Blow and McQueen, couture as philosophy and making records with Tony Visconti",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01].sort((a, b) =>
 const s04e11: Episode = {
   id: "s04e11",
   season: 4,
@@ -939,7 +938,7 @@ const s04e11: Episode = {
     "Elyssa Maxx Goodman on Julian Eltinge, Bert Savoy, the Pansy Craze, Harlem's drag balls and the 1845 masquerade law",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e11].sort((a, b) =>
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01, s04e11].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 

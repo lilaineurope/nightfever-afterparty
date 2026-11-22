@@ -68,6 +68,12 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Super Freak (unpublished)": [m("James St. James", "Wrote it")],
   "Connie's biography (by David Glamamore)": [m("David Glamamore", "Writing it"), m("Connie Fleming", "About them")],
 
+  // S04E11 Elyssa Maxx Goodman: her own book and the histories she and James name on the show
+  "Glitter and Concrete": [m("Elyssa Maxx Goodman", "Wrote it", 2023)],
+  "Just One of the Boys": [m("Gillian M. Rodger", "Wrote it", 2018)],
+  "The Changing Room": [m("Laurence Senelick", "Wrote it", 2000)],
+  "Camp: The Story of the Attitude That Conquered the World": [m("Paul Baker", "Wrote it", 2023)],
+  "The Big Sea": [m("Langston Hughes", "Wrote it", 1940)],
   // ---------- Films ----------
   "8½": [m("Federico Fellini", "Directed it", 1963)],
   "La Dolce Vita": [m("Federico Fellini", "Directed it", 1960), m("Anita Ekberg", "Starred in it"), m("Nico", "In it")],
@@ -464,7 +470,6 @@ for (const [who, paper, role, year] of WROTE_FOR) (MADE_BY[paper] ??= []).push(m
 export type OtherWork = { title: string; kind: "Book" | "Film" | "TV" | "Music" | "Magazine" | "Play" | "Club"; role: MadeRole; year?: number | undefined };
 
 export const OTHER_WORKS: Record<string, OtherWork[]> = {
-  "Elyssa Maxx Goodman": [{ title: "Glitter and Concrete", kind: "Book", role: "Wrote it", year: 2023 }],
   "Cynthia Heimel": [
     { title: "A Girl's Guide to Chaos", kind: "Play", role: "Wrote it", year: 1986 },
   ],
