@@ -38,7 +38,8 @@ const refs: Ref[] = EPISODE_REFS.flatMap(([episode, rows]) => rows.map((r) => ({
 // "(S01E07)" is kept, so each episode's on-camera look keeps its own card.
 const clean = (n: string) =>
   n
-    .replace(/\s*\(([^)]*)\)/g, (m, inner: string) => (/^S\d{2}E\d{2}$/i.test(inner.trim()) ? ` ${inner}` : ""))
+    .replace(/\s*\(([^)]*)\)/g, (m, inner: string) =>
+      /^S\d{2}E\d{2}$/i.test(inner.trim()) || KEEP_BRACKET.has(n.trim().toLowerCase()) ? ` ${inner}` : "")
     .replace(/&/g, "and")
     .replace(/^the\s+/i, "")
     .trim()
@@ -50,7 +51,29 @@ export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
   // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
+  // Places (Lisa, 22 Nov 2026: "we have to make sure we have no double ups"). A club's street address is its club page,
+  // the same place under two names is one card - so the map can never pin it twice.
+  "315-bowery": "cbgb",
+  "254-west-54th-street": "studio-54",
+  "77-white-street": "mudd-club",
+  "30-west-21st-street": "danceteria",
+  "101-avenue-a": "pyramid-club",
+  "656-sixth-avenue": "limelight",
+  "157-hudson-street": "area",
+  "126-east-14th-street": "palladium",
+  "28-30-tenth-avenue": "mars",
+  "530-west-27th-street": "sound-factory",
+  "220-twelfth-avenue": "tunnel",
+  "218-west-47th-street": "club-usa",
+  "33-st-marks-place": "manic-panic-store-st-marks-place",
+  "save-the-robots": "robots",
+  "christopher-street-piers": "piers",
+  "downtown-manhattan": "lower-manhattan",
 };
+
+// Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
+// place: the London Roxy is not the New York Roxy (Lisa, 22 Nov 2026).
+const KEEP_BRACKET = new Set(["the roxy (london)"]);
 
 // A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
 // forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
