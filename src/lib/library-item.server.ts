@@ -13,13 +13,15 @@ import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
 import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, Trailer } from "@/lib/library-item";
 
-type Clip = { id: string; name: string; cat: string; title: string; of?: string };
+type Clip = { id: string; name: string; cat: string; title: string; of?: string; first?: boolean };
 // Every video in the AFTERPARTY YouTube playlists (src/data/episode-videos), by the card it belongs to.
 const clipFiles = import.meta.glob<Clip[]>("../data/episode-videos/*.json", { eager: true, import: "default" });
 const TRAILER = /\btrailer\b/i;
 const trailersBySlug: Record<string, Trailer[]> = {};
 const clipsBySlug: Record<string, Trailer[]> = {};
+const aboutBySlug: Record<string, Trailer[]> = {};
 const SCREEN = new Set(["Film", "TV"]);
+const PRINT = new Set(["Book", "Publication"]);
 for (const [path, clips] of Object.entries(clipFiles)) {
   const episodeId = path.split("/").pop()!.replace(/\.json$/, "");
   for (const c of clips) {
@@ -30,6 +32,12 @@ for (const [path, clips] of Object.entries(clipFiles)) {
       if (SCREEN.has(c.cat)) {
         const own = (clipsBySlug[slug] ??= []);
         if (!own.some((t) => t.id === c.id)) own.push({ id: c.id, title: c.title, label: c.name, episodeId, short: episodeShort(episodeId), kind: "clip" });
+      }
+      // A film about a book or magazine, marked "first" in the episode's video file, plays first on its page (Lisa, 22 Nov
+      // 2026: Edie: Girl on Fire on the Edie: An American Biography page).
+      if (PRINT.has(c.cat) && c.first) {
+        const about = (aboutBySlug[slug] ??= []);
+        if (!about.some((t) => t.id === c.id)) about.push({ id: c.id, title: c.title, label: c.name, episodeId, short: episodeShort(episodeId), kind: "about" });
       }
       continue;
     }
@@ -165,11 +173,15 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
   for (const f of ON_SCREEN[e.name] ?? []) for (const t of trailersBySlug[entityFor(f.name)?.slug ?? ""] ?? []) if (!trailers.some((x) => x.id === t.id)) trailers.push(t);
   // A film or TV card's own clips come after its trailers, before any guest's Jukebox.
   if (SCREEN.has(e.category)) for (const t of clipsBySlug[e.slug] ?? []) if (!trailers.some((x) => x.id === t.id)) trailers.push(t);
-  // No trailer: the Jukebox plays the guests who dropped it instead - most mentions first, a few videos each.
+  // A film or video about the book or magazine plays first (Lisa, 22 Nov 2026).
+  const about = (aboutBySlug[e.slug] ?? []).filter((t) => !trailers.some((x) => x.id === t.id));
+  // No trailer: the Jukebox plays the guests who dropped it instead (after any film about it) - most mentions first, a few videos each.
   if (trailers.length === 0)
     for (const d of [...dropped].sort((a, b) => b.mentions - a.mentions)) {
-      for (const t of guestJukebox(d.episodeId).slice(0, 3)) if (trailers.length < 6 && !trailers.some((x) => x.id === t.id)) trailers.push(t);
+      for (const t of guestJukebox(d.episodeId).slice(0, 3))
+        if (trailers.length + about.length < 6 && !trailers.some((x) => x.id === t.id) && !about.some((x) => x.id === t.id)) trailers.push(t);
     }
+  trailers.unshift(...about);
   const quotes = (ITEM_QUOTES[e.slug] ?? []).map((q) => ({ ...q, episodeId: q.episode, short: episodeShort(q.episode), polaroid: guestPolaroid(q.episode) }));
   return {
     shelf,
