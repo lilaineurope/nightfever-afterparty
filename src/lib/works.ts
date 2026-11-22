@@ -17,7 +17,7 @@ import { COLUMN_PAGES } from "@/data/column-articles";
 import { PRESS } from "@/data/publication-facts";
 import { MADE_BY, OTHER_WORKS, type MadeRole } from "@/data/made-by";
 
-export type WorkKind = "Book" | "Diary" | "Magazine" | "Paper" | "Column" | "Film" | "TV" | "Podcast" | "Music" | "Play";
+export type WorkKind = "Book" | "Diary" | "Magazine" | "Paper" | "Column" | "Film" | "TV" | "Podcast" | "Music" | "Club" | "Play";
 
 export type PersonWork = {
   /** The work's A–Z card; missing for a work no guest has dropped yet. */
@@ -34,7 +34,7 @@ export type PersonWork = {
   coverName?: string | undefined;
 };
 
-const KIND_ORDER: WorkKind[] = ["Book", "Diary", "Magazine", "Paper", "Column", "Film", "TV", "Podcast", "Music", "Play"];
+const KIND_ORDER: WorkKind[] = ["Book", "Diary", "Magazine", "Paper", "Column", "Film", "TV", "Podcast", "Music", "Club", "Play"];
 const SHELF_KIND: Record<string, WorkKind> = { books: "Book", diaries: "Diary", magazines: "Magazine", newspapers: "Paper", columns: "Column" };
 const libraryBySlug = new Map(bookClub.map((b) => [b.slug, b]));
 
@@ -101,7 +101,7 @@ function kindOf(slug: string | undefined, fallback?: string): WorkKind {
   const b = slug ? libraryBySlug.get(slug) : undefined;
   if (b) return SHELF_KIND[b.shelf] ?? "Book";
   const cat = fallback ?? "";
-  if (cat === "Film" || cat === "TV" || cat === "Podcast" || cat === "Music") return cat;
+  if (cat === "Film" || cat === "TV" || cat === "Podcast" || cat === "Music" || cat === "Club") return cat;
   if (cat === "Publication") return "Magazine";
   return "Book";
 }
