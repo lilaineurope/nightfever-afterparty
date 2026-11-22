@@ -29,9 +29,24 @@ const sizeOf = (e: Entity, m: number) => (NO_BIG.has(e.name) ? 1 : m >= 60 ? 4 :
 const KIND: Record<string, string> = {
   Person: "az-ink", Organisation: "az-ink", Podcast: "az-ink",
   Club: "az-pink", Event: "az-pink",
-  Music: "az-yellow", Film: "az-yellow", TV: "az-yellow", Diary: "az-diary",
+  Music: "az-yellow", Film: "az-yellow", TV: "az-yellow",
 };
-const kindOf = (e: Entity) => KIND[e.category] ?? "az-paper";
+// Publications (Lisa, 22 Nov 2026: "everything should be called publications - books, diaries merged to publications on
+// a-z"): on the A–Z every Library item - book, diary, magazine, newspaper, column - and every book still to be written is
+// a Publication, with one chip. Only the A–Z: the cards themselves and the Library shelves keep Book, Diary and the rest.
+const PUBLICATION = new Set(["Book", "Diary", "Publication"]);
+const azCategory = (e: Entity) => (PUBLICATION.has(e.category) ? "Publication" : e.category);
+// The Publication chip sits where Book was.
+const AZ_CATEGORIES = CATEGORIES.filter((c) => c !== "Diary" && c !== "Publication").map((c) => (c === "Book" ? "Publication" : c));
+const azMentions = (c: string) =>
+  c === "Publication" ? [...PUBLICATION].reduce((n, x) => n + (categoryMentions[x] ?? 0), 0) : (categoryMentions[c] ?? 0);
+const kindOf = (e: Entity) => KIND[azCategory(e)] ?? "az-paper";
+// The chips say the plural (Lisa, 22 Nov 2026: "update every category into plural eg locations"); each sticker keeps
+// the singular for its own name. Music, TV and Fashion stay as they are.
+const PLURAL: Record<string, string> = {
+  Person: "People", Organisation: "Organisations", Mood: "Moods", Club: "Clubs", Location: "Locations",
+  Publication: "Publications", Event: "Events", Podcast: "Podcasts", Film: "Films",
+};
 
 function ExplorePage() {
   const [cat, setCat] = useState<string>("All");
@@ -40,7 +55,7 @@ function ExplorePage() {
   const [sel, setSel] = useState<string | null>(null);
   const byLetter = useMemo(() => {
     const shown = entities.filter((e) =>
-      cat === "All" ? true : cat === "Fashion" ? e.refs.some((r) => r.fashion) : e.category === cat,
+      cat === "All" ? true : cat === "Fashion" ? e.refs.some((r) => r.fashion) : azCategory(e) === cat,
     );
     const out = new Map<string, { e: Entity; m: number }[]>();
     for (const e of shown) {
@@ -69,7 +84,7 @@ function ExplorePage() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-wrap justify-center gap-2">
-          {["All", ...CATEGORIES].map((c) => (
+          {["All", ...AZ_CATEGORIES].map((c) => (
             <button
               key={c}
               type="button"
@@ -77,8 +92,8 @@ function ExplorePage() {
               aria-pressed={cat === c}
               onClick={() => setCat(c)}
             >
-              {c === "All" ? "Everything" : c}
-              <small>{categoryMentions[c] ?? 0}</small>
+              {c === "All" ? "Everything" : (PLURAL[c] ?? c)}
+              <small>{azMentions(c)}</small>
             </button>
           ))}
         </div>
@@ -106,7 +121,7 @@ function ExplorePage() {
                     <Link
                       {...cardTo(e.slug)}
                       className={`az-st az-s${sizeOf(e, m)} ${kindOf(e)}`}
-                      title={`${e.guest ? "Night Fever guest" : e.category} · ${m} ${m === 1 ? "mention" : "mentions"}`}
+                      title={`${e.guest ? "Night Fever guest" : azCategory(e)} · ${m} ${m === 1 ? "mention" : "mentions"}`}
                       aria-expanded={sel === e.slug}
                       onClick={(ev) => {
                         if (!plainClick(ev)) return;
@@ -114,13 +129,13 @@ function ExplorePage() {
                         setSel((s) => (s === e.slug ? null : e.slug));
                       }}
                     >
-                      <i>{e.guest ? "Guest" : e.category}</i>
+                      <i>{e.guest ? "Guest" : azCategory(e)}</i>
                       {e.name}
                       <small>{m}</small>
                     </Link>
                     {sel === e.slug && (
                       <div className="az-detail">
-                        <EntityBox entity={e} onClose={() => setSel(null)} />
+                        <EntityBox entity={e} note={azCategory(e)} onClose={() => setSel(null)} />
                       </div>
                     )}
                   </Fragment>

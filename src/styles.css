@@ -683,6 +683,40 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
   .card-polaroid { right: max(16px, calc(50% - 600px)); top: 60px; width: 360px; }
   .card-polaroid figcaption { margin-top: 12px; font-size: 11px; padding: 3px 6px; }
 }
+/* Place pages (Lisa, 22 Nov 2026, mockup C): a drawn map fills the header - the place in pink, clubs black, other places open -
+   and the name card sits on it, bottom left. Phones: the map on top, the card under it. Pictures never cover text. */
+.card-head.card-head-place { position: relative; background: #ece6da; border-bottom: 2px solid #111; padding: 300px 16px 36px; min-height: 0; overflow: hidden; }
+.place-map { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 280px; display: block; }
+.place-paper { fill: #ece6da; }
+.place-dot { fill: #d8cfbf; }
+.place-street { stroke: #fff; stroke-width: 3; }
+.place-avenue { stroke: #fff; stroke-width: 7; }
+.place-own-street { stroke: #f3c6dc; stroke-width: 7; }
+.place-pin-club { fill: #111; stroke: #111; stroke-width: 2; }
+.place-pin-place { fill: #fff; stroke: #111; stroke-width: 2.5; }
+.place-pin-self { fill: var(--color-pink); stroke: #111; stroke-width: 2.5; }
+.place-halo { fill: var(--color-pink); opacity: .18; }
+.place-label { font: 700 13px var(--font-mono-body); fill: #111; paint-order: stroke; stroke: #ece6da; stroke-width: 4px; }
+.place-map a:hover .place-label { fill: var(--color-pink); }
+.place-label-self { font: 18px var(--font-flyer); fill: #111; paint-order: stroke; stroke: #ece6da; stroke-width: 5px; }
+.place-scale { stroke: #111; stroke-width: 3; }
+.place-scale-label { font: 11px var(--font-mono-body); fill: #555; }
+.card-head-place .card-namecard { max-width: 460px; }
+.card-head-place + div { padding-top: 24px; }
+@media (min-width: 900px) {
+  .card-head.card-head-place { padding: 250px 16px 44px; min-height: 560px; }
+  .place-map { height: 100%; bottom: 0; }
+  .card-head-place .card-namecard { margin-left: max(0px, calc(50% - 560px)); }
+}
+.place-polaroid { display: flex; flex-direction: column; width: 132px; background: #f4f1ea; color: #111; padding: 8px 8px 10px; border: 1px solid #333; box-shadow: 2px 3px 0 #111; transition: transform .15s; }
+.place-polaroid:hover { transform: rotate(0deg) scale(1.04) !important; }
+.place-polaroid img, .place-polaroid-blank { display: block; width: 100%; aspect-ratio: 1; height: auto; background: #ddd; }
+.place-polaroid-name { margin-top: 6px; font: 700 11px/1.25 var(--font-mono-body); }
+.place-polaroid-ep { font: 10px var(--font-type); color: #666; }
+.place-box { background: #efebe4; color: #111; border: 2px solid #111; box-shadow: 6px 6px 0 #111; padding: 22px 24px; }
+.place-near { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed #bbb; font: 13px var(--font-mono-body); }
+.place-key { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #111; background: #fff; margin-right: 8px; vertical-align: -1px; }
+.place-key-club { background: #111; }
 /* Library item pages (Lisa, 21 Nov 2026): the real cover taped into the header next to the name card, the book's facts on the
    card. Phones: the cover sits above the card, smaller. Pictures never cover text. */
 .card-head.card-head-cover { display: flex; flex-direction: column; align-items: center; gap: 34px; padding-top: 40px; padding-bottom: 48px; border-bottom: 2px solid #111; }

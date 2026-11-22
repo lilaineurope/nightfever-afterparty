@@ -3,6 +3,7 @@ import { registerFullLinks, type LinkCard } from "../lib/link-index";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
+import { PART_NAMES } from "./club-parts";
 
 // One overview card per name, place, book, song, look... Every page links here.
 
@@ -37,7 +38,8 @@ const refs: Ref[] = EPISODE_REFS.flatMap(([episode, rows]) => rows.map((r) => ({
 // "(S01E07)" is kept, so each episode's on-camera look keeps its own card.
 const clean = (n: string) =>
   n
-    .replace(/\s*\(([^)]*)\)/g, (m, inner: string) => (/^S\d{2}E\d{2}$/i.test(inner.trim()) ? ` ${inner}` : ""))
+    .replace(/\s*\(([^)]*)\)/g, (m, inner: string) =>
+      /^S\d{2}E\d{2}$/i.test(inner.trim()) || KEEP_BRACKET.has(n.trim().toLowerCase()) ? ` ${inner}` : "")
     .replace(/&/g, "and")
     .replace(/^the\s+/i, "")
     .trim()
@@ -49,17 +51,41 @@ export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
   // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
+  // Places (Lisa, 22 Nov 2026: "we have to make sure we have no double ups"). A club's street address is its club page,
+  // the same place under two names is one card - so the map can never pin it twice.
+  "315-bowery": "cbgb",
+  "254-west-54th-street": "studio-54",
+  "77-white-street": "mudd-club",
+  "30-west-21st-street": "danceteria",
+  "101-avenue-a": "pyramid-club",
+  "656-sixth-avenue": "limelight",
+  "157-hudson-street": "area",
+  "126-east-14th-street": "palladium",
+  "28-30-tenth-avenue": "mars",
+  "530-west-27th-street": "sound-factory",
+  "220-twelfth-avenue": "tunnel",
+  "218-west-47th-street": "club-usa",
+  "33-st-marks-place": "manic-panic-store-st-marks-place",
+  "save-the-robots": "robots",
+  "christopher-street-piers": "piers",
+  "downtown-manhattan": "lower-manhattan",
 };
+
+// Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
+// place: the London Roxy is not the New York Roxy (Lisa, 22 Nov 2026).
+const KEEP_BRACKET = new Set(["the roxy (london)"]);
+
+// A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
+// forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
+const baseSlug = (n: string) => clean(n).normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+for (const [name, club] of PART_NAMES) SAME_AS[baseSlug(name)] = club;
 
 // Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
 const slugCache = new Map<string, string>();
 export const slugify = (n: string) => {
   let s = slugCache.get(n);
   if (s === undefined) {
-    s = clean(n)
-      .normalize("NFKD")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "");
+    s = baseSlug(n);
     s = SAME_AS[s] ?? s;
     slugCache.set(n, s);
   }
@@ -67,6 +93,7 @@ export const slugify = (n: string) => {
 };
 
 const byKey = new Map<string, Entity>();
+const borrowedName = new Set<string>();
 
 function add(name: string, category: string, extra: { guest?: Guest; link?: string | undefined } = {}) {
   const key = slugify(name);
@@ -75,6 +102,12 @@ function add(name: string, category: string, extra: { guest?: Guest; link?: stri
   if (!e) {
     e = { slug: key, name, category, refs: [], events: [], inGuestStories: [] };
     byKey.set(key, e);
+    // Made from a row that folds into another card ("Area theme nights and invitations"): the card's own name wins later.
+    if (baseSlug(name) !== key) borrowedName.add(key);
+  } else if (borrowedName.has(key) && baseSlug(name) === key) {
+    e.name = name;
+    e.category = category;
+    borrowedName.delete(key);
   }
   if (extra.guest) {
     e.guest = extra.guest;
@@ -91,8 +124,8 @@ for (const r of refs) {
   const e = add(r.name, r.category, { link: r.link || undefined });
   e?.refs.push(r);
 }
-// Lisa, 21 Nov 2026: diaries and journals the guests kept are Diaries, not Books - their card says Diary, the A–Z has a
-// Diary chip. Only books: The Wall Street Journal stays a Publication, The Basketball Diaries stays a Film.
+// Lisa, 21 Nov 2026: diaries and journals the guests kept are Diaries, not Books - their card says Diary (on the A–Z
+// list they join every other Library item under Publication, Lisa 22 Nov 2026). Only books: The Wall Street Journal stays a Publication, The Basketball Diaries stays a Film.
 export const DIARY_NAME = /\b(diary|diaries|journals?)\b/i;
 export const isDiary = (category: string, name: string) => category === "Book" && DIARY_NAME.test(name);
 for (const e of byKey.values()) if (isDiary(e.category, e.name)) e.category = "Diary";
