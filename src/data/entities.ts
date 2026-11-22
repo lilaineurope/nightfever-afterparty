@@ -124,8 +124,8 @@ for (const r of refs) {
   const e = add(r.name, r.category, { link: r.link || undefined });
   e?.refs.push(r);
 }
-// Lisa, 21 Nov 2026: diaries and journals the guests kept are Diaries, not Books - their card says Diary, the A–Z has a
-// Diary chip. Only books: The Wall Street Journal stays a Publication, The Basketball Diaries stays a Film.
+// Lisa, 21 Nov 2026: diaries and journals the guests kept are Diaries, not Books - their card says Diary (on the A–Z
+// list they join every other Library item under Publication, Lisa 22 Nov 2026). Only books: The Wall Street Journal stays a Publication, The Basketball Diaries stays a Film.
 export const DIARY_NAME = /\b(diary|diaries|journals?)\b/i;
 export const isDiary = (category: string, name: string) => category === "Book" && DIARY_NAME.test(name);
 for (const e of byKey.values()) if (isDiary(e.category, e.name)) e.category = "Diary";
