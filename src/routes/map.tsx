@@ -3,25 +3,48 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
-import { CATEGORIES, entities, entityFor, isPlace, relatedTo, totalMentions, type Entity } from "@/data/entities";
+import { entities, entityFor, isPlace, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
 import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/map")({
   staticData: { sitemap: true },
   component: MapPage,
-  head: () => pageHead({ path: "/map", title: "Map of NYC club kid history – every club and place named in Night Fever", description: "Every real place named in Night Fever on one map - clubs, streets, schools and cities - with the people, music, books and stories connected to each. Dive in!", image: "/og/home.jpg" }),
+  head: () =>
+    pageHead({
+      path: "/map",
+      title: "Map of NYC club kid history – every club and place named in Night Fever",
+      description:
+        "Every real place named in Night Fever on one map - clubs, streets, schools and cities - with the people, music, books and stories connected to each. Dive in!",
+      image: "/og/home.jpg",
+    }),
 });
 
+// Relaunch (Lisa, 22 Nov 2026, Option A "place cards + map"): one pin per card, the map drawn in the paper look of the
+// place pages - clubs black, places open - with Clubs / Places / World layers and a decade filter from the Timeline.
 type Spot = {
   key: string;
   lat: number;
   lng: number;
   area: string;
   places: Entity[];
-  connected: Entity[];
+  club: boolean;
+  world: boolean;
+  episodes: number;
+  mentions: number;
+  decades: string[];
   tip?: string;
 };
+
+const inNewYork = (lat: number, lng: number) =>
+  lat > 40.49 && lat < 40.92 && lng > -74.27 && lng < -73.68;
+const decadeOf = (when: string) => {
+  const y = when.match(/\b(19|20)\d\d\b/)?.[0];
+  if (!y) return null;
+  const d = Number(y.slice(0, 3)) * 10;
+  return d >= 2000 ? "2000s" : `${d}s`;
+};
+const DECADES = ["1960s", "1970s", "1980s", "1990s", "2000s"];
 
 function buildSpots(): Spot[] {
   const byCoord = new Map<string, Spot>();
@@ -31,53 +54,59 @@ function buildSpots(): Spot[] {
     const key = `${l.lat.toFixed(4)},${l.lng.toFixed(4)}`;
     let s = byCoord.get(key);
     if (!s) {
-      s = { key, lat: l.lat, lng: l.lng, area: l.area, places: [], connected: [] };
+      s = {
+        key,
+        lat: l.lat,
+        lng: l.lng,
+        area: l.area,
+        places: [],
+        club: false,
+        world: !inNewYork(l.lat, l.lng),
+        episodes: 0,
+        mentions: 0,
+        decades: [],
+      };
       byCoord.set(key, s);
     }
     if (!s.places.some((p) => p.slug === e.slug)) s.places.push(e);
     if (l.tip) s.tip = l.tip;
   }
-  const sec = (t: string) => {
-    const p = t.split(":").map(Number);
-    if (p.length < 2 || p.some(isNaN)) return null;
-    return p.reduce((a, b) => a * 60 + b, 0);
-  };
   for (const s of byCoord.values()) {
-    const m = new Map<string, Entity>();
-    const keep = (r: Entity) => {
-      if (!s.places.some((x) => x.slug === r.slug)) m.set(r.slug, r);
-    };
-    for (const p of s.places) {
-      relatedTo(p).forEach(keep);
-      // Anything named within 90 seconds of this place in the same episode.
-      for (const pr of p.refs) {
-        const t = sec(pr.time);
-        if (t == null) continue;
-        for (const x of entities)
-          if (
-            x.refs.some((r) => {
-              if (r.episode !== pr.episode) return false;
-              const u = sec(r.time);
-              return u != null && Math.abs(u - t) <= 90;
-            })
-          )
-            keep(x);
-      }
-    }
-    s.connected = [...m.values()].sort((a, b) => totalMentions(b) - totalMentions(a));
+    // The club (or the most talked-about place) names the pin; its nights and neighbours at the same door follow.
+    s.places.sort(
+      (a, b) =>
+        Number(b.category === "Club") - Number(a.category === "Club") ||
+        totalMentions(b) - totalMentions(a),
+    );
+    s.club = s.places.some((p) => p.category === "Club");
+    s.episodes = new Set(
+      s.places.flatMap((p) => p.refs.map((r) => r.episode).filter(Boolean)),
+    ).size;
+    s.mentions = s.places.reduce((n, p) => n + totalMentions(p), 0);
+    s.decades = [
+      ...new Set(
+        s.places.flatMap((p) =>
+          (p.events ?? []).map((ev) => decadeOf(ev.when)).filter((d): d is string => !!d),
+        ),
+      ),
+    ];
   }
-  return [...byCoord.values()];
+  return [...byCoord.values()].sort((a, b) => b.mentions - a.mentions);
 }
 
 declare global {
   interface Window {
-    __nfInitMap?: () => void;
-    google?: any;
+    // Leaflet, loaded from a CDN on this page only (free map tiles, no key: Lisa, 22 Nov 2026).
+    L?: any;
   }
 }
 
-const KEY = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"] as string | undefined;
-const CHANNEL = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"] as string | undefined;
+// Free tiles: the OpenStreetMap tile server (no key, credit shown), turned to the paper look in src/styles.css (.nf-map).
+// The Google Maps key only worked on lovable.app, not on nightfever-afterparty.com; CARTO tiles now need a key too.
+const LEAFLET = "https://unpkg.com/leaflet@1.9.4/dist/leaflet";
+const TILES = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const CREDIT =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const BRING_HOME = "Bring us home";
 
@@ -92,92 +121,121 @@ function homelessPlaces(): Entity[] {
 /** How many places the list draws at first, and how many more each time it is scrolled to the end. */
 const LIST_STEP = 40;
 
+type Layer = "All" | "Clubs" | "Places" | "World" | typeof BRING_HOME;
+const LAYERS: Layer[] = ["All", "Clubs", "Places", "World"];
+const inLayer = (s: Spot, l: Layer) =>
+  l === "All"
+    ? true
+    : l === "Clubs"
+      ? s.club && !s.world
+      : l === "Places"
+        ? !s.club && !s.world
+        : l === "World"
+          ? s.world
+          : false;
+
+const chip = (on: boolean) =>
+  `rounded-full border-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
+    on
+      ? "border-[#111] bg-[#111] text-[#f6f0ea]"
+      : "border-[#111] bg-[#f6f0ea] text-[#111] hover:bg-pink hover:text-pink-foreground"
+  }`;
+
 function MapPage() {
   const spots = useMemo(buildSpots, []);
   const homeless = useMemo(homelessPlaces, []);
-  const [cat, setCat] = useState<string>("All");
+  const [layer, setLayer] = useState<Layer>("All");
+  const [decade, setDecade] = useState<string>("any");
   const [active, setActive] = useState<string | null>(null);
   const mapEl = useRef<HTMLDivElement>(null);
   const mapRef = useRef<any>(null);
   const markers = useRef<any[]>([]);
   const [ready, setReady] = useState(false);
-  // Speed (16 Nov 2026): the list held all ~640 places with ~7,000 links, a 2 MB page that took 1-2.5 s to build on
-  // every visit. It now starts with the first places and adds more as the list is scrolled (or a pin is tapped).
+  // The list starts with the first places and adds more as it is scrolled (or a pin is tapped) - speed, 16 Nov 2026.
   const [limit, setLimit] = useState(LIST_STEP);
-  useEffect(() => setLimit(LIST_STEP), [cat]);
+  useEffect(() => setLimit(LIST_STEP), [layer, decade]);
 
-  const chips = useMemo(() => {
-    const out: [string, number][] = [["All", spots.length]];
-    for (const c of CATEGORIES) {
-      if (c === "Mood") continue;
-      const n = spots.filter((s) => s.connected.some((x) => x.category === c)).length;
-      if (n > 0) out.push([c, n]);
-    }
-    if (homeless.length > 0) out.push([BRING_HOME, homeless.length]);
-    return out;
-  }, [spots, homeless]);
-
+  const inDecade = (s: Spot) => decade === "any" || s.decades.includes(decade);
   const visible = useMemo(
-    () =>
-      cat === BRING_HOME
-        ? []
-        : cat === "All"
-          ? spots
-          : spots.filter((s) => s.connected.some((c) => c.category === cat)),
-    [spots, cat],
+    () => (layer === BRING_HOME ? [] : spots.filter((s) => inLayer(s, layer) && inDecade(s))),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [spots, layer, decade],
   );
+  const layerCount = (l: Layer) => spots.filter((s) => inLayer(s, l) && inDecade(s)).length;
+  const decadeCount = (d: string) =>
+    spots.filter(
+      (s) =>
+        inLayer(s, layer === BRING_HOME ? "All" : layer) && (d === "any" || s.decades.includes(d)),
+    ).length;
 
   useEffect(() => {
-    if (!KEY || !mapEl.current) return;
+    if (!mapEl.current) return;
     const init = () => {
-      if (!mapEl.current || !window.google?.maps) return;
-      mapRef.current = new window.google.maps.Map(mapEl.current, {
-        center: { lat: 40.735, lng: -73.99 },
-        zoom: 13,
-        clickableIcons: false,
-        styles: [
-          { elementType: "geometry", stylers: [{ color: "#1b1424" }] },
-          { elementType: "labels.text.fill", stylers: [{ color: "#c9b78a" }] },
-          { elementType: "labels.text.stroke", stylers: [{ color: "#120c18" }] },
-          { featureType: "water", stylers: [{ color: "#0d0a14" }] },
-          { featureType: "road", elementType: "geometry", stylers: [{ color: "#2c2236" }] },
-          { featureType: "poi", stylers: [{ visibility: "off" }] },
-        ],
-      });
+      if (!mapEl.current || !window.L || mapRef.current) return;
+      const L = window.L;
+      mapRef.current = L.map(mapEl.current, { zoomControl: true, worldCopyJump: true }).setView(
+        [40.735, -73.99],
+        13,
+      );
+      L.tileLayer(TILES, { attribution: CREDIT, maxZoom: 19 }).addTo(mapRef.current);
       setReady(true);
     };
-    if (window.google?.maps) return init();
-    window.__nfInitMap = init;
-    const s = document.createElement("script");
-    s.src = `https://maps.googleapis.com/maps/api/js?key=${KEY}&loading=async&callback=__nfInitMap${CHANNEL ? `&channel=${CHANNEL}` : ""}`;
-    s.async = true;
-    document.head.appendChild(s);
+    if (window.L) return init();
+    if (!document.querySelector(`link[href="${LEAFLET}.css"]`)) {
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = `${LEAFLET}.css`;
+      document.head.appendChild(css);
+    }
+    const js = document.createElement("script");
+    js.src = `${LEAFLET}.js`;
+    js.async = true;
+    js.onload = init;
+    document.head.appendChild(js);
   }, []);
+
+  // World shows the whole world; the other layers go back to downtown New York.
+  useEffect(() => {
+    if (!ready || layer === BRING_HOME) return;
+    if (layer === "World" && visible.length) {
+      mapRef.current.fitBounds(
+        visible.map((s) => [s.lat, s.lng]),
+        { padding: [30, 30] },
+      );
+    } else {
+      mapRef.current.setView([40.735, -73.99], 13);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, layer]);
 
   useEffect(() => {
     if (!ready) return;
-    markers.current.forEach((m) => m.setMap(null));
-    markers.current = visible.map((s) => {
-      const m = new window.google.maps.Marker({
-        position: { lat: s.lat, lng: s.lng },
-        map: mapRef.current,
-        title: s.places.map((p) => p.name).join(" / "),
-        icon: {
-          path: window.google.maps.SymbolPath.CIRCLE,
-          scale: 7 + Math.min(s.connected.length, 20) / 3,
-          fillColor: s.key === active ? "#ff4fa3" : "#e8c35a",
-          fillOpacity: 0.9,
-          strokeColor: "#120c18",
-          strokeWeight: 1.5,
-        },
-      });
-      m.addListener("click", () => {
+    const L = window.L;
+    markers.current.forEach((m) => m.remove());
+    // Biggest first, so small pins sit on top and stay clickable; the picked pin last of all.
+    const order = [...visible].sort(
+      (a, b) => Number(a.key === active) - Number(b.key === active) || b.mentions - a.mentions,
+    );
+    markers.current = order.map((s) => {
+      const on = s.key === active;
+      const m = L.circleMarker([s.lat, s.lng], {
+        radius: on ? 9 : 4 + Math.min(Math.log2(1 + s.mentions), 5),
+        color: "#111111",
+        weight: 2,
+        fillColor: on ? "#e6007e" : s.club ? "#111111" : "#f6f0ea",
+        fillOpacity: 1,
+      })
+        .bindTooltip(s.places.map((p) => p.name).join(" / "), { direction: "top", offset: [0, -6] })
+        .addTo(mapRef.current);
+      m.on("click", () => {
         setActive(s.key);
         const at = visible.indexOf(s);
         setLimit((l) => Math.max(l, at + 1));
         // wait a frame so a place further down the list is drawn before scrolling to it
         requestAnimationFrame(() =>
-          document.getElementById(`spot-${s.key}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+          document
+            .getElementById(`spot-${s.key}`)
+            ?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
         );
       });
       return m;
@@ -186,137 +244,181 @@ function MapPage() {
 
   const focus = (s: Spot) => {
     setActive(s.key);
-    mapRef.current?.panTo({ lat: s.lat, lng: s.lng });
-    if (mapRef.current && mapRef.current.getZoom() < 14) mapRef.current.setZoom(14);
+    mapRef.current?.setView([s.lat, s.lng], Math.max(mapRef.current.getZoom(), 15));
   };
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="disco-grid px-6 pb-10 pt-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">The map</p>
-        <h1 className="mt-4 text-5xl font-bold tracking-tight text-cream text-glow sm:text-6xl">
-          The scene, <span className="text-pink text-glow-pink">pinned</span>
+      <section className="place-hero px-4 pb-8 pt-24 text-center">
+        <h1 className="timeline-title">
+          <span className="timeline-strip timeline-strip-ink">The scene,</span>
+          <br />
+          <span className="timeline-strip timeline-strip-pink">pinned</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Every real club, street and city named on the site - pinned! Under each place you'll find the names that come up alongside it, in the same moment of an episode or the same story on the timeline. Pick a category to see only the places linked to it - the number tells you how many places that is.
-        </p>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-          And then there&apos;s <span className="font-semibold text-pink">Bring us home</span>. Some places mentioned in the episodes don&apos;t have a confirmed location. Do you know where they are?{" "}
-          <Link to="/contact" search={{ about: "Bring us home" }} className="text-gold underline underline-offset-2 hover:text-pink">
-            Help to bring them home!
-          </Link>
+        <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground">
+          Every club and place named in Night Fever, one pin each. Clubs are black, places are open,
+          and each pin opens its own page with the guests who were there. Pick a layer, or a decade
+          from the Timeline.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {chips.map(([c, n]) => (
+          {LAYERS.map((l) => (
             <button
-              key={c}
-              onClick={() => setCat(c)}
-              aria-pressed={cat === c}
-              className={`rounded-full border px-4 py-1.5 text-sm transition ${
-                cat === c ? "border-pink bg-pink/15 text-pink" : "border-border text-card-foreground/80 hover:border-gold/50"
-              }`}
+              key={l}
+              type="button"
+              onClick={() => setLayer(l)}
+              aria-pressed={layer === l}
+              className={chip(layer === l)}
             >
-              {c === "All" ? <span className="uppercase">Everything</span> : c} <span className="text-muted-foreground">{n}</span>
+              {l === "All" ? "Everything" : l}{" "}
+              <span className={layer === l ? "text-pink" : "text-[#777]"}>{layerCount(l)}</span>
             </button>
           ))}
+          {homeless.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setLayer(BRING_HOME)}
+              aria-pressed={layer === BRING_HOME}
+              className={chip(layer === BRING_HOME)}
+            >
+              {BRING_HOME}{" "}
+              <span className={layer === BRING_HOME ? "text-pink" : "text-[#777]"}>
+                {homeless.length}
+              </span>
+            </button>
+          )}
         </div>
+        {layer !== BRING_HOME && (
+          <div className="mt-3 flex flex-wrap justify-center gap-2" aria-label="Decade">
+            {["any", ...DECADES].map((d) => (
+              <button
+                key={d}
+                type="button"
+                onClick={() => setDecade(d)}
+                aria-pressed={decade === d}
+                className={chip(decade === d)}
+              >
+                {d === "any" ? "Any year" : d === "2000s" ? "2000s +" : d}{" "}
+                <span className={decade === d ? "text-pink" : "text-[#777]"}>{decadeCount(d)}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="px-4 pb-20">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <div className="h-[460px] overflow-hidden rounded-3xl border border-gold/25 bg-card lg:h-[640px]">
-            {KEY ? (
-              <div ref={mapEl} className="h-full w-full" aria-label="Map of Night Fever places" />
-            ) : (
-              <div className="flex h-full items-center justify-center p-8 text-center text-muted-foreground">
-                The interactive map switches on once Google Maps is connected. Until then, all the places are listed right here!
-              </div>
-            )}
+          <div className="h-[460px] overflow-hidden border-2 border-[#111] bg-[#ece6da] shadow-[5px_6px_0_#111] lg:h-[640px]">
+            <div
+              ref={mapEl}
+              className="nf-map h-full w-full"
+              aria-label="Map of Night Fever places"
+            />
           </div>
-          {cat === BRING_HOME ? (
-            <div className="max-h-[640px] overflow-y-auto rounded-3xl border border-pink/40 bg-card p-6">
-              <h2 className="text-2xl font-bold text-cream">Bring us home</h2>
-              <p className="mt-3 text-muted-foreground">Here is a list of places which have no real location:</p>
+          {layer === BRING_HOME ? (
+            <div className="place-box max-h-[640px] overflow-y-auto">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
+                Bring us home
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">
+                These places come up in the episodes, but we don&apos;t know where they were yet:
+              </p>
               <ul className="mt-4 space-y-2">
                 {homeless.map((e) => (
                   <li key={e.slug} className="flex flex-wrap items-baseline gap-x-2">
-                    <Link {...cardTo(e.slug)} className="font-semibold text-gold hover:text-pink">
+                    <Link {...cardTo(e.slug)} className="font-semibold hover:text-pink">
                       {e.name}
                     </Link>
                     <span className="text-xs text-muted-foreground">
-                      {[...new Set(e.refs.map((r) => (r.episode ? episodeShort(r.episode) : "")))].filter(Boolean).join(" · ")}
+                      {[...new Set(e.refs.map((r) => (r.episode ? episodeShort(r.episode) : "")))]
+                        .filter(Boolean)
+                        .join(" · ")}
                     </span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-muted-foreground">
-                Do you know where they are? Send me a message and we can bring it home together.
+              <p className="mt-5 text-sm text-muted-foreground">
+                Do you know where one of them was? Tell me and we bring it home together.
               </p>
-              <Link to="/contact" search={{ about: "Bring us home" }}
-                className="mt-4 inline-block rounded-full bg-pink px-5 py-2 text-sm font-semibold text-pink-foreground hover:opacity-90">
+              <Link
+                to="/contact"
+                search={{ about: BRING_HOME }}
+                className="mt-4 inline-block rounded-full bg-pink px-5 py-2 text-sm font-semibold text-pink-foreground hover:opacity-90"
+              >
                 Send me a message
               </Link>
             </div>
           ) : (
-          <ol
-            className="max-h-[640px] space-y-3 overflow-y-auto pr-1"
-            onScroll={(ev) => {
-              const el = ev.currentTarget;
-              if (limit < visible.length && el.scrollTop + el.clientHeight > el.scrollHeight - 600) setLimit((l) => l + LIST_STEP);
-            }}
-          >
-            {visible.slice(0, limit).map((s) => {
-              const shown = cat === "All" ? s.connected : s.connected.filter((c) => c.category === cat);
-              return (
+            <ol
+              className="max-h-[640px] space-y-3 overflow-y-auto pr-2"
+              onScroll={(ev) => {
+                const el = ev.currentTarget;
+                if (
+                  limit < visible.length &&
+                  el.scrollTop + el.clientHeight > el.scrollHeight - 600
+                )
+                  setLimit((l) => l + LIST_STEP);
+              }}
+            >
+              {visible.length === 0 && (
+                <li className="text-sm text-muted-foreground">No pins for this pick yet.</li>
+              )}
+              {visible.slice(0, limit).map((s) => (
                 <li
                   key={s.key}
                   id={`spot-${s.key}`}
-                  className={`rounded-2xl border bg-card p-4 transition ${active === s.key ? "border-pink" : "border-border"}`}
+                  className={`border-2 bg-[#f6f0ea] p-4 text-[#111] transition ${active === s.key ? "border-pink shadow-[4px_4px_0_#e6007e]" : "border-[#111] shadow-[4px_4px_0_#111]"}`}
                 >
-                  <button onClick={() => focus(s)} className="text-left">
-                    <p className="text-xs uppercase tracking-[0.2em] text-pink">{s.area}</p>
-                    <p className="mt-1 font-semibold text-gold">{s.places.map((p) => p.name).join(" · ")}</p>
-                    {s.tip && <p className="mt-1 text-xs italic text-muted-foreground">{s.tip}</p>}
+                  <button type="button" onClick={() => focus(s)} className="w-full text-left">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-pink">
+                      <span
+                        aria-hidden="true"
+                        className={s.club ? "place-key place-key-club" : "place-key"}
+                      />{" "}
+                      {s.club ? "Club" : "Place"} · {s.area}
+                    </p>
+                    <p className="mt-1 font-semibold">{s.places[0]!.name}</p>
+                    {s.places.length > 1 && (
+                      <p className="text-xs text-[#555]">
+                        Same door:{" "}
+                        {s.places
+                          .slice(1)
+                          .map((p) => p.name)
+                          .join(", ")}
+                      </p>
+                    )}
+                    {s.tip && <p className="mt-1 text-xs italic text-[#555]">{s.tip}</p>}
+                    <p className="mt-1 text-xs text-[#555]">
+                      {s.episodes} {s.episodes === 1 ? "episode" : "episodes"} · {s.mentions}{" "}
+                      {s.mentions === 1 ? "mention" : "mentions"}
+                      {s.decades.length > 0 && <> · {s.decades.sort().join(", ")}</>}
+                    </p>
                   </button>
-                  {shown.length > 0 && (
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {shown.slice(0, 12).map((c) => (
-                        <Link
-                          key={c.slug}
-                          {...cardTo(c.slug)}
-                          className="rounded-full border border-border px-2.5 py-0.5 text-xs text-card-foreground/80 transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
-                        >
-                          {c.name} <span className="text-muted-foreground">· {c.category}</span>
-                        </Link>
-                      ))}
-                      {shown.length > 12 && <span className="px-1 text-xs text-muted-foreground">+{shown.length - 12} more</span>}
-                    </div>
-                  )}
                   <Link
                     {...cardTo(s.places[0]!.slug)}
-                    className="mt-3 inline-block text-xs text-gold underline underline-offset-2 hover:text-pink"
+                    className="mt-2 inline-block text-xs font-semibold underline decoration-dotted underline-offset-2 hover:text-pink"
                   >
-                    Dive into this place
+                    Open the page &rarr;
                   </Link>
                 </li>
-              );
-            })}
-            {limit < visible.length && (
-              <li className="text-center">
-                <button
-                  type="button"
-                  onClick={() => setLimit((l) => l + LIST_STEP)}
-                  className="rounded-full border border-border px-4 py-1.5 text-sm text-card-foreground/80 transition hover:border-pink hover:bg-pink hover:text-pink-foreground"
-                >
-                  Show more places ({visible.length - limit} left)
-                </button>
-              </li>
-            )}
-          </ol>
+              ))}
+              {limit < visible.length && (
+                <li className="text-center">
+                  <button
+                    type="button"
+                    onClick={() => setLimit((l) => l + LIST_STEP)}
+                    className={chip(false)}
+                  >
+                    Show more places ({visible.length - limit} left)
+                  </button>
+                </li>
+              )}
+            </ol>
           )}
         </div>
         <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-muted-foreground">
-          Pins are approximate, from the public address of each venue. Vague places like eras or TV channels are left off the map. Spot a wrong pin? Tell me!
+          Pins are approximate, from the public address of each venue. Decades come from the
+          Timeline, so a place without a Timeline moment only shows under Any year. Spot a wrong
+          pin? Tell me!
         </p>
       </section>
       <SiteFooter />
