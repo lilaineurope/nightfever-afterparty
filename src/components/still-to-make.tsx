@@ -103,16 +103,7 @@ function Item({ it, kind }: { it: StillToMake; kind?: "Book" | "Film" | undefine
               {it.source.label} →
             </Link>
           )}
-          {it.source?.href && (
-            <a
-              href={it.source.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-gold hover:text-pink"
-            >
-              {it.source.label} ↗
-            </a>
-          )}
+          {/* source.href is where the status was checked; no outside links on the page (Lisa, 21 Nov 2026) */}
         </p>
         <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
           <span>{it.idea ? "The story starts in" : "Said in"}</span>
