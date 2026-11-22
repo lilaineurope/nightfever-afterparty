@@ -2100,5 +2100,79 @@
   "context": "Where the book ends, James says",
   "link": "https://en.wikipedia.org/wiki/RuPaul's_Drag_Race",
   "status": "Confirmed"
+ },
+ {
+  "rank": 182,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Elyssa's on-camera look (S04E11)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Long brown hair worn loose, a hot-pink silk button-up blouse, matching pink lipstick, gold hoops, stacked rings and a fine necklace - in front of a pink lips print, a drag portrait and a bookcase with a Village street sign",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-411",
+  "status": "Confirmed",
+  "fashion": "Hot-pink silk blouse, pink lipstick, gold hoops",
+  "colours": [
+   "blouse hot pink #BA496E",
+   "lipstick pink #B04A6D",
+   "hair brown #655253",
+   "lips print coral #AE5752",
+   "gold hoop #83625A",
+   "wall grey #999189"
+  ]
+ },
+ {
+  "rank": 183,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "James's on-camera look (S04E11)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "A black top with a rust-red scarf wrapped high at the neck and tortoiseshell glasses, in front of his packed bookshelves with the microphone close by",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-411",
+  "status": "Confirmed",
+  "fashion": "Black top, rust-red scarf, tortoiseshell glasses",
+  "colours": [
+   "top black #030405",
+   "scarf rust #673022",
+   "tortoiseshell #927460",
+   "bookshelf dark #090707"
+  ]
+ },
+ {
+  "rank": 184,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Fenton's on-camera look (S04E11)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "Rimless glasses and a blue zip-neck sweater with a pale blue collar, in front of the French windows between sunflower wallpaper and the bookshelves with Brillo boxes",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-411",
+  "status": "Confirmed",
+  "fashion": "Blue zip-neck sweater, rimless glasses",
+  "colours": [
+   "sweater blue #2F5589",
+   "collar pale blue #9BBEE1",
+   "zip stripe #2A2037",
+   "sunflower wallpaper #C4B17E"
+  ]
+ },
+ {
+  "rank": 185,
+  "mentions": 0,
+  "category": "Mood",
+  "name": "Randy's on-camera look (S04E11)",
+  "heard": "On camera",
+  "time": "On camera",
+  "context": "A black baseball cap, black square glasses and a green plaid flannel shirt, in his office with framed pictures, a WOW poster and a pinboard of photo strips",
+  "link": "https://www.wowpresentsplus.com/night-fever/season:4/videos/nf-411",
+  "status": "Confirmed",
+  "fashion": "Black cap, green plaid flannel shirt",
+  "colours": [
+   "plaid green #2C3A3D",
+   "plaid dark #191B1E",
+   "cap black #1D1411",
+   "office wall beige #CFC0AB"
+  ]
  }
 ]
