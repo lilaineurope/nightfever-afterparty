@@ -918,6 +918,7 @@ const s04e01: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO8462312118.mp3",
   runtime: "1:04:35",
   afterpartyPublished: "2026-12-01",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEp4NTDOtCRU",
   blurb:
     "Daphne Guinness on an Irish Guinness childhood, summers with Dalí in Cadaqués, Isabella Blow and McQueen, couture as philosophy and making records with Tony Visconti",
 };
