@@ -50,6 +50,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s05e07a: { quote: "You have something really beautiful to offer that we haven't seen yet. And I'm hungry. I want to see it. Feed me.", time: "00:36:03" }, // Christopher Comp - Lisa: A5 (16 Nov 2026)
   s05e07b: { quote: "That scene was very cutting edge and it was very liberating for someone like me to like go out half naked.", time: "00:51:24" }, // Really Denise - Lisa: B3 (16 Nov 2026)
   s04e02: { quote: "I'm so gay I couldn't blend if I wanted to.", time: "00:12:34" }, // Mickey Boardman - quote A, Claude's pick when Lisa said publish (17 Nov 2026)
+  s04e11: { quote: "How draggy are you? And I said, I'm in drag as a woman constantly.", time: "00:46:49" }, // Elyssa Maxx Goodman - recommended, waiting Lisa's pick
   s03e09: { quote: "I was a quick study. Also, I was made for magazines. And all of a sudden, I was inside of one.", time: "00:25:22" }, // Cat Marnell - Lisa: quote b (21 Nov 2026)
   s04e01: { quote: "If you can sing it all the way through, that's a song. That's my rule.", time: "00:04:33" }, // Daphne Guinness - Lisa picked quote 1 (22 Nov 2026)
   s03e07: { quote: "The love that I have for my people is the biggest, most potent elixir that anyone can give me.", time: "00:33:34" }, // Domonique Echeverria - Lisa: quote c (20 Nov 2026)

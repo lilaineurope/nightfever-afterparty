@@ -179,6 +179,13 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     library: "Dustin Pittman: New York After Dark",
     year: 2024,
     madeAs: "Dustin Pittman: New York After Dark",
+  },  {
+    title: "A queer history of Harlem",
+    why: "Elyssa says the book she wished existed while writing Glitter and Concrete is a queer history of Harlem - she hopes someone will write it.",
+    episodeId: "s04e11",
+    time: "00:48:18",
+    made: "not yet",
+    status: "Not written yet - Harlem's queer life is told in chapters of wider histories, not in a book of its own (checked 22 Nov 2026).",
   },
   {
     title: "Daphne Guinness's autobiography",
@@ -373,5 +380,12 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     made: "not yet",
     status: "Not made yet - WOW's story has only been told in interviews and profiles, never in a film of its own.",
     idea: true,
+  },  {
+    title: "Ray Bourbon, the documentary",
+    why: "James says he tried pitching World of Wonder a documentary about drag comedian Ray Bourbon some 20 years ago - he is obsessed with the story.",
+    episodeId: "s04e11",
+    time: "00:37:02",
+    made: "not yet",
+    status: "Not made yet - Ray Bourbon's story lives in Randy Riddle's research and old party records, not in a film (checked 22 Nov 2026).",
   },
 ];

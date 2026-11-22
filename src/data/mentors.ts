@@ -174,6 +174,8 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "David Bowie", mentee: "Daphne Guinness", episode: "s04e01", time: "00:07:20", line: "Told Tony Visconti she could be a pop star, so Tony made her records, as Daphne tells it" },
   { mentor: "Isabella Blow", mentee: "Daphne Guinness", episode: "s04e01", time: "00:51:20", line: "Introduced Daphne to David LaChapelle - \"Isabella's biggest gift to me\"", kind: "door" },
   { mentor: "Daphne Guinness", mentee: "Francesca Lake", episode: "s04e01", time: "01:01:46", line: "Supported Francesca through Daphne's Central Saint Martins scholarship" },
+  { mentor: "Annie Hindle", mentee: "Ella Wesner", episode: "s04e11", time: "00:08:59", line: "In many ways mentored Ella, as Elyssa tells it - one of the first to call herself a male impersonator in America" },
+  { mentor: "Lillyn Brown", mentee: "Sugar Ray Robinson", episode: "s04e11", time: "00:58:25", line: "Taught Sugar Ray to sing when he left boxing in the 50s to be a song and dance man" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

@@ -34,7 +34,7 @@ const DISTINCT = new Set(
     ["jay-z", "jazz"], ["nas", "nasa"], ["paper", "peru"], ["peru", "pierre"],
     ["d-v", "devo"], ["d-v", "diva"], // Diana Vreeland's memoir (src/data/written-by.ts)
     ["bar-one", "bern"], ["bar-one", "brian-eno"], ["east-village", "east-village-eye"], ["daisy", "dose"], ["michael-jackson", "michael-jackson-one"], ["raven", "raven-o"], ["green-day", "grind"], ["tabboo", "taboo"], ["ran", "reno"], ["new-wave", "no-wave"], ["raybeats", "robots"], ["cars", "crass"], ["cock", "cookie"], ["tabboo", "tubi"], ["taboo", "tubi"],
-    ["cairo", "carrie"], ["gia", "go"], ["marco", "morocco"], ["spa", "spy"],
+    ["cairo", "carrie"], ["gia", "go"], ["marco", "morocco"], ["spa", "spy"], ["club-a", "club-abbey"],
   ].map((p) => p.sort().join("|")),
 );
 
