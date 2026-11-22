@@ -517,6 +517,13 @@ a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important
 .their-work-group { margin-top: 30px; font-family: var(--font-mono-body); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-gold); border-bottom: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent); padding-bottom: 4px; }
 .their-work-off .lib-cv { border-style: dashed; box-shadow: none; opacity: .85; }
 .their-work-off::before { display: none; }
+/* A guest's own Library (src/routes/library_.$slug.tsx): back link as a taped strip, polaroid pinned top right. */
+.guest-lib-back { font-size: 15px; padding: 6px 14px; text-decoration: none; transition: background .15s; }
+.guest-lib-back:hover { background: var(--color-pink); }
+.guest-lib-polaroid { float: right; width: 200px; margin: 28px 0 16px 28px; transform: rotate(3deg); background: #fff; padding: 10px 10px 30px; box-shadow: 4px 6px 0 rgba(0,0,0,.35); }
+.guest-lib-polaroid img { display: block; width: 100%; }
+.guest-lib-polaroid figcaption { margin-top: 6px; text-align: center; font-family: Georgia, serif; color: #222; }
+@media (max-width: 640px) { .guest-lib-polaroid { float: none; margin: 24px auto 0; width: 170px; } }
 .lib-mast-l { font-size: clamp(15px, 1.6vw, 19px); }
 .lib-mast-xl { font-size: clamp(13px, 1.25vw, 15px); line-height: 1.05; }
 .lib-mast { hyphens: auto; }

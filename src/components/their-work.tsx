@@ -9,10 +9,10 @@ import type { PersonWork, WorkKind } from "@/lib/works";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 
-const LABEL: Record<WorkKind, string> = {
+export const LABEL: Record<WorkKind, string> = {
   Book: "Book", Diary: "Diary", Magazine: "Magazine", Paper: "Newspaper", Column: "Column", Film: "Film", TV: "TV", Podcast: "Podcast", Music: "Music", Club: "Club", Play: "Stage",
 };
-const GROUP: Record<WorkKind, string> = {
+export const GROUP: Record<WorkKind, string> = {
   Book: "Books", Diary: "Books", Magazine: "Magazines & papers", Paper: "Magazines & papers", Column: "Columns & articles",
   Film: "Films", TV: "TV & videos", Podcast: "Podcasts", Music: "Music", Club: "Clubs", Play: "On stage",
 };
@@ -20,7 +20,7 @@ const COLOUR: Record<WorkKind, string> = {
   Book: "lib-ink", Diary: "lib-diary", Magazine: "lib-pink", Paper: "lib-news", Column: "lib-col", Film: "lib-ink", TV: "lib-pink", Podcast: "lib-col", Music: "lib-news", Club: "lib-diary", Play: "lib-pink",
 };
 
-function Cover({ w }: { w: PersonWork }) {
+export function Cover({ w }: { w: PersonWork }) {
   const foot = (
     <span className="lib-foot">
       {w.roles.join(" · ")}
