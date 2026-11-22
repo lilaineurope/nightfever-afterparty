@@ -21,6 +21,7 @@ import type { CardView } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView } from "@/lib/library-item.server";
+import { placeView } from "@/lib/place-view.server";
 
 /** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
 function cardView(e: Entity): CardView {
@@ -90,6 +91,12 @@ function cardView(e: Entity): CardView {
     for (const c of item.credits) if (c.slug) L.card(c.slug);
     for (const x of [...(item.press?.by ?? []), ...(item.press?.team ?? [])]) if (x.slug) L.card(x.slug);
   }
+  // Place pages (Lisa, 22 Nov 2026): every Location card gets the drawn map header and the guests who talk about it.
+  const place = e.category === "Location" && !g && !club && !mem && !profile && !item && !diary && !column ? placeView(e) : null;
+  if (place) {
+    for (const n of place.near) L.card(n.slug);
+    for (const p of place.map?.pins ?? []) L.card(p.slug);
+  }
   const j = jukebox.find((x) => x.slug === e.slug);
   const tree = mentorTreeOf(e.slug);
   if (tree) {
@@ -121,6 +128,7 @@ function cardView(e: Entity): CardView {
     column,
     tree,
     item,
+    place,
     connector: connectorRank(e.slug),
     links: L.data,
   };
