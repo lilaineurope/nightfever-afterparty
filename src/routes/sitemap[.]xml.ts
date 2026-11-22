@@ -5,6 +5,7 @@ import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEnt
 import { entities, inSitemap } from "@/data/entities";
 import { episodePath, episodes } from "@/data/episodes";
 import { publishedDay } from "@/lib/seo";
+import { ISSUES } from "@/data/issues";
 
 // The public site origin.
 const BASE_URL = "https://nightfever-afterparty.com";
@@ -46,6 +47,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           const path = sitemapPathForLocation(router, location, "/explore/$slug");
           if (path) entries.push({ path });
         }
+        // Issue pages (/issues/$slug, Lisa 22 Nov 2026): one per entry in src/data/issues.ts.
+        for (const issue of ISSUES) entries.push({ path: `/issues/${issue.slug}` });
         // Dynamic overview cards (/explore/$slug) are included via the route's
         // staticData.sitemap decision; all slugs come from the router inventory.
         if (entries.length === 0) {

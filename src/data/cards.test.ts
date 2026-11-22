@@ -9,6 +9,9 @@ import { episodeStats } from "./episode-stats";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests } from "./guests";
 import { namedOn, namedOnCount } from "../lib/name-links";
+import { CLUB_PARTS, PART_NAMES } from "./club-parts";
+
+const CLUB_PART_NAMES = new Set(PART_NAMES.map(([n]) => n));
 
 // Guards for "no doubles, everything connected, counted properly" - run with every change:
 //   npx tsx --test src/data/*.test.ts
@@ -57,10 +60,22 @@ describe("cards: no doubles", () => {
 
   test("every card has one category in every episode", () => {
     const mixed = entities
-      .map((e) => [e.slug, [...new Set(e.refs.map((r) => r.category))]] as const)
+      // A club's theme nights and parties fold into the club on purpose (src/data/club-parts.ts) and keep their Event rows.
+      .map((e) => [e.slug, [...new Set(e.refs.filter((r) => !CLUB_PART_NAMES.has(r.name)).map((r) => r.category))]] as const)
       .filter(([, c]) => c.length > 1)
       .map(([s, c]) => `${s}: ${c.join("/")}`);
     assert.deepEqual(mixed, []);
+  });
+
+  test("every club theme night and party in club-parts.ts is a real episode row on its club's card", () => {
+    for (const [name, club] of PART_NAMES) {
+      const e = entityFor(name);
+      assert.equal(e?.slug, club, `${name} should fold into ${club}`);
+      assert.ok(e?.refs.some((r) => r.name === name), `${name}: no episode row has this exact name`);
+    }
+    for (const [club, p] of Object.entries(CLUB_PARTS)) {
+      for (const look of p.looks ?? []) assert.ok(entityFor(look) && entityFor(look)?.slug !== club, `${club} look "${look}" needs its own card`);
+    }
   });
 
   test("only house categories are used, never Place", () => {
@@ -95,6 +110,8 @@ describe("episodes: counted properly", () => {
     test(`${file}: no name listed twice`, () => {
       const seen = new Map<string, string>();
       for (const r of rows) {
+        // A club's theme night or party row sits on the club's card by design (src/data/club-parts.ts).
+        if (CLUB_PART_NAMES.has(r.name)) continue;
         const slug = entityFor(r.name)?.slug ?? r.name;
         assert.ok(!seen.has(slug), `${r.name} and ${seen.get(slug)} are the same card`);
         seen.set(slug, r.name);

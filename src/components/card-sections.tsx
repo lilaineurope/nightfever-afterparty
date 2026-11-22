@@ -62,10 +62,11 @@ function GuestBox({ g }: { g: Guest | undefined }) {
 
 /** Everything an A–Z card shows under its header (/explore/<slug>). A guest with an AFTERPARTY gets GuestAboutBox on the
  *  episode page instead. */
-export function CardSections({ v, skipRefs = false }: { v: CardView; skipRefs?: boolean }) {
+export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: CardView; skipRefs?: boolean; skipEvents?: boolean }) {
   const links = useLinks();
   const related = v.related;
-  const refs = v.refs;
+  // A club page shows its theme nights and parties in their own boxes above (club-parts.tsx), not again here.
+  const refs = v.parts ? v.refs.filter((r) => !v.parts!.names.includes(r.name)) : v.refs;
   const named = v.named;
 
   return (
@@ -105,7 +106,7 @@ export function CardSections({ v, skipRefs = false }: { v: CardView; skipRefs?: 
         </section>
       )}
 
-      {v.events.length > 0 && (
+      {v.events.length > 0 && !skipEvents && (
         <section>
           <h2 className={h}>On the scene timeline</h2>
           <ol className="mt-4 space-y-5 border-l border-gold/25 pl-5">

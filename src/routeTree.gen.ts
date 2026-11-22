@@ -94,6 +94,7 @@ import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
 import { Route as GuestbookIndexRouteImport } from './routes/guestbook.index'
 import { Route as GuestbookAdminRouteImport } from './routes/guestbook.admin'
+import { Route as IssuesSlugRouteImport } from './routes/issues.$slug'
 import { Route as ShopTestIndexRouteImport } from './routes/shop-test.index'
 import { Route as ShopTestProductRouteImport } from './routes/shop-test.$product'
 import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
@@ -525,6 +526,11 @@ const GuestbookAdminRoute = GuestbookAdminRouteImport.update({
   path: '/guestbook/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IssuesSlugRoute = IssuesSlugRouteImport.update({
+  id: '/issues/$slug',
+  path: '/issues/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopTestIndexRoute = ShopTestIndexRouteImport.update({
   id: '/shop-test/',
   path: '/shop-test/',
@@ -634,6 +640,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s06e08': typeof EpisodesS06e08Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/issues/$slug': typeof IssuesSlugRoute
   '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
   '/spotify/$': typeof SpotifySplatRoute
@@ -726,6 +733,7 @@ export interface FileRoutesByTo {
   '/episodes/s06e08': typeof EpisodesS06e08Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/issues/$slug': typeof IssuesSlugRoute
   '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
   '/spotify/$': typeof SpotifySplatRoute
@@ -819,6 +827,7 @@ export interface FileRoutesById {
   '/episodes/s06e08': typeof EpisodesS06e08Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
+  '/issues/$slug': typeof IssuesSlugRoute
   '/shop-test/$product': typeof ShopTestProductRoute
   '/shop-test/thanks': typeof ShopTestThanksRoute
   '/spotify/$': typeof SpotifySplatRoute
@@ -913,6 +922,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e08'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/issues/$slug'
     | '/shop-test/$product'
     | '/shop-test/thanks'
     | '/spotify/$'
@@ -1005,6 +1015,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e08'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/issues/$slug'
     | '/shop-test/$product'
     | '/shop-test/thanks'
     | '/spotify/$'
@@ -1097,6 +1108,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e08'
     | '/explore/$slug'
     | '/guestbook/admin'
+    | '/issues/$slug'
     | '/shop-test/$product'
     | '/shop-test/thanks'
     | '/spotify/$'
@@ -1190,6 +1202,7 @@ export interface RootRouteChildren {
   EpisodesS06e08Route: typeof EpisodesS06e08Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   GuestbookAdminRoute: typeof GuestbookAdminRoute
+  IssuesSlugRoute: typeof IssuesSlugRoute
   ShopTestProductRoute: typeof ShopTestProductRoute
   ShopTestThanksRoute: typeof ShopTestThanksRoute
   SpotifySplatRoute: typeof SpotifySplatRoute
@@ -1797,6 +1810,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuestbookAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/issues/$slug': {
+      id: '/issues/$slug'
+      path: '/issues/$slug'
+      fullPath: '/issues/$slug'
+      preLoaderRoute: typeof IssuesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop-test/': {
       id: '/shop-test/'
       path: '/shop-test'
@@ -1918,6 +1938,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS06e08Route: EpisodesS06e08Route,
   ExploreSlugRoute: ExploreSlugRoute,
   GuestbookAdminRoute: GuestbookAdminRoute,
+  IssuesSlugRoute: IssuesSlugRoute,
   ShopTestProductRoute: ShopTestProductRoute,
   ShopTestThanksRoute: ShopTestThanksRoute,
   SpotifySplatRoute: SpotifySplatRoute,

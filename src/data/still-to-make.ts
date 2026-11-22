@@ -17,9 +17,9 @@ export type StillToMake = {
   made: MadeYet;
   /** One line on what exists today */
   status: string;
-  /** Where the status comes from, or the book's A–Z card */
+  /** Where the status comes from (href: kept for the monthly check, never shown - no outside links), or the book's A–Z card */
   source?: { label: string; href?: string; card?: string };
-  /** Made books: the exact Library (A–Z) name, so the "Made since" tab shows the Library cover */
+  /** Made books and films: the exact Library (A–Z) name, so the "Made since" tab shows the cover and links to its page */
   library?: string;
   /** Made since: the year it came out */
   year?: number;
@@ -156,7 +156,6 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     time: "00:38:26",
     made: "made",
     status: "Made - The My Comrade Anthology, pages picked by Linda, came out from Boo-Hooray.",
-    source: { label: "Art Metropole", href: "https://artmetropole.com/shop/15424" },
     library: "The My Comrade Anthology",
     madeAs: "The My Comrade Anthology",
   },
@@ -308,7 +307,7 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     time: "00:49:41",
     made: "made",
     status: "Made since: Playing With Dolls, Pearl Martin's documentary on the trans clubs of the old Times Square red-light district - Edelweiss, the Gilded Grape, Sally's Hideaway, the Barnum Room - premiered at The Center in November 2023.",
-    source: { label: "Resident Advisor", href: "https://ra.co/news/79903" },
+    library: "Playing With Dolls (Pearl Martin)",
     year: 2023,
     madeAs: "Playing With Dolls (Pearl Martin)",
   },

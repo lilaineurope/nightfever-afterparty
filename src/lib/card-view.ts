@@ -3,12 +3,21 @@ import type { SceneEvent } from "@/data/scene";
 import type { Memoriam } from "@/data/memoriam";
 import type { ClubProfile } from "@/data/club-profiles";
 import type { ClubNight } from "@/data/club-nights";
+
+export type ClubPartsView = {
+  groups: { heading: string; intro: Ref[]; parts: { title: string; refs: Ref[] }[] }[];
+  looks: string[];
+  /** Row names shown in the groups, so "In the episodes" leaves them out */
+  names: string[];
+};
 import type { PersonPortrait } from "@/data/person-portraits";
 import type { PersonProfile } from "@/data/person-profiles";
 import type { DiaryPage } from "@/data/diaries";
 import type { ColumnPage } from "@/data/column-articles";
 import type { LinkData } from "@/lib/link-index";
 import type { LibraryItemView } from "@/lib/library-item";
+import type { PlaceView } from "@/lib/place-view";
+import type { PersonWork } from "@/lib/works";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
  *  doesn't download the whole A–Z (page weight, 16 Nov 2026). Types only - this file loads nothing. */
@@ -33,6 +42,8 @@ export type CardView = {
   night: ClubNight | null;
   mem: Memoriam | null;
   club: ClubProfile | null;
+  /** The club's theme nights and parties, folded in from their own cards (Lisa, 22 Nov 2026, src/data/club-parts.ts). */
+  parts: ClubPartsView | null;
   pic: PersonPortrait | null;
   /** Person page (story, guest quotes, timeline) for living people the guests talk about - Lisa, 20 Nov 2026. */
   profile: PersonProfile | null;
@@ -44,6 +55,10 @@ export type CardView = {
   tree: MentorTreeData | null;
   /** Library item page extras (books, magazines, newspapers, columns, diaries, films, TV - Lisa, 21 Nov 2026). */
   item: LibraryItemView | null;
+  /** Place page extras: drawn map, pins around it, the guests who talk about it (Lisa, 22 Nov 2026). */
+  place: PlaceView | null;
+  /** "<first>'s work": what a person made, wrote, ran or starred in (Lisa, 22 Nov 2026, src/lib/works.ts). */
+  works: PersonWork[];
   /** Rank among the top 100 great connectors (pink badge), or null. */
   connector: number | null;
   /** Every name -> card answer the page needs for its links. */

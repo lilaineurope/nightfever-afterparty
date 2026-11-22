@@ -171,11 +171,21 @@ function IssueShelf({ v, name }: { v: LibraryItemView; name: string }) {
       <ul className="lit-issues mt-5">
         {issues.map((i) => (
           <li key={i.what} className="lit-issue">
-            <div className={`lit-issue-cover lit-typed-${v.shelf}`}>
-              <span className="lit-issue-mast">{mast}</span>
-              {i.date && <span className="lit-issue-date">{i.date}</span>}
-              <span className="lit-issue-line">{i.what}</span>
-            </div>
+            {i.page ? (
+              // Its own issue page (Lisa, 22 Nov 2026): the real cover there, the typed card links to it.
+              <Link to="/issues/$slug" params={{ slug: i.page }} className={`lit-issue-cover lit-typed-${v.shelf} lit-issue-link`} aria-label={`${mast}, ${i.date ?? ""}: ${i.what} - its own page`}>
+                <span className="lit-issue-mast">{mast}</span>
+                {i.date && <span className="lit-issue-date">{i.date}</span>}
+                <span className="lit-issue-line">{i.what}</span>
+                <span className="lit-issue-open">The whole story &rarr;</span>
+              </Link>
+            ) : (
+              <div className={`lit-issue-cover lit-typed-${v.shelf}`}>
+                <span className="lit-issue-mast">{mast}</span>
+                {i.date && <span className="lit-issue-date">{i.date}</span>}
+                <span className="lit-issue-line">{i.what}</span>
+              </div>
+            )}
             <p className="lit-issue-who">
               {i.polaroid && <img src={i.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
               <span>
@@ -201,6 +211,10 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
   if (list.length === 0) return null;
   const pick = list[0]!;
   const guestBox = list.every((t) => t.kind === "guest");
+  // No trailer, but the show's own clip (Lisa, 22 Nov 2026: Candied Camera): "Watch the clip".
+  const clipBox = !guestBox && list.every((t) => t.kind === "clip" || t.kind === "guest");
+  // A film about the book or magazine plays first (Lisa, 22 Nov 2026: Edie: Girl on Fire on the Edie page): "On film".
+  const filmBox = pick.kind === "about";
   const showing = now ?? pick;
   const next = (from: Trailer) => {
     const i = list.findIndex((t) => t.id === from.id);
@@ -208,18 +222,18 @@ function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string 
   };
   return (
     <section aria-labelledby="trailer-jukebox">
-      <h2 id="trailer-jukebox" className={h}>{guestBox ? "From the guest's Jukebox" : "Watch the trailer"}</h2>
+      <h2 id="trailer-jukebox" className={h}>{filmBox ? "On film" : guestBox ? "From the guest's Jukebox" : clipBox ? "Watch the clip" : "Watch the trailer"}</h2>
       <div className="lit-jbx mt-6">
         <p className="lit-jbx-kicker">The Night Fever</p>
-        <p className="lit-jbx-title">{guestBox ? <>Juke<b>box</b></> : <>Trail<b>er</b></>}</p>
+        <p className="lit-jbx-title">{filmBox ? <>On fil<b>m</b></> : guestBox ? <>Juke<b>box</b></> : clipBox ? <>Cl<b>ip</b></> : <>Trail<b>er</b></>}</p>
         <div className="lit-jbx-screen">
           {now ? (
             <VideoScreen vid={now.id} title={now.title} onEnd={() => next(now)} onFail={() => { setFailed((f) => [...f, now.id]); next(now); }} />
           ) : (
-            <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play the trailer: ${pick.title}`}>
-              <span className="lit-jbx-k">{pick.kind === "guest" ? `${pick.short} · who dropped it` : pick.label === name ? "The trailer" : "From page to screen"}</span>
+            <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play ${pick.kind === "guest" || pick.kind === "about" ? "the video" : pick.kind === "clip" ? "the clip" : "the trailer"}: ${pick.title}`}>
+              <span className="lit-jbx-k">{pick.kind === "guest" ? `${pick.short} · who dropped it` : pick.kind === "about" ? "Watch first" : pick.kind === "clip" ? "The clip" : pick.label === name ? "The trailer" : "From page to screen"}</span>
               <span className="lit-jbx-play" aria-hidden>▶</span>
-              <span className="lit-jbx-nm">{pick.label}</span>
+              <span className="lit-jbx-nm">{pick.kind === "about" ? pick.title : pick.label}</span>
               <span className="lit-jbx-sm">From our {pick.short} AFTERPARTY playlist</span>
             </button>
           )}
