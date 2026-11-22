@@ -8,6 +8,7 @@ export const PAGES = [
   { to: "/timeline", label: "Timeline" },
   { to: "/jukebox", label: "Jukebox" },
   { to: "/inside-the-clubs", label: "Clubs" }, // Inside the Clubs, on the menu next to the Jukebox (Lisa, 30 Oct 2026)
+  { to: "/map", label: "Map" }, // relaunched in the paper look, one pin per card (Lisa, 22 Nov 2026)
   { to: "/library", label: "Library" }, // the Book Club, renamed and back on the menu (Lisa, 29 Oct 2026)
   { to: "/explore", label: "A–Z" }, // back on the top menu (Lisa, 28 Oct 2026)
   { to: "/guestbook", label: "Guestbook" },
@@ -26,7 +27,6 @@ export const UNLINKED_PAGES = [
 /** Pages outside the top menu (footer and elsewhere). */
 export const OTHER_PAGES = [
   { to: "/network", label: "Network" }, // off the top menu until the mentor reset (Lisa, 27 Oct 2026) - still in search, sitemap and the home cards
-  { to: "/map", label: "Map" }, // off the top menu while Lisa reworks it (27 Oct 2026) - still in search, sitemap and the home cards
   { to: "/guests", label: "Guests" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
