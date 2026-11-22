@@ -5,7 +5,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { LOCATIONS } from "@/data/locations";
 import { entities, entityFor, isPlace, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
+import { episodePath, episodes } from "@/data/episodes";
 import { SiteFooter } from "@/components/site-footer";
+
+// Episodes with their own AFTERPARTY page (the rest stay plain text in the map boxes).
+const BUILT = new Set<string>(episodes.map((e) => e.id));
 
 export const Route = createFileRoute("/map")({
   staticData: { sitemap: true },
@@ -451,8 +455,21 @@ function MapPage() {
                           <ul className="mt-3 space-y-2">
                             {lines.map((l) => (
                               <li key={l.ep} className="text-[13px] leading-snug">
-                                <span className="font-semibold">{episodeShort(l.ep)}</span> ·{" "}
-                                {l.context}
+                                {/* Each episode line opens its AFTERPARTY page, black to pink (Lisa, 22 Nov 2026). */}
+                                {BUILT.has(l.ep) ? (
+                                  <Link
+                                    to={episodePath(l.ep as never)}
+                                    className="text-[#111] transition-colors hover:text-pink focus-visible:text-pink"
+                                  >
+                                    <span className="font-semibold">{episodeShort(l.ep)}</span> ·{" "}
+                                    {l.context}
+                                  </Link>
+                                ) : (
+                                  <>
+                                    <span className="font-semibold">{episodeShort(l.ep)}</span> ·{" "}
+                                    {l.context}
+                                  </>
+                                )}
                               </li>
                             ))}
                           </ul>
