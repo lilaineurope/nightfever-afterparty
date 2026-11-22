@@ -17,7 +17,8 @@ export const Route = createFileRoute("/explore/")({
 
 // Everything A–Z as sticker strips (Lisa, 29 Oct 2026, option "Z4"): every name is a flyer sticker, sized in four steps by how
 // often it's dropped; each sticker carries its own category (the same categories as the chips - Lisa: "use the old categories"); letters A–Z with a sticky letter bar; the category chips filter as before.
-// Names dropped once or less stay behind "+ N more" per letter. Michael Alig never gets the big sizes (Lisa, 28 Oct 2026).
+// Every name shows inline, the ones dropped once too - no "+ N names dropped once" links; rows just wrap (Lisa, 22 Nov 2026:
+// "just show all items when you have enough space", on all A–Z lists and categories). Michael Alig never gets the big sizes (Lisa, 28 Oct 2026).
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split("");
 const letterOf = (name: string) => {
   const c = name.replace(/^['‘’"“(]+/, "").replace(/^the\s+/i, "").charAt(0).toUpperCase();
@@ -34,7 +35,6 @@ const kindOf = (e: Entity) => KIND[e.category] ?? "az-paper";
 
 function ExplorePage() {
   const [cat, setCat] = useState<string>("All");
-  const [open, setOpen] = useState<Record<string, boolean>>({});
   // Tap a sticker and its moments open in a box right under it, like the Library covers (Lisa, 29 Oct 2026);
   // cmd/ctrl-click still opens the card itself.
   const [sel, setSel] = useState<string | null>(null);
@@ -96,10 +96,7 @@ function ExplorePage() {
 
       <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         {LETTERS.filter((l) => byLetter.has(l)).map((l) => {
-          const all = byLetter.get(l)!;
-          const main = all.filter((x) => x.m >= 2 || x.e.guest);
-          const rest = all.filter((x) => !(x.m >= 2 || x.e.guest));
-          const show = open[l] || main.length === 0 ? all : main;
+          const show = byLetter.get(l)!;
           return (
             <section key={l} id={`az-${l === "#" ? "num" : l}`} className="az-letter">
               <h2 className="az-big">{l}</h2>
@@ -128,11 +125,6 @@ function ExplorePage() {
                     )}
                   </Fragment>
                 ))}
-                {rest.length > 0 && main.length > 0 && (
-                  <button type="button" className="az-more" onClick={() => setOpen((o) => ({ ...o, [l]: !o[l] }))}>
-                    {open[l] ? "Show fewer" : `+ ${rest.length} ${rest.length === 1 ? "name" : "names"} dropped once →`}
-                  </button>
-                )}
               </div>
             </section>
           );
