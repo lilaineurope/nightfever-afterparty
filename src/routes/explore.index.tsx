@@ -40,6 +40,12 @@ const AZ_CATEGORIES = CATEGORIES.filter((c) => c !== "Diary" && c !== "Publicati
 const azMentions = (c: string) =>
   c === "Publication" ? [...PUBLICATION].reduce((n, x) => n + (categoryMentions[x] ?? 0), 0) : (categoryMentions[c] ?? 0);
 const kindOf = (e: Entity) => KIND[azCategory(e)] ?? "az-paper";
+// The chips say the plural (Lisa, 22 Nov 2026: "update every category into plural eg locations"); each sticker keeps
+// the singular for its own name. Music, TV and Fashion stay as they are.
+const PLURAL: Record<string, string> = {
+  Person: "People", Organisation: "Organisations", Mood: "Moods", Club: "Clubs", Location: "Locations",
+  Publication: "Publications", Event: "Events", Podcast: "Podcasts", Film: "Films",
+};
 
 function ExplorePage() {
   const [cat, setCat] = useState<string>("All");
@@ -86,7 +92,7 @@ function ExplorePage() {
               aria-pressed={cat === c}
               onClick={() => setCat(c)}
             >
-              {c === "All" ? "Everything" : c}
+              {c === "All" ? "Everything" : (PLURAL[c] ?? c)}
               <small>{azMentions(c)}</small>
             </button>
           ))}
