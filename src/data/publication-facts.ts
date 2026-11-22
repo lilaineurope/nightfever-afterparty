@@ -261,3 +261,8 @@ export const PRESS: Record<string, PressFacts> = {
   artnet: { online: true },
   "club-kid-cards": { query: "Club Kid trading cards" },
 };
+
+// Who publishes it (Lisa, 22 Nov 2026: every publication page gets its publisher, like the books). The publishing house or
+// owner in the years the guests talk about, then today's where it changed ("Annie Flanders, then Condé Nast"). From each
+// publication's own history (Wikipedia infobox and the publisher's site), checked 22 Nov 2026. Keyed by A–Z card slug.
+export const PUBLISHERS: Record<string, string> = {};

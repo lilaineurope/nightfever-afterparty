@@ -253,6 +253,7 @@ function EntityPage() {
                 </>
               )}
               {item.press.ran && (<><dt>Ran</dt><dd>{item.press.ran}</dd></>)}
+              {item.press.publisher && (<><dt>Published by</dt><dd>{item.press.publisher}</dd></>)}
               <dt>On the show</dt>
               <dd>{(() => { const m = item.dropped.reduce((n, d) => n + d.mentions, 0); return `${m} mention${m === 1 ? "" : "s"} in ${item.dropped.length} Afterpart${item.dropped.length === 1 ? "y" : "ies"}`; })()}</dd>
             </dl>

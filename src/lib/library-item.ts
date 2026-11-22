@@ -47,6 +47,8 @@ export type LibraryItemView = {
 
 export type PressView = {
   founded: string | null;
+  /** The publishing house or owner (PUBLISHERS in src/data/publication-facts.ts). */
+  publisher: string | null;
   by: { name: string; slug?: string | undefined }[];
   ran: string | null;
   team: { role: string; name: string; slug?: string | undefined; note?: string | undefined; episodeId?: string | undefined; short?: string | undefined; time?: string | undefined }[];

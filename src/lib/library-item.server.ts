@@ -8,7 +8,7 @@ import { BOOKS_TO_WRITE } from "@/data/still-to-make";
 import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
-import { PRESS } from "@/data/publication-facts";
+import { PRESS, PUBLISHERS } from "@/data/publication-facts";
 import { WRITTEN_BY } from "@/data/written-by";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
@@ -200,6 +200,7 @@ function pressView(e: Entity, shelf: string): PressView | null {
   const p = PRESS[e.slug] ?? {};
   return {
     founded: p.founded ?? null,
+    publisher: PUBLISHERS[e.slug] ?? null,
     by: (p.by ?? []).map((name) => ({ name, slug: entityFor(name)?.slug })),
     ran: p.ran ?? null,
     team: (p.team ?? []).map((t) => ({ role: t.role, name: t.name, slug: entityFor(t.name)?.slug, note: t.note, episodeId: t.episode, short: t.episode ? episodeShort(t.episode) : undefined, time: t.time })),
