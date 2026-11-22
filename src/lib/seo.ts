@@ -119,6 +119,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s01e09: "Mars, the Limelight & DJing in 90s New York",
   s04e02: "Paper magazine, Break the Internet & downtown New York",
   s03e09: "Condé Nast, xoJane & post-9/11 New York nightlife",
+  s04e01: "Couture, Isabella Blow, McQueen, Dalí & records with Tony Visconti",
   s03e07: "San Francisco drag, New York nightlife & healing",
   s02e10: "the Gilded Grape, Studio 54 & Trans Figured",
   s04e05: "Max's Kansas City, the Factory & Studio 54",

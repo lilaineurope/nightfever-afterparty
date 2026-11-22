@@ -198,6 +198,12 @@ const COVERS: Record<string, Cover> = {
   "Daily Mail": { kind: "mast", file: "mast-daily-mail.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "The WOW Report": { kind: "mast", file: "mast-world-of-wonder.webp", credit: "Logo: World of Wonder (worldofwonder.net)" },
   "A Touch of Crass": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // a Daily News piece, like Uptown, Downtown
+  // S04E01 Daphne Guinness (Lisa's picks, 22 Nov 2026)
+  "The Duchess of Windsor (Diana Mosley)": { kind: "book", file: "book-the-duchess-of-windsor-diana-mosley.webp", credit: "Cover via Open Library (Gibson Square, 2012)" },
+  "Love in a Cold Climate": { kind: "book", file: "book-love-in-a-cold-climate.webp", credit: "Cover via Open Library (Penguin, 2008)" },
+  "The Pursuit of Love": { kind: "book", file: "book-the-pursuit-of-love.webp", credit: "Cover via Open Library (Penguin, 2010)" },
+  "Hons and Rebels": { kind: "book", file: "book-hons-and-rebels.webp", credit: "Cover via Open Library (New York Review Books, 2004)" },
+  "Tatler": { kind: "mast", file: "mast-tatler.webp", credit: "Masthead: Wikimedia Commons, public domain" },
 };
 
 export const coverFor = (name: string): (Cover & { src: string }) | undefined => {

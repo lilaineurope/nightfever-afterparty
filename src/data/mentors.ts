@@ -171,6 +171,9 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Jessica McNally", mentee: "Cat Marnell", episode: "s03e09", time: "00:24:51", line: "Got Cat her first magazine job: an internship in the Vanity Fair fashion closet" },
   { mentor: "Jean Godfrey-June", mentee: "Cat Marnell", episode: "s03e09", time: "00:28:15", line: "Hired Cat at Lucky - her boss and mentor, who valued creativity" },
   { mentor: "Jane Pratt", mentee: "Cat Marnell", episode: "s03e09", time: "00:37:29", line: "Gave Cat her xoJane column and cast her in it, as Cat tells it" },
+  { mentor: "David Bowie", mentee: "Daphne Guinness", episode: "s04e01", time: "00:07:20", line: "Told Tony Visconti she could be a pop star, so Tony made her records, as Daphne tells it" },
+  { mentor: "Isabella Blow", mentee: "Daphne Guinness", episode: "s04e01", time: "00:51:20", line: "Introduced Daphne to David LaChapelle - \"Isabella's biggest gift to me\"", kind: "door" },
+  { mentor: "Daphne Guinness", mentee: "Francesca Lake", episode: "s04e01", time: "01:01:46", line: "Supported Francesca through Daphne's Central Saint Martins scholarship" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

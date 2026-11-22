@@ -362,45 +362,112 @@ function MapPage() {
               {visible.length === 0 && (
                 <li className="text-sm text-muted-foreground">No pins for this pick yet.</li>
               )}
-              {visible.slice(0, limit).map((s) => (
-                <li
-                  key={s.key}
-                  id={`spot-${s.key}`}
-                  className={`border-2 bg-[#f6f0ea] p-4 text-[#111] transition ${active === s.key ? "border-pink shadow-[4px_4px_0_#e6007e]" : "border-[#111] shadow-[4px_4px_0_#111]"}`}
-                >
-                  <button type="button" onClick={() => focus(s)} className="w-full text-left">
-                    <p className="text-[11px] uppercase tracking-[0.2em] text-pink">
+              {visible.slice(0, limit).map((s) => {
+                // Click a card and its box opens underneath (Lisa, 22 Nov 2026); the headline itself goes to the page.
+                const open = active === s.key;
+                const lines = s.places
+                  .flatMap((p) =>
+                    p.refs
+                      .filter((r) => r.episode && r.context)
+                      .map((r) => ({ ep: r.episode!, context: r.context, mentions: r.mentions })),
+                  )
+                  .sort((x, y) => y.mentions - x.mentions)
+                  .filter((x, i, all) => all.findIndex((y) => y.ep === x.ep) === i)
+                  .slice(0, 3);
+                return (
+                  <li
+                    key={s.key}
+                    id={`spot-${s.key}`}
+                    className={`border-2 bg-[#f6f0ea] text-[#111] transition ${open ? "border-pink shadow-[4px_4px_0_#e6007e]" : "border-[#111] shadow-[4px_4px_0_#111]"}`}
+                  >
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      aria-expanded={open}
+                      aria-controls={`box-${s.key}`}
+                      onClick={() => (open ? setActive(null) : focus(s))}
+                      onKeyDown={(ev) => {
+                        if (ev.key === "Enter" || ev.key === " ") {
+                          ev.preventDefault();
+                          if (open) setActive(null);
+                          else focus(s);
+                        }
+                      }}
+                      className="flex cursor-pointer items-start justify-between gap-3 p-4"
+                    >
+                      <div>
+                        <p className="text-[11px] uppercase tracking-[0.2em] text-pink">
+                          <span
+                            aria-hidden="true"
+                            className={s.club ? "place-key place-key-club" : "place-key"}
+                          />{" "}
+                          {s.club ? "Club" : "Place"} · {s.area}
+                        </p>
+                        <Link
+                          {...cardTo(s.places[0]!.slug)}
+                          onClick={(ev) => ev.stopPropagation()}
+                          className="mt-1 inline-block font-semibold text-[#111] transition-colors hover:text-pink"
+                        >
+                          {s.places[0]!.name}
+                        </Link>
+                      </div>
                       <span
                         aria-hidden="true"
-                        className={s.club ? "place-key place-key-club" : "place-key"}
-                      />{" "}
-                      {s.club ? "Club" : "Place"} · {s.area}
-                    </p>
-                    <p className="mt-1 font-semibold">{s.places[0]!.name}</p>
-                    {s.places.length > 1 && (
-                      <p className="text-xs text-[#555]">
-                        Same door:{" "}
-                        {s.places
-                          .slice(1)
-                          .map((p) => p.name)
-                          .join(", ")}
-                      </p>
+                        className={`mt-4 text-sm transition-transform ${open ? "rotate-180 text-pink" : ""}`}
+                      >
+                        &#9662;
+                      </span>
+                    </div>
+                    {open && (
+                      <div
+                        id={`box-${s.key}`}
+                        className="mx-4 mb-4 border-t-2 border-dashed border-[#111] pt-3 text-sm"
+                      >
+                        <p className="text-xs text-[#555]">
+                          {s.episodes} {s.episodes === 1 ? "episode" : "episodes"} · {s.mentions}{" "}
+                          {s.mentions === 1 ? "mention" : "mentions"}
+                          {s.decades.length > 0 && <> · {[...s.decades].sort().join(", ")}</>}
+                        </p>
+                        {s.tip && <p className="mt-1 text-xs italic text-[#555]">{s.tip}</p>}
+                        {s.places.length > 1 && (
+                          <p className="mt-2 text-xs">
+                            <span className="uppercase tracking-[0.15em] text-[#555]">
+                              Same door:{" "}
+                            </span>
+                            {s.places.slice(1).map((p, i) => (
+                              <span key={p.slug}>
+                                {i > 0 && ", "}
+                                <Link
+                                  {...cardTo(p.slug)}
+                                  className="font-semibold text-[#111] transition-colors hover:text-pink"
+                                >
+                                  {p.name}
+                                </Link>
+                              </span>
+                            ))}
+                          </p>
+                        )}
+                        {lines.length > 0 && (
+                          <ul className="mt-3 space-y-2">
+                            {lines.map((l) => (
+                              <li key={l.ep} className="text-[13px] leading-snug">
+                                <span className="font-semibold">{episodeShort(l.ep)}</span> ·{" "}
+                                {l.context}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        <Link
+                          {...cardTo(s.places[0]!.slug)}
+                          className="mt-3 inline-block text-xs font-semibold text-[#111] underline decoration-dotted underline-offset-2 transition-colors hover:text-pink"
+                        >
+                          Open the page &rarr;
+                        </Link>
+                      </div>
                     )}
-                    {s.tip && <p className="mt-1 text-xs italic text-[#555]">{s.tip}</p>}
-                    <p className="mt-1 text-xs text-[#555]">
-                      {s.episodes} {s.episodes === 1 ? "episode" : "episodes"} · {s.mentions}{" "}
-                      {s.mentions === 1 ? "mention" : "mentions"}
-                      {s.decades.length > 0 && <> · {s.decades.sort().join(", ")}</>}
-                    </p>
-                  </button>
-                  <Link
-                    {...cardTo(s.places[0]!.slug)}
-                    className="mt-2 inline-block text-xs font-semibold underline decoration-dotted underline-offset-2 hover:text-pink"
-                  >
-                    Open the page &rarr;
-                  </Link>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
               {limit < visible.length && (
                 <li className="text-center">
                   <button
