@@ -20,6 +20,12 @@ const all = (role: MadeRole, year: number | undefined, ...names: string[]): Make
 const WOW = (role: MadeRole, year?: number) => all(role, year, "Fenton Bailey", "Randy Barbato");
 
 export const MADE_BY: Record<string, Maker[]> = {
+  // ---------- Clubs they opened, ran or made their name in (Lisa 22 Nov 2026: fill in the DJs and club makers) ----------
+  "Sound Factory": [m("Junior Vasquez", "Opened it, resident DJ", 1989), m("Christina Visca", "Opened it", 1989)],
+  "Paradise Garage": [m("Larry Levan", "Resident DJ", 1977)],
+  "Taboo": [m("Leigh Bowery", "Ran it", 1985)],
+  "The Cars – 'Hello Again' video": [m("John Sex", "In it", 1984)],
+
   // ---------- Pieces, columns and papers not in publication-facts.ts ----------
   "'On the Death of Whitney Houston: Why I Won't Shut Up About My Drug Addiction' (xoJane)": [m("Cat Marnell", "Wrote it", 2012)],
   "'The Death of Downtown' (Michael Musto)": [m("Michael Musto", "Wrote it")],
@@ -119,7 +125,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Midnight Express": [m("Alan Parker", "Directed it", 1978)],
   "Missing": [m("Costa-Gavras", "Directed it", 1982), m("Jack Lemmon", "Starred in it", 1982), m("Sissy Spacek", "Starred in it", 1982)],
   "Moby Doc": [m("Moby", "Made it", 2021)],
-  "Mondo New York": [m("Joey Arias", "In it", 1988), m("Wendy Wild", "In it", 1988), m("Karen Finley", "In it", 1988), m("Lydia Lunch", "In it", 1988)],
+  "Mondo New York": [m("John Sex", "Sang 'Hustle with My Muscle' in it", 1988), m("Joey Arias", "In it", 1988), m("Wendy Wild", "In it", 1988), m("Karen Finley", "In it", 1988), m("Lydia Lunch", "In it", 1988)],
   "Niagara": [m("Marilyn Monroe", "Starred in it", 1953)],
   "Once Upon a Time in America": [m("Sergio Leone", "Directed it", 1984), m("Robert De Niro", "Starred in it", 1984)],
   "Orlando (1992 film)": [m("Tilda Swinton", "Starred in it", 1992), m("Quentin Crisp", "In it", 1992)],
@@ -200,7 +206,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Vortex": [m("Beth B & Scott B", "Directed it", 1982), m("Lydia Lunch", "Starred in it", 1982), m("James Russo", "Starred in it", 1982)],
   "Washington Crosses the Delaware (Pittman film)": [m("Dustin Pittman", "Made it"), m("Taylor Mead", "In it")],
   "What's Love Got to Do with It": [m("Tina Turner", "About them", 1993)],
-  "Wigstock: The Movie": [m("Barry Shils", "Directed it", 1995), ...all("In it", 1995, "Lady Bunny", "RuPaul", "Lypsinka", "Joey Arias")],
+  "Wigstock: The Movie": [m("Barry Shils", "Directed it", 1995), ...all("In it", 1995, "Lady Bunny", "RuPaul", "Lypsinka", "Joey Arias", "Leigh Bowery")],
   "Women in Revolt": [m("Paul Morrissey", "Directed it", 1971), m("Andy Warhol", "Produced it", 1971), ...all("Starred in it", 1971, "Holly Woodlawn", "Candy Darling", "Jackie Curtis")],
   "Zelig": [m("Woody Allen", "Directed it", 1983)],
 
@@ -455,7 +461,7 @@ for (const [who, paper, role, year] of WROTE_FOR) (MADE_BY[paper] ??= []).push(m
 
 /** Works by people on the site that no guest drops on the show, so they have no Library or A–Z card yet. Shown in the
  *  same box without a link, marked "not on the show yet". Only works the person's own page already names. */
-export type OtherWork = { title: string; kind: "Book" | "Film" | "TV" | "Music" | "Magazine" | "Play"; role: MadeRole; year?: number | undefined };
+export type OtherWork = { title: string; kind: "Book" | "Film" | "TV" | "Music" | "Magazine" | "Play" | "Club"; role: MadeRole; year?: number | undefined };
 
 export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Gabriel Rotello": [{ title: "Sexual Ecology", kind: "Book", role: "Wrote it", year: 1997 }],
@@ -521,4 +527,45 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
     { title: "Danzig", kind: "Music", role: "In the band", year: 2000 },
   ],
   "Dean Johnson": [{ title: "The Velvet Mafia", kind: "Music", role: "In the band" }],
+  // Lisa 22 Nov 2026: fill in the people whose pages had no work yet. Facts: their Wikipedia pages (checked 22 Nov) and
+  // the site's own guest and memoriam notes.
+  "Brad Gooch": [
+    { title: "Jailbait and Other Stories", kind: "Book", role: "Wrote it", year: 1984 },
+    { title: "Scary Kisses", kind: "Book", role: "Wrote it", year: 1990 },
+    { title: "City Poet: The Life and Times of Frank O'Hara", kind: "Book", role: "Wrote it", year: 1993 },
+    { title: "The Golden Age of Promiscuity", kind: "Book", role: "Wrote it", year: 1996 },
+    { title: "Smash Cut: A Memoir of Howard & Art & the '70s & the '80s", kind: "Book", role: "Wrote it", year: 2015 },
+    { title: "Radiant: The Life and Line of Keith Haring", kind: "Book", role: "Wrote it", year: 2024 },
+  ],
+  "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2019 }],
+  "Screamin' Rachael Cain": [
+    { title: "Screamin' Rachael – 'My Main Man'", kind: "Music", role: "Sang it" },
+    { title: "Screamin' Rachael – 'Fun with Bad Boys'", kind: "Music", role: "Sang it", year: 1987 },
+    { title: "Trax Records", kind: "Music", role: "Runs it" },
+  ],
+  "Junior Vasquez": [
+    { title: "Junior Vasquez – 'Get Your Hands Off My Man'", kind: "Music", role: "Made it", year: 1994 },
+    { title: "Junior Vasquez – 'X'", kind: "Music", role: "Made it", year: 1994 },
+    { title: "Junior Vasquez – 'If Madonna Calls'", kind: "Music", role: "Made it", year: 1996 },
+  ],
+  "Frankie Knuckles": [
+    { title: "The Warehouse, Chicago", kind: "Club", role: "Resident DJ", year: 1977 },
+    { title: "Frankie Knuckles – 'Your Love'", kind: "Music", role: "Made it", year: 1987 },
+    { title: "Frankie Knuckles – 'Baby Wants to Ride'", kind: "Music", role: "Made it", year: 1987 },
+    { title: "Frankie Knuckles – 'The Whistle Song'", kind: "Music", role: "Made it", year: 1991 },
+  ],
+  "Larry Levan": [{ title: "Peech Boys – 'Don't Make Me Wait'", kind: "Music", role: "Produced it, in the band", year: 1982 }],
+  "Leigh Bowery": [
+    { title: "Hail the New Puritan (Charles Atlas)", kind: "Film", role: "In it", year: 1986 },
+    { title: "Minty – Open Wide", kind: "Music", role: "In the band", year: 1997 },
+    { title: "The Legend of Leigh Bowery (Charles Atlas)", kind: "Film", role: "About them", year: 2002 },
+  ],
+  "John Sex": [
+    { title: "John Sex – 'Hustle with My Muscle'", kind: "Music", role: "Sang it" },
+    { title: "John Sex – 'Rock Your Body'", kind: "Music", role: "Sang it" },
+  ],
+  "Nelson Sullivan": [
+    { title: "Nelson Sullivan's video diaries", kind: "Film", role: "Shot them", year: 1983 },
+    { title: "Nelson Sullivan's World of Wonder", kind: "Film", role: "Made from his tapes", year: 1994 },
+  ],
 };

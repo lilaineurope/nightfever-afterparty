@@ -32,3 +32,9 @@ test("works: duos and stocktake author lines land on the right page", () => {
   assert.ok(worksOf("luis-camacho").some((x) => x.name === "Truth or Dare"), "Luis in Truth or Dare");
   assert.ok(worksOf("ernie-glam").some((x) => x.slug === "fabulousity"), "Ernie wrote the text of Fabulousity");
 });
+
+test("works: the people the 22 Nov check found empty now show their work", () => {
+  const P = ["brad-gooch", "daphne-guinness", "jodie-harsh", "screamin-rachael-cain", "junior-vasquez", "frankie-knuckles", "larry-levan", "leigh-bowery", "john-sex", "nelson-sullivan"];
+  assert.deepEqual(P.filter((p) => worksOf(p).length === 0), []);
+  assert.ok(worksOf("junior-vasquez").some((x) => x.slug === "sound-factory" && x.kind === "Club"), "Junior's Sound Factory");
+});

@@ -3,20 +3,21 @@ import type { PersonWork, WorkKind } from "@/lib/works";
 
 // "<first>'s work" (Lisa, 22 Nov 2026: Gabriel Rotello's page should show OutWeek; every person's own books, papers, films,
 // TV, podcasts and music on their page). The Library newsstand look: real covers where we have them, typed covers for the
-// rest, each linking to the item's own page. Works no guest has dropped yet sit at the end with a dashed edge and no link.
+// rest, each linking to the item's own page. Works no guest has dropped yet sit at the end on pale paper with a dashed
+// edge and no link, whatever their kind.
 // The list comes from src/lib/works.ts (card-view.server.ts for A–Z pages, episode-page.tsx for guests).
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 
 const LABEL: Record<WorkKind, string> = {
-  Book: "Book", Diary: "Diary", Magazine: "Magazine", Paper: "Newspaper", Column: "Column", Film: "Film", TV: "TV", Podcast: "Podcast", Music: "Music", Play: "Stage",
+  Book: "Book", Diary: "Diary", Magazine: "Magazine", Paper: "Newspaper", Column: "Column", Film: "Film", TV: "TV", Podcast: "Podcast", Music: "Music", Club: "Club", Play: "Stage",
 };
 const GROUP: Record<WorkKind, string> = {
   Book: "Books", Diary: "Books", Magazine: "Magazines & papers", Paper: "Magazines & papers", Column: "Columns & articles",
-  Film: "Films", TV: "TV & videos", Podcast: "Podcasts", Music: "Music", Play: "On stage",
+  Film: "Films", TV: "TV & videos", Podcast: "Podcasts", Music: "Music", Club: "Clubs", Play: "On stage",
 };
 const COLOUR: Record<WorkKind, string> = {
-  Book: "lib-ink", Diary: "lib-diary", Magazine: "lib-pink", Paper: "lib-news", Column: "lib-col", Film: "lib-ink", TV: "lib-pink", Podcast: "lib-col", Music: "lib-news", Play: "lib-pink",
+  Book: "lib-ink", Diary: "lib-diary", Magazine: "lib-pink", Paper: "lib-news", Column: "lib-col", Film: "lib-ink", TV: "lib-pink", Podcast: "lib-col", Music: "lib-news", Club: "lib-diary", Play: "lib-pink",
 };
 
 function Cover({ w }: { w: PersonWork }) {
@@ -37,7 +38,7 @@ function Cover({ w }: { w: PersonWork }) {
       </span>
     );
   return (
-    <span className={`lib-cv lib-type ${COLOUR[w.kind]}`}>
+    <span className={`lib-cv lib-type ${w.offShow ? "lib-news" : COLOUR[w.kind]}`}>
       <span className="lib-kind">{LABEL[w.kind]}{w.offShow && <> · not on the show yet</>}</span>
       <span className={`lib-mast${w.name.length > 44 ? " lib-mast-xl" : w.name.length > 24 ? " lib-mast-l" : ""}`}>{w.name}</span>
       {foot}
