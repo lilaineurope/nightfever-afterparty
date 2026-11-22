@@ -1,7 +1,8 @@
 import { describe, test } from "node:test";
 import assert from "node:assert/strict";
 import { entityFor, entityBySlug, slugify } from "./entities";
-import { LOCATIONS } from "./locations";
+import { HOME_HINTS, LOCATIONS } from "./locations";
+import { EVENT_PLACES } from "./event-places";
 import { readFileSync } from "node:fs";
 
 // Club pages read as text: club-profiles.ts imports its pictures, which the test runner cannot load (as in share-pictures.test.ts).
@@ -51,5 +52,27 @@ describe("map pins: no doubles", () => {
   test("the London Roxy is not the New York Roxy", () => {
     assert.equal(entityFor("The Roxy (London)")?.slug, "roxy-london");
     assert.equal(entityFor("The Roxy")?.slug, "roxy");
+  });
+});
+
+// Every club on the map (Lisa, 22 Nov 2026): a club is pinned, or it carries the "Bring us home" tag - never a guessed pin.
+describe("clubs and events on the map", () => {
+  const pinned = new Set(LOCATIONS.map((l) => entityFor(l.name)?.slug));
+
+  test("every event sits on a real pin", () => {
+    const bad = EVENT_PLACES.filter((p) => entityFor(p.event)?.category !== "Event" || !pinned.has(entityFor(p.at)?.slug)).map(
+      (p) => `${p.event} @ ${p.at}`,
+    );
+    assert.deepEqual(bad, [], `events without an Event card or a pinned place: ${bad.join("; ")}`);
+  });
+
+  test("no event is listed twice", () => {
+    const slugs = EVENT_PLACES.map((p) => entityFor(p.event)?.slug);
+    assert.equal(new Set(slugs).size, slugs.length);
+  });
+
+  test("Bring us home hints belong to clubs without a pin", () => {
+    const bad = Object.keys(HOME_HINTS).filter((n) => entityFor(n)?.category !== "Club" || pinned.has(entityFor(n)?.slug));
+    assert.deepEqual(bad, [], `hints for a pinned or unknown club: ${bad.join(", ")}`);
   });
 });
