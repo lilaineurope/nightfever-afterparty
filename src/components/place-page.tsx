@@ -25,7 +25,7 @@ export function PlaceMapDrawing({ m, name }: { m: PlaceMap; name: string }) {
       lines.push(<line key={`a${x}`} x1={x} y1={0} x2={x} y2={m.h} className="place-avenue" />);
   }
   return (
-    <svg viewBox={`0 0 ${m.w} ${m.h}`} preserveAspectRatio="xMidYMid slice" className="place-map" role="img" aria-label={`Map: ${name} and the places around it`}>
+    <svg viewBox={`0 0 ${m.w} ${m.h}`} preserveAspectRatio="xMaxYMid slice" className="place-map" role="img" aria-label={`Map: ${name} and the places around it`}>
       <defs>
         <pattern id="place-dots" width="6" height="6" patternUnits="userSpaceOnUse">
           <circle cx="3" cy="3" r="1.1" className="place-dot" />
@@ -39,12 +39,20 @@ export function PlaceMapDrawing({ m, name }: { m: PlaceMap; name: string }) {
         <a key={p.slug} href={`/explore/${p.slug}`}>
           <title>{p.name}</title>
           <circle cx={p.x} cy={p.y} r={7} className={p.club ? "place-pin-club" : "place-pin-place"} />
-          {p.label && <text x={p.x + 11} y={p.y + 4} className="place-label">{p.name}</text>}
+          {p.label && (
+            <text x={p.left ? p.x - 11 : p.x + 11} y={p.y + 4} textAnchor={p.left ? "end" : undefined} className="place-label">
+              {p.name}
+            </text>
+          )}
         </a>
       ))}
       <circle cx={m.self.x} cy={m.self.y} r={24} className="place-halo" />
       <circle cx={m.self.x} cy={m.self.y} r={10} className="place-pin-self" />
-      <text x={m.self.x + 18} y={m.self.y - 14} className="place-label-self">{name.toUpperCase()}</text>
+      {m.selfName && (
+        <text x={m.self.x + 18} y={m.self.y - 14} className="place-label-self">
+          {m.selfName.toUpperCase()}
+        </text>
+      )}
       {m.scale && (
         <g transform={`translate(${m.w - 40 - m.scale.px} ${m.h - 26})`}>
           <line x1={0} y1={0} x2={m.scale.px} y2={0} className="place-scale" />
@@ -55,7 +63,7 @@ export function PlaceMapDrawing({ m, name }: { m: PlaceMap; name: string }) {
   );
 }
 
-const walk = (m: number) => (m < 2000 ? `${m} m · ${Math.max(1, Math.round(m / 80))} min walk` : m < 100_000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000)} km`);
+const walk = (m: number) => (m < 20 ? "right here" : m < 2000 ? `${m} m · ${Math.max(1, Math.round(m / 80))} min walk` : m < 100_000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000)} km`);
 
 /** Under the header: who was there, what they say, around the corner, on the Timeline. */
 export function PlaceSections({ p, name, events }: { p: PlaceView; name: string; events: SceneEvent[] }) {
