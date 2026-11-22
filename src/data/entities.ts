@@ -76,6 +76,8 @@ export const SAME_AS: Record<string, string> = {
   "downtown-manhattan": "lower-manhattan",
   // Egon von Furstenberg's book kept its first address when it got its own card (src/data/written-by.ts, 22 Nov 2026).
   "power-look": "the-power-look",
+  // Homo Xtra is HX's full name (S03E09, James) - one card with HX Magazine (publication pages audit, 22 Nov 2026).
+  "homo-xtra": "hx-magazine",
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
