@@ -18,12 +18,22 @@ type Clip = { id: string; name: string; cat: string; title: string; of?: string 
 const clipFiles = import.meta.glob<Clip[]>("../data/episode-videos/*.json", { eager: true, import: "default" });
 const TRAILER = /\btrailer\b/i;
 const trailersBySlug: Record<string, Trailer[]> = {};
+const clipsBySlug: Record<string, Trailer[]> = {};
+const SCREEN = new Set(["Film", "TV"]);
 for (const [path, clips] of Object.entries(clipFiles)) {
   const episodeId = path.split("/").pop()!.replace(/\.json$/, "");
   for (const c of clips) {
-    // A trailer of a film, show or book - never the show's own season trailers.
-    if (!TRAILER.test(c.title) || /night fever/i.test(c.title) || c.cat === "Night Fever") continue;
+    if (/night fever/i.test(c.title) || c.cat === "Night Fever") continue;
     const slug = entityFor(c.name)?.slug ?? slugify(c.name);
+    // A film or TV show's own clip in our playlists, when it is not a trailer (Lisa, 22 Nov 2026: Candied Camera plays its own clip).
+    if (!TRAILER.test(c.title)) {
+      if (SCREEN.has(c.cat)) {
+        const own = (clipsBySlug[slug] ??= []);
+        if (!own.some((t) => t.id === c.id)) own.push({ id: c.id, title: c.title, label: c.name, episodeId, short: episodeShort(episodeId), kind: "clip" });
+      }
+      continue;
+    }
+    // A trailer of a film, show or book - never the show's own season trailers.
     const list = (trailersBySlug[slug] ??= []);
     if (!list.some((t) => t.id === c.id)) list.push({ id: c.id, title: c.title, label: c.name, episodeId, short: episodeShort(episodeId) });
   }
@@ -44,7 +54,6 @@ function guestJukebox(episodeId: string): Trailer[] {
   return out;
 }
 
-const SCREEN = new Set(["Film", "TV"]);
 const libraryBySlug = Object.fromEntries(bookClub.map((b) => [b.slug, b]));
 const guestPolaroid = (episodeId: string) => polaroidThumb(episodeId, 240);
 
@@ -154,6 +163,8 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
   const dropped = droppedBy(e);
   const trailers = [...(trailersBySlug[e.slug] ?? [])];
   for (const f of ON_SCREEN[e.name] ?? []) for (const t of trailersBySlug[entityFor(f.name)?.slug ?? ""] ?? []) if (!trailers.some((x) => x.id === t.id)) trailers.push(t);
+  // A film or TV card's own clips come after its trailers, before any guest's Jukebox.
+  if (SCREEN.has(e.category)) for (const t of clipsBySlug[e.slug] ?? []) if (!trailers.some((x) => x.id === t.id)) trailers.push(t);
   // No trailer: the Jukebox plays the guests who dropped it instead - most mentions first, a few videos each.
   if (trailers.length === 0)
     for (const d of [...dropped].sort((a, b) => b.mentions - a.mentions)) {
