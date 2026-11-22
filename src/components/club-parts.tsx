@@ -10,9 +10,6 @@ const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 const TILT = [-1.5, 1, -0.5, 1.5, -1, 0.5];
 
-/** Which layout the club page uses for its theme nights and parties (mockups for Lisa, 22 Nov 2026). */
-export const PARTS_LAYOUT: "tiles" | "list" = "tiles";
-
 function Said({ r, name, dark }: { r: Ref; name: string; dark?: boolean }) {
   const ep = episodeById(r.episode ?? "s06e01");
   const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
@@ -31,12 +28,13 @@ function Said({ r, name, dark }: { r: Ref; name: string; dark?: boolean }) {
   );
 }
 
-/** A club's theme nights and parties on its own page (Lisa, 22 Nov 2026: "everything area should be all on one page"). */
+/** A club's theme nights and parties on its own page (Lisa, 22 Nov 2026: "everything area should be all on one page").
+ *  Layout A, taped theme tickets (Lisa picked it over a compact list, 22 Nov 2026). */
 export function ClubPartsSections({ p, name }: { p: ClubPartsView; name: string }) {
   return (
     <>
       {p.groups.map((g) =>
-        PARTS_LAYOUT === "tiles" ? (
+        (
           <section key={g.heading}>
             <h2 className={`${h} text-center`}>{name}'s {g.heading.toLowerCase()}</h2>
             {g.intro.length > 0 && (
@@ -59,25 +57,6 @@ export function ClubPartsSections({ p, name }: { p: ClubPartsView; name: string 
                 </article>
               ))}
             </div>
-          </section>
-        ) : (
-          <section key={g.heading} className="rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
-            <h2 className={h}>{name}'s {g.heading.toLowerCase()}</h2>
-            {g.intro.length > 0 && (
-              <div className="mt-3 space-y-3">
-                {g.intro.map((r) => <Said key={`${r.episode}-${r.rank}`} r={r} name={name} />)}
-              </div>
-            )}
-            <dl className="mt-5 grid gap-x-8 gap-y-5 md:grid-cols-2">
-              {g.parts.map((x) => (
-                <div key={x.title} className="border-l-4 border-pink pl-4">
-                  <dt className="font-[family-name:var(--font-flyer)] text-xl uppercase text-foreground">{x.title}</dt>
-                  <dd className="mt-2 space-y-3">
-                    {x.refs.map((r) => <Said key={`${r.episode}-${r.rank}`} r={r} name={name} />)}
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </section>
         ),
       )}
