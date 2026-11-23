@@ -950,6 +950,7 @@ const s06e09: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/127425320/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-13%2F988b3873-8827-85b5-ceb5-a7c2ebde22ad.mp3",
   runtime: "52:50",
   afterpartyPublished: "2026-12-03",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLG01xDlLqgmI",
   blurb:
     "Desi Santiago on becoming Desi Monster, the club kid apartments, Leigh Bowery at his 20th birthday, the band Boob and building worlds for Zaldy, Bruce LaBruce and Miami",
 };
