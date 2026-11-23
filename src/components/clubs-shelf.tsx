@@ -3,17 +3,18 @@ import { Link } from "@tanstack/react-router";
 import { Fragment, useState } from "react";
 import { EntityBox } from "@/components/entity-box";
 import { plainClick } from "@/components/moments-box";
-import { entityBySlug } from "@/data/entities";
+import { entityBySlug, entityFor } from "@/data/entities";
 import { CLUB_NIGHTS, playlistUrl } from "@/data/club-nights";
 import { clubsMentioned } from "@/data/collections";
-import { LOCATIONS } from "@/data/locations";
+import { HOME_HINTS, LOCATIONS } from "@/data/locations";
 import { CLUB_TICKETS } from "@/data/club-tickets";
 import type { CSSProperties } from "react";
 
 // Inside the Clubs (Lisa, 30 Oct 2026, was Clubkid Culture): a wall of club flyers as the header, then every club ever mentioned on
 // Night Fever street by street (New York neighbourhood by neighbourhood, then London, Paris, Los Angeles and the rest); the club
 // nights ("Hear a whole night") sit on top, as tickets that open in the Jukebox (Lisa, 30 Oct 2026). Each club is a sticker sized by its mentions; a tap opens its moments right under the block
-// (cmd/ctrl-click opens the A–Z card). Areas come from src/data/locations.ts - a club without coordinates lands in "Address unknown".
+// (cmd/ctrl-click opens the A–Z card). Areas come from src/data/locations.ts - a club without coordinates lands in "Bring us home"
+// (Lisa, 22 Nov 2026): tagged with yellow tape, with what we know and a way to tell us where it was - never a guessed pin.
 
 type Club = (typeof clubsMentioned)[number];
 const NIGHTS = new Set(CLUB_NIGHTS.map((c) => c.slug));
@@ -29,18 +30,20 @@ const NYC: Record<string, string> = {
   Tribeca: "Tribeca & Hudson Square", "Hudson Square": "Tribeca & Hudson Square",
   SoHo: "SoHo", Bowery: "Bowery & NoHo", NoHo: "Bowery & NoHo",
   "West Village": "The Village", "Greenwich Village": "The Village",
-  "Upper East Side": "Uptown", "Upper West Side": "Uptown", "Bay Ridge": "Brooklyn",
+  "Upper East Side": "Uptown", "Upper West Side": "Uptown", "Bay Ridge": "Brooklyn", Brooklyn: "Brooklyn",
 };
-const LA = new Set(["Sunset Strip", "Beverly Hills", "West Hollywood"]);
-const areaOf = new Map(LOCATIONS.map((l) => [l.name, l.area]));
+const LA = new Set(["Sunset Strip", "Beverly Hills", "West Hollywood", "Hollywood", "Los Angeles"]);
+// By card, not by spelling, so "Roxy" finds the pin called "The Roxy" - the same match the map uses.
+const areaOf = new Map(LOCATIONS.map((l) => [entityFor(l.name)?.slug, l.area]));
+const HOME = "Bring us home";
 
 type Block = { city: string; area: string; clubs: Club[]; weight: number };
 export const clubBlocks: Block[] = (() => {
   const m = new Map<string, Block>();
   for (const c of clubsMentioned) {
-    const raw = areaOf.get(c.name);
+    const raw = areaOf.get(c.slug);
     const [city, area] = !raw
-      ? ["Somewhere in the night", "Address unknown"]
+      ? [HOME, "Where was it?"]
       : NYC[raw]
         ? ["New York", NYC[raw]!]
         : LA.has(raw)
@@ -54,7 +57,7 @@ export const clubBlocks: Block[] = (() => {
     b.clubs.push(c);
     b.weight += c.mentions;
   }
-  const order = ["New York", "London", "Paris", "Los Angeles", "Elsewhere", "Somewhere in the night"];
+  const order = ["New York", "London", "Paris", "Los Angeles", "Elsewhere", HOME];
   return [...m.values()].sort((a, b) => order.indexOf(a.city) - order.indexOf(b.city) || b.weight - a.weight);
 })();
 
@@ -130,10 +133,17 @@ export function ClubsShelf() {
         const head = b.city !== lastCity && b.city !== b.area ? b.city : null;
         lastCity = b.city;
         const sel = b.clubs.find((c) => c.slug === open);
+        const home = b.city === HOME;
         return (
           <Fragment key={`${b.city}|${b.area}`}>
             {head && <h3 className="cc-city">{head}</h3>}
-            <section className="cc-block">
+            <section className={home ? "cc-block cc-block-home" : "cc-block"}>
+              {home && (
+                <p className="cc-home-note">
+                  We haven&rsquo;t found where these clubs stood, so they&rsquo;re not on the{" "}
+                  <Link to="/map">map</Link> yet. Were you there? Tap a club and tell us where it was.
+                </p>
+              )}
               <h4 className="cc-sign">
                 <span>{b.area}</span>
                 <small>{b.clubs.length} {b.clubs.length === 1 ? "club" : "clubs"}</small>
@@ -153,6 +163,7 @@ export function ClubsShelf() {
                     }}
                   >
                     {NIGHTS.has(c.slug) && <i>♫ club night</i>}
+                    {home && <span className="home-tag">{HOME}</span>}
                     {c.name}
                     <small>{c.mentions}</small>
                   </Link>
@@ -160,6 +171,14 @@ export function ClubsShelf() {
                 {sel && entityBySlug[sel.slug] && (
                   <div className="az-detail">
                     <EntityBox entity={entityBySlug[sel.slug]!} onClose={() => setOpen(null)} />
+                    {home && (
+                      <>
+                        {HOME_HINTS[sel.name] && <p className="cc-home-hint">What we know: {HOME_HINTS[sel.name]}</p>}
+                        <Link to="/contact" search={{ about: `${HOME}: ${sel.name}` }} className="cc-home-ask">
+                          I know where {sel.name} was &rarr;
+                        </Link>
+                      </>
+                    )}
                   </div>
                 )}
               </div>

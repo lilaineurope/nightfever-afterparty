@@ -2,7 +2,8 @@ import { cardTo } from "@/lib/card-link";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { LOCATIONS } from "@/data/locations";
+import { HOME_HINTS, LOCATIONS } from "@/data/locations";
+import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
 import { entities, entityFor, isPlace, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
@@ -34,6 +35,12 @@ type Spot = {
   area: string;
   places: Entity[];
   club: boolean;
+  /** An event pin (Lisa, 22 Nov 2026): the parties, shows and balls held at one club or place, drawn yellow. */
+  event?: boolean;
+  /** For an event pin: the club or place it happened at. */
+  venue?: Entity | undefined;
+  /** An event venue with no card of its own (Cannes, Burning Man) - just its name. */
+  venueName?: string;
   world: boolean;
   episodes: number;
   mentions: number;
@@ -99,6 +106,60 @@ function buildSpots(): Spot[] {
   return [...byCoord.values()].sort((a, b) => b.mentions - a.mentions);
 }
 
+const coordKey = (lat: number, lng: number) => `${lat.toFixed(4)},${lng.toFixed(4)}`;
+
+/** Event pins: every event in src/data/event-places.ts on its venue's pin, one yellow pin per venue. */
+function buildEventSpots(): Spot[] {
+  const pinOf = new Map(LOCATIONS.map((l) => [entityFor(l.name)?.slug, l]));
+  const byVenue = new Map<string, Spot>();
+  for (const p of EVENT_PLACES) {
+    const e = entityFor(p.event);
+    const venue = p.lat === undefined ? entityFor(p.at) : undefined;
+    const l =
+      p.lat !== undefined && p.lng !== undefined
+        ? { lat: p.lat, lng: p.lng, area: p.area ?? p.at }
+        : venue && pinOf.get(venue.slug);
+    if (!e || !l) continue;
+    const key = `ev:${coordKey(l.lat, l.lng)}`;
+    let s = byVenue.get(key);
+    if (!s) {
+      s = {
+        key,
+        lat: l.lat,
+        lng: l.lng,
+        area: l.area,
+        places: [],
+        club: false,
+        event: true,
+        venue,
+        venueName: p.at,
+        world: !inNewYork(l.lat, l.lng),
+        episodes: 0,
+        mentions: 0,
+        decades: [],
+      };
+      byVenue.set(key, s);
+    }
+    if (!s.places.some((x) => x.slug === e.slug)) s.places.push(e);
+    if (p.tip && s.places.length === 1) s.tip = p.tip;
+  }
+  for (const s of byVenue.values()) {
+    s.places.sort((a, b) => totalMentions(b) - totalMentions(a));
+    s.episodes = new Set(
+      s.places.flatMap((p) => p.refs.map((r) => r.episode).filter(Boolean)),
+    ).size;
+    s.mentions = s.places.reduce((n, p) => n + totalMentions(p), 0);
+    s.decades = [
+      ...new Set(
+        s.places.flatMap((p) =>
+          (p.events ?? []).map((ev) => decadeOf(ev.when)).filter((d): d is string => !!d),
+        ),
+      ),
+    ];
+  }
+  return [...byVenue.values()].sort((a, b) => b.mentions - a.mentions);
+}
+
 declare global {
   interface Window {
     // Leaflet, loaded from a CDN on this page only (free map tiles, no key: Lisa, 22 Nov 2026).
@@ -116,28 +177,51 @@ const CREDIT =
 const BRING_HOME = "Bring us home";
 
 /** Places named in the episodes that have no pin yet - Lisa's "Bring us home" list. */
+// Lisa, 23 Nov 2026: "Apply this to all categories - if you can't pin them to the map and/or location missing, move to
+// bring us home." Clubs, events and places alike: no pin means it's on this list.
+const HOME_ORDER = ["Club", "Event", "Location"];
+const HOME_HEADS: Record<string, string> = { Club: "Clubs", Event: "Events", Location: "Places" };
 function homelessPlaces(): Entity[] {
   const pinned = new Set(LOCATIONS.map((l) => entityFor(l.name)?.slug).filter(Boolean));
-  return entities
-    .filter((e) => isPlace(e.category) && e.refs.length > 0 && !pinned.has(e.slug))
-    .sort((a, b) => a.name.localeCompare(b.name));
+  for (const p of EVENT_PLACES) pinned.add(entityFor(p.event)?.slug);
+  for (const n of NO_SINGLE_PLACE) pinned.add(entityFor(n)?.slug);
+  return (
+    entities
+      .filter(
+        (e) =>
+          (isPlace(e.category) || e.category === "Event") &&
+          (e.refs.length > 0 || e.category !== "Location") &&
+          !pinned.has(e.slug),
+      )
+      // Clubs first, then events, then places
+      .sort(
+        (a, b) =>
+          HOME_ORDER.indexOf(a.category) - HOME_ORDER.indexOf(b.category) ||
+          a.name.localeCompare(b.name),
+      )
+  );
 }
 
 /** How many places the list draws at first, and how many more each time it is scrolled to the end. */
 const LIST_STEP = 40;
 
-type Layer = "All" | "Clubs" | "Places" | "World" | typeof BRING_HOME;
-const LAYERS: Layer[] = ["All", "Clubs", "Places", "World"];
+type Layer = "All" | "Clubs" | "Events" | "Places" | "World" | typeof BRING_HOME;
+const LAYERS: Layer[] = ["All", "Clubs", "Events", "Places", "World"];
+// Events sit on their club's own pin, so they get a layer of their own; everywhere else the club's box lists them.
 const inLayer = (s: Spot, l: Layer) =>
-  l === "All"
-    ? true
-    : l === "Clubs"
-      ? s.club && !s.world
-      : l === "Places"
-        ? !s.club && !s.world
-        : l === "World"
-          ? s.world
-          : false;
+  l === "Events"
+    ? !!s.event
+    : s.event
+      ? false
+      : l === "All"
+        ? true
+        : l === "Clubs"
+          ? s.club && !s.world
+          : l === "Places"
+            ? !s.club && !s.world
+            : l === "World"
+              ? s.world
+              : false;
 
 const chip = (on: boolean) =>
   `rounded-full border-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
@@ -147,7 +231,13 @@ const chip = (on: boolean) =>
   }`;
 
 function MapPage() {
-  const spots = useMemo(buildSpots, []);
+  const spots = useMemo(() => [...buildSpots(), ...buildEventSpots()], []);
+  // What happened at each pin, for the "Events here" line in its box.
+  const eventsAt = useMemo(() => {
+    const m = new Map<string, Entity[]>();
+    for (const s of spots) if (s.event) m.set(s.key.slice(3), s.places);
+    return m;
+  }, [spots]);
   const homeless = useMemo(homelessPlaces, []);
   const [layer, setLayer] = useState<Layer>("All");
   const [decade, setDecade] = useState<string>("any");
@@ -192,6 +282,12 @@ function MapPage() {
       css.href = `${LEAFLET}.css`;
       document.head.appendChild(css);
     }
+    // Load Leaflet once: a second copy would replace window.L under a map built with the first, and its pins crash.
+    const loading = document.querySelector<HTMLScriptElement>(`script[src="${LEAFLET}.js"]`);
+    if (loading) {
+      loading.addEventListener("load", init);
+      return;
+    }
     const js = document.createElement("script");
     js.src = `${LEAFLET}.js`;
     js.async = true;
@@ -227,7 +323,7 @@ function MapPage() {
         radius: on ? 9 : 4 + Math.min(Math.log2(1 + s.mentions), 5),
         color: "#111111",
         weight: 2,
-        fillColor: on ? "#e6007e" : s.club ? "#111111" : "#f6f0ea",
+        fillColor: on ? "#e6007e" : s.event ? "#f6e06a" : s.club ? "#111111" : "#f6f0ea",
         fillOpacity: 1,
       })
         .bindTooltip(s.places.map((p) => p.name).join(" / "), { direction: "top", offset: [0, -6] })
@@ -262,8 +358,8 @@ function MapPage() {
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground">
           Every club and place named in Night Fever, one pin each. Clubs are black, places are open,
-          and each pin opens its own page with the guests who were there. Pick a layer, or a decade
-          from the Timeline.
+          events are yellow, and each pin opens its own page with the guests who were there. Pick a
+          layer, or a decade from the Timeline.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {LAYERS.map((l) => (
@@ -325,19 +421,43 @@ function MapPage() {
                 Bring us home
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                These places come up in the episodes, but we don&apos;t know where they were yet:
+                These clubs, events and places come up in the episodes, but we don&apos;t know where
+                they were yet:
               </p>
-              <ul className="mt-4 space-y-2">
-                {homeless.map((e) => (
-                  <li key={e.slug} className="flex flex-wrap items-baseline gap-x-2">
-                    <Link {...cardTo(e.slug)} className="font-semibold hover:text-pink">
-                      {e.name}
+              <ul className="mt-4 space-y-3">
+                {homeless.map((e, i) => (
+                  <li key={e.slug}>
+                    {e.category !== homeless[i - 1]?.category && (
+                      <h3 className="mb-2 mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground first:mt-0">
+                        {HOME_HEADS[e.category]}
+                      </h3>
+                    )}
+                    <div className="flex flex-wrap items-baseline gap-x-2">
+                      <span className="home-tag">Bring us home</span>
+                      <Link
+                        {...cardTo(e.slug)}
+                        className="font-semibold transition-colors hover:text-pink"
+                      >
+                        {e.name}
+                      </Link>
+                      <span className="text-xs text-muted-foreground">
+                        {[...new Set(e.refs.map((r) => (r.episode ? episodeShort(r.episode) : "")))]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </span>
+                    </div>
+                    {HOME_HINTS[e.name] && (
+                      <p className="mt-0.5 text-xs italic text-muted-foreground">
+                        What we know: {HOME_HINTS[e.name]}
+                      </p>
+                    )}
+                    <Link
+                      to="/contact"
+                      search={{ about: `${BRING_HOME}: ${e.name}` }}
+                      className="mt-0.5 inline-block text-xs font-semibold text-[#111] transition-colors hover:text-pink"
+                    >
+                      I know where it was &rarr;
                     </Link>
-                    <span className="text-xs text-muted-foreground">
-                      {[...new Set(e.refs.map((r) => (r.episode ? episodeShort(r.episode) : "")))]
-                        .filter(Boolean)
-                        .join(" · ")}
-                    </span>
                   </li>
                 ))}
               </ul>
@@ -409,9 +529,17 @@ function MapPage() {
                         <p className="text-[11px] uppercase tracking-[0.2em] text-pink">
                           <span
                             aria-hidden="true"
-                            className={s.club ? "place-key place-key-club" : "place-key"}
+                            className={
+                              s.event
+                                ? "place-key place-key-event"
+                                : s.club
+                                  ? "place-key place-key-club"
+                                  : "place-key"
+                            }
                           />{" "}
-                          {s.club ? "Club" : "Place"} · {s.area}
+                          {s.event
+                            ? `Event · ${s.venue?.name ?? s.venueName}`
+                            : `${s.club ? "Club" : "Place"} · ${s.area}`}
                         </p>
                         <Link
                           {...cardTo(s.places[0]!.slug)}
@@ -442,9 +570,27 @@ function MapPage() {
                         {s.places.length > 1 && (
                           <p className="mt-2 text-xs">
                             <span className="uppercase tracking-[0.15em] text-[#555]">
-                              Same door:{" "}
+                              {s.event ? "Also here:" : "Same door:"}{" "}
                             </span>
                             {s.places.slice(1).map((p, i) => (
+                              <span key={p.slug}>
+                                {i > 0 && ", "}
+                                <Link
+                                  {...cardTo(p.slug)}
+                                  className="font-semibold text-[#111] transition-colors hover:text-pink"
+                                >
+                                  {p.name}
+                                </Link>
+                              </span>
+                            ))}
+                          </p>
+                        )}
+                        {!s.event && (eventsAt.get(s.key)?.length ?? 0) > 0 && (
+                          <p className="mt-2 text-xs">
+                            <span className="uppercase tracking-[0.15em] text-[#555]">
+                              Events here:{" "}
+                            </span>
+                            {eventsAt.get(s.key)!.map((p, i) => (
                               <span key={p.slug}>
                                 {i > 0 && ", "}
                                 <Link

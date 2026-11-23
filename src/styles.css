@@ -736,6 +736,20 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .place-near { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed #bbb; font: 13px var(--font-mono-body); }
 .place-key { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #111; background: #fff; margin-right: 8px; vertical-align: -1px; }
 .place-key-club { background: #111; }
+.place-key-event { background: #f6e06a; }
+/* "Bring us home" (Lisa, 22 Nov 2026): a club we can't pin yet gets a strip of yellow masking tape instead of a guessed pin -
+   on the map's list and on the Clubs page - asking visitors who remember the address to tell us. */
+.home-tag { display: inline-block; background: #f6e06a; color: #111; border: 1px solid #111; padding: 0 6px; font: 9px/1.6 var(--font-mono-body); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-2deg); white-space: nowrap; }
+.cc-block-home { border: 2px dashed #111; border-left-width: 2px; padding: 16px; margin-top: 12px; background: repeating-linear-gradient(-45deg, transparent 0 14px, rgba(246, 224, 106, .18) 14px 28px); }
+.cc-block-home .cc-sign { background: #f6e06a; color: #111; border-color: #111; }
+.cc-block-home .cc-sign small { color: #111; }
+.cc-home-note { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--muted-foreground); max-width: 46rem; }
+.cc-home-note a { color: #111; font-weight: 600; transition: color .12s; }
+.cc-home-note a:hover { color: var(--color-pink); }
+.az-st .home-tag { margin-right: 6px; vertical-align: 2px; }
+.cc-home-hint { margin: 10px 0 0; font-size: 13px; font-style: italic; color: var(--muted-foreground); }
+.cc-home-ask { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600; color: #111; transition: color .12s; }
+.cc-home-ask:hover { color: var(--color-pink); }
 /* Library item pages (Lisa, 21 Nov 2026): the real cover taped into the header next to the name card, the book's facts on the
    card. Phones: the cover sits above the card, smaller. Pictures never cover text. */
 .card-head.card-head-cover { display: flex; flex-direction: column; align-items: center; gap: 34px; padding-top: 40px; padding-bottom: 48px; border-bottom: 2px solid #111; }
