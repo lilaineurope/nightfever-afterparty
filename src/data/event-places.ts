@@ -377,6 +377,22 @@ export const EVENT_PLACES: EventPlace[] = [
     area: "Flatiron",
     tip: "890 Broadway, the New York premiere, 2003",
   },
+  // S04E11 Elyssa Maxx Goodman (Lisa, 23 Nov 2026: Bring us home rule, applied to every new episode)
+  { event: "Hamilton Lodge Ball", at: "Harlem", tip: "At the Rockland Palace" },
+  { event: "1939 New York World's Fair", at: "Queens", tip: "Flushing Meadows" },
+  { event: "A Chorus Line", at: "Times Square", tip: "On Broadway" },
+  { event: "Ziegfeld Follies", at: "Times Square", tip: "At the New Amsterdam Theatre" },
+  { event: "The Passing Show", at: "Times Square", tip: "At the Winter Garden Theatre" },
+  { event: "Greenwich Village Follies", at: "Greenwich Village" },
+  { event: "Occupy Wall Street", at: "Wall Street", tip: "Zuccotti Park, 2011" },
+  {
+    event: "Sex (Mae West play)",
+    at: "Daly's 63rd Street Theatre",
+    lat: 40.771,
+    lng: -73.981,
+    area: "Upper West Side",
+    tip: "22 West 63rd Street, 1926",
+  },
 ];
 
 /**
@@ -462,4 +478,19 @@ export const NO_SINGLE_PLACE = new Set([
   "Ayahuasca ceremonies",
   "Landmark Forum",
   "NASA technology-transfer seminars",
+  // S04E11
+  "1845 masquerade law",
+  "Great Depression",
+  "Lavender Scare",
+  "Long Depression",
+  "Pansy Craze",
+  "Prohibition",
+  "Three-piece rule",
+  "Women's suffrage",
+  "World War II",
+  "Stonewall Book Award",
+  "Pussy Riot protests",
+  "The Drag (Mae West play)",
+  "French Box Revue",
+  "Pearl Box Revue",
 ]);
