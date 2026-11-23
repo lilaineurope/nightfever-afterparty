@@ -50,7 +50,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s05e07a: { quote: "You have something really beautiful to offer that we haven't seen yet. And I'm hungry. I want to see it. Feed me.", time: "00:36:03" }, // Christopher Comp - Lisa: A5 (16 Nov 2026)
   s05e07b: { quote: "That scene was very cutting edge and it was very liberating for someone like me to like go out half naked.", time: "00:51:24" }, // Really Denise - Lisa: B3 (16 Nov 2026)
   s04e02: { quote: "I'm so gay I couldn't blend if I wanted to.", time: "00:12:34" }, // Mickey Boardman - quote A, Claude's pick when Lisa said publish (17 Nov 2026)
-  s06e09: { quote: "I walked into the brightly lit kitchen at 4 a.m. and I was like, 'Ah, hi Mom.' And she said, 'You look beautiful.'", time: "00:14:39" }, // Desi Santiago - recommended, waiting for Lisa's pick
+  s06e09: { quote: "Someone called me a Forrest Gump type. I just sort of happened to end up in all these interesting moments of culture.", time: "00:51:16" }, // Desi Santiago - Lisa's pick (23 Nov 2026)
   s04e11: { quote: "I don't want her stories to get lost. I don't want anyone else's stories to get lost.", time: "01:03:38" }, // Elyssa Maxx Goodman - Lisa: quote e (22 Nov 2026)
   s03e09: { quote: "I was a quick study. Also, I was made for magazines. And all of a sudden, I was inside of one.", time: "00:25:22" }, // Cat Marnell - Lisa: quote b (21 Nov 2026)
   s04e01: { quote: "If you can sing it all the way through, that's a song. That's my rule.", time: "00:04:33" }, // Daphne Guinness - Lisa picked quote 1 (22 Nov 2026)
