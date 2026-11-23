@@ -539,6 +539,120 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
   );
 }
 
+/** "The story" (Lisa, 23 Nov 2026, tested on Creative Vandal): what it is and who made it, then the film itself with its
+ *  chapters (each chapter plays the film from that moment; a chapter about a work on the site links to it, with its cover),
+ *  then what happened since and what viewers said. From src/data/item-stories.ts. */
+function Story({ v }: { v: LibraryItemView }) {
+  const links = useLinks();
+  const [at, setAt] = useState<number | null>(null);
+  const st = v.story;
+  if (!st) return null;
+  const film = st.film;
+  const name = (n: { name: string; slug?: string | undefined }) =>
+    n.slug ? <Link {...linkToSlug(links, n.slug)} className="lit-story-link">{n.name}</Link> : <span>{n.name}</span>;
+  return (
+    <>
+      <section aria-labelledby="the-story">
+        <h2 id="the-story" className={h}>The story</h2>
+        <div className="lit-story mt-5">
+          <p className="lit-story-intro">{st.intro}</p>
+          <dl className="lit-story-facts">
+            {st.facts.map((f) => (
+              <div key={f.label}>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+          {st.inIt.length > 0 && (
+            <div className="lit-story-in">
+              <p className="lit-story-k">In it</p>
+              <ul>
+                {st.inIt.map((p) => (
+                  <li key={p.name}>
+                    {name(p)}
+                    {p.note && <span className="lit-story-note"> · {p.note}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+      {film && st.chapters.length > 0 && (
+        <section aria-labelledby="inside-the-film">
+          <h2 id="inside-the-film" className={h}>Inside the film</h2>
+          <div className="lit-jbx lit-story-film mt-6">
+            <div className="lit-jbx-l">
+              <p className="lit-jbx-kicker">The Night Fever</p>
+              <p className="lit-jbx-title">On fil<b>m</b></p>
+              <div className="lit-jbx-screen">
+                {at !== null ? (
+                  <VideoScreen key={at} vid={film.id} title={film.title} start={at} onEnd={() => setAt(null)} onFail={() => setAt(null)} />
+                ) : (
+                  <button type="button" className="lit-jbx-press" onClick={() => setAt(0)} aria-label={`Play the film: ${film.title}`}>
+                    <span className="lit-jbx-k">The whole film</span>
+                    <span className="lit-jbx-play" aria-hidden>▶</span>
+                    <span className="lit-jbx-nm">{film.title}</span>
+                    <span className="lit-jbx-sm">Or pick a chapter</span>
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="lit-jbx-r">
+              <ol className="lit-story-ch">
+                {st.chapters.map((c) => (
+                  <li key={c.at} aria-current={at === c.secs || undefined}>
+                    <button type="button" className="lit-story-at" onClick={() => setAt(c.secs)} aria-label={`Play from ${c.at}: ${c.title}`}>
+                      ▶ {c.at}
+                    </button>
+                    {c.cover ? <img src={c.cover} alt="" className="lit-story-cv" loading="lazy" decoding="async" /> : <span className="lit-story-cv lit-story-cv-none" aria-hidden />}
+                    {c.slug ? <Link {...linkToSlug(links, c.slug)} className="lit-story-ch-nm">{c.title}</Link> : <span className="lit-story-ch-nm">{c.title}</span>}
+                  </li>
+                ))}
+              </ol>
+              <p className="lit-jbx-fine">Plays from {film.channel} on YouTube, loaded only when you press ▶ - same as the Jukebox.</p>
+            </div>
+            <div className="lit-jbx-grille" aria-hidden />
+          </div>
+        </section>
+      )}
+      {(st.since.length > 0 || st.viewers.length > 0) && (
+        <div className={`lit-row lit-row-${st.viewers.length ? 2 : 1}`}>
+          {st.since.length > 0 && (
+            <section className="lit-box" aria-labelledby="since">
+              <h2 id="since" className={h}>Since it came out</h2>
+              <ol className="lit-story-since mt-4">
+                {st.since.map((n) => (
+                  <li key={n.when + n.source}>
+                    <span className="lit-story-when">{n.when}</span>
+                    <p>{n.what}</p>
+                    <span className="lit-story-src">{n.source}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+          {st.viewers.length > 0 && (
+            <section className="lit-box" aria-labelledby="viewers">
+              <h2 id="viewers" className={h}>What viewers said</h2>
+              <ul className="lit-story-viewers mt-4">
+                {st.viewers.map((q) => (
+                  <li key={q.quote}>
+                    <blockquote>{q.quote}</blockquote>
+                    <span className="lit-story-src">{q.where}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
+      )}
+      <p className="lit-story-sources">Sources: {st.sources.join(" · ")}</p>
+    </>
+  );
+}
+
 /** "Wished for on air - and made since" (Publish this): shown under the header of a book a guest asked for. */
 function MadeSince({ v, name }: { v: LibraryItemView; name: string }) {
   const m = v.madeSince;
@@ -602,6 +716,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       <Dateline v={v} />
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} name={name} />
+      <Story v={v} />
       <WriterOnShow v={v} />
       <GuestQuotes v={v} />
       {!fewIssues && <IssueShelf v={v} name={name} />}

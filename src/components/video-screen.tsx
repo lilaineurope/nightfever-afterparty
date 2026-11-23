@@ -4,7 +4,7 @@ import { pauseEpisode } from "@/components/episode-player";
 // The YouTube screen of the Jukebox (src/components/jukebox-machine.tsx) and the trailer Jukebox on Library item pages
 // (src/components/library-item.tsx): youtube-nocookie, loaded only once a visitor presses play; it tells its jukebox when the
 // video ends or can't play, and pauses the episode player (one thing plays at a time).
-export function VideoScreen({ vid, title, onEnd, onFail }: { vid: string; title: string; onEnd: () => void; onFail: () => void }) {
+export function VideoScreen({ vid, title, onEnd, onFail, start }: { vid: string; title: string; onEnd: () => void; onFail: () => void; start?: number | undefined }) {
   const frame = useRef<HTMLIFrameElement>(null);
   const endRef = useRef(onEnd);
   endRef.current = onEnd;
@@ -53,7 +53,7 @@ export function VideoScreen({ vid, title, onEnd, onFail }: { vid: string; title:
     <iframe
       ref={frame}
       className="jbx-video"
-      src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1&enablejsapi=1${origin}`}
+      src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1&enablejsapi=1${start ? `&start=${start}` : ""}${origin}`}
       title={`${title} - video on YouTube`}
       allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
       referrerPolicy="strict-origin-when-cross-origin"

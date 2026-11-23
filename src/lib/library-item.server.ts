@@ -8,13 +8,14 @@ import { BOOKS_TO_WRITE } from "@/data/still-to-make";
 import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
+import { ITEM_STORIES } from "@/data/item-stories";
 import { PRESS, PRESS_HISTORY, PUBLISHERS } from "@/data/publication-facts";
 import { WRITTEN_BY } from "@/data/written-by";
 import { BOOK_FACTS_EXTRA } from "@/data/book-facts-extra";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
-import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, Trailer, WriterView } from "@/lib/library-item";
+import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, StoryView, Trailer, WriterView } from "@/lib/library-item";
 
 type Clip = { id: string; name: string; cat: string; title: string; of?: string; first?: boolean };
 // Every video in the AFTERPARTY YouTube playlists (src/data/episode-videos), by the card it belongs to.
@@ -213,6 +214,30 @@ function pressView(e: Entity, shelf: string): PressView | null {
   };
 }
 
+/** "The story" (Lisa, 23 Nov 2026): names and works that have an A–Z card link to it; a chapter about a work shows its cover. */
+function storyView(e: Entity): StoryView | null {
+  const st = ITEM_STORIES[e.slug];
+  if (!st) return null;
+  const secs = (at: string) => at.split(":").reduce((n, x) => n * 60 + Number(x), 0);
+  const card = (name: string) => {
+    const c = entityFor(name);
+    return c && c.slug !== e.slug ? c : undefined;
+  };
+  return {
+    intro: st.intro,
+    film: st.film ?? null,
+    facts: st.facts,
+    inIt: st.inIt.map((p) => ({ ...p, slug: card(p.name)?.slug })),
+    chapters: (st.chapters ?? []).map((c) => {
+      const to = c.card ? card(c.card) : undefined;
+      return { at: c.at, secs: secs(c.at), title: c.title, slug: to?.slug, cover: to ? coverSrc(to.name) : undefined };
+    }),
+    since: st.since,
+    viewers: st.viewers ?? [],
+    sources: st.sources,
+  };
+}
+
 export function libraryItemView(e: Entity): LibraryItemView | null {
   if (!isLibraryItem(e)) return null;
   const item = libraryBySlug[e.slug];
@@ -255,6 +280,7 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
           .map((c) => ({ role: c.role, name: c.name, slug: entityFor(c.name)?.slug }))
       : [],
     press: pressView(e, shelf),
+    story: storyView(e),
     find: shelf === "books" ? { isbn: facts?.isbn ?? null, query: [facts?.title ?? e.name.replace(/\s*\(.*\)$/, ""), facts?.author].filter(Boolean).join(" "), inPrint: facts ? facts.inPrint : null } : null,
   };
 }

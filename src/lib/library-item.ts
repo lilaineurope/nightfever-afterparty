@@ -43,6 +43,19 @@ export type LibraryItemView = {
   find: { isbn: string | null; query: string; inPrint: boolean | null } | null;
   /** Magazines and newspapers (src/data/publication-facts.ts): masthead, the issues the guests talk about, back issues to buy. */
   press: PressView | null;
+  /** "The story" (src/data/item-stories.ts): what it is, who made it, what is inside it, what happened since. */
+  story: StoryView | null;
+};
+
+export type StoryView = {
+  intro: string;
+  film: { id: string; title: string; channel: string } | null;
+  facts: { label: string; value: string }[];
+  inIt: { name: string; note?: string | undefined; slug?: string | undefined }[];
+  chapters: { at: string; secs: number; title: string; slug?: string | undefined; cover?: string | undefined }[];
+  since: { when: string; what: string; source: string }[];
+  viewers: { quote: string; where: string }[];
+  sources: string[];
 };
 
 export type PressView = {
