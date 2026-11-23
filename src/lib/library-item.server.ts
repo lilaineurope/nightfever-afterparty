@@ -216,7 +216,7 @@ function pressView(e: Entity, shelf: string): PressView | null {
 }
 
 /** "The story" (Lisa, 23 Nov 2026): names and works that have an A–Z card link to it; a chapter about a work shows its cover. */
-function storyView(e: Entity): StoryView | null {
+export function storyView(e: Entity): StoryView | null {
   const st = ITEM_STORIES[e.slug];
   if (!st) return null;
   const secs = (at: string) => at.split(":").reduce((n, x) => n * 60 + Number(x), 0);
@@ -229,6 +229,7 @@ function storyView(e: Entity): StoryView | null {
     film: st.film ?? null,
     facts: st.facts,
     inIt: st.inIt.map((p) => ({ ...p, slug: card(p.name)?.slug })),
+    inItLabel: st.inItLabel ?? "In it",
     chapters: (st.chapters ?? []).map((c) => {
       const to = c.card ? card(c.card) : undefined;
       return { at: c.at, secs: secs(c.at), title: c.title, slug: to?.slug, cover: to ? coverSrc(to.name) : undefined };

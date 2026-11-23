@@ -7,6 +7,8 @@
 // Facts come from the work itself (its credits, its own description) or a named source - no guesses. A name or work with
 // an A–Z card links to it. Never YouTube or social media comments (Lisa, 23 Nov 2026).
 
+import AUTO from "./item-stories-auto.json";
+
 export type StoryFact = { label: string; value: string };
 /** A part of a film, with its time code in the film. `card` is the A–Z name of a work or person it is about. */
 export type StoryChapter = { at: string; title: string; card?: string };
@@ -22,6 +24,8 @@ export type ItemStory = {
   facts: StoryFact[];
   /** People in it, as the credits name them; `note` is who they are. */
   inIt: { name: string; note?: string }[];
+  /** Heading over `inIt` when "In it" is wrong (a band: "In the band"). */
+  inItLabel?: string;
   chapters?: StoryChapter[];
   /** Since it came out: what our AFTERPARTY references and our Library publications say happened to it. */
   since: StoryNote[];
@@ -32,7 +36,10 @@ export type ItemStory = {
   sources: string[];
 };
 
-export const ITEM_STORIES: Record<string, ItemStory> = {
+// Every other work a guest made gets an automatic story (Lisa, 23 Nov 2026: "apply it to all 'made by' items of all
+// afterparty guests ... and to all future episodes"): scripts/item-stories-auto.py writes item-stories-auto.json from the
+// work's Wikipedia page and Wikidata credits. A story written here by hand always wins.
+const HAND: Record<string, ItemStory> = {
   "creative-vandal": {
     intro:
       "An hour-long documentary about Nick Egan: from a working-class art-school punk making T-shirts for the Ramones to the sleeves for The Clash, Bow Wow Wow, INXS and Duran Duran, and the music videos that followed.",
@@ -102,3 +109,5 @@ export const ITEM_STORIES: Record<string, ItemStory> = {
     sources: ["The film's own credits and chapters", "S05E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
   },
 };
+
+export const ITEM_STORIES: Record<string, ItemStory> = { ...(AUTO as Record<string, ItemStory>), ...HAND };

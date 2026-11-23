@@ -7,7 +7,7 @@ import { VideoScreen } from "@/components/video-screen";
 import { FanSuggestions } from "@/components/fan-suggestions";
 import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
-import type { DroppedBy as DroppedByT, LibraryItemView, Trailer } from "@/lib/library-item";
+import type { StoryView, DroppedBy as DroppedByT, LibraryItemView, Trailer } from "@/lib/library-item";
 
 // Library item pages (Lisa, 21 Nov 2026 - "yes to everything"): the extra boxes a book, magazine, newspaper, column, diary,
 // film or TV card gets under its header - who dropped it (their polaroids), what the guests said about it, the trailer
@@ -543,10 +543,9 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
 /** "The story" (Lisa, 23 Nov 2026, tested on Creative Vandal): what it is and who made it, then the film itself with its
  *  chapters (each chapter plays the film from that moment; a chapter about a work on the site links to it, with its cover),
  *  then what happened since and what the press on our Library shelves said. From src/data/item-stories.ts. */
-function Story({ v, name: self }: { v: LibraryItemView; name: string }) {
+export function Story({ st, name: self }: { st: StoryView | null; name: string }) {
   const links = useLinks();
   const [at, setAt] = useState<number | null>(null);
-  const st = v.story;
   if (!st) return null;
   const film = st.film;
   const name = (n: { name: string; slug?: string | undefined }) =>
@@ -567,7 +566,7 @@ function Story({ v, name: self }: { v: LibraryItemView; name: string }) {
           </dl>
           {st.inIt.length > 0 && (
             <div className="lit-story-in">
-              <p className="lit-story-k">In it</p>
+              <p className="lit-story-k">{st.inItLabel}</p>
               <ul>
                 {st.inIt.map((p) => (
                   <li key={p.name}>
@@ -759,7 +758,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       <Dateline v={v} />
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} name={name} />
-      <Story v={v} name={name} />
+      <Story st={v.story} name={name} />
       <WriterOnShow v={v} />
       <GuestQuotes v={v} />
       {!fewIssues && <IssueShelf v={v} name={name} />}

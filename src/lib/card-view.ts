@@ -15,7 +15,7 @@ import type { PersonProfile } from "@/data/person-profiles";
 import type { DiaryPage } from "@/data/diaries";
 import type { ColumnPage } from "@/data/column-articles";
 import type { LinkData } from "@/lib/link-index";
-import type { LibraryItemView } from "@/lib/library-item";
+import type { LibraryItemView, StoryView } from "@/lib/library-item";
 import type { PlaceView } from "@/lib/place-view";
 import type { PersonWork } from "@/lib/works";
 
@@ -55,6 +55,8 @@ export type CardView = {
   tree: MentorTreeData | null;
   /** Library item page extras (books, magazines, newspapers, columns, diaries, films, TV - Lisa, 21 Nov 2026). */
   item: LibraryItemView | null;
+  /** "The story" for a work that is not a Library item (a song, album, band or club a guest made). */
+  story: StoryView | null;
   /** Place page extras: drawn map, pins around it, the guests who talk about it (Lisa, 22 Nov 2026). */
   place: PlaceView | null;
   /** "<first>'s work": what a person made, wrote, ran or starred in (Lisa, 22 Nov 2026, src/lib/works.ts). */

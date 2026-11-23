@@ -21,7 +21,7 @@ import { linkRecorder } from "@/lib/link-recorder.server";
 import type { CardView, ClubPartsView } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
-import { libraryItemView } from "@/lib/library-item.server";
+import { libraryItemView, storyView } from "@/lib/library-item.server";
 import { placeView } from "@/lib/place-view.server";
 import { worksOf } from "@/lib/works";
 import { coverFor } from "@/data/library-covers";
@@ -154,6 +154,8 @@ function cardView(e: Entity): CardView {
     column,
     tree,
     item,
+    // Songs, bands, albums and clubs a guest made are not on the Library shelves, but get "The story" too (Lisa, 23 Nov 2026).
+    story: item ? null : storyView(e),
     place,
     works,
     connector: connectorRank(e.slug),
