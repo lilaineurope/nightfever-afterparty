@@ -2,7 +2,7 @@ import { describe, test } from "node:test";
 import assert from "node:assert/strict";
 import { entityFor, entityBySlug, slugify } from "./entities";
 import { HOME_HINTS, LOCATIONS } from "./locations";
-import { EVENT_PLACES } from "./event-places";
+import { EVENT_PLACES, NO_SINGLE_PLACE } from "./event-places";
 import { readFileSync } from "node:fs";
 
 // Club pages read as text: club-profiles.ts imports its pictures, which the test runner cannot load (as in share-pictures.test.ts).
@@ -71,6 +71,14 @@ describe("clubs and events on the map", () => {
         (p.lat === undefined ? !pinned.has(entityFor(p.at)?.slug) : p.lng === undefined),
     ).map((p) => `${p.event} @ ${p.at}`);
     assert.deepEqual(bad, [], `events without an Event card or a pinned place: ${bad.join("; ")}`);
+  });
+
+  test("events with no single place are real Event cards and not also pinned", () => {
+    const onMap = new Set(EVENT_PLACES.map((p) => entityFor(p.event)?.slug));
+    const bad = [...NO_SINGLE_PLACE].filter(
+      (n) => entityFor(n)?.category !== "Event" || onMap.has(entityFor(n)?.slug),
+    );
+    assert.deepEqual(bad, [], `not an Event card, or also on the map: ${bad.join(", ")}`);
   });
 
   test("no event is listed twice", () => {

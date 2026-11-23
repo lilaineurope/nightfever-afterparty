@@ -1,8 +1,8 @@
 // Events on the map (Lisa, 22 Nov 2026: "add events as a category to the map"): the parties, balls, shows, nights,
 // openings and festivals named in the episodes, each pinned at the place it happened. `at` is the name of a pin in
 // src/data/locations.ts, so an event always sits on its club's or place's own pin and never gets a guessed one.
-// Every Event card that isn't here (tours, TV shows, parties that moved around, anything we can't place yet) shows
-// in "Bring us home" on the map (Lisa, 23 Nov 2026). locations.test.ts checks every line.
+// Every Event card that isn't here and isn't in NO_SINGLE_PLACE shows in "Bring us home" on the map (Lisa, 23 Nov 2026).
+// locations.test.ts checks every line.
 
 // Lisa, 23 Nov 2026: "if you can't pin them to the map and/or location missing, move to bring us home". An event at a
 // well-known venue that has no card of its own (Cannes, Burning Man) carries the venue's own coordinates instead, so it
@@ -378,3 +378,88 @@ export const EVENT_PLACES: EventPlace[] = [
     tip: "890 Broadway, the New York premiere, 2003",
   },
 ];
+
+/**
+ * Events that never happened at one place - history, movements, tours, TV and award shows, press stories, games.
+ * They stay off the map and off "Bring us home" (Lisa, 23 Nov 2026: "Take them off the list").
+ */
+export const NO_SINGLE_PLACE = new Set([
+  // History, movements and eras
+  "AIDS crisis",
+  "AIDS awareness",
+  "British Invasion",
+  "COVID-19 pandemic",
+  "Graffiti",
+  "Hurricane Sandy",
+  "Leather scene",
+  "Open classroom movement",
+  "Punk bashing",
+  "Repeal of Don't Ask, Don't Tell",
+  "Second World War",
+  "Sexual Offences Act 1967",
+  "Sociology of the night",
+  "Solar eclipse of 8 April 2024",
+  "suRURALism",
+  "Vietnam War protests",
+  "Vocal credit legislation",
+  "Voguing",
+  "World War I and the Roaring Twenties",
+  "Disappearance of Angel Melendez",
+  "Death of Michael Alig",
+  "Peter Gatien's deportation",
+  "The disco nap",
+  // Tours, travelling festivals and parties that moved around
+  "Blond Ambition World Tour",
+  "Femme Fatale Tour",
+  "Madonna's Girlie Show",
+  "The Monster Ball Tour",
+  "This Is It tour",
+  "Toilet Boys' European tour with the Red Hot Chili Peppers",
+  "ENIT Festival",
+  "Keoki ENIT meeting",
+  "Lollapalooza",
+  "Outlaw parties",
+  "Benefit nights for Domonique",
+  "Club Kid nightlife awards",
+  "The disco truck",
+  "Ladies Auxiliary events",
+  "RuPaul's DragCon",
+  "The Drag Explosion slideshow",
+  "Fashion Week",
+  "Cat's three years of travel",
+  "The van crash on the way to New York",
+  // TV, awards, film, press and online
+  "Academy Award nomination",
+  "Academy Awards",
+  "Emmy Awards",
+  "Tony Awards",
+  "MTV Video Music Awards",
+  "California Music Video Awards",
+  "CFDA Designer of the Year (Marc Jacobs)",
+  "Olympics",
+  "DMC DJ Championships",
+  "David Bowie on Saturday Night Live (1979)",
+  "The Club Kids on Phil Donahue",
+  "Interludes After Midnight",
+  "The kiss in Truth or Dare",
+  "Rock the Vote PSA",
+  "Retro Retouch (Unitard sketch)",
+  "Manhattan Cable sold to Channel 4",
+  "Madonna 'lover' story in the UK papers",
+  "Suzygate",
+  "Break the Internet (Paper, 2014)",
+  "Nikki's Ports of Call NFTs",
+  "Newspaper Guild strike at the Daily News",
+  "World of Wonder founded (c. 1988)",
+  "Michael's bad movie club",
+  // Artworks, posters, games and habits
+  "Ladies and Gentlemen (Warhol series)",
+  "Andy Warhol memorial poster",
+  "Absolutely Queer posters",
+  "Name 25 original Tunnel club kids",
+  "Red light, green light, vogue",
+  "Drag scene sewing commissions",
+  "Ayahuasca ceremonies",
+  "Landmark Forum",
+  "NASA technology-transfer seminars",
+]);

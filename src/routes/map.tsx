@@ -3,7 +3,7 @@ import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HOME_HINTS, LOCATIONS } from "@/data/locations";
-import { EVENT_PLACES } from "@/data/event-places";
+import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
 import { entities, entityFor, isPlace, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
@@ -184,6 +184,7 @@ const HOME_HEADS: Record<string, string> = { Club: "Clubs", Event: "Events", Loc
 function homelessPlaces(): Entity[] {
   const pinned = new Set(LOCATIONS.map((l) => entityFor(l.name)?.slug).filter(Boolean));
   for (const p of EVENT_PLACES) pinned.add(entityFor(p.event)?.slug);
+  for (const n of NO_SINGLE_PLACE) pinned.add(entityFor(n)?.slug);
   return (
     entities
       .filter(

@@ -847,7 +847,6 @@ export const HOME_HINTS: Record<string, string> = {
   "House of Field Grand Street ball": "Patricia Field's 'Ball to Remember', 1988 - known as the Grand Street Ball",
   "Quentin Crisp's 90th birthday party": "December 1998, at Cheryl Hardwick's townhouse - the New York Times wrote about it",
   "Disco convention in New York": "Billboard's Disco Forums began at the Roosevelt Hotel in January 1976 - which year was Peter's?",
-  "The Drag Explosion slideshow": "Shown at Participant Inc., MoMA PS1, the Wild Project and more - where was the first?",
   "Aux Puces": "Uptown, in the 1970s - one of the first gay discos",
   "The Sewer": "Somewhere on West 18th Street",
   "Nobody's": "On Bleecker Street, 1960 to 1971",
