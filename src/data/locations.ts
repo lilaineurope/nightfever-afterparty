@@ -821,6 +821,20 @@ export const LOCATIONS: Located[] = [
   { name: "Super Electric Party Machine (London)", lat: 51.5284, lng: -0.0914, area: "London", tip: "Fridays at East Bloc, City Road" },
   { name: "Park (Berlin club)", lat: 52.4985, lng: 13.2935, area: "Berlin", tip: "A basement disco on the Kurfürstendamm at Johann-Sigismund-Straße" },
   { name: "Barneys New York", lat: 40.7647, lng: -73.9711, area: "Upper East Side", tip: "660 Madison Avenue" },
+  // Lisa, 23 Nov 2026: "if you can't pin them to the map and/or location missing, move to bring us home" - so every
+  // place card that has a known street, park or town gets its pin; the rest stay in Bring us home.
+  { name: "Washington Square Park", lat: 40.7308, lng: -73.9973, area: "Greenwich Village" },
+  { name: "Chinatown", lat: 40.7158, lng: -73.997, area: "Chinatown" },
+  { name: "Hell's Kitchen", lat: 40.7638, lng: -73.9918, area: "Hell's Kitchen" },
+  { name: "Sutton Place", lat: 40.7577, lng: -73.96, area: "Sutton Place" },
+  { name: "Carmine Street", lat: 40.7303, lng: -74.003, area: "West Village", tip: "Home of Vinyl Mania" },
+  { name: "Murray Street", lat: 40.7146, lng: -74.009, area: "Tribeca" },
+  { name: "Walker Street", lat: 40.7187, lng: -74.0035, area: "Tribeca", tip: "Round the corner from the Mudd Club" },
+  { name: "West Broadway", lat: 40.7262, lng: -74.001, area: "SoHo", tip: "Between Houston and Prince" },
+  { name: "Wooster Street", lat: 40.7253, lng: -74.0012, area: "SoHo" },
+  { name: "East 3rd Street", lat: 40.7254, lng: -73.9905, area: "East Village", tip: "By the men's shelter - Little Hollywood" },
+  { name: "Minnesota", lat: 46.2807, lng: -94.3053, area: "Minnesota" },
+  { name: "Book Soup", lat: 34.0901, lng: -118.3846, area: "West Hollywood", tip: "8818 Sunset Boulevard" },
 ];
 
 /**
@@ -828,6 +842,12 @@ export const LOCATIONS: Located[] = [
  * shown on the Clubs page and the map so a visitor who remembers the address can tell us.
  */
 export const HOME_HINTS: Record<string, string> = {
+  // Events (Lisa, 23 Nov 2026: every category without a pin goes to Bring us home)
+  "Marc Jacobs' grunge show for Perry Ellis": "3 November 1992, in the Perry Ellis showroom - which floor and address?",
+  "House of Field Grand Street ball": "Patricia Field's 'Ball to Remember', 1988 - known as the Grand Street Ball",
+  "Quentin Crisp's 90th birthday party": "December 1998, at Cheryl Hardwick's townhouse - the New York Times wrote about it",
+  "Disco convention in New York": "Billboard's Disco Forums began at the Roosevelt Hotel in January 1976 - which year was Peter's?",
+  "The Drag Explosion slideshow": "Shown at Participant Inc., MoMA PS1, the Wild Project and more - where was the first?",
   "Aux Puces": "Uptown, in the 1970s - one of the first gay discos",
   "The Sewer": "Somewhere on West 18th Street",
   "Nobody's": "On Bleecker Street, 1960 to 1971",

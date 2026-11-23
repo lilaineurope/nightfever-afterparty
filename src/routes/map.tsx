@@ -38,7 +38,9 @@ type Spot = {
   /** An event pin (Lisa, 22 Nov 2026): the parties, shows and balls held at one club or place, drawn yellow. */
   event?: boolean;
   /** For an event pin: the club or place it happened at. */
-  venue?: Entity;
+  venue?: Entity | undefined;
+  /** An event venue with no card of its own (Cannes, Burning Man) - just its name. */
+  venueName?: string;
   world: boolean;
   episodes: number;
   mentions: number;
@@ -112,9 +114,12 @@ function buildEventSpots(): Spot[] {
   const byVenue = new Map<string, Spot>();
   for (const p of EVENT_PLACES) {
     const e = entityFor(p.event);
-    const venue = entityFor(p.at);
-    const l = venue && pinOf.get(venue.slug);
-    if (!e || !venue || !l) continue;
+    const venue = p.lat === undefined ? entityFor(p.at) : undefined;
+    const l =
+      p.lat !== undefined && p.lng !== undefined
+        ? { lat: p.lat, lng: p.lng, area: p.area ?? p.at }
+        : venue && pinOf.get(venue.slug);
+    if (!e || !l) continue;
     const key = `ev:${coordKey(l.lat, l.lng)}`;
     let s = byVenue.get(key);
     if (!s) {
@@ -127,6 +132,7 @@ function buildEventSpots(): Spot[] {
         club: false,
         event: true,
         venue,
+        venueName: p.at,
         world: !inNewYork(l.lat, l.lng),
         episodes: 0,
         mentions: 0,
@@ -171,20 +177,25 @@ const CREDIT =
 const BRING_HOME = "Bring us home";
 
 /** Places named in the episodes that have no pin yet - Lisa's "Bring us home" list. */
+// Lisa, 23 Nov 2026: "Apply this to all categories - if you can't pin them to the map and/or location missing, move to
+// bring us home." Clubs, events and places alike: no pin means it's on this list.
+const HOME_ORDER = ["Club", "Event", "Location"];
+const HOME_HEADS: Record<string, string> = { Club: "Clubs", Event: "Events", Location: "Places" };
 function homelessPlaces(): Entity[] {
   const pinned = new Set(LOCATIONS.map((l) => entityFor(l.name)?.slug).filter(Boolean));
+  for (const p of EVENT_PLACES) pinned.add(entityFor(p.event)?.slug);
   return (
     entities
       .filter(
         (e) =>
-          isPlace(e.category) &&
-          (e.refs.length > 0 || e.category === "Club") &&
+          (isPlace(e.category) || e.category === "Event") &&
+          (e.refs.length > 0 || e.category !== "Location") &&
           !pinned.has(e.slug),
       )
-      // Clubs first - every club on the Clubs page is pinned or tagged here (Lisa, 22 Nov 2026)
+      // Clubs first, then events, then places
       .sort(
         (a, b) =>
-          Number(b.category === "Club") - Number(a.category === "Club") ||
+          HOME_ORDER.indexOf(a.category) - HOME_ORDER.indexOf(b.category) ||
           a.name.localeCompare(b.name),
       )
   );
@@ -409,14 +420,19 @@ function MapPage() {
                 Bring us home
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                These clubs and places come up in the episodes, but we don&apos;t know where they
-                were yet:
+                These clubs, events and places come up in the episodes, but we don&apos;t know where
+                they were yet:
               </p>
               <ul className="mt-4 space-y-3">
-                {homeless.map((e) => (
+                {homeless.map((e, i) => (
                   <li key={e.slug}>
+                    {e.category !== homeless[i - 1]?.category && (
+                      <h3 className="mb-2 mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground first:mt-0">
+                        {HOME_HEADS[e.category]}
+                      </h3>
+                    )}
                     <div className="flex flex-wrap items-baseline gap-x-2">
-                      {e.category === "Club" && <span className="home-tag">Bring us home</span>}
+                      <span className="home-tag">Bring us home</span>
                       <Link
                         {...cardTo(e.slug)}
                         className="font-semibold transition-colors hover:text-pink"
@@ -521,7 +537,7 @@ function MapPage() {
                             }
                           />{" "}
                           {s.event
-                            ? `Event · ${s.venue?.name}`
+                            ? `Event · ${s.venue?.name ?? s.venueName}`
                             : `${s.club ? "Club" : "Place"} · ${s.area}`}
                         </p>
                         <Link
