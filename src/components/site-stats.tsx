@@ -12,7 +12,7 @@ const COUNTED_HOSTS = ["nightfever-afterparty.lovable.app", "nightfever-afterpar
 const SKIP_KEY = "skipgc";
 /** Cloudflare Web Analytics (Lisa, 21 Nov 2026): free, cookie-free extra next to GoatCounter. Plausible and Pirsch
  *  were dropped when their trials ended. Loaded only when CLOUDFLARE_TOKEN is set; skipped for ?me browsers. */
-const CLOUDFLARE_TOKEN = "";
+const CLOUDFLARE_TOKEN = "cc0ae67f234d4a34ab924618ed02572a";
 
 type GoatCounter = { count?: (vars: { path: string }) => void; no_onload?: boolean };
 declare global {
