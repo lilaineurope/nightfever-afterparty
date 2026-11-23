@@ -367,6 +367,10 @@ export const YOUTUBE: Record<string, string> = {
   "The Kinks": "fTTsY-oz6Go",
   "Berlin (band)": "Bx51eegLTY8",
   "S'Express": "IpeRShWMdYM",
+  // S04E11 Elyssa Maxx Goodman
+  "Lady, Be Good": "xYZq5rHLcSw",
+  "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
+  "Ray Bourbon's party records": "nJ2_2BFaf8c",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

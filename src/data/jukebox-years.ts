@@ -370,4 +370,8 @@ export const YEARS: Record<string, number> = {
   "The Kinks": 1963,
   "Berlin (band)": 1978,
   "S'Express": 1988,
+  // S04E11 Elyssa Maxx Goodman
+  "Lady, Be Good": 1924,
+  "Fred Astaire – 'The Half of It, Dearie, Blues'": 1926,
+  "Ray Bourbon's party records": 1956,
 };

@@ -280,6 +280,11 @@ export const COME_BACK: InterviewTip[] = [
     why: "James closes: he has another 13 pages of questions to pepper Moby with sometime - and Moby says he would love to do it again and again.",
     episodeId: "s01e09",
     time: "01:03:39",
+  },  {
+    name: "Elyssa Maxx Goodman",
+    why: "The hosts close: they have to have Elyssa back - they only covered the first four chapters of Glitter and Concrete.",
+    episodeId: "s04e11",
+    time: "01:05:33",
   },
 ];
 

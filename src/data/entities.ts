@@ -19,7 +19,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11";
 };
 
 export type Entity = {
@@ -83,8 +83,9 @@ export const SAME_AS: Record<string, string> = {
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
-// place: the London Roxy is not the New York Roxy (Lisa, 22 Nov 2026).
-const KEEP_BRACKET = new Set(["the roxy (london)"]);
+// place: the London Roxy is not the New York Roxy (Lisa, 22 Nov 2026). Films and plays that share a name with a place, a
+// musical or a book keep theirs too (S04E11: the Victor/Victoria film, Mae West's plays The Drag and Sex).
+const KEEP_BRACKET = new Set(["the roxy (london)", "victor/victoria (1982 film)", "the drag (mae west play)", "sex (mae west play)"]);
 
 // A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
 // forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
