@@ -236,6 +236,25 @@ const COVERS: Record<string, Cover> = {
   // Open Library has no real cover for these two (checked every edition, 23 Nov 2026): Lisa chose Google Books for the gaps.
   "Radiant (Brad Gooch)": { kind: "book", file: "book-radiant-brad-gooch.webp", credit: "Cover via Google Books (Harper, 2024)" },
   "The Golden Age of Promiscuity": { kind: "book", file: "book-golden-age-of-promiscuity.webp", credit: "Cover via Google Books (Masquerade Books paperback)" },
+  // S05E04 Nick Egan's Library (Lisa, 23 Nov 2026: "Can we find the cover designs?"): the record sleeves he designed
+  // and the singles whose videos he directed, from the Cover Art Archive (MusicBrainz, free to reuse for identification),
+  // plus his band and the documentary about him. Shown as whole square sleeves (.lib-sleeve), never cropped.
+  "Searching for the Young Soul Rebels": { kind: "book", file: "rec-searching-for-the-young-soul-rebels.webp", credit: "Sleeve via the Cover Art Archive (Dexys Midnight Runners, 1980)" },
+  "See Jungle! See Jungle! Go Join Your Gang Yeah, City All Over! Go Ape Crazy!": { kind: "book", file: "rec-see-jungle.webp", credit: "Sleeve via the Cover Art Archive (Bow Wow Wow, 1981; photo Andy Earl)" },
+  "Blah-Blah-Blah": { kind: "book", file: "rec-blah-blah-blah.webp", credit: "Sleeve via the Cover Art Archive (Iggy Pop, 1986)" },
+  "Real Wild Child": { kind: "book", file: "rec-real-wild-child.webp", credit: "Sleeve via the Cover Art Archive (Iggy Pop single, 1986)" },
+  "Kick": { kind: "book", file: "rec-kick.webp", credit: "Sleeve via the Cover Art Archive (INXS, 1987)" },
+  "Divine Thing (probably)": { kind: "book", file: "rec-divine-thing.webp", credit: "Sleeve via the Cover Art Archive (The Soup Dragons single, 1992)" },
+  "Ordinary World": { kind: "book", file: "rec-ordinary-world.webp", credit: "Sleeve via the Cover Art Archive (Duran Duran single, 1993)" },
+  "Sugar Kane": { kind: "book", file: "rec-sugar-kane.webp", credit: "Sleeve via the Cover Art Archive (Sonic Youth single, 1993)" },
+  "The Wedding Album": { kind: "book", file: "rec-the-wedding-album.webp", credit: "Sleeve via the Cover Art Archive (Duran Duran, 1993)" },
+  "White Lines (Duran Duran)": { kind: "book", file: "rec-white-lines.webp", credit: "Sleeve via the Cover Art Archive (Duran Duran single, 1995)" },
+  "You Oughta Know": { kind: "book", file: "rec-you-oughta-know.webp", credit: "Sleeve via the Cover Art Archive (Alanis Morissette single, 1995)" },
+  "Back in Time for Tea": { kind: "book", file: "rec-back-in-time-for-tea.webp", credit: "Sleeve via the Cover Art Archive (The Tea Set, Cleopatra Records, 2019)" },
+  "Duck Rock": { kind: "book", file: "rec-duck-rock.webp", credit: "Sleeve via the Cover Art Archive (Malcolm McLaren, 1983)" },
+  "White Man in Hammersmith Palais": { kind: "book", file: "rec-white-man-in-hammersmith-palais.webp", credit: "Sleeve via the Cover Art Archive (The Clash single, 1978, yellow sleeve)" },
+  "The Tea Set": { kind: "book", file: "band-the-tea-set.webp", credit: "Band photo via Punk 77 (punk77.co.uk)" },
+  "Creative Vandal": { kind: "book", file: "film-creative-vandal.webp", credit: "Still from the documentary, via nickegan.com" },
 };
 
 export const coverFor = (name: string): (Cover & { src: string }) | undefined => {
