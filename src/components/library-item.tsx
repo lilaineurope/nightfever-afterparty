@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
+import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { VideoScreen } from "@/components/video-screen";
 import { FanSuggestions } from "@/components/fan-suggestions";
@@ -542,7 +543,7 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
 /** "The story" (Lisa, 23 Nov 2026, tested on Creative Vandal): what it is and who made it, then the film itself with its
  *  chapters (each chapter plays the film from that moment; a chapter about a work on the site links to it, with its cover),
  *  then what happened since and what the press on our Library shelves said. From src/data/item-stories.ts. */
-function Story({ v }: { v: LibraryItemView }) {
+function Story({ v, name: self }: { v: LibraryItemView; name: string }) {
   const links = useLinks();
   const [at, setAt] = useState<number | null>(null);
   const st = v.story;
@@ -624,9 +625,9 @@ function Story({ v }: { v: LibraryItemView }) {
               <h2 id="since" className={h}>Since it came out</h2>
               <ol className="lit-story-since mt-4">
                 {st.since.map((n) => (
-                  <li key={n.when + n.source}>
+                  <li key={`${n.source}-${n.time ?? n.what}`}>
                     <span className="lit-story-when">{n.when}</span>
-                    <p>{n.what}</p>
+                    <p><EntityText text={n.what} self={self} /></p>
                     <span className="lit-story-src">
                       {n.episode ? <Link to={episodePath(n.episode as never)} className="lit-story-link">{n.source}</Link> : n.source}
                       {n.episode && n.time && <> <Timestamp episodeId={n.episode} time={n.time} /></>}
@@ -701,6 +702,40 @@ function Dateline({ v }: { v: LibraryItemView }) {
   );
 }
 
+/** "Also on the site" (Lisa, 23 Nov 2026, on Creative Vandal: the three chip boxes "don't make sense"). One list in place of
+ *  "Also named on these cards", "Pops up in the guests' stories" and "In the same rooms": each card says why it is here and
+ *  where on the show, like every episode mention. Nothing that is already higher on the page; no box when nothing is left. */
+function AlsoOnSite({ v, name }: { v: LibraryItemView; name: string }) {
+  const [all, setAll] = useState(false);
+  if (v.alsoOn.length === 0) return null;
+  // Like the quote walls: 9 first, the rest one press away.
+  const list = all ? v.alsoOn : v.alsoOn.slice(0, 9);
+  return (
+    <section className="lit-box" aria-labelledby="also-on">
+      <h2 id="also-on" className={h}>Also on the site</h2>
+      <ul className="lit-also mt-4">
+        {list.map((a) => (
+          <li key={`${a.slug}-${a.episodeId ?? ""}`}>
+            <EntityLink name={a.slug} className="lit-also-name">{a.name}</EntityLink>
+            {a.why && <p><EntityText text={a.why} self={name} /></p>}
+            {a.episodeId && (
+              <span className="lit-story-src">
+                <Link to={episodePath(a.episodeId as never)} className="lit-story-link">{a.short}</Link>
+                {a.time && <> <Timestamp episodeId={a.episodeId} time={a.time} /></>}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+      {v.alsoOn.length > 9 && (
+        <button type="button" className="lit-also-more" onClick={() => setAll(!all)}>
+          {all ? "Show fewer" : `Show all ${v.alsoOn.length}`}
+        </button>
+      )}
+    </section>
+  );
+}
+
 /** The page under the header - the Front page (Lisa, 22 Nov 2026: "not organized enough and white space" - she picked mockup
  *  A, "apply it to all pages"). Full-width bands, so a short box never leaves a hole next to a tall one: the dateline, who
  *  dropped it in level columns, the wide Jukebox, the small boxes side by side in one row (all the same height), the shelves
@@ -712,6 +747,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
     v.find || v.press?.buy ? <BuyMe key="buy" v={v} here={here} onAsk={nearMe} /> : null,
     v.find ? <FindBorrow key="borrow" v={v} here={here} onAsk={nearMe} /> : null,
     v.connections.length > 0 ? <Connections key="conn" v={v} /> : null,
+    v.alsoOn.length > 0 ? <AlsoOnSite key="also" v={v} name={name} /> : null,
   ].filter(Boolean);
   const copy = v.shelf !== "film" && v.shelf !== "tv" ? <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" /> : null;
   const copyInRow = !!copy && boxes.length < 3;
@@ -723,7 +759,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       <Dateline v={v} />
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} name={name} />
-      <Story v={v} />
+      <Story v={v} name={name} />
       <WriterOnShow v={v} />
       <GuestQuotes v={v} />
       {!fewIssues && <IssueShelf v={v} name={name} />}

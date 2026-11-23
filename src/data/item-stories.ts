@@ -97,7 +97,7 @@ export const ITEM_STORIES: Record<string, ItemStory> = {
     ],
     since: [
       { when: "On the show", what: "James introduces Nick with it: just out, free to watch on YouTube.", source: "S05E04", episode: "s05e04", time: "00:00:49" },
-      { when: "On the show", what: "James says it won a California Music Video Award for best feature music film or documentary.", source: "S05E04", episode: "s05e04", time: "00:01:09" },
+      { when: "On the show", what: "James says it won best feature music film or documentary at the California Music Video Awards.", source: "S05E04", episode: "s05e04", time: "00:01:09" },
     ],
     sources: ["The film's own credits and chapters", "S05E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
   },

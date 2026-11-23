@@ -1150,3 +1150,17 @@ a.lit-story-ch-nm:hover { color: var(--color-pink); }
 .lit-story-viewers blockquote::before { content: "\201C"; font-family: var(--font-flyer); color: var(--color-pink); font-size: 36px; line-height: 0; vertical-align: -12px; margin-right: 4px; }
 .lit-story-sources { margin-top: -36px; color: #666; font-size: 11px; }
 .lit-story-mast { display: block; max-height: 26px; max-width: 160px; margin-bottom: 6px; filter: grayscale(1) contrast(1.4); }
+
+/* "Also on the site" on Library item pages (Lisa, 23 Nov 2026): one line per card - name (pink on hover), why, ▶ where. */
+.lit-also { display: grid; gap: 12px; list-style: none; padding: 0; margin: 16px 0 0; }
+.lit-also li { border-top: 1px solid #e5e5e5; padding-top: 10px; }
+.lit-also li:first-child { border-top: 0; padding-top: 0; }
+.lit-also-name { font-weight: 700; color: #111; text-decoration: none; }
+.lit-also-name:hover { color: var(--color-pink); }
+.lit-also p { margin: 2px 0 0; font-size: 13px; line-height: 1.45; color: #333; }
+.lit-also-more { margin-top: 14px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #111; background: none; border: 0; padding: 0; cursor: pointer; }
+.lit-also-more:hover { color: var(--color-pink); }
+@media (min-width: 900px) {
+  .lit-row-1 .lit-also { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+  .lit-row-1 .lit-also li:nth-child(-n+3) { border-top: 0; padding-top: 0; }
+}
