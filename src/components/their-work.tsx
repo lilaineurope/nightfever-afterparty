@@ -27,9 +27,10 @@ export function Cover({ w }: { w: PersonWork }) {
       {w.year && <> · {w.year}</>}
     </span>
   );
+  // Record sleeves are square (Lisa, 23 Nov 2026, Nick Egan's Library, layout B): the whole sleeve on top, the name strip under it.
   if (w.cover)
     return (
-      <span className="lib-cv lib-book">
+      <span className={`lib-cv lib-book${w.kind === "Music" ? " lib-sleeve" : ""}`}>
         <img src={w.cover} alt={`Cover of ${w.name}`} loading="lazy" decoding="async" />
         <span className="lib-strip">
           <span className="lib-nm">{w.name}</span>

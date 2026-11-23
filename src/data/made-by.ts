@@ -361,7 +361,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "José & Luis – 'Queen's English'": [m("José Xtravaganza", "Made it"), m("Luis Camacho", "Made it")],
   "Deep in Vogue": [m("Malcolm McLaren", "Made it", 1989), m("Chi Chi Valenti", "Credited for her words", 1989)],
   "Fans (Malcolm McLaren)": [m("Malcolm McLaren", "Made it", 1984)],
-  "Duck Rock": [m("Malcolm McLaren", "Made it", 1983)],
+  "Duck Rock": [m("Malcolm McLaren", "Made it", 1983), m("Nick Egan", "Designed the cover", 1983)],
   "Buffalo Gals": [m("Malcolm McLaren", "Made it", 1982)],
   "Bow Wow Wow": [m("Malcolm McLaren", "Started the band", 1980), m("Annabella Lwin", "Sang in it", 1980)],
   "I Want Candy": [m("Annabella Lwin", "Sang it", 1982)],
@@ -373,6 +373,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Blah-Blah-Blah": [m("Iggy Pop", "Made it", 1986), m("Nick Egan", "Designed the cover", 1986)],
   "Real Wild Child": [m("Iggy Pop", "Sang it", 1986), m("Nick Egan", "Directed the video", 1986)],
   "Kick": [m("Nick Egan", "Designed the cover", 1987)],
+  "White Man in Hammersmith Palais": [m("Nick Egan", "Designed the cover", 1978)], // his first single cover (S05E04)
   "Need You Tonight": [m("Michael Hutchence", "Sang it", 1987)],
   "Searching for the Young Soul Rebels": [m("Nick Egan", "Designed the cover", 1980)],
   "Sugar Kane": [m("Nick Egan", "Directed the video", 1993), m("Kim Gordon", "In the band", 1993), m("Chloë Sevigny", "In the video", 1993)],
