@@ -856,6 +856,7 @@ export const LOCATIONS: Located[] = [
  * shown on the Clubs page and the map so a visitor who remembers the address can tell us.
  */
 export const HOME_HINTS: Record<string, string> = {
+  "Lulu Belle's": "A Harlem drag club of the 1920s and 30s, James says - which street?",
   // Events (Lisa, 23 Nov 2026: every category without a pin goes to Bring us home)
   "Marc Jacobs' grunge show for Perry Ellis": "3 November 1992, in the Perry Ellis showroom - which floor and address?",
   "House of Field Grand Street ball": "Patricia Field's 'Ball to Remember', 1988 - known as the Grand Street Ball",
