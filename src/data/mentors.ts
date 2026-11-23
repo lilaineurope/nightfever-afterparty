@@ -176,6 +176,11 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Daphne Guinness", mentee: "Francesca Lake", episode: "s04e01", time: "01:01:46", line: "Supported Francesca through Daphne's Central Saint Martins scholarship" },
   { mentor: "Annie Hindle", mentee: "Ella Wesner", episode: "s04e11", time: "00:08:59", line: "In many ways mentored Ella, as Elyssa tells it - one of the first to call herself a male impersonator in America" },
   { mentor: "Lillyn Brown", mentee: "Sugar Ray Robinson", episode: "s04e11", time: "00:58:25", line: "Taught Sugar Ray to sing when he left boxing in the 50s to be a song and dance man" },
+  { mentor: "Matt E. Silver", mentee: "Desi Santiago", episode: "s06e09", time: "00:40:05", line: "Brought Desi in to build installations for the dressing rooms and backstage at his big-beat concerts" },
+  { mentor: "Thairin Smothers", mentee: "Desi Santiago", episode: "s06e09", time: "00:01:04", line: "Managed Desi's band Boob - bossed them around, got them gigs and filmed it all", kind: "stood" },
+  { mentor: "Kenny Kenny", mentee: "Desi Santiago", episode: "s06e09", time: "00:11:45", line: "Pointed at the teenage Desi in his velvet hat and let him into Red Zone", kind: "door" },
+  { mentor: "James St. James", mentee: "Desi Santiago", episode: "s06e09", time: "00:00:10", line: "Desi says he modelled himself a bit on James the shape-shifter", kind: "door" },
+  { mentor: "Leigh Bowery", mentee: "Desi Santiago", episode: "s06e09", time: "00:19:04", line: "An influence on Desi's body work, he says - shifting and manipulating the body", kind: "door" },
 ];
 
 /** Names kept out of the Hall of Fame (their links stay in the data). */

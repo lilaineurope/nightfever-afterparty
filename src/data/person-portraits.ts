@@ -714,7 +714,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "mr-pearl": { photo: mrPearlPhoto, polaroid: mrPearlPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "dj-keoki": { photo: djKeokiPhoto, polaroid: djKeokiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "kenny-scharf": { photo: kennyScharfPhoto, polaroid: kennyScharfPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
-  "desi-monster": { photo: desiMonsterPhoto, polaroid: desiMonsterPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "desi-santiago": { photo: desiMonsterPhoto, polaroid: desiMonsterPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "sylvia-miles": { photo: sylviaMilesPhoto, polaroid: sylviaMilesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "international-chrysis": { photo: internationalChrysisPhoto, polaroid: internationalChrysisPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "jennie-livingston": { photo: jennieLivingstonPhoto, polaroid: jennieLivingstonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },

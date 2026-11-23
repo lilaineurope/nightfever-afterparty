@@ -388,4 +388,12 @@ export const FILMS_TO_MAKE: StillToMake[] = [
     made: "not yet",
     status: "Not made yet - Ray Bourbon's story lives in Randy Riddle's research and old party records, not in a film (checked 22 Nov 2026).",
   },
+  {
+    title: "Boob, the documentary",
+    why: "James asks why there is no documentary about the late-90s band Boob - Desi agrees there should be, and says their manager Thairin Smothers has the footage of all the shows.",
+    episodeId: "s06e09",
+    time: "00:49:12",
+    made: "not yet",
+    status: "Not made yet - Boob lives on in Thairin Smothers's footage and the club kids' memories, not in a film (checked 23 Nov 2026).",
+  },
 ];
