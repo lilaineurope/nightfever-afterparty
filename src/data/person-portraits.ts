@@ -644,6 +644,10 @@ import steveMassPhoto from "@/assets/people/steve-mass-photo.webp";
 import steveMassPolaroid from "@/assets/people/steve-mass-polaroid.webp";
 import michaelAligPhoto from "@/assets/people/michael-alig-photo.webp";
 import michaelAligPolaroid from "@/assets/people/michael-alig-polaroid.webp";
+import lynnYaegerPhoto from "@/assets/people/lynn-yaeger-photo.webp";
+import lynnYaegerPolaroid from "@/assets/people/lynn-yaeger-polaroid.webp";
+import angieBowiePhoto from "@/assets/people/angie-bowie-photo.webp";
+import angieBowiePolaroid from "@/assets/people/angie-bowie-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -983,4 +987,8 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "steve-mass": { photo: steveMassPhoto, polaroid: steveMassPolaroid, focus: "20%", credit: "Illustration made with Gemini, not a photo" },
   // Lisa, 21 Nov 2026: "a sober realistic polaroid" - serious face, no glamour pose.
   "michael-alig": { photo: michaelAligPhoto, polaroid: michaelAligPolaroid, focus: "22%", credit: "Illustration made with Gemini, not a photo" },
+  // Living people batch 4 (Lisa, 23 Nov 2026: "lynn b, angie b")
+  "lynn-yaeger": { photo: lynnYaegerPhoto, polaroid: lynnYaegerPolaroid, focus: "24%", credit: `Portrait after a photo by D_M_D, 2011 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), ${STYLE}` },
+  // No usable free photo (only one, hand cut off); Lisa chose a realistic Gemini portrait, option B at Max's.
+  "angie-bowie": { photo: angieBowiePhoto, polaroid: angieBowiePolaroid, focus: "22%", credit: "Illustration made with Gemini, not a photo" },
 };
