@@ -374,4 +374,13 @@ export const YEARS: Record<string, number> = {
   "Lady, Be Good": 1924,
   "Fred Astaire – 'The Half of It, Dearie, Blues'": 1926,
   "Ray Bourbon's party records": 1956,
+  // S06E09 Desi Santiago
+  "Minty": 1993,
+  "Minty – 'Useless Man'": 1994,
+  "Marilyn Manson – 'The Dope Show'": 1998,
+  "The Chemical Brothers": 1997,
+  "The Crystal Method": 1997,
+  "Fatboy Slim": 1998,
+  "Leftfield": 1993,
+  "Psychotica": 1996,
 };

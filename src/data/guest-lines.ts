@@ -45,6 +45,7 @@ export const GUEST_LINES: Record<string, string> = {
   s05e07a: "Second-wave club kid · Project X cover boy, Limelight party planner",
   s05e07b: "Original Tunnel kid and hostess · Bainbridge Island's mailbox lady",
   s04e02: "Paper's Mr. Mickey · Break the Internet, Wigstock and the bad movie club",
+  s06e09: "Sculptor, metalsmith and production designer · Desi Monster, the band Boob and worlds for Zaldy",
   s04e11: "Drag historian and author of Glitter and Concrete · Julian Eltinge, the Pansy Craze and Harlem's balls",
   s03e09: "Beauty editor and author of How to Murder Your Life · post-9/11 it girl, Lucky and xoJane",
   s04e01: "Style icon, couture collector and singer · Isabella Blow, McQueen and records with Tony Visconti",

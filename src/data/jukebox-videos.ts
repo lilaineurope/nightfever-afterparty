@@ -371,6 +371,15 @@ export const YOUTUBE: Record<string, string> = {
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
   "Ray Bourbon's party records": "nJ2_2BFaf8c",
+  // S06E09 Desi Santiago
+  "Minty": "r9GBO7i-6GI",
+  "Minty – 'Useless Man'": "tqAOaNS1tqM",
+  "Marilyn Manson – 'The Dope Show'": "5R682M3ZEyk",
+  "The Chemical Brothers": "iTxOKsyZ0Lw",
+  "The Crystal Method": "OjTC88oIRys",
+  "Fatboy Slim": "FMrIy9zm7QY",
+  "Leftfield": "hZj9bi7YNmI",
+  "Psychotica": "amQDDq7dUVA",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

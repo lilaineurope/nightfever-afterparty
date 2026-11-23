@@ -118,6 +118,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s05e07b: "the Tunnel, outlaw parties & Bainbridge mailboxes",
   s01e09: "Mars, the Limelight & DJing in 90s New York",
   s04e02: "Paper magazine, Break the Internet & downtown New York",
+  s06e09: "Desi Monster, the Club Kids, Leigh Bowery & the band Boob",
   s04e11: "Drag history, Julian Eltinge, the Pansy Craze & Harlem drag balls",
   s03e09: "Condé Nast, xoJane & post-9/11 New York nightlife",
   s04e01: "Couture, Isabella Blow, McQueen, Dalí & records with Tony Visconti",
