@@ -1149,3 +1149,4 @@ a.lit-story-ch-nm:hover { color: var(--color-pink); }
 .lit-story-viewers blockquote { margin: 0; font-size: 15px; line-height: 1.45; }
 .lit-story-viewers blockquote::before { content: "\201C"; font-family: var(--font-flyer); color: var(--color-pink); font-size: 36px; line-height: 0; vertical-align: -12px; margin-right: 4px; }
 .lit-story-sources { margin-top: -36px; color: #666; font-size: 11px; }
+.lit-story-mast { display: block; max-height: 26px; max-width: 160px; margin-bottom: 6px; filter: grayscale(1) contrast(1.4); }

@@ -233,7 +233,11 @@ function storyView(e: Entity): StoryView | null {
       return { at: c.at, secs: secs(c.at), title: c.title, slug: to?.slug, cover: to ? coverSrc(to.name) : undefined };
     }),
     since: st.since,
-    viewers: st.viewers ?? [],
+    reviews: (st.reviews ?? []).map((r) => {
+      const c = entityFor(r.publication);
+      const m = coverFor(r.publication);
+      return { ...r, slug: c?.slug, mast: m?.src };
+    }),
     sources: st.sources,
   };
 }

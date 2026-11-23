@@ -1,15 +1,18 @@
 // "The story" on Library item pages (Lisa, 23 Nov 2026, Creative Vandal as the test: "create a page for each item ... do
 // research on anything [the guest] said on his interview about it, then check all his interviews and comments on youtube
 // and then online"). What the item is, who made it and who is in it, what is inside it, what happened to it since, and
-// what people said about it outside the show. Keyed by A–Z card slug; shown by src/components/item-story.tsx.
+// what the press on our Library shelves said about it. Keyed by A–Z card slug; shown by Story in
+// src/components/library-item.tsx.
 //
 // Facts come from the work itself (its credits, its own description) or a named source - no guesses. A name or work with
-// an A–Z card links to it. Viewers' comments are quoted without their handles.
+// an A–Z card links to it. Never YouTube or social media comments (Lisa, 23 Nov 2026).
 
 export type StoryFact = { label: string; value: string };
 /** A part of a film, with its time code in the film. `card` is the A–Z name of a work or person it is about. */
 export type StoryChapter = { at: string; title: string; card?: string };
-export type StoryNote = { when: string; what: string; source: string };
+/** Only from our AFTERPARTY references (the episode indexes) and the publications on our Library shelves (Lisa, 23 Nov
+ *  2026). `episode` + `time` play the moment on the show. */
+export type StoryNote = { when: string; what: string; source: string; episode?: string; time?: string };
 
 export type ItemStory = {
   /** One or two sentences: what it is. */
@@ -20,10 +23,12 @@ export type ItemStory = {
   /** People in it, as the credits name them; `note` is who they are. */
   inIt: { name: string; note?: string }[];
   chapters?: StoryChapter[];
-  /** Since it came out: awards, screenings, interviews about it. */
+  /** Since it came out: what our AFTERPARTY references and our Library publications say happened to it. */
   since: StoryNote[];
-  /** What viewers said about it (no handles), with where and when. */
-  viewers?: { quote: string; where: string }[];
+  /** What the press said: reviews from publications on our Library shelves only (Lisa, 23 Nov 2026: no YouTube comments -
+   *  "to avoid bad comments"; "can we add reviews from publications we have listed in library?"). `publication` is the
+   *  Library name, so the review wears its masthead and links to its page. */
+  reviews?: { publication: string; date: string; quote: string; by?: string }[];
   sources: string[];
 };
 
@@ -32,6 +37,8 @@ export const ITEM_STORIES: Record<string, ItemStory> = {
     intro:
       "An hour-long documentary about Nick Egan: from a working-class art-school punk making T-shirts for the Ramones to the sleeves for The Clash, Bow Wow Wow, INXS and Duran Duran, and the music videos that followed.",
     film: { id: "ysToqInTSQ8", title: "Creative Vandal - full documentary", channel: "DOGMA85" },
+    // No reviews yet in the publications on our Library shelves (searched 23 Nov 2026).
+    reviews: [],
     facts: [
       { label: "Out", value: "14 September 2024, free on YouTube" },
       { label: "Length", value: "1 hour 1 minute" },
@@ -39,7 +46,6 @@ export const ITEM_STORIES: Record<string, ItemStory> = {
       { label: "Made by", value: "DOGMA85, a London channel of films about artists" },
       { label: "Cinematography", value: "Ava Egan and Angel Andres Martinez" },
       { label: "Music", value: "Chris Campanaro" },
-      { label: "Award", value: "Winner, LA Fashion Film Festival 2024 (documentary)" },
     ],
     inIt: [
       { name: "Nick Egan" },
@@ -90,16 +96,9 @@ export const ITEM_STORIES: Record<string, ItemStory> = {
       { at: "59:21", title: "Outro" },
     ],
     since: [
-      { when: "14 Sep 2024", what: "Out in full and free on DOGMA85's YouTube channel, with short clips from it (Duck Rock in New York, the Ramones T-shirts) posted as Shorts.", source: "YouTube" },
-      { when: "2024", what: "Winner at the LA Fashion Film Festival, in the documentary entries.", source: "LA Fashion Film Festival archive" },
-      { when: "8 Nov 2024", what: "The director, Peter Pahor, tells how the film was made on INXS: Access All Areas, the fan podcast Nick mentors (episode 201).", source: "INXS: Access All Areas" },
-      { when: "On the show", what: "James introduces Nick with it and says it won a California Music Video Award for best feature music film or documentary - we haven't found that award online yet.", source: "S05E04, 00:00:49" },
+      { when: "On the show", what: "James introduces Nick with it: just out, free to watch on YouTube.", source: "S05E04", episode: "s05e04", time: "00:00:49" },
+      { when: "On the show", what: "James says it won a California Music Video Award for best feature music film or documentary.", source: "S05E04", episode: "s05e04", time: "00:01:09" },
     ],
-    viewers: [
-      { quote: "We all knew your work but didn't get to know you until now.", where: "YouTube comment, 2024" },
-      { quote: "It's fascinating to see how you were there by chance at the apex of two cultural movements of young, urban youth either side of the Atlantic.", where: "YouTube comment, 2024" },
-      { quote: "I've got a Bears single - I never thought I'd see them referenced in a documentary.", where: "YouTube comment, 2024" },
-    ],
-    sources: ["The film's own credits and chapters on YouTube", "IMDb (tt33380973)", "LA Fashion Film Festival archive", "INXS: Access All Areas, episode 201", "S05E04 transcript"],
+    sources: ["The film's own credits and chapters", "S05E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
   },
 };

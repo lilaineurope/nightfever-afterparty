@@ -541,7 +541,7 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
 
 /** "The story" (Lisa, 23 Nov 2026, tested on Creative Vandal): what it is and who made it, then the film itself with its
  *  chapters (each chapter plays the film from that moment; a chapter about a work on the site links to it, with its cover),
- *  then what happened since and what viewers said. From src/data/item-stories.ts. */
+ *  then what happened since and what the press on our Library shelves said. From src/data/item-stories.ts. */
 function Story({ v }: { v: LibraryItemView }) {
   const links = useLinks();
   const [at, setAt] = useState<number | null>(null);
@@ -617,8 +617,8 @@ function Story({ v }: { v: LibraryItemView }) {
           </div>
         </section>
       )}
-      {(st.since.length > 0 || st.viewers.length > 0) && (
-        <div className={`lit-row lit-row-${st.viewers.length ? 2 : 1}`}>
+      {(st.since.length > 0 || st.reviews.length > 0) && (
+        <div className={`lit-row lit-row-${st.reviews.length ? 2 : 1}`}>
           {st.since.length > 0 && (
             <section className="lit-box" aria-labelledby="since">
               <h2 id="since" className={h}>Since it came out</h2>
@@ -627,22 +627,29 @@ function Story({ v }: { v: LibraryItemView }) {
                   <li key={n.when + n.source}>
                     <span className="lit-story-when">{n.when}</span>
                     <p>{n.what}</p>
-                    <span className="lit-story-src">{n.source}</span>
+                    <span className="lit-story-src">
+                      {n.episode ? <Link to={episodePath(n.episode as never)} className="lit-story-link">{n.source}</Link> : n.source}
+                      {n.episode && n.time && <> <Timestamp episodeId={n.episode} time={n.time} /></>}
+                    </span>
                   </li>
                 ))}
               </ol>
             </section>
           )}
-          {st.viewers.length > 0 && (
-            <section className="lit-box" aria-labelledby="viewers">
-              <h2 id="viewers" className={h}>What viewers said</h2>
+          {st.reviews.length > 0 && (
+            <section className="lit-box" aria-labelledby="press-said">
+              <h2 id="press-said" className={h}>What the press said</h2>
               <ul className="lit-story-viewers mt-4">
-                {st.viewers.map((q) => (
-                  <li key={q.quote}>
-                    <blockquote>{q.quote}</blockquote>
-                    <span className="lit-story-src">{q.where}</span>
-                  </li>
-                ))}
+                {st.reviews.map((r) => {
+                  const mast = r.mast ? <img src={r.mast} alt={r.publication} className="lit-story-mast" loading="lazy" decoding="async" /> : <b>{r.publication}</b>;
+                  return (
+                    <li key={r.publication + r.date}>
+                      {r.slug ? <Link {...linkToSlug(links, r.slug)} className="lit-story-link">{mast}</Link> : mast}
+                      <blockquote>{r.quote}</blockquote>
+                      <span className="lit-story-src">{[r.by, r.publication, r.date].filter(Boolean).join(", ")}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           )}

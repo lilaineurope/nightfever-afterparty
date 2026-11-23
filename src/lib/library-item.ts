@@ -53,8 +53,8 @@ export type StoryView = {
   facts: { label: string; value: string }[];
   inIt: { name: string; note?: string | undefined; slug?: string | undefined }[];
   chapters: { at: string; secs: number; title: string; slug?: string | undefined; cover?: string | undefined }[];
-  since: { when: string; what: string; source: string }[];
-  viewers: { quote: string; where: string }[];
+  since: { when: string; what: string; source: string; episode?: string | undefined; time?: string | undefined }[];
+  reviews: { publication: string; date: string; quote: string; by?: string | undefined; slug?: string | undefined; mast?: string | undefined }[];
   sources: string[];
 };
 
