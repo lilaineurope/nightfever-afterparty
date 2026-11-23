@@ -15,7 +15,7 @@ import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
 import { TheirWork } from "@/components/their-work";
-import { LibraryItemSections } from "@/components/library-item";
+import { LibraryItemSections, Story } from "@/components/library-item";
 import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
 import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
@@ -288,6 +288,12 @@ function EntityPage() {
         {place && <PlaceSections p={place} name={e.name} events={e.events} />}
         {/* Hall of Fame family tree (Lisa, 21 Nov 2026): top 10 mentors, for now only TREE_ON_PAGE. */}
         {e.tree && TREE_ON_PAGE.has(e.slug) && <MentorTree t={e.tree} badge={<HallOfFameBadge rank={e.tree.rank} />} foldable />}
+        {/* "The story" of a song, album, band or club a guest made (Lisa, 23 Nov 2026); Library items show it in their front page. */}
+        {e.story && (
+          <div className="lit-front">
+            <Story st={e.story} name={e.name} />
+          </div>
+        )}
         <CardSections v={e} skipRefs={!!item || !!place} skipEvents={!!place} />
       </div>
           <SiteFooter />

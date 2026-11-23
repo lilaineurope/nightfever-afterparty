@@ -2,6 +2,8 @@
 // downloaded once and hosted on this site (src/assets/library) - visitors' browsers never contact Open Library or Wikimedia.
 // Keyed by the exact A–Z name. Anything without a cover here gets a typed cover. Book covers stay their publishers' work:
 // shown small, for identification only (Terms). New covers: add the picture to src/assets/library and a line here.
+import WORK_COVERS from "./work-covers.json";
+
 const files = import.meta.glob("../assets/library/*.webp", { eager: true, import: "default" }) as Record<string, string>;
 const url = (file: string) => files[`../assets/library/${file}`] ?? "";
 
@@ -10,6 +12,8 @@ const url = (file: string) => files[`../assets/library/${file}`] ?? "";
 // publication pages audit, 22 Nov 2026); `light` keeps a white or pale logo on black.
 export type Cover = { kind: "book" | "mast"; file: string; credit: string; light?: boolean };
 
+// Covers for every work a guest made (Lisa, 23 Nov 2026), made by scripts/item-stories-auto.py from the Cover Art Archive,
+// Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
   "Glitter and Concrete": { kind: "book", file: "book-glitter-and-concrete.webp", credit: "Cover via Open Library (Hanover Square Press, 2023)" },
@@ -258,6 +262,6 @@ const COVERS: Record<string, Cover> = {
 };
 
 export const coverFor = (name: string): (Cover & { src: string }) | undefined => {
-  const c = COVERS[name];
+  const c = COVERS[name] ?? (WORK_COVERS as Record<string, Cover>)[name];
   return c && url(c.file) ? { ...c, src: url(c.file) } : undefined;
 };

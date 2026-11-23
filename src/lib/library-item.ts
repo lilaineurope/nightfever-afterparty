@@ -55,6 +55,7 @@ export type StoryView = {
   film: { id: string; title: string; channel: string } | null;
   facts: { label: string; value: string }[];
   inIt: { name: string; note?: string | undefined; slug?: string | undefined }[];
+  inItLabel: string;
   chapters: { at: string; secs: number; title: string; slug?: string | undefined; cover?: string | undefined }[];
   since: { when: string; what: string; source: string; episode?: string | undefined; time?: string | undefined }[];
   reviews: { publication: string; date: string; quote: string; by?: string | undefined; slug?: string | undefined; mast?: string | undefined }[];
