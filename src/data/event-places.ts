@@ -377,6 +377,19 @@ export const EVENT_PLACES: EventPlace[] = [
     area: "Flatiron",
     tip: "890 Broadway, the New York premiere, 2003",
   },
+  // S06E09 Desi Santiago
+  { event: "Zaldy menswear show at the Hotel Chelsea", at: "Hotel Chelsea", tip: "Zaldy's first menswear collection" },
+  { event: "Desi's 20th birthday at the Limelight", at: "Limelight", tip: "Leigh Bowery on the bar" },
+  { event: "Acid punch party at The Building", at: "The Building", tip: "Desi's first official party" },
+  { event: "Michael Jackson in Hell", at: "Deitch Projects", tip: "Bernadette Corporation's show" },
+  {
+    event: "Woodstock 99",
+    at: "Griffiss Air Force Base, Rome, New York",
+    lat: 43.2259,
+    lng: -75.4106,
+    area: "Rome, New York",
+    tip: "The rave hangar",
+  },
   // S04E11 Elyssa Maxx Goodman (Lisa, 23 Nov 2026: Bring us home rule, applied to every new episode)
   { event: "Hamilton Lodge Ball", at: "Harlem", tip: "At the Rockland Palace" },
   { event: "1939 New York World's Fair", at: "Queens", tip: "Flushing Meadows" },
@@ -493,4 +506,6 @@ export const NO_SINGLE_PLACE = new Set([
   "The Drag (Mae West play)",
   "French Box Revue",
   "Pearl Box Revue",
+  // S06E09
+  "Club kid apartments",
 ]);

@@ -413,6 +413,15 @@ const SPOTIFY: Record<string, string> = {
   // S04E11 Elyssa Maxx Goodman (Ray Bourbon's party records aren't on Spotify)
   "Lady, Be Good": "spotify:track:64tnmc0rKvOIP1VhSQKewo",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "spotify:track:0oLjmNEQ8tJteV9u0amZ1w",
+  // S06E09 Desi Santiago (Boob isn't on Spotify)
+  "Minty": "spotify:artist:0vVeC3e3hdI1KVGjApg0Ud",
+  "Minty – 'Useless Man'": "spotify:track:5cIE7xmxjnK1R4cXATm6Ni",
+  "Marilyn Manson – 'The Dope Show'": "spotify:track:1KQxH1Z1BiSo3MMukVpRfl",
+  "The Chemical Brothers": "spotify:artist:1GhPHrq36VKCY3ucVaZCfo",
+  "The Crystal Method": "spotify:artist:5eKLa1xyHLq8ERWmT1CRHj",
+  "Fatboy Slim": "spotify:artist:4Y7tXHSEejGu1vQ9bwDdXW",
+  "Leftfield": "spotify:artist:72hqBMsw7x5jnfxxwkii8L",
+  "Psychotica": "spotify:artist:4jP56EOsScC5xTDWL5gkkh",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

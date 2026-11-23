@@ -91,6 +91,7 @@ import { Route as EpisodesS06e05RouteImport } from './routes/episodes.s06e05'
 import { Route as EpisodesS06e06RouteImport } from './routes/episodes.s06e06'
 import { Route as EpisodesS06e07RouteImport } from './routes/episodes.s06e07'
 import { Route as EpisodesS06e08RouteImport } from './routes/episodes.s06e08'
+import { Route as EpisodesS06e09RouteImport } from './routes/episodes.s06e09'
 import { Route as ExploreIndexRouteImport } from './routes/explore.index'
 import { Route as ExploreSlugRouteImport } from './routes/explore.$slug'
 import { Route as GuestbookIndexRouteImport } from './routes/guestbook.index'
@@ -513,6 +514,11 @@ const EpisodesS06e08Route = EpisodesS06e08RouteImport.update({
   path: '/episodes/s06e08',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpisodesS06e09Route = EpisodesS06e09RouteImport.update({
+  id: '/episodes/s06e09',
+  path: '/episodes/s06e09',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreIndexRoute = ExploreIndexRouteImport.update({
   id: '/explore/',
   path: '/explore/',
@@ -651,6 +657,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s06e06': typeof EpisodesS06e06Route
   '/episodes/s06e07': typeof EpisodesS06e07Route
   '/episodes/s06e08': typeof EpisodesS06e08Route
+  '/episodes/s06e09': typeof EpisodesS06e09Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
   '/issues/$slug': typeof IssuesSlugRoute
@@ -746,6 +753,7 @@ export interface FileRoutesByTo {
   '/episodes/s06e06': typeof EpisodesS06e06Route
   '/episodes/s06e07': typeof EpisodesS06e07Route
   '/episodes/s06e08': typeof EpisodesS06e08Route
+  '/episodes/s06e09': typeof EpisodesS06e09Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
   '/issues/$slug': typeof IssuesSlugRoute
@@ -842,6 +850,7 @@ export interface FileRoutesById {
   '/episodes/s06e06': typeof EpisodesS06e06Route
   '/episodes/s06e07': typeof EpisodesS06e07Route
   '/episodes/s06e08': typeof EpisodesS06e08Route
+  '/episodes/s06e09': typeof EpisodesS06e09Route
   '/explore/$slug': typeof ExploreSlugRoute
   '/guestbook/admin': typeof GuestbookAdminRoute
   '/issues/$slug': typeof IssuesSlugRoute
@@ -939,6 +948,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e06'
     | '/episodes/s06e07'
     | '/episodes/s06e08'
+    | '/episodes/s06e09'
     | '/explore/$slug'
     | '/guestbook/admin'
     | '/issues/$slug'
@@ -1034,6 +1044,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e06'
     | '/episodes/s06e07'
     | '/episodes/s06e08'
+    | '/episodes/s06e09'
     | '/explore/$slug'
     | '/guestbook/admin'
     | '/issues/$slug'
@@ -1129,6 +1140,7 @@ export interface FileRouteTypes {
     | '/episodes/s06e06'
     | '/episodes/s06e07'
     | '/episodes/s06e08'
+    | '/episodes/s06e09'
     | '/explore/$slug'
     | '/guestbook/admin'
     | '/issues/$slug'
@@ -1225,6 +1237,7 @@ export interface RootRouteChildren {
   EpisodesS06e06Route: typeof EpisodesS06e06Route
   EpisodesS06e07Route: typeof EpisodesS06e07Route
   EpisodesS06e08Route: typeof EpisodesS06e08Route
+  EpisodesS06e09Route: typeof EpisodesS06e09Route
   ExploreSlugRoute: typeof ExploreSlugRoute
   GuestbookAdminRoute: typeof GuestbookAdminRoute
   IssuesSlugRoute: typeof IssuesSlugRoute
@@ -1815,6 +1828,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS06e08RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/episodes/s06e09': {
+      id: '/episodes/s06e09'
+      path: '/episodes/s06e09'
+      fullPath: '/episodes/s06e09'
+      preLoaderRoute: typeof EpisodesS06e09RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore/': {
       id: '/explore/'
       path: '/explore'
@@ -1977,6 +1997,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS06e06Route: EpisodesS06e06Route,
   EpisodesS06e07Route: EpisodesS06e07Route,
   EpisodesS06e08Route: EpisodesS06e08Route,
+  EpisodesS06e09Route: EpisodesS06e09Route,
   ExploreSlugRoute: ExploreSlugRoute,
   GuestbookAdminRoute: GuestbookAdminRoute,
   IssuesSlugRoute: IssuesSlugRoute,

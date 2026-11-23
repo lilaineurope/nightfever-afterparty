@@ -849,6 +849,13 @@ export const LOCATIONS: Located[] = [
   { name: "East 3rd Street", lat: 40.7254, lng: -73.9905, area: "East Village", tip: "By the men's shelter - Little Hollywood" },
   { name: "Minnesota", lat: 46.2807, lng: -94.3053, area: "Minnesota" },
   { name: "Book Soup", lat: 34.0901, lng: -118.3846, area: "West Hollywood", tip: "8818 Sunset Boulevard" },
+  // S06E09 Desi Santiago
+  { name: "Puerto Rico", lat: 18.2208, lng: -66.5901, area: "Caribbean" },
+  { name: "Newark", lat: 40.7357, lng: -74.1724, area: "New Jersey" },
+  { name: "Catskills", lat: 42.1, lng: -74.35, area: "New York State" },
+  { name: "Bard College", lat: 42.0204, lng: -73.9076, area: "Annandale-on-Hudson" },
+  { name: "Deitch Projects", lat: 40.7224, lng: -74.0028, area: "SoHo", tip: "18 Wooster Street" },
+  { name: "The Fridge (London)", lat: 51.4612, lng: -0.1155, area: "Brixton", tip: "Town Hall Parade, Brixton Hill" },
 ];
 
 /**
@@ -879,4 +886,10 @@ export const HOME_HINTS: Record<string, string> = {
   "Continental Divide": "On Second Avenue, Brian says",
   "Planets": "London",
   "Mirror Bar": "Rhode Island",
+  // S06E09 Desi Santiago
+  "North End Bar and Grill (Newark)": "Desi's parents' bar in the North End of Newark, with a leather factory across the street - which street?",
+  "Uncle Charlie's (New Jersey)": "A New Jersey club where Desi's brother DJed and Divine performed - Desi isn't sure if it was Uncle Charlie's or Charlie's West",
+  "W Hotel": "Where Desi built Casino Diabolique - which W Hotel was it?",
+  "Casino Diabolique": "Desi's dark casino installation at a W Hotel - which one, and when?",
+  "Black Lords (Miami)": "A white Art Deco hotel in Miami that Desi painted black - which hotel?",
 };
