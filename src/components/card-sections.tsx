@@ -127,7 +127,8 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {named.length > 0 && (
+      {/* A Library item page shows these as one "Also on the site" box with why (library-item.tsx, Lisa 23 Nov 2026). */}
+      {named.length > 0 && !v.item && (
         <section>
           <h2 className={h}>Also named on these cards</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -141,7 +142,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.inGuestStories.length > 0 && (
+      {v.inGuestStories.length > 0 && !v.item && (
         <section>
           <h2 className={h}>Pops up in the guests' stories</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -150,7 +151,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {related.length > 0 && (
+      {related.length > 0 && !v.item && (
         <section>
           <h2 className={h}>In the same rooms (aka the gang)</h2>
           <div className="mt-4 flex flex-wrap gap-2">

@@ -1115,3 +1115,52 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-jbx-info-nm { font: 22px/1.15 var(--font-flyer); text-transform: uppercase; }
 .lit-jbx-open { justify-self: start; margin-top: 8px; background: var(--color-pink); color: #fff; border: 2px solid #f4f1ea; padding: 6px 12px; font: 12px/1.4 var(--font-flyer); text-transform: uppercase; letter-spacing: .04em; }
 .lit-jbx-open:hover { background: #f4f1ea; color: #111; }
+
+/* "The story" (Lisa, 23 Nov 2026, Creative Vandal test): intro, fact sheet and who is in it; the film with its chapters in the
+   Jukebox (each chapter plays from that moment, its work's cover beside it); then since it came out and what viewers said. */
+.lit-story { display: grid; gap: 22px 40px; }
+@media (min-width: 900px) { .lit-story { grid-template-columns: 1.3fr 1fr; } .lit-story-intro { grid-column: 1 / -1; } }
+.lit-story-intro { font: 20px/1.4 var(--font-type); max-width: 62ch; }
+.lit-story-facts { display: grid; gap: 0; border-top: 2px solid #111; }
+.lit-story-facts > div { display: grid; grid-template-columns: 11em 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(17,17,17,.35); font-size: 14px; }
+.lit-story-facts dt { font: 11px/1.6 var(--font-flyer); letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 520px) { .lit-story-facts > div { grid-template-columns: 1fr; gap: 2px; } }
+.lit-story-k { font: 11px/1.6 var(--font-flyer); letter-spacing: .1em; text-transform: uppercase; border-bottom: 2px solid #111; padding-bottom: 4px; }
+.lit-story-in ul { display: grid; gap: 6px; margin-top: 10px; font-size: 14px; }
+.lit-story-note { color: #555; }
+.lit-story-link { font-weight: 600; color: #111; text-decoration: none; }
+.lit-story-link:hover { color: var(--color-pink); }
+.lit-story-film .lit-jbx-r { min-width: 0; }
+.lit-story-ch { display: grid; gap: 4px; max-height: 420px; overflow-y: auto; padding-right: 6px; }
+.lit-story-ch li { display: grid; grid-template-columns: auto 34px 1fr; gap: 10px; align-items: center; color: #f4f1ea; font-size: 13px; line-height: 1.25; padding: 3px 0; border-bottom: 1px solid rgba(244,241,234,.15); }
+.lit-story-ch li[aria-current] { background: rgba(228,0,124,.25); }
+.lit-story-at { font: 12px/1.4 var(--font-flyer); color: #f2c14e; background: none; border: 0; padding: 2px 4px; cursor: pointer; white-space: nowrap; }
+.lit-story-at:hover { color: var(--color-pink); }
+.lit-story-cv { width: 34px; height: 34px; object-fit: cover; border: 1px solid #f4f1ea; }
+.lit-story-cv-none { border-color: transparent; }
+.lit-story-ch-nm { color: #f4f1ea; text-decoration: none; }
+a.lit-story-ch-nm { font-weight: 600; }
+a.lit-story-ch-nm:hover { color: var(--color-pink); }
+.lit-story-since { display: grid; gap: 14px; }
+.lit-story-since li { border-left: 3px solid var(--color-pink); padding-left: 12px; font-size: 14px; line-height: 1.45; }
+.lit-story-when { font: 12px/1.4 var(--font-flyer); letter-spacing: .08em; text-transform: uppercase; }
+.lit-story-src { display: block; margin-top: 3px; color: #666; font-size: 11px; letter-spacing: .04em; }
+.lit-story-viewers { display: grid; gap: 16px; }
+.lit-story-viewers blockquote { margin: 0; font-size: 15px; line-height: 1.45; }
+.lit-story-viewers blockquote::before { content: "\201C"; font-family: var(--font-flyer); color: var(--color-pink); font-size: 36px; line-height: 0; vertical-align: -12px; margin-right: 4px; }
+.lit-story-sources { margin-top: -36px; color: #666; font-size: 11px; }
+.lit-story-mast { display: block; max-height: 26px; max-width: 160px; margin-bottom: 6px; filter: grayscale(1) contrast(1.4); }
+
+/* "Also on the site" on Library item pages (Lisa, 23 Nov 2026): one line per card - name (pink on hover), why, ▶ where. */
+.lit-also { display: grid; gap: 12px; list-style: none; padding: 0; margin: 16px 0 0; }
+.lit-also li { border-top: 1px solid #e5e5e5; padding-top: 10px; }
+.lit-also li:first-child { border-top: 0; padding-top: 0; }
+.lit-also-name { font-weight: 700; color: #111; text-decoration: none; }
+.lit-also-name:hover { color: var(--color-pink); }
+.lit-also p { margin: 2px 0 0; font-size: 13px; line-height: 1.45; color: #333; }
+.lit-also-more { margin-top: 14px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #111; background: none; border: 0; padding: 0; cursor: pointer; }
+.lit-also-more:hover { color: var(--color-pink); }
+@media (min-width: 900px) {
+  .lit-row-1 .lit-also { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+  .lit-row-1 .lit-also li:nth-child(-n+3) { border-top: 0; padding-top: 0; }
+}

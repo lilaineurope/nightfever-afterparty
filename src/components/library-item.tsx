@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
+import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { VideoScreen } from "@/components/video-screen";
 import { FanSuggestions } from "@/components/fan-suggestions";
@@ -539,6 +540,127 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
   );
 }
 
+/** "The story" (Lisa, 23 Nov 2026, tested on Creative Vandal): what it is and who made it, then the film itself with its
+ *  chapters (each chapter plays the film from that moment; a chapter about a work on the site links to it, with its cover),
+ *  then what happened since and what the press on our Library shelves said. From src/data/item-stories.ts. */
+function Story({ v, name: self }: { v: LibraryItemView; name: string }) {
+  const links = useLinks();
+  const [at, setAt] = useState<number | null>(null);
+  const st = v.story;
+  if (!st) return null;
+  const film = st.film;
+  const name = (n: { name: string; slug?: string | undefined }) =>
+    n.slug ? <Link {...linkToSlug(links, n.slug)} className="lit-story-link">{n.name}</Link> : <span>{n.name}</span>;
+  return (
+    <>
+      <section aria-labelledby="the-story">
+        <h2 id="the-story" className={h}>The story</h2>
+        <div className="lit-story mt-5">
+          <p className="lit-story-intro">{st.intro}</p>
+          <dl className="lit-story-facts">
+            {st.facts.map((f) => (
+              <div key={f.label}>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+          {st.inIt.length > 0 && (
+            <div className="lit-story-in">
+              <p className="lit-story-k">In it</p>
+              <ul>
+                {st.inIt.map((p) => (
+                  <li key={p.name}>
+                    {name(p)}
+                    {p.note && <span className="lit-story-note"> · {p.note}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+      {film && st.chapters.length > 0 && (
+        <section aria-labelledby="inside-the-film">
+          <h2 id="inside-the-film" className={h}>Inside the film</h2>
+          <div className="lit-jbx lit-story-film mt-6">
+            <div className="lit-jbx-l">
+              <p className="lit-jbx-kicker">The Night Fever</p>
+              <p className="lit-jbx-title">On fil<b>m</b></p>
+              <div className="lit-jbx-screen">
+                {at !== null ? (
+                  <VideoScreen key={at} vid={film.id} title={film.title} start={at} onEnd={() => setAt(null)} onFail={() => setAt(null)} />
+                ) : (
+                  <button type="button" className="lit-jbx-press" onClick={() => setAt(0)} aria-label={`Play the film: ${film.title}`}>
+                    <span className="lit-jbx-k">The whole film</span>
+                    <span className="lit-jbx-play" aria-hidden>▶</span>
+                    <span className="lit-jbx-nm">{film.title}</span>
+                    <span className="lit-jbx-sm">Or pick a chapter</span>
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="lit-jbx-r">
+              <ol className="lit-story-ch">
+                {st.chapters.map((c) => (
+                  <li key={c.at} aria-current={at === c.secs || undefined}>
+                    <button type="button" className="lit-story-at" onClick={() => setAt(c.secs)} aria-label={`Play from ${c.at}: ${c.title}`}>
+                      ▶ {c.at}
+                    </button>
+                    {c.cover ? <img src={c.cover} alt="" className="lit-story-cv" loading="lazy" decoding="async" /> : <span className="lit-story-cv lit-story-cv-none" aria-hidden />}
+                    {c.slug ? <Link {...linkToSlug(links, c.slug)} className="lit-story-ch-nm">{c.title}</Link> : <span className="lit-story-ch-nm">{c.title}</span>}
+                  </li>
+                ))}
+              </ol>
+              <p className="lit-jbx-fine">Plays from {film.channel} on YouTube, loaded only when you press ▶ - same as the Jukebox.</p>
+            </div>
+            <div className="lit-jbx-grille" aria-hidden />
+          </div>
+        </section>
+      )}
+      {(st.since.length > 0 || st.reviews.length > 0) && (
+        <div className={`lit-row lit-row-${st.reviews.length ? 2 : 1}`}>
+          {st.since.length > 0 && (
+            <section className="lit-box" aria-labelledby="since">
+              <h2 id="since" className={h}>Since it came out</h2>
+              <ol className="lit-story-since mt-4">
+                {st.since.map((n) => (
+                  <li key={`${n.source}-${n.time ?? n.what}`}>
+                    <span className="lit-story-when">{n.when}</span>
+                    <p><EntityText text={n.what} self={self} /></p>
+                    <span className="lit-story-src">
+                      {n.episode ? <Link to={episodePath(n.episode as never)} className="lit-story-link">{n.source}</Link> : n.source}
+                      {n.episode && n.time && <> <Timestamp episodeId={n.episode} time={n.time} /></>}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+          {st.reviews.length > 0 && (
+            <section className="lit-box" aria-labelledby="press-said">
+              <h2 id="press-said" className={h}>What the press said</h2>
+              <ul className="lit-story-viewers mt-4">
+                {st.reviews.map((r) => {
+                  const mast = r.mast ? <img src={r.mast} alt={r.publication} className="lit-story-mast" loading="lazy" decoding="async" /> : <b>{r.publication}</b>;
+                  return (
+                    <li key={r.publication + r.date}>
+                      {r.slug ? <Link {...linkToSlug(links, r.slug)} className="lit-story-link">{mast}</Link> : mast}
+                      <blockquote>{r.quote}</blockquote>
+                      <span className="lit-story-src">{[r.by, r.publication, r.date].filter(Boolean).join(", ")}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
+        </div>
+      )}
+      <p className="lit-story-sources">Sources: {st.sources.join(" · ")}</p>
+    </>
+  );
+}
+
 /** "Wished for on air - and made since" (Publish this): shown under the header of a book a guest asked for. */
 function MadeSince({ v, name }: { v: LibraryItemView; name: string }) {
   const m = v.madeSince;
@@ -580,6 +702,40 @@ function Dateline({ v }: { v: LibraryItemView }) {
   );
 }
 
+/** "Also on the site" (Lisa, 23 Nov 2026, on Creative Vandal: the three chip boxes "don't make sense"). One list in place of
+ *  "Also named on these cards", "Pops up in the guests' stories" and "In the same rooms": each card says why it is here and
+ *  where on the show, like every episode mention. Nothing that is already higher on the page; no box when nothing is left. */
+function AlsoOnSite({ v, name }: { v: LibraryItemView; name: string }) {
+  const [all, setAll] = useState(false);
+  if (v.alsoOn.length === 0) return null;
+  // Like the quote walls: 9 first, the rest one press away.
+  const list = all ? v.alsoOn : v.alsoOn.slice(0, 9);
+  return (
+    <section className="lit-box" aria-labelledby="also-on">
+      <h2 id="also-on" className={h}>Also on the site</h2>
+      <ul className="lit-also mt-4">
+        {list.map((a) => (
+          <li key={`${a.slug}-${a.episodeId ?? ""}`}>
+            <EntityLink name={a.slug} className="lit-also-name">{a.name}</EntityLink>
+            {a.why && <p><EntityText text={a.why} self={name} /></p>}
+            {a.episodeId && (
+              <span className="lit-story-src">
+                <Link to={episodePath(a.episodeId as never)} className="lit-story-link">{a.short}</Link>
+                {a.time && <> <Timestamp episodeId={a.episodeId} time={a.time} /></>}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+      {v.alsoOn.length > 9 && (
+        <button type="button" className="lit-also-more" onClick={() => setAll(!all)}>
+          {all ? "Show fewer" : `Show all ${v.alsoOn.length}`}
+        </button>
+      )}
+    </section>
+  );
+}
+
 /** The page under the header - the Front page (Lisa, 22 Nov 2026: "not organized enough and white space" - she picked mockup
  *  A, "apply it to all pages"). Full-width bands, so a short box never leaves a hole next to a tall one: the dateline, who
  *  dropped it in level columns, the wide Jukebox, the small boxes side by side in one row (all the same height), the shelves
@@ -591,6 +747,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
     v.find || v.press?.buy ? <BuyMe key="buy" v={v} here={here} onAsk={nearMe} /> : null,
     v.find ? <FindBorrow key="borrow" v={v} here={here} onAsk={nearMe} /> : null,
     v.connections.length > 0 ? <Connections key="conn" v={v} /> : null,
+    v.alsoOn.length > 0 ? <AlsoOnSite key="also" v={v} name={name} /> : null,
   ].filter(Boolean);
   const copy = v.shelf !== "film" && v.shelf !== "tv" ? <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" /> : null;
   const copyInRow = !!copy && boxes.length < 3;
@@ -602,6 +759,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       <Dateline v={v} />
       <MadeSince v={v} name={name} />
       <DroppedBy v={v} name={name} />
+      <Story v={v} name={name} />
       <WriterOnShow v={v} />
       <GuestQuotes v={v} />
       {!fewIssues && <IssueShelf v={v} name={name} />}

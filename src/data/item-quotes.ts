@@ -92,6 +92,9 @@ export const ITEM_QUOTES: Record<string, GuestQuote[]> = {
     { episode: "s04e10", who: "Ann Magnuson", time: "00:41:51", quote: "It was important for a third party with that kind of academic rigor and emotional distance. There's things that happened in that club I had no idea about once I left it." },
     { episode: "s04e10", who: "Ann Magnuson", time: "00:44:19", quote: "There was no censorship at Club 57. Somebody from more of the Mudd Club world heard that MoMA was doing this show: Club 57? Why are they doing a show about them?" },
   ],
+  "creative-vandal": [
+    { episode: "s05e04", who: "Nick Egan", time: "00:13:55", quote: "As explained in the documentary, I was always very lucky, because my first artwork I did was a Ramones T-shirt. My first single cover was The Clash, White Man in Hammersmith Palais. My first album cover was Dexys Midnight Runners, Searching for the Young Soul Rebels. And my first video was Iggy Pop, Real Wild Child." },
+  ],
   "cruising": [
     { episode: "s01e04", who: "Peter Gatien", time: "00:12:41", quote: "A little bit of a glimpse I got of that was maybe the Al Pacino movie. Cruising! Point of the story, I was terrified." },
   ],

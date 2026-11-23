@@ -8,13 +8,15 @@ import { BOOKS_TO_WRITE } from "@/data/still-to-make";
 import { DIARY_PAGES } from "@/data/diaries";
 import { ITEM_QUOTES } from "@/data/item-quotes";
 import { BOOK_CREDITS, CREDIT_ORDER } from "@/data/book-credits";
+import { ITEM_STORIES } from "@/data/item-stories";
 import { PRESS, PRESS_HISTORY, PUBLISHERS } from "@/data/publication-facts";
 import { WRITTEN_BY } from "@/data/written-by";
 import { BOOK_FACTS_EXTRA } from "@/data/book-facts-extra";
 import { episodeById, stageName } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
-import type { Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, Trailer, WriterView } from "@/lib/library-item";
+import { namedOn } from "@/lib/name-links";
+import type { AlsoOn, Connection, DroppedBy, LibraryItemView, PressView, ShelfMate, StoryView, Trailer, WriterView } from "@/lib/library-item";
 
 type Clip = { id: string; name: string; cat: string; title: string; of?: string; first?: boolean };
 // Every video in the AFTERPARTY YouTube playlists (src/data/episode-videos), by the card it belongs to.
@@ -213,6 +215,63 @@ function pressView(e: Entity, shelf: string): PressView | null {
   };
 }
 
+/** "The story" (Lisa, 23 Nov 2026): names and works that have an A–Z card link to it; a chapter about a work shows its cover. */
+function storyView(e: Entity): StoryView | null {
+  const st = ITEM_STORIES[e.slug];
+  if (!st) return null;
+  const secs = (at: string) => at.split(":").reduce((n, x) => n * 60 + Number(x), 0);
+  const card = (name: string) => {
+    const c = entityFor(name);
+    return c && c.slug !== e.slug ? c : undefined;
+  };
+  return {
+    intro: st.intro,
+    film: st.film ?? null,
+    facts: st.facts,
+    inIt: st.inIt.map((p) => ({ ...p, slug: card(p.name)?.slug })),
+    chapters: (st.chapters ?? []).map((c) => {
+      const to = c.card ? card(c.card) : undefined;
+      return { at: c.at, secs: secs(c.at), title: c.title, slug: to?.slug, cover: to ? coverSrc(to.name) : undefined };
+    }),
+    since: st.since,
+    reviews: (st.reviews ?? []).map((r) => {
+      const c = entityFor(r.publication);
+      const m = coverFor(r.publication);
+      return { ...r, slug: c?.slug, mast: m?.src };
+    }),
+    sources: st.sources,
+  };
+}
+
+
+// Websites and apps the guests only name as where something can be seen or heard: no story of their own to connect.
+const PLATFORMS = new Set(["youtube", "spotify", "instagram", "facebook", "twitter", "tiktok", "wikipedia", "google", "imdb", "amazon", "ebay", "discogs", "apple-music", "soundcloud", "vimeo", "myspace", "netflix"]);
+
+/** "Also on the site": the cards whose reference notes name this item, and guests who bring it up in their own AFTERPARTY
+ *  without having dropped it - each with why. Leaves out platforms and anyone or anything already on the page. */
+function alsoOnSite(e: Entity, v: Omit<LibraryItemView, "alsoOn">): AlsoOn[] {
+  const shown = new Set<string>([e.slug]);
+  const see = (name?: string | null) => name && name.split(/\s+(?:with|and|&)\s+|,\s*/).forEach((n) => { const x = entityFor(n.trim()); if (x) shown.add(x.slug); });
+  v.dropped.forEach((d) => see(d.guest));
+  see(v.facts?.author);
+  if (v.writer?.slug) shown.add(v.writer.slug);
+  for (const s of [...v.connections, ...v.shelfMates, ...v.credits, ...(v.press?.by ?? []), ...(v.press?.team ?? []), ...(v.story?.inIt ?? []), ...(v.story?.chapters ?? [])]) if (s.slug) shown.add(s.slug);
+  const sinceText = (v.story?.since ?? []).map((n) => n.what.toLowerCase()).join(" ");
+  const out: AlsoOn[] = [];
+  for (const { entity: x, ref } of namedOn(e)) {
+    if (shown.has(x.slug) || PLATFORMS.has(x.slug) || sinceText.includes(x.name.toLowerCase())) continue;
+    if (out.some((o) => o.slug === x.slug && o.episodeId === ref.episode)) continue;
+    out.push({ slug: x.slug, name: x.name, why: ref.context ?? "", episodeId: ref.episode, short: ref.episode ? episodeShort(ref.episode) : undefined, time: ref.time });
+  }
+  for (const g of e.inGuestStories) {
+    const ge = entityFor(g.slug);
+    if (!ge || shown.has(ge.slug) || out.some((o) => o.slug === ge.slug)) continue;
+    const ep = afterpartyOf(ge);
+    out.push({ slug: ge.slug, name: ge.name, why: "Brings it up in their own story", episodeId: ep, short: ep ? episodeShort(ep) : undefined });
+  }
+  return out;
+}
+
 export function libraryItemView(e: Entity): LibraryItemView | null {
   if (!isLibraryItem(e)) return null;
   const item = libraryBySlug[e.slug];
@@ -237,7 +296,7 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
   if (writer?.slug && trailers.length === 0) trailers.push(...writerJukebox(writer.slug, writer.name));
   trailers.unshift(...about);
   const quotes = (ITEM_QUOTES[e.slug] ?? []).map((q) => ({ ...q, episodeId: q.episode, short: episodeShort(q.episode), polaroid: guestPolaroid(q.episode) }));
-  return {
+  const view: Omit<LibraryItemView, "alsoOn"> = {
     shelf,
     // Diaries and columns already wear their keeper's or writer's polaroid on their own sections.
     cover: c && shelf !== "diaries" ? { src: c.src, credit: c.credit, mast: c.kind === "mast", light: !!c.light } : null,
@@ -255,6 +314,8 @@ export function libraryItemView(e: Entity): LibraryItemView | null {
           .map((c) => ({ role: c.role, name: c.name, slug: entityFor(c.name)?.slug }))
       : [],
     press: pressView(e, shelf),
+    story: storyView(e),
     find: shelf === "books" ? { isbn: facts?.isbn ?? null, query: [facts?.title ?? e.name.replace(/\s*\(.*\)$/, ""), facts?.author].filter(Boolean).join(" "), inPrint: facts ? facts.inPrint : null } : null,
   };
+  return { ...view, alsoOn: alsoOnSite(e, view) };
 }
