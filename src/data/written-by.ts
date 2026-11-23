@@ -48,5 +48,5 @@ export const WRITTEN_BY: WrittenBy[] = [
   { name: "City Poet", title: "City Poet: The Life and Times of Frank O'Hara", by: "Brad Gooch", role: "Wrote it", year: 1993, publisher: "Knopf", isbn: "9780060976132" },
   { name: "The Golden Age of Promiscuity", title: "The Golden Age of Promiscuity", by: "Brad Gooch", role: "Wrote it", year: 1996, publisher: "Knopf" },
   { name: "Smash Cut", title: "Smash Cut: A Memoir of Howard & Art & the '70s & the '80s", by: "Brad Gooch", role: "Wrote it", year: 2015, publisher: "Harper", inPrint: true, isbn: "9780062354969" },
-  { name: "Radiant (Brad Gooch)", title: "Radiant: The Life and Line of Keith Haring", by: "Brad Gooch", role: "Wrote it", year: 2024, publisher: "Harper", inPrint: true },
+  { name: "Radiant (Brad Gooch)", title: "Radiant: The Life and Line of Keith Haring", by: "Brad Gooch", role: "Wrote it", year: 2024, publisher: "Harper", inPrint: true, isbn: "9780062698285" },
 ];

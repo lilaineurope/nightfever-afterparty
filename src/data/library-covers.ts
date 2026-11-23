@@ -226,6 +226,9 @@ const COVERS: Record<string, Cover> = {
   "Sexual Ecology": { kind: "book", file: "book-sexual-ecology.webp", credit: "Cover via Open Library" },
   "Smash Cut": { kind: "book", file: "book-smash-cut.webp", credit: "Cover via Open Library" },
   "Walking Through Clear Water in a Pool Painted Black": { kind: "book", file: "book-walking-through-clear-water-in-a-pool-painted-black.webp", credit: "Cover via Open Library" },
+  // Open Library has no real cover for these two (checked every edition, 23 Nov 2026): Lisa chose Google Books for the gaps.
+  "Radiant (Brad Gooch)": { kind: "book", file: "book-radiant-brad-gooch.webp", credit: "Cover via Google Books (Harper, 2024)" },
+  "The Golden Age of Promiscuity": { kind: "book", file: "book-golden-age-of-promiscuity.webp", credit: "Cover via Google Books (Masquerade Books paperback)" },
 };
 
 export const coverFor = (name: string): (Cover & { src: string }) | undefined => {
