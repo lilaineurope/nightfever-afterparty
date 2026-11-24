@@ -9,6 +9,8 @@ import { type CollectionItem } from "@/data/collections";
 import { DEFAULT_CATEGORY, LIBRARY_CATEGORIES, categoryOf } from "@/data/library-categories";
 import { coverFor } from "@/data/library-covers";
 import { CoverCard } from "@/components/library-cover";
+import { FashionNote } from "@/components/fashion-cover";
+import { isFashionItem } from "@/data/library-fashion";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 // The Library (Lisa, 29 Oct 2026 - was the Book Club at /book-club, which now redirects here): every book, magazine,
@@ -270,6 +272,8 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
       {art.designers.length > 0 && <>Cover by {art.designers.join(" and ")} · </>}
       {art.credit}
     </>
+  ) : isFashionItem(item) ? (
+    <FashionNote item={item} />
   ) : (
     cover?.credit
   );
@@ -281,7 +285,15 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
       moments={item.moments}
       link={item.link || undefined}
       note={note}
-      summary={item.by ? <>Not dropped in an episode yet · by {item.by.name}</> : undefined}
+      summary={
+        item.by ? (
+          <>Not dropped in an episode yet · by {item.by.name}</>
+        ) : isFashionItem(item) && item.shelf === "on-camera" ? (
+          <>
+            On camera · <FashionNote item={item} />
+          </>
+        ) : undefined
+      }
       onClose={onClose}
     />
   );

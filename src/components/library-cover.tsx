@@ -1,6 +1,8 @@
 import type { CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
 import { polaroidThumb } from "@/lib/polaroids";
+import { FashionCover } from "@/components/fashion-cover";
+import { isFashionItem } from "@/data/library-fashion";
 import headPaper from "@/assets/library/col-head-paper.webp";
 import headOutweek from "@/assets/library/col-head-outweek.webp";
 import headSoho from "@/assets/library/col-head-soho-news.webp";
@@ -54,6 +56,8 @@ export function CoverCard({ item, tint }: { item: CollectionItem; tint: number }
       )}
     </span>
   );
+  // Fashion & outfits (Lisa, 24 Nov 2026): swatch cards for looks, typed covers or polaroids for designers, carrier bags for shops.
+  if (isFashionItem(item)) return <FashionCover item={item} />;
   // Cover art & posters (Lisa, 24 Nov 2026): the whole piece shows, never cropped - a square sleeve, a tall poster or a
   // wide ticket sits on black with a tag saying what it is, the designer under the name when the credits name them.
   if (item.art)

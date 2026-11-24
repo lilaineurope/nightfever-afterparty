@@ -6,6 +6,7 @@
 // chosen category's shelf chips and its EVERYTHING count, and keeps the choice in the address (/library?cat=<key>).
 import { BOOK_SHELVES, bookClub, type CollectionItem, type Shelf } from "./collections";
 import { ART_SHELVES, coverArt } from "./cover-art";
+import { FASHION_SHELVES, fashionShelf } from "./library-fashion";
 
 export type LibraryCategory = {
   key: string;
@@ -31,6 +32,14 @@ export const LIBRARY_CATEGORIES: LibraryCategory[] = [
       "The sleeves, posters, title cards and club flyers of everything the guests drop - each credited. Tap one for every moment.",
     shelves: ART_SHELVES,
     items: coverArt,
+  },
+  {
+    key: "fashion",
+    label: "Fashion & outfits",
+    blurb:
+      "Every look on camera, every outfit in the stories, and the designers and shops behind them - each in its own colours. Tap one for every moment.",
+    shelves: FASHION_SHELVES,
+    items: fashionShelf,
   },
 ];
 
