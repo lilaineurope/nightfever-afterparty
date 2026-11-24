@@ -17,6 +17,8 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
   "Glitter and Concrete": { kind: "book", file: "book-glitter-and-concrete.webp", credit: "Cover via Open Library (Hanover Square Press, 2023)" },
+  // S05E02 Jodie Harsh: Open Library has the book (Faber, 2025) but no cover picture yet (checked 24 Nov 2026)
+  "You Had to Be There (Jodie Harsh)": { kind: "book", file: "book-you-had-to-be-there.webp", credit: "Cover via the Amazon listing (Faber & Faber, 2025)" },
   "Just One of the Boys": { kind: "book", file: "book-just-one-of-the-boys.webp", credit: "Cover via Open Library (University of Illinois Press, 2018)" },
   "The Changing Room": { kind: "book", file: "book-the-changing-room.webp", credit: "Cover via Open Library (Routledge, 2000)" },
   "Camp: The Story of the Attitude That Conquered the World": { kind: "book", file: "book-camp-paul-baker.webp", credit: "Cover via Open Library (Footnote Press, 2023)" },
