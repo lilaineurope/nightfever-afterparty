@@ -10,7 +10,9 @@ export type PersonProfile = {
   first?: string;
   /** One or two sentences, also the page description. */
   story: string;
-  timeline: [string, string][];
+  /** [year, line] - or [year, line, url] when Lisa asks for that line to open where it can be watched (Cornelia Guest's
+   *  Nikki Haskell Show episode on Prime Video, Lisa 24 Nov 2026). Not a "Read more": the line itself is the link. */
+  timeline: ([string, string] | [string, string, string])[];
   liftedUp: string[]; // people they gave a start
   rooms: string[]; // magazines, clubs, nights, places
   said: MemoriamQuote[];
@@ -1070,6 +1072,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     timeline: [
       ["1963", "Born in New York, daughter of C. Z. Guest"],
       ["1982", "Named debutante of the decade"],
+      ["1982", "On The Nikki Haskell Show at The Best Awards", "https://www.primevideo.com/detail/0RE6DLTJWRWA8WGE6RVXT77UB3"],
       ["80s", "Out with Andy Warhol all over town; runs through Area"],
       ["80s", "Interns on The Nikki Haskell Show"],
       ["1987", "In the front pew at Warhol's memorial"],
