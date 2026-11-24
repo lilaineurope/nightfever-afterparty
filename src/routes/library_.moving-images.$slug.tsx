@@ -18,9 +18,6 @@ import "@fontsource/covered-by-your-grace/400.css";
 
 export const Route = createFileRoute("/library_/moving-images/$slug")({
   staticData: { sitemap: false },
-  // MOCK (layout options for Lisa, 24 Nov 2026) - remove once she picks one.
-  validateSearch: (s: Record<string, unknown>): { layout?: string } =>
-    typeof s["layout"] === "string" ? { layout: s["layout"] } : {},
   loader: async ({ params }) => {
     const v = await getScreenPage({ data: params.slug });
     if (!v) throw notFound();
@@ -285,23 +282,6 @@ function Nobody() {
   );
 }
 
-/** Who was involved, all in one box (Lisa: "info box who was involved, find as many cast and team and support information as possible"). */
-function Involved({ v, className = "" }: { v: ScreenPageView; className?: string }) {
-  return (
-    <section className={`art-box scr-box ${className}`} aria-labelledby="scr-involved">
-      <h2 id="scr-involved" className={h}>
-        Who was involved
-      </h2>
-      {nobody(v) && <Nobody />}
-      <Team v={v} />
-      <CastPart v={v} />
-      <Support v={v} />
-      <Awards v={v} />
-      <SourceNote v={v} />
-    </section>
-  );
-}
-
 function Said({ v, className = "" }: { v: ScreenPageView; className?: string }) {
   if (v.quotes.length === 0) return null;
   return (
@@ -387,7 +367,6 @@ function More({ v }: { v: ScreenPageView }) {
 
 function ScreenPage() {
   const v = Route.useLoaderData() as ScreenPageView;
-  const { layout = "b" } = Route.useSearch();
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-6 sm:px-6">
@@ -402,77 +381,34 @@ function ScreenPage() {
           · <span>{v.group}</span>
         </nav>
 
-        {layout === "a" ? (
-          // A - Big screen on top: the title beside its facts, the Jukebox the full width, then the credits in three columns.
-          <div className="scr-a">
-            <Head v={v} wide />
+        {/* Front page rows (Lisa picked C, 24 Nov 2026: "too much white space around the boxes"): the title across the top,
+            the Jukebox and the team box level beside it, the cast across, then the guests' words and the moments. */}
+        <div className="scr-c">
+          <Head v={v} wide />
+          <div className="scr-c-row">
             <BigJukebox v={v} />
-            <section className="art-box scr-box scr-a-credits" aria-labelledby="scr-involved">
+            <section className="art-box scr-box" aria-labelledby="scr-involved">
               <h2 id="scr-involved" className={h}>
                 Who was involved
               </h2>
               {nobody(v) && <Nobody />}
-              <div className="scr-a-cols">
-                <div>
-                  <Team v={v} />
-                  <Support v={v} />
-                  <Awards v={v} />
-                </div>
-                {v.cast.length > 0 && (
-                  <div className="scr-a-cast">
-                    <CastPart v={v} />
-                  </div>
-                )}
-              </div>
+              <Team v={v} />
+              <Support v={v} />
+              <Awards v={v} />
+              {v.cast.length === 0 && <SourceNote v={v} />}
+            </section>
+          </div>
+          {v.cast.length > 0 && (
+            <section className="art-box scr-box scr-c-cast">
+              <CastPart v={v} />
               <SourceNote v={v} />
             </section>
-            <div className="scr-pair">
-              <Said v={v} />
-              <CameUp v={v} one={v.quotes.length > 0} />
-            </div>
+          )}
+          <div className="scr-pair">
+            <Said v={v} />
+            <CameUp v={v} one={v.quotes.length > 0} />
           </div>
-        ) : layout === "c" ? (
-          // C - Front page: the title across the top, then rows of boxes the same height - screen | team, cast across, support | awards.
-          <div className="scr-c">
-            <Head v={v} wide />
-            <div className="scr-c-row">
-              <BigJukebox v={v} />
-              <section className="art-box scr-box" aria-labelledby="scr-involved">
-                <h2 id="scr-involved" className={h}>
-                  Who was involved
-                </h2>
-                {nobody(v) && <Nobody />}
-                <Team v={v} />
-                <Support v={v} />
-                <Awards v={v} />
-              </section>
-            </div>
-            {v.cast.length > 0 && (
-              <section className="art-box scr-box scr-c-cast">
-                <CastPart v={v} />
-                <SourceNote v={v} />
-              </section>
-            )}
-            <div className="scr-pair">
-              <Said v={v} />
-              <CameUp v={v} one={v.quotes.length > 0} />
-            </div>
-          </div>
-        ) : (
-          // B - Two full columns: the screen, the guests' words and the moments on the left; the title and who was involved on
-          // the right. Both columns keep going, so nothing is left empty beside the other.
-          <div className="scr-b">
-            <div className="scr-b-l">
-              <BigJukebox v={v} />
-              <Said v={v} />
-              <CameUp v={v} one />
-            </div>
-            <div className="scr-b-r">
-              <Head v={v} />
-              <Involved v={v} />
-            </div>
-          </div>
-        )}
+        </div>
 
         <More v={v} />
       </div>
