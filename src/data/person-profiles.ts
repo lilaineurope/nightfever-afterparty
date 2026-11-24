@@ -1140,4 +1140,20 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s02e01", who: "Michelle Visage", time: "00:33:56", quote: "My own ego got in the way. And when I pulled back and realized this was not my story." },
     ],
   },
+  // Lisa, 24 Nov 2026 (decision card): a short page is fine, only Joey Arias talks about her. Joey's bathroom story stays out.
+  "sherry-vine": {
+    story:
+      "Drag star of the downtown stage. Joey Arias brought her into the Bar d'O line-up with Raven O, and took her on the road, where she went out every night while he stayed in learning his songs.",
+    timeline: [
+      ["90s", "Joins Joey Arias and Raven O on the Bar d'O stage, after Edwige"],
+      ["90s", "Plays Boy Bar"],
+      ["Later", "On the road with Joey Arias in Amsterdam"],
+    ],
+    liftedUp: [],
+    rooms: ["Bar d'O", "Boy Bar"],
+    said: [
+      { episode: "s01e10", who: "Joey Arias", time: "00:49:45", quote: "The original was like Edwige, Raven, and myself. After two months, Edwige had to go, and I got Sherry." },
+      { episode: "s01e10", who: "Joey Arias", time: "01:03:46", quote: "We were in Amsterdam, and she would go out. I just waited, there memorizing the songs and crying. She goes, why didn't you come out?" },
+    ],
+  },
 };
