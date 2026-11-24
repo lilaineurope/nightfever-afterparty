@@ -5,6 +5,7 @@ import { LegalNote } from "@/components/legal-links";
 import { TipBox } from "@/components/tip-box";
 import { ListenBox } from "@/components/listen-box";
 import { NewsletterBox } from "@/components/newsletter-box";
+import { PageSuggestionBox } from "@/components/page-suggestion-box";
 import { TEXT_LINK } from "@/lib/styles";
 
 const LINK =
@@ -14,9 +15,12 @@ const LINK =
 // Wonder links, Meet the guests, About, Contact, Under the hood, Guestbook (no "Tip the fan page" link - Lisa, 23 Oct),
 // the fan-page disclaimer and the legal note - and the Tipeee tip box on the right (below the text on phones); no extra text next to the box.
 // The other page links live only in the top menu.
+// On top, across the whole width: "Got a suggestion for this page?" (Lisa, 24 Nov 2026 - every page, from now on), which
+// records the exact page it was sent from (src/components/page-suggestion-box.tsx). Every page must render <SiteFooter />.
 export function SiteFooter() {
   return (
     <footer className="border-t border-border px-6 py-14">
+      <PageSuggestionBox className="mx-auto mb-14 max-w-6xl" />
       <div className="mx-auto grid max-w-6xl items-start gap-12 md:grid-cols-[1fr_auto]">
         <div className="space-y-4 text-left">
           <ListenBox className="mb-10 max-w-[560px]" />

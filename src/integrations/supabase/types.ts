@@ -185,6 +185,42 @@ export type Database = {
         }
         Relationships: []
       }
+      page_suggestions: {
+        Row: {
+          created_at: string
+          done_at: string | null
+          email: string | null
+          from_name: string | null
+          id: string
+          message: string
+          page_path: string
+          page_title: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          done_at?: string | null
+          email?: string | null
+          from_name?: string | null
+          id?: string
+          message: string
+          page_path: string
+          page_title?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          done_at?: string | null
+          email?: string | null
+          from_name?: string | null
+          id?: string
+          message?: string
+          page_path?: string
+          page_title?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -7,7 +7,7 @@ export const HAS_LINK = /(https?:\/\/|www\.|\.(com|net|org|ru|xyz|top|info|biz)\
 export const looksLikeBot = (website: string | undefined, elapsedMs: number, minMs: number) => !!website || elapsedMs < minMs;
 
 /** More than 25 pending entries in the last 10 minutes = someone is flooding the form. Server-side only. */
-export async function tooBusy(table: "guestbook_entries" | "interview_suggestions" | "fan_suggestions") {
+export async function tooBusy(table: "guestbook_entries" | "interview_suggestions" | "fan_suggestions" | "page_suggestions") {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const since = new Date(Date.now() - 10 * 60 * 1000).toISOString();
   const { count } = await supabaseAdmin

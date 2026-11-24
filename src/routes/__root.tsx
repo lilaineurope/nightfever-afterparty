@@ -13,13 +13,14 @@ import { useEffect, type ReactNode } from "react";
 import { SiteMenu } from "../components/site-menu";
 import { SiteStats } from "../components/site-stats";
 import { EpisodePlayer } from "../components/episode-player";
+import { PageSuggestionBox } from "../components/page-suggestion-box";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isStaleBuildError, reloadForNewBuild, watchForNewBuild } from "../lib/stale-build";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-16">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">This page left the party</h2>
@@ -34,6 +35,8 @@ function NotFoundComponent() {
             Go home
           </Link>
         </div>
+        {/* The 404 has no footer, so it gets the page suggestion box here: "what were you looking for?" comes with the broken address. */}
+        <PageSuggestionBox notFound className="mt-12 text-left" />
       </div>
     </div>
   );
