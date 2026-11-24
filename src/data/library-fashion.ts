@@ -15,7 +15,7 @@
 import type { CollectionItem, Shelf } from "./collections";
 import { afterpartyOf, entities, entityBySlug, entityFor, type Entity, type Ref } from "./entities";
 import { episodeById } from "./episodes";
-import { DESIGNERS, slotOf } from "./fashion-words";
+import { DESIGNERS, slotOf, type Slot } from "./fashion-words";
 
 export const FASHION_SHELVES: Shelf[] = [
   { key: "on-camera", label: "On camera" },
@@ -38,6 +38,8 @@ export type FashionLook = {
   code: string;
   /** The Wardrobe rails it dresses (head, top, bottom, feet, extra), from the garment words in it. */
   rails: string[];
+  /** The look dressed on the mannequin: per rail, the first garment named and its colour. */
+  outfit: Partial<Record<Slot, { label: string; hex: string; full?: boolean | undefined }>>;
   /** Designers and labels its story names (slugs on Designers & labels). */
   designers: { slug: string; name: string }[];
 };
@@ -232,6 +234,42 @@ function railsOf(e: Entity): string[] {
   return [...out];
 }
 
+/** The look on the mannequin. Colours named after a piece come first ("patent heel #0B0B0B" dresses the feet), then the
+ *  garments in its words, coloured by a colour word they share with the palette, or the palette in order. */
+function outfitOf(e: Entity, palette: string[]): FashionLook["outfit"] {
+  const out: FashionLook["outfit"] = {};
+  const named: { name: string; hex: string }[] = [];
+  for (const r of e.refs as (Ref & { colours?: string[] })[])
+    for (const c of r.colours ?? []) {
+      const m = /^(.*?)\s*(#[0-9a-fA-F]{6})$/.exec(c);
+      if (m && !ROOM.test(m[1]!)) named.push({ name: m[1]!, hex: m[2]! });
+    }
+  for (const c of named) {
+    const s = slotOf(c.name);
+    if (s && !out[s.slot]) out[s.slot] = { label: c.name, hex: c.hex, full: s.full };
+  }
+  let next = 0;
+  const r = e.refs[0]!;
+  const words = [r.fashion ?? "", r.heard, r.name]
+    .filter((t) => t && !/^(Worn or shown in the episode|—)$/i.test(t))
+    .flatMap((t) => t.split(/\s*(?:,|;|\/| and | with | over | under )\s*/));
+  for (const w of words) {
+    const s = slotOf(w);
+    if (!s || out[s.slot] || ROOM.test(w)) continue;
+    const shared = named.find((c) => c.name.split(/\s+/).some((x) => x.length > 3 && new RegExp(`\\b${x.replace(/[^\w-]/g, "")}\\b`, "i").test(w)));
+    const hex = shared?.hex ?? palette[next++ % Math.max(palette.length, 1)] ?? "#111111";
+    out[s.slot] = { label: w.trim(), hex, full: s.full };
+  }
+  // A dress covers the bottom rail.
+  if (out.top?.full) delete out.bottom;
+  // Nothing garment-shaped named ("Kelly green club kid"): dress the form in the look's colours, top and trousers.
+  if (!Object.keys(out).length && palette.length) {
+    out.top = { label: "look", hex: palette[0]! };
+    out.bottom = { label: "trousers", hex: palette[1] ?? palette[0]! };
+  }
+  return out;
+}
+
 const LOOK_WORDS = /\b(looks?|outfits?|costumes?|dress(ed|es)?|drag|gowns?|wear|wore|worn|clothes|headpiece|uniform|hair|make-?up|wigs?|couture|chic|glam(our)?)\b/i;
 const isWorn = (e: Entity) =>
   WORN.has(e.name) || (!NOT_WORN.has(e.name) && (railsOf(e).length > 0 || LOOK_WORDS.test(`${e.name} ${e.refs.map((r) => r.fashion ?? "").join(" ")}`)));
@@ -266,8 +304,10 @@ function lookItem(e: Entity, shelf: "on-camera" | "looks" | "rooms"): FashionIte
     episode: r.episode!,
     code: codeOf(r.episode!),
     rails: railsOf(e),
+    outfit: {},
     designers: [],
   };
+  look.outfit = outfitOf(e, look.palette);
   // The designers a look's story names - not the wearer themselves (Patricia's own look isn't "by Patricia Field").
   look.designers = designersIn(`${e.name} ${r.heard} ${r.context} ${r.fashion ?? ""}`).filter((d) => d.slug !== look.who?.slug);
   return { ...baseOf(e, shelf), fashion: { kind: "look", tag: shelf === "on-camera" ? "On camera" : shelf === "rooms" ? "Mood" : "Look", note: worn, look } };

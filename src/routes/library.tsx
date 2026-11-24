@@ -291,6 +291,11 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
           <Link to="/library/art/$slug" params={{ slug: art.page }} className="font-semibold text-pink hover:text-foreground">
             The {art.piece.toLowerCase().startsWith("sleeve") || art.piece.length > 20 ? "artwork" : art.piece.toLowerCase()}&rsquo;s own page &rarr;
           </Link>
+        ) : isFashionItem(item) && item.fashion.look && item.shelf !== "rooms" ? (
+          // A look's own page (Lisa, 24 Nov 2026): the mannequin, what was worn, whose look, the moment.
+          <Link to="/library/look/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
+            The look&rsquo;s own page &rarr;
+          </Link>
         ) : undefined
       }
       summary={

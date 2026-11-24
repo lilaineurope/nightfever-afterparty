@@ -1,4 +1,5 @@
 // The [.] in this file name is TanStack Router's escape for a literal dot, so the route is served at /sitemap.xml.
+import { FASHION_LOOKS } from "@/data/library-fashion";
 import { createFileRoute } from "@tanstack/react-router";
 import { getRouterInstance } from "@tanstack/react-start";
 import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap";
@@ -52,6 +53,8 @@ export const Route = createFileRoute("/sitemap.xml")({
         for (const issue of ISSUES) entries.push({ path: `/issues/${issue.slug}` });
         // Cover art & posters pages (/library/art/$slug, Lisa 24 Nov 2026): one per piece on the Library shelf.
         for (const page of Object.keys(artByPage)) entries.push({ path: `/library/art/${page}` });
+        // Look pages (/library/look/$slug, Lisa 24 Nov 2026): one per look and outfit on the Fashion & outfits shelf.
+        for (const look of FASHION_LOOKS) entries.push({ path: `/library/look/${look.slug}` });
         // Dynamic overview cards (/explore/$slug) are included via the route's
         // staticData.sitemap decision; all slugs come from the router inventory.
         if (entries.length === 0) {

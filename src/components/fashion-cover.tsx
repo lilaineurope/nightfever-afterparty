@@ -2,10 +2,11 @@ import { Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import { cardTo } from "@/lib/card-link";
 import { polaroidThumb } from "@/lib/polaroids";
+import { Mannequin } from "@/components/mannequin";
 import type { FashionItem } from "@/data/library-fashion";
 
 // Covers for the Library's Fashion & outfits category (Lisa, 24 Nov 2026), used by CoverCard (library-cover.tsx):
-// - a look is a fabric swatch card: its own colours (sampled from the story or the screenshots) as cloth strips with
+// - a look is the Wardrobe mannequin dressed in it, on a fabric swatch card: its own colours (sampled from the story or the screenshots) as cloth strips with
 //   pinked edges, a tag (On camera / Look), its name, whose look and the episode;
 // - a designer or label is a typed black cover, or the guest's polaroid when they have an AFTERPARTY;
 // - a shop is a pink carrier bag with a paper handle;
@@ -31,12 +32,15 @@ export function FashionCover({ item }: { item: FashionItem }) {
   if (f.look) {
     const l = f.look;
     const cloth = l.palette.length ? l.palette : ["#111111"];
+    const dressed = f.tag !== "Mood" && Object.keys(l.outfit).length > 0;
     return (
       <span className={`lib-cv fsh-look${f.tag === "On camera" ? " fsh-cam" : f.tag === "Mood" ? " fsh-mood" : ""}`}>
-        <span className="fsh-cloth" aria-hidden="true">
+        {/* A look you can wear stands on the mannequin (Lisa, 24 Nov 2026); a room or a moment stays a swatch. */}
+        <span className={`fsh-cloth${dressed ? " fsh-dressed" : ""}`} aria-hidden="true">
           {cloth.map((hex, i) => (
             <span key={i} style={{ "--c": hex } as CSSProperties} />
           ))}
+          {dressed && <Mannequin outfit={l.outfit} className="fsh-mq" />}
         </span>
         <span className="fsh-tag">{f.tag}</span>
         <span className="fsh-label">
