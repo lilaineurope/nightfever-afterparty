@@ -133,6 +133,18 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s04e02",
     time: "01:04:43",
   },
+  {
+    name: "Tasty Tim",
+    why: "James says he loves Tasty Tim to the end of time - part of the old Boy George and Marilyn crowd - and Jodie says the show should get Tasty Tim on; James asks Jodie to help track Tasty Tim down.",
+    episodeId: "s05e02",
+    time: "00:36:45",
+  },
+  {
+    name: "DJ Fat Tony",
+    why: "James closes the show: he will come to Jodie for Tasty Tim's and Fat Tony's contact details.",
+    episodeId: "s05e02",
+    time: "00:55:52",
+  },
 ];
 
 /** Guests the hosts want back for a part two */

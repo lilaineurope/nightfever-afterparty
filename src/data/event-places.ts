@@ -390,6 +390,8 @@ export const EVENT_PLACES: EventPlace[] = [
     area: "Rome, New York",
     tip: "The rave hangar",
   },
+  // S05E02 Jodie Harsh
+  { event: "Jodie's 21st birthday at Too 2 Much", at: "Too 2 Much (Raymond Revuebar)", tip: "It turned into her weekly night" },
   // S04E11 Elyssa Maxx Goodman (Lisa, 23 Nov 2026: Bring us home rule, applied to every new episode)
   { event: "Hamilton Lodge Ball", at: "Harlem", tip: "At the Rockland Palace" },
   { event: "1939 New York World's Fair", at: "Queens", tip: "Flushing Meadows" },
@@ -508,4 +510,8 @@ export const NO_SINGLE_PLACE = new Set([
   "Pearl Box Revue",
   // S06E09
   "Club kid apartments",
+  // S05E02
+  "Jodie's sobriety",
+  "Section 28",
+  "Eight-way auction for You Had to Be There",
 ]);

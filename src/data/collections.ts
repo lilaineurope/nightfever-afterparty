@@ -439,6 +439,11 @@ const SPOTIFY: Record<string, string> = {
   "Fatboy Slim": "spotify:artist:4Y7tXHSEejGu1vQ9bwDdXW",
   "Leftfield": "spotify:artist:72hqBMsw7x5jnfxxwkii8L",
   "Psychotica": "spotify:artist:4jP56EOsScC5xTDWL5gkkh",
+  // S05E02 Jodie Harsh (bands as their best-known song)
+  "Shannon – 'Let the Music Play'": "spotify:track:6b9hm8mvZ2KH7Fl7LLA5ct",
+  "Steps": "spotify:track:3Yqk2pdNJUtI7VOtweASV8",
+  "S Club 7": "spotify:track:6MnWfOgKRkQtY1pRgoTwB1",
+  "Scissor Sisters": "spotify:track:1q9l6c8bAzqWcvO3DM6FsR",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

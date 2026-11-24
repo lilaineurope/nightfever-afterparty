@@ -380,6 +380,11 @@ export const YOUTUBE: Record<string, string> = {
   "Fatboy Slim": "FMrIy9zm7QY",
   "Leftfield": "hZj9bi7YNmI",
   "Psychotica": "amQDDq7dUVA",
+  // S05E02 Jodie Harsh
+  "Shannon – 'Let the Music Play'": "_-0sUuGufmw",
+  "Steps": "OiwDHHcHPh0",
+  "S Club 7": "50kP4S0peAs",
+  "Scissor Sisters": "4H5I6y1Qvz0",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

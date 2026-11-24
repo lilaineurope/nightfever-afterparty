@@ -108,6 +108,27 @@ const HAND: Record<string, ItemStory> = {
     ],
     sources: ["The film's own credits and chapters", "S05E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
   },
+  // S05E02 Jodie Harsh (24 Nov 2026): her memoir. (Her single My House has no card - not said on the show - so only its sleeve.)
+  "you-had-to-be-there": {
+    intro:
+      "Jodie Harsh's memoir of a decade in 2000s London nightlife, one club to a chapter, from sneaking into G-A-Y at 15 to running her own nights.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "25 September 2025" },
+      { label: "Written by", value: "Jodie Harsh" },
+      { label: "Published by", value: "Faber & Faber" },
+      { label: "On the cover", value: "An odyssey through noughties London... one night at a time" },
+      { label: "ISBN", value: "9780571392414" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "Jodie gives the date it comes out: 25 September.", source: "S05E02", episode: "s05e02", time: "00:02:24" },
+      { when: "On the show", what: "Each chapter is a club she was going to, roughly a year each.", source: "S05E02", episode: "s05e02", time: "00:22:06" },
+      { when: "On the show", what: "A literary agent wrote to her out of the blue; Jodie wrote a first chapter herself.", source: "S05E02", episode: "s05e02", time: "00:51:32" },
+      { when: "On the show", what: "The proposal went to an eight-way auction between publishers.", source: "S05E02", episode: "s05e02", time: "00:53:04" },
+    ],
+    sources: ["The book's own cover and listing", "S05E02 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
 };
 
 /** One clip for a story that has no film of its own, shown as "Watch the clip" (Lisa, 24 Nov 2026: Blondie with Tish & Snooky -
