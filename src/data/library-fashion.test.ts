@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { FASHION_DESIGNERS, FASHION_LOOKS, FASHION_SHELVES, FASHION_SHOPS, fashionShelf } from "./library-fashion";
+import { FASHION_DESIGNERS, FASHION_LOOKS, FASHION_MOODS, FASHION_SHELVES, FASHION_SHOPS, fashionShelf } from "./library-fashion";
 import { entityBySlug } from "./entities";
 
 test("Fashion & outfits: every item is a real A–Z card on a known shelf, once per shelf", () => {
@@ -27,4 +27,11 @@ test("Fashion & outfits: looks carry their colours and episode, designers and sh
   for (const d of FASHION_DESIGNERS) assert.ok(!shops.has(d.slug), `${d.name} is on both Designers and Shops`);
   // Every on-camera look of the hosts is on the shelf.
   assert.ok(FASHION_LOOKS.filter((l) => l.shelf === "on-camera" && /^(James|Fenton|Randy)'s on-camera look/.test(l.name)).length >= 100);
+});
+
+test("Fashion & outfits: every mood in the episodes is on the shelf exactly once", () => {
+  const moods = Object.values(entityBySlug).filter((e) => e?.category === "Mood");
+  const onShelf = [...FASHION_LOOKS, ...FASHION_MOODS].map((i) => i.slug);
+  assert.equal(new Set(onShelf).size, onShelf.length);
+  assert.equal(onShelf.length, moods.length);
 });

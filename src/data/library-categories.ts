@@ -37,7 +37,7 @@ export const LIBRARY_CATEGORIES: LibraryCategory[] = [
     key: "fashion",
     label: "Fashion & outfits",
     blurb:
-      "Every look on camera, every outfit in the stories, and the designers and shops behind them - each in its own colours. Tap one for every moment.",
+      "Every look on camera, every outfit in the stories, the designers and shops behind them, and the rooms and moments of the episodes' mood boards - each in its own colours. Tap one for every moment.",
     shelves: FASHION_SHELVES,
     items: fashionShelf,
   },

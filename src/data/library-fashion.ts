@@ -22,6 +22,8 @@ export const FASHION_SHELVES: Shelf[] = [
   { key: "looks", label: "Looks & outfits" },
   { key: "designers", label: "Designers & labels" },
   { key: "shops", label: "Shops & boutiques" },
+  // Lisa, 24 Nov 2026 ("what about moods?"): the moods that aren't worn - rooms, décor, moments - so every mood is here once.
+  { key: "rooms", label: "Rooms, décor & moments" },
 ];
 
 export type FashionLook = {
@@ -253,7 +255,7 @@ const guestWho = (id: string): FashionLook["who"] => {
   return { name, slug: entityFor(name)?.slug };
 };
 
-function lookItem(e: Entity, shelf: "on-camera" | "looks"): FashionItem {
+function lookItem(e: Entity, shelf: "on-camera" | "looks" | "rooms"): FashionItem {
   const r = e.refs[0] as Ref & { colours?: string[] };
   const worn = (r.fashion && !/^Worn or shown in the episode$/i.test(r.fashion) ? r.fashion : r.heard && r.heard !== "—" ? r.heard : e.name).trim();
   const look: FashionLook = {
@@ -268,7 +270,7 @@ function lookItem(e: Entity, shelf: "on-camera" | "looks"): FashionItem {
   };
   // The designers a look's story names - not the wearer themselves (Patricia's own look isn't "by Patricia Field").
   look.designers = designersIn(`${e.name} ${r.heard} ${r.context} ${r.fashion ?? ""}`).filter((d) => d.slug !== look.who?.slug);
-  return { ...baseOf(e, shelf), fashion: { kind: "look", tag: shelf === "on-camera" ? "On camera" : "Look", note: worn, look } };
+  return { ...baseOf(e, shelf), fashion: { kind: "look", tag: shelf === "on-camera" ? "On camera" : shelf === "rooms" ? "Mood" : "Look", note: worn, look } };
 }
 
 const byMentions = (a: CollectionItem, b: CollectionItem) => b.mentions - a.mentions || a.name.localeCompare(b.name);
@@ -311,4 +313,7 @@ export const FASHION_SHOPS: FashionItem[] = (() => {
 })();
 
 /** The Fashion & outfits shelf of the Library, shelf by shelf. */
-export const fashionShelf: FashionItem[] = [...FASHION_LOOKS, ...FASHION_DESIGNERS, ...FASHION_SHOPS];
+/** The moods that aren't worn: rooms, décor, objects and moments (Club USA's giant slide, Dalí's pool of dead lobsters). */
+export const FASHION_MOODS: FashionItem[] = moods.filter((e) => !e.refs.some((r) => r.time === "On camera") && !isWorn(e)).map((e) => lookItem(e, "rooms")).sort(byMentions);
+
+export const fashionShelf: FashionItem[] = [...FASHION_LOOKS, ...FASHION_DESIGNERS, ...FASHION_SHOPS, ...FASHION_MOODS];

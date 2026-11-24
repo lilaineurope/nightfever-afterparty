@@ -8,7 +8,8 @@ import type { FashionItem } from "@/data/library-fashion";
 // - a look is a fabric swatch card: its own colours (sampled from the story or the screenshots) as cloth strips with
 //   pinked edges, a tag (On camera / Look), its name, whose look and the episode;
 // - a designer or label is a typed black cover, or the guest's polaroid when they have an AFTERPARTY;
-// - a shop is a pink carrier bag with a paper handle.
+// - a shop is a pink carrier bag with a paper handle;
+// - a mood that isn't worn (a room, décor, a moment) is a swatch card too, with a black Mood tag.
 // No outside pictures: nothing to license or credit.
 
 /** Big type for short names; smaller when a long word would otherwise break mid-word ("Trash and Vaudeville"). */
@@ -31,7 +32,7 @@ export function FashionCover({ item }: { item: FashionItem }) {
     const l = f.look;
     const cloth = l.palette.length ? l.palette : ["#111111"];
     return (
-      <span className={`lib-cv fsh-look${f.tag === "On camera" ? " fsh-cam" : ""}`}>
+      <span className={`lib-cv fsh-look${f.tag === "On camera" ? " fsh-cam" : f.tag === "Mood" ? " fsh-mood" : ""}`}>
         <span className="fsh-cloth" aria-hidden="true">
           {cloth.map((hex, i) => (
             <span key={i} style={{ "--c": hex } as CSSProperties} />
