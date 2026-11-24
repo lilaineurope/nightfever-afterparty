@@ -9,6 +9,7 @@ import { type CollectionItem } from "@/data/collections";
 import { DEFAULT_CATEGORY, LIBRARY_CATEGORIES, categoryOf } from "@/data/library-categories";
 import { coverFor } from "@/data/library-covers";
 import { CoverCard } from "@/components/library-cover";
+import { isScreenItem } from "@/data/moving-images";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 // The Library (Lisa, 29 Oct 2026 - was the Book Club at /book-club, which now redirects here): every book, magazine,
@@ -286,6 +287,11 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
           // Its own page (Lisa, 24 Nov 2026): the artwork big, who made it, everyone credited, the guests' words, its video.
           <Link to="/library/art/$slug" params={{ slug: art.page }} className="font-semibold text-pink hover:text-foreground">
             The {art.piece.toLowerCase().startsWith("sleeve") || art.piece.length > 20 ? "artwork" : art.piece.toLowerCase()}&rsquo;s own page &rarr;
+          </Link>
+        ) : isScreenItem(item) ? (
+          // Its own page (Lisa, 24 Nov 2026): the Jukebox video big, everyone who was involved, the guests' words.
+          <Link to="/library/moving-images/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
+            The {item.shelf === "tv-shows" ? "show" : item.shelf === "music-videos" ? "video" : "film"}&rsquo;s own page &rarr;
           </Link>
         ) : undefined
       }
