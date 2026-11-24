@@ -617,6 +617,33 @@ export function Story({ st, name: self }: { st: StoryView | null; name: string }
           </div>
         </section>
       )}
+      {film && st.chapters.length === 0 && (
+        <section aria-labelledby="watch-the-clip">
+          <h2 id="watch-the-clip" className={h}>Watch the clip</h2>
+          <div className="lit-jbx lit-story-film mt-6">
+            <div className="lit-jbx-l">
+              <p className="lit-jbx-kicker">The Night Fever</p>
+              <p className="lit-jbx-title">Cl<b>ip</b></p>
+              <div className="lit-jbx-screen">
+                {at !== null ? (
+                  <VideoScreen key={at} vid={film.id} title={film.title} start={at} onEnd={() => setAt(null)} onFail={() => setAt(null)} />
+                ) : (
+                  <button type="button" className="lit-jbx-press" onClick={() => setAt(0)} aria-label={`Play the clip: ${film.title}`}>
+                    <span className="lit-jbx-k">The clip</span>
+                    <span className="lit-jbx-play" aria-hidden>▶</span>
+                    <span className="lit-jbx-nm">{film.title}</span>
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="lit-jbx-r">
+              {film.note && <p className="lit-story-clip-note"><EntityText text={film.note} self={self} /></p>}
+              <p className="lit-jbx-fine">Plays from {film.channel} on YouTube, loaded only when you press ▶ - same as the Jukebox.</p>
+            </div>
+            <div className="lit-jbx-grille" aria-hidden />
+          </div>
+        </section>
+      )}
       {(st.since.length > 0 || st.reviews.length > 0) && (
         <div className={`lit-row lit-row-${st.reviews.length ? 2 : 1}`}>
           {st.since.length > 0 && (

@@ -52,7 +52,7 @@ export type LibraryItemView = {
 
 export type StoryView = {
   intro: string;
-  film: { id: string; title: string; channel: string } | null;
+  film: { id: string; title: string; channel: string; note?: string | undefined } | null;
   facts: { label: string; value: string }[];
   inIt: { name: string; note?: string | undefined; slug?: string | undefined }[];
   inItLabel: string;

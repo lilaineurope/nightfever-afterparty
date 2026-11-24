@@ -20,7 +20,7 @@ export type ItemStory = {
   /** One or two sentences: what it is. */
   intro: string;
   /** The film itself on YouTube, played from its chapters (loaded only when a chapter is pressed). */
-  film?: { id: string; title: string; channel: string };
+  film?: { id: string; title: string; channel: string; note?: string };
   facts: StoryFact[];
   /** People in it, as the credits name them; `note` is who they are. */
   inIt: { name: string; note?: string }[];
@@ -110,4 +110,13 @@ const HAND: Record<string, ItemStory> = {
   },
 };
 
-export const ITEM_STORIES: Record<string, ItemStory> = { ...(AUTO as Record<string, ItemStory>), ...HAND };
+/** One clip for a story that has no film of its own, shown as "Watch the clip" (Lisa, 24 Nov 2026: Blondie with Tish & Snooky -
+ *  "use 1", the Hall of Fame thank-you; it is also in the S05E10 AFTERPARTY playlist). */
+const CLIPS: Record<string, NonNullable<ItemStory["film"]>> = {
+  blondie: { id: "6rkbvphNFtw", title: "Debbie Harry thanks Tish & Snooky at Blondie's induction into the Rock and Roll Hall of Fame, 2006", channel: "Manic Panic",
+    note: "At Blondie's induction in 2006, Debbie Harry thanks Tish & Snooky, the backing singers in Blondie's first line-up." },
+};
+
+const MERGED: Record<string, ItemStory> = { ...(AUTO as Record<string, ItemStory>), ...HAND };
+for (const [slug, film] of Object.entries(CLIPS)) if (MERGED[slug] && !MERGED[slug]!.film) MERGED[slug] = { ...MERGED[slug]!, film };
+export const ITEM_STORIES: Record<string, ItemStory> = MERGED;
