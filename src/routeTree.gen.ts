@@ -104,6 +104,7 @@ import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
 import { Route as SpotifyIndexRouteImport } from './routes/spotify.index'
 import { Route as SpotifySplatRouteImport } from './routes/spotify.$'
 import { Route as LibraryArtSlugRouteImport } from './routes/library_.art.$slug'
+import { Route as LibraryMovingImagesSlugRouteImport } from './routes/library_.moving-images.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -580,6 +581,11 @@ const LibraryArtSlugRoute = LibraryArtSlugRouteImport.update({
   path: '/library/art/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryMovingImagesSlugRoute = LibraryMovingImagesSlugRouteImport.update({
+  id: '/library_/moving-images/$slug',
+  path: '/library/moving-images/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -677,6 +683,7 @@ export interface FileRoutesByFullPath {
   '/shop-test/': typeof ShopTestIndexRoute
   '/spotify/': typeof SpotifyIndexRoute
   '/library/art/$slug': typeof LibraryArtSlugRoute
+  '/library/moving-images/$slug': typeof LibraryMovingImagesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -774,6 +781,7 @@ export interface FileRoutesByTo {
   '/shop-test': typeof ShopTestIndexRoute
   '/spotify': typeof SpotifyIndexRoute
   '/library/art/$slug': typeof LibraryArtSlugRoute
+  '/library/moving-images/$slug': typeof LibraryMovingImagesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -872,6 +880,7 @@ export interface FileRoutesById {
   '/shop-test/': typeof ShopTestIndexRoute
   '/spotify/': typeof SpotifyIndexRoute
   '/library_/art/$slug': typeof LibraryArtSlugRoute
+  '/library_/moving-images/$slug': typeof LibraryMovingImagesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -971,6 +980,7 @@ export interface FileRouteTypes {
     | '/shop-test/'
     | '/spotify/'
     | '/library/art/$slug'
+    | '/library/moving-images/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1068,6 +1078,7 @@ export interface FileRouteTypes {
     | '/shop-test'
     | '/spotify'
     | '/library/art/$slug'
+    | '/library/moving-images/$slug'
   id:
     | '__root__'
     | '/'
@@ -1165,6 +1176,7 @@ export interface FileRouteTypes {
     | '/shop-test/'
     | '/spotify/'
     | '/library_/art/$slug'
+    | '/library_/moving-images/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1263,6 +1275,7 @@ export interface RootRouteChildren {
   ShopTestIndexRoute: typeof ShopTestIndexRoute
   SpotifyIndexRoute: typeof SpotifyIndexRoute
   LibraryArtSlugRoute: typeof LibraryArtSlugRoute
+  LibraryMovingImagesSlugRoute: typeof LibraryMovingImagesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1932,6 +1945,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryArtSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library_/moving-images/$slug': {
+      id: '/library_/moving-images/$slug'
+      path: '/library/moving-images/$slug'
+      fullPath: '/library/moving-images/$slug'
+      preLoaderRoute: typeof LibraryMovingImagesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -2031,6 +2051,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopTestIndexRoute: ShopTestIndexRoute,
   SpotifyIndexRoute: SpotifyIndexRoute,
   LibraryArtSlugRoute: LibraryArtSlugRoute,
+  LibraryMovingImagesSlugRoute: LibraryMovingImagesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
