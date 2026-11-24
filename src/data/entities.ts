@@ -5,6 +5,8 @@ import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 import { PART_NAMES } from "./club-parts";
 import { WRITTEN_BY } from "./written-by";
+import { PERSON_PROFILES } from "./person-profiles";
+import { MEMORIAM } from "./memoriam";
 
 // One overview card per name, place, book, song, look... Every page links here.
 
@@ -281,8 +283,11 @@ export const mentionsIn = (e: Entity, episode: string): number =>
 // one-episode card with timeline moments or guest stories (Voguing, Rocky Horror) is listed too. Thin cards stay out.
 export const inSitemap = (e: Entity): boolean => !afterpartyOf(e) && !isThinCard(e);
 
+// A person with a full page (living people pages, In memoriam) is never thin, even from one episode (Lisa, 24 Nov 2026).
 export const isThinCard = (e: Entity): boolean =>
   !e.guest &&
+  !PERSON_PROFILES[e.slug] &&
+  !MEMORIAM[e.slug] &&
   new Set(e.refs.map((r) => r.episode)).size < 2 &&
   e.events.length === 0 &&
   e.inGuestStories.length === 0;
