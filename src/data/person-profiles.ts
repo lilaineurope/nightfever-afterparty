@@ -945,4 +945,199 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e01", who: "James St. James", time: "00:04:58", quote: "By the time I got to New York and I saw you in the club, you were bigger in my mind than Madonna, Annie Lennox, Boy George, Cyndi, everyone put together." },
     ],
   },
+  // Living people batch 5 (daily run 24 Nov 2026)
+  "imelda-marcos": {
+    story:
+      "The Philippines' First Lady who loved to dance all night. Nikki Haskell flew to her Manila film festival, landed the interview nobody else got and became her friend.",
+    timeline: [
+      ["1929", "Born 2 July in Manila"],
+      ["1965", "First Lady of the Philippines"],
+      ["1982", "Manila International Film Festival; Nikki Haskell flies in on her own"],
+      ["80s", "Takes Nikki everywhere, dancing all night and calling her from the palace at 2 a.m."],
+      ["1986", "The Marcos family leaves for Hawaii"],
+      ["1991", "Returns to the Philippines"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    maxPerGuest: 3,
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:26:04", quote: "I made up my mind I was going to interview Madame Marcos no matter what. She wasn't giving out any interviews." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:26:49", quote: "She said, I just saw you on TV. You come with me. So after that, I was always with Madame Marcos." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:28:20", quote: "Madame Marcos, she liked to go dancing every night, all night. She would call me from the palace at two o'clock, and they'd come and get me." },
+    ],
+  },
+  sting: {
+    story:
+      "Before the Police took off he played bass in Cherry Vanilla's London band and opened for Jayne County across Europe. Later he was snapped with Dianne Brill at the Limelight, and Nell Campbell jumped out of his 40th birthday cake.",
+    timeline: [
+      ["1951", "Born Gordon Sumner, 2 October, in Wallsend"],
+      ["1977", "Bass player in Cherry Vanilla's band in London, with Stewart Copeland on drums"],
+      ["1977", "The Police tour Europe with Jayne County"],
+      ["1983", "Synchronicity; pictured with Dianne Brill at the Limelight opening"],
+      ["1985", "First solo album, The Dream of the Blue Turtles"],
+      ["1991", "His 40th birthday party: Nell Campbell jumps out of the cake"],
+    ],
+    liftedUp: [],
+    rooms: ["Limelight"],
+    said: [
+      { episode: "s03e05", who: "Cherry Vanilla", time: "01:11:12", quote: "Miles said, I have a band and I can't get them bookings because they don't have the publicity hooks that you have. And that was Stewart Copeland on drums and Sting on the bass." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "01:12:15", quote: "He already had an ego, which you need to be a star in show business. He already knew he was good at what he did. He was a fabulous bass player and composer." },
+      { episode: "s02e02", who: "Jayne County", time: "00:49:20", quote: "I toured all over Europe with the Police, and they opened up, and it was like touring with a group of librarians. They were so well-behaved." },
+      { episode: "s02e02", who: "Jayne County", time: "00:50:18", quote: "But I have to say they were very nice to me. Sting was very nice to me. He was very sweet and adorable." },
+      { episode: "s05e01", who: "Nell Campbell", time: "00:22:50", quote: "I was asked by Trudie Styler to jump out of Sting's 40th birthday cake. They wheeled out this cake, which I jumped out of." },
+    ],
+  },
+  "paris-hilton": {
+    story:
+      "Richie Rich found her crying at Patricia Field's as a teenager, dressed her up and put her in Heatherette's first shows. Soon club promoters were hiring her to DJ.",
+    timeline: [
+      ["1981", "Born 17 February in New York, daughter of Kathy and Rick Hilton"],
+      ["90s", "Meets Richie Rich at Patricia Field's store"],
+      ["2000", "David LaChapelle's shoot that made her famous"],
+      ["00s", "Walks for Heatherette; in a studded bodysuit on their back page in Women's Wear Daily"],
+      ["2003", "The Simple Life"],
+      ["00s", "Hired to DJ, one of the famous names booked instead of club DJs like Anita Sarko"],
+    ],
+    liftedUp: [],
+    rooms: ["Heatherette"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:47:44", quote: "Paris I met at Pat Field's when she was fifteen, sixteen, and she was crying in the store because she couldn't buy everything she wanted, because her mom didn't want her to buy boas and garter belts." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:48:29", quote: "When Women's Wear Daily happened, I called Paris, and they gave us a whole back page, which they never do. And we put Paris in this studded bodysuit and that began Heatherette." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:42:07", quote: "I was there when Kathy was pushing Paris around in a baby buggy." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:43:17", quote: "They were hiring famous kids and Paris Hilton and people like that to DJ." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:27:47", quote: "I wasn't gifted with a voice like Adele or Mariah. I wasn't given money like, you know, Paris Hilton." },
+    ],
+  },
+  "jack-nicholson": {
+    story:
+      "The film star Bebe Buell calls her official and acknowledged boyfriend of the early 80s, and a friend for life who walked her through every piece of his art collection.",
+    timeline: [
+      ["1937", "Born 22 April in Neptune, New Jersey"],
+      ["1969", "Easy Rider"],
+      ["1975", "One Flew Over the Cuckoo's Nest, his first Oscar"],
+      ["80s", "Bebe Buell's boyfriend, then a lifelong friend"],
+      ["1983", "Terms of Endearment"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    maxPerGuest: 3,
+    said: [
+      { episode: "s04e03", who: "Bebe Buell", time: "00:39:02", quote: "Jack was my full-fledged boyfriend. Jack Nicholson. I was what they call official and acknowledged." },
+      { episode: "s04e03", who: "Bebe Buell", time: "00:39:32", quote: "Jack, I think, now lives a very reclusive, quiet life surrounded by his incredible art collection, which I've had the good fortune to see and have every single piece explained to me." },
+      { episode: "s04e03", who: "Bebe Buell", time: "00:58:32", quote: "I consider Jack Nicholson and Mick lifelong friends." },
+    ],
+  },
+  "oprah-winfrey": {
+    story:
+      "In Chicago, just back from filming The Color Purple, she had James, Sally Randall and friends on her show. It went so badly that it ended up on The Worst of Oprah, and James wrote his first column about it.",
+    timeline: [
+      ["1954", "Born 29 January in Kosciusko, Mississippi"],
+      ["1984", "Takes over AM Chicago"],
+      ["1985", "The Color Purple; James, Sally, Anita Sarko, Michael Musto and Benjamin Liu on her show"],
+      ["1986", "The Oprah Winfrey Show goes national"],
+      ["later", "The club kids' episode turns up on The Worst of Oprah"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    said: [
+      { episode: "s06e07", who: "Sally Randall", time: "00:21:57", quote: "I do know that the show ended up on The Worst of Oprah. I was very proud of that." },
+      { episode: "s06e07", who: "James St. James", time: "00:24:24", quote: "Oprah had just come back after filming The Color Purple. During the commercials, she was signing her autograph in the books. She wouldn't pay any attention to us." },
+      { episode: "s06e07", who: "James St. James", time: "00:45:07", quote: "I wrote a sample column and it was, I think it was about when we went on Oprah. And I really enjoyed it." },
+    ],
+  },
+  beyonce: {
+    story:
+      "She wore Zaldy's gold lamé on a Vanity Fair cover, and on Renaissance she sampled Kevin Aviance's Cunty. He found out when the album dropped and calls it a love letter to the Black queer community.",
+    timeline: [
+      ["1981", "Born 4 September in Houston"],
+      ["1997", "Destiny's Child"],
+      ["2003", "Dangerously in Love, her first solo album"],
+      ["00s", "On the cover of Vanity Fair's music issue in Zaldy's gold lamé dress"],
+      ["2022", "Renaissance samples Kevin Aviance's Cunty"],
+    ],
+    liftedUp: ["Kevin Aviance"],
+    rooms: [],
+    said: [
+      { episode: "s03e03", who: "Kevin Aviance", time: "00:41:35", quote: "I went to sleep, I woke up, I had the album in my phone, in my computer, I listened to it, I'm like really moved by it. This album's like really touching me." },
+      { episode: "s03e03", who: "Kevin Aviance", time: "00:44:55", quote: "It's not just some little track somebody just uses. She was doing something and she was going to follow through with it, and she did. It's a love letter to the Black queer community." },
+      { episode: "s04e04", who: "Zaldy", time: "01:01:39", quote: "She wore a dress of mine on the cover of Vanity Fair, which was for the music issue. And that was a really big deal for me. A gold lamé dress." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:41:28", quote: "Gunning to do this girl group and then get out of it and Beyoncé that shit." },
+    ],
+  },
+  "cornelia-guest": {
+    story:
+      "The uptown debutante of the decade who came downtown, out every night with Andy Warhol's entourage and watching Dynasty at home before Area.",
+    timeline: [
+      ["1963", "Born in New York, daughter of C. Z. Guest"],
+      ["1982", "Named debutante of the decade"],
+      ["80s", "Out with Andy Warhol all over town; runs through Area"],
+      ["80s", "Interns on The Nikki Haskell Show"],
+      ["1987", "In the front pew at Warhol's memorial"],
+    ],
+    liftedUp: [],
+    rooms: ["Area"],
+    said: [
+      { episode: "s01e01", who: "Dianne Brill", time: "00:35:38", quote: "I was at Cornelia's with Andy and we're watching Dynasty before going out." },
+      { episode: "s01e02", who: "James St. James", time: "00:19:22", quote: "Angela Janklow and Cornelia Guest. They were some of those uptown girls who came downtown." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:26:43", quote: "I remember him and Cornelia Guest, and they sort of had that entourage that, you know, they were all over the place." },
+      { episode: "s02e04", who: "James St. James", time: "00:18:30", quote: "There was a Cornelia Guest interview that I loved." },
+    ],
+  },
+  "calvin-klein": {
+    story:
+      "The designer behind the hip jeans, a Studio 54 regular and an old friend of Christopher Makos, who bought a $10,000 table at Susanne Bartsch's Love Ball.",
+    timeline: [
+      ["1942", "Born 19 November in the Bronx"],
+      ["1968", "Starts his company"],
+      ["70s", "Comes into Fiorucci to see what the hip jeans are; in the celebrity corner at Studio 54"],
+      ["1987", "At Warhol's memorial with Kelly Klein"],
+      ["1989", "Buys a $10,000 table at the Love Ball"],
+    ],
+    liftedUp: [],
+    rooms: ["Studio 54", "Love Ball"],
+    said: [
+      { episode: "s01e10", who: "Joey Arias", time: "00:12:10", quote: "I remember Calvin Klein coming in there looking what the hip jeans were, because he was looking for jeans." },
+      { episode: "s05e06", who: "Christopher Makos", time: "00:29:46", quote: "All of my sort of famous friends, whether it's Calvin Klein, who I've known for a thousand years. What we talk about is between us, always between us." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:40:22", quote: "They pay to be on stage so we can make money for them being on stage. And we sell tables for $10,000 to Calvin Klein." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:49:47", quote: "You saw Andy Warhol and Calvin reaching out to Steve to try to get in the back door of the studio." },
+      { episode: "s04e05", who: "Dustin Pittman", time: "00:07:48", quote: "There was a separate area for celebrities, if you want to call them celebrities, whether it's Halston or Calvin or whoever it was, Bianca." },
+    ],
+  },
+  "sarah-jessica-parker": {
+    story:
+      "She brought Patricia Field into Sex and the City, and together they built Carrie Bradshaw's look. The flower was her own idea.",
+    timeline: [
+      ["1965", "Born 25 March in Nelsonville, Ohio"],
+      ["1995", "Miami Rhapsody, her first film with Patricia Field"],
+      ["1998", "Sex and the City: brings Pat Field in to meet Darren Star"],
+      ["1998", "Carrie Bradshaw's look, built with Pat Field"],
+    ],
+    liftedUp: ["Patricia Field"],
+    rooms: [],
+    maxPerGuest: 3,
+    said: [
+      { episode: "s03e01", who: "Patricia Field", time: "00:39:57", quote: "Working with Sarah Jessica Parker, she got it immediately. We had fun together. It was like we were playing a game together. And believe me, her input, it was very important to the look." },
+      { episode: "s03e01", who: "Patricia Field", time: "00:40:42", quote: "You know, the idea of the flower, she came with that idea." },
+      { episode: "s03e01", who: "Patricia Field", time: "00:41:16", quote: "She brought me into Sex and the City because they had made a pilot and nobody liked it. And Sarah Jessica brought me in to meet Darren Star." },
+    ],
+  },
+  "jennie-livingston": {
+    story:
+      "The director of Paris Is Burning. Chi Chi Valenti kept running into her at the balls, and Luis Xtravaganza remembers how the houses first asked her: why are you here?",
+    timeline: [
+      ["1962", "Born in Dallas"],
+      ["80s", "Films the Harlem balls for years"],
+      ["1988", "Chi Chi Valenti keeps running into the shoot while researching Nations for Details"],
+      ["1990", "Paris Is Burning"],
+      ["1991", "Grand Jury Prize at Sundance"],
+    ],
+    liftedUp: ["Luis Xtravaganza Camacho"],
+    rooms: ["The balls"],
+    said: [
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:34:08", quote: "Going to balls and researching that for the piece, of course, I was running into the whole Paris Is Burning shoot. I was running into Jennie Livingston." },
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:14:34", quote: "Every time that a Jennie Livingston came in, or a Julie Jewels, or anybody like that came in, it was like, what are you doing here, and why are you here? This is our thing." },
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:51:26", quote: "Jennie Livingston, all you guys, the House of Field, that shell was broken open, and there was enough space for you guys to come in and make your mark as well." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:33:56", quote: "My own ego got in the way. And when I pulled back and realized this was not my story." },
+    ],
+  },
 };
