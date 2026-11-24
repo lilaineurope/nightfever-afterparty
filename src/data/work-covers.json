@@ -1,28 +1,108 @@
 {
+ "'Heart of Glass' – Blondie": {
+  "kind": "book",
+  "file": "work-heart-of-glass-blondie.webp",
+  "credit": "Sleeve via the Cover Art Archive (Blondie, 1978)"
+ },
  "'Porcelain' – Moby": {
   "kind": "book",
   "file": "work-porcelain-moby.webp",
   "credit": "Sleeve via the Cover Art Archive (Moby, 2000)"
+ },
+ "'Science Fiction/Double Feature' (Rocky Horror)": {
+  "kind": "book",
+  "file": "work-science-fiction-double-feature.webp",
+  "credit": "Photo: Sebastian Dooris, Wikimedia Commons (CC BY 2.0)"
+ },
+ "'The Glamorous Life' – Sheila E.": {
+  "kind": "book",
+  "file": "work-the-glamorous-life-sheila-e.webp",
+  "credit": "Sleeve via the Cover Art Archive (Sheila E., 1984)"
+ },
+ "8½": {
+  "kind": "book",
+  "file": "work-81-2.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Afrika Bambaataa – 'Planet Rock'": {
+  "kind": "book",
+  "file": "work-afrika-bambaataa-planet-rock.webp",
+  "credit": "Sleeve via the Cover Art Archive (Afrika Bambaataa, 1982)"
  },
  "Alisha – 'Baby Talk'": {
   "kind": "book",
   "file": "work-alisha-baby-talk.webp",
   "credit": "Sleeve via the Cover Art Archive (Alisha, 1985)"
  },
+ "All About Eve (1950)": {
+  "kind": "book",
+  "file": "work-all-about-eve.webp",
+  "credit": "Poster via Wikimedia Commons (public domain)"
+ },
+ "All My Children": {
+  "kind": "book",
+  "file": "work-all-my-children.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "An American Family": {
+  "kind": "book",
+  "file": "work-an-american-family.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
  "Anything But Love": {
   "kind": "book",
   "file": "work-anything-but-love.webp",
   "credit": "Title card via Wikipedia"
+ },
+ "Bad (Andy Warhol's)": {
+  "kind": "book",
+  "file": "work-bad.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Barbie (Tina L'Hotsky film)": {
+  "kind": "book",
+  "file": "work-barbie.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Batman (1989 film)": {
+  "kind": "book",
+  "file": "work-batman.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Batman TV series": {
+  "kind": "book",
+  "file": "work-batman-tv-series.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Beastie Boys": {
+  "kind": "book",
+  "file": "work-beastie-boys.webp",
+  "credit": "Photo: Maddy Julien, Wikimedia Commons (CC BY-SA 2.0)"
+ },
+ "Bedtime Stories": {
+  "kind": "book",
+  "file": "work-bedtime-stories.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1994)"
  },
  "Behind the Velvet Ropes": {
   "kind": "book",
   "file": "work-behind-the-velvet-ropes.webp",
   "credit": "Title card via Wikipedia"
  },
+ "Beverly Hills, 90210": {
+  "kind": "book",
+  "file": "work-beverly-hills-90210.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
  "Big Top Pee-wee": {
   "kind": "book",
   "file": "work-big-top-pee-wee.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "Billie Holiday – Lady in Satin": {
+  "kind": "book",
+  "file": "work-billie-holiday-lady-in-satin.webp",
+  "credit": "Sleeve via the Cover Art Archive (Billie Holiday, 2010)"
  },
  "Black Box": {
   "kind": "book",
@@ -39,25 +119,160 @@
   "file": "work-blondie.webp",
   "credit": "Photo: Private Stock Records, Wikimedia Commons (public domain)"
  },
+ "Blondie – Parallel Lines": {
+  "kind": "book",
+  "file": "work-blondie-parallel-lines.webp",
+  "credit": "Sleeve via the Cover Art Archive (Blondie, 1978)"
+ },
+ "Bow Wow Wow": {
+  "kind": "book",
+  "file": "work-bow-wow-wow.webp",
+  "credit": "Photo: Braunov, Wikimedia Commons (CC BY-SA 3.0)"
+ },
+ "Britney Spears – 'I'm a Slave 4 U'": {
+  "kind": "book",
+  "file": "work-britney-spears-i-m-a-slave-4-u.webp",
+  "credit": "Sleeve via the Cover Art Archive (Britney Spears, 2001)"
+ },
+ "Buffalo Gals": {
+  "kind": "book",
+  "file": "work-buffalo-gals.webp",
+  "credit": "Sleeve via the Cover Art Archive (Malcolm McLaren, 1982)"
+ },
  "C+C Music Factory – 'Gonna Make You Sweat (Everybody Dance Now)'": {
   "kind": "book",
   "file": "work-c-c-music-factory-gonna-make-you-sweat.webp",
   "credit": "Sleeve via Wikimedia Commons (Columbia Records, public domain)"
+ },
+ "Cabaret (1972)": {
+  "kind": "book",
+  "file": "work-cabaret.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Carrie": {
+  "kind": "book",
+  "file": "work-carrie.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Charlie's Angels": {
+  "kind": "book",
+  "file": "work-charlie-s-angels.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Ciao! Manhattan": {
+  "kind": "book",
+  "file": "work-ciao-manhattan.webp",
+  "credit": "Poster via Wikipedia"
  },
  "Cookie": {
   "kind": "book",
   "file": "work-cookie.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Cruising": {
+  "kind": "book",
+  "file": "work-cruising.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Culture Club": {
+  "kind": "book",
+  "file": "work-culture-club.webp",
+  "credit": "Photo: John Begalke, Wikimedia Commons (CC BY 2.0)"
+ },
+ "Culture Club – 'Do You Really Want to Hurt Me'": {
+  "kind": "book",
+  "file": "work-culture-club-do-you-really-want-to-hurt-me.webp",
+  "credit": "Sleeve via the Cover Art Archive (Culture Club, 1982)"
+ },
+ "Culture Club – Kissing to Be Clever": {
+  "kind": "book",
+  "file": "work-culture-club-kissing-to-be-clever.webp",
+  "credit": "Sleeve via the Cover Art Archive (Culture Club, 1982)"
+ },
+ "DNA": {
+  "kind": "book",
+  "file": "work-dna.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
  "Daphne Guinness – Optimist in Black": {
   "kind": "book",
   "file": "work-daphne-guinness-optimist-in-black.webp",
   "credit": "Sleeve via the Cover Art Archive (Daphne Guinness, 2016)"
  },
+ "Daphne Guinness – Sleep": {
+  "kind": "book",
+  "file": "work-daphne-guinness-sleep.webp",
+  "credit": "Sleeve via the Cover Art Archive (Daphne Guinness, 2024)"
+ },
+ "Dark Shadows": {
+  "kind": "book",
+  "file": "work-dark-shadows.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "David Bowie – 'Boys Keep Swinging'": {
+  "kind": "book",
+  "file": "work-david-bowie-boys-keep-swinging.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "David Bowie – 'Young Americans'": {
+  "kind": "book",
+  "file": "work-david-bowie-young-americans.webp",
+  "credit": "Sleeve via the Cover Art Archive (David Bowie, 1975)"
+ },
+ "David Bowie – Hunky Dory": {
+  "kind": "book",
+  "file": "work-david-bowie-hunky-dory.webp",
+  "credit": "Sleeve via the Cover Art Archive (David Bowie, 1971)"
+ },
+ "David Bowie – Let's Dance": {
+  "kind": "book",
+  "file": "work-david-bowie-let-s-dance.webp",
+  "credit": "Sleeve via the Cover Art Archive (David Bowie, 1983)"
+ },
+ "Dead Calm": {
+  "kind": "book",
+  "file": "work-dead-calm.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Desperately Seeking Susan": {
   "kind": "book",
   "file": "work-desperately-seeking-susan.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "Dog Day Afternoon": {
+  "kind": "book",
+  "file": "work-dog-day-afternoon.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Donny & Marie": {
+  "kind": "book",
+  "file": "work-donny-and-marie.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Doris Day – 'Hooray for Hollywood'": {
+  "kind": "book",
+  "file": "work-doris-day-hooray-for-hollywood.webp",
+  "credit": "Sleeve via the Cover Art Archive (Doris Day, 1958)"
+ },
+ "Downtown 81": {
+  "kind": "book",
+  "file": "work-downtown-81.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Driving Miss Daisy (1989)": {
+  "kind": "book",
+  "file": "work-driving-miss-daisy.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Duran Duran": {
+  "kind": "book",
+  "file": "work-duran-duran.webp",
+  "credit": "Photo: Brian Aris, Wikimedia Commons (public domain)"
+ },
+ "Dynasty": {
+  "kind": "book",
+  "file": "work-dynasty.webp",
+  "credit": "Title card via Wikipedia"
  },
  "Electric Chairs": {
   "kind": "book",
@@ -74,34 +289,164 @@
   "file": "work-emily-in-paris.webp",
   "credit": "Title card via Wikimedia Commons (public domain)"
  },
+ "Eurythmics – 'Who's That Girl?'": {
+  "kind": "book",
+  "file": "work-eurythmics-who-s-that-girl.webp",
+  "credit": "Sleeve via the Cover Art Archive (Eurythmics, 1983)"
+ },
+ "Fade to Grey": {
+  "kind": "book",
+  "file": "work-fade-to-grey.webp",
+  "credit": "Sleeve via the Cover Art Archive (Steve Strange, 1994)"
+ },
+ "Fans (Malcolm McLaren)": {
+  "kind": "book",
+  "file": "work-fans.webp",
+  "credit": "Sleeve via the Cover Art Archive (Malcolm McLaren, 1984)"
+ },
+ "Fischerspooner": {
+  "kind": "book",
+  "file": "work-fischerspooner.webp",
+  "credit": "Photo: Mai Le, Wikimedia Commons (CC BY 2.0)"
+ },
  "Flawless (1999 film)": {
   "kind": "book",
   "file": "work-flawless.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "Flora the Red Menace": {
+  "kind": "book",
+  "file": "work-flora-the-red-menace.webp",
+  "credit": "Sleeve via the Cover Art Archive (Liza Minnelli, 1978)"
+ },
+ "Forrest Gump": {
+  "kind": "book",
+  "file": "work-forrest-gump.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Frankie Goes to Hollywood": {
+  "kind": "book",
+  "file": "work-frankie-goes-to-hollywood.webp",
+  "credit": "Photo: Jane McCormick Smith, Wikimedia Commons (CC BY-SA 3.0)"
+ },
+ "Frankie Goes to Hollywood – 'Two Tribes'": {
+  "kind": "book",
+  "file": "work-frankie-goes-to-hollywood-two-tribes.webp",
+  "credit": "Sleeve via the Cover Art Archive (Frankie Goes to Hollywood, 1984)"
  },
  "Frasier": {
   "kind": "book",
   "file": "work-frasier.webp",
   "credit": "Title card via Wikimedia Commons (public domain)"
  },
+ "Fred Astaire – 'The Half of It, Dearie, Blues'": {
+  "kind": "book",
+  "file": "work-fred-astaire-the-half-of-it-dearie-blues.webp",
+  "credit": "Sheet music cover via Wikimedia Commons (public domain)"
+ },
+ "Gay USA": {
+  "kind": "book",
+  "file": "work-gay-usa.webp",
+  "credit": "Photo: David Shankbone, Wikimedia Commons (CC BY 2.5)"
+ },
+ "George Kranz – 'Din Daa Daa'": {
+  "kind": "book",
+  "file": "work-george-kranz-din-daa-daa.webp",
+  "credit": "Sleeve via the Cover Art Archive (George Kranz, 1983)"
+ },
  "Ghost Cat": {
   "kind": "book",
   "file": "work-ghost-cat.webp",
   "credit": "Sleeve via the Cover Art Archive (Ann Magnuson, 2023)"
+ },
+ "Gilligan's Island": {
+  "kind": "book",
+  "file": "work-gilligan-s-island.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "Ginger and Fred": {
+  "kind": "book",
+  "file": "work-ginger-and-fred.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Glitter": {
+  "kind": "book",
+  "file": "work-glitter.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Gloria Gaynor – 'I Am What I Am'": {
+  "kind": "book",
+  "file": "work-gloria-gaynor-i-am-what-i-am.webp",
+  "credit": "Sleeve via the Cover Art Archive (Gloria Gaynor, 1983)"
+ },
+ "Gloria Gaynor – 'I Will Survive'": {
+  "kind": "book",
+  "file": "work-gloria-gaynor-i-will-survive.webp",
+  "credit": "Sleeve via the Cover Art Archive (Gloria Gaynor, 1995)"
  },
  "Go (Moby song)": {
   "kind": "book",
   "file": "work-go.webp",
   "credit": "Sleeve via the Cover Art Archive (Moby, 1991)"
  },
+ "Gone with the Wind": {
+  "kind": "book",
+  "file": "work-gone-with-the-wind.webp",
+  "credit": "Poster via Wikimedia Commons (public domain)"
+ },
+ "Goodfellas": {
+  "kind": "book",
+  "file": "work-goodfellas.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Grease 2": {
+  "kind": "book",
+  "file": "work-grease-2.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Great Expectations (1998)": {
   "kind": "book",
   "file": "work-great-expectations.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Guys and Dolls": {
+  "kind": "book",
+  "file": "work-guys-and-dolls.webp",
+  "credit": "Photo: AndyCBaer, Wikimedia Commons (CC BY-SA 4.0)"
+ },
+ "Hairspray": {
+  "kind": "book",
+  "file": "work-hairspray.webp",
+  "credit": "Sleeve via the Cover Art Archive (Marc Shaiman, 2002)"
+ },
  "Happy Clothes: A Film About Patricia Field": {
   "kind": "book",
   "file": "work-happy-clothes-a-film-about-patricia-field.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Heaven's Gate": {
+  "kind": "book",
+  "file": "work-heaven-s-gate.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Hedwig and the Angry Inch": {
+  "kind": "book",
+  "file": "work-hedwig-and-the-angry-inch.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "James Chance and the Contortions": {
+  "kind": "book",
+  "file": "work-james-chance-and-the-contortions.webp",
+  "credit": "Photo: Braunov, Wikimedia Commons (CC BY-SA 3.0)"
+ },
+ "Jennifer Holliday – 'I Am Love'": {
+  "kind": "book",
+  "file": "work-jennifer-holliday-i-am-love.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Jonathan Demme's Philadelphia": {
+  "kind": "book",
+  "file": "work-jonathan-demme-s-philadelphia.webp",
   "credit": "Poster via Wikipedia"
  },
  "José & Luis – 'Queen's English'": {
@@ -114,6 +459,11 @@
   "file": "work-jubilee.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Juliet of the Spirits": {
+  "kind": "book",
+  "file": "work-juliet-of-the-spirits.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Just Shoot Me!": {
   "kind": "book",
   "file": "work-just-shoot-me.webp",
@@ -124,25 +474,135 @@
   "file": "work-kevin-aviance-din-da-da.webp",
   "credit": "Sleeve via the Cover Art Archive (Kevin Aviance, 1997)"
  },
+ "Kids (1995 film)": {
+  "kind": "book",
+  "file": "work-kids.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Kindergarten Cop": {
+  "kind": "book",
+  "file": "work-kindergarten-cop.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Klute": {
+  "kind": "book",
+  "file": "work-klute.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "La Dolce Vita": {
+  "kind": "book",
+  "file": "work-la-dolce-vita.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Larry King Live": {
+  "kind": "book",
+  "file": "work-larry-king-live.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Larry Tee & Princess Superstar – 'Licky'": {
+  "kind": "book",
+  "file": "work-larry-tee-and-princess-superstar-licky.webp",
+  "credit": "Sleeve via the Cover Art Archive (Larry Tee & Princess Superstar, 2008)"
+ },
  "Late Night with David Letterman": {
   "kind": "book",
   "file": "work-late-night-with-david-letterman.webp",
   "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "Led Zeppelin": {
+  "kind": "book",
+  "file": "work-led-zeppelin.webp",
+  "credit": "Sleeve via Wikimedia Commons (public domain)"
+ },
+ "Lifestyles of the Rich and Famous": {
+  "kind": "book",
+  "file": "work-lifestyles-of-the-rich-and-famous.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Like a Virgin": {
+  "kind": "book",
+  "file": "work-like-a-virgin.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1984)"
  },
  "Limelight documentary": {
   "kind": "book",
   "file": "work-limelight-documentary.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Little House on the Prairie": {
+  "kind": "book",
+  "file": "work-little-house-on-the-prairie.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Liza Minnelli – 'Losing My Mind'": {
+  "kind": "book",
+  "file": "work-liza-minnelli-losing-my-mind.webp",
+  "credit": "Sleeve via the Cover Art Archive (Liza Minnelli, 1989)"
+ },
+ "Love (TV series)": {
+  "kind": "book",
+  "file": "work-love.webp",
+  "credit": "Title card via Wikipedia"
+ },
  "Lucky magazine": {
   "kind": "book",
   "file": "work-lucky-magazine.webp",
   "credit": "Cover via Wikipedia"
  },
+ "Lunachicks": {
+  "kind": "book",
+  "file": "work-lunachicks.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Mad Max Beyond Thunderdome": {
+  "kind": "book",
+  "file": "work-mad-max-beyond-thunderdome.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Madonna – 'Borderline'": {
+  "kind": "book",
+  "file": "work-madonna-borderline.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1984)"
+ },
+ "Madonna – 'Burning Up'": {
+  "kind": "book",
+  "file": "work-madonna-burning-up.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Madonna – 'Confessions on a Dance Floor'": {
+  "kind": "book",
+  "file": "work-madonna-confessions-on-a-dance-floor.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 2005)"
+ },
+ "Madonna – 'Everybody'": {
+  "kind": "book",
+  "file": "work-madonna-everybody.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1982)"
+ },
+ "Madonna – 'Holiday'": {
+  "kind": "book",
+  "file": "work-madonna-holiday.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1983)"
+ },
+ "Madonna – 'Into the Groove'": {
+  "kind": "book",
+  "file": "work-madonna-into-the-groove.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 2026)"
+ },
+ "Madonna – 'Lucky Star'": {
+  "kind": "book",
+  "file": "work-madonna-lucky-star.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1983)"
+ },
  "Madonna – 'Secret' music video": {
   "kind": "book",
   "file": "work-madonna-secret-music-video.webp",
   "credit": "Title card via Wikipedia"
+ },
+ "Madonna – 'Who's That Girl'": {
+  "kind": "book",
+  "file": "work-madonna-who-s-that-girl.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1987)"
  },
  "Making Mr. Right": {
   "kind": "book",
@@ -158,6 +618,26 @@
   "kind": "book",
   "file": "work-man-parrish-hip-hop-be-bop.webp",
   "credit": "Sleeve via the Cover Art Archive (Man Parrish, 1982)"
+ },
+ "Mapplethorpe: Look at the Pictures": {
+  "kind": "book",
+  "file": "work-mapplethorpe-look-at-the-pictures.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Marianne Faithfull – Broken English": {
+  "kind": "book",
+  "file": "work-marianne-faithfull-broken-english.webp",
+  "credit": "Sleeve via the Cover Art Archive (Marianne Faithfull, 1980)"
+ },
+ "Marie Antoinette": {
+  "kind": "book",
+  "file": "work-marie-antoinette.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Marilyn Manson – 'The Dope Show'": {
+  "kind": "book",
+  "file": "work-marilyn-manson-the-dope-show.webp",
+  "credit": "Sleeve via the Cover Art Archive (Marilyn Manson, 1998)"
  },
  "Martha Wash – 'Carry On'": {
   "kind": "book",
@@ -179,9 +659,49 @@
   "file": "work-martha-wash-martha-wash.webp",
   "credit": "Sleeve via the Cover Art Archive (Martha Wash, 1992)"
  },
+ "Material Girl": {
+  "kind": "book",
+  "file": "work-material-girl.webp",
+  "credit": "Sleeve via the Cover Art Archive (Madonna, 1993)"
+ },
+ "Mean Streets": {
+  "kind": "book",
+  "file": "work-mean-streets.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Melrose Place": {
+  "kind": "book",
+  "file": "work-melrose-place.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "Mermaids": {
+  "kind": "book",
+  "file": "work-mermaids.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Miami Rhapsody": {
   "kind": "book",
   "file": "work-miami-rhapsody.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Michael Jackson – 'Speed Demon'": {
+  "kind": "book",
+  "file": "work-michael-jackson-speed-demon.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Midnight Cowboy": {
+  "kind": "book",
+  "file": "work-midnight-cowboy.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Midnight Express": {
+  "kind": "book",
+  "file": "work-midnight-express.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Missing": {
+  "kind": "book",
+  "file": "work-missing.webp",
   "credit": "Poster via Wikipedia"
  },
  "Moby Doc": {
@@ -194,9 +714,69 @@
   "file": "work-mondo-new-york.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Need You Tonight": {
+  "kind": "book",
+  "file": "work-need-you-tonight.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "New York Dolls": {
+  "kind": "book",
+  "file": "work-new-york-dolls.webp",
+  "credit": "Photo: AVRO, Wikimedia Commons (CC BY-SA 3.0 nl)"
+ },
+ "Niagara": {
+  "kind": "book",
+  "file": "work-niagara.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Once Upon a Time in America": {
+  "kind": "book",
+  "file": "work-once-upon-a-time-in-america.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Orlando (1992 film)": {
+  "kind": "book",
+  "file": "work-orlando.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Orphans of the Storm": {
+  "kind": "book",
+  "file": "work-orphans-of-the-storm.webp",
+  "credit": "Poster via Wikimedia Commons (public domain)"
+ },
+ "Panic Room": {
+  "kind": "book",
+  "file": "work-panic-room.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Paradise Garage": {
+  "kind": "book",
+  "file": "work-paradise-garage.webp",
+  "credit": "Photo: Dpinnyc, Wikimedia Commons (public domain)"
+ },
+ "Paris Is Burning": {
+  "kind": "book",
+  "file": "work-paris-is-burning.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Party Monster (2003)": {
   "kind": "book",
   "file": "work-party-monster.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Party Monster: The Shockumentary": {
+  "kind": "book",
+  "file": "work-party-monster-the-shockumentary.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Paula Abdul – 'Opposites Attract'": {
+  "kind": "book",
+  "file": "work-paula-abdul-opposites-attract.webp",
+  "credit": "Sleeve via the Cover Art Archive (Paula Abdul, 1989)"
+ },
+ "Picnic (1955)": {
+  "kind": "book",
+  "file": "work-picnic.webp",
   "credit": "Poster via Wikipedia"
  },
  "Pink Floyd – The Wall": {
@@ -204,10 +784,90 @@
   "file": "work-pink-floyd-the-wall.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Places in the Heart": {
+  "kind": "book",
+  "file": "work-places-in-the-heart.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Pose": {
+  "kind": "book",
+  "file": "work-pose.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Presence (Led Zeppelin)": {
+  "kind": "book",
+  "file": "work-presence.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Puppetry of the Penis": {
+  "kind": "book",
+  "file": "work-puppetry-of-the-penis.webp",
+  "credit": "Photo: Edwardx, Wikimedia Commons (CC BY-SA 4.0)"
+ },
  "Queen of the Universe": {
   "kind": "book",
   "file": "work-queen-of-the-universe.webp",
   "credit": "Title card via Wikipedia"
+ },
+ "Ramones": {
+  "kind": "book",
+  "file": "work-ramones.webp",
+  "credit": "Photo: Danny Fields, Wikimedia Commons (public domain)"
+ },
+ "Ran": {
+  "kind": "book",
+  "file": "work-ran.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Rent-a-Cop (1987)": {
+  "kind": "book",
+  "file": "work-rent-a-cop.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Richard Hell and the Voidoids": {
+  "kind": "book",
+  "file": "work-richard-hell-and-the-voidoids.webp",
+  "credit": "Sleeve via Wikimedia Commons (public domain)"
+ },
+ "Road House": {
+  "kind": "book",
+  "file": "work-road-house.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Rocky": {
+  "kind": "book",
+  "file": "work-rocky.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Roxy Music": {
+  "kind": "book",
+  "file": "work-roxy-music.webp",
+  "credit": "Photo: AVRO, Wikimedia Commons (CC BY-SA 3.0 nl)"
+ },
+ "RuPaul – 'Back to My Roots'": {
+  "kind": "book",
+  "file": "work-rupaul-back-to-my-roots.webp",
+  "credit": "Sleeve via the Cover Art Archive (RuPaul, 1993)"
+ },
+ "RuPaul – 'Born Naked'": {
+  "kind": "book",
+  "file": "work-rupaul-born-naked.webp",
+  "credit": "Sleeve via the Cover Art Archive (RuPaul, 2014)"
+ },
+ "RuPaul – 'Can I Get an Amen'": {
+  "kind": "book",
+  "file": "work-rupaul-can-i-get-an-amen.webp",
+  "credit": "Sleeve via the Cover Art Archive (RuPaul, 2013)"
+ },
+ "RuPaul – 'Supermodel (You Better Work)'": {
+  "kind": "book",
+  "file": "work-rupaul-supermodel.webp",
+  "credit": "Sleeve via the Cover Art Archive (RuPaul, 1993)"
+ },
+ "RuPaul – Ho Ho Ho": {
+  "kind": "book",
+  "file": "work-rupaul-ho-ho-ho.webp",
+  "credit": "Sleeve via the Cover Art Archive (RuPaul, 1997)"
  },
  "RuPaul's Drag Race All Stars": {
   "kind": "book",
@@ -229,6 +889,16 @@
   "file": "work-saturday-night-fever.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Savage Grace": {
+  "kind": "book",
+  "file": "work-savage-grace.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Scorpio Rising": {
+  "kind": "book",
+  "file": "work-scorpio-rising.webp",
+  "credit": "Poster via Wikimedia Commons (public domain)"
+ },
  "Seduction – 'Heartbeat'": {
   "kind": "book",
   "file": "work-seduction-heartbeat.webp",
@@ -244,6 +914,16 @@
   "file": "work-seinfeld.webp",
   "credit": "Title card via Wikimedia Commons (public domain)"
  },
+ "Sex Pistols": {
+  "kind": "book",
+  "file": "work-sex-pistols.webp",
+  "credit": "Photo: Koen Suyk, Nationaal Archief, Wikimedia Commons (CC0)"
+ },
+ "Sex Pistols – 'Anarchy in the UK'": {
+  "kind": "book",
+  "file": "work-sex-pistols-anarchy-in-the-uk.webp",
+  "credit": "Sleeve via the Cover Art Archive (Sex Pistols, 1976)"
+ },
  "Sex and the City": {
   "kind": "book",
   "file": "work-sex-and-the-city.webp",
@@ -254,14 +934,54 @@
   "file": "work-sex-and-the-city-the-movie.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Shampoo": {
+  "kind": "book",
+  "file": "work-shampoo.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "She-Devil": {
   "kind": "book",
   "file": "work-she-devil.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Shoot the Moon": {
+  "kind": "book",
+  "file": "work-shoot-the-moon.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Siouxsie and the Banshees": {
+  "kind": "book",
+  "file": "work-siouxsie-and-the-banshees.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
  "Smithereens": {
   "kind": "book",
   "file": "work-smithereens.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Sonny & Cher – 'I Got You Babe'": {
+  "kind": "book",
+  "file": "work-sonny-and-cher-i-got-you-babe.webp",
+  "credit": "Sleeve via Wikimedia Commons (public domain)"
+ },
+ "Sophie's Choice (1982)": {
+  "kind": "book",
+  "file": "work-sophie-s-choice.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Star Search": {
+  "kind": "book",
+  "file": "work-star-search.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Star Wars": {
+  "kind": "book",
+  "file": "work-star-wars.webp",
+  "credit": "Logo via Wikimedia Commons (public domain)"
+ },
+ "Strange Journey: The Story of Rocky Horror": {
+  "kind": "book",
+  "file": "work-strange-journey-the-story-of-rocky-horror.webp",
   "credit": "Poster via Wikipedia"
  },
  "Strike a Pose": {
@@ -269,14 +989,119 @@
   "file": "work-strike-a-pose.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Suicide": {
+  "kind": "book",
+  "file": "work-suicide.webp",
+  "credit": "Photo: Canada Jack Jeremy Gilbert, Wikimedia Commons (CC BY-SA 3.0)"
+ },
+ "Sunset Boulevard (1950)": {
+  "kind": "book",
+  "file": "work-sunset-boulevard.webp",
+  "credit": "Poster via Wikimedia Commons (public domain)"
+ },
+ "Sweet Charity": {
+  "kind": "book",
+  "file": "work-sweet-charity.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Sylvester – 'You Make Me Feel (Mighty Real)'": {
   "kind": "book",
   "file": "work-sylvester-you-make-me-feel.webp",
   "credit": "Sleeve via Wikipedia"
  },
+ "Talking Heads": {
+  "kind": "book",
+  "file": "work-talking-heads.webp",
+  "credit": "Sleeve via Wikimedia Commons (public domain)"
+ },
+ "Thank God It's Friday": {
+  "kind": "book",
+  "file": "work-thank-god-it-s-friday.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Avengers (TV series)": {
+  "kind": "book",
+  "file": "work-avengers.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The B-52's": {
+  "kind": "book",
+  "file": "work-b-52-s.webp",
+  "credit": "Photo: KevinPatrickLaw, Wikimedia Commons (CC BY-SA 4.0)"
+ },
+ "The B-52's – 'Love Shack'": {
+  "kind": "book",
+  "file": "work-b-52-s-love-shack.webp",
+  "credit": "Sleeve via the Cover Art Archive (The B-52's, 1989)"
+ },
+ "The B-52's – 'Planet Claire'": {
+  "kind": "book",
+  "file": "work-b-52-s-planet-claire.webp",
+  "credit": "Sleeve via the Cover Art Archive (The B-52's, 1979)"
+ },
+ "The B-52's – 'Rock Lobster'": {
+  "kind": "book",
+  "file": "work-b-52-s-rock-lobster.webp",
+  "credit": "Sleeve via the Cover Art Archive (The B-52's, 1979)"
+ },
+ "The Baby (1973 film)": {
+  "kind": "book",
+  "file": "work-baby.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Basketball Diaries": {
+  "kind": "book",
+  "file": "work-basketball-diaries.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Best Little Whorehouse in Texas": {
+  "kind": "book",
+  "file": "work-best-little-whorehouse-in-texas.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Beverly Hillbillies": {
+  "kind": "book",
+  "file": "work-beverly-hillbillies.webp",
+  "credit": "Title card via Wikipedia"
+ },
  "The Birdcage": {
   "kind": "book",
   "file": "work-birdcage.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Bodyguard": {
+  "kind": "book",
+  "file": "work-bodyguard.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Brutalist": {
+  "kind": "book",
+  "file": "work-brutalist.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Buggles": {
+  "kind": "book",
+  "file": "work-buggles.webp",
+  "credit": "Photo: Rouserouse, Wikimedia Commons (CC BY-SA 4.0)"
+ },
+ "The Cars – 'Hello Again' video": {
+  "kind": "book",
+  "file": "work-cars-hello-again-video.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "The Children's Hour": {
+  "kind": "book",
+  "file": "work-children-s-hour.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Color Purple": {
+  "kind": "book",
+  "file": "work-color-purple.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Dark Crystal": {
+  "kind": "book",
+  "file": "work-dark-crystal.webp",
   "credit": "Poster via Wikipedia"
  },
  "The Devil Wears Prada": {
@@ -284,10 +1109,50 @@
   "file": "work-devil-wears-prada.webp",
   "credit": "Poster via Wikipedia"
  },
+ "The Ed Sullivan Show": {
+  "kind": "book",
+  "file": "work-ed-sullivan-show.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The Eyes of Tammy Faye (implied)": {
+  "kind": "book",
+  "file": "work-eyes-of-tammy-faye.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The Fuzztones": {
+  "kind": "book",
+  "file": "work-fuzztones.webp",
+  "credit": "Photo: Rudi Protrudi, Wikimedia Commons (CC BY-SA 4.0)"
+ },
+ "The Girl Can't Help It": {
+  "kind": "book",
+  "file": "work-girl-can-t-help-it.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Go-Go's": {
+  "kind": "book",
+  "file": "work-go-go-s.webp",
+  "credit": "Photo: Janette Beckman, Wikimedia Commons (public domain)"
+ },
+ "The Goonies": {
+  "kind": "book",
+  "file": "work-goonies.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Goop Lab": {
+  "kind": "book",
+  "file": "work-goop-lab.webp",
+  "credit": "Title card via Wikipedia"
+ },
  "The Grind (MTV)": {
   "kind": "book",
   "file": "work-grind.webp",
   "credit": "Title card via Wikipedia"
+ },
+ "The Heartbreak Kid": {
+  "kind": "book",
+  "file": "work-heartbreak-kid.webp",
+  "credit": "Poster via Wikipedia"
  },
  "The Hunger": {
   "kind": "book",
@@ -304,15 +1169,60 @@
   "file": "work-kominsky-method.webp",
   "credit": "Title card via Wikimedia Commons (public domain)"
  },
+ "The Mirror Crack'd (1980)": {
+  "kind": "book",
+  "file": "work-mirror-crack-d.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "The Misandrists": {
   "kind": "book",
   "file": "work-misandrists.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Muppet Show": {
+  "kind": "book",
+  "file": "work-muppet-show.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The Naked Civil Servant": {
+  "kind": "book",
+  "file": "work-naked-civil-servant.webp",
   "credit": "Poster via Wikipedia"
  },
  "The Nomi Song": {
   "kind": "book",
   "file": "work-nomi-song.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "The Oprah Winfrey Show": {
+  "kind": "book",
+  "file": "work-oprah-winfrey-show.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "The Out of Towners": {
+  "kind": "book",
+  "file": "work-out-of-towners.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Partridge Family": {
+  "kind": "book",
+  "file": "work-partridge-family.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The Pianist": {
+  "kind": "book",
+  "file": "work-pianist.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Queen (1968 film)": {
+  "kind": "book",
+  "file": "work-queen.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Real Housewives of New York City": {
+  "kind": "book",
+  "file": "work-real-housewives-of-new-york-city.webp",
+  "credit": "Title card via Wikipedia"
  },
  "The Rocky Horror Picture Show": {
   "kind": "book",
@@ -324,15 +1234,40 @@
   "file": "work-rocky-horror-show.webp",
   "credit": "Poster via Wikipedia"
  },
+ "The Rolling Stones": {
+  "kind": "book",
+  "file": "work-rolling-stones.webp",
+  "credit": "Photo: Raph_PH, Wikimedia Commons (CC BY 2.0)"
+ },
  "The RuPaul Show": {
   "kind": "book",
   "file": "work-rupaul-show.webp",
   "credit": "Title card via Wikipedia"
  },
+ "The Runaways – 'Cherry Bomb'": {
+  "kind": "book",
+  "file": "work-runaways-cherry-bomb.webp",
+  "credit": "Sleeve via the Cover Art Archive (The Runaways, 2007)"
+ },
+ "The Silence of the Lambs": {
+  "kind": "book",
+  "file": "work-silence-of-the-lambs.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "The Sterile Cuckoo": {
   "kind": "book",
   "file": "work-sterile-cuckoo.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "The Velvet Underground": {
+  "kind": "book",
+  "file": "work-velvet-underground.webp",
+  "credit": "Sleeve via Wikimedia Commons (public domain)"
+ },
+ "The Velvet Underground – 'Sweet Jane'": {
+  "kind": "book",
+  "file": "work-velvet-underground-sweet-jane.webp",
+  "credit": "Sleeve via Wikipedia"
  },
  "The Weather Girls": {
   "kind": "book",
@@ -344,14 +1279,64 @@
   "file": "work-weather-girls-it-s-raining-men.webp",
   "credit": "Sleeve via the Cover Art Archive (The Weather Girls, 1997)"
  },
+ "The Wendy Williams Show": {
+  "kind": "book",
+  "file": "work-wendy-williams-show.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "The Wiz (1978)": {
+  "kind": "book",
+  "file": "work-wiz.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Wizard of Oz": {
+  "kind": "book",
+  "file": "work-wizard-of-oz.webp",
+  "credit": "Poster via Wikimedia Commons (public domain)"
+ },
+ "Thelma Houston – 'Don't Leave Me This Way'": {
+  "kind": "book",
+  "file": "work-thelma-houston-don-t-leave-me-this-way.webp",
+  "credit": "Sleeve via the Cover Art Archive (Thelma Houston, 1976)"
+ },
+ "Theme from Valley of the Dolls": {
+  "kind": "book",
+  "file": "work-theme-from-valley-of-the-dolls.webp",
+  "credit": "Sleeve via Wikimedia Commons (public domain)"
+ },
  "Tiger King": {
   "kind": "book",
   "file": "work-tiger-king.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Tina Turner – 'Proud Mary'": {
+  "kind": "book",
+  "file": "work-tina-turner-proud-mary.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Tina Turner – Foreign Affair": {
+  "kind": "book",
+  "file": "work-tina-turner-foreign-affair.webp",
+  "credit": "Sleeve via the Cover Art Archive (Tina Turner, 1989)"
+ },
+ "Titanic": {
+  "kind": "book",
+  "file": "work-titanic.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "To Wong Foo, Thanks for Everything! Julie Newmar": {
   "kind": "book",
   "file": "work-to-wong-foo-thanks-for-everything-julie-newmar.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Too Funky": {
+  "kind": "book",
+  "file": "work-too-funky.webp",
+  "credit": "Sleeve via the Cover Art Archive (George Michael, 1992)"
+ },
+ "Trash": {
+  "kind": "book",
+  "file": "work-trash.webp",
   "credit": "Poster via Wikipedia"
  },
  "Truth or Dare": {
@@ -364,20 +1349,80 @@
   "file": "work-ugly-betty.webp",
   "credit": "Title card via Wikipedia"
  },
+ "Valley of the Dolls (film)": {
+  "kind": "book",
+  "file": "work-valley-of-the-dolls.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Vertigo (1958)": {
+  "kind": "book",
+  "file": "work-vertigo.webp",
+  "credit": "Poster by Saul Bass, Wikimedia Commons (public domain)"
+ },
+ "Victor/Victoria (Broadway)": {
+  "kind": "book",
+  "file": "work-victor-victoria.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Video Killed the Radio Star": {
+  "kind": "book",
+  "file": "work-video-killed-the-radio-star.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Village People": {
+  "kind": "book",
+  "file": "work-village-people.webp",
+  "credit": "Photo: Mario Casciano, Wikimedia Commons (CC BY-SA 3.0)"
+ },
+ "Village People – 'Macho Man'": {
+  "kind": "book",
+  "file": "work-village-people-macho-man.webp",
+  "credit": "Sleeve via the Cover Art Archive (Village People, 1978)"
+ },
+ "Village People – 'San Francisco (You've Got Me)'": {
+  "kind": "book",
+  "file": "work-village-people-san-francisco.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Village People – 'Y.M.C.A.'": {
+  "kind": "book",
+  "file": "work-village-people-y-m-c-a.webp",
+  "credit": "Sleeve via the Cover Art Archive (Village People, 1978)"
+ },
  "Vogue (Madonna song)": {
   "kind": "book",
   "file": "work-vogue.webp",
   "credit": "Sleeve via Wikipedia"
+ },
+ "War and Peace (BBC)": {
+  "kind": "book",
+  "file": "work-war-and-peace.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Warm Leatherette": {
+  "kind": "book",
+  "file": "work-warm-leatherette.webp",
+  "credit": "Sleeve via the Cover Art Archive (Grace Jones, 1980)"
  },
  "Watch What Happens Live with Andy Cohen": {
   "kind": "book",
   "file": "work-watch-what-happens-live-with-andy-cohen.webp",
   "credit": "Title card via Wikimedia Commons (public domain)"
  },
+ "What's Love Got to Do with It": {
+  "kind": "book",
+  "file": "work-what-s-love-got-to-do-with-it.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "What's the Tee? (RuPaul's podcast)": {
   "kind": "book",
   "file": "work-what-s-the-tee.webp",
   "credit": "Podcast art via Wikipedia"
+ },
+ "Whitney Houston – 'I Wanna Dance with Somebody'": {
+  "kind": "book",
+  "file": "work-whitney-houston-i-wanna-dance-with-somebody.webp",
+  "credit": "Sleeve via Wikipedia"
  },
  "Wigstock: The Movie": {
   "kind": "book",
@@ -388,6 +1433,31 @@
   "kind": "book",
   "file": "work-wings.webp",
   "credit": "Title card via Wikipedia"
+ },
+ "Women in Revolt": {
+  "kind": "book",
+  "file": "work-women-in-revolt.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Yoko Ono – 'Walking on Thin Ice'": {
+  "kind": "book",
+  "file": "work-yoko-ono-walking-on-thin-ice.webp",
+  "credit": "Sleeve via the Cover Art Archive (Yoko Ono, 1992)"
+ },
+ "Your Cassette Pet": {
+  "kind": "book",
+  "file": "work-your-cassette-pet.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Zelig": {
+  "kind": "book",
+  "file": "work-zelig.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Ziggy Stardust and the Spiders from Mars": {
+  "kind": "book",
+  "file": "work-ziggy-stardust-and-the-spiders-from-mars.webp",
+  "credit": "Sleeve via Wikipedia"
  },
  "xoJane": {
   "kind": "book",
