@@ -279,7 +279,7 @@ function IssueShelf({ v, name }: { v: LibraryItemView; name: string }) {
 /** The trailer Jukebox: a jukebox cabinet that plays the trailers from our AFTERPARTY YouTube playlists - screen on the left,
  *  the track list on the right, the full width of the page (Front page, 22 Nov 2026). Only shows when there is a trailer;
  *  nothing loads from YouTube until a visitor presses play. */
-function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string }) {
+export function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: string }) {
   const [now, setNow] = useState<Trailer | null>(null);
   const [failed, setFailed] = useState<string[]>([]);
   const list = trailers.filter((t) => !failed.includes(t.id));
