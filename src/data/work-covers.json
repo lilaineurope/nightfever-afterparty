@@ -1,18 +1,78 @@
 {
+ "'Porcelain' – Moby": {
+  "kind": "book",
+  "file": "work-porcelain-moby.webp",
+  "credit": "Sleeve via the Cover Art Archive (Moby, 2000)"
+ },
  "Alisha – 'Baby Talk'": {
   "kind": "book",
   "file": "work-alisha-baby-talk.webp",
   "credit": "Sleeve via the Cover Art Archive (Alisha, 1985)"
+ },
+ "Anything But Love": {
+  "kind": "book",
+  "file": "work-anything-but-love.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Behind the Velvet Ropes": {
+  "kind": "book",
+  "file": "work-behind-the-velvet-ropes.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Big Top Pee-wee": {
+  "kind": "book",
+  "file": "work-big-top-pee-wee.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Black Box": {
+  "kind": "book",
+  "file": "work-black-box.webp",
+  "credit": "Sleeve via Wikipedia"
  },
  "Black Box – 'Everybody Everybody'": {
   "kind": "book",
   "file": "work-black-box-everybody-everybody.webp",
   "credit": "Sleeve via the Cover Art Archive (Black Box, 1990)"
  },
+ "Blondie": {
+  "kind": "book",
+  "file": "work-blondie.webp",
+  "credit": "Photo: Private Stock Records, Wikimedia Commons (public domain)"
+ },
+ "C+C Music Factory – 'Gonna Make You Sweat (Everybody Dance Now)'": {
+  "kind": "book",
+  "file": "work-c-c-music-factory-gonna-make-you-sweat.webp",
+  "credit": "Sleeve via Wikimedia Commons (Columbia Records, public domain)"
+ },
+ "Cookie": {
+  "kind": "book",
+  "file": "work-cookie.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Daphne Guinness – Optimist in Black": {
   "kind": "book",
   "file": "work-daphne-guinness-optimist-in-black.webp",
   "credit": "Sleeve via the Cover Art Archive (Daphne Guinness, 2016)"
+ },
+ "Desperately Seeking Susan": {
+  "kind": "book",
+  "file": "work-desperately-seeking-susan.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Electric Chairs": {
+  "kind": "book",
+  "file": "work-electric-chairs.webp",
+  "credit": "Photo: The All-Nite Images, Wikimedia Commons (CC0)"
+ },
+ "Elvira, Mistress of the Dark": {
+  "kind": "book",
+  "file": "work-elvira-mistress-of-the-dark.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Flawless (1999 film)": {
+  "kind": "book",
+  "file": "work-flawless.webp",
+  "credit": "Poster via Wikipedia"
  },
  "Ghost Cat": {
   "kind": "book",
@@ -24,15 +84,55 @@
   "file": "work-go.webp",
   "credit": "Sleeve via the Cover Art Archive (Moby, 1991)"
  },
+ "Great Expectations (1998)": {
+  "kind": "book",
+  "file": "work-great-expectations.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Happy Clothes: A Film About Patricia Field": {
+  "kind": "book",
+  "file": "work-happy-clothes-a-film-about-patricia-field.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "José & Luis – 'Queen's English'": {
   "kind": "book",
   "file": "work-jose-and-luis-queen-s-english.webp",
   "credit": "Sleeve via the Cover Art Archive (José & Luis, 1993)"
  },
+ "Jubilee": {
+  "kind": "book",
+  "file": "work-jubilee.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Kevin Aviance – 'Din Da Da'": {
   "kind": "book",
   "file": "work-kevin-aviance-din-da-da.webp",
   "credit": "Sleeve via the Cover Art Archive (Kevin Aviance, 1997)"
+ },
+ "Late Night with David Letterman": {
+  "kind": "book",
+  "file": "work-late-night-with-david-letterman.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "Limelight documentary": {
+  "kind": "book",
+  "file": "work-limelight-documentary.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Lucky magazine": {
+  "kind": "book",
+  "file": "work-lucky-magazine.webp",
+  "credit": "Cover via Wikipedia"
+ },
+ "Madonna – 'Secret' music video": {
+  "kind": "book",
+  "file": "work-madonna-secret-music-video.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Making Mr. Right": {
+  "kind": "book",
+  "file": "work-making-mr-right.webp",
+  "credit": "Poster via Wikipedia"
  },
  "Man 2 Man – 'Male Stripper'": {
   "kind": "book",
@@ -49,6 +149,11 @@
   "file": "work-martha-wash-carry-on.webp",
   "credit": "Sleeve via the Cover Art Archive (Martha Wash, 1992)"
  },
+ "Martha Wash – 'Give It to You'": {
+  "kind": "book",
+  "file": "work-martha-wash-give-it-to-you.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
  "Martha Wash – 'Love & Conflict'": {
   "kind": "book",
   "file": "work-martha-wash-love-and-conflict.webp",
@@ -59,6 +164,41 @@
   "file": "work-martha-wash-martha-wash.webp",
   "credit": "Sleeve via the Cover Art Archive (Martha Wash, 1992)"
  },
+ "Miami Rhapsody": {
+  "kind": "book",
+  "file": "work-miami-rhapsody.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Moby Doc": {
+  "kind": "book",
+  "file": "work-moby-doc.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Mondo New York": {
+  "kind": "book",
+  "file": "work-mondo-new-york.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Party Monster (2003)": {
+  "kind": "book",
+  "file": "work-party-monster.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Pink Floyd – The Wall": {
+  "kind": "book",
+  "file": "work-pink-floyd-the-wall.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Queen of the Universe": {
+  "kind": "book",
+  "file": "work-queen-of-the-universe.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Saturday Night Fever": {
+  "kind": "book",
+  "file": "work-saturday-night-fever.webp",
+  "credit": "Poster via Wikipedia"
+ },
  "Seduction – 'Heartbeat'": {
   "kind": "book",
   "file": "work-seduction-heartbeat.webp",
@@ -68,5 +208,150 @@
   "kind": "book",
   "file": "work-seduction-two-to-make-it-right.webp",
   "credit": "Sleeve via the Cover Art Archive (Seduction, 1989)"
+ },
+ "Sex and the City": {
+  "kind": "book",
+  "file": "work-sex-and-the-city.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Sex and the City: The Movie": {
+  "kind": "book",
+  "file": "work-sex-and-the-city-the-movie.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "She-Devil": {
+  "kind": "book",
+  "file": "work-she-devil.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Smithereens": {
+  "kind": "book",
+  "file": "work-smithereens.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Strike a Pose": {
+  "kind": "book",
+  "file": "work-strike-a-pose.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Sylvester – 'You Make Me Feel (Mighty Real)'": {
+  "kind": "book",
+  "file": "work-sylvester-you-make-me-feel.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "The Birdcage": {
+  "kind": "book",
+  "file": "work-birdcage.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Devil Wears Prada": {
+  "kind": "book",
+  "file": "work-devil-wears-prada.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Grind (MTV)": {
+  "kind": "book",
+  "file": "work-grind.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The Hunger": {
+  "kind": "book",
+  "file": "work-hunger.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Killing Fields": {
+  "kind": "book",
+  "file": "work-killing-fields.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Kominsky Method": {
+  "kind": "book",
+  "file": "work-kominsky-method.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "The Misandrists": {
+  "kind": "book",
+  "file": "work-misandrists.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Nomi Song": {
+  "kind": "book",
+  "file": "work-nomi-song.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Rocky Horror Picture Show": {
+  "kind": "book",
+  "file": "work-rocky-horror-picture-show.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Rocky Horror Show": {
+  "kind": "book",
+  "file": "work-rocky-horror-show.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The RuPaul Show": {
+  "kind": "book",
+  "file": "work-rupaul-show.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "The Sterile Cuckoo": {
+  "kind": "book",
+  "file": "work-sterile-cuckoo.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "The Weather Girls": {
+  "kind": "book",
+  "file": "work-weather-girls.webp",
+  "credit": "Photo: Fantasy Honey Records, Wikimedia Commons (public domain)"
+ },
+ "The Weather Girls – 'It's Raining Men'": {
+  "kind": "book",
+  "file": "work-weather-girls-it-s-raining-men.webp",
+  "credit": "Sleeve via the Cover Art Archive (The Weather Girls, 1997)"
+ },
+ "Tiger King": {
+  "kind": "book",
+  "file": "work-tiger-king.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "To Wong Foo, Thanks for Everything! Julie Newmar": {
+  "kind": "book",
+  "file": "work-to-wong-foo-thanks-for-everything-julie-newmar.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Truth or Dare": {
+  "kind": "book",
+  "file": "work-truth-or-dare.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Ugly Betty": {
+  "kind": "book",
+  "file": "work-ugly-betty.webp",
+  "credit": "Title card via Wikipedia"
+ },
+ "Vogue (Madonna song)": {
+  "kind": "book",
+  "file": "work-vogue.webp",
+  "credit": "Sleeve via Wikipedia"
+ },
+ "Watch What Happens Live with Andy Cohen": {
+  "kind": "book",
+  "file": "work-watch-what-happens-live-with-andy-cohen.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "What's the Tee? (RuPaul's podcast)": {
+  "kind": "book",
+  "file": "work-what-s-the-tee.webp",
+  "credit": "Podcast art via Wikipedia"
+ },
+ "Wigstock: The Movie": {
+  "kind": "book",
+  "file": "work-wigstock-the-movie.webp",
+  "credit": "Poster via Wikipedia"
+ },
+ "Wings": {
+  "kind": "book",
+  "file": "work-wings.webp",
+  "credit": "Title card via Wikipedia"
  }
 }
