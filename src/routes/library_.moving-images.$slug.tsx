@@ -18,6 +18,9 @@ import "@fontsource/covered-by-your-grace/400.css";
 
 export const Route = createFileRoute("/library_/moving-images/$slug")({
   staticData: { sitemap: false },
+  // MOCK (layout options for Lisa, 24 Nov 2026) - remove once she picks one.
+  validateSearch: (s: Record<string, unknown>): { layout?: string } =>
+    typeof s["layout"] === "string" ? { layout: s["layout"] } : {},
   loader: async ({ params }) => {
     const v = await getScreenPage({ data: params.slug });
     if (!v) throw notFound();
@@ -187,12 +190,207 @@ function Cast({ v }: { v: ScreenPageView }) {
   );
 }
 
+function Head({ v, wide }: { v: ScreenPageView; wide?: boolean }) {
+  return (
+    <div className={wide ? "scr-head-wide" : undefined}>
+      <div>
+        <p className="art-tag">{v.kind}</p>
+        <h1 className={`art-title${v.name.length > 28 ? " art-title-long" : ""}`}>
+          <a href={v.href} className="art-name">
+            {v.name}
+          </a>
+        </h1>
+        <p className="art-for">{v.line}</p>
+        {v.intro && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.intro}</p>}
+      </div>
+      <Facts v={v} />
+    </div>
+  );
+}
+
+function Facts({ v }: { v: ScreenPageView }) {
+  if (v.facts.length === 0) return null;
+  return (
+    <dl className="scr-facts">
+      {v.facts.map((f) => (
+        <div key={f.label}>
+          <dt>{f.label}</dt>
+          <dd>{f.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function Team({ v }: { v: ScreenPageView }) {
+  if (v.team.length === 0) return null;
+  return (
+    <>
+      <h3 className="scr-sub">The team</h3>
+      <Rows rows={v.team} />
+    </>
+  );
+}
+function CastPart({ v }: { v: ScreenPageView }) {
+  if (v.cast.length === 0) return null;
+  return (
+    <>
+      <h3 className="scr-sub">
+        {v.kind === "TV show" ? "On screen" : "The cast"} <span>{v.cast.length}</span>
+      </h3>
+      <Cast v={v} />
+    </>
+  );
+}
+function Support({ v }: { v: ScreenPageView }) {
+  if (v.support.length === 0) return null;
+  return (
+    <>
+      <h3 className="scr-sub">Support</h3>
+      <Rows rows={v.support} />
+    </>
+  );
+}
+function Awards({ v }: { v: ScreenPageView }) {
+  if (v.awards.length === 0 && v.nominations === 0) return null;
+  return (
+    <>
+      <h3 className="scr-sub">Awards</h3>
+      <ul className="scr-awards mt-3">
+        {v.awards.map((a) => (
+          <li key={a.name + (a.year ?? "") + (a.for ?? "")}>
+            <b>★</b> {a.name}
+            {a.for ? ` (${a.for})` : ""}
+            {a.year ? ` · ${a.year}` : ""}
+          </li>
+        ))}
+        {v.nominations > 0 && (
+          <li className="text-muted-foreground">
+            and {v.nominations} nomination{v.nominations === 1 ? "" : "s"}
+          </li>
+        )}
+      </ul>
+    </>
+  );
+}
+function SourceNote({ v }: { v: ScreenPageView }) {
+  return <p className="scr-src">From {v.sources.join(", ")}. Pink names have a page on the site.</p>;
+}
+const nobody = (v: ScreenPageView) => v.team.length + v.cast.length + v.support.length === 0;
+function Nobody() {
+  return (
+    <p className="mt-3 text-sm text-muted-foreground">
+      Nothing we can check names who made it yet. Know who did? Tell me in the box at the bottom of the page.
+    </p>
+  );
+}
+
+/** Who was involved, all in one box (Lisa: "info box who was involved, find as many cast and team and support information as possible"). */
+function Involved({ v, className = "" }: { v: ScreenPageView; className?: string }) {
+  return (
+    <section className={`art-box scr-box ${className}`} aria-labelledby="scr-involved">
+      <h2 id="scr-involved" className={h}>
+        Who was involved
+      </h2>
+      {nobody(v) && <Nobody />}
+      <Team v={v} />
+      <CastPart v={v} />
+      <Support v={v} />
+      <Awards v={v} />
+      <SourceNote v={v} />
+    </section>
+  );
+}
+
+function Said({ v, className = "" }: { v: ScreenPageView; className?: string }) {
+  if (v.quotes.length === 0) return null;
+  return (
+    <section className={className} aria-labelledby="scr-said">
+      <h2 id="scr-said" className={h}>
+        What the guests said
+      </h2>
+      <ul className="lit-quotes scr-quotes mt-4">
+        {v.quotes.map((q) => (
+          <li key={q.episodeId + q.time} className="lit-quote">
+            <blockquote>{q.quote}</blockquote>
+            <p className="lit-quote-who">
+              {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
+              <span>
+                <Link to={episodePath(q.episodeId as never)} className="art-name font-semibold">
+                  {q.who}
+                </Link>
+                <br />
+                {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
+              </span>
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** Episode mentions: pink title link + yellow ▶ time code + what was said underneath (Lisa, 22 Nov 2026). */
+function CameUp({ v, className = "", one = false }: { v: ScreenPageView; className?: string; one?: boolean }) {
+  if (v.moments.length === 0) return null;
+  return (
+    <section className={className} aria-labelledby="scr-came-up">
+      <h2 id="scr-came-up" className={h}>
+        How it came up on the show
+      </h2>
+      <ul className={`art-moments mt-3${one ? " scr-moments-one" : ""}`}>
+        {v.moments.map((m) => (
+          <li key={m.episodeId + m.time}>
+            {m.polaroid && (
+              <img src={m.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" className="art-face" />
+            )}
+            <div>
+              <Link to={episodePath(m.episodeId as never)} className="scr-ep">
+                {m.short} · {m.guest}
+              </Link>{" "}
+              <Timestamp episodeId={m.episodeId} time={m.time} />
+              <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{m.context}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function More({ v }: { v: ScreenPageView }) {
+  if (v.more.length === 0) return null;
+  return (
+    <section className="scr-more-row" aria-labelledby="scr-more">
+      <h2 id="scr-more" className={h}>
+        More {v.group.toLowerCase()}
+      </h2>
+      <ul className="art-more scr-more-strip mt-4">
+        {v.more.map((m) => (
+          <li key={m.slug}>
+            <Link to="/library/moving-images/$slug" params={{ slug: m.slug }} className="art-more-hit">
+              <span className="art-more-pic">
+                {m.src ? (
+                  <img src={m.src} alt={m.name} loading="lazy" decoding="async" />
+                ) : (
+                  <span className="scr-more-type">{m.name}</span>
+                )}
+              </span>
+              <span className="art-name">{m.name}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function ScreenPage() {
   const v = Route.useLoaderData() as ScreenPageView;
-  const involved = v.team.length + v.cast.length + v.support.length;
+  const { layout = "b" } = Route.useSearch();
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 pb-12 pt-6 sm:px-6">
         <nav className="art-crumbs" aria-label="Where you are">
           <Link to="/library" className="art-name">
             Library
@@ -204,158 +402,79 @@ function ScreenPage() {
           · <span>{v.group}</span>
         </nav>
 
-        <div className="art-page scr-page">
-          <BigJukebox v={v} />
-
-          <div className="art-text">
-            <p className="art-tag">{v.kind}</p>
-            <h1 className={`art-title${v.name.length > 28 ? " art-title-long" : ""}`}>
-              <a href={v.href} className="art-name">
-                {v.name}
-              </a>
-            </h1>
-            <p className="art-for">{v.line}</p>
-            {v.intro && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.intro}</p>}
-            {v.facts.length > 0 && (
-              <dl className="scr-facts mt-5">
-                {v.facts.map((f) => (
-                  <div key={f.label}>
-                    <dt>{f.label}</dt>
-                    <dd>{f.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-
-            {/* Who was involved (Lisa: "info box who was involved, find as many cast and team and support information as possible") */}
-            <section className="art-box mt-8" aria-labelledby="scr-involved">
+        {layout === "a" ? (
+          // A - Big screen on top: the title beside its facts, the Jukebox the full width, then the credits in three columns.
+          <div className="scr-a">
+            <Head v={v} wide />
+            <BigJukebox v={v} />
+            <section className="art-box scr-box scr-a-credits" aria-labelledby="scr-involved">
               <h2 id="scr-involved" className={h}>
                 Who was involved
               </h2>
-              {involved === 0 && (
-                <p className="mt-3 text-sm text-muted-foreground">
-                  Nothing we can check names who made it yet. Know who did? Tell me in the box at the bottom of the page.
-                </p>
-              )}
-              {v.team.length > 0 && (
-                <>
-                  <h3 className="scr-sub">The team</h3>
-                  <Rows rows={v.team} />
-                </>
-              )}
-              {v.cast.length > 0 && (
-                <>
-                  <h3 className="scr-sub">
-                    {v.kind === "TV show" ? "On screen" : "The cast"} <span>{v.cast.length}</span>
-                  </h3>
-                  <Cast v={v} />
-                </>
-              )}
-              {v.support.length > 0 && (
-                <>
-                  <h3 className="scr-sub">Support</h3>
-                  <Rows rows={v.support} />
-                </>
-              )}
-              {(v.awards.length > 0 || v.nominations > 0) && (
-                <>
-                  <h3 className="scr-sub">Awards</h3>
-                  <ul className="scr-awards mt-3">
-                    {v.awards.map((a) => (
-                      <li key={a.name + (a.year ?? "") + (a.for ?? "")}>
-                        <b>★</b> {a.name}
-                        {a.for ? ` (${a.for})` : ""}
-                        {a.year ? ` · ${a.year}` : ""}
-                      </li>
-                    ))}
-                    {v.nominations > 0 && (
-                      <li className="text-muted-foreground">
-                        and {v.nominations} nomination{v.nominations === 1 ? "" : "s"}
-                      </li>
-                    )}
-                  </ul>
-                </>
-              )}
-              <p className="mt-4 text-xs text-muted-foreground">
-                From {v.sources.join(", ")}. Pink names have a page on the site.
-              </p>
-            </section>
-          </div>
-        </div>
-
-        {v.quotes.length > 0 && (
-          <section className="mt-14" aria-labelledby="scr-said">
-            <h2 id="scr-said" className={h}>
-              What the guests said
-            </h2>
-            <ul className="lit-quotes mt-5">
-              {v.quotes.map((q) => (
-                <li key={q.episodeId + q.time} className="lit-quote">
-                  <blockquote>{q.quote}</blockquote>
-                  <p className="lit-quote-who">
-                    {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
-                    <span>
-                      <Link to={episodePath(q.episodeId as never)} className="art-name font-semibold">
-                        {q.who}
-                      </Link>
-                      <br />
-                      {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
-                    </span>
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {/* Episode mentions: pink title link + yellow ▶ time code + what was said underneath (Lisa, 22 Nov 2026). */}
-        {v.moments.length > 0 && (
-          <section className="mt-12" aria-labelledby="scr-came-up">
-            <h2 id="scr-came-up" className={h}>
-              How it came up on the show
-            </h2>
-            <ul className="art-moments mt-4">
-              {v.moments.map((m) => (
-                <li key={m.episodeId + m.time}>
-                  {m.polaroid && (
-                    <img src={m.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" className="art-face" />
-                  )}
-                  <div>
-                    <Link to={episodePath(m.episodeId as never)} className="scr-ep">
-                      {m.short} · {m.guest}
-                    </Link>{" "}
-                    <Timestamp episodeId={m.episodeId} time={m.time} />
-                    <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{m.context}</p>
+              {nobody(v) && <Nobody />}
+              <div className="scr-a-cols">
+                <div>
+                  <Team v={v} />
+                  <Support v={v} />
+                  <Awards v={v} />
+                </div>
+                {v.cast.length > 0 && (
+                  <div className="scr-a-cast">
+                    <CastPart v={v} />
                   </div>
-                </li>
-              ))}
-            </ul>
-          </section>
+                )}
+              </div>
+              <SourceNote v={v} />
+            </section>
+            <div className="scr-pair">
+              <Said v={v} />
+              <CameUp v={v} one={v.quotes.length > 0} />
+            </div>
+          </div>
+        ) : layout === "c" ? (
+          // C - Front page: the title across the top, then rows of boxes the same height - screen | team, cast across, support | awards.
+          <div className="scr-c">
+            <Head v={v} wide />
+            <div className="scr-c-row">
+              <BigJukebox v={v} />
+              <section className="art-box scr-box" aria-labelledby="scr-involved">
+                <h2 id="scr-involved" className={h}>
+                  Who was involved
+                </h2>
+                {nobody(v) && <Nobody />}
+                <Team v={v} />
+                <Support v={v} />
+                <Awards v={v} />
+              </section>
+            </div>
+            {v.cast.length > 0 && (
+              <section className="art-box scr-box scr-c-cast">
+                <CastPart v={v} />
+                <SourceNote v={v} />
+              </section>
+            )}
+            <div className="scr-pair">
+              <Said v={v} />
+              <CameUp v={v} one={v.quotes.length > 0} />
+            </div>
+          </div>
+        ) : (
+          // B - Two full columns: the screen, the guests' words and the moments on the left; the title and who was involved on
+          // the right. Both columns keep going, so nothing is left empty beside the other.
+          <div className="scr-b">
+            <div className="scr-b-l">
+              <BigJukebox v={v} />
+              <Said v={v} />
+              <CameUp v={v} one />
+            </div>
+            <div className="scr-b-r">
+              <Head v={v} />
+              <Involved v={v} />
+            </div>
+          </div>
         )}
 
-        {v.more.length > 0 && (
-          <section className="mt-14" aria-labelledby="scr-more">
-            <h2 id="scr-more" className={h}>
-              More {v.group.toLowerCase()}
-            </h2>
-            <ul className="art-more mt-5">
-              {v.more.map((m) => (
-                <li key={m.slug}>
-                  <Link to="/library/moving-images/$slug" params={{ slug: m.slug }} className="art-more-hit">
-                    <span className="art-more-pic">
-                      {m.src ? (
-                        <img src={m.src} alt={m.name} loading="lazy" decoding="async" />
-                      ) : (
-                        <span className="scr-more-type">{m.name}</span>
-                      )}
-                    </span>
-                    <span className="art-name">{m.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        <More v={v} />
       </div>
       <SiteFooter />
     </main>
