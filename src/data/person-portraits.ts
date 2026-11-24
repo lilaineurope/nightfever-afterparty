@@ -648,6 +648,10 @@ import lynnYaegerPhoto from "@/assets/people/lynn-yaeger-photo.webp";
 import lynnYaegerPolaroid from "@/assets/people/lynn-yaeger-polaroid.webp";
 import angieBowiePhoto from "@/assets/people/angie-bowie-photo.webp";
 import angieBowiePolaroid from "@/assets/people/angie-bowie-polaroid.webp";
+import stingPhoto from "@/assets/people/sting-photo.webp";
+import stingPolaroid from "@/assets/people/sting-polaroid.webp";
+import jackNicholsonPhoto from "@/assets/people/jack-nicholson-photo.webp";
+import jackNicholsonPolaroid from "@/assets/people/jack-nicholson-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -991,4 +995,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "lynn-yaeger": { photo: lynnYaegerPhoto, polaroid: lynnYaegerPolaroid, focus: "24%", credit: `Portrait after a photo by D_M_D, 2011 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), ${STYLE}` },
   // No usable free photo (only one, hand cut off); Lisa chose a realistic Gemini portrait, option B at Max's.
   "angie-bowie": { photo: angieBowiePhoto, polaroid: angieBowiePolaroid, focus: "22%", credit: "Illustration made with Gemini, not a photo" },
+  // Living people batch 5 (Lisa, 24 Nov 2026: publish). Gemini refused both as famous, so free photos.
+  "sting": { photo: stingPhoto, polaroid: stingPolaroid, focus: "22%", credit: `Portrait after a photo by Acroterion, The Police at the Agora Ballroom, Atlanta, 1979 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
+  "jack-nicholson": { photo: jackNicholsonPhoto, polaroid: jackNicholsonPolaroid, focus: "22%", credit: `Portrait after a Los Angeles Times photo at the 1976 Academy Awards, UCLA Library (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
 };
