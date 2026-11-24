@@ -1,1 +1,72 @@
-{}
+{
+ "Alisha – 'Baby Talk'": {
+  "kind": "book",
+  "file": "work-alisha-baby-talk.webp",
+  "credit": "Sleeve via the Cover Art Archive (Alisha, 1985)"
+ },
+ "Black Box – 'Everybody Everybody'": {
+  "kind": "book",
+  "file": "work-black-box-everybody-everybody.webp",
+  "credit": "Sleeve via the Cover Art Archive (Black Box, 1990)"
+ },
+ "Daphne Guinness – Optimist in Black": {
+  "kind": "book",
+  "file": "work-daphne-guinness-optimist-in-black.webp",
+  "credit": "Sleeve via the Cover Art Archive (Daphne Guinness, 2016)"
+ },
+ "Ghost Cat": {
+  "kind": "book",
+  "file": "work-ghost-cat.webp",
+  "credit": "Sleeve via the Cover Art Archive (Ann Magnuson, 2023)"
+ },
+ "Go (Moby song)": {
+  "kind": "book",
+  "file": "work-go.webp",
+  "credit": "Sleeve via the Cover Art Archive (Moby, 1991)"
+ },
+ "José & Luis – 'Queen's English'": {
+  "kind": "book",
+  "file": "work-jose-and-luis-queen-s-english.webp",
+  "credit": "Sleeve via the Cover Art Archive (José & Luis, 1993)"
+ },
+ "Kevin Aviance – 'Din Da Da'": {
+  "kind": "book",
+  "file": "work-kevin-aviance-din-da-da.webp",
+  "credit": "Sleeve via the Cover Art Archive (Kevin Aviance, 1997)"
+ },
+ "Man 2 Man – 'Male Stripper'": {
+  "kind": "book",
+  "file": "work-man-2-man-male-stripper.webp",
+  "credit": "Sleeve via the Cover Art Archive (Man 2 Man, 1986)"
+ },
+ "Man Parrish – 'Hip Hop, Be Bop (Don't Stop)'": {
+  "kind": "book",
+  "file": "work-man-parrish-hip-hop-be-bop.webp",
+  "credit": "Sleeve via the Cover Art Archive (Man Parrish, 1982)"
+ },
+ "Martha Wash – 'Carry On'": {
+  "kind": "book",
+  "file": "work-martha-wash-carry-on.webp",
+  "credit": "Sleeve via the Cover Art Archive (Martha Wash, 1992)"
+ },
+ "Martha Wash – 'Love & Conflict'": {
+  "kind": "book",
+  "file": "work-martha-wash-love-and-conflict.webp",
+  "credit": "Sleeve via the Cover Art Archive (Martha Wash, 2020)"
+ },
+ "Martha Wash – 'Martha Wash' (album)": {
+  "kind": "book",
+  "file": "work-martha-wash-martha-wash.webp",
+  "credit": "Sleeve via the Cover Art Archive (Martha Wash, 1992)"
+ },
+ "Seduction – 'Heartbeat'": {
+  "kind": "book",
+  "file": "work-seduction-heartbeat.webp",
+  "credit": "Sleeve via the Cover Art Archive (Seduction, 1990)"
+ },
+ "Seduction – 'Two to Make It Right'": {
+  "kind": "book",
+  "file": "work-seduction-two-to-make-it-right.webp",
+  "credit": "Sleeve via the Cover Art Archive (Seduction, 1989)"
+ }
+}
