@@ -1,0 +1,4118 @@
+{
+ "2001: A Space Odyssey": {
+  "qid": "Q103474",
+  "date": [
+   "1968-04-03T00:00:00Z",
+   "1968-04-02T00:00:00Z",
+   "1968-04-11T00:00:00Z",
+   "1968-09-11T00:00:00Z",
+   "1968-07-26T00:00:00Z",
+   "1968-08-27T00:00:00Z",
+   "1968-05-12T00:00:00Z",
+   "1968-01-01T00:00:00Z",
+   "1968-05-10T00:00:00Z"
+  ],
+  "country": [
+   "United States",
+   "United Kingdom"
+  ],
+  "imdb": [
+   "tt0062622"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/2001%20A%20Space%20Odyssey%20%281968%29%20-%20Trailer.webm"
+  ],
+  "tmdb_movie": [
+   "62"
+  ],
+  "youtube": [
+   "peMX_zlIIA4",
+   "pprmw5C1AAE"
+  ]
+ },
+ "8½": {
+  "qid": "Q12018",
+  "date": [
+   "1963-02-16T00:00:00Z",
+   "1963-05-23T00:00:00Z",
+   "1963-05-29T00:00:00Z",
+   "1963-02-15T00:00:00Z",
+   "1963-02-14T00:00:00Z",
+   "1963-06-24T00:00:00Z"
+  ],
+  "country": [
+   "Italy",
+   "France"
+  ],
+  "imdb": [
+   "tt0056801"
+  ],
+  "tmdb_movie": [
+   "422"
+  ]
+ },
+ "All About Eve (1950)": {
+  "qid": "Q200299",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1951-01-15T00:00:00Z",
+   "1950-01-01T00:00:00Z",
+   "1950-10-13T00:00:00Z",
+   "1950-10-27T00:00:00Z",
+   "1950-10-22T00:00:00Z",
+   "1950-12-07T00:00:00Z",
+   "1950-11-03T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0042192"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/All%20About%20Eve%20trailer%20%281950%29.webm"
+  ],
+  "archive_org": [
+   "all.-about.-eve.-1950.720p"
+  ],
+  "tmdb_movie": [
+   "705"
+  ],
+  "youtube": [
+   "Fpx_ABqeJfA"
+  ],
+  "archive_meta": [
+   {
+    "id": "all.-about.-eve.-1950.720p",
+    "title": "All About Eve (1950)",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "feature_films_unsorted",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "elisacervv@gmail.com"
+   }
+  ]
+ },
+ "All My Children": {
+  "qid": "Q205474",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0065272"
+  ],
+  "tmdb_tv": [
+   "879"
+  ]
+ },
+ "An American Family": {
+  "qid": "Q482366",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0211195"
+  ],
+  "tmdb_tv": [
+   "12398"
+  ]
+ },
+ "Andy Warhol's Fifteen Minutes": {
+  "qid": "Q4761448",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0235907"
+  ],
+  "tmdb_tv": [
+   "33089"
+  ]
+ },
+ "Anything But Love": {
+  "qid": "Q3620516",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0096534"
+  ],
+  "tmdb_tv": [
+   "5117"
+  ]
+ },
+ "Auntie Mame (1958)": {
+  "qid": "Q1219582",
+  "date": [
+   "1958-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0051383"
+  ],
+  "tmdb_movie": [
+   "16347"
+  ]
+ },
+ "Bad (Andy Warhol's)": {
+  "qid": "Q2849188",
+  "date": [
+   "1977-03-11T00:00:00Z",
+   "1977-01-20T00:00:00Z",
+   "1977-09-07T00:00:00Z",
+   "1977-05-04T00:00:00Z",
+   "1977-05-11T00:00:00Z",
+   "1977-04-23T00:00:00Z",
+   "1977-02-17T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0075679"
+  ],
+  "tmdb_movie": [
+   "66489"
+  ]
+ },
+ "Batman (1989 film)": {
+  "qid": "Q116852",
+  "country": [
+   "United Kingdom",
+   "United States"
+  ],
+  "date": [
+   "1989-01-01T00:00:00Z",
+   "1989-10-26T00:00:00Z",
+   "1989-10-20T00:00:00Z",
+   "1989-09-13T00:00:00Z",
+   "1989-06-23T00:00:00Z",
+   "1989-08-11T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0096895"
+  ],
+  "youtube": [
+   "RAlnM2PPosg"
+  ],
+  "tmdb_movie": [
+   "268"
+  ]
+ },
+ "Batman TV series": {
+  "qid": "Q1247201",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0059968"
+  ],
+  "tmdb_tv": [
+   "2287"
+  ]
+ },
+ "Behind the Velvet Ropes": {
+  "qid": "Q134006692",
+  "imdb": [
+   "tt36461427"
+  ]
+ },
+ "Beverly Hills, 90210": {
+  "qid": "Q117590",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0098749"
+  ],
+  "tmdb_tv": [
+   "2025"
+  ]
+ },
+ "Bewitched": {
+  "qid": "Q1044635",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0057733"
+  ],
+  "tmdb_tv": [
+   "4482"
+  ]
+ },
+ "Big Top Pee-wee": {
+  "qid": "Q2364439",
+  "date": [
+   "1988-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0094744"
+  ],
+  "tmdb_movie": [
+   "30502"
+  ]
+ },
+ "Bob & Carol & Ted & Alice": {
+  "qid": "Q2731768",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1969-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0064100"
+  ],
+  "tmdb_movie": [
+   "26520"
+  ]
+ },
+ "Bosom Buddies": {
+  "qid": "Q2015828",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0080202"
+  ],
+  "tmdb_tv": [
+   "2574"
+  ]
+ },
+ "Cabaret (1972)": {
+  "qid": "Q918363",
+  "date": [
+   "1972-06-01T00:00:00Z",
+   "1972-07-07T00:00:00Z",
+   "1972-07-13T00:00:00Z",
+   "1972-08-09T00:00:00Z",
+   "1972-08-19T00:00:00Z",
+   "1972-08-21T00:00:00Z",
+   "1972-09-01T00:00:00Z",
+   "1972-09-15T00:00:00Z",
+   "1972-09-22T00:00:00Z",
+   "1972-09-28T00:00:00Z",
+   "1972-10-02T00:00:00Z",
+   "1972-10-06T00:00:00Z",
+   "1972-10-09T00:00:00Z",
+   "1972-10-12T00:00:00Z",
+   "1972-10-20T00:00:00Z",
+   "1972-10-27T00:00:00Z",
+   "1972-11-04T00:00:00Z",
+   "1973-03-01T00:00:00Z",
+   "1973-04-05T00:00:00Z",
+   "1972-02-13T00:00:00Z",
+   "1972-03-31T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0068327"
+  ],
+  "tmdb_movie": [
+   "10784"
+  ]
+ },
+ "Carrie": {
+  "qid": "Q162672",
+  "date": [
+   "1977-01-13T00:00:00Z",
+   "1976-11-16T00:00:00Z",
+   "1976-11-03T00:00:00Z",
+   "1977-04-22T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0074285"
+  ],
+  "tmdb_movie": [
+   "7340"
+  ]
+ },
+ "Channel J": {
+  "qid": "Q124749482"
+ },
+ "Charlie's Angels": {
+  "qid": "Q617274",
+  "imdb": [
+   "tt0073972"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "3382"
+  ]
+ },
+ "CHiPs": {
+  "qid": "Q1023688",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0075488"
+  ],
+  "tmdb_tv": [
+   "509"
+  ]
+ },
+ "Ciao! Manhattan": {
+  "qid": "Q847821",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1973-04-19T00:00:00Z",
+   "1974-07-18T00:00:00Z",
+   "1972-08-22T00:00:00Z",
+   "1972-07-19T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0068379"
+  ],
+  "tmdb_movie": [
+   "42479"
+  ]
+ },
+ "Cookie": {
+  "qid": "Q1129611",
+  "date": [
+   "1989-01-01T00:00:00Z",
+   "1990-05-17T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0097109"
+  ],
+  "tmdb_movie": [
+   "86093"
+  ]
+ },
+ "Cruising": {
+  "qid": "Q952511",
+  "imdb": [
+   "tt0080569"
+  ],
+  "country": [
+   "Germany",
+   "West Germany",
+   "United States"
+  ],
+  "date": [
+   "1980-08-29T00:00:00Z",
+   "1980-02-08T00:00:00Z",
+   "1980-02-15T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "27958"
+  ]
+ },
+ "Curb Your Enthusiasm": {
+  "qid": "Q23722",
+  "imdb": [
+   "tt0264235"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "4546"
+  ]
+ },
+ "Dark Shadows": {
+  "qid": "Q1166225",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0059978"
+  ],
+  "tmdb_tv": [
+   "2883"
+  ]
+ },
+ "Dead Calm": {
+  "qid": "Q845077",
+  "date": [
+   "1989-05-25T00:00:00Z",
+   "1989-09-08T00:00:00Z",
+   "1989-11-30T00:00:00Z",
+   "1989-04-07T00:00:00Z",
+   "1991-01-03T00:00:00Z",
+   "1989-09-01T00:00:00Z",
+   "1989-12-22T00:00:00Z",
+   "1989-10-06T00:00:00Z",
+   "1989-10-05T00:00:00Z",
+   "1990-04-06T00:00:00Z",
+   "1989-09-07T00:00:00Z",
+   "1989-08-26T00:00:00Z",
+   "1990-02-15T00:00:00Z",
+   "1989-06-12T00:00:00Z",
+   "1989-08-23T00:00:00Z",
+   "1989-08-04T00:00:00Z",
+   "1989-07-21T00:00:00Z",
+   "1989-07-27T00:00:00Z"
+  ],
+  "country": [
+   "United States",
+   "Australia"
+  ],
+  "imdb": [
+   "tt0097162"
+  ],
+  "tmdb_movie": [
+   "10493"
+  ]
+ },
+ "Desperately Seeking Susan": {
+  "qid": "Q1420421",
+  "date": [
+   "1985-01-01T00:00:00Z",
+   "1985-04-12T00:00:00Z",
+   "1985-03-29T00:00:00Z",
+   "1985-08-02T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0089017"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "8130"
+  ]
+ },
+ "Dinah!": {
+  "qid": "Q5277888",
+  "imdb": [
+   "tt0070982"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "118927",
+   "11340"
+  ]
+ },
+ "Diva (1981 film)": {
+  "qid": "Q735383",
+  "imdb": [
+   "tt0082269"
+  ],
+  "date": [
+   "1981-01-01T00:00:00Z",
+   "1983-03-25T00:00:00Z"
+  ],
+  "country": [
+   "France"
+  ],
+  "tmdb_movie": [
+   "4485"
+  ]
+ },
+ "Dog Day Afternoon": {
+  "qid": "Q458656",
+  "date": [
+   "1975-01-01T00:00:00Z",
+   "1975-12-18T00:00:00Z",
+   "1976-03-19T00:00:00Z",
+   "1975-09-19T00:00:00Z",
+   "1975-12-25T00:00:00Z",
+   "1975-09-21T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0072890"
+  ],
+  "tmdb_movie": [
+   "968"
+  ]
+ },
+ "Don Kirshner's Rock Concert": {
+  "qid": "Q5292926",
+  "imdb": [
+   "tt0252784"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "6249"
+  ]
+ },
+ "Donny & Marie": {
+  "qid": "Q5296720",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0073985"
+  ],
+  "tmdb_tv": [
+   "3870"
+  ]
+ },
+ "Downtown 81": {
+  "qid": "Q508136",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "2001-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0208993"
+  ],
+  "tmdb_movie": [
+   "26571"
+  ]
+ },
+ "Driving Miss Daisy (1989)": {
+  "qid": "Q211373",
+  "date": [
+   "1989-12-15T00:00:00Z",
+   "1989-01-01T00:00:00Z",
+   "1990-03-15T00:00:00Z",
+   "1990-04-27T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0097239"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "403"
+  ]
+ },
+ "Dynasty": {
+  "qid": "Q584025",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0081856"
+  ],
+  "tmdb_tv": [
+   "3769"
+  ]
+ },
+ "Elvira, Mistress of the Dark": {
+  "qid": "Q1334314",
+  "imdb": [
+   "tt0095088"
+  ],
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1989-06-08T00:00:00Z",
+   "1988-01-01T00:00:00Z",
+   "1988-09-30T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "5680"
+  ],
+  "youtube": [
+   "ROdBBWryaqI"
+  ]
+ },
+ "Emily in Paris": {
+  "qid": "Q64584978",
+  "imdb": [
+   "tt8962124"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "82596"
+  ]
+ },
+ "Energizer Bunny": {
+  "qid": "Q5376864"
+ },
+ "Entertainment Tonight": {
+  "qid": "Q3055086",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0081857"
+  ],
+  "tmdb_tv": [
+   "1387"
+  ]
+ },
+ "Evening Magazine (KING 5)": {
+  "qid": "Q5416616",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0231023"
+  ]
+ },
+ "Family Feud": {
+  "qid": "Q506074",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0073991"
+  ],
+  "tmdb_tv": [
+   "1790"
+  ]
+ },
+ "Farinelli (1994 film)": {
+  "qid": "Q1341293",
+  "country": [
+   "France",
+   "Belgium",
+   "Italy"
+  ],
+  "date": [
+   "1995-07-27T00:00:00Z",
+   "1994-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0109771"
+  ],
+  "tmdb_movie": [
+   "10954"
+  ]
+ },
+ "Fashion File": {
+  "qid": "Q5436731",
+  "country": [
+   "Canada"
+  ]
+ },
+ "Film noir": {
+  "qid": "Q185867"
+ },
+ "Flawless (1999 film)": {
+  "qid": "Q958626",
+  "date": [
+   "2000-07-06T00:00:00Z",
+   "1999-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0155711"
+  ],
+  "tmdb_movie": [
+   "31582"
+  ]
+ },
+ "Footloose": {
+  "qid": "Q627533",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1984-05-18T00:00:00Z",
+   "1984-02-17T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0087277"
+  ],
+  "tmdb_movie": [
+   "1788"
+  ]
+ },
+ "Forrest Gump": {
+  "qid": "Q134773",
+  "date": [
+   "1994-10-13T00:00:00Z",
+   "1994-10-14T00:00:00Z",
+   "1994-06-23T00:00:00Z",
+   "1994-10-05T00:00:00Z",
+   "1994-07-06T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0109830"
+  ],
+  "copyright": [
+   "copyrighted"
+  ],
+  "tmdb_movie": [
+   "13"
+  ]
+ },
+ "Frasier": {
+  "qid": "Q209282",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0106004"
+  ],
+  "tmdb_tv": [
+   "3452"
+  ]
+ },
+ "Friends": {
+  "qid": "Q79784",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0108778"
+  ],
+  "tmdb_tv": [
+   "1668"
+  ]
+ },
+ "Gay USA": {
+  "qid": "Q5528657",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt4741914"
+  ],
+  "tmdb_tv": [
+   "3378"
+  ]
+ },
+ "General Hospital": {
+  "qid": "Q1136370",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0056758"
+  ],
+  "tmdb_tv": [
+   "987"
+  ]
+ },
+ "Geraldo": {
+  "qid": "Q3945587",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0092362"
+  ]
+ },
+ "Gia (1998 film)": {
+  "qid": "Q429557",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1998-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0123865"
+  ],
+  "tmdb_movie": [
+   "14533"
+  ]
+ },
+ "Gilligan's Island": {
+  "qid": "Q1141741",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0057751"
+  ],
+  "tmdb_tv": [
+   "1921"
+  ]
+ },
+ "Ginger and Fred": {
+  "qid": "Q18439",
+  "date": [
+   "1985-01-01T00:00:00Z",
+   "1986-02-13T00:00:00Z"
+  ],
+  "country": [
+   "Italy",
+   "France",
+   "Germany"
+  ],
+  "imdb": [
+   "tt0091113"
+  ],
+  "tmdb_movie": [
+   "42021"
+  ]
+ },
+ "Glitter": {
+  "qid": "Q916221",
+  "date": [
+   "2001-11-15T00:00:00Z",
+   "2001-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0118589"
+  ],
+  "tmdb_movie": [
+   "10696"
+  ]
+ },
+ "Gone with the Wind": {
+  "qid": "Q2875",
+  "date": [
+   "1953-01-15T00:00:00Z",
+   "1939-01-01T00:00:00Z",
+   "1941-10-06T00:00:00Z",
+   "1950-11-17T00:00:00Z",
+   "1940-12-16T00:00:00Z",
+   "1939-12-15T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "justwatch": [
+   "B002W7IH0Y"
+  ],
+  "imdb": [
+   "tt0031381"
+  ],
+  "youtube": [
+   "qF6wjF40DOo",
+   "NI2F-OQStSA"
+  ],
+  "tmdb_movie": [
+   "770"
+  ]
+ },
+ "Goodfellas": {
+  "qid": "Q42047",
+  "date": [
+   "1990-09-18T00:00:00Z",
+   "1990-09-12T00:00:00Z",
+   "1990-10-11T00:00:00Z",
+   "1990-09-08T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0099685"
+  ],
+  "tmdb_movie": [
+   "769"
+  ],
+  "youtube": [
+   "VRpNwUEmVCk"
+  ]
+ },
+ "Grease 2": {
+  "qid": "Q1138932",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1982-06-11T00:00:00Z",
+   "1982-07-23T00:00:00Z",
+   "1982-08-27T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0084021"
+  ],
+  "tmdb_movie": [
+   "9037"
+  ]
+ },
+ "Great Expectations (1998)": {
+  "qid": "Q657259",
+  "imdb": [
+   "tt0119223"
+  ],
+  "date": [
+   "1998-03-05T00:00:00Z",
+   "1998-01-30T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "9410"
+  ]
+ },
+ "Green Acres": {
+  "qid": "Q3230693",
+  "imdb": [
+   "tt0058808"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "609"
+  ]
+ },
+ "Gypsy (1962)": {
+  "qid": "Q2321588",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0056048"
+  ],
+  "date": [
+   "1962-01-01T00:00:00Z",
+   "1963-06-21T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "39391"
+  ]
+ },
+ "Heathers": {
+  "qid": "Q1551916",
+  "imdb": [
+   "tt0097493"
+  ],
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1988-10-24T00:00:00Z",
+   "1989-01-21T00:00:00Z",
+   "1989-03-31T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "2640"
+  ],
+  "youtube": [
+   "WE3_uwJC4NQ"
+  ]
+ },
+ "Heaven's Gate": {
+  "qid": "Q148204",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0080855"
+  ],
+  "date": [
+   "1985-03-01T00:00:00Z",
+   "1980-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "10935"
+  ]
+ },
+ "Hellraiser": {
+  "qid": "Q1162728",
+  "date": [
+   "1988-01-29T00:00:00Z",
+   "1987-09-10T00:00:00Z",
+   "1987-09-11T00:00:00Z",
+   "1988-03-03T00:00:00Z",
+   "1987-09-18T00:00:00Z"
+  ],
+  "country": [
+   "United States",
+   "United Kingdom"
+  ],
+  "imdb": [
+   "tt0093177"
+  ],
+  "tmdb_movie": [
+   "9003"
+  ]
+ },
+ "Home Alone": {
+  "qid": "Q105031",
+  "date": [
+   "1991-01-17T00:00:00Z",
+   "1990-11-10T00:00:00Z",
+   "1990-12-14T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0099785"
+  ],
+  "tmdb_movie": [
+   "771"
+  ]
+ },
+ "I Am Curious (Yellow)": {
+  "qid": "Q2054210",
+  "country": [
+   "Sweden"
+  ],
+  "imdb": [
+   "tt0061834"
+  ],
+  "date": [
+   "1967-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "42695"
+  ],
+  "archive_org": [
+   "JagrNyfikenEnFilmIGultZo"
+  ],
+  "archive_meta": [
+   {
+    "id": "JagrNyfikenEnFilmIGultZo",
+    "title": "Jag Är Nyfiken En Film I Gult Zo",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "opensource_movies",
+     "community"
+    ],
+    "uploader": "z19womania@gmail.com"
+   }
+  ]
+ },
+ "I, Tonya": {
+  "qid": "Q28369564",
+  "date": [
+   "2018-02-01T00:00:00Z",
+   "2018-03-22T00:00:00Z",
+   "2017-01-01T00:00:00Z",
+   "2018-02-16T00:00:00Z"
+  ],
+  "country": [
+   "France",
+   "United States"
+  ],
+  "imdb": [
+   "tt5580036"
+  ],
+  "justwatch": [
+   "B07893YKZL"
+  ],
+  "tmdb_movie": [
+   "389015"
+  ]
+ },
+ "Inchon": {
+  "qid": "Q495123",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0084132"
+  ],
+  "date": [
+   "1981-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "113464"
+  ],
+  "youtube": [
+   "EqpsPjLTzWo"
+  ]
+ },
+ "Jonathan Demme's Philadelphia": {
+  "qid": "Q204057",
+  "date": [
+   "1993-01-01T00:00:00Z",
+   "1993-12-22T00:00:00Z",
+   "1994-02-24T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0107818"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "9800"
+  ]
+ },
+ "Jubilee": {
+  "qid": "Q2456013",
+  "date": [
+   "1980-03-12T00:00:00Z",
+   "1981-07-09T00:00:00Z",
+   "1978-05-01T00:00:00Z",
+   "1978-11-03T00:00:00Z",
+   "1979-05-09T00:00:00Z",
+   "1979-02-11T00:00:00Z",
+   "1978-02-01T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom"
+  ],
+  "imdb": [
+   "tt0076240"
+  ],
+  "tmdb_movie": [
+   "41426"
+  ]
+ },
+ "Juliet of the Spirits": {
+  "qid": "Q18411",
+  "date": [
+   "1965-10-22T00:00:00Z",
+   "1965-01-01T00:00:00Z",
+   "1965-11-04T00:00:00Z"
+  ],
+  "country": [
+   "Italy",
+   "France"
+  ],
+  "imdb": [
+   "tt0059229"
+  ],
+  "tmdb_movie": [
+   "19120"
+  ]
+ },
+ "Just Shoot Me!": {
+  "qid": "Q1419644",
+  "imdb": [
+   "tt0118364"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "4576"
+  ]
+ },
+ "Kids (1995 film)": {
+  "qid": "Q646426",
+  "date": [
+   "1995-11-09T00:00:00Z",
+   "1995-01-01T00:00:00Z",
+   "1995-05-17T00:00:00Z",
+   "1995-09-01T00:00:00Z",
+   "1995-08-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0113540"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "9344"
+  ],
+  "youtube": [
+   "U9a5tZSKDOU"
+  ]
+ },
+ "Kindergarten Cop": {
+  "qid": "Q257630",
+  "date": [
+   "1991-02-01T00:00:00Z",
+   "1990-12-22T00:00:00Z",
+   "1991-02-07T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0099938"
+  ],
+  "tmdb_movie": [
+   "951"
+  ]
+ },
+ "Klute": {
+  "qid": "Q1348177",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1971-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0067309"
+  ],
+  "tmdb_movie": [
+   "466"
+  ]
+ },
+ "La Dolce Vita": {
+  "qid": "Q18407",
+  "country": [
+   "France",
+   "Italy"
+  ],
+  "date": [
+   "1960-05-10T00:00:00Z",
+   "1960-02-03T00:00:00Z",
+   "1961-07-19T00:00:00Z",
+   "1961-04-19T00:00:00Z",
+   "1960-06-22T00:00:00Z",
+   "1960-01-01T00:00:00Z",
+   "1960-05-11T00:00:00Z",
+   "1960-02-04T00:00:00Z",
+   "1960-05-07T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0053779"
+  ],
+  "tmdb_movie": [
+   "439"
+  ],
+  "youtube": [
+   "5aXDk1pUzZU",
+   "XIB6nAs1ZtM"
+  ]
+ },
+ "Larry King Live": {
+  "qid": "Q1423559",
+  "imdb": [
+   "tt0088550"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "519"
+  ]
+ },
+ "Late Night with David Letterman": {
+  "qid": "Q1806831",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0083441"
+  ],
+  "tmdb_tv": [
+   "4467"
+  ]
+ },
+ "Law & Order": {
+  "qid": "Q321423",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0098844"
+  ],
+  "tmdb_tv": [
+   "549"
+  ]
+ },
+ "Legendary": {
+  "qid": "Q94703678",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt11048090"
+  ],
+  "tmdb_tv": [
+   "99595"
+  ]
+ },
+ "Lifestyles of the Rich and Famous": {
+  "qid": "Q6545520",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1984-03-31T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0086750"
+  ],
+  "tmdb_tv": [
+   "9915"
+  ]
+ },
+ "Limelight documentary": {
+  "qid": "Q6549195",
+  "date": [
+   "2011-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt1418702"
+  ],
+  "tmdb_movie": [
+   "73941"
+  ]
+ },
+ "Little House on the Prairie": {
+  "qid": "Q764813"
+ },
+ "Looney Tunes": {
+  "qid": "Q622435",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1930-01-01T00:00:00Z"
+  ],
+  "justwatch": [
+   "B0011EQBQQ"
+  ],
+  "imdb": [
+   "tt28595938"
+  ]
+ },
+ "Love (TV series)": {
+  "qid": "Q18643718",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt4061080"
+  ],
+  "tmdb_tv": [
+   "53606"
+  ]
+ },
+ "Mad Max Beyond Thunderdome": {
+  "qid": "Q426663",
+  "country": [
+   "Australia"
+  ],
+  "date": [
+   "1985-09-26T00:00:00Z",
+   "1985-07-12T00:00:00Z",
+   "1985-10-11T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0089530"
+  ],
+  "tmdb_movie": [
+   "9355"
+  ]
+ },
+ "Mad Men": {
+  "qid": "Q223977",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0804503"
+  ],
+  "tmdb_tv": [
+   "1104"
+  ]
+ },
+ "Madonna – 'Secret' music video": {
+  "qid": "Q2069388",
+  "date": [
+   "1994-09-20T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "youtube": [
+   "EPHUZenprKc"
+  ]
+ },
+ "Making Mr. Right": {
+  "qid": "Q1432521",
+  "date": [
+   "1987-01-01T00:00:00Z",
+   "1987-09-17T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0093477"
+  ],
+  "tmdb_movie": [
+   "32058"
+  ]
+ },
+ "Mapplethorpe: Look at the Pictures": {
+  "qid": "Q23925069",
+  "date": [
+   "2016-06-16T00:00:00Z",
+   "2016-01-01T00:00:00Z",
+   "2016-11-03T00:00:00Z"
+  ],
+  "country": [
+   "Germany",
+   "United States"
+  ],
+  "imdb": [
+   "tt5275838"
+  ],
+  "tmdb_movie": [
+   "373349"
+  ]
+ },
+ "Marie Antoinette": {
+  "qid": "Q829695",
+  "date": [
+   "2006-05-24T00:00:00Z",
+   "2006-11-02T00:00:00Z"
+  ],
+  "country": [
+   "France",
+   "United States",
+   "Japan"
+  ],
+  "imdb": [
+   "tt0422720"
+  ],
+  "tmdb_movie": [
+   "1887"
+  ],
+  "youtube": [
+   "gj0Aw3ZXuNI"
+  ]
+ },
+ "Mean Streets": {
+  "qid": "Q841335",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1976-06-25T00:00:00Z",
+   "1973-10-14T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0070379"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Mean%20Streets%20%281973%29%20-%20trailer.webm"
+  ],
+  "tmdb_movie": [
+   "203"
+  ]
+ },
+ "Melrose Place": {
+  "qid": "Q550238",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0103491"
+  ],
+  "tmdb_tv": [
+   "4349"
+  ]
+ },
+ "Mermaids": {
+  "qid": "Q1361375",
+  "date": [
+   "1990-12-14T00:00:00Z",
+   "1991-05-30T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0100140"
+  ],
+  "tmdb_movie": [
+   "4587"
+  ]
+ },
+ "Miami Rhapsody": {
+  "qid": "Q908983",
+  "date": [
+   "1995-06-01T00:00:00Z",
+   "1995-01-27T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0113808"
+  ],
+  "tmdb_movie": [
+   "17402"
+  ]
+ },
+ "Midnight Cowboy": {
+  "qid": "Q61696",
+  "date": [
+   "1969-07-18T00:00:00Z",
+   "1969-01-01T00:00:00Z",
+   "1969-05-25T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0064665"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/I%27m%20walkin%27%20here%21.webm"
+  ],
+  "tmdb_movie": [
+   "3116"
+  ]
+ },
+ "Midnight Express": {
+  "qid": "Q174699",
+  "date": [
+   "1978-09-16T00:00:00Z",
+   "1979-09-29T00:00:00Z",
+   "1978-08-10T00:00:00Z",
+   "1978-10-27T00:00:00Z",
+   "1978-05-18T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom",
+   "United States"
+  ],
+  "imdb": [
+   "tt0077928"
+  ],
+  "tmdb_movie": [
+   "11327"
+  ]
+ },
+ "Missing": {
+  "qid": "Q400985",
+  "imdb": [
+   "tt0084335"
+  ],
+  "date": [
+   "1982-02-12T00:00:00Z",
+   "1982-05-19T00:00:00Z",
+   "1982-05-26T00:00:00Z",
+   "1982-03-12T00:00:00Z",
+   "1982-05-27T00:00:00Z",
+   "1982-05-28T00:00:00Z",
+   "1982-06-04T00:00:00Z",
+   "1982-07-09T00:00:00Z",
+   "1982-07-22T00:00:00Z",
+   "1982-07-23T00:00:00Z",
+   "1982-07-25T00:00:00Z",
+   "1982-08-13T00:00:00Z",
+   "1982-08-21T00:00:00Z",
+   "1982-08-27T00:00:00Z",
+   "1982-09-09T00:00:00Z",
+   "1982-09-27T00:00:00Z",
+   "1982-10-30T00:00:00Z",
+   "1982-11-25T00:00:00Z",
+   "1982-12-01T00:00:00Z",
+   "1983-09-22T00:00:00Z",
+   "1984-10-15T00:00:00Z",
+   "1984-12-25T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "15600"
+  ]
+ },
+ "Moby Doc": {
+  "qid": "Q106514681",
+  "imdb": [
+   "tt5452210"
+  ],
+  "date": [
+   "2021-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "818378"
+  ]
+ },
+ "Mondo New York": {
+  "qid": "Q3860644",
+  "date": [
+   "1988-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0093558"
+  ],
+  "tmdb_movie": [
+   "41964"
+  ]
+ },
+ "Monterey Pop": {
+  "qid": "Q1179100",
+  "date": [
+   "1968-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0064689"
+  ],
+  "country": [
+   "Denmark",
+   "United States"
+  ],
+  "tmdb_movie": [
+   "42632"
+  ]
+ },
+ "Morocco (1930 film)": {
+  "qid": "Q577754",
+  "date": [
+   "1930-11-14T00:00:00Z",
+   "1930-12-06T00:00:00Z",
+   "1930-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0021156"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Morocco%20%281930%29.webm"
+  ],
+  "archive_org": [
+   "morocco-30-1538596735589",
+   "morocco_202108"
+  ],
+  "tmdb_movie": [
+   "42641"
+  ],
+  "archive_meta": [
+   {
+    "id": "morocco-30-1538596735589",
+    "title": "Morocco (1930)",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "feature_films_unsorted",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "elisacervv@gmail.com"
+   },
+   {
+    "id": "morocco_202108",
+    "title": "Morocco",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "feature_films_unsorted",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "tgauthiernc@yahoo.com"
+   }
+  ]
+ },
+ "Mrs. Doubtfire": {
+  "qid": "Q483852",
+  "date": [
+   "1993-11-24T00:00:00Z",
+   "1994-01-27T00:00:00Z",
+   "1993-01-01T00:00:00Z",
+   "1994-02-04T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0107614"
+  ],
+  "youtube": [
+   "k820wersxSg"
+  ],
+  "tmdb_movie": [
+   "788"
+  ]
+ },
+ "NCIS": {
+  "qid": "Q4525",
+  "imdb": [
+   "tt0364845"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "4614"
+  ]
+ },
+ "Netflix Halston series": {
+  "qid": "Q106602590",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt9569546"
+  ],
+  "tmdb_tv": [
+   "99617"
+  ]
+ },
+ "Niagara": {
+  "qid": "Q1347783",
+  "date": [
+   "1953-01-21T00:00:00Z",
+   "1953-10-09T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0046126"
+  ],
+  "justwatch": [
+   "B002D40X2Q"
+  ],
+  "archive_org": [
+   "1953niagarahhathaway",
+   "niagara-1953-torrentes-de-paixao"
+  ],
+  "youtube": [
+   "-CgXJw0tlr4"
+  ],
+  "tmdb_movie": [
+   "19997"
+  ],
+  "archive_meta": [
+   {
+    "id": "1953niagarahhathaway",
+    "title": "1953 - Niagara - Henry Hathaway",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "Film_Noir",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "socioculturalproject@gmail.com"
+   },
+   {
+    "id": "niagara-1953-torrentes-de-paixao",
+    "title": "Niagara (1953) Torrentes de Paixão",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "Film_Noir",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "adrianeestella@gmail.com"
+   }
+  ]
+ },
+ "Norman, Is That You?": {
+  "qid": "Q16253710",
+  "imdb": [
+   "tt0074973"
+  ],
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1976-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "91722"
+  ]
+ },
+ "Once Upon a Time in America": {
+  "qid": "Q206388",
+  "country": [
+   "France",
+   "Italy",
+   "United States"
+  ],
+  "date": [
+   "1984-05-23T00:00:00Z",
+   "1984-10-12T00:00:00Z",
+   "1984-06-01T00:00:00Z",
+   "1984-09-28T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0087843"
+  ],
+  "tmdb_movie": [
+   "311"
+  ]
+ },
+ "Orlando (1992 film)": {
+  "qid": "Q188384",
+  "country": [
+   "Russia",
+   "Italy",
+   "France",
+   "Netherlands",
+   "United Kingdom"
+  ],
+  "date": [
+   "1992-01-01T00:00:00Z",
+   "1993-01-28T00:00:00Z",
+   "2025-09-04T00:00:00Z",
+   "1993-03-12T00:00:00Z",
+   "1993-01-27T00:00:00Z",
+   "1992-12-11T00:00:00Z",
+   "1993-06-09T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0107756"
+  ],
+  "tmdb_movie": [
+   "9300"
+  ],
+  "copyright": [
+   "copyrighted (United Kingdom)"
+  ]
+ },
+ "Orphans of the Storm": {
+  "qid": "Q232133",
+  "imdb": [
+   "tt0012532"
+  ],
+  "date": [
+   "1921-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Orphans%20of%20the%20Storm%20%281921%29.webm"
+  ],
+  "youtube": [
+   "Zti4_6033To"
+  ],
+  "archive_org": [
+   "OrphansOfTheStorm_201312",
+   "OrphansoftheStorm"
+  ],
+  "copyright": [
+   "public domain (United States)"
+  ],
+  "tmdb_movie": [
+   "42511"
+  ],
+  "archive_meta": [
+   {
+    "id": "OrphansOfTheStorm_201312",
+    "title": "\"Orphans of the Storm\" (1921) director D. W. Griffith, cinematographer Billy Bitzer",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "silenthalloffame",
+     "silent_films",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "yorkmba99@hotmail.com"
+   },
+   {
+    "id": "OrphansoftheStorm",
+    "title": "Orphans of the Storm",
+    "licenseurl": "http://creativecommons.org/licenses/publicdomain/",
+    "rights": null,
+    "collection": [
+     "silent_films",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "josef_schrantz@freenet.de"
+   }
+  ]
+ },
+ "Panic Room": {
+  "qid": "Q741042",
+  "date": [
+   "2002-04-18T00:00:00Z",
+   "2002-01-01T00:00:00Z",
+   "2002-03-29T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0258000"
+  ],
+  "tmdb_movie": [
+   "4547"
+  ]
+ },
+ "Paris Is Burning": {
+  "qid": "Q7137311",
+  "imdb": [
+   "tt0100332"
+  ],
+  "date": [
+   "1990-01-01T00:00:00Z",
+   "1991-10-31T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "31225"
+  ]
+ },
+ "Party Monster (2003)": {
+  "qid": "Q1780723",
+  "date": [
+   "2003-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0320244"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "1415"
+  ]
+ },
+ "Party Monster: The Shockumentary": {
+  "qid": "Q7140926",
+  "date": [
+   "1998-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0141716"
+  ],
+  "tmdb_movie": [
+   "34424"
+  ]
+ },
+ "Picnic (1955)": {
+  "qid": "Q1300420",
+  "date": [
+   "1955-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0048491"
+  ],
+  "youtube": [
+   "hwmEeeAoZI8"
+  ],
+  "tmdb_movie": [
+   "39940"
+  ]
+ },
+ "Pink Floyd – The Wall": {
+  "qid": "Q213683",
+  "date": [
+   "1982-05-23T00:00:00Z",
+   "1982-07-15T00:00:00Z",
+   "1982-08-19T00:00:00Z",
+   "1982-10-15T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom"
+  ],
+  "imdb": [
+   "tt0084503"
+  ],
+  "tmdb_movie": [
+   "12104"
+  ]
+ },
+ "Places in the Heart": {
+  "qid": "Q59073",
+  "date": [
+   "1984-10-05T00:00:00Z",
+   "1985-03-01T00:00:00Z",
+   "1984-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0087921"
+  ],
+  "tmdb_movie": [
+   "13681"
+  ]
+ },
+ "Pose": {
+  "qid": "Q30603704",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "79084"
+  ],
+  "imdb": [
+   "tt7562112"
+  ]
+ },
+ "Pretty in Pink": {
+  "qid": "Q777564",
+  "date": [
+   "1986-01-29T00:00:00Z",
+   "1986-06-19T00:00:00Z",
+   "1986-02-28T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "11522"
+  ],
+  "imdb": [
+   "tt0091790"
+  ]
+ },
+ "Priscilla, Queen of the Desert": {
+  "qid": "Q255328",
+  "date": [
+   "1994-11-17T00:00:00Z",
+   "1994-01-01T00:00:00Z",
+   "1994-11-18T00:00:00Z"
+  ],
+  "country": [
+   "Australia"
+  ],
+  "archive_org": [
+   "the.-adventures.-of.-priscilla.-queen.-of.-the.-desert.-1994.1080p.-blu-ray.x-265-rarbg"
+  ],
+  "tmdb_movie": [
+   "2759"
+  ],
+  "imdb": [
+   "tt0109045"
+  ],
+  "archive_meta": [
+   {
+    "id": "the.-adventures.-of.-priscilla.-queen.-of.-the.-desert.-1994.1080p.-blu-ray.x-265-rarbg",
+    "title": "The Adventures Of Priscilla Queen Of The Desert (1994)",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "opensource_movies",
+     "community"
+    ],
+    "uploader": "patoquemadoytriste@disroot.org"
+   }
+  ]
+ },
+ "Puppetry of the Penis": {
+  "qid": "Q2118694"
+ },
+ "Queen of the Universe": {
+  "qid": "Q106321344",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "130048"
+  ],
+  "imdb": [
+   "tt15790598"
+  ]
+ },
+ "Ran": {
+  "qid": "Q565231",
+  "date": [
+   "1985-01-01T00:00:00Z",
+   "1985-09-18T00:00:00Z",
+   "1986-04-10T00:00:00Z",
+   "1985-06-01T00:00:00Z",
+   "1985-12-20T00:00:00Z"
+  ],
+  "country": [
+   "France",
+   "Japan"
+  ],
+  "tmdb_movie": [
+   "11645"
+  ],
+  "imdb": [
+   "tt0089881"
+  ]
+ },
+ "Real Sex": {
+  "qid": "Q7301054",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "11639"
+  ],
+  "imdb": [
+   "tt0421356"
+  ]
+ },
+ "Rent-a-Cop (1987)": {
+  "qid": "Q1515747",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1987-01-01T00:00:00Z",
+   "1987-11-26T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "80287"
+  ],
+  "youtube": [
+   "65quba6Q2wY"
+  ],
+  "imdb": [
+   "tt0095977"
+  ]
+ },
+ "Road House": {
+  "qid": "Q963351",
+  "date": [
+   "1989-07-06T00:00:00Z",
+   "1989-05-19T00:00:00Z",
+   "1989-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "10135"
+  ],
+  "imdb": [
+   "tt0098206"
+  ]
+ },
+ "Rocky": {
+  "qid": "Q188652",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1976-01-01T00:00:00Z",
+   "1978-04-25T00:00:00Z",
+   "1976-11-21T00:00:00Z",
+   "1977-04-01T00:00:00Z"
+  ],
+  "youtube": [
+   "V1LIfIFPb7M"
+  ],
+  "tmdb_movie": [
+   "1366"
+  ],
+  "imdb": [
+   "tt0075148"
+  ]
+ },
+ "Roseanne": {
+  "qid": "Q575373",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "2706"
+  ],
+  "imdb": [
+   "tt0094540"
+  ]
+ },
+ "RuPaul's Drag Race": {
+  "qid": "Q169844",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "8514"
+  ],
+  "imdb": [
+   "tt1353056"
+  ]
+ },
+ "RuPaul's Drag Race All Stars": {
+  "qid": "Q26727256",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "67482"
+  ],
+  "imdb": [
+   "tt2301351"
+  ]
+ },
+ "RuPaul's Drag Race Down Under": {
+  "qid": "Q70068406",
+  "country": [
+   "New Zealand",
+   "Australia"
+  ],
+  "tmdb_tv": [
+   "122692"
+  ],
+  "imdb": [
+   "tt14192040"
+  ]
+ },
+ "RuPaul's Drag Race UK": {
+  "qid": "Q65091388",
+  "country": [
+   "United Kingdom"
+  ],
+  "tmdb_tv": [
+   "92611"
+  ],
+  "imdb": [
+   "tt9780442"
+  ]
+ },
+ "Saturday Night Fever": {
+  "qid": "Q47654",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1977-12-16T00:00:00Z",
+   "1978-04-07T00:00:00Z",
+   "1978-04-13T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "11009"
+  ],
+  "youtube": [
+   "1tBPzBtVPhc"
+  ],
+  "imdb": [
+   "tt0076666"
+  ]
+ },
+ "Saturday Night Live": {
+  "qid": "Q13979",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "1667"
+  ],
+  "imdb": [
+   "tt0072562"
+  ]
+ },
+ "Savage Grace": {
+  "qid": "Q2060283",
+  "date": [
+   "2008-05-08T00:00:00Z",
+   "2007-01-01T00:00:00Z"
+  ],
+  "country": [
+   "France",
+   "United States",
+   "Spain"
+  ],
+  "tmdb_movie": [
+   "10822"
+  ],
+  "imdb": [
+   "tt0379976"
+  ]
+ },
+ "Scorpio Rising": {
+  "qid": "Q647939",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1963-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "46787"
+  ],
+  "imdb": [
+   "tt0058555"
+  ]
+ },
+ "Seinfeld": {
+  "qid": "Q23733",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "1400"
+  ],
+  "imdb": [
+   "tt0098904"
+  ]
+ },
+ "Sex and the City": {
+  "qid": "Q35791",
+  "imdb": [
+   "tt0159206"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "105"
+  ],
+  "youtube": [
+   "Hl9L5xL4I_0"
+  ]
+ },
+ "Sex and the City: The Movie": {
+  "qid": "Q381751",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "2008-05-29T00:00:00Z",
+   "2008-05-12T00:00:00Z"
+  ],
+  "imdb": [
+   "tt1000774"
+  ],
+  "tmdb_movie": [
+   "4564"
+  ],
+  "youtube": [
+   "EKJy4ejCilY",
+   "g9Mx2OLnoGI"
+  ]
+ },
+ "Sextette": {
+  "qid": "Q1756919",
+  "imdb": [
+   "tt0078238"
+  ],
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1978-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "116760"
+  ],
+  "youtube": [
+   "as6Iv5R1G0M"
+  ]
+ },
+ "Shampoo": {
+  "qid": "Q1534188",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1975-01-01T00:00:00Z",
+   "1975-09-12T00:00:00Z",
+   "1975-02-11T00:00:00Z",
+   "1975-03-13T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0073692"
+  ],
+  "tmdb_movie": [
+   "31121"
+  ]
+ },
+ "She-Devil": {
+  "qid": "Q1216738",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1989-01-01T00:00:00Z",
+   "1990-04-12T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0098309"
+  ],
+  "tmdb_movie": [
+   "11157"
+  ],
+  "youtube": [
+   "axFD68ha1_4"
+  ]
+ },
+ "Shoot the Moon": {
+  "qid": "Q2394570",
+  "date": [
+   "1982-10-22T00:00:00Z",
+   "1982-06-24T00:00:00Z",
+   "1982-05-19T00:00:00Z",
+   "1982-09-13T00:00:00Z",
+   "1982-08-25T00:00:00Z",
+   "1985-05-03T00:00:00Z",
+   "1982-07-15T00:00:00Z",
+   "1982-11-26T00:00:00Z",
+   "1982-09-19T00:00:00Z",
+   "1983-11-01T00:00:00Z",
+   "1983-07-01T00:00:00Z",
+   "1982-06-04T00:00:00Z",
+   "1982-09-15T00:00:00Z",
+   "1982-11-15T00:00:00Z",
+   "1982-01-22T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0084675"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "52772"
+  ]
+ },
+ "Smithereens": {
+  "qid": "Q12127550",
+  "date": [
+   "1982-05-18T00:00:00Z",
+   "1982-01-01T00:00:00Z",
+   "1982-11-19T00:00:00Z",
+   "1983-08-19T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0084698"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "94066"
+  ]
+ },
+ "Snapped": {
+  "qid": "Q7547316",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0429434"
+  ],
+  "tmdb_tv": [
+   "10184"
+  ]
+ },
+ "Soldier's Girl": {
+  "qid": "Q1285127",
+  "country": [
+   "Canada",
+   "United States"
+  ],
+  "imdb": [
+   "tt0324013"
+  ],
+  "date": [
+   "2003-01-20T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "32526"
+  ],
+  "tmdb_tv": [
+   "9350"
+  ]
+ },
+ "Some Like It Hot": {
+  "qid": "Q190086",
+  "imdb": [
+   "tt0053291"
+  ],
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1959-09-17T00:00:00Z",
+   "1959-03-19T00:00:00Z"
+  ],
+  "justwatch": [
+   "B00994W2O0"
+  ],
+  "tmdb_movie": [
+   "239"
+  ],
+  "youtube": [
+   "ajcwZQD7KWA"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Some%20Like%20it%20Hot%20%281959%29%20trailer.webm"
+  ]
+ },
+ "Sophie's Choice (1982)": {
+  "qid": "Q165627",
+  "date": [
+   "1982-01-01T00:00:00Z",
+   "1982-12-08T00:00:00Z",
+   "1983-05-06T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0084707"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "15764"
+  ]
+ },
+ "Star Search": {
+  "qid": "Q687284",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0085093"
+  ],
+  "tmdb_tv": [
+   "6443"
+  ]
+ },
+ "Star Trek": {
+  "qid": "Q1077",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0060028"
+  ],
+  "tmdb_tv": [
+   "253"
+  ]
+ },
+ "Star Wars": {
+  "qid": "Q462",
+  "country": [
+   "United States"
+  ]
+ },
+ "Stop! That! Train!": {
+  "qid": "Q137648596",
+  "imdb": [
+   "tt38128726"
+  ],
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "2026-06-12T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "1541560"
+  ],
+  "youtube": [
+   "U-ukYJXB8Ok"
+  ]
+ },
+ "Style Network": {
+  "qid": "Q893327"
+ },
+ "Succession": {
+  "qid": "Q30599007",
+  "imdb": [
+   "tt7660850"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "76331"
+  ]
+ },
+ "Sunset Boulevard (1950)": {
+  "qid": "Q193570",
+  "date": [
+   "1950-01-01T00:00:00Z",
+   "1950-08-18T00:00:00Z",
+   "1950-08-10T00:00:00Z",
+   "1950-08-17T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0043014"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "599"
+  ],
+  "archive_org": [
+   "sunset-boulevatrd-1950-restored-movie-720p",
+   "SunsetBoulevard1950"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Sunset%20Boulevard%20%281950%29%20-%20Trailer.webm"
+  ],
+  "archive_meta": [
+   {
+    "id": "sunset-boulevatrd-1950-restored-movie-720p",
+    "title": "Sunset Boulevard (restored)  (1950, BW cinematography benchmark, imdb score: 8.4)",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "Film_Noir",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "hdcontent2020@outlook.com"
+   },
+   {
+    "id": "SunsetBoulevard1950",
+    "title": "Sunset Boulevard (1950)",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "Film_Noir",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "jaugustoso@bol.com.br"
+   }
+  ]
+ },
+ "Sweet Charity": {
+  "qid": "Q2300646",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1969-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0065054"
+  ],
+  "tmdb_movie": [
+   "42618"
+  ]
+ },
+ "Thank God It's Friday": {
+  "qid": "Q2473496",
+  "date": [
+   "1978-07-20T00:00:00Z",
+   "1978-11-23T00:00:00Z",
+   "1978-05-19T00:00:00Z",
+   "1979-03-23T00:00:00Z",
+   "1979-01-08T00:00:00Z",
+   "1978-08-31T00:00:00Z",
+   "1978-08-26T00:00:00Z",
+   "1978-08-18T00:00:00Z",
+   "1978-08-25T00:00:00Z",
+   "1978-11-02T00:00:00Z",
+   "1978-08-30T00:00:00Z",
+   "1978-07-23T00:00:00Z",
+   "1978-10-05T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0078382"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "42212"
+  ],
+  "youtube": [
+   "8cXcLEPUs2o"
+  ]
+ },
+ "The American Music Show": {
+  "qid": "Q60760795",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt32166646"
+  ]
+ },
+ "The Apprentice": {
+  "qid": "Q863122",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0364782"
+  ],
+  "tmdb_tv": [
+   "3531"
+  ]
+ },
+ "The Avengers (TV series)": {
+  "qid": "Q113700",
+  "country": [
+   "United Kingdom"
+  ],
+  "imdb": [
+   "tt0054518"
+  ],
+  "tmdb_tv": [
+   "2473"
+  ]
+ },
+ "The Baby (1973 film)": {
+  "qid": "Q7715172",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1973-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "28156"
+  ],
+  "imdb": [
+   "tt0069754"
+  ]
+ },
+ "The Bad Seed (1956)": {
+  "qid": "Q164008",
+  "date": [
+   "1956-01-01T00:00:00Z",
+   "1956-09-12T00:00:00Z",
+   "1956-09-28T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "archive_org": [
+   "1956-the-bad-seed-la-mala-semilla-mervyn-le-roy-legendado",
+   "1956-the-bad-seed-la-mala-semilla-mervyn-le-roy-vose"
+  ],
+  "tmdb_movie": [
+   "42196"
+  ],
+  "imdb": [
+   "tt0048977"
+  ],
+  "archive_meta": [
+   {
+    "id": "1956-the-bad-seed-la-mala-semilla-mervyn-le-roy-legendado",
+    "title": null,
+    "licenseurl": null,
+    "rights": null,
+    "collection": null,
+    "uploader": null
+   },
+   {
+    "id": "1956-the-bad-seed-la-mala-semilla-mervyn-le-roy-vose",
+    "title": null,
+    "licenseurl": null,
+    "rights": null,
+    "collection": null,
+    "uploader": null
+   }
+  ]
+ },
+ "The Basketball Diaries": {
+  "qid": "Q962809",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1995-01-27T00:00:00Z",
+   "1995-10-05T00:00:00Z",
+   "1995-04-21T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "10474"
+  ],
+  "imdb": [
+   "tt0112461"
+  ]
+ },
+ "The Best Little Whorehouse in Texas": {
+  "qid": "Q11704376"
+ },
+ "The Beverly Hillbillies": {
+  "qid": "Q941737",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0055662"
+  ],
+  "licence": [
+   "public domain"
+  ],
+  "tmdb_tv": [
+   "1930"
+  ],
+  "copyright": [
+   "public domain"
+  ]
+ },
+ "The Birdcage": {
+  "qid": "Q1160005",
+  "date": [
+   "1996-10-01T00:00:00Z",
+   "1996-05-16T00:00:00Z",
+   "1996-03-08T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "11000"
+  ],
+  "youtube": [
+   "ItE9U5zeFfo",
+   "WZX81R7SMsQ"
+  ],
+  "imdb": [
+   "tt0115685"
+  ]
+ },
+ "The Bodyguard": {
+  "qid": "Q664539",
+  "date": [
+   "1992-11-17T00:00:00Z"
+  ]
+ },
+ "The Brutalist": {
+  "qid": "Q101112656",
+  "date": [
+   "2024-09-01T00:00:00Z",
+   "2024-12-20T00:00:00Z",
+   "2025-01-23T00:00:00Z",
+   "2025-01-24T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom",
+   "United States"
+  ],
+  "tmdb_movie": [
+   "549509"
+  ],
+  "imdb": [
+   "tt8999762"
+  ]
+ },
+ "The Children's Hour": {
+  "qid": "Q466014",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1961-01-01T00:00:00Z",
+   "1961-12-19T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "20139"
+  ],
+  "imdb": [
+   "tt0054743"
+  ]
+ },
+ "The Color Purple": {
+  "qid": "Q223299",
+  "date": [
+   "1986-08-21T00:00:00Z",
+   "1985-12-16T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "873"
+  ],
+  "youtube": [
+   "pog82V0oVzw"
+  ],
+  "imdb": [
+   "tt0088939"
+  ]
+ },
+ "The Dark Crystal": {
+  "qid": "Q1198483",
+  "country": [
+   "United States",
+   "United Kingdom"
+  ],
+  "date": [
+   "1982-01-01T00:00:00Z",
+   "1982-12-17T00:00:00Z",
+   "1983-04-01T00:00:00Z",
+   "1983-03-25T00:00:00Z",
+   "1983-02-17T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "11639"
+  ],
+  "imdb": [
+   "tt0083791"
+  ]
+ },
+ "The Devil Wears Prada": {
+  "qid": "Q223316",
+  "date": [
+   "2006-06-29T00:00:00Z",
+   "2006-10-12T00:00:00Z",
+   "2006-06-30T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "youtube": [
+   "BlzQbtH-y0Q"
+  ],
+  "tmdb_movie": [
+   "350"
+  ],
+  "imdb": [
+   "tt0458352"
+  ]
+ },
+ "The Ed Sullivan Show": {
+  "qid": "Q2081494",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0040053"
+  ],
+  "tmdb_tv": [
+   "5307"
+  ]
+ },
+ "The Eyes of Tammy Faye – 2021 film": {
+  "qid": "Q73537423",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "2021-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "601470"
+  ],
+  "imdb": [
+   "tt9115530"
+  ]
+ },
+ "The Eyes of Tammy Faye (implied)": {
+  "qid": "Q7732942",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "2000-01-01T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "15665"
+  ],
+  "imdb": [
+   "tt0233687"
+  ]
+ },
+ "The Flintstones": {
+  "qid": "Q201358",
+  "country": [
+   "United States"
+  ],
+  "justwatch": [
+   "amzn1.dv.gti.ad120c8f-2e23-454b-b71e-e7a2f31e2f59"
+  ],
+  "imdb": [
+   "tt0053502"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Winston%20Cigarettes%20-%20Flintstones%20commercial.webm"
+  ],
+  "tmdb_tv": [
+   "1996"
+  ]
+ },
+ "The Gilded Age": {
+  "qid": "Q48816554",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt4406178"
+  ],
+  "tmdb_tv": [
+   "81723"
+  ]
+ },
+ "The Girl Can't Help It": {
+  "qid": "Q1506824",
+  "date": [
+   "1956-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0049263"
+  ],
+  "archive_org": [
+   "dipwad2_zoho_4041"
+  ],
+  "tmdb_movie": [
+   "42839"
+  ],
+  "archive_meta": [
+   {
+    "id": "dipwad2_zoho_4041",
+    "title": "The Girl Can't Help It",
+    "licenseurl": "http://creativecommons.org/publicdomain/mark/1.0/",
+    "rights": null,
+    "collection": [
+     "Comedy_Films",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "dipwad2@zoho.com"
+   }
+  ]
+ },
+ "The Goonies": {
+  "qid": "Q636043",
+  "date": [
+   "2015-02-28T00:00:00Z",
+   "1985-01-01T00:00:00Z",
+   "2021-03-05T00:00:00Z",
+   "1985-12-04T00:00:00Z",
+   "1985-12-06T00:00:00Z",
+   "1985-12-25T00:00:00Z",
+   "2021-04-13T00:00:00Z",
+   "1986-10-22T00:00:00Z",
+   "1985-12-13T00:00:00Z",
+   "1990-03-29T00:00:00Z",
+   "1985-12-21T00:00:00Z",
+   "1986-01-30T00:00:00Z",
+   "1986-07-19T00:00:00Z",
+   "1985-12-12T00:00:00Z",
+   "1985-11-29T00:00:00Z",
+   "2019-12-10T00:00:00Z",
+   "1986-02-03T00:00:00Z",
+   "1985-12-20T00:00:00Z",
+   "1985-10-11T00:00:00Z",
+   "1985-12-19T00:00:00Z",
+   "2019-11-03T00:00:00Z",
+   "2019-12-09T00:00:00Z",
+   "2015-04-01T00:00:00Z",
+   "2011-12-01T00:00:00Z",
+   "2011-10-28T00:00:00Z",
+   "2019-08-14T00:00:00Z",
+   "1986-03-20T00:00:00Z",
+   "1985-11-30T00:00:00Z",
+   "1985-06-07T00:00:00Z",
+   "1985-07-24T00:00:00Z",
+   "2011-07-27T00:00:00Z",
+   "1986-02-09T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0089218"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "9340"
+  ]
+ },
+ "The Goop Lab": {
+  "qid": "Q83659896",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt11561206"
+  ],
+  "tmdb_tv": [
+   "97390"
+  ]
+ },
+ "The Grind (MTV)": {
+  "qid": "Q7738308",
+  "imdb": [
+   "tt0288362"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "15750"
+  ]
+ },
+ "The Heartbreak Kid": {
+  "qid": "Q1338889",
+  "date": [
+   "1973-12-25T00:00:00Z",
+   "1972-12-17T00:00:00Z",
+   "1973-06-01T00:00:00Z",
+   "1973-02-01T00:00:00Z",
+   "1974-02-07T00:00:00Z",
+   "1974-03-20T00:00:00Z",
+   "1974-05-17T00:00:00Z",
+   "1973-10-29T00:00:00Z",
+   "1973-09-01T00:00:00Z",
+   "1973-11-15T00:00:00Z",
+   "1973-04-23T00:00:00Z",
+   "1973-11-08T00:00:00Z",
+   "1974-01-25T00:00:00Z",
+   "1972-12-22T00:00:00Z",
+   "1974-07-18T00:00:00Z",
+   "1974-01-07T00:00:00Z",
+   "1973-05-12T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0068687"
+  ],
+  "tmdb_movie": [
+   "40687"
+  ]
+ },
+ "The Hunger": {
+  "qid": "Q814334",
+  "date": [
+   "1983-04-29T00:00:00Z",
+   "1983-06-17T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0085701"
+  ],
+  "country": [
+   "United Kingdom",
+   "United States"
+  ],
+  "youtube": [
+   "t8YB-zzZin4"
+  ],
+  "tmdb_movie": [
+   "11654"
+  ]
+ },
+ "The Jetsons": {
+  "qid": "Q457409",
+  "imdb": [
+   "tt0055683"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "2362"
+  ]
+ },
+ "The Joan Rivers Show": {
+  "qid": "Q18636648",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0262164"
+  ],
+  "tmdb_tv": [
+   "28816"
+  ]
+ },
+ "The Killing Fields": {
+  "qid": "Q494582",
+  "country": [
+   "United Kingdom"
+  ],
+  "date": [
+   "1984-01-01T00:00:00Z",
+   "1985-02-22T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0087553"
+  ],
+  "tmdb_movie": [
+   "625"
+  ]
+ },
+ "The Kominsky Method": {
+  "qid": "Q39058239",
+  "imdb": [
+   "tt7255502"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "81290"
+  ]
+ },
+ "The Merv Griffin Show": {
+  "qid": "Q3404046",
+  "imdb": [
+   "tt0055691"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "6744"
+  ]
+ },
+ "The Midnight Special": {
+  "qid": "Q7751326",
+  "imdb": [
+   "tt0229907"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "290"
+  ]
+ },
+ "The Mirror Crack'd (1980)": {
+  "qid": "Q2543979",
+  "imdb": [
+   "tt0081163"
+  ],
+  "date": [
+   "1980-01-01T00:00:00Z",
+   "1981-02-05T00:00:00Z"
+  ],
+  "country": [
+   "Australia",
+   "United Kingdom"
+  ],
+  "tmdb_movie": [
+   "6028"
+  ]
+ },
+ "The Misandrists": {
+  "qid": "Q28753460",
+  "date": [
+   "2017-01-01T00:00:00Z",
+   "2017-11-02T00:00:00Z"
+  ],
+  "imdb": [
+   "tt5518756"
+  ],
+  "country": [
+   "Germany"
+  ],
+  "tmdb_movie": [
+   "440038"
+  ]
+ },
+ "The Muppet Show": {
+  "qid": "Q2120540",
+  "imdb": [
+   "tt0074028"
+  ],
+  "country": [
+   "United Kingdom",
+   "United States"
+  ],
+  "tmdb_tv": [
+   "4459"
+  ]
+ },
+ "The Naked Civil Servant": {
+  "qid": "Q128268",
+  "imdb": [
+   "tt0073438"
+  ],
+  "date": [
+   "1975-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom"
+  ],
+  "tmdb_movie": [
+   "40950"
+  ]
+ },
+ "The Night Porter": {
+  "qid": "Q312565",
+  "date": [
+   "1976-01-30T00:00:00Z",
+   "1975-10-01T00:00:00Z",
+   "1975-09-01T00:00:00Z",
+   "1981-07-23T00:00:00Z",
+   "1974-07-05T00:00:00Z",
+   "1976-03-25T00:00:00Z",
+   "1976-03-04T00:00:00Z",
+   "1974-10-24T00:00:00Z",
+   "1976-01-23T00:00:00Z",
+   "1976-02-05T00:00:00Z",
+   "1976-09-16T00:00:00Z",
+   "1975-05-07T00:00:00Z",
+   "1975-11-01T00:00:00Z",
+   "1974-10-01T00:00:00Z",
+   "1974-04-03T00:00:00Z",
+   "1975-12-04T00:00:00Z",
+   "1975-02-14T00:00:00Z",
+   "1975-08-22T00:00:00Z",
+   "1974-04-11T00:00:00Z",
+   "1976-02-23T00:00:00Z"
+  ],
+  "country": [
+   "Austria",
+   "Italy"
+  ],
+  "imdb": [
+   "tt0071910"
+  ],
+  "tmdb_movie": [
+   "26648"
+  ]
+ },
+ "The Nomi Song": {
+  "qid": "Q7754284",
+  "imdb": [
+   "tt0402406"
+  ],
+  "date": [
+   "2004-02-06T00:00:00Z",
+   "2004-06-15T00:00:00Z",
+   "2005-03-24T00:00:00Z"
+  ],
+  "country": [
+   "Germany"
+  ],
+  "tmdb_movie": [
+   "41569"
+  ]
+ },
+ "The Oprah Winfrey Show": {
+  "qid": "Q694106",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0090493"
+  ],
+  "tmdb_tv": [
+   "724"
+  ]
+ },
+ "The Out of Towners": {
+  "qid": "Q1567345",
+  "date": [
+   "1971-01-23T00:00:00Z",
+   "1970-05-28T00:00:00Z",
+   "1970-07-09T00:00:00Z",
+   "1972-11-01T00:00:00Z",
+   "1971-02-15T00:00:00Z",
+   "1971-03-24T00:00:00Z",
+   "1970-10-22T00:00:00Z",
+   "1972-04-06T00:00:00Z",
+   "1971-02-17T00:00:00Z",
+   "1971-02-04T00:00:00Z",
+   "1970-10-25T00:00:00Z",
+   "1970-10-09T00:00:00Z",
+   "1970-12-30T00:00:00Z",
+   "1971-04-26T00:00:00Z",
+   "1970-10-02T00:00:00Z",
+   "1970-11-06T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0066193"
+  ],
+  "tmdb_movie": [
+   "20444"
+  ]
+ },
+ "The Partridge Family": {
+  "qid": "Q654652",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "13941"
+  ],
+  "imdb": [
+   "tt0065333"
+  ]
+ },
+ "The Phil Donahue Show": {
+  "qid": "Q7756883",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "13095"
+  ],
+  "imdb": [
+   "tt0065335"
+  ]
+ },
+ "The Pianist": {
+  "qid": "Q150804",
+  "date": [
+   "2002-05-24T00:00:00Z",
+   "2002-10-24T00:00:00Z"
+  ],
+  "country": [
+   "Poland",
+   "Germany",
+   "France",
+   "United Kingdom",
+   "United States"
+  ],
+  "imdb": [
+   "tt0253474"
+  ],
+  "tmdb_movie": [
+   "423"
+  ]
+ },
+ "The Queen (1968 film)": {
+  "qid": "Q48968601",
+  "date": [
+   "1968-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0063477"
+  ],
+  "tmdb_movie": [
+   "42649"
+  ]
+ },
+ "The Real Housewives of New York City": {
+  "qid": "Q7759596",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "14808"
+  ],
+  "imdb": [
+   "tt1191056"
+  ]
+ },
+ "The Rocky Horror Picture Show": {
+  "qid": "Q751921",
+  "date": [
+   "1977-06-24T00:00:00Z",
+   "1975-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom",
+   "United States"
+  ],
+  "imdb": [
+   "tt0073629"
+  ],
+  "tmdb_movie": [
+   "36685"
+  ],
+  "youtube": [
+   "TZnrbgvRb6g"
+  ]
+ },
+ "The RuPaul Show": {
+  "qid": "Q534918",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "7189"
+  ],
+  "imdb": [
+   "tt0266183"
+  ]
+ },
+ "The Servant": {
+  "qid": "Q2264443",
+  "country": [
+   "United Kingdom"
+  ],
+  "date": [
+   "1964-03-16T00:00:00Z",
+   "1964-03-27T00:00:00Z",
+   "1963-11-14T00:00:00Z",
+   "1963-09-01T00:00:00Z",
+   "1963-09-03T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0057490"
+  ],
+  "tmdb_movie": [
+   "42987"
+  ]
+ },
+ "The Silence of the Lambs": {
+  "qid": "Q399727"
+ },
+ "The Simpsons": {
+  "qid": "Q7810",
+  "copyright": [
+   "copyrighted"
+  ],
+  "imdb": [
+   "ch0003002"
+  ]
+ },
+ "The Sopranos": {
+  "qid": "Q23628",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "1398"
+  ],
+  "imdb": [
+   "tt0141842"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Sopranos%20Family%20Tree%20-%20The%20Sopranos%20-%20HBO.webm"
+  ]
+ },
+ "The Sterile Cuckoo": {
+  "qid": "Q2315929",
+  "date": [
+   "1970-02-05T00:00:00Z",
+   "1975-12-25T00:00:00Z",
+   "1970-01-14T00:00:00Z",
+   "1970-08-20T00:00:00Z",
+   "1970-07-06T00:00:00Z",
+   "1970-04-16T00:00:00Z",
+   "1970-06-26T00:00:00Z",
+   "1970-03-15T00:00:00Z",
+   "1970-06-25T00:00:00Z",
+   "1969-10-22T00:00:00Z",
+   "1971-03-19T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0065037"
+  ],
+  "tmdb_movie": [
+   "54494"
+  ]
+ },
+ "The Today Show": {
+  "qid": "Q130838",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "1709"
+  ],
+  "imdb": [
+   "tt0044298"
+  ]
+ },
+ "The Wendy Williams Show": {
+  "qid": "Q3283662",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "21676"
+  ],
+  "imdb": [
+   "tt1261356"
+  ]
+ },
+ "The White Lotus": {
+  "qid": "Q106679014",
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "111803"
+  ],
+  "imdb": [
+   "tt13406094"
+  ]
+ },
+ "The Wiz (1978)": {
+  "qid": "Q428158",
+  "date": [
+   "1978-10-24T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0078504"
+  ],
+  "tmdb_movie": [
+   "24961"
+  ],
+  "youtube": [
+   "CLFu3KDH9Fk"
+  ]
+ },
+ "The Wizard of Oz": {
+  "qid": "Q193695",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1939-08-25T00:00:00Z"
+  ],
+  "copyright": [
+   "copyrighted"
+  ],
+  "imdb": [
+   "tt0032138"
+  ],
+  "tmdb_movie": [
+   "630"
+  ],
+  "youtube": [
+   "iWJGneHlPkM"
+  ]
+ },
+ "This Is Spinal Tap": {
+  "qid": "Q7810384",
+  "country": [
+   "United States"
+  ],
+  "date": [
+   "1984-01-01T00:00:00Z",
+   "1984-03-02T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0088258"
+  ],
+  "tmdb_movie": [
+   "11031"
+  ]
+ },
+ "Tiger King": {
+  "qid": "Q88306935",
+  "date": [
+   "2020-03-20T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "100698"
+  ],
+  "imdb": [
+   "tt11823076"
+  ]
+ },
+ "Titanic": {
+  "qid": "Q44578",
+  "date": [
+   "1998-01-08T00:00:00Z",
+   "1998-02-20T00:00:00Z",
+   "1998-01-16T00:00:00Z",
+   "1997-12-19T00:00:00Z",
+   "1998-01-07T00:00:00Z",
+   "1997-11-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "copyright": [
+   "copyrighted"
+  ],
+  "imdb": [
+   "tt0120338"
+  ],
+  "tmdb_movie": [
+   "597"
+  ],
+  "youtube": [
+   "4S2Ruqhcz78",
+   "QnmMjj9e2Dc"
+  ]
+ },
+ "To Wong Foo, Thanks for Everything! Julie Newmar": {
+  "qid": "Q1759260",
+  "date": [
+   "1996-06-08T00:00:00Z",
+   "1995-11-10T00:00:00Z",
+   "1997-05-09T00:00:00Z",
+   "1995-12-21T00:00:00Z",
+   "1996-01-31T00:00:00Z",
+   "1996-01-11T00:00:00Z",
+   "1996-02-08T00:00:00Z",
+   "1996-02-16T00:00:00Z",
+   "1995-01-01T00:00:00Z",
+   "1995-12-01T00:00:00Z",
+   "1995-09-08T00:00:00Z",
+   "1996-06-14T00:00:00Z",
+   "1996-12-04T00:00:00Z",
+   "1996-03-07T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0114682"
+  ],
+  "tmdb_movie": [
+   "9090"
+  ],
+  "youtube": [
+   "nKLnj3VhDmg"
+  ]
+ },
+ "Tootsie": {
+  "qid": "Q221249",
+  "date": [
+   "1983-03-25T00:00:00Z",
+   "1982-12-17T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0084805"
+  ],
+  "tmdb_movie": [
+   "9576"
+  ]
+ },
+ "Top of the Pops": {
+  "qid": "Q930414",
+  "country": [
+   "United Kingdom"
+  ],
+  "imdb": [
+   "tt0139803"
+  ],
+  "tmdb_tv": [
+   "1636"
+  ]
+ },
+ "Trash": {
+  "qid": "Q963014",
+  "imdb": [
+   "tt0066482"
+  ],
+  "date": [
+   "1970-01-01T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "89199"
+  ]
+ },
+ "Truth or Dare": {
+  "qid": "Q187561",
+  "imdb": [
+   "tt0102370"
+  ],
+  "date": [
+   "1991-07-04T00:00:00Z",
+   "1991-05-24T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "10174"
+  ]
+ },
+ "Twin Peaks": {
+  "qid": "Q2085",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0098936"
+  ],
+  "tmdb_tv": [
+   "1920"
+  ]
+ },
+ "Ugly Betty": {
+  "qid": "Q276528",
+  "imdb": [
+   "tt0805669"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "4626"
+  ]
+ },
+ "Valley of the Dolls (film)": {
+  "qid": "Q1170515",
+  "date": [
+   "1967-01-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0062430"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "3055"
+  ],
+  "archive_org": [
+   "valley.-of.-the.-dolls.-1967.1080p.-blu-ray.x-264-yts.-am"
+  ],
+  "archive_meta": [
+   {
+    "id": "valley.-of.-the.-dolls.-1967.1080p.-blu-ray.x-264-yts.-am",
+    "title": "Valley Of The Dolls(1967) BD RIP",
+    "licenseurl": null,
+    "rights": null,
+    "collection": [
+     "feature_films_unsorted",
+     "feature_films",
+     "moviesandfilms"
+    ],
+    "uploader": "ajodriguez64@gmail.com"
+   }
+  ]
+ },
+ "Vertigo (1958)": {
+  "qid": "Q202548",
+  "date": [
+   "1958-05-28T00:00:00Z",
+   "1958-01-01T00:00:00Z",
+   "1959-02-03T00:00:00Z",
+   "1958-05-22T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0052357"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "426"
+  ],
+  "commons_video": [
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Vertigo%20theatrical%20trailer.webm",
+   "http://commons.wikimedia.org/wiki/Special:FilePath/Vertigo%20trailer%20%281958%29.webm"
+  ],
+  "youtube": [
+   "S4K8oIxzgns"
+  ]
+ },
+ "Victor/Victoria (1982 film)": {
+  "qid": "Q936037",
+  "date": [
+   "1982-03-16T00:00:00Z",
+   "1983-01-07T00:00:00Z",
+   "1982-03-19T00:00:00Z",
+   "1982-04-01T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0084865"
+  ],
+  "country": [
+   "United States",
+   "United Kingdom"
+  ],
+  "tmdb_tv": [
+   "16051"
+  ],
+  "tmdb_movie": [
+   "12614"
+  ]
+ },
+ "Vision Quest": {
+  "qid": "Q1139277",
+  "date": [
+   "1986-06-13T00:00:00Z",
+   "1985-09-12T00:00:00Z",
+   "1985-10-31T00:00:00Z",
+   "1985-09-28T00:00:00Z",
+   "1985-08-30T00:00:00Z",
+   "1985-02-15T00:00:00Z",
+   "1985-11-28T00:00:00Z",
+   "1985-08-03T00:00:00Z",
+   "1985-08-22T00:00:00Z",
+   "1986-03-07T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0090270"
+  ],
+  "tmdb_movie": [
+   "30069"
+  ]
+ },
+ "Vogue music video": {
+  "qid": "Q1128775",
+  "date": [
+   "1990-01-01T00:00:00Z"
+  ],
+  "youtube": [
+   "GuJQSAiODqI"
+  ]
+ },
+ "War and Peace (BBC)": {
+  "qid": "Q7968572",
+  "imdb": [
+   "tt0069654"
+  ],
+  "date": [
+   "1972-09-30T00:00:00Z"
+  ],
+  "country": [
+   "United Kingdom"
+  ],
+  "tmdb_movie": [
+   "360042"
+  ],
+  "tmdb_tv": [
+   "2498"
+  ]
+ },
+ "Watch What Happens Live with Andy Cohen": {
+  "qid": "Q17049499",
+  "imdb": [
+   "tt2057880"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_tv": [
+   "22980"
+  ]
+ },
+ "Wayne's World": {
+  "qid": "Q1146194",
+  "date": [
+   "1992-02-14T00:00:00Z",
+   "1992-01-01T00:00:00Z",
+   "1992-07-02T00:00:00Z"
+  ],
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0105793"
+  ],
+  "tmdb_movie": [
+   "8872"
+  ],
+  "youtube": [
+   "5p2nGVFaBh8"
+  ]
+ },
+ "What's Love Got to Do with It": {
+  "qid": "Q1471849",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0108551"
+  ],
+  "date": [
+   "1993-01-01T00:00:00Z",
+   "1993-09-16T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "15765"
+  ]
+ },
+ "Wigstock: The Movie": {
+  "qid": "Q7999720",
+  "country": [
+   "Germany",
+   "United States"
+  ],
+  "imdb": [
+   "tt0114937"
+  ],
+  "date": [
+   "1996-07-18T00:00:00Z",
+   "1995-02-11T00:00:00Z",
+   "1995-01-20T00:00:00Z",
+   "1995-06-09T00:00:00Z"
+  ],
+  "tmdb_movie": [
+   "41650"
+  ]
+ },
+ "Wings": {
+  "qid": "Q331787",
+  "country": [
+   "United States"
+  ],
+  "imdb": [
+   "tt0098948"
+  ],
+  "tmdb_tv": [
+   "2506"
+  ]
+ },
+ "Women in prison films": {
+  "qid": "Q583768"
+ },
+ "Women in Revolt": {
+  "qid": "Q1087401",
+  "date": [
+   "1975-02-28T00:00:00Z",
+   "1971-12-01T00:00:00Z",
+   "1973-09-20T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0129631"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "112234"
+  ]
+ },
+ "Zelig": {
+  "qid": "Q187423",
+  "date": [
+   "1983-08-25T00:00:00Z",
+   "1983-09-02T00:00:00Z",
+   "1984-02-03T00:00:00Z",
+   "1983-09-03T00:00:00Z",
+   "1984-03-16T00:00:00Z",
+   "1984-01-20T00:00:00Z",
+   "1983-09-30T00:00:00Z",
+   "1984-03-29T00:00:00Z",
+   "1983-10-06T00:00:00Z",
+   "1983-10-01T00:00:00Z",
+   "1984-06-23T00:00:00Z",
+   "1984-07-20T00:00:00Z",
+   "1984-03-21T00:00:00Z",
+   "1986-02-02T00:00:00Z",
+   "1983-09-29T00:00:00Z",
+   "1983-11-17T00:00:00Z",
+   "1983-09-14T00:00:00Z",
+   "1983-07-15T00:00:00Z",
+   "1983-09-23T00:00:00Z",
+   "1984-03-15T00:00:00Z",
+   "1983-12-08T00:00:00Z",
+   "1984-01-27T00:00:00Z",
+   "1983-12-15T00:00:00Z"
+  ],
+  "imdb": [
+   "tt0086637"
+  ],
+  "country": [
+   "United States"
+  ],
+  "tmdb_movie": [
+   "11030"
+  ]
+ }
+}
