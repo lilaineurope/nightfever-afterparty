@@ -966,6 +966,7 @@ const s05e02: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/104592064/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-5-24%2Fe7ea3b5f-6a7e-dcd7-c4e3-2403c2cd88ac.mp3",
   runtime: "57:53",
   afterpartyPublished: "2026-12-04",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLdk0qgdtXJ6w",
   blurb:
     "Jodie Harsh on sneaking into G-A-Y at 15, Nag Nag Nag and the electroclash years, Amy Winehouse in Camden, getting sober and writing You Had to Be There",
 };
