@@ -74,6 +74,9 @@ export const MADE_BY: Record<string, Maker[]> = {
   "The Changing Room": [m("Laurence Senelick", "Wrote it", 2000)],
   "Camp: The Story of the Attitude That Conquered the World": [m("Paul Baker", "Wrote it", 2023)],
   "The Big Sea": [m("Langston Hughes", "Wrote it", 1940)],
+
+  // S05E02 Jodie Harsh: her memoir, talked about on the show
+  "You Had to Be There (Jodie Harsh)": [m("Jodie Harsh", "Wrote it", 2025)],
   // ---------- Films ----------
   "The Misandrists": [m("Bruce LaBruce", "Directed it", 2017), m("Desi Santiago", "Production designer", 2017)],
   "Casino Diabolique": [m("Desi Santiago", "Made it")],
@@ -522,7 +525,7 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Dean Johnson": [{ title: "The Velvet Mafia", kind: "Music", role: "In the band" }],
   // Lisa 22 Nov 2026: fill in the people whose pages had no work yet. Facts: their Wikipedia pages (checked 22 Nov) and
   // the site's own guest and memoriam notes.
-  "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2019 }],
+  "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2020 }],
   "Screamin' Rachael Cain": [
     { title: "Screamin' Rachael – 'My Main Man'", kind: "Music", role: "Sang it" },
     { title: "Screamin' Rachael – 'Fun with Bad Boys'", kind: "Music", role: "Sang it", year: 1987 },
