@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
 import { Timestamp } from "@/components/episode-player";
 import { VideoScreen } from "@/components/video-screen";
 import { episodePath } from "@/data/episodes";
 import { getScreenPage } from "@/lib/screen-page.functions";
-import type { Person, ScreenPageView } from "@/lib/screen-page.server";
+import type { Person, ScreenPageView, WatchRow } from "@/lib/screen-page.server";
 import type { Trailer } from "@/lib/library-item";
 import { pageHead } from "@/lib/seo";
 import "@fontsource/covered-by-your-grace/400.css";
@@ -62,18 +62,33 @@ function People({ people }: { people: Person[] }) {
   );
 }
 
-/** The Jukebox, big (Lisa: "instead the poster it would be the jukebox video bigger"): our playlist clips and trailers. Nothing
- *  loads from YouTube until a visitor presses ▶. With no video in our playlists, the poster or title card fills the screen. */
+/** One thing the big Jukebox can play: a clip or trailer from our playlists, or the whole work (src/data/screen-full.ts). */
+type Play = Trailer & { full?: boolean; file?: string; note?: string };
+
+function playsOf(v: ScreenPageView): Play[] {
+  const f = v.full;
+  if (!f) return v.videos;
+  const whole: Play =
+    f.kind === "youtube"
+      ? { id: f.id, title: f.title, label: f.title, episodeId: "", short: "", kind: "clip", full: true, note: `${f.what} · ${f.minutes} min · official upload: ${f.channel}` }
+      : { id: "file", title: f.title, label: f.title, episodeId: "", short: "", kind: "clip", full: true, file: f.src, note: `${f.what} · ${f.minutes} min · ${f.source}` };
+  return [whole, ...v.videos.filter((t) => t.id !== whole.id)];
+}
+
+/** The Jukebox, big (Lisa: "instead the poster it would be the jukebox video bigger"): the whole work first when its owner
+ *  put it up or it is public domain ("Watch it in full", 24 Nov 2026), then our playlist clips and trailers. Nothing loads
+ *  until a visitor presses ▶. With nothing to play, the poster or title card fills the screen. */
 function BigJukebox({ v }: { v: ScreenPageView }) {
-  const [now, setNow] = useState<Trailer | null>(null);
+  const [now, setNow] = useState<Play | null>(null);
   const [failed, setFailed] = useState<string[]>([]);
-  const list = v.videos.filter((t) => !failed.includes(t.id));
+  const list = playsOf(v).filter((t) => !failed.includes(t.id));
   const pick = list[0];
-  const next = (from: Trailer) => {
+  const next = (from: Play) => {
     const i = list.findIndex((t) => t.id === from.id);
     setNow(list[i + 1] ?? null);
   };
-  const word = (t: Trailer) => (t.kind === "clip" ? "The clip" : t.kind === "about" ? "On film" : "The trailer");
+  const word = (t: Play) => (t.full ? "Watch it in full" : t.kind === "clip" ? "The clip" : t.kind === "about" ? "On film" : "The trailer");
+  const from = (t: Play) => t.note ?? `From our ${t.short} AFTERPARTY playlist`;
   return (
     <figure className="scr-big">
       <div className="lit-jbx scr-jbx">
@@ -91,7 +106,10 @@ function BigJukebox({ v }: { v: ScreenPageView }) {
             )}
           </p>
           <div className="lit-jbx-screen scr-screen">
-            {now ? (
+            {now?.file ? (
+              // A public-domain film from Wikimedia Commons, in the browser's own player.
+              <video src={now.file} controls autoPlay className="scr-file" onEnded={() => next(now)} />
+            ) : now ? (
               <VideoScreen
                 vid={now.id}
                 title={now.title}
@@ -104,12 +122,12 @@ function BigJukebox({ v }: { v: ScreenPageView }) {
             ) : pick ? (
               <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play ${word(pick).toLowerCase()}: ${pick.title}`}>
                 {v.poster && <img src={v.poster.src} alt="" className="scr-glow" aria-hidden />}
-                <span className="lit-jbx-k">{word(pick)}</span>
+                <span className={`lit-jbx-k${pick.full ? " scr-full-k" : ""}`}>{word(pick)}</span>
                 <span className="lit-jbx-play scr-play" aria-hidden>
                   ▶
                 </span>
                 <span className="lit-jbx-nm">{pick.title}</span>
-                <span className="lit-jbx-sm">From our {pick.short} AFTERPARTY playlist</span>
+                <span className="lit-jbx-sm">{from(pick)}</span>
               </button>
             ) : v.poster ? (
               <img src={v.poster.src} alt={`${v.kind === "TV show" ? "Title card" : "Poster"} - ${v.name}`} className="scr-poster" />
@@ -125,9 +143,10 @@ function BigJukebox({ v }: { v: ScreenPageView }) {
             {list.map((t, i) => (
               <li key={t.id}>
                 <button type="button" aria-pressed={now?.id === t.id} onClick={() => setNow(t)}>
-                  <i>A{i + 1}</i>
+                  <i>{t.full ? "▶" : `A${i + 1}`}</i>
                   <span>
-                    {t.title} <small>· {t.short}</small>
+                    {t.full ? <b>In full: </b> : null}
+                    {t.title} {t.short && <small>· {t.short}</small>}
                   </span>
                 </button>
               </li>
@@ -135,14 +154,106 @@ function BigJukebox({ v }: { v: ScreenPageView }) {
           </ol>
         )}
         <p className="lit-jbx-fine">
-          {pick
-            ? "Plays from YouTube, loaded only when you press ▶ - same as the Jukebox."
-            : "No clip of it in our AFTERPARTY playlists yet."}
+          {!pick
+            ? "No clip of it in our AFTERPARTY playlists yet."
+            : pick.file
+              ? "Plays from Wikimedia Commons (public domain), loaded only when you press ▶."
+              : "Plays from YouTube, loaded only when you press ▶ - same as the Jukebox."}
         </p>
         <div className="lit-jbx-grille" aria-hidden />
       </div>
       {v.poster && <figcaption>{v.poster.credit}</figcaption>}
     </figure>
+  );
+}
+
+// ---- Where to watch (Lisa, 24 Nov 2026: "an option to check where to watch it, somewhere the user is connected to, like Plex
+// does it"). The offers come from TMDB, whose data is JustWatch's - both credited. The country is picked here in the
+// visitor's browser (their saved "nf-place", else the clock's time zone); nothing is sent anywhere. ----
+const COUNTRY: Record<string, string> = {
+  SE: "Sweden", GB: "the UK", US: "the USA", DE: "Germany", FR: "France", NL: "the Netherlands", DK: "Denmark", NO: "Norway",
+  FI: "Finland", ES: "Spain", IT: "Italy", IE: "Ireland", CA: "Canada", AU: "Australia", BR: "Brazil", MX: "Mexico", JP: "Japan",
+};
+const TZ: [RegExp, string][] = [
+  [/Stockholm/, "SE"], [/London/, "GB"], [/Berlin/, "DE"], [/Paris/, "FR"], [/Amsterdam/, "NL"], [/Copenhagen/, "DK"],
+  [/Oslo/, "NO"], [/Helsinki/, "FI"], [/Madrid/, "ES"], [/Rome/, "IT"], [/Dublin/, "IE"], [/Toronto|Vancouver|Montreal/, "CA"],
+  [/Australia/, "AU"], [/Sao_Paulo/, "BR"], [/Mexico/, "MX"], [/Tokyo/, "JP"], [/^America\//, "US"],
+];
+function guessCountry(have: string[]): string {
+  let c = "";
+  try {
+    const saved = window.localStorage.getItem("nf-place");
+    c = saved === "se" ? "SE" : saved === "uk" ? "GB" : saved === "us" ? "US" : "";
+  } catch {
+    /* storage blocked */
+  }
+  if (!c) {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
+    c = TZ.find(([re]) => re.test(tz))?.[1] ?? "";
+  }
+  return have.includes(c) ? c : have.includes("US") ? "US" : (have[0] ?? "US");
+}
+const OFFER: [keyof Omit<WatchRow, "link">, string][] = [
+  ["stream", "Stream"],
+  ["free", "Free"],
+  ["ads", "Free with ads"],
+  ["rent", "Rent"],
+  ["buy", "Buy"],
+];
+
+function WhereToWatch({ v }: { v: ScreenPageView }) {
+  const have = v.watch ? Object.keys(v.watch.countries) : [];
+  const [c, setC] = useState<string>(have.includes("US") ? "US" : (have[0] ?? "US"));
+  useEffect(() => setC(guessCountry(have)), [v.slug]); // eslint-disable-line react-hooks/exhaustive-deps
+  if (!v.watch || have.length === 0) return null;
+  const row = v.watch.countries[c];
+  return (
+    <section className="art-box scr-box scr-watch" aria-labelledby="scr-watch">
+      <div className="scr-watch-head">
+        <h2 id="scr-watch" className={h}>
+          Where to watch it
+        </h2>
+        <label className="scr-watch-where">
+          in{" "}
+          <select value={c} onChange={(e) => setC(e.target.value)} aria-label="Country">
+            {have.map((k) => (
+              <option key={k} value={k}>
+                {COUNTRY[k] ?? k}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      {row ? (
+        <dl className="scr-watch-rows">
+          {OFFER.filter(([k]) => row[k]?.length).map(([k, label]) => (
+            <div key={k}>
+              <dt>{label}</dt>
+              <dd>
+                {row[k]!.map((p) => (
+                  <span key={p} className="scr-chip">
+                    {p}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      ) : (
+        <p className="mt-2 text-sm text-muted-foreground">Not on any service there right now.</p>
+      )}
+      <p className="scr-src">
+        {row?.link && (
+          <>
+            <a href={row.link} target="_blank" rel="noreferrer" className="scr-ep">
+              See every offer &rarr;
+            </a>{" "}
+            ·{" "}
+          </>
+        )}
+        Streaming data from JustWatch, via TMDB. Offers change - checked now and then.
+      </p>
+    </section>
   );
 }
 
@@ -192,6 +303,7 @@ function Head({ v, wide }: { v: ScreenPageView; wide?: boolean }) {
     <div className={wide ? "scr-head-wide" : undefined}>
       <div>
         <p className="art-tag">{v.kind}</p>
+        {v.full && <p className="art-tag scr-full-tag">▶ Watch it in full</p>}
         <h1 className={`art-title${v.name.length > 28 ? " art-title-long" : ""}`}>
           <a href={v.href} className="art-name">
             {v.name}
@@ -404,6 +516,7 @@ function ScreenPage() {
               <SourceNote v={v} />
             </section>
           )}
+          <WhereToWatch v={v} />
           <div className="scr-pair">
             <Said v={v} />
             <CameUp v={v} one={v.quotes.length > 0} />

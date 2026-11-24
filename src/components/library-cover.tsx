@@ -2,6 +2,7 @@ import type { CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
 import { polaroidThumb } from "@/lib/polaroids";
 import { isScreenItem } from "@/data/moving-images";
+import { FULL_WATCH } from "@/data/screen-full";
 import headPaper from "@/assets/library/col-head-paper.webp";
 import headOutweek from "@/assets/library/col-head-outweek.webp";
 import headSoho from "@/assets/library/col-head-soho-news.webp";
@@ -88,6 +89,7 @@ export function CoverCard({ item, tint }: { item: CollectionItem; tint: number }
           </span>
         )}
         <span className="lib-art-tag">{KIND[item.shelf]}</span>
+        {FULL_WATCH[item.slug] && <span className="lib-full">▶ In full</span>}
         <span className="lib-strip">
           <span className="lib-nm">{item.name}</span>
           {foot}

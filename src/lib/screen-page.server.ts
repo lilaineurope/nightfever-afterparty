@@ -6,6 +6,8 @@
 // scripts/screen-credits.py), the people on the site and what they did (made-by.ts) and "The story" (item-stories) - no
 // guesses. Quotes, moments and videos come from our own AFTERPARTY data, as on the Cover art pages.
 import CREDITS from "@/data/screen-credits.json";
+import PROVIDERS from "@/data/screen-providers.json";
+import { FULL_WATCH, type FullWatch } from "@/data/screen-full";
 import { SCREEN_SHELVES, screenBySlug } from "@/data/moving-images";
 import { afterpartyOf, entityFor } from "@/data/entities";
 import { episodeById, stageName } from "@/data/episodes";
@@ -66,7 +68,13 @@ export type ScreenPageView = {
   moments: { episodeId: string; short: string; guest: string; time: string; context: string; polaroid?: string | undefined }[];
   more: { slug: string; name: string; src?: string | undefined }[];
   sources: string[];
+  /** The whole film, episode or video, when its owner put it up or it is public domain (src/data/screen-full.ts). */
+  full: FullWatch | null;
+  /** Where to watch it, country by country (TMDB, data from JustWatch: src/data/screen-providers.json). */
+  watch: Watch | null;
 };
+export type WatchRow = { link: string; stream?: string[]; free?: string[]; ads?: string[]; rent?: string[]; buy?: string[] };
+export type Watch = { tmdb: string; countries: Record<string, WatchRow> };
 
 const KIND: Record<string, string> = {
   movies: "Film",
@@ -301,5 +309,7 @@ export function screenPageData(slug: string): ScreenPageView | null {
     moments,
     more,
     sources,
+    full: FULL_WATCH[slug] ?? null,
+    watch: (PROVIDERS as Record<string, Watch>)[it.name] ?? null,
   };
 }

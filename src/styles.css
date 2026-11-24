@@ -1285,3 +1285,17 @@ a.scr-ours:hover { color: #111; }
 .scr-c-row .scr-big .scr-jbx { display: flex; flex-direction: column; justify-content: center; }
 .scr-c-row .scr-big .scr-jbx .lit-jbx-grille { margin-top: auto; }
 .scr-c-row .scr-jbx > * { width: 100%; }
+/* Watch it in full + Where to watch (Lisa, 24 Nov 2026) */
+.scr-full-tag { margin-left: 8px; background: var(--color-pink); color: #fff; }
+.scr-full-k { color: #fff; background: var(--color-pink); padding: 2px 8px; }
+.scr-file { position: absolute; inset: 0; width: 100%; height: 100%; background: #000; }
+.scr-sel b { color: #f2c14e; font-weight: 600; }
+.scr-watch-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+.scr-watch-where { font-family: var(--font-mono-body); font-size: 12px; }
+.scr-watch-where select { margin-left: 4px; border: 2px solid #111; background: #fff; padding: 2px 6px; font: inherit; }
+.scr-watch-rows { display: grid; gap: 6px; margin-top: 10px; }
+@media (min-width: 900px) { .scr-watch-rows { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px 24px; } }
+.scr-watch-rows dt { font-family: var(--font-mono-body); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #555; }
+.scr-watch-rows dd { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.scr-chip { display: inline-block; background: #111; color: #f4f1ea; padding: 3px 9px; font-size: 13px; font-weight: 600; }
+.lib-full { position: absolute; top: 8px; right: 8px; z-index: 2; background: var(--color-pink); color: #fff; padding: 2px 6px; font-family: var(--font-mono-body); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; box-shadow: 2px 2px 0 #111; }
