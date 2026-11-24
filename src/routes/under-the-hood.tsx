@@ -13,7 +13,7 @@ const GROUPS: Group[] = [
     title: "Building the site",
     blurb: "Where the pages are made, stored and put online.",
     tools: [
-      { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups, guestbook notes and fan suggestions (Who to interview next, Library, Jukebox, Hall of Fame, Clubs) in its built-in database (Lovable Cloud), plus the Library's \"Got a copy?\" stories." },
+      { name: "Lovable", href: "https://lovable.dev", what: "Builds, hosts and publishes the whole site, and keeps the newsletter sign-ups, guestbook notes and fan suggestions (Who to interview next, Library, Jukebox, Hall of Fame, Clubs) in its built-in database (Lovable Cloud), plus the Library's \"Got a copy?\" stories and the \"Got a suggestion for this page?\" notes from the bottom of every page." },
       { name: "Claude", href: "https://claude.ai", what: "My co-pilot for everything behind the scenes: writes the code, researches every name and place, checks the links, transcribes the episodes, builds the reference sheets and draws the photocopied New York skyline on the Timeline in code." },
       { name: "GitHub", href: "https://github.com", what: "Stores the site's code; every change syncs straight into Lovable." },
       { name: "Archivo Black, IBM Plex Mono and Special Elite", href: "https://fontsource.org", what: "The flyer fonts - headlines (Archivo Black), the typewriter text everywhere (Special Elite), and timestamps and small data (IBM Plex Mono). Open licences (SIL OFL and Apache), served from this site, not from a font service." },
@@ -70,7 +70,7 @@ const GROUPS: Group[] = [
     title: "Visitors and search",
     blurb: "Counting visits without tracking you, and helping people find the site.",
     tools: [
-      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and alerts about new fan suggestions and guestbook notes to my inbox." },
+      { name: "Web3Forms", href: "https://web3forms.com", what: "Delivers contact-form messages and alerts about new fan suggestions, suggestions for a page and guestbook notes to my inbox." },
       { name: "Forward Email", href: "https://forwardemail.net", what: "Passes on emails sent to hello@nightfever-afterparty.com to my own inbox, without keeping them." },
       { name: "GoatCounter", href: "https://www.goatcounter.com", what: "Counts page visits without cookies or personal data." },
       { name: "Cloudflare Web Analytics", href: "https://www.cloudflare.com/web-analytics/", what: "A second free, cookie-free counter: which pages are read, where visitors come from and how fast pages load - no personal data." },
