@@ -856,6 +856,21 @@ export const LOCATIONS: Located[] = [
   { name: "Bard College", lat: 42.0204, lng: -73.9076, area: "Annandale-on-Hudson" },
   { name: "Deitch Projects", lat: 40.7224, lng: -74.0028, area: "SoHo", tip: "18 Wooster Street" },
   { name: "The Fridge (London)", lat: 51.4612, lng: -0.1155, area: "Brixton", tip: "Town Hall Parade, Brixton Hill" },
+  // S05E02 Jodie Harsh
+  { name: "London Astoria", lat: 51.5162, lng: -0.1306, area: "Soho", tip: "157 Charing Cross Road - demolished in 2009" },
+  { name: "G-A-Y", lat: 51.5162, lng: -0.1306, area: "Soho", tip: "Saturdays at the London Astoria, 157 Charing Cross Road" },
+  { name: "The Ghetto (London)", lat: 51.5157, lng: -0.131, area: "Soho", tip: "Falconberg Court, behind the Astoria" },
+  { name: "Nag Nag Nag", lat: 51.5157, lng: -0.131, area: "Soho", tip: "Wednesdays at The Ghetto, Falconberg Court" },
+  { name: "Too 2 Much (Raymond Revuebar)", lat: 51.5124, lng: -0.1338, area: "Soho", tip: "The old Raymond Revuebar, Walker's Court" },
+  { name: "Circus (London club night)", lat: 51.5124, lng: -0.1338, area: "Soho", tip: "Friday nights at Too 2 Much, Walker's Court" },
+  { name: "Boombox", lat: 51.5275, lng: -0.0812, area: "Hoxton", tip: "Sunday nights at the Hoxton Bar & Kitchen, Hoxton Square" },
+  { name: "Trade at Turnmills", lat: 51.5222, lng: -0.1047, area: "Clerkenwell", tip: "Turnmills, 63b Clerkenwell Road" },
+  { name: "Ministry of Sound", lat: 51.4978, lng: -0.0997, area: "Elephant and Castle", tip: "103 Gaunt Street" },
+  { name: "The Cross (King's Cross)", lat: 51.5352, lng: -0.123, area: "King's Cross", tip: "Under the railway arches off York Way" },
+  { name: "Hippodrome (London)", lat: 51.5112, lng: -0.1292, area: "Leicester Square", tip: "Cranbourn Street" },
+  { name: "Camden", lat: 51.539, lng: -0.1426, area: "London" },
+  { name: "King's Cross", lat: 51.5308, lng: -0.1238, area: "London" },
+  { name: "East London", lat: 51.525, lng: -0.055, area: "London" },
 ];
 
 /**
@@ -892,4 +907,11 @@ export const HOME_HINTS: Record<string, string> = {
   "W Hotel": "Where Desi built Casino Diabolique - which W Hotel was it?",
   "Casino Diabolique": "Desi's dark casino installation at a W Hotel - which one, and when?",
   "Black Lords (Miami)": "A white Art Deco hotel in Miami that Desi painted black - which hotel?",
+  // S05E02 Jodie Harsh
+  "Happy Valley (New York)": "A New York night Amanda Lepore took Jodie to, with a leopard carpet - which street?",
+  "Room Service": "Jodie's party from 2010, in London and later abroad - where was the first one?",
+  "Drama": "A dress-up night that moved around London, starting at The Cross - where did it go next?",
+  "Mr Wu (Old Compton Street)": "The five-pound Chinese buffet in Soho - which street number?",
+  "Party Monster premiere party (London)": "Around the Nag Nag Nag years - which venue was it?",
+  "Puking over the crowd": "Jodie was sick from the stage mid-set - at which club?",
 };
