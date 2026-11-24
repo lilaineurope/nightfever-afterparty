@@ -383,4 +383,9 @@ export const YEARS: Record<string, number> = {
   "Fatboy Slim": 1998,
   "Leftfield": 1993,
   "Psychotica": 1996,
+  // S05E02 Jodie Harsh (song = release year, band = year formed)
+  "Shannon – 'Let the Music Play'": 1983,
+  "Steps": 1997,
+  "S Club 7": 1998,
+  "Scissor Sisters": 2001,
 };
