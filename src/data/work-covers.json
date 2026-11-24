@@ -69,10 +69,20 @@
   "file": "work-elvira-mistress-of-the-dark.webp",
   "credit": "Poster via Wikipedia"
  },
+ "Emily in Paris": {
+  "kind": "book",
+  "file": "work-emily-in-paris.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
  "Flawless (1999 film)": {
   "kind": "book",
   "file": "work-flawless.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "Frasier": {
+  "kind": "book",
+  "file": "work-frasier.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
  },
  "Ghost Cat": {
   "kind": "book",
@@ -103,6 +113,11 @@
   "kind": "book",
   "file": "work-jubilee.webp",
   "credit": "Poster via Wikipedia"
+ },
+ "Just Shoot Me!": {
+  "kind": "book",
+  "file": "work-just-shoot-me.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
  },
  "Kevin Aviance – 'Din Da Da'": {
   "kind": "book",
@@ -194,6 +209,21 @@
   "file": "work-queen-of-the-universe.webp",
   "credit": "Title card via Wikipedia"
  },
+ "RuPaul's Drag Race All Stars": {
+  "kind": "book",
+  "file": "work-rupaul-s-drag-race-all-stars.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "RuPaul's Drag Race Down Under": {
+  "kind": "book",
+  "file": "work-rupaul-s-drag-race-down-under.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
+ "RuPaul's Drag Race UK": {
+  "kind": "book",
+  "file": "work-rupaul-s-drag-race-uk.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
+ },
  "Saturday Night Fever": {
   "kind": "book",
   "file": "work-saturday-night-fever.webp",
@@ -208,6 +238,11 @@
   "kind": "book",
   "file": "work-seduction-two-to-make-it-right.webp",
   "credit": "Sleeve via the Cover Art Archive (Seduction, 1989)"
+ },
+ "Seinfeld": {
+  "kind": "book",
+  "file": "work-seinfeld.webp",
+  "credit": "Title card via Wikimedia Commons (public domain)"
  },
  "Sex and the City": {
   "kind": "book",
@@ -353,5 +388,10 @@
   "kind": "book",
   "file": "work-wings.webp",
   "credit": "Title card via Wikipedia"
+ },
+ "xoJane": {
+  "kind": "book",
+  "file": "work-xojane.webp",
+  "credit": "Logo via Wikipedia"
  }
 }

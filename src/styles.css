@@ -1164,3 +1164,7 @@ a.lit-story-ch-nm:hover { color: var(--color-pink); }
   .lit-row-1 .lit-also { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
   .lit-row-1 .lit-also li:nth-child(-n+3) { border-top: 0; padding-top: 0; }
 }
+
+/* "Watch the clip" on a story (Blondie, 24 Nov 2026): what the clip shows, beside the screen. */
+.lit-story-clip-note { color: #f3ede2; font-size: 1.05rem; line-height: 1.55; margin: 0 0 1rem; }
+.lit-story-clip-note a { color: #ff4fa8; }
