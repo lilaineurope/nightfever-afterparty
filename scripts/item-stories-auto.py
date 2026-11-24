@@ -26,6 +26,11 @@ SKIP_KINDS = {"Magazine", "Paper", "Column", "Diary"}
 # Pictures checked and turned down by hand: never add them again.
 NOT_THE_COVER = {
     "jesus-christ-superstar",  # the 1970 album; Sally Randall put on her own downtown version
+    "taboo",  # a roast pig, not Leigh Bowery's club
+    "i-want-candy",  # the Strangeloves label; the work is Bow Wow Wow's video
+    "new-york-1983",  # a Frommer's guide, not Marcus Leatherdale's book
+    "little-gloria-happy-at-last",  # a title page, not the cover
+    "footprints",  # a title page, not the cover
 }
 # Hand-made covers and stories always win (library-covers.ts / item-stories.ts).
 covers_ts = open(os.path.join(ROOT, "src/data/library-covers.ts")).read()
@@ -43,6 +48,8 @@ def date(s):
         return y
     if d == "00":
         return f"{MONTHS[int(mo) - 1]} {y}"
+    if (mo, d) == ("01", "01"):  # Wikidata's stand-in for "some time that year"
+        return y
     return f"{int(d)} {MONTHS[int(mo) - 1]} {y}"
 
 
@@ -206,8 +213,8 @@ for slug, r in res.items():
         if cov.get("description") and w["kind"] == "Book":
             intro = two_sentences(cov["description"])
             sources.append("the publisher's description")
-    eps = sorted({b["ep"] for b in w["by"]})
-    sources.append(" and ".join(e.upper() for e in eps) + " AFTERPARTY references")
+    eps = sorted({b["ep"] for b in w["by"] if b.get("ep")})
+    sources.append((" and ".join(e.upper() for e in eps) + " AFTERPARTY references") if eps else "AFTERPARTY references")
     in_it, label = [], None
     if w["kind"] in ("Film", "TV"):
         in_it = [{"name": n} for n in (c.get("cast") or [])[:8] if not re.match(r"^Q\d+$", n)]
