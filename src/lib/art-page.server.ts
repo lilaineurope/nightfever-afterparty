@@ -18,7 +18,10 @@ import { libraryItemView } from "@/lib/library-item.server";
 import type { Trailer } from "@/lib/library-item";
 
 type Clip = { id: string; name: string; cat: string; title: string };
-const clipFiles = import.meta.glob<Clip[]>("../data/episode-videos/*.json", { eager: true, import: "default" });
+const clipFiles = import.meta.glob<Clip[]>("../data/episode-videos/*.json", {
+  eager: true,
+  import: "default",
+});
 
 export type Named = { name: string; href?: string | undefined; polaroid?: string | undefined };
 export type ArtPageView = {
@@ -48,9 +51,23 @@ export type ArtPageView = {
   credited: { role: string; people: Named[] }[];
   /** People and bands named on a club piece. */
   onIt: Named[];
-  quotes: { episodeId: string; short: string; who: string; time: string; quote: string; polaroid?: string | undefined }[];
+  quotes: {
+    episodeId: string;
+    short: string;
+    who: string;
+    time: string;
+    quote: string;
+    polaroid?: string | undefined;
+  }[];
   /** How it came up on the show, for guests without a quote. */
-  moments: { episodeId: string; short: string; guest: string; time: string; context: string; polaroid?: string | undefined }[];
+  moments: {
+    episodeId: string;
+    short: string;
+    guest: string;
+    time: string;
+    context: string;
+    polaroid?: string | undefined;
+  }[];
   videos: Trailer[];
   /** Other pieces on the same shelf, for the strip at the bottom. */
   more: { page: string; name: string; src: string; piece: string }[];
@@ -69,21 +86,52 @@ function names(value: string): Named[] {
 function named(n: string): Named {
   const e = entityFor(n);
   const ep = afterpartyOf(e);
-  return { name: e?.name ?? n, href: e ? cardPath(e.slug) : undefined, polaroid: ep ? guestPolaroid(ep) : undefined };
+  return {
+    name: e?.name ?? n,
+    href: e ? cardPath(e.slug) : undefined,
+    polaroid: ep ? guestPolaroid(ep) : undefined,
+  };
 }
 
 // The work's own credits from "The story", in the order a sleeve or a poster prints them.
-const CREDIT_FACTS = ["By", "Made by", "Created by", "Directed by", "Directed and edited by", "Written by", "Lyrics", "Music", "Produced by", "Developed by", "Cinematography", "Hosted by", "Label", "Network", "Publisher"];
-const KIND: Record<string, string> = { sleeves: "Record sleeve", posters: "Film poster", "title-cards": "TV title card" };
+const CREDIT_FACTS = [
+  "By",
+  "Made by",
+  "Created by",
+  "Directed by",
+  "Directed and edited by",
+  "Written by",
+  "Lyrics",
+  "Music",
+  "Produced by",
+  "Developed by",
+  "Cinematography",
+  "Hosted by",
+  "Label",
+  "Network",
+  "Publisher",
+];
+const KIND: Record<string, string> = {
+  sleeves: "Record sleeve",
+  posters: "Film poster",
+  "title-cards": "TV title card",
+};
 /** A club piece says what it is: "Halloween card" -> Club card, "drink ticket" -> Club ticket. */
-const clubKind = (piece: string) => `Club ${/poster/i.test(piece) ? "poster" : /flyer/i.test(piece) ? "flyer" : /invitation|invite/i.test(piece) ? "invitation" : /ticket|stub/i.test(piece) ? "ticket" : /pass/i.test(piece) ? "pass" : "card"}`;
+const clubKind = (piece: string) =>
+  `Club ${/poster/i.test(piece) ? "poster" : /flyer/i.test(piece) ? "flyer" : /invitation|invite/i.test(piece) ? "invitation" : /ticket|stub/i.test(piece) ? "ticket" : /pass/i.test(piece) ? "pass" : "card"}`;
 void ART_SHELVES;
-const DESIGN = /designed the (cover|sleeve|poster|artwork)|shot the cover|cover (art|photo)|poster/i;
+const DESIGN =
+  /designed the (cover|sleeve|poster|artwork)|shot the cover|cover (art|photo)|poster/i;
 
 function forWhat(name: string, shelf: string, facts: Record<string, string>): string {
   const by = facts["By"] ?? facts["Made by"] ?? facts["Created by"] ?? facts["Directed by"];
   const year = facts["Out"] ?? facts["On the air"];
-  const what = shelf === "sleeves" ? "The sleeve of" : shelf === "title-cards" ? "The title card of" : "The poster of";
+  const what =
+    shelf === "sleeves"
+      ? "The sleeve of"
+      : shelf === "title-cards"
+        ? "The title card of"
+        : "The poster of";
   return `${what} ${name}${by ? `, by ${by}` : ""}${year ? ` (${year})` : ""}.`;
 }
 
@@ -97,15 +145,34 @@ function videosFor(slug: string, name: string, firstEpisode: string | undefined)
   if (e) for (const t of libraryItemView(e)?.trailers ?? []) if (t.kind !== "guest") add(t);
   // Its own video in the AFTERPARTY playlists.
   for (const [path, clips] of Object.entries(clipFiles)) {
-    const episodeId = path.split("/").pop()!.replace(/\.json$/, "");
+    const episodeId = path
+      .split("/")
+      .pop()!
+      .replace(/\.json$/, "");
     for (const c of clips) {
       if (/night fever/i.test(c.title) || c.cat === "Night Fever") continue;
-      if ((entityFor(c.name)?.slug ?? slugify(c.name)) === slug) add({ id: c.id, title: c.title, label: c.name, episodeId, short: episodeShort(episodeId), kind: "clip" });
+      if ((entityFor(c.name)?.slug ?? slugify(c.name)) === slug)
+        add({
+          id: c.id,
+          title: c.title,
+          label: c.name,
+          episodeId,
+          short: episodeShort(episodeId),
+          kind: "clip",
+        });
     }
   }
   // A song or record: its Jukebox video.
   const y = YOUTUBE[name];
-  if (y && firstEpisode) add({ id: y, title: name, label: name, episodeId: firstEpisode, short: episodeShort(firstEpisode), kind: "clip" });
+  if (y && firstEpisode)
+    add({
+      id: y,
+      title: name,
+      label: name,
+      episodeId: firstEpisode,
+      short: episodeShort(firstEpisode),
+      kind: "clip",
+    });
   return out.slice(0, 6);
 }
 
@@ -115,7 +182,9 @@ export function artPageData(page: string): ArtPageView | null {
   const e = entityFor(it.name) ?? entityFor(it.slug);
   const slug = e?.slug ?? it.slug;
   const story = ITEM_STORIES[slug];
-  const facts: Record<string, string> = Object.fromEntries((story?.facts ?? []).map((f) => [f.label, f.value]));
+  const facts: Record<string, string> = Object.fromEntries(
+    (story?.facts ?? []).map((f) => [f.label, f.value]),
+  );
   const club = clubPieceFacts(it);
   const makers = MADE_BY[it.name] ?? [];
 
@@ -134,7 +203,8 @@ export function artPageData(page: string): ArtPageView | null {
 
   // Everyone else credited on the work: its own credits first, then the people on the site and what they did.
   const credited: ArtPageView["credited"] = [];
-  for (const label of CREDIT_FACTS) if (facts[label]) addRole(credited, label, names(facts[label]!));
+  for (const label of CREDIT_FACTS)
+    if (facts[label]) addRole(credited, label, names(facts[label]!));
   // A club piece's people are the ones on the piece, not the club's founders.
   for (const m of club ? [] : makers.filter((m) => !DESIGN.test(m.role))) {
     if (credited.some((r) => r.people.some((p) => p.name === m.name))) continue;
@@ -143,14 +213,28 @@ export function artPageData(page: string): ArtPageView | null {
 
   // What the guests said: their own words about it (item quotes, or the club's quote wall for a club piece).
   const said = club ? (CLUB_PROFILES[it.slug]?.said ?? []) : (ITEM_QUOTES[slug] ?? []);
-  const quotes = said.slice(0, 6).map((q) => ({ episodeId: q.episode, short: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote, polaroid: guestPolaroid(q.episode) }));
+  const quotes = said.slice(0, 6).map((q) => ({
+    episodeId: q.episode,
+    short: episodeShort(q.episode),
+    who: q.who,
+    time: q.time,
+    quote: q.quote,
+    polaroid: guestPolaroid(q.episode),
+  }));
   const quoted = new Set(quotes.map((q) => q.episodeId));
   const moments = club
     ? []
     : it.moments
         .filter((m) => !quoted.has(m.episodeId) && m.context)
         .slice(0, 6)
-        .map((m) => ({ episodeId: m.episodeId, short: m.code, guest: stageName(episodeById(m.episodeId).guest), time: m.time, context: m.context, polaroid: guestPolaroid(m.episodeId) }));
+        .map((m) => ({
+          episodeId: m.episodeId,
+          short: m.code,
+          guest: stageName(episodeById(m.episodeId).guest),
+          time: m.time,
+          context: m.context,
+          polaroid: guestPolaroid(m.episodeId),
+        }));
 
   const more = Object.values(artByPage)
     .filter((x) => x.shelf === it.shelf && x.art!.page !== page)

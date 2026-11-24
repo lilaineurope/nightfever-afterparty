@@ -20,7 +20,8 @@ export const Route = createFileRoute("/library_/art/$slug")({
     return v;
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData)
+      return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
     const v = loaderData;
     return pageHead({
       path: `/library/art/${v.page}`,
@@ -63,8 +64,14 @@ function ArtPage() {
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
         <nav className="art-crumbs" aria-label="Where you are">
-          <Link to="/library" className="art-name">Library</Link> ·{" "}
-          <Link to="/library" search={{ cat: "art" }} className="art-name">Cover art &amp; posters</Link> · <span>{v.group}</span>
+          <Link to="/library" className="art-name">
+            Library
+          </Link>{" "}
+          ·{" "}
+          <Link to="/library" search={{ cat: "art" }} className="art-name">
+            Cover art &amp; posters
+          </Link>{" "}
+          · <span>{v.group}</span>
         </nav>
 
         <div className="art-page">
@@ -77,31 +84,58 @@ function ArtPage() {
           </figure>
 
           <div className="art-text">
-            <p className="art-tag">{v.kind}{v.date ? ` · ${v.date}` : ""}</p>
-            <h1 className={`art-title${(v.kind.startsWith("Club") ? v.piece : v.name).length > 28 ? " art-title-long" : ""}`}>
+            <p className="art-tag">
+              {v.kind}
+              {v.date ? ` · ${v.date}` : ""}
+            </p>
+            <h1
+              className={`art-title${(v.kind.startsWith("Club") ? v.piece : v.name).length > 28 ? " art-title-long" : ""}`}
+            >
               {v.piece !== v.name && v.kind.startsWith("Club") ? (
                 <>
                   {v.piece}
                   <span className="art-title-sub">
-                    at <a href={v.href} className="art-name">{v.name}</a>
+                    at{" "}
+                    <a href={v.href} className="art-name">
+                      {v.name}
+                    </a>
                   </span>
                 </>
               ) : (
-                <a href={v.href} className="art-name">{v.name}</a>
+                <a href={v.href} className="art-name">
+                  {v.name}
+                </a>
               )}
             </h1>
             <p className="art-for">{v.forWhat}</p>
-            {v.intro && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.intro}</p>}
+            {v.intro && (
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.intro}</p>
+            )}
 
             <section className="art-box mt-8" aria-labelledby="art-made">
-              <h2 id="art-made" className={h}>Who made the art</h2>
+              <h2 id="art-made" className={h}>
+                Who made the art
+              </h2>
               {v.art.length ? (
                 <dl className="art-credits mt-4">
                   {v.art.map((r) => (
                     <div key={r.role}>
                       <dt>{r.role}</dt>
                       <dd>
-                        {r.people.map((p) => p.polaroid && <img key={p.name} src={p.polaroid} alt="" className="art-face" width={240} height={240} loading="lazy" />)}
+                        {r.people.map(
+                          (p) =>
+                            p.polaroid && (
+                              <img
+                                key={p.name}
+                                src={p.polaroid}
+                                alt=""
+                                className="art-face"
+                                width={240}
+                                height={240}
+                                loading="lazy"
+                              />
+                            ),
+                        )}
                         <People people={r.people} />
                       </dd>
                     </div>
@@ -109,14 +143,18 @@ function ArtPage() {
                 </dl>
               ) : (
                 <p className="mt-3 text-sm text-muted-foreground">
-                  The {v.kind.toLowerCase()} doesn&rsquo;t name its designer, and neither does anything we can check. Know who made it? Tell me in the box at the bottom of the page.
+                  The {v.kind.toLowerCase()} doesn&rsquo;t name its designer, and neither does
+                  anything we can check. Know who made it? Tell me in the box at the bottom of the
+                  page.
                 </p>
               )}
             </section>
 
             {(v.credited.length > 0 || v.onIt.length > 0) && (
               <section className="art-box mt-6" aria-labelledby="art-credited">
-                <h2 id="art-credited" className={h}>{v.onIt.length ? "Who's on it" : "Everyone credited"}</h2>
+                <h2 id="art-credited" className={h}>
+                  {v.onIt.length ? "Who's on it" : "Everyone credited"}
+                </h2>
                 {v.onIt.length > 0 && (
                   <p className="art-on-it mt-4">
                     <People people={v.onIt} />
@@ -134,7 +172,13 @@ function ArtPage() {
                     ))}
                   </dl>
                 )}
-                <p className="mt-4 text-xs text-muted-foreground">From the {v.kind.startsWith("Club") ? "piece itself and its archive listing" : "work's own credits"} - names with a page on the site link to it.</p>
+                <p className="mt-4 text-xs text-muted-foreground">
+                  From the{" "}
+                  {v.kind.startsWith("Club")
+                    ? "piece itself and its archive listing"
+                    : "work's own credits"}{" "}
+                  - names with a page on the site link to it.
+                </p>
               </section>
             )}
           </div>
@@ -142,15 +186,31 @@ function ArtPage() {
 
         {v.quotes.length > 0 && (
           <section className="mt-14" aria-labelledby="art-said">
-            <h2 id="art-said" className={h}>What the guests said{v.kind.startsWith("Club") ? ` about ${v.name}` : ""}</h2>
+            <h2 id="art-said" className={h}>
+              What the guests said{v.kind.startsWith("Club") ? ` about ${v.name}` : ""}
+            </h2>
             <ul className="lit-quotes mt-5">
               {v.quotes.map((q) => (
                 <li key={q.episodeId + q.time} className="lit-quote">
                   <blockquote>{q.quote}</blockquote>
                   <p className="lit-quote-who">
-                    {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
+                    {q.polaroid && (
+                      <img
+                        src={q.polaroid}
+                        alt=""
+                        width={240}
+                        height={240}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                     <span>
-                      <Link to={episodePath(q.episodeId as never)} className="art-name font-semibold">{q.who}</Link>
+                      <Link
+                        to={episodePath(q.episodeId as never)}
+                        className="art-name font-semibold"
+                      >
+                        {q.who}
+                      </Link>
                       <br />
                       {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
                     </span>
@@ -164,15 +224,31 @@ function ArtPage() {
         {/* Guests who name it without a quote yet: how it came up, with the moment to play (episode mention lines rule). */}
         {v.moments.length > 0 && (
           <section className="mt-12" aria-labelledby="art-came-up">
-            <h2 id="art-came-up" className={h}>How it came up on the show</h2>
+            <h2 id="art-came-up" className={h}>
+              How it came up on the show
+            </h2>
             <ul className="art-moments mt-4">
               {v.moments.map((m) => (
                 <li key={m.episodeId + m.time}>
-                  {m.polaroid && <img src={m.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" className="art-face" />}
+                  {m.polaroid && (
+                    <img
+                      src={m.polaroid}
+                      alt=""
+                      width={240}
+                      height={240}
+                      loading="lazy"
+                      decoding="async"
+                      className="art-face"
+                    />
+                  )}
                   <div>
-                    <Link to={episodePath(m.episodeId as never)} className="art-name font-semibold">{m.short} · {m.guest}</Link>{" "}
+                    <Link to={episodePath(m.episodeId as never)} className="art-name font-semibold">
+                      {m.short} · {m.guest}
+                    </Link>{" "}
                     <Timestamp episodeId={m.episodeId} time={m.time} />
-                    <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{m.context}</p>
+                    <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">
+                      {m.context}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -188,12 +264,21 @@ function ArtPage() {
 
         {v.more.length > 0 && (
           <section className="mt-14" aria-labelledby="art-more">
-            <h2 id="art-more" className={h}>More {v.kind.toLowerCase()}s</h2>
+            <h2 id="art-more" className={h}>
+              More {v.kind.toLowerCase()}s
+            </h2>
             <ul className="art-more mt-5">
               {v.more.map((m) => (
                 <li key={m.page}>
                   <Link to="/library/art/$slug" params={{ slug: m.page }} className="art-more-hit">
-                    <span className="art-more-pic"><img src={m.src} alt={`${m.piece} - ${m.name}`} loading="lazy" decoding="async" /></span>
+                    <span className="art-more-pic">
+                      <img
+                        src={m.src}
+                        alt={`${m.piece} - ${m.name}`}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
                     <span className="art-name">{m.name}</span>
                   </Link>
                 </li>
