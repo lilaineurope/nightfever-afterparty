@@ -265,3 +265,11 @@ export const coverFor = (name: string): (Cover & { src: string }) | undefined =>
   const c = COVERS[name] ?? (WORK_COVERS as Record<string, Cover>)[name];
   return c && url(c.file) ? { ...c, src: url(c.file) } : undefined;
 };
+
+/** Every hosted cover by A–Z name (a cover written above wins over the made-by covers) - the Cover art & posters shelf
+ *  (src/data/cover-art.ts) picks the sleeves, posters and title cards from it. */
+export const allCovers = (): [string, Cover & { src: string }][] =>
+  Object.keys({ ...(WORK_COVERS as Record<string, Cover>), ...COVERS }).flatMap((name) => {
+    const c = coverFor(name);
+    return c ? [[name, c] as [string, Cover & { src: string }]] : [];
+  });
