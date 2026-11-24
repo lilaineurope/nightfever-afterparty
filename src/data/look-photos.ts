@@ -11,8 +11,10 @@ export type LookPhoto = {
   credit: string;
   /** Where the picture comes from (its Commons or museum page). */
   source: string;
-  /** True when it is the very look the guest talks about; false when it shows the same piece or the same night. */
+  /** True when it is the very look the guest talks about; false when it shows the same kind of piece, another day. */
   exact: boolean;
+  /** One line under the picture saying what it shows and how close it is to the story. */
+  note: string;
 };
 
 const pics = import.meta.glob<string>("../assets/looks/*.{jpg,webp,png}", { eager: true, query: "?url", import: "default" });
@@ -21,7 +23,25 @@ const pic = (file: string) => pics[`../assets/looks/${file}`] ?? "";
 export const LOOK_PHOTOS: Record<string, LookPhoto> = Object.fromEntries(
   (
     [
-      // [slug, file, alt, credit, source, exact]
-    ] as [string, string, string, string, string, boolean][]
-  ).map(([slug, file, alt, credit, source, exact]) => [slug, { src: pic(file), alt, credit, source, exact }]),
+      // [slug, file, alt, note, credit, source, exact]
+      [
+        "imelda-s-red-dress-and-butterfly-sleeves",
+        "imelda-gowns.webp",
+        "Three of Imelda Marcos's gowns with butterfly sleeves on display, two of them red, in front of photographs of her",
+        "Her own gowns with the butterfly sleeves, two of them red - on show at the Marcos Presidential Center in Batac.",
+        "Photo: Khdamayo, CC0, via Wikimedia Commons",
+        "https://commons.wikimedia.org/wiki/File:Collection_of_gowns_worn_by_Imelda_Romualdez-Marcos.jpg",
+        false,
+      ],
+      [
+        "westwood-s-polka-dot-hoop-mini-skirts",
+        "westwood-mini-crini.webp",
+        "A Vivienne Westwood mini-crini suit in red wool on a museum dress form",
+        "A Westwood mini-crini from 1985-87 - not the polka-dot one from the Limelight show, but the same hooped little skirt.",
+        "Photo: Woehning, CC BY-SA 3.0, via Wikimedia Commons",
+        "https://commons.wikimedia.org/wiki/File:Vivienne_Westwood_Mini_Crini.jpg",
+        false,
+      ],
+    ] as [string, string, string, string, string, string, boolean][]
+  ).map(([slug, file, alt, note, credit, source, exact]) => [slug, { src: pic(file), alt, note, credit, source, exact }]),
 );

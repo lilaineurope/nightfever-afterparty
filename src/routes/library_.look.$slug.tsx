@@ -80,7 +80,7 @@ function LookPage() {
                   <img src={v.photo.src} alt={v.photo.alt} decoding="async" />
                 </div>
                 <figcaption>
-                  {v.photo.exact ? "The real thing. " : "The same piece, another day. "}
+                  {v.photo.note}{" "}
                   <a href={v.photo.source} className="art-name" rel="noreferrer">
                     {v.photo.credit}
                   </a>
