@@ -23,7 +23,18 @@ export type CollectionItem = {
 
 /** A picture on a picture shelf (Cover art & posters): what it is ("Sleeve", "Poster", a club's flyer...), its credit, and who
  *  designed it when the sleeve's or poster's own credits name them. */
-export type ArtPiece = { src: string; piece: string; credit: string; href?: string | undefined; designers: string[] };
+export type ArtPiece = {
+  src: string;
+  piece: string;
+  credit: string;
+  href?: string | undefined;
+  designers: string[];
+  /** Its own page: /library/art/<page> (Lisa, 24 Nov 2026). */
+  page: string;
+  alt?: string | undefined;
+  w?: number | undefined;
+  h?: number | undefined;
+};
 
 const hasCat = (e: Entity, cats: string[]) => cats.includes(e.category) || e.refs.some((r) => cats.includes(r.category));
 

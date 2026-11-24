@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Fragment, useMemo, useState, type CSSProperties } from "react";
 import { MomentsBox } from "@/components/moments-box";
 import { StillToMakeBox } from "@/components/still-to-make";
@@ -285,6 +285,14 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
       moments={item.moments}
       link={item.link || undefined}
       note={note}
+      extra={
+        art ? (
+          // Its own page (Lisa, 24 Nov 2026): the artwork big, who made it, everyone credited, the guests' words, its video.
+          <Link to="/library/art/$slug" params={{ slug: art.page }} className="font-semibold text-pink hover:text-foreground">
+            The {art.piece.toLowerCase().startsWith("sleeve") || art.piece.length > 20 ? "artwork" : art.piece.toLowerCase()}&rsquo;s own page &rarr;
+          </Link>
+        ) : undefined
+      }
       summary={
         item.by ? (
           <>Not dropped in an episode yet · by {item.by.name}</>

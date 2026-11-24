@@ -103,6 +103,7 @@ import { Route as ShopTestProductRouteImport } from './routes/shop-test.$product
 import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
 import { Route as SpotifyIndexRouteImport } from './routes/spotify.index'
 import { Route as SpotifySplatRouteImport } from './routes/spotify.$'
+import { Route as LibraryArtSlugRouteImport } from './routes/library_.art.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -574,6 +575,11 @@ const SpotifySplatRoute = SpotifySplatRouteImport.update({
   path: '/spotify/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryArtSlugRoute = LibraryArtSlugRouteImport.update({
+  id: '/library_/art/$slug',
+  path: '/library/art/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -670,6 +676,7 @@ export interface FileRoutesByFullPath {
   '/guestbook/': typeof GuestbookIndexRoute
   '/shop-test/': typeof ShopTestIndexRoute
   '/spotify/': typeof SpotifyIndexRoute
+  '/library/art/$slug': typeof LibraryArtSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -766,6 +773,7 @@ export interface FileRoutesByTo {
   '/guestbook': typeof GuestbookIndexRoute
   '/shop-test': typeof ShopTestIndexRoute
   '/spotify': typeof SpotifyIndexRoute
+  '/library/art/$slug': typeof LibraryArtSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -863,6 +871,7 @@ export interface FileRoutesById {
   '/guestbook/': typeof GuestbookIndexRoute
   '/shop-test/': typeof ShopTestIndexRoute
   '/spotify/': typeof SpotifyIndexRoute
+  '/library_/art/$slug': typeof LibraryArtSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -961,6 +970,7 @@ export interface FileRouteTypes {
     | '/guestbook/'
     | '/shop-test/'
     | '/spotify/'
+    | '/library/art/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1057,6 +1067,7 @@ export interface FileRouteTypes {
     | '/guestbook'
     | '/shop-test'
     | '/spotify'
+    | '/library/art/$slug'
   id:
     | '__root__'
     | '/'
@@ -1153,6 +1164,7 @@ export interface FileRouteTypes {
     | '/guestbook/'
     | '/shop-test/'
     | '/spotify/'
+    | '/library_/art/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1250,6 +1262,7 @@ export interface RootRouteChildren {
   GuestbookIndexRoute: typeof GuestbookIndexRoute
   ShopTestIndexRoute: typeof ShopTestIndexRoute
   SpotifyIndexRoute: typeof SpotifyIndexRoute
+  LibraryArtSlugRoute: typeof LibraryArtSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1912,6 +1925,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpotifySplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library_/art/$slug': {
+      id: '/library_/art/$slug'
+      path: '/library/art/$slug'
+      fullPath: '/library/art/$slug'
+      preLoaderRoute: typeof LibraryArtSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -2010,6 +2030,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuestbookIndexRoute: GuestbookIndexRoute,
   ShopTestIndexRoute: ShopTestIndexRoute,
   SpotifyIndexRoute: SpotifyIndexRoute,
+  LibraryArtSlugRoute: LibraryArtSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
