@@ -17,11 +17,17 @@ export type CollectionItem = {
   spotify?: string | undefined;
   /** A book no guest has dropped yet, by someone on the site (src/data/written-by.ts): its cover says "by <name>". */
   by?: { slug: string; name: string } | undefined;
+  /** Cover art & posters shelf (src/data/cover-art.ts): the picture, what it is, its credit and who designed it. */
+  art?: ArtPiece | undefined;
 };
+
+/** A picture on a picture shelf (Cover art & posters): what it is ("Sleeve", "Poster", a club's flyer...), its credit, and who
+ *  designed it when the sleeve's or poster's own credits name them. */
+export type ArtPiece = { src: string; piece: string; credit: string; href?: string | undefined; designers: string[] };
 
 const hasCat = (e: Entity, cats: string[]) => cats.includes(e.category) || e.refs.some((r) => cats.includes(r.category));
 
-function toItem(e: Entity, shelf: string, cats: string[]): CollectionItem {
+export function toItem(e: Entity, shelf: string, cats: string[]): CollectionItem {
   const refs: Ref[] = e.refs.filter((r) => cats.includes(r.category) || cats.includes(e.category));
   const moments = refs
     .filter((r) => r.episode)

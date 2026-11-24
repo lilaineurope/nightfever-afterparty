@@ -54,6 +54,21 @@ export function CoverCard({ item, tint }: { item: CollectionItem; tint: number }
       )}
     </span>
   );
+  // Cover art & posters (Lisa, 24 Nov 2026): the whole piece shows, never cropped - a square sleeve, a tall poster or a
+  // wide ticket sits on black with a tag saying what it is, the designer under the name when the credits name them.
+  if (item.art)
+    return (
+      <span className="lib-cv lib-art">
+        <img src={item.art.src} alt={`${item.art.piece} - ${item.name}`} loading="lazy" decoding="async" />
+        <span className="lib-art-tag">{item.shelf === "club-pieces" ? "From the club" : item.art.piece}</span>
+        <span className="lib-strip">
+          <span className="lib-nm">{item.name}</span>
+          {item.shelf === "club-pieces" && <span className="lib-art-by">{item.art.piece}</span>}
+          {item.art.designers.length > 0 && <span className="lib-art-by">Cover: {item.art.designers.join(" & ")}</span>}
+          {foot}
+        </span>
+      </span>
+    );
   // Lisa, 21 Nov 2026: the keeper's portrait fills the whole diary cover.
   if (polaroid)
     return (
