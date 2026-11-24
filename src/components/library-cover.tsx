@@ -3,6 +3,8 @@ import { coverFor } from "@/data/library-covers";
 import { polaroidThumb } from "@/lib/polaroids";
 import { FashionCover } from "@/components/fashion-cover";
 import { isFashionItem } from "@/data/library-fashion";
+import { isScreenItem } from "@/data/moving-images";
+import { FULL_WATCH } from "@/data/screen-full";
 import headPaper from "@/assets/library/col-head-paper.webp";
 import headOutweek from "@/assets/library/col-head-outweek.webp";
 import headSoho from "@/assets/library/col-head-soho-news.webp";
@@ -17,6 +19,10 @@ const KIND: Record<string, string> = {
   newspapers: "Newspapers",
   columns: "Columns",
   diaries: "Diary",
+  movies: "Film",
+  documentaries: "Documentary",
+  "tv-shows": "TV",
+  "music-videos": "Music video",
 };
 const episodesOf = (it: CollectionItem) => new Set(it.moments.map((m) => m.episodeId)).size;
 const afterparties = (n: number) => `${n} ${n === 1 ? "Afterparty" : "Afterparties"}`;
@@ -73,6 +79,28 @@ export function CoverCard({ item, tint }: { item: CollectionItem; tint: number }
         </span>
       </span>
     );
+  // Moving Images (Lisa, 24 Nov 2026): the poster or title card whole on black, like Cover art & posters, tagged Film / TV /
+  // Documentary; without one, a black screen card with the title.
+  if (isScreenItem(item)) {
+    const pic = cover?.kind === "book" && !/^Photo:|^Logo/i.test(cover.credit) ? cover.src : undefined;
+    return (
+      <span className={`lib-cv lib-art lib-screen${pic ? "" : " lib-screen-type"}`}>
+        {pic ? (
+          <img src={pic} alt={`${item.shelf === "tv-shows" ? "Title card" : "Poster"} - ${item.name}`} loading="lazy" decoding="async" />
+        ) : (
+          <span className="lib-screen-nm" aria-hidden>
+            {item.name}
+          </span>
+        )}
+        <span className="lib-art-tag">{KIND[item.shelf]}</span>
+        {FULL_WATCH[item.slug] && <span className="lib-full">▶ In full</span>}
+        <span className="lib-strip">
+          <span className="lib-nm">{item.name}</span>
+          {foot}
+        </span>
+      </span>
+    );
+  }
   // Lisa, 21 Nov 2026: the keeper's portrait fills the whole diary cover.
   if (polaroid)
     return (

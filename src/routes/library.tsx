@@ -11,6 +11,7 @@ import { coverFor } from "@/data/library-covers";
 import { CoverCard } from "@/components/library-cover";
 import { FashionNote } from "@/components/fashion-cover";
 import { isFashionItem } from "@/data/library-fashion";
+import { isScreenItem } from "@/data/moving-images";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
 // The Library (Lisa, 29 Oct 2026 - was the Book Club at /book-club, which now redirects here): every book, magazine,
@@ -295,6 +296,11 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
           // A look's own page (Lisa, 24 Nov 2026): the mannequin, what was worn, whose look, the moment.
           <Link to="/library/look/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
             The look&rsquo;s own page &rarr;
+          </Link>
+        ) : isScreenItem(item) ? (
+          // Its own page (Lisa, 24 Nov 2026): the Jukebox video big, everyone who was involved, the guests' words.
+          <Link to="/library/moving-images/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
+            The {item.shelf === "tv-shows" ? "show" : item.shelf === "music-videos" ? "video" : "film"}&rsquo;s own page &rarr;
           </Link>
         ) : undefined
       }

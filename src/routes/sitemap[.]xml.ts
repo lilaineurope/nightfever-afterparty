@@ -8,6 +8,7 @@ import { episodePath, episodes } from "@/data/episodes";
 import { publishedDay } from "@/lib/seo";
 import { ISSUES } from "@/data/issues";
 import { artByPage } from "@/data/cover-art";
+import { screenBySlug } from "@/data/moving-images";
 
 // The public site origin.
 const BASE_URL = "https://nightfever-afterparty.com";
@@ -55,6 +56,8 @@ export const Route = createFileRoute("/sitemap.xml")({
         for (const page of Object.keys(artByPage)) entries.push({ path: `/library/art/${page}` });
         // Look pages (/library/look/$slug, Lisa 24 Nov 2026): one per look and outfit on the Fashion & outfits shelf.
         for (const look of FASHION_LOOKS) entries.push({ path: `/library/look/${look.slug}` });
+        // Moving Images pages (/library/moving-images/$slug, Lisa 24 Nov 2026): one per film or show on the Library shelves.
+        for (const slug of Object.keys(screenBySlug)) entries.push({ path: `/library/moving-images/${slug}` });
         // Dynamic overview cards (/explore/$slug) are included via the route's
         // staticData.sitemap decision; all slugs come from the router inventory.
         if (entries.length === 0) {

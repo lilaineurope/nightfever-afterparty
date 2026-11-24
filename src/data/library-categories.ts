@@ -7,6 +7,7 @@
 import { BOOK_SHELVES, bookClub, type CollectionItem, type Shelf } from "./collections";
 import { ART_SHELVES, coverArt } from "./cover-art";
 import { FASHION_SHELVES, fashionShelf } from "./library-fashion";
+import { SCREEN_SHELVES, movingImages } from "./moving-images";
 
 export type LibraryCategory = {
   key: string;
@@ -40,6 +41,14 @@ export const LIBRARY_CATEGORIES: LibraryCategory[] = [
       "Every look on camera, every outfit in the stories, the designers and shops behind them, and the rooms and moments of the episodes' mood boards - each in its own colours. Tap one for every moment.",
     shelves: FASHION_SHELVES,
     items: fashionShelf,
+  },
+  {
+    key: "moving-images",
+    label: "Moving Images",
+    blurb:
+      "Every film, documentary and TV show the guests drop - with its clip, its cast and its whole team. Tap one for every moment.",
+    shelves: SCREEN_SHELVES,
+    items: movingImages,
   },
 ];
 

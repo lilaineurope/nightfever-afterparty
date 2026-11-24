@@ -92,9 +92,16 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
         <div>
           <h2 className={h}>{first}'s story</h2>
           <ol className="mt-4 space-y-3 border-l border-gold/40 pl-5">
-            {m.timeline.map(([y, t], i) => (
+            {m.timeline.map(([y, t, url], i) => (
               <li key={i} className="text-sm">
-                <span className="font-semibold text-foreground">{y}</span> · <span className="text-card-foreground/80">{t}</span>
+                <span className="font-semibold text-foreground">{y}</span> ·{" "}
+                {url ? (
+                  <a href={url} target="_blank" rel="noopener noreferrer" className="text-card-foreground/80 transition-colors hover:text-pink">
+                    {t} ↗
+                  </a>
+                ) : (
+                  <span className="text-card-foreground/80">{t}</span>
+                )}
               </li>
             ))}
           </ol>

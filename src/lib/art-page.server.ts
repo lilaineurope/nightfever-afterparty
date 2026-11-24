@@ -135,7 +135,7 @@ function forWhat(name: string, shelf: string, facts: Record<string, string>): st
   return `${what} ${name}${by ? `, by ${by}` : ""}${year ? ` (${year})` : ""}.`;
 }
 
-function videosFor(slug: string, name: string, firstEpisode: string | undefined): Trailer[] {
+export function videosFor(slug: string, name: string, firstEpisode: string | undefined): Trailer[] {
   const out: Trailer[] = [];
   const add = (t: Trailer) => {
     if (!out.some((x) => x.id === t.id)) out.push(t);
