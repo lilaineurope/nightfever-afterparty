@@ -55,7 +55,7 @@ function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated: 21 November 2026. Here's what happens to your data when
+            Last updated: 24 November 2026. Here's what happens to your data when
             you read my site - in plain words, promise!
           </p>
         </div>
@@ -208,6 +208,17 @@ function PrivacyPage() {
               your consent in sending it.
             </p>
             <p>
+              <strong className="text-cream">Suggestions for a page.</strong> The
+              &ldquo;Got a suggestion for this page?&rdquo; box at the bottom of
+              every page saves your suggestion, the optional name and the optional
+              email address you give, together with the address and title of the
+              page you sent it from, in the site&rsquo;s database, and Web3Forms
+              sends me a note about it. Only I read them - nothing from this box
+              is shown on the site. I use your email address only to answer you.
+              Ask me any time to delete yours. Legal basis: your consent in
+              sending it.
+            </p>
+            <p>
               <strong className="text-cream">Episode player.</strong> Nothing
               plays or loads until you press play or tap a timestamp. Then your
               browser streams the episode straight from the show&rsquo;s own
@@ -331,7 +342,7 @@ function PrivacyPage() {
               passes on emails sent to the site&rsquo;s address to my inbox (it does not
               keep them), the hosting
               platform&rsquo;s built-in database keeps newsletter sign-ups,
-              guestbook notes and fan suggestions, and when you press play the show&rsquo;s own
+              guestbook notes, fan suggestions and suggestions for a page, and when you press play the show&rsquo;s own
               podcast host streams the episode to you. When pages change, the site tells search engines
               which addresses to look at again (IndexNow, read by Bing and others) - that message
               holds page addresses only, never anything about visitors. No data is sold, rented or brokered. If a

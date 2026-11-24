@@ -6,6 +6,7 @@ import { adminListGuestbook, changeGuestbookKey, moderateGuestbook, type Moderat
 import { adminListSuggestions, moderateSuggestion, type PendingSuggestion } from "@/lib/suggestions.functions";
 import { adminListFanIdeas, moderateFanIdea, type ModeratedFanIdea } from "@/lib/fan-suggestions.functions";
 import { FAN_BOX, FAN_BOXES } from "@/lib/fan-suggestions";
+import { adminListPageSuggestions, handlePageSuggestion, type PageSuggestion } from "@/lib/page-suggestions.functions";
 import { showEpisode, episodeLabel } from "@/lib/guestbook-episodes";
 import { guestbookPage } from "@/lib/pages";
 import { FORM_FIELD } from "@/lib/styles";
@@ -138,6 +139,7 @@ function Moderation({ keyValue, onForget, onChanged }: { keyValue: string; onFor
 
   return (
     <div className="mt-8">
+      <PageSuggestions keyValue={keyValue} />
       <Suggestions keyValue={keyValue} />
       <FanIdeas keyValue={keyValue} />
       <h2 className="mb-4 mt-12 text-xs font-semibold uppercase tracking-[0.2em] text-pink">Guestbook notes</h2>
@@ -486,6 +488,110 @@ function FanIdeas({ keyValue }: { keyValue: string }) {
           </details>
         );
       })}
+    </section>
+  );
+}
+
+/** "Got a suggestion for this page?" at the bottom of every page (src/components/page-suggestion-box.tsx). Only Lisa sees
+ *  these: each one names the page it was sent from, with a link to open it. The email link opens this page with
+ *  ?page=<id>: that one is shown first, highlighted. Done = kept under "Done"; Delete = gone for good. */
+function PageSuggestions({ keyValue }: { keyValue: string }) {
+  const list = useServerFn(adminListPageSuggestions);
+  const handle = useServerFn(handlePageSuggestion);
+  const [rows, setRows] = useState<PageSuggestion[] | null>(null);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const [focus, setFocus] = useState<string | null>(null);
+  useEffect(() => {
+    try {
+      setFocus(new URLSearchParams(window.location.search).get("page"));
+    } catch {
+      /* no query string */
+    }
+  }, []);
+  const load = useCallback(async () => {
+    try {
+      setRows(await list({ data: { key: keyValue } }));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not load the page suggestions.");
+    }
+  }, [list, keyValue]);
+  useEffect(() => {
+    void load();
+  }, [load]);
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (focus && rows) ref.current?.scrollIntoView({ block: "start" });
+  }, [focus, rows]);
+
+  async function act(row: PageSuggestion, action: "done" | "pending" | "delete") {
+    setBusy(row.id + action);
+    setError("");
+    try {
+      await handle({ data: { key: keyValue, id: row.id, action } });
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "That didn't work.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  if (!rows) return <p className="mt-4 text-muted-foreground">{error || "Loading page suggestions..."}</p>;
+  const waiting = rows.filter((r) => r.status === "pending").sort((a, b) => Number(b.id === focus) - Number(a.id === focus));
+  const done = rows.filter((r) => r.status === "done");
+
+  const card = (r: PageSuggestion) => (
+    <li key={r.id} className={`rounded-2xl border bg-card p-5 ${r.id === focus ? "border-pink shadow-[0_0_0_2px_var(--color-pink)]" : "border-gold/25"}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <a href={r.page_path} target="_blank" rel="noopener" className="transition hover:text-pink">
+          {r.page_title || r.page_path}
+        </a>
+        <span className="ml-2 normal-case tracking-normal text-muted-foreground">{r.page_path}</span>
+      </p>
+      <p className="mt-2 whitespace-pre-line text-cream">{r.message}</p>
+      <p className="mt-2 text-sm text-muted-foreground">
+        From {r.from_name || "(no name given)"}
+        {r.email ? (
+          <>
+            {" · "}
+            <a href={`mailto:${r.email}`} className="text-gold hover:text-pink">{r.email}</a>
+          </>
+        ) : (
+          " · no email"
+        )}
+        {" · "}
+        {new Date(r.created_at).toLocaleString("en-GB")}
+      </p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {r.status === "pending" ? (
+          <button type="button" disabled={!!busy} onClick={() => act(r, "done")} className={`${BTN} bg-pink px-6 py-2.5 text-pink-foreground hover:opacity-90`}>
+            {busy === r.id + "done" ? "..." : "Done"}
+          </button>
+        ) : (
+          <button type="button" disabled={!!busy} onClick={() => act(r, "pending")} className={`${BTN} border border-border px-6 py-2.5 text-cream hover:border-gold`}>
+            {busy === r.id + "pending" ? "..." : "Back to waiting"}
+          </button>
+        )}
+        <button type="button" disabled={!!busy} onClick={() => act(r, "delete")} className={`${BTN} border border-border px-6 py-2.5 text-cream hover:border-gold`}>
+          {busy === r.id + "delete" ? "..." : "Delete"}
+        </button>
+      </div>
+    </li>
+  );
+
+  return (
+    <section ref={ref} aria-labelledby="page-sugg-h" className="mt-4">
+      <h2 id="page-sugg-h" className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">Suggestions for a page ({waiting.length} waiting)</h2>
+      {error && <p className="mt-4 text-sm text-pink">{error}</p>}
+      {focus && !rows.some((r) => r.id === focus) && <p className="mt-4 text-sm text-muted-foreground">That suggestion has been deleted.</p>}
+      {waiting.length === 0 ? <p className="mt-4 text-muted-foreground">No page suggestions waiting.</p> : <ul className="mt-4 space-y-4">{waiting.map(card)}</ul>}
+      {done.length > 0 && (
+        <details className="mt-6">
+          <summary className="cursor-pointer text-sm text-muted-foreground hover:text-pink">Done ({done.length})</summary>
+          <ul className="mt-3 space-y-4">{done.map(card)}</ul>
+        </details>
+      )}
     </section>
   );
 }
