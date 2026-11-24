@@ -23,6 +23,10 @@ works = {w["slug"]: w for w in json.load(open(os.path.join(SRC, "works.json")))}
 res = json.load(open(os.path.join(SRC, "results.json")))
 # Publications already have their own press pages (founders, team, issues, masthead): no story box for them.
 SKIP_KINDS = {"Magazine", "Paper", "Column", "Diary"}
+# Pictures checked and turned down by hand: never add them again.
+NOT_THE_COVER = {
+    "jesus-christ-superstar",  # the 1970 album; Sally Randall put on her own downtown version
+}
 # Hand-made covers and stories always win (library-covers.ts / item-stories.ts).
 covers_ts = open(os.path.join(ROOT, "src/data/library-covers.ts")).read()
 stories_ts = open(os.path.join(ROOT, "src/data/item-stories.ts")).read()
@@ -166,9 +170,13 @@ for slug, r in res.items():
         continue
     cov = r.get("cover") or {}
     key = w["coverName"]
-    if not w.get("cover") and cov.get("saved") and json.dumps(key, ensure_ascii=False) + ":" not in covers_ts:
+    # Covers already in work-covers.json were checked by hand (credits tidied, wrong pictures dropped): keep them.
+    if not w.get("cover") and cov.get("saved") and slug not in NOT_THE_COVER and key not in covers and json.dumps(key, ensure_ascii=False) + ":" not in covers_ts:
         try:
-            im = Image.open(os.path.join(SRC, "covers", cov["saved"])).convert("RGB")
+            im = Image.open(os.path.join(SRC, "covers", cov["saved"])).convert("RGBA")
+            # A transparent logo (TV title cards from Commons) would turn black: lay it on white paper instead.
+            paper = Image.new("RGBA", im.size, (255, 255, 255, 255))
+            im = Image.alpha_composite(paper, im).convert("RGB")
             if min(im.size) >= 120:
                 im.thumbnail((600, 600))
                 fn = f"work-{slug}.webp"[:90]
