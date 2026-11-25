@@ -119,6 +119,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s01e09: "Mars, the Limelight & DJing in 90s New York",
   s04e02: "Paper magazine, Break the Internet & downtown New York",
   s06e09: "Desi Monster, the Club Kids, Leigh Bowery & the band Boob",
+  s05e05: "Keith Haring, Radiant, Mapplethorpe, Warhol & Club 57",
   s05e02: "G-A-Y, Nag Nag Nag, electroclash, Amy Winehouse & getting sober",
   s04e11: "Drag history, Julian Eltinge, the Pansy Craze & Harlem drag balls",
   s03e09: "Condé Nast, xoJane & post-9/11 New York nightlife",

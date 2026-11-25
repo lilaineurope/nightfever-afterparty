@@ -390,6 +390,14 @@ export const EVENT_PLACES: EventPlace[] = [
     area: "Rome, New York",
     tip: "The rave hangar",
   },
+  // S05E05 Brad Gooch
+  { event: "Tar and feathering at Leo Castelli", at: "Leo Castelli Gallery", tip: "On the way into Keith's sculpture show, as Brad tells it" },
+  { event: "Keith Haring's memorial at St. John the Divine", at: "Cathedral of St. John the Divine", tip: "May 1990" },
+  { event: "Crack Is Wack mural", at: "East Harlem", lat: 40.8075, lng: -73.934, area: "East Harlem", tip: "The handball court at Harlem River Drive and 128th Street" },
+  { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
+  { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
+  { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  { event: "Party of Life at Paradise Garage", at: "Paradise Garage", tip: "Keith's party, with Madonna singing" },
   // S05E02 Jodie Harsh
   { event: "Jodie's 21st birthday at Too 2 Much", at: "Too 2 Much (Raymond Revuebar)", tip: "It turned into her weekly night" },
   // S04E11 Elyssa Maxx Goodman (Lisa, 23 Nov 2026: Bring us home rule, applied to every new episode)
@@ -510,6 +518,11 @@ export const NO_SINGLE_PLACE = new Set([
   "Pearl Box Revue",
   // S06E09
   "Club kid apartments",
+  // S05E05
+  "Subway chalk drawings",
+  "Luna Luna",
+  "Keith Haring's Rolling Stone interview",
+  "Silence = Death",
   // S05E02
   "Jodie's sobriety",
   "Section 28",

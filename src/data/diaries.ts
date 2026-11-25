@@ -509,6 +509,14 @@ export const DIARY_PAGES: Record<string, DiaryPage> = {
           { who: "Christopher Makos", text: "I know, I was flattered too. We were really good pals, buddies. We traveled a lot to Europe together. He was a fun person to be around. And of course, everybody has their personal Andy." },
         ],
       },
+      {
+        episode: "s05e05",
+        time: "00:47:39",
+        title: "After Keith's Fun Gallery show",
+        lines: [
+          { who: "Brad Gooch", text: "Warhol could be whiny in a certain way. It's all in his journals. So when he goes to the Haring Fun Gallery show, after that he's writing about, oh, I went down to the show. That's the way people used to be about me when I was on top." },
+        ],
+      },
     ],
   },
 };
