@@ -871,6 +871,19 @@ export const LOCATIONS: Located[] = [
   { name: "Camden", lat: 51.539, lng: -0.1426, area: "London" },
   { name: "King's Cross", lat: 51.5308, lng: -0.1238, area: "London" },
   { name: "East London", lat: 51.525, lng: -0.055, area: "London" },
+  // S05E05 Brad Gooch
+  { name: "Cathedral of St. John the Divine", lat: 40.8038, lng: -73.9619, area: "Morningside Heights", tip: "1047 Amsterdam Avenue" },
+  { name: "Kutztown", lat: 40.5173, lng: -75.7774, area: "Pennsylvania", tip: "Keith Haring's home town" },
+  { name: "The Broad", lat: 34.0544, lng: -118.2503, area: "Downtown Los Angeles", tip: "221 South Grand Avenue" },
+  { name: "Leo Castelli Gallery", lat: 40.7252, lng: -74.0018, area: "SoHo", tip: "420 West Broadway, with a second space on Greene Street in the 80s" },
+  { name: "India", lat: 22.3511, lng: 78.6677, area: "India" },
+  { name: "St. Vincent's Hospital", lat: 40.7378, lng: -74.0003, area: "Greenwich Village", tip: "Seventh Avenue at West 12th Street - closed in 2010" },
+  { name: "Keller's", lat: 40.7334, lng: -74.0103, area: "West Village", tip: "West Street at Barrow Street" },
+  { name: "Brooklyn Museum", lat: 40.6712, lng: -73.9636, area: "Prospect Heights", tip: "200 Eastern Parkway" },
+  { name: "St. Marks Baths", lat: 40.729, lng: -73.989, area: "East Village", tip: "6 St. Marks Place" },
+  { name: "Centre Pompidou", lat: 48.8607, lng: 2.3522, area: "Paris", tip: "Place Georges-Pompidou" },
+  { name: "Stedelijk Museum", lat: 52.358, lng: 4.8797, area: "Amsterdam", tip: "Museumplein" },
+  { name: "Tuttomondo (Pisa)", lat: 43.7105, lng: 10.3988, area: "Pisa", tip: "On the back wall of the church of Sant'Antonio Abate" },
 ];
 
 /**

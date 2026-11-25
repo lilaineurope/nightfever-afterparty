@@ -239,6 +239,9 @@ const COVERS: Record<string, Cover> = {
   "Sexual Ecology": { kind: "book", file: "book-sexual-ecology.webp", credit: "Cover via Open Library" },
   "Smash Cut": { kind: "book", file: "book-smash-cut.webp", credit: "Cover via Open Library" },
   "Walking Through Clear Water in a Pool Painted Black": { kind: "book", file: "book-walking-through-clear-water-in-a-pool-painted-black.webp", credit: "Cover via Open Library" },
+  // S05E05 Brad Gooch (25 Nov 2026): Open Library covers (Flannery: the 2009 hardcover; the 2008 entry is a title page)
+  "Flannery": { kind: "book", file: "book-flannery.webp", credit: "Cover via Open Library (Little, Brown and Company, 2009)" },
+  "Rumi's Secret": { kind: "book", file: "book-rumis-secret.webp", credit: "Cover via Open Library (Harper, 2017)" },
   // Open Library has no real cover for these two (checked every edition, 23 Nov 2026): Lisa chose Google Books for the gaps.
   "Radiant (Brad Gooch)": { kind: "book", file: "book-radiant-brad-gooch.webp", credit: "Cover via Google Books (Harper, 2024)" },
   "The Golden Age of Promiscuity": { kind: "book", file: "book-golden-age-of-promiscuity.webp", credit: "Cover via Google Books (Masquerade Books paperback)" },
