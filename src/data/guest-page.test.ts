@@ -24,3 +24,14 @@ test("guests without an AFTERPARTY and everyone else keep their A–Z card", () 
   assert.ok(entityBySlug["ann-magnuson"]);
   assert.equal(cardPath("ann-magnuson"), "/episodes/s04e10");
 });
+
+// Lisa, 24 Nov 2026: one-episode people with a full person page (Imelda Marcos, Oprah, Sherry Vine) are not thin cards.
+test("people with a full page are indexed and in the sitemap", async () => {
+  const { isThinCard } = await import("./entities");
+  for (const slug of ["imelda-marcos", "oprah-winfrey", "sherry-vine"]) {
+    const e = entityBySlug[slug];
+    assert.ok(e, slug);
+    assert.equal(isThinCard(e!), false, `${slug} has a full page`);
+    assert.equal(inSitemap(e!), true, `${slug} is in the sitemap`);
+  }
+});
