@@ -982,6 +982,7 @@ const s05e05: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/105594186/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-16%2Fc4eacfb3-178a-8f74-35e4-6f0b30ae29db.mp3",
   runtime: "1:20:37",
   afterpartyPublished: "2026-12-05",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLIjoJ9kO1nj8",
   blurb:
     "Brad Gooch on modelling in the late 70s, meeting Mapplethorpe and Warhol, and his Keith Haring biography Radiant: SVA, Club 57, the subway chalk drawings, the Pop Shop and ACT UP",
 };
