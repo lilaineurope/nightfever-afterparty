@@ -652,6 +652,8 @@ import stingPhoto from "@/assets/people/sting-photo.webp";
 import stingPolaroid from "@/assets/people/sting-polaroid.webp";
 import jackNicholsonPhoto from "@/assets/people/jack-nicholson-photo.webp";
 import jackNicholsonPolaroid from "@/assets/people/jack-nicholson-polaroid.webp";
+import betteMidlerPhoto from "@/assets/people/bette-midler-photo.webp";
+import betteMidlerPolaroid from "@/assets/people/bette-midler-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -998,4 +1000,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   // Living people batch 5 (Lisa, 24 Nov 2026: publish). Gemini refused both as famous, so free photos.
   "sting": { photo: stingPhoto, polaroid: stingPolaroid, focus: "22%", credit: `Portrait after a photo by Acroterion, The Police at the Agora Ballroom, Atlanta, 1979 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
   "jack-nicholson": { photo: jackNicholsonPhoto, polaroid: jackNicholsonPolaroid, focus: "22%", credit: `Portrait after a Los Angeles Times photo at the 1976 Academy Awards, UCLA Library (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
+  // Living people batch 6 (25 Nov 2026). Gemini refused her as famous, so a free photo.
+  "bette-midler": { photo: betteMidlerPhoto, polaroid: betteMidlerPolaroid, focus: "20%", credit: `Portrait after a photo by Alan Light at the 1990 Grammy Awards (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
 };

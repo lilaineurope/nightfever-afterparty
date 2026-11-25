@@ -1159,4 +1159,183 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e10", who: "Joey Arias", time: "01:03:46", quote: "We were in Amsterdam, and she would go out. I just waited, there memorizing the songs and crying. She goes, why didn't you come out?" },
     ],
   },
+  // Living people batch 6 (daily run, 25 Nov 2026). Left out: the Plaza closet story (Bette Midler, drugs), Zaldy on who held the
+  // power on Britney's tour, Richie's Trump make-up joke, and who Jenna Jameson was dating.
+  "chloe-sevigny": {
+    first: "Chloë's",
+    story:
+      "The downtown girl the club kids were in awe of. Her first time on camera was Nick Egan's Sugar Kane video for Sonic Youth, and Larry Tee says if you saw her somewhere, you knew you were on the right track.",
+    timeline: [
+      ["1974", "Born 18 November in Springfield, Massachusetts; grows up in Darien, Connecticut"],
+      ["1993", "First time on camera: Sonic Youth's Sugar Kane, directed by Nick Egan"],
+      ["1995", "Kids"],
+      ["1999", "Boys Don't Cry, an Oscar nomination"],
+      ["2010", "Golden Globe for Big Love"],
+    ],
+    liftedUp: [],
+    rooms: ["Sugar Kane video", "Peaches at the Jewish Center"],
+    said: [
+      { episode: "s05e04", who: "Nick Egan", time: "00:40:48", quote: "That's where Chloë Sevigny's first ever appearance in film was. First time on camera." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:48:26", quote: "I knew something was happening, because if you see Chloë Sevigny somewhere, you know you're on the right track." },
+      { episode: "s01e09", who: "James St. James", time: "00:05:51", quote: "Chloë always says that she was intimidated by the club kids, but we were always very intimidated by her." },
+    ],
+  },
+  "bette-midler": {
+    story:
+      "The Divine Miss M started in the basement of the Ansonia, singing to the men in towels at the Continental Baths with Barry Manilow on piano. Bebe Buell, Susan Seidelman and Man Parrish were all in the room.",
+    timeline: [
+      ["1945", "Born 1 December in Honolulu"],
+      ["Early 70s", "Sings at the Continental Baths, Barry Manilow on piano"],
+      ["1972", "The Divine Miss M"],
+      ["1979", "The Rose, an Oscar nomination"],
+      ["1989", "Wind Beneath My Wings"],
+      ["2017", "Tony Award for Hello, Dolly!"],
+    ],
+    liftedUp: ["Barry Manilow"],
+    rooms: ["Continental Baths", "Max's Kansas City"],
+    said: [
+      { episode: "s04e03", who: "Bebe Buell", time: "00:42:17", quote: "Once Bette started to sing, everybody would gather into this front room. She was unbelievable. She would come out sometimes just in a towel and a pair of kitten heels and blow your mind." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:23:36", quote: "It was just people in towels walking down the runway with Bette Midler and Barry Manilow playing, and my job was to pin the towel around people so that it wouldn't fall off. Some did." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:07:13", quote: "The basement was the Continental Baths. I couldn't have been in a more appropriate college situation. That's where Bette Midler was." },
+    ],
+  },
+  "rosie-o-donnell": {
+    first: "Rosie's",
+    story:
+      "Michael Musto and Michelangelo Signorile kept telling her to come out. She was furious, called Michelangelo a moron on Larry King, then came out, told Musto it was for him, and spoke first at his roast.",
+    timeline: [
+      ["1962", "Born 21 March in Commack, New York"],
+      ["1996", "The Rosie O'Donnell Show starts"],
+      ["2002", "Comes out publicly"],
+      ["2006", "Joins The View"],
+    ],
+    liftedUp: [],
+    rooms: ["The Village Voice columns", "OutWeek"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:25:10", quote: "After that, Rosie came out to me. She goes, that was for you. And she was the first speaker at my roast." },
+      { episode: "s02e08", who: "Michelangelo Signorile", time: "00:57:31", quote: "I remember Rosie, she was infuriated. She went on Larry King, she called me a moron. And eventually Rosie is writing me, and we're friends, and she's out." },
+      { episode: "s02e08", who: "James St. James", time: "00:56:02", quote: "Of those people that you and Musto were wanting to come out, Rosie and Ellen and even Liz Smith, they all eventually came to even befriend you." },
+    ],
+  },
+  "david-letterman": {
+    story:
+      "The late-night host every nightlife star wanted. Dianne Brill went on his show the night she was on the cover of the New York Post, and Sally Randall became one of the very few people who ever said no.",
+    timeline: [
+      ["1947", "Born 12 April in Indianapolis"],
+      ["1982", "Late Night with David Letterman on NBC"],
+      ["80s", "Dianne Brill on the show, the night of her New York Post cover"],
+      ["1993", "The Late Show on CBS, until 2015"],
+    ],
+    liftedUp: [],
+    rooms: ["Late Night"],
+    said: [
+      { episode: "s01e01", who: "Dianne Brill", time: "00:40:19", quote: "I was on the cover of the New York Post the day, the night that I was doing the David Letterman show." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:34:48", quote: "What I did notice was at what point I realized that this was not what I had planned to do in New York. And that was when David Letterman called me." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:36:06", quote: "She said only three other people have ever turned down David Letterman, and one of them was Cher. And I said, if I do the show, everyone will forever know me as a door person, and I'll never be able to go back to being an artist." },
+    ],
+  },
+  "pauley-perrette": {
+    first: "Pauley's",
+    story:
+      "Before she was Abby on NCIS she worked the nightclubs: a waitress at the Palladium, then the bartender with the shaved head at Club USA, where she and Richie Rich made up the Raspberry Smash.",
+    timeline: [
+      ["1969", "Born 27 March in New Orleans"],
+      ["80s", "Waitress at the Palladium, in the Mike Todd Room crowd"],
+      ["90s", "Bartender at Club USA, going to auditions on the side"],
+      ["2003", "Abby Sciuto on NCIS, until 2018"],
+    ],
+    liftedUp: [],
+    rooms: ["Palladium", "Mike Todd Room", "Club USA"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:39:37", quote: "Pauley was a bartender. She had a shaved head, and she was going to science school. And she's like, to make money, I'm going to go to acting auditions. And she ended up being Pauley Perrette." },
+      { episode: "s04e07", who: "James St. James", time: "00:30:54", quote: "The Mike Todd Room, that was totally glam. That was Anita Sarko, and Lisa Edelstein was doing the bar, and Pauley Perrette." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:23:05", quote: "I knew that Pauley and I knew each other, but I didn't know that I knew Pauley." },
+    ],
+  },
+  "shawn-hausman": {
+    story:
+      "Eric Goode's high-school friend. Steve Mass gave the pair their start with the basement room at the Mudd Club, then they made Area together, and Shawn went on to design the Standard hotels.",
+    timeline: [
+      ["Late 70s", "With Eric Goode, turns the Mudd Club basement by the coat check into a room"],
+      ["1983", "Area opens, with Eric and Christopher Goode and Darius Azari"],
+      ["Later", "Designs the Standard hotels around the world"],
+    ],
+    liftedUp: [],
+    rooms: ["Mudd Club", "Area"],
+    said: [
+      { episode: "s03e06", who: "Eric Goode", time: "00:07:17", quote: "That was Shawn Hausman, who went on to design all the Standard hotels around the world. My dear high school friend, that I later collaborated with on Area." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:17:10", quote: "Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really. The basement really was just a coat check." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:17:38", quote: "They did a ceiling, they did a marble effect on the floor, they treated the walls. So it became, in a way, one of their first installations." },
+    ],
+  },
+  "geraldo-rivera": {
+    story:
+      "The talk-show host who put the club kids on daytime TV. Richie Rich walked off his set when he would only talk about drugs, came back when Geraldo begged, and gave him make-up advice.",
+    timeline: [
+      ["1943", "Born 4 July in New York"],
+      ["1987", "Geraldo, his daytime talk show, until 1998"],
+      ["90s", "Has the club kids on the show"],
+    ],
+    liftedUp: [],
+    rooms: ["Geraldo"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:30:55", quote: "All he wanted to talk about was drugs. And I'm like, I don't do drugs. I look at this as a launching pad for fashion and music and fun. And he wouldn't stop, so I walked off. Then Geraldo comes backstage: please come back, I promise I'll respect what you all do. And I'm like, okay. But you need a new makeup artist, honey." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:31:31", quote: "I wasn't being shady, I was just being kind. I was giving him fashion advice." },
+      { episode: "s04e08", who: "James St. James", time: "00:28:12", quote: "It's so funny, the Joan Rivers and the Phil Donahues and all the Geraldos. Who would have ever thought, 35 years later?" },
+    ],
+  },
+  "jenna-jameson": {
+    story:
+      "She walked for Heatherette, Richie Rich's label, in the same show as Kim Kardashian. Of all the names Richie dropped at Christmas dinner, she was the only one his straight brothers knew.",
+    timeline: [
+      ["1974", "Born 9 April in Las Vegas"],
+      ["2000s", "Walks for Heatherette"],
+      ["2004", "Her memoir, a New York Times bestseller"],
+    ],
+    liftedUp: [],
+    rooms: ["Heatherette"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:51:14", quote: "I have two older brothers. They're straight-laced dudes, wives and kids. They're like, oh, little bro, it's cool what you do. They don't really get it." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:51:30", quote: "I mentioned Jenna, and they were not impressed by anybody, but their eyes bulged out of their face." },
+      { episode: "s04e08", who: "James St. James", time: "00:51:53", quote: "Straight boys know who Jenna Jameson is." },
+    ],
+  },
+  "britney-spears": {
+    story:
+      "Zaldy dressed her Femme Fatale tour and still remembers walking into rehearsal to hear her alone on the mic, a cappella. Mickey Boardman's crowd went to Vegas just to see her.",
+    timeline: [
+      ["1981", "Born 2 December in McComb, Mississippi"],
+      ["1998", "...Baby One More Time"],
+      ["2011", "Femme Fatale Tour, costumes by Zaldy"],
+      ["2013", "Piece of Me in Las Vegas"],
+      ["2023", "The Woman in Me"],
+    ],
+    liftedUp: [],
+    rooms: ["Las Vegas"],
+    said: [
+      { episode: "s04e04", who: "Zaldy", time: "01:00:09", quote: "One day I walked into the rehearsal studio from lunch, and I was like, who's singing? And it was just Britney alone, a cappella on the mic. And I was like, wow, she can really, really sing." },
+      { episode: "s04e04", who: "Zaldy", time: "01:01:00", quote: "It was Britney Spears, another person who I absolutely love and treasure." },
+      { episode: "s04e02", who: "Mickey Boardman", time: "00:39:37", quote: "My friend was getting married and did his gay bachelor party in Las Vegas. So we went one night to see Britney Spears." },
+    ],
+  },
+  "diana-ross": {
+    story:
+      "The diva the room measured itself against. Michael Schmidt came to New York to see her sing in the rain in Central Park, Lauren Ezersky saw her walk by at Studio 54, and she turned down It's Raining Men.",
+    timeline: [
+      ["1944", "Born 26 March in Detroit"],
+      ["60s", "The Supremes"],
+      ["1970", "Goes solo"],
+      ["1982", "Turns down It's Raining Men, Martha Wash is told"],
+      ["1983", "Sings in the rain in Central Park, July"],
+      ["2016", "Presidential Medal of Freedom"],
+    ],
+    liftedUp: [],
+    rooms: ["Studio 54", "Central Park", "Sound Factory"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:06:02", quote: "I went to New York in July of 83 to see Diana Ross in Central Park. And it was the greatest thing I've ever seen. It actually is the reason I do what I do today." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:13:33", quote: "I would walk around and be, oh my God, there's Diana Ross. There was Princess Grace, there was Gregory Peck, just walking around." },
+      { episode: "s03e02", who: "Martha Wash", time: "00:17:35", quote: "He said that Barbra Streisand turned it down, Donna Summer turned it down, Diana Ross turned it down, Cher turned it down." },
+      { episode: "s01e01", who: "Randy Barbato", time: "00:06:32", quote: "I remember that so clearly, because it was like Diana Ross entered the room." },
+    ],
+  },
 };
