@@ -1106,6 +1106,7 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-row { display: grid; align-items: stretch; border-top: 2px solid #111; border-bottom: 2px solid #111; }
 @media (min-width: 760px) { .lit-row-2, .lit-row-3, .lit-row-4 { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1040px) { .lit-row-3 { grid-template-columns: 1fr 1fr 1fr; } .lit-row-4 { grid-template-columns: repeat(4, 1fr); } }
+.lit-row-extra { border-top: 0; }
 .lit-row > .lit-box { margin: 0; background: transparent; border: 0; box-shadow: none; padding: 18px 26px 22px; }
 .lit-row > .lit-box + .lit-box { border-left: 1px solid #111; }
 @media (min-width: 760px) and (max-width: 1039px) { .lit-row-3 > .lit-box:nth-child(3), .lit-row-4 > .lit-box:nth-child(3) { border-left: 0; } .lit-row-3 > .lit-box:nth-child(n+3), .lit-row-4 > .lit-box:nth-child(n+3) { border-top: 1px solid #111; } }

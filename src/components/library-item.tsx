@@ -777,7 +777,11 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
   ].filter(Boolean);
   const copy = v.shelf !== "film" && v.shelf !== "tv" ? <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" /> : null;
   const copyInRow = !!copy && boxes.length < 3;
-  const row = copyInRow ? [...boxes, <div key="copy" className="lit-box lit-copy-box">{copy}</div>] : boxes;
+  // Lisa, 25 Nov 2026 (Jailbait vs Golden Age): at most four boxes side by side - a fifth ("Also on the site") gets its
+  // own full-width band under the row, so the row never falls back to one stacked column.
+  const all = copyInRow ? [...boxes, <div key="copy" className="lit-box lit-copy-box">{copy}</div>] : boxes;
+  const row = all.slice(0, 4);
+  const extra = all.slice(4);
   const issues = v.press?.issues.length ?? 0;
   const fewIssues = issues > 0 && issues <= 2 && v.shelfMates.length > 0;
   return (
@@ -791,6 +795,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       {!fewIssues && <IssueShelf v={v} name={name} />}
       {v.trailers.length > 0 && <TrailerJukebox trailers={v.trailers} name={name} />}
       {row.length > 0 && <div className={`lit-row lit-row-${row.length}`}>{row}</div>}
+      {extra.length > 0 && <div className={`lit-row lit-row-${extra.length} lit-row-extra`}>{extra}</div>}
       {fewIssues ? (
         <div className="lit-shelves">
           <IssueShelf v={v} name={name} />
