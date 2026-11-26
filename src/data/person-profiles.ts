@@ -1338,4 +1338,191 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e01", who: "Randy Barbato", time: "00:06:32", quote: "I remember that so clearly, because it was like Diana Ross entered the room." },
     ],
   },
+  // Living people batch 7 (daily run, 26 Nov 2026). Left out: the acid trip at the Burgess Meredith party, Leo's "pretend you
+  // don't know me" story, James's knees joke to Leo, Jenny's dating gossip, and Connie's word for herself in Meisel's message.
+  "lady-gaga": {
+    story:
+      "The pop star the club kids' look ended up on. Michael Schmidt made her bubble dress in fifteen minutes on a LaChapelle shoot, Zaldy and Desi Santiago dressed her tours, and James sees the club kid aesthetic in ballroom after ten years of her.",
+    timeline: [
+      ["1986", "Born 28 March in New York"],
+      ["2008", "The Fame"],
+      ["2009", "Rolling Stone cover in Michael Schmidt's bubbles, shot by David LaChapelle"],
+      ["2009", "The Monster Ball Tour, costumes by Zaldy"],
+      ["2019", "Oscar for Shallow"],
+    ],
+    liftedUp: [],
+    rooms: ["Paper", "Rolling Stone", "The Monster Ball Tour"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:43:19", quote: "So I said, okay, give me 15 minutes. I ran around the studio and found these little plastic bubbles, drilled them out, sewed them together, and then scotch taped them to her body. And that became the Rolling Stone cover." },
+      { episode: "s04e02", who: "Mickey Boardman", time: "00:22:35", quote: "When we did Lady Gaga for the cover, Justin, our editor-in-chief, interviewed her, and he's like the biggest Lady Gaga stan ever. That's why he wrote it, not because he has a master's in journalism." },
+      { episode: "s06e09", who: "Desi Santiago", time: "00:04:52", quote: "All the pop star tours, like Gaga, Britney, Michael, I was there for as well." },
+      { episode: "s01e08", who: "James St. James", time: "00:50:39", quote: "After ten years of Lady Gaga and Nicki Minaj and Katy Perry and Moschino, the club kid aesthetic is a part of the ballroom scene now. Maybe we were ahead of our times." },
+    ],
+  },
+  "bob-colacello": {
+    story:
+      "Andy Warhol's right hand at the later Factory and the editor of Interview. Sylvia Miles introduced him to Michael Musto, and his book Holy Terror tells its own version of how everybody met.",
+    timeline: [
+      ["1947", "Born in Brooklyn"],
+      ["1971", "Edits Interview, until 1983"],
+      ["70s", "Sent to the Gilded Grape for the Ladies and Gentlemen sitters"],
+      ["1990", "Holy Terror: Andy Warhol Close Up"],
+      ["Later", "Writes for Vanity Fair"],
+    ],
+    liftedUp: [],
+    rooms: ["The Factory", "Interview", "Gilded Grape"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:09:07", quote: "Nobody worked a room like Sylvia, and she knew everyone, and she introduced me to Bob Colacello." },
+      { episode: "s05e06", who: "Christopher Makos", time: "00:14:56", quote: "I'm not questioning Bob's story, but there's a lot of stories that we all have. And that was his story." },
+      { episode: "s04e05", who: "Dustin Pittman", time: "00:47:49", quote: "It was more of a business thing. Andy was doing portraits, and Bob Colacello was trying to sell to the celebrities." },
+      { episode: "s02e10", who: "James St. James", time: "00:25:27", quote: "The Gilded Grape famously is where Andy Warhol sent Bob Colacello to get the trans women for his Ladies and Gentlemen series." },
+    ],
+  },
+  "steven-meisel": {
+    story:
+      "The fashion photographer who kept finding the club kids. Limelight's first cool party was for him and Teri Toye, he gave Zaldy his first modelling job, and he spotted Jenny Talia in the Gaultier show and Connie Fleming at Pat Field's ball.",
+    timeline: [
+      ["1954", "Born 5 June in New York"],
+      ["80s", "Limelight's first big cool party, for him and Teri Toye"],
+      ["80s", "Shoots Zaldy's first modelling job, for Interview"],
+      ["1988", "Starts his run of Italian Vogue covers"],
+      ["1992", "Madonna's Sex"],
+      ["90s", "Calvin Klein campaign with Jenny Talia"],
+    ],
+    liftedUp: ["Zaldy", "Jenny Talia", "Connie Fleming"],
+    rooms: ["Limelight", "Interview", "Italian Vogue", "Details"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "01:01:39", quote: "One of the first big kind of cool parties they had was something for Teri Toye and Steven Meisel." },
+      { episode: "s04e04", who: "Zaldy", time: "00:37:47", quote: "They pushed me towards my first modeling job, which was with Steven Meisel for Interview Magazine. Not a bad way to start." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:20:49", quote: "So basically, what happened was Steven Meisel saw me in the Gaultier show." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:58:02", quote: "Details had Steven Meisel take some photos for them. And Italian Vogue was a very big influence on everyone. Those really beautifully shot, but austere shots." },
+    ],
+  },
+  "billy-idol": {
+    story:
+      "The punk from London who moved to New York and held court upstairs in the Limelight library. Musto, James and Christina Visca all remember finding him there.",
+    timeline: [
+      ["1955", "Born 30 November in Stanmore, Middlesex"],
+      ["1976", "Generation X"],
+      ["1981", "Moves to New York"],
+      ["1982", "White Wedding"],
+      ["1983", "Rebel Yell"],
+      ["80s", "A regular in the Limelight library"],
+    ],
+    liftedUp: [],
+    rooms: ["Limelight library"],
+    said: [
+      { episode: "s01e02", who: "James St. James", time: "01:01:51", quote: "You could always find a Billy Idol and Perri Lister or somebody in that library." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:13:31", quote: "Up in the library, it was just VIP galore. Actors and singers. Billy Idol was there, Michael Douglas was there, everybody was there." },
+      { episode: "s01e04", who: "James St. James", time: "00:29:01", quote: "I always remember Billy Idol being there. I remember meeting Drew Barrymore as a ten-year-old, she was up there." },
+    ],
+  },
+  "idalis-deleo-n": {
+    first: "Idalis's",
+    story:
+      "The Palladium bartender who taught Lisa Edelstein how to make her hair bigger, then became the first girl hired for Seduction and passed the audition on to her best friend, Michelle Visage.",
+    timeline: [
+      ["80s", "Bartender at the Palladium"],
+      ["1988", "The first girl hired for Seduction; tells Michelle Visage about the audition"],
+      ["90s", "VJ on MTV"],
+    ],
+    liftedUp: ["Michelle Visage", "Lisa Edelstein"],
+    rooms: ["Palladium", "Seduction", "MTV"],
+    said: [
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:23:18", quote: "I loved Idalis because we had the perfect girl conversation in the mid 80s: she taught me how to make my hair bigger." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:42:02", quote: "Idalis was the only one that had been hired. And she was my best friend. And she told me about it." },
+      { episode: "s02e01", who: "James St. James", time: "00:42:34", quote: "She and Lisa really sort of mentored Lisa E when she was a bartender at the Palladium. She's such a beautiful, beautiful girl." },
+    ],
+  },
+  "norma-kamali": {
+    story:
+      "The designer everyone downtown wanted. Lauren Ezersky wore her swimsuits and cover-ups, she shopped at Susanne Bartsch's store, and James wore her gown to the opening of the Palladium.",
+    timeline: [
+      ["1945", "Born 27 June in New York"],
+      ["Late 60s", "Opens her first shop"],
+      ["1973", "The sleeping bag coat"],
+      ["1976", "Farrah Fawcett's red swimsuit"],
+      ["1985", "James wears her gown to the Palladium opening"],
+    ],
+    liftedUp: [],
+    rooms: ["Susanne Bartsch's store", "Palladium"],
+    said: [
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:15:09", quote: "The biggest at that time was Kamali. She did that big coat, which I never had. But I would wear her swimsuits and cover-ups, and that was like my outfit." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:15:36", quote: "The hot one, I'm telling you, was Norma Kamali. That was it." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:21:24", quote: "Norma Kamali would come there and shop." },
+      { episode: "s06e07", who: "James St. James", time: "00:05:23", quote: "All the Pyramid people. Me in my Norma Kamali gown, high heels." },
+    ],
+  },
+  "leonardo-dicaprio": {
+    first: "Leo's",
+    story:
+      "A teenage actor in the Tunnel days, when he was in New York making The Basketball Diaries. Richie Rich looked after him at the clubs and, years later, got a call that he wanted to come to Richie's party.",
+    timeline: [
+      ["1974", "Born 11 November in Los Angeles"],
+      ["1994", "In New York shooting The Basketball Diaries; at the Tunnel"],
+      ["1997", "Titanic"],
+      ["2016", "Oscar for The Revenant"],
+    ],
+    liftedUp: [],
+    rooms: ["Tunnel", "Club USA"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:42:51", quote: "Tunnel on Fridays was great at that point, because that's when Leonardo DiCaprio and Marky Mark and Juliette Lewis were doing a movie, The Basketball Diaries. We were taking care of that." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:44:12", quote: "Leonardo DiCaprio wants to come to your party tonight with Tobey Maguire. And I thought it was a crank call. Click. And then they called back: no, this is really real." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:16:31", quote: "I kind of went a little bit later, like Leonardo DiCaprio." },
+    ],
+  },
+  "richard-hell": {
+    story:
+      "The punk who gave the world safety pins. He played Eric in Susan Seidelman's Smithereens, and she found that the punk rock heartbreaker was also serious about the work and a real film buff.",
+    timeline: [
+      ["1949", "Born Richard Meyers, 2 October, in Lexington, Kentucky"],
+      ["1973", "Starts Television with Tom Verlaine"],
+      ["1977", "Blank Generation, with the Voidoids"],
+      ["1977", "One of the first punks through the door of Manic Panic"],
+      ["1982", "Smithereens"],
+    ],
+    liftedUp: [],
+    rooms: ["CBGB", "Manic Panic", "Cinemabilia"],
+    said: [
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:10:51", quote: "He knows it and he plays on that. I was really nervous he wouldn't show up. When you're making this kind of movie with such a limited budget, you have to make sure everyone shows up." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:11:21", quote: "I was also surprised to find that he was a real cinephile. He had worked at Cinemabilia. It was the best film bookstore." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:20:14", quote: "We gave them Richard Hell and safety pins, and they gave us corsets, basically. So thank you." },
+    ],
+  },
+  "patti-smith": {
+    story:
+      "The poet of CBGB. She was on stage in Jackie Curtis's Femme Fatale with Jayne County, everybody downtown loved her, and Brad Gooch remembers her and Robert Mapplethorpe as two young artists who understood about making it.",
+    timeline: [
+      ["1946", "Born 30 December in Chicago"],
+      ["1970", "On stage with Jayne County in Jackie Curtis's Femme Fatale"],
+      ["1975", "Horses"],
+      ["1978", "Because the Night"],
+      ["2010", "Just Kids wins the National Book Award"],
+    ],
+    liftedUp: [],
+    rooms: ["CBGB", "Max's Kansas City", "La MaMa"],
+    said: [
+      { episode: "s02e02", who: "Jayne County", time: "00:22:48", quote: "And Patti Smith was in the play as well. She played a mafia member." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:33:24", quote: "There were so many different little cliques and scenes, but everybody loved Devo, Patti Smith, the Ramones." },
+      { episode: "s05e05", who: "Brad Gooch", time: "00:20:58", quote: "Patti and Robert were young, and Keith was young, and they understood about making it and all of that." },
+      { episode: "s05e05", who: "Fenton Bailey", time: "00:18:55", quote: "Patti Smith, for example, did not like the film at all. What we saw in him was this clarity, this focus and this ambition." },
+    ],
+  },
+  "cindy-adams": {
+    story:
+      "The New York Post gossip columnist who still writes every day. The PR men knew exactly what she wanted: Michelangelo Signorile says you gave Cindy her schmaltz.",
+    timeline: [
+      ["1930", "Born 24 April in New York"],
+      ["1979", "Starts her column in the New York Post"],
+      ["80s", "The publicists write their items in her style"],
+      ["Today", "Still writes every day"],
+    ],
+    liftedUp: [],
+    rooms: ["New York Post"],
+    said: [
+      { episode: "s02e08", who: "Michelangelo Signorile", time: "00:16:33", quote: "You had to give Cindy Adams all of her kind of Cindy Adams schmaltz, very trashy and flashy kind of stuff. So we always knew who wanted what." },
+      { episode: "s02e08", who: "James St. James", time: "00:12:52", quote: "So if Page Six doesn't take it, then you send it to Suzy. If Suzy doesn't take it, it goes to Cindy Adams." },
+      { episode: "s06e08", who: "William Norwich", time: "00:59:13", quote: "I wrote every day and Liz Smith wrote every day. And even now, Cindy Adams writes every day." },
+    ],
+  },
 };
