@@ -179,7 +179,7 @@ const TZ: [RegExp, string][] = [
   [/Oslo/, "NO"], [/Helsinki/, "FI"], [/Madrid/, "ES"], [/Rome/, "IT"], [/Dublin/, "IE"], [/Toronto|Vancouver|Montreal/, "CA"],
   [/Australia/, "AU"], [/Sao_Paulo/, "BR"], [/Mexico/, "MX"], [/Tokyo/, "JP"], [/^America\//, "US"],
 ];
-function guessCountry(have: string[]): string {
+function homeCountry(): string {
   let c = "";
   try {
     const saved = window.localStorage.getItem("nf-place");
@@ -191,6 +191,10 @@ function guessCountry(have: string[]): string {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
     c = TZ.find(([re]) => re.test(tz))?.[1] ?? "";
   }
+  return c;
+}
+function guessCountry(have: string[]): string {
+  const c = homeCountry();
   return have.includes(c) ? c : have.includes("US") ? "US" : (have[0] ?? "US");
 }
 const OFFER: [keyof Omit<WatchRow, "link">, string][] = [
@@ -204,7 +208,11 @@ const OFFER: [keyof Omit<WatchRow, "link">, string][] = [
 function WhereToWatch({ v }: { v: ScreenPageView }) {
   const have = v.watch ? Object.keys(v.watch.countries) : [];
   const [c, setC] = useState<string>(have.includes("US") ? "US" : (have[0] ?? "US"));
-  useEffect(() => setC(guessCountry(have)), [v.slug]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [home, setHome] = useState("");
+  useEffect(() => {
+    setC(guessCountry(have));
+    setHome(homeCountry());
+  }, [v.slug]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!v.watch || have.length === 0) return null;
   const row = v.watch.countries[c];
   return (
@@ -224,6 +232,11 @@ function WhereToWatch({ v }: { v: ScreenPageView }) {
           </select>
         </label>
       </div>
+      {home && COUNTRY[home] && !have.includes(home) && (
+        <p className="mt-1 text-sm text-muted-foreground">
+          No service offers it in {COUNTRY[home]} right now, so here is {COUNTRY[c] ?? c}.
+        </p>
+      )}
       {row ? (
         <dl className="scr-watch-rows">
           {OFFER.filter(([k]) => row[k]?.length).map(([k, label]) => (

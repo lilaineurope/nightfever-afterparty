@@ -22,7 +22,7 @@ def key() -> str:
     k = os.environ.get("TMDB_API_KEY", "").strip()
     for p in (os.path.join(HERE, "tmdb-key.txt"), "tmdb-key.txt"):
         if not k and os.path.exists(p):
-            k = open(p).read().strip()
+            k = (open(p).read().split() or [""])[0]  # first key if the file holds two
     if not k:
         sys.exit("No TMDB key: set TMDB_API_KEY or put it in tmdb-key.txt")
     return k
