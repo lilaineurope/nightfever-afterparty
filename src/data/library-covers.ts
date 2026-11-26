@@ -16,6 +16,8 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  // S05E08 April Palmieri - the Barricade Books reissue, with John Waters' introduction
+  "My Face for the World to See": { kind: "book", file: "book-my-face-for-the-world-to-see.webp", credit: "Cover via Open Library (Barricade Books reissue)" },
   "Glitter and Concrete": { kind: "book", file: "book-glitter-and-concrete.webp", credit: "Cover via Open Library (Hanover Square Press, 2023)" },
   // S05E02 Jodie Harsh: Open Library has the book (Faber, 2025) but no cover picture yet (checked 24 Nov 2026)
   "You Had to Be There (Jodie Harsh)": { kind: "book", file: "book-you-had-to-be-there.webp", credit: "Cover via the Amazon listing (Faber & Faber, 2025)" },

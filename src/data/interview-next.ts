@@ -144,6 +144,11 @@ export const NEW_FACES: InterviewTip[] = [
     why: "James closes the show: he will come to Jodie for Tasty Tim's and Fat Tony's contact details.",
     episodeId: "s05e02",
     time: "00:55:52",
+  },  {
+    name: "Katy K",
+    why: "April, after telling how Katy K designed the Ta Ta's dresses: the show has to get Katy on - she's amazing and very funny.",
+    episodeId: "s05e08",
+    time: "00:25:17",
   },
 ];
 

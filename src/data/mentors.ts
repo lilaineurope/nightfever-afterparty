@@ -186,6 +186,7 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Fred Hughes", mentee: "Brad Gooch", episode: "s05e05", time: "00:11:50", line: "Rang Brad in Paris one night to ask if he'd like to meet Andy Warhol", kind: "door" },
   { mentor: "Robert Mapplethorpe", mentee: "Brad Gooch", episode: "s05e05", time: "00:16:58", line: "Offered to take Brad's test shots when he was starting out as a model", kind: "door" },
   { mentor: "James Grauerholz", mentee: "Howard Brookner", episode: "s05e05", time: "00:23:18", line: "Got Howard in to film Burroughs for a student project, as Brad tells it", kind: "door" },
+  { mentor: "Ann Magnuson", mentee: "April Palmieri", episode: "s05e08", time: "00:16:05", line: "Gathered April and friends into the Ladies Auxiliary of the Lower East Side at Club 57, where Pulsallama began", kind: "door" },
   { mentor: "Matt E. Silver", mentee: "Desi Santiago", episode: "s06e09", time: "00:40:05", line: "Brought Desi in to build installations for the dressing rooms and backstage at his big-beat concerts" },
   { mentor: "Thairin Smothers", mentee: "Desi Santiago", episode: "s06e09", time: "00:01:04", line: "Managed Desi's band Boob - bossed them around, got them gigs and filmed it all", kind: "stood" },
   { mentor: "Kenny Kenny", mentee: "Desi Santiago", episode: "s06e09", time: "00:11:45", line: "Pointed at the teenage Desi in his velvet hat and let him into Red Zone", kind: "door" },
