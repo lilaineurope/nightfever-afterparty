@@ -987,7 +987,22 @@ const s05e05: Episode = {
     "Brad Gooch on modelling in the late 70s, meeting Mapplethorpe and Warhol, and his Keith Haring biography Radiant: SVA, Club 57, the subway chalk drawings, the Pop Shop and ACT UP",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01, s04e11, s06e09, s05e02, s05e05].sort((a, b) =>
+const s05e08: Episode = {
+  id: "s05e08",
+  season: 5,
+  episode: 8,
+  guest: "April Palmieri",
+  released: "2025-08-06",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-508",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://anchor.fm/s/68428444/podcast/play/106491831/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-5%2F57bed0a4-ae1c-2923-53d3-47a28b13eace.mp3",
+  runtime: "47:13",
+  afterpartyPublished: "2026-12-06",
+  blurb:
+    "April Palmieri remembers her close friend John Sex: Club 57 and the Pyramid, singing as one of his Bodacious Ta Ta's with Wendy Wild, the sky-high hair and Delilah the snake - and her own no wave band Pulsallama, which opened for the Clash.",
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01, s04e11, s06e09, s05e02, s05e05, s05e08].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -1018,7 +1033,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07a" | "/episodes/s05e07b" | "/episodes/s01e09" | "/episodes/s04e02" | "/episodes/s04e06" | "/episodes/s04e05" | "/episodes/s02e10" | "/episodes/s03e07" | "/episodes/s03e09" | "/episodes/s04e01" | "/episodes/s04e11" | "/episodes/s06e09" | "/episodes/s05e02" | "/episodes/s05e05" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07a" | "/episodes/s05e07b" | "/episodes/s01e09" | "/episodes/s04e02" | "/episodes/s04e06" | "/episodes/s04e05" | "/episodes/s02e10" | "/episodes/s03e07" | "/episodes/s03e09" | "/episodes/s04e01" | "/episodes/s04e11" | "/episodes/s06e09" | "/episodes/s05e02" | "/episodes/s05e05" | "/episodes/s05e08" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -1132,6 +1147,8 @@ export function episodePath(
       return "/episodes/s05e02";
     case "s05e05":
       return "/episodes/s05e05";
+    case "s05e08":
+      return "/episodes/s05e08";
     case "s05e07a":
       return "/episodes/s05e07a";
     case "s05e07b":

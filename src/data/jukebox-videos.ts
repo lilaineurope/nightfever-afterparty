@@ -367,6 +367,12 @@ export const YOUTUBE: Record<string, string> = {
   "The Kinks": "fTTsY-oz6Go",
   "Berlin (band)": "Bx51eegLTY8",
   "S'Express": "IpeRShWMdYM",
+  // S05E08 April Palmieri
+  "John Sex – 'Hustle with My Muscle'": "Yw0wBPnjpp8",
+  "John Sex – 'Rock Your Body'": "3BEEA2-LSkQ",
+  "The Fleshtones": "4bbJDFxUAu8",
+  "The Allman Brothers Band": "XBf48xUIBLo",
+  "Bay City Rollers": "7BKKaKT_dtM",
   // S04E11 Elyssa Maxx Goodman
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",

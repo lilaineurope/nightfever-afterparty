@@ -883,7 +883,18 @@ export const LOCATIONS: Located[] = [
   { name: "St. Marks Baths", lat: 40.729, lng: -73.989, area: "East Village", tip: "6 St. Marks Place" },
   { name: "Centre Pompidou", lat: 48.8607, lng: 2.3522, area: "Paris", tip: "Place Georges-Pompidou" },
   { name: "Stedelijk Museum", lat: 52.358, lng: 4.8797, area: "Amsterdam", tip: "Museumplein" },
-  { name: "Tuttomondo (Pisa)", lat: 43.7105, lng: 10.3988, area: "Pisa", tip: "On the back wall of the church of Sant'Antonio Abate" },
+  { name: "Tuttomondo (Pisa)", lat: 43.7105, lng: 10.3988, area: "Pisa", tip: "On the back wall of the church of Sant'Antonio Abate" },  // S05E08 April Palmieri
+  { name: "Club DV8", lat: 37.7876, lng: -122.3972, area: "San Francisco", tip: "55 Natoma Street, SoMa" },
+  { name: "Vanderbilt Museum (Eagle's Nest)", lat: 40.9045, lng: -73.374, area: "Long Island", tip: "180 Little Neck Road, Centerport" },
+  { name: "Eatons Neck", lat: 40.948, lng: -73.398, area: "Long Island" },
+  { name: "Centerport", lat: 40.8854, lng: -73.3765, area: "Long Island" },
+  { name: "Jones Beach", lat: 40.5968, lng: -73.5085, area: "Long Island" },
+  { name: "Massachusetts", lat: 42.4072, lng: -71.3824, area: "USA" },
+  { name: "Key West", lat: 24.5551, lng: -81.78, area: "Florida" },
+  { name: "Ice Palace (Fire Island)", lat: 40.6604, lng: -73.0888, area: "Cherry Grove, Fire Island", tip: "At the Cherry Grove Beach Hotel" },
+  { name: "East 9th Street", lat: 40.729, lng: -73.987, area: "East Village" },
+  { name: "Flushing, Queens", lat: 40.7675, lng: -73.8331, area: "Queens" },
+  { name: "Metro (Chicago)", lat: 41.9496, lng: -87.6588, area: "Wrigleyville", tip: "3730 North Clark Street" },
 ];
 
 /**
@@ -891,6 +902,8 @@ export const LOCATIONS: Located[] = [
  * shown on the Clubs page and the map so a visitor who remembers the address can tell us.
  */
 export const HOME_HINTS: Record<string, string> = {
+  "Club Nu": "A Miami Beach club of the 1980s where April and John danced - which street?",
+  "Pulsallama's Easter show": "The Pulsallama show where someone threw an egg on stage - which club was it?",
   "Lulu Belle's": "A Harlem drag club of the 1920s and 30s, James says - which street?",
   // Events (Lisa, 23 Nov 2026: every category without a pin goes to Bring us home)
   "Marc Jacobs' grunge show for Perry Ellis": "3 November 1992, in the Perry Ellis showroom - which floor and address?",

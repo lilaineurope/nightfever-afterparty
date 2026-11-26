@@ -397,6 +397,10 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
   { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
   { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  // S05E08 April Palmieri
+  { event: "James runs off with John Sex's clothes", at: "Limbo Lounge" },
+  { event: "John Sex and the Ta Ta's in Tokyo", at: "Tokyo" },
+  { event: "The Beatles at Shea Stadium", at: "Flushing, Queens", tip: "Shea Stadium, 15 August 1965", lat: 40.7571, lng: -73.8458, area: "Queens" },
   { event: "Party of Life at Paradise Garage", at: "Paradise Garage", tip: "Keith's party, with Madonna singing" },
   // S05E02 Jodie Harsh
   { event: "Jodie's 21st birthday at Too 2 Much", at: "Too 2 Much (Raymond Revuebar)", tip: "It turned into her weekly night" },
