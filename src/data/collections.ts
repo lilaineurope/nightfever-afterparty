@@ -427,6 +427,12 @@ const SPOTIFY: Record<string, string> = {
   "The Kinks": "spotify:artist:1SQRv42e4PjEYfPhS0Tk9E",
   "Berlin (band)": "spotify:artist:2aS6jYh7ysTL1ZUsHneNgM",
   "S'Express": "spotify:artist:2PvqyOwynRF4BveaU6IA7S",
+  // S05E08 April Palmieri
+  "John Sex – 'Hustle with My Muscle'": "spotify:track:3ZscYjPYt0fhx138vaDdTK",
+  "The Fleshtones": "spotify:track:5AmC7OZM7cuAHTRJ6GSFxI",
+  "The Allman Brothers Band": "spotify:track:1hHGUdFaiJHw9hVZGJWYO2",
+  "Bay City Rollers": "spotify:track:78zYiMv9yNTHgmm6kaUPCm",
+  "Smash (musical)": "spotify:track:27k45LwJWKloz6gPLh3Dd7",
   // S04E11 Elyssa Maxx Goodman (Ray Bourbon's party records aren't on Spotify)
   "Lady, Be Good": "spotify:track:64tnmc0rKvOIP1VhSQKewo",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "spotify:track:0oLjmNEQ8tJteV9u0amZ1w",

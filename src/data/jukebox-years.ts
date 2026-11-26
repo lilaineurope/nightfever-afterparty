@@ -371,7 +371,10 @@ export const YEARS: Record<string, number> = {
   "Berlin (band)": 1978,
   "S'Express": 1988,
   "John Sex – 'Hustle with My Muscle'": 1986,
-  "The Fleshtones": 1984,
+  "The Fleshtones": 1976,
+  "The Allman Brothers Band": 1969,
+  "Bay City Rollers": 1966,
+  "Smash (musical)": 2025,
   // S04E11 Elyssa Maxx Goodman
   "Lady, Be Good": 1924,
   "Fred Astaire – 'The Half of It, Dearie, Blues'": 1926,

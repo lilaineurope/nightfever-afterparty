@@ -997,6 +997,7 @@ const s05e08: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/106491831/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-5%2F57bed0a4-ae1c-2923-53d3-47a28b13eace.mp3",
   runtime: "47:13",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLPt3dRP7iIeI",
   afterpartyPublished: "2026-12-06",
   blurb:
     "April Palmieri remembers her close friend John Sex: Club 57 and the Pyramid, singing as one of his Bodacious Ta Ta's with Wendy Wild, the sky-high hair and Delilah the snake - and her own no wave band Pulsallama, which opened for the Clash.",

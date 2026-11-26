@@ -373,6 +373,7 @@ export const YOUTUBE: Record<string, string> = {
   "The Fleshtones": "4bbJDFxUAu8",
   "The Allman Brothers Band": "XBf48xUIBLo",
   "Bay City Rollers": "7BKKaKT_dtM",
+  "Smash (musical)": "-DGKVjGaQe8",
   // S04E11 Elyssa Maxx Goodman
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
