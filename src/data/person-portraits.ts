@@ -895,7 +895,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "ann-margret": { photo: annMargretPhoto, polaroid: annMargretPolaroid, focus: "28%", credit: "Portrait after a studio publicity photo, 1968 (public domain), in our photocopy style" },
   "anne-heche": { photo: anneHechePhoto, polaroid: anneHechePolaroid, focus: "28%", credit: "Portrait after a photo by Mingle Media TV, 2014 (CC BY 2.0), in our photocopy style" },
   "anderson-cooper": { photo: andersonCooperPhoto, polaroid: andersonCooperPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2018 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
-  "swifty-lazar": { photo: swiftyLazarPhoto, polaroid: swiftyLazarPolaroid, focus: "28%", credit: "Portrait after a photo by Kathleen Ballard, Los Angeles Times, 1975 (CC BY 4.0), in our photocopy style" },
+  "swifty-lazar": { photo: swiftyLazarPhoto, polaroid: swiftyLazarPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "steve-aoki": { photo: steveAokiPhoto, polaroid: steveAokiPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2026 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "afrojack": { photo: afrojackPhoto, polaroid: afrojackPolaroid, focus: "28%", credit: "Portrait after a photo by Michael Grech, 2011 (CC BY 2.0), in our photocopy style" },
   "scott-wittman": { photo: scottWittmanPhoto, polaroid: scottWittmanPolaroid, focus: "28%", credit: "Portrait after a photo by Philip Romano, 2026 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
