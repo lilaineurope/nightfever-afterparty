@@ -73,10 +73,11 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
   return (
     <>
       <MusicPlayer item={v.music} />
-      {v.night && <ClubNightPlaylist night={v.night} />}
+      {/* A club page shows its night and On film right under the quotes (club-profile.tsx, Lisa 27 Nov 2026). */}
+      {v.night && !v.club && <ClubNightPlaylist night={v.night} />}
       {/* "On film" on club pages too (Lisa, 27 Nov 2026: "Las bains page has the video box missing"): the films shot inside the
           club from its Jukebox night, in the same jukebox cabinet as a person's videos. */}
-      {v.night?.footage && v.night.footage.length > 0 && <ProfileVideos videos={v.night.footage} playlist={v.night.youtubePlaylist} first={v.night.club} />}
+      {!v.club && v.night?.footage && v.night.footage.length > 0 && <ProfileVideos videos={v.night.footage} playlist={v.night.youtubePlaylist} first={v.night.club} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
       {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it -
@@ -91,7 +92,8 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
               return (
                 <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <Link to={episodePath(ep.id)} className="font-semibold text-gold hover:text-pink">
+                    {/* Episode mentions everywhere (Lisa, 22 Nov 2026): the episode link in pink, the yellow ▶ time code, what was said below. */}
+                    <Link to={episodePath(ep.id)} className="font-semibold text-pink hover:text-foreground">
                       S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
                     </Link>
                     <span className="text-xs text-muted-foreground">

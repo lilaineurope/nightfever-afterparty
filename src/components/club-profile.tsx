@@ -15,7 +15,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, parts, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; parts?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function ClubProfileSections({ c, name, slug, night, sound, parts, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; sound?: ReactNode; parts?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
   return (
     <>
       <div className="pt-4 text-center">
@@ -67,8 +67,9 @@ export function ClubProfileSections({ c, name, slug, night, parts, faces }: { c:
         </section>
       )}
 
-      {/* The club's theme nights and parties, right after the quotes (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
-      {parts}
+      {/* One club page standard (Lisa, 27 Nov 2026): the sound of the club right under the quotes - "sounded like this",
+          On film, and a documentary about the club (CBGB's Listen box) - then its theme nights and parties. */}
+      {sound}
 
       {c.listen?.approved && (
         <section className="mx-auto max-w-3xl border-2 border-[#111] bg-pink p-6 text-pink-foreground shadow-[6px_7px_0_#111]">
@@ -89,6 +90,9 @@ export function ClubProfileSections({ c, name, slug, night, parts, faces }: { c:
           </p>
         </section>
       )}
+
+      {/* The club's theme nights and parties (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
+      {parts}
 
       <section className="grid gap-8 rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111] md:grid-cols-2">
         <div>

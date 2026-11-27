@@ -11,6 +11,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
 import { ClubPartsSections } from "@/components/club-parts";
+import { ClubNightPlaylist } from "@/components/club-night";
+import { ProfileVideos } from "@/components/profile-videos";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
@@ -289,7 +291,22 @@ function EntityPage() {
 
       <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} faces={e.faces} />}
-        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} faces={e.faces} />}
+        {club && (
+          <ClubProfileSections
+            c={club}
+            name={e.name}
+            slug={e.slug}
+            night={!!e.night}
+            sound={e.night ? (
+              <>
+                <ClubNightPlaylist night={e.night} />
+                {e.night.footage && e.night.footage.length > 0 && <ProfileVideos videos={e.night.footage} playlist={e.night.youtubePlaylist} first={e.night.club} />}
+              </>
+            ) : null}
+            parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null}
+            faces={e.faces}
+          />
+        )}
         {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
             card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
         {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
