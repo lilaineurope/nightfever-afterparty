@@ -6,11 +6,12 @@ import type { Slot } from "@/data/fashion-words";
 // drawings: hair or hat, top or dress, skirt or trousers or legwear, shoes, and one finishing touch. A rail the look
 // doesn't name stays bare - the dress form shows through. When the Wardrobe relaunches it can draw with this too.
 
-export type Garb = { label: string; hex: string; full?: boolean | undefined };
+export type Garb = { label: string; hex: string; full?: boolean | undefined; /** A second colour at the hem of a gown (a Soundsuit's purple raffia). */ hem?: string | undefined };
 export type Outfit = Partial<Record<Slot, Garb>>;
 
 const texture = (label: string) => {
   const l = label.toLowerCase();
+  if (/raffia|fringe|tassel|grass/.test(l)) return "fringe";
   if (/sequin|glitter|rhinestone|sparkle|lam[eé]|crystal|diamant|bugle|bead/.test(l)) return "sparkle";
   if (/stripe|pinstripe|breton/.test(l)) return "stripe";
   if (/plaid|tartan|gingham|check/.test(l)) return "plaid";
@@ -45,6 +46,7 @@ function Patterns({ id }: { id: string }) {
       <pattern id={`${id}-plaid`} width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="3" fill="#000" opacity="0.22" /><rect width="3" height="12" fill="#fff" opacity="0.2" /><rect y="7" width="12" height="1" fill="#c62828" opacity="0.5" /></pattern>
       <pattern id={`${id}-spots`} width="14" height="14" patternUnits="userSpaceOnUse"><ellipse cx="4" cy="4" rx="3" ry="2.2" fill="#2a1a0e" opacity="0.7" /><ellipse cx="11" cy="11" rx="2.4" ry="1.8" fill="#2a1a0e" opacity="0.6" /></pattern>
       <pattern id={`${id}-mesh`} width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0L6 6M6 0L0 6" stroke="#000" strokeWidth="0.9" opacity="0.7" /></pattern>
+      <pattern id={`${id}-fringe`} width="4" height="10" patternUnits="userSpaceOnUse"><path d="M1 0L1 10M3 2L3 10" stroke="#000" strokeWidth="0.7" opacity="0.28" /></pattern>
       <pattern id={`${id}-dots`} width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2.2" fill="#fff" opacity="0.85" /></pattern>
       <linearGradient id={`${id}-sheen`} x1="0" x2="1" y1="0" y2="1"><stop offset="0" stopColor="#fff" stopOpacity="0.4" /><stop offset="0.55" stopColor="#fff" stopOpacity="0" /></linearGradient>
     </defs>
@@ -97,7 +99,10 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
           <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L122 176L148 262L52 262L78 176L74 132L60 130Z" />
         ) : full && isGown(top.label) ? (
           // A gown: fitted bodice, nipped waist, skirt to the floor.
-          <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L118 182L156 374L44 374L82 182L74 132L60 130Z" />
+          <>
+            <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L118 182L156 374L44 374L82 182L74 132L60 130Z" />
+            {top.hem && <Fill id={id} ink={ink} garb={{ ...top, hex: top.hem }} d="M60.6 290L139.4 290L156 374L44 374Z" />}
+          </>
         ) : full ? (
           <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L124 170L150 318L50 318L76 170L74 132L60 130Z" />
         ) : (
@@ -110,7 +115,10 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
         </>
       )}
       {head &&
-        (/crown|tiara|chandelier|diadem/i.test(head.label) ? (
+        (/horse|ears\b/i.test(head.label) ? (
+          // A mask over the whole head with two tall ears (Nick Cave's horse Soundsuit).
+          <Fill id={id} ink={ink} garb={head} d="M84 36L72 4L94 30Q100 28 106 30L128 4L116 36Q124 44 123 56Q122 76 100 76Q78 76 77 56Q76 44 84 36Z" />
+        ) : /crown|tiara|chandelier|diadem/i.test(head.label) ? (
           <Fill id={id} ink={ink} garb={head} d="M78 36L82 12L91 26L100 4L109 26L118 12L122 36Z" />
         ) : /beret/i.test(head.label) ? (
           <Fill id={id} ink={ink} garb={head} d="M72 40Q74 20 102 20Q132 22 130 36Q104 30 72 40Z" />

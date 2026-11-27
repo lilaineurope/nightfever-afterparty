@@ -16,7 +16,7 @@ import type { CollectionItem, Shelf } from "./collections";
 import { afterpartyOf, entities, entityBySlug, entityFor, type Entity, type Ref } from "./entities";
 import { episodeById } from "./episodes";
 import { DESIGNERS, slotOf, type Slot } from "./fashion-words";
-import { LOOK_OUTFITS } from "./look-outfits";
+import { LOOK_OUTFITS, LOOK_PHOTO_COLOURS } from "./look-outfits";
 
 export const FASHION_SHELVES: Shelf[] = [
   { key: "on-camera", label: "On camera" },
@@ -319,7 +319,7 @@ function lookItem(e: Entity, shelf: "on-camera" | "looks" | "rooms"): FashionIte
   const r = e.refs[0] as Ref & { colours?: string[] };
   const worn = (r.fashion && !/^Worn or shown in the episode$/i.test(r.fashion) ? r.fashion : r.heard && r.heard !== "—" ? r.heard : e.name).trim();
   const look: FashionLook = {
-    palette: [...new Set(e.refs.flatMap(hexesOf))].slice(0, 6),
+    palette: LOOK_PHOTO_COLOURS[e.slug] ?? [...new Set(e.refs.flatMap(hexesOf))].slice(0, 6),
     worn,
     // On camera it is a host or the episode's guest ("Billy" is William Norwich, "Walt" is Waltpaper).
     who: whoseLook(r) ?? (shelf === "on-camera" ? guestWho(r.episode!) : undefined),
