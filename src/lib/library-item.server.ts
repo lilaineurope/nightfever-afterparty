@@ -2,6 +2,7 @@
 import { afterpartyOf, entityFor, episodeShort, guestOfEpisode, slugify, type Entity } from "@/data/entities";
 import { bookClub } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
+import { coverDesign } from "@/lib/cover-design";
 import { BOOK_FACTS } from "@/data/library-facts";
 import { COLUMN_PAPER, ON_SCREEN } from "@/data/library-links";
 import { BOOKS_TO_WRITE } from "@/data/still-to-make";
@@ -181,7 +182,8 @@ function connections(e: Entity, shelf: string): Connection[] {
   return out;
 }
 
-/** Other Library items dropped in the same Afterparties, most shared first (covers first). */
+/** Other Library items dropped in the same Afterparties, most shared first (covers first). Each carries its Library cover
+ *  design, so it looks exactly as it does on the Library shelves (Lisa, 27 Nov 2026). */
 function shelfMates(e: Entity, dropped: DroppedBy[]): ShelfMate[] {
   const eps = new Set(dropped.map((d) => d.episodeId));
   return bookClub
@@ -190,7 +192,7 @@ function shelfMates(e: Entity, dropped: DroppedBy[]): ShelfMate[] {
     .filter((x) => x.shared.length > 0)
     .sort((a, b) => b.shared.length - a.shared.length || Number(!!coverSrc(b.b.name)) - Number(!!coverSrc(a.b.name)) || b.b.mentions - a.b.mentions)
     .slice(0, 6)
-    .map(({ b, shared }) => ({ slug: b.slug, name: b.name, cover: coverSrc(b.name), shelf: b.shelf, eps: shared.map(episodeShort) }));
+    .map(({ b, shared }, i) => ({ slug: b.slug, name: b.name, design: coverDesign(b, i), eps: shared.map(episodeShort) }));
 }
 
 const PRESS_SHELVES = new Set(["magazines", "newspapers"]);
