@@ -1,0 +1,46 @@
+{
+  "_note": "Dean Johnson (27 Nov 2026), from the machine transcripts. 'quote' = exact words, names spelled right; 'transcript' = as transcribed. Only ONE line in all episodes says 'the Weenies' (s04e07). S01E02 is a Teams transcript: Talare 1 = Michael Musto.",
+  "dean-johnson": [
+    {
+      "episode": "s04e07", "speaker": "James St. James", "time": "00:36:23", "verdict": "good",
+      "context": "Trey Speegle asks if they remember the weird drag at the Pyramid; James remembers Dean Johnson and the Weenies when they first started",
+      "quote": "Remember drag at the Pyramid? Oh my God. Yeah. John Kelly. I remember Disco Frieda, Dean Johnson and the Weenies when they first started. I mean, it was every night there was something that would just blow your mind.",
+      "transcript": "Remember Drag It, the Pyramid? Oh my God. Yeah. John Kelly. I remember Disco Frieda, Dean Johnson, and the Weenies when they first started. I mean, it was every night there was something that would just blow your mind.",
+      "lead_in": {"time": "00:36:11", "speaker": "Trey Speegle", "text": "You know, that was like an inflection point, I guess, because there was some weird drag at the pyramid. I mean, I don't think there's enough video of shows that happened there. Do you guys remember?"}
+    },
+    {
+      "episode": "s01e02", "speaker": "Michael Musto", "time": "00:12:43", "verdict": "good",
+      "context": "Musto on Dean Johnson performing at his party - he wouldn't write a song about Musto",
+      "quote": "And then Dean Johnson, who of course was a six-foot-six bald drag queen, who's great. He was brilliant. I asked him to sing a song about me because he did a song about Teri Toye and Dianne Brill, remember all that? He goes, oh, I can't possibly do that. I was like, okay, whatever, just get up and do a song.",
+      "transcript": "And then Dean Johnson, who of course was a six-foot-six ball drag queen, who's great, **** you. / He was brilliant. / I asked him to sing a song about me because he did a song about Terry Toy and Diane Brill, remember all that? / He goes, oh, I can't possibly do that. / I was like, okay, whatever, just get up and do a song.",
+      "check": "'ball drag queen' = bald (Dean was bald). The bleeped '**** you' after 'who's great' is probably the song title 'Fuck You' - left out of the quote. The 'Teri Toye' song is on video (videos.json)."
+    },
+    {
+      "episode": "s02e09", "speaker": "Fenton Bailey (labelled) - check", "time": "00:16:28", "verdict": "usable",
+      "context": "The Pyramid performers the hosts remember, talking with Linda Simpson",
+      "quote": "So, you know, it was make the audience laugh. So it was, you know, comedy ruled. I think of Disco Frieda. The first time I saw Disco Frieda. And, you know, Dean Johnson, Ethel Eichelberger, John Kelly, Sister Dimension, Hapi Phace. So many of those people, I remember every single show, the off-kilter nuttiness of it all.",
+      "transcript": "So, you know, it was make the audience laugh. So it was, you know, comedy ruled. I think of Disco Frida. The first time I saw Disco Frida. And, you know, Dean John Ethel Eichelberger, John Kelly, Sister Dimension, Happy Face. So many of those people just, I remember every single show, the off-kilter nuttiness of it all.",
+      "check": "The first two sentences may still be Linda (the machine puts the speaker change at 00:16:28); 'Dean John' = Dean Johnson. Listen at 00:16:25."
+    },
+    {
+      "episode": "s06e07", "speaker": "Sally Randall", "time": "00:20:11", "verdict": "good",
+      "context": "Sally on dancing with Dean Johnson on the rickety balcony at Pizza a Go Go",
+      "quote": "And my favorite being when Dean Johnson and I were... And I don't know if you remember that there was this sort of balcony thing that was basically held up by two rather thin iron rods. It was definitely a death trap, and that's what we were dancing on. When we got tired, we made a deal that we would dance like junkies.",
+      "transcript": "[0:20:11] ...And my favorite being when Dean Johnson and I were. / [0:20:36] And I don't know if you remember that there was this sort of balcony thing that was basically held up by two rather thin iron rods. It was definitely a death trap, and that's what we were dancing on. When we got tired, we made a deal that we would dance like junkies. And so we let ourselves.",
+      "follow_up": {"time": "00:21:00", "speaker": "James St. James", "text": "It's so funny because we were just talking on the radio show, Fenton and I, because I had just seen the Dean Johnson documentary. ... Dean Johnson, what a character, what an amazing person.", "note": "Sally at 00:21:06: 'Big Johnson. I don't know if you've heard of this.' - ties to the film trailer in videos.json"}
+    },
+    {
+      "episode": "s06e03", "speaker": "Chi Chi Valenti", "time": "00:55:57", "verdict": "good",
+      "context": "How Jackie 60's Stevie Nicks night began: Dean Johnson was already performing as Stevie",
+      "quote": "I had happened to be out at my first Stevie Nicks concert and I ran into Dean Johnson, Joey Arias, and several other people from the whole drag performance scene in New York, and they were all Stevie fans. And Dean had already started performing as her. And so I was like, yeah, there's something there. We should do this Stevie Nicks night.",
+      "transcript": "because I had I had happened to be out at my first Stevie Nick's concert and I ran into Dean Johnson, Joey Arias, and several other. People from the whole dread performance scene in New York, and they were all Stevie fans. And Dean had already started performing as her. And so I was like, yeah, there's something there. We should do this Stevie Nick's night."
+    },
+    {
+      "episode": "s06e07", "speaker": "Sally Randall", "time": "00:27:34", "verdict": "fun extra",
+      "context": "A club staging of Jesus Christ Superstar",
+      "quote": "Well, Haoui was Pontius Pilate. Michael was Simon Zealotes, or however that is pronounced. Dean Johnson was Herod. Oh my God, with his headpiece that was made for him.",
+      "transcript": "Well, Howie was Pontius Pilate. Michael was Simon Zielotes, or however that is pronounced. I've never had anyone correct me. Dean Johnson was Herod. Oh, that's fun. Oh my God, with his headpiece that was made for him.",
+      "check": "'Oh, that's fun' is probably a host. Which Michael - listen at 00:27:20."
+    }
+  ]
+}

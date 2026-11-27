@@ -1,0 +1,20 @@
+{
+  "_note": "Dean Johnson On film candidates (27 Nov 2026). All embeddable (YouTube oEmbed 200). 5ninthavenueproject = the Nelson Sullivan video archive (real 1980s camcorder footage). No playlist made.",
+  "weenies_and_pyramid": [
+    { "id": "BswrxwRpoz8", "title": "Dean and the Weenies - Bourgeois Boys, Pyramid Club, 1985", "channel": "5ninthavenueproject (Nelson Sullivan)", "length": "4:12", "real_footage": true, "pick": 1 },
+    { "id": "P0Vhuyv_Ecg", "title": "Dean and the Weenies - Andy Warhol, Limelight, 1985", "channel": "5ninthavenueproject (Nelson Sullivan)", "length": "5:54", "real_footage": true, "pick": 2 },
+    { "id": "Uzs3J-bTeRQ", "title": "Dean Johnson sings Teri Toye at the Pyramid", "channel": "5ninthavenueproject (Nelson Sullivan)", "length": "1:57", "real_footage": true, "pick": 3, "note": "The Teri Toye song Musto mentions (S01E02 00:12:51)" },
+    { "id": "scKgI2W8sM8", "title": "Dean Johnson at Wigstock, 1986", "channel": "5ninthavenueproject (Nelson Sullivan)", "length": "3:44", "real_footage": true },
+    { "id": "Nz2xXVzQ98M", "title": "Dean and the Weenies - Attitude (music video)", "channel": "Videowave Music Videos", "length": "3:18", "real_footage": true, "note": "1980s music video" },
+    { "id": "hL5UR-vf4WQ", "title": "Dean Johnson & the Weenies - F*ck You (remastered)", "channel": "Grady George", "length": "3:49", "real_footage": false, "note": "Audio with stills; song title has a swear word" }
+  ],
+  "velvet_mafia": [
+    { "id": "iIUGQ8_6Jh0", "title": "Dean Johnson - Velvet Mafia (music video)", "channel": "RYANISLANDfilms", "length": "4:11", "real_footage": true, "pick": 1 },
+    { "id": "YzytrTlWKQI", "title": "Velvet Mafia - Dean Johnson, 1998", "channel": "RYANISLANDlive", "length": "3:53", "real_footage": true, "note": "Live" },
+    { "id": "lANYUXjX7xQ", "title": "Velvet Mafia - The Big Johnson, CBGB, 19 Oct 2002", "channel": "Robert O'Haire", "length": "5:55", "real_footage": "check - described as a Schoeps stereo recording, may be audio only" }
+  ],
+  "the_big_johnson_trailer": [
+    { "id": "bwa1ttQbXJ8", "title": "The Big Johnson - Official Trailer", "channel": "Freestyle Digital Media (US distributor)", "length": "2:52", "real_footage": true, "pick": 1, "note": "Distributor's trailer, titled 2026 (US release); the film is Lola Rocknrolla's 2025 documentary" },
+    { "id": "9fy9wxKN4lQ", "title": "The Big Johnson - film trailer", "channel": "Lola Rocknrolla (the director)", "length": "2:19", "real_footage": true, "note": "The director's own upload - also fine" }
+  ]
+}
