@@ -1808,7 +1808,15 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     liftedUp: ["Luis Xtravaganza Camacho", "Jose Xtravaganza", "Venus Xtravaganza", "David Ian Xtravaganza"],
     rooms: ["Sound Factory", "Love Ball", "Red Zone", "Voguing", "Paris Is Burning"],
     also: { heading: "The family", names: ["Angie Xtravaganza", "Hector Xtravaganza", "Willi Ninja", "Junior Vasquez", "Madonna", "Chi Chi Valenti & Johnny Dynell", "Nations"] },
-    said: [],
+    said: [
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:09:09", context: "Luis on joining the House of Xtravaganza", quote: "They were mostly Latino house in a world where there was a lot of African-American houses, which is great. We stood out, and for that fact, we had to push harder, work harder, be fiercer to get noticed." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:13:14", context: "Michelle on the piers, before the House of Magnifique took her in", quote: "And I didn't know what it was, but I knew that I wanted to be a part of the house. Everybody wanted to be an Xtravaganza. Xtravaganza paid me no mind, but the Magnifiques saw me and I was like, yeah, I want to do this." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:34:08", context: "Chi Chi on writing Nations for Details, about the tribes of the night", quote: "I was writing about these tribes in the night that I called nations that hung together like families, like style tribes. And so one of the four tribes that I picked was the House of Xtravaganza because they, of all the houses that were around me at the time, they really had the strongest family feel." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", context: "Johnny on how he joined the house", quote: "I would meet the kids like at the Garage like years ago, the ball kids, and also on the pier, like they were all on the pier, and I became an Xtravaganza." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:43:08", context: "Susanne on opening the first Love Ball, 1989", quote: "It's important to have the house ball community be part of it. And I mean, I never forget, I opened with Willi Ninja and the Xtravaganzas were opening a ball and people were crazy. They'd never seen anything like it. Because a lot of people didn't know about the house ball community." },
+      { episode: "s06e06", who: "James St. James", time: "00:32:41", context: "James to Lincoln Palsgrove IV about Red Zone", quote: "It was sort of right before Vogue and Paris Is Burning and everything. When those kids were just red hot and we sort of gave the club over to them, the Xtravaganzas, the Magnifiques." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:27:35", context: "Christina on the Sound Factory family after closing time", quote: "We would all get together outside the club when the club closed. The 'Ganzas, Junior, a group of us, we would all hang out afterward. We would go up to the park, Junior would bring his boom box and we'd listen. So the 'Ganzas themselves were a family, but then we joined on to others at Sound Factory and it was just really a beautiful time." },
+    ],
   },
   "laurie-pike": {
     story:
@@ -1820,7 +1828,9 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     liftedUp: [],
     rooms: ["Manhattan Cable", "Love Ball"],
     also: { heading: "On the show with her", names: ["Fenton Bailey", "Randy Barbato", "Willi Ninja", "House of Xtravaganza"] },
-    said: [],
+    said: [
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:45:33", context: "Susanne remembers the MC of the first Love Ball at Roseland, which Fenton and Randy filmed for Channel 4", quote: "What was with that girl? She was great. The girl was emceeing for... She was great, Laurie Pike." },
+    ],
   },
   "lynn-wagenknecht": {
     story:
@@ -1847,6 +1857,8 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     liftedUp: [],
     rooms: ["Area", "MK", "Club USA", "Mudd Club"],
     also: { heading: "Who he built them with", names: ["Eric Goode", "Shawn Hausman", "Peter Gatien", "Richard Boch"] },
-    said: [],
+    said: [
+      { episode: "s02e11", who: "Richard Boch", time: "00:17:10", context: "James first credits Serge with the Mudd Club basement; Richard, who had just been talking to Serge, sets it straight", quote: "Serge actually, I was just talking to him the other day and he was saying that, yeah, Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really." },
+    ],
   },
 };

@@ -173,6 +173,7 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s03e04", who: "Man Parrish", context: "Man looking back on Klaus, who sang on his album", time: "00:37:09", quote: "Klaus was a sweetheart." },
       { episode: "s01e10", who: "Joey Arias", context: "Joey on looking after everything Klaus left", time: "01:00:08", quote: "I promised Klaus I would watch after the legacy. I have everything of Klaus." },
       { episode: "s03e04", who: "Man Parrish", context: "Man first sees Klaus sing the Samson and Delilah aria at Irving Plaza", time: "00:32:50", quote: "The curtain opens and there's Klaus. He couldn't even afford a smoke machine. He got a smoke bomb from the joke shop." },
+      { episode: "s05e08", who: "James St. James", time: "00:31:22", context: "James to April Palmieri about where John Sex got his name", quote: "Joey Arias and Klaus Nomi were the ones who gave him the name John Sex." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q57774",
   },
