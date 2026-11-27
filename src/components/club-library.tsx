@@ -102,7 +102,7 @@ export function ClubLibrary({ v, name }: { v: ClubLibraryView; name: string }) {
               />
               <span>
                 <b className="text-[#111] group-hover:text-pink">Also in the Library:</b> {m.piece}
-                {m.date ? `, ${m.date}` : ""}
+                {m.date && !m.piece.includes(m.date.slice(-4)) ? `, ${m.date}` : ""}
               </span>
             </Link>
           ))}
@@ -130,7 +130,7 @@ export function ClubLibrary({ v, name }: { v: ClubLibraryView; name: string }) {
                   </span>
                   <Link
                     {...linkToSlug(links, r.slug)}
-                    className="font-semibold text-gold hover:text-pink"
+                    className="font-semibold text-[#111] hover:text-pink"
                   >
                     {r.name}
                   </Link>

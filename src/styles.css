@@ -1365,4 +1365,5 @@ a.scr-ours:hover { color: #111; }
 .club-read-cv .lib-foot { font-size: 8px; }
 .club-read-cv .lib-foot b { font-size: 14px; }
 .club-read-cv .lib-diary-tag, .club-read-cv .lib-art-tag { font-size: 7px; top: 5px; left: 5px; padding: 1px 4px; }
+.club-read-cv .lib-diary-cover::after, .club-read-cv .lib-diary::after { right: 9px; width: 4px; }
 .club-poster { transform: rotate(-1deg); }
