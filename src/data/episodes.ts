@@ -1026,6 +1026,7 @@ const s05e09: Episode = {
   guest: "Screamin' Rachael Cain",
   released: "2025-08-13",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:5/videos/nf-508-1",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLBGweZoHGG9A",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/106829550/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-13%2Fe403fc78-b10d-ed63-c94c-55215e1ba515.mp3",
   runtime: "54:49",
