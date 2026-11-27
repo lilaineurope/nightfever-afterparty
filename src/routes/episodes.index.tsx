@@ -11,25 +11,27 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
   staticData: { sitemap: true },
-  // "Night Fever podcast" is a top Google search (Lisa, 27 Nov 2026, "B11"): the word in the title, and every episode sent
-  // to Google as one PodcastSeries.
+  // Named "Night Fever AFTERPARTY", never "Night Fever podcast" (Lisa, 27 Nov 2026: "it should be called night fever
+  // afterparty so it doesn't compete with night fever podcast original"). Google gets this page as our collection of
+  // AFTERPARTY pages ABOUT the podcast - not as the podcast itself, which stays World of Wonder's.
   head: () => ({
-    ...pageHead({ path: "/episodes", title: "Night Fever podcast – every episode, timestamped | AFTERPARTY", description: "Every Night Fever podcast episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest AFTERPARTY first!", image: "/og/episodes.jpg" }),
+    ...pageHead({ path: "/episodes", title: "Night Fever AFTERPARTY – every episode, timestamped", description: "My fan AFTERPARTY for every Night Fever episode - every name, club, song and look the guests drop, counted and timestamped. Newest AFTERPARTY first!", image: "/og/episodes.jpg" }),
     scripts: [
       jsonLd({
         "@context": "https://schema.org",
-        "@type": "PodcastSeries",
-        name: "Night Fever",
-        url: "https://www.wowpresentsplus.com/night-fever",
-        description: "The World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato.",
-        subjectOf: { "@type": "WebPage", name: "Night Fever AFTERPARTY", url: abs("/episodes") },
-        hasPart: episodes.map((e) => ({
-          "@type": "PodcastEpisode",
-          name: `${e.guest} - Night Fever S${e.season}E${e.episode}${e.part ?? ""}`,
-          episodeNumber: e.episode,
-          partOfSeason: { "@type": "PodcastSeason", seasonNumber: e.season },
-          url: abs(`/episodes/${e.id}`),
-        })),
+        "@type": "CollectionPage",
+        name: "Night Fever AFTERPARTY",
+        url: abs("/episodes"),
+        about: { "@type": "PodcastSeries", name: "Night Fever", url: "https://www.wowpresentsplus.com/night-fever" },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: episodes.map((e, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: `${e.guest} - Night Fever AFTERPARTY S${e.season}E${e.episode}${e.part ?? ""}`,
+            url: abs(`/episodes/${e.id}`),
+          })),
+        },
       }),
     ],
   }),
