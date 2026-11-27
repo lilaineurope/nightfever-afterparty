@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { NamePile } from "@/components/name-pile";
 import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { PersonProfile } from "@/data/person-profiles";
 import { QuoteName } from "@/components/quote-name";
+import { ProfileVideos } from "@/components/profile-videos";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -38,7 +40,7 @@ function columnsOf<T extends { quote: string }>(said: T[], n: number): { s: T; i
 
 /** Person pages (Lisa, 20 Nov 2026, Kim Hastreiter first): story, "What the guests say" wall, and their story box -
  *  the In memoriam layout for people who are still with us. Sits above the usual A–Z card sections. */
-export function PersonProfileSections({ m, name }: { m: PersonProfile; name: string }) {
+export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; name: string; faces?: Record<string, { src: string; framed?: boolean }> }) {
   const first = m.first ?? name.split(" ")[0];
   return (
     <>
@@ -69,6 +71,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
                   <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">
                     {/* Lisa, 5 Nov 2026: pictures must never sit on text - the first lines wrap around the guest polaroid */}
                     {pol && <span aria-hidden="true" className="float-right -mr-2 ml-2 h-11 w-14" />}
+                    {s.context && <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">{s.context}</span>}
                     &ldquo;{s.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
@@ -112,23 +115,25 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
           {m.liftedUp.length > 0 && (
             <>
               <h2 className={h}>Who {first} lifted up</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{m.liftedUp.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={m.liftedUp} faces={faces} />
             </>
           )}
           {m.rooms.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>{first}'s rooms</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{m.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={m.rooms} faces={faces} />
             </>
           )}
           {m.also && m.also.names.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>{m.also.heading}</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{m.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={m.also.names} faces={faces} />
             </>
           )}
         </div>
       </section>
+
+      {m.videos && m.videos.length > 0 && <ProfileVideos videos={m.videos} playlist={m.playlist} first={first!} />}
     </>
   );
 }

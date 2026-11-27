@@ -939,7 +939,80 @@ const sf: ClubNight = {
   ],
 };
 
-export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf];
+const lbd: ClubNight = {
+  slug: "les-bains-douches",
+  club: "Les Bains Douches",
+  // Lisa, 27 Nov 2026: "create a sounded like this box on club page for it, create spotify and youtube playlist". Playlists built
+  // PRIVATE on Lisa's accounts (27 Nov 2026) - uncomment once she makes them public (then set YouTube Voting).
+  // playlistId: "73QOEnuWB8AbyXZsM4RAlk",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLLUN6ZnKowd4",
+  note:
+    "The Paris club in the old Bains Guerbois (1978-2010): Joy Division's set of 18 December 1979 and James Chance & the Contortions' Live aux Bains Douches, both recorded there; Depeche Mode's first concert in France (29 September 1981); the bands its stage is remembered for; Philippe Krootchey's Talking Heads and B-52's nights; Gloria Gaynor at the Page Six dinner James tells about; and David Guetta, a house DJ there, Rudolf Piper says. Not one exact night.",
+  footage: [
+    { id: "OWA_fD7C8So", title: "Night Fever S01E07 - Rudolf Piper (the Bains Douches and David Guetta, 00:50:25)" },
+    { id: "QrC1YIMd8jw", title: "Joy Division - Les Bains Douches, 18 December 1979 (the whole album)" },
+    { id: "Sgn_MVOIFpU", title: "Depeche Mode at Les Bains Douches, Paris, 29 September 1981 (live recording)" },
+  ],
+  sources: [
+    { key: "A", label: "Wikipedia: Les Bains Douches (nightclub) - concerts, Philippe Krootchey's nights", href: "https://en.wikipedia.org/wiki/Les_Bains_Douches_(nightclub)" },
+    { key: "B", label: "Wikipedia: Les Bains Douches 18 December 1979 (Joy Division live album)", href: "https://en.wikipedia.org/wiki/Les_Bains_Douches_18_December_1979" },
+    { key: "C", label: "Night Fever S02E07 - Jenny Talia (James on the Page Six dinner and Gloria Gaynor, 00:23:31)", href: "https://nightfever-afterparty.com/episodes/s02e07" },
+    { key: "D", label: "Night Fever S01E07 - Rudolf Piper (his events there, David Guetta a house DJ, 00:50:25)", href: "https://nightfever-afterparty.com/episodes/s01e07" },
+    { key: "E", label: "Depeche Mode Live Recordings: Les Bains Douches, Paris, 29 September 1981", href: "https://www.youtube.com/watch?v=Sgn_MVOIFpU" },
+  ],
+  songs: [
+    { title: "Transmission (Live Les Bains Douches, 18 December 1979)", artist: "Joy Division", year: 1979, spotify: "4KOlDKZdSpBlQ4V9wMPZbr", video: "cUXhMhLRptg", kind: "live", why: "Recorded on the club's stage on 18 December 1979", sources: ["B"] },
+    { title: "Love Will Tear Us Apart (Live Les Bains Douches, 18 December 1979)", artist: "Joy Division", year: 1979, spotify: "3BJu8CTJoNXLUevwhL8mAe", video: "7dXK9_n3III", kind: "live", why: "Same night, months before the single came out", sources: ["B"] },
+    { title: "Shadowplay (Live Les Bains Douches, 18 December 1979)", artist: "Joy Division", year: 1979, spotify: "0k5ZreZEJ9zkmX6QhdRYCO", video: "2XmWsONej4s", kind: "live", sources: ["B"] },
+    { title: "Disorder (Live Les Bains Douches, 18 December 1979)", artist: "Joy Division", year: 1979, spotify: "7rC5C3SsFFquQGfqXwbMUc", video: "DoXF2NTOT6s", kind: "live", sources: ["B"] },
+    { title: "Contort Yourself (Live aux Bains Douches)", artist: "James Chance & the Contortions", year: 1980, spotify: "4jpxyeRRTPAFPdykRkpj9f", video: "eivk4xlwsfc", kind: "live", why: "From Live aux Bains Douches, recorded at the club in 1980", sources: ["A"] },
+    { title: "Don't Stop Till You Get Enough (Live aux Bains Douches)", artist: "James Chance & the Contortions", year: 1980, spotify: "7fSQCkksxIkkhHGKcVswew", video: "dSUQDe0KcKo", kind: "live", why: "Their no wave Michael Jackson cover, on the same live album", sources: ["A"] },
+    { title: "New Life (Remix)", artist: "Depeche Mode", year: 1981, spotify: "3vtVqgtNWNwpHfhoVG1qCR", video: "lye5WAYEDfE", kind: "live", why: "Played at their first concert in France, at the club on 29 September 1981 (the video is that night)", sources: ["A", "E"] },
+    { title: "Once in a Lifetime", artist: "Talking Heads", year: 1980, spotify: "1Tr4K5MU5XYE44umXGDndd", video: "5IsSpAOD6K8", kind: "dj-artist", why: "DJ and singer Philippe Krootchey hosted nights there on the music of Talking Heads", sources: ["A"] },
+    { title: "Rock Lobster", artist: "The B-52's", year: 1978, spotify: "0rme3FLbw5o1KLXpJzivjS", video: "n4QSYx4wVQg", kind: "dj-artist", why: "...and of the B-52's", sources: ["A"] },
+    { title: "Dream Baby Dream", artist: "Suicide", year: 1979, spotify: "4NR9l4ca4iOJ93sJX37IeT", video: "dV5b64pN0SY", kind: "stage", why: "Suicide are among the bands that played the club", sources: ["A"] },
+    { title: "Holiday in Cambodia (Single Version)", artist: "Dead Kennedys", year: 1980, spotify: "6ZR7gzHIvcj4qvo5q4kqXN", video: "v0Uc6ZWDF3c", kind: "stage", why: "Dead Kennedys played there", sources: ["A"] },
+    { title: "The Killing Moon", artist: "Echo & the Bunnymen", year: 1984, spotify: "35E2eKIEXXnP5q9L51iOAk", video: "LWz0JC7afNQ", kind: "stage", why: "Echo & the Bunnymen played there", sources: ["A"] },
+    { title: "Marcia Baïla", artist: "Les Rita Mitsouko", year: 1984, spotify: "43THPstJP6RXLMd7ryXyNf", video: "1zWlnzFXcKY", kind: "stage", why: "Paris's own new wave stars played there", sources: ["A"] },
+    { title: "Just Like Honey", artist: "The Jesus and Mary Chain", year: 1985, spotify: "1LwP9g1Hjbs64jXM2Qsxry", video: "7EgB__YratE", kind: "stage", why: "The Jesus and Mary Chain played there", sources: ["A"] },
+    { title: "I Will Survive", artist: "Gloria Gaynor", year: 1978, spotify: "7rIovIsXE6kMn629b7kDig", video: "6dYWe1c3OyU", kind: "about", why: "James's 'disco dream' at the Page Six dinner at the club - poppers while Gloria Gaynor sang it. She left in tears", sources: ["C"], guest: { slug: "jenny-talia", label: "Jenny Talia" } },
+    { title: "Just a Little More Love (Elektro Edit)", artist: "David Guetta, Chris Willis", year: 2002, spotify: "4zDjX2tqzr38FJWU5AC267", video: "e72Y5u-r3u8", kind: "dj-artist", why: "David Guetta was a house DJ at the Bains Douches, Rudolf Piper says - this is his first album", sources: ["D"], guest: { slug: "rudolf-piper", label: "Rudolf Piper" } },
+  ],
+};
+
+const xn: ClubNight = {
+  slug: "xenon",
+  club: "Xenon",
+  // Lisa, 27 Nov 2026: "turn xenon also in a sounded like this box with youtube and spotify list". Spotify and YouTube ids are
+  // filled in from the Mac (checked on Spotify and YouTube, never guessed); playlists stay PRIVATE until Lisa says "playlists public".
+  note:
+    "Records documented at Xenon (1978-1984): resident DJ Tony Smith's own Xenon mixes and the new wave he slipped into the disco, Gloria Gaynor's I Will Survive video shot on its floor, Klaus Nomi's night on its stage in February 1980, Roxy Music naming it in a song, and Jellybean Benitez, another Xenon DJ. Not one exact night.",
+  sources: [
+    { key: "A", label: "Red Bull Music Academy: Tony Smith interview (2019) - his Xenon audition mix and residency", href: "https://daily.redbullmusicacademy.com/2019/01/tony-smith-interview/" },
+    { key: "B", label: "DJ History: Tony Smith walked barefoot through disco (2024) - the new wave he played at Xenon", href: "https://djhistory.com/read/tony-smith-walked-barefoot-through-disco/" },
+    { key: "C", label: "Wikipedia: Xenon (nightclub) - its DJs, Roxy Music's True to Life", href: "https://en.wikipedia.org/wiki/Xenon_(nightclub)" },
+    { key: "D", label: "Wikipedia: I Will Survive - the 1979 promo video filmed at Xenon", href: "https://en.wikipedia.org/wiki/I_Will_Survive" },
+    { key: "E", label: "Madeline Bocaro: Klaus Nomi - his Xenon show of 25 February 1980", href: "https://madelinex.com/2017/12/02/klaus/" },
+  ],
+  songs: [
+    { title: "After Dark", artist: "Patti Brooks", year: 1978, kind: "played", why: "Tony Smith's audition mix at Xenon - \"next day I had the job\"", sources: ["A", "B"] },
+    { title: "You Keep Me Hangin' On", artist: "The Supremes", year: 1966, kind: "played", why: "In the break of that same audition mix", sources: ["A", "B"] },
+    { title: "Ain't No Mountain High Enough", artist: "Inner Life", year: 1981, kind: "played", why: "Another of Tony Smith's Xenon mixes", sources: ["A"] },
+    { title: "Pop Muzik", artist: "M", year: 1979, kind: "played", why: "Tony Smith slipped new wave into the disco: \"I was playing 'Pop Muzik', Gen X, 'Moskow Diskow', 'Jet Boy Jet Girl'\"", sources: ["B"] },
+    { title: "Moskow Diskow", artist: "Telex", year: 1979, kind: "played", why: "From the same line", sources: ["B"] },
+    { title: "Jet Boy, Jet Girl", artist: "Elton Motello", year: 1977, kind: "played", why: "From the same line", sources: ["B"] },
+    { title: "I Got My Mind Made Up (You Can Get It Girl)", artist: "Instant Funk", year: 1978, kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
+    { title: "Disco Circus", artist: "Martin Circus", year: 1979, kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
+    { title: "I Will Survive", artist: "Gloria Gaynor", year: 1978, kind: "about", why: "Its promo video was filmed on Xenon's dance floor in 1979", sources: ["C", "D"] },
+    { title: "True to Life", artist: "Roxy Music", year: 1982, kind: "about", why: "The lyrics name Xenon", sources: ["C"] },
+    { title: "Lightning Strikes", artist: "Klaus Nomi", year: 1981, kind: "stage", why: "Klaus Nomi gave a forty-minute show at Xenon on 25 February 1980; a song from his shows", sources: ["E"] },
+    { title: "The Cold Song", artist: "Klaus Nomi", year: 1981, kind: "stage", why: "The aria of his shows", sources: ["E"] },
+    { title: "I Don't Wanna Lose It (Tony Smith remix)", artist: "Bambu", year: 1979, kind: "dj-artist", why: "The Xenon resident's own remix", sources: ["A"] },
+    { title: "Sidewalk Talk", artist: "Jellybean", year: 1984, kind: "dj-artist", why: "The record of Jellybean Benitez, another Xenon DJ", sources: ["A", "C"] },
+  ],
+};
+
+export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf, lbd, xn];
 
 export const clubNightFor = (slug: string) => CLUB_NIGHTS.find((c) => c.slug === slug);
 export { KIND_LABEL, playlistUrl } from "./club-night-labels";
