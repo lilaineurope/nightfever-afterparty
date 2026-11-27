@@ -983,10 +983,18 @@ const lbd: ClubNight = {
 const xn: ClubNight = {
   slug: "xenon",
   club: "Xenon",
+  // Playlists built PRIVATE on Lisa's accounts (27 Nov 2026) - uncomment once she makes them public (then set YouTube Voting).
+  // playlistId: "7H7OHq2MLLeSnPOMdmfCVN",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLMpKw0IuumAg",
   // Lisa, 27 Nov 2026: "turn xenon also in a sounded like this box with youtube and spotify list". Spotify and YouTube ids are
   // filled in from the Mac (checked on Spotify and YouTube, never guessed); playlists stay PRIVATE until Lisa says "playlists public".
   note:
     "Records documented at Xenon (1978-1984): resident DJ Tony Smith's own Xenon mixes and the new wave he slipped into the disco, Gloria Gaynor's I Will Survive video shot on its floor, Klaus Nomi's night on its stage in February 1980, Roxy Music naming it in a song, and Jellybean Benitez, another Xenon DJ. Not one exact night.",
+  footage: [
+    { id: "6dYWe1c3OyU", title: "Gloria Gaynor - I Will Survive (the 1979 promo video, filmed on Xenon's dance floor)" },
+    { id: "h1Twukgzq84", title: "Nighthawks (1981) - the disco scene, filmed at Xenon" },
+    { id: "2xUd3LRufno", title: "Klaus Nomi - The Nomi Song (live at Xenon, excerpt)" },
+  ],
   sources: [
     { key: "A", label: "Red Bull Music Academy: Tony Smith interview (2019) - his Xenon audition mix and residency", href: "https://daily.redbullmusicacademy.com/2019/01/tony-smith-interview/" },
     { key: "B", label: "DJ History: Tony Smith walked barefoot through disco (2024) - the new wave he played at Xenon", href: "https://djhistory.com/read/tony-smith-walked-barefoot-through-disco/" },
@@ -995,20 +1003,20 @@ const xn: ClubNight = {
     { key: "E", label: "Madeline Bocaro: Klaus Nomi - his Xenon show of 25 February 1980", href: "https://madelinex.com/2017/12/02/klaus/" },
   ],
   songs: [
-    { title: "After Dark", artist: "Patti Brooks", year: 1978, kind: "played", why: "Tony Smith's audition mix at Xenon - \"next day I had the job\"", sources: ["A", "B"] },
-    { title: "You Keep Me Hangin' On", artist: "The Supremes", year: 1966, kind: "played", why: "In the break of that same audition mix", sources: ["A", "B"] },
-    { title: "Ain't No Mountain High Enough", artist: "Inner Life", year: 1981, kind: "played", why: "Another of Tony Smith's Xenon mixes", sources: ["A"] },
-    { title: "Pop Muzik", artist: "M", year: 1979, kind: "played", why: "Tony Smith slipped new wave into the disco: \"I was playing 'Pop Muzik', Gen X, 'Moskow Diskow', 'Jet Boy Jet Girl'\"", sources: ["B"] },
-    { title: "Moskow Diskow", artist: "Telex", year: 1979, kind: "played", why: "From the same line", sources: ["B"] },
-    { title: "Jet Boy, Jet Girl", artist: "Elton Motello", year: 1977, kind: "played", why: "From the same line", sources: ["B"] },
-    { title: "I Got My Mind Made Up (You Can Get It Girl)", artist: "Instant Funk", year: 1978, kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
-    { title: "Disco Circus", artist: "Martin Circus", year: 1979, kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
-    { title: "I Will Survive", artist: "Gloria Gaynor", year: 1978, kind: "about", why: "Its promo video was filmed on Xenon's dance floor in 1979", sources: ["C", "D"] },
-    { title: "True to Life", artist: "Roxy Music", year: 1982, kind: "about", why: "The lyrics name Xenon", sources: ["C"] },
-    { title: "Lightning Strikes", artist: "Klaus Nomi", year: 1981, kind: "stage", why: "Klaus Nomi gave a forty-minute show at Xenon on 25 February 1980; a song from his shows", sources: ["E"] },
-    { title: "The Cold Song", artist: "Klaus Nomi", year: 1981, kind: "stage", why: "The aria of his shows", sources: ["E"] },
-    { title: "I Don't Wanna Lose It (Tony Smith remix)", artist: "Bambu", year: 1979, kind: "dj-artist", why: "The Xenon resident's own remix", sources: ["A"] },
-    { title: "Sidewalk Talk", artist: "Jellybean", year: 1984, kind: "dj-artist", why: "The record of Jellybean Benitez, another Xenon DJ", sources: ["A", "C"] },
+    { title: "After Dark", artist: "Patti Brooks", year: 1978, spotify: "3Sovavh5SyQExCno0RpFuh", video: "6IJhbziCjKk", kind: "played", why: "Tony Smith's audition mix at Xenon - \"next day I had the job\"", sources: ["A", "B"] },
+    { title: "You Keep Me Hangin' On", artist: "The Supremes", year: 1966, spotify: "4a01ClusxuZiloOK5UgLUn", video: "A9MwPMHEjNM", kind: "played", why: "In the break of that same audition mix", sources: ["A", "B"] },
+    { title: "Ain't No Mountain High Enough", artist: "Inner Life", year: 1981, spotify: "06xAJjt8HY09e14cLmBmgP", video: "BjGHWUDBYAE", kind: "played", why: "Another of Tony Smith's Xenon mixes", sources: ["A"] },
+    { title: "Pop Muzik", artist: "M", year: 1979, spotify: "6z3HAUZpAyJ0ctsbAwAiw3", video: "gPoiv0sZ4s4", kind: "played", why: "Tony Smith slipped new wave into the disco: \"I was playing 'Pop Muzik', Gen X, 'Moskow Diskow', 'Jet Boy Jet Girl'\"", sources: ["B"] },
+    { title: "Moskow Diskow", artist: "Telex", year: 1979, spotify: "0TijYO5DXWglTx3lY4zL1H", video: "___U9R8C2rU", kind: "played", why: "From the same line", sources: ["B"] },
+    { title: "Jet Boy, Jet Girl", artist: "Elton Motello", year: 1977, spotify: "2NC6VnEyAlmtPbfzazlULX", video: "G_2DDnj59Fo", kind: "played", why: "From the same line", sources: ["B"] },
+    { title: "I Got My Mind Made Up (You Can Get It Girl)", artist: "Instant Funk", year: 1978, spotify: "0l8pX36UpptBKbdRonM1zu", video: "ALIGgEqDwck", kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
+    { title: "Disco Circus", artist: "Martin Circus", year: 1979, spotify: "2YLu6ZpzkwSM3zJ1hNA6DN", video: "6YbyxvUbOZE", kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
+    { title: "I Will Survive", artist: "Gloria Gaynor", year: 1978, spotify: "7rIovIsXE6kMn629b7kDig", video: "6dYWe1c3OyU", kind: "about", why: "Its promo video was filmed on Xenon's dance floor in 1979", sources: ["C", "D"] },
+    { title: "True to Life", artist: "Roxy Music", year: 1982, spotify: "78xp7CjJ3Uqxa44QAMdBWJ", video: "8qOqoFd4SVs", kind: "about", why: "The lyrics name Xenon", sources: ["C"] },
+    { title: "Lightning Strikes", artist: "Klaus Nomi", year: 1981, spotify: "2CYnmJ25U4TiSv5mkKmQuZ", video: "tJdljxrvPqo", kind: "stage", why: "Klaus Nomi gave a forty-minute show at Xenon on 25 February 1980; a song from his shows", sources: ["E"] },
+    { title: "The Cold Song", artist: "Klaus Nomi", year: 1981, spotify: "17n7O0A3B86m0wepImtEIu", video: "_ojgPhbWs54", kind: "stage", why: "The aria of his shows", sources: ["E"] },
+    { title: "I Don't Wanna Lose It", artist: "Bambu", year: 1979, youtube: "https://www.youtube.com/watch?v=wva9RpKzx34", video: "wva9RpKzx34", kind: "dj-artist", why: "Tony Smith, the Xenon resident, remixed it (the video is the 12-inch version)", sources: ["A"] },
+    { title: "Sidewalk Talk", artist: "Jellybean", year: 1984, spotify: "3wnjAXKdsFmtKvDcYSysjd", video: "WMcpYcBMLWo", kind: "dj-artist", why: "The record of Jellybean Benitez, another Xenon DJ", sources: ["A", "C"] },
   ],
 };
 
