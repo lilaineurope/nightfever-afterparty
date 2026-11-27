@@ -141,7 +141,7 @@ export function ClubsShelf() {
               {home && (
                 <p className="cc-home-note">
                   We haven&rsquo;t found where these clubs stood, so they&rsquo;re not on the{" "}
-                  <Link to="/map">map</Link> yet. Were you there? Tap a club and tell us where it was.
+                  <Link to="/map" search={{ layer: "home" }}>map</Link> yet. Were you there? Tap a club and tell us where it was.
                 </p>
               )}
               <h4 className="cc-sign">

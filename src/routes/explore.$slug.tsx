@@ -17,6 +17,7 @@ import { ColumnIndex } from "@/components/column-index";
 import { TheirWork } from "@/components/their-work";
 import { LibraryItemSections, Story } from "@/components/library-item";
 import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
+import { AroundTheBlock, BringUsHome, RoomsMapSection } from "@/components/map-sections";
 import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
 import { TREE_ON_PAGE } from "@/lib/mentor-tree";
@@ -221,7 +222,7 @@ function EntityPage() {
               {[place.tip, place.area].filter(Boolean).join(" · ")}
               <span className="mt-2 block text-xs font-semibold uppercase tracking-wider text-pink">
                 {place.who.length} episode{place.who.length === 1 ? "" : "s"} · {place.mentions} mention{place.mentions === 1 ? "" : "s"}
-                {placeMap ? <> · <Link to="/map" className="hover:text-gold">Open the big map &rarr;</Link></> : <> · <Link to="/contact" search={{ about: "Bring us home" }} className="hover:text-gold">No pin yet - bring it home &rarr;</Link></>}
+                {placeMap ? <> · <Link to="/map" search={{ at: e.slug }} className="hover:text-gold">Open the big map &rarr;</Link></> : <> · <Link to="/contact" search={{ about: "Bring us home" }} className="hover:text-gold">No pin yet - bring it home &rarr;</Link></>}
               </span>
             </p>
           )}
@@ -286,10 +287,15 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} />}
+        {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
+            card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
+        {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
+        {e.mapHome && <BringUsHome m={e.mapHome} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
+        {profile && e.rooms && <RoomsMapSection r={e.rooms} first={profile.first ?? e.name.split(" ")[0]!} />}
         {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
         <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />
         {diary && <DiarySections d={diary} name={e.name} />}

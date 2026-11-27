@@ -23,6 +23,7 @@ import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView, storyView } from "@/lib/library-item.server";
 import { placeView } from "@/lib/place-view.server";
+import { mapSectionOf, roomsMapOf } from "@/lib/map-view.server";
 import { worksOf } from "@/lib/works";
 import { coverFor } from "@/data/library-covers";
 import { storyPagesFor } from "@/lib/story-links.server";
@@ -129,6 +130,18 @@ function cardView(e: Entity): CardView {
     for (const n of place.near) L.card(n.slug);
     for (const p of place.map?.pins ?? []) L.card(p.slug);
   }
+  // The map on club and event pages ("Around the block", Lisa 27 Nov 2026) and on living-people pages (their rooms).
+  const section = g || mem ? null : mapSectionOf(e);
+  const mapBand = section && "band" in section ? section.band : null;
+  const mapHome = section && "home" in section ? section.home : null;
+  if (mapBand) {
+    if (mapBand.pin.slug) L.card(mapBand.pin.slug);
+    for (const n of mapBand.near) L.card(n.slug);
+    for (const p of mapBand.map.pins) L.card(p.slug);
+    for (const x of [...mapBand.here, ...mapBand.nextDoor]) L.card(x.slug);
+  }
+  const rooms = profile ? roomsMapOf(profile, e.name) : null;
+  if (rooms) for (const x of [...rooms.stops, ...rooms.home, ...rooms.away]) L.card(x.slug);
   // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
   const works = e.category === "Person" ? worksOf(e.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : [];
   for (const w of works) if (w.slug) L.card(w.slug);
@@ -168,6 +181,9 @@ function cardView(e: Entity): CardView {
     // Songs, bands, albums and clubs a guest made are not on the Library shelves, but get "The story" too (Lisa, 23 Nov 2026).
     story: item ? null : storyView(e),
     place,
+    mapBand,
+    mapHome,
+    rooms,
     works,
     connector: connectorRank(e.slug),
     links: L.data,

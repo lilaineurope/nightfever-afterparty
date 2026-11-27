@@ -1301,3 +1301,34 @@ a.scr-ours:hover { color: #111; }
 .scr-watch-rows dd { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .scr-chip { display: inline-block; background: #111; color: #f4f1ea; padding: 3px 9px; font-size: 13px; font-weight: 600; }
 .lib-full { position: absolute; top: 8px; right: 8px; z-index: 2; background: var(--color-pink); color: #fff; padding: 2px 6px; font-family: var(--font-mono-body); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; box-shadow: 2px 2px 0 #111; }
+/* The map on club, event and living-people pages (Lisa, 27 Nov 2026, "Which page gets what"): "Around the block" is the
+   place pages' drawing as a band of its own, the club in the middle (phones crop both sides); the list and events below. */
+.map-band { background: #ece6da; border: 2px solid #111; box-shadow: 6px 7px 0 #111; overflow: hidden; }
+.map-band-svg { display: block; width: 100%; height: auto; }
+.map-band-foot { display: grid; gap: 28px; padding: 22px 24px; background: #f6f0ea; color: #111; border-top: 2px solid #111; }
+.map-near { columns: 2 240px; column-gap: 28px; }
+.map-near .place-near { break-inside: avoid; }
+.map-event { padding: 8px 0; border-bottom: 1px dashed #bbb; font-size: 13px; }
+.map-btn { display: inline-block; border: 2px solid #111; background: #111; color: #f6f0ea; padding: 7px 14px; font: 700 13px var(--font-mono-body); transition: background .15s, border-color .15s; }
+.map-btn:hover, .map-btn:focus-visible { background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
+@media (min-width: 900px) { .map-band-foot { grid-template-columns: 1.4fr 1fr; } }
+@media (max-width: 700px) { .map-band-svg { height: 300px; } }
+/* A living person's rooms: numbered pins on a drawn New York, the list beside it. */
+.rooms-grid { display: grid; gap: 26px; align-items: start; }
+@media (min-width: 860px) { .rooms-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .rooms-map { position: sticky; top: 90px; } }
+.rooms-map { border: 2px solid #111; box-shadow: 6px 7px 0 #111; background: #ece6da; }
+.rooms-map svg { display: block; width: 100%; height: auto; }
+.rooms-water { fill: #dfe3e1; }
+.rooms-shore { fill: none; stroke: #111; stroke-width: 2; }
+.rooms-street { stroke: #fff; stroke-width: 1.5; }
+.rooms-avenue { stroke: #fff; stroke-width: 3; }
+.rooms-leader { stroke: #111; stroke-width: 1.2; }
+.rooms-leader-dot { fill: #111; }
+.rooms-num { font: 700 12px var(--font-mono-body); fill: #111; pointer-events: none; }
+.rooms-num-club { fill: #fff; }
+.rooms-map a:hover circle { fill: var(--color-pink); }
+.rooms-list { display: grid; }
+.rooms-list > li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px dashed #bbb; font-size: 14px; }
+.rooms-badge { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #111; background: #fff; color: #111; font: 700 12px var(--font-mono-body); }
+.rooms-badge-club { background: #111; color: #fff; }
+.rooms-tape { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; font-size: 7px; padding: 3px 0; height: fit-content; }
