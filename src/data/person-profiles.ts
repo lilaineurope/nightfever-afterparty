@@ -1594,12 +1594,15 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e02", who: "Michael Musto", time: "01:02:14", context: "Musto on the Limelight in the 90s", quote: "At the Limelight there was the chapel area, there was the main dance floor. And then it became Disco 2000, the big club kid party on Wednesdays, with Clara the Carefree Chicken." },
       { episode: "s01e09", who: "Moby", time: "00:07:02", context: "Moby working out when he first met James", quote: "I had just DJ'd for the first time at Limelight, and Michael took me to Peter Gatien's office... So, James, I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
     ],
+    // Same order as Lisa's YouTube playlist "Clara the Carefree Chicken – the AFTERPARTY playlist" (PLJqISi2pr5Qo, PRIVATE
+    // 27 Nov 2026) - add playlist: "https://www.youtube.com/playlist?list=PLJqISi2pr5Qo" once she makes it public.
     videos: [
       { id: "aAYRvJGmsDQ", title: "Peeew! #90: Searching for Clara the Carefree Chicken" },
+      { id: "Ir0Y0QQQnsw", title: "The Disco 2000 commercial" },
+      { id: "Cd4kmrC_PPo", title: "Ernie Glam + Clara the Carefree Chicken in Montréal" },
       { id: "dfd6iABsJAI", title: "Peeew! #97: One step closer to finding Clara" },
       { id: "Yrln7HwA2ck", title: "Peeew! #134: Clara the Carefree Chicken sightings" },
-      { id: "Cd4kmrC_PPo", title: "Ernie Glam + Clara the Carefree Chicken in Montréal" },
-      { id: "Ir0Y0QQQnsw", title: "Disco 2000 commercial" },
+      { id: "tLfNUMsmv-o", title: "Night Fever S1E5 - Ernie Glam (Clara comes up at 28:00)" },
     ],
     also: { heading: "Clara's flock", names: ["Ernie Glam", "James St. James", "Michael Musto", "Moby", "Amanda Lepore", "Hans Ulrich", "Clara the Chicken suit", "Peeew!", "Fabulousity"] },
   },
