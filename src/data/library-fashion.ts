@@ -212,6 +212,9 @@ for (const e of entities)
 function whoseLook(r: Ref): FashionLook["who"] {
   const m = /^(?:Young )?([A-Z][\w.-]+(?: [A-Z][\w.-]+)?)'s\b/.exec(r.name);
   if (!m) return undefined;
+  // A full name wins over a first name: "Gene Malin's tuxedo" is Gene Malin, not Gene Kelly (Lisa, 27 Nov 2026).
+  const full = m[1]!.includes(" ") ? entityFor(m[1]!) : undefined;
+  if (full?.category === "Person") return { name: full.name, slug: full.slug };
   const first = m[1]!.split(" ")[0]!;
   const guest = r.episode ? episodeById(r.episode).guest : "";
   const name =
@@ -236,6 +239,15 @@ function railsOf(e: Entity): string[] {
 
 /** The look on the mannequin. Colours named after a piece come first ("patent heel #0B0B0B" dresses the feet), then the
  *  garments in its words, coloured by a colour word they share with the palette, or the palette in order. */
+/** A piece's words as a label: no leading "a"/"the"/"then", no stray brackets or stops. */
+const tidy = (w: string) =>
+  w
+    .trim()
+    .replace(/^(?:(?:a|an|the|then|not|and)\s+)+/i, "")
+    .replace(/^[\s(\[.,:;-]+|[\s)\].,:;-]+$/g, "")
+    .replace(/\(([^)]*)$/, "$1")
+    .replace(/\.\s+/g, " ");
+
 function outfitOf(e: Entity, palette: string[]): FashionLook["outfit"] {
   const out: FashionLook["outfit"] = {};
   const named: { name: string; hex: string }[] = [];
@@ -244,21 +256,30 @@ function outfitOf(e: Entity, palette: string[]): FashionLook["outfit"] {
       const m = /^(.*?)\s*(#[0-9a-fA-F]{6})$/.exec(c);
       if (m && !ROOM.test(m[1]!)) named.push({ name: m[1]!, hex: m[2]! });
     }
-  for (const c of named) {
-    const s = slotOf(c.name);
-    if (s && !out[s.slot]) out[s.slot] = { label: c.name, hex: c.hex, full: s.full };
-  }
+  // What the guest says was worn comes first ("Gibson girl gown" is a dress, whatever the colour notes call the fabric);
+  // a colour note only fills a rail the words leave empty (Lisa, 27 Nov 2026: Eltinge's gown was drawn as a top and trousers).
   let next = 0;
   const r = e.refs[0]!;
   const words = [r.fashion ?? "", r.heard, r.name]
     .filter((t) => t && !/^(Worn or shown in the episode|—)$/i.test(t))
-    .flatMap((t) => t.split(/\s*(?:,|;|\/| and | with | over | under )\s*/));
+    // "(not a tutu and tiara)", "not the best wigs": what they did NOT wear stays off the mannequin.
+    .map((t) => t.replace(/\(\s*not\b[^)]*\)/gi, " "))
+    .flatMap((t) => t.split(/\s*(?:,|;|\/| - | – | and | with | over | under )\s*/))
+    .filter((t) => !/^\s*not\b/i.test(t));
+  const notWorn = (
+    [r.fashion ?? "", r.context].join(" ").match(/\b(?:not|no(?! one\b| longer\b| matter\b| doubt\b)|rather than|instead of)\b(?:\s+[^\s,;.:)]+){1,6}/gi)?.join(" ") ?? ""
+  ).toLowerCase();
   for (const w of words) {
     const s = slotOf(w);
-    if (!s || out[s.slot] || ROOM.test(w)) continue;
+    if (!s || out[s.slot] || ROOM.test(w) || notWorn.includes(tidy(w).toLowerCase())) continue;
     const shared = named.find((c) => c.name.split(/\s+/).some((x) => x.length > 3 && new RegExp(`\\b${x.replace(/[^\w-]/g, "")}\\b`, "i").test(w)));
     const hex = shared?.hex ?? palette[next++ % Math.max(palette.length, 1)] ?? "#111111";
-    out[s.slot] = { label: w.trim(), hex, full: s.full };
+    out[s.slot] = { label: tidy(w), hex, full: s.full };
+  }
+  for (const c of named) {
+    const s = slotOf(c.name);
+    const denied = c.name.split(/[\s-]+/).some((x) => /^\w{3,}$/.test(x) && slotOf(x) && new RegExp(`\\b${x}`, "i").test(notWorn));
+    if (s && !out[s.slot] && !denied) out[s.slot] = { label: c.name, hex: c.hex, full: s.full };
   }
   // A dress covers the bottom rail.
   if (out.top?.full) delete out.bottom;

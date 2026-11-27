@@ -14,11 +14,14 @@ export const SLOTS: { id: Slot; label: string }[] = [
 ];
 
 const KW: [Slot, RegExp, boolean?][] = [
+  // Words where "top" is not a top: a top hat, a flat-top haircut, high-top sneakers.
+  ["head", /\b(top hats?|flat[- ]?tops?)\b/i],
+  ["feet", /\bhigh[- ]?tops?\b/i],
   ["feet", /\b(shoes?|heels?|stilettos?|boots?|platforms?|sneakers?|trainers?|pumps?|sandals?|loafers?|oxfords?|waders?|mules?|creepers?|brogues?|slippers?|kicks|doc martens)\b/i],
   ["bottom", /\b(skirts?|miniskirt|trousers|pants|jeans|shorts|hot-pants|kilts?|tutus?|chinos?|leggings|fishnets?|stockings?|tights|garters?|jockstrap|underwear|crinoline|crini|petticoats?|dirndl|bloomers|flares|bell-bottoms)\b/i],
-  ["top", /\b(dress(es)?|gowns?|catsuits?|jumpsuits?|bodysuits?|leotards?|costumes?|uniforms?|slip|frocks?|kimonos?|robes?|habit|wimple|pyjamas?|lingerie|tuxedos?|suits?)\b/i, true],
+  ["top", /\b(dress(es)?|gowns?|catsuits?|jumpsuits?|bodysuits?|leotards?|costumes?|uniforms?|slip|frocks?|kimonos?|robes?|habit|wimple|pyjamas?|lingerie|tuxedos?|suits?|tails|tailcoats?)\b/i, true],
   ["top", /\b(shirts?|tees?|t-shirts?|blouses?|corsets?|bustiers?|jackets?|blazers?|coats?|trench|sweatshirts?|hoodies?|sweaters?|jumpers?|cardigans?|tanks?|halters?|vests?|waistcoats?|capes?|ponchos?|tops?|bras?|pinafores?|tunics?|cravats?|bolero|cable-knit|biker)\b/i],
-  ["head", /\b(wigs?|hair|hairdo|bouffant|beehive|mohawk|pompadour|curls?|blonde|platinum|big-hair|bald|beards?|moustache|lips?|lipstick|rouge|eyeliner|mascara|lash(es)?|make-?up|face paint|beauty-spot|eyeshadow|glitter brows?|frames|glasses|sunglasses|shades|lens|masks?|earrings?|hats?|caps?|beanies?|berets?|crowns?|tiaras?|headdress(es)?|turbans?|veils?|halo|horns?|bows?|headphones|powdered-wig)\b/i],
+  ["head", /\b(wigs?|hair|hairdo|bouffant|beehive|mohawk|pompadour|quiffs?|curls?|blonde|platinum|big-hair|bald|beards?|moustache|lips?|lipstick|rouge|eyeliner|mascara|lash(es)?|make-?up|face paint|beauty-spot|eyeshadow|glitter brows?|frames|glasses|sunglasses|shades|lens|masks?|earrings?|hats?|caps?|beanies?|berets?|crowns?|tiaras?|headdress(es)?|turbans?|veils?|halo|horns?|bows?|headphones|powdered-wig)\b/i],
   ["extra", /\b(pearls?|beads?|necklaces?|chains?|bracelets?|bangles?|rings?|jewel(le)?ry|jewels?|rhinestones?|crystals?|boas?|feathers?|furs?|mink|stoles?|gloves?|belts?|braces|bags?|clutch|purses?|fans?|canes?|safety-pins?|studs?|corsage|scarf|scarves|shawls?|ties?|brooch|lunchbox|umbrella|parasol|mirror-ball|confetti|wands?|whips?|collars?)\b/i],
 ];
 // Fabrics and finishes with no garment named: worn as the top.

@@ -23,6 +23,12 @@ const texture = (label: string) => {
 export const isTrousers = (l: string) => /trouser|pants|jeans|chino|leggings|flares|slacks|501|bell-bottom/i.test(l);
 const isLegwear = (l: string) => /stocking|fishnet|tights|garter|pantyhose/i.test(l);
 const isHat = (l: string) => /hat|cap\b|caps|beanie|beret|crown|tiara|headdress|headpiece|turban|veil|wimple|halo|horn/i.test(l);
+/** Worn all over but with legs: suits, tuxedos, tails, catsuits, jumpsuits. */
+const isSuit = (l: string) => /suit|tuxedo|tails|tailcoat|pyjama/i.test(l) && !/swimsuit|bathing/i.test(l);
+/** A long gown rather than a dress to the knee: the corseted, floor-length silhouette. */
+const isGown = (l: string) => /gown|ball ?dress|evening dress|bias|corset|crinoline|wedding dress|prom dress/i.test(l);
+/** Hair worn up - piled, pinned, a bun or a bouffant (Julian Eltinge's Gibson girl, Lisa 27 Nov 2026). */
+const isUpdo = (l: string) => /piled|pinned up|\bup\b|bun\b|bouffant|beehive|gibson|chignon|top ?knot|updo/i.test(l);
 const isFace = (l: string) => /lip|rouge|eyeliner|mascara|lash|make-?up|paint|frames|glasses|sunglasses|shades|lens|mask|beauty|eye/i.test(l);
 const isDrape = (l: string) => /boa|feather|fur|mink|stole|shawl|scarf|scarves|cape/i.test(l);
 const isNecklace = (l: string) => /pearl|bead|necklace|chain|choker|collar|rhinestone|crystal|jewel|brooch/i.test(l);
@@ -74,8 +80,17 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
         ) : (
           <Fill id={id} ink={ink} garb={bottom} d="M78 190L122 190L140 286L60 286Z" />
         ))}
+      {top && full && isSuit(top.label) && (
+        // A suit, tuxedo or catsuit: the same cloth on the legs as on the body.
+        <Fill id={id} ink={ink} garb={top} d="M76 192L124 192L127 378L105 378L100 238L95 378L73 378Z" />
+      )}
       {top &&
-        (full ? (
+        (full && isSuit(top.label) ? (
+          <Fill id={id} ink={ink} garb={top} d="M64 92Q100 80 136 92L148 150L132 154L128 128L126 206L74 206L72 128L68 154L52 150Z" />
+        ) : full && isGown(top.label) ? (
+          // A gown: fitted bodice, nipped waist, skirt to the floor.
+          <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L118 182L156 374L44 374L82 182L74 132L60 130Z" />
+        ) : full ? (
           <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L124 170L150 318L50 318L76 170L74 132L60 130Z" />
         ) : (
           <Fill id={id} ink={ink} garb={top} d="M64 92Q100 80 136 92L148 150L132 154L128 128L126 200L74 200L72 128L68 154L52 150Z" />
@@ -87,7 +102,9 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
         </>
       )}
       {head &&
-        (isHat(head.label) ? (
+        (/top hat/i.test(head.label) ? (
+          <Fill id={id} ink={ink} garb={head} d="M84 36L86 2L114 2L116 36L132 36L132 42L68 42L68 36Z" />
+        ) : isHat(head.label) ? (
           <Fill id={id} ink={ink} garb={head} d="M70 40Q100 4 130 40L144 44Q100 34 56 44Z" />
         ) : isFace(head.label) ? (
           /lip/i.test(head.label) ? (
@@ -95,6 +112,8 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
           ) : (
             <Fill id={id} ink={ink} garb={head} d="M82 46L96 46L96 54L82 54ZM104 46L118 46L118 54L104 54ZM96 49L104 49L104 51L96 51Z" />
           )
+        ) : isUpdo(head.label) ? (
+          <Fill id={id} ink={ink} garb={head} d="M78 54Q74 30 90 24Q78 12 100 4Q122 12 110 24Q126 30 122 54Q116 40 100 38Q84 40 78 54Z" />
         ) : (
           <Fill id={id} ink={ink} garb={head} d="M76 56Q72 18 100 18Q128 18 124 56L128 84L116 80L118 50Q100 34 82 50L84 80L72 84Z" />
         ))}
@@ -107,6 +126,8 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
               <circle key={i} cx={84 + i * 4} cy={94 + Math.sin((i / 8) * Math.PI) * 10} r="2.6" fill={extra.hex} stroke={ink} strokeWidth="0.6" />
             ))}
           </g>
+        ) : /\bties?\b|cravat|bow ?tie/i.test(extra.label) ? (
+          <Fill id={id} ink={ink} garb={extra} d="M96 92L104 92L102 98L108 136L100 146L92 136L98 98Z" />
         ) : /bag|clutch|purse|lunchbox/i.test(extra.label) ? (
           <Fill id={id} ink={ink} garb={extra} d="M146 196L168 196L170 222L144 222Z" />
         ) : (
