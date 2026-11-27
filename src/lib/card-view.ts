@@ -13,7 +13,11 @@ export type NightPageView = {
   years: string;
   kind: string;
   title: string;
-  quotes: { episode: string; code: string; who: string; time: string; quote: string }[];
+  /** Every moment of the night as a box with the guest's polaroid: their own words where we have them, otherwise what
+   *  was said (Lisa, 27 Nov 2026: quote boxes instead of "In the episodes"). */
+  said: { episode: string; code: string; who: string; time: string; quote?: string | undefined; context?: string | undefined; mentions?: number | undefined }[];
+  /** The club's poster and reading list, at the foot of the night's page. */
+  lib: ClubLibraryView | null;
   songs: { title: string; artist: string; year: number; why: string }[];
   films: { id: string; title: string }[];
   playlist?: string | undefined;

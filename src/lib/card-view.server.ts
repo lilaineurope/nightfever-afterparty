@@ -9,13 +9,13 @@ import { clubNightFor } from "@/data/club-nights";
 import { MEMORIAM } from "@/data/memoriam";
 import { CLUB_PROFILES } from "@/data/club-profiles";
 import { CLUB_PARTS, NIGHT_PARTS, nightKind, type NightPart } from "@/data/club-parts";
-import { NIGHT_MEDIA } from "@/data/night-media";
+import { NIGHT_MEDIA, NIGHT_QUOTES } from "@/data/night-media";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { PERSON_PROFILES } from "@/data/person-profiles";
 import { DIARY_PAGES } from "@/data/diaries";
 import { COLUMN_PAGES } from "@/data/column-articles";
 import { polaroidThumb } from "@/lib/polaroids";
-import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
+import { episodeById, episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
@@ -156,9 +156,17 @@ function nightPageOf(e: Entity): NightPageView | null {
   const c = n ? CLUB_PROFILES[n.club] : undefined;
   const clubE = n ? entityBySlug[n.club] : undefined;
   if (!n || !c || !clubE) return null;
-  const quotes = c.said
-    .filter((q) => e.refs.some((r) => r.episode === q.episode && r.time && r.time !== "On camera" && Math.abs(toSec(r.time) - toSec(q.time)) <= 90))
-    .map((q) => ({ episode: q.episode, code: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote }));
+  const near = (a: { episode?: string | undefined; time?: string | undefined }, b: { episode?: string | undefined; time?: string | undefined }) =>
+    a.episode === b.episode && !!a.time && !!b.time && a.time !== "On camera" && b.time !== "On camera" && Math.abs(toSec(a.time) - toSec(b.time)) <= 90;
+  // The guests' own words: hand-picked transcript quotes first, then the club wall's quotes said around the night's rows.
+  const hand = NIGHT_QUOTES[e.slug] ?? [];
+  const wall = c.said.filter((q) => e.refs.some((r) => near(r, q)) && !hand.some((h) => near(h, q)));
+  const quotes = [...hand, ...wall].map((q) => ({ episode: q.episode, code: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote }));
+  // Every other moment of the night gets its box too, with what was said.
+  const rest = e.refs
+    .filter((r) => r.episode && !quotes.some((q) => near(r, q)))
+    .map((r) => ({ episode: r.episode!, code: episodeShort(r.episode!), who: episodeById(r.episode!).guest, time: r.time ?? "", context: r.context, mentions: r.mentions }));
+  const said = [...quotes, ...rest];
   const cn = clubNightFor(n.club);
   const m = NIGHT_MEDIA[e.slug] ?? {};
   const songs = (m.songs ?? []).flatMap((t) => {
@@ -176,7 +184,8 @@ function nightPageOf(e: Entity): NightPageView | null {
     years: `${c.opened}–${c.closed}`,
     kind: nightKind(n.heading, n.title),
     title: n.title,
-    quotes,
+    said,
+    lib: clubLibraryOf(clubE),
     songs,
     films,
     playlist: cn?.youtubePlaylist,
@@ -220,7 +229,14 @@ function cardView(e: Entity): CardView {
   if (nightPage) {
     L.card(nightPage.club);
     nightPage.others.forEach((x) => L.card(x.slug));
-    nightPage.quotes.forEach((q) => L.name(q.who));
+    nightPage.said.forEach((q) => {
+      L.name(q.who);
+      if (q.context) L.text(q.context, e.name);
+    });
+    if (nightPage.lib) {
+      for (const r of nightPage.lib.reads) L.card(r.slug);
+      for (const p of nightPage.lib.posters) [...p.madeBy.map((m) => m.name), ...p.onIt].forEach(L.name);
+    }
   }
   const crowd = club ? clubCrowdOf(e, club.stage) : null;
   if (crowd) {

@@ -34,22 +34,62 @@ function Line({ l }: { l: MapLine }) {
   );
 }
 
+/** One event in the map box, one line each (Lisa, 27 Nov 2026: "make the map box shorter and
+ *  click-on-item-and-expand-to-a-box-underneath principle"): pressing it opens a box underneath with the episode line
+ *  and the way to its page. */
 function EventRow({ x, where }: { x: MapEvent; where?: string | undefined }) {
   const links = useLinks();
   return (
     <li className="map-event">
-      <span>
-        <span aria-hidden="true" className="place-key place-key-event" />
-        <Link
-          {...linkToSlug(links, x.slug)}
-          className="font-semibold text-[#111] transition-colors hover:text-pink"
-        >
-          {x.name}
-        </Link>
-        {where && <span className="text-muted-foreground"> · {where}</span>}
-      </span>
-      {x.line && <Line l={x.line} />}
+      <details>
+        <summary>
+          <span>
+            <span aria-hidden="true" className="place-key place-key-event" />
+            <span className="font-semibold text-[#111]">{x.name}</span>
+            {where && <span className="text-muted-foreground"> · {where}</span>}
+          </span>
+          <span aria-hidden="true" className="map-event-plus">
+            +
+          </span>
+        </summary>
+        <div className="map-event-box">
+          {x.line && <Line l={x.line} />}
+          <Link
+            {...linkToSlug(links, x.slug)}
+            className="mt-2 inline-block text-xs font-bold text-[#111] transition-colors hover:text-pink"
+          >
+            Open {x.name} &rarr;
+          </Link>
+        </div>
+      </details>
     </li>
+  );
+}
+
+/** At most five events show; the rest wait behind "N more" so the map box stays short (Lisa, 27 Nov 2026). */
+const SHOW = 5;
+function EventList({ items, next = false }: { items: MapEvent[]; next?: boolean }) {
+  const row = (x: MapEvent) => (
+    <EventRow
+      key={x.slug}
+      x={x}
+      where={
+        next
+          ? [x.at, x.metres !== undefined ? mins(x.metres) : ""].filter(Boolean).join(" · ")
+          : undefined
+      }
+    />
+  );
+  return (
+    <>
+      <ul className="mt-2">{items.slice(0, SHOW).map(row)}</ul>
+      {items.length > SHOW && (
+        <details className="map-more">
+          <summary>{items.length - SHOW} more &darr;</summary>
+          <ul>{items.slice(SHOW).map(row)}</ul>
+        </details>
+      )}
+    </>
   );
 }
 
@@ -111,27 +151,13 @@ export function AroundTheBlock({ b, slug }: { b: MapBand; slug: string }) {
             {b.here.length > 0 && (
               <>
                 <h3 className={h}>{b.kind === "club" ? "Events here" : "Also here"}</h3>
-                <ul className="mt-2">
-                  {b.here.map((x) => (
-                    <EventRow key={x.slug} x={x} />
-                  ))}
-                </ul>
+                <EventList items={b.here} />
               </>
             )}
             {b.nextDoor.length > 0 && (
               <>
                 <h3 className={`${h} ${b.here.length ? "mt-6" : ""}`}>Events next door</h3>
-                <ul className="mt-2">
-                  {b.nextDoor.map((x) => (
-                    <EventRow
-                      key={x.slug}
-                      x={x}
-                      where={[x.at, x.metres !== undefined ? mins(x.metres) : ""]
-                        .filter(Boolean)
-                        .join(" · ")}
-                    />
-                  ))}
-                </ul>
+                <EventList items={b.nextDoor} next />
               </>
             )}
             <p className={b.here.length || b.nextDoor.length ? "mt-6" : ""}>

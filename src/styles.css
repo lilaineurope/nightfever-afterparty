@@ -1315,6 +1315,16 @@ a.scr-ours:hover { color: #111; }
 .map-near { columns: 2 240px; column-gap: 28px; }
 .map-near .place-near { break-inside: avoid; }
 .map-event { padding: 8px 0; border-bottom: 1px dashed #bbb; font-size: 13px; }
+/* Click an event, its box opens underneath (Lisa, 27 Nov 2026): one line per event keeps the map box short. */
+.map-event summary { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; cursor: pointer; list-style: none; }
+.map-event summary::-webkit-details-marker { display: none; }
+.map-event summary:hover .font-semibold { color: var(--color-pink); }
+.map-event-plus { flex: none; width: 20px; height: 20px; display: grid; place-items: center; border: 2px solid #111; font: 700 14px/1 var(--font-flyer); transition: transform .15s, background .15s; }
+.map-event details[open] .map-event-plus { transform: rotate(45deg); background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
+.map-more > summary { margin-top: 8px; cursor: pointer; list-style: none; font-size: 12px; font-weight: 700; color: var(--color-pink); }
+.map-more > summary::-webkit-details-marker { display: none; }
+.map-more[open] > summary { display: none; }
+.map-event-box { margin: 8px 0 4px; padding: 10px 12px; background: #fff; border: 2px solid #111; box-shadow: 3px 3px 0 #111; }
 .map-btn { display: inline-block; border: 2px solid #111; background: #111; color: #f6f0ea; padding: 7px 14px; font: 700 13px var(--font-mono-body); transition: background .15s, border-color .15s; }
 .map-btn:hover, .map-btn:focus-visible { background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
 /* On the AFTERPARTY pages every text link is pink (21 Oct rule); the map button keeps its own black fill. */

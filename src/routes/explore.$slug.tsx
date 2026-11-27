@@ -347,7 +347,7 @@ function EntityPage() {
             <Story st={e.story} name={e.name} />
           </div>
         )}
-        <CardSections v={e} skipRefs={!!item || !!place} skipEvents={!!place} />
+        <CardSections v={e} skipRefs={!!item || !!place || !!nightPage} skipEvents={!!place} />
         {nightPage && <NightPageOthers v={nightPage} />}
       </div>
           <SiteFooter />
