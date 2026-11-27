@@ -894,6 +894,16 @@ export const LOCATIONS: Located[] = [
   { name: "Ice Palace (Fire Island)", lat: 40.6604, lng: -73.0888, area: "Cherry Grove, Fire Island", tip: "At the Cherry Grove Beach Hotel" },
   { name: "East 9th Street", lat: 40.729, lng: -73.987, area: "East Village" },
   { name: "Flushing, Queens", lat: 40.7675, lng: -73.8331, area: "Queens" },
+  // S05E09 Screamin' Rachael Cain
+  { name: "The Warehouse (Chicago)", lat: 41.8790, lng: -87.6427, area: "West Loop, Chicago", tip: "206 South Jefferson Street - the birthplace of house" },
+  { name: "Jefferson Street (Chicago)", lat: 41.8805, lng: -87.6427, area: "West Loop, Chicago", tip: "Frankie Knuckles Way runs along it now" },
+  { name: "Four Seasons Hotel New York", lat: 40.7625, lng: -73.9718, area: "Midtown", tip: "57 East 57th Street" },
+  { name: "Ninth Avenue", lat: 40.7537, lng: -73.9969, area: "Hell's Kitchen", tip: "Rachael's first New York street, by the IDRC record pool" },
+  { name: "Cannes", lat: 43.5528, lng: 7.0174, area: "France" },
+  { name: "La Croisette", lat: 43.5490, lng: 7.0290, area: "Cannes, France", tip: "The seafront promenade" },
+  { name: "Indiana", lat: 40.2672, lng: -86.1349, area: "Indiana" },
+  { name: "Denver", lat: 39.7392, lng: -104.9903, area: "Colorado" },
+  { name: "Korea", lat: 35.9078, lng: 127.7669, area: "South Korea" },
   // S06E10 Kenneth Hash aka Lil' Kenny
   { name: "Rockefeller Center", lat: 40.7587, lng: -73.9787, area: "Midtown", tip: "The ice rink under the Christmas tree" },
   { name: "James A. Farley Building", lat: 40.7505, lng: -73.9965, area: "Midtown West", tip: "421 Eighth Avenue, across from Madison Square Garden" },
@@ -908,6 +918,9 @@ export const LOCATIONS: Located[] = [
  * shown on the Clubs page and the map so a visitor who remembers the address can tell us.
  */
 export const HOME_HINTS: Record<string, string> = {
+  "Space Place (Chicago)": "An underground Chicago punk spot round the corner from the Warehouse, raided by the police one night, Rachael says - which street?",
+  "Honey Pot": "The New York club where Rachael first sang 'Give Me My Freedom' - which street?",
+  "Michael's circus party with the giant TV set": "A circus-theme party with a book where every page was another party - which club was it?",
   "J's (New York)": "The bar Kenny went on to after the pizza-outfit night - you checked in your own liquor; there was a pool table and pinball. Which street?",
   "Waltpaper's gallery": "Walt's gallery, where Kenny worked in the late 1990s - which street?",
   "Club Nu": "A Miami Beach club of the 1980s where April and John danced - which street?",

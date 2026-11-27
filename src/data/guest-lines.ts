@@ -47,6 +47,7 @@ export const GUEST_LINES: Record<string, string> = {
   s04e02: "Paper's Mr. Mickey · Break the Internet, Wigstock and the bad movie club",
   s06e09: "Sculptor, metalsmith and production designer · Desi Monster, the band Boob and worlds for Zaldy",
   s05e05: "Poet, novelist, biographer and former model · Mapplethorpe, Warhol and Radiant, his life of Keith Haring",
+  s05e09: "Queen of House, 'Fantasy' singer and keeper of Trax Records · Chicago punk turned Club Kid",
   s06e10: "Second-wave Club Kid, Patricia Field buyer and Project X model · French fries, pizza slices and Björk",
   s05e08: "Club 57 and Pyramid it girl, Bodacious Ta Ta and Pulsallama · remembering her friend John Sex",
   s05e02: "DJ, producer, London club host and memoir writer · G-A-Y at 15, Nag Nag Nag, Circus and You Had to Be There",
