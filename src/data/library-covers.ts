@@ -16,6 +16,8 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  // S05E09 Screamin' Rachael Cain - the only cover found (Open Library, 27 Nov 2026), waiting for Lisa's look
+  "The World, Captured by Stephan Lupino": { kind: "book", file: "book-the-world-stephan-lupino.webp", credit: "Cover via Open Library (Graphics-Photos-Art, 1988)" },
   // S06E10 Kenneth Hash aka Lil' Kenny (Lisa picked B, 27 Nov 2026)
   "The Artist's Way (Julia Cameron)": { kind: "book", file: "book-the-artists-way.webp", credit: "Cover via Open Library (Tarcher/Putnam, 10th anniversary edition, 2002)" },
   // S05E08 April Palmieri - the Barricade Books reissue, with John Waters' introduction

@@ -199,6 +199,14 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
 
 export const FILMS_TO_MAKE: StillToMake[] = [
   {
+    title: "A Michael Alig musical",
+    why: "Rachael says a publisher hired her and Tyler Stone to write a musical about Michael; they wrote many of the songs and talked them through with him after he left prison.",
+    episodeId: "s05e09",
+    time: "00:48:40",
+    made: "not yet",
+    status: "Songs written; no staging found online (checked 27 Nov 2026).",
+  },
+  {
     title: "Behind the Velvet Ropes, the new version",
     why: "Lauren says people still ask her to put the show back on the air, and she still has to make a new version - just like the old one, running around talking to the new crew.",
     episodeId: "s04e06",

@@ -400,6 +400,12 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
   { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
   { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  // S05E09 Screamin' Rachael Cain
+  { event: "Police raid on a punk show at the Space Place", at: "Chicago", tip: "At the Space Place, a punk spot round the corner from the Warehouse; that night she heard Frankie Knuckles was mixing her record" },
+  { event: "Michael Alig on the run", at: "Chicago", tip: "Michael turned up at Rachael's Chicago condo, she says" },
+  { event: "Club owner shot at the World", at: "The World", tip: "As told on the show, the club closed after one of its owners was killed" },
+  { event: "MIDEM", at: "Cannes", tip: "The music market where Larry Sherman asked Rachael back to Trax" },
+  { event: "James's lunch with the DA in Los Angeles", at: "Los Angeles" },
   // S06E10 Kenneth Hash aka Lil' Kenny
   { event: "Club Kids skating at Rockefeller Center", at: "Rockefeller Center", tip: "Under the Christmas tree, an outlaw party for Patricia Field's store" },
   { event: "Tax night at the post office", at: "James A. Farley Building", tip: "The post office open until midnight on tax night" },
@@ -435,6 +441,7 @@ export const EVENT_PLACES: EventPlace[] = [
  */
 export const NO_SINGLE_PLACE = new Set([
   "Kenny gets sober (6 August 1996)", // S06E10 - a personal turning point, not a place
+  "Grand jury in the Peter Gatien case", // S05E09 - a court process, not a night out
   // History, movements and eras
   "AIDS crisis",
   "AIDS awareness",
