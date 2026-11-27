@@ -69,6 +69,8 @@ export type CardView = {
   rooms: RoomsMap | null;
   /** "<first>'s work": what a person made, wrote, ran or starred in (Lisa, 22 Nov 2026, src/lib/works.ts). */
   works: PersonWork[];
+  /** A maker's own tapes, each with its Moving Images page (Lisa, 27 Nov 2026: Nelson Sullivan; src/lib/tapes.server.ts). */
+  tapes: { slug: string; title: string; year?: string | undefined; whole: boolean }[];
   /** Rank among the top 100 great connectors (pink badge), or null. */
   connector: number | null;
   /** Every name -> card answer the page needs for its links. */

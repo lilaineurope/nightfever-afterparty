@@ -25,6 +25,7 @@ import { libraryItemView, storyView } from "@/lib/library-item.server";
 import { placeView } from "@/lib/place-view.server";
 import { mapSectionOf, roomsMapOf } from "@/lib/map-view.server";
 import { worksOf } from "@/lib/works";
+import { tapesOf } from "@/lib/tapes.server";
 import { coverFor } from "@/data/library-covers";
 import { storyPagesFor } from "@/lib/story-links.server";
 
@@ -145,6 +146,7 @@ function cardView(e: Entity): CardView {
   // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
   const works = e.category === "Person" ? worksOf(e.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : [];
   for (const w of works) if (w.slug) L.card(w.slug);
+  const tapes = e.category === "Person" ? tapesOf(e.name) : [];
   const j = jukebox.find((x) => x.slug === e.slug);
   const tree = mentorTreeOf(e.slug);
   if (tree) {
@@ -185,6 +187,7 @@ function cardView(e: Entity): CardView {
     mapHome,
     rooms,
     works,
+    tapes,
     connector: connectorRank(e.slug),
     links: L.data,
   };
