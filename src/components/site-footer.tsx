@@ -6,6 +6,7 @@ import { TipBox } from "@/components/tip-box";
 import { ListenBox } from "@/components/listen-box";
 import { NewsletterBox } from "@/components/newsletter-box";
 import { PageSuggestionBox } from "@/components/page-suggestion-box";
+import { RandomPickBox } from "@/components/random-pick";
 import { TEXT_LINK } from "@/lib/styles";
 
 const LINK =
@@ -17,9 +18,11 @@ const LINK =
 // The other page links live only in the top menu.
 // On top, across the whole width: "Got a suggestion for this page?" (Lisa, 24 Nov 2026 - every page, from now on), which
 // records the exact page it was sent from (src/components/page-suggestion-box.tsx). Every page must render <SiteFooter />.
+// Right above it: "Random night out" (Lisa, 27-28 Nov 2026, "for fun"), four random picks with "Spin again!" (src/components/random-pick.tsx).
 export function SiteFooter() {
   return (
     <footer className="border-t border-border px-6 py-14">
+      <RandomPickBox className="mx-auto mb-14 max-w-6xl" />
       <PageSuggestionBox className="mx-auto mb-14 max-w-6xl" />
       <div className="mx-auto grid max-w-6xl items-start gap-12 md:grid-cols-[1fr_auto]">
         <div className="space-y-4 text-left">
