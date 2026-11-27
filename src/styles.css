@@ -1335,3 +1335,21 @@ a.scr-ours:hover { color: #111; }
 .rooms-badge { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #111; background: #fff; color: #111; font: 700 12px var(--font-mono-body); }
 .rooms-badge-club { background: #111; color: #fff; }
 .rooms-tape { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; font-size: 7px; padding: 3px 0; height: fit-content; }
+
+/* The Map page header (Lisa, 27 Nov 2026, "H1"): the drawn city, every pin on it, the title over uptown. */
+.map-hdr { position: relative; height: 440px; overflow: hidden; border-bottom: 3px solid #111; background: #ece6da; }
+.map-hdr-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.map-hdr-title { position: absolute; right: max(24px, calc(50% - 600px)); top: 40px; text-align: right; }
+.map-hdr-island { fill: #f1ece2; }
+.map-hdr-wave { fill: #b9c3c6; }
+.map-hdr-club { fill: #111; stroke: #111; stroke-width: 1.3; }
+.map-hdr-place { fill: #fff; stroke: #111; stroke-width: 1.3; }
+.map-hdr-event { fill: #f6e06a; stroke: #111; stroke-width: 1.3; }
+.map-hdr-label { font: 700 11px var(--font-mono-body); fill: #111; paint-order: stroke; stroke: #f1ece2; stroke-width: 4px; letter-spacing: 0.06em; }
+.map-hdr-river { font: 600 11px var(--font-mono-body); letter-spacing: 0.5em; fill: #7f8d91; }
+.map-hdr-compass { fill: #f6f0ea; stroke: #111; stroke-width: 2; }
+.map-hdr-n { font: 700 11px var(--font-mono-body); fill: #111; }
+@media (max-width: 700px) {
+  .map-hdr { height: 300px; }
+  .map-hdr-title { right: 14px; top: 16px; font-size: 22px; }
+}
