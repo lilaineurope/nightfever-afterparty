@@ -18,6 +18,10 @@ export type PersonProfile = {
   said: MemoriamQuote[];
   /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
   also?: { heading: string; names: string[] };
+  /** "On film" (Lisa, 27 Nov 2026, Clara: "make a playlist on youtube and put a video box on the page"): videos about them,
+   *  played in the page's video jukebox; `playlist` is our AFTERPARTY YouTube playlist of the same videos, once it exists. */
+  videos?: { id: string; title: string }[];
+  playlist?: string;
   /** Lisa's rule is two quotes per guest; a page can go higher when she says so (Kim: Mickey x3, Lisa 21 Nov 2026). */
   maxPerGuest?: number;
 };
@@ -1589,6 +1593,13 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e05", who: "Ernie Glam", time: "00:29:30", context: "Ernie on why he said yes to being Clara", quote: "Here's my opportunity to do a type of cartoon drag, where I'm still playing a female character, but I'm not really having to wear women's clothes." },
       { episode: "s01e02", who: "Michael Musto", time: "01:02:19", context: "Musto on the Limelight in the 90s", quote: "Disco 2000 was the big club kid party on Wednesdays, with Clara the Carefree Chicken." },
       { episode: "s01e09", who: "Moby", time: "00:08:00", context: "Moby working out when he first met James", quote: "I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
+    ],
+    videos: [
+      { id: "aAYRvJGmsDQ", title: "Peeew! #90: Searching for Clara the Carefree Chicken" },
+      { id: "dfd6iABsJAI", title: "Peeew! #97: One step closer to finding Clara" },
+      { id: "Yrln7HwA2ck", title: "Peeew! #134: Clara the Carefree Chicken sightings" },
+      { id: "Cd4kmrC_PPo", title: "Ernie Glam + Clara the Carefree Chicken in Montréal" },
+      { id: "Ir0Y0QQQnsw", title: "Disco 2000 commercial" },
     ],
     also: { heading: "Clara's flock", names: ["Ernie Glam", "James St. James", "Michael Musto", "Moby", "Amanda Lepore", "Hans Ulrich", "Clara the Chicken suit", "Peeew!", "Fabulousity"] },
   },

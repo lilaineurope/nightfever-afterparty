@@ -7,6 +7,7 @@ import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { PersonProfile } from "@/data/person-profiles";
 import { QuoteName } from "@/components/quote-name";
+import { ProfileVideos } from "@/components/profile-videos";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -131,6 +132,8 @@ export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; na
           )}
         </div>
       </section>
+
+      {m.videos && m.videos.length > 0 && <ProfileVideos videos={m.videos} playlist={m.playlist} first={first!} />}
     </>
   );
 }
