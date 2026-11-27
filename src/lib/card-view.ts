@@ -35,6 +35,8 @@ export type CardView = {
   /** "Also named on these cards" */
   named: { slug: string; name: string; episode?: string | undefined; short?: string | undefined }[];
   inGuestStories: { slug: string; name: string }[];
+  /** Club, In memoriam, person and diary pages whose story names this card (two-way story links, Lisa 27 Nov 2026). */
+  onPages: { slug: string; name: string; kind: string }[];
   /** "In the same rooms" */
   related: { slug: string; name: string }[];
   /** The card's own Jukebox entry (songs, artists, stage bands get a player). */

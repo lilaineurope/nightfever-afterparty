@@ -23,6 +23,11 @@ export const MADE_BY: Record<string, Maker[]> = {
   // ---------- Clubs they opened, ran or made their name in (Lisa 22 Nov 2026: fill in the DJs and club makers) ----------
   "Sound Factory": [m("Junior Vasquez", "Opened it, resident DJ", 1989), m("Christina Visca", "Opened it", 1989)],
   "Paradise Garage": [m("Larry Levan", "Resident DJ", 1977)],
+  // Top Google search pages (Lisa, 27 Nov 2026)
+  "Xenon": [m("Peppo Vanini", "Opened it", 1978), m("Howard Stein", "Opened it", 1978)],
+  "Area": [m("Eric Goode", "Opened it", 1983), m("Shawn Hausman", "Opened it", 1983)],
+  "Standard Hotels": [m("Shawn Hausman", "Designed them")],
+  "Celebrity Club": [m("Larry Tee", "Hosted it"), m("Lahoma van Zandt (John Witherspoon)", "Hosted it")],
   "Taboo": [m("Leigh Bowery", "Ran it", 1985)],
   "The Cars – 'Hello Again' video": [m("John Sex", "In it", 1984)],
 

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { PersonProfile } from "@/data/person-profiles";
@@ -42,7 +43,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
   return (
     <>
       <div className="pt-4 text-center">
-        <p className="mx-auto max-w-2xl text-card-foreground/85">{m.story}</p>
+        <p className="mx-auto max-w-2xl text-card-foreground/85"><EntityText text={m.story} self={name} /></p>
       </div>
 
       {m.said.length > 0 && (
@@ -101,7 +102,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
                     {t} ↗
                   </a>
                 ) : (
-                  <span className="text-card-foreground/80">{t}</span>
+                  <span className="text-card-foreground/80"><EntityText text={t} self={name} /></span>
                 )}
               </li>
             ))}
@@ -118,6 +119,12 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
             <>
               <h2 className={`${h} mt-6`}>{first}'s rooms</h2>
               <div className="mt-3 flex flex-wrap gap-2">{m.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+            </>
+          )}
+          {m.also && m.also.names.length > 0 && (
+            <>
+              <h2 className={`${h} mt-6`}>{m.also.heading}</h2>
+              <div className="mt-3 flex flex-wrap gap-2">{m.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
             </>
           )}
         </div>

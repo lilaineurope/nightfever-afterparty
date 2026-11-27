@@ -292,10 +292,15 @@ export const isThinCard = (e: Entity): boolean =>
   e.events.length === 0 &&
   e.inGuestStories.length === 0;
 
+/** A guest's other name with its own card (Tish Gervais = Brian Belovitch, Lisa 27 Nov 2026, "B2a"): it forwards to the
+ *  guest's episode page like the guest's own card, is left out of the sitemap, and every link to it goes straight there. */
+const ALSO_GUEST: Record<string, NonNullable<Ref["episode"]>> = { "tish-gervais": "s02e10" };
+
 /** One page per guest (Lisa, 1 Nov 2026): a guest whose AFTERPARTY is on the site has ONE page, the episode page.
  *  Their A–Z card address forwards there and every name link goes straight there. Guests without an AFTERPARTY
  *  yet keep their A–Z card until their episode is registered in episodes.ts. */
 export function afterpartyOf(e: Entity | undefined): NonNullable<Ref["episode"]> | undefined {
+  if (e && ALSO_GUEST[e.slug]) return ALSO_GUEST[e.slug];
   if (!e?.guest) return undefined;
   const id = episodeIdOf(e.guest.episode);
   if (!id) return undefined;

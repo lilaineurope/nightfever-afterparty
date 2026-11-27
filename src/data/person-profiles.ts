@@ -16,6 +16,8 @@ export type PersonProfile = {
   liftedUp: string[]; // people they gave a start
   rooms: string[]; // magazines, clubs, nights, places
   said: MemoriamQuote[];
+  /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
+  also?: { heading: string; names: string[] };
   /** Lisa's rule is two quotes per guest; a page can go higher when she says so (Kim: Mickey x3, Lisa 21 Nov 2026). */
   maxPerGuest?: number;
 };
@@ -1261,7 +1263,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       ["Later", "Designs the Standard hotels around the world"],
     ],
     liftedUp: [],
-    rooms: ["Mudd Club", "Area"],
+    rooms: ["Mudd Club", "Area", "Standard Hotels"],
     said: [
       { episode: "s03e06", who: "Eric Goode", time: "00:07:17", quote: "That was Shawn Hausman, who went on to design all the Standard hotels around the world. My dear high school friend, that I later collaborated with on Area." },
       { episode: "s02e11", who: "Richard Boch", time: "00:17:10", quote: "Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really. The basement really was just a coat check." },
@@ -1524,5 +1526,50 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s02e08", who: "James St. James", time: "00:12:52", quote: "So if Page Six doesn't take it, then you send it to Suzy. If Suzy doesn't take it, it goes to Cindy Adams." },
       { episode: "s06e08", who: "William Norwich", time: "00:59:13", quote: "I wrote every day and Liz Smith wrote every day. And even now, Cindy Adams writes every day." },
     ],
+  },
+  // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
+  // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
+  "peppo-vanini": {
+    story:
+      "Co-owner of Xenon. He had run clubs in Europe, Régine's among them, before he and Howard Stein opened Xenon in June 1978 in the old Henry Miller's Theatre on West 43rd Street - xenon is element 54, a wink at Studio 54. Nora Burns's 1980 diary names him as the owner.",
+    timeline: [
+      ["Before 1978", "Runs clubs in Europe, Régine's among them"],
+      ["Jun 1978", "Opens Xenon with Howard Stein in the former Henry Miller's Theatre"],
+      ["1980", "In Nora Burns's diary, read on Night Fever S6E5"],
+      ["1984", "Xenon closes"],
+    ],
+    liftedUp: [],
+    rooms: ["Xenon", "Studio 54", "Régine's"],
+    said: [{ episode: "s06e05", who: "Nora Burns", time: "00:09:12", quote: "Peppo was the owner of Xenon." }],
+    also: { heading: "In the diaries", names: ["Nora Burns's diaries (1980)"] },
+  },
+  "lahoma-van-zandt": {
+    first: "Lahoma",
+    story:
+      "Drag queen from Atlanta, Larry Tee's partner in crime, who came to New York with RuPaul and Larry, lived in Nelson Sullivan's house, co-hosted Celebrity Club in the Tunnel basement with Larry - 'the king and queen of Manhattan', he says - and later hung up the wig for publishing.",
+    timeline: [
+      ["Atlanta", "Larry Tee's partner in crime"],
+      ["1987", "Moves in with Nelson Sullivan at 5 Ninth Avenue, up from Atlanta with RuPaul and Larry Tee"],
+      ["Late 80s", "Co-hosts Celebrity Club in the Tunnel basement with Larry Tee"],
+      ["90s", "Busy at Disco 2000 at the Limelight; out at the Roxy with Larry Tee"],
+      ["Later", "Hangs up the wig for publishing, and saves the box of archive photos"],
+    ],
+    liftedUp: [],
+    rooms: ["Celebrity Club", "Tunnel", "Disco 2000", "Limelight", "Roxy"],
+    said: [{ episode: "s01e02", who: "Michael Musto", time: "00:38:35", quote: "Lahoma and RuPaul all moved to New York and lived with Nelson. And Lady Bunny was part of that." }],
+    also: { heading: "The crowd", names: ["Nelson Sullivan", "Larry Tee", "RuPaul", "Lady Bunny", "Alexis DiBiasio", "Linda Simpson"] },
+  },
+  "clara-the-carefree-chicken": {
+    first: "Clara",
+    story:
+      "Ernie Glam's Club Kid character at Disco 2000, the Wednesday party at the Limelight. As James tells it, Clara hatched from an egg on the party's opening night, one of the names Michael gave his costume-shop characters. Ernie made her his 'cartoon drag' and kept her for three years, sweaty suits and all.",
+    timeline: [
+      ["Disco 2000 opening night", "Clara hatches from an egg at the Limelight"],
+      ["The next three years", "Ernie Glam's 'cartoon drag', the Club Kids' mascot"],
+    ],
+    liftedUp: [],
+    rooms: ["Disco 2000", "Limelight"],
+    said: [],
+    also: { heading: "Who talks about her", names: ["Ernie Glam", "James St. James", "Moby", "Michael Musto"] },
   },
 };

@@ -3,6 +3,8 @@
 import { entityBySlug } from "../src/data/entities";
 import { MEMORIAM } from "../src/data/memoriam";
 import { CLUB_PROFILES } from "../src/data/club-profiles";
+import { PERSON_PROFILES } from "../src/data/person-profiles";
+import { ROLE_LINES } from "../src/data/role-lines";
 import { PERSON_PORTRAITS } from "../src/data/person-portraits";
 import { bookClub } from "../src/data/collections";
 import { coverFor } from "../src/data/library-covers";
@@ -12,6 +14,8 @@ import { libraryShareCover } from "../src/lib/library-share";
 const rows = [
   ...Object.entries(MEMORIAM).map(([slug, m]) => ({ slug, kind: "memoriam", years: `${m.born}–${m.died}`, pic: PERSON_PORTRAITS[slug] })),
   ...Object.entries(CLUB_PROFILES).map(([slug, c]) => ({ slug, kind: "club", years: `${c.opened}–${c.closed}`, pic: c.portrait })),
+  // Living-person pages with a polaroid (Lisa, 27 Nov 2026, "A5"): the kicker is who they are (src/data/role-lines.ts).
+  ...Object.keys(PERSON_PROFILES).map((slug) => ({ slug, kind: "person", years: (ROLE_LINES[slug] ?? "Night Fever AFTERPARTY").toUpperCase(), pic: PERSON_PORTRAITS[slug] })),
 ]
   .filter((r) => r.pic && entityBySlug[r.slug])
   .map((r) => ({ slug: r.slug, name: entityBySlug[r.slug].name, kind: r.kind, years: r.years, photo: r.pic!.photo, polaroid: r.pic!.polaroid, focus: r.pic!.focus }));
