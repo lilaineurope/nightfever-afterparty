@@ -1531,6 +1531,185 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s06e08", who: "William Norwich", time: "00:59:13", quote: "I wrote every day and Liz Smith wrote every day. And even now, Cindy Adams writes every day." },
     ],
   },
+  // Batch 8 (daily run 27 Nov 2026): Nick Cave to Ian Schrager, strictly by mentions.
+  "nick-cave": {
+    story:
+      "The artist of the Soundsuits, not the singer. In Kansas City he was Michael Schmidt's teenage friend 'Nikki', the first person who showed Michael that art is a way of life.",
+    timeline: [
+      ["1959", "Born in Fulton, Missouri"],
+      ["Mid 70s", "Teenage friends with Michael Schmidt in Kansas City, sewing clothes"],
+      ["1982", "Graduates from the Kansas City Art Institute"],
+      ["1992", "Makes his first Soundsuit, after the Rodney King beating"],
+      ["2023", "Forothermore, his retrospective, at the Guggenheim in New York"],
+    ],
+    liftedUp: [],
+    rooms: ["Kansas City Art Institute"],
+    said: [
+      { episode: "s02e06", who: "James St. James", time: "00:11:48", quote: "This isn't the singer Nick Cave, this is the artist Nick Cave. Google Nick Cave artist Soundsuits, because he creates these looks that I always say are Bigfoot meets Leigh Bowery." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:13:11", quote: "I never really understood prior to being with Nikki that art was a way of life. It wasn't just something you made that hung on a wall, or was a sculpture, or was worn." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:13:35", quote: "He was very much an influencer on my way of thinking about how anything could be art, anything could be fashion, as long as you brought a distinctive eye." },
+    ],
+  },
+  "kate-moss": {
+    story:
+      "The new face from Croydon. Zaldy did an early i-D shoot with her when she was 16, and Jenny Talia woke up to find herself on a full page of Vogue, next to Kate in a Calvin Klein campaign.",
+    timeline: [
+      ["1974", "Born 16 January in Croydon, south London"],
+      ["1988", "Spotted at JFK airport by Sarah Doukas of Storm"],
+      ["1990", "On the cover of The Face, shot by Corinne Day"],
+      ["Early 90s", "An early i-D shoot with Zaldy"],
+      ["1992", "The face of Calvin Klein"],
+    ],
+    liftedUp: [],
+    rooms: ["i-D", "The Face", "Vogue", "Calvin Klein"],
+    said: [
+      { episode: "s04e04", who: "Zaldy", time: "00:46:17", quote: "An early i-D shoot with Kate Moss, you know, like weird, weird thing. The new face, Kate Moss, doing doubles." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:21:18", quote: "This was the one before, where it was me. It was full page, single. Me, Kate Moss, and two guys. I don't remember who the guys were." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:21:42", quote: "Someone said, have you seen Vogue? And I said, no. And they said, you're on a full page in Vogue. Like next to Kate, with Kate Moss on the second page." },
+    ],
+  },
+  "tracey-africa": {
+    story:
+      "The Black trans model on the Clairol box in the 70s, from the House of Africa. When Connie Fleming was starting out, the girls before her were only talked about in hushed tones, and Tracey was one of them.",
+    timeline: [
+      ["1952", "Born in Newark, New Jersey"],
+      ["1975", "Her face is on the Clairol Born Beautiful hair colour box"],
+      ["Late 70s", "Moves to Paris, gets an agent and models there"],
+      ["2015", "Tells her own story to New York magazine"],
+      ["2016", "Clairol brings her back for a new campaign"],
+    ],
+    liftedUp: [],
+    rooms: ["House of Africa", "Clairol", "Paris"],
+    said: [
+      { episode: "s02e05", who: "James St. James", time: "00:26:40", quote: "Back in the 70s, Tracey Africa, a trans woman, was on a bottle of Clairol hair dye that women all over the country bought, but nobody knew that this was a trans woman except for in the community." },
+      { episode: "s02e05", who: "Connie Fleming", time: "00:26:25", quote: "Very secretive and in very hushed tones. So I think I saw Tracey once, and I think DeAndre introduced me to her." },
+      { episode: "s02e05", who: "Connie Fleming", time: "00:27:22", quote: "She went to Paris, got an agent there, started to model, and she was a fit model for Givenchy. And she came back, built her book there." },
+    ],
+  },
+  "elizabeth-saltzman": {
+    story:
+      "Fashion editor and stylist, part of the Details crew in the 80s. She organised the night the Downtown crowd went on Oprah, and gave the answer the audience still remembers.",
+    timeline: [
+      ["80s", "Out every night with the Details crew"],
+      ["Late 80s", "Organises the Downtown night people's visit to the Oprah show"],
+      ["90s", "Fashion director at Vanity Fair"],
+      ["2000s", "Stylist to Gwyneth Paltrow and others"],
+    ],
+    liftedUp: [],
+    rooms: ["Details", "Vanity Fair", "The Oprah Winfrey Show"],
+    said: [
+      { episode: "s06e07", who: "Sally Randall", time: "00:21:38", quote: "Elizabeth Saltzman. Elizabeth Saltzman was the one who organized everything." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:23:30", quote: "I don't remember what the first part of it was, but the last part of it was that we'd read magazine articles, look for pictures of ourselves." },
+      { episode: "s04e07", who: "James St. James", time: "00:53:56", quote: "One of the audience members asked, what do you do during the day? And Elizabeth Saltzman said, well, I wake up around noon and then look at my press clippings to see where I was last night. And that is sort of what it was at the time." },
+    ],
+  },
+  "donna-karan": {
+    story:
+      "The New York designer of Seven Easy Pieces. Zaldy and Mathu walked as the House of Donna Karan at the first Love Ball, and she said yes to Lauren Ezersky's very first interview for Paper.",
+    timeline: [
+      ["1948", "Born in Forest Hills, Queens"],
+      ["1974", "Head designer at Anne Klein"],
+      ["1985", "Her own label, with Seven Easy Pieces"],
+      ["1989", "DKNY; Zaldy and Mathu's House of Donna Karan at the first Love Ball"],
+      ["2007", "Starts Urban Zen"],
+    ],
+    liftedUp: ["Lauren Ezersky"],
+    rooms: ["Anne Klein", "DKNY", "Love Ball", "Paper"],
+    said: [
+      { episode: "s04e04", who: "James St. James", time: "00:31:42", quote: "That first Love Ball, where you did that outfit. It was the House of Donna Karan. It was those nude illusion bodysuits with the blobs." },
+      { episode: "s04e04", who: "Zaldy", time: "00:32:31", quote: "The concept was: let's transform from human to alien. We did it like it was a regular Donna Karan fashion show, and then the music changed, and all of this came off." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:23:46", quote: "She goes, go do Donna Karan. If you can do Donna Karan and I like it, I'll print it. I said, okay. I called up Donna Karan. Somehow they said yes, come on. It was my first interview." },
+    ],
+  },
+  "philip-sallon": {
+    story:
+      "London club host from the Blitz days, friend of Boy George and Marilyn, and the man behind the Mud Club. Nick Egan loves him; James and Jodie Harsh have both had his famous turned back.",
+    timeline: [
+      ["Late 70s", "Part of the Blitz crowd with Boy George and Marilyn"],
+      ["80s", "Runs the Mud Club in London"],
+      ["80s", "Keeps calling Nick Egan until he gives in and DJs"],
+    ],
+    liftedUp: ["Nick Egan"],
+    rooms: ["Mud Club", "Blitz"],
+    said: [
+      { episode: "s05e04", who: "Nick Egan", time: "00:26:15", quote: "They used to call me the King of the Queens, because all my friends were Philip Sallon, Marilyn, Boy George, Denzil." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:28:03", quote: "Philip, I love Philip. He used to drive me crazy because he wanted me to DJ, do all these things in there, and he would call me endlessly, over and over and over again. And in the end, I'd give in." },
+      { episode: "s05e02", who: "James St. James", time: "00:14:34", quote: "I went up to Philip Sallon and I jumped up and down, hi, how are you, how are you, and he turned his back on me and wouldn't speak to me." },
+      { episode: "s05e02", who: "Jodie Harsh", time: "00:14:47", quote: "Philip Sallon still does that all the time. I've seen him so many times over the past year, but he's like, hmm." },
+    ],
+  },
+  "anna-wintour": {
+    story:
+      "Vogue's editor since 1988. William Norwich had the office across from hers and swears she has the driest sense of humour in the world, and Cat Marnell's first time in print was a letter to her Vogue.",
+    timeline: [
+      ["1949", "Born 3 November in London"],
+      ["1985", "Editor of British Vogue"],
+      ["1988", "Editor-in-chief of American Vogue"],
+      ["1995", "Starts chairing the Met Gala"],
+      ["2013", "Artistic director of Condé Nast"],
+    ],
+    liftedUp: [],
+    rooms: ["Vogue", "Condé Nast", "Met Gala"],
+    said: [
+      { episode: "s06e08", who: "William Norwich", time: "00:52:38", quote: "For me, Anna Wintour has the best sense of humor in the world, dry as paper. And a little British about it." },
+      { episode: "s06e08", who: "William Norwich", time: "00:53:02", quote: "I said, it's not ringing, Anna. And she said, I know you worry a lot, and I don't want you to worry. I will always be able to get you a job in the market department at Brides." },
+      { episode: "s03e09", who: "Cat Marnell", time: "00:14:38", quote: "Anna came in to save Courtney. I wrote her a letter being like, dear Vogue, thank you so much for publishing this about my favorite rock star and showing her in a new light." },
+      { episode: "s05e04", who: "James St. James", time: "00:43:18", quote: "People still talk about that collection to this day. There was just a show about Anna Wintour, and all the supermodels were still going on and on about that one show." },
+    ],
+  },
+  "tony-defries": {
+    story:
+      "David Bowie's manager and the boss of MainMan, the company with as many famous characters as any. Cherry Vanilla carried out the plan that made Bowie unreachable, and Man Parrish signed with him years later.",
+    timeline: [
+      ["1970", "Becomes David Bowie's manager"],
+      ["1972", "MainMan; Cherry Vanilla does the publicity for Ziggy Stardust in America"],
+      ["1975", "Bowie leaves MainMan"],
+      ["80s", "Signs Man Parrish"],
+    ],
+    liftedUp: ["Cherry Vanilla", "Jayne County"],
+    rooms: ["MainMan"],
+    said: [
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:52:36", quote: "Tony DeFries and David were very clever, and they created a scene that I had to carry out, where David wasn't available to anybody. He had two bodyguards, but there weren't all that many people wanting him yet." },
+      { episode: "s03e05", who: "James St. James", time: "00:57:41", quote: "Tony Zanetta, Tony DeFries and Tony Ingrassia are the three Tonys I hear about all the time." },
+      { episode: "s03e04", who: "Man Parrish", time: "00:48:02", quote: "I got involved with David Bowie's manager. Tony DeFries, his infamous manager, wound up wanting to produce a friend of mine. I got signed up with Tony DeFries. I put out a rock and roll kind of thing." },
+    ],
+  },
+  "philip-glass": {
+    story:
+      "The composer played the Mudd Club and kept coming back as a regular, with friends like his sax player Dickie Landry. James had him on his fantasy dinner-party list.",
+    timeline: [
+      ["1937", "Born 31 January in Baltimore"],
+      ["1968", "Starts the Philip Glass Ensemble"],
+      ["1976", "Einstein on the Beach, with Robert Wilson"],
+      ["1980", "Plays the Mudd Club and comes back as a regular"],
+      ["1982", "Koyaanisqatsi"],
+    ],
+    liftedUp: [],
+    rooms: ["Mudd Club"],
+    said: [
+      { episode: "s02e11", who: "Richard Boch", time: "00:30:23", quote: "Glass was someone who would also come there. And a lot of his friends, like Dickie Landry, who was his sax player, was at the Mudd Club all the time. Dickie famously played sax in Einstein on the Beach." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:30:40", quote: "Rebecca Christiansen, who was married to Donnie Christiansen then, they would often come there. And Rebecca is still one of Phil's closest associates today." },
+      { episode: "s06e01", who: "James St. James", time: "00:20:09", quote: "I had fantasy dinner parties I want to have someday. And it would be like Divine, Martha Graham, Andy Warhol, Philip Glass and Howie Montaug." },
+    ],
+  },
+  "ian-schrager": {
+    story:
+      "Steve Rubell's partner at Studio 54 and the Palladium, who went on to invent the boutique hotel. He brought Peter Gatien to the Times Square theatre that became Club USA.",
+    timeline: [
+      ["1946", "Born 19 July in Brooklyn"],
+      ["1977", "Opens Studio 54 with Steve Rubell"],
+      ["1985", "The Palladium, with Steve Rubell"],
+      ["1988", "The Royalton, then the Paramount: the boutique hotel"],
+      ["1992", "Brings Peter Gatien to the theatre that becomes Club USA"],
+    ],
+    liftedUp: ["Peter Gatien"],
+    rooms: ["Studio 54", "Palladium", "Morgans", "Royalton", "Paramount", "Club USA"],
+    said: [
+      { episode: "s04e05", who: "Dustin Pittman", time: "00:07:48", quote: "I was lucky enough to have all access to Studio. I knew Ian and Steve very well." },
+      { episode: "s06e07", who: "James St. James", time: "00:08:29", quote: "When Steve Rubell and Ian Schrager got out of prison, I think they saw what was happening in culture in general, but also at Area. And they said, we're going to do the biggest club you've ever seen, and it is going to be art." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:36:56", quote: "Ian Schrager was in partners with the guys that owned that property. They also owned the Paramount at the time, and the Royalton. So Ian introduced me to the guy who owned the building." },
+    ],
+  },
   // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
   // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
   "peppo-vanini": {
