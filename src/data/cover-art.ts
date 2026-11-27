@@ -79,6 +79,7 @@ export const CLUB_PIECES: Record<string, ClubPieceFacts> = {
   "club-57:ticket": { forWhat: "Club 57 at 57 St. Mark's Place: a smiling woman holding a Heinz-style \"Club 57\" label", date: "Early 1980s", madeBy: [], onIt: [] },
   "pyramid-club:ticket": { forWhat: "\"Born to Be a Wild Night\", the Pyramid's benefit for Wendy Wild", date: "1995", madeBy: [], onIt: ["Wendy Wild", "Brian Butterick", "John Sex", "Lady Bunny", "Deee-Lite", "Joey Arias"] },
   "paradise-garage:ticket": { forWhat: "Vito and Roman's Charivari Christmas Party at the Paradise Garage, 84 King Street - a car stub and claim check", date: "12 Dec 1984", madeBy: [{ role: "Threw the party", name: "Charivari" }], onIt: [] },
+  "les-bains-douches:ticket": { forWhat: "Joy Division's only concert in France, at the Bains-Douches, 7 rue du Bourg-l'Abbé, Tuesday 18 December 1979 at 20h30 - entry 40 francs, ticket no. 00194. The night was recorded and came out as Les Bains Douches 18 December 1979", date: "18 Dec 1979", madeBy: [], onIt: ["Joy Division"] },
   "studio-54:ticket": { forWhat: "Free entry to Studio 54: the silver and gold logo on a black card", madeBy: [], onIt: [] },
   "mudd-club:jukebox": { forWhat: "\"Here's Mudd in Your Ears\": a night of readings and music at the Mudd Club", date: "1981", madeBy: [], onIt: ["Nancy Reilly", "Cookie Mueller", "Chris Kraus", "Avant Squares"] },
   "palladium:jukebox": { forWhat: "The Palladium, 23 November 1985 - his brushstroke poster", date: "23 Nov 1985", madeBy: [{ role: "Made the poster", name: "Roy Lichtenstein" }], onIt: [] },

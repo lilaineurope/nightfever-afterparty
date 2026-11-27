@@ -1713,6 +1713,13 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
   // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
   "peppo-vanini": {
+    // On film (Lisa, 27 Nov 2026: "all"): his YouTube playlist PLd67fLFlUa14 is private for now - add playlist once it's public.
+    videos: [
+      { id: "RNQjstPreJ4", title: "Xenon's opening night, June 1978 - the club Peppo opened with Howard Stein" },
+      { id: "nYEaDPuNOIo", title: "Xenon in 1979" },
+      { id: "6dYWe1c3OyU", title: "Gloria Gaynor - I Will Survive (the 1979 video, filmed on Xenon's dance floor)" },
+      { id: "fcZMEuytALY", title: "Régine's discotheque, New York" },
+    ],
     story:
       "Co-owner of Xenon, the one disco that could keep up with Studio 54. Peppo had run some of Europe's best clubs, Régine's among them, and met Howard Stein at Studio 54. In June 1978 they opened Xenon in the old Henry Miller's Theatre on West 43rd Street - xenon is element 54, a wink at Studio. Silver walls, rays of light from a giant X over the dance floor, the first go-go boxes for anyone who wanted to dance on one, and the fashion crowd where Studio had Hollywood. On Night Fever, Christina Visca remembers FIT students let in free on Thursdays, Nikki Haskell her Christmas party there, and Nora Burns reads her 1980 diary - night after night at Xenon, and a P.S. that ends at Peppo's window.",
     timeline: [
@@ -1784,5 +1791,74 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { id: "tLfNUMsmv-o", title: "Night Fever S1E5 - Ernie Glam (Clara comes up at 28:00)" },
     ],
     also: { heading: "Clara's flock", names: ["Ernie Glam", "James St. James", "Michael Musto", "Moby", "Amanda Lepore", "Hans Ulrich", "Clara the Chicken suit", "Peeew!", "Fabulousity"] },
+  },
+  // The next five top-searched pages (Search Console 31 Oct - 27 Nov 2026; Lisa, 27 Nov 2026: "yes"). Quotes follow from
+  // the transcripts on Lisa's Mac.
+  "house-of-xtravaganza": {
+    first: "the House",
+    story:
+      "The ballroom house Angie Xtravaganza founded in 1982 with Hector Xtravaganza, and mothered until she died. Mostly Latino in a mostly African-American ball scene - which meant, Luis says, they had to work harder and be fiercer. Everybody wanted to be an Xtravaganza. The house opened the first Love Ball with Willi Ninja, made the Sound Factory its home, sent Jose and Luis to dance for Madonna, and the world met it in Paris Is Burning.",
+    timeline: [
+      ["1982", "Angie Xtravaganza founds the house with Hector Xtravaganza and becomes its mother"],
+      ["Late 80s", "At home at the Sound Factory: after the club closes, the Xtravaganzas go to the park with Junior Vasquez's boom box"],
+      ["1989", "Opens the first Love Ball with Willi Ninja"],
+      ["1990", "Paris Is Burning comes out; Jose and Luis Xtravaganza dance in Madonna's Vogue and on Blond Ambition"],
+      ["1993", "Mother Angie dies, aged 28; Hector keeps the house going"],
+    ],
+    liftedUp: ["Luis Xtravaganza Camacho", "Jose Xtravaganza", "Venus Xtravaganza", "David Ian Xtravaganza"],
+    rooms: ["Sound Factory", "Love Ball", "Red Zone", "Voguing", "Paris Is Burning"],
+    also: { heading: "The family", names: ["Angie Xtravaganza", "Hector Xtravaganza", "Willi Ninja", "Junior Vasquez", "Madonna", "Chi Chi Valenti & Johnny Dynell", "Nations"] },
+    said: [
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:09:09", context: "Luis on joining the House of Xtravaganza", quote: "They were mostly Latino house in a world where there was a lot of African-American houses, which is great. We stood out, and for that fact, we had to push harder, work harder, be fiercer to get noticed." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:13:14", context: "Michelle on the piers, before the House of Magnifique took her in", quote: "And I didn't know what it was, but I knew that I wanted to be a part of the house. Everybody wanted to be an Xtravaganza. Xtravaganza paid me no mind, but the Magnifiques saw me and I was like, yeah, I want to do this." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:34:08", context: "Chi Chi on writing Nations for Details, about the tribes of the night", quote: "I was writing about these tribes in the night that I called nations that hung together like families, like style tribes. And so one of the four tribes that I picked was the House of Xtravaganza because they, of all the houses that were around me at the time, they really had the strongest family feel." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", context: "Johnny on how he joined the house", quote: "I would meet the kids like at the Garage like years ago, the ball kids, and also on the pier, like they were all on the pier, and I became an Xtravaganza." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:43:08", context: "Susanne on opening the first Love Ball, 1989", quote: "It's important to have the house ball community be part of it. And I mean, I never forget, I opened with Willi Ninja and the Xtravaganzas were opening a ball and people were crazy. They'd never seen anything like it. Because a lot of people didn't know about the house ball community." },
+      { episode: "s06e06", who: "James St. James", time: "00:32:41", context: "James to Lincoln Palsgrove IV about Red Zone", quote: "It was sort of right before Vogue and Paris Is Burning and everything. When those kids were just red hot and we sort of gave the club over to them, the Xtravaganzas, the Magnifiques." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:27:35", context: "Christina on the Sound Factory family after closing time", quote: "We would all get together outside the club when the club closed. The 'Ganzas, Junior, a group of us, we would all hang out afterward. We would go up to the park, Junior would bring his boom box and we'd listen. So the 'Ganzas themselves were a family, but then we joined on to others at Sound Factory and it was just really a beautiful time." },
+    ],
+  },
+  "laurie-pike": {
+    story:
+      "Downtown's hostess with a microphone: she hosted Manhattan Cable, the cable show about New York nights, and at the first Love Ball in 1989 she was the MC for the cameras, as Randy and Fenton remember it.",
+    timeline: [
+      ["Late 80s", "Hosts Manhattan Cable"],
+      ["1989", "MC for the cameras at the first Love Ball"],
+    ],
+    liftedUp: [],
+    rooms: ["Manhattan Cable", "Love Ball"],
+    also: { heading: "On the show with her", names: ["Fenton Bailey", "Randy Barbato", "Willi Ninja", "House of Xtravaganza"] },
+    said: [
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:45:33", context: "Susanne remembers the MC of the first Love Ball at Roseland, which Fenton and Randy filmed for Channel 4", quote: "What was with that girl? She was great. The girl was emceeing for... She was great, Laurie Pike." },
+    ],
+  },
+  "lynn-wagenknecht": {
+    story:
+      "Keith McNally's wife and partner in the restaurants that fed downtown: the Odeon, then Cafe Luxembourg, and with Nell Campbell the club Nell's. After the divorce, Nell says, Lynn kept those three.",
+    timeline: [
+      ["1980", "Opens the Odeon in Tribeca with Keith McNally"],
+      ["1983", "Cafe Luxembourg on the Upper West Side"],
+      ["Fall 1986", "Opens Nell's on West 14th Street with Nell Campbell and Keith McNally"],
+      ["Later", "Keeps the Odeon, Cafe Luxembourg and Nell's after the divorce"],
+    ],
+    liftedUp: [],
+    rooms: ["Odeon", "Cafe Luxembourg", "Nell's"],
+    also: { heading: "At her tables", names: ["Keith McNally", "Nell Campbell"] },
+    said: [],
+  },
+  "serge-becker": {
+    story:
+      "Eric Goode's collaborator from the Area years. Together they built MK in an old bank on Fifth Avenue - the supper club Andy Warhol wanted to be a partner in - and Peter Gatien's Club USA in Times Square, with its giant slide.",
+    timeline: [
+      ["1983", "Works with Eric Goode at Area"],
+      ["Mar 1988", "Opens MK with Eric Goode at 204 Fifth Avenue"],
+      ["1992", "Builds Club USA for Peter Gatien with Eric Goode"],
+    ],
+    liftedUp: [],
+    rooms: ["Area", "MK", "Club USA", "Mudd Club"],
+    also: { heading: "Who he built them with", names: ["Eric Goode", "Shawn Hausman", "Peter Gatien", "Richard Boch"] },
+    said: [
+      { episode: "s02e11", who: "Richard Boch", time: "00:17:10", context: "James first credits Serge with the Mudd Club basement; Richard, who had just been talking to Serge, sets it straight", quote: "Serge actually, I was just talking to him the other day and he was saying that, yeah, Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really." },
+    ],
   },
 };

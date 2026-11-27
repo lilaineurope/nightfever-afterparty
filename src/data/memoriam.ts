@@ -26,6 +26,9 @@ export type Memoriam = {
   said: MemoriamQuote[];
   /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
   also?: { heading: string; names: string[] };
+  /** "On film" (Lisa, 27 Nov 2026): videos about them in the jukebox cabinet, like person pages; `playlist` once public. */
+  videos?: { id: string; title: string }[];
+  playlist?: string;
   memorial?: { label: string; href: string };
   // "Read more" on the name card instead of the Google search, when there is no Wikipedia article (Lisa, 4 Nov 2026).
   readMore?: { label: string; href: string };
@@ -159,19 +162,21 @@ export const MEMORIAM: Record<string, Memoriam> = {
       ["1972", "Moves from West Berlin to New York and runs a pastry shop"],
       ["1978", "Becomes Klaus Nomi and stops the show at New Wave Vaudeville, Irving Plaza"],
       ["1979", "Sings with Joey Arias behind David Bowie on Saturday Night Live"],
+      ["Feb 1980", "Gives a forty-minute show on the stage of Xenon, the Times Square disco"],
       ["1981", "First album, Klaus Nomi"],
       ["1982", "Second album, Simple Man"],
       ["1983", "Dies of AIDS-related illness, aged 39, one of the first well-known people lost to it"],
     ],
-    liftedUp: ["Joey Arias"],
-    rooms: ["New Wave Vaudeville", "Irving Plaza", "Mudd Club", "Fiorucci"],
+    liftedUp: ["Joey Arias", "John Sex"],
+    rooms: ["New Wave Vaudeville", "Irving Plaza", "Mudd Club", "Fiorucci", "Xenon"],
     said: [
-      { episode: "s01e10", who: "Joey Arias", time: "00:16:37", quote: "That first week, I met Klaus, who's a baker and an opera singer." },
-      { episode: "s04e10", who: "Ann Magnuson", time: "00:21:29", quote: "We went right up to this guy and said, who are you? Because you're the most interesting person here. And it was Klaus Nomi, Klaus Sperber." },
-      { episode: "s04e10", who: "Ann Magnuson", time: "00:22:00", quote: "He jumped up on this snow mound and started singing opera, lit by the street light." },
-      { episode: "s03e04", who: "Man Parrish", time: "00:37:09", quote: "Klaus was a sweetheart." },
-      { episode: "s01e10", who: "Joey Arias", time: "01:00:08", quote: "I promised Klaus I would watch after the legacy. I have everything of Klaus." },
-      { episode: "s03e04", who: "Man Parrish", time: "00:32:50", quote: "The curtain opens and there's Klaus. He couldn't even afford a smoke machine. He got a smoke bomb from the joke shop." },
+      { episode: "s01e10", who: "Joey Arias", context: "Joey on his first week in New York: coffee and cake, Callas and Elvis with his soul brother", time: "00:16:37", quote: "That first week, I met Klaus, who's a baker and an opera singer." },
+      { episode: "s04e10", who: "Ann Magnuson", context: "Ann and Peter walk up to a stranger across the bar at Max's", time: "00:21:29", quote: "We went right up to this guy and said, who are you? Because you're the most interesting person here. And it was Klaus Nomi, Klaus Sperber." },
+      { episode: "s04e10", who: "Ann Magnuson", context: "Walking back to the East Village that night", time: "00:22:00", quote: "He jumped up on this snow mound and started singing opera, lit by the street light." },
+      { episode: "s03e04", who: "Man Parrish", context: "Man looking back on Klaus, who sang on his album", time: "00:37:09", quote: "Klaus was a sweetheart." },
+      { episode: "s01e10", who: "Joey Arias", context: "Joey on looking after everything Klaus left", time: "01:00:08", quote: "I promised Klaus I would watch after the legacy. I have everything of Klaus." },
+      { episode: "s03e04", who: "Man Parrish", context: "Man first sees Klaus sing the Samson and Delilah aria at Irving Plaza", time: "00:32:50", quote: "The curtain opens and there's Klaus. He couldn't even afford a smoke machine. He got a smoke bomb from the joke shop." },
+      { episode: "s05e08", who: "James St. James", time: "00:31:22", context: "James to April Palmieri about where John Sex got his name", quote: "Joey Arias and Klaus Nomi were the ones who gave him the name John Sex." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q57774",
   },
@@ -567,6 +572,9 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s01e03", who: "James St. James", time: "00:53:45", quote: "Haoui Montaug was a doorman at Studio 54, Palladium, Tunnel, Paradise Garage, Danceteria. He also was a writer for Paper and Details. And he really had like a chosen family around him." },
       { episode: "s02e06", who: "Michael Schmidt", time: "00:16:59", quote: "Haoui Montaug introduced me to Vicki Sarge and all these people, and they hired me." },
       { episode: "s06e01", who: "James St. James", time: "00:20:13", quote: "It would be Divine, Martha Graham, Andy Warhol, Philip Glass and Haoui Montaug. How did I even know who Haoui Montaug was?" },
+      // Lisa, 27 Nov 2026 ("all" - fuller quotes for the top-searched pages), from the episode transcripts on her Mac.
+      { episode: "s06e07", who: "Sally Randall", time: "00:12:52", context: "James asks Sally about working the Palladium door with Haoui", quote: "I adored it. As for working with him, he ended up becoming one of my closest friends. He was very inspirational too, and could be a real Jewish mother. He had his Jewish mother moments, especially when Jorge and I would come up with some ridiculous idea, like we come up with the celebrity cookbook, and how he just laughed and he was like, seriously, do you know how to do it?" },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:15:20", context: "James has just named Haoui his number one door person; here he asks Lincoln if Haoui eased his way into clubs like Palladium", quote: "For sure, for sure. I think once Haoui recognized that I was friends with Jennifer, that made it a shoo-in." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q14946791",
   },
@@ -730,6 +738,9 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s02e01", who: "Michelle Visage", time: "00:16:24", quote: "She could look shady. She could read you, she could cut you down. But she was always very lovely to me and very loving." },
       { episode: "s02e01", who: "Michelle Visage", time: "00:17:30", quote: "Angie was just wonderful. Angie, Danny, Jose, Luis, I knew all of them, and none of them were ever shady or mean." },
       { episode: "s01e08", who: "James St. James", time: "00:09:39", quote: "Mother Angie, oh God, what a character. I knew her a little bit when we would go to Sound Factory." },
+      // Lisa, 27 Nov 2026 ("all" - fuller quotes for the top-searched pages), from the episode transcripts on her Mac.
+      { episode: "s03e01", who: "Patricia Field", time: "00:28:00", context: "Pat was judging a ball when Mother Angie walked with a ladder in her stocking - and marked her down", quote: "There were a few different episodes at that ball. One was Angie Xtravaganza with the hose with the big run in it, the black hose with the big run in it. Walked down the runway with a big run on her black stocking, and I was like... Yeah, I copped her." },
+      { episode: "s06e02", who: "James St. James", time: "00:27:03", context: "James to Christina Visca about the Sound Factory regulars of the Paris Is Burning years", quote: "So many of the people who went to Sound Factory have gone on to become just legendary legends in gay culture and everything. This is around the time of Paris Is Burning in the 80s. You had like Mother Angie Xtravaganza who I would see there every week and Willie Ninja and Venus Xtravaganza." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q4763232",
   },
@@ -742,9 +753,10 @@ export const MEMORIAM: Record<string, Memoriam> = {
     timeline: [
       ["1961", "Born the son of a preacher in Massachusetts"],
       ["1979", "Moves to New York to study film at NYU"],
-      ["1980s", "Fronts Dean and the Weenies at the Pyramid, Danceteria, Area and the Cat Club"],
+      ["1980s", "Fronts Dean and the Weenies at the Pyramid, Danceteria, Area and the Cat Club; their first record, 'Chicken', comes out in 1987"],
       ["1980s", "Plays Herod in Sally Randall's Jesus Christ Superstar"],
-      ["Late 1980s", "Runs the Rock and Roll Fag Bar on Tuesdays at the World"],
+      ["1987", "Starts Rock 'n' Roll Fag Bar, Tuesdays at the World"],
+      ["1988", "Sings 'F*ck You' in the film Mondo New York"],
       ["1990s", "Fronts the Velvet Mafia and starts HomoCorps, a night of gay and trans rock bands at CBGB"],
       ["2007", "Dies in Washington, D.C., aged 46"],
       ["2025", "The documentary The Big Johnson, by Lola Rocknrolla"],
@@ -752,12 +764,24 @@ export const MEMORIAM: Record<string, Memoriam> = {
     liftedUp: [],
     rooms: ["Pyramid Club", "Danceteria", "Area", "Cat Club", "The World", "CBGB", "Pizza a Go Go"],
     said: [
-      { episode: "s01e02", who: "Michael Musto", time: "00:12:51", quote: "I asked him to sing a song about me, because he did a song about Teri Toye and Dianne Brill. He goes, oh, I can't possibly do that. He gets up and does a song about you, James." },
-      { episode: "s01e02", who: "James St. James", time: "00:13:47", quote: "Dean was his own sort of special genius." },
-      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:55:57", quote: "I ran into Dean Johnson, Joey Arias and several other people from the whole drag performance scene, and they were all Stevie fans. And Dean had already started performing as her." },
-      { episode: "s06e07", who: "Sally Randall", time: "00:20:11", quote: "My favorite being when Dean Johnson and I were dancing on this balcony held up by two rather thin iron rods. It was definitely a death trap." },
-      { episode: "s06e07", who: "Sally Randall", time: "00:27:34", quote: "Dean Johnson was Herod, with his headpiece that was made for him. He was about seven feet tall." },
-      { episode: "s06e07", who: "James St. James", time: "00:21:11", quote: "Dean Johnson, what a character, what an amazing person." },
+      { episode: "s01e02", who: "Michael Musto", context: "Musto's birthday, when Dean sang songs about the people in the room", time: "00:12:51", quote: "I asked him to sing a song about me, because he did a song about Teri Toye and Dianne Brill. He goes, oh, I can't possibly do that. He gets up and does a song about you, James." },
+      { episode: "s01e02", who: "James St. James", context: "James after the song Dean made up about him", time: "00:13:47", quote: "Dean was his own sort of special genius." },
+      { episode: "s06e03", who: "Chi Chi Valenti", context: "Chi Chi at her first Stevie Nicks concert", time: "00:55:57", quote: "I ran into Dean Johnson, Joey Arias and several other people from the whole drag performance scene, and they were all Stevie fans. And Dean had already started performing as her." },
+      { episode: "s06e07", who: "Sally Randall", context: "Sally on the rickety balcony at Pizza a Go Go", time: "00:20:11", quote: "My favorite being when Dean Johnson and I were dancing on this balcony held up by two rather thin iron rods. It was definitely a death trap." },
+      { episode: "s06e07", who: "Sally Randall", context: "Sally's Jesus Christ Superstar, with Haoui as Pontius Pilate", time: "00:27:34", quote: "Dean Johnson was Herod, with his headpiece that was made for him. He was about seven feet tall." },
+      { episode: "s04e07", who: "James St. James", context: "Trey Speegle asks who remembers the weird drag at the Pyramid", time: "00:36:23", quote: "Remember drag at the Pyramid? Oh my God. John Kelly. I remember Disco Frieda, Dean Johnson and the Weenies when they first started. I mean, it was every night there was something that would just blow your mind." },
+    ],
+    // On film (Lisa, 27 Nov 2026, "run these with /explore/dean-johnson"): Nelson Sullivan's own camcorder tapes from the
+    // Pyramid, Limelight and Wigstock, the Velvet Mafia, and the trailer of the documentary about him. No playlist yet.
+    videos: [
+      { id: "BswrxwRpoz8", title: "Dean and the Weenies - Bourgeois Boys, Pyramid Club, 1985" },
+      { id: "P0Vhuyv_Ecg", title: "Dean and the Weenies - Andy Warhol, Limelight, 1985" },
+      { id: "Uzs3J-bTeRQ", title: "Dean Johnson sings Teri Toye at the Pyramid" },
+      { id: "scKgI2W8sM8", title: "Dean Johnson at Wigstock, 1986" },
+      { id: "Nz2xXVzQ98M", title: "Dean and the Weenies - Attitude (music video)" },
+      { id: "iIUGQ8_6Jh0", title: "Dean Johnson - Velvet Mafia (music video)" },
+      { id: "YzytrTlWKQI", title: "Velvet Mafia - live, 1998" },
+      { id: "bwa1ttQbXJ8", title: "The Big Johnson - trailer" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q5246255",
   },

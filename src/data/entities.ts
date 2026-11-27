@@ -5,6 +5,7 @@ import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 import { PART_NAMES } from "./club-parts";
 import { WRITTEN_BY } from "./written-by";
+import { OTHER_WORKS } from "./made-by";
 import { PERSON_PROFILES } from "./person-profiles";
 import { MEMORIAM } from "./memoriam";
 
@@ -181,6 +182,9 @@ for (const g of guests) for (const s of g.scenes) if (known(s)) add(s, CARD_CATE
 // Books by people on the site that no guest has dropped yet get a Book card and Library page of their own (Lisa, 22 Nov
 // 2026, src/data/written-by.ts). A guest who drops one later adds their episode row to the same card.
 for (const w of WRITTEN_BY) add(w.name, "Book");
+// Records, films and nights a person made that no guest has dropped yet, when they get a page of their own (Lisa, 27 Nov
+// 2026, Dean Johnson: "each item needs a page"; src/data/made-by.ts OTHER_WORKS `card`).
+for (const works of Object.values(OTHER_WORKS)) for (const w of works) if (w.card) add(w.title, w.card);
 
 // Wire events and guest stories to every entity.
 // Each event's and guest's slugs and lower-case text are worked out once here, not once per entity:

@@ -184,7 +184,7 @@ function build(): Index {
   // Everything else.
   for (const [work, makers] of Object.entries(MADE_BY)) for (const m of makers) add(m.name, { name: work }, m.role, m.year);
   for (const [person, works] of Object.entries(OTHER_WORKS))
-    for (const w of works) add(person, { name: w.title, kind: w.kind, offShow: true }, w.role, w.year);
+    for (const w of works) add(person, { name: w.title, kind: w.kind, offShow: !w.card }, w.role, w.year);
   return idx;
 }
 
