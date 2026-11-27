@@ -908,6 +908,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e02", who: "Christina Visca", time: "00:03:10", quote: "A lot of them were just beginning to come downtown. They would go to the World and they'd go to Mars and Tunnel." },
       { episode: "s01e09", who: "Moby", time: "00:18:56", quote: "I listened to my answering machine and there was a message from Yuki asking me to call him about working at Mars. It still is the most exciting thing that's ever happened to me professionally." },
     ],
+    timelineEvent: "mars-club",
     portrait: { photo: marsPhoto, phone: marsPhotoPhone, polaroid: marsPolaroid, focus: "50%", credit: MARS_CREDIT },
   },
   robots: {
