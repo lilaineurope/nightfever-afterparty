@@ -9,6 +9,7 @@ import { episodeShort } from "@/data/entities";
 import { episodeById, episodePath, episodes } from "@/data/episodes";
 import { Timestamp } from "@/components/episode-player";
 import { SiteFooter } from "@/components/site-footer";
+import { MapHeader } from "@/components/map-header";
 
 // Episodes with their own AFTERPARTY page (the rest stay plain text in the map boxes).
 const BUILT = new Set<string>(episodes.map((e) => e.id));
@@ -247,6 +248,19 @@ function MapPage() {
     return m;
   }, [spots]);
   const homeless = useMemo(homelessPlaces, []);
+  const headerPins = useMemo(
+    () =>
+      spots.map((s) => ({
+        lat: s.lat,
+        lng: s.lng,
+        club: s.club,
+        event: s.event,
+        world: s.world,
+        mentions: s.mentions,
+        name: s.places[0]?.name ?? "",
+      })),
+    [spots],
+  );
   const search = Route.useSearch();
   const [layer, setLayer] = useState<Layer>(search.layer === "home" ? BRING_HOME : "All");
   const [decade, setDecade] = useState<string>("any");
@@ -395,13 +409,17 @@ function MapPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="place-hero px-4 pb-8 pt-24 text-center">
-        <h1 className="timeline-title">
+      {/* The header (Lisa, 27 Nov 2026, "H1"): the drawn city with every pin, the title over uptown. */}
+      <div className="map-hdr">
+        <MapHeader pins={headerPins} />
+        <h1 className="timeline-title map-hdr-title">
           <span className="timeline-strip timeline-strip-ink">The scene,</span>
           <br />
           <span className="timeline-strip timeline-strip-pink">pinned</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground">
+      </div>
+      <section className="place-hero px-4 pb-8 pt-8 text-center">
+        <p className="mx-auto max-w-2xl text-base text-muted-foreground">
           Every club and place named in Night Fever, one pin each. Clubs are black, places are open,
           events are yellow, and each pin opens its own page with the guests who were there. Pick a
           layer, or a decade from the Timeline.
