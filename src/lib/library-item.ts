@@ -3,6 +3,7 @@
 // the usual card. Worked out on the server (src/lib/library-item.server.ts), drawn by src/components/library-item.tsx.
 // Types only - this file loads nothing.
 import type { BookFacts } from "@/data/library-facts";
+import type { CoverDesign } from "@/lib/cover-design";
 
 export type DroppedBy = { episodeId: string; short: string; guest: string; polaroid?: string | undefined; time: string; mentions: number; said: { time: string; text: string }[] };
 export type WriterView = {
@@ -14,7 +15,7 @@ export type WriterView = {
   role?: string | undefined;
   moments: { episodeId: string; short: string; guest: string; time: string; context: string; mentions: number }[];
 };
-export type ShelfMate = { slug: string; name: string; cover?: string | undefined; shelf: string; eps: string[] };
+export type ShelfMate = { slug: string; name: string; design: CoverDesign; eps: string[] };
 /** A trailer of the item, (kind "clip") a film or TV show's own clip from our playlists, (kind "about") a film or video
  *  about a book or magazine from our playlists - it plays first, or (kind "guest") a video from the Jukebox of a guest who
  *  dropped it, when there is no trailer, or (kind "writer") a video of the writer of a book no guest has dropped yet. */

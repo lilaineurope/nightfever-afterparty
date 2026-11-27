@@ -9,6 +9,7 @@ import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { StoryView, DroppedBy as DroppedByT, LibraryItemView, Trailer } from "@/lib/library-item";
 import { QuoteName } from "@/components/quote-name";
+import { CoverFace } from "@/components/cover-face";
 
 // Library item pages (Lisa, 21 Nov 2026 - "yes to everything"): the extra boxes a book, magazine, newspaper, column, diary,
 // film or TV card gets under its header - who dropped it (their polaroids), what the guests said about it, the trailer
@@ -526,12 +527,11 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
   return (
     <section aria-labelledby="shelf-mates">
       <h2 id="shelf-mates" className={h}>Also on the shelf in these Afterparties</h2>
-      <ul className="lit-shelf mt-5">
+      <ul className="lib-grid their-work-grid lit-mates">
         {v.shelfMates.map((m) => (
-          <li key={m.slug}>
-            <Link {...linkToSlug(links, m.slug)} className="block">
-              {m.cover ? <img src={m.cover} alt={`Cover of ${m.name}`} loading="lazy" decoding="async" /> : <span className={`lit-typed lit-typed-${m.shelf}`}>{m.name}</span>}
-              <span className="lit-shelf-nm">{m.name}</span>
+          <li key={m.slug} className="lib-item">
+            <Link {...linkToSlug(links, m.slug)} className="lib-hit">
+              <CoverFace d={m.design} />
             </Link>
             <span className="lit-shelf-eps">{m.eps.join(", ")}</span>
           </li>
