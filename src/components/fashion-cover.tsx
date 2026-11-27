@@ -5,7 +5,7 @@ import { polaroidThumb } from "@/lib/polaroids";
 import { Mannequin } from "@/components/mannequin";
 import type { FashionItem } from "@/data/library-fashion";
 
-// Covers for the Library's Fashion & outfits category (Lisa, 24 Nov 2026), used by CoverCard (library-cover.tsx):
+// Covers for the Library's Fashion & outfits category (Lisa, 24 Nov 2026), drawn by CoverFace (cover-face.tsx) for every Library cover:
 // - a look is the Wardrobe mannequin dressed in it, on a fabric swatch card: its own colours (sampled from the story or the screenshots) as cloth strips with
 //   pinked edges, a tag (On camera / Look), its name, whose look and the episode;
 // - a designer or label is a typed black cover, or the guest's polaroid when they have an AFTERPARTY;

@@ -6,6 +6,7 @@ import { linkToSlug, useLinks } from "@/lib/link-index";
 import { episodePath } from "@/data/episodes";
 import type { SceneEvent } from "@/data/scene";
 import type { PlaceMap, PlaceView } from "@/lib/place-view";
+import { QuoteName } from "@/components/quote-name";
 
 // Place pages (Lisa, 22 Nov 2026, mockup C): mockup B's map header, then mockup A's guest polaroids and taped boxes, then
 // B's "Around the corner" with walking distances and the Timeline box. Data: src/lib/place-view.server.ts.
@@ -15,7 +16,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1, -2, 1.5, -1];
 
 /** The drawn map behind the name card: the place in pink, clubs as black dots, other places as open dots. Pins are
  *  approximate, from the public address; the street grid is drawn, not traced. */
-export function PlaceMapDrawing({ m, name }: { m: PlaceMap; name: string }) {
+export function PlaceMapDrawing({ m, name, band = false }: { m: PlaceMap; name: string; band?: boolean }) {
   const lines: ReactNode[] = [];
   if (m.grid) {
     // Streets across, avenues up, through the place itself (it sits on a street).
@@ -25,7 +26,7 @@ export function PlaceMapDrawing({ m, name }: { m: PlaceMap; name: string }) {
       lines.push(<line key={`a${x}`} x1={x} y1={0} x2={x} y2={m.h} className="place-avenue" />);
   }
   return (
-    <svg viewBox={`0 0 ${m.w} ${m.h}`} preserveAspectRatio="xMaxYMid slice" className="place-map" role="img" aria-label={`Map: ${name} and the places around it`}>
+    <svg viewBox={`0 0 ${m.w} ${m.h}`} preserveAspectRatio={band ? "xMidYMid slice" : "xMaxYMid slice"} className={band ? "map-band-svg" : "place-map"} role="img" aria-label={`Map: ${name} and the places around it`}>
       <defs>
         <pattern id="place-dots" width="6" height="6" patternUnits="userSpaceOnUse">
           <circle cx="3" cy="3" r="1.1" className="place-dot" />
@@ -63,7 +64,7 @@ export function PlaceMapDrawing({ m, name }: { m: PlaceMap; name: string }) {
   );
 }
 
-const walk = (m: number) => (m < 20 ? "right here" : m < 2000 ? `${m} m · ${Math.max(1, Math.round(m / 80))} min walk` : m < 100_000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000)} km`);
+export const walk = (m: number) => (m < 20 ? "right here" : m < 2000 ? `${m} m · ${Math.max(1, Math.round(m / 80))} min walk` : m < 100_000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000)} km`);
 
 /** Under the header: who was there, what they say, around the corner, on the Timeline. */
 export function PlaceSections({ p, name, events }: { p: PlaceView; name: string; events: SceneEvent[] }) {
@@ -115,7 +116,7 @@ export function PlaceSections({ p, name, events }: { p: PlaceView; name: string;
                 </p>
                 <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                   <span className="font-semibold">
-                    {w.guest}
+                    <QuoteName who={w.guest} episodeId={w.episode} />
                     <br />
                     <Link to={episodePath(w.episode as never)} className="font-normal text-[#555] hover:text-pink">{w.short}</Link>
                   </span>

@@ -17,6 +17,7 @@ import type { ColumnPage } from "@/data/column-articles";
 import type { LinkData } from "@/lib/link-index";
 import type { LibraryItemView, StoryView } from "@/lib/library-item";
 import type { PlaceView } from "@/lib/place-view";
+import type { MapBand, MapHome, RoomsMap } from "@/lib/map-view";
 import type { PersonWork } from "@/lib/works";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
@@ -35,6 +36,8 @@ export type CardView = {
   /** "Also named on these cards" */
   named: { slug: string; name: string; episode?: string | undefined; short?: string | undefined }[];
   inGuestStories: { slug: string; name: string }[];
+  /** Club, In memoriam, person and diary pages whose story names this card (two-way story links, Lisa 27 Nov 2026). */
+  onPages: { slug: string; name: string; kind: string }[];
   /** "In the same rooms" */
   related: { slug: string; name: string }[];
   /** The card's own Jukebox entry (songs, artists, stage bands get a player). */
@@ -59,6 +62,11 @@ export type CardView = {
   story: StoryView | null;
   /** Place page extras: drawn map, pins around it, the guests who talk about it (Lisa, 22 Nov 2026). */
   place: PlaceView | null;
+  /** "Around the block" on club and event pages, or the Bring us home block when there is no pin (Lisa, 27 Nov 2026). */
+  mapBand: MapBand | null;
+  mapHome: MapHome | null;
+  /** A living person's rooms as numbered pins on a drawn New York (Lisa, 27 Nov 2026). */
+  rooms: RoomsMap | null;
   /** "<first>'s work": what a person made, wrote, ran or starred in (Lisa, 22 Nov 2026, src/lib/works.ts). */
   works: PersonWork[];
   /** Rank among the top 100 great connectors (pink badge), or null. */

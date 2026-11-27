@@ -427,6 +427,12 @@ const SPOTIFY: Record<string, string> = {
   "The Kinks": "spotify:artist:1SQRv42e4PjEYfPhS0Tk9E",
   "Berlin (band)": "spotify:artist:2aS6jYh7ysTL1ZUsHneNgM",
   "S'Express": "spotify:artist:2PvqyOwynRF4BveaU6IA7S",
+  // S05E08 April Palmieri
+  "John Sex – 'Hustle with My Muscle'": "spotify:track:3ZscYjPYt0fhx138vaDdTK",
+  "The Fleshtones": "spotify:track:5AmC7OZM7cuAHTRJ6GSFxI",
+  "The Allman Brothers Band": "spotify:track:1hHGUdFaiJHw9hVZGJWYO2",
+  "Bay City Rollers": "spotify:track:78zYiMv9yNTHgmm6kaUPCm",
+  "Smash (musical)": "spotify:track:27k45LwJWKloz6gPLh3Dd7",
   // S04E11 Elyssa Maxx Goodman (Ray Bourbon's party records aren't on Spotify)
   "Lady, Be Good": "spotify:track:64tnmc0rKvOIP1VhSQKewo",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "spotify:track:0oLjmNEQ8tJteV9u0amZ1w",
@@ -439,6 +445,11 @@ const SPOTIFY: Record<string, string> = {
   "Fatboy Slim": "spotify:artist:4Y7tXHSEejGu1vQ9bwDdXW",
   "Leftfield": "spotify:artist:72hqBMsw7x5jnfxxwkii8L",
   "Psychotica": "spotify:artist:4jP56EOsScC5xTDWL5gkkh",
+  // S05E02 Jodie Harsh (bands as their best-known song)
+  "Shannon – 'Let the Music Play'": "spotify:track:6b9hm8mvZ2KH7Fl7LLA5ct",
+  "Steps": "spotify:track:3Yqk2pdNJUtI7VOtweASV8",
+  "S Club 7": "spotify:track:6MnWfOgKRkQtY1pRgoTwB1",
+  "Scissor Sisters": "spotify:track:1q9l6c8bAzqWcvO3DM6FsR",
 };
 
 /** Lisa's public Spotify playlist with every playable Jukebox entry (artists and albums as their best-known song), most mentioned first. */

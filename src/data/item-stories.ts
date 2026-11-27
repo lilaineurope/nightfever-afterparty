@@ -108,6 +108,166 @@ const HAND: Record<string, ItemStory> = {
     ],
     sources: ["The film's own credits and chapters", "S05E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
   },
+  // S05E02 Jodie Harsh (24 Nov 2026): her memoir. (Her single My House has no card - not said on the show - so only its sleeve.)
+  "you-had-to-be-there": {
+    intro:
+      "Jodie Harsh's memoir of a decade in 2000s London nightlife, one club to a chapter, from sneaking into G-A-Y at 15 to running her own nights.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "25 September 2025" },
+      { label: "Written by", value: "Jodie Harsh" },
+      { label: "Published by", value: "Faber & Faber" },
+      { label: "On the cover", value: "An odyssey through noughties London... one night at a time" },
+      { label: "ISBN", value: "9780571392414" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "Jodie gives the date it comes out: 25 September.", source: "S05E02", episode: "s05e02", time: "00:02:24" },
+      { when: "On the show", what: "Each chapter is a club she was going to, roughly a year each.", source: "S05E02", episode: "s05e02", time: "00:22:06" },
+      { when: "On the show", what: "A literary agent wrote to her out of the blue; Jodie wrote a first chapter herself.", source: "S05E02", episode: "s05e02", time: "00:51:32" },
+      { when: "On the show", what: "The proposal went to an eight-way auction between publishers.", source: "S05E02", episode: "s05e02", time: "00:53:04" },
+    ],
+    sources: ["The book's own cover and listing", "S05E02 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  // S05E05 Brad Gooch (25 Nov 2026): his books, facts from their covers and listings, notes from the episode.
+  "radiant": {
+    intro:
+      "Brad Gooch's biography of Keith Haring, from his childhood in Kutztown and art school in New York to the subway drawings, the Pop Shop, ACT UP and his last murals.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2024" },
+      { label: "Full title", value: "Radiant: The Life and Line of Keith Haring" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "Harper" },
+      { label: "ISBN", value: "9780062698285" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James introduces it as Brad's latest book - which makes the episode a tribute to Keith.", source: "S05E05", episode: "s05e05", time: "00:01:06" },
+      { when: "On the show", what: "The first third of the book is Keith growing up in Kutztown, as James puts it.", source: "S05E05", episode: "s05e05", time: "00:24:59" },
+      { when: "On the show", what: "James begs everyone to go out and get a copy.", source: "S05E05", episode: "s05e05", time: "01:19:36" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "smash-cut": {
+    intro:
+      "Brad Gooch's memoir of his life with the filmmaker Howard Brookner and of downtown New York in the 70s and 80s.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2015" },
+      { label: "Full title", value: "Smash Cut: A Memoir of Howard & Art & the '70s & the '80s" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "Harper" },
+      { label: "ISBN", value: "9780062354969" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "Brad says one of Mapplethorpe's test shots of him, with a little scarf around his neck, is in the book.", source: "S05E05", episode: "s05e05", time: "00:16:54" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "city-poet": {
+    intro:
+      "Brad Gooch's biography of the New York School poet Frank O'Hara.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1993" },
+      { label: "Full title", value: "City Poet: The Life and Times of Frank O'Hara" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "Knopf" },
+      { label: "ISBN", value: "9780060976132" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James names it in his introduction (he says John O'Hara).", source: "S05E05", episode: "s05e05", time: "00:00:48" },
+      { when: "On the show", what: "Brad says he was more drawn to Frank O'Hara and the New York School poets than to the Burroughs crowd.", source: "S05E05", episode: "s05e05", time: "00:22:47" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "flannery": {
+    intro:
+      "Brad Gooch's biography of the Southern writer Flannery O'Connor.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2009" },
+      { label: "Full title", value: "Flannery: A Life of Flannery O'Connor" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "Little, Brown and Company" },
+      { label: "ISBN", value: "9780316000666" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James names it in his introduction, among Brad's award-winning biographies.", source: "S05E05", episode: "s05e05", time: "00:00:49" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "rumi-s-secret": {
+    intro:
+      "Brad Gooch's biography of the 13th-century Persian poet and mystic Rumi.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2017" },
+      { label: "Full title", value: "Rumi's Secret: The Life of the Sufi Poet of Love" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "Harper" },
+      { label: "ISBN", value: "9780061999147" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James names it in his introduction - Fenton says the line sounds like a Jeopardy question.", source: "S05E05", episode: "s05e05", time: "00:00:56" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "jailbait-and-other-stories": {
+    intro:
+      "Brad Gooch's first book of short stories, published by a small gay press, with a cover photograph by Robert Mapplethorpe.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1984" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "SeaHorse Press" },
+      { label: "Cover photograph", value: "Robert Mapplethorpe" },
+      { label: "ISBN", value: "9780933322172" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "Brad met Mapplethorpe the first week the Mineshaft opened; he went on to do the cover of this book.", source: "S05E05", episode: "s05e05", time: "00:10:20" },
+      { when: "On the show", what: "Brad asked Robert to photograph his brother Edward for the cover.", source: "S05E05", episode: "s05e05", time: "00:18:28" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "scary-kisses": {
+    intro:
+      "Brad Gooch's novel about the world of male modelling.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1988" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "G. P. Putnam's Sons" },
+      { label: "ISBN", value: "9780330307512" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "Brad says he wrote the novel out of his modelling years.", source: "S05E05", episode: "s05e05", time: "00:03:55" },
+      { when: "On the show", what: "It was partly about the casualties of a rough industry, Brad says.", source: "S05E05", episode: "s05e05", time: "00:07:20" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "golden-age-of-promiscuity": {
+    intro:
+      "Brad Gooch's novel of gay downtown New York in the years before AIDS.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1996" },
+      { label: "Written by", value: "Brad Gooch" },
+      { label: "Published by", value: "Knopf" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James names it in his introduction.", source: "S05E05", episode: "s05e05", time: "00:00:43" },
+    ],
+    sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
 };
 
 /** One clip for a story that has no film of its own, shown as "Watch the clip" (Lisa, 24 Nov 2026: Blondie with Tish & Snooky -

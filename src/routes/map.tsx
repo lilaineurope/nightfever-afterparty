@@ -13,8 +13,16 @@ import { SiteFooter } from "@/components/site-footer";
 // Episodes with their own AFTERPARTY page (the rest stay plain text in the map boxes).
 const BUILT = new Set<string>(episodes.map((e) => e.id));
 
+/** `?at=<slug>` opens the big map at that club, place or event with its box open (Lisa, 27 Nov 2026: every page's map
+ *  link goes straight to its pin); `?layer=home` opens the Bring us home list. */
+type MapSearch = { at?: string; layer?: "home" };
+
 export const Route = createFileRoute("/map")({
   staticData: { sitemap: true },
+  validateSearch: (s: Record<string, unknown>): MapSearch => ({
+    ...(typeof s["at"] === "string" && /^[a-z0-9-]+$/.test(s["at"]) ? { at: s["at"] } : {}),
+    ...(s["layer"] === "home" ? { layer: "home" as const } : {}),
+  }),
   component: MapPage,
   head: () =>
     pageHead({
@@ -239,7 +247,8 @@ function MapPage() {
     return m;
   }, [spots]);
   const homeless = useMemo(homelessPlaces, []);
-  const [layer, setLayer] = useState<Layer>("All");
+  const search = Route.useSearch();
+  const [layer, setLayer] = useState<Layer>(search.layer === "home" ? BRING_HOME : "All");
   const [decade, setDecade] = useState<string>("any");
   const [active, setActive] = useState<string | null>(null);
   const mapEl = useRef<HTMLDivElement>(null);
@@ -347,6 +356,42 @@ function MapPage() {
     setActive(s.key);
     mapRef.current?.setView([s.lat, s.lng], Math.max(mapRef.current.getZoom(), 15));
   };
+
+  // Opened from a page's map (?at=<slug>): its layer, its box open and scrolled into view, then (once the map has
+  // loaded) its pin in the middle.
+  const target = useMemo(
+    () =>
+      search.at
+        ? (spots.find((x) => !x.event && x.places.some((p) => p.slug === search.at)) ??
+          spots.find((x) => x.places.some((p) => p.slug === search.at)))
+        : undefined,
+    [spots, search.at],
+  );
+  useEffect(() => {
+    if (!target) return;
+    const l: Layer = target.event ? "Events" : target.world ? "World" : "All";
+    setLayer(l);
+    setDecade("any");
+    setActive(target.key);
+    // after the layer's own list reset (the effect above)
+    const t = setTimeout(() => {
+      setLimit((n) => Math.max(n, spots.filter((x) => inLayer(x, l)).indexOf(target) + 1));
+      setTimeout(
+        () =>
+          document
+            .getElementById(`spot-${target.key}`)
+            ?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+        60,
+      );
+    }, 100);
+    return () => clearTimeout(t);
+  }, [target, spots]);
+  useEffect(() => {
+    if (!ready || !target) return;
+    // after the layer's own zoom (the effect above), so the pin wins
+    const t = setTimeout(() => mapRef.current?.setView([target.lat, target.lng], 16), 150);
+    return () => clearTimeout(t);
+  }, [ready, target]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">

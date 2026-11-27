@@ -2,9 +2,11 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { ClubProfile } from "@/data/club-profiles";
+import { QuoteName } from "@/components/quote-name";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -20,7 +22,7 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
           {c.opened} – {c.closed}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">{c.address}</p>
-        <p className="mx-auto mt-3 max-w-2xl text-card-foreground/85">{c.story}</p>
+        <p className="mx-auto mt-3 max-w-2xl text-card-foreground/85"><EntityText text={c.story} self={name} /></p>
       </div>
 
       {c.said.length > 0 && (
@@ -48,7 +50,7 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                     <span className="font-semibold">
-                      {s.who}
+                      <QuoteName who={s.who} episodeId={s.episode} />
                       <br />
                       <Link to={episodePath(ep.id)} className="font-normal text-[#555] hover:text-pink">
                         {s.who === ep.guest ? code : `${code} · ${ep.guest}`}
@@ -92,7 +94,7 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
           <ol className="mt-4 space-y-3 border-l border-gold/40 pl-5">
             {c.timeline.map(([y, t], i) => (
               <li key={i} className="text-sm">
-                <span className="font-semibold text-foreground">{y}</span> · <span className="text-card-foreground/80">{t}</span>
+                <span className="font-semibold text-foreground">{y}</span> · <span className="text-card-foreground/80"><EntityText text={t} self={name} /></span>
               </li>
             ))}
           </ol>
@@ -100,7 +102,7 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
             {c.timelineEvent && (
               <Link to="/timeline" hash={`ev-${c.timelineEvent}`} className="text-gold hover:text-pink">On the Timeline &rarr;</Link>
             )}
-            <Link to="/map" className="text-gold hover:text-pink">On the map &rarr;</Link>
+            <Link to="/map" search={{ at: slug }} className="text-gold hover:text-pink">On the map &rarr;</Link>
           </p>
         </div>
         <div>
@@ -114,6 +116,12 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
             <>
               <h2 className={`${h} mt-6`}>The rooms around it</h2>
               <div className="mt-3 flex flex-wrap gap-2">{c.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+            </>
+          )}
+          {c.also && c.also.names.length > 0 && (
+            <>
+              <h2 className={`${h} mt-6`}>{c.also.heading}</h2>
+              <div className="mt-3 flex flex-wrap gap-2">{c.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
             </>
           )}
         </div>

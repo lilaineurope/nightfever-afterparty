@@ -344,7 +344,7 @@ export const LOCATIONS: Located[] = [
   { name: "Wigstock", lat: 40.7265, lng: -73.9815, area: "East Village" },
   { name: "Williamsburg Bridge", lat: 40.7135, lng: -73.9726, area: "Lower East Side" },
   { name: "Wollman Rink", lat: 40.7678, lng: -73.9745, area: "Central Park" },
-  { name: "Xenon", lat: 40.7590, lng: -73.9845, area: "Times Square" },
+  { name: "Xenon", lat: 40.7562, lng: -73.9848, area: "Times Square", tip: "124 West 43rd Street, the old Henry Miller's Theatre" },
   { name: "Private Eyes", lat: 40.7410, lng: -73.9918, area: "Flatiron" },
   { name: "New York University", lat: 40.7295, lng: -73.9965, area: "Greenwich Village" },
   { name: "The Gaiety", lat: 40.7590, lng: -73.9862, area: "Times Square" },
@@ -856,6 +856,45 @@ export const LOCATIONS: Located[] = [
   { name: "Bard College", lat: 42.0204, lng: -73.9076, area: "Annandale-on-Hudson" },
   { name: "Deitch Projects", lat: 40.7224, lng: -74.0028, area: "SoHo", tip: "18 Wooster Street" },
   { name: "The Fridge (London)", lat: 51.4612, lng: -0.1155, area: "Brixton", tip: "Town Hall Parade, Brixton Hill" },
+  // S05E02 Jodie Harsh
+  { name: "London Astoria", lat: 51.5162, lng: -0.1306, area: "Soho", tip: "157 Charing Cross Road - demolished in 2009" },
+  { name: "G-A-Y", lat: 51.5162, lng: -0.1306, area: "Soho", tip: "Saturdays at the London Astoria, 157 Charing Cross Road" },
+  { name: "The Ghetto (London)", lat: 51.5157, lng: -0.131, area: "Soho", tip: "Falconberg Court, behind the Astoria" },
+  { name: "Nag Nag Nag", lat: 51.5157, lng: -0.131, area: "Soho", tip: "Wednesdays at The Ghetto, Falconberg Court" },
+  { name: "Too 2 Much (Raymond Revuebar)", lat: 51.5124, lng: -0.1338, area: "Soho", tip: "The old Raymond Revuebar, Walker's Court" },
+  { name: "Circus (London club night)", lat: 51.5124, lng: -0.1338, area: "Soho", tip: "Friday nights at Too 2 Much, Walker's Court" },
+  { name: "Boombox", lat: 51.5275, lng: -0.0812, area: "Hoxton", tip: "Sunday nights at the Hoxton Bar & Kitchen, Hoxton Square" },
+  { name: "Trade at Turnmills", lat: 51.5222, lng: -0.1047, area: "Clerkenwell", tip: "Turnmills, 63b Clerkenwell Road" },
+  { name: "Ministry of Sound", lat: 51.4978, lng: -0.0997, area: "Elephant and Castle", tip: "103 Gaunt Street" },
+  { name: "The Cross (King's Cross)", lat: 51.5352, lng: -0.123, area: "King's Cross", tip: "Under the railway arches off York Way" },
+  { name: "Hippodrome (London)", lat: 51.5112, lng: -0.1292, area: "Leicester Square", tip: "Cranbourn Street" },
+  { name: "Camden", lat: 51.539, lng: -0.1426, area: "London" },
+  { name: "King's Cross", lat: 51.5308, lng: -0.1238, area: "London" },
+  { name: "East London", lat: 51.525, lng: -0.055, area: "London" },
+  // S05E05 Brad Gooch
+  { name: "Cathedral of St. John the Divine", lat: 40.8038, lng: -73.9619, area: "Morningside Heights", tip: "1047 Amsterdam Avenue" },
+  { name: "Kutztown", lat: 40.5173, lng: -75.7774, area: "Pennsylvania", tip: "Keith Haring's home town" },
+  { name: "The Broad", lat: 34.0544, lng: -118.2503, area: "Downtown Los Angeles", tip: "221 South Grand Avenue" },
+  { name: "Leo Castelli Gallery", lat: 40.7252, lng: -74.0018, area: "SoHo", tip: "420 West Broadway, with a second space on Greene Street in the 80s" },
+  { name: "India", lat: 22.3511, lng: 78.6677, area: "India" },
+  { name: "St. Vincent's Hospital", lat: 40.7378, lng: -74.0003, area: "Greenwich Village", tip: "Seventh Avenue at West 12th Street - closed in 2010" },
+  { name: "Keller's", lat: 40.7334, lng: -74.0103, area: "West Village", tip: "West Street at Barrow Street" },
+  { name: "Brooklyn Museum", lat: 40.6712, lng: -73.9636, area: "Prospect Heights", tip: "200 Eastern Parkway" },
+  { name: "St. Marks Baths", lat: 40.729, lng: -73.989, area: "East Village", tip: "6 St. Marks Place" },
+  { name: "Centre Pompidou", lat: 48.8607, lng: 2.3522, area: "Paris", tip: "Place Georges-Pompidou" },
+  { name: "Stedelijk Museum", lat: 52.358, lng: 4.8797, area: "Amsterdam", tip: "Museumplein" },
+  { name: "Tuttomondo (Pisa)", lat: 43.7105, lng: 10.3988, area: "Pisa", tip: "On the back wall of the church of Sant'Antonio Abate" },  // S05E08 April Palmieri
+  { name: "Club DV8", lat: 37.7876, lng: -122.3972, area: "San Francisco", tip: "55 Natoma Street, SoMa" },
+  { name: "Vanderbilt Museum (Eagle's Nest)", lat: 40.9045, lng: -73.374, area: "Long Island", tip: "180 Little Neck Road, Centerport" },
+  { name: "Eatons Neck", lat: 40.948, lng: -73.398, area: "Long Island" },
+  { name: "Centerport", lat: 40.8854, lng: -73.3765, area: "Long Island" },
+  { name: "Jones Beach", lat: 40.5968, lng: -73.5085, area: "Long Island" },
+  { name: "Massachusetts", lat: 42.4072, lng: -71.3824, area: "USA" },
+  { name: "Key West", lat: 24.5551, lng: -81.78, area: "Florida" },
+  { name: "Ice Palace (Fire Island)", lat: 40.6604, lng: -73.0888, area: "Cherry Grove, Fire Island", tip: "At the Cherry Grove Beach Hotel" },
+  { name: "East 9th Street", lat: 40.729, lng: -73.987, area: "East Village" },
+  { name: "Flushing, Queens", lat: 40.7675, lng: -73.8331, area: "Queens" },
+  { name: "Metro (Chicago)", lat: 41.9496, lng: -87.6588, area: "Wrigleyville", tip: "3730 North Clark Street" },
 ];
 
 /**
@@ -863,6 +902,8 @@ export const LOCATIONS: Located[] = [
  * shown on the Clubs page and the map so a visitor who remembers the address can tell us.
  */
 export const HOME_HINTS: Record<string, string> = {
+  "Club Nu": "A Miami Beach club of the 1980s where April and John danced - which street?",
+  "Pulsallama's Easter show": "The Pulsallama show where someone threw an egg on stage - which club was it?",
   "Lulu Belle's": "A Harlem drag club of the 1920s and 30s, James says - which street?",
   // Events (Lisa, 23 Nov 2026: every category without a pin goes to Bring us home)
   "Marc Jacobs' grunge show for Perry Ellis": "3 November 1992, in the Perry Ellis showroom - which floor and address?",
@@ -892,4 +933,11 @@ export const HOME_HINTS: Record<string, string> = {
   "W Hotel": "Where Desi built Casino Diabolique - which W Hotel was it?",
   "Casino Diabolique": "Desi's dark casino installation at a W Hotel - which one, and when?",
   "Black Lords (Miami)": "A white Art Deco hotel in Miami that Desi painted black - which hotel?",
+  // S05E02 Jodie Harsh
+  "Happy Valley (New York)": "A New York night Amanda Lepore took Jodie to, with a leopard carpet - which street?",
+  "Room Service": "Jodie's party from 2010, in London and later abroad - where was the first one?",
+  "Drama": "A dress-up night that moved around London, starting at The Cross - where did it go next?",
+  "Mr Wu (Old Compton Street)": "The five-pound Chinese buffet in Soho - which street number?",
+  "Party Monster premiere party (London)": "Around the Nag Nag Nag years - which venue was it?",
+  "Puking over the crowd": "Jodie was sick from the stage mid-set - at which club?",
 };

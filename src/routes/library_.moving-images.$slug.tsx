@@ -9,6 +9,7 @@ import type { Person, ScreenPageView, WatchRow } from "@/lib/screen-page.server"
 import type { Trailer } from "@/lib/library-item";
 import { pageHead } from "@/lib/seo";
 import "@fontsource/covered-by-your-grace/400.css";
+import { QuoteName } from "@/components/quote-name";
 
 // One page per film or show on the Library's Moving Images shelves (Lisa, 24 Nov 2026: "do it like we did it with the
 // artwork list and pages - and instead the poster it would be the jukebox video bigger. info box who was involved, find as
@@ -179,7 +180,7 @@ const TZ: [RegExp, string][] = [
   [/Oslo/, "NO"], [/Helsinki/, "FI"], [/Madrid/, "ES"], [/Rome/, "IT"], [/Dublin/, "IE"], [/Toronto|Vancouver|Montreal/, "CA"],
   [/Australia/, "AU"], [/Sao_Paulo/, "BR"], [/Mexico/, "MX"], [/Tokyo/, "JP"], [/^America\//, "US"],
 ];
-function guessCountry(have: string[]): string {
+function homeCountry(): string {
   let c = "";
   try {
     const saved = window.localStorage.getItem("nf-place");
@@ -191,6 +192,10 @@ function guessCountry(have: string[]): string {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
     c = TZ.find(([re]) => re.test(tz))?.[1] ?? "";
   }
+  return c;
+}
+function guessCountry(have: string[]): string {
+  const c = homeCountry();
   return have.includes(c) ? c : have.includes("US") ? "US" : (have[0] ?? "US");
 }
 const OFFER: [keyof Omit<WatchRow, "link">, string][] = [
@@ -204,7 +209,11 @@ const OFFER: [keyof Omit<WatchRow, "link">, string][] = [
 function WhereToWatch({ v }: { v: ScreenPageView }) {
   const have = v.watch ? Object.keys(v.watch.countries) : [];
   const [c, setC] = useState<string>(have.includes("US") ? "US" : (have[0] ?? "US"));
-  useEffect(() => setC(guessCountry(have)), [v.slug]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [home, setHome] = useState("");
+  useEffect(() => {
+    setC(guessCountry(have));
+    setHome(homeCountry());
+  }, [v.slug]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!v.watch || have.length === 0) return null;
   const row = v.watch.countries[c];
   return (
@@ -224,6 +233,11 @@ function WhereToWatch({ v }: { v: ScreenPageView }) {
           </select>
         </label>
       </div>
+      {home && COUNTRY[home] && !have.includes(home) && (
+        <p className="mt-1 text-sm text-muted-foreground">
+          No service offers it in {COUNTRY[home]} right now, so here is {COUNTRY[c] ?? c}.
+        </p>
+      )}
       {row ? (
         <dl className="scr-watch-rows">
           {OFFER.filter(([k]) => row[k]?.length).map(([k, label]) => (
@@ -408,9 +422,7 @@ function Said({ v, className = "" }: { v: ScreenPageView; className?: string }) 
             <p className="lit-quote-who">
               {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
               <span>
-                <Link to={episodePath(q.episodeId as never)} className="art-name font-semibold">
-                  {q.who}
-                </Link>
+                <QuoteName who={q.who} episodeId={q.episodeId} className="art-name font-semibold" />
                 <br />
                 {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
               </span>

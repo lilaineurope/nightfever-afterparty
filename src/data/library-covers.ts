@@ -16,7 +16,11 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  // S05E08 April Palmieri - the Barricade Books reissue, with John Waters' introduction
+  "My Face for the World to See": { kind: "book", file: "book-my-face-for-the-world-to-see.webp", credit: "Cover via Open Library (Barricade Books reissue)" },
   "Glitter and Concrete": { kind: "book", file: "book-glitter-and-concrete.webp", credit: "Cover via Open Library (Hanover Square Press, 2023)" },
+  // S05E02 Jodie Harsh: Open Library has the book (Faber, 2025) but no cover picture yet (checked 24 Nov 2026)
+  "You Had to Be There (Jodie Harsh)": { kind: "book", file: "book-you-had-to-be-there.webp", credit: "Cover via the Amazon listing (Faber & Faber, 2025)" },
   "Just One of the Boys": { kind: "book", file: "book-just-one-of-the-boys.webp", credit: "Cover via Open Library (University of Illinois Press, 2018)" },
   "The Changing Room": { kind: "book", file: "book-the-changing-room.webp", credit: "Cover via Open Library (Routledge, 2000)" },
   "Camp: The Story of the Attitude That Conquered the World": { kind: "book", file: "book-camp-paul-baker.webp", credit: "Cover via Open Library (Footnote Press, 2023)" },
@@ -237,6 +241,9 @@ const COVERS: Record<string, Cover> = {
   "Sexual Ecology": { kind: "book", file: "book-sexual-ecology.webp", credit: "Cover via Open Library" },
   "Smash Cut": { kind: "book", file: "book-smash-cut.webp", credit: "Cover via Open Library" },
   "Walking Through Clear Water in a Pool Painted Black": { kind: "book", file: "book-walking-through-clear-water-in-a-pool-painted-black.webp", credit: "Cover via Open Library" },
+  // S05E05 Brad Gooch (25 Nov 2026): Open Library covers (Flannery: the 2009 hardcover; the 2008 entry is a title page)
+  "Flannery": { kind: "book", file: "book-flannery.webp", credit: "Cover via Open Library (Little, Brown and Company, 2009)" },
+  "Rumi's Secret": { kind: "book", file: "book-rumis-secret.webp", credit: "Cover via Open Library (Harper, 2017)" },
   // Open Library has no real cover for these two (checked every edition, 23 Nov 2026): Lisa chose Google Books for the gaps.
   "Radiant (Brad Gooch)": { kind: "book", file: "book-radiant-brad-gooch.webp", credit: "Cover via Google Books (Harper, 2024)" },
   "The Golden Age of Promiscuity": { kind: "book", file: "book-golden-age-of-promiscuity.webp", credit: "Cover via Google Books (Masquerade Books paperback)" },

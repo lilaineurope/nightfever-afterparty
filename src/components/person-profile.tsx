@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { PersonProfile } from "@/data/person-profiles";
+import { QuoteName } from "@/components/quote-name";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -41,7 +43,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
   return (
     <>
       <div className="pt-4 text-center">
-        <p className="mx-auto max-w-2xl text-card-foreground/85">{m.story}</p>
+        <p className="mx-auto max-w-2xl text-card-foreground/85"><EntityText text={m.story} self={name} /></p>
       </div>
 
       {m.said.length > 0 && (
@@ -71,7 +73,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                     <span className="font-semibold">
-                      {s.who}
+                      <QuoteName who={s.who} episodeId={s.episode} />
                       <br />
                       <Link to={episodePath(ep.id)} className="font-normal text-[#555] hover:text-pink">
                         {s.who === ep.guest ? code : `${code} · ${ep.guest}`}
@@ -100,7 +102,7 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
                     {t} ↗
                   </a>
                 ) : (
-                  <span className="text-card-foreground/80">{t}</span>
+                  <span className="text-card-foreground/80"><EntityText text={t} self={name} /></span>
                 )}
               </li>
             ))}
@@ -117,6 +119,12 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
             <>
               <h2 className={`${h} mt-6`}>{first}'s rooms</h2>
               <div className="mt-3 flex flex-wrap gap-2">{m.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+            </>
+          )}
+          {m.also && m.also.names.length > 0 && (
+            <>
+              <h2 className={`${h} mt-6`}>{m.also.heading}</h2>
+              <div className="mt-3 flex flex-wrap gap-2">{m.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
             </>
           )}
         </div>

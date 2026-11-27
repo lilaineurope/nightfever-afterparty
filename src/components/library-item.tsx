@@ -8,6 +8,8 @@ import { FanSuggestions } from "@/components/fan-suggestions";
 import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { StoryView, DroppedBy as DroppedByT, LibraryItemView, Trailer } from "@/lib/library-item";
+import { QuoteName } from "@/components/quote-name";
+import { CoverFace } from "@/components/cover-face";
 
 // Library item pages (Lisa, 21 Nov 2026 - "yes to everything"): the extra boxes a book, magazine, newspaper, column, diary,
 // film or TV card gets under its header - who dropped it (their polaroids), what the guests said about it, the trailer
@@ -160,7 +162,7 @@ function GuestQuotes({ v }: { v: LibraryItemView }) {
             <p className="lit-quote-who">
               {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
               <span>
-                <Link to={episodePath(q.episodeId as never)} className="font-semibold text-gold hover:text-pink">{q.who}</Link>
+                <QuoteName who={q.who} episodeId={q.episodeId} className="font-semibold" />
                 <br />
                 {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
               </span>
@@ -525,12 +527,11 @@ function ShelfMates({ v }: { v: LibraryItemView }) {
   return (
     <section aria-labelledby="shelf-mates">
       <h2 id="shelf-mates" className={h}>Also on the shelf in these Afterparties</h2>
-      <ul className="lit-shelf mt-5">
+      <ul className="lib-grid their-work-grid lit-mates">
         {v.shelfMates.map((m) => (
-          <li key={m.slug}>
-            <Link {...linkToSlug(links, m.slug)} className="block">
-              {m.cover ? <img src={m.cover} alt={`Cover of ${m.name}`} loading="lazy" decoding="async" /> : <span className={`lit-typed lit-typed-${m.shelf}`}>{m.name}</span>}
-              <span className="lit-shelf-nm">{m.name}</span>
+          <li key={m.slug} className="lib-item">
+            <Link {...linkToSlug(links, m.slug)} className="lib-hit">
+              <CoverFace d={m.design} />
             </Link>
             <span className="lit-shelf-eps">{m.eps.join(", ")}</span>
           </li>
@@ -777,7 +778,11 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
   ].filter(Boolean);
   const copy = v.shelf !== "film" && v.shelf !== "tv" ? <FanSuggestions box="copies" about={name} variant="inset" className="lit-copy" /> : null;
   const copyInRow = !!copy && boxes.length < 3;
-  const row = copyInRow ? [...boxes, <div key="copy" className="lit-box lit-copy-box">{copy}</div>] : boxes;
+  // Lisa, 25 Nov 2026 (Jailbait vs Golden Age): at most four boxes side by side - a fifth ("Also on the site") gets its
+  // own full-width band under the row, so the row never falls back to one stacked column.
+  const all = copyInRow ? [...boxes, <div key="copy" className="lit-box lit-copy-box">{copy}</div>] : boxes;
+  const row = all.slice(0, 4);
+  const extra = all.slice(4);
   const issues = v.press?.issues.length ?? 0;
   const fewIssues = issues > 0 && issues <= 2 && v.shelfMates.length > 0;
   return (
@@ -791,6 +796,7 @@ export function LibraryItemSections({ v, name }: { v: LibraryItemView; name: str
       {!fewIssues && <IssueShelf v={v} name={name} />}
       {v.trailers.length > 0 && <TrailerJukebox trailers={v.trailers} name={name} />}
       {row.length > 0 && <div className={`lit-row lit-row-${row.length}`}>{row}</div>}
+      {extra.length > 0 && <div className={`lit-row lit-row-${extra.length} lit-row-extra`}>{extra}</div>}
       {fewIssues ? (
         <div className="lit-shelves">
           <IssueShelf v={v} name={name} />

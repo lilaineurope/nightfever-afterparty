@@ -16,6 +16,8 @@ export type PersonProfile = {
   liftedUp: string[]; // people they gave a start
   rooms: string[]; // magazines, clubs, nights, places
   said: MemoriamQuote[];
+  /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
+  also?: { heading: string; names: string[] };
   /** Lisa's rule is two quotes per guest; a page can go higher when she says so (Kim: Mickey x3, Lisa 21 Nov 2026). */
   maxPerGuest?: number;
 };
@@ -1158,5 +1160,416 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e10", who: "Joey Arias", time: "00:49:45", quote: "The original was like Edwige, Raven, and myself. After two months, Edwige had to go, and I got Sherry." },
       { episode: "s01e10", who: "Joey Arias", time: "01:03:46", quote: "We were in Amsterdam, and she would go out. I just waited, there memorizing the songs and crying. She goes, why didn't you come out?" },
     ],
+  },
+  // Living people batch 6 (daily run, 25 Nov 2026). Left out: the Plaza closet story (Bette Midler, drugs), Zaldy on who held the
+  // power on Britney's tour, Richie's Trump make-up joke, and who Jenna Jameson was dating.
+  "chloe-sevigny": {
+    first: "Chloë's",
+    story:
+      "The downtown girl the club kids were in awe of. Her first time on camera was Nick Egan's Sugar Kane video for Sonic Youth, and Larry Tee says if you saw her somewhere, you knew you were on the right track.",
+    timeline: [
+      ["1974", "Born 18 November in Springfield, Massachusetts; grows up in Darien, Connecticut"],
+      ["1993", "First time on camera: Sonic Youth's Sugar Kane, directed by Nick Egan"],
+      ["1995", "Kids"],
+      ["1999", "Boys Don't Cry, an Oscar nomination"],
+      ["2010", "Golden Globe for Big Love"],
+    ],
+    liftedUp: [],
+    rooms: ["Sugar Kane video", "Peaches at the Jewish Center"],
+    said: [
+      { episode: "s05e04", who: "Nick Egan", time: "00:40:48", quote: "That's where Chloë Sevigny's first ever appearance in film was. First time on camera." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:48:26", quote: "I knew something was happening, because if you see Chloë Sevigny somewhere, you know you're on the right track." },
+      { episode: "s01e09", who: "James St. James", time: "00:05:51", quote: "Chloë always says that she was intimidated by the club kids, but we were always very intimidated by her." },
+    ],
+  },
+  "bette-midler": {
+    story:
+      "The Divine Miss M started in the basement of the Ansonia, singing to the men in towels at the Continental Baths with Barry Manilow on piano. Bebe Buell, Susan Seidelman and Man Parrish were all in the room.",
+    timeline: [
+      ["1945", "Born 1 December in Honolulu"],
+      ["Early 70s", "Sings at the Continental Baths, Barry Manilow on piano"],
+      ["1972", "The Divine Miss M"],
+      ["1979", "The Rose, an Oscar nomination"],
+      ["1989", "Wind Beneath My Wings"],
+      ["2017", "Tony Award for Hello, Dolly!"],
+    ],
+    liftedUp: ["Barry Manilow"],
+    rooms: ["Continental Baths", "Max's Kansas City"],
+    said: [
+      { episode: "s04e03", who: "Bebe Buell", time: "00:42:17", quote: "Once Bette started to sing, everybody would gather into this front room. She was unbelievable. She would come out sometimes just in a towel and a pair of kitten heels and blow your mind." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:23:36", quote: "It was just people in towels walking down the runway with Bette Midler and Barry Manilow playing, and my job was to pin the towel around people so that it wouldn't fall off. Some did." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:07:13", quote: "The basement was the Continental Baths. I couldn't have been in a more appropriate college situation. That's where Bette Midler was." },
+    ],
+  },
+  "rosie-o-donnell": {
+    first: "Rosie's",
+    story:
+      "Michael Musto and Michelangelo Signorile kept telling her to come out. She was furious, called Michelangelo a moron on Larry King, then came out, told Musto it was for him, and spoke first at his roast.",
+    timeline: [
+      ["1962", "Born 21 March in Commack, New York"],
+      ["1996", "The Rosie O'Donnell Show starts"],
+      ["2002", "Comes out publicly"],
+      ["2006", "Joins The View"],
+    ],
+    liftedUp: [],
+    rooms: ["The Village Voice columns", "OutWeek"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:25:10", quote: "After that, Rosie came out to me. She goes, that was for you. And she was the first speaker at my roast." },
+      { episode: "s02e08", who: "Michelangelo Signorile", time: "00:57:31", quote: "I remember Rosie, she was infuriated. She went on Larry King, she called me a moron. And eventually Rosie is writing me, and we're friends, and she's out." },
+      { episode: "s02e08", who: "James St. James", time: "00:56:02", quote: "Of those people that you and Musto were wanting to come out, Rosie and Ellen and even Liz Smith, they all eventually came to even befriend you." },
+    ],
+  },
+  "david-letterman": {
+    story:
+      "The late-night host every nightlife star wanted. Dianne Brill went on his show the night she was on the cover of the New York Post, and Sally Randall became one of the very few people who ever said no.",
+    timeline: [
+      ["1947", "Born 12 April in Indianapolis"],
+      ["1982", "Late Night with David Letterman on NBC"],
+      ["80s", "Dianne Brill on the show, the night of her New York Post cover"],
+      ["1993", "The Late Show on CBS, until 2015"],
+    ],
+    liftedUp: [],
+    rooms: ["Late Night"],
+    said: [
+      { episode: "s01e01", who: "Dianne Brill", time: "00:40:19", quote: "I was on the cover of the New York Post the day, the night that I was doing the David Letterman show." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:34:48", quote: "What I did notice was at what point I realized that this was not what I had planned to do in New York. And that was when David Letterman called me." },
+      { episode: "s06e07", who: "Sally Randall", time: "00:36:06", quote: "She said only three other people have ever turned down David Letterman, and one of them was Cher. And I said, if I do the show, everyone will forever know me as a door person, and I'll never be able to go back to being an artist." },
+    ],
+  },
+  "pauley-perrette": {
+    first: "Pauley's",
+    story:
+      "Before she was Abby on NCIS she worked the nightclubs: a waitress at the Palladium, then the bartender with the shaved head at Club USA, where she and Richie Rich made up the Raspberry Smash.",
+    timeline: [
+      ["1969", "Born 27 March in New Orleans"],
+      ["80s", "Waitress at the Palladium, in the Mike Todd Room crowd"],
+      ["90s", "Bartender at Club USA, going to auditions on the side"],
+      ["2003", "Abby Sciuto on NCIS, until 2018"],
+    ],
+    liftedUp: [],
+    rooms: ["Palladium", "Mike Todd Room", "Club USA"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:39:37", quote: "Pauley was a bartender. She had a shaved head, and she was going to science school. And she's like, to make money, I'm going to go to acting auditions. And she ended up being Pauley Perrette." },
+      { episode: "s04e07", who: "James St. James", time: "00:30:54", quote: "The Mike Todd Room, that was totally glam. That was Anita Sarko, and Lisa Edelstein was doing the bar, and Pauley Perrette." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:23:05", quote: "I knew that Pauley and I knew each other, but I didn't know that I knew Pauley." },
+    ],
+  },
+  "shawn-hausman": {
+    story:
+      "Eric Goode's high-school friend. Steve Mass gave the pair their start with the basement room at the Mudd Club, then they made Area together, and Shawn went on to design the Standard hotels.",
+    timeline: [
+      ["Late 70s", "With Eric Goode, turns the Mudd Club basement by the coat check into a room"],
+      ["1983", "Area opens, with Eric and Christopher Goode and Darius Azari"],
+      ["Later", "Designs the Standard hotels around the world"],
+    ],
+    liftedUp: [],
+    rooms: ["Mudd Club", "Area", "Standard Hotels"],
+    said: [
+      { episode: "s03e06", who: "Eric Goode", time: "00:07:17", quote: "That was Shawn Hausman, who went on to design all the Standard hotels around the world. My dear high school friend, that I later collaborated with on Area." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:17:10", quote: "Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really. The basement really was just a coat check." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:17:38", quote: "They did a ceiling, they did a marble effect on the floor, they treated the walls. So it became, in a way, one of their first installations." },
+    ],
+  },
+  "geraldo-rivera": {
+    story:
+      "The talk-show host who put the club kids on daytime TV. Richie Rich walked off his set when he would only talk about drugs, came back when Geraldo begged, and gave him make-up advice.",
+    timeline: [
+      ["1943", "Born 4 July in New York"],
+      ["1987", "Geraldo, his daytime talk show, until 1998"],
+      ["90s", "Has the club kids on the show"],
+    ],
+    liftedUp: [],
+    rooms: ["Geraldo"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:30:55", quote: "All he wanted to talk about was drugs. And I'm like, I don't do drugs. I look at this as a launching pad for fashion and music and fun. And he wouldn't stop, so I walked off. Then Geraldo comes backstage: please come back, I promise I'll respect what you all do. And I'm like, okay. But you need a new makeup artist, honey." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:31:31", quote: "I wasn't being shady, I was just being kind. I was giving him fashion advice." },
+      { episode: "s04e08", who: "James St. James", time: "00:28:12", quote: "It's so funny, the Joan Rivers and the Phil Donahues and all the Geraldos. Who would have ever thought, 35 years later?" },
+    ],
+  },
+  "jenna-jameson": {
+    story:
+      "She walked for Heatherette, Richie Rich's label, in the same show as Kim Kardashian. Of all the names Richie dropped at Christmas dinner, she was the only one his straight brothers knew.",
+    timeline: [
+      ["1974", "Born 9 April in Las Vegas"],
+      ["2000s", "Walks for Heatherette"],
+      ["2004", "Her memoir, a New York Times bestseller"],
+    ],
+    liftedUp: [],
+    rooms: ["Heatherette"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:51:14", quote: "I have two older brothers. They're straight-laced dudes, wives and kids. They're like, oh, little bro, it's cool what you do. They don't really get it." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:51:30", quote: "I mentioned Jenna, and they were not impressed by anybody, but their eyes bulged out of their face." },
+      { episode: "s04e08", who: "James St. James", time: "00:51:53", quote: "Straight boys know who Jenna Jameson is." },
+    ],
+  },
+  "britney-spears": {
+    story:
+      "Zaldy dressed her Femme Fatale tour and still remembers walking into rehearsal to hear her alone on the mic, a cappella. Mickey Boardman's crowd went to Vegas just to see her.",
+    timeline: [
+      ["1981", "Born 2 December in McComb, Mississippi"],
+      ["1998", "...Baby One More Time"],
+      ["2011", "Femme Fatale Tour, costumes by Zaldy"],
+      ["2013", "Piece of Me in Las Vegas"],
+      ["2023", "The Woman in Me"],
+    ],
+    liftedUp: [],
+    rooms: ["Las Vegas"],
+    said: [
+      { episode: "s04e04", who: "Zaldy", time: "01:00:09", quote: "One day I walked into the rehearsal studio from lunch, and I was like, who's singing? And it was just Britney alone, a cappella on the mic. And I was like, wow, she can really, really sing." },
+      { episode: "s04e04", who: "Zaldy", time: "01:01:00", quote: "It was Britney Spears, another person who I absolutely love and treasure." },
+      { episode: "s04e02", who: "Mickey Boardman", time: "00:39:37", quote: "My friend was getting married and did his gay bachelor party in Las Vegas. So we went one night to see Britney Spears." },
+    ],
+  },
+  "diana-ross": {
+    story:
+      "The diva the room measured itself against. Michael Schmidt came to New York to see her sing in the rain in Central Park, Lauren Ezersky saw her walk by at Studio 54, and she turned down It's Raining Men.",
+    timeline: [
+      ["1944", "Born 26 March in Detroit"],
+      ["60s", "The Supremes"],
+      ["1970", "Goes solo"],
+      ["1982", "Turns down It's Raining Men, Martha Wash is told"],
+      ["1983", "Sings in the rain in Central Park, July"],
+      ["2016", "Presidential Medal of Freedom"],
+    ],
+    liftedUp: [],
+    rooms: ["Studio 54", "Central Park", "Sound Factory"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:06:02", quote: "I went to New York in July of 83 to see Diana Ross in Central Park. And it was the greatest thing I've ever seen. It actually is the reason I do what I do today." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:13:33", quote: "I would walk around and be, oh my God, there's Diana Ross. There was Princess Grace, there was Gregory Peck, just walking around." },
+      { episode: "s03e02", who: "Martha Wash", time: "00:17:35", quote: "He said that Barbra Streisand turned it down, Donna Summer turned it down, Diana Ross turned it down, Cher turned it down." },
+      { episode: "s01e01", who: "Randy Barbato", time: "00:06:32", quote: "I remember that so clearly, because it was like Diana Ross entered the room." },
+    ],
+  },
+  // Living people batch 7 (daily run, 26 Nov 2026). Left out: the acid trip at the Burgess Meredith party, Leo's "pretend you
+  // don't know me" story, James's knees joke to Leo, Jenny's dating gossip, and Connie's word for herself in Meisel's message.
+  "lady-gaga": {
+    story:
+      "The pop star the club kids' look ended up on. Michael Schmidt made her bubble dress in fifteen minutes on a LaChapelle shoot, Zaldy and Desi Santiago dressed her tours, and James sees the club kid aesthetic in ballroom after ten years of her.",
+    timeline: [
+      ["1986", "Born 28 March in New York"],
+      ["2008", "The Fame"],
+      ["2009", "Rolling Stone cover in Michael Schmidt's bubbles, shot by David LaChapelle"],
+      ["2009", "The Monster Ball Tour, costumes by Zaldy"],
+      ["2019", "Oscar for Shallow"],
+    ],
+    liftedUp: [],
+    rooms: ["Paper", "Rolling Stone", "The Monster Ball Tour"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:43:19", quote: "So I said, okay, give me 15 minutes. I ran around the studio and found these little plastic bubbles, drilled them out, sewed them together, and then scotch taped them to her body. And that became the Rolling Stone cover." },
+      { episode: "s04e02", who: "Mickey Boardman", time: "00:22:35", quote: "When we did Lady Gaga for the cover, Justin, our editor-in-chief, interviewed her, and he's like the biggest Lady Gaga stan ever. That's why he wrote it, not because he has a master's in journalism." },
+      { episode: "s06e09", who: "Desi Santiago", time: "00:04:52", quote: "All the pop star tours, like Gaga, Britney, Michael, I was there for as well." },
+      { episode: "s01e08", who: "James St. James", time: "00:50:39", quote: "After ten years of Lady Gaga and Nicki Minaj and Katy Perry and Moschino, the club kid aesthetic is a part of the ballroom scene now. Maybe we were ahead of our times." },
+    ],
+  },
+  "bob-colacello": {
+    story:
+      "Andy Warhol's right hand at the later Factory and the editor of Interview. Sylvia Miles introduced him to Michael Musto, and his book Holy Terror tells its own version of how everybody met.",
+    timeline: [
+      ["1947", "Born in Brooklyn"],
+      ["1971", "Edits Interview, until 1983"],
+      ["70s", "Sent to the Gilded Grape for the Ladies and Gentlemen sitters"],
+      ["1990", "Holy Terror: Andy Warhol Close Up"],
+      ["Later", "Writes for Vanity Fair"],
+    ],
+    liftedUp: [],
+    rooms: ["The Factory", "Interview", "Gilded Grape"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "00:09:07", quote: "Nobody worked a room like Sylvia, and she knew everyone, and she introduced me to Bob Colacello." },
+      { episode: "s05e06", who: "Christopher Makos", time: "00:14:56", quote: "I'm not questioning Bob's story, but there's a lot of stories that we all have. And that was his story." },
+      { episode: "s04e05", who: "Dustin Pittman", time: "00:47:49", quote: "It was more of a business thing. Andy was doing portraits, and Bob Colacello was trying to sell to the celebrities." },
+      { episode: "s02e10", who: "James St. James", time: "00:25:27", quote: "The Gilded Grape famously is where Andy Warhol sent Bob Colacello to get the trans women for his Ladies and Gentlemen series." },
+    ],
+  },
+  "steven-meisel": {
+    story:
+      "The fashion photographer who kept finding the club kids. Limelight's first cool party was for him and Teri Toye, he gave Zaldy his first modelling job, and he spotted Jenny Talia in the Gaultier show and Connie Fleming at Pat Field's ball.",
+    timeline: [
+      ["1954", "Born 5 June in New York"],
+      ["80s", "Limelight's first big cool party, for him and Teri Toye"],
+      ["80s", "Shoots Zaldy's first modelling job, for Interview"],
+      ["1988", "Starts his run of Italian Vogue covers"],
+      ["1992", "Madonna's Sex"],
+      ["90s", "Calvin Klein campaign with Jenny Talia"],
+    ],
+    liftedUp: ["Zaldy", "Jenny Talia", "Connie Fleming"],
+    rooms: ["Limelight", "Interview", "Italian Vogue", "Details"],
+    said: [
+      { episode: "s01e02", who: "Michael Musto", time: "01:01:39", quote: "One of the first big kind of cool parties they had was something for Teri Toye and Steven Meisel." },
+      { episode: "s04e04", who: "Zaldy", time: "00:37:47", quote: "They pushed me towards my first modeling job, which was with Steven Meisel for Interview Magazine. Not a bad way to start." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:20:49", quote: "So basically, what happened was Steven Meisel saw me in the Gaultier show." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:58:02", quote: "Details had Steven Meisel take some photos for them. And Italian Vogue was a very big influence on everyone. Those really beautifully shot, but austere shots." },
+    ],
+  },
+  "billy-idol": {
+    story:
+      "The punk from London who moved to New York and held court upstairs in the Limelight library. Musto, James and Christina Visca all remember finding him there.",
+    timeline: [
+      ["1955", "Born 30 November in Stanmore, Middlesex"],
+      ["1976", "Generation X"],
+      ["1981", "Moves to New York"],
+      ["1982", "White Wedding"],
+      ["1983", "Rebel Yell"],
+      ["80s", "A regular in the Limelight library"],
+    ],
+    liftedUp: [],
+    rooms: ["Limelight library"],
+    said: [
+      { episode: "s01e02", who: "James St. James", time: "01:01:51", quote: "You could always find a Billy Idol and Perri Lister or somebody in that library." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:13:31", quote: "Up in the library, it was just VIP galore. Actors and singers. Billy Idol was there, Michael Douglas was there, everybody was there." },
+      { episode: "s01e04", who: "James St. James", time: "00:29:01", quote: "I always remember Billy Idol being there. I remember meeting Drew Barrymore as a ten-year-old, she was up there." },
+    ],
+  },
+  "idalis-deleo-n": {
+    first: "Idalis's",
+    story:
+      "The Palladium bartender who taught Lisa Edelstein how to make her hair bigger, then became the first girl hired for Seduction and passed the audition on to her best friend, Michelle Visage.",
+    timeline: [
+      ["80s", "Bartender at the Palladium"],
+      ["1988", "The first girl hired for Seduction; tells Michelle Visage about the audition"],
+      ["90s", "VJ on MTV"],
+    ],
+    liftedUp: ["Michelle Visage", "Lisa Edelstein"],
+    rooms: ["Palladium", "Seduction", "MTV"],
+    said: [
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:23:18", quote: "I loved Idalis because we had the perfect girl conversation in the mid 80s: she taught me how to make my hair bigger." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:42:02", quote: "Idalis was the only one that had been hired. And she was my best friend. And she told me about it." },
+      { episode: "s02e01", who: "James St. James", time: "00:42:34", quote: "She and Lisa really sort of mentored Lisa E when she was a bartender at the Palladium. She's such a beautiful, beautiful girl." },
+    ],
+  },
+  "norma-kamali": {
+    story:
+      "The designer everyone downtown wanted. Lauren Ezersky wore her swimsuits and cover-ups, she shopped at Susanne Bartsch's store, and James wore her gown to the opening of the Palladium.",
+    timeline: [
+      ["1945", "Born 27 June in New York"],
+      ["Late 60s", "Opens her first shop"],
+      ["1973", "The sleeping bag coat"],
+      ["1976", "Farrah Fawcett's red swimsuit"],
+      ["1985", "James wears her gown to the Palladium opening"],
+    ],
+    liftedUp: [],
+    rooms: ["Susanne Bartsch's store", "Palladium"],
+    said: [
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:15:09", quote: "The biggest at that time was Kamali. She did that big coat, which I never had. But I would wear her swimsuits and cover-ups, and that was like my outfit." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:15:36", quote: "The hot one, I'm telling you, was Norma Kamali. That was it." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:21:24", quote: "Norma Kamali would come there and shop." },
+      { episode: "s06e07", who: "James St. James", time: "00:05:23", quote: "All the Pyramid people. Me in my Norma Kamali gown, high heels." },
+    ],
+  },
+  "leonardo-dicaprio": {
+    first: "Leo's",
+    story:
+      "A teenage actor in the Tunnel days, when he was in New York making The Basketball Diaries. Richie Rich looked after him at the clubs and, years later, got a call that he wanted to come to Richie's party.",
+    timeline: [
+      ["1974", "Born 11 November in Los Angeles"],
+      ["1994", "In New York shooting The Basketball Diaries; at the Tunnel"],
+      ["1997", "Titanic"],
+      ["2016", "Oscar for The Revenant"],
+    ],
+    liftedUp: [],
+    rooms: ["Tunnel", "Club USA"],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:42:51", quote: "Tunnel on Fridays was great at that point, because that's when Leonardo DiCaprio and Marky Mark and Juliette Lewis were doing a movie, The Basketball Diaries. We were taking care of that." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:44:12", quote: "Leonardo DiCaprio wants to come to your party tonight with Tobey Maguire. And I thought it was a crank call. Click. And then they called back: no, this is really real." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:16:31", quote: "I kind of went a little bit later, like Leonardo DiCaprio." },
+    ],
+  },
+  "richard-hell": {
+    story:
+      "The punk who gave the world safety pins. He played Eric in Susan Seidelman's Smithereens, and she found that the punk rock heartbreaker was also serious about the work and a real film buff.",
+    timeline: [
+      ["1949", "Born Richard Meyers, 2 October, in Lexington, Kentucky"],
+      ["1973", "Starts Television with Tom Verlaine"],
+      ["1977", "Blank Generation, with the Voidoids"],
+      ["1977", "One of the first punks through the door of Manic Panic"],
+      ["1982", "Smithereens"],
+    ],
+    liftedUp: [],
+    rooms: ["CBGB", "Manic Panic", "Cinemabilia"],
+    said: [
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:10:51", quote: "He knows it and he plays on that. I was really nervous he wouldn't show up. When you're making this kind of movie with such a limited budget, you have to make sure everyone shows up." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:11:21", quote: "I was also surprised to find that he was a real cinephile. He had worked at Cinemabilia. It was the best film bookstore." },
+      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:20:14", quote: "We gave them Richard Hell and safety pins, and they gave us corsets, basically. So thank you." },
+    ],
+  },
+  "patti-smith": {
+    story:
+      "The poet of CBGB. She was on stage in Jackie Curtis's Femme Fatale with Jayne County, everybody downtown loved her, and Brad Gooch remembers her and Robert Mapplethorpe as two young artists who understood about making it.",
+    timeline: [
+      ["1946", "Born 30 December in Chicago"],
+      ["1970", "On stage with Jayne County in Jackie Curtis's Femme Fatale"],
+      ["1975", "Horses"],
+      ["1978", "Because the Night"],
+      ["2010", "Just Kids wins the National Book Award"],
+    ],
+    liftedUp: [],
+    rooms: ["CBGB", "Max's Kansas City", "La MaMa"],
+    said: [
+      { episode: "s02e02", who: "Jayne County", time: "00:22:48", quote: "And Patti Smith was in the play as well. She played a mafia member." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:33:24", quote: "There were so many different little cliques and scenes, but everybody loved Devo, Patti Smith, the Ramones." },
+      { episode: "s05e05", who: "Brad Gooch", time: "00:20:58", quote: "Patti and Robert were young, and Keith was young, and they understood about making it and all of that." },
+      { episode: "s05e05", who: "Fenton Bailey", time: "00:18:55", quote: "Patti Smith, for example, did not like the film at all. What we saw in him was this clarity, this focus and this ambition." },
+    ],
+  },
+  "cindy-adams": {
+    story:
+      "The New York Post gossip columnist who still writes every day. The PR men knew exactly what she wanted: Michelangelo Signorile says you gave Cindy her schmaltz.",
+    timeline: [
+      ["1930", "Born 24 April in New York"],
+      ["1979", "Starts her column in the New York Post"],
+      ["80s", "The publicists write their items in her style"],
+      ["Today", "Still writes every day"],
+    ],
+    liftedUp: [],
+    rooms: ["New York Post"],
+    said: [
+      { episode: "s02e08", who: "Michelangelo Signorile", time: "00:16:33", quote: "You had to give Cindy Adams all of her kind of Cindy Adams schmaltz, very trashy and flashy kind of stuff. So we always knew who wanted what." },
+      { episode: "s02e08", who: "James St. James", time: "00:12:52", quote: "So if Page Six doesn't take it, then you send it to Suzy. If Suzy doesn't take it, it goes to Cindy Adams." },
+      { episode: "s06e08", who: "William Norwich", time: "00:59:13", quote: "I wrote every day and Liz Smith wrote every day. And even now, Cindy Adams writes every day." },
+    ],
+  },
+  // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
+  // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
+  "peppo-vanini": {
+    story:
+      "Co-owner of Xenon. He had run clubs in Europe, Régine's among them, before he and Howard Stein opened Xenon in June 1978 in the old Henry Miller's Theatre on West 43rd Street - xenon is element 54, a wink at Studio 54. Nora Burns's 1980 diary names him as the owner.",
+    timeline: [
+      ["Before 1978", "Runs clubs in Europe, Régine's among them"],
+      ["Jun 1978", "Opens Xenon with Howard Stein in the former Henry Miller's Theatre"],
+      ["1980", "In Nora Burns's diary, read on Night Fever S6E5"],
+      ["1984", "Xenon closes"],
+    ],
+    liftedUp: [],
+    rooms: ["Xenon", "Studio 54", "Régine's"],
+    said: [{ episode: "s06e05", who: "Nora Burns", time: "00:09:12", quote: "Peppo was the owner of Xenon." }],
+    also: { heading: "In the diaries", names: ["Nora Burns's diaries (1980)"] },
+  },
+  "lahoma-van-zandt": {
+    first: "Lahoma",
+    story:
+      "Drag queen from Atlanta, Larry Tee's partner in crime, who came to New York with RuPaul and Larry, lived in Nelson Sullivan's house, co-hosted Celebrity Club in the Tunnel basement with Larry - 'the king and queen of Manhattan', he says - and later hung up the wig for publishing.",
+    timeline: [
+      ["Atlanta", "Larry Tee's partner in crime"],
+      ["1987", "Moves in with Nelson Sullivan at 5 Ninth Avenue, up from Atlanta with RuPaul and Larry Tee"],
+      ["Late 80s", "Co-hosts Celebrity Club in the Tunnel basement with Larry Tee"],
+      ["90s", "Busy at Disco 2000 at the Limelight; out at the Roxy with Larry Tee"],
+      ["Later", "Hangs up the wig for publishing, and saves the box of archive photos"],
+    ],
+    liftedUp: [],
+    rooms: ["Celebrity Club", "Tunnel", "Disco 2000", "Limelight", "Roxy"],
+    said: [{ episode: "s01e02", who: "Michael Musto", time: "00:38:35", quote: "Lahoma and RuPaul all moved to New York and lived with Nelson. And Lady Bunny was part of that." }],
+    also: { heading: "The crowd", names: ["Nelson Sullivan", "Larry Tee", "RuPaul", "Lady Bunny", "Alexis DiBiasio", "Linda Simpson"] },
+  },
+  "clara-the-carefree-chicken": {
+    first: "Clara",
+    story:
+      "Ernie Glam's Club Kid character at Disco 2000, the Wednesday party at the Limelight. As James tells it, Clara hatched from an egg on the party's opening night, one of the names Michael gave his costume-shop characters. Ernie made her his 'cartoon drag' and kept her for three years, sweaty suits and all.",
+    timeline: [
+      ["Disco 2000 opening night", "Clara hatches from an egg at the Limelight"],
+      ["The next three years", "Ernie Glam's 'cartoon drag', the Club Kids' mascot"],
+    ],
+    liftedUp: [],
+    rooms: ["Disco 2000", "Limelight"],
+    said: [],
+    also: { heading: "Who talks about her", names: ["Ernie Glam", "James St. James", "Moby", "Michael Musto"] },
   },
 };

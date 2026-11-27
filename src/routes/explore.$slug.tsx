@@ -17,6 +17,7 @@ import { ColumnIndex } from "@/components/column-index";
 import { TheirWork } from "@/components/their-work";
 import { LibraryItemSections, Story } from "@/components/library-item";
 import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
+import { AroundTheBlock, BringUsHome, RoomsMapSection } from "@/components/map-sections";
 import { libraryShareCover } from "@/lib/library-share";
 import { MentorTree } from "@/components/mentor-tree";
 import { TREE_ON_PAGE } from "@/lib/mentor-tree";
@@ -24,6 +25,8 @@ import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { guestBySlug } from "@/data/guests";
 import { episodePath } from "@/data/episodes";
 import { getCardPage } from "@/lib/card-view.functions";
+import { ROLE_LINES } from "@/data/role-lines";
+import { ALTERNATE_NAMES } from "@/data/alternate-names";
 import { LinkDataProvider } from "@/lib/link-index";
 import "@fontsource/covered-by-your-grace/400.css";
 
@@ -41,11 +44,15 @@ export const Route = createFileRoute("/explore/$slug")({
     // In memoriam and club pages are full pages, not cards (SEO check, 16 Nov 2026): the name with its years in the title,
     // their own story as the description, and their own share picture (public/og/explore/<slug>.jpg, scripts/og-cards.py).
     const years = mem ? `${mem.born}–${mem.died}` : club ? `${club.opened}–${club.closed}` : "";
+    // Who someone is in the title (Lisa, 27 Nov 2026, "A1"): "Peppo Vanini – co-owner of Xenon nightclub, New York".
+    const role = ROLE_LINES[d.slug];
     const title = mem
-      ? `${d.name} (${years}) – in memoriam | Night Fever AFTERPARTY`
+      ? `${d.name} (${years})${role ? `, ${role}` : ""} – in memoriam | Night Fever AFTERPARTY`
       : club
-        ? `${d.name} (${years}) – New York club | Night Fever AFTERPARTY`
-        : `${d.name} - ${d.category} | Night Fever AFTERPARTY`;
+        ? `${club.aka && !d.name.includes(club.aka) ? club.aka : d.name} (${years}) – ${club.city ?? "New York"} club | Night Fever AFTERPARTY`
+        : role
+          ? `${d.name} – ${role} | Night Fever AFTERPARTY`
+          : `${d.name} - ${d.category} | Night Fever AFTERPARTY`;
     // Clean story line + "Mentioned in N Night Fever episodes" (SEO check, 4 Nov 2026): no research notes, no long code lists.
     const description = mem || club ? pageDescription(d.name, mem?.story ?? d.story, d.episodes) : cardDescription(d.name, d.story, d.episodes);
     const path = `/explore/${d.slug}`;
@@ -53,24 +60,28 @@ export const Route = createFileRoute("/explore/$slug")({
     // Library items with a real cover (Lisa, 21 Nov 2026) share their cover picture too.
     const it0 = d.view.item;
     const libraryPic = !!it0?.cover && libraryShareCover(it0.shelf, it0.cover.mast ? "mast" : "book");
-    const image = (mem && d.portrait) || club?.portrait || libraryPic ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
+    // Living-person pages with a polaroid share their own picture too (Lisa, 27 Nov 2026, "A5").
+    const image = (mem && d.portrait) || club?.portrait || libraryPic || (d.view.profile && d.portrait) ? `/og/explore/${d.slug}.jpg` : "/og/explore.jpg";
     const head = pageHead({ path, title, description, image, type: "article", noindex: d.thin });
     const TYPES: Record<string, string> = { Person: "Person", Club: "NightClub", Location: "Place", Book: "Book", Diary: "Book", Film: "Movie", TV: "TVSeries", Organisation: "Organization" };
     const thing: Record<string, unknown> = { "@type": TYPES[d.rawCategory] ?? "Thing", name: d.name };
     if (/wikipedia\.org|imdb\.com/.test(d.link)) thing["sameAs"] = d.link;
     if (club) {
       thing["description"] = club.story;
-      thing["address"] = { "@type": "PostalAddress", streetAddress: club.address, addressLocality: "New York", addressCountry: "US" };
+      thing["address"] = { "@type": "PostalAddress", streetAddress: club.address, addressLocality: club.city ?? "New York", addressCountry: club.country ?? "US" };
       thing["foundingDate"] = club.opened;
       thing["dissolutionDate"] = club.closed;
     }
+    // Other names Google should know (Lisa, 27 Nov 2026, "A3"): the club's aka plus src/data/alternate-names.ts.
+    const alt = [...new Set([...(club?.aka ? [club.aka] : []), ...(mem?.aka ? [mem.aka] : []), ...(ALTERNATE_NAMES[d.slug] ?? [])])].filter((n) => n !== d.name);
+    if (alt.length) thing["alternateName"] = alt.length === 1 ? alt[0] : alt;
+    if (role && !club) thing["description"] = role.charAt(0).toUpperCase() + role.slice(1);
     // Place pages (Lisa, 22 Nov 2026): the pin as GeoCoordinates.
     const geo = d.view.place?.geo;
     if (geo) thing["geo"] = { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng };
     if (mem) {
       thing["birthDate"] = mem.born;
       thing["deathDate"] = mem.died;
-      if (mem.aka) thing["alternateName"] = mem.aka;
       thing["description"] = mem.story;
       if (mem.wikidata) thing["sameAs"] = thing["sameAs"] ? [thing["sameAs"] as string, mem.wikidata] : mem.wikidata;
     }
@@ -211,7 +222,7 @@ function EntityPage() {
               {[place.tip, place.area].filter(Boolean).join(" · ")}
               <span className="mt-2 block text-xs font-semibold uppercase tracking-wider text-pink">
                 {place.who.length} episode{place.who.length === 1 ? "" : "s"} · {place.mentions} mention{place.mentions === 1 ? "" : "s"}
-                {placeMap ? <> · <Link to="/map" className="hover:text-gold">Open the big map &rarr;</Link></> : <> · <Link to="/contact" search={{ about: "Bring us home" }} className="hover:text-gold">No pin yet - bring it home &rarr;</Link></>}
+                {placeMap ? <> · <Link to="/map" search={{ at: e.slug }} className="hover:text-gold">Open the big map &rarr;</Link></> : <> · <Link to="/contact" search={{ about: "Bring us home" }} className="hover:text-gold">No pin yet - bring it home &rarr;</Link></>}
               </span>
             </p>
           )}
@@ -276,10 +287,15 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} />}
         {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} />}
+        {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
+            card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
+        {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
+        {e.mapHome && <BringUsHome m={e.mapHome} />}
         {profile && <PersonProfileSections m={profile} name={e.name} />}
+        {profile && e.rooms && <RoomsMapSection r={e.rooms} first={profile.first ?? e.name.split(" ")[0]!} />}
         {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
         <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />
         {diary && <DiarySections d={diary} name={e.name} />}

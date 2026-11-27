@@ -1,4 +1,4 @@
-import { pageHead } from "@/lib/seo";
+import { abs, jsonLd, pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type CSSProperties } from "react";
 import tablePic from "@/assets/afterparty-table.webp";
@@ -11,7 +11,28 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
   staticData: { sitemap: true },
-  head: () => pageHead({ path: "/episodes", title: "Night Fever AFTERPARTY – every episode's names, clubs & looks", description: "Every Night Fever episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest Afterparty first!", image: "/og/episodes.jpg" }),
+  // "Night Fever podcast" is a top Google search (Lisa, 27 Nov 2026, "B11"): the word in the title, and every episode sent
+  // to Google as one PodcastSeries.
+  head: () => ({
+    ...pageHead({ path: "/episodes", title: "Night Fever podcast – every episode, timestamped | AFTERPARTY", description: "Every Night Fever podcast episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest AFTERPARTY first!", image: "/og/episodes.jpg" }),
+    scripts: [
+      jsonLd({
+        "@context": "https://schema.org",
+        "@type": "PodcastSeries",
+        name: "Night Fever",
+        url: "https://www.wowpresentsplus.com/night-fever",
+        description: "The World of Wonder podcast with James St. James, Fenton Bailey and Randy Barbato.",
+        subjectOf: { "@type": "WebPage", name: "Night Fever AFTERPARTY", url: abs("/episodes") },
+        hasPart: episodes.map((e) => ({
+          "@type": "PodcastEpisode",
+          name: `${e.guest} - Night Fever S${e.season}E${e.episode}${e.part ?? ""}`,
+          episodeNumber: e.episode,
+          partOfSeason: { "@type": "PodcastSeason", seasonNumber: e.season },
+          url: abs(`/episodes/${e.id}`),
+        })),
+      }),
+    ],
+  }),
   component: EpisodesPage,
 });
 

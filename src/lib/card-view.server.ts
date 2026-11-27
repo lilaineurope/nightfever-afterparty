@@ -23,8 +23,10 @@ import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView, storyView } from "@/lib/library-item.server";
 import { placeView } from "@/lib/place-view.server";
+import { mapSectionOf, roomsMapOf } from "@/lib/map-view.server";
 import { worksOf } from "@/lib/works";
 import { coverFor } from "@/data/library-covers";
+import { storyPagesFor } from "@/lib/story-links.server";
 
 /** A club's theme nights and parties (src/data/club-parts.ts) with their episode rows, biggest first inside a tile. */
 function clubPartsView(e: Entity): ClubPartsView | null {
@@ -64,6 +66,10 @@ function cardView(e: Entity): CardView {
     L.text(column.about, e.name);
   }
 
+  // Stories and timelines link the names in them (A6, Lisa 27 Nov 2026): record those links for the page.
+  for (const t of [club?.story, mem?.story, profile?.story, diaryPage?.story, ...(club?.timeline ?? []).map((x) => x[1]), ...(mem?.timeline ?? []).map((x) => x[1]), ...(profile?.timeline ?? []).map((x) => x[1])])
+    if (t) L.text(t, e.name);
+  for (const n of [...(club?.also?.names ?? []), ...(mem?.also?.names ?? []), ...(profile?.also?.names ?? [])]) L.name(n);
   mem?.liftedUp.forEach(L.name);
   mem?.rooms.forEach(L.name);
   club?.stage.forEach(L.name);
@@ -99,6 +105,11 @@ function cardView(e: Entity): CardView {
     L.name(x.slug);
     return { slug: x.slug, name: x.name };
   });
+  // Two-way story links (A6): the club, In memoriam, person and diary pages whose story names this card.
+  const onPages = storyPagesFor(e.slug).map((x) => {
+    L.card(x.slug);
+    return x;
+  });
   const related = relatedTo(e).map((x) => {
     L.card(x.slug);
     return { slug: x.slug, name: x.name };
@@ -119,6 +130,18 @@ function cardView(e: Entity): CardView {
     for (const n of place.near) L.card(n.slug);
     for (const p of place.map?.pins ?? []) L.card(p.slug);
   }
+  // The map on club and event pages ("Around the block", Lisa 27 Nov 2026) and on living-people pages (their rooms).
+  const section = g || mem ? null : mapSectionOf(e);
+  const mapBand = section && "band" in section ? section.band : null;
+  const mapHome = section && "home" in section ? section.home : null;
+  if (mapBand) {
+    if (mapBand.pin.slug) L.card(mapBand.pin.slug);
+    for (const n of mapBand.near) L.card(n.slug);
+    for (const p of mapBand.map.pins) L.card(p.slug);
+    for (const x of [...mapBand.here, ...mapBand.nextDoor]) L.card(x.slug);
+  }
+  const rooms = profile ? roomsMapOf(profile, e.name) : null;
+  if (rooms) for (const x of [...rooms.stops, ...rooms.home, ...rooms.away]) L.card(x.slug);
   // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
   const works = e.category === "Person" ? worksOf(e.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : [];
   for (const w of works) if (w.slug) L.card(w.slug);
@@ -143,6 +166,7 @@ function cardView(e: Entity): CardView {
     named,
     inGuestStories,
     related,
+    onPages,
     music: j ? { name: j.name, shelf: j.shelf, spotify: j.spotify } : null,
     night: clubNightFor(e.slug) ?? null,
     mem,
@@ -157,6 +181,9 @@ function cardView(e: Entity): CardView {
     // Songs, bands, albums and clubs a guest made are not on the Library shelves, but get "The story" too (Lisa, 23 Nov 2026).
     story: item ? null : storyView(e),
     place,
+    mapBand,
+    mapHome,
+    rooms,
     works,
     connector: connectorRank(e.slug),
     links: L.data,
@@ -203,7 +230,7 @@ export function cardPageData(slug: string) {
     thin: isThinCard(e),
     guest: e.guest ? guestFacts(e.guest.episode, e.guest.tagline) : null,
     // In memoriam and club pages (not guests) get their own head (SEO check, 16 Nov 2026): the facts it needs travel here.
-    club: !e.guest && club ? { story: club.story, address: club.address, opened: club.opened, closed: club.closed, portrait: !!club.portrait } : null,
+    club: !e.guest && club ? { story: club.story, address: club.address, opened: club.opened, closed: club.closed, portrait: !!club.portrait, aka: club.aka ?? null, city: club.city ?? null, country: club.country ?? null } : null,
     mem: !e.guest && mem ? { born: mem.born, died: mem.died, aka: mem.aka ?? null, story: mem.story, wikidata: mem.wikidata ?? null } : null,
     portrait: !!PERSON_PORTRAITS[e.slug],
     view: cardView(e),

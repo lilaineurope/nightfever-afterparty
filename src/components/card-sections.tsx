@@ -142,6 +142,20 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
+      {v.onPages.length > 0 && (
+        <section>
+          <h2 className={h}>On these AFTERPARTY pages</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {v.onPages.map((x) => (
+              <Link key={x.slug} {...linkToSlug(links, x.slug)} className={chip}>
+                {x.name}
+                <span className="ml-1.5 text-muted-foreground">{x.kind}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       {v.inGuestStories.length > 0 && !v.item && (
         <section>
           <h2 className={h}>Pops up in the guests' stories</h2>

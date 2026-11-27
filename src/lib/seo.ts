@@ -1,5 +1,6 @@
 // Search and share settings in one place: full addresses, share pictures (public/og/*.jpg, 1200x630)
 // and structured data (schema.org JSON-LD) for Google. Episode pages call episodeHead(id).
+import { ALTERNATE_NAMES, EPISODE_TITLE_NAME } from "@/data/alternate-names";
 import { episodeById, episodeIdOf } from "@/data/episodes";
 import { guests } from "@/data/guests";
 import { GUEST_LINES } from "@/data/guest-lines";
@@ -119,6 +120,9 @@ const EPISODE_TOPICS: Record<string, string> = {
   s01e09: "Mars, the Limelight & DJing in 90s New York",
   s04e02: "Paper magazine, Break the Internet & downtown New York",
   s06e09: "Desi Monster, the Club Kids, Leigh Bowery & the band Boob",
+  s05e05: "Keith Haring, Radiant, Mapplethorpe, Warhol & Club 57",
+  s05e08: "John Sex, Club 57, the Pyramid, Pulsallama & Wendy Wild",
+  s05e02: "G-A-Y, Nag Nag Nag, electroclash, Amy Winehouse & getting sober",
   s04e11: "Drag history, Julian Eltinge, the Pansy Craze & Harlem drag balls",
   s03e09: "Condé Nast, xoJane & post-9/11 New York nightlife",
   s04e01: "Couture, Isabella Blow, McQueen, Dalí & records with Tony Visconti",
@@ -150,6 +154,9 @@ function guestPerson(id: string, name: string) {
   const person: Record<string, unknown> = { "@type": "Person", name: g?.name ?? name, image: abs(`/og/${id}.jpg`) };
   if (g?.tagline) person["description"] = g.tagline;
   if (GUEST_LINES[id]) person["jobTitle"] = GUEST_LINES[id];
+  // Other names the guest is searched by (Lisa, 27 Nov 2026, "A3"): Tish Gervais, Desi Monster.
+  const alt = ALTERNATE_NAMES[id];
+  if (alt?.length) person["alternateName"] = alt.length === 1 ? alt[0] : alt;
   return person;
 }
 
@@ -157,8 +164,13 @@ export function episodeHead(id: string, references: number) {
   const ep = episodeById(id);
   const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
   const topics = EPISODE_TOPICS[id];
-  const title = episodeTitle(ep.guest, code, topics);
-  const description = `All ${references} names, clubs, places and looks from ${ep.guest}'s Night Fever interview (${code}), each timestamped to play from that moment. Dive in!`;
+  const title = episodeTitle(EPISODE_TITLE_NAME[id] ?? ep.guest, code, topics);
+  // Each episode its own description (Lisa, 27 Nov 2026, "A2"): who the guest is and what they talk about, from the blurb,
+  // then the AFTERPARTY line. Before, every episode said the same "All N names, clubs, places and looks…".
+  const blurb = ep.blurb?.trim().replace(/[.!]$/, "");
+  const description = blurb
+    ? clip(`${blurb}. All ${references} names, clubs and looks from Night Fever ${code}, timestamped.`, 160)
+    : `All ${references} names, clubs, places and looks from ${ep.guest}'s Night Fever interview (${code}), each timestamped to play from that moment. Dive in!`;
   const path = `/episodes/${id}`;
   const head = pageHead({ path, title, description, image: `/og/${id}.jpg`, type: "article" });
   const episode = {

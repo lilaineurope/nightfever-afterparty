@@ -23,6 +23,11 @@ export const MADE_BY: Record<string, Maker[]> = {
   // ---------- Clubs they opened, ran or made their name in (Lisa 22 Nov 2026: fill in the DJs and club makers) ----------
   "Sound Factory": [m("Junior Vasquez", "Opened it, resident DJ", 1989), m("Christina Visca", "Opened it", 1989)],
   "Paradise Garage": [m("Larry Levan", "Resident DJ", 1977)],
+  // Top Google search pages (Lisa, 27 Nov 2026)
+  "Xenon": [m("Peppo Vanini", "Opened it", 1978), m("Howard Stein", "Opened it", 1978)],
+  "Area": [m("Eric Goode", "Opened it", 1983), m("Shawn Hausman", "Opened it", 1983)],
+  "Standard Hotels": [m("Shawn Hausman", "Designed them")],
+  "Celebrity Club": [m("Larry Tee", "Hosted it"), m("Lahoma van Zandt (John Witherspoon)", "Hosted it")],
   "Taboo": [m("Leigh Bowery", "Ran it", 1985)],
   "The Cars – 'Hello Again' video": [m("John Sex", "In it", 1984)],
 
@@ -74,6 +79,9 @@ export const MADE_BY: Record<string, Maker[]> = {
   "The Changing Room": [m("Laurence Senelick", "Wrote it", 2000)],
   "Camp: The Story of the Attitude That Conquered the World": [m("Paul Baker", "Wrote it", 2023)],
   "The Big Sea": [m("Langston Hughes", "Wrote it", 1940)],
+
+  // S05E02 Jodie Harsh: her memoir, talked about on the show
+  "You Had to Be There (Jodie Harsh)": [m("Jodie Harsh", "Wrote it", 2025)],
   // ---------- Films ----------
   "The Misandrists": [m("Bruce LaBruce", "Directed it", 2017), m("Desi Santiago", "Production designer", 2017)],
   "Casino Diabolique": [m("Desi Santiago", "Made it")],
@@ -522,7 +530,7 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Dean Johnson": [{ title: "The Velvet Mafia", kind: "Music", role: "In the band" }],
   // Lisa 22 Nov 2026: fill in the people whose pages had no work yet. Facts: their Wikipedia pages (checked 22 Nov) and
   // the site's own guest and memoriam notes.
-  "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2019 }],
+  "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2020 }],
   "Screamin' Rachael Cain": [
     { title: "Screamin' Rachael – 'My Main Man'", kind: "Music", role: "Sang it" },
     { title: "Screamin' Rachael – 'Fun with Bad Boys'", kind: "Music", role: "Sang it", year: 1987 },

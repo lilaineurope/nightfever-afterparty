@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { Memoriam } from "@/data/memoriam";
+import { QuoteName } from "@/components/quote-name";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -19,7 +21,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
         <p className="font-[family-name:var(--font-flyer)] text-4xl uppercase tracking-wide text-foreground md:text-5xl">
           {m.born} – {m.died}
         </p>
-        <p className="mx-auto mt-3 max-w-2xl text-card-foreground/85">{m.story}</p>
+        <p className="mx-auto mt-3 max-w-2xl text-card-foreground/85"><EntityText text={m.story} self={name} /></p>
       </div>
 
       {m.said.length > 0 && (
@@ -47,7 +49,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                     <span className="font-semibold">
-                      {s.who}
+                      <QuoteName who={s.who} episodeId={s.episode} />
                       <br />
                       <Link to={episodePath(ep.id)} className="font-normal text-[#555] hover:text-pink">
                         {s.who === ep.guest ? code : `${code} · ${ep.guest}`}
@@ -68,7 +70,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
           <ol className="mt-4 space-y-3 border-l border-gold/40 pl-5">
             {m.timeline.map(([y, t], i) => (
               <li key={i} className="text-sm">
-                <span className="font-semibold text-foreground">{y}</span> · <span className="text-card-foreground/80">{t}</span>
+                <span className="font-semibold text-foreground">{y}</span> · <span className="text-card-foreground/80"><EntityText text={t} self={name} /></span>
               </li>
             ))}
           </ol>
@@ -84,6 +86,12 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
             <>
               <h2 className={`${h} mt-6`}>{first}'s rooms</h2>
               <div className="mt-3 flex flex-wrap gap-2">{m.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+            </>
+          )}
+          {m.also && m.also.names.length > 0 && (
+            <>
+              <h2 className={`${h} mt-6`}>{m.also.heading}</h2>
+              <div className="mt-3 flex flex-wrap gap-2">{m.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
             </>
           )}
           {m.watch && m.watch.length > 0 && (

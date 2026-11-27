@@ -367,6 +367,13 @@ export const YOUTUBE: Record<string, string> = {
   "The Kinks": "fTTsY-oz6Go",
   "Berlin (band)": "Bx51eegLTY8",
   "S'Express": "IpeRShWMdYM",
+  // S05E08 April Palmieri
+  "John Sex – 'Hustle with My Muscle'": "Yw0wBPnjpp8",
+  "John Sex – 'Rock Your Body'": "3BEEA2-LSkQ",
+  "The Fleshtones": "4bbJDFxUAu8",
+  "The Allman Brothers Band": "XBf48xUIBLo",
+  "Bay City Rollers": "7BKKaKT_dtM",
+  "Smash (musical)": "-DGKVjGaQe8",
   // S04E11 Elyssa Maxx Goodman
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
@@ -380,6 +387,11 @@ export const YOUTUBE: Record<string, string> = {
   "Fatboy Slim": "FMrIy9zm7QY",
   "Leftfield": "hZj9bi7YNmI",
   "Psychotica": "amQDDq7dUVA",
+  // S05E02 Jodie Harsh
+  "Shannon – 'Let the Music Play'": "_-0sUuGufmw",
+  "Steps": "OiwDHHcHPh0",
+  "S Club 7": "50kP4S0peAs",
+  "Scissor Sisters": "4H5I6y1Qvz0",
 };
 /** Videos whose owners don't allow playing them on other sites (or that are age-restricted): their button opens YouTube instead.
  *  Empty since 28 Oct 2026 - every such video was swapped for one that plays here. */

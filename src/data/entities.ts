@@ -5,6 +5,8 @@ import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 import { PART_NAMES } from "./club-parts";
 import { WRITTEN_BY } from "./written-by";
+import { PERSON_PROFILES } from "./person-profiles";
+import { MEMORIAM } from "./memoriam";
 
 // One overview card per name, place, book, song, look... Every page links here.
 
@@ -19,7 +21,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11" | "s06e09";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11" | "s06e09" | "s05e02" | "s05e05" | "s05e08";
 };
 
 export type Entity = {
@@ -87,7 +89,7 @@ export const SAME_AS: Record<string, string> = {
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
 // place: the London Roxy is not the New York Roxy (Lisa, 22 Nov 2026). Films and plays that share a name with a place, a
 // musical or a book keep theirs too (S04E11: the Victor/Victoria film, Mae West's plays The Drag and Sex).
-const KEEP_BRACKET = new Set(["the roxy (london)", "victor/victoria (1982 film)", "the drag (mae west play)", "sex (mae west play)"]);
+const KEEP_BRACKET = new Set(["the roxy (london)", "victor/victoria (1982 film)", "the drag (mae west play)", "sex (mae west play)", "circus (london club night)"]);
 
 // A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
 // forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
@@ -281,16 +283,24 @@ export const mentionsIn = (e: Entity, episode: string): number =>
 // one-episode card with timeline moments or guest stories (Voguing, Rocky Horror) is listed too. Thin cards stay out.
 export const inSitemap = (e: Entity): boolean => !afterpartyOf(e) && !isThinCard(e);
 
+// A person with a full page (living people pages, In memoriam) is never thin, even from one episode (Lisa, 24 Nov 2026).
 export const isThinCard = (e: Entity): boolean =>
   !e.guest &&
+  !PERSON_PROFILES[e.slug] &&
+  !MEMORIAM[e.slug] &&
   new Set(e.refs.map((r) => r.episode)).size < 2 &&
   e.events.length === 0 &&
   e.inGuestStories.length === 0;
+
+/** A guest's other name with its own card (Tish Gervais = Brian Belovitch, Lisa 27 Nov 2026, "B2a"): it forwards to the
+ *  guest's episode page like the guest's own card, is left out of the sitemap, and every link to it goes straight there. */
+const ALSO_GUEST: Record<string, NonNullable<Ref["episode"]>> = { "tish-gervais": "s02e10" };
 
 /** One page per guest (Lisa, 1 Nov 2026): a guest whose AFTERPARTY is on the site has ONE page, the episode page.
  *  Their A–Z card address forwards there and every name link goes straight there. Guests without an AFTERPARTY
  *  yet keep their A–Z card until their episode is registered in episodes.ts. */
 export function afterpartyOf(e: Entity | undefined): NonNullable<Ref["episode"]> | undefined {
+  if (e && ALSO_GUEST[e.slug]) return ALSO_GUEST[e.slug];
   if (!e?.guest) return undefined;
   const id = episodeIdOf(e.guest.episode);
   if (!id) return undefined;
