@@ -1,0 +1,122 @@
+{
+  "_note": "From the machine transcripts in the NightFever season folders (27 Nov 2026). 'quote' = exact words with names spelled right; 'transcript' = as transcribed. Teams .docx transcripts (S02E03, S06E01) only say 'Talare N': S02E03 Talare 1 = James St. James, Talare 2 = Susanne Bartsch, Talare 3/4 = Fenton Bailey or Randy Barbato; S06E01 Talare 1 = James's interviewer side, Talare 2 = Fenton Bailey or Randy Barbato (the WOW founders telling their own story - listen to say which). 'verdict': good / usable / thin.",
+  "klaus-nomi": [
+    {
+      "episode": "s05e08", "speaker": "James St. James", "time": "00:31:22", "verdict": "good",
+      "context": "James to April Palmieri about John Sex and where his name came from",
+      "quote": "Joey Arias and Klaus Nomi were the ones who gave him the name John Sex because they were always seeing him at the bathhouses. And he was very sexual. He was a very, you know, he was a hot guy in hot times, you know.",
+      "transcript": "Joey Arias and Klaus Nomi were the ones who gave him the name John Sex because they were always seeing him at the bathhouses. And he was very sexual. He was a very, you know, he was a hot guy in hot times, you know."
+    },
+    {
+      "episode": "s06e09", "speaker": "Desi Santiago", "time": "00:31:03", "verdict": "usable (garbled)",
+      "context": "Desi on his older brother, a DJ at a gay club in New Jersey where Divine and Klaus Nomi performed",
+      "quote": "He was very quiet, but he would draw, he would make collages, and he was DJing at this club in New Jersey called, I think it's called, Charlie's West or Uncle Charlie's, one of those. But like, Divine performed there, Klaus Nomi performed there. It was like this weird club in Jersey.",
+      "transcript": "guy he was very quiet um but he and he would draw he would make collages and he was just like he was DJing at this club in New Jersey called I think it's called them was the uh Charlie is a Charlie's West or Uncle Charlie's one of those um but like Divine perform their class Nomi perform / [0:31:21] And there yeah it was like this weird like club in jersey",
+      "check": "The machine heard 'class Nomi perform' and 'Divine perform their' - listen at 00:31:00 to confirm 'Klaus Nomi performed there'. Lightly cleaned (ums dropped)."
+    },
+    {
+      "episode": "s01e07", "speaker": "James St. James (question) / Rudolf Piper", "time": "00:14:28", "verdict": "thin",
+      "context": "James asks if Klaus Nomi was around in 1970s Berlin; Rudolf doesn't remember him there",
+      "quote": "James: Were there nightclub celebrities, like was Klaus Nomi around? Was Grace Jones, Romy Haag? Was she around? - Rudolf: Romy Haag was around, yes. Klaus Nomi? I don't think so. I mean, I don't remember him.",
+      "transcript": "[0:14:28 James/Fenton] Were there nightclub celebrities like was Klaus Nomi around? Was Grace Jones Romy Hogg? Was she around? / [0:14:36 Rudolf] Ronnie Hag was around, yes. Uh Klaus Normi? I don't think so. I mean, I don't remember him. I think he was too young uh I believe.",
+      "check": "Speaker label at 00:14:28 is 'James/Fenton' (the machine couldn't tell). Rudolf's answer is a no - not a Nomi story, better left out or used only as Berlin context."
+    }
+  ],
+  "klaus-nomi-xenon": "No line in any transcript links Klaus Nomi and Xenon (searched every episode for Nomi). The Xenon show (25 Feb 1980) comes only from the outside source on the Xenon page.",
+  "house-of-xtravaganza": [
+    {
+      "episode": "s01e08", "speaker": "Luis Xtravaganza Camacho", "time": "00:09:09", "verdict": "good",
+      "context": "Luis on joining the House of Xtravaganza, a mostly Latino house",
+      "quote": "Arrived into the group that I was really supposed to be in. You know, they were hot house, they were mostly Latino house in a world where there was a lot of African-American houses, which is great. We stood out, and for that fact, we had to push harder, work harder, be fiercer to get noticed.",
+      "transcript": "arrived into the group that I was really supposed to be in. You know, they were hot house, they were mostly Latino house in a world where there was a lot of African-American. American houses, which is great. We stood out, and for that fact, we had to. To push harder, work harder, be fiercer to get noticed.",
+      "check": "The brief's time 00:00:43 is James's intro; the 'fiercer' line is at 00:09:09. Starts mid-sentence ('Once I was accepted, I felt like I had a ride... arrived into the group') - could open with 'Once I was accepted, I felt like I arrived into the group that I was really supposed to be in' after a listen at 00:09:00."
+    },
+    {
+      "episode": "s02e01", "speaker": "Michelle Visage", "time": "00:13:14", "verdict": "good",
+      "context": "Michelle on the piers and joining the House of Magnifique",
+      "quote": "And I didn't know what it was, but I knew that I wanted to be a part of the house. Everybody wanted to be an Xtravaganza. Xtravaganza paid me no mind, but the Magnifiques saw me and I was like, yeah, I want to do this. And that's how the whole ballroom thing started for me.",
+      "transcript": "And I didn't know what it was, but I knew that I wanted to be a part of the house. Everybody wanted to be an extravaganza. Extravaganza paid me no mind, but the Magnafiques saw me and I was like, Yeah, I want to do this. And that's how the whole ballroom thing started for me."
+    },
+    {
+      "episode": "s06e03", "speaker": "Chi Chi Valenti", "time": "00:34:08", "verdict": "good",
+      "context": "Chi Chi on meeting the voguers at the Tunnel and writing 'Nations' for Details",
+      "quote": "And I was writing about these tribes in the night that I called nations that hung together like families, like style tribes. And so one of the four tribes that I picked was the House of Xtravaganza because they, of all the houses that were around me at the time, they really had the strongest family feel.",
+      "transcript": "And I was writing about these tribes in the night that I called nations that hung together like families, like style tribes. And so one of the Four tribes that I picked was the House of Extravaganza because they, of all the houses that were around me at the time, They really had the strongest family feel."
+    },
+    {
+      "episode": "s06e03", "speaker": "Johnny Dynell", "time": "00:37:56", "verdict": "good",
+      "context": "Johnny on how he became an Xtravaganza",
+      "quote": "I would meet the kids like at the Garage like years ago, the ball kids, and also on the pier, like they were all on the pier, and I became an Xtravaganza.",
+      "transcript": "Yeah. Then, um, now I met the kids because I would meet the kids like at the garage like years ago, the ball kids, and also on the pier, like they were all on the pier, and I became an extravaganza."
+    },
+    {
+      "episode": "s02e03", "speaker": "Susanne Bartsch", "time": "00:43:08", "verdict": "good",
+      "context": "Susanne on the first Love Ball (1989): she opened it with Willi Ninja and the Xtravaganzas",
+      "quote": "It's important to have the house ball community be part of it. And I mean, I never forget we opened. I opened with Willi Ninja and the Xtravaganzas were opening a ball and people were crazy. They'd never seen anything like it. Because a lot of people didn't know about the house ball community.",
+      "transcript": "It's important to have the houseball community be part of it. / And I mean, I never forget we opened. / I opened with Willie Nincha and the Extravagantas were opening a ball and people were crazy. / They'd never seen anything like it. / Because a lot of people didn't know about the houseball community.",
+      "check": "Brief said 00:14:40 - that's about the Blitz in London. The Love Ball moment is at 00:43:08 (Talare 2 = Susanne)."
+    },
+    {
+      "episode": "s06e06", "speaker": "James St. James", "time": "00:32:41", "verdict": "good",
+      "context": "James to Lincoln Palsgrove IV about Red Zone being given over to the voguers",
+      "quote": "Red Zone was like, you know, there were a lot of people. It was a lot of fun. And we don't talk about it enough on this show. It was sort of right before Vogue and Paris Is Burning and everything. When those kids were just red hot and we sort of gave the club over to them, the Xtravaganzas, the Magnifiques.",
+      "transcript": "So I mean, Red Zone was like, you know, there were a lot of people. I know it was a lot of fun. And we don't talk about it enough on this show. It was sort of right before Vogue and Paris is Burning and everything. When, when those kids were just red hot and we sort of gave the club over to, to them, the extravaganza, the magnifiques,"
+    },
+    {
+      "episode": "s06e02", "speaker": "Christina Visca", "time": "00:27:35", "verdict": "good",
+      "context": "Christina on the Xtravaganzas and the Sound Factory family after closing",
+      "quote": "We would all get together outside the club when the club closed. The 'Ganzas, Junior, a group of us, we would all hang out afterward. We would go up to the park, Junior would bring his boom box and we'd listen. So the 'Ganzas themselves were a family, but then we joined on to others at Sound Factory and it was just really a beautiful time.",
+      "transcript": "we would also all get together outside the club when the club closed The Gans's junior a group of us we would all hang out afterward We would go up to the park Junior would bring his boom box and we'd listen. So The Gans's themselves were a family but then we joined on to others at Sound Factory and it was just really a beautiful time",
+      "check": "Brief said 00:01:06 - that's the intro/James's apology. The boom-box line is at 00:27:35 (inside a longer answer starting there). 'The Gans's' = the 'Ganzas (Xtravaganzas)."
+    }
+  ],
+  "laurie-pike": [
+    {
+      "episode": "s02e03", "speaker": "Susanne Bartsch / Fenton or Randy", "time": "00:45:33", "verdict": "usable (short)",
+      "context": "Susanne and Fenton/Randy remember Laurie Pike as MC of the first Love Ball at Roseland, filmed for Channel 4",
+      "quote": "Susanne: What was with that girl? She was great. The girl was emceeing for... - Fenton/Randy: Laurie Pike. Yeah, we went, we did something for Channel 4, for Channel 4 UK. - Susanne: She was great, Laurie Pike.",
+      "transcript": "[0:45:33 Talare 2] What was with that girl? / [0:45:34] She was great. / [0:45:35] The girl was emceeing for. / [0:45:37 Talare 3] Lori Pike. / [0:45:38 Talare 3] Yeah, we went, we did something for Channel 4, for Channel 4 UK, but. / [0:45:43 Talare 2] She was great, Lori Pike.",
+      "check": "Talare 3 is Fenton or Randy - listen at 00:45:30 to name him."
+    },
+    {
+      "episode": "s06e01", "speaker": "Fenton Bailey or Randy Barbato", "time": "00:50:56", "verdict": "good",
+      "context": "How World of Wonder sold Manhattan Cable to Channel 4 and hired friends like Laurie Pike to host",
+      "quote": "But we were also pitching TV stuff at that time. So we were like, ultimately, I think the turning point was when we sold Manhattan Cable to Channel 4 in the UK. Which was basically us just licensing public access clips and then hiring people like Laurie Pike, like hiring friends of ours to host, and RuPaul was one of them as well. And that's when we were able to have an actual office.",
+      "transcript": "But we were also pitching TV stuff at that time. / So we were like ultimately, I think the turning point was when we sold Manhattan Cable to Channel 4 in the UK. / Which was basically us just licensing public access clips and then hiring people like Lori Pike, like hiring friends of ours to host and RuPaul was one of them as well. / And that's when we were able to have an actual office.",
+      "check": "Teams transcript says 'Talare 2' - it's one of the WOW founders; listen at 00:50:56 to say Fenton or Randy."
+    }
+  ],
+  "lynn-wagenknecht": [
+    {
+      "episode": "s05e01", "speaker": "Nell Campbell", "time": "00:25:56", "verdict": "usable (garbled)",
+      "context": "Nell on Keith McNally and his wife and partner Lynn Wagenknecht, before telling how Nell's began",
+      "quote": "It was Keith McNally and his wife Lynn Wagenknecht, the Odeon and Cafe Luxembourg. Together they did the Odeon, Cafe Luxembourg and another restaurant, Lucky Strike... They did those three and Nell's, right? And when they got divorced, she got to keep Nell's, the Odeon and Cafe Luxembourg. And then he went his own way and did Minetta and Balthazar and all those things.",
+      "transcript": "[0:25:56] It was Keith McDow and his wife Lynn Wagonet the Rociode and Cafe Luxembourg and Cloney in New York. - It went on to do pastis and... / [0:26:09] Oh dear. Together they did the Odeon Cafe Luxembourg. / [0:26:16] and another restaurant, Lucky Strike. - Oh, and Minetta Tavern. - No, they did those three and Nells, right? And when they got divorced... and she got... to keep Nels, the Odeon and Cafe Luxembourg. / [0:26:35] And then he went his own way and did Mineta Lane and Balteza and all those things.",
+      "check": "Badly transcribed (two people talking over each other: 'Oh, and Minetta Tavern' is probably James). Listen at 00:25:50-00:26:40 and write the final words from the audio."
+    }
+  ],
+  "serge-becker": [
+    {
+      "episode": "s01e04", "speaker": "James St. James", "time": "00:36:26", "verdict": "usable (a question)",
+      "context": "James asks Peter Gatien how Club USA in Times Square began",
+      "quote": "Then when you worked with Eric Goode from Area and Serge Becker, and you went to open Club USA in Times Square. How did you find that space? What was the space and how did you go about it?",
+      "transcript": "Then when you worked with Eric Good from Area and Serge Becker, and you went to open Club USA in Times Square. How did you find that space? What was the space and how did you go about it?",
+      "answer": "Peter (00:36:40): 'this is 92-93... Ian Schrager was in partners with the guys that owned that property... Ian introduced me to the guy's name was Arthur Cohen, who owned the building... it was a theater.' - doesn't mention Serge."
+    },
+    {
+      "episode": "s02e11", "speaker": "Richard Boch", "time": "00:17:10", "verdict": "usable",
+      "context": "After James mixes up Serge and Shawn Hausman, Richard Boch on the Mudd Club basement",
+      "quote": "Serge actually, I was just talking to him the other day and he was saying that, yeah, Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really.",
+      "transcript": "Serge actually was just talking to him the other day and he was saying that, yeah, well, that's Steve gave Steve Mass, the owner of the Mud Club, gave Eric and Sean their start, really.",
+      "check": "Lightly cleaned. James at 00:16:49 first says 'Eric Goode and Serge Becker designed the basement', then corrects himself: 'not Eric and Serge, Eric and Shawn'."
+    },
+    {
+      "episode": "s03e06", "speaker": "James St. James / Eric Goode", "time": "00:07:13", "verdict": "thin for Serge",
+      "context": "The Mudd Club basement installation: James asks if it was Serge; Eric says it was Shawn Hausman",
+      "quote": "James: Was that you and Serge or you and Shawn? Who was it? - Eric: That was Shawn Hausman, who went on to design all the Standard hotels around the world. My dear high school friend Shawn Hausman that I later collaborated with on Area.",
+      "transcript": "[0:07:13 James] Was that you and Serge or you and Sean? Who who was it? / [0:07:17 Eric] That was Sean Hausman who went on to design all the standard hotels around the world. My dear high school friend Sean Hausman that I later collaborated with Aria.",
+      "check": "Better for the Shawn Hausman page. The brief mentions 'Club USA, MK' here, but Eric doesn't talk about Serge at this point."
+    }
+  ],
+  "serge-becker-verdict": "Only 5 lines in all episodes name Serge, and none is Serge's own story: Serge Becker is the thinnest of the five. Best pick: s02e11 Richard Boch."
+}
