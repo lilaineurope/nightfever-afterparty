@@ -1,0 +1,30 @@
+Peppo Vanini - sources (27 Nov 2026)
+
+POLAROID (options A and B)
+- Both are Gemini drawings (Lisa's Chrome, chat https://gemini.google.com/app/d5e696e7af6bb6be). Gemini drew him - no refusal.
+- Reference photos given to Gemini (face crops only; never for the site):
+  1. Alamy 2Y9E98N - LaPresse/Olycom archive, 1980s: "Maria Gabriella di Savoia con Peppo Vanini"
+     https://www.alamy.com/anni-80-archivio-storico-olycomlapresse-gabriella-di-savoia-napoli-24-febbraio-1940-una-principessa-italiana-terzogenita-dellultimo-re-ditalia-umberto-ii-e-della-regina-maria-jos-una-scrittrice-storica-avendo-pubblicato-vari-libri-sulla-sua-famiglia-nella-foto-maria-gabriella-di-savoia-con-peppo-vanini-in-the-photo-maria-gabriella-di-savoia-with-peppo-vanini-credit-lapressealamy-live-news-image625419781.html
+  2. Alamy 2Y9E990 - same LaPresse series (image625419...; all 10 listed at https://www.alamy.com/stock-photo/peppo-vanini.html)
+  3. Alamy 2Y9E93B - same LaPresse series (laughing)
+- Also seen, not used: Google Images "Peppo Vanini" (https://www.google.com/search?q=%22Peppo+Vanini%22&udm=2):
+  ICharta / eBay "1970 ca SANTA MARGHERITA LIGURE Peppo VANINI durante festa al COVO KING'S CLUB";
+  Avenue Magazine "The Man Who Taught JFK Jr. About Disco" (Howard Stein) https://avenuemagazine.com/notorious-howard-stein-jfk-jr/;
+  Getty Images ids 1346517357 and 1126248667 (linked from Google; Getty's own search is behind a bot check, not opened).
+- Wikimedia Commons: no photo of him. No licence fee paid for anything.
+- Built with scripts/person-portraits/polaroid.py "Peppo Vanini" --labels "A|B" --code "MENTIONS"
+  --line "Co-owner of Xenon · Studio 54 · Régine's" --zoom 1.05 --head 0.06 (standard disco-ball background).
+  Site files: <slug>-photo.webp 1024x1024, <slug>-polaroid.webp 720x892, WebP q72 method 6.
+  <slug>-photo-phone.webp = middle 683x1024 of the photo (people don't use a phone copy on the site yet - clubs do).
+- Suggested credit line (as for other Gemini people): "Illustration made with Gemini, not a photo".
+
+XENON POSTER
+- xenon-poster-original.jpg = "Everybody Hates Punk" poster/invitation by Tad Shaffer, Xenon, 29 Oct 1978 (1600x2260),
+  the un-halftoned original the live Xenon club polaroid was made from.
+  Source: Gallery 98 https://gallery98.org/2019/xenon-everybody-hates-punk-tad-shaffer-poster-1978/
+  (archive copy: Clubs/Tickets and posters archive/Round 11 .../gallery98/xenon-everybody-hates-punk-1978.jpg;
+  sources sheet row: "Dealer photo, credit Gallery 98", captured 18 Nov 2026).
+
+TRANSCRIPTS
+- peppo-transcript-lines.txt - copied from the machine transcripts in the NightFever season folders
+  (S06E05, S06E02, S02E04, S01E07); S06E05/S06E02 sentence starts from the raw ASR word timings.

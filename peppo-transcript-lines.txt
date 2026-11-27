@@ -1,0 +1,104 @@
+Peppo Vanini / Howard Stein / Xenon - transcript lines (copied 27 Nov 2026)
+Copied verbatim from the machine transcripts in the NightFever folder (names as the ASR heard them -
+e.g. 'xenon', 'Xena', 'Zenon', 'How Stein', 'Simo/Simul Stein' - not corrected). Times are h:mm:ss in the podcast audio.
+Each [time] is the start of that transcript line. For S06E05 and S06E02 the raw ASR word timings
+(~/cache/nf-work/s06e0x/work/asr.json) also give the start of each sentence; those are listed separately.
+
+====================================================================================================
+1) S06E05 Nora Burns - the passage 00:08:19 to 00:10:00 (last 1980 diary entry), file: Season 6/S06E05 Nora Burns/S06E05 Nora Burns transcript.txt
+====================================================================================================
+[0:08:19] Fenton Bailey: Just another day with you James every time we do the wire report. You're like, oh the hardest person i'm so in love with him
+[0:08:25] James St. James: We don't change we really do um two seven six and that that'll be the end of the um, the diaries
+[0:08:35] Nora Burns: Okay, um the princess of kuwait and her friend took me and me to dinner and then we went to roxy roller roller disco is fun Poor Luwala, though, she kept falling and her space outfit fell off. We all went to Xenon and Danceteria. Every place was sort of dull. No place has the energy it used to. This is 1980, and the scene's already over in 1980. I feel like the city used to be the center of a tornado and now it's a breeze. How profound. P.S., Earl is dead. Davey told me last night he fell off the roof of the Navarro trying to climb into Peppo's window, that was the owner of Xenon. I feel sad about it. I wish I'd been nicer or seen him more or something.
+[0:09:20] James St. James: I love that like in 1980, the scene is done. It used to be so fun and now it's just- The studio was closed, it was over. Let's go back to your growing up in Boston, right?
+[0:09:34] Nora Burns: Or outside of London.
+[0:09:36] James St. James: Yeah, and your first, the first club you went to?
+[0:09:41] Nora Burns: Oh, yeah, so I got like obsessed with I was obsessed with disco in high school like just like my my my Queenie friend Francis from high school we would just go back to his basement every night and play disco and we knew like there was because there was nothing back then there was no like a checks or you know, and there were gays and there was disco and there was like we're gonna find a gay disco and so the first first thing we found was like we went out at like 7 p.m. and we found some like thing on the top of a Howard Johnson's and we're like no this is not it but eventually we found the 1270 which was this really fabulous I remember the 12th and all these floors had like a piano bar in the basement and then like a rock and roll floor and then like the disco on the main floor and then once I you know that was like all the doors were open that I was like okay I'm off. Never stayed home again.
+
+Same passage split by sentence, start times from the raw ASR word timings:
+  00:08:19  Just another day with you James every time we do the wire report. You're like, oh the hardest person i'm so in love with him
+  00:08:25  We don't change we really do um two seven six and that that'll be the end of the um, the
+  00:08:34  diaries
+  00:08:35  Okay, um the princess of kuwait and her friend took me and me to dinner and then we went to roxy roller roller disco is fun
+  00:08:44  Poor Luwala, though, she kept falling and her space outfit fell off.
+  00:08:49  We all went to Xenon and Danceteria.
+  00:08:51  Every place was sort of dull.
+  00:08:52  No place has the energy it used to.
+  00:08:55  This is 1980, and the scene's already over in 1980.
+  00:09:00  I feel like the city used to be the center of a tornado and now it's a breeze.
+  00:09:04  How profound.
+  00:09:06  P.S., Earl is dead.
+  00:09:08  Davey told me last night he fell off the roof of the Navarro trying to climb into
+  00:09:12  Peppo's window, that was the owner of Xenon.
+  00:09:14  I feel sad about it.
+  00:09:16  I wish I'd been nicer or seen him more or something.
+  00:09:20  I love that like in 1980, the scene is done.
+  00:09:24  It used to be so fun and now it's just-
+  00:09:26  The studio was closed, it was over.
+  00:09:29  Let's go back to your growing up in Boston, right?
+  00:09:34  Or outside of London.
+  00:09:36  Yeah, and your first, the first club you went to?
+  00:09:41  Oh, yeah, so I got like obsessed with I was obsessed with disco in high school like just like my my my Queenie friend Francis from high school we would just go back to his basement every night and play disco and we knew like there was because there was nothing back then there was no like a checks or you know,
+  00:09:59  and
+
+Key timestamps:
+  00:08:25  James: '...two seven six and that that'll be the end of the um, the diaries' (James calls the last date)
+  00:08:35  Nora starts reading the entry (transcript line start)
+  00:08:49  'We all went to Xenon and Danceteria.'  (word 'Xenon' at 00:08:49.8)
+  00:09:06  'P.S., Earl is dead.'  (sentence starts 00:09:06.0; 'Earl' at 00:09:06.9)
+  00:09:08  'Davey told me last night he fell off the roof of the Navarro trying to climb into'
+  00:09:12  'Peppo's window, that was the owner of Xenon.'  ('Peppo's' at 00:09:12.4, 'owner' 00:09:13.6, 'Xenon' 00:09:14.0)
+  00:09:20  James: 'I love that like in 1980, the scene is done.'
+  Note: on the audio Nora says "that was the owner of Xenon" (00:09:12-00:09:14). The site's diary card / Peppo
+  profile shows it as "Peppo was the owner of Xenon." at 00:09:12 - a tidied version, not her exact words.
+
+====================================================================================================
+2) Other lines naming Peppo, Howard Stein or Xenon
+====================================================================================================
+
+--- S06E05 Nora Burns (other lines) ---
+[0:05:47] Nora Burns: Last night Richie and I went to the Kennedy party at xenon because I had to see Brooke Shields. Kennedy people are so straight. I got really good coke. And for a while, I thought I was standing on the top of the world forever. And then suddenly, I fell to the bottom of the Grand Canyon. Then the fourth period. This is when somebody doesn't remember ever doing drugs. I was like, I never did drugs back then.
+[0:06:14] Nora Burns: Time doth fly. I am a broken woman physically, though it's spreading to my brain. My legs keep getting worse, but I still go dancing in heels when I get codeine. My lip is goopy, and I suddenly developed a black eye. Don't ask me why. I took $5 and went to xenon, and then got into a limo with Marco Ricotta, Brenda Vaccaro, Roscoe, and some other actors, and we went to magic. Hi, Gypsy. Wednesday night with bons, xenon, magic, xenon, and bons again, all with different people. It seems like I don't live in sunshine hours.
+[0:16:33] Nora Burns: Yeah, I mean, I was, you know, Patasa was here. And so like literally the entire evening would be like everyone being like, Patasa's coming. Patasa was here. Have you seen Patasa? It was all about like, even back then it was like, everyone was waiting for Patasa. and our evening would start at New York, New York, because they wanted to like hustle the guys for drugs and you know, whatever they could get out of them. And then we'd move on to Xenon and then Xenon you'd move on to studio. So that was always the progression. Then sometimes we, Richie and I would go down to Mud Club.
+  (Peppo is named only once in S06E05, at 00:09:12; Howard Stein is not named.)
+  Word starts for 'xenon': 00:05:49, 00:06:30, 00:06:40, 00:06:41, 00:08:49, 00:09:14, 00:16:59, 00:17:00
+
+--- S06E02 Christina Visca, file: Season 6/S06E02 Christina Visca/S06E02 Christina Visca transcript.txt ---
+  (one Xenon line; the whole transcript line is copied - Xenon is in its first sentences)
+[0:10:33] Christina Visca: Well, so when I came to FIT, I started going out right away. And I often mentioned this, Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. When you think about it, we were, you know, fashioned out. We got in for free. so when the regular patrons came in, it was filled with good-looking people. Yeah. Right, so from there, I met security guards and then they worked here and there, and I got in and studio and all those clubs. So when fast forward, maybe, I don't know, not even a year, when the limelight opened, I knew some of the security guards already. And I don't know how I got to know the door person, but you know James back then, You'd pull up to a nightclub. There was a thousand people in the street. There wasn't lines. You couldn't buy tickets. And somehow I knew the door people or whatever. And also I traveled with a really nice looking group of people. So, you know, I would get out of the cab and Christina, Christina, and the, you know, the crowd parts and the cab door, you know. Oh, that's what you really love, Pat, yeah. And it's just like, oh my God. And so this would happen night after night. And Peter, one day I could still visualize it standing up on the one step, you know, and he tapped me on my shoulder and he goes, I think you need to give parties in my nightclub. And that's how it started. And I started with Fred Rothbell-Mister, I don't know if you remember him.
+  Word start for 'Xenon': 00:10:40 ('And I often mentioned this, Xenon was very smart.'). No Peppo or Howard Stein in S06E02.
+
+--- S02E04 Nikki Haskell, file: Season 2/S02E04 Nikki Haskell/S02E04 Nikki Haskell transcript.txt ---
+[0:47:25] James: There are some other clubs around that time, Xenon, Hurrah, places like that. Tell me about.
+[0:47:38] Nikki: Son, DDA Millinaire. And he came to New York and his sister was Katrine Millinaire. We gave a party at Xenon. It was the first time anybody had ever given a party because of all the newspapers and everything.
+[0:47:55] Nikki: A seated dinner for them at Xenon. This is before the show. I didn't have the show at the time.
+[0:48:10] Nikki: And I gave a very famous party. I don't know if you might have been on one of the tapes, the Xenon Christmas party.
+[0:48:56] Nikki: And he came to Xena. I did a lot of shows from Xena. I liked Howard Stein a lot. Then he opened a
+  ('Xena' at 0:48:56 = Xenon as the ASR heard it; 'he' = Ricky Schroder from the lines before. No Peppo in S02E04.)
+  Context, the whole stretch 0:47:25-0:49:02 as it is in the transcript:
+    [0:47:25] James: There are some other clubs around that time, Xenon, Hurrah, places like that. Tell me about.
+    [0:47:31] Fenton/Randy: those
+    [0:47:32] Nikki: Well, I never went to Haraz. That was, but I did. First of all, so I was engaged to the Duchess of Bedford.
+    [0:47:38] Nikki: Son, DDA Millinaire. And he came to New York and his sister was Katrine Millinaire. We gave a party at Xenon. It was the first time anybody had ever given a party because of all the newspapers and everything.
+    [0:47:49] Nikki: So then DDA and I, when I started going with DDA, the Duke and Duchess of Bedford were coming to New York.
+    [0:47:55] Nikki: A seated dinner for them at Xenon. This is before the show. I didn't have the show at the time.
+    [0:48:02] Nikki: But I had started giving parties. And then, when, and then, when, of course, when the show started, it was like a lateral move.
+    [0:48:08] Nikki: You know, to start getting parties.
+    [0:48:10] Nikki: And I gave a very famous party. I don't know if you might have been on one of the tapes, the Xenon Christmas party.
+    [0:48:16] Nikki: That I gave for orphans, and every year in the spring, I did it with Ricky Schroeder and Little Laurie Lachlan.
+    [0:48:19] Fenton/Randy: Yeah.
+    [0:48:24] Nikki: And they were I I I Ricky Schroeder was six years old.
+    [0:48:29] Nikki: He he came to every one of my parties. His parents were like party animals.
+    [0:48:33] Nikki: In fact, I saw him at Beverly Hills Hotel gave me my 80th birthday party. And they uh and I invited Ricky and he came to the party and he said that um
+    [0:48:46] Nikki: That you know, he met you know, he was going to discax at six years old because of me. He was on an interview on every one of my shows.
+    [0:48:52] Fenton/Randy: Mm-hmm.
+    [0:48:53] Nikki: He was adorable.
+    [0:48:56] Nikki: And he came to Xena. I did a lot of shows from Xena. I liked Howard Stein a lot. Then he opened a
+    [0:49:02] Nikki: Another club called Bar One. There's very few clubs that I haven't been in. I was not a fan.
+
+--- S01E07 Rudolf Piper, file: Season 1/S01E07 Rudolf Piper/S01E07 Rudolf Piper transcript.txt ---
+[0:22:38] Rudolf: The first four shows were there. Uh and then she uh the second or third show the third show Howard Stein uh came uh to see her and he was uh the the record uh company guy that signed her first record deal together Simo Stein now That's it. Simul Stein at Sigh Records. How Stein is a guy from Xenon. Yeah. Zenon and Obar, right? And anyway, so it's Simul Stein, right?
+  (Howard Stein and Xenon/'Zenon' all in this one line starting 0:22:38; Rudolf first says Howard Stein, then
+  corrects himself to Seymour Stein of Sire Records. No Peppo in S01E07. No word-level timings kept for this episode.)
+
+Searched for: peppo/pepo/beppo, vanini, xenon/zenon/xena, howard, stein (and other spellings) in all four transcripts.
