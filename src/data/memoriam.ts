@@ -26,6 +26,9 @@ export type Memoriam = {
   said: MemoriamQuote[];
   /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
   also?: { heading: string; names: string[] };
+  /** "On film" (Lisa, 27 Nov 2026): videos about them in the jukebox cabinet, like person pages; `playlist` once public. */
+  videos?: { id: string; title: string }[];
+  playlist?: string;
   memorial?: { label: string; href: string };
   // "Read more" on the name card instead of the Google search, when there is no Wikipedia article (Lisa, 4 Nov 2026).
   readMore?: { label: string; href: string };
@@ -760,12 +763,12 @@ export const MEMORIAM: Record<string, Memoriam> = {
     liftedUp: [],
     rooms: ["Pyramid Club", "Danceteria", "Area", "Cat Club", "The World", "CBGB", "Pizza a Go Go"],
     said: [
-      { episode: "s01e02", who: "Michael Musto", time: "00:12:51", quote: "I asked him to sing a song about me, because he did a song about Teri Toye and Dianne Brill. He goes, oh, I can't possibly do that. He gets up and does a song about you, James." },
-      { episode: "s01e02", who: "James St. James", time: "00:13:47", quote: "Dean was his own sort of special genius." },
-      { episode: "s06e03", who: "Chi Chi Valenti", time: "00:55:57", quote: "I ran into Dean Johnson, Joey Arias and several other people from the whole drag performance scene, and they were all Stevie fans. And Dean had already started performing as her." },
-      { episode: "s06e07", who: "Sally Randall", time: "00:20:11", quote: "My favorite being when Dean Johnson and I were dancing on this balcony held up by two rather thin iron rods. It was definitely a death trap." },
-      { episode: "s06e07", who: "Sally Randall", time: "00:27:34", quote: "Dean Johnson was Herod, with his headpiece that was made for him. He was about seven feet tall." },
-      { episode: "s06e07", who: "James St. James", time: "00:21:11", quote: "Dean Johnson, what a character, what an amazing person." },
+      { episode: "s01e02", who: "Michael Musto", context: "Musto's birthday, when Dean sang songs about the people in the room", time: "00:12:51", quote: "I asked him to sing a song about me, because he did a song about Teri Toye and Dianne Brill. He goes, oh, I can't possibly do that. He gets up and does a song about you, James." },
+      { episode: "s01e02", who: "James St. James", context: "James after the song Dean made up about him", time: "00:13:47", quote: "Dean was his own sort of special genius." },
+      { episode: "s06e03", who: "Chi Chi Valenti", context: "Chi Chi at her first Stevie Nicks concert", time: "00:55:57", quote: "I ran into Dean Johnson, Joey Arias and several other people from the whole drag performance scene, and they were all Stevie fans. And Dean had already started performing as her." },
+      { episode: "s06e07", who: "Sally Randall", context: "Sally on the rickety balcony at Pizza a Go Go", time: "00:20:11", quote: "My favorite being when Dean Johnson and I were dancing on this balcony held up by two rather thin iron rods. It was definitely a death trap." },
+      { episode: "s06e07", who: "Sally Randall", context: "Sally's Jesus Christ Superstar, with Haoui as Pontius Pilate", time: "00:27:34", quote: "Dean Johnson was Herod, with his headpiece that was made for him. He was about seven feet tall." },
+      { episode: "s06e07", who: "James St. James", context: "James, after Sally's balcony story", time: "00:21:11", quote: "Dean Johnson, what a character, what an amazing person." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q5246255",
   },

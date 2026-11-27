@@ -13,6 +13,8 @@ export const ALTERNATE_NAMES: Record<string, string[]> = {
   tunnel: ["Tunnel"],
   "anita-sarko": ["Sarko"],
   "les-bains-douches": ["Les Bains", "Bains Douches"],
+  // Search Console 19-25 Nov 2026: "dean and the weenies" got a click and landed on Dean Johnson's page.
+  "dean-johnson": ["Dean and the Weenies", "Dean Johnson and the Weenies"],
 };
 
 /** The name in an episode page's title when the guest is searched by another name too (B2a, Lisa 27 Nov 2026). */

@@ -127,7 +127,7 @@ export const ROLE_LINES: Record<string, string> = {
   "jayne-wrightsman": "art collector",
   halston: "fashion designer",
   "international-chrysis": "showgirl",
-  "dean-johnson": "downtown performer",
+  "dean-johnson": "singer of Dean and the Weenies",
   "egon-von-furstenberg": "prince and fashion designer",
   "james-revson": "Revlon heir and society writer",
   "azzedine-alai-a": "couturier",
