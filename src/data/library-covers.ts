@@ -16,6 +16,8 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  // S06E04 Raja - RuPaul's memoir, the HarperCollins edition (Open Library, 27 Nov 2026), waiting for Lisa's look
+  "The House of Hidden Meanings": { kind: "book", file: "book-the-house-of-hidden-meanings.webp", credit: "Cover via Open Library (HarperCollins, 2024)" },
   // S05E09 Screamin' Rachael Cain - the only cover found (Open Library, 27 Nov 2026), waiting for Lisa's look
   "The World, Captured by Stephan Lupino": { kind: "book", file: "book-the-world-stephan-lupino.webp", credit: "Cover via Open Library (Graphics-Photos-Art, 1988)" },
   // S06E10 Kenneth Hash aka Lil' Kenny (Lisa picked B, 27 Nov 2026)
