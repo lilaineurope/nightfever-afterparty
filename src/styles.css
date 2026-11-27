@@ -1038,7 +1038,8 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .iss-btn:hover { background: var(--color-pink); color: #fff; }
 .iss-sec { margin-top: 52px; }
 .iss-h { font: clamp(17px, 3vw, 22px)/1.1 var(--font-flyer); letter-spacing: .12em; text-transform: uppercase; color: var(--color-pink); }
-.iss-who { font-weight: 700; color: var(--color-pink); font-size: 14px; }
+.iss-who { font-weight: 700; color: #111; font-size: 14px; }
+.iss-who:hover, .iss-who:focus-visible { color: var(--color-pink); }
 .iss-chain { display: grid; gap: 26px; margin-top: 22px; padding: 0; list-style: none; }
 @media (min-width: 860px) { .iss-chain { grid-template-columns: repeat(5, 1fr); } }
 .iss-link { position: relative; background: #fff; border: 2px solid #111; box-shadow: 4px 4px 0 #111; padding: 14px; }

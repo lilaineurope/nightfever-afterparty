@@ -8,6 +8,7 @@ import { FanSuggestions } from "@/components/fan-suggestions";
 import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { StoryView, DroppedBy as DroppedByT, LibraryItemView, Trailer } from "@/lib/library-item";
+import { QuoteName } from "@/components/quote-name";
 
 // Library item pages (Lisa, 21 Nov 2026 - "yes to everything"): the extra boxes a book, magazine, newspaper, column, diary,
 // film or TV card gets under its header - who dropped it (their polaroids), what the guests said about it, the trailer
@@ -160,7 +161,7 @@ function GuestQuotes({ v }: { v: LibraryItemView }) {
             <p className="lit-quote-who">
               {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
               <span>
-                <Link to={episodePath(q.episodeId as never)} className="font-semibold text-gold hover:text-pink">{q.who}</Link>
+                <QuoteName who={q.who} episodeId={q.episodeId} className="font-semibold" />
                 <br />
                 {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
               </span>

@@ -1,13 +1,14 @@
 import { formatDate } from "@/lib/time";
 import { Link } from "@tanstack/react-router";
 import { EntityLink } from "./entity-link";
-import { afterpartyNumber, episodePath, type Episode } from "@/data/episodes";
+import { afterpartyNumber, episodePath, stageName, type Episode } from "@/data/episodes";
 import type { EpisodeStats } from "@/data/episode-stats";
 import { guestLine } from "@/data/guest-lines";
 import { episodeQuotes } from "@/data/quotes";
 import { Timestamp } from "@/components/episode-player";
 import "@fontsource/covered-by-your-grace/400.css";
 import { episodePortraits, polaroidThumb } from "@/lib/polaroids";
+import { QuoteName } from "@/components/quote-name";
 
 export { episodePortraits, polaroidThumb };
 
@@ -26,7 +27,7 @@ function QuoteNote({ ep }: { ep: Episode }) {
         &ldquo;{q.quote}&rdquo;
       </blockquote>
       <figcaption className="mt-3 flex items-center gap-4 font-type text-sm text-[#141414]">
-        <span>- {q.who ?? ep.guest}</span>
+        <span>- <QuoteName who={q.who ?? stageName(ep.guest)} episodeId={ep.id} /></span>
         <Timestamp episodeId={ep.id} time={q.time} />
       </figcaption>
     </figure>

@@ -1027,6 +1027,23 @@ export function episodeIdOf(text: string): string {
   const m = text.match(/Season\s+(\d+),\s*Episode\s+(\d+)([AB])?/i);
   return m ? `s${m[1]!.padStart(2, "0")}e${m[2]!.padStart(2, "0")}${(m[3] ?? "").toLowerCase()}` : "";
 }
+/** A guest's own AFTERPARTY by the name they are quoted under (Lisa, 27 Nov 2026: the name in every quote box links to
+ *  the guest's AFTERPARTY page). Matches the full guest line, the stage name and each half of a two-guest line
+ *  ("Chi Chi Valenti & Johnny Dynell", "Tish & Snooky"); two-interview episodes keep their own A/B page. */
+// "Luis Xtravaganza Camacho" = 'Luis "Xtravaganza" Camacho'; "Johnny Dynell, quoting Sister Dimension" = Johnny Dynell.
+const guestKey = (name: string) => name.replace(/, quoting .*$/, "").replace(/["“”]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+const byGuestName = new Map<string, Episode["id"]>();
+for (const ep of episodes) {
+  const names = [ep.guest, stageName(ep.guest), ...ep.guest.split(" & "), ...ep.guest.split(" aka ")];
+  for (const n of names) {
+    const k = guestKey(n);
+    if (k && !byGuestName.has(k)) byGuestName.set(k, ep.id);
+  }
+}
+export const afterpartyOfGuest = (who: string): Episode["id"] | undefined => byGuestName.get(guestKey(who));
+/** Where a quote's name links: the speaker's own AFTERPARTY, else the AFTERPARTY the quote comes from. */
+export const quoteNamePath = (who: string | undefined, episodeId: string) =>
+  episodePath((who && afterpartyOfGuest(who)) || episodeById(episodeId).id);
 export const afterpartyNumber = (id: string): number => afterpartyOrder.indexOf(id) + 1;
 
 export const episodeById = (id: string): Episode =>
