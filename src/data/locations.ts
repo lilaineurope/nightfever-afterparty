@@ -835,6 +835,12 @@ export const LOCATIONS: Located[] = [
   { name: "Super Electric Party Machine (London)", lat: 51.5284, lng: -0.0914, area: "London", tip: "Fridays at East Bloc, City Road" },
   { name: "Park (Berlin club)", lat: 52.4985, lng: 13.2935, area: "Berlin", tip: "A basement disco on the Kurfürstendamm at Johann-Sigismund-Straße" },
   { name: "Barneys New York", lat: 40.7647, lng: -73.9711, area: "Upper East Side", tip: "660 Madison Avenue" },
+  // Shops & boutiques shelf of the Library (Lisa, 27 Nov 2026): the department stores the guests name.
+  { name: "Bloomingdale's", lat: 40.7625, lng: -73.9672, area: "Upper East Side", tip: "Lexington Avenue at 59th Street" },
+  { name: "Bergdorf Goodman", lat: 40.7637, lng: -73.9737, area: "Midtown", tip: "754 Fifth Avenue, at 58th Street" },
+  { name: "Macy's", lat: 40.7508, lng: -73.989, area: "Herald Square", tip: "151 West 34th Street" },
+  { name: "Saks Fifth Avenue", lat: 40.758, lng: -73.9765, area: "Midtown", tip: "611 Fifth Avenue" },
+  { name: "Browns", lat: 51.5136, lng: -0.1474, area: "Mayfair", tip: "South Molton Street" },
   // Lisa, 23 Nov 2026: "if you can't pin them to the map and/or location missing, move to bring us home" - so every
   // place card that has a known street, park or town gets its pin; the rest stay in Bring us home.
   { name: "Washington Square Park", lat: 40.7308, lng: -73.9973, area: "Greenwich Village" },

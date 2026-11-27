@@ -299,3 +299,11 @@ export function roomsMapOf(p: PersonProfile, name: string): RoomsMap | null {
   });
   return { stops: out, map, home, away };
 }
+
+/** "Where it was" on a shop page of the Library (Lisa, 27 Nov 2026): the same drawn band as a club's, the shop in the
+ *  middle - found by its own pin, or by the pin named in src/data/shop-facts.ts. Null when it has no pin. */
+export function shopBandOf(slug: string, pinName?: string): MapBand | null {
+  const here = pins().find((p) => p.slug === slug) ?? (pinName ? pins().find((p) => p.name === pinName || p.slug === entityFor(pinName)?.slug) : undefined);
+  if (!here) return null;
+  return band("club", here, here.slug, here.name, here.area, here.tip, null);
+}

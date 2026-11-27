@@ -42,3 +42,10 @@ test("every photo outfit belongs to a real look", async () => {
   const slugs = new Set(FASHION_LOOKS.map((l) => l.slug));
   for (const k of Object.keys(LOOK_OUTFITS)) assert.ok(slugs.has(k), k);
 });
+
+test("every shop fact and shop photo is keyed by a real shop slug", async () => {
+  const { FASHION_SHOPS } = await import("./library-fashion");
+  const { SHOP_FACTS } = await import("./shop-facts");
+  const slugs = new Set(FASHION_SHOPS.map((s) => s.slug));
+  for (const k of Object.keys(SHOP_FACTS)) assert.ok(slugs.has(k), `SHOP_FACTS key ${k} is not a shop on the shelf`);
+});

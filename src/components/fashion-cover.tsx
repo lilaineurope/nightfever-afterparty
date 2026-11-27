@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import { cardTo } from "@/lib/card-link";
 import { polaroidThumb } from "@/lib/polaroids";
+import { PERSON_PORTRAITS } from "@/data/person-portraits";
+import { SHOP_PHOTOS } from "@/data/shop-photos";
 import { Mannequin } from "@/components/mannequin";
 import type { FashionItem } from "@/data/library-fashion";
 
@@ -63,12 +65,28 @@ export function FashionCover({ item }: { item: FashionItem }) {
     );
   }
 
-  const polaroid = f.polaroidEpisode ? polaroidThumb(f.polaroidEpisode, 512) : undefined;
+  // A designer's or label's face: their AFTERPARTY polaroid, else their person polaroid, else the label's maker's.
+  const polaroid = f.polaroidEpisode ? polaroidThumb(f.polaroidEpisode, 512) : f.face ? PERSON_PORTRAITS[f.face]?.polaroid : undefined;
   if (polaroid)
     return (
       <span className="lib-cv lib-book lib-diary-cover fsh-face">
-        <img src={polaroid} alt={`${item.name} - their AFTERPARTY polaroid`} loading="lazy" decoding="async" />
+        <img src={polaroid} alt={`${f.maker?.name ?? item.name} - polaroid`} loading="lazy" decoding="async" />
         <span className="fsh-tag">{f.tag}</span>
+        <span className="lib-strip">
+          <span className="lib-nm">{item.name}</span>
+          {f.maker && <span className="lib-art-by">{f.maker.name}'s label</span>}
+          <span className="lib-foot">{dropped}</span>
+        </span>
+      </span>
+    );
+
+  // A shop with a free photo of it shows the photo (Lisa, 27 Nov 2026: "cover pictures also"); the rest keep the bag.
+  const shopPhoto = f.kind === "shop" ? SHOP_PHOTOS[item.slug] : undefined;
+  if (shopPhoto)
+    return (
+      <span className="lib-cv fsh-shop-photo">
+        <img src={shopPhoto.src} alt={shopPhoto.alt} loading="lazy" decoding="async" />
+        <span className="fsh-tag">Shop</span>
         <span className="lib-strip">
           <span className="lib-nm">{item.name}</span>
           <span className="lib-foot">{dropped}</span>

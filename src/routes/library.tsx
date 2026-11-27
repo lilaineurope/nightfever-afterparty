@@ -297,6 +297,15 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
           <Link to="/library/look/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
             The look&rsquo;s own page &rarr;
           </Link>
+        ) : isFashionItem(item) && (item.shelf === "designers" || item.shelf === "shops") ? (
+          // A designer's, label's or shop's own page (Lisa, 27 Nov 2026): the polaroid or the shop's photo, the looks, the map.
+          <Link
+            to={item.shelf === "shops" ? "/library/shop/$slug" : "/library/designer/$slug"}
+            params={{ slug: item.slug }}
+            className="font-semibold text-pink hover:text-foreground"
+          >
+            {item.shelf === "shops" ? "The shop\u2019s own page" : item.fashion.tag === "Label" ? "The label\u2019s own page" : "The designer\u2019s own page"} &rarr;
+          </Link>
         ) : isScreenItem(item) ? (
           // Its own page (Lisa, 24 Nov 2026): the Jukebox video big, everyone who was involved, the guests' words.
           <Link to="/library/moving-images/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">

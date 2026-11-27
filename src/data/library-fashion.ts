@@ -55,6 +55,11 @@ export type FashionItem = CollectionItem & {
     look?: FashionLook | undefined;
     /** A guest with an AFTERPARTY: their polaroid is the cover. */
     polaroidEpisode?: string | undefined;
+    /** Whose face is on the cover: the designer themselves, or the maker of a label (Heatherette is Richie Rich's) - a person
+     *  polaroid from src/data/person-portraits.ts by this slug when they have no AFTERPARTY. */
+    face?: string | undefined;
+    /** "Richie Rich's label" - when the cover shows the maker rather than the label. */
+    maker?: { slug?: string | undefined; name: string } | undefined;
   };
 };
 
@@ -351,6 +356,31 @@ export const FASHION_LOOKS: FashionItem[] = [
 
 const withPolaroid = (e: Entity) => afterpartyOf(e);
 
+/** A label wears its maker's polaroid (Lisa, 27 Nov 2026: "designers needs pages and polaroids"). Label slug -> maker slug. */
+const LABEL_MAKERS: Record<string, string> = {
+  heatherette: "richie-rich",
+  richerette: "richie-rich",
+  villionaire: "richie-rich",
+  poplux: "richie-rich",
+  "house-of-field": "patricia-field",
+  "house-of-mugler": "thierry-mugler",
+};
+/** Labels whose makers are a guest pair or a guest known by a first name: the label slug -> that AFTERPARTY. */
+const LABEL_AFTERPARTY: Record<string, { episode: string; name: string }> = {
+  "manic-panic": { episode: "s05e10", name: "Tish & Snooky" },
+  zuzii: { episode: "s03e08", name: "Larry Tee" },
+};
+
+function faceOf(e: Entity): Pick<FashionItem["fashion"], "polaroidEpisode" | "face" | "maker"> {
+  const own = withPolaroid(e);
+  if (own) return { polaroidEpisode: own, face: e.slug };
+  const by = LABEL_AFTERPARTY[e.slug];
+  if (by) return { polaroidEpisode: by.episode, maker: { name: by.name } };
+  const m = LABEL_MAKERS[e.slug] ? entityBySlug[LABEL_MAKERS[e.slug]!] : undefined;
+  if (m) return { polaroidEpisode: withPolaroid(m), face: m.slug, maker: { slug: m.slug, name: m.name } };
+  return { face: e.slug };
+}
+
 export const FASHION_DESIGNERS: FashionItem[] = (() => {
   const seen = new Set<string>();
   const shops = new Set(SHOPS);
@@ -358,7 +388,7 @@ export const FASHION_DESIGNERS: FashionItem[] = (() => {
   const add = (e: Entity | undefined) => {
     if (!e || seen.has(e.slug) || shops.has(e.name) || NOT_DESIGNERS.has(e.slug)) return;
     seen.add(e.slug);
-    out.push({ ...baseOf(e, "designers"), fashion: { kind: "designer", tag: e.category === "Person" ? "Designer" : "Label", note: noteOf(e), polaroidEpisode: withPolaroid(e) } });
+    out.push({ ...baseOf(e, "designers"), fashion: { kind: "designer", tag: e.category === "Person" ? "Designer" : "Label", note: noteOf(e), ...faceOf(e) } });
   };
   for (const d of DESIGNERS) add(entityBySlug[d.slug]);
   for (const n of LABELS) add(entityFor(n));
