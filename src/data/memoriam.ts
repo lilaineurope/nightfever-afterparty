@@ -768,7 +768,19 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s06e03", who: "Chi Chi Valenti", context: "Chi Chi at her first Stevie Nicks concert", time: "00:55:57", quote: "I ran into Dean Johnson, Joey Arias and several other people from the whole drag performance scene, and they were all Stevie fans. And Dean had already started performing as her." },
       { episode: "s06e07", who: "Sally Randall", context: "Sally on the rickety balcony at Pizza a Go Go", time: "00:20:11", quote: "My favorite being when Dean Johnson and I were dancing on this balcony held up by two rather thin iron rods. It was definitely a death trap." },
       { episode: "s06e07", who: "Sally Randall", context: "Sally's Jesus Christ Superstar, with Haoui as Pontius Pilate", time: "00:27:34", quote: "Dean Johnson was Herod, with his headpiece that was made for him. He was about seven feet tall." },
-      { episode: "s06e07", who: "James St. James", context: "James, after Sally's balcony story", time: "00:21:11", quote: "Dean Johnson, what a character, what an amazing person." },
+      { episode: "s04e07", who: "James St. James", context: "Trey Speegle asks who remembers the weird drag at the Pyramid", time: "00:36:23", quote: "Remember drag at the Pyramid? Oh my God. John Kelly. I remember Disco Frieda, Dean Johnson and the Weenies when they first started. I mean, it was every night there was something that would just blow your mind." },
+    ],
+    // On film (Lisa, 27 Nov 2026, "run these with /explore/dean-johnson"): Nelson Sullivan's own camcorder tapes from the
+    // Pyramid, Limelight and Wigstock, the Velvet Mafia, and the trailer of the documentary about him. No playlist yet.
+    videos: [
+      { id: "BswrxwRpoz8", title: "Dean and the Weenies - Bourgeois Boys, Pyramid Club, 1985" },
+      { id: "P0Vhuyv_Ecg", title: "Dean and the Weenies - Andy Warhol, Limelight, 1985" },
+      { id: "Uzs3J-bTeRQ", title: "Dean Johnson sings Teri Toye at the Pyramid" },
+      { id: "scKgI2W8sM8", title: "Dean Johnson at Wigstock, 1986" },
+      { id: "Nz2xXVzQ98M", title: "Dean and the Weenies - Attitude (music video)" },
+      { id: "iIUGQ8_6Jh0", title: "Dean Johnson - Velvet Mafia (music video)" },
+      { id: "YzytrTlWKQI", title: "Velvet Mafia - live, 1998" },
+      { id: "bwa1ttQbXJ8", title: "The Big Johnson - trailer" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q5246255",
   },
