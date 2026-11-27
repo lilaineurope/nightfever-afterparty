@@ -66,6 +66,7 @@ const realPiece = (t: ClubTicket) => !/^Photo:|drawn for the AFTERPARTY/i.test(t
  *  ticket picture) or "jukebox" (the Jukebox picture). Names with an A–Z card link to it on the page. */
 export type ClubPieceFacts = { forWhat: string; madeBy: { role: string; name: string }[]; onIt: string[]; date?: string };
 export const CLUB_PIECES: Record<string, ClubPieceFacts> = {
+  "xenon:ticket": { forWhat: "Everybody Hates Punk, Tad Shaffer's costume party at Xenon, 124 West 43rd Street, Sunday 29 October 1978 at 10 pm - costume a must, music by Larry Rossiello", date: "29 Oct 1978", madeBy: [{ role: "Threw the party", name: "Tad Shaffer" }], onIt: ["Xenon"] },
   "cbgb:ticket": { forWhat: "Blondie's three nights at CBGB, 17, 18 and 19 June 1976", date: "June 1976", madeBy: [], onIt: ["Blondie", "Debbie Harry"] },
   "max-s-kansas-city:ticket": { forWhat: "Theoretical Girls at Max's Kansas City, Wednesday 31 January, midnight - three xeroxes pasted into one flyer", date: "1979", madeBy: [], onIt: ["Theoretical Girls"] },
   "sound-factory:ticket": { forWhat: "The Sound Factory's Halloween costume party at 116 Crosby Street, 31 October 1988 - the year before the club opened on West 27th Street", date: "31 Oct 1988", madeBy: [{ role: "Drew it (his dancing skeletons)", name: "Keith Haring" }], onIt: ["Keith Haring", "Junior Vasquez"] },

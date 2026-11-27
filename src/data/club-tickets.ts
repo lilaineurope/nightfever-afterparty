@@ -18,6 +18,7 @@ import studio54 from "@/assets/club-tickets/studio-54.webp";
 import cbgb from "@/assets/club-tickets/cbgb.webp";
 import maxs from "@/assets/club-tickets/max-s-kansas-city.webp";
 import soundFactory from "@/assets/club-tickets/sound-factory.webp";
+import xenon from "@/assets/club-tickets/xenon.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -36,6 +37,17 @@ export type ClubTicket = {
 };
 
 export const CLUB_TICKETS: Record<string, ClubTicket> = {
+  // Xenon (Lisa, 27 Nov 2026: "cover for xenon", "cross reference to library"): the original Everybody Hates Punk poster the
+  // Xenon club polaroid was made from - Tad Shaffer's party, 29 October 1978, hand-lettered over a newspaper page.
+  xenon: {
+    src: xenon,
+    w: 800,
+    h: 1130,
+    pos: "center 62%",
+    alt: "Hand-lettered poster over a newspaper page: \"Tad Shaffer invites you to Everybody Hates Punk!! at Xenon, 124 W 43rd, Oct 29th 10pm - costume a must\", 1978",
+    credit: "Everybody Hates Punk poster, Xenon, 1978 - Gallery 98",
+    href: "https://gallery98.org/2019/xenon-everybody-hates-punk-tad-shaffer-poster-1978/",
+  },
   // CBGB (Lisa, 14 Nov 2026: "one ticket background"): the June 1976 Blondie flyer - CBGB's first wave, and Joey Arias met Debbie there.
   cbgb: {
     src: cbgb,
