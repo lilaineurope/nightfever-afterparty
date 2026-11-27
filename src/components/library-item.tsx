@@ -565,17 +565,27 @@ export function Story({ st, name: self }: { st: StoryView | null; name: string }
               </div>
             ))}
           </dl>
-          {st.inIt.length > 0 && (
-            <div className="lit-story-in">
-              <p className="lit-story-k">{st.inItLabel}</p>
-              <ul>
-                {st.inIt.map((p) => (
-                  <li key={p.name}>
-                    {name(p)}
-                    {p.note && <span className="lit-story-note"> · {p.note}</span>}
-                  </li>
-                ))}
-              </ul>
+          {(st.cover || st.inIt.length > 0) && (
+            <div className="lit-story-side">
+              {st.cover && (
+                <figure className={`lit-story-cover${st.cover.square ? " is-square" : ""}`}>
+                  <img src={st.cover.src} alt={`Cover of ${self}`} loading="lazy" decoding="async" />
+                  <figcaption>{st.cover.credit}</figcaption>
+                </figure>
+              )}
+              {st.inIt.length > 0 && (
+                <div className="lit-story-in">
+                  <p className="lit-story-k">{st.inItLabel}</p>
+                  <ul>
+                    {st.inIt.map((p) => (
+                      <li key={p.name}>
+                        {name(p)}
+                        {p.note && <span className="lit-story-note"> · {p.note}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
         </div>

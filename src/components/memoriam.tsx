@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
 import { NamePile } from "@/components/name-pile";
+import { ProfileVideos } from "@/components/profile-videos";
 import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
@@ -128,6 +129,7 @@ export function MemoriamSections({ m, name, faces }: { m: Memoriam; name: string
           <p className="mt-4 text-xs text-muted-foreground">{m.diedLine}.</p>
         </div>
       </section>
+      {m.videos && m.videos.length > 0 && <ProfileVideos videos={m.videos} playlist={m.playlist} first={first!} />}
     </>
   );
 }

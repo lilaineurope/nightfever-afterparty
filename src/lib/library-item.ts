@@ -61,6 +61,8 @@ export type StoryView = {
   since: { when: string; what: string; source: string; episode?: string | undefined; time?: string | undefined }[];
   reviews: { publication: string; date: string; quote: string; by?: string | undefined; slug?: string | undefined; mast?: string | undefined }[];
   sources: string[];
+  /** The work's cover beside its story, on pages with no cover in their header (songs, bands, nights - Lisa, 27 Nov 2026). */
+  cover?: { src: string; credit: string; square: boolean } | undefined;
 };
 
 export type PressView = {

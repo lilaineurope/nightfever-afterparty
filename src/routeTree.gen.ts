@@ -86,6 +86,7 @@ import { Route as EpisodesS05e07RouteImport } from './routes/episodes.s05e07'
 import { Route as EpisodesS05e07aRouteImport } from './routes/episodes.s05e07a'
 import { Route as EpisodesS05e07bRouteImport } from './routes/episodes.s05e07b'
 import { Route as EpisodesS05e08RouteImport } from './routes/episodes.s05e08'
+import { Route as EpisodesS05e09RouteImport } from './routes/episodes.s05e09'
 import { Route as EpisodesS05e10RouteImport } from './routes/episodes.s05e10'
 import { Route as EpisodesS06e01RouteImport } from './routes/episodes.s06e01'
 import { Route as EpisodesS06e02RouteImport } from './routes/episodes.s06e02'
@@ -108,7 +109,10 @@ import { Route as ShopTestThanksRouteImport } from './routes/shop-test.thanks'
 import { Route as SpotifyIndexRouteImport } from './routes/spotify.index'
 import { Route as SpotifySplatRouteImport } from './routes/spotify.$'
 import { Route as LibraryArtSlugRouteImport } from './routes/library_.art.$slug'
+import { Route as LibraryDesignerSlugRouteImport } from './routes/library_.designer.$slug'
+import { Route as LibraryLookSlugRouteImport } from './routes/library_.look.$slug'
 import { Route as LibraryMovingImagesSlugRouteImport } from './routes/library_.moving-images.$slug'
+import { Route as LibraryShopSlugRouteImport } from './routes/library_.shop.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -495,6 +499,11 @@ const EpisodesS05e08Route = EpisodesS05e08RouteImport.update({
   path: '/episodes/s05e08',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpisodesS05e09Route = EpisodesS05e09RouteImport.update({
+  id: '/episodes/s05e09',
+  path: '/episodes/s05e09',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EpisodesS05e10Route = EpisodesS05e10RouteImport.update({
   id: '/episodes/s05e10',
   path: '/episodes/s05e10',
@@ -605,9 +614,24 @@ const LibraryArtSlugRoute = LibraryArtSlugRouteImport.update({
   path: '/library/art/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryDesignerSlugRoute = LibraryDesignerSlugRouteImport.update({
+  id: '/library_/designer/$slug',
+  path: '/library/designer/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryLookSlugRoute = LibraryLookSlugRouteImport.update({
+  id: '/library_/look/$slug',
+  path: '/library/look/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibraryMovingImagesSlugRoute = LibraryMovingImagesSlugRouteImport.update({
   id: '/library_/moving-images/$slug',
   path: '/library/moving-images/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryShopSlugRoute = LibraryShopSlugRouteImport.update({
+  id: '/library_/shop/$slug',
+  path: '/library/shop/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -688,6 +712,7 @@ export interface FileRoutesByFullPath {
   '/episodes/s05e07a': typeof EpisodesS05e07aRoute
   '/episodes/s05e07b': typeof EpisodesS05e07bRoute
   '/episodes/s05e08': typeof EpisodesS05e08Route
+  '/episodes/s05e09': typeof EpisodesS05e09Route
   '/episodes/s05e10': typeof EpisodesS05e10Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e02': typeof EpisodesS06e02Route
@@ -711,7 +736,10 @@ export interface FileRoutesByFullPath {
   '/shop-test/': typeof ShopTestIndexRoute
   '/spotify/': typeof SpotifyIndexRoute
   '/library/art/$slug': typeof LibraryArtSlugRoute
+  '/library/designer/$slug': typeof LibraryDesignerSlugRoute
+  '/library/look/$slug': typeof LibraryLookSlugRoute
   '/library/moving-images/$slug': typeof LibraryMovingImagesSlugRoute
+  '/library/shop/$slug': typeof LibraryShopSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -790,6 +818,7 @@ export interface FileRoutesByTo {
   '/episodes/s05e07a': typeof EpisodesS05e07aRoute
   '/episodes/s05e07b': typeof EpisodesS05e07bRoute
   '/episodes/s05e08': typeof EpisodesS05e08Route
+  '/episodes/s05e09': typeof EpisodesS05e09Route
   '/episodes/s05e10': typeof EpisodesS05e10Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e02': typeof EpisodesS06e02Route
@@ -813,7 +842,10 @@ export interface FileRoutesByTo {
   '/shop-test': typeof ShopTestIndexRoute
   '/spotify': typeof SpotifyIndexRoute
   '/library/art/$slug': typeof LibraryArtSlugRoute
+  '/library/designer/$slug': typeof LibraryDesignerSlugRoute
+  '/library/look/$slug': typeof LibraryLookSlugRoute
   '/library/moving-images/$slug': typeof LibraryMovingImagesSlugRoute
+  '/library/shop/$slug': typeof LibraryShopSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -893,6 +925,7 @@ export interface FileRoutesById {
   '/episodes/s05e07a': typeof EpisodesS05e07aRoute
   '/episodes/s05e07b': typeof EpisodesS05e07bRoute
   '/episodes/s05e08': typeof EpisodesS05e08Route
+  '/episodes/s05e09': typeof EpisodesS05e09Route
   '/episodes/s05e10': typeof EpisodesS05e10Route
   '/episodes/s06e01': typeof EpisodesS06e01Route
   '/episodes/s06e02': typeof EpisodesS06e02Route
@@ -916,7 +949,10 @@ export interface FileRoutesById {
   '/shop-test/': typeof ShopTestIndexRoute
   '/spotify/': typeof SpotifyIndexRoute
   '/library_/art/$slug': typeof LibraryArtSlugRoute
+  '/library_/designer/$slug': typeof LibraryDesignerSlugRoute
+  '/library_/look/$slug': typeof LibraryLookSlugRoute
   '/library_/moving-images/$slug': typeof LibraryMovingImagesSlugRoute
+  '/library_/shop/$slug': typeof LibraryShopSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -997,6 +1033,7 @@ export interface FileRouteTypes {
     | '/episodes/s05e07a'
     | '/episodes/s05e07b'
     | '/episodes/s05e08'
+    | '/episodes/s05e09'
     | '/episodes/s05e10'
     | '/episodes/s06e01'
     | '/episodes/s06e02'
@@ -1020,7 +1057,10 @@ export interface FileRouteTypes {
     | '/shop-test/'
     | '/spotify/'
     | '/library/art/$slug'
+    | '/library/designer/$slug'
+    | '/library/look/$slug'
     | '/library/moving-images/$slug'
+    | '/library/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1099,6 +1139,7 @@ export interface FileRouteTypes {
     | '/episodes/s05e07a'
     | '/episodes/s05e07b'
     | '/episodes/s05e08'
+    | '/episodes/s05e09'
     | '/episodes/s05e10'
     | '/episodes/s06e01'
     | '/episodes/s06e02'
@@ -1122,7 +1163,10 @@ export interface FileRouteTypes {
     | '/shop-test'
     | '/spotify'
     | '/library/art/$slug'
+    | '/library/designer/$slug'
+    | '/library/look/$slug'
     | '/library/moving-images/$slug'
+    | '/library/shop/$slug'
   id:
     | '__root__'
     | '/'
@@ -1201,6 +1245,7 @@ export interface FileRouteTypes {
     | '/episodes/s05e07a'
     | '/episodes/s05e07b'
     | '/episodes/s05e08'
+    | '/episodes/s05e09'
     | '/episodes/s05e10'
     | '/episodes/s06e01'
     | '/episodes/s06e02'
@@ -1224,7 +1269,10 @@ export interface FileRouteTypes {
     | '/shop-test/'
     | '/spotify/'
     | '/library_/art/$slug'
+    | '/library_/designer/$slug'
+    | '/library_/look/$slug'
     | '/library_/moving-images/$slug'
+    | '/library_/shop/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1304,6 +1352,7 @@ export interface RootRouteChildren {
   EpisodesS05e07aRoute: typeof EpisodesS05e07aRoute
   EpisodesS05e07bRoute: typeof EpisodesS05e07bRoute
   EpisodesS05e08Route: typeof EpisodesS05e08Route
+  EpisodesS05e09Route: typeof EpisodesS05e09Route
   EpisodesS05e10Route: typeof EpisodesS05e10Route
   EpisodesS06e01Route: typeof EpisodesS06e01Route
   EpisodesS06e02Route: typeof EpisodesS06e02Route
@@ -1327,7 +1376,10 @@ export interface RootRouteChildren {
   ShopTestIndexRoute: typeof ShopTestIndexRoute
   SpotifyIndexRoute: typeof SpotifyIndexRoute
   LibraryArtSlugRoute: typeof LibraryArtSlugRoute
+  LibraryDesignerSlugRoute: typeof LibraryDesignerSlugRoute
+  LibraryLookSlugRoute: typeof LibraryLookSlugRoute
   LibraryMovingImagesSlugRoute: typeof LibraryMovingImagesSlugRoute
+  LibraryShopSlugRoute: typeof LibraryShopSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1871,6 +1923,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EpisodesS05e08RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/episodes/s05e09': {
+      id: '/episodes/s05e09'
+      path: '/episodes/s05e09'
+      fullPath: '/episodes/s05e09'
+      preLoaderRoute: typeof EpisodesS05e09RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/episodes/s05e10': {
       id: '/episodes/s05e10'
       path: '/episodes/s05e10'
@@ -2025,11 +2084,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryArtSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library_/designer/$slug': {
+      id: '/library_/designer/$slug'
+      path: '/library/designer/$slug'
+      fullPath: '/library/designer/$slug'
+      preLoaderRoute: typeof LibraryDesignerSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library_/look/$slug': {
+      id: '/library_/look/$slug'
+      path: '/library/look/$slug'
+      fullPath: '/library/look/$slug'
+      preLoaderRoute: typeof LibraryLookSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/library_/moving-images/$slug': {
       id: '/library_/moving-images/$slug'
       path: '/library/moving-images/$slug'
       fullPath: '/library/moving-images/$slug'
       preLoaderRoute: typeof LibraryMovingImagesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library_/shop/$slug': {
+      id: '/library_/shop/$slug'
+      path: '/library/shop/$slug'
+      fullPath: '/library/shop/$slug'
+      preLoaderRoute: typeof LibraryShopSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -2112,6 +2192,7 @@ const rootRouteChildren: RootRouteChildren = {
   EpisodesS05e07aRoute: EpisodesS05e07aRoute,
   EpisodesS05e07bRoute: EpisodesS05e07bRoute,
   EpisodesS05e08Route: EpisodesS05e08Route,
+  EpisodesS05e09Route: EpisodesS05e09Route,
   EpisodesS05e10Route: EpisodesS05e10Route,
   EpisodesS06e01Route: EpisodesS06e01Route,
   EpisodesS06e02Route: EpisodesS06e02Route,
@@ -2135,7 +2216,10 @@ const rootRouteChildren: RootRouteChildren = {
   ShopTestIndexRoute: ShopTestIndexRoute,
   SpotifyIndexRoute: SpotifyIndexRoute,
   LibraryArtSlugRoute: LibraryArtSlugRoute,
+  LibraryDesignerSlugRoute: LibraryDesignerSlugRoute,
+  LibraryLookSlugRoute: LibraryLookSlugRoute,
   LibraryMovingImagesSlugRoute: LibraryMovingImagesSlugRoute,
+  LibraryShopSlugRoute: LibraryShopSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

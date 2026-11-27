@@ -19,6 +19,7 @@ import cbgb from "@/assets/club-tickets/cbgb.webp";
 import maxs from "@/assets/club-tickets/max-s-kansas-city.webp";
 import soundFactory from "@/assets/club-tickets/sound-factory.webp";
 import xenon from "@/assets/club-tickets/xenon.webp";
+import lesBainsDouches from "@/assets/club-tickets/les-bains-douches.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -49,6 +50,17 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     href: "https://gallery98.org/2019/xenon-everybody-hates-punk-tad-shaffer-poster-1978/",
   },
   // CBGB (Lisa, 14 Nov 2026: "one ticket background"): the June 1976 Blondie flyer - CBGB's first wave, and Joey Arias met Debbie there.
+  // Les Bains Douches (Lisa, 27 Nov 2026: "all" - the club's ticket like the other clubs): the real entry ticket for Joy Division's
+  // only concert in France, at the Bains-Douches on 18 December 1979 (the night recorded as their live album).
+  "les-bains-douches": {
+    src: lesBainsDouches,
+    w: 882,
+    h: 559,
+    pos: "center 50%",
+    alt: "Entry ticket for Joy Division at the Bains-Douches, 18 December 1979, 20h30, 40 francs, no. 00194, with the bathhouse facade logo",
+    credit: "Ticket: Joy Division at the Bains-Douches, 18 December 1979 - auction photo, Aguttes",
+    href: "https://www.aguttes.com/en/lot/2ef1b234-2d74-4617-ae8c-920797b2d827/5612442a-712d-4118-89f5-92c26aa5c206",
+  },
   cbgb: {
     src: cbgb,
     w: 800,

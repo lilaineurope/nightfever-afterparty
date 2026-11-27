@@ -376,7 +376,7 @@ function cardView(e: Entity): CardView {
     tree,
     item,
     // Songs, bands, albums and clubs a guest made are not on the Library shelves, but get "The story" too (Lisa, 23 Nov 2026).
-    story: item ? null : storyView(e),
+    story: item ? null : storyView(e, true),
     place,
     mapBand,
     mapHome,

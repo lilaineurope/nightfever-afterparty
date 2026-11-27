@@ -40,6 +40,70 @@ export type ItemStory = {
 // afterparty guests ... and to all future episodes"): scripts/item-stories-auto.py writes item-stories-auto.json from the
 // work's Wikipedia page and Wikidata credits. A story written here by hand always wins.
 const HAND: Record<string, ItemStory> = {
+  // S05E09 Screamin' Rachael Cain (27 Nov 2026)
+  "z-factor-and-jesse-saunders-fantasy": {
+    intro: "The Chicago record credited as the first house song, made by Z-Factor and Jesse Saunders with Screamin' Rachael singing.",
+    facts: [
+      { label: "Out", value: "1984" },
+      { label: "By", value: "Z-Factor & Jesse Saunders" },
+      { label: "Sung by", value: "Screamin' Rachael Cain" },
+      { label: "Label", value: "Mitchbal Records" },
+    ],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }, { name: "Jesse Saunders" }, { name: "Vince Lawrence" }],
+    since: [
+      { when: "On the show", what: "James introduces it as credited as the first house music song ever.", source: "S05E09", episode: "s05e09", time: "00:00:53" },
+      { when: "On the show", what: "Rachael says her manager sent her to sing it and she didn't even like it at first - years later she saw how important it was.", source: "S05E09", episode: "s05e09", time: "00:16:15" },
+    ],
+    sources: ["The record's own label credits (MusicBrainz)", "S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "screamin-rachael-give-me-my-freedom": {
+    intro: "Screamin' Rachael's song about the Club Kid rumours after Angel Melendez went missing, with a backward loop asking 'Michael, where's Angel?'.",
+    facts: [
+      { label: "Sung by", value: "Screamin' Rachael Cain" },
+      { label: "Also known as", value: "Murder in Clubland" },
+    ],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }],
+    since: [
+      { when: "On the show", what: "James and Fenton remember it from Party Monster - 'Michael, where's Angel?'", source: "S05E09", episode: "s05e09", time: "00:01:28" },
+      { when: "On the show", what: "Rachael says she debuted it at the Honey Pot, and that Michael asked her that night whether the song said he had killed Angel.", source: "S05E09", episode: "s05e09", time: "00:42:02" },
+    ],
+    sources: ["Screamin' Rachael's Wikipedia page", "S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "screamin-rachael-fun-with-bad-boys": {
+    intro: "Screamin' Rachael's dance record of the late 1980s.",
+    facts: [
+      { label: "Out", value: "1987" },
+      { label: "Sung by", value: "Screamin' Rachael Cain" },
+    ],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }],
+    since: [
+      { when: "On the show", what: "Rachael says it was so big in the Building days that many people thought she was a drag queen.", source: "S05E09", episode: "s05e09", time: "00:24:27" },
+    ],
+    sources: ["S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "screamin-rachael-the-real-thing": {
+    intro: "A Screamin' Rachael song whose music video was shot at the World.",
+    facts: [{ label: "Sung by", value: "Screamin' Rachael Cain" }],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }],
+    since: [
+      { when: "On the show", what: "Rachael says she shot the music video at the World, the club she loved.", source: "S05E09", episode: "s05e09", time: "00:21:38" },
+    ],
+    sources: ["S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "world-captured-by-stephan-lupino": {
+    intro: "Stephan Lupino's photo book of the World, the club at 254 East 2nd Street, in black and white and colour.",
+    facts: [
+      { label: "Out", value: "1988" },
+      { label: "Photographs by", value: "Stephan Lupino" },
+      { label: "Published by", value: "Graphics-Photos-Art" },
+      { label: "Format", value: "Softcover, 21 x 29.5 cm" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James says Lupino's book about the World is all girls he talked into taking their tops off; Rachael didn't pose, but he did photograph her.", source: "S05E09", episode: "s05e09", time: "00:23:12" },
+    ],
+    sources: ["The book's own cover and listing (Open Library, a bookseller's listing)", "S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
   "creative-vandal": {
     intro:
       "An hour-long documentary about Nick Egan: from a working-class art-school punk making T-shirts for the Ramones to the sleeves for The Clash, Bow Wow Wow, INXS and Duran Duran, and the music videos that followed.",
@@ -268,11 +332,225 @@ const HAND: Record<string, ItemStory> = {
     ],
     sources: ["The book's own cover and listing", "S05E05 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
   },
+
+  // ---------- Dean Johnson's work (Lisa, 27 Nov 2026: "dean's work needs cover designs and each item needs a page") ----------
+  // Facts: the records' own sleeves and labels (Discogs, MusicBrainz), the Velvet Mafia's own site and CD Baby page, the
+  // film credits (TMDB, IMDb), the Dean Johnson Papers at NYU's Fales Library, and the flyers his sister Beth keeps.
+  weenies: {
+    intro:
+      "Dean Johnson's band. He wrote the songs and sang them, often about the people in the room. They played the Pyramid, Area, Danceteria, the Cat Club, the Limelight and Wigstock, and were the house band at his Rock 'n' Roll Fag Bar at the World.",
+    reviews: [],
+    facts: [
+      { label: "Records", value: "'Chicken' / 'F*ck You' (Radical Records, 1987), 'F*ck You' on CD (Great Jones, 1988), 'Conventions' (Great Jones, 1988)" },
+      { label: "Produced by", value: "Keith Masco" },
+      { label: "Songs only on film", value: "'Bourgeois Boys', 'Andy Warhol', 'Teri Toye', 'Attitude' and 'Do the Drag' - never put out on a record" },
+      { label: "Last show", value: "A reunion set at Rock 'n' Roll Fag Bar 2008, the memorial concert for Dean, 30 May 2008" },
+    ],
+    inItLabel: "In the band (on the 1987 record)",
+    inIt: [
+      { name: "Dean Johnson", note: "lead vocals, songs" },
+      { name: "Eunice Holland", note: "bass, vocals" },
+      { name: "Rocko Mezias", note: "drums" },
+      { name: "Luthur", note: "guitar" },
+      { name: "Al Ludgate", note: "horns" },
+      { name: "Stephen Amico", note: "keyboards, vocals" },
+      { name: "Perry Masco", note: "mandolin, vocals" },
+      { name: "Lloyd Goldberg", note: "sax" },
+    ],
+    since: [
+      { when: "On the show", what: "Musto asked Dean for a song about him, like the ones he sang about Teri Toye and Dianne Brill.", source: "S01E02", episode: "s01e02", time: "00:12:51" },
+      { when: "On the show", what: "James remembers Dean Johnson and the Weenies when they first started at the Pyramid.", source: "S04E07", episode: "s04e07", time: "00:36:23" },
+    ],
+    sources: ["The records' own sleeves and labels (Discogs, MusicBrainz)", "Nelson Sullivan's video archive", "The 2008 memorial concert page", "S01E02 and S04E07 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "dean-and-the-weenies-chicken": {
+    intro:
+      "Dean and the Weenies' first record: a 12-inch single with 'Chicken' on one side and 'F*ck You' on the other. The sleeve dedicates it to Tipper Gore and the PMRC, the parents' group that wanted warning stickers on records.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1987" },
+      { label: "Label", value: "Radical Records (RAD 12)" },
+      { label: "Format", value: "12-inch vinyl single, US" },
+      { label: "Side A", value: "'Chicken' (3:00)" },
+      { label: "Side B", value: "'F*ck You' (3:45)" },
+      { label: "Written by", value: "Dean Johnson" },
+      { label: "Produced by", value: "Keith Masco" },
+      { label: "Engineer", value: "Fred Tenny" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "The Weenies" }, { name: "Dean Johnson" }],
+    since: [],
+    sources: ["The record's own sleeve and label (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "dean-and-the-weenies-f-ck-you": {
+    intro:
+      "Dean's best-known song. Dean and the Weenies sing it in the film Mondo New York, and Great Jones, a label of Island Records, put it out on CD from the soundtrack.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1988" },
+      { label: "Label", value: "Great Jones (CCD 600)" },
+      { label: "Format", value: "CD single in a gatefold card sleeve, US" },
+      { label: "Length", value: "3:48" },
+      { label: "Words and music", value: "Dean Johnson" },
+      { label: "Produced by", value: "Keith Masco" },
+      { label: "Also on", value: "The Mondo New York soundtrack (1988), This Is Offensive (1994) and Blacklips Bar: Androgyns and Deviants (2023); first out as the B-side of 'Chicken' (1987)" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "The Weenies" }, { name: "Dean Johnson" }, { name: "Mondo New York" }],
+    since: [],
+    sources: ["The record's own sleeve and label (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "dean-and-the-weenies-conventions": {
+    intro: "A 12-inch dance single by Dean and the Weenies, with four mixes of 'Conventions'.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1988" },
+      { label: "Label", value: "Great Jones (GJ-600)" },
+      { label: "Format", value: "12-inch vinyl, 45 rpm" },
+      { label: "Side A", value: "The Unconventional Mix, The Unconventional Radio Mix" },
+      { label: "Side B", value: "Radio Mix, Bonus Beats" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "The Weenies" }, { name: "Dean Johnson" }],
+    since: [],
+    sources: ["The record's own label (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "velvet-mafia": {
+    intro:
+      "Dean Johnson's glam rock band, from the late 1990s until he died in 2007. On the cover of their CD Cheap But Not Free the band stands in a police line-up, with a Catholic schoolgirl on bass and a sax-playing nun.",
+    reviews: [],
+    facts: [
+      { label: "Years", value: "About 1997 to 2007" },
+      { label: "Records", value: "We Know Where You Live (1998), Cheap But Not Free (2004)" },
+      { label: "Style", value: "Glam rock and power pop" },
+      { label: "On film", value: "Freaks, Glam Gods and Rock Stars (2001)" },
+    ],
+    inItLabel: "In the band",
+    inIt: [{ name: "Dean Johnson", note: "vocals, songs" }, { name: "Susanne Hassenstein" }],
+    since: [],
+    sources: ["The Velvet Mafia's own website and press list", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "velvet-mafia-we-know-where-you-live": {
+    intro: "The Velvet Mafia's first CD. Next Magazine reviewed it in 1998. No picture of it and no track list have turned up yet.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1998" },
+      { label: "Format", value: "CD" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "The Velvet Mafia" }, { name: "Dean Johnson" }],
+    since: [],
+    sources: ["The Velvet Mafia's own press list", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "velvet-mafia-cheap-but-not-free": {
+    intro:
+      "The Velvet Mafia's second CD: ten glam rock songs. Song 7, 'The Big Johnson', later gave the documentary about Dean its title.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2004" },
+      { label: "Label", value: "Hassenstein Music (the band's own)" },
+      { label: "Format", value: "CD" },
+      { label: "Songs", value: "The Girl From Planet Muff, Dharmageddon (Celebrity), The Pretty One, Coco Chanel, Testosterone, Make A Mess, The Big Johnson, Foot/Stool, Air Kisses For The Masses, This Stud's For You" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "The Velvet Mafia" }, { name: "Dean Johnson" }],
+    since: [],
+    sources: ["The CD's own listing (CD Baby)", "The Velvet Mafia's own website", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "freaks-glam-gods-and-rock-stars": {
+    intro:
+      "John T. Ryan's concert documentary of New York's underground drag, punk and performance scene. Dean Johnson and the Velvet Mafia are in it.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2001" },
+      { label: "Length", value: "1 hour 26 minutes" },
+      { label: "Directed by", value: "John T. Ryan" },
+    ],
+    inIt: [{ name: "Dean Johnson" }, { name: "The Velvet Mafia" }, { name: "Kevin Aviance" }, { name: "Donovan Leitch" }, { name: "Jason Nesmith" }],
+    since: [],
+    sources: ["The film's credits (IMDb, TCM)", "The Dean Johnson Papers, NYU Fales Library", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "big-johnson": {
+    intro:
+      "Lola Rocknrolla's documentary about the wild life and mysterious death of Dean Johnson, named after a Velvet Mafia song. Dean's sister Beth is one of its producers.",
+    reviews: [],
+    facts: [
+      { label: "First shown", value: "Slamdance Film Festival, 20 February 2025" },
+      { label: "In cinemas", value: "Quad Cinema, New York, January 2026" },
+      { label: "Online", value: "27 February 2026" },
+      { label: "Written and directed by", value: "Lola Rocknrolla" },
+      { label: "Made by", value: "Funtown Pictures" },
+      { label: "Length", value: "1 hour 35 minutes" },
+    ],
+    inIt: [
+      { name: "Dean Johnson" },
+      { name: "Beth Johnson", note: "Dean's sister" },
+      { name: "Lady Bunny" },
+      { name: "Taylor Mac" },
+      { name: "Kevin Aviance" },
+      { name: "Jackie Beat" },
+      { name: "Sherry Vine" },
+      { name: "Michael Musto" },
+      { name: "Penny Arcade" },
+      { name: "Miss Guy" },
+      { name: "World Famous *BOB*" },
+    ],
+    since: [
+      { when: "On the show", what: "James had just seen the Dean Johnson documentary, and talked about it with Fenton on their radio show.", source: "S06E07", episode: "s06e07", time: "00:21:00" },
+    ],
+    sources: ["The film's credits (TMDB)", "Slamdance and the Quad Cinema", "S06E07 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "rock-n-roll-fag-bar": {
+    intro:
+      "Dean Johnson's Tuesday night at the World on East 2nd Street, from 1987: gay rock and roll, go-go boys, and Dean and the Weenies on stage. Dean made it, promoted it and hosted it.",
+    reviews: [],
+    facts: [
+      { label: "Started", value: "1987" },
+      { label: "Where", value: "The World, 254 East 2nd Street - Tuesdays" },
+      { label: "House band", value: "Dean and the Weenies" },
+      { label: "Came back", value: "At Coney Island High in the 1990s, and as Rock 'n' Roll Fag Bar 2008, the memorial concert for Dean at Don Hill's on 30 May 2008" },
+      { label: "The 2008 concert", value: "Made by Beth Johnson with Chi Chi Valenti, Joe Birdsong and Hattie Hathaway. Bebe Buell, Joey Arias, Kevin Aviance, Miss Guy, Justin Bond and World Famous *BOB* performed, and it raised $3,300 for Sylvia's Place" },
+    ],
+    inItLabel: "Who ran it",
+    inIt: [{ name: "Dean Johnson" }, { name: "The Weenies", note: "the house band" }],
+    since: [],
+    sources: ["The night's own flyers (Beth Johnson's Dean Johnson fan page)", "OutWeek, 19 November 1989", "The 2008 memorial concert page", "Our Library publications (no reviews or mentions yet)"],
+  },
+  homocorps: {
+    intro:
+      "Dean Johnson's monthly showcase of gay, lesbian and trans rock bands at CBGB, which he produced and hosted from the late 1990s until about 2006.",
+    reviews: [],
+    facts: [
+      { label: "Where", value: "CBGB, 315 Bowery" },
+      { label: "When", value: "Monthly, late 1990s to about 2006" },
+      { label: "Made and hosted by", value: "Dean Johnson" },
+      { label: "Posters", value: "Three are kept in the Dean Johnson Papers at NYU's Fales Library" },
+    ],
+    inItLabel: "On stage",
+    inIt: [
+      { name: "Dean Johnson" },
+      { name: "Rufus Wainwright", note: "in the first cast photo" },
+      { name: "Michael Cavadias" },
+      { name: "Jesse Adams" },
+      { name: "Paxton" },
+      { name: "Lisa Jackson" },
+      { name: "Frederick Ford" },
+      { name: "Formika" },
+      { name: "Jonny McGovern" },
+      { name: "Laura Branigan" },
+    ],
+    since: [],
+    sources: ["The Dean Johnson Papers, NYU Fales Library", "The Velvet Mafia's own press list", "Our Library publications (no reviews or mentions yet)"],
+  },
 };
 
 /** One clip for a story that has no film of its own, shown as "Watch the clip" (Lisa, 24 Nov 2026: Blondie with Tish & Snooky -
  *  "use 1", the Hall of Fame thank-you; it is also in the S05E10 AFTERPARTY playlist). */
 const CLIPS: Record<string, NonNullable<ItemStory["film"]>> = {
+  // Dean Johnson's work (Lisa, 27 Nov 2026): Nelson Sullivan's own tape, the Velvet Mafia's video, the film's trailer.
+  weenies: { id: "BswrxwRpoz8", title: "Dean and the Weenies - Bourgeois Boys, Pyramid Club, 1985", channel: "Nelson Sullivan's video archive" },
+  "velvet-mafia": { id: "iIUGQ8_6Jh0", title: "Dean Johnson - Velvet Mafia (music video)", channel: "RYANISLANDfilms" },
+  "big-johnson": { id: "bwa1ttQbXJ8", title: "The Big Johnson - trailer", channel: "Freestyle Digital Media" },
   blondie: { id: "6rkbvphNFtw", title: "Debbie Harry thanks Tish & Snooky at Blondie's induction into the Rock and Roll Hall of Fame, 2006", channel: "Manic Panic",
     note: "At Blondie's induction in 2006, Debbie Harry thanks Tish & Snooky, the backing singers in Blondie's first line-up." },
 };

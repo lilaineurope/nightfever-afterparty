@@ -516,6 +516,60 @@ a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important
 .lib-cat-n { margin-left: 6px; font-family: var(--font-mono-body); font-size: 13px; opacity: .8; }
 @media (max-width: 639px) { .lib-cat { font-size: 16px; padding: 5px 12px; } }
 .lib-art-by { display: block; margin: -2px 0 4px; font-family: var(--font-mono-body); font-size: 10px; line-height: 1.25; color: var(--color-pink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* Fashion & outfits (Lisa, 24 Nov 2026): a look is a fabric swatch card in its own colours, a shop a pink carrier bag */
+.fsh-look { padding: 0; background: #f4f1ea; color: #111; justify-content: flex-start; }
+.fsh-cloth { position: relative; display: flex; flex: 1 1 auto; min-height: 0; margin: 10px 10px 0; }
+.fsh-cloth > span { flex: 1; background: var(--c); -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 7px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 10px 7px repeat-x; mask: linear-gradient(#000 0 0) top / 100% calc(100% - 7px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 10px 7px repeat-x; }
+.fsh-cloth > span:nth-child(even) { margin-top: 6px; }
+.fsh-cloth::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(#0000002e 1.1px, transparent 1.3px); background-size: 5px 5px; pointer-events: none; }
+.fsh-tag { position: absolute; top: 8px; left: 8px; z-index: 2; background: #f6e06a; color: #111; padding: 2px 6px; font-family: var(--font-mono-body); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; box-shadow: 2px 2px 0 #111; }
+.fsh-cam .fsh-tag { background: var(--color-pink); color: #fff; }
+.fsh-mood .fsh-tag { background: #111; color: #f4f1ea; box-shadow: 2px 2px 0 var(--color-pink); }
+.fsh-label { position: relative; padding: 8px 10px 9px; border-top: 3px solid #111; margin-top: 8px; }
+.fsh-nm { display: block; margin-bottom: 4px; font-family: var(--font-flyer); font-size: 12px; line-height: 1.1; text-transform: uppercase; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.fsh-look .lib-foot { font-family: var(--font-mono-body); font-size: 10px; letter-spacing: .04em; }
+.fsh-face img { object-position: center 30%; }
+.fsh-face .fsh-tag { background: #111; color: #f4f1ea; box-shadow: 2px 2px 0 var(--color-pink); }
+.fsh-label-cover .lib-mast { margin-top: auto; }
+.fsh-mast { overflow-wrap: normal; }
+.fsh-mast-s { font-size: clamp(14px, 1.45vw, 18px); }
+.fsh-note { position: relative; margin: 8px 0 10px; font-family: var(--font-mono-body); font-size: 10px; line-height: 1.3; text-transform: uppercase; opacity: .8; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.fsh-bag { background: var(--color-pink); color: #fff; padding-top: 34px; }
+.fsh-handle { position: absolute; top: -18px; left: 50%; width: 46%; height: 40px; transform: translateX(-50%); border: 5px solid #f4f1ea; border-radius: 50% 50% 0 0 / 100% 100% 0 0; border-bottom: 0; }
+.fsh-bag .lib-mast { margin-top: auto; margin-bottom: 10px; }
+.fsh-dots { display: inline-flex; gap: 3px; margin-left: 8px; vertical-align: middle; }
+.fsh-dots span { width: 11px; height: 11px; border: 1px solid #0006; display: inline-block; }
+/* Look pages (/library/look/<slug>, Lisa 24 Nov 2026): the mannequin on its own colour stripes, the real photo beside it */
+.look-big { display: grid; gap: 22px; }
+@media (min-width: 900px) { .look-big { position: sticky; top: 84px; } .look-big-2 { grid-template-columns: 1fr 1fr; align-items: start; } }
+.look-big figure { margin: 0; }
+.look-big figcaption { margin-top: 16px; font-size: 12px; line-height: 1.4; color: var(--color-muted-foreground, #666); }
+.look-frame { position: relative; background: #f4f1ea; border: 3px solid #111; box-shadow: 10px 10px 0 var(--color-pink); padding: 18px; transform: rotate(-.6deg); }
+.look-frame::before { content: ""; position: absolute; top: -14px; left: 50%; z-index: 2; width: 120px; height: 30px; background: #e8dfc3cc; transform: translateX(-50%) rotate(-3deg); box-shadow: 0 1px 2px #0003; }
+.look-stripes { position: absolute; inset: 18px; display: flex; opacity: .55; }
+.look-stripes > span { flex: 1; background: var(--c); }
+.look-stripes::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(#0000002e 1.1px, transparent 1.3px); background-size: 5px 5px; }
+.look-mq { position: relative; display: block; width: 100%; height: auto; max-height: min(62vh, 560px); margin: 0 auto; }
+.look-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.look-chips span { width: 26px; height: 26px; border: 2px solid #111; box-shadow: 2px 2px 0 #111; }
+.look-dot { display: inline-block; width: 14px; height: 14px; margin-right: 8px; border: 1.5px solid #111; vertical-align: -2px; }
+.look-who { font-size: 16px; font-weight: 600; line-height: 1.4; }
+/* Designer, label and shop pages (Lisa, 27 Nov 2026): the shelf cover drawn big, the polaroid framed, the strip below. */
+.fsh-page-cover { max-width: 420px; margin: 0 auto; }
+.fsh-page-cover .lib-mast { font-size: clamp(28px, 3.2vw, 44px); overflow-wrap: normal; hyphens: manual; }
+.fsh-page-polaroid { background: #f4f1ea; }
+.art-more-pic.fsh-more-bag, .art-more-pic.fsh-more-type { color: #fff; font-family: var(--font-flyer); font-size: 13px; line-height: 1; text-transform: uppercase; text-align: center; padding: 10px; }
+.art-more-pic.fsh-more-bag { background: var(--color-pink); }
+.art-more-pic.fsh-more-type { background: #111; }
+.fsh-shop-photo { padding: 0; background: #111; }
+.fsh-shop-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fsh-shop-photo .fsh-tag, .fsh-shop-photo .lib-strip { position: relative; }
+.look-more-pic { position: relative; display: block; aspect-ratio: 3 / 4; background: #f4f1ea; border: 2px solid #111; padding: 8px; margin-bottom: 8px; overflow: hidden; }
+.look-more-pic .look-stripes { inset: 8px; }
+.look-more-pic .look-mq { height: 100%; }
+/* A look's Library cover: the mannequin dressed in the look, standing on its own colour stripes */
+.fsh-cloth .fsh-mq { position: absolute; inset: 6px 0 0; z-index: 1; width: 100%; height: calc(100% - 6px); }
+.fsh-cloth.fsh-dressed > span { opacity: .5; }
 .lib-book img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.06) saturate(.9); }
 .lib-strip { position: absolute; left: 0; right: 0; bottom: 0; background: #f4f1ea; color: #111; padding: 8px 10px; border-top: 3px solid #111; }
 .lib-nm { display: block; margin-bottom: 4px; font-family: var(--font-flyer); font-size: 11px; line-height: 1.1; text-transform: uppercase; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1144,13 +1198,18 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-story { display: grid; gap: 22px 40px; }
 @media (min-width: 900px) { .lit-story { grid-template-columns: 1.3fr 1fr; } .lit-story-intro { grid-column: 1 / -1; } }
 .lit-story-intro { font: 20px/1.4 var(--font-type); max-width: 62ch; }
-.lit-story-facts { display: grid; gap: 0; border-top: 2px solid #111; }
+.lit-story-facts { display: grid; gap: 0; border-top: 2px solid #111; align-self: start; align-content: start; }
 .lit-story-facts > div { display: grid; grid-template-columns: 11em 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(17,17,17,.35); font-size: 14px; }
 .lit-story-facts dt { font: 11px/1.6 var(--font-flyer); letter-spacing: .1em; text-transform: uppercase; }
 @media (max-width: 520px) { .lit-story-facts > div { grid-template-columns: 1fr; gap: 2px; } }
 .lit-story-k { font: 11px/1.6 var(--font-flyer); letter-spacing: .1em; text-transform: uppercase; border-bottom: 2px solid #111; padding-bottom: 4px; }
 .lit-story-in ul { display: grid; gap: 6px; margin-top: 10px; font-size: 14px; }
 .lit-story-note { color: #555; }
+.lit-story-side { display: grid; gap: 22px; align-content: start; }
+.lit-story-cover { justify-self: center; width: min(100%, 300px); transform: rotate(1.5deg); }
+.lit-story-cover.is-square { width: min(100%, 320px); }
+.lit-story-cover img { display: block; width: 100%; height: auto; border: 2px solid #111; box-shadow: 5px 6px 0 #111; background: #f6f0ea; }
+.lit-story-cover figcaption { margin-top: 10px; font: 11px/1.45 var(--font-mono-body); color: #555; }
 .lit-story-link { font-weight: 600; color: #111; text-decoration: none; }
 .lit-story-link:hover { color: var(--color-pink); }
 .lit-story-film .lit-jbx-r { min-width: 0; }
@@ -1451,3 +1510,23 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+/* Random night out (Lisa, 27-28 Nov 2026, option C): four reels at the bottom of every page, already filled in, with
+   "Spin again!". src/components/random-pick.tsx */
+.rn-reel { display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #f4f1ea; color: #111; border: 3px solid var(--color-pink); padding: 10px 10px 12px; }
+.rn-q { font-family: var(--font-mono-body); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-pink); }
+.rn-win { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; overflow: hidden; background: #111; }
+.rn-photo { width: 100%; height: 100%; object-fit: cover; }
+.rn-cover { width: 100%; height: 100%; object-fit: contain; }
+.rn-record { width: 82%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #f4f1ea 0 3%, var(--color-pink) 4% 22%, #111 23% 24%, #1d1d1d 25% 100%); box-shadow: inset 0 0 0 6px #262626, inset 0 0 0 12px #1a1a1a, inset 0 0 0 18px #262626; }
+.rn-blank { padding: 12px; background: radial-gradient(circle, #111 1.6px, transparent 2px) 0 0 / 9px 9px, var(--color-pink); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-flyer); font-size: 18px; line-height: 1.05; text-transform: uppercase; color: #fff; }
+.rn-empty { background: repeating-linear-gradient(180deg, #e8e2d4 0 22px, #d9d2c2 22px 26px); font-family: var(--font-flyer); font-size: 56px; color: var(--color-pink); }
+.rn-name { font-family: var(--font-flyer); font-size: 14px; line-height: 1.1; text-transform: uppercase; overflow-wrap: break-word; hyphens: auto; }
+@media (min-width: 640px) { .rn-name { font-size: 16px; } }
+.rn-sub { font-size: 12px; line-height: 1.3; color: oklch(0.38 0.01 85); }
+.rn-story-link { font-family: var(--font-flyer); font-size: .9em; text-transform: uppercase; color: #fff; transition: color .15s; }
+.rn-story-link:hover, .rn-story-link:focus-visible { color: var(--color-pink); outline: none; }
+.rn-spinning .rn-win > * { animation: rn-spin .18s linear infinite; }
+.rn-spinning .rn-win { animation: rn-blur .18s linear infinite; }
+@keyframes rn-spin { from { transform: translateY(-30%); } to { transform: translateY(30%); } }
+@keyframes rn-blur { 0%, 100% { filter: blur(1px); } 50% { filter: blur(2.5px); } }
+@media (prefers-reduced-motion: reduce) { .rn-spinning .rn-win, .rn-spinning .rn-win > * { animation: none; } }

@@ -378,6 +378,13 @@ export const YOUTUBE: Record<string, string> = {
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
   "Ray Bourbon's party records": "nJ2_2BFaf8c",
+  // S05E09 Screamin' Rachael Cain
+  "Z-Factor & Jesse Saunders – 'Fantasy'": "7yn53tLNyuY",
+  "Screamin' Rachael – 'Give Me My Freedom (Murder in Clubland)'": "yOjkyknKJ2c",
+  "Screamin' Rachael – 'Fun with Bad Boys'": "1UPOMZVQnXA",
+  "Screamin' Rachael – 'The Real Thing'": "IJFVuYbqxRQ",
+  "DJ Keoki – 'Kaleidoscope'": "SU-yWeIw5xM",
+  "New Edition": "YtbFPLK-JWI",
   // S06E10 Kenneth Hash aka Lil' Kenny
   "The Sugarcubes": "ALkk6UlfjgU",
   "The Sugarcubes – 'Hit'": "Z5fAWpv_axs",

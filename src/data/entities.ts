@@ -5,6 +5,7 @@ import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
 import { INTRO_NAMES, NIGHT_PARTS } from "./club-parts";
 import { WRITTEN_BY } from "./written-by";
+import { OTHER_WORKS } from "./made-by";
 import { PERSON_PROFILES } from "./person-profiles";
 import { MEMORIAM } from "./memoriam";
 
@@ -21,7 +22,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11" | "s06e09" | "s05e02" | "s05e05" | "s05e08" | "s06e10";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11" | "s06e09" | "s05e02" | "s05e05" | "s05e08" | "s06e10" | "s05e09";
 };
 
 export type Entity = {
@@ -183,6 +184,9 @@ for (const g of guests) for (const s of g.scenes) if (known(s)) add(s, CARD_CATE
 // Books by people on the site that no guest has dropped yet get a Book card and Library page of their own (Lisa, 22 Nov
 // 2026, src/data/written-by.ts). A guest who drops one later adds their episode row to the same card.
 for (const w of WRITTEN_BY) add(w.name, "Book");
+// Records, films and nights a person made that no guest has dropped yet, when they get a page of their own (Lisa, 27 Nov
+// 2026, Dean Johnson: "each item needs a page"; src/data/made-by.ts OTHER_WORKS `card`).
+for (const works of Object.values(OTHER_WORKS)) for (const w of works) if (w.card) add(w.title, w.card);
 
 // Wire events and guest stories to every entity.
 // Each event's and guest's slugs and lower-case text are worked out once here, not once per entity:
