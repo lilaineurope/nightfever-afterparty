@@ -48,6 +48,9 @@ export type MapStop = {
   y: number;
   tx: number;
   ty: number;
+  /** The real spot, for the live map on /map?ep=. */
+  lat: number;
+  lng: number;
   line?: MapLine | undefined;
 };
 

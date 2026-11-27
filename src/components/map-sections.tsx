@@ -193,15 +193,21 @@ export function RoomsMapSection({
   title,
   intro,
   id = "their-new-york",
+  episode,
+  noMap = false,
 }: {
   r: RoomsMap;
   first: string;
   title?: string | undefined;
   intro?: string | undefined;
   id?: string | undefined;
+  /** On an AFTERPARTY page: the big map opens on this episode's stops (/map?ep=). */
+  episode?: string | undefined;
+  /** On /map itself: only the list, the live map shows the stops. */
+  noMap?: boolean;
 }) {
   const links = useLinks();
-  const m = r.map;
+  const m = noMap ? null : r.map;
   return (
     <section aria-labelledby={id}>
       <h2 id={id} className={`${h} text-center`}>
@@ -279,7 +285,7 @@ export function RoomsMapSection({
         <div>
           <ol className="rooms-list">
             {r.stops.map((s) => (
-              <li key={s.slug}>
+              <li key={s.slug} id={`stop-${s.n}`}>
                 <span
                   className={s.club ? "rooms-badge rooms-badge-club" : "rooms-badge"}
                   aria-hidden="true"
@@ -342,9 +348,13 @@ export function RoomsMapSection({
               ))}
             </p>
           )}
-          {r.stops.length > 0 && (
+          {r.stops.length > 0 && !noMap && (
             <p className="mt-5">
-              <Link to="/map" search={{ at: r.stops[0]!.slug }} className="map-btn">
+              <Link
+                to="/map"
+                search={episode ? { ep: episode } : { at: r.stops[0]!.slug }}
+                className="map-btn"
+              >
                 See them on the big map &rarr;
               </Link>
             </p>

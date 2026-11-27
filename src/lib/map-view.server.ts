@@ -345,6 +345,8 @@ function drawnCity(stops: (Pinned & { line?: MapLine | undefined })[]): {
       y: Math.round(d.y * 10) / 10,
       tx: Math.round(placed[i]!.x * 10) / 10,
       ty: Math.round(placed[i]!.y * 10) / 10,
+      lat: x.lat,
+      lng: x.lng,
       line: x.line,
     };
   });

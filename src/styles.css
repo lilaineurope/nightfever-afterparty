@@ -1370,3 +1370,7 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 .club-read-cv .lib-diary-tag, .club-read-cv .lib-art-tag { font-size: 7px; top: 5px; left: 5px; padding: 1px 4px; }
 .club-read-cv .lib-diary-cover::after, .club-read-cv .lib-diary::after { right: 9px; width: 4px; }
 .club-poster { transform: rotate(-1deg); }
+
+/* /map?ep=: one AFTERPARTY's stops as numbered pins on the live map (Lisa, 27 Nov 2026). */
+.map-stop { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #111; border: 2px solid #111; font: 700 12px var(--font-mono-body); box-shadow: 2px 2px 0 rgba(0,0,0,.35); }
+.map-stop-club { background: #111; color: #fff; }

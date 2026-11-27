@@ -264,6 +264,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
                   r={nightsOut}
                   first={stageName(thisEpisode.guest)}
                   id="nights-out-map"
+                  episode={id}
                   title={`Follow ${stageName(thisEpisode.guest)}'s nights out`}
                   intro={`Every club and place ${stageName(thisEpisode.guest)} talks about, numbered in the order they come up in the episode. Tap a ▶ time code to hear that moment.`}
                 />
