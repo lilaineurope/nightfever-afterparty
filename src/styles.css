@@ -858,7 +858,10 @@ a.jbx-srckey:hover { background: var(--pink); color: #fff; }
 .lit-jbx-sel { display: grid; gap: 8px; margin-top: 16px; }
 .lit-jbx-sel button { display: flex; width: 100%; gap: 10px; align-items: center; border: 2px solid #f4f1ea; color: #f4f1ea; background: transparent; padding: 6px 10px; font-size: 13px; text-align: left; cursor: pointer; }
 .lit-jbx-sel button:hover, .lit-jbx-sel button[aria-pressed="true"] { background: var(--color-pink); border-color: var(--color-pink); }
-.lit-jbx-sel i { font: normal 12px/1.4 var(--font-flyer); background: #f4f1ea; color: #111; padding: 1px 6px; }
+/* Each video in a film box gets the Jukebox's play button (Lisa, 27 Nov 2026: "instead of 'a1' use the play button as we
+   are doing it in jukebox. apply to all"): pink square with ▶, black with a yellow ♫ while it plays. */
+.lit-jbx-sel i { flex: none; display: grid; place-items: center; width: 34px; height: 34px; font: normal 16px/1 var(--font-flyer); background: var(--color-pink); color: #fff; border: 2px solid var(--color-pink); }
+.lit-jbx-sel button:hover i, .lit-jbx-sel button[aria-pressed="true"] i { background: #111; border-color: #111; color: #f6e06a; }
 .lit-jbx-fine { margin-top: 12px; color: #aaa; font-size: 11px; line-height: 1.4; }
 .lit-jbx-grille { height: 16px; margin: 16px -24px 0; background: repeating-linear-gradient(90deg, #999 0 3px, #666 3px 6px); }
 .lit-box { background: var(--card); border: 2px solid #111; box-shadow: 6px 6px 0 #111; padding: 20px 22px; }
@@ -1314,6 +1317,9 @@ a.scr-ours:hover { color: #111; }
 .map-event { padding: 8px 0; border-bottom: 1px dashed #bbb; font-size: 13px; }
 .map-btn { display: inline-block; border: 2px solid #111; background: #111; color: #f6f0ea; padding: 7px 14px; font: 700 13px var(--font-mono-body); transition: background .15s, border-color .15s; }
 .map-btn:hover, .map-btn:focus-visible { background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
+/* On the AFTERPARTY pages every text link is pink (21 Oct rule); the map button keeps its own black fill. */
+main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]) { color: #f6f0ea; box-shadow: none; }
+main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]):hover, main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]):focus-visible { color: #fff; }
 @media (min-width: 900px) { .map-band-foot { grid-template-columns: 1.4fr 1fr; } }
 @media (max-width: 700px) { .map-band-svg { height: 300px; } }
 /* A living person's rooms: numbered pins on a drawn New York, the list beside it. */
@@ -1367,3 +1373,7 @@ a.scr-ours:hover { color: #111; }
 .club-read-cv .lib-diary-tag, .club-read-cv .lib-art-tag { font-size: 7px; top: 5px; left: 5px; padding: 1px 4px; }
 .club-read-cv .lib-diary-cover::after, .club-read-cv .lib-diary::after { right: 9px; width: 4px; }
 .club-poster { transform: rotate(-1deg); }
+
+/* /map?ep=: one AFTERPARTY's stops as numbered pins on the live map (Lisa, 27 Nov 2026). */
+.map-stop { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #111; border: 2px solid #111; font: 700 12px var(--font-mono-body); box-shadow: 2px 2px 0 rgba(0,0,0,.35); }
+.map-stop-club { background: #111; color: #fff; }
