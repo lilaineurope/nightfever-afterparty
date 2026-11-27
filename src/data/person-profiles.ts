@@ -18,6 +18,10 @@ export type PersonProfile = {
   said: MemoriamQuote[];
   /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
   also?: { heading: string; names: string[] };
+  /** "On film" (Lisa, 27 Nov 2026, Clara: "make a playlist on youtube and put a video box on the page"): videos about them,
+   *  played in the page's video jukebox; `playlist` is our AFTERPARTY YouTube playlist of the same videos, once it exists. */
+  videos?: { id: string; title: string }[];
+  playlist?: string;
   /** Lisa's rule is two quotes per guest; a page can go higher when she says so (Kim: Mickey x3, Lisa 21 Nov 2026). */
   maxPerGuest?: number;
 };
@@ -1531,17 +1535,27 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
   "peppo-vanini": {
     story:
-      "Co-owner of Xenon. He had run clubs in Europe, Régine's among them, before he and Howard Stein opened Xenon in June 1978 in the old Henry Miller's Theatre on West 43rd Street - xenon is element 54, a wink at Studio 54. Nora Burns's 1980 diary names him as the owner.",
+      "Co-owner of Xenon, the one disco that could keep up with Studio 54. Peppo had run some of Europe's best clubs, Régine's among them, and met Howard Stein at Studio 54. In June 1978 they opened Xenon in the old Henry Miller's Theatre on West 43rd Street - xenon is element 54, a wink at Studio. Silver walls, rays of light from a giant X over the dance floor, the first go-go boxes for anyone who wanted to dance on one, and the fashion crowd where Studio had Hollywood. On Night Fever, Christina Visca remembers FIT students let in free on Thursdays, Nikki Haskell her Christmas party there, and Nora Burns reads her 1980 diary - night after night at Xenon, and a P.S. that ends at Peppo's window.",
     timeline: [
       ["Before 1978", "Runs clubs in Europe, Régine's among them"],
+      ["Studio 54 days", "Meets Howard Stein at Studio 54"],
       ["Jun 1978", "Opens Xenon with Howard Stein in the former Henry Miller's Theatre"],
-      ["1980", "In Nora Burns's diary, read on Night Fever S6E5"],
-      ["1984", "Xenon closes"],
+      ["Oct 1978", "Everybody Hates Punk night at Xenon - costume a must"],
+      ["1980", "Nora Burns's diary: the Kennedy party, five dollars and a limo to Magique, and the P.S. about Peppo's window"],
+      ["Early 80s", "Free for FIT students on Thursdays; Nikki Haskell's Christmas party"],
+      ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
     ],
     liftedUp: [],
     rooms: ["Xenon", "Studio 54", "Régine's"],
-    said: [{ episode: "s06e05", who: "Nora Burns", time: "00:09:12", quote: "Peppo was the owner of Xenon." }],
-    also: { heading: "In the diaries", names: ["Nora Burns's diaries (1980)"] },
+    // Lisa, 27 Nov 2026: "more context in quote" / "for quotes give them more context" - the diary passages in full, from
+    // src/data/diaries.ts, and a line on what was being talked about. Max 2 per guest.
+    said: [
+      { episode: "s06e05", who: "Nora Burns", time: "00:08:49", context: "The last entry Nora reads from her 1980 diary, the year the scene already felt over", quote: "We all went to Xenon and Danceteria. Every place was sort of dull. No place has the energy it used to... P.S., Earl is dead. Davey told me last night he fell off the roof of the Navarro trying to climb into Peppo's window - that was the owner of Xenon. I feel sad about it. I wish I'd been nicer or seen him more or something." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:10:33", context: "Christina, a 19-year-old FIT student, on how she got into Peppo's club", quote: "When I came to FIT, I started going out right away. And I often mentioned this, Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:38", context: "James asks about the other clubs of the time - Xenon, Hurrah - and Nikki remembers her parties there", quote: "We gave a party at Xenon. It was the first time anybody had ever given a party because of all the newspapers and everything... And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:06:14", context: "Nora's diary, 2 May 1980, read on air", quote: "I took $5 and went to Xenon, and then got into a limo with... Brenda Vaccaro... and some other actors, and we went to Magique. Wednesday night was Bond's, Xenon, Magique, Xenon and Bond's again, all with different people. It seems like I don't live in sunshine hours." },
+    ],
+    also: { heading: "The Xenon crowd", names: ["Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Nora Burns's diaries (1980)", "Andy Warhol", "Brooke Shields", "Halston"] },
   },
   "lahoma-van-zandt": {
     first: "Lahoma",
@@ -1562,14 +1576,34 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   "clara-the-carefree-chicken": {
     first: "Clara",
     story:
-      "Ernie Glam's Club Kid character at Disco 2000, the Wednesday party at the Limelight. As James tells it, Clara hatched from an egg on the party's opening night, one of the names Michael gave his costume-shop characters. Ernie made her his 'cartoon drag' and kept her for three years, sweaty suits and all.",
+      "Ernie Glam's Club Kid character at Disco 2000, the Wednesday party at the Limelight. As James tells it, Clara came out of her egg on the party's opening night, one of the names Michael gave his costume-shop characters. Boy Bar's drag shows gave Ernie the spark, and Clara became his 'cartoon drag' - a female character without women's clothes - go-go dancing in a cage over the dance floor. He kept her for three years, sweaty suits and all, and his show Peeew! has been looking for her ever since.",
     timeline: [
-      ["Disco 2000 opening night", "Clara hatches from an egg at the Limelight"],
-      ["The next three years", "Ernie Glam's 'cartoon drag', the Club Kids' mascot"],
+      ["Before Disco 2000", "Boy Bar's drag shows give Ernie Glam the spark"],
+      ["Disco 2000 opening night", "Clara comes out of her egg at the Limelight"],
+      ["The next three years", "Ernie's 'cartoon drag', go-go dancing in the cage over the floor"],
+      ["Later", "Peeew!, Ernie's show, goes searching for Clara"],
     ],
     liftedUp: [],
-    rooms: ["Disco 2000", "Limelight"],
-    said: [],
-    also: { heading: "Who talks about her", names: ["Ernie Glam", "James St. James", "Moby", "Michael Musto"] },
+    rooms: ["Disco 2000", "Limelight", "Boy Bar"],
+    // Lines from the transcripts (Lisa, 27 Nov 2026: "quotes from people?", "give them more context"); max two per guest.
+    // A host's line at S1E5 00:28:15 waits until we know whether it was Fenton or Randy.
+    said: [
+      { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", context: "Ernie on taking the job at Disco 2000", quote: "When Michael hired me to be Clara the Chicken, I decided that this was going to be my drag persona. I used to go to Boy Bar on St. Mark's Place every Thursday to watch the drag shows, and I kind of wanted to do that, but I didn't really want to be a drag queen." },
+      { episode: "s01e05", who: "James St. James", time: "00:28:27", context: "James remembers how Clara arrived", quote: "Clara the Chicken came out of her egg on the opening night of Disco 2000. There was Hans Ulrich the dog, a leather dog - Michael had just gone and gotten all these costumes from a costume shop and christened everybody." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:29:30", context: "Ernie on the chicken suit", quote: "When Michael presented me with the chicken suit, I thought, okay, here's my opportunity to do a type of cartoon drag - I'm still playing a female character, but I'm not really having to wear women's clothes. The suits were so smelly, they got so sweaty... but I did it for three years. I just wanted it to be something fabulous." },
+      { episode: "s01e02", who: "Michael Musto", time: "01:02:14", context: "Musto on the Limelight in the 90s", quote: "At the Limelight there was the chapel area, there was the main dance floor. And then it became Disco 2000, the big club kid party on Wednesdays, with Clara the Carefree Chicken." },
+      { episode: "s01e09", who: "Moby", time: "00:07:02", context: "Moby working out when he first met James", quote: "I had just DJ'd for the first time at Limelight, and Michael took me to Peter Gatien's office... So, James, I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
+    ],
+    // Same order as Lisa's YouTube playlist "Clara the Carefree Chicken – the AFTERPARTY playlist" (PLJqISi2pr5Qo, PRIVATE
+    // 27 Nov 2026) - add playlist: "https://www.youtube.com/playlist?list=PLJqISi2pr5Qo" once she makes it public.
+    videos: [
+      { id: "aAYRvJGmsDQ", title: "Peeew! #90: Searching for Clara the Carefree Chicken" },
+      { id: "Ir0Y0QQQnsw", title: "The Disco 2000 commercial" },
+      { id: "Cd4kmrC_PPo", title: "Ernie Glam + Clara the Carefree Chicken in Montréal" },
+      { id: "dfd6iABsJAI", title: "Peeew! #97: One step closer to finding Clara" },
+      { id: "Yrln7HwA2ck", title: "Peeew! #134: Clara the Carefree Chicken sightings" },
+      { id: "tLfNUMsmv-o", title: "Night Fever S1E5 - Ernie Glam (Clara comes up at 28:00)" },
+    ],
+    also: { heading: "Clara's flock", names: ["Ernie Glam", "James St. James", "Michael Musto", "Moby", "Amanda Lepore", "Hans Ulrich", "Clara the Chicken suit", "Peeew!", "Fabulousity"] },
   },
 };

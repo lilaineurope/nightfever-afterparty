@@ -2,7 +2,7 @@
 // every name -> card answer its links need, and sends just that (CardView, src/lib/card-view.ts). Only the server and
 // the server function in card-view.functions.ts load this file.
 import { notFound, redirect } from "@tanstack/react-router";
-import { afterpartyOf, entityBySlug, SAME_AS, slugify, episodeShort, isThinCard, relatedTo, type Entity } from "@/data/entities";
+import { afterpartyOf, entityBySlug, entityFor, SAME_AS, slugify, episodeShort, isThinCard, relatedTo, type Entity } from "@/data/entities";
 import { namedOn } from "@/lib/name-links";
 import { jukebox } from "@/data/collections";
 import { clubNightFor } from "@/data/club-nights";
@@ -28,6 +28,43 @@ import { worksOf } from "@/lib/works";
 import { tapesOf } from "@/lib/tapes.server";
 import { coverFor } from "@/data/library-covers";
 import { storyPagesFor } from "@/lib/story-links.server";
+import { CLUB_TICKETS } from "@/data/club-tickets";
+
+/** The picture on a work in "<first>'s work": the Library cover of a book, else - for a club they opened or ran (Lisa,
+ *  27 Nov 2026: "cover for xenon") - the club's period ticket or poster, else its polaroid from the club page. */
+const workCover = (n: string): string | undefined => {
+  const c = coverFor(n);
+  if (c?.kind === "book") return c.src;
+  const s = slugify(n);
+  return CLUB_TICKETS[s]?.src ?? CLUB_PROFILES[s]?.portrait?.polaroid;
+};
+
+/** The picture for a name in a story box (Lisa, 27 Nov 2026: make the pages "sticky"): the person's polaroid, their
+ *  AFTERPARTY polaroid, the club's polaroid or ticket, the diary keeper's polaroid, else a Library cover. Names without
+ *  one stay plain chips. */
+type Face = { src: string; framed?: boolean };
+const faceOf = (n: string): Face | undefined => {
+  const e = entityFor(n);
+  const s = e?.slug ?? slugify(n);
+  const ep = afterpartyOf(e);
+  const diary = DIARY_PAGES[s];
+  // Person and club polaroids are whole polaroid cards (photo at 40-680 px of a 720 x 892 card): the pile shows the photo part.
+  const framed = PERSON_PORTRAITS[s]?.polaroid ?? CLUB_PROFILES[s]?.portrait?.polaroid;
+  if (framed && PERSON_PORTRAITS[s]) return { src: framed, framed: true };
+  const flat =
+    (ep ? polaroidThumb(ep, 240) : undefined) ??
+    (framed ? undefined : CLUB_TICKETS[s]?.src) ??
+    (diary?.keeperEpisode ? polaroidThumb(diary.keeperEpisode, 240) : undefined);
+  if (flat) return { src: flat };
+  if (framed) return { src: framed, framed: true };
+  const cover = coverFor(n)?.src;
+  return cover ? { src: cover } : undefined;
+};
+const facesOf = (names: string[]): Record<string, Face> =>
+  Object.fromEntries(names.flatMap((n) => {
+    const f = faceOf(n);
+    return f ? [[n, f]] : [];
+  }));
 
 /** A club's theme nights and parties (src/data/club-parts.ts) with their episode rows, biggest first inside a tile. */
 function clubPartsView(e: Entity): ClubPartsView | null {
@@ -144,7 +181,7 @@ function cardView(e: Entity): CardView {
   const rooms = profile ? roomsMapOf(profile, e.name) : null;
   if (rooms) for (const x of [...rooms.stops, ...rooms.home, ...rooms.away]) L.card(x.slug);
   // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
-  const works = e.category === "Person" ? worksOf(e.slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)) : [];
+  const works = e.category === "Person" ? worksOf(e.slug, workCover) : [];
   for (const w of works) if (w.slug) L.card(w.slug);
   const tapes = e.category === "Person" ? tapesOf(e.name) : [];
   const j = jukebox.find((x) => x.slug === e.slug);
@@ -188,6 +225,11 @@ function cardView(e: Entity): CardView {
     rooms,
     works,
     tapes,
+    faces: facesOf([
+      ...(profile ? [...profile.liftedUp, ...profile.rooms, ...(profile.also?.names ?? [])] : []),
+      ...(mem ? [...mem.liftedUp, ...mem.rooms, ...(mem.also?.names ?? [])] : []),
+      ...(club ? [...club.stage, ...club.rooms, ...(club.also?.names ?? [])] : []),
+    ]),
     connector: connectorRank(e.slug),
     links: L.data,
   };

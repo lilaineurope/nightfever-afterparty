@@ -38,6 +38,8 @@ export type CardView = {
   inGuestStories: { slug: string; name: string }[];
   /** Club, In memoriam, person and diary pages whose story names this card (two-way story links, Lisa 27 Nov 2026). */
   onPages: { slug: string; name: string; kind: string }[];
+  /** Pictures for the names in the story box (rooms, lifted up, stage, also): name -> polaroid or cover. */
+  faces: Record<string, { src: string; framed?: boolean }>;
   /** "In the same rooms" */
   related: { slug: string; name: string }[];
   /** The card's own Jukebox entry (songs, artists, stage bands get a player). */

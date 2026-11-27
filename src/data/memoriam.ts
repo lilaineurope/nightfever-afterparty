@@ -8,6 +8,8 @@ export type MemoriamQuote = {
   who: string; // who says it
   time: string; // hh:mm:ss in the episode
   quote: string;
+  /** What was being talked about, in a few words, shown above the quote (Lisa, 27 Nov 2026: "for quotes give them more context"). */
+  context?: string;
 };
 
 export type Memoriam = {

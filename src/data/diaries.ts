@@ -348,8 +348,10 @@ export const DIARY_PAGES: Record<string, DiaryPage> = {
           { who: "Nora Burns", text: "This is 1980, and the scene's already over in 1980!" },
           { who: "Nora Burns", read: true, text: "I feel like the city used to be the center of a tornado, and now it's a breeze." },
           { who: "Nora Burns", text: "How profound." },
-          { who: "Nora Burns", read: true, text: "P.S. Earl is dead. Davey told me last night he fell off the roof of the Navarro trying to climb into Peppo's window. I feel sad about it. I wish I'd been nicer, or seen him more, or something." },
-          { who: "Nora Burns", text: "Peppo was the owner of Xenon." },
+          // Exact words from the audio (00:09:06-00:09:20): her aside about Peppo comes mid-sentence.
+          { who: "Nora Burns", read: true, text: "P.S., Earl is dead. Davey told me last night he fell off the roof of the Navarro trying to climb into Peppo's window -" },
+          { who: "Nora Burns", text: "that was the owner of Xenon." },
+          { who: "Nora Burns", read: true, text: "I feel sad about it. I wish I'd been nicer or seen him more or something." },
           { who: J, text: "I love that in 1980 the scene is done. It used to be so fun, and now it's just…" },
           { who: "Nora Burns", text: "Studio was closed. It was over." },
         ],
