@@ -14,7 +14,6 @@ export const ROLE_LINES: Record<string, string> = {
   "anita-sarko": "Mudd Club and Danceteria DJ",
   "stephen-sprouse": "fashion designer",
   "howie-pyro": "Mudd Club kid, punk bassist and DJ",
-  "ian-schrager": "Studio 54 and Palladium co-owner",
   "tish-gervais": "Brian Belovitch's name in the 70s and 80s",
 
   // Living-person pages
