@@ -30,11 +30,17 @@ export const CLUB_READING: Record<string, ClubRead[]> = {
     { name: "Interview magazine", episode: "s06e06", time: "00:10:50" },
   ],
   "club-57": [
-    { name: "Club 57: Film, Performance, and Art in the East Village", episode: "s05e08", time: "00:28:16" },
+    {
+      name: "Club 57: Film, Performance, and Art in the East Village",
+      episode: "s05e08",
+      time: "00:28:16",
+    },
     { name: "Life As Art: The Club 57 Story", episode: "s04e10", time: "00:34:55" },
     { name: "We Started a Nightclub (Pyramid book)", episode: "s04e10", time: "00:23:16" },
   ],
-  "paradise-garage": [{ name: "James St. James's diaries (1981–91)", episode: "s02e08", time: "00:17:02" }],
+  "paradise-garage": [
+    { name: "James St. James's diaries (1981–91)", episode: "s02e08", time: "00:17:02" },
+  ],
   roxy: [
     { name: "Nora Burns's diaries (1980)", episode: "s06e05", time: "00:03:10" },
     { name: "Miss Guy's journals (1989)", episode: "s03e10", time: "00:32:45" },
