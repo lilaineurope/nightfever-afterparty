@@ -14,7 +14,7 @@ import { ClubPartsSections } from "@/components/club-parts";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
-import { TheirWork } from "@/components/their-work";
+import { TheirTapes, TheirWork } from "@/components/their-work";
 import { LibraryItemSections, Story } from "@/components/library-item";
 import { PlaceMapDrawing, PlaceSections } from "@/components/place-page";
 import { AroundTheBlock, BringUsHome, RoomsMapSection } from "@/components/map-sections";
@@ -298,6 +298,8 @@ function EntityPage() {
         {profile && e.rooms && <RoomsMapSection r={e.rooms} first={profile.first ?? e.name.split(" ")[0]!} />}
         {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
         <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />
+        {/* A maker's own tapes (Lisa, 27 Nov 2026, Nelson Sullivan): each one's Moving Images page, not on the Library shelves. */}
+        <TheirTapes tapes={e.tapes ?? []} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.split(" ")[0]!} />
         {diary && <DiarySections d={diary} name={e.name} />}
         {column && <ColumnIndex c={column} name={e.name} />}
         {item && <LibraryItemSections v={item} name={e.name} />}

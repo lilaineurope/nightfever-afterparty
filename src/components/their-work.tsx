@@ -109,3 +109,30 @@ export function TheirWork({ works, first, id = "their-work" }: { works: PersonWo
     </section>
   );
 }
+
+/** A maker's own tapes (Lisa, 27 Nov 2026: "make a moving image page for each video work of nelson"): typed tiles - no stills
+ *  from the tapes - each opening the tape's Moving Images page. They stay off the Library shelves. */
+export function TheirTapes({ tapes, first }: { tapes: { slug: string; title: string; year?: string | undefined; whole: boolean }[]; first: string }) {
+  if (!tapes.length) return null;
+  return (
+    <section id="tapes" aria-labelledby="tapes-h" className="their-work">
+      <h2 id="tapes-h" className={`${h} text-center`}>{first}'s tapes</h2>
+      <p className="mx-auto mt-2 max-w-xl text-center text-sm text-muted-foreground">
+        {tapes.length} of {first}'s videos are in the AFTERPARTY playlists - tap one for its page, who is on it and where it came up on the show.
+      </p>
+      <ul className="lib-grid their-work-grid">
+        {tapes.map((t) => (
+          <li key={t.slug} className="lib-item">
+            <Link to="/library/moving-images/$slug" params={{ slug: t.slug }} className="lib-hit">
+              <span className={`lib-cv lib-type ${t.whole ? "lib-ink" : "lib-pink"}`}>
+                <span className="lib-kind">{t.whole ? "Video diary" : "Clip"}</span>
+                <span className={`lib-mast${t.title.length > 44 ? " lib-mast-xl" : t.title.length > 24 ? " lib-mast-l" : ""}`}>{t.title}</span>
+                <span className="lib-foot">{t.whole ? "▶ The whole tape" : "▶ A clip"}{t.year && <> · {t.year}</>}</span>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

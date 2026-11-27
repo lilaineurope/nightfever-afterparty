@@ -6,7 +6,7 @@
 // can't tie to the work (the Tom Rubnitz shorts, Made for TV). Keyed by A–Z slug.
 
 export type FullWatch =
-  | { kind: "youtube"; id: string; title: string; channel: string; minutes: number; what: string }
+  | { kind: "youtube"; id: string; title: string; channel: string; minutes?: number | undefined; what: string }
   | { kind: "file"; src: string; title: string; source: string; minutes: number; what: string };
 
 const COMMONS = "https://commons.wikimedia.org/wiki/Special:FilePath/";
