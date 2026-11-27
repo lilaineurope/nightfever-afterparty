@@ -25,4 +25,9 @@ export const LOOK_OUTFITS: Record<string, PhotoOutfit> = {
     bottom: { label: "red wool mini-crini", hex: "#C8402E" },
     extra: { label: "pearl necklace", hex: "#E8E2D6" },
   },
+  // HEARD•NY, Grand Central 2013: a horse Soundsuit - blue-eared head with an embroidered, flowered mask, yellow and purple raffia to the floor.
+  "nick-cave-s-soundsuits": {
+    top: { label: "Soundsuit of yellow and purple raffia to the floor", hex: "#E3C34A", full: true },
+    extra: { label: "beaded flowers", hex: "#8E3FA0" },
+  },
 };

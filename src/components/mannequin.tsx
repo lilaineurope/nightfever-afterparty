@@ -30,7 +30,7 @@ const isShortHair = (l: string) => /quiff|pompadour|flat ?top|crop|buzz|short ha
 /** Worn all over but with legs: suits, tuxedos, tails, catsuits, jumpsuits. */
 const isSuit = (l: string) => /suit|tuxedo|tails|tailcoat|pyjama/i.test(l) && !/swimsuit|bathing|soundsuit/i.test(l);
 /** A long gown rather than a dress to the knee: the corseted, floor-length silhouette. */
-const isGown = (l: string) => /gown|ball ?dress|evening dress|bias|corset|crinoline|wedding dress|prom dress/i.test(l);
+const isGown = (l: string) => /gown|ball ?dress|evening dress|bias|corset|crinoline|wedding dress|prom dress|to the floor|floor-length/i.test(l);
 /** Hair worn up - piled, pinned, a bun or a bouffant (Julian Eltinge's Gibson girl, Lisa 27 Nov 2026). */
 const isUpdo = (l: string) => /piled|pinned up|\bup\b|bun\b|bouffant|beehive|gibson|chignon|top ?knot|updo/i.test(l);
 const isFace = (l: string) => /lip|rouge|eyeliner|mascara|lash|make-?up|paint|frames|glasses|sunglasses|shades|lens|mask|beauty|eye/i.test(l);

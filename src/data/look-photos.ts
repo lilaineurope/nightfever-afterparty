@@ -52,6 +52,15 @@ export const LOOK_PHOTOS: Record<string, LookPhoto> = Object.fromEntries(
         "https://commons.wikimedia.org/wiki/File:Julian-Eltinge-Fascinating-Widow.jpg",
         false,
       ],
+      [
+        "nick-cave-s-soundsuits",
+        "nick-cave-soundsuit-heard-ny.webp",
+        "One of Nick Cave's horse Soundsuits, head to floor: a horse head with blue ears and an embroidered, flowered mask over a long coat of yellow and purple raffia, in Grand Central Terminal",
+        "A whole Soundsuit, head to floor - a horse from HEARD•NY in Grand Central, 2013.",
+        "Photo: Metropolitan Transportation Authority, CC BY 2.0, via Wikimedia Commons",
+        "https://commons.wikimedia.org/wiki/File:AFT_1833_(8592219039).jpg",
+        true,
+      ],
     ] as [string, string, string, string, string, string, boolean][]
   ).map(([slug, file, alt, note, credit, source, exact]) => [slug, { src: pic(file), alt, note, credit, source, exact }]),
 );
