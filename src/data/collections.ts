@@ -441,6 +441,13 @@ const SPOTIFY: Record<string, string> = {
   "The Sugarcubes – 'Hit'": "spotify:track:24a0BpgQyuJzrGq9TvTZOR",
   "Björk – 'Venus as a Boy'": "spotify:track:48oX55j4gqDw0G80KxzpaQ",
   "Björk – 'Jóga'": "spotify:track:3nschTSboTkjPwgdbrRLyf",
+  // S05E09 Screamin' Rachael Cain (New Edition as 'Candy Girl')
+  "Z-Factor & Jesse Saunders – 'Fantasy'": "spotify:track:6fJd4UhGoAccG72q7Txbzb",
+  "Screamin' Rachael – 'Give Me My Freedom (Murder in Clubland)'": "spotify:track:7KtMRHPh8uDTZjWp1qyerB",
+  "Screamin' Rachael – 'Fun with Bad Boys'": "spotify:track:5kbpWX2sDBTCiAFwgg5FGH",
+  "Screamin' Rachael – 'The Real Thing'": "spotify:track:6iaBQNNahRgNkw9k7oLpUn",
+  "DJ Keoki – 'Kaleidoscope'": "spotify:track:0Dcn9IUnQmwBFsiKuNqRAu",
+  "New Edition": "spotify:track:3aHqs6SCMoNQ1GtPCG6mwP",
   // S06E09 Desi Santiago (Boob isn't on Spotify)
   "Minty": "spotify:artist:0vVeC3e3hdI1KVGjApg0Ud",
   "Minty – 'Useless Man'": "spotify:track:5cIE7xmxjnK1R4cXATm6Ni",
