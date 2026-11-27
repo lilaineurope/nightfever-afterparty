@@ -18,7 +18,7 @@ import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
-import type { CardView, ClubPartsView } from "@/lib/card-view";
+import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView, storyView } from "@/lib/library-item.server";
@@ -29,6 +29,10 @@ import { tapesOf } from "@/lib/tapes.server";
 import { coverFor } from "@/data/library-covers";
 import { storyPagesFor } from "@/lib/story-links.server";
 import { CLUB_TICKETS } from "@/data/club-tickets";
+import { CLUB_PIECES, coverArt, clubPieceFacts } from "@/data/cover-art";
+import { CLUB_READING } from "@/data/club-reading";
+import { bookClub } from "@/data/collections";
+import { coverDesign, KIND as COVER_KIND } from "@/lib/cover-design";
 
 /** The picture on a work in "<first>'s work": the Library cover of a book, else - for a club they opened or ran (Lisa,
  *  27 Nov 2026: "cover for xenon") - the club's period ticket or poster, else its polaroid from the club page. */
@@ -65,6 +69,58 @@ const facesOf = (names: string[]): Record<string, Face> =>
     const f = faceOf(n);
     return f ? [[n, f]] : [];
   }));
+
+/** "Who else was there" on a club page (Lisa, 27 Nov 2026, W1): every guest who talks about the club with their biggest
+ *  moment (most mentions first), the regulars - people whose own page (living or In memoriam) lists the club as one of their
+ *  rooms, minus those already on its stage - and who made or is named on its posters (CLUB_PIECES). */
+function clubCrowdOf(e: Entity, stage: string[]): ClubCrowdView {
+  const best = new Map<string, { time: string; context: string; mentions: number; total: number }>();
+  for (const r of e.refs) {
+    if (!r.episode) continue;
+    const b = best.get(r.episode);
+    const total = (b?.total ?? 0) + r.mentions;
+    if (!b || r.mentions > b.mentions) best.set(r.episode, { time: r.time, context: r.context, mentions: r.mentions, total });
+    else b.total = total;
+  }
+  const told = [...best]
+    .sort((a, b) => b[1].total - a[1].total)
+    .map(([id, b]) => {
+      const ep = episodes.find((x) => x.id === id)!;
+      return { episode: id, code: episodeShort(id), guest: ep.guest, time: b.time, context: b.context, mentions: b.total, pol: polaroidThumb(id, 240) };
+    });
+  const onStage = new Set(stage.map((n) => entityFor(n)?.slug ?? slugify(n)));
+  const regulars = [...Object.entries(PERSON_PROFILES), ...Object.entries(MEMORIAM)]
+    .filter(([s, p]) => !onStage.has(s) && p.rooms.some((r) => entityFor(r)?.slug === e.slug))
+    .map(([s]) => entityBySlug[s]?.name)
+    .filter((n): n is string => !!n);
+  const posters: { name: string; role: string }[] = [];
+  for (const which of ["ticket", "jukebox"]) {
+    const f = CLUB_PIECES[`${e.slug}:${which}`];
+    if (!f) continue;
+    for (const m of f.madeBy) posters.push({ name: m.name, role: m.role });
+    for (const n of f.onIt) if (n !== e.name) posters.push({ name: n, role: "On the poster" });
+  }
+  const seen = new Set<string>();
+  return { told, regulars: [...new Set(regulars)], posters: posters.filter((p) => !seen.has(p.name) && seen.add(p.name)) };
+}
+
+/** "The poster + read about it" on a club page (Lisa, 27 Nov 2026, L2). */
+function clubLibraryOf(e: Entity): ClubLibraryView | null {
+  const posters = coverArt
+    .filter((it) => it.shelf === "club-pieces" && it.slug === e.slug && it.art)
+    .map((it) => {
+      const f = clubPieceFacts(it);
+      const a = it.art!;
+      return { page: a.page, src: a.src, alt: a.alt, piece: a.piece, credit: a.credit, w: a.w, h: a.h, forWhat: f?.forWhat, date: f?.date, madeBy: f?.madeBy ?? [], onIt: (f?.onIt ?? []).filter((n) => n !== e.name) };
+    });
+  const reads = (CLUB_READING[e.slug] ?? []).flatMap((r, i) => {
+    const it = bookClub.find((b) => b.name === r.name);
+    const m = it?.moments.find((x) => x.episodeId === r.episode && x.time === r.time);
+    if (!it || !m) return [];
+    return [{ slug: it.slug, name: it.name, kind: COVER_KIND[it.shelf] ?? it.shelf, design: coverDesign(it, i), episode: m.episodeId, code: m.code, guest: m.guest, time: m.time, context: m.context }];
+  });
+  return posters.length || reads.length ? { posters, reads } : null;
+}
 
 /** A club's theme nights and parties (src/data/club-parts.ts) with their episode rows, biggest first inside a tile. */
 function clubPartsView(e: Entity): ClubPartsView | null {
@@ -113,6 +169,16 @@ function cardView(e: Entity): CardView {
   club?.stage.forEach(L.name);
   club?.rooms.forEach(L.name);
   const parts = g ? null : clubPartsView(e);
+  const crowd = club ? clubCrowdOf(e, club.stage) : null;
+  if (crowd) {
+    crowd.regulars.forEach(L.name);
+    crowd.posters.forEach((p) => L.name(p.name));
+  }
+  const clubLib = club ? clubLibraryOf(e) : null;
+  if (clubLib) {
+    for (const r of clubLib.reads) L.card(r.slug);
+    for (const p of clubLib.posters) [...p.madeBy.map((m) => m.name), ...p.onIt].forEach(L.name);
+  }
   parts?.looks.forEach(L.name);
   profile?.liftedUp.forEach(L.name);
   profile?.rooms.forEach(L.name);
@@ -211,6 +277,8 @@ function cardView(e: Entity): CardView {
     mem,
     club,
     parts,
+    crowd,
+    clubLib,
     pic,
     profile,
     diary,
@@ -229,6 +297,7 @@ function cardView(e: Entity): CardView {
       ...(profile ? [...profile.liftedUp, ...profile.rooms, ...(profile.also?.names ?? [])] : []),
       ...(mem ? [...mem.liftedUp, ...mem.rooms, ...(mem.also?.names ?? [])] : []),
       ...(club ? [...club.stage, ...club.rooms, ...(club.also?.names ?? [])] : []),
+      ...(crowd ? [...crowd.regulars, ...crowd.posters.map((p) => p.name)] : []),
     ]),
     connector: connectorRank(e.slug),
     links: L.data,
