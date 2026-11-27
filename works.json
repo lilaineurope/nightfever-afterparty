@@ -1,0 +1,115 @@
+{
+  "_note": "Dean Johnson (1961-2007) - everything he made, researched 27 Nov 2026 on Lisa's Mac. Covers are real items only (no Gemini). Discogs pictures are user photos of the records. 'cover': null = none found.",
+  "person_sources": [
+    {"what": "Wikipedia: Dean Johnson (entertainer)", "url": "https://en.wikipedia.org/wiki/Dean_Johnson_(entertainer)"},
+    {"what": "NYU Fales Library, Dean Johnson Papers MSS.335 (1982-2007; donated by his sister Beth Johnson, 2012): bio - came to NYC in 1979 to study film at NYU; parties Rock and Roll Fag Bar, Pubic Hair Club for Men, HomoCorps; bands Dean and the Weenies, the Velvet Mafia; in the films Mondo New York and Freaks, Glam Gods and Rock Stars; later blogging and readings", "url": "http://dlib.nyu.edu/findingaids/html/fales/djohnson/index.html"},
+    {"what": "Velvet Mafia band site (archived 2011-2012): press kit list, 2008 memorial concert", "url": "https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm"},
+    {"what": "NYT, Cara Buckley, 'Disquieting Death Stills the Nite Life', 14 Oct 2007", "url": "https://www.nytimes.com/2007/10/14/fashion/14dean.html"}
+  ],
+  "items": [
+    {
+      "slug": "dean-and-the-weenies", "kind": "band", "title": "Dean and the Weenies",
+      "facts": {"years": "c. 1983 - late 1980s (reunion set 30 May 2008 at the memorial concert)", "members_on_1987_record": "Dean Johnson (lead vocals, songs), Eunice Holland (bass, vocals), Rocko Mezias (drums), Luthur (guitar), Al Ludgate (horns), Stephen Amico (keyboards, vocals), Perry Masco (mandolin, vocals), Lloyd Goldberg (sax); producer Keith Masco; Stuart Klinger named as a Weenie in 2008", "played": "Pyramid, Area, Danceteria, Cat Club, Limelight, Wigstock; house band of Rock and Roll Fag Bar at The World", "songs_known": "Chicken, Fuck You, Conventions, Bourgeois Boys (Pyramid 1985 video), Andy Warhol (Limelight 1985 video), Teri Toye (Pyramid video), Attitude (music video), Do the Drag (video)", "unreleased": "Bourgeois Boys, Andy Warhol, Teri Toye, Attitude and Do the Drag are on no record in Discogs/MusicBrainz - known from videos only (Nelson Sullivan archive, Videowave)"},
+      "sources": ["https://www.discogs.com/artist/832558", "https://musicbrainz.org/artist/19b74f83-c120-4f14-8e8b-68de409ee199", "https://web.archive.org/web/20120317185304/http://www.mothernyc.com/events/dean08.html"],
+      "cover": "covers/dean-and-the-weenies.jpg", "credit": "Sleeve of 'Chicken / Fuck You' (Radical Records, 1987) - photo via Discogs"
+    },
+    {
+      "slug": "chicken-fuck-you", "kind": "record", "title": "Chicken / Fuck You", "artist": "Dean and the Weenies",
+      "facts": {"year": 1987, "label": "Radical Records", "catalogue": "RAD 12", "format": "12\" vinyl single, US", "tracks": ["A: Chicken (3:00)", "B: Fuck You (3:45)"], "credits": "Written by Dean Johnson; produced by Keith Masco; engineer Fred Tenny; Rad-A-Toui Music (BMI)", "note": "Sleeve note: 'This record is dedicated to Tipper Gore and the p.m.r.c.' Back sleeve = band photo."},
+      "sources": ["https://www.discogs.com/release/1399464"],
+      "cover": "covers/chicken-fuck-you-1987.jpg", "credit": "Sleeve photo via Discogs"
+    },
+    {
+      "slug": "fuck-you-dean-and-the-weenies", "kind": "record", "title": "Fuck You", "artist": "Dean and the Weenies",
+      "facts": {"year": 1988, "label": "Great Jones (Island)", "catalogue": "CCD 600", "format": "CD single in gatefold card sleeve, US", "tracks": ["Fuck You (3:48)"], "credits": "Words and music Dean Johnson; produced by Keith Masco (courtesy of Radical Records)", "note": "From the Mondo New York soundtrack. Also on the compilation 'This Is Offensive' (Continuum, 1994, COND-19420) and 'Blacklips Bar: Androgyns and Deviants' (2023)."},
+      "sources": ["https://www.discogs.com/release/3769875", "https://www.discogs.com/release/2188237", "https://www.discogs.com/master/3020627"],
+      "cover": "covers/fuck-you-cd-single-1988.jpg", "cover_alt": "covers/fuck-you-cd-single-1988-inside.jpg (the 'FUCK YOU!' artwork inside the gatefold - stronger picture, but a swear word)", "credit": "Sleeve photo via Discogs"
+    },
+    {
+      "slug": "conventions", "kind": "record", "title": "Conventions", "artist": "Dean and the Weenies",
+      "facts": {"year": 1988, "label": "Great Jones", "catalogue": "GJ-600", "format": "12\" vinyl, 45 rpm", "tracks": ["A1 Conventions (The Unconventional Mix)", "A2 (The Unconventional Radio Mix)", "B1 (Radio Mix)", "B2 (Bonus Beats)"]},
+      "sources": ["https://www.discogs.com/master/1051969", "https://www.discogs.com/release/8988821"],
+      "cover": "covers/conventions-1988.jpg", "credit": "Record photo via Discogs", "check": "Only a photo of the label in a company sleeve - weak as a cover."
+    },
+    {
+      "slug": "mondo-new-york", "kind": "film", "title": "Mondo New York",
+      "facts": {"year": 1988, "released": "22 Apr 1988 (US)", "director": "Harvey Keith", "writers": "David Silver, Harvey Keith", "producers": "Stuart S. Shapiro, Steven G. Menkin", "runtime": "83 min", "company": "International Harmony", "cast_incl": "Joey Arias, Dean Johnson, Ann Magnuson, John Sex, Karen Finley, Lydia Lunch, Phoebe Legere, Annie Sprinkle, Joe Coleman", "dean": "Dean and the Weenies perform 'Fuck You' (track 11 of the soundtrack, Great Jones/Island)", "imdb": "tt0093558"},
+      "sources": ["https://www.themoviedb.org/movie/41964", "https://www.discogs.com/master/133304"],
+      "cover": "covers/mondo-new-york-1988.jpg", "cover_alt": "covers/mondo-new-york-soundtrack-1988.jpg", "credit": "Film poster via TMDB / soundtrack sleeve via Discogs"
+    },
+    {
+      "slug": "the-velvet-mafia", "kind": "band", "title": "The Velvet Mafia",
+      "facts": {"years": "c. 1997 - 2007", "members": "Dean Johnson (vocals, songs); Susanne Hassenstein (named for the band in 2008; the 2004 CD is (c) Hassenstein Music). The band line-up on the CD cover: a Catholic schoolgirl on bass and a sax-playing nun (CD Baby notes)", "style": "glam/power-pop rock; 'The Velvet Mafia makes Marilyn Manson look like John Tesh' (Next Magazine)", "press": "Time Out NY 1998 (Jackie Beat interview), NYT 1998 (police raid at CBGB during a Velvet Mafia show), Next 1998 (debut CD review), HX 2004 cover story", "careful": "The Discogs artist 'Velvet Mafia' (Stomp 2002, F**k Off 2003, Lovelife UK) is a DIFFERENT act."},
+      "sources": ["https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm", "https://web.archive.org/web/20121023215703/http://www.cdbaby.com/cd/velvetmafia"],
+      "cover": "covers/the-velvet-mafia.jpg", "credit": "Cover of 'Cheap But Not Free' (Hassenstein Music, 2004) - from the band's website"
+    },
+    {
+      "slug": "we-know-where-you-live", "kind": "record", "title": "We Know Where You Live", "artist": "The Velvet Mafia",
+      "facts": {"year": 1998, "format": "CD (debut)", "note": "Known only from the band's press kit list ('A-Listers in Mortar: The Velvet Mafia release We Know Where You Live', Next Magazine, Derek DeKoff, 1998; CD review, 1998). No track list found."},
+      "sources": ["https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm"],
+      "cover": null, "credit": "none found"
+    },
+    {
+      "slug": "cheap-but-not-free", "kind": "record", "title": "Cheap But Not Free", "artist": "The Velvet Mafia",
+      "facts": {"year": 2004, "label": "Hassenstein Music / The Velvet Mafia (self-released, sold on CD Baby)", "upc": "825346675220", "format": "CD", "genre": "Rock: Glam", "tracks": ["The Girl From Planet Muff 4:11", "Dharmageddon (Celebrity) 3:35", "The Pretty One 3:07", "Coco Chanel 4:32", "Testosterone 4:19", "Make A Mess 3:57", "The Big Johnson 5:24", "Foot/Stool 4:26", "Air Kisses For The Masses 3:48", "This Stud's For You 5:26"], "note": "HX cover story 2004 'Sisters With Voices: New Music From The Velvet Mafia's Cheap But Not Free'. Track 7 gave the 2025 documentary its title."},
+      "sources": ["https://web.archive.org/web/20121023215703/http://www.cdbaby.com/cd/velvetmafia", "https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm"],
+      "cover": "covers/cheap-but-not-free-2004.jpg", "credit": "CD cover from the Velvet Mafia's website (424x391 - small)"
+    },
+    {
+      "slug": "the-big-johnson", "kind": "film", "title": "The Big Johnson",
+      "facts": {"year": 2025, "director_writer": "Lola Rocknrolla", "company": "Funtown Pictures", "producers": "Beth Johnson (Dean's sister), Mitch (Mikki) del Monico, Patty Lovemore (as listed by different sources)", "runtime": "95 min (TMDB; other listings 94/135)", "premiere": "Slamdance Film Festival, 20 Feb 2025", "us_release": "theatrical at the Quad Cinema, New York, January 2026; digital 27 Feb 2026", "distributor": "Freestyle Digital Media (US)", "festivals_also": "Revelation Perth IFF (9 Jun 2026), In-Edit Brasil 2026", "with": "Lady Bunny, Taylor Mac, Kevin Aviance, Jackie Beat, Sherry Vine, Michael Musto, Penny Arcade, Miss Guy, World Famous *BOB*, Beth Johnson", "imdb": "tt12585288"},
+      "sources": ["https://www.themoviedb.org/movie/1405748", "https://www.rottentomatoes.com/m/the_big_johnson", "https://quadcinema.com/film/the-big-johnson/", "https://evgrieve.com/2026/01/the-big-johnson-brings-east-village.html", "https://filmthreat.com/reviews/the-big-johnson/"],
+      "cover": "covers/the-big-johnson-2025.jpg", "credit": "Poster: The Big Johnson (Funtown Pictures / Lola Rocknrolla)"
+    },
+    {
+      "slug": "freaks-glam-gods-and-rock-stars", "kind": "film", "title": "Freaks, Glam Gods and Rock Stars",
+      "facts": {"year": 2001, "director": "John T. Ryan", "runtime": "86 min", "about": "Concert documentary of New York's underground performance and music scene (drag, punk, performance art); with Kevin Aviance, Donovan Leitch, Jason Nesmith; Dean Johnson and the Velvet Mafia appear (RYANISLANDfilms YouTube clip 'Dean Johnson - Velvet Mafia - R.I.P. Freaks Glam Gods and R.', jbqnJmlQQkM)", "imdb": "tt0283348"},
+      "sources": ["https://www.imdb.com/title/tt0283348", "https://tcm.com/tcmdb/title/528879/freaks-glam-gods-and-rock-stars", "http://dlib.nyu.edu/findingaids/html/fales/djohnson/index.html"],
+      "cover": null, "credit": "none found (IMDb/TCM poster pages blocked from here; not in TMDB)"
+    },
+    {
+      "slug": "rock-n-roll-fag-bar", "kind": "night", "title": "Rock 'n' Roll Fag Bar",
+      "facts": {"years": "1987 - c. 1990 (weekly); reunions at Coney Island High (1990s) and 'Rock n Roll Fag Bar 2008', the memorial benefit at Don Hill's, 30 May 2008", "venue": "The World, 254 East 2nd Street (Alphabet City) - Tuesdays", "who": "Created, promoted and emceed by Dean Johnson, with Dean and the Weenies often playing; go-go boys in underwear (Kiki Mason, OutWeek, 19 Nov 1989)", "dated_flyer": "'Hey kids!! It's Christmas time at Dean Johnson's Rock and Roll Fag Bar ... Tuesday December 22, 1987'", "2008": "Produced by Beth Johnson with Chi Chi Valenti (Jackie Factory), Joe Birdsong and Hattie Hathaway; performers incl. Bebe Buell, Joey Arias, Kevin Aviance, Miss Guy, Justin Bond, World Famous *BOB*; raised $3,300 for Sylvia's Place"},
+      "sources": ["https://filthydreams.org/2014/05/16/welcome-to-dean-johnsons-rock-nroll-fag-bar/", "https://www.interviewmagazine.com/culture/a-maybe-exaggerated-definitely-foggy-look-back-at-the-world-the-most-iconic-nightclub-youve-never-heard-of", "https://web.archive.org/web/20120317185304/http://www.mothernyc.com/events/dean08.html"],
+      "cover": "covers/rock-n-roll-fag-bar-comic-flyer.jpg",
+      "cover_options": ["covers/rock-n-roll-fag-bar-comic-flyer.jpg ('Dean Johnson's Rock'n'Roll Fag Bar - Can any man be trusted?', comic-book flyer)", "covers/rock-n-roll-fag-bar-christmas-1987.jpg (Christmas card, Tue 22 Dec 1987 - dated, two pink bald heads)", "covers/rock-n-roll-fag-bar-family-flyer.jpg ('Spend an evening with the Fag Bar family' - photo of people)", "covers/rock-n-roll-fag-bar-2008-benefit-invite.jpg (2008 benefit invitation by Adam Alexander and Leslie Sternbergh, 240x360)"],
+      "credit": "Flyer from Beth Johnson's Dean Johnson fan page (Facebook), via Filthy Dreams"
+    },
+    {
+      "slug": "homocorps", "kind": "night", "title": "HomoCorps",
+      "facts": {"years": "monthly, late 1990s - c. 2006 (press 1999-2006)", "venue": "CBGB, 315 Bowery", "what": "Live showcase of gay, lesbian and transgender rock bands, produced and hosted by Dean Johnson", "people": "Original cast photo: Dean with Michael Cavadias, Jesse Adams, Paxton, Rufus Wainwright; later Lisa Jackson, Frederick Ford, Formika, Jonny McGovern; Laura Branigan performed; celebrities seen: Kirstie Alley, Rufus Wainwright, Parker Posey, Liv Tyler, Kate Moss, Christian Slater, Diane Lane", "press": "The Advocate 'Esprit de HomoCorps' (Cathay Che, 2000); HX cover 'Homo to the Core' (Austin Downey, 2001); 'HomoCorps Hall of Fame' (2004); Time Out NY 'Dean's List' (2004)", "posters_exist": "NYU Fales MSS.335 oversize posters: 'Dean Johnson's Homocorps Music Showcase', 'Homocorps Present: Grrrl's Nite Out!', 'Critics Agree: Homocorps Rock Gay Scene!' (scans only on request)"},
+      "sources": ["https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm", "https://findingaids.library.nyu.edu/fales/mss_335/contents/aspace_ref5", "http://nymag.com/daily/intel/2007/09/promoter_and_queer_icon_dean_j.html"],
+      "cover": null, "credit": "none found online (posters are in the NYU Fales Library - could ask for a scan)"
+    },
+    {
+      "slug": "pubic-hair-club-for-men", "kind": "night", "title": "Pubic Hair Club for Men",
+      "facts": {"what": "A party Dean Johnson organized (named in the NYU Fales bio and Filthy Dreams); no date or venue found"},
+      "sources": ["http://dlib.nyu.edu/findingaids/html/fales/djohnson/index.html"],
+      "cover": null, "credit": "none found"
+    },
+    {
+      "slug": "xxx-and-magnum", "kind": "night", "title": "XXX / Magnum (with Jonny McGovern)",
+      "facts": {"years": "2002-2006", "what": "Parties Dean Johnson co-promoted with Jonny McGovern: XXX (New York Magazine 'Party Favorites', 2002; HX 'Size Queens', 2002; XXX meets Sperm, New Year's Eve 2005; police raid 2006) and Magnum at The Park (Village Voice, Musto). Dean also produced the Black Party (Time Out NY, 2005)."},
+      "sources": ["https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm"],
+      "cover": null, "credit": "none found"
+    },
+    {
+      "slug": "jesus-christ-superstar-club-staging", "kind": "show", "title": "Jesus Christ Superstar (club staging, Dean as Herod)",
+      "facts": {"what": "Told by Sally Randall on Night Fever S06E07 at 00:27:34: Haoui Montaug was Pontius Pilate, Michael was Simon Zealotes, Dean Johnson was Herod, 'with his headpiece that was made for him'.", "venue_year": "not found anywhere in writing"},
+      "sources": ["Night Fever S06E07 transcript 00:27:34"],
+      "cover": null, "credit": "none found"
+    },
+    {
+      "slug": "night-of-a-thousand-stevies", "kind": "night", "title": "Night of a Thousand Stevies (Jackie 60)",
+      "facts": {"what": "Chi Chi Valenti and Johnny Dynell's Stevie Nicks night; Dean was already performing as Stevie and inspired it (S06E03 00:55:57); Village Voice (Musto): 'Dean Johnson steals show at Night of a Thousand Stevies'. It's their night, not Dean's - a link, not a work item."},
+      "sources": ["Night Fever S06E03 00:55:57", "https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm"],
+      "cover": null, "credit": "not Dean's work"
+    },
+    {
+      "slug": "nyu-film-and-writing", "kind": "other",
+      "facts": {"film": "Studied film at NYU from 1979 - no student films found.", "writing": "Wrote for the press: 'Do's and Don'ts of Public Sex' (Time Out NY, 2005), Next Magazine cover 'Men's Health: Rock Doc Dean Johnson Examines the State of HIV in New York' (2005), interviews in HX (2006); blog and readings in his last years (Fales).", "acting": "Mondo New York (1988), Freaks, Glam Gods and Rock Stars (2001); Musto (Village Voice) reported he almost got the lead in Rocky Horror on Broadway."},
+      "sources": ["http://dlib.nyu.edu/findingaids/html/fales/djohnson/index.html", "https://web.archive.org/web/20120317185329/http://www.velvetmafiatheband.com/press.htm"],
+      "cover": null, "credit": "none found"
+    }
+  ]
+}
