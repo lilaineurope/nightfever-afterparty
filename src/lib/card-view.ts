@@ -4,8 +4,24 @@ import type { Memoriam } from "@/data/memoriam";
 import type { ClubProfile } from "@/data/club-profiles";
 import type { ClubNight } from "@/data/club-nights";
 
+/** A club night, theme night or party's own page (Lisa, 27 Nov 2026, all 78): the club it belongs to, what was played,
+ *  filmed and said there, and the club's other nights. */
+export type NightPageView = {
+  club: string;
+  clubName: string;
+  address: string;
+  years: string;
+  kind: string;
+  title: string;
+  quotes: { episode: string; code: string; who: string; time: string; quote: string }[];
+  songs: { title: string; artist: string; year: number; why: string }[];
+  films: { id: string; title: string }[];
+  playlist?: string | undefined;
+  others: { slug: string; title: string; kind: string }[];
+};
+
 export type ClubPartsView = {
-  groups: { heading: string; intro: Ref[]; parts: { title: string; refs: Ref[] }[] }[];
+  groups: { heading: string; intro: Ref[]; parts: { title: string; slug: string; refs: Ref[] }[] }[];
   looks: string[];
   /** Row names shown in the groups, so "In the episodes" leaves them out */
   names: string[];
@@ -78,6 +94,8 @@ export type CardView = {
   club: ClubProfile | null;
   /** The club's theme nights and parties, folded in from their own cards (Lisa, 22 Nov 2026, src/data/club-parts.ts). */
   parts: ClubPartsView | null;
+  /** This card is one of a club's nights or parties (Lisa, 27 Nov 2026). */
+  nightPage: NightPageView | null;
   /** "Who else was there" (club pages only). */
   crowd: ClubCrowdView | null;
   /** The club's poster and reading list (club pages only). */

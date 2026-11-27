@@ -360,6 +360,23 @@ export const CLUB_PARTS: Record<string, ClubParts> = {
 };
 
 /** Every row name that folds into a club -> the club's slug. */
+/** Rows about a club's nights as a whole ("Area theme nights and invitations"): they still fold into the club's card. */
+export const INTRO_NAMES: [string, string][] = Object.entries(CLUB_PARTS).flatMap(([club, p]) =>
+  p.groups.flatMap((g) => (g.intro ?? []).map((n) => [n, club] as [string, string])),
+);
+
+/** Every night, theme night and party gets its own page again (Lisa, 27 Nov 2026: "club night and theme nights need
+ *  their own pages, eg closing weekend at paradise", then "All 78 nights and parties"). One page per tile: the tile's
+ *  first row names the page, its other rows join it, and the club page's tile links there. */
+export type NightPart = { club: string; title: string; heading: string; names: string[] };
+export const NIGHT_PARTS: NightPart[] = Object.entries(CLUB_PARTS).flatMap(([club, p]) =>
+  p.groups.flatMap((g) => g.parts.map((x) => ({ club, title: x.title, heading: g.heading, names: x.names }))),
+);
+
+/** The sticker on a night's page header. */
+export const nightKind = (heading: string, title: string): string =>
+  /theme/i.test(heading) ? "Theme night" : heading === "Parties" || /party|benefit|ball|opening|closing/i.test(title) ? "Party" : "Club night";
+
 export const PART_NAMES: [string, string][] = Object.entries(CLUB_PARTS).flatMap(([club, p]) =>
   p.groups.flatMap((g) => [...(g.intro ?? []), ...g.parts.flatMap((x) => x.names)].map((n) => [n, club] as [string, string])),
 );

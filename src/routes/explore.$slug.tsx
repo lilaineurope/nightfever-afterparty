@@ -11,6 +11,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
 import { ClubPartsSections } from "@/components/club-parts";
+import { NightPageOthers, NightPageSections } from "@/components/night-page";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { ProfileVideos } from "@/components/profile-videos";
 import { ClubCrowd } from "@/components/club-crowd";
@@ -161,6 +162,8 @@ function EntityPage() {
   // Place pages (Lisa, 22 Nov 2026, mockup C): the drawn map fills the header, the name card sits on it.
   const place = e.place ?? undefined;
   const placeMap = place?.map ?? undefined;
+  // A club's night or party on its own page (Lisa, 27 Nov 2026): the club's header picture, the club on the name card.
+  const nightPage = e.nightPage ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -191,12 +194,16 @@ function EntityPage() {
         )}
         {/* A book with facts but no picture yet keeps its facts on the paper name card, so they stay readable over the dots. */}
         <div className={pic || cover || placeMap || facts ? "card-namecard" : "mx-auto max-w-4xl"}>
-          <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
+          {nightPage ? (
+            <Link to="/explore/$slug" params={{ slug: nightPage.club }} className="card-back">&larr; {nightPage.clubName}</Link>
+          ) : (
+            <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
+          )}
           <p className="mt-5">
             {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
                 the top menu and covered the stickers in the photo. Pictures never cover text, text never covers pictures' text. */}
             {mem && <span className="az-st az-s2 memoriam-band">In memoriam</span>}
-            <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : e.category}</span>
+            <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : nightPage ? nightPage.kind : e.category}</span>
           </p>
           <h1 className="card-title">
             <span className="timeline-strip timeline-strip-ink">{e.name}</span>
@@ -213,6 +220,12 @@ function EntityPage() {
             <div className={pic ? undefined : "memoriam-meta"}>
               {mem.aka && <p className="memoriam-aka">aka {mem.aka}</p>}
               <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died}{mem.convictedLine && <> · {mem.convictedLine}</>} · {mem.diedLine.replace(/^Died/, "died")}</p>
+            </div>
+          )}
+          {nightPage && (
+            <div className={pic ? undefined : "memoriam-meta"}>
+              <p className="memoriam-aka">At {nightPage.clubName}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{nightPage.address} · the club {nightPage.years}</p>
             </div>
           )}
           {club && (
@@ -291,7 +304,7 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || nightPage || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} faces={e.faces} />}
         {club && (
           <ClubProfileSections
@@ -311,6 +324,7 @@ function EntityPage() {
             faces={e.faces}
           />
         )}
+        {nightPage && <NightPageSections v={nightPage} name={e.name} />}
         {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
             card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
         {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
@@ -334,6 +348,7 @@ function EntityPage() {
           </div>
         )}
         <CardSections v={e} skipRefs={!!item || !!place} skipEvents={!!place} />
+        {nightPage && <NightPageOthers v={nightPage} />}
       </div>
           <SiteFooter />
 </main>

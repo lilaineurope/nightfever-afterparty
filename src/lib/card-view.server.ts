@@ -8,7 +8,8 @@ import { jukebox } from "@/data/collections";
 import { clubNightFor } from "@/data/club-nights";
 import { MEMORIAM } from "@/data/memoriam";
 import { CLUB_PROFILES } from "@/data/club-profiles";
-import { CLUB_PARTS } from "@/data/club-parts";
+import { CLUB_PARTS, NIGHT_PARTS, nightKind, type NightPart } from "@/data/club-parts";
+import { NIGHT_MEDIA } from "@/data/night-media";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { PERSON_PROFILES } from "@/data/person-profiles";
 import { DIARY_PAGES } from "@/data/diaries";
@@ -18,7 +19,7 @@ import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
-import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView } from "@/lib/card-view";
+import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView, NightPageView } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView, storyView } from "@/lib/library-item.server";
@@ -126,17 +127,61 @@ function clubLibraryOf(e: Entity): ClubLibraryView | null {
 function clubPartsView(e: Entity): ClubPartsView | null {
   const p = CLUB_PARTS[e.slug];
   if (!p) return null;
-  const rowsOf = (names: string[]) =>
-    e.refs.filter((r) => names.includes(r.name)).sort((a, b) => b.mentions - a.mentions);
+  const rowsOf = (from: Entity | undefined, names: string[]) =>
+    (from?.refs ?? []).filter((r) => names.includes(r.name)).sort((a, b) => b.mentions - a.mentions);
+  // Each night has its own page since 27 Nov 2026: its rows live on that card, the tile links there.
   const groups = p.groups
     .map((g) => ({
       heading: g.heading,
-      intro: rowsOf(g.intro ?? []),
-      parts: g.parts.map((x) => ({ title: x.title, refs: rowsOf(x.names) })).filter((x) => x.refs.length > 0),
+      intro: rowsOf(e, g.intro ?? []),
+      parts: g.parts
+        .map((x) => {
+          const slug = slugify(x.names[0]!);
+          return { title: x.title, slug, refs: rowsOf(entityBySlug[slug], x.names) };
+        })
+        .filter((x) => x.refs.length > 0),
     }))
     .filter((g) => g.parts.length > 0 || g.intro.length > 0);
   const names = p.groups.flatMap((g) => [...(g.intro ?? []), ...g.parts.flatMap((x) => x.names)]);
   return { groups, looks: p.looks ?? [], names };
+}
+
+const NIGHT_BY_SLUG = new Map<string, NightPart>(NIGHT_PARTS.map((n) => [slugify(n.names[0]!), n]));
+const toSec = (t: string) => t.split(":").map(Number).reduce((a, b) => a * 60 + (b || 0), 0);
+
+/** A night's own page: the club's quotes said within a minute and a half of the night's own rows, the songs and films
+ *  hand-matched in src/data/night-media.ts, and the club's other nights. */
+function nightPageOf(e: Entity): NightPageView | null {
+  const n = NIGHT_BY_SLUG.get(e.slug);
+  const c = n ? CLUB_PROFILES[n.club] : undefined;
+  const clubE = n ? entityBySlug[n.club] : undefined;
+  if (!n || !c || !clubE) return null;
+  const quotes = c.said
+    .filter((q) => e.refs.some((r) => r.episode === q.episode && r.time && r.time !== "On camera" && Math.abs(toSec(r.time) - toSec(q.time)) <= 90))
+    .map((q) => ({ episode: q.episode, code: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote }));
+  const cn = clubNightFor(n.club);
+  const m = NIGHT_MEDIA[e.slug] ?? {};
+  const songs = (m.songs ?? []).flatMap((t) => {
+    const s = cn?.songs.find((x) => x.title === t);
+    return s ? [{ title: s.title, artist: s.artist, year: s.year, why: s.why ?? "" }] : [];
+  });
+  const films = (m.films ?? []).flatMap((id) => (cn?.footage ?? []).filter((f) => f.id === id));
+  const others = NIGHT_PARTS.filter((x) => x.club === n.club && x !== n)
+    .map((x) => ({ slug: slugify(x.names[0]!), title: x.title, kind: nightKind(x.heading, x.title) }))
+    .filter((x) => entityBySlug[x.slug]);
+  return {
+    club: n.club,
+    clubName: clubE.name,
+    address: c.address,
+    years: `${c.opened}–${c.closed}`,
+    kind: nightKind(n.heading, n.title),
+    title: n.title,
+    quotes,
+    songs,
+    films,
+    playlist: cn?.youtubePlaylist,
+    others,
+  };
 }
 
 /** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
@@ -144,7 +189,9 @@ function cardView(e: Entity): CardView {
   const g = e.guest;
   const club = g ? null : (CLUB_PROFILES[e.slug] ?? null);
   const mem = g ? null : (MEMORIAM[e.slug] ?? null);
-  const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? null);
+  const nightPage = g ? null : nightPageOf(e);
+  // A night's page wears its club's header picture (Lisa, 27 Nov 2026).
+  const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? (nightPage ? CLUB_PROFILES[nightPage.club]?.portrait : null) ?? null);
   const profile = g || club || mem ? null : (PERSON_PROFILES[e.slug] ?? null);
   const L = linkRecorder();
   const diaryPage = g ? undefined : DIARY_PAGES[e.slug];
@@ -169,6 +216,12 @@ function cardView(e: Entity): CardView {
   club?.stage.forEach(L.name);
   club?.rooms.forEach(L.name);
   const parts = g ? null : clubPartsView(e);
+  if (parts) for (const gr of parts.groups) for (const x of gr.parts) L.card(x.slug);
+  if (nightPage) {
+    L.card(nightPage.club);
+    nightPage.others.forEach((x) => L.card(x.slug));
+    nightPage.quotes.forEach((q) => L.name(q.who));
+  }
   const crowd = club ? clubCrowdOf(e, club.stage) : null;
   if (crowd) {
     crowd.regulars.forEach(L.name);
@@ -277,6 +330,7 @@ function cardView(e: Entity): CardView {
     mem,
     club,
     parts,
+    nightPage,
     crowd,
     clubLib,
     pic,

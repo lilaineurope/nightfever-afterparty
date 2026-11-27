@@ -3,7 +3,7 @@ import { registerFullLinks, type LinkCard } from "../lib/link-index";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
-import { PART_NAMES } from "./club-parts";
+import { INTRO_NAMES, NIGHT_PARTS } from "./club-parts";
 import { WRITTEN_BY } from "./written-by";
 import { PERSON_PROFILES } from "./person-profiles";
 import { MEMORIAM } from "./memoriam";
@@ -93,10 +93,12 @@ export const SAME_AS: Record<string, string> = {
 // musical or a book keep theirs too (S04E11: the Victor/Victoria film, Mae West's plays The Drag and Sex).
 const KEEP_BRACKET = new Set(["the roxy (london)", "victor/victoria (1982 film)", "the drag (mae west play)", "sex (mae west play)", "circus (london club night)"]);
 
-// A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
-// forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
+// A club's nights and parties (src/data/club-parts.ts): rows about the nights as a whole fold into the club's card (Lisa,
+// 22 Nov 2026), and since 27 Nov 2026 every night has its own page again - its other rows forward to the first one, so
+// "/explore/area-art-invitation-photo" opens "/explore/area-s-art-theme".
 const baseSlug = (n: string) => clean(n).normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-for (const [name, club] of PART_NAMES) SAME_AS[baseSlug(name)] = club;
+for (const [name, club] of INTRO_NAMES) SAME_AS[baseSlug(name)] = club;
+for (const n of NIGHT_PARTS) for (const name of n.names.slice(1)) SAME_AS[baseSlug(name)] = baseSlug(n.names[0]!);
 
 // Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
 const slugCache = new Map<string, string>();

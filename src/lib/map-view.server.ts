@@ -117,10 +117,10 @@ function band(
 export function mapSectionOf(e: Entity): { band: MapBand } | { home: MapHome } | null {
   if (e.category === "Club") {
     const here = pins().find((p) => p.slug === e.slug);
-    if (!here) return { home: { kind: "club", name: e.name, hint: HOME_HINTS[e.name] } };
-    return { band: band("club", here, e.slug, e.name, here.area, here.tip, null) };
-  }
-  if (e.category !== "Event") return null;
+    if (here) return { band: band("club", here, e.slug, e.name, here.area, here.tip, null) };
+    // A club night filed as a Club row ("Bump", "Groove Thing") sits on its club's pin like the other nights (27 Nov 2026).
+    if (!EVENT_PLACES.some((x) => entityFor(x.event)?.slug === e.slug)) return { home: { kind: "club", name: e.name, hint: HOME_HINTS[e.name] } };
+  } else if (e.category !== "Event") return null;
   const p = EVENT_PLACES.find((x) => entityFor(x.event)?.slug === e.slug);
   if (!p) {
     // History, tours, TV and the rest with no single place stay off the map (Lisa, 23 Nov 2026); the others come home.
