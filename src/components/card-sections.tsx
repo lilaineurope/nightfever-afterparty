@@ -111,7 +111,9 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.events.length > 0 && !skipEvents && (
+      {/* A club page drops the old A–Z lists below (Lisa, 27 Nov 2026: "feels outdated"): its story box, quotes and "Who else
+          was there" say the same with a face and a reason. */}
+      {v.events.length > 0 && !skipEvents && !v.club && (
         <section>
           <h2 className={h}>On the scene timeline</h2>
           <ol className="mt-4 space-y-5 border-l border-gold/25 pl-5">
@@ -133,7 +135,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
       )}
 
       {/* A Library item page shows these as one "Also on the site" box with why (library-item.tsx, Lisa 23 Nov 2026). */}
-      {named.length > 0 && !v.item && (
+      {named.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>Also named on these cards</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -147,7 +149,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.onPages.length > 0 && (
+      {v.onPages.length > 0 && !v.club && (
         <section>
           <h2 className={h}>On these AFTERPARTY pages</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -161,7 +163,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.inGuestStories.length > 0 && !v.item && (
+      {v.inGuestStories.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>Pops up in the guests' stories</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -170,7 +172,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {related.length > 0 && !v.item && (
+      {related.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>In the same rooms (aka the gang)</h2>
           <div className="mt-4 flex flex-wrap gap-2">
