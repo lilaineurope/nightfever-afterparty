@@ -1,14 +1,14 @@
 import { Timestamp, useEpisodePlayer } from "@/components/episode-player";
 import { linkPlace, showsReadMore } from "@/lib/link-label";
 import { Link } from "@tanstack/react-router";
-import { useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { guests } from "@/data/guests";
 import { sceneEvents } from "@/data/scene";
 import { Button } from "@/components/ui/button";
 import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { namedOnCount } from "@/lib/name-links";
-import { entityFor, guestOfEpisode, totalMentions } from "@/data/entities";
+import { entityFor, guestOfEpisode, isPlace, totalMentions } from "@/data/entities";
 import { GuestAboutBox, headerColumns } from "@/components/guest-about";
 import { cardTo } from "@/lib/card-link";
 import { episodeById, stageName } from "@/data/episodes";
@@ -24,6 +24,9 @@ import { TREE_ON_PAGE } from "@/lib/mentor-tree";
 import { ConnectorBadge, HallOfFameBadge } from "@/components/badges";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryOf } from "@/lib/works";
+import { RoomsMapSection } from "@/components/map-sections";
+import { getEpisodeMap } from "@/lib/episode-map.functions";
+import type { RoomsMap } from "@/lib/map-view";
 import "@/lib/full-links"; // EntityLink / EntityText link every name here (src/lib/link-index.tsx)
 
 /** One row of an episode's reference JSON (src/data/s<nn>e<nn>.json). */
@@ -62,6 +65,9 @@ const NIGHT_FEVER = "Night Fever";
 
 /** One Afterparty page (Lisa's episode index): header, mood boards and the full reference list. Every episode route renders this
  *  with its own data - add a new episode by copying one of the small route files, never by copying this page. */
+/** The reference list's Map view, next to the category buttons. */
+const MAP_VIEW = "Map";
+
 export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   id: string;
   refs: Ref[];
@@ -93,6 +99,24 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
   );
   const [sort, setSort] = useState<Sort>("mentions");
   const [cat, setCat] = useState("All");
+  // The reference list's Map view (Lisa, 27 Nov 2026, "M2 plus M3 button"): every club and place the guest names, as
+  // numbered stops in the order they come up. Drawn on the server and fetched the first time the view opens. The header
+  // button "Follow <guest>'s nights out" opens it, and so does a link to #nights-out.
+  const hasPlaces = refs.some((r) => isPlace(r.category) && r.time && r.time !== "On camera");
+  const [nightsOut, setNightsOut] = useState<RoomsMap | null | undefined>(undefined);
+  useEffect(() => {
+    if (cat !== MAP_VIEW || nightsOut !== undefined) return;
+    getEpisodeMap({ data: id })
+      .then((m) => setNightsOut(m))
+      .catch(() => setNightsOut(null));
+  }, [cat, id, nightsOut]);
+  useEffect(() => {
+    if (hasPlaces && window.location.hash === "#nights-out") setCat(MAP_VIEW);
+  }, [hasPlaces]);
+  const openNightsOut = () => {
+    setCat(MAP_VIEW);
+    document.getElementById("nights-out")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const enriched = useMemo(
     () =>
@@ -173,6 +197,12 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
                 Visit {stageName(thisEpisode.guest)}'s Library
               </Link>
             )}
+            {hasPlaces && (
+              <a href="#nights-out" onClick={(ev) => { ev.preventDefault(); openNightsOut(); }}
+                className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold">
+                Follow {stageName(thisEpisode.guest)}'s nights out
+              </a>
+            )}
             <ShareButton path={`/episodes/${id}`} title={`${stageName(thisEpisode.guest)}'s AFTERPARTY – Night Fever`} className="inline-block rounded-full border-2 border-cream bg-card text-cream transition hover:bg-pink hover:border-pink hover:text-pink-foreground px-6 py-3 font-semibold" />
           </div>
           {/* Mentor score and Top of the drop: here or under the Timeline, whichever column is shorter (headerColumns). */}
@@ -209,7 +239,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
         <MoodSpectrum episodeId={id} nested moods={moods.filter((m) => m.time !== "On camera")} id="story-looks" title="In the stories" />
       </section>
 
-      <section className="px-6 pb-24">
+      <section id="nights-out" className="scroll-mt-24 px-6 pb-24">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
             <div className="flex flex-wrap gap-2">
@@ -219,12 +249,29 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
               <Button variant="outline" aria-pressed={sort === "time"} className={btn(sort === "time")} onClick={() => setSort("time")}>Timestamp</Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {[...cats, "Fashion", ...(refs.some((r) => isOtherShowGuest(r.name, thisEpisode.guest)) ? [NIGHT_FEVER] : [])].map((c) => (
+              {[...cats, "Fashion", ...(refs.some((r) => isOtherShowGuest(r.name, thisEpisode.guest)) ? [NIGHT_FEVER] : []), ...(hasPlaces ? [MAP_VIEW] : [])].map((c) => (
                 <Button variant="outline" aria-pressed={cat === c} key={c} className={btn(cat === c)} onClick={() => setCat(c)}>{c === "All" ? <><span className="uppercase">Everything</span><span className="ml-1.5 opacity-70">{refs.length}</span></> : c}</Button>
               ))}
             </div>
           </div>
 
+          {cat === MAP_VIEW ? (
+            <div className="mt-8">
+              {nightsOut === undefined ? (
+                <p className="text-center text-sm text-muted-foreground">Drawing the map&hellip;</p>
+              ) : nightsOut ? (
+                <RoomsMapSection
+                  r={nightsOut}
+                  first={stageName(thisEpisode.guest)}
+                  id="nights-out-map"
+                  title={`Follow ${stageName(thisEpisode.guest)}'s nights out`}
+                  intro={`Every club and place ${stageName(thisEpisode.guest)} talks about, numbered in the order they come up in the episode. Tap a ▶ time code to hear that moment.`}
+                />
+              ) : (
+                <p className="text-center text-sm text-muted-foreground">No New York clubs or places to put on the map in this episode.</p>
+              )}
+            </div>
+          ) : (
           <ul aria-label="Episode references" className="mt-6 divide-y divide-border">
             {list.map((r, i) => (
               <li key={r.name + i} className="grid gap-3 py-5 sm:grid-cols-[90px_1fr_auto]">
@@ -287,6 +334,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
               </li>
             ))}
           </ul>
+          )}
           <p className="mt-8 text-xs text-muted-foreground">
             The big number counts mentions in this episode. The gold number counts the same name across all
             episodes on the site. Timestamps mark the first mention. Spot something wrong? Tell me!{" "}

@@ -66,8 +66,8 @@ export type CityMap = {
 export type RoomsMap = {
   stops: MapStop[];
   map: CityMap | null;
-  /** Rooms we can't pin yet. */
-  home: { slug: string; name: string; hint?: string | undefined }[];
+  /** Rooms we can't pin yet (on an AFTERPARTY page with the episode line about them). */
+  home: { slug: string; name: string; hint?: string | undefined; line?: MapLine | undefined }[];
   /** Pinned rooms outside New York. */
   away: { slug: string; name: string; area: string }[];
 };

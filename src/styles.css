@@ -1314,6 +1314,9 @@ a.scr-ours:hover { color: #111; }
 .map-event { padding: 8px 0; border-bottom: 1px dashed #bbb; font-size: 13px; }
 .map-btn { display: inline-block; border: 2px solid #111; background: #111; color: #f6f0ea; padding: 7px 14px; font: 700 13px var(--font-mono-body); transition: background .15s, border-color .15s; }
 .map-btn:hover, .map-btn:focus-visible { background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
+/* On the AFTERPARTY pages every text link is pink (21 Oct rule); the map button keeps its own black fill. */
+main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]) { color: #f6f0ea; box-shadow: none; }
+main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]):hover, main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([class*="border-2"]):focus-visible { color: #fff; }
 @media (min-width: 900px) { .map-band-foot { grid-template-columns: 1.4fr 1fr; } }
 @media (max-width: 700px) { .map-band-svg { height: 300px; } }
 /* A living person's rooms: numbered pins on a drawn New York, the list beside it. */

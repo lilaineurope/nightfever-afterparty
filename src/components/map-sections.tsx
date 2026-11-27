@@ -185,15 +185,31 @@ export function BringUsHome({ m }: { m: MapHome }) {
   );
 }
 
-/** A living person's rooms: numbered pins on a drawn New York, each with the episode line about it. */
-export function RoomsMapSection({ r, first }: { r: RoomsMap; first: string }) {
+/** A living person's rooms, or an AFTERPARTY's places (the reference list's Map view): numbered pins on a drawn New
+ *  York, each with the episode line about it. */
+export function RoomsMapSection({
+  r,
+  first,
+  title,
+  intro,
+  id = "their-new-york",
+}: {
+  r: RoomsMap;
+  first: string;
+  title?: string | undefined;
+  intro?: string | undefined;
+  id?: string | undefined;
+}) {
   const links = useLinks();
   const m = r.map;
   return (
-    <section aria-labelledby="their-new-york">
-      <h2 id="their-new-york" className={`${h} text-center`}>
-        {first}&apos;s New York
+    <section aria-labelledby={id}>
+      <h2 id={id} className={`${h} text-center`}>
+        {title ?? `${first}'s New York`}
       </h2>
+      {intro && (
+        <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground">{intro}</p>
+      )}
       <div className={m ? "rooms-grid mt-6" : "mx-auto mt-6 max-w-3xl"}>
         {m && (
           <div className="rooms-map">
@@ -292,6 +308,7 @@ export function RoomsMapSection({ r, first }: { r: RoomsMap; first: string }) {
                   >
                     {x.name}
                   </Link>
+                  {x.line && <Line l={x.line} />}
                   {x.hint && (
                     <span className="mt-0.5 block text-xs italic text-muted-foreground">
                       What we know: {x.hint}
