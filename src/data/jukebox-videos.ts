@@ -378,6 +378,11 @@ export const YOUTUBE: Record<string, string> = {
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
   "Ray Bourbon's party records": "nJ2_2BFaf8c",
+  // S06E10 Kenneth Hash aka Lil' Kenny
+  "The Sugarcubes": "ALkk6UlfjgU",
+  "The Sugarcubes – 'Hit'": "Z5fAWpv_axs",
+  "Björk – 'Venus as a Boy'": "7Z5aPaDwAkU",
+  "Björk – 'Jóga'": "loB0kmz_0MM",
   // S06E09 Desi Santiago
   "Minty": "r9GBO7i-6GI",
   "Minty – 'Useless Man'": "tqAOaNS1tqM",

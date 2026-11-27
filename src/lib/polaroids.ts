@@ -61,6 +61,7 @@ import desiSantiagoPortrait from "@/assets/polaroid-desi-santiago.jpg";
 import jodieHarshPortrait from "@/assets/polaroid-jodie-harsh.jpg";
 import bradGoochPortrait from "@/assets/polaroid-brad-gooch.jpg";
 import aprilPalmieriPortrait from "@/assets/polaroid-april-palmieri.jpg";
+import kennethHashPortrait from "@/assets/polaroid-kenneth-hash.jpg";
 
 export const episodePortraits: Record<string, string> = {
   s01e01: diannePortrait,
@@ -123,6 +124,7 @@ export const episodePortraits: Record<string, string> = {
   s05e02: jodieHarshPortrait,
   s05e05: bradGoochPortrait,
   s05e08: aprilPalmieriPortrait,
+  s06e10: kennethHashPortrait,
 };
 
 // WebP copies of the polaroids (scripts/polaroid-thumbs.py): 1024px for the episode page header (SEO check 16 Nov 2026),

@@ -1013,6 +1013,7 @@ const s06e10: Episode = {
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/127805740/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-20%2Fa8feb609-5312-6ebd-feb8-5cab38f9ad17.mp3",
   runtime: "44:28",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLMcpAQQ0DjNE",
   afterpartyPublished: "2026-12-07",
   blurb:
     "Lil' Kenny on the second wave of Club Kids, Patricia Field's store, Björk and Jenny Talia, his French fries and pizza looks - and the costumes he made for Party Monster.",

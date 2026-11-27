@@ -393,4 +393,9 @@ export const YEARS: Record<string, number> = {
   "Steps": 1997,
   "S Club 7": 1998,
   "Scissor Sisters": 2001,
+  // S06E10 Kenneth Hash aka Lil' Kenny
+  "The Sugarcubes": 1986,
+  "The Sugarcubes – 'Hit'": 1991,
+  "Björk – 'Venus as a Boy'": 1993,
+  "Björk – 'Jóga'": 1997,
 };
