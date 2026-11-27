@@ -943,7 +943,9 @@ const lbd: ClubNight = {
   slug: "les-bains-douches",
   club: "Les Bains Douches",
   // Lisa, 27 Nov 2026: "create a sounded like this box on club page for it, create spotify and youtube playlist". Playlists built
-  // PRIVATE on Lisa's accounts - add playlistId / youtubePlaylist here once she makes them public.
+  // PRIVATE on Lisa's accounts (27 Nov 2026) - uncomment once she makes them public (then set YouTube Voting).
+  // playlistId: "73QOEnuWB8AbyXZsM4RAlk",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLLUN6ZnKowd4",
   note:
     "The Paris club in the old Bains Guerbois (1978-2010): Joy Division's set of 18 December 1979 and James Chance & the Contortions' Live aux Bains Douches, both recorded there; Depeche Mode's first concert in France (29 September 1981); the bands its stage is remembered for; Philippe Krootchey's Talking Heads and B-52's nights; Gloria Gaynor at the Page Six dinner James tells about; and David Guetta, a house DJ there, Rudolf Piper says. Not one exact night.",
   footage: [
@@ -965,16 +967,16 @@ const lbd: ClubNight = {
     { title: "Disorder (Live Les Bains Douches, 18 December 1979)", artist: "Joy Division", year: 1979, spotify: "7rC5C3SsFFquQGfqXwbMUc", video: "DoXF2NTOT6s", kind: "live", sources: ["B"] },
     { title: "Contort Yourself (Live aux Bains Douches)", artist: "James Chance & the Contortions", year: 1980, spotify: "4jpxyeRRTPAFPdykRkpj9f", video: "eivk4xlwsfc", kind: "live", why: "From Live aux Bains Douches, recorded at the club in 1980", sources: ["A"] },
     { title: "Don't Stop Till You Get Enough (Live aux Bains Douches)", artist: "James Chance & the Contortions", year: 1980, spotify: "7fSQCkksxIkkhHGKcVswew", video: "dSUQDe0KcKo", kind: "live", why: "Their no wave Michael Jackson cover, on the same live album", sources: ["A"] },
-    { title: "New Life", artist: "Depeche Mode", year: 1981, spotify: "6xWzdBoMS3b1rZisBckhpy", video: "lye5WAYEDfE", kind: "live", why: "Played at their first concert in France, at the club on 29 September 1981 (the video is that night)", sources: ["A", "E"] },
+    { title: "New Life (Remix)", artist: "Depeche Mode", year: 1981, spotify: "3vtVqgtNWNwpHfhoVG1qCR", video: "lye5WAYEDfE", kind: "live", why: "Played at their first concert in France, at the club on 29 September 1981 (the video is that night)", sources: ["A", "E"] },
     { title: "Once in a Lifetime", artist: "Talking Heads", year: 1980, spotify: "1Tr4K5MU5XYE44umXGDndd", video: "5IsSpAOD6K8", kind: "dj-artist", why: "DJ and singer Philippe Krootchey hosted nights there on the music of Talking Heads", sources: ["A"] },
     { title: "Rock Lobster", artist: "The B-52's", year: 1978, spotify: "0rme3FLbw5o1KLXpJzivjS", video: "n4QSYx4wVQg", kind: "dj-artist", why: "...and of the B-52's", sources: ["A"] },
     { title: "Dream Baby Dream", artist: "Suicide", year: 1979, spotify: "4NR9l4ca4iOJ93sJX37IeT", video: "dV5b64pN0SY", kind: "stage", why: "Suicide are among the bands that played the club", sources: ["A"] },
-    { title: "Holiday in Cambodia", artist: "Dead Kennedys", year: 1980, spotify: "7CqUQm7usqKyxtIPKByDZs", video: "v0Uc6ZWDF3c", kind: "stage", why: "Dead Kennedys played there", sources: ["A"] },
+    { title: "Holiday in Cambodia (Single Version)", artist: "Dead Kennedys", year: 1980, spotify: "6ZR7gzHIvcj4qvo5q4kqXN", video: "v0Uc6ZWDF3c", kind: "stage", why: "Dead Kennedys played there", sources: ["A"] },
     { title: "The Killing Moon", artist: "Echo & the Bunnymen", year: 1984, spotify: "35E2eKIEXXnP5q9L51iOAk", video: "LWz0JC7afNQ", kind: "stage", why: "Echo & the Bunnymen played there", sources: ["A"] },
     { title: "Marcia Baïla", artist: "Les Rita Mitsouko", year: 1984, spotify: "43THPstJP6RXLMd7ryXyNf", video: "1zWlnzFXcKY", kind: "stage", why: "Paris's own new wave stars played there", sources: ["A"] },
     { title: "Just Like Honey", artist: "The Jesus and Mary Chain", year: 1985, spotify: "1LwP9g1Hjbs64jXM2Qsxry", video: "7EgB__YratE", kind: "stage", why: "The Jesus and Mary Chain played there", sources: ["A"] },
     { title: "I Will Survive", artist: "Gloria Gaynor", year: 1978, spotify: "7rIovIsXE6kMn629b7kDig", video: "6dYWe1c3OyU", kind: "about", why: "James's 'disco dream' at the Page Six dinner at the club - poppers while Gloria Gaynor sang it. She left in tears", sources: ["C"], guest: { slug: "jenny-talia", label: "Jenny Talia" } },
-    { title: "Just a Little More Love", artist: "David Guetta", year: 2002, spotify: "2UzjcEqz9HXtzWe6oAlx9P", video: "e72Y5u-r3u8", kind: "dj-artist", why: "David Guetta was a house DJ at the Bains Douches, Rudolf Piper says - this is his first album", sources: ["D"], guest: { slug: "rudolf-piper", label: "Rudolf Piper" } },
+    { title: "Just a Little More Love (Elektro Edit)", artist: "David Guetta, Chris Willis", year: 2002, spotify: "4zDjX2tqzr38FJWU5AC267", video: "e72Y5u-r3u8", kind: "dj-artist", why: "David Guetta was a house DJ at the Bains Douches, Rudolf Piper says - this is his first album", sources: ["D"], guest: { slug: "rudolf-piper", label: "Rudolf Piper" } },
   ],
 };
 
