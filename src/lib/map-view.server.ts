@@ -72,10 +72,11 @@ const AREA =
 
 /** A Library-style cover for an event next door (Lisa, 27 Nov 2026: "use the library cover style and add covers of the
  *  event next door"): the venue's own picture from its club page (flyer, ticket, invitation), else a typed cover. */
-function eventCover(x: EventAt, at: string | undefined, metres: number, i: number): CoverDesign {
+function eventCover(x: EventAt, at: string | undefined, metres: number, i: number, photo: boolean): CoverDesign {
   const e = entityFor(x.slug)!;
   const foot = { mentions: e.refs.reduce((n, r) => n + r.mentions, 0), afterparties: new Set(e.refs.map((r) => r.episode)).size };
-  const pic = x.venue ? CLUB_PROFILES[x.venue]?.portrait?.polaroid : undefined;
+  // A venue's picture goes on its first cover only, so a row of Studio 54 nights doesn't repeat one photo.
+  const pic = photo && x.venue ? CLUB_PROFILES[x.venue]?.portrait?.polaroid : undefined;
   const where = [at, metres < 20 ? "next door" : `${Math.max(1, Math.round(metres / 80))} min walk`].filter(Boolean).join(" · ");
   return pic
     ? { name: e.name, foot, look: "art", src: pic, alt: at ?? e.name, tag: "Next door", lines: [where] }
@@ -116,9 +117,10 @@ function band(
     }))
     .sort((a, b) => a.m - b.m)
     .slice(0, 8)
-    .map(({ x, m }, i) => {
+    .map(({ x, m }, i, list) => {
       const at = x.venue ? entityFor(x.venue)?.name : undefined;
-      return { ...ev(x, m), at, design: eventCover(x, at, m, i) };
+      const first = list.findIndex((y) => y.x.venue === x.venue) === i;
+      return { ...ev(x, m), at, design: eventCover(x, at, m, i, first) };
     });
   return {
     kind,

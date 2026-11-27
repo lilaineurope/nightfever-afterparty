@@ -16,6 +16,7 @@ import { ClubNightPlaylist } from "@/components/club-night";
 import { ProfileVideos } from "@/components/profile-videos";
 import { ClubCrowd } from "@/components/club-crowd";
 import { ClubLibrary } from "@/components/club-library";
+import { SaidWall } from "@/components/said-wall";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
@@ -312,6 +313,7 @@ function EntityPage() {
             name={e.name}
             slug={e.slug}
             night={!!e.night}
+            wall={e.wall}
             sound={e.night ? (
               <>
                 <ClubNightPlaylist night={e.night} />
@@ -325,6 +327,8 @@ function EntityPage() {
           />
         )}
         {nightPage && <NightPageSections v={nightPage} name={e.name} />}
+        {/* An event (or a club with no page of its own) shows its guests' words first, like a night (Lisa, 28 Nov 2026). */}
+        {e.wall && !club && <SaidWall items={e.wall} name={e.name} id="card-said" />}
         {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
             card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
         {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
@@ -347,7 +351,7 @@ function EntityPage() {
             <Story st={e.story} name={e.name} />
           </div>
         )}
-        <CardSections v={e} skipRefs={!!item || !!place || !!nightPage} skipEvents={!!place} />
+        <CardSections v={e} skipRefs={!!item || !!place || !!nightPage || !!e.wall} skipEvents={!!place} />
         {nightPage && <NightPageOthers v={nightPage} />}
       </div>
           <SiteFooter />

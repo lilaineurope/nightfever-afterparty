@@ -1,21 +1,18 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
 import { NamePile } from "@/components/name-pile";
 import { EntityText } from "@/components/entity-text";
-import { polaroidThumb } from "@/lib/polaroids";
-import { episodeById, episodePath } from "@/data/episodes";
 import type { ClubProfile } from "@/data/club-profiles";
-import { QuoteName } from "@/components/quote-name";
+import { SaidWall } from "@/components/said-wall";
+import type { SaidBox } from "@/lib/card-view";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
-const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; sound?: ReactNode; parts?: ReactNode; crowd?: ReactNode; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; crowd?: ReactNode; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
   return (
     <>
       <div className="pt-4 text-center">
@@ -26,46 +23,8 @@ export function ClubProfileSections({ c, name, slug, night, sound, parts, crowd,
         <p className="mx-auto mt-3 max-w-2xl text-card-foreground/85"><EntityText text={c.story} self={name} /></p>
       </div>
 
-      {c.said.length > 0 && (
-        <section>
-          <h2 className={`${h} text-center`}>What the guests say</h2>
-          <div className={c.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : c.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3"}>
-            {c.said.map((s, i) => {
-              const ep = episodeById(s.episode);
-              const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
-              const pol = polaroidThumb(s.episode, 240);
-              return (
-                <figure
-                  key={`${s.episode}-${s.time}`}
-                  className="relative border-2 border-[#111] bg-[#f6f0ea] p-5 pt-8 text-[#111] shadow-[5px_6px_0_#111]"
-                  style={{ transform: `rotate(${TILT[i % TILT.length]}deg)` }}
-                >
-                  <span aria-hidden="true" className="absolute -top-4 left-1/2 h-7 w-24 -translate-x-1/2 rotate-3 bg-[rgba(240,230,200,.9)] shadow" />
-                  {pol && (
-                    <img src={pol} alt="" loading="lazy" className="absolute -right-4 -top-6 w-16 rotate-6 border-2 border-[#111] shadow-[3px_3px_0_#111]" />
-                  )}
-                  <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">
-                    {/* Pictures never sit on text (Lisa, 5 Nov 2026): the first lines wrap around the guest polaroid */}
-                    {pol && <span aria-hidden="true" className="float-right -mr-2 ml-2 h-11 w-14" />}
-                    {s.context && <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">{s.context}</span>}
-                    &ldquo;{s.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
-                    <span className="font-semibold">
-                      <QuoteName who={s.who} episodeId={s.episode} />
-                      <br />
-                      <Link to={episodePath(ep.id)} className="font-normal text-[#555] hover:text-pink">
-                        {s.who === ep.guest ? code : `${code} · ${ep.guest}`}
-                      </Link>
-                    </span>
-                    <Timestamp episodeId={s.episode} time={s.time} />
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
-        </section>
-      )}
+      {/* Every quote and every other episode that talks about the club (Lisa, 28 Nov 2026: "show all quotes"). */}
+      {wall && <SaidWall items={wall} name={name} id="club-said" />}
 
       {/* One club page standard (Lisa, 27 Nov 2026): the sound of the club right under the quotes - "sounded like this",
           On film, and a documentary about the club (CBGB's Listen box) - then its theme nights and parties. */}

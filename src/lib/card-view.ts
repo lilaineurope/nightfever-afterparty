@@ -15,7 +15,7 @@ export type NightPageView = {
   title: string;
   /** Every moment of the night as a box with the guest's polaroid: their own words where we have them, otherwise what
    *  was said (Lisa, 27 Nov 2026: quote boxes instead of "In the episodes"). */
-  said: { episode: string; code: string; who: string; time: string; quote?: string | undefined; context?: string | undefined; mentions?: number | undefined }[];
+  said: SaidBox[];
   /** The club's poster and reading list, at the foot of the night's page. */
   lib: ClubLibraryView | null;
   songs: { title: string; artist: string; year: number; why: string }[];
@@ -75,6 +75,9 @@ export type ClubLibraryView = {
     entry?: { time: string; title: string; lines: { who: string; text: string; read?: boolean }[] } | undefined }[];
 };
 
+/** One box on a "What the guests say" wall (club, event and night pages): a quote, or a mention with what was said. */
+export type SaidBox = { episode: string; code: string; who: string; time: string; quote?: string | undefined; label?: string | undefined; context?: string | undefined; mentions?: number | undefined };
+
 export type CardView = {
   slug: string;
   name: string;
@@ -102,6 +105,8 @@ export type CardView = {
   parts: ClubPartsView | null;
   /** This card is one of a club's nights or parties (Lisa, 27 Nov 2026). */
   nightPage: NightPageView | null;
+  /** Club and event pages: every quote and mention as a box (Lisa, 28 Nov 2026), in place of "In the episodes". */
+  wall: SaidBox[] | null;
   /** "Who else was there" (club pages only). */
   crowd: ClubCrowdView | null;
   /** The club's poster and reading list (club pages only). */

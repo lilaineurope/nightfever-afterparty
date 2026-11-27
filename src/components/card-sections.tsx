@@ -64,6 +64,8 @@ function GuestBox({ g }: { g: Guest | undefined }) {
 /** Everything an A–Z card shows under its header (/explore/<slug>). A guest with an AFTERPARTY gets GuestAboutBox on the
  *  episode page instead. */
 export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: CardView; skipRefs?: boolean; skipEvents?: boolean }) {
+  // Club and event pages drop the old A–Z lists (Lisa, 27 Nov 2026 "feels outdated"; 28 Nov: events follow the club standard).
+  const lean = !!v.club || !!v.wall;
   const links = useLinks();
   const related = v.related;
   // A club page shows its theme nights and parties in their own boxes above (club-parts.tsx), not again here.
@@ -113,7 +115,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
 
       {/* A club page drops the old A–Z lists below (Lisa, 27 Nov 2026: "feels outdated"): its story box, quotes and "Who else
           was there" say the same with a face and a reason. */}
-      {v.events.length > 0 && !skipEvents && !v.club && (
+      {v.events.length > 0 && !skipEvents && !lean && (
         <section>
           <h2 className={h}>On the scene timeline</h2>
           <ol className="mt-4 space-y-5 border-l border-gold/25 pl-5">
@@ -135,7 +137,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
       )}
 
       {/* A Library item page shows these as one "Also on the site" box with why (library-item.tsx, Lisa 23 Nov 2026). */}
-      {named.length > 0 && !v.item && !v.club && (
+      {named.length > 0 && !v.item && !lean && (
         <section>
           <h2 className={h}>Also named on these cards</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -149,7 +151,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.onPages.length > 0 && !v.club && (
+      {v.onPages.length > 0 && !lean && (
         <section>
           <h2 className={h}>On these AFTERPARTY pages</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -163,7 +165,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.inGuestStories.length > 0 && !v.item && !v.club && (
+      {v.inGuestStories.length > 0 && !v.item && !lean && (
         <section>
           <h2 className={h}>Pops up in the guests' stories</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -172,7 +174,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {related.length > 0 && !v.item && !v.club && (
+      {related.length > 0 && !v.item && !lean && (
         <section>
           <h2 className={h}>In the same rooms (aka the gang)</h2>
           <div className="mt-4 flex flex-wrap gap-2">

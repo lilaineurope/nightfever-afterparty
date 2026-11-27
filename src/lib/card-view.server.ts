@@ -19,7 +19,7 @@ import { episodeById, episodeIdOf, episodePath, episodes } from "@/data/episodes
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
-import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView, NightPageView } from "@/lib/card-view";
+import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView, NightPageView, SaidBox } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView, storyView } from "@/lib/library-item.server";
@@ -334,7 +334,22 @@ function cardView(e: Entity): CardView {
     }
   }
 
+  // "What the guests say" on club and event pages (Lisa, 28 Nov 2026: "show all quotes ... same applies to events pages"):
+  // a club's own quotes, then a box for every other episode that talks about it; an event gets a box per mention.
+  const mentionBox = (r: Entity["refs"][number]): SaidBox => ({ episode: r.episode!, code: episodeShort(r.episode!), who: episodeById(r.episode!).guest, time: r.time ?? "", context: r.context, mentions: r.mentions });
+  const wall: SaidBox[] | null =
+    g || nightPage || item || diary || column ? null
+    : club
+      ? [
+          ...club.said.map((q) => ({ episode: q.episode, code: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote, label: q.context })),
+          ...e.refs.filter((r) => r.episode && !(parts?.names ?? []).includes(r.name) && !club.said.some((q) => q.episode === r.episode)).map(mentionBox),
+        ]
+      : e.category === "Event" || e.category === "Club" ? e.refs.filter((r) => r.episode).map(mentionBox)
+      : null;
+  for (const q of wall ?? []) if (q.context) L.text(q.context, e.name);
+
   return {
+    wall: wall && wall.length ? wall : null,
     slug: e.slug,
     name: e.name,
     category: e.category,
