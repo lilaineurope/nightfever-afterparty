@@ -3,7 +3,7 @@
 // the server (src/lib/fashion-page.functions.ts), drawn by src/components/fashion-name-page.tsx through the routes
 // /library/designer/$slug and /library/shop/$slug. Every word comes from the episode rows, src/data/shop-facts.ts and
 // the photo credits - nothing guessed.
-import { FASHION_DESIGNERS, FASHION_LOOKS, FASHION_SHOPS, type FashionItem, type FashionLook } from "@/data/library-fashion";
+import { FASHION_DESIGNERS, LIBRARY_LOOKS as FASHION_LOOKS, FASHION_SHOPS, type FashionItem, type FashionLook } from "@/data/library-fashion";
 import { SHOP_FACTS } from "@/data/shop-facts";
 import { SHOP_PHOTOS, type ShopPhoto } from "@/data/shop-photos";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";

@@ -25,8 +25,10 @@ test("Fashion & outfits: looks carry their colours and episode, designers and sh
   }
   const shops = new Set(FASHION_SHOPS.map((s) => s.slug));
   for (const d of FASHION_DESIGNERS) assert.ok(!shops.has(d.slug), `${d.name} is on both Designers and Shops`);
-  // Every on-camera look of the hosts is on the shelf.
-  assert.ok(FASHION_LOOKS.filter((l) => l.shelf === "on-camera" && /^(James|Fenton|Randy)'s on-camera look/.test(l.name)).length >= 100);
+  // The on-camera looks stay for the Wardrobe, but are off the Library shelf (Lisa, 28 Nov 2026).
+  assert.ok(FASHION_LOOKS.filter((l) => l.shelf === "on-camera").length >= 100);
+  assert.ok(!fashionShelf.some((i) => i.shelf === "on-camera" || i.shelf === "rooms"));
+  assert.deepEqual(FASHION_SHELVES.map((s) => s.key), ["designers", "shops", "looks"]);
 });
 
 test("Fashion & outfits: every mood in the episodes is on the shelf exactly once", () => {

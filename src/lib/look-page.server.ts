@@ -2,7 +2,7 @@
 // which describes it with a mannequin setup like we have it in wardrobe and look for a photo of the real thing the guests
 // were referring to"). Worked out on the server (src/lib/look-page.functions.ts), drawn by src/routes/library_.look.$slug.tsx.
 // Every word comes from the episode index rows (what was worn, the colours, the moment) - nothing guessed.
-import { FASHION_LOOKS, type FashionLook } from "@/data/library-fashion";
+import { LIBRARY_LOOKS as FASHION_LOOKS, type FashionLook } from "@/data/library-fashion";
 import { LOOK_PHOTOS, type LookPhoto } from "@/data/look-photos";
 import { afterpartyOf, entityBySlug, entityFor } from "@/data/entities";
 import { episodeById } from "@/data/episodes";

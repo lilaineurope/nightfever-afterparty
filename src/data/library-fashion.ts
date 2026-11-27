@@ -18,13 +18,12 @@ import { episodeById } from "./episodes";
 import { DESIGNERS, slotOf, type Slot } from "./fashion-words";
 import { LOOK_OUTFITS, LOOK_PHOTO_COLOURS } from "./look-outfits";
 
+// Lisa, 28 Nov 2026: "take off on camera and rooms, move looks to the bottom of the list". The on-camera looks stay in
+// FASHION_LOOKS for the Wardrobe; the Library shows only the looks told in the stories (LIBRARY_LOOKS).
 export const FASHION_SHELVES: Shelf[] = [
-  { key: "on-camera", label: "On camera" },
-  { key: "looks", label: "Looks & outfits" },
   { key: "designers", label: "Designers & labels" },
   { key: "shops", label: "Shops & boutiques" },
-  // Lisa, 24 Nov 2026 ("what about moods?"): the moods that aren't worn - rooms, décor, moments - so every mood is here once.
-  { key: "rooms", label: "Rooms, décor & moments" },
+  { key: "looks", label: "Looks & outfits" },
 ];
 
 export type FashionLook = {
@@ -405,8 +404,11 @@ export const FASHION_SHOPS: FashionItem[] = (() => {
     .sort(byMentions);
 })();
 
-/** The Fashion & outfits shelf of the Library, shelf by shelf. */
+/** The looks on the Library's shelf and with a page of their own: the outfits in the stories (not the on-camera looks). */
+export const LIBRARY_LOOKS: FashionItem[] = FASHION_LOOKS.filter((l) => l.shelf === "looks");
+
 /** The moods that aren't worn: rooms, décor, objects and moments (Club USA's giant slide, Dalí's pool of dead lobsters). */
 export const FASHION_MOODS: FashionItem[] = moods.filter((e) => !e.refs.some((r) => r.time === "On camera") && !isWorn(e)).map((e) => lookItem(e, "rooms")).sort(byMentions);
 
-export const fashionShelf: FashionItem[] = [...FASHION_LOOKS, ...FASHION_DESIGNERS, ...FASHION_SHOPS, ...FASHION_MOODS];
+/** The Fashion & outfits shelf of the Library, shelf by shelf. */
+export const fashionShelf: FashionItem[] = [...FASHION_DESIGNERS, ...FASHION_SHOPS, ...LIBRARY_LOOKS];
