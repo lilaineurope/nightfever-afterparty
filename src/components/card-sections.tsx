@@ -92,8 +92,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
               return (
                 <li key={`${r.episode}-${r.rank}`} className="rounded-xl border border-border bg-card p-4">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    {/* Episode mentions everywhere (Lisa, 22 Nov 2026): the episode link in pink, the yellow ▶ time code, what was said below. */}
-                    <Link to={episodePath(ep.id)} className="font-semibold text-pink hover:text-foreground">
+                    <Link to={episodePath(ep.id)} className="font-semibold text-gold hover:text-pink">
                       S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
                     </Link>
                     <span className="text-xs text-muted-foreground">
