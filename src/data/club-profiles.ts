@@ -40,6 +40,9 @@ import hurrahPolaroid from "@/assets/clubs/hurrah-polaroid.webp";
 import c82Photo from "@/assets/clubs/club-82-photo.webp";
 import c82PhotoPhone from "@/assets/clubs/club-82-photo-phone.webp";
 import c82Polaroid from "@/assets/clubs/club-82-polaroid.webp";
+import bainsPhoto from "@/assets/clubs/les-bains-douches-photo.webp";
+import bainsPhotoPhone from "@/assets/clubs/les-bains-douches-photo-phone.webp";
+import bainsPolaroid from "@/assets/clubs/les-bains-douches-polaroid.webp";
 import redZonePhoto from "@/assets/clubs/red-zone-photo.webp";
 import redZonePhotoPhone from "@/assets/clubs/red-zone-photo-phone.webp";
 import redZonePolaroid from "@/assets/clubs/red-zone-polaroid.webp";
@@ -168,6 +171,9 @@ const QUICK_CREDIT = "Header and polaroid: a night at Quick drawn for the AFTERP
 const BUILDING_CREDIT = "Header and polaroid: a night at the Building drawn for the AFTERPARTY - no photo of the Building is free to use";
 const HURRAH_CREDIT = "Header: a night at Hurrah drawn for the AFTERPARTY. Polaroid: Hurrah complimentary entry card - Gallery 98";
 const CLUB_82_CREDIT = "Header and polaroid: a night at the 82 Club drawn for the AFTERPARTY - no photo of the 82 Club is free to use";
+// Lisa, 27 Nov 2026 ("add header picture and polaroid as we did for all clubs"): no free photo of a night inside, so the header is
+// drawn; the polaroid is the BAINS sign and mascaron over the door of the old Bains Guerbois.
+const BAINS_CREDIT = "Header: a night at Les Bains Douches drawn for the AFTERPARTY. Polaroid: Thomon, the BAINS sign over the door at 7 rue du Bourg-l'Abbé in 2016, via Wikimedia Commons, CC BY-SA 4.0; our photocopy version is CC BY-SA 4.0 too";
 
 export const CLUB_PROFILES: Record<string, ClubProfile> = {
   cbgb: {
@@ -1089,12 +1095,20 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       ["1979", "Joy Division play the live set released as Les Bains Douches 18 December 1979"],
       ["1981", "Depeche Mode's first concert in France"],
       ["80s", "Rudolf Piper does events there; David Guetta is a house DJ, Rudolf says"],
-      ["90s", "Page Six throws the club kids' dinner in Paris there"],
+      ["90s", "Page Six throws the club kids' dinner in Paris there - and Gloria Gaynor leaves in tears, as James tells it"],
       ["2010", "The club closes"],
     ],
-    stage: ["Rudolf Piper", "David Guetta", "James St. James"],
+    stage: ["Rudolf Piper", "David Guetta", "James St. James", "Jenny Talia", "Gloria Gaynor"],
     rooms: ["Le Palace", "Page Six (New York Post)"],
-    said: [],
+    // Lisa, 27 Nov 2026: every guest line that names the club (S1E7 Rudolf, S2E7 the Page Six dinner with Gloria Gaynor),
+    // with more context around each line ("for quotes give them more context").
+    said: [
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:50:25", quote: "I did the Bains Douches. I did many events - at the Bains Douches, at the end of Le Palace, which was really the greatest club... And that's when David Guetta, for instance, was one of my DJs at the Bains Douches. He was basically a house DJ there. Somehow he catapulted himself into this monster that he is." },
+      { episode: "s02e07", who: "James St. James", time: "00:23:31", quote: "We couldn't find any drugs, so we went to a sex shop and got poppers. And this is important to the story, because that night Page Six threw a dinner party for us. And we were seated at a long table at Les Bains Douches." },
+      { episode: "s02e07", who: "James St. James", time: "00:24:04", quote: "And for some reason, I said to Gloria, it's always been my disco dream to do poppers while you sing I Will Survive... I did poppers, and Gloria Gaynor burst into tears and said, I'm a Christian woman, I'm a good Christian woman - and ran out, horrified that we had completely destroyed the dinner party." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:24:39", quote: "What we think is entertaining, just bringing it up a notch, is actually offensive to some people. I learned that in my older days... You made Gloria Gaynor cry. Oh my God." },
+    ],
+    portrait: { photo: bainsPhoto, phone: bainsPhotoPhone, polaroid: bainsPolaroid, focus: "50%", credit: BAINS_CREDIT },
   },
 };
 
