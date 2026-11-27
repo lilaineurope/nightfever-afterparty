@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { NamePile } from "@/components/name-pile";
 import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
@@ -38,7 +39,7 @@ function columnsOf<T extends { quote: string }>(said: T[], n: number): { s: T; i
 
 /** Person pages (Lisa, 20 Nov 2026, Kim Hastreiter first): story, "What the guests say" wall, and their story box -
  *  the In memoriam layout for people who are still with us. Sits above the usual A–Z card sections. */
-export function PersonProfileSections({ m, name }: { m: PersonProfile; name: string }) {
+export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; name: string; faces?: Record<string, { src: string; framed?: boolean }> }) {
   const first = m.first ?? name.split(" ")[0];
   return (
     <>
@@ -112,19 +113,19 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
           {m.liftedUp.length > 0 && (
             <>
               <h2 className={h}>Who {first} lifted up</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{m.liftedUp.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={m.liftedUp} faces={faces} />
             </>
           )}
           {m.rooms.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>{first}'s rooms</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{m.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={m.rooms} faces={faces} />
             </>
           )}
           {m.also && m.also.names.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>{m.also.heading}</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{m.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={m.also.names} faces={faces} />
             </>
           )}
         </div>

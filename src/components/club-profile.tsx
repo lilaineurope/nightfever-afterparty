@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { NamePile } from "@/components/name-pile";
 import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
@@ -14,7 +15,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubProfile; name: string; slug: string; night: boolean; parts?: ReactNode }) {
+export function ClubProfileSections({ c, name, slug, night, parts, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; parts?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
   return (
     <>
       <div className="pt-4 text-center">
@@ -109,19 +110,19 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
           {c.stage.length > 0 && (
             <>
               <h2 className={h}>On {name}'s stage</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{c.stage.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={c.stage} faces={faces} />
             </>
           )}
           {c.rooms.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>The rooms around it</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{c.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={c.rooms} faces={faces} />
             </>
           )}
           {c.also && c.also.names.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>{c.also.heading}</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{c.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={c.also.names} faces={faces} />
             </>
           )}
         </div>

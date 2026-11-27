@@ -288,13 +288,13 @@ function EntityPage() {
       </section>
 
       <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
-        {mem && <MemoriamSections m={mem} name={e.name} />}
-        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} />}
+        {mem && <MemoriamSections m={mem} name={e.name} faces={e.faces} />}
+        {club && <ClubProfileSections c={club} name={e.name} slug={e.slug} night={!!e.night} parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null} faces={e.faces} />}
         {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
             card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
         {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
         {e.mapHome && <BringUsHome m={e.mapHome} />}
-        {profile && <PersonProfileSections m={profile} name={e.name} />}
+        {profile && <PersonProfileSections m={profile} name={e.name} faces={e.faces} />}
         {profile && e.rooms && <RoomsMapSection r={e.rooms} first={profile.first ?? e.name.split(" ")[0]!} />}
         {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
         <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />

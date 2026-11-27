@@ -936,11 +936,13 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     timeline: [
       ["Jun 1978", "Howard Stein and Peppo Vanini open Xenon in the former Henry Miller's Theatre"],
       ["Oct 1978", "Everybody Hates Punk night - costume a must"],
+      ["1979", "Gloria Gaynor films the I Will Survive video on the dance floor; Tony Smith becomes the resident DJ"],
+      ["Feb 1980", "Klaus Nomi gives a forty-minute show on the Xenon stage"],
       ["1980", "Nora Burns's diary: the Kennedy party, five dollars and a limo to Magique"],
       ["Early 80s", "Free for FIT students on Thursdays; Nikki Haskell's Christmas party"],
       ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
     ],
-    stage: ["Peppo Vanini", "Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Fiorucci"],
+    stage: ["Peppo Vanini", "Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Klaus Nomi", "Gloria Gaynor", "John \"Jellybean\" Benitez", "Fiorucci"],
     rooms: ["Studio 54", "Régine's", "Copacabana", "Danceteria", "Roxy"],
     said: [
       { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
