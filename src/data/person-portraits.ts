@@ -654,6 +654,12 @@ import jackNicholsonPhoto from "@/assets/people/jack-nicholson-photo.webp";
 import jackNicholsonPolaroid from "@/assets/people/jack-nicholson-polaroid.webp";
 import betteMidlerPhoto from "@/assets/people/bette-midler-photo.webp";
 import betteMidlerPolaroid from "@/assets/people/bette-midler-polaroid.webp";
+import billyIdolPhoto from "@/assets/people/billy-idol-photo.webp";
+import billyIdolPolaroid from "@/assets/people/billy-idol-polaroid.webp";
+import richardHellPhoto from "@/assets/people/richard-hell-photo.webp";
+import richardHellPolaroid from "@/assets/people/richard-hell-polaroid.webp";
+import pattiSmithPhoto from "@/assets/people/patti-smith-photo.webp";
+import pattiSmithPolaroid from "@/assets/people/patti-smith-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -1002,4 +1008,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "jack-nicholson": { photo: jackNicholsonPhoto, polaroid: jackNicholsonPolaroid, focus: "22%", credit: `Portrait after a Los Angeles Times photo at the 1976 Academy Awards, UCLA Library (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
   // Living people batch 6 (25 Nov 2026). Gemini refused her as famous, so a free photo.
   "bette-midler": { photo: betteMidlerPhoto, polaroid: betteMidlerPolaroid, focus: "20%", credit: `Portrait after a photo by Alan Light at the 1990 Grammy Awards (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
+  "billy-idol": { photo: billyIdolPhoto, polaroid: billyIdolPolaroid, focus: "25%", credit: `Portrait after a photo by possan at the Peace & Love Festival, 2012 (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
+  "richard-hell": { photo: richardHellPhoto, polaroid: richardHellPolaroid, focus: "30%", credit: `Portrait after a photo by David Shankbone, 2008 (CC BY 3.0; our version is CC BY 3.0 too), ${STYLE}` },
+  "patti-smith": { photo: pattiSmithPhoto, polaroid: pattiSmithPolaroid, focus: "25%", credit: `Portrait after a 1978 photo from UCLA Library Special Collections (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
 };
