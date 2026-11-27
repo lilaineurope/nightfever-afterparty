@@ -324,7 +324,7 @@ export function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: 
             {list.map((t, i) => (
               <li key={t.id}>
                 <button type="button" aria-pressed={showing.id === t.id && !!now} onClick={() => setNow(t)}>
-                  <i>A{i + 1}</i>
+                  <i aria-hidden>{showing.id === t.id && !!now ? "♫" : "▶"}</i>
                   <span>{t.kind === "guest" || t.kind === "writer" ? `${t.label}: ${t.title}` : t.title}</span>
                 </button>
               </li>
@@ -565,17 +565,27 @@ export function Story({ st, name: self }: { st: StoryView | null; name: string }
               </div>
             ))}
           </dl>
-          {st.inIt.length > 0 && (
-            <div className="lit-story-in">
-              <p className="lit-story-k">{st.inItLabel}</p>
-              <ul>
-                {st.inIt.map((p) => (
-                  <li key={p.name}>
-                    {name(p)}
-                    {p.note && <span className="lit-story-note"> · {p.note}</span>}
-                  </li>
-                ))}
-              </ul>
+          {(st.cover || st.inIt.length > 0) && (
+            <div className="lit-story-side">
+              {st.cover && (
+                <figure className={`lit-story-cover${st.cover.square ? " is-square" : ""}`}>
+                  <img src={st.cover.src} alt={`Cover of ${self}`} loading="lazy" decoding="async" />
+                  <figcaption>{st.cover.credit}</figcaption>
+                </figure>
+              )}
+              {st.inIt.length > 0 && (
+                <div className="lit-story-in">
+                  <p className="lit-story-k">{st.inItLabel}</p>
+                  <ul>
+                    {st.inIt.map((p) => (
+                      <li key={p.name}>
+                        {name(p)}
+                        {p.note && <span className="lit-story-note"> · {p.note}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
         </div>

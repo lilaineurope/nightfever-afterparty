@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { NamePile } from "@/components/name-pile";
 import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
@@ -14,7 +15,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubProfile; name: string; slug: string; night: boolean; parts?: ReactNode }) {
+export function ClubProfileSections({ c, name, slug, night, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; sound?: ReactNode; parts?: ReactNode; crowd?: ReactNode; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
   return (
     <>
       <div className="pt-4 text-center">
@@ -46,6 +47,7 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
                   <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">
                     {/* Pictures never sit on text (Lisa, 5 Nov 2026): the first lines wrap around the guest polaroid */}
                     {pol && <span aria-hidden="true" className="float-right -mr-2 ml-2 h-11 w-14" />}
+                    {s.context && <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">{s.context}</span>}
                     &ldquo;{s.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
@@ -65,8 +67,9 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
         </section>
       )}
 
-      {/* The club's theme nights and parties, right after the quotes (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
-      {parts}
+      {/* One club page standard (Lisa, 27 Nov 2026): the sound of the club right under the quotes - "sounded like this",
+          On film, and a documentary about the club (CBGB's Listen box) - then its theme nights and parties. */}
+      {sound}
 
       {c.listen?.approved && (
         <section className="mx-auto max-w-3xl border-2 border-[#111] bg-pink p-6 text-pink-foreground shadow-[6px_7px_0_#111]">
@@ -87,6 +90,9 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
           </p>
         </section>
       )}
+
+      {/* The club's theme nights and parties (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
+      {parts}
 
       <section className="grid gap-8 rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111] md:grid-cols-2">
         <div>
@@ -109,23 +115,27 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
           {c.stage.length > 0 && (
             <>
               <h2 className={h}>On {name}'s stage</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{c.stage.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={c.stage} faces={faces} />
             </>
           )}
           {c.rooms.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>The rooms around it</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{c.rooms.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={c.rooms} faces={faces} />
             </>
           )}
           {c.also && c.also.names.length > 0 && (
             <>
               <h2 className={`${h} mt-6`}>{c.also.heading}</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{c.also.names.map((x) => <EntityLink key={x} name={x} className={chip} />)}</div>
+              <NamePile names={c.also.names} faces={faces} />
             </>
           )}
         </div>
       </section>
+
+      {/* "Who else was there" and "The poster + read about it", under the story box (Lisa, 27 Nov 2026, W1 + L2). */}
+      {crowd}
+      {library}
     </>
   );
 }

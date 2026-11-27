@@ -19,6 +19,13 @@ export type MentorKind = "lifted" | "stood" | "door";
 export type MentorLink = { mentor: string; mentee: string; episode: string; time: string; line: string; kind?: MentorKind; told?: string };
 
 export const MENTOR_LINKS: MentorLink[] = [
+  // S05E09 Screamin' Rachael Cain
+  { mentor: "Michael Alig", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:07:12", line: "Took to her right away, booked her and helped her along, as James and Rachael remember it", kind: "door" },
+  { mentor: "Suz (Columbia Pictures Music)", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:08:09", line: "One of the people who helped Rachael most in her first New York days, she says", kind: "stood" },
+  { mentor: "DD (introduced Rachael to Musto)", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:10:06", line: "A stranger who showed lost Rachael the way, then introduced her to Michael Musto", kind: "door" },
+  { mentor: "Jay B. Ross", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:15:50", line: "Her first manager, who sent her to sing 'Fantasy'", kind: "door" },
+  { mentor: "Larry Sherman", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:51:12", line: "Asked his star artist back to Trax in Cannes and made her president, as she tells it", kind: "lifted" },
+  { mentor: "Robert Williams (the Warehouse)", mentee: "Frankie Knuckles", episode: "s05e09", time: "00:14:36", line: "Brought Frankie Knuckles to Chicago, as Rachael tells it", kind: "door" },
   { mentor: "Michael Musto", mentee: "James St. James", episode: "s06e01", time: "00:18:30", line: "James's early mentor and plus-one" },
   { mentor: "Michael Musto", mentee: "Larry Tee", episode: "s03e08", time: "00:18:35", line: "Got Larry and friends into Keith Haring's parties and Warhol's book signings", kind: "door" },
   { mentor: "Sylvia Miles", mentee: "Michael Musto", episode: "s01e02", time: "00:07:15", line: "An early mentor who taught Musto the social game" },
@@ -186,6 +193,11 @@ export const MENTOR_LINKS: MentorLink[] = [
   { mentor: "Fred Hughes", mentee: "Brad Gooch", episode: "s05e05", time: "00:11:50", line: "Rang Brad in Paris one night to ask if he'd like to meet Andy Warhol", kind: "door" },
   { mentor: "Robert Mapplethorpe", mentee: "Brad Gooch", episode: "s05e05", time: "00:16:58", line: "Offered to take Brad's test shots when he was starting out as a model", kind: "door" },
   { mentor: "James Grauerholz", mentee: "Howard Brookner", episode: "s05e05", time: "00:23:18", line: "Got Howard in to film Burroughs for a student project, as Brad tells it", kind: "door" },
+  { mentor: "Patricia Field", mentee: "Kenneth Hash aka Lil' Kenny", episode: "s06e10", time: "00:08:32", line: "Took Kenny on at her store, made him one of her buyers and gave him a platform for his outlaw parties, as he tells it", kind: "lifted" },
+  { mentor: "Steve Lewis", mentee: "Kenneth Hash aka Lil' Kenny", episode: "s06e10", time: "00:03:51", line: "Hired Kenny at the Palladium when he came to New York for the Style Summit", kind: "door" },
+  { mentor: "Björk", mentee: "Kenneth Hash aka Lil' Kenny", episode: "s06e10", time: "00:12:23", line: "The first to tell Kenny to move to New York when everyone else said the city would eat him up", kind: "stood" },
+  { mentor: "Kenneth Hash aka Lil' Kenny", mentee: "Jenny Dembrow aka Jenny Talia", episode: "s06e10", time: "00:01:02", line: "Got Jenny a job at the Patricia Field store", kind: "door" },
+  { mentor: "Jojo Americo", mentee: "Waltpaper", episode: "s06e10", time: "00:01:02", line: "Got Walt a job at the Patricia Field store on Sixth Avenue, as Kenny tells it", kind: "door" },
   { mentor: "Ann Magnuson", mentee: "April Palmieri", episode: "s05e08", time: "00:16:05", line: "Gathered April and friends into the Ladies Auxiliary of the Lower East Side at Club 57, where Pulsallama began", kind: "door" },
   { mentor: "Matt E. Silver", mentee: "Desi Santiago", episode: "s06e09", time: "00:40:05", line: "Brought Desi in to build installations for the dressing rooms and backstage at his big-beat concerts" },
   { mentor: "Thairin Smothers", mentee: "Desi Santiago", episode: "s06e09", time: "00:01:04", line: "Managed Desi's band Boob - bossed them around, got them gigs and filmed it all", kind: "stood" },

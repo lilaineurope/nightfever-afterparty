@@ -19,6 +19,8 @@ import { MADE_BY } from "@/data/made-by";
 import { cardPath } from "@/lib/card-link";
 import { polaroidThumb } from "@/lib/polaroids";
 import { videosFor } from "@/lib/art-page.server";
+import { allTapes, tapeBySlug, type Tape } from "@/lib/tapes.server";
+import { entities } from "@/data/entities";
 import type { Trailer } from "@/lib/library-item";
 
 type RawPerson = { name: string; as?: string };
@@ -51,6 +53,8 @@ export type ScreenPageView = {
   kind: string;
   shelf: string;
   group: string;
+  /** Where the group lives when it is not a Library shelf (a maker's tapes sit on their A–Z page). */
+  groupHref?: string | undefined;
   /** "Directed by Susan Seidelman · 1982". */
   line: string;
   intro?: string | undefined;
@@ -164,7 +168,10 @@ const asList = (v: string | string[] | undefined) => (Array.isArray(v) ? v : v ?
 
 export function screenPageData(slug: string): ScreenPageView | null {
   const it = screenBySlug[slug];
-  if (!it) return null;
+  if (!it) {
+    const t = tapeBySlug(slug);
+    return t ? tapePage(t) : null;
+  }
   const e = entityFor(it.name);
   const raw = WORKS[it.name];
   const story = ITEM_STORIES[slug];
@@ -311,5 +318,111 @@ export function screenPageData(slug: string): ScreenPageView | null {
     sources,
     full: FULL_WATCH[slug] ?? null,
     watch: (PROVIDERS as Record<string, Watch>)[it.name] ?? null,
+  };
+}
+
+// ---- A maker's own tape (src/lib/tapes.server.ts): one of Nelson Sullivan's videos.
+const ON_TAPE = new Set(["Person", "Host"]);
+const WHERE = new Set(["Club", "Location", "Place"]);
+const EVENT = new Set(["Event"]);
+let PEOPLE: { name: string; re: RegExp }[] | undefined;
+/** The people and places the site has a card for whose name is in a tape's title ("Taking Lady Bunny to The Pyramid Club"). */
+function namedIn(title: string, cats: Set<string>): string[] {
+  PEOPLE ??= entities
+    .filter((e) => (ON_TAPE.has(e.category) || WHERE.has(e.category) || EVENT.has(e.category)) && e.name.length > 5 && /\s/.test(e.name))
+    .map((e) => ({ name: e.name, re: new RegExp(`\\b${e.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/^The /, "(?:The )?")}\\b`, "i") }));
+  return PEOPLE.filter((p) => cats.has(entityFor(p.name)?.category ?? "") && p.re.test(title)).map((p) => p.name);
+}
+
+function tapePage(t: Tape): ScreenPageView {
+  const maker = entityFor(t.maker);
+  const makerHref = maker ? `${cardPath(maker.slug)}#tapes` : "/library";
+  const cast: Person[] = [];
+  const addCast = (n: string) => {
+    const p = person(n);
+    if (p.name !== t.maker && !cast.some((x) => x.name === p.name)) cast.push(p);
+  };
+  const where: Person[] = [];
+  const events: Person[] = [];
+  const addTo = (list: Person[], n: string) => {
+    const p = person(n);
+    if (!list.some((x) => x.name === p.name)) list.push(p);
+  };
+  for (const pl of t.places) {
+    const cat = entityFor(pl.name)?.category ?? pl.cat;
+    if (ON_TAPE.has(cat)) addCast(pl.name);
+    else if (WHERE.has(cat)) addTo(where, pl.name);
+    else if (cat === "Event") addTo(events, pl.name);
+  }
+  for (const n of namedIn(t.title, ON_TAPE)) addCast(n);
+  for (const n of namedIn(t.title, WHERE)) addTo(where, n);
+  for (const n of namedIn(t.title, EVENT)) addTo(events, n);
+  const rank = (p: Person) => (p.polaroid ? 0 : p.ours ? 1 : 2);
+  cast.sort((a, b) => rank(a) - rank(b));
+
+  const team = [{ role: "Filmed by", people: [person(t.maker)] }];
+  const support = [
+    ...(where.length ? [{ role: "Filmed at", people: where }] : []),
+    ...(events.length ? [{ role: "Event", people: events }] : []),
+    { role: t.whole ? "Online at" : "Licensed by", people: [{ name: t.channel.split(",")[0]! }] },
+  ];
+  const facts = [
+    ...(t.year ? [{ label: "Filmed", value: t.year }] : []),
+    { label: "Shot on", value: "Nelson's own video camera" },
+    { label: "On YouTube", value: t.whole ? "The whole tape, from his archive" : "A clip, for licensing" },
+  ].filter((f) => t.maker === "Nelson Sullivan" || f.label !== "Shot on");
+
+  // How it came up: every AFTERPARTY that has it in its playlist, at the moment its card comes up, in the guest's words.
+  const moments = t.places
+    .map((pl) => {
+      const e = entityFor(pl.name);
+      const ref = e?.refs.find((r) => r.episode === pl.episodeId && (!pl.time || r.time === pl.time)) ?? e?.refs.find((r) => r.episode === pl.episodeId);
+      return ref?.context
+        ? {
+            episodeId: pl.episodeId,
+            short: episodeShort(pl.episodeId),
+            guest: stageName(episodeById(pl.episodeId).guest),
+            time: ref.time || pl.time,
+            context: ref.context,
+            polaroid: polaroidThumb(pl.episodeId, 240),
+          }
+        : null;
+    })
+    .filter((m): m is NonNullable<typeof m> => !!m)
+    .slice(0, 12);
+  const first = t.places[0]?.episodeId ?? "";
+  const first2 = t.maker.split(" ")[0]!;
+
+  return {
+    slug: t.slug,
+    name: t.title,
+    href: makerHref,
+    kind: t.whole ? "Video diary" : "Video clip",
+    shelf: "tapes",
+    group: `${t.maker}'s tapes`,
+    groupHref: makerHref,
+    line: [`Filmed by ${t.maker}`, t.year].filter(Boolean).join(" · "),
+    intro:
+      t.maker === "Nelson Sullivan"
+        ? `${t.whole ? "One of the tapes" : "A clip from the tapes"} ${first2} shot as he went out in downtown New York, from 1983 until he died on 4 July 1989 - the camera in his hand, talking to it as he went. The guests don't drop the ${t.whole ? "tape" : "clip"} itself on the show; it is in the AFTERPARTY playlists for what is on it.`
+        : undefined,
+    poster: null,
+    videos: [{ id: t.id, title: t.title, label: t.title, episodeId: first, short: first ? episodeShort(first) : "", kind: "clip" }],
+    facts,
+    team,
+    cast,
+    leads: cast.filter((p) => p.ours).length,
+    support,
+    awards: [],
+    nominations: 0,
+    quotes: [],
+    moments,
+    more: allTapes()
+      .filter((x) => x.maker === t.maker && x.slug !== t.slug)
+      .slice(0, 12)
+      .map((x) => ({ slug: x.slug, name: x.title })),
+    sources: [t.whole ? "The tape itself, as his archive put it online" : "The clip as Kinolibrary lists it", "AFTERPARTY references and playlists"],
+    full: t.whole ? { kind: "youtube", id: t.id, title: t.title, channel: t.channel, what: "The whole tape" } : null,
+    watch: null,
   };
 }

@@ -1,3 +1,4 @@
+import { ProfileVideos } from "@/components/profile-videos";
 import { Link } from "@tanstack/react-router";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { MusicPlayer } from "@/components/music-player";
@@ -72,7 +73,11 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
   return (
     <>
       <MusicPlayer item={v.music} />
-      {v.night && <ClubNightPlaylist night={v.night} />}
+      {/* A club page shows its night and On film right under the quotes (club-profile.tsx, Lisa 27 Nov 2026). */}
+      {v.night && !v.club && <ClubNightPlaylist night={v.night} />}
+      {/* "On film" on club pages too (Lisa, 27 Nov 2026: "Las bains page has the video box missing"): the films shot inside the
+          club from its Jukebox night, in the same jukebox cabinet as a person's videos. */}
+      {!v.club && v.night?.footage && v.night.footage.length > 0 && <ProfileVideos videos={v.night.footage} playlist={v.night.youtubePlaylist} first={v.night.club} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
       {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it -
@@ -106,7 +111,9 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.events.length > 0 && !skipEvents && (
+      {/* A club page drops the old A–Z lists below (Lisa, 27 Nov 2026: "feels outdated"): its story box, quotes and "Who else
+          was there" say the same with a face and a reason. */}
+      {v.events.length > 0 && !skipEvents && !v.club && (
         <section>
           <h2 className={h}>On the scene timeline</h2>
           <ol className="mt-4 space-y-5 border-l border-gold/25 pl-5">
@@ -128,7 +135,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
       )}
 
       {/* A Library item page shows these as one "Also on the site" box with why (library-item.tsx, Lisa 23 Nov 2026). */}
-      {named.length > 0 && !v.item && (
+      {named.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>Also named on these cards</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -142,7 +149,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.onPages.length > 0 && (
+      {v.onPages.length > 0 && !v.club && (
         <section>
           <h2 className={h}>On these AFTERPARTY pages</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -156,7 +163,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {v.inGuestStories.length > 0 && !v.item && (
+      {v.inGuestStories.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>Pops up in the guests' stories</h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -165,7 +172,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {related.length > 0 && !v.item && (
+      {related.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>In the same rooms (aka the gang)</h2>
           <div className="mt-4 flex flex-wrap gap-2">

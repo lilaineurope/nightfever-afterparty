@@ -66,6 +66,7 @@ const realPiece = (t: ClubTicket) => !/^Photo:|drawn for the AFTERPARTY/i.test(t
  *  ticket picture) or "jukebox" (the Jukebox picture). Names with an A–Z card link to it on the page. */
 export type ClubPieceFacts = { forWhat: string; madeBy: { role: string; name: string }[]; onIt: string[]; date?: string };
 export const CLUB_PIECES: Record<string, ClubPieceFacts> = {
+  "xenon:ticket": { forWhat: "Everybody Hates Punk, Tad Shaffer's costume party at Xenon, 124 West 43rd Street, Sunday 29 October 1978 at 10 pm - costume a must, music by Larry Rossiello", date: "29 Oct 1978", madeBy: [{ role: "Threw the party", name: "Tad Shaffer" }], onIt: ["Xenon"] },
   "cbgb:ticket": { forWhat: "Blondie's three nights at CBGB, 17, 18 and 19 June 1976", date: "June 1976", madeBy: [], onIt: ["Blondie", "Debbie Harry"] },
   "max-s-kansas-city:ticket": { forWhat: "Theoretical Girls at Max's Kansas City, Wednesday 31 January, midnight - three xeroxes pasted into one flyer", date: "1979", madeBy: [], onIt: ["Theoretical Girls"] },
   "sound-factory:ticket": { forWhat: "The Sound Factory's Halloween costume party at 116 Crosby Street, 31 October 1988 - the year before the club opened on West 27th Street", date: "31 Oct 1988", madeBy: [{ role: "Drew it (his dancing skeletons)", name: "Keith Haring" }], onIt: ["Keith Haring", "Junior Vasquez"] },
@@ -78,6 +79,7 @@ export const CLUB_PIECES: Record<string, ClubPieceFacts> = {
   "club-57:ticket": { forWhat: "Club 57 at 57 St. Mark's Place: a smiling woman holding a Heinz-style \"Club 57\" label", date: "Early 1980s", madeBy: [], onIt: [] },
   "pyramid-club:ticket": { forWhat: "\"Born to Be a Wild Night\", the Pyramid's benefit for Wendy Wild", date: "1995", madeBy: [], onIt: ["Wendy Wild", "Brian Butterick", "John Sex", "Lady Bunny", "Deee-Lite", "Joey Arias"] },
   "paradise-garage:ticket": { forWhat: "Vito and Roman's Charivari Christmas Party at the Paradise Garage, 84 King Street - a car stub and claim check", date: "12 Dec 1984", madeBy: [{ role: "Threw the party", name: "Charivari" }], onIt: [] },
+  "les-bains-douches:ticket": { forWhat: "Joy Division's only concert in France, at the Bains-Douches, 7 rue du Bourg-l'Abbé, Tuesday 18 December 1979 at 20h30 - entry 40 francs, ticket no. 00194. The night was recorded and came out as Les Bains Douches 18 December 1979", date: "18 Dec 1979", madeBy: [], onIt: ["Joy Division"] },
   "studio-54:ticket": { forWhat: "Free entry to Studio 54: the silver and gold logo on a black card", madeBy: [], onIt: [] },
   "mudd-club:jukebox": { forWhat: "\"Here's Mudd in Your Ears\": a night of readings and music at the Mudd Club", date: "1981", madeBy: [], onIt: ["Nancy Reilly", "Cookie Mueller", "Chris Kraus", "Avant Squares"] },
   "palladium:jukebox": { forWhat: "The Palladium, 23 November 1985 - his brushstroke poster", date: "23 Nov 1985", madeBy: [{ role: "Made the poster", name: "Roy Lichtenstein" }], onIt: [] },

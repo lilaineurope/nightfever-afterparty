@@ -143,7 +143,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Midnight Express": [m("Alan Parker", "Directed it", 1978)],
   "Missing": [m("Costa-Gavras", "Directed it", 1982), m("Jack Lemmon", "Starred in it", 1982), m("Sissy Spacek", "Starred in it", 1982)],
   "Moby Doc": [m("Moby", "Made it", 2021)],
-  "Mondo New York": [m("John Sex", "Sang 'Hustle with My Muscle' in it", 1988), m("Joey Arias", "In it", 1988), m("Wendy Wild", "In it", 1988), m("Karen Finley", "In it", 1988), m("Lydia Lunch", "In it", 1988)],
+  "Mondo New York": [m("John Sex", "Sang 'Hustle with My Muscle' in it", 1988), m("Joey Arias", "In it", 1988), m("Wendy Wild", "In it", 1988), m("Karen Finley", "In it", 1988), m("Lydia Lunch", "In it", 1988), m("Dean Johnson", "Sang 'F*ck You' in it", 1988)],
   "Niagara": [m("Marilyn Monroe", "Starred in it", 1953)],
   "Once Upon a Time in America": [m("Sergio Leone", "Directed it", 1984), m("Robert De Niro", "Starred in it", 1984)],
   "Orlando (1992 film)": [m("Tilda Swinton", "Starred in it", 1992), m("Quentin Crisp", "In it", 1992)],
@@ -156,6 +156,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Party Monster (2003)": [
     ...WOW("Directed it", 2003), m("James St. James", "Wrote the book it's based on", 2003),
     ...all("Starred in it", 2003, "Macaulay Culkin", "Seth Green", "Chloë Sevigny"), m("Marilyn Manson", "In it", 2003), m("Michael Alig", "About them"),
+    m("Kenneth Hash aka Lil' Kenny", "Made costumes for it", 2003), // S06E10: 72 pieces from the 99-cent store, he says
   ],
   "Party Monster": [...WOW("Directed it", 2003), m("James St. James", "Wrote the book it's based on", 2003), m("Michael Alig", "About them")],
   "Party Monster: The Shockumentary": [...WOW("Made it", 1998), m("Thairin Smothers", "Worked on it", 1998), m("Michael Alig", "About them")],
@@ -330,10 +331,10 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Evergreen (Steve Lewis's band)": [m("Steve Lewis", "Started the band", 1989), m("Moby", "In the band", 1989), m("DJ Keoki", "In the band", 1989)],
   "Toilet Boys": [m("Miss Guy", "In the band")],
   "The Blessed": [m("Howie Pyro", "In the band", 1979)],
-  "The Weenies": [m("Dean Johnson", "In the band")],
+  "The Weenies": [m("Dean Johnson", "Fronted it, wrote the songs")],
   "The Must": [m("Michael Musto", "In the band", 1980)],
   "The Sic F*cks": [m("Tish & Snooky", "In the band")],
-  "Boob (band)": [m("Waltpaper", "In the band", 1996), m("Desi Santiago", "In the band", 1996), m("Lil' Kenny", "In the band", 1996), m("John Boy", "In the band"), m("Thairin Smothers", "Managed it")],
+  "Boob (band)": [m("Waltpaper", "In the band", 1996), m("Desi Santiago", "In the band", 1996), m("Kenneth Hash aka Lil' Kenny", "In the band", 1996), m("John Boy", "In the band"), m("Thairin Smothers", "Managed it")],
   "The Fabulous Pop Tarts": [...WOW("In the band")],
   "Strange Party": [m("Joey Arias", "In the band")],
   "The B-Sides": [m("Bebe Buell", "In the band")],
@@ -480,7 +481,15 @@ for (const [who, paper, role, year] of WROTE_FOR) (MADE_BY[paper] ??= []).push(m
 
 /** Works by people on the site that no guest drops on the show, so they have no Library or A–Z card yet. Shown in the
  *  same box without a link, marked "not on the show yet". Only works the person's own page already names. */
-export type OtherWork = { title: string; kind: "Book" | "Film" | "TV" | "Music" | "Magazine" | "Play" | "Club"; role: MadeRole; year?: number | undefined };
+export type OtherWork = {
+  title: string;
+  kind: "Book" | "Film" | "TV" | "Music" | "Magazine" | "Play" | "Club";
+  role: MadeRole;
+  year?: number | undefined;
+  /** Gets an A–Z card and page of its own in this category, though no guest has dropped it yet (Lisa, 27 Nov 2026, Dean
+   *  Johnson: "each item needs a page"). Its cover and story go in work-covers.json and item-stories.ts like any work. */
+  card?: "Music" | "Film" | "TV" | "Event";
+};
 
 export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Cynthia Heimel": [
@@ -527,13 +536,30 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
     { title: "D Generation", kind: "Music", role: "In the band", year: 1994 },
     { title: "Danzig", kind: "Music", role: "In the band", year: 2000 },
   ],
-  "Dean Johnson": [{ title: "The Velvet Mafia", kind: "Music", role: "In the band" }],
+  // Lisa, 27 Nov 2026: "dean's work needs cover designs and each item needs a page". Facts: the records' own sleeves and
+  // labels (Discogs), the Velvet Mafia's own site and press list, the film credits (TMDB, IMDb), the NYU Fales Library's
+  // Dean Johnson Papers and the flyers his sister Beth keeps (researched 27 Nov 2026).
+  "Dean Johnson": [
+    { title: "Dean and the Weenies – 'Chicken'", kind: "Music", role: "Wrote it, sang it", year: 1987, card: "Music" },
+    { title: "Dean and the Weenies – 'F*ck You'", kind: "Music", role: "Wrote it, sang it", year: 1988, card: "Music" },
+    { title: "Dean and the Weenies – 'Conventions'", kind: "Music", role: "Sang it", year: 1988, card: "Music" },
+    { title: "The Velvet Mafia", kind: "Music", role: "Fronted it", year: 1997, card: "Music" },
+    { title: "The Velvet Mafia – We Know Where You Live", kind: "Music", role: "Sang it", year: 1998, card: "Music" },
+    { title: "The Velvet Mafia – Cheap But Not Free", kind: "Music", role: "Wrote it, sang it", year: 2004, card: "Music" },
+    { title: "Freaks, Glam Gods and Rock Stars", kind: "Film", role: "In it", year: 2001, card: "Film" },
+    { title: "The Big Johnson", kind: "Film", role: "About him", year: 2025, card: "Film" },
+    { title: "Rock 'n' Roll Fag Bar", kind: "Club", role: "Ran it", year: 1987, card: "Event" },
+    { title: "HomoCorps", kind: "Club", role: "Ran it", card: "Event" },
+  ],
   // Lisa 22 Nov 2026: fill in the people whose pages had no work yet. Facts: their Wikipedia pages (checked 22 Nov) and
   // the site's own guest and memoriam notes.
   "Jodie Harsh": [{ title: "Jodie Harsh – 'My House'", kind: "Music", role: "Made it", year: 2020 }],
   "Screamin' Rachael Cain": [
     { title: "Screamin' Rachael – 'My Main Man'", kind: "Music", role: "Sang it" },
     { title: "Screamin' Rachael – 'Fun with Bad Boys'", kind: "Music", role: "Sang it", year: 1987 },
+    { title: "Z-Factor & Jesse Saunders – 'Fantasy'", kind: "Music", role: "Sang it", year: 1984 }, // S05E09
+    { title: "Screamin' Rachael – 'Give Me My Freedom (Murder in Clubland)'", kind: "Music", role: "Sang it" }, // S05E09
+    { title: "Screamin' Rachael – 'The Real Thing'", kind: "Music", role: "Sang it" }, // S05E09: video shot at the World
     { title: "Trax Records", kind: "Music", role: "Runs it" },
   ],
   "Junior Vasquez": [

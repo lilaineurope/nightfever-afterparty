@@ -36,6 +36,9 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Wet underwear contest", at: "Pyramid Club" },
   { event: "Brown Party", at: "Jackie 60" },
   { event: "Night of a Thousand Stevies", at: "Jackie 60" },
+  // Dean Johnson's nights (Lisa, 27 Nov 2026, "each item needs a page")
+  { event: "Rock 'n' Roll Fag Bar", at: "The World", tip: "Tuesdays from 1987" },
+  { event: "HomoCorps", at: "CBGB", tip: "Gay, lesbian and trans rock bands, monthly" },
   { event: "Silence of the Lunch Pails", at: "Jackie 60" },
   { event: "Christopher's satanic 20th birthday party", at: "Limelight", tip: "At Disco 2000" },
   { event: "Blaine Trump's Disco 2000 dinner party", at: "Limelight" },
@@ -397,6 +400,16 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
   { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
   { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  // S05E09 Screamin' Rachael Cain
+  { event: "Police raid on a punk show at the Space Place", at: "Chicago", tip: "At the Space Place, a punk spot round the corner from the Warehouse; that night she heard Frankie Knuckles was mixing her record" },
+  { event: "Michael Alig on the run", at: "Chicago", tip: "Michael turned up at Rachael's Chicago condo, she says" },
+  { event: "Club owner shot at the World", at: "The World", tip: "As told on the show, the club closed after one of its owners was killed" },
+  { event: "MIDEM", at: "Cannes", tip: "The music market where Larry Sherman asked Rachael back to Trax" },
+  { event: "James's lunch with the DA in Los Angeles", at: "Los Angeles" },
+  // S06E10 Kenneth Hash aka Lil' Kenny
+  { event: "Club Kids skating at Rockefeller Center", at: "Rockefeller Center", tip: "Under the Christmas tree, an outlaw party for Patricia Field's store" },
+  { event: "Tax night at the post office", at: "James A. Farley Building", tip: "The post office open until midnight on tax night" },
+  { event: "The Club Kids' bathroom at the Tunnel", at: "The Tunnel", tip: "Hosted by Kenny and Walt with Lady Bunny" },
   // S05E08 April Palmieri
   { event: "James runs off with John Sex's clothes", at: "Limbo Lounge" },
   { event: "John Sex and the Ta Ta's in Tokyo", at: "Tokyo" },
@@ -427,6 +440,8 @@ export const EVENT_PLACES: EventPlace[] = [
  * They stay off the map and off "Bring us home" (Lisa, 23 Nov 2026: "Take them off the list").
  */
 export const NO_SINGLE_PLACE = new Set([
+  "Kenny gets sober (6 August 1996)", // S06E10 - a personal turning point, not a place
+  "Grand jury in the Peter Gatien case", // S05E09 - a court process, not a night out
   // History, movements and eras
   "AIDS crisis",
   "AIDS awareness",

@@ -71,7 +71,7 @@ function playsOf(v: ScreenPageView): Play[] {
   if (!f) return v.videos;
   const whole: Play =
     f.kind === "youtube"
-      ? { id: f.id, title: f.title, label: f.title, episodeId: "", short: "", kind: "clip", full: true, note: `${f.what} · ${f.minutes} min · official upload: ${f.channel}` }
+      ? { id: f.id, title: f.title, label: f.title, episodeId: "", short: "", kind: "clip", full: true, note: [f.what, f.minutes ? `${f.minutes} min` : "", `official upload: ${f.channel}`].filter(Boolean).join(" · ") }
       : { id: "file", title: f.title, label: f.title, episodeId: "", short: "", kind: "clip", full: true, file: f.src, note: `${f.what} · ${f.minutes} min · ${f.source}` };
   return [whole, ...v.videos.filter((t) => t.id !== whole.id)];
 }
@@ -144,7 +144,7 @@ function BigJukebox({ v }: { v: ScreenPageView }) {
             {list.map((t, i) => (
               <li key={t.id}>
                 <button type="button" aria-pressed={now?.id === t.id} onClick={() => setNow(t)}>
-                  <i>{t.full ? "▶" : `A${i + 1}`}</i>
+                  <i aria-hidden>{now?.id === t.id ? "♫" : "▶"}</i>
                   <span>
                     {t.full ? <b>In full: </b> : null}
                     {t.title} {t.short && <small>· {t.short}</small>}
@@ -502,7 +502,14 @@ function ScreenPage() {
           <Link to="/library" search={{ cat: "moving-images" }} className="art-name">
             Moving Images
           </Link>{" "}
-          · <span>{v.group}</span>
+          ·{" "}
+          {v.groupHref ? (
+            <a href={v.groupHref} className="art-name">
+              {v.group}
+            </a>
+          ) : (
+            <span>{v.group}</span>
+          )}
         </nav>
 
         {/* Front page rows (Lisa picked C, 24 Nov 2026: "too much white space around the boxes"): the title across the top,

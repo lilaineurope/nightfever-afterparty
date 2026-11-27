@@ -19,10 +19,39 @@ import type { LibraryItemView, StoryView } from "@/lib/library-item";
 import type { PlaceView } from "@/lib/place-view";
 import type { MapBand, MapHome, RoomsMap } from "@/lib/map-view";
 import type { PersonWork } from "@/lib/works";
+import type { CoverDesign } from "@/lib/cover-design";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
  *  doesn't download the whole A–Z (page weight, 16 Nov 2026). Types only - this file loads nothing. */
 import type { MentorTreeData } from "@/lib/mentor-tree";
+
+/** "Who else was there" on a club page (Lisa, 27 Nov 2026, option W1 "the door list"): the guests who told us about it
+ *  (their biggest moment), the regulars (people whose own page lists the club as a room), and who made or is on its posters.
+ *  The stage stays in the story box. */
+export type ClubCrowdView = {
+  told: { episode: string; code: string; guest: string; time: string; context: string; mentions: number; pol?: string | undefined }[];
+  regulars: string[];
+  posters: { name: string; role: string }[];
+};
+
+/** "The poster + read about it" on a club page (Lisa, 27 Nov 2026, option L2): the club's own flyers and tickets from the
+ *  Library's Cover art & posters, and the hand-checked books, diaries and papers a guest ties to it (src/data/club-reading.ts). */
+export type ClubLibraryView = {
+  posters: {
+    page: string;
+    src: string;
+    alt?: string | undefined;
+    piece: string;
+    credit: string;
+    w?: number | undefined;
+    h?: number | undefined;
+    forWhat?: string | undefined;
+    date?: string | undefined;
+    madeBy: { role: string; name: string }[];
+    onIt: string[];
+  }[];
+  reads: { slug: string; name: string; kind: string; design: CoverDesign; episode: string; code: string; guest: string; time: string; context: string }[];
+};
 
 export type CardView = {
   slug: string;
@@ -38,6 +67,8 @@ export type CardView = {
   inGuestStories: { slug: string; name: string }[];
   /** Club, In memoriam, person and diary pages whose story names this card (two-way story links, Lisa 27 Nov 2026). */
   onPages: { slug: string; name: string; kind: string }[];
+  /** Pictures for the names in the story box (rooms, lifted up, stage, also): name -> polaroid or cover. */
+  faces: Record<string, { src: string; framed?: boolean }>;
   /** "In the same rooms" */
   related: { slug: string; name: string }[];
   /** The card's own Jukebox entry (songs, artists, stage bands get a player). */
@@ -47,6 +78,10 @@ export type CardView = {
   club: ClubProfile | null;
   /** The club's theme nights and parties, folded in from their own cards (Lisa, 22 Nov 2026, src/data/club-parts.ts). */
   parts: ClubPartsView | null;
+  /** "Who else was there" (club pages only). */
+  crowd: ClubCrowdView | null;
+  /** The club's poster and reading list (club pages only). */
+  clubLib: ClubLibraryView | null;
   pic: PersonPortrait | null;
   /** Person page (story, guest quotes, timeline) for living people the guests talk about - Lisa, 20 Nov 2026. */
   profile: PersonProfile | null;
@@ -69,6 +104,8 @@ export type CardView = {
   rooms: RoomsMap | null;
   /** "<first>'s work": what a person made, wrote, ran or starred in (Lisa, 22 Nov 2026, src/lib/works.ts). */
   works: PersonWork[];
+  /** A maker's own tapes, each with its Moving Images page (Lisa, 27 Nov 2026: Nelson Sullivan; src/lib/tapes.server.ts). */
+  tapes: { slug: string; title: string; year?: string | undefined; whole: boolean }[];
   /** Rank among the top 100 great connectors (pink badge), or null. */
   connector: number | null;
   /** Every name -> card answer the page needs for its links. */

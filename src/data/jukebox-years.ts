@@ -393,4 +393,14 @@ export const YEARS: Record<string, number> = {
   "Steps": 1997,
   "S Club 7": 1998,
   "Scissor Sisters": 2001,
+  // S05E09 Screamin' Rachael Cain
+  "Z-Factor & Jesse Saunders – 'Fantasy'": 1984,
+  "Screamin' Rachael – 'Fun with Bad Boys'": 1987,
+  "DJ Keoki – 'Kaleidoscope'": 2025,
+  "New Edition": 1983,
+  // S06E10 Kenneth Hash aka Lil' Kenny
+  "The Sugarcubes": 1986,
+  "The Sugarcubes – 'Hit'": 1991,
+  "Björk – 'Venus as a Boy'": 1993,
+  "Björk – 'Jóga'": 1997,
 };
