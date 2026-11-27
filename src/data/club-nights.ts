@@ -991,6 +991,8 @@ const xn: ClubNight = {
   note:
     "Records documented at Xenon (1978-1984): resident DJ Tony Smith's own Xenon mixes and the new wave he slipped into the disco, Gloria Gaynor's I Will Survive video shot on its floor, Klaus Nomi's night on its stage in February 1980, Roxy Music naming it in a song, and Jellybean Benitez, another Xenon DJ. Not one exact night.",
   footage: [
+    { id: "RNQjstPreJ4", title: "Xenon's opening night, June 1978" },
+    { id: "nYEaDPuNOIo", title: "Xenon in 1979 - the crowd on the dance floor" },
     { id: "6dYWe1c3OyU", title: "Gloria Gaynor - I Will Survive (the 1979 promo video, filmed on Xenon's dance floor)" },
     { id: "h1Twukgzq84", title: "Nighthawks (1981) - the disco scene, filmed at Xenon" },
     { id: "2xUd3LRufno", title: "Klaus Nomi - The Nomi Song (live at Xenon, excerpt)" },

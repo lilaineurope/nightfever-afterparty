@@ -1713,6 +1713,13 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
   // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
   "peppo-vanini": {
+    // On film (Lisa, 27 Nov 2026: "all"): his YouTube playlist PLd67fLFlUa14 is private for now - add playlist once it's public.
+    videos: [
+      { id: "RNQjstPreJ4", title: "Xenon's opening night, June 1978 - the club Peppo opened with Howard Stein" },
+      { id: "nYEaDPuNOIo", title: "Xenon in 1979" },
+      { id: "6dYWe1c3OyU", title: "Gloria Gaynor - I Will Survive (the 1979 video, filmed on Xenon's dance floor)" },
+      { id: "fcZMEuytALY", title: "Régine's discotheque, New York" },
+    ],
     story:
       "Co-owner of Xenon, the one disco that could keep up with Studio 54. Peppo had run some of Europe's best clubs, Régine's among them, and met Howard Stein at Studio 54. In June 1978 they opened Xenon in the old Henry Miller's Theatre on West 43rd Street - xenon is element 54, a wink at Studio. Silver walls, rays of light from a giant X over the dance floor, the first go-go boxes for anyone who wanted to dance on one, and the fashion crowd where Studio had Hollywood. On Night Fever, Christina Visca remembers FIT students let in free on Thursdays, Nikki Haskell her Christmas party there, and Nora Burns reads her 1980 diary - night after night at Xenon, and a P.S. that ends at Peppo's window.",
     timeline: [
