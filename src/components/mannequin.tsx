@@ -23,8 +23,12 @@ const texture = (label: string) => {
 export const isTrousers = (l: string) => /trouser|pants|jeans|chino|leggings|flares|slacks|501|bell-bottom/i.test(l);
 const isLegwear = (l: string) => /stocking|fishnet|tights|garter|pantyhose/i.test(l);
 const isHat = (l: string) => /hat|cap\b|caps|beanie|beret|crown|tiara|headdress|headpiece|turban|veil|wimple|halo|horn/i.test(l);
+/** Short shapes: a mini dress to the thigh, a hooped or flared mini skirt, short hair. */
+const isShort = (l: string) => /\bshort\b|\bmini\b|mini-?dress|baby ?doll|ruffled skirt/i.test(l);
+const isPuff = (l: string) => /crini|tutu|hoop|puff|ra-ra|rara|petticoat/i.test(l);
+const isShortHair = (l: string) => /quiff|pompadour|flat ?top|crop|buzz|short hair|slicked/i.test(l);
 /** Worn all over but with legs: suits, tuxedos, tails, catsuits, jumpsuits. */
-const isSuit = (l: string) => /suit|tuxedo|tails|tailcoat|pyjama/i.test(l) && !/swimsuit|bathing/i.test(l);
+const isSuit = (l: string) => /suit|tuxedo|tails|tailcoat|pyjama/i.test(l) && !/swimsuit|bathing|soundsuit/i.test(l);
 /** A long gown rather than a dress to the knee: the corseted, floor-length silhouette. */
 const isGown = (l: string) => /gown|ball ?dress|evening dress|bias|corset|crinoline|wedding dress|prom dress/i.test(l);
 /** Hair worn up - piled, pinned, a bun or a bouffant (Julian Eltinge's Gibson girl, Lisa 27 Nov 2026). */
@@ -73,10 +77,12 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
         <path d="M66 92Q100 80 134 92L146 190L134 192L126 120L124 200L76 200L74 120L66 192L54 190Z" />
         <path d="M78 200L76 380L94 380L100 236L106 380L124 380L122 200Z" />
       </g>
-      {!full && bottom && isLegwear(bottom.label) && <Fill id={id} ink={ink} garb={bottom} d="M78 200L76 380L94 380L100 236L106 380L124 380L122 200Z" />}
+      {bottom && isLegwear(bottom.label) && <Fill id={id} ink={ink} garb={bottom} d="M78 200L76 380L94 380L100 236L106 380L124 380L122 200Z" />}
       {!full && bottom && !isLegwear(bottom.label) &&
         (isTrousers(bottom.label) ? (
           <Fill id={id} ink={ink} garb={bottom} d="M76 192L124 192L127 378L105 378L100 238L95 378L73 378Z" />
+        ) : isPuff(bottom.label) ? (
+          <Fill id={id} ink={ink} garb={bottom} d="M80 190L120 190Q152 226 148 262L52 262Q48 226 80 190Z" />
         ) : (
           <Fill id={id} ink={ink} garb={bottom} d="M78 190L122 190L140 286L60 286Z" />
         ))}
@@ -87,6 +93,8 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
       {top &&
         (full && isSuit(top.label) ? (
           <Fill id={id} ink={ink} garb={top} d="M64 92Q100 80 136 92L148 150L132 154L128 128L126 206L74 206L72 128L68 154L52 150Z" />
+        ) : full && isShort(top.label) ? (
+          <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L122 176L148 262L52 262L78 176L74 132L60 130Z" />
         ) : full && isGown(top.label) ? (
           // A gown: fitted bodice, nipped waist, skirt to the floor.
           <Fill id={id} ink={ink} garb={top} d="M66 92Q100 82 134 92L140 130L126 132L118 182L156 374L44 374L82 182L74 132L60 130Z" />
@@ -102,7 +110,13 @@ export function Mannequin({ outfit, ink = "#111", className, label }: { outfit: 
         </>
       )}
       {head &&
-        (/top hat/i.test(head.label) ? (
+        (/crown|tiara|chandelier|diadem/i.test(head.label) ? (
+          <Fill id={id} ink={ink} garb={head} d="M78 36L82 12L91 26L100 4L109 26L118 12L122 36Z" />
+        ) : /beret/i.test(head.label) ? (
+          <Fill id={id} ink={ink} garb={head} d="M72 40Q74 20 102 20Q132 22 130 36Q104 30 72 40Z" />
+        ) : isShortHair(head.label) ? (
+          <Fill id={id} ink={ink} garb={head} d="M78 50Q72 26 94 22Q100 6 122 20Q130 30 122 50Q114 36 100 36Q86 36 78 50Z" />
+        ) : /top hat/i.test(head.label) ? (
           <Fill id={id} ink={ink} garb={head} d="M84 36L86 2L114 2L116 36L132 36L132 42L68 42L68 36Z" />
         ) : isHat(head.label) ? (
           <Fill id={id} ink={ink} garb={head} d="M70 40Q100 4 130 40L144 44Q100 34 56 44Z" />

@@ -92,7 +92,11 @@ function LookPage() {
                 <Stripes palette={v.palette} />
                 <Mannequin outfit={v.outfit} className="look-mq" label={`${v.name}, dressed on the mannequin`} />
               </div>
-              <figcaption>Dressed from the words and the colours in the episode - the Wardrobe&rsquo;s mannequin.</figcaption>
+              <figcaption>
+                {v.asPhoto
+                  ? "Dressed as in the photo - the Wardrobe\u2019s mannequin."
+                  : "Dressed from the words and the colours in the episode - the Wardrobe\u2019s mannequin."}
+              </figcaption>
             </figure>
           </div>
 

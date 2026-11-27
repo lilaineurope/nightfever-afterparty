@@ -16,6 +16,7 @@ import type { CollectionItem, Shelf } from "./collections";
 import { afterpartyOf, entities, entityBySlug, entityFor, type Entity, type Ref } from "./entities";
 import { episodeById } from "./episodes";
 import { DESIGNERS, slotOf, type Slot } from "./fashion-words";
+import { LOOK_OUTFITS } from "./look-outfits";
 
 export const FASHION_SHELVES: Shelf[] = [
   { key: "on-camera", label: "On camera" },
@@ -328,7 +329,8 @@ function lookItem(e: Entity, shelf: "on-camera" | "looks" | "rooms"): FashionIte
     outfit: {},
     designers: [],
   };
-  look.outfit = outfitOf(e, look.palette);
+  // A look with a real photo wears what the photo shows (src/data/look-outfits.ts); the rest are dressed from the words.
+  look.outfit = LOOK_OUTFITS[e.slug] ?? outfitOf(e, look.palette);
   // The designers a look's story names - not the wearer themselves (Patricia's own look isn't "by Patricia Field").
   look.designers = designersIn(`${e.name} ${r.heard} ${r.context} ${r.fashion ?? ""}`).filter((d) => d.slug !== look.who?.slug);
   return { ...baseOf(e, shelf), fashion: { kind: "look", tag: shelf === "on-camera" ? "On camera" : shelf === "rooms" ? "Mood" : "Look", note: worn, look } };

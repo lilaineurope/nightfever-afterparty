@@ -35,3 +35,10 @@ test("Fashion & outfits: every mood in the episodes is on the shelf exactly once
   assert.equal(new Set(onShelf).size, onShelf.length);
   assert.equal(onShelf.length, moods.length);
 });
+
+test("every photo outfit belongs to a real look", async () => {
+  const { LOOK_OUTFITS } = await import("./look-outfits");
+  const { FASHION_LOOKS } = await import("./library-fashion");
+  const slugs = new Set(FASHION_LOOKS.map((l) => l.slug));
+  for (const k of Object.keys(LOOK_OUTFITS)) assert.ok(slugs.has(k), k);
+});

@@ -9,6 +9,7 @@ import { episodeById } from "@/data/episodes";
 import { cardPath } from "@/lib/card-link";
 import { polaroidThumb } from "@/lib/polaroids";
 import { SLOTS } from "@/data/fashion-words";
+import { LOOK_OUTFITS } from "@/data/look-outfits";
 
 export type LookNamed = { name: string; href?: string | undefined; polaroid?: string | undefined };
 export type LookPageView = {
@@ -32,6 +33,8 @@ export type LookPageView = {
   moments: { episodeId: string; short: string; guest: string; time: string; context: string; polaroid?: string | undefined }[];
   mentions: number;
   photo?: LookPhoto | undefined;
+  /** True when the mannequin wears what the photo shows rather than the episode's words. */
+  asPhoto: boolean;
   /** Other looks from the same episode, for the strip at the bottom. */
   more: { slug: string; name: string; who?: string | undefined; outfit: FashionLook["outfit"]; palette: string[] }[];
 };
@@ -84,6 +87,7 @@ export function lookPageData(slug: string): LookPageView | null {
     moments: it.moments.map((m) => ({ ...m, short: short(m.episodeId), polaroid: polaroidThumb(m.episodeId, 240) })),
     mentions: it.mentions,
     photo: LOOK_PHOTOS[slug],
+    asPhoto: !!LOOK_PHOTOS[slug] && slug in LOOK_OUTFITS,
     more: FASHION_LOOKS.filter((x) => x.slug !== slug && x.fashion.look?.episode === l.episode)
       .slice(0, 12)
       .map((x) => ({ slug: x.slug, name: x.name, who: x.fashion.look!.who?.name, outfit: x.fashion.look!.outfit, palette: x.fashion.look!.palette })),
