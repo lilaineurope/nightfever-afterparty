@@ -1543,12 +1543,13 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     ],
     liftedUp: [],
     rooms: ["Xenon", "Studio 54", "Régine's", "Magique"],
-    // Lisa, 27 Nov 2026: "more context in quote" - the diary P.S. in full, then the guests on his club (max 2 per guest).
+    // Lisa, 27 Nov 2026: "more context in quote" / "for quotes give them more context" - the diary passages in full, from
+    // src/data/diaries.ts, and a line on what was being talked about. Max 2 per guest.
     said: [
-      { episode: "s06e05", who: "Nora Burns", time: "00:09:12", quote: "P.S. Earl is dead. Davey told me last night he fell off the roof of the Navarro trying to climb into Peppo's window. I feel sad about it. I wish I'd been nicer, or seen him more, or something... Peppo was the owner of Xenon." },
-      { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
-      { episode: "s02e04", who: "Nikki Haskell", time: "00:48:10", quote: "And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
-      { episode: "s06e05", who: "Nora Burns", time: "00:06:14", quote: "I took $5 and went to Xenon, and then got into a limo with some actors and we went to Magique... Wednesday night with Bonds, Xenon, Magique, Xenon and Bonds again." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:08:25", context: "The last entry Nora reads from her 1980 diary, the year the scene already felt over", quote: "I feel like the city used to be the center of a tornado, and now it's a breeze... P.S. Earl is dead. Davey told me last night he fell off the roof of the Navarro trying to climb into Peppo's window. I feel sad about it. I wish I'd been nicer, or seen him more, or something... Peppo was the owner of Xenon." },
+      { episode: "s06e02", who: "Christina Visca", time: "00:10:33", context: "Christina, a 19-year-old FIT student, on how she got into Peppo's club", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:38", context: "Nikki on the parties she gave at Xenon, the yearly Christmas party among them", quote: "We gave a party at Xenon. It was the first time anybody had ever given a party because of all the newspapers and everything... And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
+      { episode: "s06e05", who: "Nora Burns", time: "00:06:09", context: "Nora's diary, 2 May 1980, read on air", quote: "I took $5 and went to Xenon, and then got into a limo with Brenda Vaccaro and some other actors, and we went to Magique. Wednesday night was Bond's, Xenon, Magique, Xenon and Bond's again, all with different people. It seems like I don't live in sunshine hours." },
     ],
     also: { heading: "The Xenon crowd", names: ["Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Nora Burns's diaries (1980)", "Andy Warhol", "Brooke Shields", "Halston"] },
   },
@@ -1583,9 +1584,9 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     // Exact transcript lines (Lisa, 27 Nov 2026: "quotes from people?"). One host's line at S1E5 00:28:15 waits until we
     // know whether it was Fenton or Randy.
     said: [
-      { episode: "s01e05", who: "Ernie Glam", time: "00:29:34", quote: "Here's my opportunity to do a type of cartoon drag, where I'm still playing a female character, but I'm not really having to wear women's clothes." },
-      { episode: "s01e02", who: "Michael Musto", time: "01:02:19", quote: "Disco 2000 was the big club kid party on Wednesdays with Clara the Carefree Chicken." },
-      { episode: "s01e09", who: "Moby", time: "00:08:00", quote: "I would have definitely encountered you around, like, the same time I met Clara the Chicken, basically." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:29:34", context: "Ernie on why he said yes to being Clara", quote: "Here's my opportunity to do a type of cartoon drag, where I'm still playing a female character, but I'm not really having to wear women's clothes." },
+      { episode: "s01e02", who: "Michael Musto", time: "01:02:19", context: "Musto on the Limelight in the 90s", quote: "Disco 2000 was the big club kid party on Wednesdays with Clara the Carefree Chicken." },
+      { episode: "s01e09", who: "Moby", time: "00:08:00", context: "Moby working out when he first met James", quote: "I would have definitely encountered you around, like, the same time I met Clara the Chicken, basically." },
     ],
     also: { heading: "Clara's flock", names: ["Ernie Glam", "James St. James", "Michael Musto", "Moby", "Amanda Lepore", "Hans Ulrich", "Clara the Chicken suit", "Peeew!", "Fabulousity"] },
   },

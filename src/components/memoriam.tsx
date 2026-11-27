@@ -46,6 +46,7 @@ export function MemoriamSections({ m, name, faces }: { m: Memoriam; name: string
                   <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">
                     {/* Lisa, 5 Nov 2026: pictures must never sit on text - the first lines wrap around the guest polaroid */}
                     {pol && <span aria-hidden="true" className="float-right -mr-2 ml-2 h-11 w-14" />}
+                    {s.context && <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">{s.context}</span>}
                     &ldquo;{s.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
