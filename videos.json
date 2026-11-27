@@ -1,0 +1,17 @@
+{
+  "_note": "YouTube videos for the On film boxes (27 Nov 2026). All embeddable (oEmbed 200). Titles = suggested box titles; 'youtube_title' = the uploader's title.",
+  "xenon_new_films": [
+    { "id": "RNQjstPreJ4", "title": "Xenon's opening night, June 1978", "youtube_title": "Xenon Nightclub New York Opening Party June 1978", "channel": "The Fluid Druid", "length": "41:42", "check": "Real footage with timecode; the description quotes the 1978 New York Times opening-night report (wet paint, Douglas Trumbull's descending spaceship). Already in episode-videos/s06e05.json at 00:05:49." },
+    { "id": "nYEaDPuNOIo", "title": "Xenon in 1979 - the crowd on the dance floor", "youtube_title": "1979 NYC XENON DISCO CLUB - DIVERSITY. PARTY SCENE. TRANS. GAY. STRAIGHT.", "channel": "Historic Films Stock Footage Archive", "length": "11:38", "check": "Stock-footage archive upload (watermarked preview)." }
+  ],
+  "peppo_vanini_playlist": {
+    "playlist": "https://www.youtube.com/playlist?list=PLd67fLFlUa14",
+    "status": "PRIVATE until Lisa says playlists public",
+    "videos": [
+      { "id": "RNQjstPreJ4", "title": "Xenon's opening night, June 1978 - the club Peppo opened with Howard Stein", "youtube_title": "Xenon Nightclub New York Opening Party June 1978" },
+      { "id": "nYEaDPuNOIo", "title": "Xenon in 1979", "youtube_title": "1979 NYC XENON DISCO CLUB - DIVERSITY. PARTY SCENE. TRANS. GAY. STRAIGHT." },
+      { "id": "6dYWe1c3OyU", "title": "Gloria Gaynor - I Will Survive (the 1979 video, filmed on Xenon's dance floor)", "youtube_title": "Gloria Gaynor - I Will Survive" },
+      { "id": "fcZMEuytALY", "title": "Régine's discotheque, New York", "youtube_title": "follow the sound: Regine's discotheque", "channel": "Nelson George" }
+    ]
+  }
+}
