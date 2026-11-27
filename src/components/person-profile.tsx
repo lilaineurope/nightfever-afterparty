@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { VideoScreen } from "@/components/video-screen";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
@@ -34,6 +36,60 @@ function columnsOf<T extends { quote: string }>(said: T[], n: number): { s: T; i
   walk(0, n, []);
   let prev = 0;
   return best.map((end) => { const col = items.slice(prev, end); prev = end; return col; });
+}
+
+
+/** The video box (Lisa, 27 Nov 2026, Clara): the Library's trailer Jukebox cabinet (.lit-jbx styles) with the person's videos -
+ *  screen on the left, the list on the right. Nothing loads from YouTube until a visitor presses play. */
+function VideoBox({ v, first }: { v: NonNullable<PersonProfile["videos"]>; first: string }) {
+  const [now, setNow] = useState<{ id: string; title: string } | null>(null);
+  const [failed, setFailed] = useState<string[]>([]);
+  const list = v.list.filter((x) => !failed.includes(x.id));
+  if (list.length === 0) return null;
+  const pick = list[0]!;
+  const next = (from: { id: string }) => setNow(list[list.findIndex((x) => x.id === from.id) + 1] ?? null);
+  return (
+    <section aria-labelledby="person-videos">
+      <h2 id="person-videos" className={`${h} text-center`}>Watch {first}</h2>
+      <div className="lit-jbx mt-6">
+        <div className="lit-jbx-l">
+          <p className="lit-jbx-kicker">The Night Fever</p>
+          <p className="lit-jbx-title">On fil<b>m</b></p>
+          <div className="lit-jbx-screen">
+            {now ? (
+              <VideoScreen vid={now.id} title={now.title} onEnd={() => next(now)} onFail={() => { setFailed((f) => [...f, now.id]); next(now); }} />
+            ) : (
+              <button type="button" className="lit-jbx-press" onClick={() => setNow(pick)} aria-label={`Play the video: ${pick.title}`}>
+                <span className="lit-jbx-k">Watch first</span>
+                <span className="lit-jbx-play" aria-hidden>▶</span>
+                <span className="lit-jbx-nm">{pick.title}</span>
+                <span className="lit-jbx-sm">From {first}'s AFTERPARTY playlist</span>
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="lit-jbx-r">
+          {list.length > 1 && (
+            <ol className="lit-jbx-sel">
+              {list.map((x, i) => (
+                <li key={x.id}>
+                  <button type="button" aria-pressed={(now ?? pick).id === x.id && !!now} onClick={() => setNow(x)}>
+                    <i>A{i + 1}</i>
+                    <span>{x.title}</span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          )}
+          {v.playlist && (
+            <a href={v.playlist} target="_blank" rel="noopener noreferrer" className="lit-jbx-open">The whole playlist on YouTube ↗</a>
+          )}
+          <p className="lit-jbx-fine">Plays from YouTube, loaded only when you press ▶ - same as the Jukebox.</p>
+        </div>
+        <div className="lit-jbx-grille" aria-hidden />
+      </div>
+    </section>
+  );
 }
 
 /** Person pages (Lisa, 20 Nov 2026, Kim Hastreiter first): story, "What the guests say" wall, and their story box -
@@ -89,6 +145,8 @@ export function PersonProfileSections({ m, name }: { m: PersonProfile; name: str
           </div>
         </section>
       )}
+
+      {m.videos && m.videos.list.length > 0 && <VideoBox v={m.videos} first={first ?? name} />}
 
       <section className="grid gap-8 rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111] md:grid-cols-2">
         <div>

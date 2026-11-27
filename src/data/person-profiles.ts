@@ -18,6 +18,10 @@ export type PersonProfile = {
   said: MemoriamQuote[];
   /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
   also?: { heading: string; names: string[] };
+  /** A video box on the page (Lisa, 27 Nov 2026, Clara: "make a playlist on youtube and put a video box on the page"): videos
+   *  from the person's AFTERPARTY YouTube playlist, played with youtube-nocookie only when a visitor presses play. `playlist`
+   *  is the YouTube playlist link once Lisa has made it public. */
+  videos?: { list: { id: string; title: string }[]; playlist?: string };
   /** Lisa's rule is two quotes per guest; a page can go higher when she says so (Kim: Mickey x3, Lisa 21 Nov 2026). */
   maxPerGuest?: number;
 };
@@ -1579,5 +1583,17 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e09", who: "Moby", time: "00:07:02", quote: "I had just DJ'd for the first time at Limelight, and Michael took me to Peter Gatien's office... So, James, I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
     ],
     also: { heading: "Who talks about her", names: ["Ernie Glam", "James St. James", "Moby", "Michael Musto", "Peeew!"] },
+    // YouTube playlist "Clara the Carefree Chicken – the AFTERPARTY playlist" PLJqISi2pr5Qo, PRIVATE (27 Nov 2026) - add
+    // playlist: "https://www.youtube.com/playlist?list=PLJqISi2pr5Qo" once Lisa makes it public.
+    videos: {
+      list: [
+        { id: "aAYRvJGmsDQ", title: "Peeew! #90: Searching for Clara the Carefree Chicken - Ernie Glam" },
+        { id: "Ir0Y0QQQnsw", title: "The Disco 2000 commercial - Peeew!" },
+        { id: "Cd4kmrC_PPo", title: "Ernie Glam + Clara the Carefree Chicken in Montréal" },
+        { id: "dfd6iABsJAI", title: "Peeew! #97: One step closer to finding Clara the Carefree Chicken" },
+        { id: "Yrln7HwA2ck", title: "Peeew! #134: Clara the Carefree Chicken sightings" },
+        { id: "tLfNUMsmv-o", title: "Night Fever S1E5 - Ernie Glam (Clara comes up at 00:28)" },
+      ],
+    },
   },
 };
