@@ -4,6 +4,8 @@
 // they come up (episodeMapOf). No pin means no guess: Bring us home.
 import { entityFor, episodeShort, isPlace, type Entity } from "@/data/entities";
 import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
+import { CLUB_PROFILES } from "@/data/club-profiles";
+import type { CoverDesign } from "@/lib/cover-design";
 import { HOME_HINTS } from "@/data/locations";
 import { episodeById } from "@/data/episodes";
 import { refsOf } from "@/data/episode-refs";
@@ -68,6 +70,18 @@ const SAME_DOOR = 15; // metres: a club's own nights and rooms share its pin
 const AREA =
   /(Street|Avenue|Place|Square|Broadway|Bowery|Manhattan|Village|District|Side|Heights|Park)$/;
 
+/** A Library-style cover for an event next door (Lisa, 27 Nov 2026: "use the library cover style and add covers of the
+ *  event next door"): the venue's own picture from its club page (flyer, ticket, invitation), else a typed cover. */
+function eventCover(x: EventAt, at: string | undefined, metres: number, i: number): CoverDesign {
+  const e = entityFor(x.slug)!;
+  const foot = { mentions: e.refs.reduce((n, r) => n + r.mentions, 0), afterparties: new Set(e.refs.map((r) => r.episode)).size };
+  const pic = x.venue ? CLUB_PROFILES[x.venue]?.portrait?.polaroid : undefined;
+  const where = [at, metres < 20 ? "next door" : `${Math.max(1, Math.round(metres / 80))} min walk`].filter(Boolean).join(" · ");
+  return pic
+    ? { name: e.name, foot, look: "art", src: pic, alt: at ?? e.name, tag: "Next door", lines: [where] }
+    : { name: e.name, foot, look: "type", colour: i % 2 ? "lib-ink" : "lib-pink", kind: where || "Event" };
+}
+
 function band(
   kind: MapBand["kind"],
   here: { lat: number; lng: number },
@@ -101,8 +115,11 @@ function band(
       m: (x.venue ? nearBy.get(x.venue) : undefined) ?? Math.round(metresBetween(x.at, here)),
     }))
     .sort((a, b) => a.m - b.m)
-    .slice(0, 4)
-    .map(({ x, m }) => ({ ...ev(x, m), at: x.venue ? entityFor(x.venue)?.name : undefined }));
+    .slice(0, 8)
+    .map(({ x, m }, i) => {
+      const at = x.venue ? entityFor(x.venue)?.name : undefined;
+      return { ...ev(x, m), at, design: eventCover(x, at, m, i) };
+    });
   return {
     kind,
     pin: { slug: kind === "club" ? slug : slug || null, name, area, tip },

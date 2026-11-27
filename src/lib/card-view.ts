@@ -70,7 +70,9 @@ export type ClubLibraryView = {
     madeBy: { role: string; name: string }[];
     onIt: string[];
   }[];
-  reads: { slug: string; name: string; kind: string; design: CoverDesign; episode: string; code: string; guest: string; time: string; context: string }[];
+  reads: { slug: string; name: string; kind: string; design: CoverDesign; episode: string; code: string; guest: string; time: string; context: string;
+    /** A diary's whole entry about the club, as told on the show (Lisa, 28 Nov 2026: "show the whole diary entry"). */
+    entry?: { time: string; title: string; lines: { who: string; text: string; read?: boolean }[] } | undefined }[];
 };
 
 export type CardView = {

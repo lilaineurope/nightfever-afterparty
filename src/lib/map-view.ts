@@ -1,4 +1,5 @@
 import type { PlaceMap, PlaceNear } from "@/lib/place-view";
+import type { CoverDesign } from "@/lib/cover-design";
 
 /** The map on club, event and living-people pages (Lisa, 27 Nov 2026, "Which page gets what": option B "Around the
  *  block" on clubs and events, the numbered map on living-people pages). Worked out on the server
@@ -19,6 +20,8 @@ export type MapEvent = {
   at?: string | undefined;
   metres?: number | undefined;
   line?: MapLine | undefined;
+  /** Events next door get a Library-style cover (Lisa, 27 Nov 2026): their venue's own picture, or a typed cover. */
+  design?: CoverDesign | undefined;
 };
 
 /** "Around the block": the drawn map band with the club (or the event's venue) in the middle. */

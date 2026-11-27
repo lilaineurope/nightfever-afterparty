@@ -118,7 +118,12 @@ function clubLibraryOf(e: Entity): ClubLibraryView | null {
     const it = bookClub.find((b) => b.name === r.name);
     const m = it?.moments.find((x) => x.episodeId === r.episode && x.time === r.time);
     if (!it || !m) return [];
-    return [{ slug: it.slug, name: it.name, kind: COVER_KIND[it.shelf] ?? it.shelf, design: coverDesign(it, i), episode: m.episodeId, code: m.code, guest: m.guest, time: m.time, context: m.context }];
+    // A diary shows its whole entry: the moment of that episode that names the club, else the moment itself.
+    const said = DIARY_PAGES[it.slug]?.moments.filter((d) => d.episode === m.episodeId);
+    const names = [e.name, ...(e.name.startsWith("Paradise ") ? ["the Garage"] : [])].map((n) => n.toLowerCase());
+    const d = said?.find((d) => d.lines.some((l) => names.some((n) => l.text.toLowerCase().includes(n)))) ?? said?.find((d) => d.time === m.time);
+    const entry = d ? { time: d.time, title: d.title, lines: d.lines } : undefined;
+    return [{ slug: it.slug, name: it.name, kind: COVER_KIND[it.shelf] ?? it.shelf, design: coverDesign(it, i), episode: m.episodeId, code: m.code, guest: m.guest, time: entry?.time ?? m.time, context: m.context, entry }];
   });
   return posters.length || reads.length ? { posters, reads } : null;
 }

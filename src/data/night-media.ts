@@ -59,4 +59,43 @@ export const NIGHT_QUOTES: Record<string, NightQuote[]> = {
         "Well, I sort of thought ahead. The last night of the Garage, I had a party ready to go. Joey Llanos and David DePino, who played at the Garage, were my DJs for the first week or two.",
     },
   ],
+  // Monster Movie Club, Club 57's Tuesday film nights (Lisa, 28 Nov 2026: "do we have more quotes?"). Transcript slips
+  // fixed: Jayne Mansfield, "May of '79", Ann Magnuson.
+  "monster-movie-club": [
+    {
+      episode: "s01e10",
+      who: "Joey Arias",
+      time: "00:28:26",
+      quote:
+        "It opened up as a monster movie club, because we were all the neighborhood, so it was just the gang. It was a little shitty Polish hall underneath the church. They would show films and we'd all be in there screaming and laughing, with the big reel and popcorn. And then eventually, after about a month or so, instead of doing it every Tuesday, Ann started booking events like Prom Night or Girls on Fire or Mud Wrestling or the Art Show.",
+    },
+    {
+      episode: "s04e10",
+      who: "Ann Magnuson",
+      time: "00:35:59",
+      quote:
+        "Tom started to program films, starting with a juvenile delinquent series, and then that moved into Jayne Mansfield movies and Russ Meyer, and also the Monster Movie Club, which was every Tuesday. That didn't happen until May of '79.",
+    },
+    {
+      episode: "s04e10",
+      who: "Ann Magnuson",
+      time: "00:37:29",
+      quote:
+        "It was all done on five cents, basically. And I just liked that. I like things that are not money driven and that require ingenuity. So Club 57 was a perfect place for that.",
+    },
+    {
+      episode: "s05e08",
+      who: "April Palmieri",
+      time: "00:09:22",
+      quote:
+        "I went to Club 57 because they had the Monster Movie Club. That was the first incarnation of their public reaching out to the local kids. So I went to the Monster Movie Club, and John Sex was there with Wendy.",
+    },
+    {
+      episode: "s05e08",
+      who: "April Palmieri",
+      time: "00:10:20",
+      quote:
+        "When I met him at Monster Movie Club, I had my camera, and I said I gotta take your picture - and then Wendy threw herself into the frame.",
+    },
+  ],
 };

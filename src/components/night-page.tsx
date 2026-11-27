@@ -13,32 +13,11 @@ const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const TILT = [-1.2, 0.8, -0.5, 1.1];
 
 /** A club night, theme night or party on its own page (Lisa, 27 Nov 2026: "club night and theme nights need their own
- *  pages, eg closing weekend at paradise", then all 78). Under the club's header: the night's box with its club, what
+ *  pages, eg closing weekend at paradise", then all 78). Under the club's header (the night box went, Lisa 28 Nov): what
  *  the guests said, what was played and filmed there, then the episode lines (CardSections) and the club's other nights. */
 export function NightPageSections({ v, name }: { v: NightPageView; name: string }) {
   return (
     <>
-      <aside className="mx-auto w-full max-w-xl border-2 border-[#111] bg-[#fbf8f1] p-5 font-sans text-sm text-[#111] shadow-[5px_6px_0_#111]">
-        <p className={h}>The {v.kind.toLowerCase()}</p>
-        <dl className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-1.5">
-          <dt className="text-[#6b6460]">Where</dt>
-          <dd className="font-semibold">
-            <Link to="/explore/$slug" params={{ slug: v.club }} className="hover:text-pink">
-              {v.clubName}
-            </Link>
-            , {v.address}
-          </dd>
-          <dt className="text-[#6b6460]">The club</dt>
-          <dd className="font-semibold">{v.years}</dd>
-          <dt className="text-[#6b6460]">Map</dt>
-          <dd className="font-semibold">
-            <Link to="/map" search={{ at: v.club }} className="hover:text-pink">
-              Open the big map &rarr;
-            </Link>
-          </dd>
-        </dl>
-      </aside>
-
       {v.said.length > 0 && (
         <section aria-labelledby="night-said">
           <h2 id="night-said" className={`${h} text-center`}>

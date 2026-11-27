@@ -3,6 +3,7 @@ import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
 import { EntityText } from "@/components/entity-text";
 import { CoverFace } from "@/components/cover-face";
+import { QuoteName } from "@/components/quote-name";
 import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { ClubLibraryView } from "@/lib/card-view";
@@ -143,10 +144,33 @@ export function ClubLibrary({ v, name }: { v: ClubLibraryView; name: string }) {
                     </Link>
                     <Timestamp episodeId={r.episode} time={r.time} />
                   </span>
-                  <span className="mt-1 block text-sm text-muted-foreground">
-                    <EntityText text={r.context} self={name} />
-                  </span>
+                  {!r.entry && (
+                    <span className="mt-1 block text-sm text-muted-foreground">
+                      <EntityText text={r.context} self={name} />
+                    </span>
+                  )}
                 </span>
+                {r.entry && (
+                  // The whole entry, as told on the show (Lisa, 28 Nov 2026: "lots of space next to the poster").
+                  <div className="club-entry col-span-2">
+                    <p className="club-entry-title">{r.entry.title}</p>
+                    {r.entry.lines.map((l, i) => {
+                      const same = i > 0 && r.entry!.lines[i - 1]!.who === l.who;
+                      return (
+                        <p key={i} className={l.read ? "club-entry-read" : undefined}>
+                          {!same && (
+                            <QuoteName
+                              who={l.who}
+                              episodeId={r.episode}
+                              className="club-entry-who"
+                            />
+                          )}
+                          {l.read ? <mark className="diary-mark">{l.text}</mark> : l.text}
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
