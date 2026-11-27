@@ -2,14 +2,14 @@
 // guestbook's "Favourite page" dropdown are all built from it, so a page added or renamed here shows up everywhere.
 // src/data/pages.test.ts fails if a page route exists that isn't listed here.
 
-/** The top menu, in order. */
+/** The top menu, in order (Lisa, 27 Nov 2026: AFTERPARTY, Library, Clubs, Jukebox, Map, Timeline, A–Z, Guestbook). */
 export const PAGES = [
-  { to: "/episodes", label: "Afterparty" },
-  { to: "/timeline", label: "Timeline" },
-  { to: "/jukebox", label: "Jukebox" },
-  { to: "/inside-the-clubs", label: "Clubs" }, // Inside the Clubs, on the menu next to the Jukebox (Lisa, 30 Oct 2026)
+  { to: "/episodes", label: "AFTERPARTY" }, // always upper case (Lisa)
   { to: "/library", label: "Library" }, // the Book Club, renamed and back on the menu (Lisa, 29 Oct 2026)
-  { to: "/map", label: "Map" }, // relaunched 22 Nov 2026 (paper look, free tiles), on the menu between Library and A–Z (Lisa, 22 Nov 2026)
+  { to: "/inside-the-clubs", label: "Clubs" }, // Inside the Clubs (Lisa, 30 Oct 2026)
+  { to: "/jukebox", label: "Jukebox" },
+  { to: "/map", label: "Map" }, // relaunched 22 Nov 2026 (paper look, free tiles)
+  { to: "/timeline", label: "Timeline" },
   { to: "/explore", label: "A–Z" }, // back on the top menu (Lisa, 28 Oct 2026)
   { to: "/guestbook", label: "Guestbook" },
 ] as const;
