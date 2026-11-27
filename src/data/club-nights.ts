@@ -980,7 +980,39 @@ const lbd: ClubNight = {
   ],
 };
 
-export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf, lbd];
+const xn: ClubNight = {
+  slug: "xenon",
+  club: "Xenon",
+  // Lisa, 27 Nov 2026: "turn xenon also in a sounded like this box with youtube and spotify list". Spotify and YouTube ids are
+  // filled in from the Mac (checked on Spotify and YouTube, never guessed); playlists stay PRIVATE until Lisa says "playlists public".
+  note:
+    "Records documented at Xenon (1978-1984): resident DJ Tony Smith's own Xenon mixes and the new wave he slipped into the disco, Gloria Gaynor's I Will Survive video shot on its floor, Klaus Nomi's night on its stage in February 1980, Roxy Music naming it in a song, and Jellybean Benitez, another Xenon DJ. Not one exact night.",
+  sources: [
+    { key: "A", label: "Red Bull Music Academy: Tony Smith interview (2019) - his Xenon audition mix and residency", href: "https://daily.redbullmusicacademy.com/2019/01/tony-smith-interview/" },
+    { key: "B", label: "DJ History: Tony Smith walked barefoot through disco (2024) - the new wave he played at Xenon", href: "https://djhistory.com/read/tony-smith-walked-barefoot-through-disco/" },
+    { key: "C", label: "Wikipedia: Xenon (nightclub) - its DJs, Roxy Music's True to Life", href: "https://en.wikipedia.org/wiki/Xenon_(nightclub)" },
+    { key: "D", label: "Wikipedia: I Will Survive - the 1979 promo video filmed at Xenon", href: "https://en.wikipedia.org/wiki/I_Will_Survive" },
+    { key: "E", label: "Madeline Bocaro: Klaus Nomi - his Xenon show of 25 February 1980", href: "https://madelinex.com/2017/12/02/klaus/" },
+  ],
+  songs: [
+    { title: "After Dark", artist: "Patti Brooks", year: 1978, kind: "played", why: "Tony Smith's audition mix at Xenon - \"next day I had the job\"", sources: ["A", "B"] },
+    { title: "You Keep Me Hangin' On", artist: "The Supremes", year: 1966, kind: "played", why: "In the break of that same audition mix", sources: ["A", "B"] },
+    { title: "Ain't No Mountain High Enough", artist: "Inner Life", year: 1981, kind: "played", why: "Another of Tony Smith's Xenon mixes", sources: ["A"] },
+    { title: "Pop Muzik", artist: "M", year: 1979, kind: "played", why: "Tony Smith slipped new wave into the disco: \"I was playing 'Pop Muzik', Gen X, 'Moskow Diskow', 'Jet Boy Jet Girl'\"", sources: ["B"] },
+    { title: "Moskow Diskow", artist: "Telex", year: 1979, kind: "played", why: "From the same line", sources: ["B"] },
+    { title: "Jet Boy, Jet Girl", artist: "Elton Motello", year: 1977, kind: "played", why: "From the same line", sources: ["B"] },
+    { title: "I Got My Mind Made Up (You Can Get It Girl)", artist: "Instant Funk", year: 1978, kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
+    { title: "Disco Circus", artist: "Martin Circus", year: 1979, kind: "played", why: "Named with his Xenon-years records", sources: ["B"] },
+    { title: "I Will Survive", artist: "Gloria Gaynor", year: 1978, kind: "about", why: "Its promo video was filmed on Xenon's dance floor in 1979", sources: ["C", "D"] },
+    { title: "True to Life", artist: "Roxy Music", year: 1982, kind: "about", why: "The lyrics name Xenon", sources: ["C"] },
+    { title: "Lightning Strikes", artist: "Klaus Nomi", year: 1981, kind: "stage", why: "Klaus Nomi gave a forty-minute show at Xenon on 25 February 1980; a song from his shows", sources: ["E"] },
+    { title: "The Cold Song", artist: "Klaus Nomi", year: 1981, kind: "stage", why: "The aria of his shows", sources: ["E"] },
+    { title: "I Don't Wanna Lose It (Tony Smith remix)", artist: "Bambu", year: 1979, kind: "dj-artist", why: "The Xenon resident's own remix", sources: ["A"] },
+    { title: "Sidewalk Talk", artist: "Jellybean", year: 1984, kind: "dj-artist", why: "The record of Jellybean Benitez, another Xenon DJ", sources: ["A", "C"] },
+  ],
+};
+
+export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf, lbd, xn];
 
 export const clubNightFor = (slug: string) => CLUB_NIGHTS.find((c) => c.slug === slug);
 export { KIND_LABEL, playlistUrl } from "./club-night-labels";
