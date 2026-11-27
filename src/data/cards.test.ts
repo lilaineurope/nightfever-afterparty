@@ -36,6 +36,7 @@ const DISTINCT = new Set(
     ["bar-one", "bern"], ["bar-one", "brian-eno"], ["east-village", "east-village-eye"], ["daisy", "dose"], ["michael-jackson", "michael-jackson-one"], ["raven", "raven-o"], ["green-day", "grind"], ["tabboo", "taboo"], ["ran", "reno"], ["new-wave", "no-wave"], ["raybeats", "robots"], ["cars", "crass"], ["cock", "cookie"], ["tabboo", "tubi"], ["taboo", "tubi"],
     ["cairo", "carrie"], ["new-york", "newark"], ["bar-d-o", "broad"], ["caa", "cece"], ["crass", "cross"], ["cars", "cross"], ["g-a-y", "gia"], ["g-a-y", "go"], ["gia", "go"], ["marco", "morocco"], ["spa", "spy"], ["club-a", "club-abbey"],
     ["caa", "cuica"], ["cece", "cuica"], // the Brazilian drum April played in Pulsallama (S05E08)
+    ["jo-ga", "joe-gage"], // Björk's friend Jóga in Iceland (S06E10)
   ].map((p) => p.sort().join("|")),
 );
 

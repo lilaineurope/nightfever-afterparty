@@ -150,6 +150,12 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s05e08",
     time: "00:25:17",
   },
+  {
+    name: "KD (club kid)",
+    why: "James, after Kenny names KD as his favourite Club Kid: the show needs to get KD on - KD and Kabuki did a monster drag of their own, close to Desi Monster's.",
+    episodeId: "s06e10",
+    time: "00:28:43",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
@@ -302,6 +308,12 @@ export const COME_BACK: InterviewTip[] = [
     why: "The hosts close: they have to have Elyssa back - they only covered the first four chapters of Glitter and Concrete.",
     episodeId: "s04e11",
     time: "01:05:33",
+  },
+  {
+    name: "Kenneth Hash aka Lil' Kenny",
+    why: "James closes: they only got as far as the 2000s, so they will have to have Kenny back to carry on his story.",
+    episodeId: "s06e10",
+    time: "00:43:06",
   },
 ];
 

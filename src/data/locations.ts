@@ -894,6 +894,12 @@ export const LOCATIONS: Located[] = [
   { name: "Ice Palace (Fire Island)", lat: 40.6604, lng: -73.0888, area: "Cherry Grove, Fire Island", tip: "At the Cherry Grove Beach Hotel" },
   { name: "East 9th Street", lat: 40.729, lng: -73.987, area: "East Village" },
   { name: "Flushing, Queens", lat: 40.7675, lng: -73.8331, area: "Queens" },
+  // S06E10 Kenneth Hash aka Lil' Kenny
+  { name: "Rockefeller Center", lat: 40.7587, lng: -73.9787, area: "Midtown", tip: "The ice rink under the Christmas tree" },
+  { name: "James A. Farley Building", lat: 40.7505, lng: -73.9965, area: "Midtown West", tip: "421 Eighth Avenue, across from Madison Square Garden" },
+  { name: "Huntington Beach", lat: 33.6603, lng: -117.9992, area: "Orange County, California" },
+  { name: "Orange County", lat: 33.7175, lng: -117.8311, area: "California" },
+  { name: "Iceland", lat: 64.9631, lng: -19.0208, area: "Iceland" },
   { name: "Metro (Chicago)", lat: 41.9496, lng: -87.6588, area: "Wrigleyville", tip: "3730 North Clark Street" },
 ];
 
@@ -902,6 +908,8 @@ export const LOCATIONS: Located[] = [
  * shown on the Clubs page and the map so a visitor who remembers the address can tell us.
  */
 export const HOME_HINTS: Record<string, string> = {
+  "J's (New York)": "The bar Kenny went on to after the pizza-outfit night - you checked in your own liquor; there was a pool table and pinball. Which street?",
+  "Waltpaper's gallery": "Walt's gallery, where Kenny worked in the late 1990s - which street?",
   "Club Nu": "A Miami Beach club of the 1980s where April and John danced - which street?",
   "Pulsallama's Easter show": "The Pulsallama show where someone threw an egg on stage - which club was it?",
   "Lulu Belle's": "A Harlem drag club of the 1920s and 30s, James says - which street?",
