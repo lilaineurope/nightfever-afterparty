@@ -8,7 +8,7 @@ import type { RandomNight, RandomPick } from "@/lib/random-pick";
 // of every pages, for fun"; 28 Nov 2026, option C: "just show the version where you can see the choices and pictures already
 // and then you can spin again if you like"). Four reels - who you meet, where you go, what the DJ plays, what you take home -
 // already filled in with their pictures, one line that tells the night, and "Spin again!". It sits in the shared SiteFooter
-// right above "Got a suggestion for this page?", so every page gets it. The night is drawn on the server
+// right above "Got a suggestion for this page?", so every page gets it - except the guest AFTERPARTY pages (Lisa, 28 Nov 2026). The night is drawn on the server
 // (src/lib/random-pick.server.ts) as the box comes near the screen, and every pick opens a page on this site.
 
 const REELS: { key: keyof RandomNight; q: string }[] = [
@@ -64,6 +64,9 @@ function Window({ p }: { p: RandomPick }) {
   );
 }
 
+/** A guest's AFTERPARTY page (/episodes/s05e03, /episodes/s05e07a) - the AFTERPARTY list at /episodes keeps the box. */
+const isGuestAfterparty = (path: string) => /^\/episodes\/s\d{2}e\d{2}[a-z]?\/?$/.test(path);
+
 export function RandomPickBox({ className = "" }: { className?: string }) {
   const draw = useServerFn(getRandomNight);
   const router = useRouter();
@@ -118,6 +121,9 @@ export function RandomPickBox({ className = "" }: { className?: string }) {
     e.preventDefault();
     void router.navigate({ href });
   };
+
+  // Every page except the guest AFTERPARTY pages (Lisa, 28 Nov 2026: "publish for all pages, except guest afterparty pages").
+  if (isGuestAfterparty(pathname)) return null;
 
   const spinning = state === "spinning";
   // The links carry bg-transparent so the episode pages' pink text-link look (main.episode-page a, styles.css) leaves them alone.
