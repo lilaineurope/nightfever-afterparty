@@ -660,10 +660,32 @@ import richardHellPhoto from "@/assets/people/richard-hell-photo.webp";
 import richardHellPolaroid from "@/assets/people/richard-hell-polaroid.webp";
 import pattiSmithPhoto from "@/assets/people/patti-smith-photo.webp";
 import pattiSmithPolaroid from "@/assets/people/patti-smith-polaroid.webp";
+import philipGlassPhoto from "@/assets/people/philip-glass-photo.webp";
+import philipGlassPolaroid from "@/assets/people/philip-glass-polaroid.webp";
+import tonyDefriesPhoto from "@/assets/people/tony-defries-photo.webp";
+import tonyDefriesPolaroid from "@/assets/people/tony-defries-polaroid.webp";
 import peppoVaniniPhoto from "@/assets/people/peppo-vanini-photo.webp";
 import peppoVaniniPolaroid from "@/assets/people/peppo-vanini-polaroid.webp";
 import claraPhoto from "@/assets/people/clara-the-carefree-chicken-photo.webp";
 import claraPolaroid from "@/assets/people/clara-the-carefree-chicken-polaroid.webp";
+import andrewLoganPhoto from "@/assets/people/andrew-logan-photo.webp";
+import andrewLoganPolaroid from "@/assets/people/andrew-logan-polaroid.webp";
+import angeloBadalamentiPhoto from "@/assets/people/angelo-badalamenti-photo.webp";
+import angeloBadalamentiPolaroid from "@/assets/people/angelo-badalamenti-polaroid.webp";
+import charlesJamesPhoto from "@/assets/people/charles-james-photo.webp";
+import charlesJamesPolaroid from "@/assets/people/charles-james-polaroid.webp";
+import claudeMontanaPhoto from "@/assets/people/claude-montana-photo.webp";
+import claudeMontanaPolaroid from "@/assets/people/claude-montana-polaroid.webp";
+import davidDalrymplePhoto from "@/assets/people/david-dalrymple-photo.webp";
+import davidDalrymplePolaroid from "@/assets/people/david-dalrymple-polaroid.webp";
+import jasperConranPhoto from "@/assets/people/jasper-conran-photo.webp";
+import jasperConranPolaroid from "@/assets/people/jasper-conran-polaroid.webp";
+import normaKamaliPhoto from "@/assets/people/norma-kamali-photo.webp";
+import normaKamaliPolaroid from "@/assets/people/norma-kamali-polaroid.webp";
+import rachelAuburnPhoto from "@/assets/people/rachel-auburn-photo.webp";
+import rachelAuburnPolaroid from "@/assets/people/rachel-auburn-polaroid.webp";
+import stephenJonesPhoto from "@/assets/people/stephen-jones-photo.webp";
+import stephenJonesPolaroid from "@/assets/people/stephen-jones-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -1015,8 +1037,20 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "billy-idol": { photo: billyIdolPhoto, polaroid: billyIdolPolaroid, focus: "25%", credit: `Portrait after a photo by possan at the Peace & Love Festival, 2012 (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
   "richard-hell": { photo: richardHellPhoto, polaroid: richardHellPolaroid, focus: "30%", credit: `Portrait after a photo by David Shankbone, 2008 (CC BY 3.0; our version is CC BY 3.0 too), ${STYLE}` },
   "patti-smith": { photo: pattiSmithPhoto, polaroid: pattiSmithPolaroid, focus: "25%", credit: `Portrait after a 1978 photo from UCLA Library Special Collections (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
+  "philip-glass": { photo: philipGlassPhoto, polaroid: philipGlassPolaroid, focus: "30%", credit: `Portrait after a 2008 photo by Lelli e Masotti for MITO SettembreMusica, Milan (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
+  "tony-defries": { photo: tonyDefriesPhoto, polaroid: tonyDefriesPolaroid, focus: "25%", credit: `Portrait after a 2017 photo by Marlene Defries (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
   // Lisa, 27 Nov 2026: "peppo - make a polaroid". Gemini, after 1980s LaPresse press photos (references only, not on the site).
   "peppo-vanini": { photo: peppoVaniniPhoto, polaroid: peppoVaniniPolaroid, focus: "8%", credit: "Illustration made with Gemini, not a photo" },
   // Lisa, 27 Nov 2026 ("yes polaroid"): Gemini drawing of the chicken suit after the photo in Ernie Glam's Peeew! #90 thumbnail.
   "clara-the-carefree-chicken": { photo: claraPhoto, polaroid: claraPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Lisa, 27 Nov 2026: sticker batch 1 ("everything else okay and publish"). Gemini drawings after web/Commons reference photos (references not on the site).
+  "andrew-logan": { photo: andrewLoganPhoto, polaroid: andrewLoganPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "angelo-badalamenti": { photo: angeloBadalamentiPhoto, polaroid: angeloBadalamentiPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "charles-james": { photo: charlesJamesPhoto, polaroid: charlesJamesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "claude-montana": { photo: claudeMontanaPhoto, polaroid: claudeMontanaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "david-dalrymple": { photo: davidDalrymplePhoto, polaroid: davidDalrymplePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jasper-conran": { photo: jasperConranPhoto, polaroid: jasperConranPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "norma-kamali": { photo: normaKamaliPhoto, polaroid: normaKamaliPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "rachel-auburn": { photo: rachelAuburnPhoto, polaroid: rachelAuburnPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "stephen-jones": { photo: stephenJonesPhoto, polaroid: stephenJonesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };

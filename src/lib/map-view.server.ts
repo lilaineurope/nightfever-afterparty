@@ -1,10 +1,13 @@
 // Server side of the map on club, event and living-people pages (src/lib/map-view.ts; Lisa, 27 Nov 2026: "yes to all
 // Which page gets what"). Clubs and events get "Around the block", the drawn band of the place pages with the club in the
-// middle; living people get their rooms as numbered pins on a drawn New York. No pin means no guess: Bring us home.
+// middle; living people get their rooms as numbered pins on a drawn New York, and each AFTERPARTY its places in the order
+// they come up (episodeMapOf). No pin means no guess: Bring us home.
 import { entityFor, episodeShort, isPlace, type Entity } from "@/data/entities";
 import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
 import { HOME_HINTS } from "@/data/locations";
 import { episodeById } from "@/data/episodes";
+import { refsOf } from "@/data/episode-refs";
+import { toSeconds } from "@/lib/time";
 import type { PersonProfile } from "@/data/person-profiles";
 import {
   aroundMap,
@@ -62,7 +65,8 @@ const pinnedEvents = (): EventAt[] =>
 
 const SAME_DOOR = 15; // metres: a club's own nights and rooms share its pin
 /** Pins that name a street, square or neighbourhood (St. Marks Place, Times Square, Midtown Manhattan), not a door. */
-const AREA = /(Street|Avenue|Place|Square|Broadway|Bowery|Manhattan|Village|District|Side|Heights|Park)$/;
+const AREA =
+  /(Street|Avenue|Place|Square|Broadway|Bowery|Manhattan|Village|District|Side|Heights|Park)$/;
 
 function band(
   kind: MapBand["kind"],
@@ -76,7 +80,11 @@ function band(
   // Cards at the same door (the club's own nights, a hotel's bar) are the club itself here, not dots of their own; and
   // streets, squares and neighbourhoods are where it is, not what is around it.
   const door = pins()
-    .filter((p) => metresBetween(p, here) < SAME_DOOR || (!p.club && AREA.test(p.name.replace(/\s*\(.*\)$/, ""))))
+    .filter(
+      (p) =>
+        metresBetween(p, here) < SAME_DOOR ||
+        (!p.club && AREA.test(p.name.replace(/\s*\(.*\)$/, ""))),
+    )
     .map((p) => p.slug);
   const { map, near } = aroundMap(here, slug, name, BAND, door);
   const ev = (x: EventAt, metres?: number): MapEvent => {
@@ -185,7 +193,50 @@ export function roomsMapOf(p: PersonProfile, name: string): RoomsMap | null {
   }
   if (!stops.length && !home.length && !away.length) return null;
   if (!stops.length) return { stops: [], map: null, home, away };
+  return { ...drawnCity(stops), home, away };
+}
 
+/** One AFTERPARTY's places as numbered stops (Lisa, 27 Nov 2026, "M2 plus M3 button"): every club and place the guest
+ *  names, in the order they come up in the episode, each with its own ▶ time code and what was said. Not one night: the
+ *  order is the order of the talk. No pin means no guess (Bring us home); pins outside New York go to "Further away". */
+export function episodeMapOf(id: string): RoomsMap | null {
+  const ep = episodeById(id as never);
+  const stops: (Pinned & { line?: MapLine | undefined })[] = [];
+  const home: RoomsMap["home"] = [];
+  const away: RoomsMap["away"] = [];
+  const seen = new Set<string>();
+  const rows = refsOf(id)
+    .filter((r) => isPlace(r.category) && r.time && r.time !== "On camera")
+    .sort((a, b) => toSeconds(a.time) - toSeconds(b.time));
+  for (const r of rows) {
+    const e = entityFor(r.name);
+    if (!e || !isPlace(e.category) || seen.has(e.slug)) continue;
+    seen.add(e.slug);
+    const pin = pins().find((x) => x.slug === e.slug);
+    const line: MapLine = {
+      episode: id,
+      short: episodeShort(id),
+      guest: ep.guest,
+      time: r.time,
+      context: r.context,
+    };
+    // A whole city, country or neighbourhood (New York, East Village, Germany) is where the stops are, not a stop.
+    if (pin && !pin.club && (pin.area === e.name || AREA.test(e.name.replace(/\s*\(.*\)$/, ""))))
+      continue;
+    if (!pin) home.push({ slug: e.slug, name: e.name, hint: HOME_HINTS[e.name], line });
+    else if (!inNewYork(pin)) away.push({ slug: e.slug, name: e.name, area: pin.area });
+    else stops.push({ ...pin, line });
+  }
+  if (!stops.length && !home.length) return null;
+  if (!stops.length) return { stops: [], map: null, home, away };
+  return { ...drawnCity(stops), home, away };
+}
+
+/** The drawn New York behind numbered stops, and where each number sits. */
+function drawnCity(stops: (Pinned & { line?: MapLine | undefined })[]): {
+  stops: MapStop[];
+  map: CityMap;
+} {
   // Turn the map 29 degrees so Manhattan's avenues run straight up, then fit the stops (at least 1.6 km across).
   const o = {
     lat: stops.reduce((s, x) => s + x.lat, 0) / stops.length,
@@ -294,8 +345,10 @@ export function roomsMapOf(p: PersonProfile, name: string): RoomsMap | null {
       y: Math.round(d.y * 10) / 10,
       tx: Math.round(placed[i]!.x * 10) / 10,
       ty: Math.round(placed[i]!.y * 10) / 10,
+      lat: x.lat,
+      lng: x.lng,
       line: x.line,
     };
   });
-  return { stops: out, map, home, away };
+  return { stops: out, map };
 }

@@ -144,7 +144,7 @@ function BigJukebox({ v }: { v: ScreenPageView }) {
             {list.map((t, i) => (
               <li key={t.id}>
                 <button type="button" aria-pressed={now?.id === t.id} onClick={() => setNow(t)}>
-                  <i>{t.full ? "▶" : `A${i + 1}`}</i>
+                  <i aria-hidden>{now?.id === t.id ? "♫" : "▶"}</i>
                   <span>
                     {t.full ? <b>In full: </b> : null}
                     {t.title} {t.short && <small>· {t.short}</small>}
