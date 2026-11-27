@@ -101,7 +101,7 @@ export function ClubProfileSections({ c, name, slug, night, parts }: { c: ClubPr
             {c.timelineEvent && (
               <Link to="/timeline" hash={`ev-${c.timelineEvent}`} className="text-gold hover:text-pink">On the Timeline &rarr;</Link>
             )}
-            <Link to="/map" className="text-gold hover:text-pink">On the map &rarr;</Link>
+            <Link to="/map" search={{ at: slug }} className="text-gold hover:text-pink">On the map &rarr;</Link>
           </p>
         </div>
         <div>

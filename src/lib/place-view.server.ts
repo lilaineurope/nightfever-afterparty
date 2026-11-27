@@ -3,31 +3,33 @@ import { entityFor, episodeShort, type Entity } from "@/data/entities";
 import { LOCATIONS, type Located } from "@/data/locations";
 import { episodeById } from "@/data/episodes";
 import { polaroidThumb } from "@/lib/polaroids";
-import type { PlacePin, PlaceView } from "@/lib/place-view";
+import type { PlaceMap, PlacePin, PlaceView } from "@/lib/place-view";
 
-type Pinned = Located & { slug: string; name: string; club: boolean; mentions: number };
+export type Pinned = Located & { slug: string; name: string; club: boolean; mentions: number };
 
 let pinned: Pinned[] | null = null;
-const pins = (): Pinned[] =>
+export const pins = (): Pinned[] =>
   (pinned ??= LOCATIONS.flatMap((l) => {
     const e = entityFor(l.name);
     return e ? [{ ...l, slug: e.slug, name: e.name, club: e.category === "Club", mentions: e.refs.reduce((n, r) => n + r.mentions, 0) }] : [];
   }));
 
 const M_LAT = 111_000;
-const metresBetween = (a: { lat: number; lng: number }, b: { lat: number; lng: number }) =>
+export const metresBetween = (a: { lat: number; lng: number }, b: { lat: number; lng: number }) =>
   Math.hypot((a.lat - b.lat) * M_LAT, (a.lng - b.lng) * M_LAT * Math.cos((a.lat * Math.PI) / 180));
 
-const inNewYork = (p: { lat: number; lng: number }) => p.lat > 40.68 && p.lat < 40.88 && p.lng > -74.03 && p.lng < -73.9;
+export const inNewYork = (p: { lat: number; lng: number }) => p.lat > 40.68 && p.lat < 40.88 && p.lng > -74.03 && p.lng < -73.9;
 
 // The drawing: 1200 x 520, drawn right-aligned (xMaxYMid slice): a narrow screen crops the left side, and on desktop the
 // name card covers the left. So the place sits right of centre and every pin stays inside BOX, which is visible on a
 // phone (the right ~720 units) and clear of the name card from about 1000 px wide; top and bottom keep clear of the crop
 // on very wide screens.
-const W = 1200;
-const H = 520;
-const SELF = { x: 950, y: 255 };
-const BOX = { left: 760, right: 1170, top: 70, bottom: 450 };
+/** Where the drawing puts the place and the box its pins and names keep inside. */
+export type MapLayout = { count?: number; w: number; h: number; self: { x: number; y: number }; box: { left: number; right: number; top: number; bottom: number } };
+const HEADER: MapLayout = { w: 1200, h: 520, self: { x: 950, y: 255 }, box: { left: 760, right: 1170, top: 70, bottom: 450 } };
+/** "Around the block" (Lisa, 27 Nov 2026, option B on club and event pages): a band of its own, the place in the middle.
+ *  Phones crop both sides (xMidYMid slice), so the near pins sit in the middle and the far ones spread to the sides. */
+export const BAND: MapLayout = { count: 14, w: 1200, h: 440, self: { x: 600, y: 235 }, box: { left: 60, right: 1170, top: 50, bottom: 400 } };
 // Manhattan's grid runs 29 degrees off true north: turning the map by it makes the avenues run straight up the page.
 const TURN = (29 * Math.PI) / 180;
 // Label widths in viewBox units per character (13px mono labels, 18px flyer type for the place itself).
@@ -63,9 +65,17 @@ export function placeView(e: Entity): PlaceView {
   const mentions = e.refs.reduce((s, r) => s + r.mentions, 0);
   if (!here) return { map: null, near: [], who, mentions };
 
+  return { geo: { lat: here.lat, lng: here.lng }, area: here.area, tip: here.tip, ...aroundMap(here, e.slug, e.name, HEADER), who, mentions };
+}
+
+/** The drawn map around one pin and its nearest pins (place headers, and the club and event bands). `selfName` is the
+ *  name by the pink pin; `skip` lists cards that share the pin and must not show as their own dot (the club's own nights). */
+export function aroundMap(here: { lat: number; lng: number }, slug: string, selfName0: string, L: MapLayout, skip: string[] = []): { map: PlaceMap; near: PlaceView["near"] } {
+  const { w: W, h: H, self: SELF, box: BOX } = L;
+  const e = { slug, name: selfName0 };
   // Around the corner: the nearest pins within 900 m; a city or country with nothing that close shows its nearest pins
   // further away instead, so London shows the London places and Paris the Paris ones.
-  const seen = new Set([e.slug]);
+  const seen = new Set([e.slug, ...skip]);
   const others = pins()
     .filter((p) => !seen.has(p.slug) && (seen.add(p.slug), true))
     .map((p) => ({ p, m: metresBetween(here, p) }))
@@ -74,7 +84,7 @@ export function placeView(e: Entity): PlaceView {
   const venues = others.filter(
     (x) => !(x.p.club && others.some((y) => y !== x && y.p.club && y.p.mentions > x.p.mentions && metresBetween(x.p, y.p) < 15)),
   );
-  let close = venues.filter((x) => x.m <= 900).slice(0, 10);
+  let close = venues.filter((x) => x.m <= 900).slice(0, L.count ?? 10);
   if (close.length < 3) close = venues.filter((x) => x.m <= 300_000).slice(0, 8);
 
   const ny = inNewYork(here);
@@ -135,9 +145,6 @@ export function placeView(e: Entity): PlaceView {
   });
   const bar = NICE.find((m) => m * s >= 90) ?? NICE[NICE.length - 1]!;
   return {
-    geo: { lat: here.lat, lng: here.lng },
-    area: here.area,
-    tip: here.tip,
     map: {
       w: W,
       h: H,
@@ -149,7 +156,5 @@ export function placeView(e: Entity): PlaceView {
       scale: mapPins.length ? { px: Math.round(bar * s), label: label(bar) } : null,
     },
     near: close.map(({ p, m }) => ({ slug: p.slug, name: p.name, club: p.club, metres: Math.round(m) })),
-    who,
-    mentions,
   };
 }

@@ -344,7 +344,7 @@ export const LOCATIONS: Located[] = [
   { name: "Wigstock", lat: 40.7265, lng: -73.9815, area: "East Village" },
   { name: "Williamsburg Bridge", lat: 40.7135, lng: -73.9726, area: "Lower East Side" },
   { name: "Wollman Rink", lat: 40.7678, lng: -73.9745, area: "Central Park" },
-  { name: "Xenon", lat: 40.7590, lng: -73.9845, area: "Times Square" },
+  { name: "Xenon", lat: 40.7562, lng: -73.9848, area: "Times Square", tip: "124 West 43rd Street, the old Henry Miller's Theatre" },
   { name: "Private Eyes", lat: 40.7410, lng: -73.9918, area: "Flatiron" },
   { name: "New York University", lat: 40.7295, lng: -73.9965, area: "Greenwich Village" },
   { name: "The Gaiety", lat: 40.7590, lng: -73.9862, area: "Times Square" },
