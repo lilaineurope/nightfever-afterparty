@@ -36,6 +36,9 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Wet underwear contest", at: "Pyramid Club" },
   { event: "Brown Party", at: "Jackie 60" },
   { event: "Night of a Thousand Stevies", at: "Jackie 60" },
+  // Dean Johnson's nights (Lisa, 27 Nov 2026, "each item needs a page")
+  { event: "Rock 'n' Roll Fag Bar", at: "The World", tip: "Tuesdays from 1987" },
+  { event: "HomoCorps", at: "CBGB", tip: "Gay, lesbian and trans rock bands, monthly" },
   { event: "Silence of the Lunch Pails", at: "Jackie 60" },
   { event: "Christopher's satanic 20th birthday party", at: "Limelight", tip: "At Disco 2000" },
   { event: "Blaine Trump's Disco 2000 dinner party", at: "Limelight" },

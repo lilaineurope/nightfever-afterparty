@@ -218,9 +218,13 @@ function pressView(e: Entity, shelf: string): PressView | null {
 }
 
 /** "The story" (Lisa, 23 Nov 2026): names and works that have an A–Z card link to it; a chapter about a work shows its cover. */
-export function storyView(e: Entity): StoryView | null {
+export function storyView(e: Entity, withCover = false): StoryView | null {
   const st = ITEM_STORIES[e.slug];
   if (!st) return null;
+  // Songs, bands and nights have no cover in their page header, so it sits beside the story (Lisa, 27 Nov 2026: "dean's work
+  // needs cover designs and each item needs a page").
+  const c = withCover ? coverFor(e.name) : undefined;
+  const cover = c?.kind === "book" && c.src ? { src: c.src, credit: c.credit, square: e.category === "Music" } : undefined;
   const secs = (at: string) => at.split(":").reduce((n, x) => n * 60 + Number(x), 0);
   const card = (name: string) => {
     const c = entityFor(name);
@@ -243,6 +247,7 @@ export function storyView(e: Entity): StoryView | null {
       return { ...r, slug: c?.slug, mast: m?.src };
     }),
     sources: st.sources,
+    cover,
   };
 }
 

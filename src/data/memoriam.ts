@@ -753,9 +753,10 @@ export const MEMORIAM: Record<string, Memoriam> = {
     timeline: [
       ["1961", "Born the son of a preacher in Massachusetts"],
       ["1979", "Moves to New York to study film at NYU"],
-      ["1980s", "Fronts Dean and the Weenies at the Pyramid, Danceteria, Area and the Cat Club"],
+      ["1980s", "Fronts Dean and the Weenies at the Pyramid, Danceteria, Area and the Cat Club; their first record, 'Chicken', comes out in 1987"],
       ["1980s", "Plays Herod in Sally Randall's Jesus Christ Superstar"],
-      ["Late 1980s", "Runs the Rock and Roll Fag Bar on Tuesdays at the World"],
+      ["1987", "Starts Rock 'n' Roll Fag Bar, Tuesdays at the World"],
+      ["1988", "Sings 'F*ck You' in the film Mondo New York"],
       ["1990s", "Fronts the Velvet Mafia and starts HomoCorps, a night of gay and trans rock bands at CBGB"],
       ["2007", "Dies in Washington, D.C., aged 46"],
       ["2025", "The documentary The Big Johnson, by Lola Rocknrolla"],
