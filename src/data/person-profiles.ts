@@ -1792,4 +1792,61 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     ],
     also: { heading: "Clara's flock", names: ["Ernie Glam", "James St. James", "Michael Musto", "Moby", "Amanda Lepore", "Hans Ulrich", "Clara the Chicken suit", "Peeew!", "Fabulousity"] },
   },
+  // The next five top-searched pages (Search Console 31 Oct - 27 Nov 2026; Lisa, 27 Nov 2026: "yes"). Quotes follow from
+  // the transcripts on Lisa's Mac.
+  "house-of-xtravaganza": {
+    first: "the House",
+    story:
+      "The ballroom house Angie Xtravaganza founded in 1982 with Hector Xtravaganza, and mothered until she died. Mostly Latino in a mostly African-American ball scene - which meant, Luis says, they had to work harder and be fiercer. Everybody wanted to be an Xtravaganza. The house opened the first Love Ball with Willi Ninja, made the Sound Factory its home, sent Jose and Luis to dance for Madonna, and the world met it in Paris Is Burning.",
+    timeline: [
+      ["1982", "Angie Xtravaganza founds the house with Hector Xtravaganza and becomes its mother"],
+      ["Late 80s", "At home at the Sound Factory: after the club closes, the Xtravaganzas go to the park with Junior Vasquez's boom box"],
+      ["1989", "Opens the first Love Ball with Willi Ninja"],
+      ["1990", "Paris Is Burning comes out; Jose and Luis Xtravaganza dance in Madonna's Vogue and on Blond Ambition"],
+      ["1993", "Mother Angie dies, aged 28; Hector keeps the house going"],
+    ],
+    liftedUp: ["Luis Xtravaganza Camacho", "Jose Xtravaganza", "Venus Xtravaganza", "David Ian Xtravaganza"],
+    rooms: ["Sound Factory", "Love Ball", "Red Zone", "Voguing", "Paris Is Burning"],
+    also: { heading: "The family", names: ["Angie Xtravaganza", "Hector Xtravaganza", "Willi Ninja", "Junior Vasquez", "Madonna", "Chi Chi Valenti & Johnny Dynell", "Nations"] },
+    said: [],
+  },
+  "laurie-pike": {
+    story:
+      "Downtown's hostess with a microphone: she hosted Manhattan Cable, the cable show about New York nights, and at the first Love Ball in 1989 she was the MC for the cameras, as Randy and Fenton remember it.",
+    timeline: [
+      ["Late 80s", "Hosts Manhattan Cable"],
+      ["1989", "MC for the cameras at the first Love Ball"],
+    ],
+    liftedUp: [],
+    rooms: ["Manhattan Cable", "Love Ball"],
+    also: { heading: "On the show with her", names: ["Fenton Bailey", "Randy Barbato", "Willi Ninja", "House of Xtravaganza"] },
+    said: [],
+  },
+  "lynn-wagenknecht": {
+    story:
+      "Keith McNally's wife and partner in the restaurants that fed downtown: the Odeon, then Cafe Luxembourg, and with Nell Campbell the club Nell's. After the divorce, Nell says, Lynn kept those three.",
+    timeline: [
+      ["1980", "Opens the Odeon in Tribeca with Keith McNally"],
+      ["1983", "Cafe Luxembourg on the Upper West Side"],
+      ["Fall 1986", "Opens Nell's on West 14th Street with Nell Campbell and Keith McNally"],
+      ["Later", "Keeps the Odeon, Cafe Luxembourg and Nell's after the divorce"],
+    ],
+    liftedUp: [],
+    rooms: ["Odeon", "Cafe Luxembourg", "Nell's"],
+    also: { heading: "At her tables", names: ["Keith McNally", "Nell Campbell"] },
+    said: [],
+  },
+  "serge-becker": {
+    story:
+      "Eric Goode's collaborator from the Area years. Together they built MK in an old bank on Fifth Avenue - the supper club Andy Warhol wanted to be a partner in - and Peter Gatien's Club USA in Times Square, with its giant slide.",
+    timeline: [
+      ["1983", "Works with Eric Goode at Area"],
+      ["Mar 1988", "Opens MK with Eric Goode at 204 Fifth Avenue"],
+      ["1992", "Builds Club USA for Peter Gatien with Eric Goode"],
+    ],
+    liftedUp: [],
+    rooms: ["Area", "MK", "Club USA", "Mudd Club"],
+    also: { heading: "Who he built them with", names: ["Eric Goode", "Shawn Hausman", "Peter Gatien", "Richard Boch"] },
+    said: [],
+  },
 };
