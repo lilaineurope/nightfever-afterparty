@@ -535,6 +535,9 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Screamin' Rachael Cain": [
     { title: "Screamin' Rachael – 'My Main Man'", kind: "Music", role: "Sang it" },
     { title: "Screamin' Rachael – 'Fun with Bad Boys'", kind: "Music", role: "Sang it", year: 1987 },
+    { title: "Z-Factor & Jesse Saunders – 'Fantasy'", kind: "Music", role: "Sang it", year: 1984 }, // S05E09
+    { title: "Screamin' Rachael – 'Give Me My Freedom (Murder in Clubland)'", kind: "Music", role: "Sang it" }, // S05E09
+    { title: "Screamin' Rachael – 'The Real Thing'", kind: "Music", role: "Sang it" }, // S05E09: video shot at the World
     { title: "Trax Records", kind: "Music", role: "Runs it" },
   ],
   "Junior Vasquez": [

@@ -19,6 +19,13 @@ export type MentorKind = "lifted" | "stood" | "door";
 export type MentorLink = { mentor: string; mentee: string; episode: string; time: string; line: string; kind?: MentorKind; told?: string };
 
 export const MENTOR_LINKS: MentorLink[] = [
+  // S05E09 Screamin' Rachael Cain
+  { mentor: "Michael Alig", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:07:12", line: "Took to her right away, booked her and helped her along, as James and Rachael remember it", kind: "door" },
+  { mentor: "Suz (Columbia Pictures Music)", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:08:09", line: "One of the people who helped Rachael most in her first New York days, she says", kind: "stood" },
+  { mentor: "DD (introduced Rachael to Musto)", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:10:06", line: "A stranger who showed lost Rachael the way, then introduced her to Michael Musto", kind: "door" },
+  { mentor: "Jay B. Ross", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:15:50", line: "Her first manager, who sent her to sing 'Fantasy'", kind: "door" },
+  { mentor: "Larry Sherman", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:51:12", line: "Asked his star artist back to Trax in Cannes and made her president, as she tells it", kind: "lifted" },
+  { mentor: "Robert Williams (the Warehouse)", mentee: "Frankie Knuckles", episode: "s05e09", time: "00:14:36", line: "Brought Frankie Knuckles to Chicago, as Rachael tells it", kind: "door" },
   { mentor: "Michael Musto", mentee: "James St. James", episode: "s06e01", time: "00:18:30", line: "James's early mentor and plus-one" },
   { mentor: "Michael Musto", mentee: "Larry Tee", episode: "s03e08", time: "00:18:35", line: "Got Larry and friends into Keith Haring's parties and Warhol's book signings", kind: "door" },
   { mentor: "Sylvia Miles", mentee: "Michael Musto", episode: "s01e02", time: "00:07:15", line: "An early mentor who taught Musto the social game" },

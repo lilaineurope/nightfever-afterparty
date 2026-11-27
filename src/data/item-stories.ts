@@ -40,6 +40,70 @@ export type ItemStory = {
 // afterparty guests ... and to all future episodes"): scripts/item-stories-auto.py writes item-stories-auto.json from the
 // work's Wikipedia page and Wikidata credits. A story written here by hand always wins.
 const HAND: Record<string, ItemStory> = {
+  // S05E09 Screamin' Rachael Cain (27 Nov 2026)
+  "z-factor-and-jesse-saunders-fantasy": {
+    intro: "The Chicago record credited as the first house song, made by Z-Factor and Jesse Saunders with Screamin' Rachael singing.",
+    facts: [
+      { label: "Out", value: "1984" },
+      { label: "By", value: "Z-Factor & Jesse Saunders" },
+      { label: "Sung by", value: "Screamin' Rachael Cain" },
+      { label: "Label", value: "Mitchbal Records" },
+    ],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }, { name: "Jesse Saunders" }, { name: "Vince Lawrence" }],
+    since: [
+      { when: "On the show", what: "James introduces it as credited as the first house music song ever.", source: "S05E09", episode: "s05e09", time: "00:00:53" },
+      { when: "On the show", what: "Rachael says her manager sent her to sing it and she didn't even like it at first - years later she saw how important it was.", source: "S05E09", episode: "s05e09", time: "00:16:15" },
+    ],
+    sources: ["The record's own label credits (MusicBrainz)", "S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "screamin-rachael-give-me-my-freedom": {
+    intro: "Screamin' Rachael's song about the Club Kid rumours after Angel Melendez went missing, with a backward loop asking 'Michael, where's Angel?'.",
+    facts: [
+      { label: "Sung by", value: "Screamin' Rachael Cain" },
+      { label: "Also known as", value: "Murder in Clubland" },
+    ],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }],
+    since: [
+      { when: "On the show", what: "James and Fenton remember it from Party Monster - 'Michael, where's Angel?'", source: "S05E09", episode: "s05e09", time: "00:01:28" },
+      { when: "On the show", what: "Rachael says she debuted it at the Honey Pot, and that Michael asked her that night whether the song said he had killed Angel.", source: "S05E09", episode: "s05e09", time: "00:42:02" },
+    ],
+    sources: ["Screamin' Rachael's Wikipedia page", "S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "screamin-rachael-fun-with-bad-boys": {
+    intro: "Screamin' Rachael's dance record of the late 1980s.",
+    facts: [
+      { label: "Out", value: "1987" },
+      { label: "Sung by", value: "Screamin' Rachael Cain" },
+    ],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }],
+    since: [
+      { when: "On the show", what: "Rachael says it was so big in the Building days that many people thought she was a drag queen.", source: "S05E09", episode: "s05e09", time: "00:24:27" },
+    ],
+    sources: ["S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "screamin-rachael-the-real-thing": {
+    intro: "A Screamin' Rachael song whose music video was shot at the World.",
+    facts: [{ label: "Sung by", value: "Screamin' Rachael Cain" }],
+    inIt: [{ name: "Screamin' Rachael Cain", note: "Sings it" }],
+    since: [
+      { when: "On the show", what: "Rachael says she shot the music video at the World, the club she loved.", source: "S05E09", episode: "s05e09", time: "00:21:38" },
+    ],
+    sources: ["S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "world-captured-by-stephan-lupino": {
+    intro: "Stephan Lupino's photo book of the World, the club at 254 East 2nd Street, in black and white and colour.",
+    facts: [
+      { label: "Out", value: "1988" },
+      { label: "Photographs by", value: "Stephan Lupino" },
+      { label: "Published by", value: "Graphics-Photos-Art" },
+      { label: "Format", value: "Softcover, 21 x 29.5 cm" },
+    ],
+    inIt: [],
+    since: [
+      { when: "On the show", what: "James says Lupino's book about the World is all girls he talked into taking their tops off; Rachael didn't pose, but he did photograph her.", source: "S05E09", episode: "s05e09", time: "00:23:12" },
+    ],
+    sources: ["The book's own cover and listing (Open Library, a bookseller's listing)", "S05E09 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
   "creative-vandal": {
     intro:
       "An hour-long documentary about Nick Egan: from a working-class art-school punk making T-shirts for the Ramones to the sleeves for The Clash, Bow Wow Wow, INXS and Duran Duran, and the music videos that followed.",

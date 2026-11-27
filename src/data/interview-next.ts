@@ -161,6 +161,12 @@ export const NEW_FACES: InterviewTip[] = [
 /** Guests the hosts want back for a part two */
 export const COME_BACK: InterviewTip[] = [
   {
+    name: "Screamin' Rachael Cain",
+    why: "James closes: there is a whole other story, the murder of Prince Teddy, for a part two - and Rachael says she looks forward to part two.",
+    episodeId: "s05e09",
+    time: "00:54:13",
+  },
+  {
     name: "Jayne County",
     why: "James closes: they have to have Jayne back for a part two - they only got as far as the 70s, with the 80s, 90s and 2000s still to go.",
     episodeId: "s02e02",
