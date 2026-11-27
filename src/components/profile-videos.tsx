@@ -42,7 +42,7 @@ export function ProfileVideos({ videos, playlist, first }: { videos: { id: strin
               {list.map((v, i) => (
                 <li key={v.id}>
                   <button type="button" aria-pressed={now?.id === v.id} onClick={() => setNow(v)}>
-                    <i>A{i + 1}</i>
+                    <i aria-hidden>{now?.id === v.id ? "♫" : "▶"}</i>
                     <span>{v.title}</span>
                   </button>
                 </li>

@@ -324,7 +324,7 @@ export function TrailerJukebox({ trailers, name }: { trailers: Trailer[]; name: 
             {list.map((t, i) => (
               <li key={t.id}>
                 <button type="button" aria-pressed={showing.id === t.id && !!now} onClick={() => setNow(t)}>
-                  <i>A{i + 1}</i>
+                  <i aria-hidden>{showing.id === t.id && !!now ? "♫" : "▶"}</i>
                   <span>{t.kind === "guest" || t.kind === "writer" ? `${t.label}: ${t.title}` : t.title}</span>
                 </button>
               </li>
