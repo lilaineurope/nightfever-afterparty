@@ -19,10 +19,39 @@ import type { LibraryItemView, StoryView } from "@/lib/library-item";
 import type { PlaceView } from "@/lib/place-view";
 import type { MapBand, MapHome, RoomsMap } from "@/lib/map-view";
 import type { PersonWork } from "@/lib/works";
+import type { CoverDesign } from "@/lib/cover-design";
 
 /** Everything an A–Z card page shows, worked out on the server for one card (src/lib/card-view.server.ts), so the page
  *  doesn't download the whole A–Z (page weight, 16 Nov 2026). Types only - this file loads nothing. */
 import type { MentorTreeData } from "@/lib/mentor-tree";
+
+/** "Who else was there" on a club page (Lisa, 27 Nov 2026, option W1 "the door list"): the guests who told us about it
+ *  (their biggest moment), the regulars (people whose own page lists the club as a room), and who made or is on its posters.
+ *  The stage stays in the story box. */
+export type ClubCrowdView = {
+  told: { episode: string; code: string; guest: string; time: string; context: string; mentions: number; pol?: string | undefined }[];
+  regulars: string[];
+  posters: { name: string; role: string }[];
+};
+
+/** "The poster + read about it" on a club page (Lisa, 27 Nov 2026, option L2): the club's own flyers and tickets from the
+ *  Library's Cover art & posters, and the hand-checked books, diaries and papers a guest ties to it (src/data/club-reading.ts). */
+export type ClubLibraryView = {
+  posters: {
+    page: string;
+    src: string;
+    alt?: string | undefined;
+    piece: string;
+    credit: string;
+    w?: number | undefined;
+    h?: number | undefined;
+    forWhat?: string | undefined;
+    date?: string | undefined;
+    madeBy: { role: string; name: string }[];
+    onIt: string[];
+  }[];
+  reads: { slug: string; name: string; kind: string; design: CoverDesign; episode: string; code: string; guest: string; time: string; context: string }[];
+};
 
 export type CardView = {
   slug: string;
@@ -49,6 +78,10 @@ export type CardView = {
   club: ClubProfile | null;
   /** The club's theme nights and parties, folded in from their own cards (Lisa, 22 Nov 2026, src/data/club-parts.ts). */
   parts: ClubPartsView | null;
+  /** "Who else was there" (club pages only). */
+  crowd: ClubCrowdView | null;
+  /** The club's poster and reading list (club pages only). */
+  clubLib: ClubLibraryView | null;
   pic: PersonPortrait | null;
   /** Person page (story, guest quotes, timeline) for living people the guests talk about - Lisa, 20 Nov 2026. */
   profile: PersonProfile | null;
