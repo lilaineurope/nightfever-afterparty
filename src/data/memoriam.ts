@@ -567,6 +567,9 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s01e03", who: "James St. James", time: "00:53:45", quote: "Haoui Montaug was a doorman at Studio 54, Palladium, Tunnel, Paradise Garage, Danceteria. He also was a writer for Paper and Details. And he really had like a chosen family around him." },
       { episode: "s02e06", who: "Michael Schmidt", time: "00:16:59", quote: "Haoui Montaug introduced me to Vicki Sarge and all these people, and they hired me." },
       { episode: "s06e01", who: "James St. James", time: "00:20:13", quote: "It would be Divine, Martha Graham, Andy Warhol, Philip Glass and Haoui Montaug. How did I even know who Haoui Montaug was?" },
+      // Lisa, 27 Nov 2026 ("all" - fuller quotes for the top-searched pages), from the episode transcripts on her Mac.
+      { episode: "s06e07", who: "Sally Randall", time: "00:12:52", context: "James asks Sally about working the Palladium door with Haoui", quote: "I adored it. As for working with him, he ended up becoming one of my closest friends. He was very inspirational too, and could be a real Jewish mother. He had his Jewish mother moments, especially when Jorge and I would come up with some ridiculous idea, like we come up with the celebrity cookbook, and how he just laughed and he was like, seriously, do you know how to do it?" },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:15:20", context: "James has just named Haoui his number one door person; here he asks Lincoln if Haoui eased his way into clubs like Palladium", quote: "For sure, for sure. I think once Haoui recognized that I was friends with Jennifer, that made it a shoo-in." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q14946791",
   },
@@ -730,6 +733,9 @@ export const MEMORIAM: Record<string, Memoriam> = {
       { episode: "s02e01", who: "Michelle Visage", time: "00:16:24", quote: "She could look shady. She could read you, she could cut you down. But she was always very lovely to me and very loving." },
       { episode: "s02e01", who: "Michelle Visage", time: "00:17:30", quote: "Angie was just wonderful. Angie, Danny, Jose, Luis, I knew all of them, and none of them were ever shady or mean." },
       { episode: "s01e08", who: "James St. James", time: "00:09:39", quote: "Mother Angie, oh God, what a character. I knew her a little bit when we would go to Sound Factory." },
+      // Lisa, 27 Nov 2026 ("all" - fuller quotes for the top-searched pages), from the episode transcripts on her Mac.
+      { episode: "s03e01", who: "Patricia Field", time: "00:28:00", context: "Pat was judging a ball when Mother Angie walked with a ladder in her stocking - and marked her down", quote: "There were a few different episodes at that ball. One was Angie Xtravaganza with the hose with the big run in it, the black hose with the big run in it. Walked down the runway with a big run on her black stocking, and I was like... Yeah, I copped her." },
+      { episode: "s06e02", who: "James St. James", time: "00:27:03", context: "James to Christina Visca about the Sound Factory regulars of the Paris Is Burning years", quote: "So many of the people who went to Sound Factory have gone on to become just legendary legends in gay culture and everything. This is around the time of Paris Is Burning in the 80s. You had like Mother Angie Xtravaganza who I would see there every week and Willie Ninja and Venus Xtravaganza." },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q4763232",
   },
