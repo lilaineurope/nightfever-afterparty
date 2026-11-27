@@ -6,23 +6,29 @@ import { HOME_HINTS, LOCATIONS } from "@/data/locations";
 import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
 import { entities, entityFor, isPlace, totalMentions, type Entity } from "@/data/entities";
 import { episodeShort } from "@/data/entities";
-import { episodeById, episodePath, episodes } from "@/data/episodes";
+import { episodeById, episodePath, episodes, stageName } from "@/data/episodes";
 import { Timestamp } from "@/components/episode-player";
 import { SiteFooter } from "@/components/site-footer";
 import { MapHeader } from "@/components/map-header";
+import { RoomsMapSection } from "@/components/map-sections";
+import { getEpisodeMap } from "@/lib/episode-map.functions";
+import type { RoomsMap } from "@/lib/map-view";
 
 // Episodes with their own AFTERPARTY page (the rest stay plain text in the map boxes).
 const BUILT = new Set<string>(episodes.map((e) => e.id));
 
 /** `?at=<slug>` opens the big map at that club, place or event with its box open (Lisa, 27 Nov 2026: every page's map
  *  link goes straight to its pin); `?layer=home` opens the Bring us home list. */
-type MapSearch = { at?: string; layer?: "home" };
+type MapSearch = { at?: string; layer?: "home"; ep?: string };
 
 export const Route = createFileRoute("/map")({
   staticData: { sitemap: true },
   validateSearch: (s: Record<string, unknown>): MapSearch => ({
     ...(typeof s["at"] === "string" && /^[a-z0-9-]+$/.test(s["at"]) ? { at: s["at"] } : {}),
     ...(s["layer"] === "home" ? { layer: "home" as const } : {}),
+    // `?ep=<id>` shows one AFTERPARTY's places as numbered stops (Lisa, 27 Nov 2026: "on the map page itself ... per
+    // afterparty").
+    ...(typeof s["ep"] === "string" && BUILT.has(s["ep"]) ? { ep: s["ep"] } : {}),
   }),
   component: MapPage,
   head: () =>
@@ -262,6 +268,19 @@ function MapPage() {
     [spots],
   );
   const search = Route.useSearch();
+  const navigate = Route.useNavigate();
+  // One AFTERPARTY at a time (?ep=): its clubs and places as numbered pins, the nights-out list beside the map.
+  const ep = search.ep;
+  const [epMap, setEpMap] = useState<{ id: string; map: RoomsMap | null } | null>(null);
+  useEffect(() => {
+    if (!ep || epMap?.id === ep) return;
+    getEpisodeMap({ data: ep })
+      .then((m) => setEpMap({ id: ep, map: m }))
+      .catch(() => setEpMap({ id: ep, map: null }));
+  }, [ep, epMap]);
+  const epStops = ep && epMap?.id === ep ? (epMap.map?.stops ?? []) : [];
+  const pickEpisode = (id: string) =>
+    void navigate({ search: id ? { ep: id } : {}, replace: true, resetScroll: false });
   const [layer, setLayer] = useState<Layer>(search.layer === "home" ? BRING_HOME : "All");
   const [decade, setDecade] = useState<string>("any");
   const [active, setActive] = useState<string | null>(null);
@@ -336,6 +355,31 @@ function MapPage() {
     if (!ready) return;
     const L = window.L;
     markers.current.forEach((m) => m.remove());
+    if (ep) {
+      markers.current = epStops.map((s) =>
+        L.marker([s.lat, s.lng], {
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="map-stop${s.club ? " map-stop-club" : ""}">${s.n}</span>`,
+            iconSize: [26, 26],
+            iconAnchor: [13, 13],
+          }),
+        })
+          .bindTooltip(`${s.n} · ${s.name}`, { direction: "top", offset: [0, -12] })
+          .on("click", () =>
+            document
+              .getElementById(`stop-${s.n}`)
+              ?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+          )
+          .addTo(mapRef.current),
+      );
+      if (epStops.length)
+        mapRef.current.fitBounds(
+          epStops.map((s) => [s.lat, s.lng]),
+          { padding: [40, 40], maxZoom: 15 },
+        );
+      return;
+    }
     // Biggest first, so small pins sit on top and stay clickable; the picked pin last of all.
     const order = [...visible].sort(
       (a, b) => Number(a.key === active) - Number(b.key === active) || b.mentions - a.mentions,
@@ -364,7 +408,8 @@ function MapPage() {
       });
       return m;
     });
-  }, [ready, visible, active]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, visible, active, ep, epMap]);
 
   const focus = (s: Spot) => {
     setActive(s.key);
@@ -429,9 +474,12 @@ function MapPage() {
             <button
               key={l}
               type="button"
-              onClick={() => setLayer(l)}
-              aria-pressed={layer === l}
-              className={chip(layer === l)}
+              onClick={() => {
+                setLayer(l);
+                if (ep) pickEpisode("");
+              }}
+              aria-pressed={layer === l && !ep}
+              className={chip(layer === l && !ep)}
             >
               {l === "All" ? "Everything" : l}{" "}
               <span className={layer === l ? "text-pink" : "text-[#777]"}>{layerCount(l)}</span>
@@ -440,9 +488,12 @@ function MapPage() {
           {homeless.length > 0 && (
             <button
               type="button"
-              onClick={() => setLayer(BRING_HOME)}
-              aria-pressed={layer === BRING_HOME}
-              className={chip(layer === BRING_HOME)}
+              onClick={() => {
+                setLayer(BRING_HOME);
+                if (ep) pickEpisode("");
+              }}
+              aria-pressed={layer === BRING_HOME && !ep}
+              className={chip(layer === BRING_HOME && !ep)}
             >
               {BRING_HOME}{" "}
               <span className={layer === BRING_HOME ? "text-pink" : "text-[#777]"}>
@@ -451,7 +502,7 @@ function MapPage() {
             </button>
           )}
         </div>
-        {layer !== BRING_HOME && (
+        {layer !== BRING_HOME && !ep && (
           <div className="mt-3 flex flex-wrap justify-center gap-2" aria-label="Decade">
             {["any", ...DECADES].map((d) => (
               <button
@@ -467,6 +518,35 @@ function MapPage() {
             ))}
           </div>
         )}
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+          <label
+            htmlFor="map-afterparty"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-[#111]"
+          >
+            AFTERPARTY
+          </label>
+          <span className="relative inline-block max-w-full">
+            <select
+              id="map-afterparty"
+              value={ep ?? ""}
+              onChange={(ev) => pickEpisode(ev.target.value)}
+              className={`${chip(!!ep)} max-w-full cursor-pointer appearance-none pr-8`}
+            >
+              <option value="">Pick a guest&rsquo;s nights out</option>
+              {episodes.map((x) => (
+                <option key={x.id} value={x.id}>
+                  {episodeShort(x.id)} · {stageName(x.guest)}
+                </option>
+              ))}
+            </select>
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs ${ep ? "text-[#f6f0ea]" : "text-[#111]"}`}
+            >
+              &#9662;
+            </span>
+          </span>
+        </div>
       </section>
 
       <section className="px-4 pb-20">
@@ -478,7 +558,31 @@ function MapPage() {
               aria-label="Map of Night Fever places"
             />
           </div>
-          {layer === BRING_HOME ? (
+          {ep ? (
+            <div className="place-box max-h-[640px] overflow-y-auto">
+              {epMap?.id !== ep ? (
+                <p className="text-sm text-muted-foreground">Finding the places&hellip;</p>
+              ) : epMap.map ? (
+                <RoomsMapSection
+                  r={epMap.map}
+                  first={stageName(episodeById(ep as never).guest)}
+                  id="map-nights-out"
+                  title={`Follow ${stageName(episodeById(ep as never).guest)}'s nights out`}
+                  intro={`${epStops.length} New York stops, numbered in the order they come up in the episode. Tap a number on the map to find it here.`}
+                  noMap
+                />
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No New York clubs or places to put on the map in this AFTERPARTY.
+                </p>
+              )}
+              <p className="mt-5">
+                <Link to={episodePath(ep as never)} className="map-btn">
+                  Back to {stageName(episodeById(ep as never).guest)}&rsquo;s AFTERPARTY &rarr;
+                </Link>
+              </p>
+            </div>
+          ) : layer === BRING_HOME ? (
             <div className="place-box max-h-[640px] overflow-y-auto">
               <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink">
                 Bring us home
