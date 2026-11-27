@@ -436,6 +436,11 @@ const SPOTIFY: Record<string, string> = {
   // S04E11 Elyssa Maxx Goodman (Ray Bourbon's party records aren't on Spotify)
   "Lady, Be Good": "spotify:track:64tnmc0rKvOIP1VhSQKewo",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "spotify:track:0oLjmNEQ8tJteV9u0amZ1w",
+  // S06E10 Kenneth Hash aka Lil' Kenny (The Sugarcubes as 'Birthday')
+  "The Sugarcubes": "spotify:track:0WSTUuw7gP80yTcEkL7oXc",
+  "The Sugarcubes – 'Hit'": "spotify:track:24a0BpgQyuJzrGq9TvTZOR",
+  "Björk – 'Venus as a Boy'": "spotify:track:48oX55j4gqDw0G80KxzpaQ",
+  "Björk – 'Jóga'": "spotify:track:3nschTSboTkjPwgdbrRLyf",
   // S06E09 Desi Santiago (Boob isn't on Spotify)
   "Minty": "spotify:artist:0vVeC3e3hdI1KVGjApg0Ud",
   "Minty – 'Useless Man'": "spotify:track:5cIE7xmxjnK1R4cXATm6Ni",

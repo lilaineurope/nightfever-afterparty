@@ -121,6 +121,7 @@ const EPISODE_TOPICS: Record<string, string> = {
   s04e02: "Paper magazine, Break the Internet & downtown New York",
   s06e09: "Desi Monster, the Club Kids, Leigh Bowery & the band Boob",
   s05e05: "Keith Haring, Radiant, Mapplethorpe, Warhol & Club 57",
+  s06e10: "Lil' Kenny, Patricia Field, Björk, Jenny Talia & Party Monster",
   s05e08: "John Sex, Club 57, the Pyramid, Pulsallama & Wendy Wild",
   s05e02: "G-A-Y, Nag Nag Nag, electroclash, Amy Winehouse & getting sober",
   s04e11: "Drag history, Julian Eltinge, the Pansy Craze & Harlem drag balls",

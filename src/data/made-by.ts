@@ -156,6 +156,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Party Monster (2003)": [
     ...WOW("Directed it", 2003), m("James St. James", "Wrote the book it's based on", 2003),
     ...all("Starred in it", 2003, "Macaulay Culkin", "Seth Green", "Chloë Sevigny"), m("Marilyn Manson", "In it", 2003), m("Michael Alig", "About them"),
+    m("Kenneth Hash aka Lil' Kenny", "Made costumes for it", 2003), // S06E10: 72 pieces from the 99-cent store, he says
   ],
   "Party Monster": [...WOW("Directed it", 2003), m("James St. James", "Wrote the book it's based on", 2003), m("Michael Alig", "About them")],
   "Party Monster: The Shockumentary": [...WOW("Made it", 1998), m("Thairin Smothers", "Worked on it", 1998), m("Michael Alig", "About them")],
@@ -333,7 +334,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "The Weenies": [m("Dean Johnson", "In the band")],
   "The Must": [m("Michael Musto", "In the band", 1980)],
   "The Sic F*cks": [m("Tish & Snooky", "In the band")],
-  "Boob (band)": [m("Waltpaper", "In the band", 1996), m("Desi Santiago", "In the band", 1996), m("Lil' Kenny", "In the band", 1996), m("John Boy", "In the band"), m("Thairin Smothers", "Managed it")],
+  "Boob (band)": [m("Waltpaper", "In the band", 1996), m("Desi Santiago", "In the band", 1996), m("Kenneth Hash aka Lil' Kenny", "In the band", 1996), m("John Boy", "In the band"), m("Thairin Smothers", "Managed it")],
   "The Fabulous Pop Tarts": [...WOW("In the band")],
   "Strange Party": [m("Joey Arias", "In the band")],
   "The B-Sides": [m("Bebe Buell", "In the band")],

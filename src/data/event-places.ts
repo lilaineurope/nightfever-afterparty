@@ -397,6 +397,10 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
   { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
   { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  // S06E10 Kenneth Hash aka Lil' Kenny
+  { event: "Club Kids skating at Rockefeller Center", at: "Rockefeller Center", tip: "Under the Christmas tree, an outlaw party for Patricia Field's store" },
+  { event: "Tax night at the post office", at: "James A. Farley Building", tip: "The post office open until midnight on tax night" },
+  { event: "The Club Kids' bathroom at the Tunnel", at: "The Tunnel", tip: "Hosted by Kenny and Walt with Lady Bunny" },
   // S05E08 April Palmieri
   { event: "James runs off with John Sex's clothes", at: "Limbo Lounge" },
   { event: "John Sex and the Ta Ta's in Tokyo", at: "Tokyo" },
@@ -427,6 +431,7 @@ export const EVENT_PLACES: EventPlace[] = [
  * They stay off the map and off "Bring us home" (Lisa, 23 Nov 2026: "Take them off the list").
  */
 export const NO_SINGLE_PLACE = new Set([
+  "Kenny gets sober (6 August 1996)", // S06E10 - a personal turning point, not a place
   // History, movements and eras
   "AIDS crisis",
   "AIDS awareness",

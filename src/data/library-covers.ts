@@ -16,6 +16,8 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  // S06E10 Kenneth Hash aka Lil' Kenny (Lisa picked B, 27 Nov 2026)
+  "The Artist's Way (Julia Cameron)": { kind: "book", file: "book-the-artists-way.webp", credit: "Cover via Open Library (Tarcher/Putnam, 10th anniversary edition, 2002)" },
   // S05E08 April Palmieri - the Barricade Books reissue, with John Waters' introduction
   "My Face for the World to See": { kind: "book", file: "book-my-face-for-the-world-to-see.webp", credit: "Cover via Open Library (Barricade Books reissue)" },
   "Glitter and Concrete": { kind: "book", file: "book-glitter-and-concrete.webp", credit: "Cover via Open Library (Hanover Square Press, 2023)" },
