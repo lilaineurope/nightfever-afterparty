@@ -662,6 +662,8 @@ import pattiSmithPhoto from "@/assets/people/patti-smith-photo.webp";
 import pattiSmithPolaroid from "@/assets/people/patti-smith-polaroid.webp";
 import philipGlassPhoto from "@/assets/people/philip-glass-photo.webp";
 import philipGlassPolaroid from "@/assets/people/philip-glass-polaroid.webp";
+import tonyDefriesPhoto from "@/assets/people/tony-defries-photo.webp";
+import tonyDefriesPolaroid from "@/assets/people/tony-defries-polaroid.webp";
 import peppoVaniniPhoto from "@/assets/people/peppo-vanini-photo.webp";
 import peppoVaniniPolaroid from "@/assets/people/peppo-vanini-polaroid.webp";
 import claraPhoto from "@/assets/people/clara-the-carefree-chicken-photo.webp";
@@ -1018,6 +1020,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "richard-hell": { photo: richardHellPhoto, polaroid: richardHellPolaroid, focus: "30%", credit: `Portrait after a photo by David Shankbone, 2008 (CC BY 3.0; our version is CC BY 3.0 too), ${STYLE}` },
   "patti-smith": { photo: pattiSmithPhoto, polaroid: pattiSmithPolaroid, focus: "25%", credit: `Portrait after a 1978 photo from UCLA Library Special Collections (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
   "philip-glass": { photo: philipGlassPhoto, polaroid: philipGlassPolaroid, focus: "30%", credit: `Portrait after a 2008 photo by Lelli e Masotti for MITO SettembreMusica, Milan (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
+  "tony-defries": { photo: tonyDefriesPhoto, polaroid: tonyDefriesPolaroid, focus: "25%", credit: `Portrait after a 2017 photo by Marlene Defries (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
   // Lisa, 27 Nov 2026: "peppo - make a polaroid". Gemini, after 1980s LaPresse press photos (references only, not on the site).
   "peppo-vanini": { photo: peppoVaniniPhoto, polaroid: peppoVaniniPolaroid, focus: "8%", credit: "Illustration made with Gemini, not a photo" },
   // Lisa, 27 Nov 2026 ("yes polaroid"): Gemini drawing of the chicken suit after the photo in Ernie Glam's Peeew! #90 thumbnail.
