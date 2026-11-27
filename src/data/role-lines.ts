@@ -90,6 +90,16 @@ export const ROLE_LINES: Record<string, string> = {
   "richard-hell": "punk singer and writer",
   "patti-smith": "poet and singer, CBGB",
   "cindy-adams": "New York Post gossip columnist",
+  "nick-cave": "artist of the Soundsuits",
+  "kate-moss": "model",
+  "tracey-africa": "model on the Clairol box, House of Africa",
+  "elizabeth-saltzman": "fashion editor and stylist",
+  "donna-karan": "fashion designer, DKNY",
+  "philip-sallon": "London club host, the Mud Club",
+  "anna-wintour": "editor of Vogue",
+  "tony-defries": "David Bowie's manager, MainMan",
+  "philip-glass": "composer",
+  "ian-schrager": "co-owner of Studio 54 and the Palladium",
   "brian-butterick": "Pyramid Club's Hattie Hathaway",
 
   // In memoriam
