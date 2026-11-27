@@ -1588,11 +1588,11 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     // Lines from the transcripts (Lisa, 27 Nov 2026: "quotes from people?", "give them more context"); max two per guest.
     // A host's line at S1E5 00:28:15 waits until we know whether it was Fenton or Randy.
     said: [
-      { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", context: "Ernie on taking the job at Disco 2000", quote: "When Michael hired me to be Clara the Chicken, I decided that this was going to be my drag persona." },
-      { episode: "s01e05", who: "James St. James", time: "00:28:27", context: "James remembers how Clara arrived", quote: "Clara the Chicken came out of her egg on the opening night of Disco 2000." },
-      { episode: "s01e05", who: "Ernie Glam", time: "00:29:30", context: "Ernie on why he said yes to being Clara", quote: "Here's my opportunity to do a type of cartoon drag, where I'm still playing a female character, but I'm not really having to wear women's clothes." },
-      { episode: "s01e02", who: "Michael Musto", time: "01:02:19", context: "Musto on the Limelight in the 90s", quote: "Disco 2000 was the big club kid party on Wednesdays, with Clara the Carefree Chicken." },
-      { episode: "s01e09", who: "Moby", time: "00:08:00", context: "Moby working out when he first met James", quote: "I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", context: "Ernie on taking the job at Disco 2000", quote: "When Michael hired me to be Clara the Chicken, I decided that this was going to be my drag persona. I used to go to Boy Bar on St. Mark's Place every Thursday to watch the drag shows, and I kind of wanted to do that, but I didn't really want to be a drag queen." },
+      { episode: "s01e05", who: "James St. James", time: "00:28:27", context: "James remembers how Clara arrived", quote: "Clara the Chicken came out of her egg on the opening night of Disco 2000. There was Hans Ulrich the dog, a leather dog - Michael had just gone and gotten all these costumes from a costume shop and christened everybody." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:29:30", context: "Ernie on the chicken suit", quote: "When Michael presented me with the chicken suit, I thought, okay, here's my opportunity to do a type of cartoon drag - I'm still playing a female character, but I'm not really having to wear women's clothes. The suits were so smelly, they got so sweaty... but I did it for three years. I just wanted it to be something fabulous." },
+      { episode: "s01e02", who: "Michael Musto", time: "01:02:14", context: "Musto on the Limelight in the 90s", quote: "At the Limelight there was the chapel area, there was the main dance floor. And then it became Disco 2000, the big club kid party on Wednesdays, with Clara the Carefree Chicken." },
+      { episode: "s01e09", who: "Moby", time: "00:07:02", context: "Moby working out when he first met James", quote: "I had just DJ'd for the first time at Limelight, and Michael took me to Peter Gatien's office... So, James, I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
     ],
     videos: [
       { id: "aAYRvJGmsDQ", title: "Peeew! #90: Searching for Clara the Carefree Chicken" },
