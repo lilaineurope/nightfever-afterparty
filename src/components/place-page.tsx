@@ -6,6 +6,7 @@ import { linkToSlug, useLinks } from "@/lib/link-index";
 import { episodePath } from "@/data/episodes";
 import type { SceneEvent } from "@/data/scene";
 import type { PlaceMap, PlaceView } from "@/lib/place-view";
+import { QuoteName } from "@/components/quote-name";
 
 // Place pages (Lisa, 22 Nov 2026, mockup C): mockup B's map header, then mockup A's guest polaroids and taped boxes, then
 // B's "Around the corner" with walking distances and the Timeline box. Data: src/lib/place-view.server.ts.
@@ -115,7 +116,7 @@ export function PlaceSections({ p, name, events }: { p: PlaceView; name: string;
                 </p>
                 <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                   <span className="font-semibold">
-                    {w.guest}
+                    <QuoteName who={w.guest} episodeId={w.episode} />
                     <br />
                     <Link to={episodePath(w.episode as never)} className="font-normal text-[#555] hover:text-pink">{w.short}</Link>
                   </span>

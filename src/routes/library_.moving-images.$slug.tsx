@@ -9,6 +9,7 @@ import type { Person, ScreenPageView, WatchRow } from "@/lib/screen-page.server"
 import type { Trailer } from "@/lib/library-item";
 import { pageHead } from "@/lib/seo";
 import "@fontsource/covered-by-your-grace/400.css";
+import { QuoteName } from "@/components/quote-name";
 
 // One page per film or show on the Library's Moving Images shelves (Lisa, 24 Nov 2026: "do it like we did it with the
 // artwork list and pages - and instead the poster it would be the jukebox video bigger. info box who was involved, find as
@@ -421,9 +422,7 @@ function Said({ v, className = "" }: { v: ScreenPageView; className?: string }) 
             <p className="lit-quote-who">
               {q.polaroid && <img src={q.polaroid} alt="" width={240} height={240} loading="lazy" decoding="async" />}
               <span>
-                <Link to={episodePath(q.episodeId as never)} className="art-name font-semibold">
-                  {q.who}
-                </Link>
+                <QuoteName who={q.who} episodeId={q.episodeId} className="art-name font-semibold" />
                 <br />
                 {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
               </span>
