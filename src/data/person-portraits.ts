@@ -660,6 +660,8 @@ import richardHellPhoto from "@/assets/people/richard-hell-photo.webp";
 import richardHellPolaroid from "@/assets/people/richard-hell-polaroid.webp";
 import pattiSmithPhoto from "@/assets/people/patti-smith-photo.webp";
 import pattiSmithPolaroid from "@/assets/people/patti-smith-polaroid.webp";
+import claraPhoto from "@/assets/people/clara-the-carefree-chicken-photo.webp";
+import claraPolaroid from "@/assets/people/clara-the-carefree-chicken-polaroid.webp";
 
 export type PersonPortrait = {
   photo: string;
@@ -1011,4 +1013,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "billy-idol": { photo: billyIdolPhoto, polaroid: billyIdolPolaroid, focus: "25%", credit: `Portrait after a photo by possan at the Peace & Love Festival, 2012 (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
   "richard-hell": { photo: richardHellPhoto, polaroid: richardHellPolaroid, focus: "30%", credit: `Portrait after a photo by David Shankbone, 2008 (CC BY 3.0; our version is CC BY 3.0 too), ${STYLE}` },
   "patti-smith": { photo: pattiSmithPhoto, polaroid: pattiSmithPolaroid, focus: "25%", credit: `Portrait after a 1978 photo from UCLA Library Special Collections (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
+  // Lisa, 27 Nov 2026 ("yes polaroid"): Gemini drawing of the chicken suit after the photo in Ernie Glam's Peeew! #90 thumbnail.
+  "clara-the-carefree-chicken": { photo: claraPhoto, polaroid: claraPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };

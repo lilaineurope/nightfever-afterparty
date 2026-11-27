@@ -1566,10 +1566,18 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     timeline: [
       ["Disco 2000 opening night", "Clara hatches from an egg at the Limelight"],
       ["The next three years", "Ernie Glam's 'cartoon drag', the Club Kids' mascot"],
+      ["2015", "Ernie goes looking for her on his YouTube show Peeew! - 'Searching for Clara the Carefree Chicken'", "https://www.youtube.com/watch?v=aAYRvJGmsDQ"],
     ],
     liftedUp: [],
-    rooms: ["Disco 2000", "Limelight"],
-    said: [],
-    also: { heading: "Who talks about her", names: ["Ernie Glam", "James St. James", "Moby", "Michael Musto"] },
+    rooms: ["Disco 2000", "Limelight", "Boy Bar"],
+    // Lisa, 27 Nov 2026: "quotes from people?" - lines from the transcripts, cleaned up; max two per guest.
+    said: [
+      { episode: "s01e05", who: "Ernie Glam", time: "00:29:30", quote: "Here's my opportunity to do a type of cartoon drag, where I'm still playing a female character, but I'm not really having to wear women's clothes." },
+      { episode: "s01e05", who: "Ernie Glam", time: "00:28:50", quote: "When Michael hired me to be Clara the Chicken, I decided that this was going to be my drag persona." },
+      { episode: "s01e05", who: "James St. James", time: "00:28:27", quote: "Clara the Chicken came out of her egg on the opening night of Disco 2000." },
+      { episode: "s01e02", who: "Michael Musto", time: "01:02:19", quote: "Disco 2000 was the big club kid party on Wednesdays, with Clara the Carefree Chicken." },
+      { episode: "s01e09", who: "Moby", time: "00:08:00", quote: "I would have definitely encountered you around the same time I met Clara the Chicken, basically." },
+    ],
+    also: { heading: "Who talks about her", names: ["Ernie Glam", "James St. James", "Moby", "Michael Musto", "Peeew!"] },
   },
 };
