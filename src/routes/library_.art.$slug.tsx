@@ -7,6 +7,7 @@ import { getArtPage } from "@/lib/art-page.functions";
 import type { ArtPageView, Named } from "@/lib/art-page.server";
 import { pageHead } from "@/lib/seo";
 import "@fontsource/covered-by-your-grace/400.css";
+import { QuoteName } from "@/components/quote-name";
 
 // One page per piece on the Library's Cover art & posters shelf (Lisa, 24 Nov 2026): the artwork big on the side, then
 // what it was made for, who made the art, everyone else credited, what the guests said about it and its video.
@@ -205,12 +206,7 @@ function ArtPage() {
                       />
                     )}
                     <span>
-                      <Link
-                        to={episodePath(q.episodeId as never)}
-                        className="art-name font-semibold"
-                      >
-                        {q.who}
-                      </Link>
+                      <QuoteName who={q.who} episodeId={q.episodeId} className="art-name font-semibold" />
                       <br />
                       {q.short} · <Timestamp episodeId={q.episodeId} time={q.time} />
                     </span>

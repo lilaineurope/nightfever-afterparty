@@ -5,6 +5,7 @@ import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { Memoriam } from "@/data/memoriam";
+import { QuoteName } from "@/components/quote-name";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -48,7 +49,7 @@ export function MemoriamSections({ m, name }: { m: Memoriam; name: string }) {
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                     <span className="font-semibold">
-                      {s.who}
+                      <QuoteName who={s.who} episodeId={s.episode} />
                       <br />
                       <Link to={episodePath(ep.id)} className="font-normal text-[#555] hover:text-pink">
                         {s.who === ep.guest ? code : `${code} · ${ep.guest}`}

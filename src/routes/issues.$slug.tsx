@@ -7,6 +7,7 @@ import { episodePath, episodes } from "@/data/episodes";
 import { issueBySlug, type Issue, type IssueQuote } from "@/data/issues";
 import { polaroidThumb } from "@/lib/polaroids";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
+import { QuoteName } from "@/components/quote-name";
 
 // Issue pages (Lisa, 22 Nov 2026, mockup A "the cover story"): one page per real issue a guest talks about on the show.
 // All content lives in src/data/issues.ts - a new issue is a new entry there, this page stays as it is.
@@ -170,7 +171,7 @@ function Quotes({ i }: { i: Issue }) {
                   <img src={pic} alt="" width={240} height={240} loading="lazy" decoding="async" />
                 )}
                 <span>
-                  <span className="iss-who">{q.who}</span>
+                  <QuoteName who={q.who} episodeId={q.episode} className="iss-who" />
                   <br />
                   <Link
                     to={episodePath(q.episode as never)}

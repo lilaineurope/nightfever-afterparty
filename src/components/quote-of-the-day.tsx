@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { polaroidThumb } from "@/lib/polaroids";
-import { episodes, episodePath } from "@/data/episodes";
+import { episodes, episodePath, stageName } from "@/data/episodes";
 import allQuotes from "@/data/quotes-all.json";
 import { seededRandom } from "@/lib/random";
+import { QuoteName } from "@/components/quote-name";
 
 // Quote of the day (Lisa, 24 Oct 2026): a random quote from the quotes spreadsheet (5 per guest, "Night Fever Afterparty
 // quotes.xlsx"), a new one every day, under the intro on Home - with the guest, a play button for the exact moment and a
@@ -50,7 +51,7 @@ export function QuoteOfTheDay() {
           &ldquo;{q.quote}&rdquo;
         </blockquote>
         <figcaption className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-type text-sm text-[#141414]">
-          <span>- {q.who ?? ep.guest}</span>
+          <span>- <QuoteName who={q.who ?? stageName(ep.guest)} episodeId={ep.id} /></span>
           <Timestamp episodeId={ep.id} time={q.time} />
           <Link to={episodePath(ep.id)} className="text-gold underline-offset-2 hover:underline">
             S{ep.season} E{ep.episode}{ep.part} Afterparty &rarr;
