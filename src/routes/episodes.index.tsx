@@ -11,10 +11,10 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/episodes/")({
   staticData: { sitemap: true },
-  // "Night Fever podcast" is a top Google search (Lisa, 27 Nov 2026, "B11"): the word in the title, and every episode sent
-  // to Google as one PodcastSeries.
+  // "Night Fever podcast" is a top Google search (Lisa, 27 Nov 2026, "B11"), but the title says Night Fever AFTERPARTY so this fan
+  // page doesn't compete with the original podcast (Lisa, 27 Nov 2026). Every episode still goes to Google as one PodcastSeries.
   head: () => ({
-    ...pageHead({ path: "/episodes", title: "Night Fever podcast – every episode, timestamped | AFTERPARTY", description: "Every Night Fever podcast episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest AFTERPARTY first!", image: "/og/episodes.jpg" }),
+    ...pageHead({ path: "/episodes", title: "Night Fever AFTERPARTY – every episode, timestamped", description: "The fan page for the Night Fever podcast: every episode I've unpacked - every name, club, song and look the guests drop, counted and timestamped. Newest AFTERPARTY first!", image: "/og/episodes.jpg" }),
     scripts: [
       jsonLd({
         "@context": "https://schema.org",
