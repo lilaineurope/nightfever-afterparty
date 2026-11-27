@@ -14,6 +14,7 @@ import { SiteMenu } from "../components/site-menu";
 import { SiteStats } from "../components/site-stats";
 import { EpisodePlayer } from "../components/episode-player";
 import { PageSuggestionBox } from "../components/page-suggestion-box";
+import { Breadcrumbs } from "../components/breadcrumbs";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isStaleBuildError, reloadForNewBuild, watchForNewBuild } from "../lib/stale-build";
@@ -175,6 +176,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <SiteMenu />
+      <Breadcrumbs />
       <Outlet />
       <EpisodePlayer />
       <SiteStats />

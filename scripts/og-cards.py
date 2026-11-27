@@ -38,7 +38,9 @@ def card(row):
     px = W - pol.width - 44
     im.alpha_composite(pol, (px, (H - pol.height) // 2))
     d = ImageDraw.Draw(im); room = px - 56 - 32
-    kicker = row["years"] if row["kind"] == "library" else ("IN MEMORIAM" if row["kind"] == "memoriam" else "NEW YORK CLUB") + " · " + row["years"]
+    kicker = row["years"] if row["kind"] in ("library", "person") else ("IN MEMORIAM" if row["kind"] == "memoriam" else "NEW YORK CLUB") + " · " + row["years"]
+    while d.textlength(kicker, font=ImageFont.truetype(FONT, 24)) > room and " " in kicker:  # a long role line is cut at a word
+        kicker = kicker.rsplit(" ", 1)[0].rstrip(",")
     name = row["name"]; f = fit(d, name, 68, room); lines = [name]
     if d.textlength(name, font=f) > room or f.size < 46:  # long names go on two lines
         words = name.split(); half = (len(words) + 1) // 2

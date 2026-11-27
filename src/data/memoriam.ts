@@ -22,6 +22,8 @@ export type Memoriam = {
   liftedUp: string[]; // people they gave a start
   rooms: string[]; // clubs, nights, places
   said: MemoriamQuote[];
+  /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
+  also?: { heading: string; names: string[] };
   memorial?: { label: string; href: string };
   // "Read more" on the name card instead of the Google search, when there is no Wikipedia article (Lisa, 4 Nov 2026).
   readMore?: { label: string; href: string };
@@ -212,7 +214,8 @@ export const MEMORIAM: Record<string, Memoriam> = {
       ["2016", "Dies at home in Manhattan, aged 98"],
     ],
     liftedUp: [],
-    rooms: ["Women's Wear Daily"],
+    rooms: ["Women's Wear Daily", "W magazine", "New York Post"],
+    also: { heading: "On the same beat", names: ["Liz Smith", "Cindy Adams", "William Norwich", "Michael Musto", "Page Six (New York Post)", "Michelangelo Signorile"] },
     said: [
       { episode: "s02e08", who: "Michelangelo Signorile", time: "00:27:01", quote: "Suzy was Aileen Mehle, the columnist who wrote the column in the Daily News that was all high society. She liked celebrities, though, too." },
       { episode: "s02e08", who: "James St. James", time: "00:31:43", quote: "All of New York came to a standstill because Suzy did not write her own column. It became front-page news in every New York newspaper." },
@@ -718,7 +721,8 @@ export const MEMORIAM: Record<string, Memoriam> = {
       ["1994", "Junior Vasquez dedicates his single X to her"],
     ],
     liftedUp: ["Luis Xtravaganza Camacho", "Jose Xtravaganza"],
-    rooms: ["House of Xtravaganza", "Sound Factory", "the balls"],
+    rooms: ["House of Xtravaganza", "Sound Factory", "the balls", "Voguing"],
+    also: { heading: "Her house and her look", names: ["Hector Xtravaganza", "Paris Is Burning", "Angie Xtravaganza's laddered black stockings", "Patricia Field", "Michelle Visage"] },
     said: [
       { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:10:06", quote: "She was honestly like a mother, literally. She was like, come, children. And we would follow her around, like mama duck and her baby ducks. She led with her chestbone. It was up and proud and unabashed. And so we all followed suit." },
       { episode: "s02e01", who: "Michelle Visage", time: "00:16:24", quote: "She could look shady. She could read you, she could cut you down. But she was always very lovely to me and very loving." },
@@ -988,6 +992,7 @@ export const MEMORIAM: Record<string, Memoriam> = {
     ],
     liftedUp: ["Teri Toye"],
     rooms: ["Area", "Limelight"],
+    also: { heading: "Sprouse moments", names: ["Stephen Sprouse's SoHo shop opening", "Stephen Sprouse's window at Area", "Debbie Harry", "Miss Guy"] },
     said: [
       { episode: "s01e01", who: "Dianne Brill", time: "00:38:42", quote: "I didn't really get to say goodbye to Stephen Sprouse. And that's a shame." },
       { episode: "s03e06", who: "Eric Goode", time: "00:16:32", quote: "We did Fashion, and we had some wonderful people contribute. Stephen Sprouse did a great window in the entrance." },

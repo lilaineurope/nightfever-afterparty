@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
+import { EntityText } from "@/components/entity-text";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { DiaryLine, DiaryMoment } from "@/data/diaries";
 import type { CardView } from "@/lib/card-view";
@@ -53,7 +54,7 @@ export function DiarySections({ d, name }: { d: NonNullable<CardView["diary"]>; 
             Kept by <EntityLink name={d.keeper} className="text-pink underline decoration-pink/40 underline-offset-4 hover:text-gold" />
             {d.years && <> · {d.years}</>}
           </p>
-          <p className="mt-3 max-w-2xl text-card-foreground/85">{d.story}</p>
+          <p className="mt-3 max-w-2xl text-card-foreground/85"><EntityText text={d.story} self={name} /></p>
           <p className="mt-4 text-sm text-muted-foreground">
             Comes up {d.moments.length === 1 ? "once" : `${d.moments.length} times`} in {eps === 1 ? "one episode" : `${eps} episodes`}
             {read.length > 0 && (

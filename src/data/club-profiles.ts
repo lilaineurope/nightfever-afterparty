@@ -108,11 +108,16 @@ export type ClubProfile = {
   closed: string;
   address: string;
   aka?: string;
+  /** A club outside New York (Les Bains Douches, Paris - Lisa 27 Nov 2026): the city and country for the title and markup. */
+  city?: string;
+  country?: string;
   story: string;
   timeline: [string, string][];
   stage: string[]; // bands and people of its stage (A–Z names)
   rooms: string[]; // the clubs around it (A–Z names)
   said: MemoriamQuote[];
+  /** More links under the rooms (Lisa, 27 Nov 2026, top Google search pages): a heading and A–Z names. */
+  also?: { heading: string; names: string[] };
   portrait?: PersonPortrait; // header photo + taped polaroid, same shape as the person pages
   timelineEvent?: string; // scene.ts event id for "On the Timeline"
   // A documentary or podcast about the club. Shown only once its maker has said yes (approved: true).
@@ -181,7 +186,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       ["1980s", "Sunday hardcore matinees take over the afternoons"],
       ["15 Oct 2006", "CBGB closes with a Patti Smith set"],
     ],
-    stage: ["Television", "Patti Smith", "Ramones", "Blondie", "Talking Heads", "Debbie Harry", "Richard Hell", "James Chance and the Contortions", "The Sic F*cks", "Jayne County", "Tish & Snooky", "Lance Loud"],
+    stage: ["Hilly Kristal", "Television", "Patti Smith", "Ramones", "Blondie", "Talking Heads", "Debbie Harry", "Richard Hell", "James Chance and the Contortions", "The Sic F*cks", "Jayne County", "Tish & Snooky", "Lance Loud"],
     rooms: ["Max's Kansas City", "Club 82", "Mudd Club"],
     said: [
       { episode: "s02e11", who: "Richard Boch", time: "00:07:42", quote: "I had been coming into the city to go to shows at CBGB, to see Television and Talking Heads and Ramones and Patti Smith." },
@@ -573,6 +578,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     ],
     stage: ["Ann Magnuson", "Stanley Strychacki", "Keith Haring", "Kenny Scharf", "John Sex", "Wendy Wild", "Pulsallama", "Joey Arias", "Michael Musto", "Holly Woodlawn", "Marc Shaiman", "Scott Wittman", "Klaus Nomi", "Tseng Kwong Chi", "Lypsinka", "Charles Busch", "Cyndi Lauper", "Madonna", "Dany Johnson"],
     rooms: ["Mudd Club", "Pyramid Club", "Danceteria", "Area", "Max's Kansas City", "CBGB"],
+    also: { heading: "On the Library shelf", names: ["Club 57: Film, Performance, and Art in the East Village"] },
     said: [
       { episode: "s04e10", who: "Ann Magnuson", time: "00:37:29", quote: "It was all done on five cents, basically. And I just liked that. I like things that are not money driven and that require ingenuity. So Club 57 was a perfect place for that." },
       { episode: "s04e10", who: "Ann Magnuson", time: "00:58:01", quote: "At Club 57, we recreated a spaceship and had a salute to NASA where we all landed on the moon." },
@@ -934,7 +940,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       ["Early 80s", "Free for FIT students on Thursdays; Nikki Haskell's Christmas party"],
       ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
     ],
-    stage: ["Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Fiorucci"],
+    stage: ["Peppo Vanini", "Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Fiorucci"],
     rooms: ["Studio 54", "Régine's", "Copacabana", "Danceteria", "Roxy"],
     said: [
       { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
@@ -1064,6 +1070,29 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e04", who: "Man Parrish", time: "00:41:01", quote: "It used to be Club 82... it was the 82 Club, and it went downstairs." },
     ],
     portrait: { photo: c82Photo, phone: c82PhotoPhone, polaroid: c82Polaroid, focus: "50%", credit: CLUB_82_CREDIT },
+  },
+  // Les Bains Douches (Lisa, 27 Nov 2026: a top Google search). Facts: Wikipedia "Les Bains Douches (nightclub)", read
+  // 27 Nov 2026; the rest from the guests' own stories. No picture yet, so it keeps the plain header.
+  "les-bains-douches": {
+    opened: "1978",
+    closed: "2010",
+    address: "7 rue du Bourg-l'Abbé, Paris",
+    city: "Paris",
+    country: "FR",
+    story:
+      "Paris's answer to Studio 54, in the Guerbois bathhouse of 1885 in the Marais. Antique dealer Jacques Renault and Fabrice Coat opened it in December 1978 and Philippe Starck tiled it black and white. Rudolf Piper did events there and, he says, David Guetta was a house DJ; Page Six threw the club kids' Paris dinner there, as James St. James recalls.",
+    timeline: [
+      ["1885", "The Guerbois baths open at 7 rue du Bourg-l'Abbé"],
+      ["Dec 1978", "Jacques Renault and Fabrice Coat open Les Bains Douches as a club"],
+      ["1979", "Joy Division play the live set released as Les Bains Douches 18 December 1979"],
+      ["1981", "Depeche Mode's first concert in France"],
+      ["80s", "Rudolf Piper does events there; David Guetta is a house DJ, Rudolf says"],
+      ["90s", "Page Six throws the club kids' dinner in Paris there"],
+      ["2010", "The club closes"],
+    ],
+    stage: ["Rudolf Piper", "David Guetta", "James St. James"],
+    rooms: ["Le Palace", "Page Six (New York Post)"],
+    said: [],
   },
 };
 
