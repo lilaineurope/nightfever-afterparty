@@ -1,3 +1,4 @@
+import { ProfileVideos } from "@/components/profile-videos";
 import { Link } from "@tanstack/react-router";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { MusicPlayer } from "@/components/music-player";
@@ -73,6 +74,9 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
     <>
       <MusicPlayer item={v.music} />
       {v.night && <ClubNightPlaylist night={v.night} />}
+      {/* "On film" on club pages too (Lisa, 27 Nov 2026: "Las bains page has the video box missing"): the films shot inside the
+          club from its Jukebox night, in the same jukebox cabinet as a person's videos. */}
+      {v.night?.footage && v.night.footage.length > 0 && <ProfileVideos videos={v.night.footage} playlist={v.night.youtubePlaylist} first={v.night.club} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
       {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it -
