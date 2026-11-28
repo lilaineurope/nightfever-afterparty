@@ -115,6 +115,25 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { id: "kvwOYRQ29Ys", title: "Marie Montana feat. David Ian Xtravaganza (Sveta & Tokoloshe Remix) - Johnny Dynell" },
     ],
   },
+  // Lisa, 28 Nov 2026 on Stephan Lupino's page: "create foto for petting zoo party and create page". All from S05E07 part B.
+  "petting-zoo-party": {
+    first: "the petting zoo party",
+    story:
+      "Really Denise and Jenny Go-Getter's favourite party, in the basement of the Tunnel: bales of hay from a shop in the flower district, Zaldy dressed as a zebra dancing in a cage, and an invitation photographed by Stephan Lupino, with the two of them posing behind a cage they built. Probably a fire hazard, Denise says; James doubts anyone at the Tunnel worried.",
+    timeline: [
+      ["Late 1980s", "Really Denise and Jenny Go-Getter throw parties at the Tunnel"],
+      ["Late 1980s", "Stephan Lupino shoots the invitation: the two of them behind a home-made cage"],
+      ["The night", "Bales of hay in the Tunnel basement; Zaldy dances in a cage dressed as a zebra"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel"],
+    said: [
+      { episode: "s05e07b", who: "Really Denise", time: "00:44:23", context: "Asked about her parties with Jenny Go-Getter at the Tunnel, she picks the petting zoo", quote: "The favorite party I ever did with Jenny was the petting zoo. We decided we were going to do a petting zoo party in the basement. I found this flower shop in the flower district that had hay, and I had them deliver bales of hay into the basement of the Tunnel." },
+      { episode: "s05e07b", who: "Really Denise", time: "00:45:12", context: "Zaldy in the cage, and Stephan Lupino's invitation photo", quote: "I remember Zaldy dressed up as a zebra, and Zaldy was dancing in a cage in this outfit. Stephan Lupino took the picture for the invite. Jenny and I created this weird cage, and that was our invite." },
+      { episode: "s05e07b", who: "James St. James", time: "00:45:03", context: "Denise says the hay was probably a fire hazard", quote: "I don't think they ever worried about fire hazard. I don't think they were really playing within the scope of the law." },
+    ],
+    also: { heading: "At the party", names: ["Really Denise", "Jenny Go-Getter", "Zaldy", "Stephan Lupino"] },
+  },
   "love-ball": {
     first: "the Love Ball",
     story:

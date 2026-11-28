@@ -76,6 +76,9 @@ import ladyBunnyPhoto from "@/assets/people/lady-bunny-photo.webp";
 import ladyBunnyPolaroid from "@/assets/people/lady-bunny-polaroid.webp";
 import colleenWeinsteinPhoto from "@/assets/people/colleen-weinstein-photo.webp";
 import colleenWeinsteinPolaroid from "@/assets/people/colleen-weinstein-polaroid.webp";
+import pettingZooPartyPhoto from "@/assets/people/petting-zoo-party-photo.webp";
+import pettingZooPartyPhotoPhone from "@/assets/people/petting-zoo-party-photo-phone.webp";
+import pettingZooPartyPolaroid from "@/assets/people/petting-zoo-party-polaroid.webp";
 import venusXtravaganzaPhoto from "@/assets/people/venus-xtravaganza-photo.webp";
 import venusXtravaganzaPolaroid from "@/assets/people/venus-xtravaganza-polaroid.webp";
 import davidIanXtravaganzaPhoto from "@/assets/people/david-ian-xtravaganza-photo.webp";
@@ -1128,6 +1131,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "david-ian-xtravaganza": { photo: davidIanXtravaganzaPhoto, polaroid: davidIanXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "stephan-lupino": { photo: stephanLupinoPhoto, polaroid: stephanLupinoPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "christopher-street": { photo: christopherStreetPhoto, polaroid: christopherStreetPolaroid, focus: "50%", credit: "Christopher Street Liberation Day, 28 June 1970 - still from Lilli Vincenz's film Gay and Proud (public domain, Library of Congress)" },
+  "petting-zoo-party": { photo: pettingZooPartyPhoto, phone: pettingZooPartyPhotoPhone, polaroid: pettingZooPartyPolaroid, focus: "50%", credit: "Header and polaroid: the Tunnel basement dressed as a petting zoo, drawn for the AFTERPARTY - no people shown" },
   "love-ball": { photo: loveBallPhoto, polaroid: loveBallPolaroid, focus: "40%", credit: "Invitation: The Love Ball, Roseland, 1989 - photo via Gallery 98" },
   voguing: { photo: voguingPhoto, polaroid: voguingPolaroid, focus: "50%", credit: "Photo: S Pakhrin, Voguing Masquerade Ball, 2016, CC BY 2.0, via Wikimedia Commons" },
   "no-entiendes": { photo: noEntiendesPhoto, polaroid: noEntiendesPolaroid, focus: "45%", credit: "Card: No Entiendes, second anniversary, Danceteria, 1984 - photo via Gallery 98" },
