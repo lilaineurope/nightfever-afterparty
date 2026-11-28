@@ -41,7 +41,14 @@ export function Cover({ w }: { w: PersonWork }) {
   return (
     <span className={`lib-cv lib-type ${w.offShow ? "lib-news" : COLOUR[w.kind]}`}>
       <span className="lib-kind">{LABEL[w.kind]}{w.offShow && <> · not on the show yet</>}</span>
-      <span className={`lib-mast${w.name.length > 44 ? " lib-mast-xl" : w.name.length > 24 ? " lib-mast-l" : ""}`}>{w.name}</span>
+      {w.logo ? (
+        <>
+          <img className="lib-logo" src={w.logo} alt={`${w.name} masthead`} loading="lazy" decoding="async" />
+          <span className="lib-lines">{w.name}</span>
+        </>
+      ) : (
+        <span className={`lib-mast${w.name.length > 44 ? " lib-mast-xl" : w.name.length > 24 ? " lib-mast-l" : ""}`}>{w.name}</span>
+      )}
       {foot}
     </span>
   );

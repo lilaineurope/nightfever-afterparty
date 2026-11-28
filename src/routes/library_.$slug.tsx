@@ -69,7 +69,12 @@ function GuestLibrary() {
   const { slug } = Route.useLoaderData();
   const e = entityBySlug[slug]!;
   const { works, picks, ideas, tips, episode } = useMemo(
-    () => libraryOf(slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined)),
+    () => {
+      const lib = libraryOf(slug, (n) => (coverFor(n)?.kind === "book" ? coverFor(n)!.src : undefined));
+      // Masthead logos on the typed covers (Lisa, 28 Nov 2026: "cover designs or logos"), as on the A–Z pages.
+      for (const w of lib.works) if (!w.cover && w.slug) { const c = coverFor(w.coverName ?? w.name); if (c?.kind === "mast") w.logo = c.src; }
+      return lib;
+    },
     [slug],
   );
   const name = episode ? stageName(episodeById(episode).guest) : e.name;

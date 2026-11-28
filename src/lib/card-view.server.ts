@@ -42,6 +42,11 @@ const workCover = (n: string): string | undefined => {
   const s = slugify(n);
   return CLUB_TICKETS[s]?.src ?? CLUB_PROFILES[s]?.portrait?.polaroid;
 };
+/** A magazine or paper with only a masthead in the Library shows its logo on the typed cover. */
+const workLogo = (n: string): string | undefined => {
+  const c = coverFor(n);
+  return c?.kind === "mast" ? c.src : undefined;
+};
 
 /** The picture for a name in a story box (Lisa, 27 Nov 2026: make the pages "sticky"): the person's polaroid, their
  *  AFTERPARTY polaroid, the club's polaroid or ticket, the diary keeper's polaroid, else a Library cover. Names without
@@ -257,6 +262,7 @@ function cardView(e: Entity): CardView {
   if (rooms) for (const x of [...rooms.stops, ...rooms.home, ...rooms.away]) L.card(x.slug);
   // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
   const works = e.category === "Person" ? worksOf(e.slug, workCover) : [];
+  for (const w of works) if (!w.cover && w.slug) w.logo = workLogo(w.coverName ?? w.name);
   for (const w of works) if (w.slug) L.card(w.slug);
   const tapes = e.category === "Person" ? tapesOf(e.name) : [];
   const j = jukebox.find((x) => x.slug === e.slug);
