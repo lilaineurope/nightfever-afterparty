@@ -14,7 +14,6 @@ import { ClubPartsSections } from "@/components/club-parts";
 import { NightPageOthers, NightPageSections } from "@/components/night-page";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { ProfileVideos } from "@/components/profile-videos";
-import { ClubCrowd } from "@/components/club-crowd";
 import { ClubLibrary, EventLibrary } from "@/components/club-library";
 import { SaidWall } from "@/components/said-wall";
 import { PersonProfileSections } from "@/components/person-profile";
@@ -322,7 +321,7 @@ function EntityPage() {
               </>
             ) : null}
             parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null}
-            crowd={e.crowd ? <ClubCrowd c={e.crowd} name={e.name} address={club.address} faces={e.faces} /> : null}
+            crowd={e.crowd}
             library={e.clubLib ? <ClubLibrary v={e.clubLib} name={e.name} /> : null}
             faces={e.faces}
           />

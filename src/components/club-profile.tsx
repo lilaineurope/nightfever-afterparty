@@ -5,14 +5,39 @@ import { NamePile } from "@/components/name-pile";
 import { EntityText } from "@/components/entity-text";
 import type { ClubProfile } from "@/data/club-profiles";
 import { SaidWall } from "@/components/said-wall";
-import type { SaidBox } from "@/lib/card-view";
+import { ClubCrowd } from "@/components/club-crowd";
+import type { ClubCrowdView, SaidBox } from "@/lib/card-view";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; crowd?: ReactNode; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; crowd?: ClubCrowdView | null; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+  const story = (
+    <>
+      <h3 className={`${h} mt-7`}>{name}'s story</h3>
+      <ol className="mt-4 space-y-3 border-l-2 border-pink/50 pl-5">
+        {c.timeline.map(([y, t], i) => (
+          <li key={i} className="text-sm">
+            <span className="font-semibold">{y}</span> · <span className="text-[#333]"><EntityText text={t} self={name} /></span>
+          </li>
+        ))}
+      </ol>
+      <p className="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-sans text-sm font-semibold">
+        {c.timelineEvent && (
+          <Link to="/timeline" hash={`ev-${c.timelineEvent}`} className="text-[#111] hover:text-pink">On the Timeline &rarr;</Link>
+        )}
+        <Link to="/map" search={{ at: slug }} className="text-[#111] hover:text-pink">On the map &rarr;</Link>
+      </p>
+      {c.stage.length > 0 && (
+        <>
+          <h3 className={`${h} mt-8`}>On {name}'s stage</h3>
+          <NamePile names={c.stage} faces={faces} />
+        </>
+      )}
+    </>
+  );
   return (
     <>
       <div className="pt-4 text-center">
@@ -53,47 +78,31 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
       {/* The club's theme nights and parties (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
       {parts}
 
-      <section className="grid gap-8 rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111] md:grid-cols-2">
-        <div>
-          <h2 className={h}>{name}'s story</h2>
-          <ol className="mt-4 space-y-3 border-l border-gold/40 pl-5">
-            {c.timeline.map(([y, t], i) => (
-              <li key={i} className="text-sm">
-                <span className="font-semibold text-foreground">{y}</span> · <span className="text-card-foreground/80"><EntityText text={t} self={name} /></span>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            {c.timelineEvent && (
-              <Link to="/timeline" hash={`ev-${c.timelineEvent}`} className="text-gold hover:text-pink">On the Timeline &rarr;</Link>
-            )}
-            <Link to="/map" search={{ at: slug }} className="text-gold hover:text-pink">On the map &rarr;</Link>
-          </p>
-        </div>
-        <div>
-          {c.stage.length > 0 && (
-            <>
-              <h2 className={h}>On {name}'s stage</h2>
-              <NamePile names={c.stage} faces={faces} />
-            </>
-          )}
+      {/* One clipboard (Lisa, 28 Nov 2026): the club's story and stage beside On the list; the rooms around it get their own box. */}
+      {crowd ? (
+        <ClubCrowd c={crowd} name={name} address={c.address} faces={faces ?? {}} story={story} />
+      ) : (
+        <section className="club-list mx-auto w-full max-w-3xl">{story}</section>
+      )}
+
+      {(c.rooms.length > 0 || (c.also && c.also.names.length > 0)) && (
+        <section className="mx-auto w-full max-w-5xl rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
           {c.rooms.length > 0 && (
             <>
-              <h2 className={`${h} mt-6`}>The rooms around it</h2>
+              <h2 className={h}>The rooms around it</h2>
               <NamePile names={c.rooms} faces={faces} />
             </>
           )}
           {c.also && c.also.names.length > 0 && (
             <>
-              <h2 className={`${h} mt-6`}>{c.also.heading}</h2>
+              <h2 className={`${h} ${c.rooms.length > 0 ? "mt-6" : ""}`}>{c.also.heading}</h2>
               <NamePile names={c.also.names} faces={faces} />
             </>
           )}
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* "Who else was there" and "The poster + read about it", under the story box (Lisa, 27 Nov 2026, W1 + L2). */}
-      {crowd}
       {library}
     </>
   );
