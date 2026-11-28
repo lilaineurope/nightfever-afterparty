@@ -9,6 +9,7 @@ import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { CardView } from "@/lib/card-view";
 import { EntityText } from "@/components/entity-text";
 import { EntityLink } from "@/components/entity-link";
+import { SlugPile } from "@/components/name-pile";
 
 // The A–Z card's sections, drawn from the CardView the server sends with the page (src/lib/card-view.server.ts) - the card
 // page never loads the whole A–Z (page weight, 16 Nov 2026). The episode header's About box lives in guest-about.tsx.
@@ -68,7 +69,14 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
   const related = v.related;
   // A club page shows its theme nights and parties in their own boxes above (club-parts.tsx), not again here.
   const refs = v.parts ? v.refs.filter((r) => !v.parts!.names.includes(r.name)) : v.refs;
-  const named = v.named;
+  // One box per name: a person named on two episode cards gets both episode codes under one picture.
+  const named = Object.values(
+    v.named.reduce<Record<string, { slug: string; name: string; sub?: string }>>((acc, x) => {
+      const a = (acc[x.slug] ??= { slug: x.slug, name: x.name });
+      if (x.short) a.sub = a.sub ? `${a.sub} · ${x.short}` : x.short;
+      return acc;
+    }, {}),
+  );
 
   return (
     <>
@@ -138,48 +146,28 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
       {named.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>Also named on these cards</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {named.map((x) => (
-              <Link key={`${x.slug}-${x.episode}`} {...linkToSlug(links, x.slug)} className={chip}>
-                {x.name}
-                {x.episode && <span className="ml-1.5 text-muted-foreground">{x.short}</span>}
-              </Link>
-            ))}
-          </div>
+          <SlugPile items={named} faces={v.faces} />
         </section>
       )}
 
       {v.onPages.length > 0 && !v.club && (
         <section>
           <h2 className={h}>On these AFTERPARTY pages</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {v.onPages.map((x) => (
-              <Link key={x.slug} {...linkToSlug(links, x.slug)} className={chip}>
-                {x.name}
-                <span className="ml-1.5 text-muted-foreground">{x.kind}</span>
-              </Link>
-            ))}
-          </div>
+          <SlugPile items={v.onPages.map((x) => ({ slug: x.slug, name: x.name, sub: x.kind }))} faces={v.faces} />
         </section>
       )}
 
       {v.inGuestStories.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>Pops up in the guests' stories</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {v.inGuestStories.map((x) => <EntityLink key={x.slug} name={x.slug} className={chip}>{x.name}</EntityLink>)}
-          </div>
+          <SlugPile items={v.inGuestStories} faces={v.faces} />
         </section>
       )}
 
       {related.length > 0 && !v.item && !v.club && (
         <section>
           <h2 className={h}>In the same rooms (aka the gang)</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {related.map((x) => (
-              <Link key={x.slug} {...linkToSlug(links, x.slug)} className={chip}>{x.name}</Link>
-            ))}
-          </div>
+          <SlugPile items={related} faces={v.faces} />
         </section>
       )}
     </>

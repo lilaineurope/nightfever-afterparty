@@ -298,6 +298,11 @@ function cardView(e: Entity): CardView {
       ...(mem ? [...mem.liftedUp, ...mem.rooms, ...(mem.also?.names ?? [])] : []),
       ...(club ? [...club.stage, ...club.rooms, ...(club.also?.names ?? [])] : []),
       ...(crowd ? [...crowd.regulars, ...crowd.posters.map((p) => p.name)] : []),
+      // The A–Z lists under the card show picture boxes too (Lisa, 28 Nov 2026).
+      ...named.map((x) => x.name),
+      ...inGuestStories.map((x) => x.name),
+      ...onPages.map((x) => x.name),
+      ...related.map((x) => x.name),
     ]),
     connector: connectorRank(e.slug),
     links: L.data,
