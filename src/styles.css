@@ -1420,6 +1420,7 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 @media (max-width: 700px) { .map-band-svg { height: 300px; } }
 /* A living person's rooms: numbered pins on a drawn New York, the list beside it. */
 .rooms-grid { display: grid; gap: 26px; align-items: start; }
+.rooms-map { position: relative; }
 @media (min-width: 860px) { .rooms-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .rooms-map { position: sticky; top: 90px; } }
 .rooms-map { border: 2px solid #111; box-shadow: 6px 7px 0 #111; background: #ece6da; }
 .rooms-map svg { display: block; width: 100%; height: auto; }
@@ -1437,6 +1438,13 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 .rooms-badge { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #111; background: #fff; color: #111; font: 700 12px var(--font-mono-body); }
 .rooms-badge-club { background: #111; color: #fff; }
 .rooms-tape { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; font-size: 7px; padding: 3px 0; height: fit-content; }
+/* The short map box (Lisa, 28 Nov 2026, every page from now on): numbered names only, one line each, two columns where
+   they fit; the big-map button sits in the map's corner (.map-btn-corner). */
+.rooms-short .rooms-list { display: block; columns: 2 220px; column-gap: 24px; }
+.rooms-short .rooms-list > li { break-inside: avoid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: center; padding: 6px 0; font-size: 13px; line-height: 1.35; }
+.rooms-short .rooms-badge { width: 24px; height: 24px; font-size: 11px; }
+.rooms-badge-home { background: #f6e06a; }
+.rooms-short .home-tag { vertical-align: 1px; }
 
 /* The Map page header (Lisa, 27 Nov 2026, "H1"): the drawn city, every pin on it, the title over uptown. */
 .map-hdr { position: relative; height: 440px; overflow: hidden; border-bottom: 3px solid #111; background: #ece6da; }
