@@ -15,7 +15,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; sound?: ReactNode; parts?: ReactNode; crowd?: ReactNode; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function ClubProfileSections({ c, name, slug, night, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; sound?: ReactNode; parts?: ReactNode; crowd?: ReactNode; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }> }) {
   return (
     <>
       <div className="pt-4 text-center">

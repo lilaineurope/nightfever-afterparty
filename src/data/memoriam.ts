@@ -37,6 +37,30 @@ export type Memoriam = {
 };
 
 export const MEMORIAM: Record<string, Memoriam> = {
+  // Lisa, 28 Nov 2026 on the House of Xtravaganza page: "all the extravaganzas need a polaroid and a page". Facts: Wikipedia.
+  "venus-xtravaganza": {
+    born: "1965",
+    died: "1988",
+    diedLine: "Died 21 December 1988 in New York, aged 23",
+    story:
+      "The House of Xtravaganza daughter whose dream of a quiet life became the heart of Paris Is Burning. Hector Xtravaganza brought her into the house in 1983 and Mother Angie raised her. She was killed in a Times Square hotel in December 1988, before the film came out, and her murder has never been solved.",
+    timeline: [
+      ["1965", "Born Venus Pellagatti on 5 May in Jersey City, New Jersey"],
+      ["1983", "Hector Xtravaganza brings her into the House of Xtravaganza"],
+      ["1985", "After Hector dies, Mother Angie Xtravaganza takes her as her daughter"],
+      ["1988", "Found dead on 21 December at the Fulton Hotel on West 46th Street; the case is never solved"],
+      ["1990", "Paris Is Burning, by Jennie Livingston, comes out with her story at its heart"],
+      ["2022", "The NYPD reopens the case"],
+      ["2024", "I'm Your Venus, a documentary about her family and the house"],
+    ],
+    liftedUp: [],
+    rooms: ["House of Xtravaganza", "Sound Factory", "Paris Is Burning"],
+    said: [
+      { episode: "s06e02", who: "James St. James", time: "00:27:03", context: "Talking to Christina Visca about who came to the Sound Factory in the Paris Is Burning years", quote: "You had like Mother Angie Xtravaganza who I would see there every week and Willie Ninja and Venus Xtravaganza." },
+      { episode: "s06e02", who: "James St. James", time: "00:27:28", context: "James asks Christina to remember the ballroom legends who have died; she answers that they were family and the Sound Factory held balls too", quote: "I just wonder if you wanted to talk about like maybe Venus or Angie, or just some of those people that we've lost along the way, Willie." },
+    ],
+    also: { heading: "Her house", names: ["Angie Xtravaganza", "Hector Xtravaganza", "Willi Ninja", "Jennie Livingston"] },
+  },
   "brian-butterick": {
     born: "1956",
     died: "2019",

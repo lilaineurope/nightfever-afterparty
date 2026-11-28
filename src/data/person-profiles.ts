@@ -52,9 +52,316 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s05e07b", who: "Really Denise", time: "00:44:23", context: "Their favourite party: the petting zoo in the Tunnel basement", quote: "The favorite party I ever did with Jenny was the petting zoo. So we decided we were going to do a petting zoo party in the basement. I found this flower shop in the flower district that had hay, and I had them deliver bales of hay into the basement of the Tunnel." },
       { episode: "s05e07b", who: "Really Denise", time: "00:53:57", context: "Jenny today: Jennifer Banash, novelist, ghostwriter and editor", quote: "You mentioned Jenny Go-Getter earlier. I'm still friendly with her... Jenny got in touch with me and said, Denise, I'll edit your book for free. She's written four YA novels, which is young adult novels. Her day job is as a ghostwriter and an editor." },
     ],
-    also: { heading: "The Tunnel kids", names: ["Really Denise", "Michael Tron", "Magenta", "Julie Jules", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy", "Stephan Lupino"] },
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Michael Tron", "Magenta", "Julie Jewels", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy", "Stephan Lupino"] },
     // Already in the S05E07b AFTERPARTY playlist.
     videos: [{ id: "j164z_j1U-U", title: "Jennifer Banash on the feminist stories in her books and her life (You, Me, and The Girls Podcast)" }],
+  },
+
+  // Lisa, 28 Nov 2026 on the House of Xtravaganza page: "love ball and voguing needs a picture and a page", and "Haoui Montaug
+  // no entiendes needs picture and it's own page". Facts: Wikipedia (Susanne Bartsch, Vogue (dance), Haoui Montaug), FIT's
+  // Fashion Underground, the CFDA, Gallery 98's cards and the episodes. Pictures are real: no Gemini.
+  // Lisa, 28 Nov 2026 on Jim Fouratt's page: "christopher street needs picture and a page". A real 1970 picture, no Gemini.
+  "christopher-street": {
+    first: "Christopher Street",
+    story:
+      "The West Village street that runs from Sixth Avenue down to the Hudson: the Stonewall Inn, Sheridan Square and, at its end, the piers where the sunbathers, the artists and later the ball kids all went. Jayne County sat on its steps in the 60s and marched up and down it the night of Stonewall; Michelle Visage met Willi Ninja on its piers.",
+    timeline: [
+      ["1960s", "The place to hang out, Jayne County says: sit on a step and wait for something to happen"],
+      ["28 June 1969", "The Stonewall uprising at the Stonewall Inn, 53 Christopher Street"],
+      ["28 June 1970", "The first Christopher Street Liberation Day march, a year after Stonewall"],
+      ["1970s", "Sunbathing on the piers at the end of the street, in Christopher Makos's pictures"],
+      ["1980s", "The ball kids meet on the pier; Michelle Visage meets Willi Ninja there"],
+      ["2016", "The Stonewall National Monument"],
+    ],
+    liftedUp: [],
+    rooms: ["Stonewall Inn", "Sheridan Square", "Limelight"],
+    said: [
+      { episode: "s02e02", who: "Jayne County", time: "00:16:21", context: "Arriving in New York in the 60s: Christopher Street was where you went to sit on a step and wait for something to happen", quote: "When I went there in the 60s, Christopher Street was the place to hang out. Whether you wanted to stay with someone, or wanted to turn a trick, or whether you just didn't have anything to do, you just go to Christopher Street and sit on one of the steps and wait for something to happen." },
+      { episode: "s02e02", who: "Jayne County", time: "00:43:55", context: "The Stonewall night: marching up and down Christopher Street between Sheridan Square and Greenwich Avenue with Jim Fouratt", quote: "We were just marching up and down Christopher Street, back and forth, because you didn't have any place to go once you marched down to Greenwich Avenue... screaming gay power, gay power, with a fist in the air." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:11:50", context: "The night she first saw voguing, then met the ball kids at the Christopher Street piers", quote: "Dorothy clicked her heels three times and ended up in Kansas. I clicked my heels three times and ended up on Christopher Street." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:11:59", context: "Meeting Caesar, Willie Ninja and the House of Magnifique on the piers", quote: "I met Caesar later on at the piers, at the Christopher Street piers... And then I went to the piers with them, and that's where I met Willie Ninja." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:13:00", context: "The first Limelight: a men-only disco on Seventh Avenue South at Christopher Street, before the church on Sixth Avenue", quote: "There was a Limelight on 7th Avenue, near a restaurant called Penny Feathers on the corner of 7th Avenue and Christopher Street. If you were a woman or a trans woman or a drag queen, you were not getting in." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:07:31", context: "His first apartment at Bleecker and Sullivan, in the middle of everything", quote: "At Bleecker and Sullivan, I was equidistant between CBGB's to the east, Christopher Street to the west, and Max's Kansas City to the north." },
+      { episode: "s05e06", who: "Christopher Makos", time: "00:16:47", context: "Photographing the piers at the end of Christopher Street in the 70s", quote: "There's so many pictures of Peter Berlin down at the piers. I have pictures of Keith Haring and Juan, his boyfriend, down at the piers. Everybody used to go down to the piers sunbathing." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", context: "How he met the ball kids and became an Xtravaganza", quote: "I would meet the kids at the Garage years ago, the ball kids, and also on the pier. They were all on the pier, and I became an Xtravaganza." },
+    ],
+    videos: [
+      { id: "cCqcvqkWQhc", title: "Chapter 1 | Stonewall Uprising | American Experience" },
+      { id: "Krwi_i6x4ts", title: "Gay & Proud (1970): The First Christopher Street Liberation Day March" },
+      { id: "tS990SCeQIE", title: "Queer Histories of the Piers | David Hammons: Day's End" },
+      { id: "ftcvaJCKVjs", title: "Marsha P. Johnson and the Stonewall Rebellion: Crash Course Black American History #41" },
+      { id: "kn9gHUwhAEQ", title: "Episode 304: Fenced Out" },
+    ],
+  },
+  // Lisa, 28 Nov 2026 on the House of Xtravaganza page: "all the extravaganzas need a polaroid and a page".
+  "david-ian-xtravaganza": {
+    first: "David Ian",
+    story:
+      "A House of Xtravaganza ball kid who put the scene on a record: Elements of Vogue, a 1989 12-inch on Extravaganza Records, with mixes by David DePino and Johnny Dynell. Luis Xtravaganza Camacho remembers dancing with him from the Sound Factory at dawn to the Choice at noon, and back again.",
+    timeline: [
+      ["1980s", "Walks the balls with the House of Xtravaganza"],
+      ["1989", "Elements of Vogue, mixed by David DePino and Johnny Dynell"],
+      ["1991", "Love's Gonna Get You"],
+      ["Later", "Sings on Johnny Dynell's Marie Montana"],
+    ],
+    liftedUp: [],
+    rooms: ["Sound Factory", "The Choice", "House of Xtravaganza"],
+    said: [
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:19:42", context: "A Sound Factory weekend that never ended: from the Factory at dawn to Richard Vasquez's after-hours club the Choice at noon, then back again", quote: "There was a night where me and David Ian were at the Sound Factory. We didn't get to the Sound Factory till like five, six in the morning, right? And so, you know, 12 in the afternoon, we jump in a cab, we go to the Choice." },
+    ],
+    videos: [
+      { id: "987WYNZZX4k", title: "David Ian Xtravaganza - Elements of Vogue (David DePino Mix)" },
+      { id: "MTTW14M1D0M", title: "David Ian Xtravaganza - Elements of Vogue (Johnny Dynell Mix)" },
+      { id: "kvwOYRQ29Ys", title: "Marie Montana feat. David Ian Xtravaganza (Sveta & Tokoloshe Remix) - Johnny Dynell" },
+    ],
+  },
+  "love-ball": {
+    first: "the Love Ball",
+    story:
+      "Susanne Bartsch's AIDS benefit at the Roseland Ballroom on 10 May 1989, with DIFFA: the Harlem ball houses walked their categories for the fashion world, and designers and stars judged. Willi Ninja and the House of Xtravaganza opened it, it raised about $400,000, and the legend goes that it was where Madonna first saw voguing.",
+    timeline: [
+      ["10 May 1989", "The first Love Ball at Roseland, with DIFFA: Willi Ninja and the Xtravaganzas open the night"],
+      ["10 May 1989", "Marc Jacobs, André Leon Talley and Leigh Bowery among the judges; Michelle Visage walks with the House of Magnifique"],
+      ["10 May 1989", "Zaldy and Mathu's House of Donna Karan wins with nude bodysuits that turn humans into aliens"],
+      ["1989", "The night raises about $400,000 for DIFFA"],
+      ["1991", "Love Ball II at Roseland"],
+      ["2019", "Love Ball III, with the CFDA"],
+    ],
+    liftedUp: [],
+    rooms: ["Roseland Ballroom", "DIFFA", "House of Xtravaganza", "House of Magnifique", "Voguing"],
+    said: [
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:43:08", context: "Susanne on opening the first Love Ball with the ball houses", quote: "It's important to have the house ball community be part of it. And I mean, I never forget, I opened with Willi Ninja and the Xtravaganzas were opening a ball and people were crazy. They'd never seen anything like it. Because a lot of people didn't know about the house ball community." },
+      { episode: "s02e03", who: "Susanne Bartsch", time: "00:46:40", context: "Susanne on the night itself", quote: "Well, everything was... Mario Testino came in drag. Mario Testino was in drag with five supermodels just strutting around." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:32:00", context: "Michelle walked the first Love Ball with the House of Magnifique", quote: "And yeah, vogued with the Magnifiques and had my knee pads on, had my blonde ponytail on... We dressed ourselves because we weren't high profile like the other houses were." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:32:21", context: "The judges of the first Love Ball", quote: "Things were starting to blow up because of voguing starting to blow up. So the judges were like Marc Jacobs and people like that that were judging this Love Ball. And I remember André Leon Talley and Leigh Bowery." },
+      { episode: "s04e04", who: "Zaldy", time: "00:31:42", context: "The House of Donna Karan's bodysuits at the first Love Ball", quote: "(James: The first Love Ball, where you did that outfit... the House of Donna Karan... those nude illusion bodysuits with the blobs.) It was early 3D printing, where I actually molded all those things on fake bodies of ours, casted them, had them car-painted. It was like armor... let's transform from human to alien." },
+      { episode: "s02e01", who: "James St. James", time: "00:33:03", context: "The legend of Madonna and the Love Ball", quote: "It was at the first Love Ball that Madonna was first exposed to vogue culture, is what the legend goes." },
+    ],
+    also: { heading: "On the night", names: ["Susanne Bartsch", "Willi Ninja", "Marc Jacobs", "André Leon Talley", "Leigh Bowery", "Mario Testino", "Zaldy", "Michelle Visage", "Laurie Pike", "Madonna"] },
+    videos: [
+      { id: "L9QEi3HoEuQ", title: "The celebrities assemble for Susanne Bartsch's Love Ball, 1989 (Nelson Sullivan)" },
+      { id: "6106tuI6tnY", title: "The Love Ball at Roseland (Nelson Sullivan)" },
+      { id: "KR1ZZFEEg9w", title: "1989 Legends of Vogue at Susanne Bartsch's Love Ball (The Ballroom History Nerd)" },
+      { id: "odnaKLU8Kag", title: "Susanne Bartsch's Love Ball, 10 May 1989: the complete tape (Nelson Sullivan)" },
+    ],
+  },
+
+  voguing: {
+    first: "Voguing",
+    story:
+      "The dance of the Harlem ballroom houses: poses like a model on the cover of Vogue that, Luis Xtravaganza says, connected faster and faster until they became a dance. In the late 1980s it came downtown, to Red Zone, Mars and the Love Ball, and in 1990 the world saw it in Paris Is Burning and in Madonna's Vogue, with Jose and Luis Xtravaganza dancing.",
+    timeline: [
+      ["Early 70s", "Patricia Field goes to her first ball, in a Harlem brownstone"],
+      ["1980s", "Poses hit like a magazine cover start to connect, faster and faster, into a dance"],
+      ["1988", "Pat Field's House of Field ball: the fashion world meets the voguers downtown; Chi Chi Valenti writes Nations for Details"],
+      ["1989", "The first Love Ball; at Mars the houses take over the first floor"],
+      ["1989", "The first vogue records: Johnny Dynell's Elements of Vogue and Malcolm McLaren's Deep in Vogue"],
+      ["1990", "Paris Is Burning, and Madonna's Vogue with Jose and Luis Xtravaganza"],
+    ],
+    liftedUp: [],
+    rooms: ["House of Xtravaganza", "House of Magnifique", "House of Field", "Love Ball", "Red Zone", "Mars", "Paris Is Burning"],
+    said: [
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:22:55", context: "Luis on how voguing grew out of poses", quote: "Vogue came a little bit later, and who could be the best Vogue model? And then butch queens started coming in and started voguing, but it was more like poses, hit a pose like in a magazine. And then the poses started to connect. Faster and faster and faster. And by the time me and Jose hit it, it was a dance. But in the beginning, Vogue was just poses." },
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:23:55", context: "From the cover of Vogue magazine to the dance", quote: "It's just like, who can be a fashion model on the cover of Vogue magazine? And then it just turned into Vogue. And so the girls would come out in these wonderful high-fashion outfits and just stand there and pose... And then, literally, as the years have gone by, the poses started to connect faster and faster and faster. And today it's so fast." },
+      { episode: "s03e01", who: "Patricia Field", time: "00:21:24", context: "Pat's first ball, in a Harlem brownstone in the early 70s", quote: "And he got into voguing and he was the one who opened up my eyes to the existence of voguing... he invited me to come and I went. And that was my first experience in voguing and the vogue balls and all of that, early seventies." },
+      { episode: "s03e01", who: "Patricia Field", time: "00:35:55", context: "Pat's own downtown ball, where fashion met the voguers", quote: "I was so inspired by the voguing balls. So it led me into making a House of Field, which was kind of a fashion house. (James: And the fashion community was meeting the voguing community for the first time.)" },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:18:45", context: "Michelle on her first time on the floor", quote: "I never intended to compete. I became a little bit of a local legend with voguing within the circle. And Caesar, my house father, is the one who... it was Fem Queen Vogue, and he just took my back and pulled me in. And my imposter syndrome just had no choice to leave, because once you're on the floor, you can't turn around." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:40:29", context: "The first vogue records, before Madonna", quote: "Then I did the record Elements of Vogue... So Malcolm's Deep in Vogue and my Elements of Vogue were the first vogue records... a year before the other one. Mine was '89." },
+    ],
+    also: { heading: "On the floor", names: ["Willi Ninja", "Luis Xtravaganza Camacho", "Jose Xtravaganza", "Michelle Visage", "Patricia Field", "Johnny Dynell", "Malcolm McLaren", "Madonna"] },
+    videos: [
+      { id: "XJ6fqQX_e9U", title: "How the LGBTQ community created voguing (Vox)" },
+      { id: "RLzP6121dlo", title: "Willi Ninja" },
+      { id: "Pwu-YJqDd0s", title: "Vogue history, old way (Wolfgang Busch, Art From The Heart Films)" },
+      { id: "9s31QN7nq14", title: "Willi Ninja voguing in Diane Martel's 1990 short documentary House of Tres" },
+    ],
+  },
+
+  "no-entiendes": {
+    first: "No Entiendes",
+    story:
+      "Haoui Montaug's travelling cabaret and talent night, on Wednesdays at Danceteria from 1982 and later with DJ Anita Sarko as co-host. A young Madonna sang Everybody there in 1982, and the early Beastie Boys played it. It moved with Haoui, to the Palladium and to The World for its sixth anniversary.",
+    timeline: [
+      ["1982", "Wednesday nights at Danceteria; a young Madonna sings Everybody on its stage"],
+      ["1983", "The Endless Cocktail Party card, drawn by Serge Clerc"],
+      ["1984", "The second anniversary at Danceteria; Anita Sarko co-hosts"],
+      ["1985", "Haoui stages Jesus Christ Superstar, the Lip Sync Opera, at Danceteria, with Dean Johnson, Joey Arias, Anita Sarko and Michael Musto"],
+      ["Late 80s", "No Entiendes at the Palladium, on Nelson Sullivan's tape"],
+      ["1988", "The sixth anniversary, at The World"],
+    ],
+    liftedUp: ["Madonna"],
+    rooms: ["Danceteria", "Palladium", "The World"],
+    said: [],
+    also: { heading: "On its stage", names: ["Haoui Montaug", "Anita Sarko", "Madonna", "Beastie Boys", "Dean Johnson", "Joey Arias", "Michael Musto"] },
+    videos: [
+      { id: "iWa-hE8KeQk", title: "Haoui Montaug and Anita Sarko's No Entiendes at the Palladium (Nelson Sullivan)" },
+      { id: "ZtY2rV6yWZc", title: "Madonna sings Everybody at Haoui Montaug's No Entiendes, 1982" },
+      { id: "yNcEggr_xwc", title: "No Entiendes, 14 Jan 1987, with Haoui Montaug and Anita Sarko" },
+      { id: "UAubqBL1i18", title: "Haoui Montaug on Anita Sarko" },
+    ],
+  },
+
+  // The Tunnel kids (Lisa, 28 Nov 2026 on Jenny Go-Getter's page: "the tunnel kids names should all get a picture box like
+  // really denise and zaldy and a proper page"). Quotes from the transcripts; facts from the episodes. No photo has been found
+  // of Magenta, Oliver Twisted, Harley Quinn or Fuchsia Dahl, so they have no polaroid (we never invent a face).
+  "julie-jewels": {
+    first: "Julie",
+    story:
+      "One of the original club kids and a Tunnel kid in the basement. In the summer of 1987 she went up to a ball at the Elks Lodge in Harlem, won Face, and walked into the Tunnel at four in the morning with the trophy, and the club kids followed her uptown. Years later Jackie 60's great award line was still Bring us the head of Julie Jewels.",
+    timeline: [
+      ["Late 1980s", "One of the Tunnel kids in the basement, and one of the first club kids"],
+      ["Summer 1987", "Wins Face at a ball at the Elks Lodge in Harlem and brings the trophy down to the Tunnel at 4 am; the club kids follow her uptown as the House of Pancakes"],
+      ["Late 1980s", "On the ball scene, people play her off against Michelle Visage: the same pale skin and blonde ponytail"],
+      ["Late 1980s", "Stars with Michael Tron in Nelson Sullivan's tape The Club Kids Go To Boston"],
+      ["1992", "Jackie 60's great award line: Bring us the head of Julie Jewels"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel", "Elks Lodge", "House of Pancakes", "Jackie 60"],
+    said: [
+      { episode: "s01e08", who: "James St. James", time: "00:12:41", context: "Summer 1987: Julie wins Face uptown and takes the club kids to the balls", quote: "I remember in 1987, it was the summer of '87, and Julie Jewels had gone up to the Elks Lodge and she won Face and came down with the trophy at like four in the morning to the Tunnel and said, you guys, there's this thing happening up in Harlem. It is amazing... And then we all went on an expedition... all the club kids went together and we called ourselves the House of Pancakes. And we were not welcome." },
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:16:30", context: "Luis on Julie at the balls: an outsider, but nobody could deny her face", quote: "You can't deny Julie Jewels' beauty back then. I mean, she was otherworldly, right? ... Whether she was white, black, Latino, you couldn't deny that she had face. So at the very core of that idea, yes, she's not one of us, but that bitch got face... then she gets the trophy." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:16:44", context: "Michelle on being played against Julie on the ball scene", quote: "We both had our blonde ponytails, and nobody did it first, but there was a little bit of competition between me and Julie. But I was a voguer. Julie wasn't, but they wanted to put us against each other because we had similar looks: the pale skin, the blonde ponytail." },
+      { episode: "s01e01", who: "Dianne Brill", time: "00:44:37", context: "Dianne on her ex dressing Julie up to look like her", quote: "There was a girl, Julie Jewels, I know she was a friend of yours, beautiful girl, right? Beautiful. And he would start dressing her up like me... I never got to know her because I didn't like that he had done that. So it wasn't her. It was him." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:47:35", context: "Johnny and Chi Chi Valenti on Jackie 60's best award line, 1992", quote: "Bring us the head of Julie Jewels. (Chi Chi: Was our great award. And that was so early on in Jackie. That was 1992. And we could never top it.)" },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Jenny Go-Getter", "Michael Tron", "Magenta", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy"] },
+    videos: [
+      { id: "LfMtJo4Ag5E", title: "The Club Kids Go To Boston, starring Julie Jewels and Mikel Tron (Nelson Sullivan)" },
+      { id: "E0R2pZreMBA", title: "Club Kid, Julie Jewels (Retro Room)" },
+    ],
+  },
+
+  "michael-tron": {
+    first: "Michael",
+    story:
+      "A Tunnel kid from the Upper East Side, there in the basement before the club kids. Really Denise loved his crazy creativity and his pointy hair, and they are still friends. He went to high school with Lincoln Palsgrove and Jennifer Rubell, and into the Palladium with her.",
+    timeline: [
+      ["Mid-80s", "At high school with Lincoln Palsgrove IV and Jennifer Rubell; the three go to the Palladium together"],
+      ["Late 1980s", "One of the Tunnel kids in the basement, with Really Denise, Jenny Go-Getter and Julie Jewels"],
+      ["Late 1980s", "Goes to Boston with Julie Jewels in Nelson Sullivan's tape The Club Kids Go To Boston"],
+      ["Today", "Still friends with Really Denise"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel", "Palladium"],
+    said: [
+      { episode: "s05e07b", who: "Really Denise", time: "00:53:04", context: "Denise is still friends with him", quote: "Yes, love him, still friends with him. I just loved his crazy creativity and his pointy hair. And I remember his mother's apartment on the Upper East Side. I went up there, with a view over Central Park. Fabulous." },
+      { episode: "s04e04", who: "Zaldy", time: "00:21:01", context: "Zaldy on the people of the Tunnel years", quote: "People like Michael Tron and James, I mean, everyone was so interesting, you know. And it was fun. It was just what we did. We saw so much of each other, and usually at nighttime, and usually just for fun and dancing and drinking and having a good time." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:14:20", context: "Lincoln and Michael went to high school with Jennifer Rubell", quote: "...was friends with through high school, and Michael Tron was as well, was Jennifer Rubell. So we would go together to the Palladium with Jennifer. And of course, Jennifer had carte blanche, being Steve's niece." },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Jenny Go-Getter", "Magenta", "Julie Jewels", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy"] },
+    videos: [
+      { id: "LfMtJo4Ag5E", title: "The Club Kids Go To Boston, starring Julie Jewels and Mikel Tron (Nelson Sullivan)" },
+      { id: "dDaXu_5RmJA", title: "Club Kid, Michael Tronn (Retro Room)" },
+    ],
+  },
+
+  "magenta": {
+    story:
+      "One of the Tunnel kids in the basement in the late 1980s, before the club kids. Really Denise lights up at the name, and James and the show tried to find her.",
+    timeline: [
+      ["Late 1980s", "One of the Tunnel kids in the basement of the Tunnel, with Really Denise, Jenny Go-Getter and Michael Tron, before the club kids"],
+      ["Today", "No photo of Magenta from those nights has turned up yet: if you have one, the suggestion box at the foot of this page is the place"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel"],
+    said: [
+      { episode: "s05e07b", who: "James St. James", time: "00:55:20", context: "James asks Really Denise about the Tunnel kids", quote: "Magenta? I think you wanted us to try and find Magenta, right? It makes me think of Magenta, Fuchsia Dahl and Harley Quinn." },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Jenny Go-Getter", "Michael Tron", "Julie Jewels", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy"] },
+  },
+  "oliver-twisted": {
+    story:
+      "One of the Tunnel kids in the basement in the late 1980s, before the club kids: James St. James names him with Really Denise, Jenny Go-Getter, Harley Quinn and Fuchsia Dahl.",
+    timeline: [
+      ["Late 1980s", "One of the Tunnel kids in the basement of the Tunnel, with Really Denise, Jenny Go-Getter and Michael Tron, before the club kids"],
+      ["Today", "No photo of Oliver from those nights has turned up yet: if you have one, the suggestion box at the foot of this page is the place"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel"],
+    said: [
+      { episode: "s06e06", who: "James St. James", time: "00:11:35", context: "The Tunnel kids in the basement, before the club kids", quote: "Back before it was the club kids, when it was the Tunnel kids, and they were all in the basement, and it was a group of young kids... Really Denise, Jenny Go-Getter, Oliver Twisted, Harley Quinn, Fuchsia Dahl, a number of those kids." },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Jenny Go-Getter", "Michael Tron", "Magenta", "Julie Jewels", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy"] },
+  },
+  "harley-quinn": {
+    story:
+      "One of the Tunnel kids in the basement in the late 1980s, before the club kids, and no relation to the comic-book Harley Quinn: James St. James names her with Really Denise, Jenny Go-Getter, Oliver Twisted and Fuchsia Dahl.",
+    timeline: [
+      ["Late 1980s", "One of the Tunnel kids in the basement of the Tunnel, with Really Denise, Jenny Go-Getter and Michael Tron, before the club kids"],
+      ["Today", "No photo of Harley from those nights has turned up yet: if you have one, the suggestion box at the foot of this page is the place"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel"],
+    said: [
+      { episode: "s06e06", who: "James St. James", time: "00:11:35", context: "The Tunnel kids in the basement, before the club kids", quote: "Back before it was the club kids, when it was the Tunnel kids, and they were all in the basement, and it was a group of young kids... Really Denise, Jenny Go-Getter, Oliver Twisted, Harley Quinn, Fuchsia Dahl, a number of those kids." },
+      { episode: "s05e07b", who: "James St. James", time: "00:55:20", context: "James asks Really Denise about the Tunnel kids", quote: "Magenta? I think you wanted us to try and find Magenta, right? It makes me think of Magenta, Fuchsia Dahl and Harley Quinn." },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Jenny Go-Getter", "Michael Tron", "Magenta", "Julie Jewels", "Oliver Twisted", "Fuchsia Dahl", "Zaldy"] },
+  },
+  "fuchsia-dahl": {
+    story:
+      "One of the Tunnel kids in the basement in the late 1980s, before the club kids: James St. James names Fuchsia Dahl with Really Denise, Jenny Go-Getter, Oliver Twisted and Harley Quinn.",
+    timeline: [
+      ["Late 1980s", "One of the Tunnel kids in the basement of the Tunnel, with Really Denise, Jenny Go-Getter and Michael Tron, before the club kids"],
+      ["Today", "No photo of Fuchsia from those nights has turned up yet: if you have one, the suggestion box at the foot of this page is the place"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel"],
+    said: [
+      { episode: "s06e06", who: "James St. James", time: "00:11:35", context: "The Tunnel kids in the basement, before the club kids", quote: "Back before it was the club kids, when it was the Tunnel kids, and they were all in the basement, and it was a group of young kids... Really Denise, Jenny Go-Getter, Oliver Twisted, Harley Quinn, Fuchsia Dahl, a number of those kids." },
+      { episode: "s05e07b", who: "James St. James", time: "00:55:20", context: "James asks Really Denise about the Tunnel kids", quote: "Magenta? I think you wanted us to try and find Magenta, right? It makes me think of Magenta, Fuchsia Dahl and Harley Quinn." },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Jenny Go-Getter", "Michael Tron", "Magenta", "Julie Jewels", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Zaldy"] },
+  },
+
+  // Facts: Galerija Fotografija (Ljubljana, "80's in NY", 2016-17), L'Oeil de la Photographie, Zoe Lund's 1988 statement on
+  // his World shoot and IDEA Books' listing of his book The World (1988). Alive: no death notice; both write in the present.
+  "stephan-lupino": {
+    first: "Stephan",
+    story:
+      "The Croatian photographer of 1980s New York nights. He came to study acting, modelled, and got his first camera from Deborah Turbeville; at Area he set up a studio in the bathroom, and in 1988 he made a book of The World. He shot the petting zoo invitation for Really Denise and Jenny Go-Getter's Tunnel party. Today he paints and sculpts as much as he photographs.",
+    timeline: [
+      ["Early 1980s", "From Varaždin, Croatia, via Britain to New York to study acting; works as a photo model"],
+      ["Early 1980s", "Deborah Turbeville lends him his first camera; self-taught from there"],
+      ["1983-1987", "Area: he sets up an improvised studio in the club's bathroom, and shoots the night for Details"],
+      ["Late 1980s", "Shoots Really Denise in a fur bikini for her and Jenny Go-Getter's petting zoo party at the Tunnel"],
+      ["1988", "A shoot at The World, and his book The World"],
+      ["1990s", "Back in Croatia, he serves as an officer in the war and is wounded"],
+      ["2016", "80's in NY, his New York pictures, at Galerija Fotografija in Ljubljana"],
+      ["Today", "Painter, sculptor and photographer"],
+    ],
+    liftedUp: [],
+    rooms: ["Area", "The World", "The Tunnel"],
+    said: [
+      { episode: "s05e07b", who: "Really Denise", time: "00:45:12", context: "He shot Denise and Jenny Go-Getter's petting zoo invitation", quote: "I literally made a bikini out of this fur... back then I had a fur bikini and Stephan Lupino took the picture for the invite." },
+      { episode: "s05e09", who: "Screamin' Rachael Cain", time: "00:23:22", context: "James mentions his photo book of The World; Rachael remembers being photographed by him", quote: "(James: Stephan Lupino has a book out about the World.) He did photograph me. I have some photos that he did. He was really very talented. He was a wonderful guy." },
+    ],
+    also: { heading: "In front of his camera", names: ["Really Denise", "Jenny Go-Getter", "Screamin' Rachael Cain"] },
+  },
+
+  // The Jefferson's people (Lisa, 28 Nov 2026: "make polaroid for colleen weinstein, create page"). Facts: her own account in
+  // PIN-UP 27 (Whitney Mallett, 2019/20), the Daily Beast's after-hours story and the episodes. Alive: PIN-UP interviewed her
+  // at home in the Chelsea Hotel, and Eric Goode says she still lives there (S03E06).
+  "colleen-weinstein": {
+    first: "Colleen",
+    story:
+      "The designer behind Arthur Weinstein's clubs: he did the lights, she made the rooms. It began in 1980 with the Jefferson, the after-hours in their own loft above an old theatre on 14th Street, and went on to the Continental, The World's Crystal Room, the Michael Todd Room at the Palladium and the Limelight's entrance of giant animal topiaries. She still lives in the Chelsea Hotel.",
+    timeline: [
+      ["1980", "A party Arthur throws for her in their loft above the old Jefferson Theatre turns into the Jefferson, the first club she designs"],
+      ["Early 1980s", "The Continental, in an old garage on West 25th Street: big hanging sheets of plexiglass, after the film Blow-Up"],
+      ["1985", "The Michael Todd Room at the Palladium, named after Michael Todd's seal, which she found in a desk drawer"],
+      ["Mid-80s", "The World on East 2nd Street: the Crystal Room, with marble-effect wallpaper, a silver leather bar and the old chandelier"],
+      ["1980s", "Milk Bar on Seventh Avenue, all white like A Clockwork Orange and lit like a lightbox"],
+      ["c. 1988", "A new entrance for the Limelight: giant animal topiaries and walls of peacock feathers, steamed open by club kids"],
+      ["2008", "Arthur Weinstein dies"],
+      ["2019", "PIN-UP interviews her at home in the Chelsea Hotel"],
+    ],
+    liftedUp: [],
+    rooms: ["The Jefferson", "The Continental", "The World", "Palladium", "Milk Bar", "Limelight", "The Ritz", "La Palace de Beauté", "Hotel Chelsea"],
+    said: [
+      { episode: "s03e06", who: "Eric Goode", time: "00:39:01", context: "Eric tells James who to ask for the Arthur Weinstein stories", quote: "Arthur Weinstein stories, you should definitely interview Colleen, his wife, who still lives in the Chelsea Hotel." },
+    ],
+    also: { heading: "With Arthur", names: ["Arthur Weinstein", "Eric Goode", "Susanne Bartsch"] },
   },
 
   "kim-hastreiter": {
@@ -2112,6 +2419,18 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s06e06", who: "James St. James", time: "00:32:41", context: "James to Lincoln Palsgrove IV about Red Zone", quote: "It was sort of right before Vogue and Paris Is Burning and everything. When those kids were just red hot and we sort of gave the club over to them, the Xtravaganzas, the Magnifiques." },
       { episode: "s06e02", who: "Christina Visca", time: "00:27:35", context: "Christina on the Sound Factory family after closing time", quote: "We would all get together outside the club when the club closed. The 'Ganzas, Junior, a group of us, we would all hang out afterward. We would go up to the park, Junior would bring his boom box and we'd listen. So the 'Ganzas themselves were a family, but then we joined on to others at Sound Factory and it was just really a beautiful time." },
     ],
+    // "On film" (Lisa, 28 Nov 2026: the House "needs ... a video box"). Embeds checked; Paris Is Burning uploads left out
+    // (unofficial copies of the film).
+    videos: [
+      { id: "8ej86oHMJ8o", title: "Welcome to the House of Xtravaganza, the most iconic house in New York's ballroom scene (In The Know)" },
+      { id: "TybDsSlaR0E", title: "Remembering Hector Xtravaganza, the house's founding father (Logo)" },
+      { id: "BpRSk_knBec", title: "Remembering Mother Angie Xtravaganza" },
+      { id: "-YrP3Ajf6qM", title: "Angie Xtravaganza at the Xtravaganza Spring Affair Ball, Tracks, 1992" },
+      { id: "5hi_c9sSbb8", title: "Voguing at a House of Xtravaganza ball, Harlem, 2001 (Kinolibrary)" },
+      { id: "z3X5Igcf4Ms", title: "Jose Xtravaganza interview" },
+      { id: "rcmcuANg-sg", title: "Hector Xtravaganza walks Legendary Statement Status, Evisu Ball, 2010" },
+      { id: "IfSmZcH1Opo", title: "Night Fever with Luis Xtravaganza Camacho (S1E8, WOW Presents)" },
+    ],
   },
   "laurie-pike": {
     story:
@@ -2154,6 +2473,9 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     also: { heading: "Who he built them with", names: ["Eric Goode", "Shawn Hausman", "Peter Gatien", "Richard Boch"] },
     said: [
       { episode: "s02e11", who: "Richard Boch", time: "00:17:10", context: "James first credits Serge with the Mudd Club basement; Richard, who had just been talking to Serge, sets it straight", quote: "Serge actually, I was just talking to him the other day and he was saying that, yeah, Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really." },
+      // All three mentions in quote boxes (Lisa, 28 Nov 2026: "it says there are 3 mentions there - show them all").
+      { episode: "s01e04", who: "James St. James", time: "00:36:26", context: "James asks Peter Gatien how Club USA in Times Square began", quote: "Then when you worked with Eric Goode from Area and Serge Becker, and you went to open Club USA in Times Square. How did you find that space? What was the space and how did you go about it?" },
+      { episode: "s03e06", who: "Eric Goode", time: "00:07:13", context: "The Mudd Club basement: James asks if it was Serge; Eric says it was Shawn Hausman", quote: "(James: Was that you and Serge or you and Shawn? Who was it?) That was Shawn Hausman, who went on to design all the Standard hotels around the world. My dear high school friend Shawn Hausman that I later collaborated with on Area." },
     ],
   },
 };
