@@ -15,6 +15,10 @@ export const ALTERNATE_NAMES: Record<string, string[]> = {
   "les-bains-douches": ["Les Bains", "Bains Douches"],
   // Search Console 19-25 Nov 2026: "dean and the weenies" got a click and landed on Dean Johnson's page.
   "dean-johnson": ["Dean and the Weenies", "Dean Johnson and the Weenies"],
+  // Top Google search pages, round 3 (Lisa, 28 Nov 2026).
+  "jenny-go-getter": ["Jennifer Banash", "Jenny Banash", "Jenny Go Getter"],
+  jefferson: ["The Jefferson", "Jefferson Theatre", "Arthur Weinstein's Jefferson"],
+  "howie-pyro": ["Howard Kusten"],
 };
 
 /** The name in an episode page's title when the guest is searched by another name too (B2a, Lisa 27 Nov 2026). */

@@ -114,10 +114,21 @@ function GuestLibrary() {
       </section>
 
       <div className="mx-auto max-w-6xl px-6 pb-16">
+        {/* Lisa, 28 Nov 2026: "the polaroid and name should be clickable and connect to his page" - their AFTERPARTY for a
+            guest, else their own page. */}
         {polaroid && (
           <figure className="guest-lib-polaroid">
-            <img src={polaroid} alt={`${name} polaroid`} loading="lazy" decoding="async" />
-            <figcaption>{name}</figcaption>
+            {episode ? (
+              <Link to={episodePath(episode as Parameters<typeof episodePath>[0])} className="guest-lib-polaroid-link">
+                <img src={polaroid} alt={`${name} polaroid`} loading="lazy" decoding="async" />
+                <figcaption>{name}</figcaption>
+              </Link>
+            ) : (
+              <Link to="/explore/$slug" params={{ slug }} className="guest-lib-polaroid-link">
+                <img src={polaroid} alt={`${name} polaroid`} loading="lazy" decoding="async" />
+                <figcaption>{name}</figcaption>
+              </Link>
+            )}
           </figure>
         )}
         {works.length > 0 && (
