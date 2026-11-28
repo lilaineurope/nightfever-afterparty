@@ -1049,7 +1049,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "patti-smith": { photo: pattiSmithPhoto, polaroid: pattiSmithPolaroid, focus: "25%", credit: `Portrait after a 1978 photo from UCLA Library Special Collections (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
   "philip-glass": { photo: philipGlassPhoto, polaroid: philipGlassPolaroid, focus: "30%", credit: `Portrait after a 2008 photo by Lelli e Masotti for MITO SettembreMusica, Milan (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
   "tony-defries": { photo: tonyDefriesPhoto, polaroid: tonyDefriesPolaroid, focus: "25%", credit: `Portrait after a 2017 photo by Marlene Defries (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), ${STYLE}` },
-  "grandmaster-flash": { photo: grandmasterFlashPhoto, polaroid: grandmasterFlashPolaroid, focus: "20%", credit: `Portrait after a 2007 photo by stu_spivack at the Ingenuity Festival (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), ${STYLE}` },
+  "grandmaster-flash": { photo: grandmasterFlashPhoto, polaroid: grandmasterFlashPolaroid, focus: "20%", credit: `Portrait after a 1999 photo by Mika-photography (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), ${STYLE}` },
   "laurie-metcalf": { photo: laurieMetcalfPhoto, polaroid: laurieMetcalfPolaroid, focus: "20%", credit: `Portrait after a 1992 photo by Alan Light at the Emmy Awards (CC BY 2.0; our version is CC BY 2.0 too), ${STYLE}` },
   // Lisa, 27 Nov 2026: "peppo - make a polaroid". Gemini, after 1980s LaPresse press photos (references only, not on the site).
   "peppo-vanini": { photo: peppoVaniniPhoto, polaroid: peppoVaniniPolaroid, focus: "8%", credit: "Illustration made with Gemini, not a photo" },
