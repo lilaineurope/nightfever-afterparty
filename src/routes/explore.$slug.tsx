@@ -321,6 +321,7 @@ function EntityPage() {
               </>
             ) : null}
             parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null}
+            partsSide={!!e.parts && e.parts.groups.length === 1 && e.parts.groups[0]!.parts.length <= 2}
             crowd={e.crowd}
             library={e.clubLib ? <ClubLibrary v={e.clubLib} name={e.name} /> : null}
             faces={e.faces}

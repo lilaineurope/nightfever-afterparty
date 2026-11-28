@@ -13,7 +13,7 @@ const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs t
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; crowd?: ClubCrowdView | null; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, partsSide, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; partsSide?: boolean; crowd?: ClubCrowdView | null; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
   const story = (
     <>
       <h3 className={`${h} mt-7`}>{name}'s story</h3>
@@ -32,6 +32,24 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
       </p>
     </>
   );
+  const rooms =
+    c.rooms.length > 0 || (c.also && c.also.names.length > 0) ? (
+      <section className="rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
+        {c.rooms.length > 0 && (
+          <>
+            <h2 className={h}>The rooms around it</h2>
+            <NamePile names={c.rooms} faces={faces} />
+          </>
+        )}
+        {c.also && c.also.names.length > 0 && (
+          <>
+            <h2 className={`${h} ${c.rooms.length > 0 ? "mt-6" : ""}`}>{c.also.heading}</h2>
+            <NamePile names={c.also.names} faces={faces} />
+          </>
+        )}
+      </section>
+    ) : null;
+  const beside = !!(partsSide && parts && rooms);
   return (
     <>
       <div className="pt-4 text-center">
@@ -69,8 +87,16 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
         </section>
       )}
 
-      {/* The club's theme nights and parties (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
-      {parts}
+      {/* The club's theme nights and parties (Lisa, 22 Nov 2026, src/data/club-parts.ts). With only a night or two, the rooms
+          around it sit beside them (Lisa, 28 Nov 2026, Régine's: "move the rooms around it next to regine's nights and parties"). */}
+      {beside ? (
+        <div className="club-beside mx-auto grid w-full max-w-5xl items-start gap-8 md:grid-cols-2">
+          {parts}
+          {rooms}
+        </div>
+      ) : (
+        parts
+      )}
 
       {/* One clipboard (Lisa, 28 Nov 2026): the club's story beside On the list. */}
       {crowd ? (
@@ -80,30 +106,15 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
       )}
 
       {/* On the stage and the rooms around it, each in a box of its own, side by side (Lisa, 28 Nov 2026). */}
-      {(c.stage.length > 0 || c.rooms.length > 0 || (c.also && c.also.names.length > 0)) && (
-        <div className="mx-auto grid w-full max-w-5xl items-start gap-8 md:grid-cols-2">
+      {(c.stage.length > 0 || (rooms && !beside)) && (
+        <div className={`mx-auto grid w-full max-w-5xl items-start gap-8 ${beside ? "" : "md:grid-cols-2"}`}>
           {c.stage.length > 0 && (
             <section className="rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
               <h2 className={h}>On {name}'s stage</h2>
               <NamePile names={c.stage} faces={faces} />
             </section>
           )}
-          {(c.rooms.length > 0 || (c.also && c.also.names.length > 0)) && (
-            <section className="rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
-              {c.rooms.length > 0 && (
-                <>
-                  <h2 className={h}>The rooms around it</h2>
-                  <NamePile names={c.rooms} faces={faces} />
-                </>
-              )}
-              {c.also && c.also.names.length > 0 && (
-                <>
-                  <h2 className={`${h} ${c.rooms.length > 0 ? "mt-6" : ""}`}>{c.also.heading}</h2>
-                  <NamePile names={c.also.names} faces={faces} />
-                </>
-              )}
-            </section>
-          )}
+          {!beside && rooms}
         </div>
       )}
 

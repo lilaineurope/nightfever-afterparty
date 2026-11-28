@@ -1510,6 +1510,10 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+/* A club's one or two nights in a half-width box beside the rooms around it (Régine's, 28 Nov 2026): two covers a row. */
+.club-beside .map-next-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 /* Random night out (Lisa, 27-28 Nov 2026, option C): four reels at the bottom of every page, already filled in, with
    "Spin again!". src/components/random-pick.tsx */
 .rn-reel { display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #f4f1ea; color: #111; border: 3px solid var(--color-pink); padding: 10px 10px 12px; }
