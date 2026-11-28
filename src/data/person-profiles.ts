@@ -1788,6 +1788,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e07", who: "Rudolf Piper", time: "00:14:36", quote: "Romy Haag was around, yes." },
       { episode: "s02e02", who: "James St. James", time: "01:01:47", quote: "Going now quickly to Germany and Romy Haag. You were very good friends with her and worked with her, right?" },
       { episode: "s02e02", who: "Jayne County", time: "01:01:56", quote: "Romy Haag was just queen of Berlin, you know. Everyone loved Romy Haag. She was the queen of Berlin. And she's very beautiful. So I became friends with her then. We did a play together called Sheila, and she played a next-door neighbour, pretty Hollywood starlet." },
+      { episode: "s01e07", who: "James St. James", time: "00:14:28", quote: "Were there nightclub celebrities? Was Klaus Nomi around? Was Grace Jones, Romy Haag? Was she around?" },
     ],
   },
   danilo: {
@@ -1805,7 +1806,11 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s04e08", who: "Richie Rich", time: "00:17:24", quote: "Danilo was from San Francisco, but then he's been in New York for years with Billy Beyond and everybody. He's like, can you take work off from the salon? I'm doing this video. And so he really taught me how to airbrush wigs." },
       { episode: "s04e08", who: "James St. James", time: "00:18:28", quote: "Wait, were you there for the George Michael video? Oh my God, I can't believe you missed that." },
       { episode: "s04e08", who: "Richie Rich", time: "00:18:35", quote: "Danilo is so sweet. He's like, all right, if you have to work, you have to work. I didn't really know how major he was. But he really took me under his wing, and he's like, New York, you are New York." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:17:02", quote: "Danilo, who now does Gwen Stefani's hair, did Mugler and couture, I met him through Dimitri in San Francisco. They ran a salon in Union Square." },
+      { episode: "s06e04", who: "Raja", time: "00:44:11", quote: "And then him and Danilo on production, and Tyra Banks. My 90s, 17, 18-year-old self could not even understand what was happening." },
     ],
+    // Lisa, 28 Nov 2026: "show all mentions" - Richie's three go up together.
+    maxPerGuest: 3,
   },
   "kabuki-starshine": {
     story:
@@ -1823,7 +1828,12 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s06e09", who: "Desi Santiago", time: "00:17:01", quote: "Kabuki came a little, like, maybe a few months later, a little bit later. I think came from Florida. And then Sushi had come in around the same time too." },
       { episode: "s04e04", who: "James St. James", time: "00:20:43", quote: "You know, I often think of you with Kiday and Sacred Boy and Walt Paper and Desi and Kabuki." },
       { episode: "s06e03", who: "Johnny Dynell", time: "00:46:00", quote: "There were really about ten that I liked. You, Desi, I mean, I could name them, but you know, the ones that actually went on to do something. Kabuki, you know." },
+      { episode: "s06e09", who: "James St. James", time: "00:16:53", quote: "Sushi and Kabuki and Sacred Boy around them, because I sort of feel like they were your comrades." },
+      { episode: "s06e10", who: "Kenneth Hash", time: "00:26:23", quote: "The makeup room, with Lena and Candis Cayne and Amanda Lepore and Onyx and Kabuki and Wallpaper, for like several years. That went on." },
+      { episode: "s06e10", who: "James St. James", time: "00:28:46", quote: "We need to get KD on the show, because KD and Kabuki, there was a whole little thing going on right there. They were doing something very different than the rest. He was doing sort of a monster drag, more aligned with Desi Monster." },
     ],
+    // Lisa, 28 Nov 2026: "show all mentions" - James's three go up together.
+    maxPerGuest: 3,
   },
   "john-taylor": {
     story:
@@ -1840,6 +1850,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s05e04", who: "James St. James", time: "00:50:01", quote: "I believe in my heart of hearts, I will die on this hill, that Duran Duran's White Lines is better than Grandmaster Flash's. I love it so much. It's so good." },
       { episode: "s05e04", who: "Nick Egan", time: "00:50:46", quote: "Billy said to me, oh, I've just been in London. John Taylor's looking for you because he wants you to do an album cover. And I happened to be in London at the time. So we set up a meeting and I went over to John's." },
       { episode: "s05e04", who: "Nick Egan", time: "00:51:07", quote: "John and I got on like a house on fire, which is strange, because I was never up until that point really a Duran Duran fan. Because I was a punk." },
+      { episode: "s04e02", who: "Mickey Boardman", time: "00:43:37", quote: "We were shooting Duran Duran for the cover, and a ton of women in our office were like, Oh my God, I need to stop by the shoot. I love Duran Duran. I love Simon. I love John." },
     ],
   },
   "grandmaster-flash": {
@@ -1867,6 +1878,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s05e04", who: "Nick Egan", time: "00:21:38", quote: "That was coming from the South Bronx, where people in Manhattan didn't know about Afrika Bambaataa or Grandmaster Flash. But we kind of did, because of a girl called Blue and a guy called Michael Holman." },
       { episode: "s03e04", who: "James St. James", time: "00:22:31", quote: "I'm wondering if during this period of hip-hop, be-bop, don't stop, you were playing shows up in the Bronx. Is this around the time of Grandmaster Flash and the Furious Five?" },
       { episode: "s05e04", who: "James St. James", time: "00:50:01", quote: "I believe in my heart of hearts, I will die on this hill, that Duran Duran's White Lines is better than Grandmaster Flash's." },
+      { episode: "s03e04", who: "Man Parrish", time: "00:22:46", quote: "And I'm like, you're a legend. So it was Grandmaster Flash." },
     ],
   },
   "laurie-metcalf": {
@@ -1942,6 +1954,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s02e06", who: "Michael Schmidt", time: "01:04:44", quote: "Politically powerful. I like that. He's obviously very gifted and he's fearless." },
       { episode: "s02e06", who: "James St. James", time: "01:05:32", quote: "That's exactly what you've done with Lil Nas X, because he is a genius and fearless. I saw him perform recently at the iHeartRadio thing, and it was so mesmerizing." },
       { episode: "s02e08", who: "Randy Barbato", time: "00:58:14", quote: "I look at someone like Lil Nas X, you know, and just the freedom from shame. It gives us Lil Nas X, who's just so fabulous, who's here and queer and out and proud." },
+      { episode: "s02e06", who: "James St. James", time: "00:00:35", quote: "His work with Cher, Tina Turner, Grace Jones, Lady Gaga, Madonna, Rihanna, Doja Cat, Lil Nas X. The list goes on and on and on." },
     ],
   },
   // Lisa, 28 Nov 2026: "show all mentiones". Every mention on S01E04 except the two about the ayahuasca ceremony
