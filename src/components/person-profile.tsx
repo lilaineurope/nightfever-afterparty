@@ -134,6 +134,25 @@ export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; na
       </section>
 
       {m.videos && m.videos.length > 0 && <ProfileVideos videos={m.videos} playlist={m.playlist} first={first!} />}
+      {m.jukebox && <ProfileJukebox episode={m.jukebox} first={first!} />}
     </>
+  );
+}
+
+/** The page's Jukebox (PersonProfile.jukebox): the songs from the AFTERPARTY the story comes from. */
+function ProfileJukebox({ episode, first }: { episode: string; first: string }) {
+  const ep = episodeById(episode);
+  return (
+    <section aria-labelledby="profile-jukebox" className="border-2 border-gold bg-card p-6 text-center shadow-[6px_6px_0_var(--color-pink)] sm:p-8">
+      <h2 id="profile-jukebox" className={h}>Jukebox</h2>
+      <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+        No film of {first} has turned up yet. Its story comes from{" "}
+        <Link to={episodePath(ep.id)} className="font-semibold text-cream hover:text-pink">{ep.guest}'s AFTERPARTY</Link>, so play the songs from that episode.
+      </p>
+      <Link to="/jukebox" search={{ afterparty: ep.id }}
+        className="mt-5 inline-block rounded-full border-2 border-pink bg-pink px-6 py-3 font-semibold text-pink-foreground transition hover:border-cream hover:bg-card hover:text-cream">
+        Turn on {ep.guest}'s AFTERPARTY JUKEBOX
+      </Link>
+    </section>
   );
 }
