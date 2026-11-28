@@ -738,6 +738,9 @@ import lisaCollinsPolaroid from "@/assets/people/lisa-collins-polaroid.webp";
 import zandraRhodesPhoto from "@/assets/people/zandra-rhodes-photo.webp";
 import zandraRhodesPolaroid from "@/assets/people/zandra-rhodes-polaroid.webp";
 
+import alexanderMcqueenPhoto from "@/assets/people/alexander-mcqueen-photo.webp";
+import alexanderMcqueenPolaroid from "@/assets/people/alexander-mcqueen-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   /** Phone copy of the header photo (club pages, SEO check 16 Nov 2026): the middle 800 px at full size, so the dots look the same. */
@@ -1137,4 +1140,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "lisa-collins": { photo: lisaCollinsPhoto, polaroid: lisaCollinsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   // Lisa, 28 Nov 2026 ("yes zandra publish"): Gemini drawing after a reference photo (reference not on the site).
   "zandra-rhodes": { photo: zandraRhodesPhoto, polaroid: zandraRhodesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Lisa, 28 Nov 2026: Gemini refused his real face, she picked the free 2009 runway photo (raised hand masked out), then "publish to all pending".
+  "alexander-mcqueen": { photo: alexanderMcqueenPhoto, polaroid: alexanderMcqueenPolaroid, focus: "28%", credit: "Portrait after a photo by Ed Kavishe / FashionWirePress, 2009 (CC BY 3.0), in our photocopy style" },
 };
