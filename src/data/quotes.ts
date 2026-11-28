@@ -51,7 +51,7 @@ export const episodeQuotes: Record<string, EpisodeQuote> = {
   s05e07b: { quote: "That scene was very cutting edge and it was very liberating for someone like me to like go out half naked.", time: "00:51:24" }, // Really Denise - Lisa: B3 (16 Nov 2026)
   s04e02: { quote: "I'm so gay I couldn't blend if I wanted to.", time: "00:12:34" }, // Mickey Boardman - quote A, Claude's pick when Lisa said publish (17 Nov 2026)
   s06e09: { quote: "Someone called me a Forrest Gump type. I just sort of happened to end up in all these interesting moments of culture.", time: "00:51:16" }, // Desi Santiago - Lisa's pick (23 Nov 2026)
-  s06e04: { quote: "The gig was life and you were living... What a wonderful time to live in.", time: "00:34:10" }, // Raja - Claude's suggestion, Lisa to pick (27 Nov 2026)
+  s06e04: { quote: "The gig was life and you were living... What a wonderful time to live in.", time: "00:34:10" }, // Raja - Lisa picked C (28 Nov 2026)
   s05e09: { quote: "You couldn't even avoid seeing Screamin' Rachael if you wanted to, because I was on TV, on TV, on TV.", time: "00:23:55" }, // Screamin' Rachael Cain - Lisa picked D (27 Nov 2026)
   s06e10: { quote: "I was in a bag of French fries and a pizza outfit. I wasn't futuristic - I was more Phyllis Diller from that planet.", time: "00:04:55" }, // Kenneth Hash - Lisa picked D (27 Nov 2026)
   s05e08: { quote: "I didn't have to go to the club anymore. The club was with me.", time: "00:21:14" }, // April Palmieri - Claude's suggestion, Lisa to confirm (26 Nov 2026)
