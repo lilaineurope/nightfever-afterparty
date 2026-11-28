@@ -80,12 +80,12 @@ export function FashionCover({ item }: { item: FashionItem }) {
       </span>
     );
 
-  // A shop shows its free photo (Lisa, 27 Nov 2026: "cover pictures also"), else its pencil drawing (28 Nov); the bag is the fallback.
+  // A shop shows its free photo (Lisa, 27 Nov 2026: "cover pictures also"), else its Gemini-made polaroid (28 Nov, shopfront on the right, so the 3:4 cover keeps the right side); the bag is the fallback.
   const shopPhoto = f.kind === "shop" ? SHOP_PHOTOS[item.slug] : undefined;
   if (shopPhoto)
     return (
       <span className="lib-cv fsh-shop-photo">
-        <img src={shopPhoto.src} alt={shopPhoto.alt} loading="lazy" decoding="async" />
+        <img src={shopPhoto.src} alt={shopPhoto.alt} loading="lazy" decoding="async" style={shopPhoto.drawing ? { objectPosition: "82% 50%" } : undefined} />
         <span className="fsh-tag">Shop</span>
         <span className="lib-strip">
           <span className="lib-nm">{item.name}</span>

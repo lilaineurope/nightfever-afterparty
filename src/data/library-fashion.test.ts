@@ -57,6 +57,6 @@ test("every shop on the shelf has a picture: a free photo or a drawing (Lisa, 28
   const src = readFileSync(new URL("./shop-photos.ts", import.meta.url), "utf8");
   const pictured = new Set([...src.matchAll(/^\s*\[\s*"([a-z0-9-]+)",/gm)].map((m) => m[1]));
   for (const s of FASHION_SHOPS) assert.ok(pictured.has(s.slug), `${s.name} has no photo or drawing`);
-  for (const m of src.matchAll(/^\s*\["([a-z0-9-]+)", "Pencil drawing/gm))
+  for (const m of src.matchAll(/^\s*\["([a-z0-9-]+)", "Polaroid-style picture/gm))
     assert.ok(existsSync(new URL(`../assets/shops/drawings/${m[1]}.webp`, import.meta.url)), `no drawing file for ${m[1]}`);
 });
