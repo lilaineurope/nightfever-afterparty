@@ -28,6 +28,9 @@ import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
 import grapePhoto from "@/assets/clubs/gilded-grape-photo.webp";
 import grapePhotoPhone from "@/assets/clubs/gilded-grape-photo-phone.webp";
 import grapePolaroid from "@/assets/clubs/gilded-grape-polaroid.webp";
+import continentalPhoto from "@/assets/clubs/continental-photo.webp";
+import continentalPhotoPhone from "@/assets/clubs/continental-photo-phone.webp";
+import continentalPolaroid from "@/assets/clubs/continental-polaroid.webp";
 import jeffersonPhoto from "@/assets/clubs/jefferson-photo.webp";
 import jeffersonPhotoPhone from "@/assets/clubs/jefferson-photo-phone.webp";
 import jeffersonPolaroid from "@/assets/clubs/jefferson-polaroid.webp";
@@ -169,6 +172,7 @@ const MARS_CREDIT = "Header and polaroid: a night at Mars drawn for the AFTERPAR
 const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPARTY. Polaroid: Save the Robots after-hours Saturdays card - Gallery 98";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
+const CONTINENTAL_CREDIT = "Header and polaroid: the room with its hanging plexiglass and the garage door on West 25th Street, drawn for the AFTERPARTY - no photo of the Continental is known";
 const JEFFERSON_CREDIT = "Header and polaroid: a night at the Jefferson and its marquee on 14th Street, drawn for the AFTERPARTY - no photo of the Jefferson is free to use";
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
 const QUICK_CREDIT = "Header and polaroid: a night at Quick drawn for the AFTERPARTY - no photo of Quick is free to use";
@@ -1016,6 +1020,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e06", who: "Eric Goode", time: "00:13:32", context: "The Continental shared a building with Eric's first club", quote: "So the Continental was in the same building as my club with no name. And I gave Arthur that space, but he was in the loading bay. And that's a whole other story." },
     ],
     also: { heading: "Who came", names: ["Mick Jagger", "Billy Idol"] },
+    portrait: { photo: continentalPhoto, phone: continentalPhotoPhone, polaroid: continentalPolaroid, focus: "50%", credit: CONTINENTAL_CREDIT },
   },
   // Lisa, 28 Nov 2026 on Howie Pyro's page: "add picture for don hills and create page". Facts: Hudson Square BID history,
   // the Village Voice's and Interview's Don Hill obituaries, The Real Deal and BrooklynVegan on the closing (Apr 2011), and
