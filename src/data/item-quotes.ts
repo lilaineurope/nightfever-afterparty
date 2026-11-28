@@ -76,6 +76,12 @@ export const ITEM_QUOTES: Record<string, GuestQuote[]> = {
   "bedtime-stories": [
     { episode: "s04e08", who: "Richie Rich", time: "00:04:20", quote: "Madonna came and did her Bedtime Stories album artwork there, you know, photographs. And it was just like an artsy-partsy..." },
   ],
+  // Daily search pages (28 Nov 2026): Lauren on her own show. Fenton, Randy and James talk about it too in S04E06, but hosts
+  // only count on S06E01.
+  "behind-the-velvet-ropes": [
+    { episode: "s04e06", who: "Lauren Ezersky", time: "00:24:24", quote: "I was out one night wearing some pantyhose and some underwear and, I don't know, some bra, and some guy comes over to me and he said, oh, would you be a guest on our show? And I said, why not? And that was Behind the Velvet Ropes." },
+    { episode: "s04e06", who: "Lauren Ezersky", time: "00:26:49", quote: "We went out and we shot our own stuff... Nobody had money. We didn't really do anything fabulous, but we had content, because there was not a lot of people out there doing what we did. I interviewed the cab drivers, I would interview the elevator operators on my way up to do an interview with, like, Vera Wang. I would talk to everybody." },
+  ],
   "best-little-whorehouse-in-texas": [
     { episode: "s02e01", who: "Michelle Visage", time: "00:49:25", quote: "One of the dream roles for me has always been Miss Mona in Best Little Whorehouse. To be able to do that song with Ru all those moons ago, when I was far too young to play Miss Mona, was special." },
   ],
