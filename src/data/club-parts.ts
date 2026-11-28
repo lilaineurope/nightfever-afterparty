@@ -365,6 +365,7 @@ export const CLUB_PARTS: Record<string, ClubParts> = {
 // page, a tile on the club page. Left out on purpose: things that were not a night (Danceteria's time capsule, the
 // Tunnel's Club Kids bathroom, Michael's guessing game), the New Music Seminar, and shows that ran at several venues.
 const MORE_NIGHTS: Record<string, ClubPart[]> = {
+  "re-gine-s": [{ title: "Gaultier party", names: ["Gaultier party at Régine's"] }],
   area: [{ title: "Breakfast in Bed with Boy George", names: ["Breakfast in Bed with Boy George"] }],
   building: [{ title: "Acid punch party", names: ["Acid punch party at The Building"] }],
   "club-57": [

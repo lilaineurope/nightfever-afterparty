@@ -950,7 +950,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
     ],
     stage: ["Peppo Vanini", "Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Klaus Nomi", "Gloria Gaynor", "John \"Jellybean\" Benitez", "Fiorucci"],
-    rooms: ["Studio 54", "Régine's", "Copacabana", "Danceteria", "Roxy"],
+    rooms: ["Studio 54", "Régine's", "Le Club", "New York, New York", "Magique", "Hurrah", "Copacabana", "Danceteria", "Roxy"],
     said: [
       { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
       { episode: "s02e04", who: "Nikki Haskell", time: "00:48:10", quote: "And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
@@ -1079,6 +1079,35 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e04", who: "Man Parrish", time: "00:41:01", quote: "It used to be Club 82... it was the 82 Club, and it went downstairs." },
     ],
     portrait: { photo: c82Photo, phone: c82PhotoPhone, polaroid: c82Polaroid, focus: "50%", credit: CLUB_82_CREDIT },
+  },
+  // Régine's (Lisa, 28 Nov 2026: "make a page for regine's", from Xenon's rooms around it). Facts: Wikipedia "Regine's" and
+  // "Régine Zylberberg", read 28 Nov 2026; quotes from the Mac transcripts (S2E4 Nikki Haskell, S6E8 William Norwich),
+  // "regimes"/"Regines" spelled right. No picture yet, so it keeps the plain header.
+  "re-gine-s": {
+    opened: "1976",
+    closed: "1991",
+    address: "Delmonico Hotel, 69 East 59th Street at Park Avenue",
+    aka: "Regine's",
+    story:
+      "Régine Zylberberg, the queen of the night from Paris, opened her New York club in May 1976 on the ground floor of the Delmonico Hotel at Park Avenue and 59th Street: Art Deco mirrors and brocade couches, a heart-shaped neon she called the Heart of New York, ten dollars at the door or a table booked for the year. Nikki Haskell went all the time - Le Club, then Régine's, then Studio, two or three clubs a night. Peppo Vanini ran Régine's clubs in Europe before he opened Xenon, and James St. James's diary has him at Régine's with Michael Musto for a Gaultier party, taken upstairs to the uptown crowd by William Norwich.",
+    timeline: [
+      ["1958", "Régine opens Chez Régine in Paris"],
+      ["1974", "Jimmy'z opens in Monte Carlo - one of the great discotheques of all time, says Nikki Haskell"],
+      ["Mar 1976", "A benefit night before the opening, in the Delmonico Hotel"],
+      ["May 1976", "Régine's opens to the public: ten dollars at the door, or a table for the year"],
+      ["1977", "Café Reginette opens next door to take on Studio 54"],
+      ["80s", "A Gaultier party: William Norwich takes James St. James upstairs to the uptown crowd"],
+      ["1986", "A kitchen and waiters' strike"],
+      ["1991", "Régine's New York closes"],
+    ],
+    stage: ["Régine", "Nikki Haskell", "Peppo Vanini", "Jean Paul Gaultier", "William Norwich", "James St. James", "Michael Musto", "Andy Warhol"],
+    rooms: ["Le Club", "Studio 54", "Xenon", "Copacabana", "Jimmy'z"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:32", quote: "When she first opened, I was there every night. I used to go to Paris all the time. Jimmy's in Monte Carlo was one of my favorites - one of the great discotheques of all time." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I loved Régine's in New York. I went there all the time... I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+      { episode: "s06e08", who: "James St. James", time: "00:46:46", quote: "We were at Régine's with Musto, for Gaultier. You brought me upstairs to this chic uptown party, and it was another case of record skip - the whole place turned and looked at me with horror in their face." },
+      { episode: "s02e04", who: "James St. James", time: "00:44:48", quote: "My first job as a student, out of school, was working in Régine's in London." },
+    ],
   },
   // Les Bains Douches (Lisa, 27 Nov 2026: a top Google search). Facts: Wikipedia "Les Bains Douches (nightclub)", read
   // 27 Nov 2026; the rest from the guests' own stories. No picture yet, so it keeps the plain header.

@@ -321,7 +321,7 @@ export const LOCATIONS: Located[] = [
   { name: "Playwrights Horizons Theater School", lat: 40.7283, lng: -73.9967, area: "Greenwich Village" },
   { name: "Pravda", lat: 40.7243, lng: -73.9967, area: "NoHo" },
   { name: "Pyramid Club", lat: 40.7253, lng: -73.9838, area: "East Village" },
-  { name: "Régine's", lat: 40.7650, lng: -73.9700, area: "Upper East Side" },
+  { name: "Régine's", lat: 40.7633, lng: -73.9711, area: "Park Avenue at 59th Street" },
   { name: "Rikers Island", lat: 40.7932, lng: -73.8860, area: "Queens" },
   { name: "Roundhouse", lat: 51.5432, lng: -0.1519, area: "London" },
   { name: "Rubin Hall (NYU dorm)", lat: 40.7339, lng: -73.9952, area: "Greenwich Village" },
