@@ -26,7 +26,7 @@ import { placeView } from "@/lib/place-view.server";
 import { mapSectionOf, roomsMapOf } from "@/lib/map-view.server";
 import { worksOf } from "@/lib/works";
 import { tapesOf } from "@/lib/tapes.server";
-import { coverFor } from "@/data/library-covers";
+import { allCovers, coverFor } from "@/data/library-covers";
 import { storyPagesFor } from "@/lib/story-links.server";
 import { CLUB_TICKETS } from "@/data/club-tickets";
 import { CLUB_PIECES, coverArt, clubPieceFacts } from "@/data/cover-art";
@@ -46,7 +46,7 @@ const workCover = (n: string): string | undefined => {
 /** The picture for a name in a story box (Lisa, 27 Nov 2026: make the pages "sticky"): the person's polaroid, their
  *  AFTERPARTY polaroid, the club's polaroid or ticket, the diary keeper's polaroid, else a Library cover. Names without
  *  one stay plain chips. */
-type Face = { src: string; framed?: boolean };
+type Face = { src: string; framed?: boolean; mast?: "light" | "dark" };
 const faceOf = (n: string): Face | undefined => {
   const e = entityFor(n);
   const s = e?.slug ?? slugify(n);
@@ -61,8 +61,17 @@ const faceOf = (n: string): Face | undefined => {
     (diary?.keeperEpisode ? polaroidThumb(diary.keeperEpisode, 240) : undefined);
   if (flat) return { src: flat };
   if (framed) return { src: framed, framed: true };
-  const cover = coverFor(n)?.src;
-  return cover ? { src: cover } : undefined;
+  // A magazine's masthead is a wide logo: shown whole on paper (Lisa, 28 Nov 2026: Details "needs ... its own logo
+  // displayed on the box"), not cropped to a square. A cover with a slugified name ("Nations (Chi Chi Valenti, Details)" is the
+  // Nations card) is found by its slug.
+  const cover = coverFor(n) ?? coverBySlug(s);
+  if (!cover) return undefined;
+  return cover.kind === "mast" ? { src: cover.src, mast: cover.light ? "dark" : "light" } : { src: cover.src };
+};
+let slugCovers: Map<string, ReturnType<typeof coverFor>> | undefined;
+const coverBySlug = (s: string) => {
+  slugCovers ??= new Map(allCovers().map(([name, c]) => [slugify(name), c]));
+  return slugCovers.get(s);
 };
 const facesOf = (names: string[]): Record<string, Face> =>
   Object.fromEntries(names.flatMap((n) => {

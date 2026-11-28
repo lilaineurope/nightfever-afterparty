@@ -74,6 +74,12 @@ import brookeAstorPolaroid from "@/assets/people/brooke-astor-polaroid.webp";
 // Night run, all remaining people (Lisa, 3 Nov 2026)
 import ladyBunnyPhoto from "@/assets/people/lady-bunny-photo.webp";
 import ladyBunnyPolaroid from "@/assets/people/lady-bunny-polaroid.webp";
+import loveBallPhoto from "@/assets/people/love-ball-photo.webp";
+import loveBallPolaroid from "@/assets/people/love-ball-polaroid.webp";
+import voguingPhoto from "@/assets/people/voguing-photo.webp";
+import voguingPolaroid from "@/assets/people/voguing-polaroid.webp";
+import noEntiendesPhoto from "@/assets/people/no-entiendes-photo.webp";
+import noEntiendesPolaroid from "@/assets/people/no-entiendes-polaroid.webp";
 import julieJewelsPhoto from "@/assets/people/julie-jewels-photo.webp";
 import julieJewelsPolaroid from "@/assets/people/julie-jewels-polaroid.webp";
 import lahomaVanZandtPhoto from "@/assets/people/lahoma-van-zandt-photo.webp";
@@ -1063,4 +1069,9 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "norma-kamali": { photo: normaKamaliPhoto, polaroid: normaKamaliPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "rachel-auburn": { photo: rachelAuburnPhoto, polaroid: rachelAuburnPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "stephen-jones": { photo: stephenJonesPhoto, polaroid: stephenJonesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Real pictures, no Gemini needed (Lisa, 28 Nov 2026 on the House of Xtravaganza page: "love ball and voguing needs a picture
+  // and a page"; "Haoui Montaug no entiendes needs picture and it's own page").
+  "love-ball": { photo: loveBallPhoto, polaroid: loveBallPolaroid, focus: "40%", credit: "Invitation: The Love Ball, Roseland, 1989 - photo via Gallery 98" },
+  voguing: { photo: voguingPhoto, polaroid: voguingPolaroid, focus: "50%", credit: "Photo: S Pakhrin, Voguing Masquerade Ball, 2016, CC BY 2.0, via Wikimedia Commons" },
+  "no-entiendes": { photo: noEntiendesPhoto, polaroid: noEntiendesPolaroid, focus: "45%", credit: "Card: No Entiendes, second anniversary, Danceteria, 1984 - photo via Gallery 98" },
 };

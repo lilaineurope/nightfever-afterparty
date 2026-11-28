@@ -87,6 +87,8 @@ export const SAME_AS: Record<string, string> = {
   "desi-monster": "desi-santiago",
   // S06E10: Lil' Kenny from Desi's band Boob is the guest Kenneth Hash - the old card address forwards to his AFTERPARTY.
   "lil-kenny": "kenneth-hash-aka-lil-kenny",
+  // S03E09 and S06E06 heard "Julie Jules": the club kid Julie Jewels (Lisa, 28 Nov 2026, Tunnel kids) - one page.
+  "julie-jules": "julie-jewels",
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different

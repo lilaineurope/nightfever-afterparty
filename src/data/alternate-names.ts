@@ -18,6 +18,9 @@ export const ALTERNATE_NAMES: Record<string, string[]> = {
   // Top Google search pages, round 3 (Lisa, 28 Nov 2026).
   "jenny-go-getter": ["Jennifer Banash", "Jenny Banash", "Jenny Go Getter"],
   jefferson: ["The Jefferson", "Jefferson Theatre", "Arthur Weinstein's Jefferson"],
+  continental: ["The Continental", "Arthur Weinstein's Continental"],
+  "julie-jewels": ["Julie Jules"],
+  "michael-tron": ["Michael Tronn", "Mikel Tron"],
   "howie-pyro": ["Howard Kusten"],
 };
 

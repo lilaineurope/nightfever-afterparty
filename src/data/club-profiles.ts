@@ -993,6 +993,59 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     ],
     portrait: { photo: jeffersonPhoto, phone: jeffersonPhotoPhone, polaroid: jeffersonPolaroid, focus: "50%", credit: JEFFERSON_CREDIT },
   },
+  // Lisa, 28 Nov 2026 on the Jefferson page: "make picture for the continental and create page". Facts: Colleen Weinstein in
+  // PIN-UP 27 (2019/20), Bedford + Bowery's "Nightclubbing: After-Hours, 1980", the Daily Beast's after-hours story and
+  // Eric Goode (S03E06). No street number found: no pin on the map (Bring us home).
+  continental: {
+    opened: "c. 1981",
+    closed: "Mid-80s",
+    address: "A garage on West 25th Street, Chelsea",
+    story:
+      "Arthur and Colleen Weinstein's illegal after-hours club after the Jefferson, in an old garage on West 25th Street, in the same building as Eric Goode's first club, the one with no name. Colleen hung big sheets of plexiglass from the ceiling, after the film Blow-Up, to make rooms along a centre aisle, and the back room was the old loading bay. It opened at two in the morning, when the uptown crowd came looking for somewhere to go: Mick Jagger once turned up early and offered to sweep the floor. Eric Goode says Arthur later wore a wire to help bust corrupt cops.",
+    timeline: [
+      ["1980", "The Jefferson, Arthur and Colleen's first after-hours, opens in their loft on 14th Street"],
+      ["Early 1980s", "The Continental opens in a garage on West 25th Street, in the same building as Eric Goode's first club"],
+      ["Early 1980s", "Doors at 2 am; Colleen's hanging plexiglass rooms, and the loading bay out back"],
+      ["Early 1980s", "Arthur pays off police and fire officials to stay open, then wears a wire against corrupt cops"],
+      ["Mid-80s", "Arthur and Colleen's next club: The World, on East 2nd Street"],
+    ],
+    stage: ["Arthur Weinstein", "Colleen Weinstein", "Eric Goode"],
+    rooms: ["The Jefferson", "Club With No Name", "The World", "Studio 54"],
+    said: [
+      { episode: "s03e06", who: "James St. James", time: "00:13:24", context: "James remembers Arthur Weinstein's clubs", quote: "I remember it well, yes. Like the Continental, wasn't it? It was Arthur Weinstein's. Was that an after-hours?" },
+      { episode: "s03e06", who: "Eric Goode", time: "00:13:32", context: "The Continental shared a building with Eric's first club", quote: "So the Continental was in the same building as my club with no name. And I gave Arthur that space, but he was in the loading bay. And that's a whole other story." },
+    ],
+    also: { heading: "Who came", names: ["Mick Jagger", "Billy Idol"] },
+  },
+  // Lisa, 28 Nov 2026 on Howie Pyro's page: "add picture for don hills and create page". Facts: Hudson Square BID history,
+  // the Village Voice's and Interview's Don Hill obituaries, The Real Deal and BrooklynVegan on the closing (Apr 2011), and
+  // the guests (S02E06, S03E10, S04E03).
+  "don-hill-s": {
+    opened: "1993",
+    closed: "Apr 2011",
+    address: "511 Greenwich Street, at Spring Street",
+    story:
+      "Don Hill's rock club on the corner of Greenwich and Spring, a no-man's land where you couldn't get a cab and nobody complained about the noise. The building had been the Munson Diner and then Canal Bar. Don gave his promoters full freedom, and in April 1994 Michael Schmidt and Miss Guy started Squeezebox there on Fridays: drag queens singing with a live punk band, with Howie Pyro on the decks. Bebe Buell says she owes Don Hill her life.",
+    timeline: [
+      ["Before 1993", "The corner building is the Munson Diner, then Brian McNally's restaurant Canal Bar"],
+      ["1993", "Don Hill opens his rock club at 511 Greenwich Street"],
+      ["Apr 1994", "Squeezebox starts on Fridays: Michael Schmidt and Miss Guy, Mistress Formika hosting, Howie Pyro the first DJ"],
+      ["Summer 1994", "Squeezebox is on fire; Debbie Harry is one of the first famous faces"],
+      ["2008", "A benefit there in memory of Dean Johnson"],
+      ["Early 2011", "Don Hill dies, aged 66, a few months after selling the club"],
+      ["Apr 2011", "Don Hill's closes for good"],
+      ["2014", "The space reopens as The Hills"],
+    ],
+    stage: ["Don Hill", "Michael Schmidt", "Miss Guy", "Howie Pyro", "Bebe Buell", "Patrick Briggs"],
+    rooms: ["Squeezebox", "Canal Bar", "Cat Club"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:50:39", context: "How Squeezebox began: Patrick Briggs was managing Don Hill's and wanted a gay night", quote: "He called me up and he said, I'm managing this club called Don Hill's and we want to do a gay night. And would you be interested in promoting it? And I said no, because I had never done that before and it sounded like a lot of work." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:52:54", context: "Greenwich and Spring was a no-man's land, and Don Hill let them do anything", quote: "You couldn't get a cab there... it was a no-man's land, which worked in our favor because there was nobody to complain about the noise. So this was uniquely situated, and it was absolutely perfect. And Don Hill was so wonderful, and he just let me do whatever the hell I wanted." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:39:25", context: "Miss Guy on the space before Don Hill's, and starting Squeezebox there", quote: "When he got involved with the space that became Don Hill's, it was a restaurant. I think it was called Canal Bar... So when that closed, then Don got it and he had it for about six months before we started Squeezebox and nothing was really happening there. So he gave us full freedom to do whatever we wanted and full support. And so we started Squeezebox in April of '94." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:40:00", context: "The first nights at Don Hill's", quote: "It got off to a slow start. It wasn't making any money. Every night was magical. There was that feeling in the air where you knew it was something special. And then I think by that summer, it was pretty much on fire, and celebrities started coming. Of course, Debbie Harry was one of the first." },
+      { episode: "s04e03", who: "Bebe Buell", time: "01:09:20", context: "Bebe on the Squeezebox family and Don Hill bringing her back on stage", quote: "And they repaired me, put me back together again, gave me my soul back. I owe my life to those guys. I owe my life to Don Hill, Hilly Kristal, my New York community, my friends, my musicians, the people that have loved me and welcomed me back." },
+    ],
+  },
   "gilded-grape": {
     opened: "Early 70s",
     closed: "1977",

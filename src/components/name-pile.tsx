@@ -9,7 +9,7 @@ const TILT = [-3, 2, -1.5, 2.5, -2, 1];
  *  (Lisa, 27 Nov 2026: make the pages "cohesive and sticky"): every name that has a picture on the site - a person's
  *  polaroid, a guest's AFTERPARTY polaroid, a club's polaroid or ticket, a Library cover - shows it, so the next page
  *  is a face to tap instead of a word. Names without a picture stay chips, after the pictures. */
-export function NamePile({ names, faces }: { names: string[]; faces: Record<string, { src: string; framed?: boolean }> | undefined }) {
+export function NamePile({ names, faces }: { names: string[]; faces: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }> | undefined }) {
   const pics = names.filter((n) => faces?.[n]);
   const rest = names.filter((n) => !faces?.[n]);
   return (
@@ -32,7 +32,7 @@ export function NamePile({ names, faces }: { names: string[]; faces: Record<stri
 /** The same pile for the A–Z lists under a card ("Also named on these cards", "In the same rooms", "Pops up in the guests'
  *  stories", "On these AFTERPARTY pages" - Lisa, 28 Nov 2026: "don't we show them with picture boxes instead?"). Items link
  *  by slug; `sub` is the small grey line under the name (the episode code, or what kind of page it is). */
-export function SlugPile({ items, faces }: { items: { slug: string; name: string; sub?: string | undefined }[]; faces: Record<string, { src: string; framed?: boolean }> | undefined }) {
+export function SlugPile({ items, faces }: { items: { slug: string; name: string; sub?: string | undefined }[]; faces: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }> | undefined }) {
   const links = useLinks();
   const pics = items.filter((x) => faces?.[x.name]);
   const rest = items.filter((x) => !faces?.[x.name]);
@@ -63,14 +63,19 @@ export function SlugPile({ items, faces }: { items: { slug: string; name: string
   );
 }
 
-function Face({ face, i }: { face: { src: string; framed?: boolean }; i: number }) {
+function Face({ face, i }: { face: { src: string; framed?: boolean; mast?: "light" | "dark" }; i: number }) {
   return (
     <span
       className="block border border-[#111]/15 bg-white p-1 pb-1.5 shadow-[2px_3px_0_#111] transition-transform group-hover:rotate-0 group-hover:shadow-[3px_4px_0_var(--pink,#e0007a)]"
       style={{ transform: `rotate(${TILT[i % TILT.length]}deg)` }}
     >
       <span className="block aspect-square w-full overflow-hidden">
-        {face.framed ? (
+        {face.mast ? (
+          // A magazine masthead: the whole logo on paper (or on black for a white logo).
+          <span className={`flex h-full w-full items-center justify-center p-1.5 ${face.mast === "dark" ? "bg-[#111]" : "bg-[#f4efe6]"}`}>
+            <img src={face.src} alt="" loading="lazy" decoding="async" className="block max-h-full w-full object-contain" />
+          </span>
+        ) : face.framed ? (
           // A whole polaroid card: show only its photo (40-680 px of the 720 px wide card).
           <img src={face.src} alt="" loading="lazy" decoding="async" className="block w-[112.5%] max-w-none" style={{ margin: "-6.25% 0 0 -6.25%" }} />
         ) : (
