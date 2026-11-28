@@ -61,6 +61,9 @@ import xenonPolaroid from "@/assets/clubs/xenon-polaroid.webp";
 import reginesPhoto from "@/assets/clubs/re-gine-s-photo.webp";
 import reginesPhotoPhone from "@/assets/clubs/re-gine-s-photo-phone.webp";
 import reginesPolaroid from "@/assets/clubs/re-gine-s-polaroid.webp";
+import elMoroccoPhoto from "@/assets/clubs/el-morocco-photo.webp";
+import elMoroccoPhotoPhone from "@/assets/clubs/el-morocco-photo-phone.webp";
+import elMoroccoPolaroid from "@/assets/clubs/el-morocco-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -170,6 +173,7 @@ const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPART
 // No free period picture of Régine's New York exists (Commons has only today's building; the NIGHT Magazine 1978 Régine's issue
 // at Gallery 98 shows real faces), so both are drawn (Lisa, 28 Nov 2026: "regine needs a background picture and a polaroid").
 const REGINES_CREDIT = "Header: a night at Régine's drawn for the AFTERPARTY. Polaroid: the Delmonico canopy on Park Avenue, drawn for the AFTERPARTY";
+const EL_MOROCCO_CREDIT = "Photo: Constance Bennett, Richard Brown and Eva Gabor on the zebra banquettes at El Morocco, February 1965, by Wally Heim for United Artists, via Wikimedia Commons, public domain; our photocopy versions too";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
@@ -1107,8 +1111,37 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     said: [
       { episode: "s02e04", who: "Nikki Haskell", time: "00:09:13", quote: "Men always wore jackets and ties and girls always wore cocktail dresses. It was in a townhouse... very high ceilings. It was done like an English carriage house. It had a fireplace with sofas on one side. And it had a dance floor." },
       { episode: "s03e05", who: "Cherry Vanilla", time: "00:14:36", quote: "Right down the street towards Sutton Place was this little, intimate French club, the first discotheque I ever heard of in New York, called Le Club. You would have a beautiful French dinner, and then as the lights got a little lower, you would dance to... a guy playing records." },
-      { episode: "s02e04", who: "Nikki Haskell", time: "00:05:13", quote: "There were a lot of discotheques... Le Club - when I moved to New York, that's where I went." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:05:13", quote: "Le Club - when I moved to New York, that's where I went. Almost every night. Everybody was in cocktail dresses, everything... That was sort of in the 60s, because I moved to New York in '65." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:09:48", quote: "Not so much disco, but like Raindrops... not really full-blown disco songs. They had their own sound, and they played a lot of European disco music, which was very fashionable in the clubs in those days. And it was great. Everybody went there." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:17:37", context: "Opus, the club she compares it with", quote: "That was also a place where you could have dinner... He cooked French meals, and it was the same idea like Le Club. The lights went down, the music got louder." },
       { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I went to all the clubs. I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+    ],
+  },
+  // Lisa, 28 Nov 2026: "el morrocco needs a picture and a page". Facts: Wikipedia El Morocco, Bowery Boys (2007), InsideHook
+  // (2022), read 28 Nov 2026. Only James St. James names it on the show (S2E5, S6E6 intro), so the history carries the page.
+  "el-morocco": {
+    opened: "1931",
+    closed: "1970",
+    address: "154 East 54th Street, then 307 East 54th Street",
+    aka: "Elmo",
+    portrait: { photo: elMoroccoPhoto, phone: elMoroccoPhotoPhone, polaroid: elMoroccoPolaroid, focus: "50%", credit: EL_MOROCCO_CREDIT },
+    story:
+      "John Perona opened El Morocco on 5 October 1931 as a speakeasy at 154 East 54th Street, named for the Third Avenue El that ran past it - Elmo to its regulars. The decorator Vernon MacFarlane gave it the blue-and-white zebra-stripe banquettes, and Perona's photographer Jerome Zerbe made them famous: his pictures ran in the papers the next morning, and the stripes told everyone where they had been taken. Lucille Ball and Desi Arnaz held their wedding reception there in 1940; Truman Capote, Audrey Hepburn, Marilyn Monroe, Frank Sinatra and Salvador Dalí came through the door. In 1961 El Morocco moved to a townhouse at 307 East 54th Street, and after Perona died it went through new owners until it closed on 23 May 1970. James St. James calls it the historic club - New York has always been about nighttime - and Lincoln Palsgrove worked the door when it was revived in the 80s.",
+    timeline: [
+      ["5 Oct 1931", "John Perona opens The Morocco, a speakeasy at 154 East 54th Street"],
+      ["30s", "Vernon MacFarlane's zebra-stripe banquettes; Jerome Zerbe photographs the room from 1935 to 1939"],
+      ["1940", "Lucille Ball and Desi Arnaz's wedding reception"],
+      ["Jan 1961", "El Morocco moves to a townhouse at 307 East 54th Street"],
+      ["Jun 1961", "John Perona dies; his son Edwin sells the club to John Mills"],
+      ["1964", "Maurice Uchitel and Sheldon Hazeltine take over"],
+      ["23 May 1970", "El Morocco closes"],
+      ["1987", "El Morocco reopens - Lincoln Palsgrove IV is one of its doormen"],
+    ],
+    stage: ["Truman Capote", "Audrey Hepburn", "Marilyn Monroe", "Frank Sinatra", "Salvador Dalí", "Marlene Dietrich", "Humphrey Bogart", "Lincoln Palsgrove IV"],
+    rooms: ["Le Club", "Copacabana", "Régine's", "Delmonico's"],
+    said: [
+      { episode: "s02e05", who: "James St. James", time: "00:57:04", quote: "...at this historic club, the El Morocco. Like, I mean, New York has always been about nighttime... Delmonico's in the 1880s. That was always part of what made New York special." },
+      { episode: "s06e06", who: "James St. James", time: "00:00:38", context: "Lincoln's doors", quote: "A few of the doors he's worked on include The World... Red Zone, The Roxy, Cha-Cha Room at Stringfellows, Palladium, El Morocco, Twilo, Milk Bar, MK..." },
     ],
   },
   // Régine's club in Monaco, still open (Lisa, 28 Nov 2026, as above). Facts: Monte-Carlo SBM "The story of Jimmy'z" and
