@@ -64,6 +64,12 @@ import reginesPolaroid from "@/assets/clubs/re-gine-s-polaroid.webp";
 import elMoroccoPhoto from "@/assets/clubs/el-morocco-photo.webp";
 import elMoroccoPhotoPhone from "@/assets/clubs/el-morocco-photo-phone.webp";
 import elMoroccoPolaroid from "@/assets/clubs/el-morocco-polaroid.webp";
+import leClubPhoto from "@/assets/clubs/le-club-photo.webp";
+import leClubPhotoPhone from "@/assets/clubs/le-club-photo-phone.webp";
+import leClubPolaroid from "@/assets/clubs/le-club-polaroid.webp";
+import jimmyzPhoto from "@/assets/clubs/jimmy-z-photo.webp";
+import jimmyzPhotoPhone from "@/assets/clubs/jimmy-z-photo-phone.webp";
+import jimmyzPolaroid from "@/assets/clubs/jimmy-z-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -174,6 +180,9 @@ const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPART
 // at Gallery 98 shows real faces), so both are drawn (Lisa, 28 Nov 2026: "regine needs a background picture and a polaroid").
 const REGINES_CREDIT = "Header: a night at Régine's drawn for the AFTERPARTY. Polaroid: the Delmonico canopy on Park Avenue, drawn for the AFTERPARTY";
 const EL_MOROCCO_CREDIT = "Photo: Constance Bennett, Richard Brown and Eva Gabor on the zebra banquettes at El Morocco, February 1965, by Wally Heim for United Artists, via Wikimedia Commons, public domain; our photocopy versions too";
+// No period picture of either club is free to use (Commons: nothing for Le Club, only a 2014 Jimmy'z), so both are drawn (28 Nov 2026).
+const LE_CLUB_CREDIT = "Header: a night at Le Club in the 60s drawn for the AFTERPARTY. Polaroid: the door on East 55th Street, drawn for the AFTERPARTY";
+const JIMMYZ_CREDIT = "Header: Jimmy'z by the sea in the 70s drawn for the AFTERPARTY. Polaroid: the lantern-lit lake, drawn for the AFTERPARTY";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
@@ -1097,6 +1106,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     opened: "1960",
     closed: "after 1996",
     address: "416 East 55th Street, near Sutton Place",
+    portrait: { photo: leClubPhoto, phone: leClubPhotoPhone, polaroid: leClubPolaroid, focus: "50%", credit: LE_CLUB_CREDIT },
     story:
       "Olivier Coquelin, a young Frenchman, opened Le Club on New Year's Eve 1960 in a converted garage on East 55th Street near Sutton Place - one of the first discotheques in New York, a private club with a board that counted Oleg Cassini, Rex Harrison and Alan Jay Lerner, two hundred dollars to join and sixty-five a year. Slim Hyatt played the records from the first night. When Nikki Haskell moved to New York in 1965, that's where she went: a townhouse done like an English carriage house, a fireplace with sofas, a small dance floor, European disco records, men in jackets and ties and girls in cocktail dresses. Cherry Vanilla lived down the street - for her it was the first discotheque she ever heard of: a French dinner, then the lights went lower and a guy played records.",
     timeline: [
@@ -1150,6 +1160,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     opened: "1971",
     closed: "today",
     address: "Monte-Carlo Sporting Club, Monaco",
+    portrait: { photo: jimmyzPhoto, phone: jimmyzPhotoPhone, polaroid: jimmyzPolaroid, focus: "50%", credit: JIMMYZ_CREDIT },
     city: "Monte Carlo",
     country: "MC",
     story:

@@ -5,6 +5,7 @@
 import { entityFor, episodeShort, isPlace, type Entity } from "@/data/entities";
 import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
 import { CLUB_PROFILES } from "@/data/club-profiles";
+import { EVENT_COVERS } from "@/data/event-covers";
 import type { CoverDesign } from "@/lib/cover-design";
 import { HOME_HINTS } from "@/data/locations";
 import { episodeById } from "@/data/episodes";
@@ -78,6 +79,9 @@ function eventCover(x: EventAt, at: string | undefined, metres: number, i: numbe
   // A venue's picture goes on its first cover only, so a row of Studio 54 nights doesn't repeat one photo.
   const pic = photo && x.venue ? CLUB_PROFILES[x.venue]?.portrait?.polaroid : undefined;
   const where = [at, metres < 20 ? "next door" : `${Math.max(1, Math.round(metres / 80))} min walk`].filter(Boolean).join(" · ");
+  // An event with its own drawn picture (src/data/event-covers.ts) wears it on every cover.
+  const own = EVENT_COVERS[x.slug];
+  if (own) return { name: e.name, foot, look: "art", src: own.src, alt: own.alt, tag: "Event", lines: [where] };
   return pic
     ? { name: e.name, foot, look: "art", src: pic, alt: at ?? e.name, tag: "Next door", lines: [where] }
     : { name: e.name, foot, look: "type", colour: i % 2 ? "lib-ink" : "lib-pink", kind: where || "Event" };
