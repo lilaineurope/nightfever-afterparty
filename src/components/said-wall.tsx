@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { QuoteName } from "@/components/quote-name";
@@ -15,6 +16,7 @@ const SHOW = 9;
  *  about it is a taped box with their polaroid. A quote shows their own words; any other mention shows what was said,
  *  labelled "On the show". It replaces the old "In the episodes" list on these pages. */
 export function SaidWall({ items, name, id }: { items: SaidBox[]; name: string; id: string }) {
+  const [all, setAll] = useState(false);
   if (items.length === 0) return null;
   const grid =
     items.length === 1
@@ -28,35 +30,22 @@ export function SaidWall({ items, name, id }: { items: SaidBox[]; name: string; 
         What the guests say
       </h2>
       <div className={`mt-10 grid gap-x-8 gap-y-12 ${grid}`}>
-        {items.slice(0, SHOW).map((q, i) => (
+        {items.slice(0, all ? items.length : SHOW).map((q, i) => (
           <SaidFigure key={`${q.episode}-${q.time}-${i}`} q={q} i={i} name={name} />
         ))}
       </div>
       {items.length > SHOW && (
-        // More than 9: the rest are one line each, and a click opens the box underneath (Lisa, 28 Nov 2026).
-        <ul className="said-more mx-auto mt-14 max-w-3xl">
-          {items.slice(SHOW).map((q, i) => (
-            <li key={`${q.episode}-${q.time}-${i}`}>
-              <details className="said-row">
-                <summary>
-                  <span className="min-w-0">
-                    <span className="said-row-who">{q.who}</span>
-                    <span className="said-row-what">
-                      {q.quote ? `\u201c${q.quote}\u201d` : (q.context ?? "")}
-                    </span>
-                  </span>
-                  <span className="said-row-code">{q.code}</span>
-                  <span aria-hidden="true" className="map-event-plus">
-                    +
-                  </span>
-                </summary>
-                <div className="said-row-box">
-                  <SaidFigure q={q} i={i + 1} name={name} />
-                </div>
-              </details>
-            </li>
-          ))}
-        </ul>
+        // More than 9 (Lisa, 28 Nov 2026, Xenon as the blueprint): a More button under the wall opens the rest as boxes.
+        <p className="mt-12 text-center">
+          <button
+            type="button"
+            className="map-btn"
+            aria-expanded={all}
+            onClick={() => setAll(!all)}
+          >
+            {all ? "Fewer quotes \u2191" : `${items.length - SHOW} more quotes \u2193`}
+          </button>
+        </p>
       )}
     </section>
   );

@@ -1530,17 +1530,3 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 @keyframes rn-spin { from { transform: translateY(-30%); } to { transform: translateY(30%); } }
 @keyframes rn-blur { 0%, 100% { filter: blur(1px); } 50% { filter: blur(2.5px); } }
 @media (prefers-reduced-motion: reduce) { .rn-spinning .rn-win, .rn-spinning .rn-win > * { animation: none; } }
-
-/* Quote walls over nine boxes (Lisa, 28 Nov 2026): one line per guest, a click opens their box underneath. */
-.said-more { border-top: 2px solid #111; }
-.said-row { border-bottom: 1px dashed #bbb; color: #111; }
-.said-row summary { display: flex; align-items: baseline; gap: 12px; padding: 12px 2px; cursor: pointer; list-style: none; }
-.said-row summary::-webkit-details-marker { display: none; }
-.said-row summary > .min-w-0 { flex: 1; display: flex; gap: 10px; align-items: baseline; overflow: hidden; }
-.said-row-who { flex: none; font-weight: 700; transition: color .15s; }
-.said-row summary:hover .said-row-who { color: var(--color-pink); }
-.said-row-what { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-family: var(--font-type); font-size: 14px; color: #555; }
-.said-row-code { flex: none; font-family: var(--font-mono-body); font-size: 11px; color: #6b6460; }
-.said-row[open] .map-event-plus { transform: rotate(45deg); background: #111; color: #f6e06a; }
-.said-row-box { padding: 22px 8px 28px; }
-@media (max-width: 640px) { .said-row-what { display: none; } }
