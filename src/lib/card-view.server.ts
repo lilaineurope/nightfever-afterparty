@@ -425,6 +425,14 @@ function cardView(e: Entity): CardView {
       : e.category === "Event" || e.category === "Club" ? e.refs.filter((r) => r.episode).map(mentionBox)
       : null;
   for (const q of wall ?? []) if (q.context) L.text(q.context, e.name);
+  // Person pages (Lisa, 28 Nov 2026, Calvin Klein: "show all mentions as quote boxes"): every episode that talks about them
+  // gets a box on the quote wall - its quote, or what was said, labelled "On the show" - in place of "In the episodes".
+  const saidMore: SaidBox[] | null = profile
+    ? e.refs
+        .filter((r, i, all) => r.episode && !profile.said.some((q) => q.episode === r.episode) && all.findIndex((x) => x.episode === r.episode) === i)
+        .map(mentionBox)
+    : null;
+  for (const q of saidMore ?? []) if (q.context) L.text(q.context, e.name);
   const eventLib = e.category === "Event" && !nightPage && !g ? eventLibraryOf(e, mapBand?.pin.slug) : null;
   for (const lib of [eventLib?.own, eventLib?.venue?.lib]) {
     if (!lib) continue;
@@ -435,6 +443,7 @@ function cardView(e: Entity): CardView {
 
   return {
     wall: wall && wall.length ? wall : null,
+    saidMore,
     eventLib,
     slug: e.slug,
     name: e.name,

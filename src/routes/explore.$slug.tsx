@@ -345,7 +345,7 @@ function EntityPage() {
             card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
         {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
         {e.mapHome && <BringUsHome m={e.mapHome} />}
-        {profile && <PersonProfileSections m={profile} name={e.name} faces={e.faces} />}
+        {profile && <PersonProfileSections m={profile} name={e.name} faces={e.faces} more={e.saidMore ?? []} />}
         {profile && e.rooms && <RoomsMapSection r={e.rooms} first={profile.first ?? e.name.split(" ")[0]!} />}
         {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
         <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />
@@ -363,7 +363,7 @@ function EntityPage() {
             <Story st={e.story} name={e.name} />
           </div>
         )}
-        <CardSections v={e} skipRefs={!!item || !!place || !!nightPage || !!e.wall} skipEvents={!!place} />
+        <CardSections v={e} skipRefs={!!item || !!place || !!nightPage || !!e.wall || (!!profile && e.refs.every((r) => r.episode))} skipEvents={!!place} />
         {nightPage && <NightPageOthers v={nightPage} />}
         {e.eventLib && <EventLibrary v={e.eventLib} name={e.name} />}
       </div>
