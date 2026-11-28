@@ -1745,13 +1745,15 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   // the poppers dinner and the "I Am What I Am" session remark about Gloria Gaynor (S02E07, S03E04), the ayahuasca story (S01E04).
   sade: {
     story:
-      "The British singer played her first American show at Danceteria, Rudolf Piper says, though she never tended bar there, whatever James had read. James simply couldn't picture her and Madonna working the same club.",
+      "The British singer played her first American show at Danceteria - Rudolf Piper paid $3,000 to bring her over, his limit for a band - though she never tended bar there, whatever James had read. James simply couldn't picture her and Madonna working the same club.",
     timeline: [
       ["1959", "Born Helen Folasade Adu on 16 January in Ibadan, Nigeria, and grows up in England"],
       ["1982", "Starts the band Sade in London"],
       ["1984", "Diamond Life, with Smooth Operator"],
       ["1980s", "First American show, at Danceteria"],
+      ["1985", "Promise, the second album"],
       ["1986", "Grammy for Best New Artist"],
+      ["1992", "Love Deluxe, with No Ordinary Love"],
       ["2010", "Soldier of Love"],
     ],
     liftedUp: [],
@@ -1760,6 +1762,15 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e07", who: "James St. James", time: "00:23:09", quote: "But now Sade worked there as well. Sade was a bartender, right?" },
       { episode: "s01e07", who: "Rudolf Piper", time: "00:23:13", quote: "No. Their first American show was at Danceteria. Sade was British. She's in England." },
       { episode: "s01e07", who: "James St. James", time: "00:23:35", quote: "Because I was trying to imagine, like, Sade and Madonna working at the same club and hanging out after. I just couldn't do it in my head." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:25:26", quote: "I could bring Sade to America, which cost a fortune. It cost $3,000 at the time to bring Sade for the first American show." },
+    ],
+    // On film (Lisa, 28 Nov 2026: "add film box"). The band's own 1984 videos, all embeddable, checked 28 Nov 2026.
+    videos: [
+      { id: "4TYv2PhG89A", title: "Sade - Smooth Operator (1984, directed by Julien Temple)" },
+      { id: "k1ljpLQ1V6Y", title: "Sade - Your Love Is King (1984)" },
+      { id: "kxNJV83EMJw", title: "Sade - Hang On to Your Love (1984)" },
+      { id: "SxMavpCwSMo", title: "Sade in 1984, just as Diamond Life came out - an early TV interview" },
+      { id: "zwDjJP_l5AY", title: "Sade - Your Love Is King, live at Live Aid, Wembley 1985" },
     ],
   },
   "romy-haag": {
@@ -1832,6 +1843,15 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     ],
   },
   "grandmaster-flash": {
+    // On film (Lisa, 28 Nov 2026: "grandmaster flash add video box"). All embeddable, checked 28 Nov 2026.
+    videos: [
+      { id: "PobrSpMwKk4", title: "Grandmaster Flash & the Furious Five - The Message (the 1982 video)" },
+      { id: "F3unhUrwp68", title: "The Adventures of Grandmaster Flash on the Wheels of Steel (1981)" },
+      { id: "Au86wouG5Hk", title: "Where hip-hop is from: Grandmaster Flash back in the South Bronx" },
+      { id: "bIoeoOaqD6g", title: "The Furious Five's block party grounds in the Bronx" },
+      { id: "KQoSAGWEuKg", title: "Grandmaster Flash explains his Quick Mix Theory at the turntables" },
+      { id: "1J2HknXcl3Q", title: "Grandmaster Flash & the Furious Five enter the Rock & Roll Hall of Fame (2007)" },
+    ],
     story:
       "South Bronx DJ and hip-hop pioneer. Back then Manhattan didn't know him yet, Nick Egan says, but he did. Man Parrish was making records in the same years, and James still prefers Duran Duran's White Lines.",
     timeline: [
@@ -1864,9 +1884,45 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     liftedUp: [],
     rooms: [],
     said: [
-      { episode: "s04e09", who: "Susan Seidelman", time: "00:53:41", quote: "I had happened to go to the theatre and saw a Steppenwolf play called Balm in Gilead, and I was blown away by it. And that's where I first saw Laurie. John Malkovich directed it. Glenn Headly was in it. Laurie Metcalf was in it." },
-      { episode: "s04e09", who: "James St. James", time: "00:54:44", quote: "And also Laurie Metcalf again, is hysterical." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:53:41", quote: "I had happened to go to the theatre and saw a Steppenwolf play called Balm in Gilead, and I was blown away by it. And that's where I first saw Laurie. John Malkovich directed it. Glenne Headly was in it. Laurie Metcalf was in it." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:54:31", quote: "I used Laurie Metcalf in Desperately Seeking Susan. And then when it came time to do Making Mr. Right, I thought, I'll use Malkovich, his wife at the time, Glenne Headly, and also Laurie Metcalf again." },
+      { episode: "s04e09", who: "James St. James", time: "00:54:48", quote: "Laurie Metcalf is hysterical, as is Polly Bergen, who plays her mother. So fabulous." },
       { episode: "s04e10", who: "Ann Magnuson", time: "00:58:58", quote: "With Making Mr. Right, I was the straight guy, really. And I had to temper down so much of my personality. I was so excited that I got to be a kook. I was so envious of Laurie Metcalf's part in Making Mr. Right." },
+    ],
+  },
+  // Lisa, 28 Nov 2026: "jim fouratt show all quotes, libary and film box". Every mention on the show; facts from the episodes
+  // and Wikipedia "Jim Fouratt" (read 28 Nov 2026). Left out under the living-people rule: the put-downs about him (S01E07
+  // 00:30:14-00:30:39, S02E02 00:43:55 "Nobody does") and the Peppermint Lounge mob talk (S02E11 00:57:31).
+  "jim-fouratt": {
+    first: "Jim",
+    story:
+      "Gay-rights activist and club maker. Jayne County was with him on Christopher Street on the first night of Stonewall, chanting gay power. Rudolf Piper hired him for Pravda, opened Danceteria with him and needed weeks to win him over to the name. At the Peppermint Lounge he brought Richard Boch on, and Eric Goode always wanted to know what he was up to.",
+    timeline: [
+      ["1941", "Born 23 June, grows up in Rhode Island"],
+      ["1967", "One of the organisers of the Central Park Be-In, and a co-founder of the Yippies"],
+      ["1969", "On Christopher Street with Jayne County on the first night of the Stonewall riots; co-founds the Gay Liberation Front days later"],
+      ["Late 1970s", "Hurrah, the first rock disco: DJs, live bands and music videos"],
+      ["1980", "Rudolf Piper hires him for Pravda, which lasts one night; together they open Danceteria on West 37th Street"],
+      ["Nov 1980", "The new Peppermint Lounge with Rudolf Piper, where he brings Richard Boch on"],
+      ["Sep 1981", "Manages the reopened Studio 54 with Rudolf Piper"],
+      ["1995-1999", "Vice president of A&R at Mercury Records"],
+    ],
+    liftedUp: ["Richard Boch"],
+    rooms: ["Danceteria", "Peppermint Lounge", "Hurrah", "Studio 54", "Pravda", "Christopher Street", "Stonewall riots"],
+    said: [
+      { episode: "s02e02", who: "Jayne County", time: "00:43:55", quote: "And I remember being there with Jim Fouratt. And so we were just marching up and down Christopher Street, back and forth, just screaming gay power, gay power, with a fist in the air." },
+      { episode: "s01e07", who: "James St. James", time: "00:29:05", quote: "So there was Pravda, then Danceteria, then the new Danceteria. And where does Jim Fouratt come into that? Because he was your partner for a time, wasn't he?" },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:29:25", quote: "Peppermint Lounge, that was Jim, right? And Jim Fouratt came in as I hired him for Pravda. And then, when Pravda was only one night, we were looking for another space, and then we found the space of Danceteria. So he was my partner at Danceteria." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:53:39", quote: "We were walking on the street, Jim Fouratt, me, David King and Sean Cassette, a DJ. We passed in front of a cafeteria and somebody said, Oh, I don't want a cafeteria, I want a dancing area. And then I had a hell of a time to convince Jim Fouratt that this was the name. Two weeks, three weeks later, he grudgingly accepted the name." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:57:31", context: "Richard on working the Peppermint Lounge for Rudolf and Jim", quote: "Yeah, they only lasted about a month. I worked with them. Jim brought me on there." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:37:59", quote: "Yes, I went to the other places. I wanted to know what they were doing. Yes, I always wanted to know what Rudolf was doing, what Jim Fouratt was doing, what Steve Rubell was doing." },
+    ],
+    // On film (Lisa, 28 Nov 2026). All embeddable, checked 28 Nov 2026.
+    videos: [
+      { id: "ulU3UEdiRwo", title: "Jim Fouratt on Danceteria's stage, 1982" },
+      { id: "iFvjPmPkofs", title: "Jim Fouratt on affirmation and joy in Gay Liberation (Media Burn Archive)" },
+      { id: "EZI6y3eIYPk", title: "Jim Fouratt and Tony Fletcher on New York's music scene, Strand Book Store 2009" },
+      { id: "YK7BngbI8Bw", title: "Danceteria - New York in the 80s" },
     ],
   },
   "lil-nas-x": {
@@ -1888,6 +1944,8 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s02e08", who: "Randy Barbato", time: "00:58:14", quote: "I look at someone like Lil Nas X, you know, and just the freedom from shame. It gives us Lil Nas X, who's just so fabulous, who's here and queer and out and proud." },
     ],
   },
+  // Lisa, 28 Nov 2026: "show all mentiones". Every mention on S01E04 except the two about the ayahuasca ceremony
+  // (00:02:27, 00:03:46), left out under the living-people rule.
   "jen-gatien": {
     story:
       "Peter Gatien's daughter, who did the guest list at his clubs, with James on the door at the Limelight and the Tunnel, and later produced Limelight, the 2011 documentary about her father.",
@@ -1902,7 +1960,8 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e04", who: "James St. James", time: "00:01:13", quote: "The subject of a 2011 documentary made by his daughter, Jen Gatien." },
       { episode: "s01e04", who: "James St. James", time: "00:56:20", quote: "I remember your daughter was involved in a lot of the clubs. I did the door with her at Limelight, the door with her at Tunnel. She really grew into an amazing woman, didn't she?" },
       { episode: "s01e04", who: "Peter Gatien", time: "00:56:35", quote: "She was young at the time, you know. I basically had the choice. At least she's at my nightclub, and she used to do the guest list. I can watch her." },
-      { episode: "s01e04", who: "Peter Gatien", time: "00:56:55", quote: "So it worked out well. Plus, obviously, she was my daughter, she was going to be honest." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:56:55", quote: "So it worked out well. Plus, obviously, she was my daughter, she was going to be honest. Remember, back then we'd have three or four guest lists, or even up to five, six at the Tunnel. So it was good to have a person that you knew that was not handing out comps to best buddies. People who got comps deserved them." },
+      { episode: "s01e04", who: "Randy Barbato", time: "00:57:27", quote: "I met her back then, but Fenton knows her better than I do." },
     ],
   },
   "linda-evangelista": {
@@ -1922,7 +1981,11 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s03e08", who: "Larry Tee", time: "00:25:22", quote: "Clearly, it was these three most famous models of all time. And living in the meat market, they used to shoot all the winter issues of Vogue. So all the time we would run down with cigarettes and we would feed Linda Evangelista." },
       { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:42:45", quote: "On occasion you'd have different celebrities and supermodels show up, which I can remember vividly, having to go down into a massive crowd and pull in Linda Evangelista." },
       { episode: "s05e05", who: "James St. James", time: "01:02:07", quote: "It's a bit like the Linda Evangelista. I'm not going to get out of bed for less than $10,000." },
+      { episode: "s03e08", who: "Larry Tee", context: "Larry, Lahoma and RuPaul at Versace's show in Milan, 1991", time: "00:36:29", quote: "It was a time where they threw the supermodels down the runway like confetti. It was Linda, Christy, Nadja. It was everybody on that runway." },
     ],
+    // Lisa, 28 Nov 2026: "show all mentions" - Larry's three go up together. Left out under the living-people rule: James's
+    // Love Machine staircase story (S03E08 00:23:29, he says himself it needs cutting) and the "hots for" line (00:24:37).
+    maxPerGuest: 3,
   },
   // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
   // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.

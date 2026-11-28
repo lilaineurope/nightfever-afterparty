@@ -103,6 +103,7 @@ export const ROLE_LINES: Record<string, string> = {
   "tony-defries": "David Bowie's manager, MainMan",
   "philip-glass": "composer",
   "ian-schrager": "co-owner of Studio 54 and the Palladium",
+  "jim-fouratt": "gay-rights activist, co-founder of Danceteria",
   sade: "singer",
   "romy-haag": "queen of Berlin nightlife, Chez Romy Haag",
   danilo: "hairstylist",
