@@ -1,5 +1,5 @@
 // The [.] in this file name is TanStack Router's escape for a literal dot, so the route is served at /sitemap.xml.
-import { FASHION_DESIGNERS, FASHION_LOOKS, FASHION_SHOPS } from "@/data/library-fashion";
+import { FASHION_DESIGNERS, LIBRARY_LOOKS, FASHION_SHOPS } from "@/data/library-fashion";
 import { createFileRoute } from "@tanstack/react-router";
 import { getRouterInstance } from "@tanstack/react-start";
 import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap";
@@ -56,7 +56,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         // Cover art & posters pages (/library/art/$slug, Lisa 24 Nov 2026): one per piece on the Library shelf.
         for (const page of Object.keys(artByPage)) entries.push({ path: `/library/art/${page}` });
         // Look pages (/library/look/$slug, Lisa 24 Nov 2026): one per look and outfit on the Fashion & outfits shelf.
-        for (const look of FASHION_LOOKS) entries.push({ path: `/library/look/${look.slug}` });
+        for (const look of LIBRARY_LOOKS) entries.push({ path: `/library/look/${look.slug}` });
         // Designer, label and shop pages (Lisa, 27 Nov 2026).
         for (const d of FASHION_DESIGNERS) entries.push({ path: `/library/designer/${d.slug}` });
         for (const x of FASHION_SHOPS) entries.push({ path: `/library/shop/${x.slug}` });

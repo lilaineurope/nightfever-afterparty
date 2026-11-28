@@ -83,7 +83,7 @@ def scraps(out, labels, rng, spots=None, scale=1.0):
     return np.asarray(im.convert("RGB"), np.float32)
 
 
-def cutout(img, composite, model="isnet-general-use"):
+def cutout(img, composite, model="isnet-general-use", hull=False):
     from rembg import remove, new_session
     sess = new_session(model)
     rgb = np.asarray(img.convert("RGB"))
@@ -115,6 +115,10 @@ def cutout(img, composite, model="isnet-general-use"):
             holes[lab2 == i] = 0
     a = a | holes
     if composite: a = cv2.erode(a, np.ones((5, 5), np.uint8))
+    if hull:  # a shopfront (Library shop covers, Lisa's M2 pick 28 Nov 2026): rembg drops dark doorways that reach the
+        # pavement, so fill every row between its leftmost and rightmost kept pixel - the shop is one solid block
+        for y in np.nonzero(a.any(1))[0]:
+            xs = np.nonzero(a[y])[0]; a[y, xs[0]:xs[-1] + 1] = 1
     return rgb.astype(np.float32), a
 
 
@@ -202,6 +206,7 @@ def main():
     ap.add_argument("--width", type=float, default=0.0, help="figure width as a share of the box (0 = fit by height)")
     ap.add_argument("--labels", default="", help="scrap labels separated by | (default: top references from src/data/<id>.json)")
     ap.add_argument("--header", default="", help="WxH for a wide episode header (portrait on the right) instead of the square box")
+    ap.add_argument("--hull", action="store_true", help="solid block cut-out (shopfronts on a white backdrop)")
     ap.add_argument("--cx", type=float, default=0.0, help="horizontal head centre (share of the width)")
     o = ap.parse_args(); rng = np.random.default_rng(o.seed)
 
@@ -228,7 +233,7 @@ def main():
         if l and len(l) <= 22 and not any(h in l for h in hosts) and l not in NEVER_ON_POLAROID and l not in clean: clean.append(l)
     labels = clean[:4]
 
-    rgb, a = cutout(Image.open(o.portrait), o.composite, o.model)
+    rgb, a = cutout(Image.open(o.portrait), o.composite, o.model, o.hull)
     if o.trim_backdrop: a = trim_backdrop(rgb, a, o.trim_backdrop)
     if o.accent_red: rgb = accent_red(rgb)
     if o.header:

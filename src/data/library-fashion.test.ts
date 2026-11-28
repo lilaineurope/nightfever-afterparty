@@ -25,8 +25,10 @@ test("Fashion & outfits: looks carry their colours and episode, designers and sh
   }
   const shops = new Set(FASHION_SHOPS.map((s) => s.slug));
   for (const d of FASHION_DESIGNERS) assert.ok(!shops.has(d.slug), `${d.name} is on both Designers and Shops`);
-  // Every on-camera look of the hosts is on the shelf.
-  assert.ok(FASHION_LOOKS.filter((l) => l.shelf === "on-camera" && /^(James|Fenton|Randy)'s on-camera look/.test(l.name)).length >= 100);
+  // The on-camera looks stay for the Wardrobe, but are off the Library shelf (Lisa, 28 Nov 2026).
+  assert.ok(FASHION_LOOKS.filter((l) => l.shelf === "on-camera").length >= 100);
+  assert.ok(!fashionShelf.some((i) => i.shelf === "on-camera" || i.shelf === "rooms"));
+  assert.deepEqual(FASHION_SHELVES.map((s) => s.key), ["designers", "shops", "looks"]);
 });
 
 test("Fashion & outfits: every mood in the episodes is on the shelf exactly once", () => {
@@ -48,4 +50,13 @@ test("every shop fact and shop photo is keyed by a real shop slug", async () => 
   const { SHOP_FACTS } = await import("./shop-facts");
   const slugs = new Set(FASHION_SHOPS.map((s) => s.slug));
   for (const k of Object.keys(SHOP_FACTS)) assert.ok(slugs.has(k), `SHOP_FACTS key ${k} is not a shop on the shelf`);
+});
+
+test("every shop on the shelf has a picture: a free photo or a drawing (Lisa, 28 Nov 2026)", async () => {
+  const { readFileSync, existsSync } = await import("node:fs");
+  const src = readFileSync(new URL("./shop-photos.ts", import.meta.url), "utf8");
+  const pictured = new Set([...src.matchAll(/^\s*\[\s*"([a-z0-9-]+)",/gm)].map((m) => m[1]));
+  for (const s of FASHION_SHOPS) assert.ok(pictured.has(s.slug), `${s.name} has no photo or drawing`);
+  for (const m of src.matchAll(/^\s*\["([a-z0-9-]+)", "Polaroid-style picture/gm))
+    assert.ok(existsSync(new URL(`../assets/shops/drawings/${m[1]}.webp`, import.meta.url)), `no drawing file for ${m[1]}`);
 });
