@@ -173,7 +173,7 @@ export function EpisodePage({ id, refs, title, subtitle, released, blurb }: {
           <p className="mt-2 text-sm text-muted-foreground">
             {released ?? `Released ${formatDate(thisEpisode.released)} · ${thisEpisode.runtime}`}
             {/* Next to the release line: the day this AFTERPARTY went up on the site (Lisa, 2 Nov 2026). */}
-            {" · "}AFTERPARTY launched {formatDate(thisEpisode.afterpartyPublished)}
+            {" · "}AFTERPARTY launched {formatDate(thisEpisode.afterpartyLive)}
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             {refs.length} references · {refs.reduce((total, r) => total + r.mentions, 0)} mentions

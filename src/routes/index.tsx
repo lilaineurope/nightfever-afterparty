@@ -3,7 +3,7 @@ import { InterviewNext } from "@/components/interview-next";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getHomePage } from "@/lib/home-view.functions";
 import { LinkDataProvider } from "@/lib/link-index";
-import { episodes } from "../data/episodes";
+import { episodeById } from "../data/episodes";
 import { EpisodeCard } from "@/components/episode-block";
 import { HallOfFame } from "@/components/hall-of-fame";
 import { ExplorePages } from "@/components/explore-pages";
@@ -66,23 +66,15 @@ function Index() {
         </div>
       </section>
 
-      {/* Latest episodes */}
+      {/* Daily pick (Lisa, 28 Nov 2026): three AFTERPARTIES, shuffled once a day, the same for everyone (dailyPick in
+          src/lib/home-view.server.ts) */}
       <section className="px-6 py-10">
         <div className="mx-auto max-w-6xl">
-          <h2 className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Latest Afterparties</h2>
-          {/* Same ranking as the Episodes page: Afterparty publish date, newest first. Only the three newest show here. */}
+          <h2 className="border-b-[3px] border-gold pb-2 text-4xl sm:text-[44px]">Daily pick</h2>
           <div className="mt-7 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {[...episodes]
-              .sort(
-                (a, b) =>
-                  b.afterpartyPublished.localeCompare(a.afterpartyPublished) ||
-                  b.season - a.season ||
-                  b.episode - a.episode,
-              )
-              .slice(0, 3)
-              .map((ep, i) => (
-                <EpisodeCard key={ep.id} ep={ep} stats={home.stats[ep.id]!} index={i} />
-              ))}
+            {home.dailyPick.map((id, i) => (
+              <EpisodeCard key={id} ep={episodeById(id)} stats={home.stats[id]!} index={i} />
+            ))}
           </div>
           <div className="mt-10 text-center">
             <Link to="/episodes"

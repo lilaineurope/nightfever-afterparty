@@ -53,7 +53,7 @@ export function EpisodeBlock({ ep, stats, showDates = false, headingLevel = 3 }:
                 <div className="p-8">
                   {showDates && (
                     <div className="mb-5 text-xs leading-relaxed text-muted-foreground">
-                      <p>On the Afterparty since {formatDate(ep.afterpartyPublished)}</p>
+                      <p>On the AFTERPARTY since {formatDate(ep.afterpartyLive)}</p>
                       <p className="mt-1">First aired on WOW {formatDate(ep.released)}</p>
                     </div>
                   )}
@@ -136,7 +136,7 @@ function Polaroid({ ep, stats, Heading = "span", tilt = "", className = "" }: {
   );
 }
 
-/** Home page "Latest Afterparties": the episode's polaroid; the whole card opens the episode. */
+/** Home page "Daily pick": the episode's polaroid; the whole card opens the episode. */
 export function EpisodeCard({ ep, stats, index = 0 }: { ep: Episode; stats: EpisodeStats; index?: number }) {
   return (
     <Link
