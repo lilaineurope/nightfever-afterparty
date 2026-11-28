@@ -261,7 +261,7 @@ function nightPageOf(e: Entity): NightPageView | null {
     kind: nightKind(n.heading, n.title),
     title: n.title,
     said,
-    lib: clubLibraryOf(clubE),
+    lib: PERSON_PROFILES[e.slug]?.venueLibrary === false ? null : clubLibraryOf(clubE),
     songs,
     films,
     playlist: cn?.youtubePlaylist,
