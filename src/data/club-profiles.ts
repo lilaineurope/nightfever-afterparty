@@ -1183,6 +1183,39 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s06e06", who: "James St. James", time: "00:00:38", context: "Lincoln's doors", quote: "A few of the doors he's worked on include The World... Red Zone, The Roxy, Cha-Cha Room at Stringfellows, Palladium, El Morocco, Twilo, Milk Bar, MK..." },
     ],
   },
+  // Lisa, 28 Nov 2026 (Roxy page): "disco 2000 needs a picture and a page update". Michael Alig's Wednesday at the Limelight, a
+  // Club card in the A–Z, so it gets the club standard. Facts: NPR (Limelight documentary, 2011), Wikipedia DJ Keoki, Club Kids and
+  // Michael Alig; years and the rest from the guests (Mac transcripts). Living-people rule: no sex stories, nothing unproven.
+  "disco-2000": {
+    opened: "c. 1989",
+    closed: "c. 1996",
+    address: "Wednesdays at the Limelight, Sixth Avenue at 20th Street",
+    aka: "Michael Alig's Wednesday at the Limelight",
+    story:
+      "Disco 2000 was Michael Alig's Wednesday night at Peter Gatien's Limelight, the Club Kids' party in the old church on Sixth Avenue. James St. James dates the first one to '89 or '90, when Clara the Carefree Chicken came out of her egg on opening night; Ernie Glam, who was Clara, worked it every week. DJ Keoki was the resident, Amanda Lepore go-go danced, Larry Tee hosted the hot body contest, and the Pyramid's Wednesday crowd hopped over because Disco 2000 went later. Behind the effortless look were fourteen-hour days, Ernie says - noon to seven at the club, home to get ready, back by eleven. Lincoln Palsgrove thinks the muscle boys taking over the Roxy led to its birth; after it, he says, the 90s scene splintered. By the mid-90s it had turned dark, and it ended with the Club Kids' world in 1996.",
+    timeline: [
+      ["1988", "Peter Gatien hires Michael Alig at the Limelight"],
+      ["c. 1989", "The first Disco 2000 - Clara the Carefree Chicken hatches on opening night"],
+      ["1990-1992", "Ernie Glam and the Club Kids work fourteen-hour days to make Wednesdays happen"],
+      ["Early 90s", "Disco 2000 and Channel 69 at the Pyramid share Wednesday night"],
+      ["1991", "DJ Keoki Presents Disco 2000 - Keoki's records named after the party"],
+      ["1995", "Gatien sends Michael Alig to rehab; Alig says he was fired"],
+      ["1996", "The Limelight is closed by federal agents, and the Club Kids' world ends with Alig's arrest"],
+    ],
+    stage: ["Michael Alig", "Clara the Carefree Chicken", "DJ Keoki", "Ernie Glam", "Amanda Lepore", "Larry Tee", "Richie Rich", "Waltpaper", "James St. James", "Kevin Aviance", "Desi Santiago", "Floyd"],
+    rooms: ["Limelight", "Pyramid Club", "Roxy", "Club USA", "The Tunnel", "Palladium", "The World"],
+    said: [
+      { episode: "s01e05", who: "Ernie Glam", time: "00:17:45", quote: "People think that we were just partying all the time, but in the early years of Disco 2000, when we arrived at the Limelight, from the summer of 1990 to 1992, we were literally working 14-hour days. We would go to the Limelight at noon and be there until seven o'clock at night." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:15:07", quote: "Disco 2000, all of us just kind of merrily running through the club... the transcendental experience of dance and dancing with a group of people in this church, which was really like a religious experience." },
+      { episode: "s01e04", who: "James St. James", time: "00:30:28", context: "How it started", quote: "There was a lull, and then that's when Michael came in to do the first Disco 2000. I guess that was '89, probably. '89, '90." },
+      { episode: "s02e09", who: "Linda Simpson", time: "00:26:02", quote: "I wouldn't say it was competing, but we were on the same night. Because I think Disco 2000 went later than we did, people would hop over from the Pyramid to the Limelight." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:44:08", quote: "You had these club kids that were going to Roxy on Saturday, which kind of owned the space, and then all these big muscle guys came in and took over. So I think that led to the birth of Disco 2000." },
+      { episode: "s05e07a", who: "Christopher Comp", time: "00:28:06", context: "His 20th birthday party", quote: "Disco 2000 was everybody, everybody was there... And Floyd is on stage with this wig, with this This Mortal Coil song, this shrieking, and black blood rolling down his body. Chef's kiss. So good." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:30:49", quote: "Wednesday was really great for the Club Kids and the gays. But we developed a night like Rock and Roll Church that lasted literally nine, ten years. To those people, Disco 2000 didn't exist." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:31:20", quote: "By the time I got to Disco 2000, I didn't really know how to take being the big Roxy DJ to the next level of business." },
+      { episode: "s06e09", who: "Desi Santiago", time: "00:10:22", quote: "I saw Larry Tee... I saw RuPaul walking in, and then it was also simultaneous with the birth of Disco 2000." },
+    ],
+  },
   // Régine's club in Monaco, still open (Lisa, 28 Nov 2026, as above). Facts: Monte-Carlo SBM "The story of Jimmy'z" and
   // "Régine" pages, Monaco Life (50 years, July 2024), read 28 Nov 2026; Nikki Haskell from the S2E4 transcript.
   "jimmy-z": {
