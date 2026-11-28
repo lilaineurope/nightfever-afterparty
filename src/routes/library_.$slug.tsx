@@ -209,7 +209,7 @@ function GuestLibrary() {
             {summary.map((s) => (
               <li key={s.id}>
                 {s.n > 0 ? (
-                  <a href={`#${s.id}`} className="lib-cat guest-lib-cat">
+                  <a href={`#${s.id}`} className="lib-cat guest-lib-cat guest-lib-cat-on">
                     {s.label} <span className="lib-cat-n">{s.n}</span>
                   </a>
                 ) : (
