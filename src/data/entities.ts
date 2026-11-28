@@ -56,6 +56,8 @@ const clean = (n: string) =>
 // (Lisa, 21 Nov 2026: "double ups in magazines eg paper"). The old address forwards to the card (card-view.server.ts).
 export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
+  // Google found /explore/mike-todd-room (a real 404, daily check 28 Nov 2026): guests say "Mike Todd room" too.
+  "mike-todd-room": "michael-todd-room",
   // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
   // Places (Lisa, 22 Nov 2026: "we have to make sure we have no double ups"). A club's street address is its club page,

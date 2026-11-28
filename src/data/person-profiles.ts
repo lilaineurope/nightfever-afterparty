@@ -1338,13 +1338,18 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   },
   "britney-spears": {
     story:
-      "Zaldy dressed her Femme Fatale tour and still remembers walking into rehearsal to hear her alone on the mic, a cappella. Mickey Boardman's crowd went to Vegas just to see her.",
+      "The pop star from McComb, Mississippi, who went from The All-New Mickey Mouse Club to ...Baby One More Time at 16. On the show she comes up through the people who dressed her: Zaldy made the costumes for her Femme Fatale tour and still remembers walking into rehearsal to hear her alone on the mic, a cappella, and Desi Santiago worked on her tours with him. Mickey Boardman's crowd went to Las Vegas just to see her, and Cat Marnell brings her up too.",
     timeline: [
       ["1981", "Born 2 December in McComb, Mississippi"],
-      ["1998", "...Baby One More Time"],
+      ["1993", "Joins The All-New Mickey Mouse Club"],
+      ["1998", "...Baby One More Time, her first single, at 16"],
+      ["2000", "Oops!... I Did It Again"],
+      ["2001", "I'm a Slave 4 U at the MTV Video Music Awards"],
+      ["2005", "Toxic wins her a Grammy"],
       ["2011", "Femme Fatale Tour, costumes by Zaldy"],
-      ["2013", "Piece of Me in Las Vegas"],
-      ["2023", "The Woman in Me"],
+      ["2013", "Piece of Me opens in Las Vegas and runs until 2017"],
+      ["2021", "Her conservatorship ends after 13 years"],
+      ["2023", "Her memoir, The Woman in Me"],
     ],
     liftedUp: [],
     rooms: ["Las Vegas"],
