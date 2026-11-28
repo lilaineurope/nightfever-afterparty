@@ -30,12 +30,6 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
         )}
         <Link to="/map" search={{ at: slug }} className="text-[#111] hover:text-pink">On the map &rarr;</Link>
       </p>
-      {c.stage.length > 0 && (
-        <>
-          <h3 className={`${h} mt-8`}>On {name}'s stage</h3>
-          <NamePile names={c.stage} faces={faces} />
-        </>
-      )}
     </>
   );
   return (
@@ -78,28 +72,39 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
       {/* The club's theme nights and parties (Lisa, 22 Nov 2026, src/data/club-parts.ts) */}
       {parts}
 
-      {/* One clipboard (Lisa, 28 Nov 2026): the club's story and stage beside On the list; the rooms around it get their own box. */}
+      {/* One clipboard (Lisa, 28 Nov 2026): the club's story beside On the list. */}
       {crowd ? (
         <ClubCrowd c={crowd} name={name} address={c.address} faces={faces ?? {}} story={story} />
       ) : (
         <section className="club-list mx-auto w-full max-w-3xl">{story}</section>
       )}
 
-      {(c.rooms.length > 0 || (c.also && c.also.names.length > 0)) && (
-        <section className="mx-auto w-full max-w-5xl rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
-          {c.rooms.length > 0 && (
-            <>
-              <h2 className={h}>The rooms around it</h2>
-              <NamePile names={c.rooms} faces={faces} />
-            </>
+      {/* On the stage and the rooms around it, each in a box of its own, side by side (Lisa, 28 Nov 2026). */}
+      {(c.stage.length > 0 || c.rooms.length > 0 || (c.also && c.also.names.length > 0)) && (
+        <div className="mx-auto grid w-full max-w-5xl items-start gap-8 md:grid-cols-2">
+          {c.stage.length > 0 && (
+            <section className="rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
+              <h2 className={h}>On {name}'s stage</h2>
+              <NamePile names={c.stage} faces={faces} />
+            </section>
           )}
-          {c.also && c.also.names.length > 0 && (
-            <>
-              <h2 className={`${h} ${c.rooms.length > 0 ? "mt-6" : ""}`}>{c.also.heading}</h2>
-              <NamePile names={c.also.names} faces={faces} />
-            </>
+          {(c.rooms.length > 0 || (c.also && c.also.names.length > 0)) && (
+            <section className="rounded-2xl border-2 border-[#111] bg-card p-6 shadow-[6px_7px_0_#111]">
+              {c.rooms.length > 0 && (
+                <>
+                  <h2 className={h}>The rooms around it</h2>
+                  <NamePile names={c.rooms} faces={faces} />
+                </>
+              )}
+              {c.also && c.also.names.length > 0 && (
+                <>
+                  <h2 className={`${h} ${c.rooms.length > 0 ? "mt-6" : ""}`}>{c.also.heading}</h2>
+                  <NamePile names={c.also.names} faces={faces} />
+                </>
+              )}
+            </section>
           )}
-        </section>
+        </div>
       )}
 
       {/* "Who else was there" and "The poster + read about it", under the story box (Lisa, 27 Nov 2026, W1 + L2). */}
