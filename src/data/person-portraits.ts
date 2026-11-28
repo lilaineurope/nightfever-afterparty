@@ -76,6 +76,14 @@ import ladyBunnyPhoto from "@/assets/people/lady-bunny-photo.webp";
 import ladyBunnyPolaroid from "@/assets/people/lady-bunny-polaroid.webp";
 import colleenWeinsteinPhoto from "@/assets/people/colleen-weinstein-photo.webp";
 import colleenWeinsteinPolaroid from "@/assets/people/colleen-weinstein-polaroid.webp";
+import venusXtravaganzaPhoto from "@/assets/people/venus-xtravaganza-photo.webp";
+import venusXtravaganzaPolaroid from "@/assets/people/venus-xtravaganza-polaroid.webp";
+import davidIanXtravaganzaPhoto from "@/assets/people/david-ian-xtravaganza-photo.webp";
+import davidIanXtravaganzaPolaroid from "@/assets/people/david-ian-xtravaganza-polaroid.webp";
+import stephanLupinoPhoto from "@/assets/people/stephan-lupino-photo.webp";
+import stephanLupinoPolaroid from "@/assets/people/stephan-lupino-polaroid.webp";
+import christopherStreetPhoto from "@/assets/people/christopher-street-photo.webp";
+import christopherStreetPolaroid from "@/assets/people/christopher-street-polaroid.webp";
 import michaelTronPhoto from "@/assets/people/michael-tron-photo.webp";
 import michaelTronPolaroid from "@/assets/people/michael-tron-polaroid.webp";
 import juniorVasquezPhoto from "@/assets/people/junior-vasquez-photo.webp";
@@ -1109,6 +1117,11 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "paul-morrissey": { photo: paulMorrisseyPhoto, polaroid: paulMorrisseyPolaroid, focus: "30%", credit: "Illustration made with Gemini from the 1967 public-domain photo by James Kavallines, not a photo" },
   // Lisa: "house of xtravaganza needs a background header picture and a polaroid". No faces: an empty Harlem ballroom and the judges' table.
   "house-of-xtravaganza": { photo: houseOfXtravaganzaPhoto, phone: houseOfXtravaganzaPhotoPhone, polaroid: houseOfXtravaganzaPolaroid, focus: "50%", credit: "Header and polaroid: a Harlem ballroom before a ball and the judges' trophies, drawn for the AFTERPARTY - no people shown" },
+  // Venus and David Ian: option A wired, Lisa picks A or B. Stephan: A only (three tries at a B failed).
+  "venus-xtravaganza": { photo: venusXtravaganzaPhoto, polaroid: venusXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "david-ian-xtravaganza": { photo: davidIanXtravaganzaPhoto, polaroid: davidIanXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "stephan-lupino": { photo: stephanLupinoPhoto, polaroid: stephanLupinoPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "christopher-street": { photo: christopherStreetPhoto, polaroid: christopherStreetPolaroid, focus: "50%", credit: "Christopher Street Liberation Day, 28 June 1970 - still from Lilli Vincenz's film Gay and Proud (public domain, Library of Congress)" },
   "love-ball": { photo: loveBallPhoto, polaroid: loveBallPolaroid, focus: "40%", credit: "Invitation: The Love Ball, Roseland, 1989 - photo via Gallery 98" },
   voguing: { photo: voguingPhoto, polaroid: voguingPolaroid, focus: "50%", credit: "Photo: S Pakhrin, Voguing Masquerade Ball, 2016, CC BY 2.0, via Wikimedia Commons" },
   "no-entiendes": { photo: noEntiendesPhoto, polaroid: noEntiendesPolaroid, focus: "45%", credit: "Card: No Entiendes, second anniversary, Danceteria, 1984 - photo via Gallery 98" },

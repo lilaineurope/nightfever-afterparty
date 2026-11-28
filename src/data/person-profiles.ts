@@ -60,6 +60,61 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
   // Lisa, 28 Nov 2026 on the House of Xtravaganza page: "love ball and voguing needs a picture and a page", and "Haoui Montaug
   // no entiendes needs picture and it's own page". Facts: Wikipedia (Susanne Bartsch, Vogue (dance), Haoui Montaug), FIT's
   // Fashion Underground, the CFDA, Gallery 98's cards and the episodes. Pictures are real: no Gemini.
+  // Lisa, 28 Nov 2026 on Jim Fouratt's page: "christopher street needs picture and a page". A real 1970 picture, no Gemini.
+  "christopher-street": {
+    first: "Christopher Street",
+    story:
+      "The West Village street that runs from Sixth Avenue down to the Hudson: the Stonewall Inn, Sheridan Square and, at its end, the piers where the sunbathers, the artists and later the ball kids all went. Jayne County sat on its steps in the 60s and marched up and down it the night of Stonewall; Michelle Visage met Willi Ninja on its piers.",
+    timeline: [
+      ["1960s", "The place to hang out, Jayne County says: sit on a step and wait for something to happen"],
+      ["28 June 1969", "The Stonewall uprising at the Stonewall Inn, 53 Christopher Street"],
+      ["28 June 1970", "The first Christopher Street Liberation Day march, a year after Stonewall"],
+      ["1970s", "Sunbathing on the piers at the end of the street, in Christopher Makos's pictures"],
+      ["1980s", "The ball kids meet on the pier; Michelle Visage meets Willi Ninja there"],
+      ["2016", "The Stonewall National Monument"],
+    ],
+    liftedUp: [],
+    rooms: ["Stonewall Inn", "Sheridan Square", "Limelight"],
+    said: [
+      { episode: "s02e02", who: "Jayne County", time: "00:16:21", context: "Arriving in New York in the 60s: Christopher Street was where you went to sit on a step and wait for something to happen", quote: "When I went there in the 60s, Christopher Street was the place to hang out. Whether you wanted to stay with someone, or wanted to turn a trick, or whether you just didn't have anything to do, you just go to Christopher Street and sit on one of the steps and wait for something to happen." },
+      { episode: "s02e02", who: "Jayne County", time: "00:43:55", context: "The Stonewall night: marching up and down Christopher Street between Sheridan Square and Greenwich Avenue with Jim Fouratt", quote: "We were just marching up and down Christopher Street, back and forth, because you didn't have any place to go once you marched down to Greenwich Avenue... screaming gay power, gay power, with a fist in the air." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:11:50", context: "The night she first saw voguing, then met the ball kids at the Christopher Street piers", quote: "Dorothy clicked her heels three times and ended up in Kansas. I clicked my heels three times and ended up on Christopher Street." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:11:59", context: "Meeting Caesar, Willie Ninja and the House of Magnifique on the piers", quote: "I met Caesar later on at the piers, at the Christopher Street piers... And then I went to the piers with them, and that's where I met Willie Ninja." },
+      { episode: "s02e10", who: "Brian Belovitch", time: "00:13:00", context: "The first Limelight: a men-only disco on Seventh Avenue South at Christopher Street, before the church on Sixth Avenue", quote: "There was a Limelight on 7th Avenue, near a restaurant called Penny Feathers on the corner of 7th Avenue and Christopher Street. If you were a woman or a trans woman or a drag queen, you were not getting in." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:07:31", context: "His first apartment at Bleecker and Sullivan, in the middle of everything", quote: "At Bleecker and Sullivan, I was equidistant between CBGB's to the east, Christopher Street to the west, and Max's Kansas City to the north." },
+      { episode: "s05e06", who: "Christopher Makos", time: "00:16:47", context: "Photographing the piers at the end of Christopher Street in the 70s", quote: "There's so many pictures of Peter Berlin down at the piers. I have pictures of Keith Haring and Juan, his boyfriend, down at the piers. Everybody used to go down to the piers sunbathing." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:37:56", context: "How he met the ball kids and became an Xtravaganza", quote: "I would meet the kids at the Garage years ago, the ball kids, and also on the pier. They were all on the pier, and I became an Xtravaganza." },
+    ],
+    videos: [
+      { id: "cCqcvqkWQhc", title: "Chapter 1 | Stonewall Uprising | American Experience" },
+      { id: "Krwi_i6x4ts", title: "Gay & Proud (1970): The First Christopher Street Liberation Day March" },
+      { id: "tS990SCeQIE", title: "Queer Histories of the Piers | David Hammons: Day's End" },
+      { id: "ftcvaJCKVjs", title: "Marsha P. Johnson and the Stonewall Rebellion: Crash Course Black American History #41" },
+      { id: "kn9gHUwhAEQ", title: "Episode 304: Fenced Out" },
+    ],
+  },
+  // Lisa, 28 Nov 2026 on the House of Xtravaganza page: "all the extravaganzas need a polaroid and a page".
+  "david-ian-xtravaganza": {
+    first: "David Ian",
+    story:
+      "A House of Xtravaganza ball kid who put the scene on a record: Elements of Vogue, a 1989 12-inch on Extravaganza Records, with mixes by David DePino and Johnny Dynell. Luis Xtravaganza Camacho remembers dancing with him from the Sound Factory at dawn to the Choice at noon, and back again.",
+    timeline: [
+      ["1980s", "Walks the balls with the House of Xtravaganza"],
+      ["1989", "Elements of Vogue, mixed by David DePino and Johnny Dynell"],
+      ["1991", "Love's Gonna Get You"],
+      ["Later", "Sings on Johnny Dynell's Marie Montana"],
+    ],
+    liftedUp: [],
+    rooms: ["Sound Factory", "The Choice", "House of Xtravaganza"],
+    said: [
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:19:42", context: "A Sound Factory weekend that never ended: from the Factory at dawn to Richard Vasquez's after-hours club the Choice at noon, then back again", quote: "There was a night where me and David Ian were at the Sound Factory. We didn't get to the Sound Factory till like five, six in the morning, right? And so, you know, 12 in the afternoon, we jump in a cab, we go to the Choice." },
+    ],
+    videos: [
+      { id: "987WYNZZX4k", title: "David Ian Xtravaganza - Elements of Vogue (David DePino Mix)" },
+      { id: "MTTW14M1D0M", title: "David Ian Xtravaganza - Elements of Vogue (Johnny Dynell Mix)" },
+      { id: "kvwOYRQ29Ys", title: "Marie Montana feat. David Ian Xtravaganza (Sveta & Tokoloshe Remix) - Johnny Dynell" },
+    ],
+  },
   "love-ball": {
     first: "the Love Ball",
     story:
