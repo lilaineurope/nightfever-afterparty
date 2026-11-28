@@ -19,6 +19,14 @@ export type MentorKind = "lifted" | "stood" | "door";
 export type MentorLink = { mentor: string; mentee: string; episode: string; time: string; line: string; kind?: MentorKind; told?: string };
 
 export const MENTOR_LINKS: MentorLink[] = [
+  // S06E04 Raja
+  { mentor: "Viva (Peanuts drag queen)", mentee: "Raja", episode: "s06e04", time: "00:24:41", line: "Raja's drag mother, met on the Gloria Estefan video set: took Raja under her wing and later gave Raja a place to perform at Peanuts", kind: "lifted" },
+  { mentor: "Tommy Rose", mentee: "Raja", episode: "s06e04", time: "00:47:44", line: "Gave Raja the first big break: the mic at Oz when he left for a casino gig", kind: "lifted" },
+  { mentor: "RuPaul", mentee: "Raja", episode: "s06e04", time: "00:40:24", line: "A mentor, Raja says: bags of clothes from the Hollywood Hills and a paid make-up job on a video shoot", kind: "lifted" },
+  { mentor: "Mathu Andersen", mentee: "Raja", episode: "s06e04", time: "00:45:12", line: "Called Raja to assist on America's Next Top Model and was a great mentor, Raja says", kind: "lifted" },
+  { mentor: "Brian Rabin", mentee: "Raja", episode: "s06e04", time: "00:30:28", line: "Worked with Raja at Club Cherry and Club Makeup and really introduced Raja to LA", kind: "door" },
+  { mentor: "Joseph Brooks", mentee: "Raja", episode: "s06e04", time: "00:30:28", line: "Worked with Raja at Club Cherry and Club Makeup and really introduced Raja to LA", kind: "door" },
+  { mentor: "Naomi (Arena)", mentee: "Raja", episode: "s06e04", time: "00:56:09", line: "Taught Raja to tuck, the DIY way, in the dressing room", kind: "door" },
   // S05E09 Screamin' Rachael Cain
   { mentor: "Michael Alig", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:07:12", line: "Took to her right away, booked her and helped her along, as James and Rachael remember it", kind: "door" },
   { mentor: "Suz (Columbia Pictures Music)", mentee: "Screamin' Rachael Cain", episode: "s05e09", time: "00:08:09", line: "One of the people who helped Rachael most in her first New York days, she says", kind: "stood" },

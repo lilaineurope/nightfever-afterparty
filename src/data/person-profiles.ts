@@ -1992,6 +1992,266 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
       { episode: "s01e04", who: "Peter Gatien", time: "00:36:56", quote: "Ian Schrager was in partners with the guys that owned that property. They also owned the Paramount at the time, and the Royalton. So Ian introduced me to the guy who owned the building." },
     ],
   },
+  // Batch 9 (daily run 28 Nov 2026): Sade to Linda Evangelista, strictly by mentions. Kelly Osbourne, Steven Tyler and
+  // Gloria Gaynor wait for Lisa (short lists). Left out under the living-people rule: Liv Tyler's father story (S04E03),
+  // the poppers dinner and the "I Am What I Am" session remark about Gloria Gaynor (S02E07, S03E04), the ayahuasca story (S01E04).
+  sade: {
+    story:
+      "The British singer played her first American show at Danceteria - Rudolf Piper paid $3,000 to bring her over, his limit for a band - though she never tended bar there, whatever James had read. James simply couldn't picture her and Madonna working the same club.",
+    timeline: [
+      ["1959", "Born Helen Folasade Adu on 16 January in Ibadan, Nigeria, and grows up in England"],
+      ["1982", "Starts the band Sade in London"],
+      ["1984", "Diamond Life, with Smooth Operator"],
+      ["1980s", "First American show, at Danceteria"],
+      ["1985", "Promise, the second album"],
+      ["1986", "Grammy for Best New Artist"],
+      ["1992", "Love Deluxe, with No Ordinary Love"],
+      ["2010", "Soldier of Love"],
+    ],
+    liftedUp: [],
+    rooms: ["Danceteria"],
+    said: [
+      { episode: "s01e07", who: "James St. James", time: "00:23:09", quote: "But now Sade worked there as well. Sade was a bartender, right?" },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:23:13", quote: "No. Their first American show was at Danceteria. Sade was British. She's in England." },
+      { episode: "s01e07", who: "James St. James", time: "00:23:35", quote: "Because I was trying to imagine, like, Sade and Madonna working at the same club and hanging out after. I just couldn't do it in my head." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:25:26", quote: "I could bring Sade to America, which cost a fortune. It cost $3,000 at the time to bring Sade for the first American show." },
+    ],
+    // On film (Lisa, 28 Nov 2026: "add film box"). The band's own 1984 videos, all embeddable, checked 28 Nov 2026.
+    videos: [
+      { id: "4TYv2PhG89A", title: "Sade - Smooth Operator (1984, directed by Julien Temple)" },
+      { id: "k1ljpLQ1V6Y", title: "Sade - Your Love Is King (1984)" },
+      { id: "kxNJV83EMJw", title: "Sade - Hang On to Your Love (1984)" },
+      { id: "SxMavpCwSMo", title: "Sade in 1984, just as Diamond Life came out - an early TV interview" },
+      { id: "zwDjJP_l5AY", title: "Sade - Your Love Is King, live at Live Aid, Wembley 1985" },
+    ],
+  },
+  "romy-haag": {
+    story:
+      "The queen of West Berlin, with her own club in Schöneberg. Rudolf Piper remembers her around in his Berlin days, and Jayne County did a play with her, Romy as the pretty Hollywood starlet next door.",
+    timeline: [
+      ["1951", "Born in Scheveningen, the Netherlands"],
+      ["1974", "Opens her club, Chez Romy Haag, in West Berlin"],
+      ["Late 1970s", "Queen of Berlin nightlife while Jayne County lives in the city"],
+      ["Late 1970s", "On stage with Jayne County in the play Sheila"],
+    ],
+    liftedUp: [],
+    rooms: ["Chez Romy Haag"],
+    said: [
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:14:36", quote: "Romy Haag was around, yes." },
+      { episode: "s02e02", who: "James St. James", time: "01:01:47", quote: "Going now quickly to Germany and Romy Haag. You were very good friends with her and worked with her, right?" },
+      { episode: "s02e02", who: "Jayne County", time: "01:01:56", quote: "Romy Haag was just queen of Berlin, you know. Everyone loved Romy Haag. She was the queen of Berlin. And she's very beautiful. So I became friends with her then. We did a play together called Sheila, and she played a next-door neighbour, pretty Hollywood starlet." },
+      { episode: "s01e07", who: "James St. James", time: "00:14:28", quote: "Were there nightclub celebrities? Was Klaus Nomi around? Was Grace Jones, Romy Haag? Was she around?" },
+    ],
+  },
+  danilo: {
+    story:
+      "The San Francisco hairstylist who taught Richie Rich to airbrush wigs in his parents' garage, took him under his wing and told him he was New York. Today he does Gwen Stefani's hair.",
+    timeline: [
+      ["Early 1990s", "Hairstylist in San Francisco, where Richie Rich meets him"],
+      ["Early 1990s", "Teaches Richie Rich to airbrush wigs and invites him to a George Michael video shoot"],
+      ["1990s", "In New York with Billy Beyond's crowd"],
+      ["Later", "Gwen Stefani's hairstylist"],
+    ],
+    liftedUp: ["Richie Rich"],
+    rooms: [],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:17:24", quote: "Danilo was from San Francisco, but then he's been in New York for years with Billy Beyond and everybody. He's like, can you take work off from the salon? I'm doing this video. And so he really taught me how to airbrush wigs." },
+      { episode: "s04e08", who: "James St. James", time: "00:18:28", quote: "Wait, were you there for the George Michael video? Oh my God, I can't believe you missed that." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:18:35", quote: "Danilo is so sweet. He's like, all right, if you have to work, you have to work. I didn't really know how major he was. But he really took me under his wing, and he's like, New York, you are New York." },
+      { episode: "s04e08", who: "Richie Rich", time: "00:17:02", quote: "Danilo, who now does Gwen Stefani's hair, did Mugler and couture, I met him through Dimitri in San Francisco. They ran a salon in Union Square." },
+      { episode: "s06e04", who: "Raja", time: "00:44:11", quote: "And then him and Danilo on production, and Tyra Banks. My 90s, 17, 18-year-old self could not even understand what was happening." },
+    ],
+    // Lisa, 28 Nov 2026: "show all mentions" - Richie's three go up together.
+    maxPerGuest: 3,
+  },
+  "kabuki-starshine": {
+    story:
+      "Club Kid in Richie Rich's crew, who came up from Florida a few months after Desi Santiago. Richie introduced Kabuki to the stylist Patti Wilson, and Kabuki became one of the top make-up artists, working with Steven Klein.",
+    timeline: [
+      ["Early 1990s", "Comes to New York from Florida and joins the Club Kids, with Desi, Sushi and Sacred Boy"],
+      ["1990s", "In Richie Rich's crew, with Jenny Talia and Sushi"],
+      ["Later", "Richie introduces Kabuki to the stylist Patti Wilson"],
+      ["Today", "One of the top make-up artists, working with Steven Klein"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    said: [
+      { episode: "s04e08", who: "Richie Rich", time: "00:25:41", quote: "Kabuki Starshine, who I introduced to Patti Wilson, who's one of the biggest stylists in the world. Now he's one of the biggest make-up artists in the world, with Steven Klein." },
+      { episode: "s06e09", who: "Desi Santiago", time: "00:17:01", quote: "Kabuki came a little, like, maybe a few months later, a little bit later. I think came from Florida. And then Sushi had come in around the same time too." },
+      { episode: "s04e04", who: "James St. James", time: "00:20:43", quote: "You know, I often think of you with Kiday and Sacred Boy and Walt Paper and Desi and Kabuki." },
+      { episode: "s06e03", who: "Johnny Dynell", time: "00:46:00", quote: "There were really about ten that I liked. You, Desi, I mean, I could name them, but you know, the ones that actually went on to do something. Kabuki, you know." },
+      { episode: "s06e09", who: "James St. James", time: "00:16:53", quote: "Sushi and Kabuki and Sacred Boy around them, because I sort of feel like they were your comrades." },
+      { episode: "s06e10", who: "Kenneth Hash", time: "00:26:23", quote: "The makeup room, with Lena and Candis Cayne and Amanda Lepore and Onyx and Kabuki and Wallpaper, for like several years. That went on." },
+      { episode: "s06e10", who: "James St. James", time: "00:28:46", quote: "We need to get KD on the show, because KD and Kabuki, there was a whole little thing going on right there. They were doing something very different than the rest. He was doing sort of a monster drag, more aligned with Desi Monster." },
+    ],
+    // Lisa, 28 Nov 2026: "show all mentions" - James's three go up together.
+    maxPerGuest: 3,
+  },
+  "john-taylor": {
+    story:
+      "Duran Duran's bassist, who went looking for Nick Egan to do an album cover. The punk and the New Romantic got on like a house on fire, and White Lines turned out to be John's favourite of Nick's videos.",
+    timeline: [
+      ["1960", "Born 20 June in Birmingham, England"],
+      ["1978", "Starts Duran Duran with Nick Rhodes"],
+      ["1993", "The Wedding Album, cover by Nick Egan with the band's parents' wedding pictures"],
+      ["1995", "Thank You, with Duran Duran's version of White Lines"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    said: [
+      { episode: "s05e04", who: "James St. James", time: "00:50:01", quote: "I believe in my heart of hearts, I will die on this hill, that Duran Duran's White Lines is better than Grandmaster Flash's. I love it so much. It's so good." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:50:46", quote: "Billy said to me, oh, I've just been in London. John Taylor's looking for you because he wants you to do an album cover. And I happened to be in London at the time. So we set up a meeting and I went over to John's." },
+      { episode: "s05e04", who: "Nick Egan", time: "00:51:07", quote: "John and I got on like a house on fire, which is strange, because I was never up until that point really a Duran Duran fan. Because I was a punk." },
+      { episode: "s04e02", who: "Mickey Boardman", time: "00:43:37", quote: "We were shooting Duran Duran for the cover, and a ton of women in our office were like, Oh my God, I need to stop by the shoot. I love Duran Duran. I love Simon. I love John." },
+    ],
+  },
+  "grandmaster-flash": {
+    // On film (Lisa, 28 Nov 2026: "grandmaster flash add video box"). All embeddable, checked 28 Nov 2026.
+    videos: [
+      { id: "PobrSpMwKk4", title: "Grandmaster Flash & the Furious Five - The Message (the 1982 video)" },
+      { id: "F3unhUrwp68", title: "The Adventures of Grandmaster Flash on the Wheels of Steel (1981)" },
+      { id: "Au86wouG5Hk", title: "Where hip-hop is from: Grandmaster Flash back in the South Bronx" },
+      { id: "bIoeoOaqD6g", title: "The Furious Five's block party grounds in the Bronx" },
+      { id: "KQoSAGWEuKg", title: "Grandmaster Flash explains his Quick Mix Theory at the turntables" },
+      { id: "1J2HknXcl3Q", title: "Grandmaster Flash & the Furious Five enter the Rock & Roll Hall of Fame (2007)" },
+    ],
+    story:
+      "South Bronx DJ and hip-hop pioneer. Back then Manhattan didn't know him yet, Nick Egan says, but he did. Man Parrish was making records in the same years, and James still prefers Duran Duran's White Lines.",
+    timeline: [
+      ["1958", "Born Joseph Saddler on 1 January in Barbados, grows up in the Bronx"],
+      ["Late 1970s", "DJs at parties in the South Bronx with the Furious Five"],
+      ["1981", "The Adventures of Grandmaster Flash on the Wheels of Steel"],
+      ["1982", "The Message"],
+      ["2007", "The first hip-hop act in the Rock and Roll Hall of Fame"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    said: [
+      { episode: "s05e04", who: "Nick Egan", time: "00:21:38", quote: "That was coming from the South Bronx, where people in Manhattan didn't know about Afrika Bambaataa or Grandmaster Flash. But we kind of did, because of a girl called Blue and a guy called Michael Holman." },
+      { episode: "s03e04", who: "James St. James", time: "00:22:31", quote: "I'm wondering if during this period of hip-hop, be-bop, don't stop, you were playing shows up in the Bronx. Is this around the time of Grandmaster Flash and the Furious Five?" },
+      { episode: "s05e04", who: "James St. James", time: "00:50:01", quote: "I believe in my heart of hearts, I will die on this hill, that Duran Duran's White Lines is better than Grandmaster Flash's." },
+      { episode: "s03e04", who: "Man Parrish", time: "00:22:46", quote: "And I'm like, you're a legend. So it was Grandmaster Flash." },
+    ],
+  },
+  "laurie-metcalf": {
+    story:
+      "Steppenwolf actor Susan Seidelman first saw in Balm in Gilead, and cast in Desperately Seeking Susan and again in Making Mr. Right. Ann Magnuson, who played the straight part in that one, envied her the kooky one.",
+    timeline: [
+      ["1955", "Born 16 June in Carbondale, Illinois"],
+      ["1970s", "One of the first actors of the Steppenwolf Theatre Company in Chicago"],
+      ["1984", "Balm in Gilead in New York, directed by John Malkovich"],
+      ["1985", "Desperately Seeking Susan"],
+      ["1987", "Making Mr. Right"],
+      ["1988", "Jackie in Roseanne"],
+      ["2017", "Lady Bird"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    said: [
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:53:41", quote: "I had happened to go to the theatre and saw a Steppenwolf play called Balm in Gilead, and I was blown away by it. And that's where I first saw Laurie. John Malkovich directed it. Glenne Headly was in it. Laurie Metcalf was in it." },
+      { episode: "s04e09", who: "Susan Seidelman", time: "00:54:31", quote: "I used Laurie Metcalf in Desperately Seeking Susan. And then when it came time to do Making Mr. Right, I thought, I'll use Malkovich, his wife at the time, Glenne Headly, and also Laurie Metcalf again." },
+      { episode: "s04e09", who: "James St. James", time: "00:54:48", quote: "Laurie Metcalf is hysterical, as is Polly Bergen, who plays her mother. So fabulous." },
+      { episode: "s04e10", who: "Ann Magnuson", time: "00:58:58", quote: "With Making Mr. Right, I was the straight guy, really. And I had to temper down so much of my personality. I was so excited that I got to be a kook. I was so envious of Laurie Metcalf's part in Making Mr. Right." },
+    ],
+  },
+  // Lisa, 28 Nov 2026: "jim fouratt show all quotes, libary and film box". Every mention on the show; facts from the episodes
+  // and Wikipedia "Jim Fouratt" (read 28 Nov 2026). Left out under the living-people rule: the put-downs about him (S01E07
+  // 00:30:14-00:30:39, S02E02 00:43:55 "Nobody does") and the Peppermint Lounge mob talk (S02E11 00:57:31).
+  "jim-fouratt": {
+    first: "Jim",
+    story:
+      "Gay-rights activist and club maker. Jayne County was with him on Christopher Street on the first night of Stonewall, chanting gay power. Rudolf Piper hired him for Pravda, opened Danceteria with him and needed weeks to win him over to the name. At the Peppermint Lounge he brought Richard Boch on, and Eric Goode always wanted to know what he was up to.",
+    timeline: [
+      ["1941", "Born 23 June, grows up in Rhode Island"],
+      ["1967", "One of the organisers of the Central Park Be-In, and a co-founder of the Yippies"],
+      ["1969", "On Christopher Street with Jayne County on the first night of the Stonewall riots; co-founds the Gay Liberation Front days later"],
+      ["Late 1970s", "Hurrah, the first rock disco: DJs, live bands and music videos"],
+      ["1980", "Rudolf Piper hires him for Pravda, which lasts one night; together they open Danceteria on West 37th Street"],
+      ["Nov 1980", "The new Peppermint Lounge with Rudolf Piper, where he brings Richard Boch on"],
+      ["Sep 1981", "Manages the reopened Studio 54 with Rudolf Piper"],
+      ["1995-1999", "Vice president of A&R at Mercury Records"],
+    ],
+    liftedUp: ["Richard Boch"],
+    rooms: ["Danceteria", "Peppermint Lounge", "Hurrah", "Studio 54", "Pravda", "Christopher Street", "Stonewall riots"],
+    said: [
+      { episode: "s02e02", who: "Jayne County", time: "00:43:55", quote: "And I remember being there with Jim Fouratt. And so we were just marching up and down Christopher Street, back and forth, just screaming gay power, gay power, with a fist in the air." },
+      { episode: "s01e07", who: "James St. James", time: "00:29:05", quote: "So there was Pravda, then Danceteria, then the new Danceteria. And where does Jim Fouratt come into that? Because he was your partner for a time, wasn't he?" },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:29:25", quote: "Peppermint Lounge, that was Jim, right? And Jim Fouratt came in as I hired him for Pravda. And then, when Pravda was only one night, we were looking for another space, and then we found the space of Danceteria. So he was my partner at Danceteria." },
+      { episode: "s01e07", who: "Rudolf Piper", time: "00:53:39", quote: "We were walking on the street, Jim Fouratt, me, David King and Sean Cassette, a DJ. We passed in front of a cafeteria and somebody said, Oh, I don't want a cafeteria, I want a dancing area. And then I had a hell of a time to convince Jim Fouratt that this was the name. Two weeks, three weeks later, he grudgingly accepted the name." },
+      { episode: "s02e11", who: "Richard Boch", time: "00:57:31", context: "Richard on working the Peppermint Lounge for Rudolf and Jim", quote: "Yeah, they only lasted about a month. I worked with them. Jim brought me on there." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:37:59", quote: "Yes, I went to the other places. I wanted to know what they were doing. Yes, I always wanted to know what Rudolf was doing, what Jim Fouratt was doing, what Steve Rubell was doing." },
+    ],
+    // On film (Lisa, 28 Nov 2026). All embeddable, checked 28 Nov 2026.
+    videos: [
+      { id: "ulU3UEdiRwo", title: "Jim Fouratt on Danceteria's stage, 1982" },
+      { id: "iFvjPmPkofs", title: "Jim Fouratt on affirmation and joy in Gay Liberation (Media Burn Archive)" },
+      { id: "EZI6y3eIYPk", title: "Jim Fouratt and Tony Fletcher on New York's music scene, Strand Book Store 2009" },
+      { id: "YK7BngbI8Bw", title: "Danceteria - New York in the 80s" },
+    ],
+  },
+  "lil-nas-x": {
+    story:
+      "The rapper who came out at the top of the charts. Michael Schmidt made him a golden tearaway suit of armour with Versace, and Randy sees his freedom from shame as part of what Michelangelo Signorile fought for.",
+    timeline: [
+      ["1999", "Born Montero Lamar Hill on 9 April near Atlanta, Georgia"],
+      ["2019", "Old Town Road, a record 19 weeks at number one in America"],
+      ["2019", "Comes out while the song is at the top"],
+      ["2021", "Montero, his first album"],
+      ["2020s", "Wears Michael Schmidt's golden tearaway armour, made with Versace"],
+    ],
+    liftedUp: [],
+    rooms: [],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "01:06:07", quote: "That was a collaboration with Versace. The challenge about that piece really was the fact that it's not only a golden suit of armour, but it's a tearaway suit of armour." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "01:04:44", quote: "Politically powerful. I like that. He's obviously very gifted and he's fearless." },
+      { episode: "s02e06", who: "James St. James", time: "01:05:32", quote: "That's exactly what you've done with Lil Nas X, because he is a genius and fearless. I saw him perform recently at the iHeartRadio thing, and it was so mesmerizing." },
+      { episode: "s02e08", who: "Randy Barbato", time: "00:58:14", quote: "I look at someone like Lil Nas X, you know, and just the freedom from shame. It gives us Lil Nas X, who's just so fabulous, who's here and queer and out and proud." },
+      { episode: "s02e06", who: "James St. James", time: "00:00:35", quote: "His work with Cher, Tina Turner, Grace Jones, Lady Gaga, Madonna, Rihanna, Doja Cat, Lil Nas X. The list goes on and on and on." },
+    ],
+  },
+  // Lisa, 28 Nov 2026: "show all mentiones". Every mention on S01E04 except the two about the ayahuasca ceremony
+  // (00:02:27, 00:03:46), left out under the living-people rule.
+  "jen-gatien": {
+    story:
+      "Peter Gatien's daughter, who did the guest list at his clubs, with James on the door at the Limelight and the Tunnel, and later produced Limelight, the 2011 documentary about her father.",
+    timeline: [
+      ["Early 1990s", "Does the guest list at her father's clubs"],
+      ["1990s", "On the door with James St. James at the Limelight and the Tunnel"],
+      ["2011", "Produces Limelight, the documentary about Peter Gatien"],
+    ],
+    liftedUp: [],
+    rooms: ["Limelight", "Tunnel"],
+    said: [
+      { episode: "s01e04", who: "James St. James", time: "00:01:13", quote: "The subject of a 2011 documentary made by his daughter, Jen Gatien." },
+      { episode: "s01e04", who: "James St. James", time: "00:56:20", quote: "I remember your daughter was involved in a lot of the clubs. I did the door with her at Limelight, the door with her at Tunnel. She really grew into an amazing woman, didn't she?" },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:56:35", quote: "She was young at the time, you know. I basically had the choice. At least she's at my nightclub, and she used to do the guest list. I can watch her." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:56:55", quote: "So it worked out well. Plus, obviously, she was my daughter, she was going to be honest. Remember, back then we'd have three or four guest lists, or even up to five, six at the Tunnel. So it was good to have a person that you knew that was not handing out comps to best buddies. People who got comps deserved them." },
+      { episode: "s01e04", who: "Randy Barbato", time: "00:57:27", quote: "I met her back then, but Fenton knows her better than I do." },
+    ],
+  },
+  "linda-evangelista": {
+    story:
+      "The supermodel who came to Love Machine every week with Christy and Naomi, the 'supermodel cluster', as Larry Tee calls it. At the Roxy, Lincoln Palsgrove had to pull her in from the crowd.",
+    timeline: [
+      ["1965", "Born 10 May in St. Catharines, Ontario"],
+      ["1988", "The short haircut"],
+      ["1990", "Says the supermodels don't wake up for less than $10,000 a day"],
+      ["1990", "In George Michael's Freedom! '90 video"],
+      ["Early 1990s", "At Love Machine every week with Christy Turlington and Naomi Campbell"],
+    ],
+    liftedUp: [],
+    rooms: ["Love Machine", "Roxy"],
+    said: [
+      { episode: "s03e08", who: "Larry Tee", time: "00:24:57", quote: "The supermodels, you know, they would come as a cluster. I call it a supermodel cluster, with Linda, Christy and Naomi every week, and they would stand under this light in the basement." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:25:22", quote: "Clearly, it was these three most famous models of all time. And living in the meat market, they used to shoot all the winter issues of Vogue. So all the time we would run down with cigarettes and we would feed Linda Evangelista." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:42:45", quote: "On occasion you'd have different celebrities and supermodels show up, which I can remember vividly, having to go down into a massive crowd and pull in Linda Evangelista." },
+      { episode: "s05e05", who: "James St. James", time: "01:02:07", quote: "It's a bit like the Linda Evangelista. I'm not going to get out of bed for less than $10,000." },
+      { episode: "s03e08", who: "Larry Tee", context: "Larry, Lahoma and RuPaul at Versace's show in Milan, 1991", time: "00:36:29", quote: "It was a time where they threw the supermodels down the runway like confetti. It was Linda, Christy, Nadja. It was everybody on that runway." },
+    ],
+    // Lisa, 28 Nov 2026: "show all mentions" - Larry's three go up together. Left out under the living-people rule: James's
+    // Love Machine staircase story (S03E08 00:23:29, he says himself it needs cutting) and the "hots for" line (00:24:37).
+    maxPerGuest: 3,
+  },
   // Pages behind the top Google searches (Lisa, 27 Nov 2026: "do all the suggested updates"). Facts from the guests'
   // own words on the show and the Xenon club page; Peppo's founding from Wikipedia "Xenon (nightclub)", read 27 Nov 2026.
   "peppo-vanini": {

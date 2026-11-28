@@ -393,6 +393,11 @@ export const YEARS: Record<string, number> = {
   "Steps": 1997,
   "S Club 7": 1998,
   "Scissor Sisters": 2001,
+  // S06E04 Raja
+  "Gloria Estefan – 'Everlasting Love'": 1994,
+  "RuPaul – 'Looking Good, Feeling Gorgeous'": 2004,
+  "Sheryl Crow – 'All I Wanna Do'": 1994,
+  "10,000 Maniacs": 1981,
   // S05E09 Screamin' Rachael Cain
   "Z-Factor & Jesse Saunders – 'Fantasy'": 1984,
   "Screamin' Rachael – 'Fun with Bad Boys'": 1987,

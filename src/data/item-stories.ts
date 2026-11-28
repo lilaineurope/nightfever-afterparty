@@ -40,6 +40,20 @@ export type ItemStory = {
 // afterparty guests ... and to all future episodes"): scripts/item-stories-auto.py writes item-stories-auto.json from the
 // work's Wikipedia page and Wikidata credits. A story written here by hand always wins.
 const HAND: Record<string, ItemStory> = {
+  // S06E04 Raja (27 Nov 2026)
+  "fashion-photo-ruview": {
+    intro: "A weekly WOWPresents show on YouTube where Raja and Raven review the runway looks from RuPaul's Drag Race.",
+    facts: [
+      { label: "Since", value: "2014" },
+      { label: "Hosts", value: "Raja and Raven" },
+      { label: "Made for", value: "WOWPresents" },
+    ],
+    inIt: [{ name: "Raja", note: "Hosts it" }, { name: "Raven", note: "Hosts it" }],
+    since: [
+      { when: "On the show", what: "James says it has become classic viewing for him and makes him feel young, like watching what the kids watch.", source: "S06E04", episode: "s06e04", time: "00:54:53" },
+    ],
+    sources: ["Raja's Wikipedia page", "S06E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
   // Top Google search pages, round 3 (Lisa, 28 Nov 2026: "do all 1-5"). Howie Pyro's records: the sleeves and credits on
   // Discogs; Nations: Gallery 98's copy of the issue; The Death of Downtown: the episodes (no copy of the article found online).
   blessed: {

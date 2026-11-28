@@ -25,6 +25,11 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Paradise Garage": [m("Larry Levan", "Resident DJ", 1977)],
   // Top Google search pages (Lisa, 27 Nov 2026)
   "Xenon": [m("Peppo Vanini", "Opened it", 1978), m("Howard Stein", "Opened it", 1978)],
+  // Jim Fouratt's work box (Lisa, 28 Nov 2026: "libary"): Wikipedia "Jim Fouratt" and Rudolf Piper on S01E07.
+  "Danceteria": [m("Jim Fouratt", "Opened it, with Rudolf Piper", 1980)],
+  "Hurrah": [m("Jim Fouratt", "Made it the first rock disco")],
+  "Peppermint Lounge": [m("Jim Fouratt", "Ran the new one, with Rudolf Piper", 1980)],
+  "Pravda": [m("Jim Fouratt", "Worked there, hired by Rudolf Piper", 1980)],
   "Area": [m("Eric Goode", "Opened it", 1983), m("Shawn Hausman", "Opened it", 1983)],
   "Standard Hotels": [m("Shawn Hausman", "Designed them")],
   "Celebrity Club": [m("Larry Tee", "Hosted it"), m("Lahoma van Zandt (John Witherspoon)", "Hosted it")],
@@ -72,6 +77,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Meet Me at the Mailbox (Denise Stoughton)": [m("Really Denise", "Writing it")],
   "Super Freak (unpublished)": [m("James St. James", "Wrote it")],
   "Connie's biography (by David Glamamore)": [m("David Glamamore", "Writing it"), m("Connie Fleming", "About them")],
+  "Raja's book (in the works)": [m("Raja", "Writing it")],
 
   // S04E11 Elyssa Maxx Goodman: her own book and the histories she and James name on the show
   "Glitter and Concrete": [m("Elyssa Maxx Goodman", "Wrote it", 2023)],
@@ -107,7 +113,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Dead Calm": [m("Nicole Kidman", "Starred in it", 1989), m("Billy Zane", "Starred in it", 1989)],
   "Desperately Seeking Susan": [
     m("Susan Seidelman", "Directed it", 1985), m("Madonna", "Starred in it", 1985), m("Rosanna Arquette", "Starred in it", 1985),
-    m("Ann Magnuson", "In it", 1985), m("Richard Hell", "In it", 1985), m("John Lurie", "In it", 1985),
+    m("Ann Magnuson", "In it", 1985), m("Richard Hell", "In it", 1985), m("John Lurie", "In it", 1985), m("Laurie Metcalf", "In it", 1985),
   ],
   "Dog Day Afternoon": [m("Sidney Lumet", "Directed it", 1975), m("Al Pacino", "Starred in it", 1975), m("Liz Eden", "About them")],
   "Downtown 81": [m("Jean-Michel Basquiat", "Starred in it", 2000), m("Debbie Harry", "In it", 2000), m("Fab 5 Freddy", "In it", 2000), m("John Lurie", "In it", 2000), m("Haoui Montaug", "In it", 2000)],
@@ -133,7 +139,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Limelight documentary": [m("Jen Gatien", "Made it", 2011), m("Peter Gatien", "About them")],
   "Mad Max Beyond Thunderdome": [m("Tina Turner", "Starred in it", 1985)],
   "Made for TV": [m("Tom Rubnitz", "Made it", 1984), m("Ann Magnuson", "Starred in it", 1984)],
-  "Making Mr. Right": [m("Susan Seidelman", "Directed it", 1987), m("Ann Magnuson", "Starred in it", 1987), m("John Malkovich", "Starred in it", 1987)],
+  "Making Mr. Right": [m("Susan Seidelman", "Directed it", 1987), m("Ann Magnuson", "Starred in it", 1987), m("John Malkovich", "Starred in it", 1987), m("Laurie Metcalf", "In it", 1987)],
   "Mapplethorpe: Look at the Pictures": [...WOW("Made it", 2016), m("Robert Mapplethorpe", "About them")],
   "Marie Antoinette": [m("Sofia Coppola", "Directed it", 2006), m("Milena Canonero", "Costumes", 2006)],
   "Mean Streets": [m("Martin Scorsese", "Directed it", 1973), m("Robert De Niro", "Starred in it", 1973)],
@@ -272,11 +278,15 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Puppetry of the Penis": [...WOW("Made it")],
   "Real Sex": [...WOW("Made an episode"), m("Susanne Bartsch", "In it"), m("RuPaul", "In it")],
   "Queen of the Universe": [m("Michelle Visage", "Judge", 2021)],
-  "Roseanne": [m("Roseanne Barr", "Starred in it", 1988)],
+  "Roseanne": [m("Roseanne Barr", "Starred in it", 1988), m("Laurie Metcalf", "Starred in it", 1988)],
   "RuPaul's Drag Race": [
     m("RuPaul", "Created and hosts it", 2009), ...WOW("Producers", 2009), m("Michelle Visage", "Judge"), m("Mathu Andersen", "Creative producer"),
     m("Zaldy", "Costumes for RuPaul"), m("Raja", "Won season 3", 2011), m("Sharon Needles", "Won season 4", 2012),
   ],
+  // S06E04 Raja (Raja's Wikipedia page, checked 27 Nov 2026, and the episode)
+  "Fashion Photo RuView": [m("Raja", "Hosts it", 2014)],
+  "America's Next Top Model": [m("Tyra Banks", "Created and hosts it", 2003), m("Mathu Andersen", "Make-up"), m("Raja", "Make-up artist", 2005)],
+  "The Simpsons": [m("Raja", "In the episode 'Werking Mom'", 2018)],
   "RuPaul's Drag Race All Stars": [m("RuPaul", "Hosts it", 2012), ...WOW("Producers", 2012), m("Michelle Visage", "Judge"), m("Alaska Thunderfuck", "Won All Stars 2", 2016), m("Raja", "On All Stars 7", 2022)],
   "RuPaul's Drag Race UK": [m("RuPaul", "Hosts it", 2019), ...WOW("Producers", 2019), m("Michelle Visage", "Judge"), m("Bimini Bon Boulash", "On season 2", 2021), m("Tayce", "On season 2", 2021)],
   "RuPaul's Drag Race Down Under": [m("RuPaul", "Hosts it", 2021), ...WOW("Producers", 2021), m("Michelle Visage", "Judge")],
@@ -498,6 +508,13 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Klaus Nomi": [
     { title: "Klaus Nomi", kind: "Music", role: "Made it", year: 1981 },
     { title: "Simple Man", kind: "Music", role: "Made it", year: 1982 },
+  ],
+  // Sade's work box (Lisa, 28 Nov 2026: "add libary"): the band's albums her page names.
+  "Sade": [
+    { title: "Diamond Life", kind: "Music", role: "Sang it", year: 1984 },
+    { title: "Promise", kind: "Music", role: "Sang it", year: 1985 },
+    { title: "Love Deluxe", kind: "Music", role: "Sang it", year: 1992 },
+    { title: "Soldier of Love", kind: "Music", role: "Sang it", year: 2010 },
   ],
   "Nico": [
     { title: "Chelsea Girl", kind: "Music", role: "Made it", year: 1967 },

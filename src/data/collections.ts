@@ -79,6 +79,7 @@ export const UNPUBLISHED_BOOKS = new Set([
   "Queen of the Mudd (Tina L'Hotsky)",
   "Super Freak (unpublished)",
   "After Hours: The Rise and Fall of the Mega Discotheque (Rudolf Piper)",
+  "Raja's book (in the works)",
 ]);
 
 // Lisa, 23 Oct 2026: magazines, newspapers and columns are separate shelves.
@@ -441,6 +442,11 @@ const SPOTIFY: Record<string, string> = {
   "The Sugarcubes – 'Hit'": "spotify:track:24a0BpgQyuJzrGq9TvTZOR",
   "Björk – 'Venus as a Boy'": "spotify:track:48oX55j4gqDw0G80KxzpaQ",
   "Björk – 'Jóga'": "spotify:track:3nschTSboTkjPwgdbrRLyf",
+  // S06E04 Raja (10,000 Maniacs as 'These Are Days')
+  "Gloria Estefan – 'Everlasting Love'": "spotify:track:0DCxAJasKxjhODdqpF4s36",
+  "RuPaul – 'Looking Good, Feeling Gorgeous'": "spotify:track:14AsAchc7p5nJYiT077giP",
+  "Sheryl Crow – 'All I Wanna Do'": "spotify:track:3ZpQiJ78LKINrW9SQTgbXd",
+  "10,000 Maniacs": "spotify:track:0Ryfwv1mx092aOsb4ZUhJK",
   // S05E09 Screamin' Rachael Cain (New Edition as 'Candy Girl')
   "Z-Factor & Jesse Saunders – 'Fantasy'": "spotify:track:6fJd4UhGoAccG72q7Txbzb",
   "Screamin' Rachael – 'Give Me My Freedom (Murder in Clubland)'": "spotify:track:7KtMRHPh8uDTZjWp1qyerB",
