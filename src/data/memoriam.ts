@@ -567,14 +567,22 @@ export const MEMORIAM: Record<string, Memoriam> = {
     liftedUp: ["Madonna", "Beastie Boys", "Michael Schmidt"],
     rooms: ["Hurrah", "Mudd Club", "Danceteria", "No Entiendes", "Studio 54", "Palladium", "Paradise Garage", "Tunnel"],
     said: [
-      { episode: "s04e07", who: "Trey Speegle", time: "00:06:56", quote: "At a door, you would hear Howie, Howie, H-O-W-I-E. And if you ever spelled it that way, boy, you were out. It's H-A-O-U-I." },
-      { episode: "s01e03", who: "Lisa Edelstein", time: "00:53:41", quote: "Haoui totally took me out." },
-      { episode: "s01e03", who: "James St. James", time: "00:53:45", quote: "Haoui Montaug was a doorman at Studio 54, Palladium, Tunnel, Paradise Garage, Danceteria. He also was a writer for Paper and Details. And he really had like a chosen family around him." },
-      { episode: "s02e06", who: "Michael Schmidt", time: "00:16:59", quote: "Haoui Montaug introduced me to Vicki Sarge and all these people, and they hired me." },
-      { episode: "s06e01", who: "James St. James", time: "00:20:13", quote: "It would be Divine, Martha Graham, Andy Warhol, Philip Glass and Haoui Montaug. How did I even know who Haoui Montaug was?" },
+      { episode: "s04e07", who: "Trey Speegle", time: "00:06:56", context: "How to spell Haoui, if you wanted to get in", quote: "At a door, you would hear Howie, Howie, H-O-W-I-E. And if you ever spelled it that way, boy, you were out. It's H-A-O-U-I." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:53:41", context: "Haoui and his chosen family took Lisa in", quote: "Haoui totally took me out." },
+      { episode: "s01e03", who: "James St. James", time: "00:53:45", context: "James on who Haoui was", quote: "Haoui Montaug was a doorman at Studio 54, Palladium, Tunnel, Paradise Garage, Danceteria. He also was a writer for Paper and Details. And he really had like a chosen family around him." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:16:59", context: "How Michael got his start with Erickson Beamon", quote: "Haoui Montaug introduced me to Vicki Sarge and all these people, and they hired me." },
+      { episode: "s06e01", who: "James St. James", time: "00:20:13", context: "James's dream dinner party", quote: "It would be Divine, Martha Graham, Andy Warhol, Philip Glass and Haoui Montaug. How did I even know who Haoui Montaug was?" },
       // Lisa, 27 Nov 2026 ("all" - fuller quotes for the top-searched pages), from the episode transcripts on her Mac.
       { episode: "s06e07", who: "Sally Randall", time: "00:12:52", context: "James asks Sally about working the Palladium door with Haoui", quote: "I adored it. As for working with him, he ended up becoming one of my closest friends. He was very inspirational too, and could be a real Jewish mother. He had his Jewish mother moments, especially when Jorge and I would come up with some ridiculous idea, like we come up with the celebrity cookbook, and how he just laughed and he was like, seriously, do you know how to do it?" },
       { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:15:20", context: "James has just named Haoui his number one door person; here he asks Lincoln if Haoui eased his way into clubs like Palladium", quote: "For sure, for sure. I think once Haoui recognized that I was friends with Jennifer, that made it a shoo-in." },
+    ],
+    // "On film" (daily search pages, 28 Nov 2026).
+    videos: [
+      { id: "iWa-hE8KeQk", title: "Haoui Montaug and Anita Sarko's No Entiendes at the Palladium (Nelson Sullivan's tape)" },
+      { id: "yNcEggr_xwc", title: "No Entiendes, 14 January 1987, with Haoui Montaug and Anita Sarko" },
+      { id: "UAubqBL1i18", title: "Haoui talks about Anita" },
+      { id: "ag_mK2uqERw", title: "No Entiendes on The Bad Music Video Show: Haoui's introduction" },
+      { id: "ZtY2rV6yWZc", title: "Madonna sings Everybody at Haoui Montaug's No Entiendes, 1982" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q14946791",
   },
@@ -734,13 +742,19 @@ export const MEMORIAM: Record<string, Memoriam> = {
     rooms: ["House of Xtravaganza", "Sound Factory", "the balls", "Voguing"],
     also: { heading: "Her house and her look", names: ["Hector Xtravaganza", "Paris Is Burning", "Angie Xtravaganza's laddered black stockings", "Patricia Field", "Michelle Visage"] },
     said: [
-      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:10:06", quote: "She was honestly like a mother, literally. She was like, come, children. And we would follow her around, like mama duck and her baby ducks. She led with her chestbone. It was up and proud and unabashed. And so we all followed suit." },
-      { episode: "s02e01", who: "Michelle Visage", time: "00:16:24", quote: "She could look shady. She could read you, she could cut you down. But she was always very lovely to me and very loving." },
-      { episode: "s02e01", who: "Michelle Visage", time: "00:17:30", quote: "Angie was just wonderful. Angie, Danny, Jose, Luis, I knew all of them, and none of them were ever shady or mean." },
-      { episode: "s01e08", who: "James St. James", time: "00:09:39", quote: "Mother Angie, oh God, what a character. I knew her a little bit when we would go to Sound Factory." },
+      { episode: "s01e08", who: "Luis Xtravaganza Camacho", time: "00:10:06", context: "Mother Angie leading the House of Xtravaganza", quote: "She was honestly like a mother, literally. She was like, come, children. And we would follow her around, like mama duck and her baby ducks. She led with her chestbone. It was up and proud and unabashed. And so we all followed suit." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:16:24", context: "What Mother Angie was like with Michelle", quote: "She could look shady. She could read you, she could cut you down. But she was always very lovely to me and very loving." },
+      { episode: "s02e01", who: "Michelle Visage", time: "00:17:30", context: "The Xtravaganzas Michelle knew", quote: "Angie was just wonderful. Angie, Danny, Jose, Luis, I knew all of them, and none of them were ever shady or mean." },
+      { episode: "s01e08", who: "James St. James", time: "00:09:39", context: "James remembers Mother Angie at the Sound Factory", quote: "Mother Angie, oh God, what a character. I knew her a little bit when we would go to Sound Factory." },
       // Lisa, 27 Nov 2026 ("all" - fuller quotes for the top-searched pages), from the episode transcripts on her Mac.
       { episode: "s03e01", who: "Patricia Field", time: "00:28:00", context: "Pat was judging a ball when Mother Angie walked with a ladder in her stocking - and marked her down", quote: "There were a few different episodes at that ball. One was Angie Xtravaganza with the hose with the big run in it, the black hose with the big run in it. Walked down the runway with a big run on her black stocking, and I was like... Yeah, I copped her." },
       { episode: "s06e02", who: "James St. James", time: "00:27:03", context: "James to Christina Visca about the Sound Factory regulars of the Paris Is Burning years", quote: "So many of the people who went to Sound Factory have gone on to become just legendary legends in gay culture and everything. This is around the time of Paris Is Burning in the 80s. You had like Mother Angie Xtravaganza who I would see there every week and Willie Ninja and Venus Xtravaganza." },
+    ],
+    // "On film" (daily search pages, 28 Nov 2026). Paris Is Burning clips on YouTube are unofficial uploads, left out.
+    videos: [
+      { id: "BpRSk_knBec", title: "Remembering Mother Angie Xtravaganza" },
+      { id: "-YrP3Ajf6qM", title: "Angie Xtravaganza at the Xtravaganza Spring Affair Ball, Tracks, 1992" },
+      { id: "8ej86oHMJ8o", title: "Welcome to the House of Xtravaganza" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q4763232",
   },
@@ -1966,7 +1980,18 @@ export const MEMORIAM: Record<string, Memoriam> = {
     liftedUp: ["Zackary Drucker"],
     rooms: ["The Queen"],
     said: [
-      { episode: "s01e02", who: "Michael Musto", time: "00:45:41", quote: "The ones that go forever, I love them too. I love Flawless Sabrina, you know." },
+      { episode: "s01e02", who: "Michael Musto", time: "00:45:41", context: "Musto on the queens who hang up the wig, and the ones who go on forever", quote: "The ones that go forever, I love them too. I love Flawless Sabrina, you know." },
+      { episode: "s04e11", who: "Elyssa Maxx Goodman", time: "01:03:38", context: "Why Elyssa wrote Glitter and Concrete, her history of New York drag", quote: "The idea for the book came actually after the passing of Flawless Sabrina in November 2017. And I said to myself, I don't want her stories to get lost. I don't want anyone else's stories to get lost. How do I make sure that doesn't happen?" },
+    ],
+    // "On film" (daily search pages, 28 Nov 2026). All embed; full uploads of The Queen left out.
+    videos: [
+      { id: "-SLB6vYWKJ0", title: "Flawless Sabrina, queer icon and star of The Queen (American Masters, PBS)" },
+      { id: "ki3fUvhRqrk", title: "James St. James and Mother Flawless Sabrina: an interview and a tarot reading" },
+      { id: "SeXrIZqMAfY", title: "The Queen (1968) - the re-release trailer" },
+      { id: "e0TojIcruRk", title: "A tarot reading with Flawless Sabrina at the 2014 Whitney Biennial" },
+      { id: "C62XptOyKfk", title: "Bruno Wizard talks to Jack, Mother Flawless Sabrina" },
+      { id: "e8MuNmbMEC8", title: "Tribute to a Queen: Flawless Sabrina at the Leslie-Lohman Museum, 2011" },
+      { id: "Yxx93IjoClc", title: "Flawless Sabrina, Kelly Webb and Dean Johnson" },
     ],
     wikidata: "https://www.wikidata.org/wiki/Q28134914",
   },
