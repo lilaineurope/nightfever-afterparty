@@ -1,0 +1,42 @@
+{
+ "_note": "Tunnel kids - facts and pictures (28 Nov 2026).",
+ "reference_photos_found": {
+  "julie-jewels": "yes - 1980s photo in the Retro Room YouTube thumbnail (E0R2pZreMBA 'Club Kid, Julie Jewels'); Nelson Sullivan tape LfMtJo4Ag5E 'The Club Kids Go To Boston starring Julie Jewels and Mikel Tron' (5ninthavenueproject)",
+  "michael-tron": "yes - 1980s photo (white sunglasses, spiked hair) in Retro Room thumbnail dDaXu_5RmJA 'Club Kid, Michael Tronn'",
+  "stephan-lupino": "yes - photographer, today (Croatian TV/podcast thumbnails, e.g. mvsNsXCBMyA)",
+  "magenta": "none found",
+  "oliver-twisted": "none found",
+  "harley-quinn": "none found (searches only find the DC Comics character)",
+  "fuchsia-dahl": "none found"
+ },
+ "no_reference_plan": "For Magenta, Oliver Twisted, Harley Quinn and Fuchsia Dahl there's no photo anywhere online, so Gemini can't draw a likeness (and we never invent a face for a real person). Their picture box can use the existing 'name as polaroid' design (PR #180) until someone sends a photo.",
+ "polaroids": {
+  "julie-jewels": "Option A drafted (Gemini drew her from the reference, no refusal) - polaroids/julie-jewels/option-A-draft/. Gemini made it tall and narrow, so her shoulders don't reach the polaroid's edges; a wider A and an option B come after Gemini's limit resets (18:24 Stockholm, 28 Nov). Labels THE TUNNEL | HARLEM BALL | 1987 | PROJECT X; '23 MENTIONS' (sum of her rows in 12 episodes incl. 'Julie Jules'); 'Original club kid · won Face at a Harlem ball'.",
+  "michael-tron": "after 18:24 (reference ready)",
+  "stephan-lupino": "after 18:24 (reference ready)"
+ },
+ "videos": [
+  {
+   "for": "julie-jewels, michael-tron",
+   "id": "LfMtJo4Ag5E",
+   "title": "The Club Kids Go To Boston, starring Julie Jewels and Mikel Tron",
+   "channel": "5ninthavenueproject (Nelson Sullivan)",
+   "length": "10:01"
+  },
+  {
+   "for": "julie-jewels",
+   "id": "E0R2pZreMBA",
+   "title": "Club Kid, Julie Jewels",
+   "channel": "Retro Room",
+   "length": "3:18"
+  },
+  {
+   "for": "michael-tron",
+   "id": "dDaXu_5RmJA",
+   "title": "Club Kid, Michael Tronn",
+   "channel": "Retro Room",
+   "length": "6:04"
+  }
+ ],
+ "videos_check": "Embeds not yet checked - check oEmbed before use. The Retro Room clip 8M8if7LuY8E is about a feud with Alig/Musto - left out."
+}
