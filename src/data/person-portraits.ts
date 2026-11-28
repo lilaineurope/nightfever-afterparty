@@ -1117,7 +1117,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "paul-morrissey": { photo: paulMorrisseyPhoto, polaroid: paulMorrisseyPolaroid, focus: "30%", credit: "Illustration made with Gemini from the 1967 public-domain photo by James Kavallines, not a photo" },
   // Lisa: "house of xtravaganza needs a background header picture and a polaroid". No faces: an empty Harlem ballroom and the judges' table.
   "house-of-xtravaganza": { photo: houseOfXtravaganzaPhoto, phone: houseOfXtravaganzaPhotoPhone, polaroid: houseOfXtravaganzaPolaroid, focus: "50%", credit: "Header and polaroid: a Harlem ballroom before a ball and the judges' trophies, drawn for the AFTERPARTY - no people shown" },
-  // Venus and David Ian: option A wired, Lisa picks A or B. Stephan: A only (three tries at a B failed).
+  // Venus: B (Lisa, 28 Nov 2026, "venus b"). David Ian: option A wired, Lisa picks A or B. Stephan: A only (three tries at a B failed).
   "venus-xtravaganza": { photo: venusXtravaganzaPhoto, polaroid: venusXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "david-ian-xtravaganza": { photo: davidIanXtravaganzaPhoto, polaroid: davidIanXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "stephan-lupino": { photo: stephanLupinoPhoto, polaroid: stephanLupinoPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
