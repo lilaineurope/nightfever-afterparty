@@ -25,6 +25,9 @@ export type PersonProfile = {
   /** A Jukebox box (Lisa, 28 Nov 2026, petting zoo party: "add to petting zoo page, the jukebox"): no film of the night
    *  exists, so the page turns on the AFTERPARTY Jukebox of the episode it comes from (/jukebox?afterparty=<id>). */
   jukebox?: string;
+  /** false: a night or event page skips its club's "<club> in the Library" box (Lisa, 28 Nov 2026, petting zoo party: the Tunnel's
+   *  Last Supper poster is another night, "shouldn't be on the petting zoo party page"). */
+  venueLibrary?: false;
   /** Lisa's rule is two quotes per guest; a page can go higher when she says so (Kim: Mickey x3, Lisa 21 Nov 2026). */
   maxPerGuest?: number;
 };
@@ -137,6 +140,7 @@ export const PERSON_PROFILES: Record<string, PersonProfile> = {
     ],
     also: { heading: "At the party", names: ["Really Denise", "Jenny Go-Getter", "Zaldy", "Stephan Lupino"] },
     jukebox: "s05e07b",
+    venueLibrary: false,
   },
   "love-ball": {
     first: "the Love Ball",
