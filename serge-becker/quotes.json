@@ -1,0 +1,15 @@
+{
+ "_note":"All 3 transcript lines that name Serge Becker (28 Nov 2026). 'quote' = exact words, names spelled right; 'transcript' as heard. None is Serge's own story - each names him.",
+ "serge-becker":[
+  {"episode":"s01e04","speaker":"James St. James","time":"00:36:26","context":"James asks Peter Gatien how he found the Club USA space, which he opened with Eric Goode and Serge Becker",
+   "quote":"Then when you worked with Eric Goode from Area and Serge Becker, and you went to open Club USA in Times Square. How did you find that space? What was the space and how did you go about it?",
+   "transcript":"Then when you worked with Eric Good from Area and Serge Becker, and you went to open Club USA in Times Square. How did you find that space? What was the space and how did you go about it?"},
+  {"episode":"s02e11","speaker":"Richard Boch","time":"00:17:10","context":"After James mixes up Serge with Shawn Hausman, Richard tells what Serge said about the Mudd Club basement",
+   "quote":"Serge actually, I was just talking to him the other day and he was saying that, yeah, Steve Mass, the owner of the Mudd Club, gave Eric and Shawn their start, really.",
+   "transcript":"Serge actually was just talking to him the other day and he was saying that, yeah, well, that's Steve gave Steve Mass, the owner of the Mud Club, gave Eric and Sean their start, really.",
+   "lead_in":{"time":"00:16:49","speaker":"James St. James","text":"I was shocked to see that Eric Goode and Serge Becker designed the basement before they ever had any idea of doing Area or anything - not Eric and Serge, Eric and Shawn. Eric and Shawn, okay, I'm sorry."}},
+  {"episode":"s03e06","speaker":"James St. James / Eric Goode","time":"00:07:13","context":"The Mudd Club basement installation: James asks if it was Serge; Eric says it was Shawn Hausman",
+   "quote":"James: Was that you and Serge or you and Shawn? Who was it? - Eric: That was Shawn Hausman, who went on to design all the Standard hotels around the world. My dear high school friend Shawn Hausman that I later collaborated with on Area.",
+   "transcript":"[0:07:13 James] Was that you and Serge or you and Sean? Who who was it? / [0:07:17 Eric] That was Sean Hausman who went on to design all the standard hotels around the world. My dear high school friend Sean Hausman that I later collaborated with Aria."}
+ ]
+}

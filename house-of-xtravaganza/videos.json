@@ -1,0 +1,14 @@
+{
+ "_note":"House of Xtravaganza 'On film' (28 Nov 2026). Embeds checked with YouTube oEmbed. Paris Is Burning clips on YouTube are unofficial copies of the film - left out.",
+ "videos":[
+  {"id":"8ej86oHMJ8o","title":"Welcome to the House of Xtravaganza, the most iconic house in New York's ballroom scene","channel":"In The Know","length":"5:14","embeds":true,"pick":1},
+  {"id":"TybDsSlaR0E","title":"Remembering Hector Xtravaganza, the house's founding father","channel":"Logo (The Latex Ball)","length":"3:30","embeds":true,"pick":2},
+  {"id":"BpRSk_knBec","title":"Remembering Mother Angie Xtravaganza","channel":"gran varones","length":"1:42","embeds":true,"pick":3},
+  {"id":"-YrP3Ajf6qM","title":"Angie Xtravaganza at the Xtravaganza Spring Affair Ball, Tracks, 1992","channel":"sugarchampagne","length":"1:06","embeds":true,"pick":4},
+  {"id":"5hi_c9sSbb8","title":"Voguing at a House of Xtravaganza ball, Harlem, 2001","channel":"Kinolibrary","length":"3:44","embeds":true,"pick":5,"note":"stock-footage library preview (may carry a watermark)"},
+  {"id":"z3X5Igcf4Ms","title":"Jose Xtravaganza interview","channel":"LaGuardia Film & Television","length":"2:38","embeds":true,"pick":6},
+  {"id":"rcmcuANg-sg","title":"Hector Xtravaganza walks Legendary Statement Status, Evisu Ball 2010","channel":"Ballclips4u","length":"0:51","embeds":true,"pick":7},
+  {"id":"IfSmZcH1Opo","title":"Night Fever with Luis Xtravaganza Camacho (S1E8, the whole episode)","channel":"WOWPresents","length":"59:43","embeds":true,"pick":8,"note":"our own show - WOW's upload"}
+ ],
+ "not_usable":[{"id":"wTj2yAj0DuM","title":"House of Xtravaganza Ball, Roxy, 26 Oct 2004 (Wolfgang Busch)","why":"embedding disabled (oEmbed 401)"}]
+}
