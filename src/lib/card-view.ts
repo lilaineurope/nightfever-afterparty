@@ -109,6 +109,8 @@ export type CardView = {
   nightPage: NightPageView | null;
   /** Club and event pages: every quote and mention as a box (Lisa, 28 Nov 2026), in place of "In the episodes". */
   wall: SaidBox[] | null;
+  /** Person pages: a box for every episode mention their quotes don't cover (Lisa, 28 Nov 2026), in place of "In the episodes". */
+  saidMore: SaidBox[] | null;
   /** An event's Library box: what was talked about with it, then its club venue's poster and reading list. */
   eventLib: { own: ClubLibraryView | null; venue: { slug: string; name: string; lib: ClubLibraryView } | null } | null;
   /** "Who else was there" (club pages only). */

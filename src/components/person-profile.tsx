@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
@@ -6,21 +7,24 @@ import { EntityText } from "@/components/entity-text";
 import { polaroidThumb } from "@/lib/polaroids";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { PersonProfile } from "@/data/person-profiles";
+import type { SaidBox } from "@/lib/card-view";
 import { QuoteName } from "@/components/quote-name";
 import { ProfileVideos } from "@/components/profile-videos";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
 const TILT = [-2, 1.5, -1, 2, -1.5, 1];
+/** At most nine boxes on the wall (Lisa's quote-wall rule); a More button opens the rest. */
+const SHOW = 9;
 
 /** The quote wall's columns, worked out here instead of CSS columns: Safari cut the boxes off at the top
  *  when they sat in CSS columns (Lisa, 21 Nov 2026). Quotes stay in reading order, top to bottom, column by
  *  column, split where the columns come out most even (a box counts as its text plus about 220 letters).
  *  Below lg the column wrappers are display: contents, so phones and tablets get one column in order. */
-function columnsOf<T extends { quote: string }>(said: T[], n: number): { s: T; i: number }[][] {
+function columnsOf<T extends { quote?: string | undefined; context?: string | undefined }>(said: T[], n: number): { s: T; i: number }[][] {
   const items = said.map((s, i) => ({ s, i }));
   if (n <= 1 || said.length <= n) return n <= 1 ? [items] : items.map((x) => [x]);
-  const w = said.map((s) => s.quote.length + 220);
+  const w = said.map((s) => (s.quote ?? s.context ?? "").length + 220);
   let best: number[] = [];
   let bestMax = Infinity;
   const walk = (start: number, left: number, cuts: number[]) => {
@@ -40,20 +44,28 @@ function columnsOf<T extends { quote: string }>(said: T[], n: number): { s: T; i
 
 /** Person pages (Lisa, 20 Nov 2026, Kim Hastreiter first): story, "What the guests say" wall, and their story box -
  *  the In memoriam layout for people who are still with us. Sits above the usual A–Z card sections. */
-export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; name: string; faces?: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }> }) {
+export function PersonProfileSections({ m, name, faces, more = [] }: { m: PersonProfile; name: string; faces?: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }>; more?: SaidBox[] }) {
   const first = m.first ?? name.split(" ")[0];
+  // Every episode that talks about them is a box (Lisa, 28 Nov 2026): their quotes first, then each other mention with
+  // what was said, labelled "On the show" like the club and event walls.
+  const said: { episode: string; who: string; time: string; quote?: string | undefined; context?: string | undefined; mentions?: number | undefined; onShow?: boolean }[] = [
+    ...m.said,
+    ...more.map((b) => ({ episode: b.episode, who: b.who, time: b.time, context: b.context, mentions: b.mentions, onShow: true })),
+  ];
+  const [all, setAll] = useState(false);
+  const shown = all ? said : said.slice(0, SHOW);
   return (
     <>
       <div className="pt-4 text-center">
         <p className="mx-auto max-w-2xl text-card-foreground/85"><EntityText text={m.story} self={name} /></p>
       </div>
 
-      {m.said.length > 0 && (
+      {said.length > 0 && (
         <section>
           <h2 className={`${h} text-center`}>What the guests say</h2>
-          <div className={m.said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : m.said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mx-auto mt-10 flex max-w-xl flex-col gap-12 lg:max-w-none lg:flex-row lg:items-start lg:gap-10"}>
-            {columnsOf(m.said, m.said.length > 2 ? 3 : 1).map((col, c) => (
-            <div key={c} className={m.said.length > 2 ? "contents lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:gap-12" : "contents"}>
+          <div className={said.length === 1 ? "mx-auto mt-10 grid max-w-sm gap-10" : said.length === 2 ? "mx-auto mt-10 grid max-w-3xl gap-10 sm:grid-cols-2" : "mx-auto mt-10 flex max-w-xl flex-col gap-12 lg:max-w-none lg:flex-row lg:items-start lg:gap-10"}>
+            {columnsOf(shown, said.length > 2 ? 3 : 1).map((col, c) => (
+            <div key={c} className={said.length > 2 ? "contents lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:gap-12" : "contents"}>
             {col.map(({ s, i }) => {
               const ep = episodeById(s.episode);
               const code = `S${ep.season}E${ep.episode}${ep.part ?? ""}`;
@@ -71,8 +83,19 @@ export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; na
                   <blockquote className="font-[family-name:var(--font-type)] text-[15px] leading-relaxed">
                     {/* Lisa, 5 Nov 2026: pictures must never sit on text - the first lines wrap around the guest polaroid */}
                     {pol && <span aria-hidden="true" className="float-right -mr-2 ml-2 h-11 w-14" />}
-                    {s.context && <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">{s.context}</span>}
-                    &ldquo;{s.quote}&rdquo;
+                    {s.onShow ? (
+                      <>
+                        <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">
+                          On the show{s.mentions && s.mentions > 1 ? ` · ${s.mentions} mentions` : ""}
+                        </span>
+                        <EntityText text={s.context ?? ""} self={name} />
+                      </>
+                    ) : (
+                      <>
+                        {s.context && <span className="mb-2 block font-[family-name:var(--font-mono-body)] text-[11px] uppercase leading-snug tracking-wide text-[#6b6460]">{s.context}</span>}
+                        &ldquo;{s.quote}&rdquo;
+                      </>
+                    )}
                   </blockquote>
                   <figcaption className="mt-4 flex items-end justify-between gap-2 text-xs">
                     <span className="font-semibold">
@@ -82,7 +105,7 @@ export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; na
                         {s.who === ep.guest ? code : `${code} · ${ep.guest}`}
                       </Link>
                     </span>
-                    <Timestamp episodeId={s.episode} time={s.time} />
+                    {s.time && s.time !== "On camera" && <Timestamp episodeId={s.episode} time={s.time} />}
                   </figcaption>
                 </figure>
               );
@@ -90,6 +113,14 @@ export function PersonProfileSections({ m, name, faces }: { m: PersonProfile; na
             </div>
             ))}
           </div>
+          {said.length > SHOW && (
+            // More than 9 (Xenon as the blueprint, Lisa 28 Nov 2026): a More button under the wall opens the rest as boxes.
+            <p className="mt-12 text-center">
+              <button type="button" className="map-btn" aria-expanded={all} onClick={() => setAll(!all)}>
+                {all ? "Fewer quotes \u2191" : `${said.length - SHOW} more quotes \u2193`}
+              </button>
+            </p>
+          )}
         </section>
       )}
 
