@@ -1,3 +1,4 @@
+import { NIGHT_PARTS } from "./club-parts";
 // Events on the map (Lisa, 22 Nov 2026: "add events as a category to the map"): the parties, balls, shows, nights,
 // openings and festivals named in the episodes, each pinned at the place it happened. `at` is the name of a pin in
 // src/data/locations.ts, so an event always sits on its club's or place's own pin and never gets a guessed one.
@@ -16,7 +17,7 @@ export type EventPlace = {
   area?: string;
 };
 
-export const EVENT_PLACES: EventPlace[] = [
+const HAND_PLACED: EventPlace[] = [
   // Club nights, parties and contests at the clubs
   { event: "Breakfast in Bed with Boy George", at: "Area", tip: "Then on to the Palladium" },
   { event: "A Sound of Muzak", at: "Club 57" },
@@ -400,6 +401,12 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
   { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
   { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  // S06E04 Raja
+  { event: "Ivan on The Jerry Springer Show", at: "Chicago", tip: "The show was taped in Chicago; Raja's parents watched it at home" },
+  { event: "RuPaul at Arena", at: "Arena (Los Angeles)", tip: "End of 1992, as James remembers" },
+  { event: "The runway fight at Arena", at: "Arena (Los Angeles)", tip: "During the pre-show runway, as Raja tells it" },
+  { event: "Raja's one-woman show in Puerto Vallarta", at: "Puerto Vallarta", tip: "Three months, just before the episode was made" },
+  { event: "RuPaul look-alike contest at Ripples", at: "Ripples (Long Beach)", tip: "Raja won the $150 prize and met Delta Work" },
   // S05E09 Screamin' Rachael Cain
   { event: "Police raid on a punk show at the Space Place", at: "Chicago", tip: "At the Space Place, a punk spot round the corner from the Warehouse; that night she heard Frankie Knuckles was mixing her record" },
   { event: "Michael Alig on the run", at: "Chicago", tip: "Michael turned up at Rachael's Chicago condo, she says" },
@@ -439,6 +446,13 @@ export const EVENT_PLACES: EventPlace[] = [
  * Events that never happened at one place - history, movements, tours, TV and award shows, press stories, games.
  * They stay off the map and off "Bring us home" (Lisa, 23 Nov 2026: "Take them off the list").
  */
+// Every club night, theme night and party with its own page (Lisa, 27 Nov 2026, src/data/club-parts.ts) sits on its
+// club's pin - never "Bring us home", the club is where it happened. `at` is the club's slug, which names its card.
+export const EVENT_PLACES: EventPlace[] = [
+  ...HAND_PLACED,
+  ...NIGHT_PARTS.filter((n) => !HAND_PLACED.some((p) => p.event === n.names[0])).map((n) => ({ event: n.names[0]!, at: n.club })),
+];
+
 export const NO_SINGLE_PLACE = new Set([
   "Kenny gets sober (6 August 1996)", // S06E10 - a personal turning point, not a place
   "Grand jury in the Peter Gatien case", // S05E09 - a court process, not a night out

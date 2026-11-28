@@ -22,8 +22,12 @@ export type Episode = {
   audioUrl: string;
   /** Approximate runtime as listed on Spotify */
   runtime: string;
-  /** Date this afterparty connection was published on this site (ISO) */
+  /** Sets the AFTERPARTY number order (afterpartyNumber) - the mention-chain order, which runs ahead of the calendar.
+   *  Never shown as a date: the real day is afterpartyLive. */
   afterpartyPublished: string;
+  /** The real day this AFTERPARTY went up on the site (YYYY-MM-DD, Stockholm): the day it joined main. Shown as
+   *  "On the AFTERPARTY since" and "AFTERPARTY launched" (Lisa, 28 Nov 2026: "show the actual dates"). */
+  afterpartyLive: string;
   /** Short summary written from the public episode description */
   blurb: string;
 };
@@ -41,6 +45,7 @@ const s06e01: Episode = {
       "https://anchor.fm/s/68428444/podcast/play/124554015/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-21%2Fc7dcf7aa-4b58-5bb2-8cc1-c4189e449912.mp3",
     runtime: "54 min",
     afterpartyPublished: "2026-10-10",
+    afterpartyLive: "2026-10-10",
     blurb:
       "The host finally takes the guest chair! James on growing up, moving to New York and the club years he has been documenting ever since - with Warhol and Michael Alig never far away.",
 };
@@ -59,6 +64,7 @@ const s01e01: Episode = {
       "https://traffic.megaphone.fm/APO6963798592.mp3",
     runtime: "51 min",
     afterpartyPublished: "2026-10-11",
+    afterpartyLive: "2026-10-11",
     blurb:
       "Where it all started - the very first episode! Dianne Brill, the Queen of the Night, on Warhol, Mugler, Danceteria and inventing her very own silhouette. Pure glamour.",
 };
@@ -76,6 +82,7 @@ const s01e02: Episode = {
     "https://traffic.megaphone.fm/APO5000936966.mp3",
   runtime: "1:04:35",
   afterpartyPublished: "2026-10-11T12:00",
+  afterpartyLive: "2026-10-11",
   blurb:
     "The oldest club kid in the world! Village Voice legend Michael Musto on Studio 54, outlaw parties, ACT UP, the Club Kids - and, as he tells it, the vodka cranberry waiting for him at the Limelight.",
 };
@@ -92,6 +99,7 @@ const s01e03: Episode = {
     "https://traffic.megaphone.fm/APO6468224536.mp3",
   runtime: "1:08:34",
   afterpartyPublished: "2026-10-15",
+  afterpartyLive: "2026-10-15",
   blurb:
     "Lisa E., the it girl! James's NYU partner-in-crime on their plan to conquer the clubs, lunchboxes and drooping hats, Warhol's memorial - and the New York Times story that changed her life.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLAknZ8rbAhR4",
@@ -109,6 +117,7 @@ const s02e03: Episode = {
     "https://traffic.megaphone.fm/APO2258730998.mp3",
   runtime: "1:01:34",
   afterpartyPublished: "2026-10-14",
+  afterpartyLive: "2026-10-14",
   blurb:
     "The Empress of the Night! Susanne Bartsch on running away to London, the Blitz, her SoHo stores, Savage, Bentley's and the Copa - and throwing the Love Balls that raised millions for AIDS.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLK2eT8Odqysw",
@@ -127,6 +136,7 @@ const s03e01: Episode = {
     "https://traffic.megaphone.fm/APO8384165495.mp3",
   runtime: "52 min",
   afterpartyPublished: "2026-10-13",
+  afterpartyLive: "2026-10-13",
   blurb:
     "The fashion legend herself! Patricia Field on her 8th Street store, the House of Field balls, dressing Carrie Bradshaw and Miranda Priestly - and why the world needs way more personal style.",
 };
@@ -144,6 +154,7 @@ const s04e08: Episode = {
     "https://traffic.megaphone.fm/APO8522098604.mp3",
   runtime: "1:03:03",
   afterpartyPublished: "2026-10-16",
+  afterpartyLive: "2026-10-16",
   blurb:
     "Boom! Richie Rich skates from the Ice Capades to the Style Summit, Hotel 17 and Susanne Bartsch's side - then Heatherette, with Miss Piggy front row and Paris in a studded bodysuit.",
 };
@@ -161,6 +172,7 @@ const s05e06: Episode = {
     "https://anchor.fm/s/68428444/podcast/play/105847809/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-22%2F176ceac0-a5de-b68f-2a93-568eb4cf8014.mp3",
   runtime: "47:17",
   afterpartyPublished: "2026-10-17",
+  afterpartyLive: "2026-10-16",
   blurb:
     "Christopher Makos, Warhol's perfect companion! From a Catholic boy in El Monte to Tennessee Williams's typewriter, Tony Perkins on the Riviera, a weekend with Man Ray and Andy in drag.",
 };
@@ -178,6 +190,7 @@ const s03e06: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO4562653957.mp3",
   runtime: "57:09",
   afterpartyPublished: "2026-10-18",
+  afterpartyLive: "2026-10-17",
   blurb:
     "Eric Goode, the mind behind Area! From Etch A Sketch drawings at the Mudd Club and a pig carcass at the Club With No Name to Area's ever-changing themes, MK's Dobermans, the Maritime Hotel, Tiger King and a lifelong love of tortoises.",
 };
@@ -193,6 +206,7 @@ const s01e07: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1329477005.mp3",
   runtime: "1:10:35",
   afterpartyPublished: "2026-10-18T13:40", // same day as S03E06 but published later, so it lists first
+  afterpartyLive: "2026-10-18",
   blurb:
     "Rudolf Piper, the club man behind Pravda, Danceteria, the Tunnel and Mars! From a 24-hour bunker club in Berlin and Keith Haring's black-and-white floor to Madonna's first shows, the Club Kids' basement, a Liberace party with white pianos everywhere and the clubs that followed in Paris, Miami and São Paulo.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEVw6ON78TZM",
@@ -211,6 +225,7 @@ const s06e03: Episode = {
     "https://anchor.fm/s/68428444/podcast/play/125064645/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-1%2F3e95126c-03ee-0799-ab78-ddf0993405f1.mp3",
   runtime: "1:02:00",
   afterpartyPublished: "2026-10-19",
+  afterpartyLive: "2026-10-18",
   blurb:
     "Chi Chi Valenti & Johnny Dynell, the couple who met at the Mudd Club! From Chi Chi on its door and Johnny's first DJ night there - without owning a single record - to Jackie 60's wild theme nights and Night of a Thousand Stevies, the House of Xtravaganza, Elements of Vogue and the balls coming downtown, and Click + Drag at Mother, the tightest door Chi Chi ever ran.",
 };
@@ -228,6 +243,7 @@ const s05e04: Episode = {
     "https://anchor.fm/s/68428444/podcast/play/105168938/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-7%2F14f43340-2f90-2573-508f-f0b3b161d1a2.mp3",
   runtime: "1:02:49",
   afterpartyPublished: "2026-10-20",
+  afterpartyLive: "2026-10-18",
   blurb:
     "Nick Egan, the art-school punk who sang in The Tea Set! From modelling for Vivienne Westwood and steering Bow Wow Wow for Malcolm McLaren - the See Jungle cover included - to Duck Rock and Buffalo Gals, the Stray Cats making tattoos mainstream and his first videos as MTV took off, then Marc Jacobs' grunge show and Sonic Youth's Sugar Kane, Duran Duran's Ordinary World and INXS's Kick.",
 };
@@ -244,6 +260,7 @@ const s04e10: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO2610883704.mp3",
   runtime: "1:07:52",
   afterpartyPublished: "2026-10-21",
+  afterpartyLive: "2026-10-18",
   blurb:
     "Ann Magnuson, the West Virginia girl who managed Club 57! From childhood shows in Charleston and London punk watched from a safe distance to New York, New Wave Vaudeville and a year running Club 57 for Stanley Strychacki - the Monster Movie Club, Ladies Auxiliary proms and Klaus Nomi singing opera on a snow mound - then the Pyramid and Danceteria, Pulsallama, Bongwater and Vulcan Death Grip, The Hunger with Bowie, Desperately Seeking Susan, Making Mr. Right, Anything But Love, Ghost Cat and her own suRURALism.",
 };
@@ -259,6 +276,7 @@ const s02e08: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO9383473018.mp3",
   runtime: "1:02:35",
   afterpartyPublished: "2026-10-22",
+  afterpartyLive: "2026-10-22",
   blurb:
     "Michelangelo Signorile, from gossip-column planter to ACT UP and OutWeek! Mike Hall Associates and the columns of Liz Smith and Suzy, the Gaultier lookalike contest at the Palladium, being turned away from The World by James, Suzygate, a first protest at Cardinal Ratzinger's speech, the Malcolm Forbes cover and the birth of outing.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLBdv5CNDx8Wg",
@@ -276,6 +294,7 @@ const s05e03: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/104950113/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-2%2F7ef0eb79-bcc9-93de-3ac3-393c8f20b595.mp3",
   runtime: "1:06:45",
   afterpartyPublished: "2026-10-22T13:00",
+  afterpartyLive: "2026-10-22",
   blurb:
     "Amanda Lepore, original Club Kid, LaChapelle muse and Doll Parts author! A fall on the stairs at The Building, the glitter-rock crowd in New Jersey, the Cave Canem opening, go-go dancing in the cage at Disco 2000, the Club Kids on The Joan Rivers Show, a Beverly Hillbillies barn party for Donna Douglas and diamonds glued under her nose.",
 };
@@ -292,6 +311,7 @@ const s06e08: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/127047586/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-7%2Fbe2eabc1-b2bd-ef95-c501-74590c2e28b6.mp3",
   runtime: "1:01:07",
   afterpartyPublished: "2026-10-23",
+  afterpartyLive: "2026-10-23",
   blurb:
     "William Norwich, the Daily News uptown society columnist of the go-go 80s! Uptown versus Downtown with Dinah Prince, Suzy and the Cholly Knickerbockers, Brooke Astor's emeralds, Jayne Wrightsman's last interview, Blaine Trump's AIDS fundraising, Anna Wintour during the newspaper strike - and James escorted out of an East Hampton party.",
 };
@@ -307,6 +327,7 @@ const s02e06: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO3849520172.mp3",
   runtime: "1:07:09",
   afterpartyPublished: "2026-10-24",
+  afterpartyLive: "2026-10-23",
   blurb:
     "Michael Schmidt, the chain-mail man! Meeting James at the Gaiety, Annie Flanders walking him into Area, a dress in a SoHo window that brought Cher calling, Tina Turner's crystal dress, Debbie Harry's razor-blade gown, a Palladium room with Iggy Pop in Braille, Squeezebox at Don Hill's - and Dita Von Teese in 3D print.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLaWjcrYbPf7Y",
@@ -323,6 +344,7 @@ const s01e04: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO4213256955.mp3",
   runtime: "58:57",
   afterpartyPublished: "2026-10-25",
+  afterpartyLive: "2026-10-23",
   blurb:
     "Peter Gatien, the Club King! Rush in Cornwall, sharks under the dance floor in Atlanta, an old church that became the Limelight, Whitney Houston singing, Disco 2000, Club USA's slide and the Tunnel's hip-hop Sundays - and, as Peter tells it, Giuliani's war on his clubs.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLXKM8jtNUvYs",
@@ -339,6 +361,7 @@ const s02e04: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1681659641.mp3",
   runtime: "1:07:02",
   afterpartyPublished: "2026-10-26",
+  afterpartyLive: "2026-10-24",
   blurb:
     "Nikki Haskell, the queen of the disco nap! The Daisy on Rodeo Drive, Le Club, a broker by day and dancing every night, Studio 54's opening night, The Nikki Haskell Show, Imelda Marcos in Manila - and the tapes nobody else has.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEN9ytk00s2o",
@@ -356,6 +379,7 @@ const s06e07: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/126574237/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-30%2F97e3c042-582e-f931-d087-898fab1ec538.mp3",
   runtime: "1:05:05",
   afterpartyPublished: "2026-10-27",
+  afterpartyLive: "2026-10-24",
   blurb:
     "Sally Randall, the face at the Palladium door! Opening night as the crowd rolled under the gates, Napoleon hats and long wigs, SVA with Keith and Kenny, a lip-sync Jesus Christ Superstar at Danceteria, the club crowd on Oprah - and why she turned down Letterman.",
 };
@@ -371,6 +395,7 @@ const s01e10: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO6186863452.mp3",
   runtime: "1:10:36",
   afterpartyPublished: "2026-10-28",
+  afterpartyLive: "2026-10-24",
   blurb:
     "Joey Arias, not a queen but a goddess! Fiorucci's star stylist, Klaus Nomi's soul brother, Bowie on Saturday Night Live, Club 57, the Andy and Edie show at Danceteria, a movie date with Warhol, Billie Holiday at the Limelight and Bar d'O.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLHwtitorQnoQ",
@@ -388,6 +413,7 @@ const s03e08: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO8489230682.mp3",
   runtime: "1:06:53",
   afterpartyPublished: "2026-10-29",
+  afterpartyLive: "2026-10-24",
   blurb:
     "Larry Tee, superstar DJ! Up from Atlanta with RuPaul and Lahoma van Zandt, Celebrity Club in the Tunnel basement, Nelson Sullivan's townhouse, co-writing 'Supermodel', Liza dancing in his booth at Love Machine, naming Electroclash in Williamsburg - and Zuzii in London and Berlin.",
 };
@@ -404,6 +430,7 @@ const s04e04: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO2836341979.mp3",
   runtime: "1:04:50",
   afterpartyPublished: "2026-10-30",
+  afterpartyLive: "2026-10-24",
   blurb:
     "Zaldy, from the Tunnel basement to three Emmys! Dressing Ru for decades, Miss Boy Bar, twin looks with Mathu Andersen, the alien reveal that won the Love Ball, walking for Mugler, the Levi's taxi ad - and Michael Jackson's loafers in a Ziploc.",
 };
@@ -420,6 +447,7 @@ const s02e01: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCIbesoI82iQ",
   runtime: "1:01:04",
   afterpartyPublished: "2026-10-31",
+  afterpartyLive: "2026-10-27",
   blurb:
     "Michelle Visage, from New Jersey teen clubs to Drag Race! A fake ID from her mother, voguing at the Underground and on the piers with the House of Magnifique, the Love Ball, the Seduction audition, meeting RuPaul at the Copa - and co-hosting The RuPaul Show.",
 };
@@ -436,6 +464,7 @@ const s01e06: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLYXcNI2FQ3e0",
   runtime: "54:12",
   afterpartyPublished: "2026-11-01",
+  afterpartyLive: "2026-10-27",
   blurb:
     "Waltpaper, from a punk Mohawk in Norfolk to the Limelight stage! Wigstock 1991, an art studio in the attic of The Building, the club kid houses, Michael Alig's mentoring, drag queens versus club kids, the House of Field - and the 90s turning darker.",
 };
@@ -452,6 +481,7 @@ const s02e07: Episode = {
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLJLnyR5VUQWY",
   runtime: "52:35",
   afterpartyPublished: "2026-11-02",
+  afterpartyLive: "2026-10-28",
   blurb:
     "Jenny Talia, club kid icon and Queen of Manhattan! Her goodbye to Michael Alig, sneaking into The Building at 15, Phil Donahue in a gimp mask, Gaultier and Steven Meisel's Calvin Klein ad, the club kids in Paris with Gloria Gaynor - and from the club to the Lower East Side Girls Club.",
 };
@@ -468,6 +498,7 @@ const s02e05: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1744907754.mp3",
   runtime: "1:17:43",
   afterpartyPublished: "2026-11-03",
+  afterpartyLive: "2026-10-29",
   blurb:
     "Connie Fleming, Boy Bar beauty and Mugler supermodel! The D train over the Williamsburg Bridge, Madonna in the Funhouse DJ booth, a Mr. Blackwell dress at the Antique Boutique, Boy Bar from fawn to star, International Chrysis's lessons, Tracey Africa, Mugler's red cowgirl look - and New York's toughest door.",
 };
@@ -484,6 +515,7 @@ const s03e10: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO5904367636.mp3",
   runtime: "48:33",
   afterpartyPublished: "2026-11-04",
+  afterpartyLive: "2026-10-29",
   blurb:
     "Miss Guy, Toilet Boys singer and Squeezebox DJ! Debbie Harry and a paper KISS jacket, a Malcolm McLaren party, Boy Bar on the first night in New York, Matthew Kasten's shows from Doris Day to Cherry Bomb, a day job at Pat Field's - and Squeezebox at Don Hill's.",
 };
@@ -501,6 +533,7 @@ const s05e01: Episode = {
   runtime: "50:13",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLcYRxSxlgKxA",
   afterpartyPublished: "2026-11-05",
+  afterpartyLive: "2026-11-01",
   blurb:
     "Nell Campbell, Rocky Horror's Columbia and the face of Nell's! Tap-dancing on a Knightsbridge cafe table, Freddie Mercury across the stall at Kensington Market, Do the Swim in one take - and a nightclub on 14th Street she said yes to on the spot.",
 };
@@ -517,6 +550,7 @@ const s02e11: Episode = {
   runtime: "1:05:09",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLd7ISLMKbqXI",
   afterpartyPublished: "2026-11-06",
+  afterpartyLive: "2026-11-02",
   blurb:
     "Richard Boch, the Mudd Club's doorman! Bartending at the Ballroom on West Broadway, walking home past 77 White Street, Steve Mass calling \"no beards tonight\", Basquiat still SAMO and spray-painting the bathroom, Anita Sarko hired on the spot - and the Mudd Club in every club that came after.",
 };
@@ -532,6 +566,7 @@ const s01e08: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO2651060663.mp3",
   runtime: "1:00:12",
   afterpartyPublished: "2026-11-07",
+  afterpartyLive: "2026-11-03",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLah-_tKqIyok",
   blurb:
     "Luis \"Xtravaganza\" Camacho, voguer and Madonna's Vogue dancer! Playing red light, green light, vogue on the Lincoln Center steps, walking his first ball in drag to get into the House of Xtravaganza, Mother Angie leading with her chestbone, the Sound Factory as home - and why Madonna doesn't owe him a thing.",
@@ -548,6 +583,7 @@ const s03e04: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO7505116916.mp3",
   runtime: "1:12:24",
   afterpartyPublished: "2026-11-08",
+  afterpartyLive: "2026-11-03",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCwFgYVg0fEY",
   blurb:
     "Man Parrish, the electro pioneer behind Hip Hop, Be Bop! Sneaking into the Continental Baths to see Bette Midler, getting his name from Andy Warhol, a trapeze over Studio 54 with Madonna waiting backstage, the British papers calling him her lover - and 15 years of Sunday nights at the Cock.",
@@ -564,6 +600,7 @@ const s04e07: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1582386230.mp3",
   runtime: "1:03:04",
   afterpartyPublished: "2026-11-09",
+  afterpartyLive: "2026-11-04",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLUMsrhG_L7lQ",
   blurb:
     "Trey Speegle, the artist behind 80s Polaroids: art director at 19 in Houston, Vogue at 21, Straight to Hell at the Pyramid with John Waters and Quentin Crisp, Bad Boy nights at Danceteria with go-go boys from the Gaiety - and the story behind the Andy Warhol memorial poster.",
@@ -581,6 +618,7 @@ const s05e10: Episode = {
   runtime: "52:15",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLMGLT6ERsSwU",
   afterpartyPublished: "2026-11-10",
+  afterpartyLive: "2026-11-04",
   blurb:
     "Tish & Snooky, the Bronx sisters behind Manic Panic: backing vocals in the first Blondie, the Sic F*cks in nuns' habits, America's first punk boutique on St. Marks Place in 1977, hair dye smuggled home from England, the Mudd Club's opening-night fight, Fred Rothbell-Mista's New Jersey Nightingales - and a brand they built from $250 each.",
 };
@@ -597,6 +635,7 @@ const s04e09: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO2105387815.mp3",
   runtime: "1:16:41",
   afterpartyPublished: "2026-11-11",
+  afterpartyLive: "2026-11-05",
   blurb:
     "Susan Seidelman, the director who put the East Village on screen: Smithereens made with her grandmother's $12,000 and moved into the Cannes competition, Plato's Retreat out of curiosity, towels at the Continental Baths, casting Madonna in Desperately Seeking Susan and Into the Groove arriving as temp music at Danceteria, Making Mr. Right with Ann Magnuson, She-Devil with Meryl Streep and Roseanne, the Sex and the City pilot and her memoir Desperately Seeking Something.",
 };
@@ -612,6 +651,7 @@ const s01e05: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO9735126718.mp3",
   runtime: "57:54",
   afterpartyPublished: "2026-11-12",
+  afterpartyLive: "2026-11-06",
   blurb:
     "Ernie Glam, original Club Kid and writer: workshopping his look in Philadelphia clubs, an LED smiley-face hat that won Michael Alig over, Clara the Carefree Chicken at Disco 2000, Berlin the week the Wall fell, and, as Ernie tells it, forgiving Michael and the years that followed.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLSkpBNoDn7W0",
@@ -628,6 +668,7 @@ const s06e06: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/126166153/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-22%2F7d494bce-7a28-8125-d5c3-57c537cbe9cf.mp3",
   runtime: "1:10:04",
   afterpartyPublished: "2026-11-13",
+  afterpartyLive: "2026-11-07",
   blurb:
     "Lincoln Palsgrove IV, doorman and party promoter: the Palladium opening at 15, the World's door with James, introducing RuPaul to Michelle Visage at Red Zone, the Roxy's Saturday crowds, and judging a crowd by its shoes.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLP8VmOeR-JGI",
@@ -644,6 +685,7 @@ const s02e09: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO2633515564.mp3",
   runtime: "1:06:44",
   afterpartyPublished: "2026-11-14",
+  afterpartyLive: "2026-11-08",
   blurb:
     "Linda Simpson, drag queen, zine maker and the scene's accidental historian: the Pyramid's punk drag, a name from Tabboo!, the zine My Comrade, Channel 69 on Wednesdays, bombing at Wigstock, and her snapshots that became The Drag Explosion.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCPc4wjvZ9xw",
@@ -660,6 +702,7 @@ const s03e03: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO2960835454.mp3",
   runtime: "52:18",
   afterpartyPublished: "2026-11-15",
+  afterpartyLive: "2026-11-09",
   blurb:
     "Kevin Aviance, drag performer and dance-music star of the House of Aviance: Mother Juan, DC and South Beach, the Sound Factory's runway, Madonna's Secret video, Cunty and Din Da Da, surviving the 2006 attack, and hearing himself on Beyoncé's Renaissance.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLFvGkMrif8fE",
@@ -676,6 +719,7 @@ const s04e03: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO6276956588.mp3",
   runtime: "1:13:58",
   afterpartyPublished: "2026-11-16",
+  afterpartyLive: "2026-11-10",
   blurb:
     "Bebe Buell, model, Playmate, singer and rock memoirist: not a groupie, Max's back room, tea with Dalí and Capote, Bowie, Iggy and Jimmy Page, her 21st birthday at John Lennon's, raising Liv, and Squeezebox putting her back on stage.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCwE6cwS0PK0",
@@ -692,6 +736,7 @@ const s03e02: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO4556749622.mp3",
   runtime: "49:06",
   afterpartyPublished: "2026-11-17",
+  afterpartyLive: "2026-11-11",
   blurb:
     "Martha Wash, the voice of the Weather Girls and dance music: auditioning for Sylvester, the Palms on Polk Street, nearly turning down It's Raining Men, finding her voice in Black Box's video, the lawsuits that changed credits, and Carry On.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLbAeuvl9HuOc",
@@ -708,6 +753,7 @@ const s02e02: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO9045365151.mp3",
   runtime: "1:09:43",
   afterpartyPublished: "2026-11-18",
+  afterpartyLive: "2026-11-12",
   blurb:
     "Jayne County on wrecking in Atlanta, crash pads and Leee Black Childers' flat, Warhol's Pork, DJing at Max's, Stonewall, touring with the Police and the Bowie years.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLCXMHe455ALQ",
@@ -724,6 +770,7 @@ const s03e05: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO9776508552.mp3",
   runtime: "1:17:10",
   afterpartyPublished: "2026-11-19",
+  afterpartyLive: "2026-11-13",
   blurb:
     "Cherry Vanilla on the Copa, Madison Avenue acid trips, DJing at Aux Puces, Warhol's Pork in London, Bowie's MainMan years and punk with Sting and Stewart Copeland.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLJDtj-nrvsMM",
@@ -740,6 +787,7 @@ const s06e02: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/124776578/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-26%2Fe702b493-f955-44d1-c990-cbe7776d4d83.mp3",
   runtime: "54:12",
   afterpartyPublished: "2026-11-20",
+  afterpartyLive: "2026-11-14",
   blurb:
     "Christina Visca on the Limelight's Library, the Palladium door, Bassline and the Sound Factory with Junior Vasquez, Grace Jones's Halloween '89 and managing Club USA.",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLB65aYXWXX0s",
@@ -756,6 +804,7 @@ const s06e05: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/125834658/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-16%2F3ef3b694-3a17-5250-8c9e-d14a8dd174d7.mp3",
   runtime: "59:01",
   afterpartyPublished: "2026-11-21",
+  afterpartyLive: "2026-11-14",
   blurb:
     "Nora Burns on her 1980 diaries, Studio 54 by limo, David Burns, strippergrams, her cable show Candied Camera and the disco musical The Village!",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLULpb2lCNCnU",
@@ -773,6 +822,7 @@ const s05e07a: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/106220603/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-30%2F21030ee8-1f4b-8fae-0adb-1cbe811e542e.mp3",
   runtime: "1:05:14",
   afterpartyPublished: "2026-11-22",
+  afterpartyLive: "2026-11-16",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLLz4yt8gO8w4",
   blurb:
     "Christopher Comp on goth Pennsylvania, the club kids on Geraldo, living with James at Riverbank West, planning Limelight parties and his crucifix night at the Palladium",
@@ -790,6 +840,7 @@ const s05e07b: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/106220603/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-30%2F21030ee8-1f4b-8fae-0adb-1cbe811e542e.mp3",
   runtime: "1:05:14",
   afterpartyPublished: "2026-11-23",
+  afterpartyLive: "2026-11-16",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLOFl95PxmhZA",
   blurb:
     "Really Denise on getting her name at the Tunnel, the petting zoo party with Jenny Go-Getter, the McDonald's outlaw party and Bainbridge Island's mailboxes",
@@ -806,6 +857,7 @@ const s01e09: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO3572293666.mp3",
   runtime: "1:04:38",
   afterpartyPublished: "2026-11-24",
+  afterpartyLive: "2026-11-16",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLC3Hyv3Ji7MA",
   blurb:
     "Moby on his abandoned-factory squat, his first gig at Mars, Michael Alig's L train party, the Friday record-shop scrum, Go and his two memoirs",
@@ -822,6 +874,7 @@ const s04e02: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO6075025647.mp3",
   runtime: "1:11:55",
   afterpartyPublished: "2026-11-25",
+  afterpartyLive: "2026-11-17",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLdK6xhYa8aJI",
   blurb:
     "Mickey Boardman on going from Parsons drop-out to Paper's Mr. Mickey, Wigstock, Michael Musto's bad movie club, Break the Internet with Kim Kardashian and getting sober",
@@ -838,6 +891,7 @@ const s04e06: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO8016283024.mp3",
   runtime: "51:10",
   afterpartyPublished: "2026-11-26",
+  afterpartyLive: "2026-11-18",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLPEUr_i2Tp6M",
   blurb:
     "Lauren Ezersky on Behind the Velvet Ropes, interviewing McQueen in bed, opening night at Studio 54, Le Jardin and why your coat is your car",
@@ -854,6 +908,7 @@ const s04e05: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO4510664262.mp3",
   runtime: "49:18",
   afterpartyPublished: "2026-11-27",
+  afterpartyLive: "2026-11-18",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLY-Yh2JSGKho",
   blurb:
     "Dustin Pittman on Max's back room, meeting Andy at the Factory, The Sterile Cuckoo with Liza and half a century of shooting New York after dark",
@@ -870,6 +925,7 @@ const s02e10: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO1115742838.mp3",
   runtime: "1:14:41",
   afterpartyPublished: "2026-11-28",
+  afterpartyLive: "2026-11-18",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLQ-qB_NRzTlc",
   blurb:
     "Brian Belovitch on the Gilded Grape, Fellini's pink carpet, Antonio Lopez, army-wife days in Germany and the life of Tish Gervais",
@@ -886,6 +942,7 @@ const s03e07: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO7709111503.mp3",
   runtime: "44:20",
   afterpartyPublished: "2026-11-29",
+  afterpartyLive: "2026-11-20",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLJ-4xOUn7NLw",
   blurb:
     "Domonique Echeverria on San Francisco's drag mothers, hosting New York in the twenty-tens, surviving and healing, and her site Universal Mother",
@@ -902,6 +959,7 @@ const s03e09: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO6796663616.mp3",
   runtime: "57:45",
   afterpartyPublished: "2026-11-30",
+  afterpartyLive: "2026-11-21",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEik953ZYoGg",
   blurb:
     "Cat Marnell on post-9/11 clubs, Condé Nast beauty closets, xoJane, How to Murder Your Life and growing up on the Edie book",
@@ -918,6 +976,7 @@ const s04e01: Episode = {
   audioUrl: "https://traffic.megaphone.fm/APO8462312118.mp3",
   runtime: "1:04:35",
   afterpartyPublished: "2026-12-01",
+  afterpartyLive: "2026-11-22",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLEp4NTDOtCRU",
   blurb:
     "Daphne Guinness on an Irish Guinness childhood, summers with Dalí in Cadaqués, Isabella Blow and McQueen, couture as philosophy and making records with Tony Visconti",
@@ -934,6 +993,7 @@ const s04e11: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/88709230/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-6-1%2Fb7f05a16-3027-40a3-668f-9673cb26839b.mp3",
   runtime: "1:06:10",
   afterpartyPublished: "2026-12-02",
+  afterpartyLive: "2026-11-23",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLbSM0YiYGwiQ",
   blurb:
     "Elyssa Maxx Goodman on Julian Eltinge, Bert Savoy, the Pansy Craze, Harlem's drag balls and the 1845 masquerade law",
@@ -950,6 +1010,7 @@ const s06e09: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/127425320/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-13%2F988b3873-8827-85b5-ceb5-a7c2ebde22ad.mp3",
   runtime: "52:50",
   afterpartyPublished: "2026-12-03",
+  afterpartyLive: "2026-11-23",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLG01xDlLqgmI",
   blurb:
     "Desi Santiago on becoming Desi Monster, the club kid apartments, Leigh Bowery at his 20th birthday, the band Boob and building worlds for Zaldy, Bruce LaBruce and Miami",
@@ -966,6 +1027,7 @@ const s05e02: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/104592064/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-5-24%2Fe7ea3b5f-6a7e-dcd7-c4e3-2403c2cd88ac.mp3",
   runtime: "57:53",
   afterpartyPublished: "2026-12-04",
+  afterpartyLive: "2026-11-25",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLdk0qgdtXJ6w",
   blurb:
     "Jodie Harsh on sneaking into G-A-Y at 15, Nag Nag Nag and the electroclash years, Amy Winehouse in Camden, getting sober and writing You Had to Be There",
@@ -982,6 +1044,7 @@ const s05e05: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/105594186/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-6-16%2Fc4eacfb3-178a-8f74-35e4-6f0b30ae29db.mp3",
   runtime: "1:20:37",
   afterpartyPublished: "2026-12-05",
+  afterpartyLive: "2026-11-25",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLIjoJ9kO1nj8",
   blurb:
     "Brad Gooch on modelling in the late 70s, meeting Mapplethorpe and Warhol, and his Keith Haring biography Radiant: SVA, Club 57, the subway chalk drawings, the Pop Shop and ACT UP",
@@ -999,6 +1062,7 @@ const s05e08: Episode = {
   runtime: "47:13",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLPt3dRP7iIeI",
   afterpartyPublished: "2026-12-06",
+  afterpartyLive: "2026-11-26",
   blurb:
     "April Palmieri remembers her close friend John Sex: Club 57 and the Pyramid, singing as one of his Bodacious Ta Ta's with Wendy Wild, the sky-high hair and Delilah the snake - and her own no wave band Pulsallama, which opened for the Clash.",
 };
@@ -1015,6 +1079,7 @@ const s06e10: Episode = {
   runtime: "44:28",
   youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLMcpAQQ0DjNE",
   afterpartyPublished: "2026-12-07",
+  afterpartyLive: "2026-11-27",
   blurb:
     "Lil' Kenny on the second wave of Club Kids, Patricia Field's store, Björk and Jenny Talia, his French fries and pizza looks - and the costumes he made for Party Monster.",
 };
@@ -1031,11 +1096,29 @@ const s05e09: Episode = {
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/106829550/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-13%2Fe403fc78-b10d-ed63-c94c-55215e1ba515.mp3",
   runtime: "54:49",
   afterpartyPublished: "2026-12-08",
+  afterpartyLive: "2026-11-27",
   blurb:
     "Screamin' Rachael Cain, the Queen of House, on singing 'Fantasy', Chicago's punk underground and Frankie Knuckles, how Trax got its name, the World and four TV shows at once - and her Club Kid years with Michael and Angel.",
 };
 
-export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01, s04e11, s06e09, s05e02, s05e05, s05e08, s06e10, s05e09].sort((a, b) =>
+const s06e04: Episode = {
+  id: "s06e04",
+  season: 6,
+  episode: 4,
+  guest: "Raja",
+  released: "2026-09-09",
+  watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-604",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLVW4aQADVN8M",
+  listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
+  audioUrl: "https://anchor.fm/s/68428444/podcast/play/125479296/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-9%2F5381a37a-79b3-0e94-71a0-e4ecdfacad64.mp3",
+  runtime: "1:03:52",
+  afterpartyPublished: "2026-12-09",
+  afterpartyLive: "2026-11-28",
+  blurb:
+    "Raja, Drag Race season 3 winner and make-up artist, on LA in the 90s: first nights at Arena, coming out by way of The Jerry Springer Show, Peanuts, MAC and Ru, Mathu Andersen and Top Model - and turning Oz into the hottest show in Orange County.",
+};
+
+export const episodes: Episode[] = [s01e01, s01e02, s01e03, s01e07, s02e03, s02e08, s03e01, s03e06, s04e08, s04e10, s05e03, s05e04, s05e06, s06e01, s06e03, s06e08, s02e06, s01e04, s02e04, s06e07, s01e10, s03e08, s04e04, s02e01, s01e06, s02e07, s02e05, s03e10, s05e01, s02e11, s01e08, s03e04, s04e07, s05e10, s04e09, s01e05, s06e06, s02e09, s03e03, s04e03, s03e02, s02e02, s03e05, s06e02, s06e05, s05e07a, s05e07b, s01e09, s04e02, s04e06, s04e05, s02e10, s03e07, s03e09, s04e01, s04e11, s06e09, s05e02, s05e05, s05e08, s06e10, s05e09, s06e04].sort((a, b) =>
   a.season - b.season || a.episode - b.episode,
 );
 
@@ -1083,7 +1166,7 @@ export const episodeById = (id: string): Episode =>
 
 export function episodePath(
   id: Episode["id"],
-): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07a" | "/episodes/s05e07b" | "/episodes/s01e09" | "/episodes/s04e02" | "/episodes/s04e06" | "/episodes/s04e05" | "/episodes/s02e10" | "/episodes/s03e07" | "/episodes/s03e09" | "/episodes/s04e01" | "/episodes/s04e11" | "/episodes/s06e09" | "/episodes/s05e02" | "/episodes/s05e05" | "/episodes/s05e08" | "/episodes/s06e10" | "/episodes/s05e09" {
+): "/episodes/s06e01" | "/episodes/s01e01" | "/episodes/s01e02" | "/episodes/s01e03" | "/episodes/s02e03" | "/episodes/s03e01" | "/episodes/s03e06" | "/episodes/s04e08" | "/episodes/s05e06" | "/episodes/s01e07" | "/episodes/s06e03" | "/episodes/s05e04" | "/episodes/s04e10" | "/episodes/s02e08" | "/episodes/s05e03" | "/episodes/s06e08" | "/episodes/s02e06" | "/episodes/s01e04" | "/episodes/s02e04" | "/episodes/s06e07" | "/episodes/s01e10" | "/episodes/s03e08" | "/episodes/s04e04" | "/episodes/s02e01" | "/episodes/s01e06" | "/episodes/s02e07" | "/episodes/s02e05" | "/episodes/s03e10" | "/episodes/s05e01" | "/episodes/s02e11" | "/episodes/s01e08" | "/episodes/s03e04" | "/episodes/s04e07" | "/episodes/s05e10" | "/episodes/s04e09" | "/episodes/s01e05" | "/episodes/s06e06" | "/episodes/s02e09" | "/episodes/s03e03" | "/episodes/s04e03" | "/episodes/s03e02" | "/episodes/s02e02" | "/episodes/s03e05" | "/episodes/s06e02" | "/episodes/s06e05" | "/episodes/s05e07a" | "/episodes/s05e07b" | "/episodes/s01e09" | "/episodes/s04e02" | "/episodes/s04e06" | "/episodes/s04e05" | "/episodes/s02e10" | "/episodes/s03e07" | "/episodes/s03e09" | "/episodes/s04e01" | "/episodes/s04e11" | "/episodes/s06e09" | "/episodes/s05e02" | "/episodes/s05e05" | "/episodes/s05e08" | "/episodes/s06e10" | "/episodes/s05e09" | "/episodes/s06e04" {
   switch (id) {
     case "s01e01":
       return "/episodes/s01e01";
@@ -1203,6 +1286,8 @@ export function episodePath(
       return "/episodes/s06e10";
     case "s05e09":
       return "/episodes/s05e09";
+    case "s06e04":
+      return "/episodes/s06e04";
     case "s05e07a":
       return "/episodes/s05e07a";
     case "s05e07b":

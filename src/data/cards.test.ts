@@ -9,7 +9,7 @@ import { episodeStats } from "./episode-stats";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests } from "./guests";
 import { namedOn, namedOnCount } from "../lib/name-links";
-import { CLUB_PARTS, PART_NAMES } from "./club-parts";
+import { CLUB_PARTS, INTRO_NAMES, NIGHT_PARTS, PART_NAMES } from "./club-parts";
 
 const CLUB_PART_NAMES = new Set(PART_NAMES.map(([n]) => n));
 
@@ -31,6 +31,7 @@ const DISTINCT = new Set(
     ["baby-rue", "boy-bar"], ["bailey", "bebe-buell"], ["jerry-lee-lewis", "jerry-lewis"], ["bern", "brian-eno"], ["dean-johnson", "don-johnson"], ["dany-johnson", "dean-johnson"], ["dany-johnson", "don-johnson"],
     ["leo", "lila"], ["baby", "boob"], ["devo", "diva"], ["lee", "leo"], ["lee", "lila"], ["maripol", "maury-paul"], ["mk", "mokai"], ["nice", "nico"], ["paper", "pierre"], ["paris", "piers"], ["rome", "romeo"], ["park", "pork"],
     ["valentino", "viva-valentino"], ["soho", "sushi"], ["dean-martin", "dina-martina"], ["gay-usa", "go-go-s"], ["maui", "miami"], ["rebel-soul", "robbie-leslie"], ["tatou", "tea-at-toy"], ["astro-earl", "australia"], ["hawaii", "howie"], ["carlyle", "carol"],
+    ["biloxi", "bolex"], ["bitter-end", "bobby-trendy"], ["denny-s", "donnas"], ["rage", "reggae"], // S06E04
     ["jay-z", "jazz"], ["nas", "nasa"], ["paper", "peru"], ["peru", "pierre"],
     ["d-v", "devo"], ["d-v", "diva"], // Diana Vreeland's memoir (src/data/written-by.ts)
     ["bar-one", "bern"], ["bar-one", "brian-eno"], ["east-village", "east-village-eye"], ["daisy", "dose"], ["michael-jackson", "michael-jackson-one"], ["raven", "raven-o"], ["green-day", "grind"], ["tabboo", "taboo"], ["ran", "reno"], ["new-wave", "no-wave"], ["raybeats", "robots"], ["cars", "crass"], ["cock", "cookie"], ["tabboo", "tubi"], ["taboo", "tubi"],
@@ -70,11 +71,20 @@ describe("cards: no doubles", () => {
     assert.deepEqual(mixed, []);
   });
 
-  test("every club theme night and party in club-parts.ts is a real episode row on its club's card", () => {
-    for (const [name, club] of PART_NAMES) {
+  test("every club night and party in club-parts.ts has its own page, made of real episode rows", () => {
+    for (const [name, club] of INTRO_NAMES) {
       const e = entityFor(name);
       assert.equal(e?.slug, club, `${name} should fold into ${club}`);
       assert.ok(e?.refs.some((r) => r.name === name), `${name}: no episode row has this exact name`);
+    }
+    for (const n of NIGHT_PARTS) {
+      const home = entityFor(n.names[0]!);
+      assert.ok(home && home.slug !== n.club, `${n.club} / ${n.title}: needs its own page`);
+      for (const name of n.names) {
+        const e = entityFor(name);
+        assert.equal(e?.slug, home?.slug, `${name} should open ${home?.slug}`);
+        assert.ok(e?.refs.some((r) => r.name === name), `${name}: no episode row has this exact name`);
+      }
     }
     for (const [club, p] of Object.entries(CLUB_PARTS)) {
       for (const look of p.looks ?? []) assert.ok(entityFor(look) && entityFor(look)?.slug !== club, `${club} look "${look}" needs its own card`);

@@ -4,8 +4,28 @@ import type { Memoriam } from "@/data/memoriam";
 import type { ClubProfile } from "@/data/club-profiles";
 import type { ClubNight } from "@/data/club-nights";
 
+/** A club night, theme night or party's own page (Lisa, 27 Nov 2026, all 78): the club it belongs to, what was played,
+ *  filmed and said there, and the club's other nights. */
+export type NightPageView = {
+  club: string;
+  clubName: string;
+  address: string;
+  years: string;
+  kind: string;
+  title: string;
+  /** Every moment of the night as a box with the guest's polaroid: their own words where we have them, otherwise what
+   *  was said (Lisa, 27 Nov 2026: quote boxes instead of "In the episodes"). */
+  said: SaidBox[];
+  /** The club's poster and reading list, at the foot of the night's page. */
+  lib: ClubLibraryView | null;
+  songs: { title: string; artist: string; year: number; why: string }[];
+  films: { id: string; title: string }[];
+  playlist?: string | undefined;
+  others: { slug: string; title: string; kind: string; design: CoverDesign }[];
+};
+
 export type ClubPartsView = {
-  groups: { heading: string; intro: Ref[]; parts: { title: string; refs: Ref[] }[] }[];
+  groups: { heading: string; intro: Ref[]; parts: { title: string; slug: string; refs: Ref[]; design: CoverDesign }[] }[];
   looks: string[];
   /** Row names shown in the groups, so "In the episodes" leaves them out */
   names: string[];
@@ -50,8 +70,13 @@ export type ClubLibraryView = {
     madeBy: { role: string; name: string }[];
     onIt: string[];
   }[];
-  reads: { slug: string; name: string; kind: string; design: CoverDesign; episode: string; code: string; guest: string; time: string; context: string }[];
+  reads: { slug: string; name: string; kind: string; design: CoverDesign; episode: string; code: string; guest: string; time: string; context: string;
+    /** A diary's whole entry about the club, as told on the show (Lisa, 28 Nov 2026: "show the whole diary entry"). */
+    entry?: { time: string; title: string; lines: { who: string; text: string; read?: boolean }[] } | undefined }[];
 };
+
+/** One box on a "What the guests say" wall (club, event and night pages): a quote, or a mention with what was said. */
+export type SaidBox = { episode: string; code: string; who: string; time: string; quote?: string | undefined; label?: string | undefined; context?: string | undefined; mentions?: number | undefined };
 
 export type CardView = {
   slug: string;
@@ -68,9 +93,11 @@ export type CardView = {
   /** Club, In memoriam, person and diary pages whose story names this card (two-way story links, Lisa 27 Nov 2026). */
   onPages: { slug: string; name: string; kind: string }[];
   /** Pictures for the names in the story box (rooms, lifted up, stage, also): name -> polaroid or cover. */
-  faces: Record<string, { src: string; framed?: boolean }>;
+  faces: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }>;
   /** "In the same rooms" */
   related: { slug: string; name: string }[];
+  /** The one Connections box (28 Nov 2026): named / onPages / inGuestStories / related merged, each name once, grouped. */
+  connections: { heading: string; items: { slug: string; name: string; sub?: string }[] }[];
   /** The card's own Jukebox entry (songs, artists, stage bands get a player). */
   music: { name: string; shelf: string; spotify?: string | undefined } | null;
   night: ClubNight | null;
@@ -78,6 +105,14 @@ export type CardView = {
   club: ClubProfile | null;
   /** The club's theme nights and parties, folded in from their own cards (Lisa, 22 Nov 2026, src/data/club-parts.ts). */
   parts: ClubPartsView | null;
+  /** This card is one of a club's nights or parties (Lisa, 27 Nov 2026). */
+  nightPage: NightPageView | null;
+  /** Club and event pages: every quote and mention as a box (Lisa, 28 Nov 2026), in place of "In the episodes". */
+  wall: SaidBox[] | null;
+  /** Person pages: a box for every episode mention their quotes don't cover (Lisa, 28 Nov 2026), in place of "In the episodes". */
+  saidMore: SaidBox[] | null;
+  /** An event's Library box: what was talked about with it, then its club venue's poster and reading list. */
+  eventLib: { own: ClubLibraryView | null; venue: { slug: string; name: string; lib: ClubLibraryView } | null } | null;
   /** "Who else was there" (club pages only). */
   crowd: ClubCrowdView | null;
   /** The club's poster and reading list (club pages only). */

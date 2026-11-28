@@ -33,6 +33,9 @@ export type PersonWork = {
   roles: string[];
   year?: string | undefined;
   cover?: string | undefined;
+  /** The masthead logo from the Library when there's no real cover (Lisa, 28 Nov 2026 on Anita Sarko's page: "anitas work
+   *  covers need cover designs or logos"). Shown on the typed cover, the way the Library shelves show it. */
+  logo?: string | undefined;
   /** No guest has dropped it on the show yet, so it has no card. */
   offShow?: boolean | undefined;
   /** The A–Z name the Library cover is filed under. */

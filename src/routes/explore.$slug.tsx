@@ -11,10 +11,11 @@ import { SiteFooter } from "@/components/site-footer";
 import { MemoriamSections } from "@/components/memoriam";
 import { ClubProfileSections } from "@/components/club-profile";
 import { ClubPartsSections } from "@/components/club-parts";
+import { NightPageOthers, NightPageSections } from "@/components/night-page";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { ProfileVideos } from "@/components/profile-videos";
-import { ClubCrowd } from "@/components/club-crowd";
-import { ClubLibrary } from "@/components/club-library";
+import { ClubLibrary, EventLibrary } from "@/components/club-library";
+import { SaidWall } from "@/components/said-wall";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
 import { ColumnIndex } from "@/components/column-index";
@@ -74,7 +75,8 @@ export const Route = createFileRoute("/explore/$slug")({
       thing["description"] = club.story;
       thing["address"] = { "@type": "PostalAddress", streetAddress: club.address, addressLocality: club.city ?? "New York", addressCountry: club.country ?? "US" };
       thing["foundingDate"] = club.opened;
-      thing["dissolutionDate"] = club.closed;
+      // A club still open (Jimmy'z, "today") or with no known date has no dissolution date.
+      if (/^(c\. )?\d{4}$/.test(club.closed)) thing["dissolutionDate"] = club.closed.replace("c. ", "");
     }
     // Other names Google should know (Lisa, 27 Nov 2026, "A3"): the club's aka plus src/data/alternate-names.ts.
     const alt = [...new Set([...(club?.aka ? [club.aka] : []), ...(mem?.aka ? [mem.aka] : []), ...(ALTERNATE_NAMES[d.slug] ?? [])])].filter((n) => n !== d.name);
@@ -107,8 +109,18 @@ export const Route = createFileRoute("/explore/$slug")({
         thing["subjectOf"] = { "@type": "PodcastEpisode", name: `Night Fever ${d.guest.code} - the AFTERPARTY`, url: abs(d.guest.path) };
       }
     }
+    // The header photo is a CSS background, which the browser finds late (daily check 28 Nov 2026: person headers had a
+    // ~3 s LCP). Preload it with the page, the phone crop on phones.
+    const pic = d.view.pic;
+    const picLinks: { rel: string; as: string; href: string; media: string; fetchPriority: "high" }[] = pic
+      ? [
+          { rel: "preload", as: "image", href: pic.phone ?? pic.photo, media: "(max-width: 639px)", fetchPriority: "high" },
+          { rel: "preload", as: "image", href: pic.photo, media: "(min-width: 640px)", fetchPriority: "high" },
+        ]
+      : [];
     return {
       ...head,
+      links: [...head.links, ...picLinks],
       scripts: [
         jsonLd({
           "@context": "https://schema.org",
@@ -161,6 +173,8 @@ function EntityPage() {
   // Place pages (Lisa, 22 Nov 2026, mockup C): the drawn map fills the header, the name card sits on it.
   const place = e.place ?? undefined;
   const placeMap = place?.map ?? undefined;
+  // A club's night or party on its own page (Lisa, 27 Nov 2026): the club's header picture, the club on the name card.
+  const nightPage = e.nightPage ?? undefined;
 
   return (
     <LinkDataProvider value={e.links}>
@@ -191,12 +205,16 @@ function EntityPage() {
         )}
         {/* A book with facts but no picture yet keeps its facts on the paper name card, so they stay readable over the dots. */}
         <div className={pic || cover || placeMap || facts ? "card-namecard" : "mx-auto max-w-4xl"}>
-          <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
+          {nightPage ? (
+            <Link to="/explore/$slug" params={{ slug: nightPage.club }} className="card-back">&larr; {nightPage.clubName}</Link>
+          ) : (
+            <Link to="/explore" className="card-back">&larr; Everything A–Z</Link>
+          )}
           <p className="mt-5">
             {/* IN MEMORIAM band sits on the name card, next to the category (Lisa, 5 Nov 2026): in the header corner it slid under
                 the top menu and covered the stickers in the photo. Pictures never cover text, text never covers pictures' text. */}
             {mem && <span className="az-st az-s2 memoriam-band">In memoriam</span>}
-            <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : e.category}</span>
+            <span className={`az-st az-s2 ${KIND[e.category] ?? "az-paper"}`}>{g ? `Night Fever guest · ${g.episode}` : nightPage ? nightPage.kind : e.category}</span>
           </p>
           <h1 className="card-title">
             <span className="timeline-strip timeline-strip-ink">{e.name}</span>
@@ -213,6 +231,12 @@ function EntityPage() {
             <div className={pic ? undefined : "memoriam-meta"}>
               {mem.aka && <p className="memoriam-aka">aka {mem.aka}</p>}
               <p className="mt-2 text-sm text-muted-foreground">{mem.born} – {mem.died}{mem.convictedLine && <> · {mem.convictedLine}</>} · {mem.diedLine.replace(/^Died/, "died")}</p>
+            </div>
+          )}
+          {nightPage && (
+            <div className={pic ? undefined : "memoriam-meta"}>
+              <p className="memoriam-aka">At {nightPage.clubName}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{nightPage.address} · the club {nightPage.years}</p>
             </div>
           )}
           {club && (
@@ -291,7 +315,7 @@ function EntityPage() {
         </div>
       </section>
 
-      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
+      <div className={`mx-auto ${item ? "max-w-6xl space-y-14 pt-12" : mem || club || nightPage || profile || place || e.mapBand ? "max-w-5xl space-y-14" : diary ? "max-w-4xl space-y-14" : "max-w-4xl space-y-12"} px-6 pb-20`}>
         {mem && <MemoriamSections m={mem} name={e.name} faces={e.faces} />}
         {club && (
           <ClubProfileSections
@@ -299,23 +323,29 @@ function EntityPage() {
             name={e.name}
             slug={e.slug}
             night={!!e.night}
+            wall={e.wall}
             sound={e.night ? (
               <>
-                <ClubNightPlaylist night={e.night} />
+                {/* On film first, then "A night at ... sounded like this" (Lisa, 28 Nov 2026: "swap"). */}
                 {e.night.footage && e.night.footage.length > 0 && <ProfileVideos videos={e.night.footage} playlist={e.night.youtubePlaylist} first={e.night.club} />}
+                <ClubNightPlaylist night={e.night} />
               </>
             ) : null}
             parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null}
-            crowd={e.crowd ? <ClubCrowd c={e.crowd} name={e.name} address={club.address} faces={e.faces} /> : null}
+            partsSide={!!e.parts && e.parts.groups.length === 1 && e.parts.groups[0]!.parts.length <= 2}
+            crowd={e.crowd}
             library={e.clubLib ? <ClubLibrary v={e.clubLib} name={e.name} /> : null}
             faces={e.faces}
           />
         )}
+        {nightPage && <NightPageSections v={nightPage} name={e.name} />}
+        {/* An event (or a club with no page of its own) shows its guests' words first, like a night (Lisa, 28 Nov 2026). */}
+        {e.wall && !club && <SaidWall items={e.wall} name={e.name} id="card-said" />}
         {/* The map (Lisa, 27 Nov 2026): "Around the block" right after a club's story box (first on a plain club or event
             card), the yellow tape block where there is no pin, a living person's rooms under their story. */}
         {e.mapBand && <AroundTheBlock b={e.mapBand} slug={e.slug} />}
         {e.mapHome && <BringUsHome m={e.mapHome} />}
-        {profile && <PersonProfileSections m={profile} name={e.name} faces={e.faces} />}
+        {profile && <PersonProfileSections m={profile} name={e.name} faces={e.faces} more={e.saidMore ?? []} />}
         {profile && e.rooms && <RoomsMapSection r={e.rooms} first={profile.first ?? e.name.split(" ")[0]!} />}
         {/* "<first>'s work" (Lisa, 22 Nov 2026): their books, papers, films, TV, podcasts and music, under their story. */}
         <TheirWork works={e.works} first={mem || profile ? ((mem ?? profile)!.first ?? e.name.split(" ")[0]!) : e.name.replace(/\s*\(.*\)$/, "")} />
@@ -333,7 +363,9 @@ function EntityPage() {
             <Story st={e.story} name={e.name} />
           </div>
         )}
-        <CardSections v={e} skipRefs={!!item || !!place} skipEvents={!!place} />
+        <CardSections v={e} skipRefs={!!item || !!place || !!nightPage || !!e.wall || (!!profile && e.refs.every((r) => r.episode))} skipEvents={!!place} />
+        {nightPage && <NightPageOthers v={nightPage} />}
+        {e.eventLib && <EventLibrary v={e.eventLib} name={e.name} />}
       </div>
           <SiteFooter />
 </main>

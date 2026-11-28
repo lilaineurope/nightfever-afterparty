@@ -28,6 +28,15 @@ import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
 import grapePhoto from "@/assets/clubs/gilded-grape-photo.webp";
 import grapePhotoPhone from "@/assets/clubs/gilded-grape-photo-phone.webp";
 import grapePolaroid from "@/assets/clubs/gilded-grape-polaroid.webp";
+import continentalPhoto from "@/assets/clubs/continental-photo.webp";
+import continentalPhotoPhone from "@/assets/clubs/continental-photo-phone.webp";
+import continentalPolaroid from "@/assets/clubs/continental-polaroid.webp";
+import donHillsPhoto from "@/assets/clubs/don-hills-photo.webp";
+import donHillsPhotoPhone from "@/assets/clubs/don-hills-photo-phone.webp";
+import donHillsPolaroid from "@/assets/clubs/don-hills-polaroid.webp";
+import jeffersonPhoto from "@/assets/clubs/jefferson-photo.webp";
+import jeffersonPhotoPhone from "@/assets/clubs/jefferson-photo-phone.webp";
+import jeffersonPolaroid from "@/assets/clubs/jefferson-polaroid.webp";
 import quickPhoto from "@/assets/clubs/quick-photo.webp";
 import quickPhotoPhone from "@/assets/clubs/quick-photo-phone.webp";
 import quickPolaroid from "@/assets/clubs/quick-polaroid.webp";
@@ -58,6 +67,21 @@ import robotsPolaroid from "@/assets/clubs/robots-polaroid.webp";
 import xenonPhoto from "@/assets/clubs/xenon-photo.webp";
 import xenonPhotoPhone from "@/assets/clubs/xenon-photo-phone.webp";
 import xenonPolaroid from "@/assets/clubs/xenon-polaroid.webp";
+import reginesPhoto from "@/assets/clubs/re-gine-s-photo.webp";
+import reginesPhotoPhone from "@/assets/clubs/re-gine-s-photo-phone.webp";
+import reginesPolaroid from "@/assets/clubs/re-gine-s-polaroid.webp";
+import elMoroccoPhoto from "@/assets/clubs/el-morocco-photo.webp";
+import elMoroccoPhotoPhone from "@/assets/clubs/el-morocco-photo-phone.webp";
+import elMoroccoPolaroid from "@/assets/clubs/el-morocco-polaroid.webp";
+import leClubPhoto from "@/assets/clubs/le-club-photo.webp";
+import leClubPhotoPhone from "@/assets/clubs/le-club-photo-phone.webp";
+import leClubPolaroid from "@/assets/clubs/le-club-polaroid.webp";
+import jimmyzPhoto from "@/assets/clubs/jimmy-z-photo.webp";
+import jimmyzPhotoPhone from "@/assets/clubs/jimmy-z-photo-phone.webp";
+import jimmyzPolaroid from "@/assets/clubs/jimmy-z-polaroid.webp";
+import disco2000Photo from "@/assets/clubs/disco-2000-photo.webp";
+import disco2000PhotoPhone from "@/assets/clubs/disco-2000-photo-phone.webp";
+import disco2000Polaroid from "@/assets/clubs/disco-2000-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -164,8 +188,20 @@ const RED_ZONE_CREDIT = "Header and polaroid: a Red Zone night drawn for the AFT
 const SQUEEZEBOX_CREDIT = "Header: a Squeezebox night drawn for the AFTERPARTY. Polaroid: the stage at Don Hill's in 2010, photo by kimm613, via Wikimedia Commons, CC BY-SA 2.0";
 const MARS_CREDIT = "Header and polaroid: a night at Mars drawn for the AFTERPARTY - no photo of Mars is free to use";
 const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPARTY. Polaroid: Save the Robots after-hours Saturdays card - Gallery 98";
+// No free period picture of Régine's New York exists (Commons has only today's building; the NIGHT Magazine 1978 Régine's issue
+// at Gallery 98 shows real faces), so both are drawn (Lisa, 28 Nov 2026: "regine needs a background picture and a polaroid").
+const REGINES_CREDIT = "Header: a night at Régine's drawn for the AFTERPARTY. Polaroid: the Delmonico canopy on Park Avenue, drawn for the AFTERPARTY";
+const EL_MOROCCO_CREDIT = "Photo: Constance Bennett, Richard Brown and Eva Gabor on the zebra banquettes at El Morocco, February 1965, by Wally Heim for United Artists, via Wikimedia Commons, public domain; our photocopy versions too";
+// No period picture of either club is free to use (Commons: nothing for Le Club, only a 2014 Jimmy'z), so both are drawn (28 Nov 2026).
+const LE_CLUB_CREDIT = "Header: a night at Le Club in the 60s drawn for the AFTERPARTY. Polaroid: the door on East 55th Street, drawn for the AFTERPARTY";
+const JIMMYZ_CREDIT = "Header: Jimmy'z by the sea in the 70s drawn for the AFTERPARTY. Polaroid: the lantern-lit lake, drawn for the AFTERPARTY";
+// No Disco 2000 flyer at Gallery 98 or on Commons (28 Nov 2026), so both are drawn.
+const DISCO_2000_CREDIT = "Header: a Disco 2000 Wednesday at the Limelight drawn for the AFTERPARTY. Polaroid: Club Kids on the Limelight steps, drawn for the AFTERPARTY";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
+const CONTINENTAL_CREDIT = "Header and polaroid: the room with its hanging plexiglass and the garage door on West 25th Street, drawn for the AFTERPARTY - no photo of the Continental is known";
+const DON_HILLS_CREDIT = "Header and polaroid: the corner bar at Greenwich and Spring and its tiny stage, drawn for the AFTERPARTY - no photo of Don Hill's is free to use";
+const JEFFERSON_CREDIT = "Header and polaroid: a night at the Jefferson and its marquee on 14th Street, drawn for the AFTERPARTY - no photo of the Jefferson is free to use";
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
 const QUICK_CREDIT = "Header and polaroid: a night at Quick drawn for the AFTERPARTY - no photo of Quick is free to use";
 const BUILDING_CREDIT = "Header and polaroid: a night at the Building drawn for the AFTERPARTY - no photo of the Building is free to use";
@@ -950,7 +986,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
     ],
     stage: ["Peppo Vanini", "Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Klaus Nomi", "Gloria Gaynor", "John \"Jellybean\" Benitez", "Fiorucci"],
-    rooms: ["Studio 54", "Régine's", "Copacabana", "Danceteria", "Roxy"],
+    rooms: ["Studio 54", "Régine's", "Le Club", "New York, New York", "Magique", "Hurrah", "Copacabana", "Danceteria", "Roxy"],
     said: [
       { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
       { episode: "s02e04", who: "Nikki Haskell", time: "00:48:10", quote: "And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
@@ -965,7 +1001,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
   // Standard Hotels, W Magazine and Vice (opened 1989 in a former Con Ed substation); the Gilded Grape, Quick and Club 82 from
   // the guests' own stories (checked 19 Nov 2026). Pictures: sources sheet, Round 12.
   // Top Google search pages (Lisa, 28 Nov 2026: "do all 1-5"). Facts: Cinema Treasures, the Daily Beast's after-hours story,
-  // Arthur Weinstein's NYT obituary (16 Jul 2008) and the episodes. Header and polaroid to come, drawn on Lisa's Mac.
+  // Arthur Weinstein's NYT obituary (16 Jul 2008) and the episodes. Header and polaroid drawn for the AFTERPARTY (Gemini, 28 Nov).
   jefferson: {
     opened: "New Year's 1981",
     closed: "c. 1982",
@@ -987,6 +1023,91 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s02e03", who: "James St. James", time: "00:17:53", context: "James to Susanne Bartsch about her first nights in New York, 1981", quote: "When you came to New York, it was '81. And I remember you saying that one of the first places you went to was the Jefferson, Arthur Weinstein's after-hours club. It felt European to you. It was the one place in New York that felt fabulous." },
       { episode: "s03e06", who: "Eric Goode", time: "00:13:32", context: "Arthur Weinstein's after-hours clubs", quote: "So Arthur did the Jefferson, which was in the Jefferson Theater, then the Continental. And we all thought Arthur was going to get shot by the police, because he brought down the Ninth and Tenth Precinct, basically wearing a wire and busting corrupt cops. That was the time when the cops were corrupt, the mafia, of course, was corrupt, the whole city was corrupt, and it was incredible." },
     ],
+    portrait: { photo: jeffersonPhoto, phone: jeffersonPhotoPhone, polaroid: jeffersonPolaroid, focus: "50%", credit: JEFFERSON_CREDIT },
+  },
+  // Lisa, 28 Nov 2026 on the Jefferson page: "make picture for the continental and create page". Facts: Colleen Weinstein in
+  // PIN-UP 27 (2019/20), Bedford + Bowery's "Nightclubbing: After-Hours, 1980", the Daily Beast's after-hours story and
+  // Eric Goode (S03E06). No street number found: no pin on the map (Bring us home).
+  continental: {
+    opened: "c. 1981",
+    closed: "Mid-80s",
+    address: "A garage on West 25th Street, Chelsea",
+    story:
+      "Arthur and Colleen Weinstein's illegal after-hours club after the Jefferson, in an old garage on West 25th Street, in the same building as Eric Goode's first club, the one with no name. Colleen hung big sheets of plexiglass from the ceiling, after the film Blow-Up, to make rooms along a centre aisle, and the back room was the old loading bay. It opened at two in the morning, when the uptown crowd came looking for somewhere to go: Mick Jagger once turned up early and offered to sweep the floor. Eric Goode says Arthur later wore a wire to help bust corrupt cops.",
+    timeline: [
+      ["1980", "The Jefferson, Arthur and Colleen's first after-hours, opens in their loft on 14th Street"],
+      ["Early 1980s", "The Continental opens in a garage on West 25th Street, in the same building as Eric Goode's first club"],
+      ["Early 1980s", "Doors at 2 am; Colleen's hanging plexiglass rooms, and the loading bay out back"],
+      ["Early 1980s", "Arthur pays off police and fire officials to stay open, then wears a wire against corrupt cops"],
+      ["Mid-80s", "Arthur and Colleen's next club: The World, on East 2nd Street"],
+    ],
+    stage: ["Arthur Weinstein", "Colleen Weinstein", "Eric Goode"],
+    rooms: ["The Jefferson", "Club With No Name", "The World", "Studio 54"],
+    said: [
+      { episode: "s03e06", who: "James St. James", time: "00:13:24", context: "James remembers Arthur Weinstein's clubs", quote: "I remember it well, yes. Like the Continental, wasn't it? It was Arthur Weinstein's. Was that an after-hours?" },
+      { episode: "s03e06", who: "Eric Goode", time: "00:13:32", context: "The Continental shared a building with Eric's first club", quote: "So the Continental was in the same building as my club with no name. And I gave Arthur that space, but he was in the loading bay. And that's a whole other story." },
+    ],
+    also: { heading: "Who came", names: ["Mick Jagger", "Billy Idol"] },
+    portrait: { photo: continentalPhoto, phone: continentalPhotoPhone, polaroid: continentalPolaroid, focus: "50%", credit: CONTINENTAL_CREDIT },
+  },
+  // Lisa, 28 Nov 2026 on Howie Pyro's page: "add picture for don hills and create page". Facts: Hudson Square BID history,
+  // the Village Voice's and Interview's Don Hill obituaries, The Real Deal and BrooklynVegan on the closing (Apr 2011), and
+  // the guests (S02E06, S03E10, S04E03).
+  // Lisa, 28 Nov 2026: "are the quotes for michael todd?" - Palladium's upstairs room, every mention as a quote (max 2 per guest).
+  "michael-todd-room": {
+    opened: "1985",
+    closed: "1997",
+    address: "Upstairs at the Palladium, 126 East 14th Street",
+    story:
+      "Palladium's upstairs VIP room, the glam room above the dance floor: Jean-Michel Basquiat's paintings over the bar and above the DJ, Anita Sarko on the decks and Lisa Edelstein behind the bar. James calls it always spectacular, always filled; for Lincoln Palsgrove it was Babylon, a crash course in downtown.",
+    timeline: [
+      ["May 1985", "Steve Rubell and Ian Schrager open Palladium in the old Academy of Music on East 14th Street"],
+      ["1985", "Upstairs, the Michael Todd Room, with two Basquiats: one above the bar, one above the DJ"],
+      ["1985", "Lisa Edelstein moves up to its bar after her first two weeks; Anita Sarko DJs"],
+      ["1985", "Miss Guy's first night in New York ends up here, with Boy George"],
+      ["1980s", "The Grace Jones party; Madonna and Keith Haring in the crowd, James remembers"],
+      ["1997", "Palladium closes"],
+    ],
+    stage: ["Anita Sarko", "Lisa Edelstein", "Steve Rubell", "Jean-Michel Basquiat", "Keith Haring", "Grace Jones"],
+    rooms: ["Palladium", "Area", "Boy Bar"],
+    said: [
+      { episode: "s01e07", who: "James St. James", time: "01:04:23", context: "Talking to Rudolf Piper about Palladium: the upstairs VIP room was where the best parties happened", quote: "There might have been some middling people on the dance floor, but that Michael Todd Room was always spectacular, always filled. I remember the Grace Jones party. I remember Madonna and Keith Haring. Some of my best memories are at Palladium." },
+      { episode: "s04e07", who: "James St. James", time: "00:30:54", context: "With Trey Speegle: the two Basquiats, Anita Sarko on the decks and Lisa Edelstein behind the bar", quote: "There was the one above the bar, and then there was the one above Anita. Absolutely spectacular. The Mike Todd Room, that was totally glam. That was Anita Sarko, and Lisa Edelstein was doing the bar." },
+      { episode: "s04e07", who: "Randy Barbato", time: "00:29:53", context: "How Palladium took the art-in-a-club idea from Area to the next level", quote: "As great as Area was, the Palladium took that to the nth degree, where you had the Michael Todd Room with those Jean-Michel Basquiats and you had Keith Haring doing the dance floor." },
+      { episode: "s04e07", who: "Fenton Bailey", time: "00:30:36", context: "Trey asks about the long Basquiat painting", quote: "In the Michael Todd Room. I mean, that alone would be worth more than the value of the building." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:22:49", context: "Area's Eric Goode on how Steve Rubell answered Area with Palladium", quote: "He did the Mike Todd Room with Jean-Michel Basquiat, and Keith Haring on the dance floor, and Kenny Scharf, and Francesco Clemente. He built a bigger, better mousetrap." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:22:50", context: "Her Palladium job: after trailing on opening night she was moved upstairs", quote: "I wasn't officially working the opening night. I was trailing, watching somebody else do it. And I was moved to the Michael Todd Room after the first two weeks or something. It was such a funny job." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:18:09", context: "Her first night in New York, 1985: a show at Boy Bar, then on to Palladium", quote: "After the show, we went into the Palladium and went up to the Mike Todd Room. I feel like Warhol was there, and Boy George was definitely there." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:09:57", context: "His first time at Palladium as a teenager from the Upper East Side", quote: "I can remember the Mike Todd Room like it was yesterday, because it was just like Babylon, seeing all of the people in this huge space. I've never experienced anything like it. It was a crash course in downtown." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:14:20", context: "Going with Jennifer Rubell, Steve Rubell's niece, through the 13th Street door", quote: "We would go together to the Palladium with Jennifer. We would just scooch up the 13th Street entrance and go right into the Mike Todd Room. That is where I met Rudolf and Steve Lewis and David Knapp and Anita Sarko." },
+    ],
+  },
+  "don-hill-s": {
+    opened: "1993",
+    closed: "Apr 2011",
+    address: "511 Greenwich Street, at Spring Street",
+    story:
+      "Don Hill's rock club on the corner of Greenwich and Spring, a no-man's land where you couldn't get a cab and nobody complained about the noise. The building had been the Munson Diner and then Canal Bar. Don gave his promoters full freedom, and in April 1994 Michael Schmidt and Miss Guy started Squeezebox there on Fridays: drag queens singing with a live punk band, with Howie Pyro on the decks. Bebe Buell says she owes Don Hill her life.",
+    timeline: [
+      ["Before 1993", "The corner building is the Munson Diner, then Brian McNally's restaurant Canal Bar"],
+      ["1993", "Don Hill opens his rock club at 511 Greenwich Street"],
+      ["Apr 1994", "Squeezebox starts on Fridays: Michael Schmidt and Miss Guy, Mistress Formika hosting, Howie Pyro the first DJ"],
+      ["Summer 1994", "Squeezebox is on fire; Debbie Harry is one of the first famous faces"],
+      ["2008", "A benefit there in memory of Dean Johnson"],
+      ["Early 2011", "Don Hill dies, aged 66, a few months after selling the club"],
+      ["Apr 2011", "Don Hill's closes for good"],
+      ["2014", "The space reopens as The Hills"],
+    ],
+    stage: ["Don Hill", "Michael Schmidt", "Miss Guy", "Howie Pyro", "Bebe Buell", "Patrick Briggs"],
+    rooms: ["Squeezebox", "Canal Bar", "Cat Club"],
+    said: [
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:50:39", context: "How Squeezebox began: Patrick Briggs was managing Don Hill's and wanted a gay night", quote: "He called me up and he said, I'm managing this club called Don Hill's and we want to do a gay night. And would you be interested in promoting it? And I said no, because I had never done that before and it sounded like a lot of work." },
+      { episode: "s02e06", who: "Michael Schmidt", time: "00:52:54", context: "Greenwich and Spring was a no-man's land, and Don Hill let them do anything", quote: "You couldn't get a cab there... it was a no-man's land, which worked in our favor because there was nobody to complain about the noise. So this was uniquely situated, and it was absolutely perfect. And Don Hill was so wonderful, and he just let me do whatever the hell I wanted." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:39:25", context: "Miss Guy on the space before Don Hill's, and starting Squeezebox there", quote: "When he got involved with the space that became Don Hill's, it was a restaurant. I think it was called Canal Bar... So when that closed, then Don got it and he had it for about six months before we started Squeezebox and nothing was really happening there. So he gave us full freedom to do whatever we wanted and full support. And so we started Squeezebox in April of '94." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:40:00", context: "The first nights at Don Hill's", quote: "It got off to a slow start. It wasn't making any money. Every night was magical. There was that feeling in the air where you knew it was something special. And then I think by that summer, it was pretty much on fire, and celebrities started coming. Of course, Debbie Harry was one of the first." },
+      { episode: "s04e03", who: "Bebe Buell", time: "01:09:20", context: "Bebe on the Squeezebox family and Don Hill bringing her back on stage", quote: "And they repaired me, put me back together again, gave me my soul back. I owe my life to those guys. I owe my life to Don Hill, Hilly Kristal, my New York community, my friends, my musicians, the people that have loved me and welcomed me back." },
+    ],
+    portrait: { photo: donHillsPhoto, phone: donHillsPhotoPhone, polaroid: donHillsPolaroid, focus: "50%", credit: DON_HILLS_CREDIT },
   },
   "gilded-grape": {
     opened: "Early 70s",
@@ -1103,6 +1224,151 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e04", who: "Man Parrish", time: "00:41:01", quote: "It used to be Club 82... it was the 82 Club, and it went downstairs." },
     ],
     portrait: { photo: c82Photo, phone: c82PhotoPhone, polaroid: c82Polaroid, focus: "50%", credit: CLUB_82_CREDIT },
+  },
+  // Lisa, 28 Nov 2026 (Régine's page): "le club and jimmy's need a box for themselves like studio 54 and xenon and also its own
+  // pages". Facts: Wikipedia Le Club + Olivier Coquelin, DJ History (Slim Hyatt), American Heritage (birth of disco), read 28 Nov;
+  // quotes from the Mac transcripts (S2E4 Nikki Haskell, S3E5 Cherry Vanilla). Closing date not found - last known: the Waldorf, 1996.
+  "le-club": {
+    opened: "1960",
+    closed: "after 1996",
+    address: "416 East 55th Street, near Sutton Place",
+    portrait: { photo: leClubPhoto, phone: leClubPhotoPhone, polaroid: leClubPolaroid, focus: "50%", credit: LE_CLUB_CREDIT },
+    story:
+      "Olivier Coquelin, a young Frenchman, opened Le Club on New Year's Eve 1960 in a converted garage on East 55th Street near Sutton Place - one of the first discotheques in New York, a private club with a board that counted Oleg Cassini, Rex Harrison and Alan Jay Lerner, two hundred dollars to join and sixty-five a year. Slim Hyatt played the records from the first night. When Nikki Haskell moved to New York in 1965, that's where she went: a townhouse done like an English carriage house, a fireplace with sofas, a small dance floor, European disco records, men in jackets and ties and girls in cocktail dresses. Cherry Vanilla lived down the street - for her it was the first discotheque she ever heard of: a French dinner, then the lights went lower and a guy played records.",
+    timeline: [
+      ["31 Dec 1960", "Olivier Coquelin opens Le Club on East 55th Street, Slim Hyatt at the turntables"],
+      ["1965", "Nikki Haskell moves to New York - Le Club is where she goes"],
+      ["70s", "Nikki goes on from Le Club to Régine's and Studio 54, two or three clubs a night"],
+      ["1981", "Le Club moves to 313 East 58th Street"],
+      ["1996", "Le Club at the Waldorf Astoria"],
+    ],
+    stage: ["Nikki Haskell", "Cherry Vanilla", "Oleg Cassini"],
+    rooms: ["Régine's", "El Morocco", "Studio 54"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:09:13", quote: "Men always wore jackets and ties and girls always wore cocktail dresses. It was in a townhouse... very high ceilings. It was done like an English carriage house. It had a fireplace with sofas on one side. And it had a dance floor." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:14:36", quote: "Right down the street towards Sutton Place was this little, intimate French club, the first discotheque I ever heard of in New York, called Le Club. You would have a beautiful French dinner, and then as the lights got a little lower, you would dance to... a guy playing records." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:05:13", quote: "Le Club - when I moved to New York, that's where I went. Almost every night. Everybody was in cocktail dresses, everything... That was sort of in the 60s, because I moved to New York in '65." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:09:48", quote: "Not so much disco, but like Raindrops... not really full-blown disco songs. They had their own sound, and they played a lot of European disco music, which was very fashionable in the clubs in those days. And it was great. Everybody went there." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:17:37", context: "Opus, the club she compares it with", quote: "That was also a place where you could have dinner... He cooked French meals, and it was the same idea like Le Club. The lights went down, the music got louder." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I went to all the clubs. I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+    ],
+  },
+  // Lisa, 28 Nov 2026: "el morrocco needs a picture and a page". Facts: Wikipedia El Morocco, Bowery Boys (2007), InsideHook
+  // (2022), read 28 Nov 2026. Only James St. James names it on the show (S2E5, S6E6 intro), so the history carries the page.
+  "el-morocco": {
+    opened: "1931",
+    closed: "1970",
+    address: "154 East 54th Street, then 307 East 54th Street",
+    aka: "Elmo",
+    portrait: { photo: elMoroccoPhoto, phone: elMoroccoPhotoPhone, polaroid: elMoroccoPolaroid, focus: "50%", credit: EL_MOROCCO_CREDIT },
+    story:
+      "John Perona opened El Morocco on 5 October 1931 as a speakeasy at 154 East 54th Street, named for the Third Avenue El that ran past it - Elmo to its regulars. The decorator Vernon MacFarlane gave it the blue-and-white zebra-stripe banquettes, and Perona's photographer Jerome Zerbe made them famous: his pictures ran in the papers the next morning, and the stripes told everyone where they had been taken. Lucille Ball and Desi Arnaz held their wedding reception there in 1940; Truman Capote, Audrey Hepburn, Marilyn Monroe, Frank Sinatra and Salvador Dalí came through the door. In 1961 El Morocco moved to a townhouse at 307 East 54th Street, and after Perona died it went through new owners until it closed on 23 May 1970. James St. James calls it the historic club - New York has always been about nighttime - and Lincoln Palsgrove worked the door when it was revived in the 80s.",
+    timeline: [
+      ["5 Oct 1931", "John Perona opens The Morocco, a speakeasy at 154 East 54th Street"],
+      ["30s", "Vernon MacFarlane's zebra-stripe banquettes; Jerome Zerbe photographs the room from 1935 to 1939"],
+      ["1940", "Lucille Ball and Desi Arnaz's wedding reception"],
+      ["Jan 1961", "El Morocco moves to a townhouse at 307 East 54th Street"],
+      ["Jun 1961", "John Perona dies; his son Edwin sells the club to John Mills"],
+      ["1964", "Maurice Uchitel and Sheldon Hazeltine take over"],
+      ["23 May 1970", "El Morocco closes"],
+      ["1987", "El Morocco reopens - Lincoln Palsgrove IV is one of its doormen"],
+    ],
+    stage: ["Truman Capote", "Audrey Hepburn", "Marilyn Monroe", "Frank Sinatra", "Salvador Dalí", "Marlene Dietrich", "Humphrey Bogart", "Lincoln Palsgrove IV"],
+    rooms: ["Le Club", "Copacabana", "Régine's", "Delmonico's"],
+    said: [
+      { episode: "s02e05", who: "James St. James", time: "00:57:04", quote: "...at this historic club, the El Morocco. Like, I mean, New York has always been about nighttime... Delmonico's in the 1880s. That was always part of what made New York special." },
+      { episode: "s06e06", who: "James St. James", time: "00:00:38", context: "Lincoln's doors", quote: "A few of the doors he's worked on include The World... Red Zone, The Roxy, Cha-Cha Room at Stringfellows, Palladium, El Morocco, Twilo, Milk Bar, MK..." },
+    ],
+  },
+  // Lisa, 28 Nov 2026 (Roxy page): "disco 2000 needs a picture and a page update". Michael Alig's Wednesday at the Limelight, a
+  // Club card in the A–Z, so it gets the club standard. Facts: NPR (Limelight documentary, 2011), Wikipedia DJ Keoki, Club Kids and
+  // Michael Alig; years and the rest from the guests (Mac transcripts). Living-people rule: no sex stories, nothing unproven.
+  "disco-2000": {
+    opened: "c. 1989",
+    closed: "c. 1996",
+    address: "Wednesdays at the Limelight, Sixth Avenue at 20th Street",
+    aka: "Michael Alig's Wednesday at the Limelight",
+    portrait: { photo: disco2000Photo, phone: disco2000PhotoPhone, polaroid: disco2000Polaroid, focus: "50%", credit: DISCO_2000_CREDIT },
+    story:
+      "Disco 2000 was Michael Alig's Wednesday night at Peter Gatien's Limelight, the Club Kids' party in the old church on Sixth Avenue. James St. James dates the first one to '89 or '90, when Clara the Carefree Chicken came out of her egg on opening night; Ernie Glam, who was Clara, worked it every week. DJ Keoki was the resident, Amanda Lepore go-go danced, Larry Tee hosted the hot body contest, and the Pyramid's Wednesday crowd hopped over because Disco 2000 went later. Behind the effortless look were fourteen-hour days, Ernie says - noon to seven at the club, home to get ready, back by eleven. Lincoln Palsgrove thinks the muscle boys taking over the Roxy led to its birth; after it, he says, the 90s scene splintered. By the mid-90s it had turned dark, and it ended with the Club Kids' world in 1996.",
+    timeline: [
+      ["1988", "Peter Gatien hires Michael Alig at the Limelight"],
+      ["c. 1989", "The first Disco 2000 - Clara the Carefree Chicken hatches on opening night"],
+      ["1990-1992", "Ernie Glam and the Club Kids work fourteen-hour days to make Wednesdays happen"],
+      ["Early 90s", "Disco 2000 and Channel 69 at the Pyramid share Wednesday night"],
+      ["1991", "DJ Keoki Presents Disco 2000 - Keoki's records named after the party"],
+      ["1995", "Gatien sends Michael Alig to rehab; Alig says he was fired"],
+      ["1996", "The Limelight is closed by federal agents, and the Club Kids' world ends with Alig's arrest"],
+    ],
+    stage: ["Michael Alig", "Clara the Carefree Chicken", "DJ Keoki", "Ernie Glam", "Amanda Lepore", "Larry Tee", "Richie Rich", "Waltpaper", "James St. James", "Kevin Aviance", "Desi Santiago", "Floyd"],
+    rooms: ["Limelight", "Pyramid Club", "Roxy", "Club USA", "The Tunnel", "Palladium", "The World"],
+    said: [
+      { episode: "s01e05", who: "Ernie Glam", time: "00:17:45", quote: "People think that we were just partying all the time, but in the early years of Disco 2000, when we arrived at the Limelight, from the summer of 1990 to 1992, we were literally working 14-hour days. We would go to the Limelight at noon and be there until seven o'clock at night." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:15:07", quote: "Disco 2000, all of us just kind of merrily running through the club... the transcendental experience of dance and dancing with a group of people in this church, which was really like a religious experience." },
+      { episode: "s01e04", who: "James St. James", time: "00:30:28", context: "How it started", quote: "There was a lull, and then that's when Michael came in to do the first Disco 2000. I guess that was '89, probably. '89, '90." },
+      { episode: "s02e09", who: "Linda Simpson", time: "00:26:02", quote: "I wouldn't say it was competing, but we were on the same night. Because I think Disco 2000 went later than we did, people would hop over from the Pyramid to the Limelight." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:44:08", quote: "You had these club kids that were going to Roxy on Saturday, which kind of owned the space, and then all these big muscle guys came in and took over. So I think that led to the birth of Disco 2000." },
+      { episode: "s05e07a", who: "Christopher Comp", time: "00:28:06", context: "His 20th birthday party", quote: "Disco 2000 was everybody, everybody was there... And Floyd is on stage with this wig, with this This Mortal Coil song, this shrieking, and black blood rolling down his body. Chef's kiss. So good." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:30:49", quote: "Wednesday was really great for the Club Kids and the gays. But we developed a night like Rock and Roll Church that lasted literally nine, ten years. To those people, Disco 2000 didn't exist." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:31:20", quote: "By the time I got to Disco 2000, I didn't really know how to take being the big Roxy DJ to the next level of business." },
+      { episode: "s06e09", who: "Desi Santiago", time: "00:10:22", quote: "I saw Larry Tee... I saw RuPaul walking in, and then it was also simultaneous with the birth of Disco 2000." },
+    ],
+  },
+  // Régine's club in Monaco, still open (Lisa, 28 Nov 2026, as above). Facts: Monte-Carlo SBM "The story of Jimmy'z" and
+  // "Régine" pages, Monaco Life (50 years, July 2024), read 28 Nov 2026; Nikki Haskell from the S2E4 transcript.
+  "jimmy-z": {
+    opened: "1971",
+    closed: "today",
+    address: "Monte-Carlo Sporting Club, Monaco",
+    portrait: { photo: jimmyzPhoto, phone: jimmyzPhotoPhone, polaroid: jimmyzPolaroid, focus: "50%", credit: JIMMYZ_CREDIT },
+    city: "Monte Carlo",
+    country: "MC",
+    story:
+      "Régine opened The Jimmy'z in Monte Carlo on 9 July 1971, below the summer Sporting club - decor by André Levasseur, and only with a club card. When the new Monte-Carlo Sporting Club opened on 22 June 1974, Jimmy'z moved in by the sea, with a lagoon, fountains and a Japanese garden, and Mick Jagger, Rudolf Nureyev and Farrah Fawcett came to dance. Nikki Haskell followed Régine's clubs from Paris to Monte Carlo: for her, Monte Carlo had the best discos in Europe and Jimmy'z was one of the great discotheques of all time. Régine left in 1986; the club is still there, and turned fifty in July 2024 with Prince Albert II.",
+    timeline: [
+      ["9 Jul 1971", "Régine opens The Jimmy'z below the summer Sporting, decor by André Levasseur"],
+      ["1973", "A winter Jimmy'z at the Café de Paris"],
+      ["22 Jun 1974", "Jimmy'z reopens in the new Monte-Carlo Sporting Club, with a lagoon and a Japanese garden"],
+      ["1986", "Régine leaves, and the club is redone"],
+      ["2004", "The lagoon is filled in for the Monte-Carlo Bay hotel"],
+      ["Jul 2024", "Fifty years of Jimmy'z, with Prince Albert II"],
+    ],
+    stage: ["Régine", "Nikki Haskell", "Mick Jagger", "Rudolf Nureyev", "Farrah Fawcett"],
+    rooms: ["Régine's", "Les Bains Douches"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:12", quote: "Europe always had a lot of really fabulous discos. Of course, Monte Carlo being the best." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:32", quote: "When she first opened, I was there every night. I used to go to Paris all the time. Jimmy'z was one of my favorites in Monte Carlo. I mean, that's one of the great discotheques of all time." },
+    ],
+  },
+  // Régine's (Lisa, 28 Nov 2026: "make a page for regine's", from Xenon's rooms around it). Facts: Wikipedia "Regine's" and
+  // "Régine Zylberberg", read 28 Nov 2026; quotes from the Mac transcripts (S2E4 Nikki Haskell, S6E8 William Norwich),
+  // "regimes"/"Regines" spelled right. Header + polaroid drawn on the Mac (28 Nov 2026), no free period photo exists.
+  "re-gine-s": {
+    opened: "1976",
+    closed: "1991",
+    address: "Delmonico Hotel, 502 Park Avenue at 59th Street",
+    aka: "Regine's",
+    portrait: { photo: reginesPhoto, phone: reginesPhotoPhone, polaroid: reginesPolaroid, focus: "50%", credit: REGINES_CREDIT },
+    story:
+      "Régine Zylberberg, the queen of the night from Paris, opened her New York club in May 1976 on the ground floor of the Delmonico Hotel at Park Avenue and 59th Street: Art Deco mirrors and brocade couches, a heart-shaped neon she called the Heart of New York, ten dollars at the door or a table booked for the year. Nikki Haskell went all the time - Le Club, then Régine's, then Studio, two or three clubs a night. Peppo Vanini ran Régine's clubs in Europe before he opened Xenon, and James St. James's diary has him at Régine's with Michael Musto for a Gaultier party, taken upstairs to the uptown crowd by William Norwich.",
+    timeline: [
+      ["1958", "Régine opens Chez Régine in Paris"],
+      ["1971", "Jimmy'z opens in Monte Carlo - one of the great discotheques of all time, says Nikki Haskell"],
+      ["Mar 1976", "A benefit night before the opening, in the Delmonico Hotel"],
+      ["May 1976", "Régine's opens to the public: ten dollars at the door, or a table for the year"],
+      ["1977", "Café Reginette opens next door to take on Studio 54"],
+      ["80s", "A Gaultier party: William Norwich takes James St. James upstairs to the uptown crowd"],
+      ["1986", "A kitchen and waiters' strike"],
+      ["1991", "Régine's New York closes"],
+    ],
+    stage: ["Régine", "Nikki Haskell", "Peppo Vanini", "Jean Paul Gaultier", "William Norwich", "James St. James", "Michael Musto", "Andy Warhol"],
+    rooms: ["Le Club", "Studio 54", "Xenon", "Copacabana", "Jimmy'z"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:32", quote: "When she first opened, I was there every night. I used to go to Paris all the time. Jimmy's in Monte Carlo was one of my favorites - one of the great discotheques of all time." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I loved Régine's in New York. I went there all the time... I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+      { episode: "s06e08", who: "James St. James", time: "00:46:46", quote: "We were at Régine's with Musto, for Gaultier. You brought me upstairs to this chic uptown party, and it was another case of record skip - the whole place turned and looked at me with horror in their face." },
+      { episode: "s02e04", who: "James St. James", time: "00:44:48", quote: "My first job as a student, out of school, was working in Régine's in London." },
+    ],
   },
   // Les Bains Douches (Lisa, 27 Nov 2026: a top Google search). Facts: Wikipedia "Les Bains Douches (nightclub)", read
   // 27 Nov 2026; the rest from the guests' own stories. No picture yet, so it keeps the plain header.

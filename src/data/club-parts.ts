@@ -360,6 +360,86 @@ export const CLUB_PARTS: Record<string, ClubParts> = {
 };
 
 /** Every row name that folds into a club -> the club's slug. */
+// More nights (Lisa, 27 Nov 2026: "add more night as if applicable"): the parties, shows and nights that
+// src/data/event-places.ts already pins at a club with its own page. Each joins its club's nights and parties - its own
+// page, a tile on the club page. Left out on purpose: things that were not a night (Danceteria's time capsule, the
+// Tunnel's Club Kids bathroom, Michael's guessing game), the New Music Seminar, and shows that ran at several venues.
+const MORE_NIGHTS: Record<string, ClubPart[]> = {
+  "re-gine-s": [{ title: "Gaultier party", names: ["Gaultier party at Régine's"] }],
+  area: [{ title: "Breakfast in Bed with Boy George", names: ["Breakfast in Bed with Boy George"] }],
+  building: [{ title: "Acid punch party", names: ["Acid punch party at The Building"] }],
+  "club-57": [
+    { title: "Monster Movie Club", names: ["Monster Movie Club"] },
+    { title: "A Sound of Muzak", names: ["A Sound of Muzak"] },
+    { title: "Salute to NASA", names: ["Salute to NASA"] },
+    { title: "Erotic art show", names: ["Erotic art show at Club 57"] },
+    { title: "Kennedy's Children", names: ["Kennedy's Children"] },
+    { title: "The Tooth of Crime", names: ["The Tooth of Crime"] },
+  ],
+  danceteria: [
+    { title: "No Entiendes", names: ["No Entiendes"] },
+    { title: "Frankie Goes to Hollywood's first New York show", names: ["Frankie Goes to Hollywood's first New York show"] },
+  ],
+  "jackie-60": [
+    { title: "Night of a Thousand Stevies", names: ["Night of a Thousand Stevies"] },
+    { title: "Brown Party", names: ["Brown Party"] },
+    { title: "Silence of the Lunch Pails", names: ["Silence of the Lunch Pails"] },
+  ],
+  limelight: [
+    { title: "Downtown Dukes and Divas", names: ["Downtown Dukes and Divas"] },
+    { title: "Style Summit", names: ["Style Summit"] },
+    { title: "Christopher's satanic 20th birthday", names: ["Christopher's satanic 20th birthday party"] },
+    { title: "Desi's 20th birthday", names: ["Desi's 20th birthday at the Limelight"] },
+    { title: "Blaine Trump's Disco 2000 dinner party", names: ["Blaine Trump's Disco 2000 dinner party"] },
+  ],
+  mk: [{ title: "Keith Haring's last birthday party", names: ["Keith Haring's last birthday party"] }],
+  "mudd-club": [
+    { title: "Beyond Words show", names: ["Beyond Words show at the Mudd Club"] },
+    { title: "Lower Manhattan Drawing Show", names: ["Lower Manhattan Drawing Show"] },
+  ],
+  palladium: [
+    { title: "Drag Aid", names: ["Drag Aid"] },
+    { title: "Jay-Z's first album release party", names: ["Jay-Z's first album release party"] },
+  ],
+  "paradise-garage": [{ title: "Party of Life", names: ["Party of Life at Paradise Garage"] }],
+  "pyramid-club": [
+    { title: "Whispers", names: ["Whispers"] },
+    { title: "Channel 69", names: ["Channel 69"] },
+    { title: "Night of a Thousand Barbaras", names: ["Night of a Thousand Barbaras"] },
+    { title: "Wet underwear contest", names: ["Wet underwear contest"] },
+  ],
+  tunnel: [{ title: "Petting zoo party", names: ["Petting zoo party"] }],
+};
+for (const [club, parts] of Object.entries(MORE_NIGHTS)) {
+  const p = (CLUB_PARTS[club] ??= { groups: [] });
+  let g = p.groups.find((x) => /parties/i.test(x.heading)) ?? p.groups.find((x) => /nights/i.test(x.heading));
+  if (!g) p.groups.push((g = { heading: "Nights and parties", parts: [] }));
+  g.parts.push(...parts);
+}
+
+/** Rows about a club's nights as a whole ("Area theme nights and invitations"): they still fold into the club's card. */
+export const INTRO_NAMES: [string, string][] = Object.entries(CLUB_PARTS).flatMap(([club, p]) =>
+  p.groups.flatMap((g) => (g.intro ?? []).map((n) => [n, club] as [string, string])),
+);
+
+/** Every night, theme night and party gets its own page again (Lisa, 27 Nov 2026: "club night and theme nights need
+ *  their own pages, eg closing weekend at paradise", then "All 78 nights and parties"). One page per tile: the tile's
+ *  first row names the page, its other rows join it, and the club page's tile links there. */
+export type NightPart = { club: string; title: string; heading: string; names: string[] };
+export const NIGHT_PARTS: NightPart[] = Object.entries(CLUB_PARTS).flatMap(([club, p]) =>
+  p.groups.flatMap((g) => g.parts.map((x) => ({ club, title: x.title, heading: g.heading, names: x.names }))),
+);
+
+/** The sticker on a night's page header. */
+export const nightKind = (heading: string, title: string): string =>
+  /party|birthday|benefit|ball\b|aid\b|release|opening|closing/i.test(title)
+    ? "Party"
+    : /show|play|reading|contest|pageant|summit|concert|shoot|moma|muzak|crime|children|nasa/i.test(title)
+      ? "Show"
+      : /theme/i.test(heading)
+        ? "Theme night"
+        : "Club night";
+
 export const PART_NAMES: [string, string][] = Object.entries(CLUB_PARTS).flatMap(([club, p]) =>
   p.groups.flatMap((g) => [...(g.intro ?? []), ...g.parts.flatMap((x) => x.names)].map((n) => [n, club] as [string, string])),
 );

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { EntityLink } from "@/components/entity-link";
@@ -18,13 +19,17 @@ export function ClubCrowd({
   name,
   address,
   faces,
+  story,
 }: {
   c: ClubCrowdView;
   name: string;
   address: string;
-  faces: Record<string, { src: string; framed?: boolean }>;
+  faces: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }>;
+  /** The club's story and stage, on the left of the same clipboard (Lisa, 28 Nov 2026: "merge the story box with On the list"). */
+  story?: ReactNode;
 }) {
-  if (c.told.length === 0 && c.regulars.length === 0 && c.posters.length === 0) return null;
+  const empty = c.told.length === 0 && c.regulars.length === 0 && c.posters.length === 0;
+  if (empty && !story) return null;
   const row = (t: ClubCrowdView["told"][number]) => (
     <li
       key={t.episode}
@@ -63,18 +68,8 @@ export function ClubCrowd({
       </span>
     </li>
   );
-  return (
-    <section aria-labelledby="who-else" className="club-list mx-auto w-full max-w-3xl">
-      <h2
-        id="who-else"
-        className="text-center font-[family-name:var(--font-flyer)] text-3xl uppercase tracking-wide text-[#111]"
-      >
-        On the list
-      </h2>
-      <p className="mt-1 text-center text-xs text-[#6b6460]">
-        {name} · {address} · who else was there
-      </p>
-
+  const body = (
+    <>
       {c.told.length > 0 && (
         <>
           <h3 className={h4}>
@@ -122,6 +117,31 @@ export function ClubCrowd({
             ))}
           </ul>
         </>
+      )}
+    </>
+  );
+  return (
+    <section
+      aria-labelledby="who-else"
+      className={`club-list mx-auto w-full ${story ? "max-w-5xl" : "max-w-3xl"}`}
+    >
+      <h2
+        id="who-else"
+        className="text-center font-[family-name:var(--font-flyer)] text-3xl uppercase tracking-wide text-[#111]"
+      >
+        On the list
+      </h2>
+      <p className="mt-1 text-center text-xs text-[#6b6460]">
+        {name} · {address} · who else was there
+      </p>
+
+      {story ? (
+        <div className="grid gap-x-12 md:grid-cols-2">
+          <div>{story}</div>
+          <div>{body}</div>
+        </div>
+      ) : (
+        body
       )}
     </section>
   );

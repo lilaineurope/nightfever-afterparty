@@ -15,7 +15,7 @@ export const Route = createFileRoute("/episodes/")({
   // afterparty so it doesn't compete with night fever podcast original"). Google gets this page as our collection of
   // AFTERPARTY pages ABOUT the podcast - not as the podcast itself, which stays World of Wonder's.
   head: () => ({
-    ...pageHead({ path: "/episodes", title: "Night Fever AFTERPARTY – every episode, timestamped", description: "My fan AFTERPARTY for every Night Fever episode - every name, club, song and look the guests drop, counted and timestamped. Newest AFTERPARTY first!", image: "/og/episodes.jpg" }),
+    ...pageHead({ path: "/episodes", title: "Night Fever AFTERPARTY – every episode, timestamped", description: "My fan AFTERPARTY for every Night Fever episode - every name, club, song and look the guests drop, counted and timestamped. Most mentioned AFTERPARTY first!", image: "/og/episodes.jpg" }),
     scripts: [
       jsonLd({
         "@context": "https://schema.org",
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/episodes/")({
         about: { "@type": "PodcastSeries", name: "Night Fever", url: "https://www.wowpresentsplus.com/night-fever" },
         mainEntity: {
           "@type": "ItemList",
-          itemListElement: episodes.map((e, i) => ({
+          itemListElement: byMostMentioned.map((e, i) => ({
             "@type": "ListItem",
             position: i + 1,
             name: `${e.guest} - Night Fever AFTERPARTY S${e.season}E${e.episode}${e.part ?? ""}`,
@@ -39,18 +39,21 @@ export const Route = createFileRoute("/episodes/")({
 });
 
 
+/** S06E01 James St. James, the host in the guest chair: always first on the AFTERPARTY page (Lisa, 28 Nov 2026). */
+const PINNED_ON_TOP = "s06e01";
+
+// Most mentioned first (Lisa, 28 Nov 2026): ranked by the mentions on each polaroid (every timestamped mention in
+// that AFTERPARTY, episodeStats), with the host's own episode, S06E01 James St. James, always pinned on top.
+const byMostMentioned = [...episodes].sort(
+  (a, b) =>
+    Number(b.id === PINNED_ON_TOP) - Number(a.id === PINNED_ON_TOP) ||
+    episodeStats(b.id).mentions - episodeStats(a.id).mentions ||
+    a.season - b.season ||
+    a.episode - b.episode,
+);
+
 function EpisodesPage() {
   const [season, setSeason] = useState<number | null>(null);
-  // Ranked by afterparty publish date: the connection published here most
-  // recently comes first. This is the date the index went live on this site,
-  // not the date the episode was published at WOW Presents Plus.
-  const byAfterpartyPublishDate = [...episodes].sort(
-    (a, b) =>
-      b.afterpartyPublished.localeCompare(a.afterpartyPublished) ||
-      b.season - a.season ||
-      b.episode - a.episode,
-  );
-
   return (
     <main
       className="page-sky min-h-screen bg-background text-foreground"
@@ -64,7 +67,7 @@ function EpisodesPage() {
           <br />
           <span className="timeline-strip timeline-strip-pink">unpacked &amp; timestamped</span>
         </h1>
-        <p className="timeline-tag">Every name, club, song, book and look - to the minute you hear it. Newest Afterparty first.</p>
+        <p className="timeline-tag">Every name, club, song, book and look - to the minute you hear it. Most mentioned AFTERPARTY first.</p>
       </section>
 
       {/* Episode list */}
@@ -85,7 +88,7 @@ function EpisodesPage() {
           })}
         </div>
         <div className="mx-auto flex max-w-5xl flex-col gap-6">
-          {byAfterpartyPublishDate.filter((ep) => season === null || ep.season === season).map((ep) => (
+          {byMostMentioned.filter((ep) => season === null || ep.season === season).map((ep) => (
             <EpisodeBlock key={ep.id} ep={ep} stats={episodeStats(ep.id)} showDates headingLevel={2} />
           ))}
         </div>

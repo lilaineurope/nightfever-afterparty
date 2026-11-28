@@ -16,15 +16,19 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
   // Jenny Go-Getter's novels, written as Jennifer Banash (Lisa, 28 Nov 2026, top Google search pages). Open Library first.
+  // Brian Belovitch's documentary (Lisa, 28 Nov 2026: "needs a cover design"): the real poster, via TMDB.
+  "I'm Gonna Make You Love Me": { kind: "book", file: "film-im-gonna-make-you-love-me.webp", credit: "Poster: I'm Gonna Make You Love Me (Karen Bernstein, 2019), via TMDB" },
   "Hollywoodland (Jennifer Banash)": { kind: "book", file: "book-hollywoodland-banash.webp", credit: "Cover via Open Library (Impetus Press, 2006)" },
   "The Elite (Jennifer Banash)": { kind: "book", file: "book-the-elite-banash.webp", credit: "Cover via Open Library (Berkley JAM, 2008, eBook edition)" },
-  "In Too Deep (Jennifer Banash)": { kind: "book", file: "book-in-too-deep-banash.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
-  "Simply Irresistible (Jennifer Banash)": { kind: "book", file: "book-simply-irresistible-banash.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
+  "In Too Deep (Jennifer Banash)": { kind: "book", file: "book-in-too-deep-banash.webp", credit: "Cover: Berkley JAM (Penguin), 2009" },
+  "Simply Irresistible (Jennifer Banash)": { kind: "book", file: "book-simply-irresistible-banash.webp", credit: "Cover: Berkley JAM (Penguin), 2009" },
   "White Lines – Jennifer Banash": { kind: "book", file: "book-white-lines-banash.webp", credit: "Cover via Open Library (G. P. Putnam's Sons, 2013)" },
   "Silent Alarm (Jennifer Banash)": { kind: "book", file: "book-silent-alarm-banash.webp", credit: "Cover via Open Library (G. P. Putnam's Sons, 2015)" },
   "The Rise and Fall of Ava Arcana": { kind: "book", file: "book-rise-and-fall-of-ava-arcana.webp", credit: "Cover via Open Library (Lake Union Publishing, 2023)" },
   "The Essential Elizabeth Stone": { kind: "book", file: "book-essential-elizabeth-stone.webp", credit: "Cover via Open Library (Lake Union Publishing, 2024)" },
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
+  // S06E04 Raja - RuPaul's memoir, the HarperCollins edition (Open Library, 27 Nov 2026), waiting for Lisa's look
+  "The House of Hidden Meanings": { kind: "book", file: "book-the-house-of-hidden-meanings.webp", credit: "Cover via Open Library (HarperCollins, 2024)" },
   // S05E09 Screamin' Rachael Cain - the only cover found (Open Library, 27 Nov 2026), waiting for Lisa's look
   "The World, Captured by Stephan Lupino": { kind: "book", file: "book-the-world-stephan-lupino.webp", credit: "Cover via Open Library (Graphics-Photos-Art, 1988)" },
   // S06E10 Kenneth Hash aka Lil' Kenny (Lisa picked B, 27 Nov 2026)
@@ -155,7 +159,7 @@ const COVERS: Record<string, Cover> = {
   // picture is its magazine's cover (Fat and All That and Lunch with Lauren in Paper, Diary of a Mad Queen in OutWeek,
   // Ms. Lonely Hearts in the SoHo News) gets a typed yellow cover. Out magazine has its own cover (RuPaul, 2017), so the Glass Closet cover stays with that article.
   "'Bring On the Night' (New York Post, 1990)": { kind: "mast", file: "mast-new-york-post.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // Lisa: A (7 Nov 2026)
-  "'The Death of Downtown' (Michael Musto)": { kind: "book", file: "book-death-of-downtown.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
+  "'The Death of Downtown' (Michael Musto)": { kind: "book", file: "book-death-of-downtown.webp", credit: "Cover designed by the AFTERPARTY as a 1987 front page (the Village Voice, 28 April 1987) - no picture of the real one found" },
   "New York magazine – 'Club Kids'": { kind: "mast", file: "mast-new-york-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "The Social Circus (Sunday column)": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "New York Daily News": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" },

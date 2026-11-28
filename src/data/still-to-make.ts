@@ -195,6 +195,14 @@ export const BOOKS_TO_WRITE: StillToMake[] = [
     made: "in the works",
     status: "Started, handwritten, no publisher announced (checked 22 Nov 2026).",
   },
+  {
+    title: "Raja's book",
+    why: "Raja says a new book is on the way, with a chapter about Ivan, the high school best friend who first took Raja to Arena.",
+    episodeId: "s06e04",
+    time: "00:09:55",
+    made: "in the works",
+    status: "Announced on the show; no title or date found online (checked 27 Nov 2026).",
+  },
 ];
 
 export const FILMS_TO_MAKE: StillToMake[] = [

@@ -1,59 +1,26 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { PlaceMapDrawing } from "@/components/place-page";
+import { CoverFace } from "@/components/cover-face";
 import { linkToSlug, useLinks } from "@/lib/link-index";
-import { episodePath } from "@/data/episodes";
-import type { MapBand, MapEvent, MapHome, MapLine, RoomsMap } from "@/lib/map-view";
+import type { MapBand, MapHome, RoomsMap } from "@/lib/map-view";
 
 // The map on the pages (Lisa, 27 Nov 2026, "yes to all Which page gets what"): "Around the block" on club and event
 // pages - the place pages' drawing as a band of its own, the club in the middle - the yellow tape block where there is
 // no pin, and a living person's rooms as numbered pins on a drawn New York. Data: src/lib/map-view.server.ts.
+//
+// THE SHORT MAP BOX ON EVERY PAGE (Lisa, 28 Nov 2026, standing rule "FROM NOW ONWARDS"): the map, the big-map button in
+// its corner, then the names around it - no episode lines inside the map box. Any page that shows a map box uses
+// AroundTheBlock (one pin) or RoomsMapSection (numbered stops) from this file, so a new page gets the short map by itself.
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const BRING_HOME = "Bring us home";
 /** Walking minutes only, so the names keep the room (the place pages' list also gives metres). */
 const mins = (m: number) => (m < 20 ? "next door" : `${Math.max(1, Math.round(m / 80))} min walk`);
 
-/** An episode mention line (Lisa, 22 Nov 2026): the episode link in pink, the yellow ▶ time code, what was said below. */
-function Line({ l }: { l: MapLine }) {
-  return (
-    <>
-      <span className="mt-0.5 flex flex-wrap items-baseline gap-x-2 text-xs">
-        <Link
-          to={episodePath(l.episode as never)}
-          className="font-semibold text-pink hover:text-[#111]"
-        >
-          {l.short} · {l.guest}
-        </Link>
-        <Timestamp episodeId={l.episode} time={l.time} />
-      </span>
-      <span className="mt-0.5 block font-[family-name:var(--font-type)] text-[13px] leading-snug text-[#333]">
-        {l.context}
-      </span>
-    </>
-  );
-}
-
-function EventRow({ x, where }: { x: MapEvent; where?: string | undefined }) {
-  const links = useLinks();
-  return (
-    <li className="map-event">
-      <span>
-        <span aria-hidden="true" className="place-key place-key-event" />
-        <Link
-          {...linkToSlug(links, x.slug)}
-          className="font-semibold text-[#111] transition-colors hover:text-pink"
-        >
-          {x.name}
-        </Link>
-        {where && <span className="text-muted-foreground"> · {where}</span>}
-      </span>
-      {x.line && <Line l={x.line} />}
-    </li>
-  );
-}
-
-/** "Around the block": the drawn band, Around the corner with walking minutes, the events here and next door. */
+/** "Around the block": the drawn band with the big-map button in its corner, Around the corner with walking minutes, then
+ *  the events next door as Library covers in a box of their own (Lisa, 28 Nov 2026: "just show the map and then around
+ *  the corner"). */
 export function AroundTheBlock({ b, slug }: { b: MapBand; slug: string }) {
   const links = useLinks();
   const at = b.kind === "club" ? slug : (b.pin.slug ?? slug);
@@ -79,74 +46,67 @@ export function AroundTheBlock({ b, slug }: { b: MapBand; slug: string }) {
         </p>
       )}
       <div className="map-band mt-6">
-        <PlaceMapDrawing m={b.map} name={b.pin.name} band />
-        <div className="map-band-foot">
-          {b.near.length > 0 && (
-            <div>
-              <h3 className={h}>Around the corner</h3>
-              <ul className="map-near mt-3">
-                {b.near.slice(0, 10).map((n) => (
-                  <li key={n.slug} className="place-near">
-                    <span>
-                      <span
-                        aria-hidden="true"
-                        className={n.club ? "place-key place-key-club" : "place-key"}
-                      />
-                      <Link
-                        {...linkToSlug(links, n.slug)}
-                        className="font-semibold text-[#111] transition-colors hover:text-pink"
-                      >
-                        {n.name}
-                      </Link>
-                    </span>
-                    <span className="whitespace-nowrap text-muted-foreground">
-                      {mins(n.metres)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <div>
-            {b.here.length > 0 && (
-              <>
-                <h3 className={h}>{b.kind === "club" ? "Events here" : "Also here"}</h3>
-                <ul className="mt-2">
-                  {b.here.map((x) => (
-                    <EventRow key={x.slug} x={x} />
-                  ))}
-                </ul>
-              </>
-            )}
-            {b.nextDoor.length > 0 && (
-              <>
-                <h3 className={`${h} ${b.here.length ? "mt-6" : ""}`}>Events next door</h3>
-                <ul className="mt-2">
-                  {b.nextDoor.map((x) => (
-                    <EventRow
-                      key={x.slug}
-                      x={x}
-                      where={[x.at, x.metres !== undefined ? mins(x.metres) : ""]
-                        .filter(Boolean)
-                        .join(" · ")}
+        {/* The big-map button sits in the map's bottom-right corner (Lisa, 28 Nov 2026). */}
+        <div className="relative">
+          <PlaceMapDrawing m={b.map} name={b.pin.name} band />
+          <Link to="/map" search={{ at }} className="map-btn map-btn-corner">
+            Open the big map &rarr;
+          </Link>
+        </div>
+        {b.near.length > 0 && (
+          <div className="map-band-foot map-band-foot-one">
+            <h3 className={h}>Around the corner</h3>
+            <ul className="map-near map-near-wide mt-3">
+              {b.near.slice(0, 12).map((n) => (
+                <li key={n.slug} className="place-near">
+                  <span>
+                    <span
+                      aria-hidden="true"
+                      className={n.club ? "place-key place-key-club" : "place-key"}
                     />
-                  ))}
-                </ul>
-              </>
-            )}
-            <p className={b.here.length || b.nextDoor.length ? "mt-6" : ""}>
-              <Link to="/map" search={{ at }} className="map-btn">
-                Open the big map at {b.pin.name} &rarr;
-              </Link>
-            </p>
-            <p className="mt-3 text-xs text-muted-foreground">
+                    <Link
+                      {...linkToSlug(links, n.slug)}
+                      className="font-semibold text-[#111] transition-colors hover:text-pink"
+                    >
+                      {n.name}
+                    </Link>
+                  </span>
+                  <span className="whitespace-nowrap text-muted-foreground">{mins(n.metres)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-xs text-muted-foreground">
               <span aria-hidden="true" className="place-key place-key-club" /> club &nbsp;
               <span aria-hidden="true" className="place-key" /> place &nbsp; · Pins are approximate,
               from the public address. The street grid is drawn, not traced.
             </p>
           </div>
-        </div>
+        )}
       </div>
+      {b.nextDoor.length > 0 && (
+        // Its own box, in the Library's cover style (Lisa, 28 Nov 2026).
+        <div className="map-next mt-10">
+          <h3 className={`${h} text-center`}>Events next door</h3>
+          <ul className="map-next-grid mt-6">
+            {b.nextDoor.map((x) => (
+              <li key={x.slug}>
+                <Link {...linkToSlug(links, x.slug)} className="lib-hit block" aria-label={x.name}>
+                  {x.design && <CoverFace d={x.design} />}
+                </Link>
+                <Link
+                  {...linkToSlug(links, x.slug)}
+                  className="mt-3 block font-semibold leading-snug text-[#111] transition-colors hover:text-pink"
+                >
+                  {x.name}
+                </Link>
+                <span className="mt-0.5 block text-xs text-muted-foreground">
+                  {[x.at, x.metres !== undefined ? mins(x.metres) : ""].filter(Boolean).join(" · ")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }
@@ -185,8 +145,12 @@ export function BringUsHome({ m }: { m: MapHome }) {
   );
 }
 
-/** A living person's rooms, or an AFTERPARTY's places (the reference list's Map view): numbered pins on a drawn New
- *  York, each with the episode line about it. */
+/** A living person's rooms, or an AFTERPARTY's places (the reference list's Map view): the SHORT map box (Lisa, 28 Nov
+ *  2026, "REMEMBER TO ALL PAGES THAT WE ARE SHORTENING THE MAP BOX ... FROM NOW ONWARDS"), cut like "Around the block":
+ *  the drawn New York with the big-map button in its bottom-right corner, then the numbered names only, side by side. What was said
+ *  about each place stays in the episode's reference list and the place's own page, not in the map box. On an AFTERPARTY
+ *  page each name keeps its yellow ▶ time code. Every page with a map uses this component or AroundTheBlock, never a
+ *  map box of its own. */
 export function RoomsMapSection({
   r,
   first,
@@ -201,7 +165,7 @@ export function RoomsMapSection({
   title?: string | undefined;
   intro?: string | undefined;
   id?: string | undefined;
-  /** On an AFTERPARTY page: the big map opens on this episode's stops (/map?ep=). */
+  /** On an AFTERPARTY page: the big map opens on this episode's stops (/map?ep=), and each name keeps its ▶ time code. */
   episode?: string | undefined;
   /** On /map itself: only the list, the live map shows the stops. */
   noMap?: boolean;
@@ -216,7 +180,7 @@ export function RoomsMapSection({
       {intro && (
         <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground">{intro}</p>
       )}
-      <div className={m ? "rooms-grid mt-6" : "mx-auto mt-6 max-w-3xl"}>
+      <div className={m ? "rooms-grid rooms-short mt-6" : "rooms-short mx-auto mt-6 max-w-3xl"}>
         {m && (
           <div className="rooms-map">
             <svg
@@ -273,16 +237,29 @@ export function RoomsMapSection({
                   </text>
                 </a>
               ))}
-              <g transform={`translate(${m.w - 30 - m.scale.px} ${m.h - 24})`}>
+              {/* The scale sits bottom-left, under the big-map button's corner. */}
+              <g transform={`translate(24 ${m.h - 24})`}>
                 <line x1={0} y1={0} x2={m.scale.px} y2={0} className="place-scale" />
                 <text x={m.scale.px / 2} y={-7} textAnchor="middle" className="place-scale-label">
                   {m.scale.label}
                 </text>
               </g>
             </svg>
+            {/* The big-map button in the map box's bottom-right corner, on a strip of its own so it never hides a pin. */}
+            {r.stops.length > 0 && (
+              <div className="rooms-map-foot">
+                <Link
+                  to="/map"
+                  search={episode ? { ep: episode } : { at: r.stops[0]!.slug }}
+                  className="map-btn"
+                >
+                  Open the big map &rarr;
+                </Link>
+              </div>
+            )}
           </div>
         )}
-        <div>
+        <div className="rooms-short-list">
           <ol className="rooms-list">
             {r.stops.map((s) => (
               <li key={s.slug} id={`stop-${s.n}`}>
@@ -292,42 +269,49 @@ export function RoomsMapSection({
                 >
                   {s.n}
                 </span>
-                <div>
+                <span className="rooms-name">
                   <Link
                     {...linkToSlug(links, s.slug)}
                     className="font-semibold text-[#111] transition-colors hover:text-pink"
                   >
                     {s.name}
                   </Link>
-                  <span className="text-xs text-muted-foreground"> · {s.area}</span>
-                  {s.line && <Line l={s.line} />}
-                </div>
+                  <span className="text-muted-foreground"> · {s.area}</span>
+                  {episode && s.line && (
+                    <>
+                      {" "}
+                      <Timestamp episodeId={s.line.episode} time={s.line.time} />
+                    </>
+                  )}
+                </span>
               </li>
             ))}
             {r.home.map((x) => (
               <li key={x.slug}>
-                <span className="home-tag rooms-tape">{BRING_HOME}</span>
-                <div>
+                <span className="rooms-badge rooms-badge-home" aria-hidden="true">
+                  ?
+                </span>
+                <span className="rooms-name">
                   <Link
                     {...linkToSlug(links, x.slug)}
                     className="font-semibold text-[#111] transition-colors hover:text-pink"
                   >
                     {x.name}
                   </Link>
-                  {x.line && <Line l={x.line} />}
-                  {x.hint && (
-                    <span className="mt-0.5 block text-xs italic text-muted-foreground">
-                      What we know: {x.hint}
-                    </span>
+                  {episode && x.line && (
+                    <>
+                      {" "}
+                      <Timestamp episodeId={x.line.episode} time={x.line.time} />
+                    </>
                   )}
                   <Link
                     to="/contact"
                     search={{ about: `${BRING_HOME}: ${x.name}` }}
-                    className="mt-0.5 inline-block text-xs font-semibold text-[#111] transition-colors hover:text-pink"
+                    className="ml-2 whitespace-nowrap text-xs font-semibold text-[#111] transition-colors hover:text-pink"
                   >
                     I know where it was &rarr;
                   </Link>
-                </div>
+                </span>
               </li>
             ))}
           </ol>
@@ -348,16 +332,18 @@ export function RoomsMapSection({
               ))}
             </p>
           )}
-          {r.stops.length > 0 && !noMap && (
-            <p className="mt-5">
-              <Link
-                to="/map"
-                search={episode ? { ep: episode } : { at: r.stops[0]!.slug }}
-                className="map-btn"
-              >
-                See them on the big map &rarr;
-              </Link>
-            </p>
+          {(r.stops.length > 0 || r.home.length > 0) && (
+          <p className="mt-4 text-xs text-muted-foreground">
+            <span aria-hidden="true" className="place-key place-key-club" /> club &nbsp;
+            <span aria-hidden="true" className="place-key" /> place
+            {r.home.length > 0 && (
+              <>
+                {" "}
+                &nbsp;<span className="home-tag">{BRING_HOME}</span> no pin yet
+              </>
+            )}{" "}
+            · Pins are approximate, from the public address.
+          </p>
           )}
         </div>
       </div>

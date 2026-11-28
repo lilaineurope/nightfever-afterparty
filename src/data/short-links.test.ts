@@ -26,6 +26,10 @@ test("every club night has a short Spotify address", () => {
   }
 });
 
+test("a playlist description's alias opens the same club night (/spotify/regines)", () => {
+  assert.equal(shortLinkTarget("spotify", "regines"), shortLinkTarget("spotify", "re-gine-s"));
+});
+
 test("an unknown code still lands on the home page, tagged", () => {
   assert.equal(shortLinkTarget("spotify", "nope"), "/?utm_source=spotify&utm_medium=playlist&utm_campaign=unknown");
 });

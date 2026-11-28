@@ -40,6 +40,20 @@ export type ItemStory = {
 // afterparty guests ... and to all future episodes"): scripts/item-stories-auto.py writes item-stories-auto.json from the
 // work's Wikipedia page and Wikidata credits. A story written here by hand always wins.
 const HAND: Record<string, ItemStory> = {
+  // S06E04 Raja (27 Nov 2026)
+  "fashion-photo-ruview": {
+    intro: "A weekly WOWPresents show on YouTube where Raja and Raven review the runway looks from RuPaul's Drag Race.",
+    facts: [
+      { label: "Since", value: "2014" },
+      { label: "Hosts", value: "Raja and Raven" },
+      { label: "Made for", value: "WOWPresents" },
+    ],
+    inIt: [{ name: "Raja", note: "Hosts it" }, { name: "Raven", note: "Hosts it" }],
+    since: [
+      { when: "On the show", what: "James says it has become classic viewing for him and makes him feel young, like watching what the kids watch.", source: "S06E04", episode: "s06e04", time: "00:54:53" },
+    ],
+    sources: ["Raja's Wikipedia page", "S06E04 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
   // Top Google search pages, round 3 (Lisa, 28 Nov 2026: "do all 1-5"). Howie Pyro's records: the sleeves and credits on
   // Discogs; Nations: Gallery 98's copy of the issue; The Death of Downtown: the episodes (no copy of the article found online).
   blessed: {
@@ -666,6 +680,30 @@ const HAND: Record<string, ItemStory> = {
     since: [],
     sources: ["The film's credits (IMDb, TCM)", "The Dean Johnson Papers, NYU Fales Library", "Our Library publications (no reviews or mentions yet)"],
   },
+  // Lisa, 28 Nov 2026 (Alexander McQueen's Library box). Facts: Wikipedia "McQueen (film)" and TMDB, read 28 Nov 2026.
+  "mcqueen-2018-film": {
+    intro:
+      "Ian Bonhôte and Peter Ettedgui's documentary about Alexander McQueen, from the East London boy who learnt tailoring on Savile Row to the head of Givenchy and his own house, told through his shows, his own tapes and the people around him.",
+    reviews: [],
+    facts: [
+      { label: "First shown", value: "Tribeca Film Festival, 22 April 2018" },
+      { label: "Directed by", value: "Ian Bonhôte" },
+      { label: "Written and co-directed by", value: "Peter Ettedgui" },
+      { label: "Made by", value: "Misfits Entertainment and Salon Pictures" },
+      { label: "Music", value: "Michael Nyman" },
+      { label: "Length", value: "1 hour 51 minutes" },
+    ],
+    inIt: [
+      { name: "Alexander McQueen" },
+      { name: "Joseph Bennett" },
+      { name: "Magdalena Frackowiak" },
+      { name: "Jodie Kidd" },
+      { name: "Kate Moss" },
+      { name: "Bernard Arnault" },
+    ],
+    since: [],
+    sources: ["Wikipedia: McQueen (film)", "The film's credits (TMDB)", "Our Library publications (no reviews or mentions yet)"],
+  },
   "big-johnson": {
     intro:
       "Lola Rocknrolla's documentary about the wild life and mysterious death of Dean Johnson, named after a Velvet Mafia song. Dean's sister Beth is one of its producers.",
@@ -751,6 +789,7 @@ const CLIPS: Record<string, NonNullable<ItemStory["film"]>> = {
   // Dean Johnson's work (Lisa, 27 Nov 2026): Nelson Sullivan's own tape, the Velvet Mafia's video, the film's trailer.
   weenies: { id: "BswrxwRpoz8", title: "Dean and the Weenies - Bourgeois Boys, Pyramid Club, 1985", channel: "Nelson Sullivan's video archive" },
   "velvet-mafia": { id: "iIUGQ8_6Jh0", title: "Dean Johnson - Velvet Mafia (music video)", channel: "RYANISLANDfilms" },
+  "mcqueen-2018-film": { id: "4OjX3ZbsfbU", title: "McQueen - official trailer", channel: "Bleecker Street" },
   "big-johnson": { id: "bwa1ttQbXJ8", title: "The Big Johnson - trailer", channel: "Freestyle Digital Media" },
   blondie: { id: "6rkbvphNFtw", title: "Debbie Harry thanks Tish & Snooky at Blondie's induction into the Rock and Roll Hall of Fame, 2006", channel: "Manic Panic",
     note: "At Blondie's induction in 2006, Debbie Harry thanks Tish & Snooky, the backing singers in Blondie's first line-up." },

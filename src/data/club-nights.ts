@@ -1028,7 +1028,46 @@ const xn: ClubNight = {
   ],
 };
 
-export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf, lbd, xn];
+const rg: ClubNight = {
+  slug: "re-gine-s",
+  club: "Régine's",
+  // Playlists built PRIVATE on Lisa's accounts (28 Nov 2026) - uncomment once she makes them public (then set YouTube Voting).
+  // playlistId: "1paI1Tw6LvzG0Nbuentnxe",
+  // youtubePlaylist: "https://www.youtube.com/playlist?list=PLHeCWrqjXZ-8",
+  // Lisa, 28 Nov 2026: "create a whole a nights sounds like this in regine and add it to the clubs page". Songs found on the Mac
+  // in Record World's Régine's DJ charts (1979), Billboard and MR PORTER; Spotify and YouTube ids checked there, never guessed.
+  // The playlist descriptions link /spotify/regines and /jukebox?club=regines - "regines" is an alias (CLUB_NIGHT_ALIASES).
+  note: "Records documented at Régine's New York (1976-1991): the two Régine's charts DJ Tony Lawrence sent to Record World in 1979, the Bee Gees as the guests came in, Van McCoy from Jonata Garavaglia, the resident DJ from opening night, the acts who sang there, a disco hit that rhymes \"jeans\" with \"Regine's\", and Régine's own French I Will Survive. Not one exact night.",
+  footage: [{ id: "fcZMEuytALY", title: "Nelson George: follow the sound - Régine's discotheque, New York" }],
+  sources: [
+    { key: "A", label: "MR PORTER: When Disco Had A Dress Code - the Bee Gees at the door, Neil Sedaka's birthday", href: "https://www.mrporter.com/en-us/journal/fashion/when-disco-had-a-dress-code-688280" },
+    { key: "B", label: "Billboard, 30 October 1976, p. 51 - Jonata at Régine's", href: "https://books.google.com/books?id=EyUEAAAAMBAJ&pg=PT50" },
+    { key: "C", label: "Disco Diva: DJ Jonata Garavaglia interview - Régine's from opening night", href: "https://discodiva.it/dj-jonata-garavaglia/" },
+    { key: "D", label: "Record World, 11 August 1979, p. 26 - the Regine's/New York chart, DJ Tony Lawrence", href: "https://www.worldradiohistory.com/Archive-All-Music/Record-World/70s/79/Record-World-1979-08-11.pdf" },
+    { key: "E", label: "Record World, 15 December 1979, p. 16 - the Regine's/New York chart, DJ Tony Lawrence", href: "https://www.worldradiohistory.com/Archive-All-Music/Record-World/70s/79/RW-1979-12-15.pdf" },
+    { key: "F", label: "Record World, 19 February 1977, p. 30 - Vince Aletti's Disco File", href: "https://www.worldradiohistory.com/Archive-All-Music/Record-World/70s/77/RW-1977-02-19.pdf" },
+    { key: "G", label: "Rare Vinyl: Régine - Je survivrai, French 12-inch", href: "https://eu.rarevinyl.com/products/regine-je-survivrai-autographed-french-12-inch-vinyl-single-maxi-8-040-726986" },
+  ],
+  songs: [
+    { title: "Nights on Broadway", artist: "Bee Gees", year: 1975, spotify: "4JjcCdm0RSPuvQWnZyrNkm", video: "5g2bJbrwLmk", kind: "played", why: "Playing as the guests came in", sources: ["A"] },
+    { title: "The Hustle", artist: "Van McCoy", year: 1975, spotify: "6hYT9vkr0xMjhBlaLsYq9T", video: "SFzMs2SN--s", kind: "played", why: "Billboard names Van McCoy among the records of Jonata, the resident DJ (the artist, not the song)", sources: ["B", "C"] },
+    { title: "N.Y., You Got Me Dancing", artist: "Andrea True Connection", year: 1977, spotify: "3zg3c6ZqxN48124dp39hRt", video: "NefWw8lD2_w", kind: "about", why: "Vince Aletti: it rhymes \"come in your jeans\" with \"Regine's\"", sources: ["F"] },
+    { title: "Let's All Chant", artist: "Michael Zager Band", year: 1977, spotify: "2xGMzDlPnmPHD8HUYOy4Lw", video: "tVOycFbfIDA", kind: "live", why: "Jonata remembers Michael Zager coming to perform (the artist, not the song)", sources: ["C"] },
+    { title: "Happy Birthday Sweet Sixteen", artist: "Neil Sedaka", year: 1961, spotify: "5ttys6S3vGWCgOpiuB5axN", video: "NFns51rl4BU", kind: "live", why: "Paloma Picasso sang it to Neil Sedaka at Régine's", sources: ["A"] },
+    { title: "Ain't Nothing Gonna Keep Me from You", artist: "Teri DeSario", year: 1978, spotify: "2NfkIVo84zxqeq1vKUrTI2", video: "RnvwcGLWybI", kind: "played", why: "On the Régine's chart, August 1979", sources: ["D"] },
+    { title: "Born to Be Alive", artist: "Patrick Hernandez", year: 1979, spotify: "3XIEWK1V9n25PS9Vb6axj5", video: "vb5a-GYty-o", kind: "played", why: "On the Régine's chart, August 1979", sources: ["D"] },
+    { title: "Good Times", artist: "Chic", year: 1979, spotify: "0G3fbPbE1vGeABDEZF0jeG", video: "iGKQapswGaY", kind: "played", why: "On the Régine's chart, August 1979", sources: ["D"] },
+    { title: "Here Comes That Sound Again", artist: "Love De-Luxe", year: 1979, spotify: "7fJvlmnfsJZTdcHhqT5UH2", video: "3IJ4ECTAm6Y", kind: "played", why: "On the Régine's chart, August 1979", sources: ["D"] },
+    { title: "The Boss", artist: "Diana Ross", year: 1979, spotify: "5kfQK1Vb1mKSwzVn32Tarj", video: "1Xthfy1WMfI", kind: "played", why: "On the Régine's chart, August 1979", sources: ["D"] },
+    { title: "Rock with You", artist: "Michael Jackson", year: 1979, spotify: "7oOOI85fVQvVnK5ynNMdW7", video: "5X-Mrc2l1d0", kind: "played", why: "On the Régine's chart, December 1979", sources: ["E"] },
+    { title: "Rapper's Delight", artist: "Sugarhill Gang", year: 1979, spotify: "4506T8EPxwv27t2v84oIcY", video: "mcCK99wHrk0", kind: "played", why: "On the Régine's chart, December 1979", sources: ["E"] },
+    { title: "No More Tears (Enough Is Enough)", artist: "Donna Summer & Barbra Streisand", year: 1979, spotify: "2WOxDSMVbPy8rsK9oMtWuj", video: "MUA7ylTmrmA", kind: "played", why: "On the Régine's chart, December 1979", sources: ["E"] },
+    { title: "Let Me Know (I Have a Right)", artist: "Gloria Gaynor", year: 1979, spotify: "29ok4nWfUmmR1A8P8t2kuq", video: "l8RiFSJ2Sf8", kind: "played", why: "On the Régine's chart, December 1979", sources: ["E"] },
+    { title: "Je survivrai", artist: "Régine", year: 1979, spotify: "2jTGmdp9BMqnWfkKvHLyUk", video: "EIL_5q6p12w", kind: "about", why: "The owner's own record - her French I Will Survive", sources: ["G"] },
+  ],
+};
+
+export const CLUB_NIGHTS: ClubNight[] = [pg, s54, dt, ar, mc, ll, tn, pd, bb, c57, py, nl, cb, mx, sf, lbd, xn, rg];
 
 export const clubNightFor = (slug: string) => CLUB_NIGHTS.find((c) => c.slug === slug);
 export { KIND_LABEL, playlistUrl } from "./club-night-labels";

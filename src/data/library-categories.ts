@@ -58,3 +58,19 @@ export const categoryOf = (key: string | undefined): LibraryCategory =>
 /** Every item in every category (the Library's head and share card count them all). */
 export const libraryCount = (): number =>
   LIBRARY_CATEGORIES.reduce((n, c) => n + c.items.length, 0);
+
+// AFTERPARTY filter (Lisa, 28 Nov 2026: "on library, do a setup where we can sort on afterparty only and select per
+// episode"). Every item carries the moments it comes up in, each with its episode, so these read straight off them.
+/** Dropped by a guest in an AFTERPARTY (not one of the "by" books that no guest has dropped yet). */
+export const droppedInAfterparty = (it: CollectionItem): boolean => !it.by && it.moments.length > 0;
+/** Dropped in this AFTERPARTY (episode id, e.g. "s06e04"). */
+export const inEpisode = (it: CollectionItem, episodeId: string): boolean =>
+  it.moments.some((m) => m.episodeId === episodeId);
+/** When an item first comes up in this AFTERPARTY, in seconds (for "in the order they come up"). */
+export const firstTimeIn = (it: CollectionItem, episodeId: string): number =>
+  Math.min(
+    ...it.moments
+      .filter((m) => m.episodeId === episodeId)
+      .map((m) => m.time.split(":").reduce((s, p) => s * 60 + (Number(p) || 0), 0)),
+    Number.MAX_SAFE_INTEGER,
+  );

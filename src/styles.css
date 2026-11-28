@@ -515,6 +515,19 @@ a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important
 .lib-cat[aria-pressed="true"] { background: var(--color-pink); color: #fff; transform: rotate(0) translateY(-2px); box-shadow: 4px 4px 0 #111; }
 .lib-cat-n { margin-left: 6px; font-family: var(--font-mono-body); font-size: 13px; opacity: .8; }
 @media (max-width: 639px) { .lib-cat { font-size: 16px; padding: 5px 12px; } }
+/* AFTERPARTY switch + episode picker on the Library (Lisa, 28 Nov 2026). */
+.lib-ap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+.lib-ap-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; color: #111; margin-right: 4px; }
+.lib-ap-ep { position: relative; display: flex; align-items: center; gap: 14px; margin-bottom: 22px; padding: 12px 44px 12px 12px; background: #f4f1ea; border: 2px solid #111; box-shadow: 4px 4px 0 #111; max-width: 640px; }
+.lib-ap-ep img { width: 72px; height: auto; flex: none; transform: rotate(-3deg); box-shadow: 2px 3px 0 rgba(0,0,0,.35); }
+.lib-ap-name { display: block; font-family: var(--font-flyer); font-size: 24px; line-height: 1.1; text-transform: uppercase; color: #111; text-decoration: none; transition: color .15s; }
+.lib-ap-name:hover, .lib-ap-name:focus-visible { color: var(--color-pink); text-decoration: none; }
+.lib-ap-x { position: absolute; top: 6px; right: 8px; width: 30px; height: 30px; border: 2px solid #111; background: #fff; font-size: 18px; line-height: 1; cursor: pointer; }
+.lib-ap-x:hover { background: var(--color-pink); color: #fff; }
+@media (max-width: 639px) { .lib-ap-name { font-size: 20px; } .lib-ap-ep img { width: 56px; } }
+/* Every category at once for one AFTERPARTY: each category opens with its own flyer strip. */
+.lib-ap-cat { display: inline-block; margin-top: 56px; background: var(--color-pink); color: #fff; padding: 6px 18px; font-family: var(--font-flyer); font-size: 26px; line-height: 1.1; text-transform: uppercase; transform: rotate(-1deg); box-shadow: 4px 4px 0 #111; }
+@media (max-width: 639px) { .lib-ap-cat { font-size: 20px; margin-top: 40px; } }
 .lib-art-by { display: block; margin: -2px 0 4px; font-family: var(--font-mono-body); font-size: 10px; line-height: 1.25; color: var(--color-pink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 /* Fashion & outfits (Lisa, 24 Nov 2026): a look is a fabric swatch card in its own colours, a shop a pink carrier bag */
 .fsh-look { padding: 0; background: #f4f1ea; color: #111; justify-content: flex-start; }
@@ -597,6 +610,18 @@ a.az-st[aria-expanded="true"] { transform: rotate(0) translateY(-2px) !important
 .guest-lib-polaroid-link { display: block; color: inherit; text-decoration: none; }
 .guest-lib-polaroid-link:hover figcaption, .guest-lib-polaroid-link:focus-visible figcaption { color: var(--pink); }
 @media (max-width: 640px) { .guest-lib-polaroid { float: none; margin: 24px auto 0; width: 170px; } }
+/* Guest Library summary row (Lisa, 28 Nov 2026: a summary of all Library categories) and the "why it's theirs" line under a cover. */
+.guest-lib-sum { margin-top: 28px; }
+.guest-lib-sum-h { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--color-pink); }
+.guest-lib-sum ul { display: flex; flex-wrap: wrap; gap: 14px 12px; margin-top: 12px; list-style: none; padding: 0; }
+.guest-lib-cat { display: inline-block; text-decoration: none; font-size: 17px; }
+/* Every category with something in it shows as selected (Lisa, 28 Nov 2026: "display all categories selected"). */
+.guest-lib-cat-on { background: var(--color-pink); color: #fff; box-shadow: 4px 4px 0 #111; }
+.guest-lib-cat-on:hover { background: #111; color: #f4f1ea; }
+.guest-lib-cat-0 { opacity: .45; cursor: default; box-shadow: none; }
+.guest-lib-cat-0:hover { background: #111; color: #f4f1ea; }
+.guest-lib-why { display: block; margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--color-gold); line-height: 1.3; }
+@media (max-width: 639px) { .guest-lib-cat { font-size: 14px; } }
 .lib-mast-l { font-size: clamp(15px, 1.6vw, 19px); }
 .lib-mast-xl { font-size: clamp(13px, 1.25vw, 15px); line-height: 1.05; }
 .lib-mast { hyphens: auto; }
@@ -1376,6 +1401,16 @@ a.scr-ours:hover { color: #111; }
 .map-near { columns: 2 240px; column-gap: 28px; }
 .map-near .place-near { break-inside: avoid; }
 .map-event { padding: 8px 0; border-bottom: 1px dashed #bbb; font-size: 13px; }
+/* Click an event, its box opens underneath (Lisa, 27 Nov 2026): one line per event keeps the map box short. */
+.map-event summary { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; cursor: pointer; list-style: none; }
+.map-event summary::-webkit-details-marker { display: none; }
+.map-event summary:hover .font-semibold { color: var(--color-pink); }
+.map-event-plus { flex: none; width: 20px; height: 20px; display: grid; place-items: center; border: 2px solid #111; font: 700 14px/1 var(--font-flyer); transition: transform .15s, background .15s; }
+.map-event details[open] .map-event-plus { transform: rotate(45deg); background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
+.map-more > summary { margin-top: 8px; cursor: pointer; list-style: none; font-size: 12px; font-weight: 700; color: var(--color-pink); }
+.map-more > summary::-webkit-details-marker { display: none; }
+.map-more[open] > summary { display: none; }
+.map-event-box { margin: 8px 0 4px; padding: 10px 12px; background: #fff; border: 2px solid #111; box-shadow: 3px 3px 0 #111; }
 .map-btn { display: inline-block; border: 2px solid #111; background: #111; color: #f6f0ea; padding: 7px 14px; font: 700 13px var(--font-mono-body); transition: background .15s, border-color .15s; }
 .map-btn:hover, .map-btn:focus-visible { background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
 /* On the AFTERPARTY pages every text link is pink (21 Oct rule); the map button keeps its own black fill. */
@@ -1385,6 +1420,7 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 @media (max-width: 700px) { .map-band-svg { height: 300px; } }
 /* A living person's rooms: numbered pins on a drawn New York, the list beside it. */
 .rooms-grid { display: grid; gap: 26px; align-items: start; }
+.rooms-map { position: relative; }
 @media (min-width: 860px) { .rooms-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .rooms-map { position: sticky; top: 90px; } }
 .rooms-map { border: 2px solid #111; box-shadow: 6px 7px 0 #111; background: #ece6da; }
 .rooms-map svg { display: block; width: 100%; height: auto; }
@@ -1402,6 +1438,14 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 .rooms-badge { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #111; background: #fff; color: #111; font: 700 12px var(--font-mono-body); }
 .rooms-badge-club { background: #111; color: #fff; }
 .rooms-tape { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; font-size: 7px; padding: 3px 0; height: fit-content; }
+/* The short map box (Lisa, 28 Nov 2026, every page from now on): numbered names only, one line each, two columns where
+   they fit; the big-map button sits in the map's corner (.map-btn-corner). */
+.rooms-short .rooms-list { display: block; columns: 2 220px; column-gap: 24px; }
+.rooms-short .rooms-list > li { break-inside: avoid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: center; padding: 6px 0; font-size: 13px; line-height: 1.35; }
+.rooms-short .rooms-badge { width: 24px; height: 24px; font-size: 11px; }
+.rooms-badge-home { background: #f6e06a; }
+.rooms-map-foot { display: flex; justify-content: flex-end; padding: 8px; border-top: 2px solid #111; background: #f6f0ea; }
+.rooms-short .home-tag { vertical-align: 1px; }
 
 /* The Map page header (Lisa, 27 Nov 2026, "H1"): the drawn city, every pin on it, the title over uptown. */
 .map-hdr { position: relative; height: 440px; overflow: hidden; border-bottom: 3px solid #111; background: #ece6da; }
@@ -1439,6 +1483,73 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 .map-stop { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #111; border: 2px solid #111; font: 700 12px var(--font-mono-body); box-shadow: 2px 2px 0 rgba(0,0,0,.35); }
 .map-stop-club { background: #111; color: #fff; }
 
+/* A diary's whole entry beside the club poster (Lisa, 28 Nov 2026): a ruled page, speaker names in caps. */
+.club-entry {
+  border: 2px solid #111;
+  background: #fbf8f1 repeating-linear-gradient(transparent 0 27px, rgba(80, 120, 200, 0.18) 27px 28px);
+  box-shadow: 4px 5px 0 #111;
+  padding: 1rem 1.25rem 1.1rem;
+  color: #111;
+  font-family: var(--font-type);
+  font-size: 15px;
+  line-height: 28px;
+}
+.club-entry p + p {
+  margin-top: 0.6rem;
+}
+.club-entry-title {
+  font-family: var(--font-flyer);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+.club-entry-who {
+  margin-right: 0.5rem;
+  font-family: var(--font-mono-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+/* Around the block, 28 Nov 2026: big-map button in the map's corner, Around the corner across the band, next-door covers. */
+.map-btn-corner {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+}
+@media (min-width: 900px) {
+  .map-band-foot.map-band-foot-one {
+    grid-template-columns: 1fr;
+  }
+  .map-near-wide {
+    columns: 3;
+  }
+}
+.map-next {
+  border: 2px solid #111;
+  background: #fbf8f1;
+  box-shadow: 5px 6px 0 #111;
+  padding: 1.5rem;
+  color: #111;
+}
+.map-next-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1.25rem;
+}
+@media (min-width: 640px) {
+  .map-next-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* A club's one or two nights in a half-width box beside the rooms around it (Régine's, 28 Nov 2026): two covers a row. */
+.club-beside .map-next-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 /* Random night out (Lisa, 27-28 Nov 2026, option C): four reels at the bottom of every page, already filled in, with
    "Spin again!". src/components/random-pick.tsx */
 .rn-reel { display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #f4f1ea; color: #111; border: 3px solid var(--color-pink); padding: 10px 10px 12px; }

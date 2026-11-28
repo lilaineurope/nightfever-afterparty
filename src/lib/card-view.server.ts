@@ -8,17 +8,18 @@ import { jukebox } from "@/data/collections";
 import { clubNightFor } from "@/data/club-nights";
 import { MEMORIAM } from "@/data/memoriam";
 import { CLUB_PROFILES } from "@/data/club-profiles";
-import { CLUB_PARTS } from "@/data/club-parts";
+import { CLUB_PARTS, NIGHT_PARTS, nightKind, type NightPart } from "@/data/club-parts";
+import { NIGHT_MEDIA, NIGHT_QUOTES } from "@/data/night-media";
 import { PERSON_PORTRAITS } from "@/data/person-portraits";
 import { PERSON_PROFILES } from "@/data/person-profiles";
 import { DIARY_PAGES } from "@/data/diaries";
 import { COLUMN_PAGES } from "@/data/column-articles";
 import { polaroidThumb } from "@/lib/polaroids";
-import { episodeIdOf, episodePath, episodes } from "@/data/episodes";
+import { episodeById, episodeIdOf, episodePath, episodes } from "@/data/episodes";
 import { GUEST_LINES } from "@/data/guest-lines";
 import { cleanStory } from "@/lib/seo";
 import { linkRecorder } from "@/lib/link-recorder.server";
-import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView } from "@/lib/card-view";
+import type { CardView, ClubCrowdView, ClubLibraryView, ClubPartsView, NightPageView, SaidBox } from "@/lib/card-view";
 import { mentorTreeOf } from "@/lib/mentor-rank";
 import { connectorRank } from "@/lib/connector-rank";
 import { libraryItemView, storyView } from "@/lib/library-item.server";
@@ -26,13 +27,13 @@ import { placeView } from "@/lib/place-view.server";
 import { mapSectionOf, roomsMapOf } from "@/lib/map-view.server";
 import { worksOf } from "@/lib/works";
 import { tapesOf } from "@/lib/tapes.server";
-import { coverFor } from "@/data/library-covers";
+import { allCovers, coverFor } from "@/data/library-covers";
 import { storyPagesFor } from "@/lib/story-links.server";
 import { CLUB_TICKETS } from "@/data/club-tickets";
 import { CLUB_PIECES, coverArt, clubPieceFacts } from "@/data/cover-art";
 import { CLUB_READING } from "@/data/club-reading";
 import { bookClub } from "@/data/collections";
-import { coverDesign, KIND as COVER_KIND } from "@/lib/cover-design";
+import { coverDesign, KIND as COVER_KIND, type CoverDesign } from "@/lib/cover-design";
 
 /** The picture on a work in "<first>'s work": the Library cover of a book, else - for a club they opened or ran (Lisa,
  *  27 Nov 2026: "cover for xenon") - the club's period ticket or poster, else its polaroid from the club page. */
@@ -42,11 +43,16 @@ const workCover = (n: string): string | undefined => {
   const s = slugify(n);
   return CLUB_TICKETS[s]?.src ?? CLUB_PROFILES[s]?.portrait?.polaroid;
 };
+/** A magazine or paper with only a masthead in the Library shows its logo on the typed cover. */
+const workLogo = (n: string): string | undefined => {
+  const c = coverFor(n);
+  return c?.kind === "mast" ? c.src : undefined;
+};
 
 /** The picture for a name in a story box (Lisa, 27 Nov 2026: make the pages "sticky"): the person's polaroid, their
  *  AFTERPARTY polaroid, the club's polaroid or ticket, the diary keeper's polaroid, else a Library cover. Names without
  *  one stay plain chips. */
-type Face = { src: string; framed?: boolean };
+type Face = { src: string; framed?: boolean; mast?: "light" | "dark" };
 const faceOf = (n: string): Face | undefined => {
   const e = entityFor(n);
   const s = e?.slug ?? slugify(n);
@@ -61,14 +67,48 @@ const faceOf = (n: string): Face | undefined => {
     (diary?.keeperEpisode ? polaroidThumb(diary.keeperEpisode, 240) : undefined);
   if (flat) return { src: flat };
   if (framed) return { src: framed, framed: true };
-  const cover = coverFor(n)?.src;
-  return cover ? { src: cover } : undefined;
+  // A magazine's masthead is a wide logo: shown whole on paper (Lisa, 28 Nov 2026: Details "needs ... its own logo
+  // displayed on the box"), not cropped to a square. A cover with a slugified name ("Nations (Chi Chi Valenti, Details)" is the
+  // Nations card) is found by its slug.
+  const cover = coverFor(n) ?? coverBySlug(s);
+  if (!cover) return undefined;
+  return cover.kind === "mast" ? { src: cover.src, mast: cover.light ? "dark" : "light" } : { src: cover.src };
+};
+let slugCovers: Map<string, ReturnType<typeof coverFor>> | undefined;
+const coverBySlug = (s: string) => {
+  slugCovers ??= new Map(allCovers().map(([name, c]) => [slugify(name), c]));
+  return slugCovers.get(s);
 };
 const facesOf = (names: string[]): Record<string, Face> =>
   Object.fromEntries(names.flatMap((n) => {
     const f = faceOf(n);
     return f ? [[n, f]] : [];
   }));
+
+type Conn = { slug: string; name: string; short?: string | undefined };
+const GROUP: Record<string, string> = { Person: "People", Club: "Clubs & places", Location: "Clubs & places", Event: "Nights & events" };
+const GROUP_ORDER = ["People", "Clubs & places", "Nights & events", "Works & more"];
+/** The card's connections from every source (named on the same episode cards, story pages that name it, guests' stories,
+ *  the same rooms), each name once with its episode codes, grouped People / Clubs & places / Nights & events / Works & more. */
+function connectionsOf(e: Entity, lists: Conn[][], shown: string[]): CardView["connections"] {
+  const skip = new Set([e.slug, ...shown.map((n) => entityFor(n)?.slug ?? slugify(n))]);
+  const by = new Map<string, { slug: string; name: string; codes: string[] }>();
+  for (const list of lists)
+    for (const x of list) {
+      if (skip.has(x.slug)) continue;
+      const c = by.get(x.slug) ?? { slug: x.slug, name: x.name, codes: [] };
+      if (x.short && !c.codes.includes(x.short)) c.codes.push(x.short);
+      by.set(x.slug, c);
+    }
+  const groups = new Map<string, { slug: string; name: string; sub?: string }[]>();
+  for (const c of by.values()) {
+    const g = GROUP[entityBySlug[c.slug]?.category ?? ""] ?? "Works & more";
+    const list = groups.get(g) ?? [];
+    list.push({ slug: c.slug, name: c.name, ...(c.codes.length ? { sub: c.codes.slice(0, 3).join(" · ") } : {}) });
+    groups.set(g, list);
+  }
+  return GROUP_ORDER.filter((g) => groups.has(g)).map((g) => ({ heading: g, items: groups.get(g)! }));
+}
 
 /** "Who else was there" on a club page (Lisa, 27 Nov 2026, W1): every guest who talks about the club with their biggest
  *  moment (most mentions first), the regulars - people whose own page (living or In memoriam) lists the club as one of their
@@ -117,26 +157,116 @@ function clubLibraryOf(e: Entity): ClubLibraryView | null {
     const it = bookClub.find((b) => b.name === r.name);
     const m = it?.moments.find((x) => x.episodeId === r.episode && x.time === r.time);
     if (!it || !m) return [];
-    return [{ slug: it.slug, name: it.name, kind: COVER_KIND[it.shelf] ?? it.shelf, design: coverDesign(it, i), episode: m.episodeId, code: m.code, guest: m.guest, time: m.time, context: m.context }];
+    // A diary shows its whole entry: the moment of that episode that names the club, else the moment itself.
+    const said = DIARY_PAGES[it.slug]?.moments.filter((d) => d.episode === m.episodeId);
+    const names = [e.name, ...(e.name.startsWith("Paradise ") ? ["the Garage"] : [])].map((n) => n.toLowerCase());
+    const d = said?.find((d) => d.lines.some((l) => names.some((n) => l.text.toLowerCase().includes(n)))) ?? said?.find((d) => d.time === m.time);
+    const entry = d ? { time: d.time, title: d.title, lines: d.lines } : undefined;
+    return [{ slug: it.slug, name: it.name, kind: COVER_KIND[it.shelf] ?? it.shelf, design: coverDesign(it, i), episode: m.episodeId, code: m.code, guest: m.guest, time: entry?.time ?? m.time, context: m.context, entry }];
   });
   return posters.length || reads.length ? { posters, reads } : null;
 }
 
 /** A club's theme nights and parties (src/data/club-parts.ts) with their episode rows, biggest first inside a tile. */
+/** A night's cover (Lisa, 28 Nov 2026: nights and parties boxes in the Library's cover style): the club's own picture on
+ *  the first one, typed pink and black covers after it, with how often it was dropped. */
+function nightCover(slug: string, title: string, kind: string, club: string, i: number): CoverDesign {
+  const refs = entityBySlug[slug]?.refs ?? [];
+  const foot = { mentions: refs.reduce((n, r) => n + r.mentions, 0), afterparties: new Set(refs.map((r) => r.episode)).size };
+  const pic = i === 0 ? CLUB_PROFILES[club]?.portrait?.polaroid : undefined;
+  return pic
+    ? { name: title, foot, look: "art", src: pic, alt: title, tag: kind, lines: [entityBySlug[club]?.name ?? ""] }
+    : { name: title, foot, look: "type", colour: i % 2 ? "lib-pink" : "lib-ink", kind };
+}
+
 function clubPartsView(e: Entity): ClubPartsView | null {
   const p = CLUB_PARTS[e.slug];
   if (!p) return null;
-  const rowsOf = (names: string[]) =>
-    e.refs.filter((r) => names.includes(r.name)).sort((a, b) => b.mentions - a.mentions);
+  const rowsOf = (from: Entity | undefined, names: string[]) =>
+    (from?.refs ?? []).filter((r) => names.includes(r.name)).sort((a, b) => b.mentions - a.mentions);
+  // Each night has its own page since 27 Nov 2026: its rows live on that card, the tile links there.
   const groups = p.groups
     .map((g) => ({
       heading: g.heading,
-      intro: rowsOf(g.intro ?? []),
-      parts: g.parts.map((x) => ({ title: x.title, refs: rowsOf(x.names) })).filter((x) => x.refs.length > 0),
+      intro: rowsOf(e, g.intro ?? []),
+      parts: g.parts
+        .map((x) => {
+          const slug = slugify(x.names[0]!);
+          return { title: x.title, slug, refs: rowsOf(entityBySlug[slug], x.names) };
+        })
+        .filter((x) => x.refs.length > 0)
+        .map((x, i) => ({ ...x, design: nightCover(x.slug, x.title, nightKind(g.heading, x.title), e.slug, i) })),
     }))
     .filter((g) => g.parts.length > 0 || g.intro.length > 0);
   const names = p.groups.flatMap((g) => [...(g.intro ?? []), ...g.parts.flatMap((x) => x.names)]);
   return { groups, looks: p.looks ?? [], names };
+}
+
+const toSec = (t: string) => t.split(":").map(Number).reduce((a, b) => a * 60 + (b || 0), 0);
+
+/** An event's Library box (Lisa, 28 Nov 2026, "and a library box"): the Library items talked about in the same breath as
+ *  the event - within two minutes of one of its mentions, and only when one names the other - then its venue's poster and
+ *  reading list when the venue is a club with a page. */
+function eventLibraryOf(e: Entity, venue: string | null | undefined): CardView["eventLib"] {
+  const word = (text: string, n: string) => new RegExp(`(^|[^a-z])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z]|$)`).test(text.toLowerCase());
+  const short = (n: string) => n.replace(/\s*\(.*\)$/, "").replace(/^the /i, "").toLowerCase();
+  const reads = bookClub.flatMap((it, i) => {
+    const m = it.moments.find((m) =>
+      e.refs.some((r) => r.episode === m.episodeId && r.time && r.time !== "On camera" && Math.abs(toSec(r.time) - toSec(m.time)) <= 120 && (word(r.context, short(it.name)) || word(m.context, short(e.name)))),
+    );
+    return m ? [{ slug: it.slug, name: it.name, kind: COVER_KIND[it.shelf] ?? it.shelf, design: coverDesign(it, i), episode: m.episodeId, code: m.code, guest: m.guest, time: m.time, context: m.context }] : [];
+  });
+  const v = venue && CLUB_PROFILES[venue] ? entityBySlug[venue] : undefined;
+  const lib = v ? clubLibraryOf(v) : null;
+  const own = reads.length ? { posters: [], reads } : null;
+  return own || lib ? { own, venue: v && lib ? { slug: v.slug, name: v.name, lib } : null } : null;
+}
+
+const NIGHT_BY_SLUG = new Map<string, NightPart>(NIGHT_PARTS.map((n) => [slugify(n.names[0]!), n]));
+
+/** A night's own page: the club's quotes said within a minute and a half of the night's own rows, the songs and films
+ *  hand-matched in src/data/night-media.ts, and the club's other nights. */
+function nightPageOf(e: Entity): NightPageView | null {
+  const n = NIGHT_BY_SLUG.get(e.slug);
+  const c = n ? CLUB_PROFILES[n.club] : undefined;
+  const clubE = n ? entityBySlug[n.club] : undefined;
+  if (!n || !c || !clubE) return null;
+  const near = (a: { episode?: string | undefined; time?: string | undefined }, b: { episode?: string | undefined; time?: string | undefined }) =>
+    a.episode === b.episode && !!a.time && !!b.time && a.time !== "On camera" && b.time !== "On camera" && Math.abs(toSec(a.time) - toSec(b.time)) <= 90;
+  // The guests' own words: hand-picked transcript quotes first, then the club wall's quotes said around the night's rows.
+  const hand = NIGHT_QUOTES[e.slug] ?? [];
+  const wall = c.said.filter((q) => e.refs.some((r) => near(r, q)) && !hand.some((h) => near(h, q)));
+  const quotes = [...hand, ...wall].map((q) => ({ episode: q.episode, code: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote }));
+  // Every other moment of the night gets its box too, with what was said.
+  const rest = e.refs
+    .filter((r) => r.episode && !quotes.some((q) => near(r, q)))
+    .map((r) => ({ episode: r.episode!, code: episodeShort(r.episode!), who: episodeById(r.episode!).guest, time: r.time ?? "", context: r.context, mentions: r.mentions }));
+  const said = [...quotes, ...rest];
+  const cn = clubNightFor(n.club);
+  const m = NIGHT_MEDIA[e.slug] ?? {};
+  const songs = (m.songs ?? []).flatMap((t) => {
+    const s = cn?.songs.find((x) => x.title === t);
+    return s ? [{ title: s.title, artist: s.artist, year: s.year, why: s.why ?? "" }] : [];
+  });
+  const films = (m.films ?? []).flatMap((id) => (cn?.footage ?? []).filter((f) => f.id === id));
+  const others = NIGHT_PARTS.filter((x) => x.club === n.club && x !== n)
+    .map((x) => ({ slug: slugify(x.names[0]!), title: x.title, kind: nightKind(x.heading, x.title) }))
+    .filter((x) => entityBySlug[x.slug])
+    .map((x, i) => ({ ...x, design: nightCover(x.slug, x.title, x.kind, n.club, i) }));
+  return {
+    club: n.club,
+    clubName: clubE.name,
+    address: c.address,
+    years: `${c.opened}–${c.closed}`,
+    kind: nightKind(n.heading, n.title),
+    title: n.title,
+    said,
+    lib: PERSON_PROFILES[e.slug]?.venueLibrary === false ? null : clubLibraryOf(clubE),
+    songs,
+    films,
+    playlist: cn?.youtubePlaylist,
+    others,
+  };
 }
 
 /** What the card page shows (mirrors src/components/card-sections.tsx, memoriam.tsx and club-profile.tsx). */
@@ -144,7 +274,9 @@ function cardView(e: Entity): CardView {
   const g = e.guest;
   const club = g ? null : (CLUB_PROFILES[e.slug] ?? null);
   const mem = g ? null : (MEMORIAM[e.slug] ?? null);
-  const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? null);
+  const nightPage = g ? null : nightPageOf(e);
+  // A night's page wears its club's header picture (Lisa, 27 Nov 2026).
+  const pic = g ? null : (PERSON_PORTRAITS[e.slug] ?? club?.portrait ?? (nightPage ? CLUB_PROFILES[nightPage.club]?.portrait : null) ?? null);
   const profile = g || club || mem ? null : (PERSON_PROFILES[e.slug] ?? null);
   const L = linkRecorder();
   const diaryPage = g ? undefined : DIARY_PAGES[e.slug];
@@ -169,6 +301,19 @@ function cardView(e: Entity): CardView {
   club?.stage.forEach(L.name);
   club?.rooms.forEach(L.name);
   const parts = g ? null : clubPartsView(e);
+  if (parts) for (const gr of parts.groups) for (const x of gr.parts) L.card(x.slug);
+  if (nightPage) {
+    L.card(nightPage.club);
+    nightPage.others.forEach((x) => L.card(x.slug));
+    nightPage.said.forEach((q) => {
+      L.name(q.who);
+      if (q.context) L.text(q.context, e.name);
+    });
+    if (nightPage.lib) {
+      for (const r of nightPage.lib.reads) L.card(r.slug);
+      for (const p of nightPage.lib.posters) [...p.madeBy.map((m) => m.name), ...p.onIt].forEach(L.name);
+    }
+  }
   const crowd = club ? clubCrowdOf(e, club.stage) : null;
   if (crowd) {
     crowd.regulars.forEach(L.name);
@@ -220,6 +365,12 @@ function cardView(e: Entity): CardView {
   });
   // Library item pages (Lisa, 21 Nov 2026): cover, facts, who dropped it, connections, trailers, find/borrow/buy.
   const item = g ? null : libraryItemView(e);
+  // One "Connections" box instead of four lists that repeated each other (Lisa, 28 Nov 2026: "it feels like we are doubling
+  // up here and mixing up databases"): every name once, grouped by kind, and none that the page's own story box already shows.
+  const connections = item || club ? [] : connectionsOf(e, [named, onPages, inGuestStories, related], [
+    ...(profile ? [...profile.liftedUp, ...profile.rooms, ...(profile.also?.names ?? [])] : []),
+    ...(mem ? [...mem.liftedUp, ...mem.rooms, ...(mem.also?.names ?? [])] : []),
+  ]);
   if (item) {
     if (item.facts?.author) L.text(item.facts.author, e.name);
     if (item.madeSince) L.text(item.madeSince.why, e.name);
@@ -248,6 +399,7 @@ function cardView(e: Entity): CardView {
   if (rooms) for (const x of [...rooms.stops, ...rooms.home, ...rooms.away]) L.card(x.slug);
   // "<first>'s work" (Lisa, 22 Nov 2026): every person card lists what they made, linking to each work's own page.
   const works = e.category === "Person" ? worksOf(e.slug, workCover) : [];
+  for (const w of works) if (!w.cover && w.slug) w.logo = workLogo(w.coverName ?? w.name);
   for (const w of works) if (w.slug) L.card(w.slug);
   const tapes = e.category === "Person" ? tapesOf(e.name) : [];
   const j = jukebox.find((x) => x.slug === e.slug);
@@ -260,7 +412,39 @@ function cardView(e: Entity): CardView {
     }
   }
 
+  // "What the guests say" on club and event pages (Lisa, 28 Nov 2026: "show all quotes ... same applies to events pages"):
+  // a club's own quotes, then a box for every other episode that talks about it; an event gets a box per mention.
+  const mentionBox = (r: Entity["refs"][number]): SaidBox => ({ episode: r.episode!, code: episodeShort(r.episode!), who: episodeById(r.episode!).guest, time: r.time ?? "", context: r.context, mentions: r.mentions });
+  const wall: SaidBox[] | null =
+    g || nightPage || item || diary || column ? null
+    : club
+      ? [
+          ...club.said.map((q) => ({ episode: q.episode, code: episodeShort(q.episode), who: q.who, time: q.time, quote: q.quote, label: q.context })),
+          ...e.refs.filter((r) => r.episode && !(parts?.names ?? []).includes(r.name) && !club.said.some((q) => q.episode === r.episode)).map(mentionBox),
+        ]
+      : e.category === "Event" || e.category === "Club" ? e.refs.filter((r) => r.episode).map(mentionBox)
+      : null;
+  for (const q of wall ?? []) if (q.context) L.text(q.context, e.name);
+  // Person pages (Lisa, 28 Nov 2026, Calvin Klein: "show all mentions as quote boxes"): every episode that talks about them
+  // gets a box on the quote wall - its quote, or what was said, labelled "On the show" - in place of "In the episodes".
+  const saidMore: SaidBox[] | null = profile
+    ? e.refs
+        .filter((r, i, all) => r.episode && !profile.said.some((q) => q.episode === r.episode) && all.findIndex((x) => x.episode === r.episode) === i)
+        .map(mentionBox)
+    : null;
+  for (const q of saidMore ?? []) if (q.context) L.text(q.context, e.name);
+  const eventLib = e.category === "Event" && !nightPage && !g ? eventLibraryOf(e, mapBand?.pin.slug) : null;
+  for (const lib of [eventLib?.own, eventLib?.venue?.lib]) {
+    if (!lib) continue;
+    for (const r of lib.reads) L.card(r.slug);
+    for (const p of lib.posters) [...p.madeBy.map((m) => m.name), ...p.onIt].forEach(L.name);
+  }
+  if (eventLib?.venue) L.card(eventLib.venue.slug);
+
   return {
+    wall: wall && wall.length ? wall : null,
+    saidMore,
+    eventLib,
     slug: e.slug,
     name: e.name,
     category: e.category,
@@ -272,11 +456,13 @@ function cardView(e: Entity): CardView {
     inGuestStories,
     related,
     onPages,
+    connections,
     music: j ? { name: j.name, shelf: j.shelf, spotify: j.spotify } : null,
     night: clubNightFor(e.slug) ?? null,
     mem,
     club,
     parts,
+    nightPage,
     crowd,
     clubLib,
     pic,
@@ -298,6 +484,11 @@ function cardView(e: Entity): CardView {
       ...(mem ? [...mem.liftedUp, ...mem.rooms, ...(mem.also?.names ?? [])] : []),
       ...(club ? [...club.stage, ...club.rooms, ...(club.also?.names ?? [])] : []),
       ...(crowd ? [...crowd.regulars, ...crowd.posters.map((p) => p.name)] : []),
+      // The A–Z lists under the card show picture boxes too (Lisa, 28 Nov 2026).
+      ...named.map((x) => x.name),
+      ...inGuestStories.map((x) => x.name),
+      ...onPages.map((x) => x.name),
+      ...related.map((x) => x.name),
     ]),
     connector: connectorRank(e.slug),
     links: L.data,

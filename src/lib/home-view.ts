@@ -12,7 +12,9 @@ export type BoxData = { name: string; slug: string; mentions: number; moments: M
 export type HomeView = {
   /** "More to explore" counts */
   counts: { timeline: number; jukebox: number; clubs: number; library: number; explore: number };
-  /** Box totals of the latest AFTERPARTIES */
+  /** Daily pick: today's three AFTERPARTY ids (Stockholm date) */
+  dailyPick: string[];
+  /** Box totals of the Daily pick AFTERPARTIES */
   stats: Record<string, EpisodeStats>;
   /** Hall of Fame: the top 10 mentors */
   mentors: RankedMentor[];

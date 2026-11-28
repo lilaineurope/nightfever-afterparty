@@ -3,7 +3,7 @@ import { registerFullLinks, type LinkCard } from "../lib/link-index";
 import { EPISODE_REFS } from "./episode-refs";
 import { guests, type Guest } from "./guests";
 import { sceneEvents, type SceneEvent } from "./scene";
-import { PART_NAMES } from "./club-parts";
+import { INTRO_NAMES, NIGHT_PARTS } from "./club-parts";
 import { WRITTEN_BY } from "./written-by";
 import { OTHER_WORKS } from "./made-by";
 import { PERSON_PROFILES } from "./person-profiles";
@@ -22,7 +22,7 @@ export type Ref = {
   link: string;
   status: string;
   fashion?: string;
-  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11" | "s06e09" | "s05e02" | "s05e05" | "s05e08" | "s06e10" | "s05e09";
+  episode?: "s06e01" | "s01e01" | "s01e02" | "s01e03" | "s02e03" | "s03e01" | "s03e06" | "s04e08" | "s05e06" | "s01e07" | "s06e03" | "s05e04" | "s04e10" | "s02e08" | "s05e03" | "s06e08" | "s02e06" | "s01e04" | "s02e04" | "s06e07" | "s01e10" | "s03e08" | "s04e04" | "s02e01" | "s01e06" | "s02e07" | "s02e05" | "s03e10" | "s05e01" | "s02e11" | "s01e08" | "s03e04" | "s04e07" | "s05e10" | "s04e09" | "s01e05" | "s06e06" | "s02e09" | "s03e03" | "s04e03" | "s03e02" | "s02e02" | "s03e05" | "s06e02" | "s06e05" | "s05e07a" | "s05e07b" | "s01e09" | "s04e02" | "s04e06" | "s04e05" | "s02e10" | "s03e07" | "s03e09" | "s04e01" | "s04e11" | "s06e09" | "s05e02" | "s05e05" | "s05e08" | "s06e10" | "s05e09" | "s06e04";
 };
 
 export type Entity = {
@@ -42,7 +42,7 @@ const refs: Ref[] = EPISODE_REFS.flatMap(([episode, rows]) => rows.map((r) => ({
 // "(S01E07)" is kept, so each episode's on-camera look keeps its own card.
 // A few names share their plain words with another card of a different kind (the band Berlin and the city, the film
 // Morocco and the country, the film Farinelli and the singer): those keep their bracket, so each gets its own card (S04E01).
-export const OWN_CARD = new Set(["Berlin (band)", "Morocco (1930 film)", "Farinelli (1994 film)"]);
+export const OWN_CARD = new Set(["Berlin (band)", "Morocco (1930 film)", "Farinelli (1994 film)", "McQueen (2018 film)"]);
 const clean = (n: string) =>
   n
     .replace(/\s*\(([^)]*)\)/g, (m, inner: string) =>
@@ -56,6 +56,13 @@ const clean = (n: string) =>
 // (Lisa, 21 Nov 2026: "double ups in magazines eg paper"). The old address forwards to the card (card-view.server.ts).
 export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
+  // Google found /explore/mike-todd-room (a real 404, daily check 28 Nov 2026): guests say "Mike Todd room" too.
+  "mike-todd-room": "michael-todd-room",
+  "don-hills": "don-hill-s", // how people type it
+  // Chi Chi and Johnny are one guest page (S06E03, a joint interview): either name alone opens it (Lisa, 28 Nov 2026 on Anita
+  // Sarko's page: "john dyell needs a picture box and a page").
+  "johnny-dynell": "chi-chi-valenti-and-johnny-dynell", // the guest card is filed under its name, "&" read as "and"
+  "chi-chi-valenti": "chi-chi-valenti-and-johnny-dynell",
   // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
   // Places (Lisa, 22 Nov 2026: "we have to make sure we have no double ups"). A club's street address is its club page,
@@ -87,6 +94,8 @@ export const SAME_AS: Record<string, string> = {
   "desi-monster": "desi-santiago",
   // S06E10: Lil' Kenny from Desi's band Boob is the guest Kenneth Hash - the old card address forwards to his AFTERPARTY.
   "lil-kenny": "kenneth-hash-aka-lil-kenny",
+  // S03E09 and S06E06 heard "Julie Jules": the club kid Julie Jewels (Lisa, 28 Nov 2026, Tunnel kids) - one page.
+  "julie-jules": "julie-jewels",
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different
@@ -94,10 +103,12 @@ export const SAME_AS: Record<string, string> = {
 // musical or a book keep theirs too (S04E11: the Victor/Victoria film, Mae West's plays The Drag and Sex).
 const KEEP_BRACKET = new Set(["the roxy (london)", "victor/victoria (1982 film)", "the drag (mae west play)", "sex (mae west play)", "circus (london club night)"]);
 
-// A club's theme nights and parties fold into the club's own card (Lisa, 22 Nov 2026, src/data/club-parts.ts): same
-// forwarding as above, so "/explore/area-s-fashion-theme" opens the Area page.
+// A club's nights and parties (src/data/club-parts.ts): rows about the nights as a whole fold into the club's card (Lisa,
+// 22 Nov 2026), and since 27 Nov 2026 every night has its own page again - its other rows forward to the first one, so
+// "/explore/area-art-invitation-photo" opens "/explore/area-s-art-theme".
 const baseSlug = (n: string) => clean(n).normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-for (const [name, club] of PART_NAMES) SAME_AS[baseSlug(name)] = club;
+for (const [name, club] of INTRO_NAMES) SAME_AS[baseSlug(name)] = club;
+for (const n of NIGHT_PARTS) for (const name of n.names.slice(1)) SAME_AS[baseSlug(name)] = baseSlug(n.names[0]!);
 
 // Remembered per name: the site slugifies the same few thousand names over and over while it starts up.
 const slugCache = new Map<string, string>();

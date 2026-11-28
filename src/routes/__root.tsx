@@ -16,6 +16,7 @@ import { EpisodePlayer } from "../components/episode-player";
 import { PageSuggestionBox } from "../components/page-suggestion-box";
 import { Breadcrumbs } from "../components/breadcrumbs";
 import appCss from "../styles.css?url";
+import archivoBlack from "@fontsource/archivo-black/files/archivo-black-latin-400-normal.woff2?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isStaleBuildError, reloadForNewBuild, watchForNewBuild } from "../lib/stale-build";
 
@@ -142,6 +143,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      // The headline font, fetched with the page (daily check 28 Nov 2026: a CLS of 0.53 on an A–Z page whose title strip
+      // reflowed when Archivo Black arrived late).
+      { rel: "preload", as: "font", type: "font/woff2", href: archivoBlack, crossOrigin: "anonymous" },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
