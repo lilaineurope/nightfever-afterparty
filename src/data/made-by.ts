@@ -532,9 +532,17 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   "Greer Lankton": [{ title: "I'll Be Your Mirror", kind: "Film", role: "In it", year: 1995 }],
   "Octavia St. Laurent": [{ title: "How Do I Look", kind: "Film", role: "Starred in it", year: 2006 }],
   "William A. Henry III": [{ title: "Steam Heat", kind: "Film", role: "Made it", year: 1990 }],
+  // Lisa, 28 Nov 2026 (top Google search pages): Howie's records get pages of their own. Facts and sleeves: Discogs.
   "Howie Pyro": [
-    { title: "D Generation", kind: "Music", role: "In the band", year: 1994 },
-    { title: "Danzig", kind: "Music", role: "In the band", year: 2000 },
+    { title: "The Blessed – 'Deep Frenzy'", kind: "Music", role: "Played bass", year: 1979, card: "Music" },
+    { title: "D Generation", kind: "Music", role: "Started it, played bass", year: 1991, card: "Music" },
+    { title: "D Generation – 'No Way Out'", kind: "Music", role: "Played bass", year: 1993, card: "Music" },
+    { title: "D Generation – 'Wasted Years'", kind: "Music", role: "Played bass", year: 1993, card: "Music" },
+    { title: "D Generation – D Generation", kind: "Music", role: "Played bass, co-wrote songs", year: 1994, card: "Music" },
+    { title: "D Generation – No Lunch", kind: "Music", role: "Played bass", year: 1996, card: "Music" },
+    { title: "D Generation – Through the Darkness", kind: "Music", role: "Played bass, came up with the cover", year: 1999, card: "Music" },
+    { title: "Danzig – Live on the Black Hand Side", kind: "Music", role: "Played bass", year: 2001, card: "Music" },
+    { title: "Danzig – 777: I Luciferi", kind: "Music", role: "Played bass", year: 2002, card: "Music" },
   ],
   // Lisa, 27 Nov 2026: "dean's work needs cover designs and each item needs a page". Facts: the records' own sleeves and
   // labels (Discogs), the Velvet Mafia's own site and press list, the film credits (TMDB, IMDb), the NYU Fales Library's

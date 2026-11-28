@@ -668,6 +668,8 @@ import peppoVaniniPhoto from "@/assets/people/peppo-vanini-photo.webp";
 import peppoVaniniPolaroid from "@/assets/people/peppo-vanini-polaroid.webp";
 import shawnHausmanPhoto from "@/assets/people/shawn-hausman-photo.webp";
 import shawnHausmanPolaroid from "@/assets/people/shawn-hausman-polaroid.webp";
+import jennyGoGetterPhoto from "@/assets/people/jenny-go-getter-photo.webp";
+import jennyGoGetterPolaroid from "@/assets/people/jenny-go-getter-polaroid.webp";
 import lynnWagenknechtPhoto from "@/assets/people/lynn-wagenknecht-photo.webp";
 import lynnWagenknechtPolaroid from "@/assets/people/lynn-wagenknecht-polaroid.webp";
 import claraPhoto from "@/assets/people/clara-the-carefree-chicken-photo.webp";
@@ -1047,6 +1049,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "peppo-vanini": { photo: peppoVaniniPhoto, polaroid: peppoVaniniPolaroid, focus: "8%", credit: "Illustration made with Gemini, not a photo" },
   // Top Google search pages (Lisa, 27 Nov 2026): Gemini drawings after press photos (references not on the site).
   "shawn-hausman": { photo: shawnHausmanPhoto, polaroid: shawnHausmanPolaroid, focus: "25%", credit: "Illustration made with Gemini, not a photo" },
+  "jenny-go-getter": { photo: jennyGoGetterPhoto, polaroid: jennyGoGetterPolaroid, focus: "25%", credit: "Illustration made with Gemini, not a photo" },
   "lynn-wagenknecht": { photo: lynnWagenknechtPhoto, polaroid: lynnWagenknechtPolaroid, focus: "25%", credit: "Illustration made with Gemini, not a photo" },
   // Lisa, 27 Nov 2026 ("yes polaroid"): Gemini drawing of the chicken suit after the photo in Ernie Glam's Peeew! #90 thumbnail.
   "clara-the-carefree-chicken": { photo: claraPhoto, polaroid: claraPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },

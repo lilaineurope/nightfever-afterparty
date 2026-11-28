@@ -15,6 +15,15 @@ export type Cover = { kind: "book" | "mast"; file: string; credit: string; light
 // Covers for every work a guest made (Lisa, 23 Nov 2026), made by scripts/item-stories-auto.py from the Cover Art Archive,
 // Open Library, Google Books and Wikipedia. A cover written below always wins.
 const COVERS: Record<string, Cover> = {
+  // Jenny Go-Getter's novels, written as Jennifer Banash (Lisa, 28 Nov 2026, top Google search pages). Open Library first.
+  "Hollywoodland (Jennifer Banash)": { kind: "book", file: "book-hollywoodland-banash.webp", credit: "Cover via Open Library (Impetus Press, 2006)" },
+  "The Elite (Jennifer Banash)": { kind: "book", file: "book-the-elite-banash.webp", credit: "Cover via Open Library (Berkley JAM, 2008, eBook edition)" },
+  "In Too Deep (Jennifer Banash)": { kind: "book", file: "book-in-too-deep-banash.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
+  "Simply Irresistible (Jennifer Banash)": { kind: "book", file: "book-simply-irresistible-banash.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
+  "White Lines – Jennifer Banash": { kind: "book", file: "book-white-lines-banash.webp", credit: "Cover via Open Library (G. P. Putnam's Sons, 2013)" },
+  "Silent Alarm (Jennifer Banash)": { kind: "book", file: "book-silent-alarm-banash.webp", credit: "Cover via Open Library (G. P. Putnam's Sons, 2015)" },
+  "The Rise and Fall of Ava Arcana": { kind: "book", file: "book-rise-and-fall-of-ava-arcana.webp", credit: "Cover via Open Library (Lake Union Publishing, 2023)" },
+  "The Essential Elizabeth Stone": { kind: "book", file: "book-essential-elizabeth-stone.webp", credit: "Cover via Open Library (Lake Union Publishing, 2024)" },
   // S04E11 Elyssa Maxx Goodman (Lisa, 22 Nov 2026: always prefer Open Library covers)
   // S05E09 Screamin' Rachael Cain - the only cover found (Open Library, 27 Nov 2026), waiting for Lisa's look
   "The World, Captured by Stephan Lupino": { kind: "book", file: "book-the-world-stephan-lupino.webp", credit: "Cover via Open Library (Graphics-Photos-Art, 1988)" },
@@ -99,7 +108,7 @@ const COVERS: Record<string, Cover> = {
   "Uptown, Downtown (Daily News column)": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "Columbia Spectator": { kind: "mast", file: "mast-columbia-spectator.webp", credit: "Masthead: Wikimedia Commons" },
   "Page Six (New York Post)": { kind: "book", file: "col-page-six.webp", credit: "A Page Six page from 1977 - via Wikipedia" },
-  "Nations (Chi Chi Valenti, Details)": { kind: "book", file: "col-nations-details.webp", credit: "Details, September 1988 (the issue before Nations) - via Gallery 98" },
+  "Nations (Chi Chi Valenti, Details)": { kind: "book", file: "col-nations-details.webp", credit: "DETAILS, October 1988, the Nations issue: Tina L'Hotsky by William Coupon on the cover - via Gallery 98" },
   "Out magazine – 'The Glass Closet'": { kind: "book", file: "col-out-glass-closet.webp", credit: "Out, 2007 - the Glass Closet cover, via out.com" },
   "Egg Thoughts and Other Frances Songs (Russell Hoban)": { kind: "book", file: "book-egg-thoughts.webp", credit: "Egg Thoughts and Other Frances Songs - cover by Lillian Hoban, via Open Library" }, // S06E01 badger book, found 21 Nov 2026
   "Nightbirds (Michael Fazakerley)": { kind: "book", file: "book-nightbirds.webp", credit: "Nightbirds: Photos of NYC's Dynamic Club Culture Personalities 1986–1995, Michael Fazakerley - cover (PopLife Designs)" },
@@ -146,7 +155,7 @@ const COVERS: Record<string, Cover> = {
   // picture is its magazine's cover (Fat and All That and Lunch with Lauren in Paper, Diary of a Mad Queen in OutWeek,
   // Ms. Lonely Hearts in the SoHo News) gets a typed yellow cover. Out magazine has its own cover (RuPaul, 2017), so the Glass Closet cover stays with that article.
   "'Bring On the Night' (New York Post, 1990)": { kind: "mast", file: "mast-new-york-post.webp", credit: "Masthead: Wikimedia Commons, public domain" }, // Lisa: A (7 Nov 2026)
-  "'The Death of Downtown' (Michael Musto)": { kind: "mast", file: "mast-village-voice.webp", credit: "Masthead: Wikimedia Commons, public domain" },
+  "'The Death of Downtown' (Michael Musto)": { kind: "book", file: "book-death-of-downtown.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
   "New York magazine – 'Club Kids'": { kind: "mast", file: "mast-new-york-magazine.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "The Social Circus (Sunday column)": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" },
   "New York Daily News": { kind: "mast", file: "mast-new-york-daily-news.webp", credit: "Masthead: Wikimedia Commons, public domain" },

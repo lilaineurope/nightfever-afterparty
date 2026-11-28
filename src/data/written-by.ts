@@ -27,6 +27,15 @@ export type WrittenBy = {
 };
 
 export const WRITTEN_BY: WrittenBy[] = [
+  // Jenny Go-Getter, the Tunnel party hostess, writes as Jennifer Banash (Lisa, 28 Nov 2026). First editions, Open Library.
+  { name: "Hollywoodland (Jennifer Banash)", title: "Hollywoodland: An American Fairy Tale", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2006, publisher: "Impetus Press", isbn: "9780977669301" },
+  { name: "The Elite (Jennifer Banash)", title: "The Elite", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2008, publisher: "Berkley JAM", isbn: "9780425221570" },
+  { name: "In Too Deep (Jennifer Banash)", title: "In Too Deep", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2009, publisher: "Berkley JAM", isbn: "9780425223536" },
+  { name: "Simply Irresistible (Jennifer Banash)", title: "Simply Irresistible", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2009, publisher: "Berkley JAM", isbn: "9780425227831" },
+  { name: "White Lines – Jennifer Banash", title: "White Lines", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2013, publisher: "G. P. Putnam's Sons", isbn: "9780399257889" },
+  { name: "Silent Alarm (Jennifer Banash)", title: "Silent Alarm", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2015, publisher: "G. P. Putnam's Sons", isbn: "9780399257896" },
+  { name: "The Rise and Fall of Ava Arcana", title: "The Rise and Fall of Ava Arcana", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2023, publisher: "Lake Union Publishing", isbn: "9781662505416" },
+  { name: "The Essential Elizabeth Stone", title: "The Essential Elizabeth Stone", by: "Jenny Go-Getter (Jennifer Banash)", role: "Wrote it", year: 2024, publisher: "Lake Union Publishing", isbn: "9781662505430" },
   { name: "The Power Look (Egon von Furstenberg)", title: "The Power Look", by: "Egon von Furstenberg", with: "with Camille Duhé", role: "Wrote it", year: 1978, publisher: "Fawcett", isbn: "9780449901243", inPrint: false },
   { name: "Sex Tips for Girls", title: "Sex Tips for Girls", by: "Cynthia Heimel", role: "Wrote it", year: 1983, publisher: "Simon & Schuster", isbn: "9780099324904" },
   { name: "Sexual Ecology", title: "Sexual Ecology: AIDS and the Destiny of Gay Men", by: "Gabriel Rotello", role: "Wrote it", year: 1997, publisher: "Dutton", isbn: "9780452277199" },

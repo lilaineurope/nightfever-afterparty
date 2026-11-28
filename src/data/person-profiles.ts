@@ -27,6 +27,36 @@ export type PersonProfile = {
 };
 
 export const PERSON_PROFILES: Record<string, PersonProfile> = {
+  // Top Google search pages, round 3 (Lisa, 28 Nov 2026: "do all 1-5"). Facts: the episodes and Open Library (her books).
+  // Left out under the living-people rule: the topless invitation story (S05E07b 00:45:12).
+  "jenny-go-getter": {
+    first: "Jenny",
+    story:
+      "One of the first Tunnel kids in the basement, and Really Denise's party partner: the two of them were on a million invitations together. Today she writes novels as Jennifer Banash, among them White Lines, about a teenager's nights in the clubs of 1980s New York.",
+    timeline: [
+      ["Late 1980s", "One of the Tunnel kids in the basement, with Really Denise, Michael Tron, Magenta and Oliver Twisted"],
+      ["Late 1980s", "Throws parties at the Tunnel with Really Denise, among them a petting zoo in the basement, with bales of hay and Zaldy dancing in a cage as a zebra"],
+      ["2006", "First novel as Jennifer Banash: Hollywoodland, an American fairy tale"],
+      ["2008", "The Elite, the first of three books in a series for teenagers from Berkley JAM"],
+      ["2013", "White Lines: seventeen-year-old Caitlin's nights in the clubs of 1980s New York"],
+      ["2015", "Silent Alarm"],
+      ["2023", "The Rise and Fall of Ava Arcana"],
+      ["2024", "The Essential Elizabeth Stone"],
+      ["Today", "Also a ghostwriter and editor; offers to edit Really Denise's book for free"],
+    ],
+    liftedUp: [],
+    rooms: ["The Tunnel"],
+    said: [
+      { episode: "s06e06", who: "James St. James", time: "00:11:35", context: "The Tunnel kids in the basement, before the club kids", quote: "Back before it was the club kids, when it was the Tunnel kids, and they were all in the basement, and it was a group of young kids... Really Denise, Jenny Go-Getter, Oliver Twisted, Harley Quinn, Fuchsia Dahl, a number of those kids." },
+      { episode: "s05e07b", who: "James St. James", time: "00:44:03", context: "James asks Really Denise about the parties she threw with Jenny", quote: "You were on a million invitations, you and Jenny Go-Getter, where it was always Really Denise and Jenny Go-Getter, and you were always sort of paired together." },
+      { episode: "s05e07b", who: "Really Denise", time: "00:44:23", context: "Their favourite party: the petting zoo in the Tunnel basement", quote: "The favorite party I ever did with Jenny was the petting zoo. So we decided we were going to do a petting zoo party in the basement. I found this flower shop in the flower district that had hay, and I had them deliver bales of hay into the basement of the Tunnel." },
+      { episode: "s05e07b", who: "Really Denise", time: "00:53:57", context: "Jenny today: Jennifer Banash, novelist, ghostwriter and editor", quote: "You mentioned Jenny Go-Getter earlier. I'm still friendly with her... Jenny got in touch with me and said, Denise, I'll edit your book for free. She's written four YA novels, which is young adult novels. Her day job is as a ghostwriter and an editor." },
+    ],
+    also: { heading: "The Tunnel kids", names: ["Really Denise", "Michael Tron", "Magenta", "Julie Jules", "Oliver Twisted", "Harley Quinn (Tunnel kid)", "Fuchsia Dahl", "Zaldy", "Stephan Lupino"] },
+    // Already in the S05E07b AFTERPARTY playlist.
+    videos: [{ id: "j164z_j1U-U", title: "Jennifer Banash on the feminist stories in her books and her life (You, Me, and The Girls Podcast)" }],
+  },
+
   "kim-hastreiter": {
     story:
       "Co-founded Paper with David Hershkovits in 1984, in the kitchen of her Tribeca loft, and ran it for 33 years. Downtown's den mother, who gave Mickey Boardman and Lauren Ezersky their start.",
