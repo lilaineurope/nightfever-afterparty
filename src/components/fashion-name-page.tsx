@@ -48,9 +48,15 @@ function Picture({ v }: { v: FashionPageView }) {
         </div>
         <figcaption>
           {v.photo.note}{" "}
-          <a href={v.photo.source} className="art-name" rel="noreferrer">
-            {v.photo.credit}
-          </a>
+          {v.photo.source ? (
+            <a href={v.photo.source} className="art-name" rel="noreferrer">
+              {v.photo.credit}
+            </a>
+          ) : (
+            <>
+              {v.photo.credit} Got a photo of it, or know who took one? Tell me in the box at the bottom of the page.
+            </>
+          )}
         </figcaption>
       </figure>
     );

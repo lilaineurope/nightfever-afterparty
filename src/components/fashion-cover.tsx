@@ -80,7 +80,7 @@ export function FashionCover({ item }: { item: FashionItem }) {
       </span>
     );
 
-  // A shop with a free photo of it shows the photo (Lisa, 27 Nov 2026: "cover pictures also"); the rest keep the bag.
+  // A shop shows its free photo (Lisa, 27 Nov 2026: "cover pictures also"), else its pencil drawing (28 Nov); the bag is the fallback.
   const shopPhoto = f.kind === "shop" ? SHOP_PHOTOS[item.slug] : undefined;
   if (shopPhoto)
     return (

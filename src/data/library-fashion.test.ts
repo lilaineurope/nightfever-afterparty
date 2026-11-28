@@ -51,3 +51,12 @@ test("every shop fact and shop photo is keyed by a real shop slug", async () => 
   const slugs = new Set(FASHION_SHOPS.map((s) => s.slug));
   for (const k of Object.keys(SHOP_FACTS)) assert.ok(slugs.has(k), `SHOP_FACTS key ${k} is not a shop on the shelf`);
 });
+
+test("every shop on the shelf has a picture: a free photo or a drawing (Lisa, 28 Nov 2026)", async () => {
+  const { readFileSync, existsSync } = await import("node:fs");
+  const src = readFileSync(new URL("./shop-photos.ts", import.meta.url), "utf8");
+  const pictured = new Set([...src.matchAll(/^\s*\[\s*"([a-z0-9-]+)",/gm)].map((m) => m[1]));
+  for (const s of FASHION_SHOPS) assert.ok(pictured.has(s.slug), `${s.name} has no photo or drawing`);
+  for (const m of src.matchAll(/^\s*\["([a-z0-9-]+)", "Pencil drawing/gm))
+    assert.ok(existsSync(new URL(`../assets/shops/drawings/${m[1]}.webp`, import.meta.url)), `no drawing file for ${m[1]}`);
+});
