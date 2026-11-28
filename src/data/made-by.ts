@@ -72,6 +72,7 @@ export const MADE_BY: Record<string, Maker[]> = {
   "Meet Me at the Mailbox (Denise Stoughton)": [m("Really Denise", "Writing it")],
   "Super Freak (unpublished)": [m("James St. James", "Wrote it")],
   "Connie's biography (by David Glamamore)": [m("David Glamamore", "Writing it"), m("Connie Fleming", "About them")],
+  "Raja's book (in the works)": [m("Raja", "Writing it")],
 
   // S04E11 Elyssa Maxx Goodman: her own book and the histories she and James name on the show
   "Glitter and Concrete": [m("Elyssa Maxx Goodman", "Wrote it", 2023)],
@@ -277,6 +278,10 @@ export const MADE_BY: Record<string, Maker[]> = {
     m("RuPaul", "Created and hosts it", 2009), ...WOW("Producers", 2009), m("Michelle Visage", "Judge"), m("Mathu Andersen", "Creative producer"),
     m("Zaldy", "Costumes for RuPaul"), m("Raja", "Won season 3", 2011), m("Sharon Needles", "Won season 4", 2012),
   ],
+  // S06E04 Raja (Raja's Wikipedia page, checked 27 Nov 2026, and the episode)
+  "Fashion Photo RuView": [m("Raja", "Hosts it", 2014)],
+  "America's Next Top Model": [m("Tyra Banks", "Created and hosts it", 2003), m("Mathu Andersen", "Make-up"), m("Raja", "Make-up artist", 2005)],
+  "The Simpsons": [m("Raja", "In the episode 'Werking Mom'", 2018)],
   "RuPaul's Drag Race All Stars": [m("RuPaul", "Hosts it", 2012), ...WOW("Producers", 2012), m("Michelle Visage", "Judge"), m("Alaska Thunderfuck", "Won All Stars 2", 2016), m("Raja", "On All Stars 7", 2022)],
   "RuPaul's Drag Race UK": [m("RuPaul", "Hosts it", 2019), ...WOW("Producers", 2019), m("Michelle Visage", "Judge"), m("Bimini Bon Boulash", "On season 2", 2021), m("Tayce", "On season 2", 2021)],
   "RuPaul's Drag Race Down Under": [m("RuPaul", "Hosts it", 2021), ...WOW("Producers", 2021), m("Michelle Visage", "Judge")],

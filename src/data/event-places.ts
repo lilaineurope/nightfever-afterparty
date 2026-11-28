@@ -400,6 +400,12 @@ export const EVENT_PLACES: EventPlace[] = [
   { event: "Erotic art show at Club 57", at: "Club 57", tip: "Keith's most popular show there" },
   { event: "Beyond Words show at the Mudd Club", at: "Mudd Club", tip: "The street-art show on the Mudd Club's upper floor" },
   { event: "Keith Haring's first show at Tony Shafrazi", at: "Tony Shafrazi Gallery", tip: "His first one-man show, 1982" },
+  // S06E04 Raja
+  { event: "Ivan on The Jerry Springer Show", at: "Chicago", tip: "The show was taped in Chicago; Raja's parents watched it at home" },
+  { event: "RuPaul at Arena", at: "Arena (Los Angeles)", tip: "End of 1992, as James remembers" },
+  { event: "The runway fight at Arena", at: "Arena (Los Angeles)", tip: "During the pre-show runway, as Raja tells it" },
+  { event: "Raja's one-woman show in Puerto Vallarta", at: "Puerto Vallarta", tip: "Three months, just before the episode was made" },
+  { event: "RuPaul look-alike contest at Ripples", at: "Ripples (Long Beach)", tip: "Raja won the $150 prize and met Delta Work" },
   // S05E09 Screamin' Rachael Cain
   { event: "Police raid on a punk show at the Space Place", at: "Chicago", tip: "At the Space Place, a punk spot round the corner from the Warehouse; that night she heard Frankie Knuckles was mixing her record" },
   { event: "Michael Alig on the run", at: "Chicago", tip: "Michael turned up at Rachael's Chicago condo, she says" },
