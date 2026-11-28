@@ -28,6 +28,9 @@ import limelightPolaroid from "@/assets/clubs/limelight-polaroid.webp";
 import grapePhoto from "@/assets/clubs/gilded-grape-photo.webp";
 import grapePhotoPhone from "@/assets/clubs/gilded-grape-photo-phone.webp";
 import grapePolaroid from "@/assets/clubs/gilded-grape-polaroid.webp";
+import jeffersonPhoto from "@/assets/clubs/jefferson-photo.webp";
+import jeffersonPhotoPhone from "@/assets/clubs/jefferson-photo-phone.webp";
+import jeffersonPolaroid from "@/assets/clubs/jefferson-polaroid.webp";
 import quickPhoto from "@/assets/clubs/quick-photo.webp";
 import quickPhotoPhone from "@/assets/clubs/quick-photo-phone.webp";
 import quickPolaroid from "@/assets/clubs/quick-polaroid.webp";
@@ -185,6 +188,7 @@ const LE_CLUB_CREDIT = "Header: a night at Le Club in the 60s drawn for the AFTE
 const JIMMYZ_CREDIT = "Header: Jimmy'z by the sea in the 70s drawn for the AFTERPARTY. Polaroid: the lantern-lit lake, drawn for the AFTERPARTY";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
+const JEFFERSON_CREDIT = "Header and polaroid: a night at the Jefferson and its marquee on 14th Street, drawn for the AFTERPARTY - no photo of the Jefferson is free to use";
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
 const QUICK_CREDIT = "Header and polaroid: a night at Quick drawn for the AFTERPARTY - no photo of Quick is free to use";
 const BUILDING_CREDIT = "Header and polaroid: a night at the Building drawn for the AFTERPARTY - no photo of the Building is free to use";
@@ -983,6 +987,31 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
   // Batch 6 (Lisa, 19 Nov 2026: "yes"). Facts: Wikipedia "Hurrah (nightclub)" and "Peppermint Lounge"; the Building from
   // Standard Hotels, W Magazine and Vice (opened 1989 in a former Con Ed substation); the Gilded Grape, Quick and Club 82 from
   // the guests' own stories (checked 19 Nov 2026). Pictures: sources sheet, Round 12.
+  // Top Google search pages (Lisa, 28 Nov 2026: "do all 1-5"). Facts: Cinema Treasures, the Daily Beast's after-hours story,
+  // Arthur Weinstein's NYT obituary (16 Jul 2008) and the episodes. Header and polaroid drawn for the AFTERPARTY (Gemini, 28 Nov).
+  jefferson: {
+    opened: "New Year's 1981",
+    closed: "c. 1982",
+    address: "214 East 14th Street, upstairs in the old Jefferson Theatre",
+    story:
+      "Arthur Weinstein's illegal after-hours club, upstairs above the marquee of the old Jefferson Theatre on 14th Street near Third Avenue, run with his wife Colleen. A party he threw for Colleen in their loft there turned into a club the same night. For Susanne Bartsch, just arrived in New York, it was the one place that felt fabulous. Arthur's first after-hours club, before the Continental and The World.",
+    timeline: [
+      ["1913", "B.F. Keith's Jefferson opens as a vaudeville theatre at 214 East 14th Street; later the RKO Jefferson cinema"],
+      ["1977", "Still showing films, then it stands empty"],
+      ["c. 1980", "Arthur Weinstein throws a party for his wife Colleen in their loft in the building, and it turns into a club that night"],
+      ["New Year's 1981", "The Jefferson opens as an after-hours club, upstairs above the marquee"],
+      ["1981", "Susanne Bartsch, new in New York, finds it in her first weeks"],
+      ["c. 1982", "Arthur moves on: the Continental, in a garage on West 25th Street"],
+      ["2000", "The Jefferson Theatre is torn down"],
+    ],
+    stage: ["Arthur Weinstein", "Colleen Weinstein", "Susanne Bartsch", "Eric Goode"],
+    rooms: ["The Continental", "The World", "Hurrah", "Mudd Club", "Club 57"],
+    said: [
+      { episode: "s02e03", who: "James St. James", time: "00:17:53", context: "James to Susanne Bartsch about her first nights in New York, 1981", quote: "When you came to New York, it was '81. And I remember you saying that one of the first places you went to was the Jefferson, Arthur Weinstein's after-hours club. It felt European to you. It was the one place in New York that felt fabulous." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:13:32", context: "Arthur Weinstein's after-hours clubs", quote: "So Arthur did the Jefferson, which was in the Jefferson Theater, then the Continental. And we all thought Arthur was going to get shot by the police, because he brought down the Ninth and Tenth Precinct, basically wearing a wire and busting corrupt cops. That was the time when the cops were corrupt, the mafia, of course, was corrupt, the whole city was corrupt, and it was incredible." },
+    ],
+    portrait: { photo: jeffersonPhoto, phone: jeffersonPhotoPhone, polaroid: jeffersonPolaroid, focus: "50%", credit: JEFFERSON_CREDIT },
+  },
   "gilded-grape": {
     opened: "Early 70s",
     closed: "1977",

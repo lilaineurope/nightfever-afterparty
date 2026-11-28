@@ -96,6 +96,8 @@ export type CardView = {
   faces: Record<string, { src: string; framed?: boolean }>;
   /** "In the same rooms" */
   related: { slug: string; name: string }[];
+  /** The one Connections box (28 Nov 2026): named / onPages / inGuestStories / related merged, each name once, grouped. */
+  connections: { heading: string; items: { slug: string; name: string; sub?: string }[] }[];
   /** The card's own Jukebox entry (songs, artists, stage bands get a player). */
   music: { name: string; shelf: string; spotify?: string | undefined } | null;
   night: ClubNight | null;

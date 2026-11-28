@@ -581,7 +581,7 @@ const bb: ClubNight = {
   playlistId: "1y73pYZUjvlAVPpuHzJ2PO",
   youtubePlaylist: "https://www.youtube.com/playlist?list=PLUYR06S7Rc2c",
   note:
-    "From the guests' own stories on Night Fever: the Boy Bar beauties lip-synced on its little stage on St. Marks Place, and Johnny Dynell was its DJ. Three songs are named - Connie Fleming's Walking on Thin Ice and Miss Guy's first two shows; the rest stand in for the acts Miss Guy remembers from her first night. Not one exact night.",
+    "Two eras of Boy Bar. First the 1980s, from the guests' own stories on Night Fever: the Boy Bar beauties lip-synced on its little stage on St. Marks Place, and Johnny Dynell was its DJ. Three songs are named - Connie Fleming's Walking on Thin Ice and Miss Guy's first two shows, a few years after Miss Guy moved to New York in 1985; the rest stand in for the acts Miss Guy remembers from her first night. Then Boy Bar in 1994: the three songs Jillian Jonas, who photographed its shows that year, remembers as the most popular there. Not one exact night.",
   footage: [
     { id: "1jwBImEgilQ", title: "Lypsinka at \"Boybar\" in NYC, 1993" },
   ],
@@ -589,6 +589,8 @@ const bb: ClubNight = {
     { key: "A", label: "Night Fever S03E10 - Miss Guy (her first night at Boy Bar, her first shows)", href: "https://nightfever-afterparty.com/episodes/s03e10" },
     { key: "B", label: "Night Fever S06E03 - Chi Chi Valenti & Johnny Dynell (Johnny: 'I was the DJ at the Boy Bar')", href: "https://nightfever-afterparty.com/episodes/s06e03" },
     { key: "C", label: "Night Fever S02E05 - Connie Fleming (the Boy Bar beauties)", href: "https://nightfever-afterparty.com/episodes/s02e05" },
+    // Jillian Jonas (email to Lisa, 12 Nov 2026; OK to use with credit, 26 Nov 2026): "the music most popular in '94 at boy bar".
+    { key: "D", label: "Jillian Jonas, who photographed Boy Bar's shows in 1994 - the songs most popular there that year (to the AFTERPARTY, Nov 2026)", href: "https://urbanarchive.org/o/villagepreservation/post/d2def65d-c4c9-4a6f-9250-0346c7ee984d" },
   ],
   songs: [
     { title: "Walking on Thin Ice", artist: "Yoko Ono", year: 1981, spotify: "3dSmcooRQGXXQ3wi0ZxGde", video: "Ft7-xEiwvJw", kind: "played", why: "Connie Fleming lip-synced it, cartwheeling in a bikini and white mules, on Miss Guy's first night at Boy Bar", sources: ["A", "C"], guest: { slug: "connie-fleming", label: "Connie Fleming" } },
@@ -598,6 +600,10 @@ const bb: ClubNight = {
     { title: "I Love Rock 'n' Roll", artist: "Joan Jett & the Blackhearts", year: 1981, spotify: "4jTqsgDaffdNH0BMBwhjFv", video: "wMsazR6Tnf8", kind: "dj-artist", why: "Madame Adam 'did Joan Jett lip syncs', Miss Guy says. The song is my pick", sources: ["A"] },
     { title: "Holiday", artist: "Madonna", year: 1983, spotify: "7arHM2KZ0KzIZXFVDRGClI", video: "uGdMBRZDEAY", kind: "dj-artist", why: "Someone 'did Madonna' on Miss Guy's first night. The song is my pick", sources: ["A"] },
     { title: "Jam Hot", artist: "Johnny Dynell", year: 1983, spotify: "46qCv6ODMDCcadIjntyqrQ", video: "gRU-XNOvT5E", kind: "dj-artist", why: "Johnny Dynell was the Boy Bar DJ; this is his own record, not a documented play there", sources: ["B"], guest: { slug: "chi-chi-valenti-johnny-dynell", label: "Johnny Dynell" } },
+    // Boy Bar in 1994 (Jillian Jonas). "Pride" = Aretha's A Deeper Love, issued as "(Pride) A Deeper Love"; Spotify ids read from Spotify search 28 Nov 2026.
+    { title: "A Deeper Love", artist: "Aretha Franklin", year: 1994, spotify: "0tUw4tn3mWIDW705HLKE9B", video: "P7wCrjuTIyo", kind: "played", why: "Boy Bar in 1994: one of the most popular songs there that year, Jillian Jonas remembers - she calls it \"Pride\"", sources: ["D"] },
+    { title: "100% Pure Love", artist: "Crystal Waters", year: 1994, spotify: "66X03EIfE1zm99rd4SfL71", video: "zQX2q6WCrbE", kind: "played", why: "Boy Bar in 1994: one of the most popular songs there that year, Jillian Jonas remembers", sources: ["D"] },
+    { title: "Show Me Love", artist: "Robin S.", year: 1993, spotify: "4t0UsYzmmmZRMTWn77jiGF", video: "Ps2Jc28tQrw", kind: "played", why: "Boy Bar in 1994: one of the most popular songs there that year, Jillian Jonas remembers", sources: ["D"] },
   ],
 };
 

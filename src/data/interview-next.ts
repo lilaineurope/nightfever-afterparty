@@ -156,6 +156,12 @@ export const NEW_FACES: InterviewTip[] = [
     episodeId: "s06e10",
     time: "00:28:43",
   },
+  {
+    name: "Brian Rabin",
+    why: "James, closing the all-LA episode: he would like Brian Rabin to come on and tell his version of LA in the 90s, probably very different from Raja's.",
+    episodeId: "s06e04",
+    time: "01:01:00",
+  },
 ];
 
 /** Guests the hosts want back for a part two */
@@ -320,6 +326,12 @@ export const COME_BACK: InterviewTip[] = [
     why: "James closes: they only got as far as the 2000s, so they will have to have Kenny back to carry on his story.",
     episodeId: "s06e10",
     time: "00:43:06",
+  },
+  {
+    name: "Raja",
+    why: "James closes: they definitely have a follow-up, and Raja says there are plenty more West Coast stories to tell.",
+    episodeId: "s06e04",
+    time: "01:02:47",
   },
 ];
 

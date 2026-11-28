@@ -9,6 +9,7 @@ import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { CardView } from "@/lib/card-view";
 import { EntityText } from "@/components/entity-text";
 import { EntityLink } from "@/components/entity-link";
+import { SlugPile } from "@/components/name-pile";
 
 // The A–Z card's sections, drawn from the CardView the server sends with the page (src/lib/card-view.server.ts) - the card
 // page never loads the whole A–Z (page weight, 16 Nov 2026). The episode header's About box lives in guest-about.tsx.
@@ -70,7 +71,14 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
   const related = v.related;
   // A club page shows its theme nights and parties in their own boxes above (club-parts.tsx), not again here.
   const refs = v.parts ? v.refs.filter((r) => !v.parts!.names.includes(r.name)) : v.refs;
-  const named = v.named;
+  // One box per name: a person named on two episode cards gets both episode codes under one picture.
+  const named = Object.values(
+    v.named.reduce<Record<string, { slug: string; name: string; sub?: string }>>((acc, x) => {
+      const a = (acc[x.slug] ??= { slug: x.slug, name: x.name });
+      if (x.short) a.sub = a.sub ? `${a.sub} · ${x.short}` : x.short;
+      return acc;
+    }, {}),
+  );
 
   return (
     <>
@@ -136,50 +144,19 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {/* A Library item page shows these as one "Also on the site" box with why (library-item.tsx, Lisa 23 Nov 2026). */}
-      {named.length > 0 && !v.item && !lean && (
-        <section>
-          <h2 className={h}>Also named on these cards</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {named.map((x) => (
-              <Link key={`${x.slug}-${x.episode}`} {...linkToSlug(links, x.slug)} className={chip}>
-                {x.name}
-                {x.episode && <span className="ml-1.5 text-muted-foreground">{x.short}</span>}
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {v.onPages.length > 0 && !lean && (
-        <section>
-          <h2 className={h}>On these AFTERPARTY pages</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {v.onPages.map((x) => (
-              <Link key={x.slug} {...linkToSlug(links, x.slug)} className={chip}>
-                {x.name}
-                <span className="ml-1.5 text-muted-foreground">{x.kind}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {v.inGuestStories.length > 0 && !v.item && !lean && (
-        <section>
-          <h2 className={h}>Pops up in the guests' stories</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {v.inGuestStories.map((x) => <EntityLink key={x.slug} name={x.slug} className={chip}>{x.name}</EntityLink>)}
-          </div>
-        </section>
-      )}
-
-      {related.length > 0 && !v.item && !lean && (
-        <section>
-          <h2 className={h}>In the same rooms (aka the gang)</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {related.map((x) => (
-              <Link key={x.slug} {...linkToSlug(links, x.slug)} className={chip}>{x.name}</Link>
+      {/* One Connections box (Lisa, 28 Nov 2026: "it feels like we are doubling up here and mixing up databases - how can we
+          combine that also with our page standard"): what used to be "Also named on these cards", "On these AFTERPARTY pages",
+          "Pops up in the guests' stories" and "In the same rooms", each name once, by kind. A Library item page keeps its own
+          "Also on the site" box (library-item.tsx). */}
+      {v.connections.length > 0 && !lean && (
+        <section className="rounded-2xl border border-border bg-card p-6">
+          <h2 className={h}>Connections (aka the gang)</h2>
+          <div className={`mt-2 grid gap-x-10 gap-y-6 ${v.connections.length > 1 ? "md:grid-cols-2" : ""}`}>
+            {v.connections.map((g) => (
+              <div key={g.heading}>
+                <h3 className="mt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{g.heading}</h3>
+                <SlugPile items={g.items} faces={v.faces} />
+              </div>
             ))}
           </div>
         </section>

@@ -103,6 +103,17 @@ export const ROLE_LINES: Record<string, string> = {
   "tony-defries": "David Bowie's manager, MainMan",
   "philip-glass": "composer",
   "ian-schrager": "co-owner of Studio 54 and the Palladium",
+  "jim-fouratt": "gay-rights activist, co-founder of Danceteria",
+  sade: "singer",
+  "romy-haag": "queen of Berlin nightlife, Chez Romy Haag",
+  danilo: "hairstylist",
+  "kabuki-starshine": "Club Kid and make-up artist",
+  "john-taylor": "bassist of Duran Duran",
+  "grandmaster-flash": "hip-hop DJ from the Bronx",
+  "laurie-metcalf": "actor, Steppenwolf",
+  "lil-nas-x": "rapper",
+  "jen-gatien": "film producer, Peter Gatien's daughter",
+  "linda-evangelista": "supermodel",
   "brian-butterick": "Pyramid Club's Hattie Hathaway",
 
   // In memoriam
@@ -189,4 +200,5 @@ export const ROLE_LINES: Record<string, string> = {
   "mark-kamins": "Danceteria DJ",
   "paris-dupree": "founder of the House of Dupree",
   "stephen-saban": "nightlife columnist",
+  "jenny-go-getter": "Tunnel party hostess, now novelist Jennifer Banash",
 };

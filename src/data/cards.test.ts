@@ -31,6 +31,7 @@ const DISTINCT = new Set(
     ["baby-rue", "boy-bar"], ["bailey", "bebe-buell"], ["jerry-lee-lewis", "jerry-lewis"], ["bern", "brian-eno"], ["dean-johnson", "don-johnson"], ["dany-johnson", "dean-johnson"], ["dany-johnson", "don-johnson"],
     ["leo", "lila"], ["baby", "boob"], ["devo", "diva"], ["lee", "leo"], ["lee", "lila"], ["maripol", "maury-paul"], ["mk", "mokai"], ["nice", "nico"], ["paper", "pierre"], ["paris", "piers"], ["rome", "romeo"], ["park", "pork"],
     ["valentino", "viva-valentino"], ["soho", "sushi"], ["dean-martin", "dina-martina"], ["gay-usa", "go-go-s"], ["maui", "miami"], ["rebel-soul", "robbie-leslie"], ["tatou", "tea-at-toy"], ["astro-earl", "australia"], ["hawaii", "howie"], ["carlyle", "carol"],
+    ["biloxi", "bolex"], ["bitter-end", "bobby-trendy"], ["denny-s", "donnas"], ["rage", "reggae"], // S06E04
     ["jay-z", "jazz"], ["nas", "nasa"], ["paper", "peru"], ["peru", "pierre"],
     ["d-v", "devo"], ["d-v", "diva"], // Diana Vreeland's memoir (src/data/written-by.ts)
     ["bar-one", "bern"], ["bar-one", "brian-eno"], ["east-village", "east-village-eye"], ["daisy", "dose"], ["michael-jackson", "michael-jackson-one"], ["raven", "raven-o"], ["green-day", "grind"], ["tabboo", "taboo"], ["ran", "reno"], ["new-wave", "no-wave"], ["raybeats", "robots"], ["cars", "crass"], ["cock", "cookie"], ["tabboo", "tubi"], ["taboo", "tubi"],

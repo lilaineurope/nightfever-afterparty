@@ -378,6 +378,11 @@ export const YOUTUBE: Record<string, string> = {
   "Lady, Be Good": "xYZq5rHLcSw",
   "Fred Astaire – 'The Half of It, Dearie, Blues'": "cmJKVy-X8qA",
   "Ray Bourbon's party records": "nJ2_2BFaf8c",
+  // S06E04 Raja
+  "Gloria Estefan – 'Everlasting Love'": "clpW8w7RV4s",
+  "RuPaul – 'Looking Good, Feeling Gorgeous'": "xxy70zebYDQ",
+  "Sheryl Crow – 'All I Wanna Do'": "ClbmWkbocoY",
+  "10,000 Maniacs": "xUzBgJut8fQ",
   // S05E09 Screamin' Rachael Cain
   "Z-Factor & Jesse Saunders – 'Fantasy'": "7yn53tLNyuY",
   "Screamin' Rachael – 'Give Me My Freedom (Murder in Clubland)'": "yOjkyknKJ2c",
