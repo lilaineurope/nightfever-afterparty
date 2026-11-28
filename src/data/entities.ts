@@ -56,6 +56,11 @@ const clean = (n: string) =>
 // (Lisa, 21 Nov 2026: "double ups in magazines eg paper"). The old address forwards to the card (card-view.server.ts).
 export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
+  "don-hills": "don-hill-s", // how people type it
+  // Chi Chi and Johnny are one guest page (S06E03, a joint interview): either name alone opens it (Lisa, 28 Nov 2026 on Anita
+  // Sarko's page: "john dyell needs a picture box and a page").
+  "johnny-dynell": "chi-chi-valenti-and-johnny-dynell", // the guest card is filed under its name, "  "johnny-dynell": "chi-chi-valenti-johnny-dynell"," read as "and"
+  "chi-chi-valenti": "chi-chi-valenti-and-johnny-dynell",
   // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",
   // Places (Lisa, 22 Nov 2026: "we have to make sure we have no double ups"). A club's street address is its club page,
@@ -87,6 +92,8 @@ export const SAME_AS: Record<string, string> = {
   "desi-monster": "desi-santiago",
   // S06E10: Lil' Kenny from Desi's band Boob is the guest Kenneth Hash - the old card address forwards to his AFTERPARTY.
   "lil-kenny": "kenneth-hash-aka-lil-kenny",
+  // S03E09 and S06E06 heard "Julie Jules": the club kid Julie Jewels (Lisa, 28 Nov 2026, Tunnel kids) - one page.
+  "julie-jules": "julie-jewels",
 };
 
 // Brackets are dropped from names ("Heaven (London)" is the same Heaven), except where the bracket names a different

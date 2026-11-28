@@ -22,7 +22,7 @@ export function ClubCrowd({
   c: ClubCrowdView;
   name: string;
   address: string;
-  faces: Record<string, { src: string; framed?: boolean }>;
+  faces: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }>;
 }) {
   if (c.told.length === 0 && c.regulars.length === 0 && c.posters.length === 0) return null;
   const row = (t: ClubCrowdView["told"][number]) => (
