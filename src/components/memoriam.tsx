@@ -15,7 +15,7 @@ const TILT = [-2, 1.5, -1, 2, -1.5, 1];
 
 /** In memoriam (Lisa, 4 Nov 2026, option C): dates, story, "Remembered by the guests" wall, and their story box.
  *  Sits above the usual A–Z card sections. */
-export function MemoriamSections({ m, name, faces }: { m: Memoriam; name: string; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function MemoriamSections({ m, name, faces }: { m: Memoriam; name: string; faces?: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }> }) {
   const first = m.first ?? name.split(" ")[0];
   return (
     <>

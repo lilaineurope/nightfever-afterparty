@@ -13,7 +13,7 @@ const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs t
 
 /** Club pages (Lisa, 13 Nov 2026): dates, story, "What the guests say", the club's story, its stage and the rooms around it.
  *  Built like the In memoriam sections and sits above the usual A–Z card sections. */
-export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, partsSide, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; partsSide?: boolean; crowd?: ClubCrowdView | null; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean }> }) {
+export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, partsSide, crowd, library, faces }: { c: ClubProfile; name: string; slug: string; night: boolean; wall?: SaidBox[] | null; sound?: ReactNode; parts?: ReactNode; partsSide?: boolean; crowd?: ClubCrowdView | null; library?: ReactNode; faces?: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }> }) {
   const story = (
     <>
       <h3 className={`${h} mt-7`}>{name}'s story</h3>

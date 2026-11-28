@@ -24,7 +24,7 @@ export function ClubCrowd({
   c: ClubCrowdView;
   name: string;
   address: string;
-  faces: Record<string, { src: string; framed?: boolean }>;
+  faces: Record<string, { src: string; framed?: boolean; mast?: "light" | "dark" }>;
   /** The club's story and stage, on the left of the same clipboard (Lisa, 28 Nov 2026: "merge the story box with On the list"). */
   story?: ReactNode;
 }) {

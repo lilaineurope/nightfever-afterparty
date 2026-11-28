@@ -74,6 +74,31 @@ import brookeAstorPolaroid from "@/assets/people/brooke-astor-polaroid.webp";
 // Night run, all remaining people (Lisa, 3 Nov 2026)
 import ladyBunnyPhoto from "@/assets/people/lady-bunny-photo.webp";
 import ladyBunnyPolaroid from "@/assets/people/lady-bunny-polaroid.webp";
+import colleenWeinsteinPhoto from "@/assets/people/colleen-weinstein-photo.webp";
+import colleenWeinsteinPolaroid from "@/assets/people/colleen-weinstein-polaroid.webp";
+import venusXtravaganzaPhoto from "@/assets/people/venus-xtravaganza-photo.webp";
+import venusXtravaganzaPolaroid from "@/assets/people/venus-xtravaganza-polaroid.webp";
+import davidIanXtravaganzaPhoto from "@/assets/people/david-ian-xtravaganza-photo.webp";
+import davidIanXtravaganzaPolaroid from "@/assets/people/david-ian-xtravaganza-polaroid.webp";
+import stephanLupinoPhoto from "@/assets/people/stephan-lupino-photo.webp";
+import stephanLupinoPolaroid from "@/assets/people/stephan-lupino-polaroid.webp";
+import christopherStreetPhoto from "@/assets/people/christopher-street-photo.webp";
+import christopherStreetPolaroid from "@/assets/people/christopher-street-polaroid.webp";
+import michaelTronPhoto from "@/assets/people/michael-tron-photo.webp";
+import michaelTronPolaroid from "@/assets/people/michael-tron-polaroid.webp";
+import juniorVasquezPhoto from "@/assets/people/junior-vasquez-photo.webp";
+import juniorVasquezPolaroid from "@/assets/people/junior-vasquez-polaroid.webp";
+import paulMorrisseyPhoto from "@/assets/people/paul-morrissey-photo.webp";
+import paulMorrisseyPolaroid from "@/assets/people/paul-morrissey-polaroid.webp";
+import houseOfXtravaganzaPhoto from "@/assets/people/house-of-xtravaganza-photo.webp";
+import houseOfXtravaganzaPolaroid from "@/assets/people/house-of-xtravaganza-polaroid.webp";
+import houseOfXtravaganzaPhotoPhone from "@/assets/people/house-of-xtravaganza-photo-phone.webp";
+import loveBallPhoto from "@/assets/people/love-ball-photo.webp";
+import loveBallPolaroid from "@/assets/people/love-ball-polaroid.webp";
+import voguingPhoto from "@/assets/people/voguing-photo.webp";
+import voguingPolaroid from "@/assets/people/voguing-polaroid.webp";
+import noEntiendesPhoto from "@/assets/people/no-entiendes-photo.webp";
+import noEntiendesPolaroid from "@/assets/people/no-entiendes-polaroid.webp";
 import julieJewelsPhoto from "@/assets/people/julie-jewels-photo.webp";
 import julieJewelsPolaroid from "@/assets/people/julie-jewels-polaroid.webp";
 import lahomaVanZandtPhoto from "@/assets/people/lahoma-van-zandt-photo.webp";
@@ -710,6 +735,9 @@ import sueClowesPolaroid from "@/assets/people/sue-clowes-polaroid.webp";
 import lisaCollinsPhoto from "@/assets/people/lisa-collins-photo.webp";
 import lisaCollinsPolaroid from "@/assets/people/lisa-collins-polaroid.webp";
 
+import zandraRhodesPhoto from "@/assets/people/zandra-rhodes-photo.webp";
+import zandraRhodesPolaroid from "@/assets/people/zandra-rhodes-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   /** Phone copy of the header photo (club pages, SEO check 16 Nov 2026): the middle 800 px at full size, so the dots look the same. */
@@ -1082,6 +1110,24 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "norma-kamali": { photo: normaKamaliPhoto, polaroid: normaKamaliPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "rachel-auburn": { photo: rachelAuburnPhoto, polaroid: rachelAuburnPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "stephen-jones": { photo: stephenJonesPhoto, polaroid: stephenJonesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Real pictures, no Gemini needed (Lisa, 28 Nov 2026 on the House of Xtravaganza page: "love ball and voguing needs a picture
+  // and a page"; "Haoui Montaug no entiendes needs picture and it's own page").
+  "colleen-weinstein": { photo: colleenWeinsteinPhoto, polaroid: colleenWeinsteinPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Gemini, 28 Nov 2026 (Lisa: "Michael Tron needs a polaroid", "paul morrissey needs a polaroid", "the family ... junior ... needs a picture").
+  // Option A wired; Lisa picks A or B for Michael and Junior. Paul: A only (a second take was refused).
+  "michael-tron": { photo: michaelTronPhoto, polaroid: michaelTronPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "junior-vasquez": { photo: juniorVasquezPhoto, polaroid: juniorVasquezPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "paul-morrissey": { photo: paulMorrisseyPhoto, polaroid: paulMorrisseyPolaroid, focus: "30%", credit: "Illustration made with Gemini from the 1967 public-domain photo by James Kavallines, not a photo" },
+  // Lisa: "house of xtravaganza needs a background header picture and a polaroid". No faces: an empty Harlem ballroom and the judges' table.
+  "house-of-xtravaganza": { photo: houseOfXtravaganzaPhoto, phone: houseOfXtravaganzaPhotoPhone, polaroid: houseOfXtravaganzaPolaroid, focus: "50%", credit: "Header and polaroid: a Harlem ballroom before a ball and the judges' trophies, drawn for the AFTERPARTY - no people shown" },
+  // Venus and David Ian: B (Lisa, 28 Nov 2026, "venus b", "david b"). Stephan: A only (three tries at a B failed).
+  "venus-xtravaganza": { photo: venusXtravaganzaPhoto, polaroid: venusXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "david-ian-xtravaganza": { photo: davidIanXtravaganzaPhoto, polaroid: davidIanXtravaganzaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "stephan-lupino": { photo: stephanLupinoPhoto, polaroid: stephanLupinoPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "christopher-street": { photo: christopherStreetPhoto, polaroid: christopherStreetPolaroid, focus: "50%", credit: "Christopher Street Liberation Day, 28 June 1970 - still from Lilli Vincenz's film Gay and Proud (public domain, Library of Congress)" },
+  "love-ball": { photo: loveBallPhoto, polaroid: loveBallPolaroid, focus: "40%", credit: "Invitation: The Love Ball, Roseland, 1989 - photo via Gallery 98" },
+  voguing: { photo: voguingPhoto, polaroid: voguingPolaroid, focus: "50%", credit: "Photo: S Pakhrin, Voguing Masquerade Ball, 2016, CC BY 2.0, via Wikimedia Commons" },
+  "no-entiendes": { photo: noEntiendesPhoto, polaroid: noEntiendesPolaroid, focus: "45%", credit: "Card: No Entiendes, second anniversary, Danceteria, 1984 - photo via Gallery 98" },
   // Lisa, 28 Nov 2026 ("everything else publish"): sticker batch 1 redos (Hapi, Mary, Carolina, Jody, Sue) and Lisa Collins. Gemini drawings after reference photos (references not on the site).
   "hapi-phace": { photo: hapiPhacePhoto, polaroid: hapiPhacePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "mary-mcfadden": { photo: maryMcfaddenPhoto, polaroid: maryMcfaddenPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
@@ -1089,4 +1135,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "jody-morlock": { photo: jodyMorlockPhoto, polaroid: jodyMorlockPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "sue-clowes": { photo: sueClowesPhoto, polaroid: sueClowesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "lisa-collins": { photo: lisaCollinsPhoto, polaroid: lisaCollinsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Lisa, 28 Nov 2026 ("yes zandra publish"): Gemini drawing after a reference photo (reference not on the site).
+  "zandra-rhodes": { photo: zandraRhodesPhoto, polaroid: zandraRhodesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };
