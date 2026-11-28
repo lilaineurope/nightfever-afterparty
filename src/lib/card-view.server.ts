@@ -70,6 +70,31 @@ const facesOf = (names: string[]): Record<string, Face> =>
     return f ? [[n, f]] : [];
   }));
 
+type Conn = { slug: string; name: string; short?: string | undefined };
+const GROUP: Record<string, string> = { Person: "People", Club: "Clubs & places", Location: "Clubs & places", Event: "Nights & events" };
+const GROUP_ORDER = ["People", "Clubs & places", "Nights & events", "Works & more"];
+/** The card's connections from every source (named on the same episode cards, story pages that name it, guests' stories,
+ *  the same rooms), each name once with its episode codes, grouped People / Clubs & places / Nights & events / Works & more. */
+function connectionsOf(e: Entity, lists: Conn[][], shown: string[]): CardView["connections"] {
+  const skip = new Set([e.slug, ...shown.map((n) => entityFor(n)?.slug ?? slugify(n))]);
+  const by = new Map<string, { slug: string; name: string; codes: string[] }>();
+  for (const list of lists)
+    for (const x of list) {
+      if (skip.has(x.slug)) continue;
+      const c = by.get(x.slug) ?? { slug: x.slug, name: x.name, codes: [] };
+      if (x.short && !c.codes.includes(x.short)) c.codes.push(x.short);
+      by.set(x.slug, c);
+    }
+  const groups = new Map<string, { slug: string; name: string; sub?: string }[]>();
+  for (const c of by.values()) {
+    const g = GROUP[entityBySlug[c.slug]?.category ?? ""] ?? "Works & more";
+    const list = groups.get(g) ?? [];
+    list.push({ slug: c.slug, name: c.name, ...(c.codes.length ? { sub: c.codes.slice(0, 3).join(" · ") } : {}) });
+    groups.set(g, list);
+  }
+  return GROUP_ORDER.filter((g) => groups.has(g)).map((g) => ({ heading: g, items: groups.get(g)! }));
+}
+
 /** "Who else was there" on a club page (Lisa, 27 Nov 2026, W1): every guest who talks about the club with their biggest
  *  moment (most mentions first), the regulars - people whose own page (living or In memoriam) lists the club as one of their
  *  rooms, minus those already on its stage - and who made or is named on its posters (CLUB_PIECES). */
@@ -220,6 +245,12 @@ function cardView(e: Entity): CardView {
   });
   // Library item pages (Lisa, 21 Nov 2026): cover, facts, who dropped it, connections, trailers, find/borrow/buy.
   const item = g ? null : libraryItemView(e);
+  // One "Connections" box instead of four lists that repeated each other (Lisa, 28 Nov 2026: "it feels like we are doubling
+  // up here and mixing up databases"): every name once, grouped by kind, and none that the page's own story box already shows.
+  const connections = item || club ? [] : connectionsOf(e, [named, onPages, inGuestStories, related], [
+    ...(profile ? [...profile.liftedUp, ...profile.rooms, ...(profile.also?.names ?? [])] : []),
+    ...(mem ? [...mem.liftedUp, ...mem.rooms, ...(mem.also?.names ?? [])] : []),
+  ]);
   if (item) {
     if (item.facts?.author) L.text(item.facts.author, e.name);
     if (item.madeSince) L.text(item.madeSince.why, e.name);
@@ -272,6 +303,7 @@ function cardView(e: Entity): CardView {
     inGuestStories,
     related,
     onPages,
+    connections,
     music: j ? { name: j.name, shelf: j.shelf, spotify: j.spotify } : null,
     night: clubNightFor(e.slug) ?? null,
     mem,
