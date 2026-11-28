@@ -1,0 +1,1 @@
+Colleen Weinstein: Gemini drew her (chat https://gemini.google.com/app/93383feae2c665c1), no refusal. A = c. 1981 (from Anton Perich ref), B = today (from Sangwoo Suh 2019 ref). Labels THE JEFFERSON | THE WORLD | 1980 | LIMELIGHT; 1 MENTION; "Nightclub designer · the Jefferson, The World, Limelight". Credit: Illustration made with Gemini, not a photo.
