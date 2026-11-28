@@ -6,7 +6,7 @@ import { CoverFace } from "@/components/cover-face";
 import { QuoteName } from "@/components/quote-name";
 import { episodePath } from "@/data/episodes";
 import { linkToSlug, useLinks } from "@/lib/link-index";
-import type { ClubLibraryView } from "@/lib/card-view";
+import type { CardView, ClubLibraryView } from "@/lib/card-view";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 
@@ -177,5 +177,26 @@ export function ClubLibrary({ v, name }: { v: ClubLibraryView; name: string }) {
         </div>
       )}
     </section>
+  );
+}
+
+/** An event page's Library box at the foot (Lisa, 28 Nov 2026: "and a library box"): what was talked about with the event,
+ *  then its club venue's poster and reading list, as on a night's page. */
+export function EventLibrary({ v, name }: { v: NonNullable<CardView["eventLib"]>; name: string }) {
+  return (
+    <>
+      {v.own && (
+        <div>
+          <p className={`${h} mb-6 text-center`}>{name} in the Library</p>
+          <ClubLibrary v={v.own} name={name} />
+        </div>
+      )}
+      {v.venue && (
+        <div>
+          <p className={`${h} mb-6 text-center`}>{v.venue.name} in the Library</p>
+          <ClubLibrary v={v.venue.lib} name={v.venue.name} />
+        </div>
+      )}
+    </>
   );
 }

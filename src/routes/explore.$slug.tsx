@@ -15,7 +15,7 @@ import { NightPageOthers, NightPageSections } from "@/components/night-page";
 import { ClubNightPlaylist } from "@/components/club-night";
 import { ProfileVideos } from "@/components/profile-videos";
 import { ClubCrowd } from "@/components/club-crowd";
-import { ClubLibrary } from "@/components/club-library";
+import { ClubLibrary, EventLibrary } from "@/components/club-library";
 import { SaidWall } from "@/components/said-wall";
 import { PersonProfileSections } from "@/components/person-profile";
 import { DiarySections } from "@/components/diary";
@@ -316,8 +316,9 @@ function EntityPage() {
             wall={e.wall}
             sound={e.night ? (
               <>
-                <ClubNightPlaylist night={e.night} />
+                {/* On film first, then "A night at ... sounded like this" (Lisa, 28 Nov 2026: "swap"). */}
                 {e.night.footage && e.night.footage.length > 0 && <ProfileVideos videos={e.night.footage} playlist={e.night.youtubePlaylist} first={e.night.club} />}
+                <ClubNightPlaylist night={e.night} />
               </>
             ) : null}
             parts={e.parts ? <ClubPartsSections p={e.parts} name={e.name} /> : null}
@@ -353,6 +354,7 @@ function EntityPage() {
         )}
         <CardSections v={e} skipRefs={!!item || !!place || !!nightPage || !!e.wall} skipEvents={!!place} />
         {nightPage && <NightPageOthers v={nightPage} />}
+        {e.eventLib && <EventLibrary v={e.eventLib} name={e.name} />}
       </div>
           <SiteFooter />
 </main>

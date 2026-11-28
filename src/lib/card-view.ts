@@ -21,11 +21,11 @@ export type NightPageView = {
   songs: { title: string; artist: string; year: number; why: string }[];
   films: { id: string; title: string }[];
   playlist?: string | undefined;
-  others: { slug: string; title: string; kind: string }[];
+  others: { slug: string; title: string; kind: string; design: CoverDesign }[];
 };
 
 export type ClubPartsView = {
-  groups: { heading: string; intro: Ref[]; parts: { title: string; slug: string; refs: Ref[] }[] }[];
+  groups: { heading: string; intro: Ref[]; parts: { title: string; slug: string; refs: Ref[]; design: CoverDesign }[] }[];
   looks: string[];
   /** Row names shown in the groups, so "In the episodes" leaves them out */
   names: string[];
@@ -107,6 +107,8 @@ export type CardView = {
   nightPage: NightPageView | null;
   /** Club and event pages: every quote and mention as a box (Lisa, 28 Nov 2026), in place of "In the episodes". */
   wall: SaidBox[] | null;
+  /** An event's Library box: what was talked about with it, then its club venue's poster and reading list. */
+  eventLib: { own: ClubLibraryView | null; venue: { slug: string; name: string; lib: ClubLibraryView } | null } | null;
   /** "Who else was there" (club pages only). */
   crowd: ClubCrowdView | null;
   /** The club's poster and reading list (club pages only). */

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ProfileVideos } from "@/components/profile-videos";
 import { SaidWall } from "@/components/said-wall";
+import { CoverFace } from "@/components/cover-face";
 import { ClubLibrary } from "@/components/club-library";
 import { linkToSlug, useLinks } from "@/lib/link-index";
 import type { NightPageView } from "@/lib/card-view";
@@ -14,6 +15,8 @@ export function NightPageSections({ v, name }: { v: NightPageView; name: string 
   return (
     <>
       <SaidWall items={v.said} name={name} id="night-said" />
+
+      {v.films.length > 0 && <ProfileVideos videos={v.films} playlist={v.playlist} first={name} />}
 
       {v.songs.length > 0 && (
         <section aria-labelledby="night-played" className="jbx" style={{ maxWidth: "none" }}>
@@ -52,8 +55,6 @@ export function NightPageSections({ v, name }: { v: NightPageView; name: string 
           </p>
         </section>
       )}
-
-      {v.films.length > 0 && <ProfileVideos videos={v.films} playlist={v.playlist} first={name} />}
     </>
   );
 }
@@ -73,16 +74,19 @@ export function NightPageOthers({ v }: { v: NightPageView }) {
       {v.others.length > 0 && (
         <section className="border-2 border-[#111] bg-[#fbf8f1] p-6 text-[#111] shadow-[5px_6px_0_#111]">
           <h2 className={h}>More nights at {v.clubName}</h2>
-          <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+          <ul className="map-next-grid mt-6">
             {v.others.map((o) => (
-              <li key={o.slug} className="border-l-4 border-pink pl-3">
+              <li key={o.slug}>
+                <Link {...linkToSlug(links, o.slug)} className="lib-hit block" aria-label={o.title}>
+                  <CoverFace d={o.design} />
+                </Link>
                 <Link
                   {...linkToSlug(links, o.slug)}
-                  className="font-[family-name:var(--font-flyer)] text-lg uppercase leading-tight hover:text-pink"
+                  className="mt-3 block font-semibold leading-snug text-[#111] transition-colors hover:text-pink"
                 >
                   {o.title}
                 </Link>
-                <span className="ml-2 text-xs text-[#6b6460]">{o.kind}</span>
+                <span className="mt-0.5 block text-xs text-[#6b6460]">{o.kind}</span>
               </li>
             ))}
           </ul>

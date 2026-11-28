@@ -76,10 +76,10 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
     <>
       <MusicPlayer item={v.music} />
       {/* A club page shows its night and On film right under the quotes (club-profile.tsx, Lisa 27 Nov 2026). */}
-      {v.night && !v.club && <ClubNightPlaylist night={v.night} />}
       {/* "On film" on club pages too (Lisa, 27 Nov 2026: "Las bains page has the video box missing"): the films shot inside the
           club from its Jukebox night, in the same jukebox cabinet as a person's videos. */}
       {!v.club && v.night?.footage && v.night.footage.length > 0 && <ProfileVideos videos={v.night.footage} playlist={v.night.youtubePlaylist} first={v.night.club} />}
+      {v.night && !v.club && <ClubNightPlaylist night={v.night} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
       {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it -
