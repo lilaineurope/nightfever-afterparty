@@ -75,7 +75,8 @@ export const Route = createFileRoute("/explore/$slug")({
       thing["description"] = club.story;
       thing["address"] = { "@type": "PostalAddress", streetAddress: club.address, addressLocality: club.city ?? "New York", addressCountry: club.country ?? "US" };
       thing["foundingDate"] = club.opened;
-      thing["dissolutionDate"] = club.closed;
+      // A club still open (Jimmy'z, "today") or with no known date has no dissolution date.
+      if (/^(c\. )?\d{4}$/.test(club.closed)) thing["dissolutionDate"] = club.closed.replace("c. ", "");
     }
     // Other names Google should know (Lisa, 27 Nov 2026, "A3"): the club's aka plus src/data/alternate-names.ts.
     const alt = [...new Set([...(club?.aka ? [club.aka] : []), ...(mem?.aka ? [mem.aka] : []), ...(ALTERNATE_NAMES[d.slug] ?? [])])].filter((n) => n !== d.name);

@@ -1086,6 +1086,56 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     ],
     portrait: { photo: c82Photo, phone: c82PhotoPhone, polaroid: c82Polaroid, focus: "50%", credit: CLUB_82_CREDIT },
   },
+  // Lisa, 28 Nov 2026 (Régine's page): "le club and jimmy's need a box for themselves like studio 54 and xenon and also its own
+  // pages". Facts: Wikipedia Le Club + Olivier Coquelin, DJ History (Slim Hyatt), American Heritage (birth of disco), read 28 Nov;
+  // quotes from the Mac transcripts (S2E4 Nikki Haskell, S3E5 Cherry Vanilla). Closing date not found - last known: the Waldorf, 1996.
+  "le-club": {
+    opened: "1960",
+    closed: "after 1996",
+    address: "416 East 55th Street, near Sutton Place",
+    story:
+      "Olivier Coquelin, a young Frenchman, opened Le Club on New Year's Eve 1960 in a converted garage on East 55th Street near Sutton Place - one of the first discotheques in New York, a private club with a board that counted Oleg Cassini, Rex Harrison and Alan Jay Lerner, two hundred dollars to join and sixty-five a year. Slim Hyatt played the records from the first night. When Nikki Haskell moved to New York in 1965, that's where she went: a townhouse done like an English carriage house, a fireplace with sofas, a small dance floor, European disco records, men in jackets and ties and girls in cocktail dresses. Cherry Vanilla lived down the street - for her it was the first discotheque she ever heard of: a French dinner, then the lights went lower and a guy played records.",
+    timeline: [
+      ["31 Dec 1960", "Olivier Coquelin opens Le Club on East 55th Street, Slim Hyatt at the turntables"],
+      ["1965", "Nikki Haskell moves to New York - Le Club is where she goes"],
+      ["70s", "Nikki goes on from Le Club to Régine's and Studio 54, two or three clubs a night"],
+      ["1981", "Le Club moves to 313 East 58th Street"],
+      ["1996", "Le Club at the Waldorf Astoria"],
+    ],
+    stage: ["Nikki Haskell", "Cherry Vanilla", "Oleg Cassini"],
+    rooms: ["Régine's", "El Morocco", "Studio 54"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:09:13", quote: "Men always wore jackets and ties and girls always wore cocktail dresses. It was in a townhouse... very high ceilings. It was done like an English carriage house. It had a fireplace with sofas on one side. And it had a dance floor." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:14:36", quote: "Right down the street towards Sutton Place was this little, intimate French club, the first discotheque I ever heard of in New York, called Le Club. You would have a beautiful French dinner, and then as the lights got a little lower, you would dance to... a guy playing records." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:05:13", quote: "There were a lot of discotheques... Le Club - when I moved to New York, that's where I went." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I went to all the clubs. I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+    ],
+  },
+  // Régine's club in Monaco, still open (Lisa, 28 Nov 2026, as above). Facts: Monte-Carlo SBM "The story of Jimmy'z" and
+  // "Régine" pages, Monaco Life (50 years, July 2024), read 28 Nov 2026; Nikki Haskell from the S2E4 transcript.
+  "jimmy-z": {
+    opened: "1971",
+    closed: "today",
+    address: "Monte-Carlo Sporting Club, Monaco",
+    city: "Monte Carlo",
+    country: "MC",
+    story:
+      "Régine opened The Jimmy'z in Monte Carlo on 9 July 1971, below the summer Sporting club - decor by André Levasseur, and only with a club card. When the new Monte-Carlo Sporting Club opened on 22 June 1974, Jimmy'z moved in by the sea, with a lagoon, fountains and a Japanese garden, and Mick Jagger, Rudolf Nureyev and Farrah Fawcett came to dance. Nikki Haskell followed Régine's clubs from Paris to Monte Carlo: for her, Monte Carlo had the best discos in Europe and Jimmy'z was one of the great discotheques of all time. Régine left in 1986; the club is still there, and turned fifty in July 2024 with Prince Albert II.",
+    timeline: [
+      ["9 Jul 1971", "Régine opens The Jimmy'z below the summer Sporting, decor by André Levasseur"],
+      ["1973", "A winter Jimmy'z at the Café de Paris"],
+      ["22 Jun 1974", "Jimmy'z reopens in the new Monte-Carlo Sporting Club, with a lagoon and a Japanese garden"],
+      ["1986", "Régine leaves, and the club is redone"],
+      ["2004", "The lagoon is filled in for the Monte-Carlo Bay hotel"],
+      ["Jul 2024", "Fifty years of Jimmy'z, with Prince Albert II"],
+    ],
+    stage: ["Régine", "Nikki Haskell", "Mick Jagger", "Rudolf Nureyev", "Farrah Fawcett"],
+    rooms: ["Régine's", "Les Bains Douches"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:12", quote: "Europe always had a lot of really fabulous discos. Of course, Monte Carlo being the best." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:32", quote: "When she first opened, I was there every night. I used to go to Paris all the time. Jimmy'z was one of my favorites in Monte Carlo. I mean, that's one of the great discotheques of all time." },
+    ],
+  },
   // Régine's (Lisa, 28 Nov 2026: "make a page for regine's", from Xenon's rooms around it). Facts: Wikipedia "Regine's" and
   // "Régine Zylberberg", read 28 Nov 2026; quotes from the Mac transcripts (S2E4 Nikki Haskell, S6E8 William Norwich),
   // "regimes"/"Regines" spelled right. Header + polaroid drawn on the Mac (28 Nov 2026), no free period photo exists.
@@ -1099,7 +1149,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       "Régine Zylberberg, the queen of the night from Paris, opened her New York club in May 1976 on the ground floor of the Delmonico Hotel at Park Avenue and 59th Street: Art Deco mirrors and brocade couches, a heart-shaped neon she called the Heart of New York, ten dollars at the door or a table booked for the year. Nikki Haskell went all the time - Le Club, then Régine's, then Studio, two or three clubs a night. Peppo Vanini ran Régine's clubs in Europe before he opened Xenon, and James St. James's diary has him at Régine's with Michael Musto for a Gaultier party, taken upstairs to the uptown crowd by William Norwich.",
     timeline: [
       ["1958", "Régine opens Chez Régine in Paris"],
-      ["1974", "Jimmy'z opens in Monte Carlo - one of the great discotheques of all time, says Nikki Haskell"],
+      ["1971", "Jimmy'z opens in Monte Carlo - one of the great discotheques of all time, says Nikki Haskell"],
       ["Mar 1976", "A benefit night before the opening, in the Delmonico Hotel"],
       ["May 1976", "Régine's opens to the public: ten dollars at the door, or a table for the year"],
       ["1977", "Café Reginette opens next door to take on Studio 54"],
