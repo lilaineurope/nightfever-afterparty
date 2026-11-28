@@ -1,0 +1,1 @@
+Michael Tron(n): Gemini drew him from a reference (chat https://gemini.google.com/app/5b3c7d89fff685ab), no refusal. A = white sunglasses, spiked hair, mesh top; B = spiked hair, leather jacket, grin. Labels THE TUNNEL | UPPER EAST SIDE | 1988 | CLUB KIDS; 7 MENTIONS; "Tunnel kid · original club kid". Credit: Illustration made with Gemini, not a photo.
