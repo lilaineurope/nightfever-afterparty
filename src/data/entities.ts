@@ -56,10 +56,12 @@ const clean = (n: string) =>
 // (Lisa, 21 Nov 2026: "double ups in magazines eg paper"). The old address forwards to the card (card-view.server.ts).
 export const SAME_AS: Record<string, string> = {
   "paper-magazine": "paper",
+  // Google found /explore/mike-todd-room (a real 404, daily check 28 Nov 2026): guests say "Mike Todd room" too.
+  "mike-todd-room": "michael-todd-room",
   "don-hills": "don-hill-s", // how people type it
   // Chi Chi and Johnny are one guest page (S06E03, a joint interview): either name alone opens it (Lisa, 28 Nov 2026 on Anita
   // Sarko's page: "john dyell needs a picture box and a page").
-  "johnny-dynell": "chi-chi-valenti-and-johnny-dynell", // the guest card is filed under its name, "  "johnny-dynell": "chi-chi-valenti-johnny-dynell"," read as "and"
+  "johnny-dynell": "chi-chi-valenti-and-johnny-dynell", // the guest card is filed under its name, "&" read as "and"
   "chi-chi-valenti": "chi-chi-valenti-and-johnny-dynell",
   // S06E01: the badger book James sang from is Russell Hoban's Frances book (found 21 Nov 2026) - old card URL redirects.
   "children-s-book-about-a-badger": "egg-thoughts-and-other-frances-songs",

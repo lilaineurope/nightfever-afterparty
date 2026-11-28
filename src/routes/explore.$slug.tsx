@@ -107,8 +107,18 @@ export const Route = createFileRoute("/explore/$slug")({
         thing["subjectOf"] = { "@type": "PodcastEpisode", name: `Night Fever ${d.guest.code} - the AFTERPARTY`, url: abs(d.guest.path) };
       }
     }
+    // The header photo is a CSS background, which the browser finds late (daily check 28 Nov 2026: person headers had a
+    // ~3 s LCP). Preload it with the page, the phone crop on phones.
+    const pic = d.view.pic;
+    const picLinks: { rel: string; as: string; href: string; media: string; fetchPriority: "high" }[] = pic
+      ? [
+          { rel: "preload", as: "image", href: pic.phone ?? pic.photo, media: "(max-width: 639px)", fetchPriority: "high" },
+          { rel: "preload", as: "image", href: pic.photo, media: "(min-width: 640px)", fetchPriority: "high" },
+        ]
+      : [];
     return {
       ...head,
+      links: [...head.links, ...picLinks],
       scripts: [
         jsonLd({
           "@context": "https://schema.org",
