@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { CoverDesign } from "@/lib/cover-design";
+import { FashionCover } from "@/components/fashion-cover";
 
 // Draws one Library cover from its CoverDesign (src/lib/cover-design.ts). Loads no data, so any page can use it - the
 // Library shelves, a guest's own Library and "Also on the shelf in these Afterparties" all look the same.
@@ -27,6 +28,8 @@ export function CoverFace({ d }: { d: CoverDesign }) {
     </span>
   );
   switch (d.look) {
+    case "fashion":
+      return <FashionCover item={d.item} />;
     case "art":
       return (
         <span className="lib-cv lib-art">

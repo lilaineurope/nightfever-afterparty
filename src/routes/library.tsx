@@ -9,6 +9,8 @@ import { type CollectionItem } from "@/data/collections";
 import { DEFAULT_CATEGORY, LIBRARY_CATEGORIES, categoryOf } from "@/data/library-categories";
 import { coverFor } from "@/data/library-covers";
 import { CoverCard } from "@/components/library-cover";
+import { FashionNote } from "@/components/fashion-cover";
+import { isFashionItem } from "@/data/library-fashion";
 import { isScreenItem } from "@/data/moving-images";
 import { abs, jsonLd, pageHead } from "@/lib/seo";
 
@@ -271,6 +273,8 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
       {art.designers.length > 0 && <>Cover by {art.designers.join(" and ")} · </>}
       {art.credit}
     </>
+  ) : isFashionItem(item) ? (
+    <FashionNote item={item} />
   ) : (
     cover?.credit
   );
@@ -288,6 +292,20 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
           <Link to="/library/art/$slug" params={{ slug: art.page }} className="font-semibold text-pink hover:text-foreground">
             The {art.piece.toLowerCase().startsWith("sleeve") || art.piece.length > 20 ? "artwork" : art.piece.toLowerCase()}&rsquo;s own page &rarr;
           </Link>
+        ) : isFashionItem(item) && item.fashion.look && item.shelf !== "rooms" ? (
+          // A look's own page (Lisa, 24 Nov 2026): the mannequin, what was worn, whose look, the moment.
+          <Link to="/library/look/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
+            The look&rsquo;s own page &rarr;
+          </Link>
+        ) : isFashionItem(item) && (item.shelf === "designers" || item.shelf === "shops") ? (
+          // A designer's, label's or shop's own page (Lisa, 27 Nov 2026): the polaroid or the shop's photo, the looks, the map.
+          <Link
+            to={item.shelf === "shops" ? "/library/shop/$slug" : "/library/designer/$slug"}
+            params={{ slug: item.slug }}
+            className="font-semibold text-pink hover:text-foreground"
+          >
+            {item.shelf === "shops" ? "The shop\u2019s own page" : item.fashion.tag === "Label" ? "The label\u2019s own page" : "The designer\u2019s own page"} &rarr;
+          </Link>
         ) : isScreenItem(item) ? (
           // Its own page (Lisa, 24 Nov 2026): the Jukebox video big, everyone who was involved, the guests' words.
           <Link to="/library/moving-images/$slug" params={{ slug: item.slug }} className="font-semibold text-pink hover:text-foreground">
@@ -295,7 +313,15 @@ function Detail({ item, onClose }: { item: CollectionItem; onClose: () => void }
           </Link>
         ) : undefined
       }
-      summary={item.by ? <>Not dropped in an episode yet · by {item.by.name}</> : undefined}
+      summary={
+        item.by ? (
+          <>Not dropped in an episode yet · by {item.by.name}</>
+        ) : isFashionItem(item) && item.shelf === "on-camera" ? (
+          <>
+            On camera · <FashionNote item={item} />
+          </>
+        ) : undefined
+      }
       onClose={onClose}
     />
   );

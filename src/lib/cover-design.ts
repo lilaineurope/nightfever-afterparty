@@ -2,6 +2,7 @@ import type { CollectionItem } from "@/data/collections";
 import { coverFor } from "@/data/library-covers";
 import { polaroidThumb } from "@/lib/polaroids";
 import { isScreenItem } from "@/data/moving-images";
+import { isFashionItem, type FashionItem } from "@/data/library-fashion";
 import { FULL_WATCH } from "@/data/screen-full";
 import headPaper from "@/assets/library/col-head-paper.webp";
 import headOutweek from "@/assets/library/col-head-outweek.webp";
@@ -53,6 +54,7 @@ export type CoverDesign = { name: string; foot: CoverFoot } & (
   | { look: "column"; face?: string | undefined; head: string; paper: string }
   | { look: "book"; src: string }
   | { look: "type"; colour: string; kind: string; mast?: string | undefined }
+  | { look: "fashion"; item: FashionItem }
 );
 
 export function coverDesign(item: CollectionItem, tint: number): CoverDesign {
@@ -61,6 +63,9 @@ export function coverDesign(item: CollectionItem, tint: number): CoverDesign {
   const foot: CoverFoot = item.by
     ? { by: item.by.name }
     : { mentions: item.mentions, afterparties: new Set(item.moments.map((m) => m.episodeId)).size };
+  // Fashion & outfits (Lisa, 24 Nov 2026): the mannequin on a swatch card for looks, typed covers or polaroids for designers,
+  // carrier bags for shops - drawn by FashionCover (src/components/fashion-cover.tsx).
+  if (isFashionItem(item)) return { name, foot, look: "fashion", item };
   // Cover art & posters (Lisa, 24 Nov 2026): the whole piece shows, never cropped - a square sleeve, a tall poster or a
   // wide ticket sits on black with a tag saying what it is, the designer under the name when the credits name them.
   if (item.art) {

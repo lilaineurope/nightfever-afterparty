@@ -436,6 +436,10 @@ export const ITEM_QUOTES: Record<string, GuestQuote[]> = {
   "my-comrade-anthology": [
     { episode: "s02e09", who: "Linda Simpson", time: "00:39:43", quote: "In June of this year I'm having an exhibit of My Comrade at a gallery in the East Village called Howl." },
   ],
+  "nations": [
+    { episode: "s06e03", who: "Chi Chi Valenti", time: "00:34:08", quote: "My very first big piece of writing was for Details. And I was writing about these tribes in the night that I called nations, that hung together like families, like style tribes. And so one of the four tribes that I picked was the House of Xtravaganza, because of all the houses that were around me at the time, they really had the strongest family feel." },
+    { episode: "s06e03", who: "Chi Chi Valenti", time: "00:35:10", quote: "Very, very early, going to balls and researching that for the piece, of course, I was running into the whole Paris Is Burning shoot that was going on. I was running into Jennie Livingston. And also Donald Suggs, who was writing the other first piece, specifically about voguing and the balls, called Venus Envy, that was in The Village Voice." },
+  ],
   "new-york-club-kids": [
     { episode: "s01e06", who: "Waltpaper", time: "00:03:53", quote: "We had to keep it just under the art book framework in order to have access to the Urban Outfitters kids. I really wanted to reach the new generation." },
     { episode: "s02e07", who: "Jenny Talia", time: "00:19:17", quote: "Put these incredible stories out and really create such a beautiful book. I can't even." },
@@ -699,8 +703,12 @@ export const ITEM_QUOTES: Record<string, GuestQuote[]> = {
   "thank-you-andy-warhol": [
     { episode: "s04e07", who: "Trey Speegle", time: "00:56:38", quote: "My friend Catherine Johnson had done this book called Thank You, Andy Warhol, that I was in with a lot of other people. And I told the story in that." },
   ],
+  // Lisa, 28 Nov 2026 (top Google search pages): the guests' own words on Musto's piece.
   "the-death-of-downtown": [
-    { episode: "s06e01", who: "James St. James", time: "00:30:11", quote: "When Michael Musto wrote The Death of Downtown after Andy Warhol died, there was that vacuum in the club scene, and Michael Alig came in to fill it." },
+    { episode: "s01e02", who: "Michael Musto", time: "00:30:15", quote: "Warhol to me was the centerpiece of the scene. When you saw him in a room, you knew you were in the right place. Everyone craved his validation. I know I did... Not only did Andy die, but the clubs were dying. The excitement was dying. People were moving on. Yuppies were taking over. The paying customers, the dreaded bridge-and-tunnel people, were taking over, and the press was drying up." },
+    { episode: "s01e02", who: "Michael Musto", time: "00:31:01", quote: "It was really fun to walk into Area, go right through the dance floor, go to the VIP room, and you knew everyone there. That moment was past. But James, I ended the piece by saying, of course, nothing's ever really over. Something's going to come back to kick everyone in the pants. It might be a revolution." },
+    { episode: "s03e06", who: "Eric Goode", time: "00:34:30", quote: "Andy wanted to invest in MK and be a partner in MK. And of course, he died in 1987... It just felt like the end of the 80s, and the rise of someone named Donald Trump, and the commodification of downtown culture with Absolut vodka and Swatch. And it just changed, and money became the currency rather than ideas." },
+    { episode: "s06e01", who: "James St. James", time: "00:29:58", quote: "There was a feeling of adapt or die. I did not want to be a dinosaur. And even when Michael Musto wrote The Death of Downtown after Andy Warhol died, and there was that vacuum in the club scene, and Michael Alig came in to fill it, that's when I just saw: I'm working in clubs now, and these are the people that are running the club scene now." },
   ],
   "the-night-of-the-iguana": [
     { episode: "s03e06", who: "Eric Goode", time: "00:11:10", quote: "Thank God there was a guy named Stephen Saban who loved me and wrote about me in Details Magazine and Soho News. He wrote a story called The Night of the Iguana about that club." },
