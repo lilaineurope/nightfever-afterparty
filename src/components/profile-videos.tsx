@@ -31,7 +31,7 @@ export function ProfileVideos({ videos, playlist, first }: { videos: { id: strin
                 <span className="lit-jbx-k">Watch first</span>
                 <span className="lit-jbx-play" aria-hidden>▶</span>
                 <span className="lit-jbx-nm">{pick.title}</span>
-                <span className="lit-jbx-sm">{list.length} videos about {first}</span>
+                <span className="lit-jbx-sm">{list.length} {list.length === 1 ? "video" : "videos"} about {first}</span>
               </button>
             )}
           </div>

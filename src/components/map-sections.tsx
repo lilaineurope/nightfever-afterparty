@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Timestamp } from "@/components/episode-player";
 import { PlaceMapDrawing } from "@/components/place-page";
+import { CoverFace } from "@/components/cover-face";
 import { linkToSlug, useLinks } from "@/lib/link-index";
 import { episodePath } from "@/data/episodes";
-import type { MapBand, MapEvent, MapHome, MapLine, RoomsMap } from "@/lib/map-view";
+import type { MapBand, MapHome, MapLine, RoomsMap } from "@/lib/map-view";
 
 // The map on the pages (Lisa, 27 Nov 2026, "yes to all Which page gets what"): "Around the block" on club and event
 // pages - the place pages' drawing as a band of its own, the club in the middle - the yellow tape block where there is
@@ -34,26 +35,9 @@ function Line({ l }: { l: MapLine }) {
   );
 }
 
-function EventRow({ x, where }: { x: MapEvent; where?: string | undefined }) {
-  const links = useLinks();
-  return (
-    <li className="map-event">
-      <span>
-        <span aria-hidden="true" className="place-key place-key-event" />
-        <Link
-          {...linkToSlug(links, x.slug)}
-          className="font-semibold text-[#111] transition-colors hover:text-pink"
-        >
-          {x.name}
-        </Link>
-        {where && <span className="text-muted-foreground"> · {where}</span>}
-      </span>
-      {x.line && <Line l={x.line} />}
-    </li>
-  );
-}
-
-/** "Around the block": the drawn band, Around the corner with walking minutes, the events here and next door. */
+/** "Around the block": the drawn band with the big-map button in its corner, Around the corner with walking minutes, then
+ *  the events next door as Library covers in a box of their own (Lisa, 28 Nov 2026: "just show the map and then around
+ *  the corner"). */
 export function AroundTheBlock({ b, slug }: { b: MapBand; slug: string }) {
   const links = useLinks();
   const at = b.kind === "club" ? slug : (b.pin.slug ?? slug);
@@ -79,74 +63,67 @@ export function AroundTheBlock({ b, slug }: { b: MapBand; slug: string }) {
         </p>
       )}
       <div className="map-band mt-6">
-        <PlaceMapDrawing m={b.map} name={b.pin.name} band />
-        <div className="map-band-foot">
-          {b.near.length > 0 && (
-            <div>
-              <h3 className={h}>Around the corner</h3>
-              <ul className="map-near mt-3">
-                {b.near.slice(0, 10).map((n) => (
-                  <li key={n.slug} className="place-near">
-                    <span>
-                      <span
-                        aria-hidden="true"
-                        className={n.club ? "place-key place-key-club" : "place-key"}
-                      />
-                      <Link
-                        {...linkToSlug(links, n.slug)}
-                        className="font-semibold text-[#111] transition-colors hover:text-pink"
-                      >
-                        {n.name}
-                      </Link>
-                    </span>
-                    <span className="whitespace-nowrap text-muted-foreground">
-                      {mins(n.metres)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <div>
-            {b.here.length > 0 && (
-              <>
-                <h3 className={h}>{b.kind === "club" ? "Events here" : "Also here"}</h3>
-                <ul className="mt-2">
-                  {b.here.map((x) => (
-                    <EventRow key={x.slug} x={x} />
-                  ))}
-                </ul>
-              </>
-            )}
-            {b.nextDoor.length > 0 && (
-              <>
-                <h3 className={`${h} ${b.here.length ? "mt-6" : ""}`}>Events next door</h3>
-                <ul className="mt-2">
-                  {b.nextDoor.map((x) => (
-                    <EventRow
-                      key={x.slug}
-                      x={x}
-                      where={[x.at, x.metres !== undefined ? mins(x.metres) : ""]
-                        .filter(Boolean)
-                        .join(" · ")}
+        {/* The big-map button sits in the map's bottom-right corner (Lisa, 28 Nov 2026). */}
+        <div className="relative">
+          <PlaceMapDrawing m={b.map} name={b.pin.name} band />
+          <Link to="/map" search={{ at }} className="map-btn map-btn-corner">
+            Open the big map &rarr;
+          </Link>
+        </div>
+        {b.near.length > 0 && (
+          <div className="map-band-foot map-band-foot-one">
+            <h3 className={h}>Around the corner</h3>
+            <ul className="map-near map-near-wide mt-3">
+              {b.near.slice(0, 12).map((n) => (
+                <li key={n.slug} className="place-near">
+                  <span>
+                    <span
+                      aria-hidden="true"
+                      className={n.club ? "place-key place-key-club" : "place-key"}
                     />
-                  ))}
-                </ul>
-              </>
-            )}
-            <p className={b.here.length || b.nextDoor.length ? "mt-6" : ""}>
-              <Link to="/map" search={{ at }} className="map-btn">
-                Open the big map at {b.pin.name} &rarr;
-              </Link>
-            </p>
-            <p className="mt-3 text-xs text-muted-foreground">
+                    <Link
+                      {...linkToSlug(links, n.slug)}
+                      className="font-semibold text-[#111] transition-colors hover:text-pink"
+                    >
+                      {n.name}
+                    </Link>
+                  </span>
+                  <span className="whitespace-nowrap text-muted-foreground">{mins(n.metres)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-xs text-muted-foreground">
               <span aria-hidden="true" className="place-key place-key-club" /> club &nbsp;
               <span aria-hidden="true" className="place-key" /> place &nbsp; · Pins are approximate,
               from the public address. The street grid is drawn, not traced.
             </p>
           </div>
-        </div>
+        )}
       </div>
+      {b.nextDoor.length > 0 && (
+        // Its own box, in the Library's cover style (Lisa, 28 Nov 2026).
+        <div className="map-next mt-10">
+          <h3 className={`${h} text-center`}>Events next door</h3>
+          <ul className="map-next-grid mt-6">
+            {b.nextDoor.map((x) => (
+              <li key={x.slug}>
+                <Link {...linkToSlug(links, x.slug)} className="lib-hit block" aria-label={x.name}>
+                  {x.design && <CoverFace d={x.design} />}
+                </Link>
+                <Link
+                  {...linkToSlug(links, x.slug)}
+                  className="mt-3 block font-semibold leading-snug text-[#111] transition-colors hover:text-pink"
+                >
+                  {x.name}
+                </Link>
+                <span className="mt-0.5 block text-xs text-muted-foreground">
+                  {[x.at, x.metres !== undefined ? mins(x.metres) : ""].filter(Boolean).join(" · ")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }

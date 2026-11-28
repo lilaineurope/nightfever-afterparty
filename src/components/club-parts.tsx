@@ -5,6 +5,8 @@ import { EntityText } from "@/components/entity-text";
 import { episodeById, episodePath } from "@/data/episodes";
 import type { Ref } from "@/data/entities";
 import type { ClubPartsView } from "@/lib/card-view";
+import { linkToSlug, useLinks } from "@/lib/link-index";
+import { CoverFace } from "@/components/cover-face";
 
 const h = "text-xs font-semibold uppercase tracking-[0.2em] text-pink";
 const chip = "rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground transition hover:border-pink hover:bg-pink hover:text-pink-foreground";
@@ -30,6 +32,7 @@ function Said({ r, name }: { r: Ref; name: string }) {
 /** A club's theme nights and parties on its own page (Lisa, 22 Nov 2026: "everything area should be all on one page",
  *  for every club page). Layout B, one framed list per group with a pink line by each night (Lisa picked it, 22 Nov 2026). */
 export function ClubPartsSections({ p, name }: { p: ClubPartsView; name: string }) {
+  const links = useLinks();
   return (
     <>
       {p.groups.map((g) => (
@@ -40,16 +43,28 @@ export function ClubPartsSections({ p, name }: { p: ClubPartsView; name: string 
               {g.intro.map((r) => <Said key={`${r.episode}-${r.rank}`} r={r} name={name} />)}
             </div>
           )}
-          <dl className="mt-5 grid gap-x-8 gap-y-5 md:grid-cols-2">
-            {g.parts.map((x) => (
-              <div key={x.title} className="border-l-4 border-pink pl-4">
-                <dt className="font-[family-name:var(--font-flyer)] text-xl uppercase leading-tight text-foreground">{x.title}</dt>
-                <dd className="mt-2 space-y-3">
-                  {x.refs.map((r) => <Said key={`${r.episode}-${r.rank}`} r={r} name={name} />)}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          {/* Each night has its own page (Lisa, 27 Nov 2026), and its box is a Library-style cover (28 Nov 2026). */}
+          <ul className="map-next-grid mt-6">
+            {g.parts.map((x) => {
+              const r = x.refs[0];
+              const ep = r?.episode ? episodeById(r.episode) : undefined;
+              return (
+                <li key={x.title}>
+                  <Link {...linkToSlug(links, x.slug)} className="lib-hit block" aria-label={x.title}>
+                    <CoverFace d={x.design} />
+                  </Link>
+                  <Link {...linkToSlug(links, x.slug)} className="mt-3 block font-semibold leading-snug text-[#111] transition-colors hover:text-pink">
+                    {x.title}
+                  </Link>
+                  {ep && (
+                    <span className="mt-0.5 block text-xs text-muted-foreground">
+                      S{ep.season}E{ep.episode}{ep.part} · {ep.guest}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </section>
       ))}
       {p.looks.length > 0 && (

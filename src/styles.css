@@ -1401,6 +1401,16 @@ a.scr-ours:hover { color: #111; }
 .map-near { columns: 2 240px; column-gap: 28px; }
 .map-near .place-near { break-inside: avoid; }
 .map-event { padding: 8px 0; border-bottom: 1px dashed #bbb; font-size: 13px; }
+/* Click an event, its box opens underneath (Lisa, 27 Nov 2026): one line per event keeps the map box short. */
+.map-event summary { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; cursor: pointer; list-style: none; }
+.map-event summary::-webkit-details-marker { display: none; }
+.map-event summary:hover .font-semibold { color: var(--color-pink); }
+.map-event-plus { flex: none; width: 20px; height: 20px; display: grid; place-items: center; border: 2px solid #111; font: 700 14px/1 var(--font-flyer); transition: transform .15s, background .15s; }
+.map-event details[open] .map-event-plus { transform: rotate(45deg); background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
+.map-more > summary { margin-top: 8px; cursor: pointer; list-style: none; font-size: 12px; font-weight: 700; color: var(--color-pink); }
+.map-more > summary::-webkit-details-marker { display: none; }
+.map-more[open] > summary { display: none; }
+.map-event-box { margin: 8px 0 4px; padding: 10px 12px; background: #fff; border: 2px solid #111; box-shadow: 3px 3px 0 #111; }
 .map-btn { display: inline-block; border: 2px solid #111; background: #111; color: #f6f0ea; padding: 7px 14px; font: 700 13px var(--font-mono-body); transition: background .15s, border-color .15s; }
 .map-btn:hover, .map-btn:focus-visible { background: var(--color-pink); border-color: var(--color-pink); color: #fff; }
 /* On the AFTERPARTY pages every text link is pink (21 Oct rule); the map button keeps its own black fill. */
@@ -1464,6 +1474,73 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 .map-stop { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #111; border: 2px solid #111; font: 700 12px var(--font-mono-body); box-shadow: 2px 2px 0 rgba(0,0,0,.35); }
 .map-stop-club { background: #111; color: #fff; }
 
+/* A diary's whole entry beside the club poster (Lisa, 28 Nov 2026): a ruled page, speaker names in caps. */
+.club-entry {
+  border: 2px solid #111;
+  background: #fbf8f1 repeating-linear-gradient(transparent 0 27px, rgba(80, 120, 200, 0.18) 27px 28px);
+  box-shadow: 4px 5px 0 #111;
+  padding: 1rem 1.25rem 1.1rem;
+  color: #111;
+  font-family: var(--font-type);
+  font-size: 15px;
+  line-height: 28px;
+}
+.club-entry p + p {
+  margin-top: 0.6rem;
+}
+.club-entry-title {
+  font-family: var(--font-flyer);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+.club-entry-who {
+  margin-right: 0.5rem;
+  font-family: var(--font-mono-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+/* Around the block, 28 Nov 2026: big-map button in the map's corner, Around the corner across the band, next-door covers. */
+.map-btn-corner {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+}
+@media (min-width: 900px) {
+  .map-band-foot.map-band-foot-one {
+    grid-template-columns: 1fr;
+  }
+  .map-near-wide {
+    columns: 3;
+  }
+}
+.map-next {
+  border: 2px solid #111;
+  background: #fbf8f1;
+  box-shadow: 5px 6px 0 #111;
+  padding: 1.5rem;
+  color: #111;
+}
+.map-next-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1.25rem;
+}
+@media (min-width: 640px) {
+  .map-next-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* A club's one or two nights in a half-width box beside the rooms around it (Régine's, 28 Nov 2026): two covers a row. */
+.club-beside .map-next-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 /* Random night out (Lisa, 27-28 Nov 2026, option C): four reels at the bottom of every page, already filled in, with
    "Spin again!". src/components/random-pick.tsx */
 .rn-reel { display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #f4f1ea; color: #111; border: 3px solid var(--color-pink); padding: 10px 10px 12px; }

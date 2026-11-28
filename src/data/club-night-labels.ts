@@ -10,3 +10,7 @@ export const KIND_LABEL: Record<Kind, string> = {
   about: "Tied to the club",
   stage: "A band of its stage",
 };
+
+// Other spellings of a club night's slug used in links outside the site (playlist descriptions): Régine's card is
+// "re-gine-s", but its Spotify and YouTube descriptions say /spotify/regines and /jukebox?club=regines (28 Nov 2026).
+export const CLUB_NIGHT_ALIASES: Record<string, string> = { regines: "re-gine-s" };

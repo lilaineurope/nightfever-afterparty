@@ -65,6 +65,8 @@ function GuestBox({ g }: { g: Guest | undefined }) {
 /** Everything an A–Z card shows under its header (/explore/<slug>). A guest with an AFTERPARTY gets GuestAboutBox on the
  *  episode page instead. */
 export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: CardView; skipRefs?: boolean; skipEvents?: boolean }) {
+  // Club and event pages drop the old A–Z lists (Lisa, 27 Nov 2026 "feels outdated"; 28 Nov: events follow the club standard).
+  const lean = !!v.club || !!v.wall;
   const links = useLinks();
   const related = v.related;
   // A club page shows its theme nights and parties in their own boxes above (club-parts.tsx), not again here.
@@ -82,10 +84,10 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
     <>
       <MusicPlayer item={v.music} />
       {/* A club page shows its night and On film right under the quotes (club-profile.tsx, Lisa 27 Nov 2026). */}
-      {v.night && !v.club && <ClubNightPlaylist night={v.night} />}
       {/* "On film" on club pages too (Lisa, 27 Nov 2026: "Las bains page has the video box missing"): the films shot inside the
           club from its Jukebox night, in the same jukebox cabinet as a person's videos. */}
       {!v.club && v.night?.footage && v.night.footage.length > 0 && <ProfileVideos videos={v.night.footage} playlist={v.night.youtubePlaylist} first={v.night.club} />}
+      {v.night && !v.club && <ClubNightPlaylist night={v.night} />}
       <GuestBox g={v.guest ? guestBySlug[v.guest] : undefined} />
 
       {/* A diary page shows every moment in full above (src/components/diary.tsx), so the short list would only repeat it -
@@ -121,7 +123,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
 
       {/* A club page drops the old A–Z lists below (Lisa, 27 Nov 2026: "feels outdated"): its story box, quotes and "Who else
           was there" say the same with a face and a reason. */}
-      {v.events.length > 0 && !skipEvents && !v.club && (
+      {v.events.length > 0 && !skipEvents && !lean && (
         <section>
           <h2 className={h}>On the scene timeline</h2>
           <ol className="mt-4 space-y-5 border-l border-gold/25 pl-5">
@@ -146,7 +148,7 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
           combine that also with our page standard"): what used to be "Also named on these cards", "On these AFTERPARTY pages",
           "Pops up in the guests' stories" and "In the same rooms", each name once, by kind. A Library item page keeps its own
           "Also on the site" box (library-item.tsx). */}
-      {v.connections.length > 0 && (
+      {v.connections.length > 0 && !lean && (
         <section className="rounded-2xl border border-border bg-card p-6">
           <h2 className={h}>Connections (aka the gang)</h2>
           <div className={`mt-2 grid gap-x-10 gap-y-6 ${v.connections.length > 1 ? "md:grid-cols-2" : ""}`}>

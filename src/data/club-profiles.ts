@@ -67,6 +67,21 @@ import robotsPolaroid from "@/assets/clubs/robots-polaroid.webp";
 import xenonPhoto from "@/assets/clubs/xenon-photo.webp";
 import xenonPhotoPhone from "@/assets/clubs/xenon-photo-phone.webp";
 import xenonPolaroid from "@/assets/clubs/xenon-polaroid.webp";
+import reginesPhoto from "@/assets/clubs/re-gine-s-photo.webp";
+import reginesPhotoPhone from "@/assets/clubs/re-gine-s-photo-phone.webp";
+import reginesPolaroid from "@/assets/clubs/re-gine-s-polaroid.webp";
+import elMoroccoPhoto from "@/assets/clubs/el-morocco-photo.webp";
+import elMoroccoPhotoPhone from "@/assets/clubs/el-morocco-photo-phone.webp";
+import elMoroccoPolaroid from "@/assets/clubs/el-morocco-polaroid.webp";
+import leClubPhoto from "@/assets/clubs/le-club-photo.webp";
+import leClubPhotoPhone from "@/assets/clubs/le-club-photo-phone.webp";
+import leClubPolaroid from "@/assets/clubs/le-club-polaroid.webp";
+import jimmyzPhoto from "@/assets/clubs/jimmy-z-photo.webp";
+import jimmyzPhotoPhone from "@/assets/clubs/jimmy-z-photo-phone.webp";
+import jimmyzPolaroid from "@/assets/clubs/jimmy-z-polaroid.webp";
+import disco2000Photo from "@/assets/clubs/disco-2000-photo.webp";
+import disco2000PhotoPhone from "@/assets/clubs/disco-2000-photo-phone.webp";
+import disco2000Polaroid from "@/assets/clubs/disco-2000-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -173,6 +188,15 @@ const RED_ZONE_CREDIT = "Header and polaroid: a Red Zone night drawn for the AFT
 const SQUEEZEBOX_CREDIT = "Header: a Squeezebox night drawn for the AFTERPARTY. Polaroid: the stage at Don Hill's in 2010, photo by kimm613, via Wikimedia Commons, CC BY-SA 2.0";
 const MARS_CREDIT = "Header and polaroid: a night at Mars drawn for the AFTERPARTY - no photo of Mars is free to use";
 const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPARTY. Polaroid: Save the Robots after-hours Saturdays card - Gallery 98";
+// No free period picture of Régine's New York exists (Commons has only today's building; the NIGHT Magazine 1978 Régine's issue
+// at Gallery 98 shows real faces), so both are drawn (Lisa, 28 Nov 2026: "regine needs a background picture and a polaroid").
+const REGINES_CREDIT = "Header: a night at Régine's drawn for the AFTERPARTY. Polaroid: the Delmonico canopy on Park Avenue, drawn for the AFTERPARTY";
+const EL_MOROCCO_CREDIT = "Photo: Constance Bennett, Richard Brown and Eva Gabor on the zebra banquettes at El Morocco, February 1965, by Wally Heim for United Artists, via Wikimedia Commons, public domain; our photocopy versions too";
+// No period picture of either club is free to use (Commons: nothing for Le Club, only a 2014 Jimmy'z), so both are drawn (28 Nov 2026).
+const LE_CLUB_CREDIT = "Header: a night at Le Club in the 60s drawn for the AFTERPARTY. Polaroid: the door on East 55th Street, drawn for the AFTERPARTY";
+const JIMMYZ_CREDIT = "Header: Jimmy'z by the sea in the 70s drawn for the AFTERPARTY. Polaroid: the lantern-lit lake, drawn for the AFTERPARTY";
+// No Disco 2000 flyer at Gallery 98 or on Commons (28 Nov 2026), so both are drawn.
+const DISCO_2000_CREDIT = "Header: a Disco 2000 Wednesday at the Limelight drawn for the AFTERPARTY. Polaroid: Club Kids on the Limelight steps, drawn for the AFTERPARTY";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 const CONTINENTAL_CREDIT = "Header and polaroid: the room with its hanging plexiglass and the garage door on West 25th Street, drawn for the AFTERPARTY - no photo of the Continental is known";
@@ -962,7 +986,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       ["1984", "Xenon closes; the building is now the Stephen Sondheim Theatre"],
     ],
     stage: ["Peppo Vanini", "Howard Stein", "Nikki Haskell", "Christina Visca", "Nora Burns", "Andy Warhol", "Halston", "Brooke Shields", "Klaus Nomi", "Gloria Gaynor", "John \"Jellybean\" Benitez", "Fiorucci"],
-    rooms: ["Studio 54", "Régine's", "Copacabana", "Danceteria", "Roxy"],
+    rooms: ["Studio 54", "Régine's", "Le Club", "New York, New York", "Magique", "Hurrah", "Copacabana", "Danceteria", "Roxy"],
     said: [
       { episode: "s06e02", who: "Christina Visca", time: "00:10:33", quote: "Xenon was very smart. On Thursday nights, they would let FIT students in for free, which was a genius idea. We were fashioned out, we got in for free, so when the regular patrons came in, it was filled with good-looking people." },
       { episode: "s02e04", who: "Nikki Haskell", time: "00:48:10", quote: "And I gave a very famous party - I don't know if you might have been on one of the tapes - the Xenon Christmas party." },
@@ -1200,6 +1224,151 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e04", who: "Man Parrish", time: "00:41:01", quote: "It used to be Club 82... it was the 82 Club, and it went downstairs." },
     ],
     portrait: { photo: c82Photo, phone: c82PhotoPhone, polaroid: c82Polaroid, focus: "50%", credit: CLUB_82_CREDIT },
+  },
+  // Lisa, 28 Nov 2026 (Régine's page): "le club and jimmy's need a box for themselves like studio 54 and xenon and also its own
+  // pages". Facts: Wikipedia Le Club + Olivier Coquelin, DJ History (Slim Hyatt), American Heritage (birth of disco), read 28 Nov;
+  // quotes from the Mac transcripts (S2E4 Nikki Haskell, S3E5 Cherry Vanilla). Closing date not found - last known: the Waldorf, 1996.
+  "le-club": {
+    opened: "1960",
+    closed: "after 1996",
+    address: "416 East 55th Street, near Sutton Place",
+    portrait: { photo: leClubPhoto, phone: leClubPhotoPhone, polaroid: leClubPolaroid, focus: "50%", credit: LE_CLUB_CREDIT },
+    story:
+      "Olivier Coquelin, a young Frenchman, opened Le Club on New Year's Eve 1960 in a converted garage on East 55th Street near Sutton Place - one of the first discotheques in New York, a private club with a board that counted Oleg Cassini, Rex Harrison and Alan Jay Lerner, two hundred dollars to join and sixty-five a year. Slim Hyatt played the records from the first night. When Nikki Haskell moved to New York in 1965, that's where she went: a townhouse done like an English carriage house, a fireplace with sofas, a small dance floor, European disco records, men in jackets and ties and girls in cocktail dresses. Cherry Vanilla lived down the street - for her it was the first discotheque she ever heard of: a French dinner, then the lights went lower and a guy played records.",
+    timeline: [
+      ["31 Dec 1960", "Olivier Coquelin opens Le Club on East 55th Street, Slim Hyatt at the turntables"],
+      ["1965", "Nikki Haskell moves to New York - Le Club is where she goes"],
+      ["70s", "Nikki goes on from Le Club to Régine's and Studio 54, two or three clubs a night"],
+      ["1981", "Le Club moves to 313 East 58th Street"],
+      ["1996", "Le Club at the Waldorf Astoria"],
+    ],
+    stage: ["Nikki Haskell", "Cherry Vanilla", "Oleg Cassini"],
+    rooms: ["Régine's", "El Morocco", "Studio 54"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:09:13", quote: "Men always wore jackets and ties and girls always wore cocktail dresses. It was in a townhouse... very high ceilings. It was done like an English carriage house. It had a fireplace with sofas on one side. And it had a dance floor." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:14:36", quote: "Right down the street towards Sutton Place was this little, intimate French club, the first discotheque I ever heard of in New York, called Le Club. You would have a beautiful French dinner, and then as the lights got a little lower, you would dance to... a guy playing records." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:05:13", quote: "Le Club - when I moved to New York, that's where I went. Almost every night. Everybody was in cocktail dresses, everything... That was sort of in the 60s, because I moved to New York in '65." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:09:48", quote: "Not so much disco, but like Raindrops... not really full-blown disco songs. They had their own sound, and they played a lot of European disco music, which was very fashionable in the clubs in those days. And it was great. Everybody went there." },
+      { episode: "s03e05", who: "Cherry Vanilla", time: "00:17:37", context: "Opus, the club she compares it with", quote: "That was also a place where you could have dinner... He cooked French meals, and it was the same idea like Le Club. The lights went down, the music got louder." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I went to all the clubs. I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+    ],
+  },
+  // Lisa, 28 Nov 2026: "el morrocco needs a picture and a page". Facts: Wikipedia El Morocco, Bowery Boys (2007), InsideHook
+  // (2022), read 28 Nov 2026. Only James St. James names it on the show (S2E5, S6E6 intro), so the history carries the page.
+  "el-morocco": {
+    opened: "1931",
+    closed: "1970",
+    address: "154 East 54th Street, then 307 East 54th Street",
+    aka: "Elmo",
+    portrait: { photo: elMoroccoPhoto, phone: elMoroccoPhotoPhone, polaroid: elMoroccoPolaroid, focus: "50%", credit: EL_MOROCCO_CREDIT },
+    story:
+      "John Perona opened El Morocco on 5 October 1931 as a speakeasy at 154 East 54th Street, named for the Third Avenue El that ran past it - Elmo to its regulars. The decorator Vernon MacFarlane gave it the blue-and-white zebra-stripe banquettes, and Perona's photographer Jerome Zerbe made them famous: his pictures ran in the papers the next morning, and the stripes told everyone where they had been taken. Lucille Ball and Desi Arnaz held their wedding reception there in 1940; Truman Capote, Audrey Hepburn, Marilyn Monroe, Frank Sinatra and Salvador Dalí came through the door. In 1961 El Morocco moved to a townhouse at 307 East 54th Street, and after Perona died it went through new owners until it closed on 23 May 1970. James St. James calls it the historic club - New York has always been about nighttime - and Lincoln Palsgrove worked the door when it was revived in the 80s.",
+    timeline: [
+      ["5 Oct 1931", "John Perona opens The Morocco, a speakeasy at 154 East 54th Street"],
+      ["30s", "Vernon MacFarlane's zebra-stripe banquettes; Jerome Zerbe photographs the room from 1935 to 1939"],
+      ["1940", "Lucille Ball and Desi Arnaz's wedding reception"],
+      ["Jan 1961", "El Morocco moves to a townhouse at 307 East 54th Street"],
+      ["Jun 1961", "John Perona dies; his son Edwin sells the club to John Mills"],
+      ["1964", "Maurice Uchitel and Sheldon Hazeltine take over"],
+      ["23 May 1970", "El Morocco closes"],
+      ["1987", "El Morocco reopens - Lincoln Palsgrove IV is one of its doormen"],
+    ],
+    stage: ["Truman Capote", "Audrey Hepburn", "Marilyn Monroe", "Frank Sinatra", "Salvador Dalí", "Marlene Dietrich", "Humphrey Bogart", "Lincoln Palsgrove IV"],
+    rooms: ["Le Club", "Copacabana", "Régine's", "Delmonico's"],
+    said: [
+      { episode: "s02e05", who: "James St. James", time: "00:57:04", quote: "...at this historic club, the El Morocco. Like, I mean, New York has always been about nighttime... Delmonico's in the 1880s. That was always part of what made New York special." },
+      { episode: "s06e06", who: "James St. James", time: "00:00:38", context: "Lincoln's doors", quote: "A few of the doors he's worked on include The World... Red Zone, The Roxy, Cha-Cha Room at Stringfellows, Palladium, El Morocco, Twilo, Milk Bar, MK..." },
+    ],
+  },
+  // Lisa, 28 Nov 2026 (Roxy page): "disco 2000 needs a picture and a page update". Michael Alig's Wednesday at the Limelight, a
+  // Club card in the A–Z, so it gets the club standard. Facts: NPR (Limelight documentary, 2011), Wikipedia DJ Keoki, Club Kids and
+  // Michael Alig; years and the rest from the guests (Mac transcripts). Living-people rule: no sex stories, nothing unproven.
+  "disco-2000": {
+    opened: "c. 1989",
+    closed: "c. 1996",
+    address: "Wednesdays at the Limelight, Sixth Avenue at 20th Street",
+    aka: "Michael Alig's Wednesday at the Limelight",
+    portrait: { photo: disco2000Photo, phone: disco2000PhotoPhone, polaroid: disco2000Polaroid, focus: "50%", credit: DISCO_2000_CREDIT },
+    story:
+      "Disco 2000 was Michael Alig's Wednesday night at Peter Gatien's Limelight, the Club Kids' party in the old church on Sixth Avenue. James St. James dates the first one to '89 or '90, when Clara the Carefree Chicken came out of her egg on opening night; Ernie Glam, who was Clara, worked it every week. DJ Keoki was the resident, Amanda Lepore go-go danced, Larry Tee hosted the hot body contest, and the Pyramid's Wednesday crowd hopped over because Disco 2000 went later. Behind the effortless look were fourteen-hour days, Ernie says - noon to seven at the club, home to get ready, back by eleven. Lincoln Palsgrove thinks the muscle boys taking over the Roxy led to its birth; after it, he says, the 90s scene splintered. By the mid-90s it had turned dark, and it ended with the Club Kids' world in 1996.",
+    timeline: [
+      ["1988", "Peter Gatien hires Michael Alig at the Limelight"],
+      ["c. 1989", "The first Disco 2000 - Clara the Carefree Chicken hatches on opening night"],
+      ["1990-1992", "Ernie Glam and the Club Kids work fourteen-hour days to make Wednesdays happen"],
+      ["Early 90s", "Disco 2000 and Channel 69 at the Pyramid share Wednesday night"],
+      ["1991", "DJ Keoki Presents Disco 2000 - Keoki's records named after the party"],
+      ["1995", "Gatien sends Michael Alig to rehab; Alig says he was fired"],
+      ["1996", "The Limelight is closed by federal agents, and the Club Kids' world ends with Alig's arrest"],
+    ],
+    stage: ["Michael Alig", "Clara the Carefree Chicken", "DJ Keoki", "Ernie Glam", "Amanda Lepore", "Larry Tee", "Richie Rich", "Waltpaper", "James St. James", "Kevin Aviance", "Desi Santiago", "Floyd"],
+    rooms: ["Limelight", "Pyramid Club", "Roxy", "Club USA", "The Tunnel", "Palladium", "The World"],
+    said: [
+      { episode: "s01e05", who: "Ernie Glam", time: "00:17:45", quote: "People think that we were just partying all the time, but in the early years of Disco 2000, when we arrived at the Limelight, from the summer of 1990 to 1992, we were literally working 14-hour days. We would go to the Limelight at noon and be there until seven o'clock at night." },
+      { episode: "s02e07", who: "Jenny Talia", time: "00:15:07", quote: "Disco 2000, all of us just kind of merrily running through the club... the transcendental experience of dance and dancing with a group of people in this church, which was really like a religious experience." },
+      { episode: "s01e04", who: "James St. James", time: "00:30:28", context: "How it started", quote: "There was a lull, and then that's when Michael came in to do the first Disco 2000. I guess that was '89, probably. '89, '90." },
+      { episode: "s02e09", who: "Linda Simpson", time: "00:26:02", quote: "I wouldn't say it was competing, but we were on the same night. Because I think Disco 2000 went later than we did, people would hop over from the Pyramid to the Limelight." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:44:08", quote: "You had these club kids that were going to Roxy on Saturday, which kind of owned the space, and then all these big muscle guys came in and took over. So I think that led to the birth of Disco 2000." },
+      { episode: "s05e07a", who: "Christopher Comp", time: "00:28:06", context: "His 20th birthday party", quote: "Disco 2000 was everybody, everybody was there... And Floyd is on stage with this wig, with this This Mortal Coil song, this shrieking, and black blood rolling down his body. Chef's kiss. So good." },
+      { episode: "s01e04", who: "Peter Gatien", time: "00:30:49", quote: "Wednesday was really great for the Club Kids and the gays. But we developed a night like Rock and Roll Church that lasted literally nine, ten years. To those people, Disco 2000 didn't exist." },
+      { episode: "s03e08", who: "Larry Tee", time: "00:31:20", quote: "By the time I got to Disco 2000, I didn't really know how to take being the big Roxy DJ to the next level of business." },
+      { episode: "s06e09", who: "Desi Santiago", time: "00:10:22", quote: "I saw Larry Tee... I saw RuPaul walking in, and then it was also simultaneous with the birth of Disco 2000." },
+    ],
+  },
+  // Régine's club in Monaco, still open (Lisa, 28 Nov 2026, as above). Facts: Monte-Carlo SBM "The story of Jimmy'z" and
+  // "Régine" pages, Monaco Life (50 years, July 2024), read 28 Nov 2026; Nikki Haskell from the S2E4 transcript.
+  "jimmy-z": {
+    opened: "1971",
+    closed: "today",
+    address: "Monte-Carlo Sporting Club, Monaco",
+    portrait: { photo: jimmyzPhoto, phone: jimmyzPhotoPhone, polaroid: jimmyzPolaroid, focus: "50%", credit: JIMMYZ_CREDIT },
+    city: "Monte Carlo",
+    country: "MC",
+    story:
+      "Régine opened The Jimmy'z in Monte Carlo on 9 July 1971, below the summer Sporting club - decor by André Levasseur, and only with a club card. When the new Monte-Carlo Sporting Club opened on 22 June 1974, Jimmy'z moved in by the sea, with a lagoon, fountains and a Japanese garden, and Mick Jagger, Rudolf Nureyev and Farrah Fawcett came to dance. Nikki Haskell followed Régine's clubs from Paris to Monte Carlo: for her, Monte Carlo had the best discos in Europe and Jimmy'z was one of the great discotheques of all time. Régine left in 1986; the club is still there, and turned fifty in July 2024 with Prince Albert II.",
+    timeline: [
+      ["9 Jul 1971", "Régine opens The Jimmy'z below the summer Sporting, decor by André Levasseur"],
+      ["1973", "A winter Jimmy'z at the Café de Paris"],
+      ["22 Jun 1974", "Jimmy'z reopens in the new Monte-Carlo Sporting Club, with a lagoon and a Japanese garden"],
+      ["1986", "Régine leaves, and the club is redone"],
+      ["2004", "The lagoon is filled in for the Monte-Carlo Bay hotel"],
+      ["Jul 2024", "Fifty years of Jimmy'z, with Prince Albert II"],
+    ],
+    stage: ["Régine", "Nikki Haskell", "Mick Jagger", "Rudolf Nureyev", "Farrah Fawcett"],
+    rooms: ["Régine's", "Les Bains Douches"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:12", quote: "Europe always had a lot of really fabulous discos. Of course, Monte Carlo being the best." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:32", quote: "When she first opened, I was there every night. I used to go to Paris all the time. Jimmy'z was one of my favorites in Monte Carlo. I mean, that's one of the great discotheques of all time." },
+    ],
+  },
+  // Régine's (Lisa, 28 Nov 2026: "make a page for regine's", from Xenon's rooms around it). Facts: Wikipedia "Regine's" and
+  // "Régine Zylberberg", read 28 Nov 2026; quotes from the Mac transcripts (S2E4 Nikki Haskell, S6E8 William Norwich),
+  // "regimes"/"Regines" spelled right. Header + polaroid drawn on the Mac (28 Nov 2026), no free period photo exists.
+  "re-gine-s": {
+    opened: "1976",
+    closed: "1991",
+    address: "Delmonico Hotel, 502 Park Avenue at 59th Street",
+    aka: "Regine's",
+    portrait: { photo: reginesPhoto, phone: reginesPhotoPhone, polaroid: reginesPolaroid, focus: "50%", credit: REGINES_CREDIT },
+    story:
+      "Régine Zylberberg, the queen of the night from Paris, opened her New York club in May 1976 on the ground floor of the Delmonico Hotel at Park Avenue and 59th Street: Art Deco mirrors and brocade couches, a heart-shaped neon she called the Heart of New York, ten dollars at the door or a table booked for the year. Nikki Haskell went all the time - Le Club, then Régine's, then Studio, two or three clubs a night. Peppo Vanini ran Régine's clubs in Europe before he opened Xenon, and James St. James's diary has him at Régine's with Michael Musto for a Gaultier party, taken upstairs to the uptown crowd by William Norwich.",
+    timeline: [
+      ["1958", "Régine opens Chez Régine in Paris"],
+      ["1971", "Jimmy'z opens in Monte Carlo - one of the great discotheques of all time, says Nikki Haskell"],
+      ["Mar 1976", "A benefit night before the opening, in the Delmonico Hotel"],
+      ["May 1976", "Régine's opens to the public: ten dollars at the door, or a table for the year"],
+      ["1977", "Café Reginette opens next door to take on Studio 54"],
+      ["80s", "A Gaultier party: William Norwich takes James St. James upstairs to the uptown crowd"],
+      ["1986", "A kitchen and waiters' strike"],
+      ["1991", "Régine's New York closes"],
+    ],
+    stage: ["Régine", "Nikki Haskell", "Peppo Vanini", "Jean Paul Gaultier", "William Norwich", "James St. James", "Michael Musto", "Andy Warhol"],
+    rooms: ["Le Club", "Studio 54", "Xenon", "Copacabana", "Jimmy'z"],
+    said: [
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:45:32", quote: "When she first opened, I was there every night. I used to go to Paris all the time. Jimmy's in Monte Carlo was one of my favorites - one of the great discotheques of all time." },
+      { episode: "s02e04", who: "Nikki Haskell", time: "00:47:03", quote: "I loved Régine's in New York. I went there all the time... I would go to Le Club, then we'd go to Régine's, then we'd go to Studio. So you could go to two, three clubs in a night." },
+      { episode: "s06e08", who: "James St. James", time: "00:46:46", quote: "We were at Régine's with Musto, for Gaultier. You brought me upstairs to this chic uptown party, and it was another case of record skip - the whole place turned and looked at me with horror in their face." },
+      { episode: "s02e04", who: "James St. James", time: "00:44:48", quote: "My first job as a student, out of school, was working in Régine's in London." },
+    ],
   },
   // Les Bains Douches (Lisa, 27 Nov 2026: a top Google search). Facts: Wikipedia "Les Bains Douches (nightclub)", read
   // 27 Nov 2026; the rest from the guests' own stories. No picture yet, so it keeps the plain header.

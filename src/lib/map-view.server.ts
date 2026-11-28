@@ -4,6 +4,9 @@
 // they come up (episodeMapOf). No pin means no guess: Bring us home.
 import { entityFor, episodeShort, isPlace, type Entity } from "@/data/entities";
 import { EVENT_PLACES, NO_SINGLE_PLACE } from "@/data/event-places";
+import { CLUB_PROFILES } from "@/data/club-profiles";
+import { EVENT_COVERS } from "@/data/event-covers";
+import type { CoverDesign } from "@/lib/cover-design";
 import { HOME_HINTS } from "@/data/locations";
 import { episodeById } from "@/data/episodes";
 import { refsOf } from "@/data/episode-refs";
@@ -68,6 +71,22 @@ const SAME_DOOR = 15; // metres: a club's own nights and rooms share its pin
 const AREA =
   /(Street|Avenue|Place|Square|Broadway|Bowery|Manhattan|Village|District|Side|Heights|Park)$/;
 
+/** A Library-style cover for an event next door (Lisa, 27 Nov 2026: "use the library cover style and add covers of the
+ *  event next door"): the venue's own picture from its club page (flyer, ticket, invitation), else a typed cover. */
+function eventCover(x: EventAt, at: string | undefined, metres: number, i: number, photo: boolean): CoverDesign {
+  const e = entityFor(x.slug)!;
+  const foot = { mentions: e.refs.reduce((n, r) => n + r.mentions, 0), afterparties: new Set(e.refs.map((r) => r.episode)).size };
+  // A venue's picture goes on its first cover only, so a row of Studio 54 nights doesn't repeat one photo.
+  const pic = photo && x.venue ? CLUB_PROFILES[x.venue]?.portrait?.polaroid : undefined;
+  const where = [at, metres < 20 ? "next door" : `${Math.max(1, Math.round(metres / 80))} min walk`].filter(Boolean).join(" · ");
+  // An event with its own drawn picture (src/data/event-covers.ts) wears it on every cover.
+  const own = EVENT_COVERS[x.slug];
+  if (own) return { name: e.name, foot, look: "art", src: own.src, alt: own.alt, tag: "Event", lines: [where] };
+  return pic
+    ? { name: e.name, foot, look: "art", src: pic, alt: at ?? e.name, tag: "Next door", lines: [where] }
+    : { name: e.name, foot, look: "type", colour: i % 2 ? "lib-ink" : "lib-pink", kind: where || "Event" };
+}
+
 function band(
   kind: MapBand["kind"],
   here: { lat: number; lng: number },
@@ -101,8 +120,12 @@ function band(
       m: (x.venue ? nearBy.get(x.venue) : undefined) ?? Math.round(metresBetween(x.at, here)),
     }))
     .sort((a, b) => a.m - b.m)
-    .slice(0, 4)
-    .map(({ x, m }) => ({ ...ev(x, m), at: x.venue ? entityFor(x.venue)?.name : undefined }));
+    .slice(0, 8)
+    .map(({ x, m }, i, list) => {
+      const at = x.venue ? entityFor(x.venue)?.name : undefined;
+      const first = list.findIndex((y) => y.x.venue === x.venue) === i;
+      return { ...ev(x, m), at, design: eventCover(x, at, m, i, first) };
+    });
   return {
     kind,
     pin: { slug: kind === "club" ? slug : slug || null, name, area, tip },
@@ -117,10 +140,10 @@ function band(
 export function mapSectionOf(e: Entity): { band: MapBand } | { home: MapHome } | null {
   if (e.category === "Club") {
     const here = pins().find((p) => p.slug === e.slug);
-    if (!here) return { home: { kind: "club", name: e.name, hint: HOME_HINTS[e.name] } };
-    return { band: band("club", here, e.slug, e.name, here.area, here.tip, null) };
-  }
-  if (e.category !== "Event") return null;
+    if (here) return { band: band("club", here, e.slug, e.name, here.area, here.tip, null) };
+    // A club night filed as a Club row ("Bump", "Groove Thing") sits on its club's pin like the other nights (27 Nov 2026).
+    if (!EVENT_PLACES.some((x) => entityFor(x.event)?.slug === e.slug)) return { home: { kind: "club", name: e.name, hint: HOME_HINTS[e.name] } };
+  } else if (e.category !== "Event") return null;
   const p = EVENT_PLACES.find((x) => entityFor(x.event)?.slug === e.slug);
   if (!p) {
     // History, tours, TV and the rest with no single place stay off the map (Lisa, 23 Nov 2026); the others come home.

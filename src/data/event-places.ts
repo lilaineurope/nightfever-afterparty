@@ -1,3 +1,4 @@
+import { NIGHT_PARTS } from "./club-parts";
 // Events on the map (Lisa, 22 Nov 2026: "add events as a category to the map"): the parties, balls, shows, nights,
 // openings and festivals named in the episodes, each pinned at the place it happened. `at` is the name of a pin in
 // src/data/locations.ts, so an event always sits on its club's or place's own pin and never gets a guessed one.
@@ -16,7 +17,7 @@ export type EventPlace = {
   area?: string;
 };
 
-export const EVENT_PLACES: EventPlace[] = [
+const HAND_PLACED: EventPlace[] = [
   // Club nights, parties and contests at the clubs
   { event: "Breakfast in Bed with Boy George", at: "Area", tip: "Then on to the Palladium" },
   { event: "A Sound of Muzak", at: "Club 57" },
@@ -445,6 +446,13 @@ export const EVENT_PLACES: EventPlace[] = [
  * Events that never happened at one place - history, movements, tours, TV and award shows, press stories, games.
  * They stay off the map and off "Bring us home" (Lisa, 23 Nov 2026: "Take them off the list").
  */
+// Every club night, theme night and party with its own page (Lisa, 27 Nov 2026, src/data/club-parts.ts) sits on its
+// club's pin - never "Bring us home", the club is where it happened. `at` is the club's slug, which names its card.
+export const EVENT_PLACES: EventPlace[] = [
+  ...HAND_PLACED,
+  ...NIGHT_PARTS.filter((n) => !HAND_PLACED.some((p) => p.event === n.names[0])).map((n) => ({ event: n.names[0]!, at: n.club })),
+];
+
 export const NO_SINGLE_PLACE = new Set([
   "Kenny gets sober (6 August 1996)", // S06E10 - a personal turning point, not a place
   "Grand jury in the Peter Gatien case", // S05E09 - a court process, not a night out

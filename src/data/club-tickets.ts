@@ -20,6 +20,7 @@ import maxs from "@/assets/club-tickets/max-s-kansas-city.webp";
 import soundFactory from "@/assets/club-tickets/sound-factory.webp";
 import xenon from "@/assets/club-tickets/xenon.webp";
 import lesBainsDouches from "@/assets/club-tickets/les-bains-douches.webp";
+import regines from "@/assets/club-tickets/re-gine-s.webp";
 
 /** Real period club tickets (Lisa, 30 Oct 2026 - like the Library covers): a photo of an original drink ticket, admission ticket or
  *  membership card, captured once at card size and hosted here (never hotlinked), with the source named on the page.
@@ -60,6 +61,17 @@ export const CLUB_TICKETS: Record<string, ClubTicket> = {
     alt: "Entry ticket for Joy Division at the Bains-Douches, 18 December 1979, 20h30, 40 francs, no. 00194, with the bathhouse facade logo",
     credit: "Ticket: Joy Division at the Bains-Douches, 18 December 1979 - auction photo, Aguttes",
     href: "https://www.aguttes.com/en/lot/2ef1b234-2d74-4617-ae8c-920797b2d827/5612442a-712d-4118-89f5-92c26aa5c206",
+  },
+  // Régine's (Lisa, 28 Nov 2026, picked "New card drawn with Gemini"): the only real card found is LeRoy Neiman's own member
+  // card (LeRoy Neiman Foundation, ask their archivist), so this one is drawn - not a copy of it.
+  "re-gine-s": {
+    src: regines,
+    w: 800,
+    h: 436,
+    pos: "center 50%",
+    alt: "A black lacquer Régine's New York membership card with gold Art Deco lines and a red neon heart, 502 Park Avenue, drawn for the AFTERPARTY",
+    credit: "Régine's member card, drawn for the AFTERPARTY",
+    href: "https://en.wikipedia.org/wiki/R%C3%A9gine_Zylberberg",
   },
   cbgb: {
     src: cbgb,
