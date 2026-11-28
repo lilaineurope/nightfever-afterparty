@@ -18,8 +18,8 @@ const COVERS: Record<string, Cover> = {
   // Jenny Go-Getter's novels, written as Jennifer Banash (Lisa, 28 Nov 2026, top Google search pages). Open Library first.
   "Hollywoodland (Jennifer Banash)": { kind: "book", file: "book-hollywoodland-banash.webp", credit: "Cover via Open Library (Impetus Press, 2006)" },
   "The Elite (Jennifer Banash)": { kind: "book", file: "book-the-elite-banash.webp", credit: "Cover via Open Library (Berkley JAM, 2008, eBook edition)" },
-  "In Too Deep (Jennifer Banash)": { kind: "book", file: "book-in-too-deep-banash.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
-  "Simply Irresistible (Jennifer Banash)": { kind: "book", file: "book-simply-irresistible-banash.webp", credit: "Cover designed by the AFTERPARTY - no picture of the real one found" },
+  "In Too Deep (Jennifer Banash)": { kind: "book", file: "book-in-too-deep-banash.webp", credit: "Cover: Berkley JAM (Penguin), 2009" },
+  "Simply Irresistible (Jennifer Banash)": { kind: "book", file: "book-simply-irresistible-banash.webp", credit: "Cover: Berkley JAM (Penguin), 2009" },
   "White Lines – Jennifer Banash": { kind: "book", file: "book-white-lines-banash.webp", credit: "Cover via Open Library (G. P. Putnam's Sons, 2013)" },
   "Silent Alarm (Jennifer Banash)": { kind: "book", file: "book-silent-alarm-banash.webp", credit: "Cover via Open Library (G. P. Putnam's Sons, 2015)" },
   "The Rise and Fall of Ava Arcana": { kind: "book", file: "book-rise-and-fall-of-ava-arcana.webp", credit: "Cover via Open Library (Lake Union Publishing, 2023)" },
