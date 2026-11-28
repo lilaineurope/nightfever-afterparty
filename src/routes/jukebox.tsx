@@ -9,6 +9,7 @@ import type { CSSProperties } from "react";
 import disco from "@/assets/jukebox-disco.webp";
 import discoPhone from "@/assets/jukebox-disco-phone.webp";
 import { JUKEBOX_CLUB_BACKGROUNDS } from "@/data/jukebox-club-backgrounds";
+import { CLUB_NIGHT_ALIASES } from "@/data/club-night-labels";
 
 
 // Shareable links (Lisa, 28 Oct 2026): tapping a polaroid puts the Afterparty in the address, /jukebox?afterparty=s05e04,
@@ -22,7 +23,8 @@ export const Route = createFileRoute("/jukebox")({
   // address is passed on as it comes and the loader works out the share title from it.
   validateSearch: (s: Record<string, unknown>): Search => ({
     ...(typeof s["afterparty"] === "string" ? { afterparty: s["afterparty"] } : {}),
-    ...(typeof s["club"] === "string" ? { club: s["club"] } : {}),
+    // A playlist description's spelling (?club=regines) opens the same night as the card slug.
+    ...(typeof s["club"] === "string" ? { club: CLUB_NIGHT_ALIASES[s["club"]] ?? s["club"] } : {}),
     ...(s["show"] === "clubs" ? { show: "clubs" as const } : {}),
   }),
   loaderDeps: ({ search }) => ({ afterparty: search.afterparty, club: search.club }),

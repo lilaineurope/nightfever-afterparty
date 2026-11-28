@@ -58,6 +58,9 @@ import robotsPolaroid from "@/assets/clubs/robots-polaroid.webp";
 import xenonPhoto from "@/assets/clubs/xenon-photo.webp";
 import xenonPhotoPhone from "@/assets/clubs/xenon-photo-phone.webp";
 import xenonPolaroid from "@/assets/clubs/xenon-polaroid.webp";
+import reginesPhoto from "@/assets/clubs/re-gine-s-photo.webp";
+import reginesPhotoPhone from "@/assets/clubs/re-gine-s-photo-phone.webp";
+import reginesPolaroid from "@/assets/clubs/re-gine-s-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -164,6 +167,9 @@ const RED_ZONE_CREDIT = "Header and polaroid: a Red Zone night drawn for the AFT
 const SQUEEZEBOX_CREDIT = "Header: a Squeezebox night drawn for the AFTERPARTY. Polaroid: the stage at Don Hill's in 2010, photo by kimm613, via Wikimedia Commons, CC BY-SA 2.0";
 const MARS_CREDIT = "Header and polaroid: a night at Mars drawn for the AFTERPARTY - no photo of Mars is free to use";
 const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPARTY. Polaroid: Save the Robots after-hours Saturdays card - Gallery 98";
+// No free period picture of Régine's New York exists (Commons has only today's building; the NIGHT Magazine 1978 Régine's issue
+// at Gallery 98 shows real faces), so both are drawn (Lisa, 28 Nov 2026: "regine needs a background picture and a polaroid").
+const REGINES_CREDIT = "Header: a night at Régine's drawn for the AFTERPARTY. Polaroid: the Delmonico canopy on Park Avenue, drawn for the AFTERPARTY";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
@@ -1082,12 +1088,13 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
   },
   // Régine's (Lisa, 28 Nov 2026: "make a page for regine's", from Xenon's rooms around it). Facts: Wikipedia "Regine's" and
   // "Régine Zylberberg", read 28 Nov 2026; quotes from the Mac transcripts (S2E4 Nikki Haskell, S6E8 William Norwich),
-  // "regimes"/"Regines" spelled right. No picture yet, so it keeps the plain header.
+  // "regimes"/"Regines" spelled right. Header + polaroid drawn on the Mac (28 Nov 2026), no free period photo exists.
   "re-gine-s": {
     opened: "1976",
     closed: "1991",
-    address: "Delmonico Hotel, 69 East 59th Street at Park Avenue",
+    address: "Delmonico Hotel, 502 Park Avenue at 59th Street",
     aka: "Regine's",
+    portrait: { photo: reginesPhoto, phone: reginesPhotoPhone, polaroid: reginesPolaroid, focus: "50%", credit: REGINES_CREDIT },
     story:
       "Régine Zylberberg, the queen of the night from Paris, opened her New York club in May 1976 on the ground floor of the Delmonico Hotel at Park Avenue and 59th Street: Art Deco mirrors and brocade couches, a heart-shaped neon she called the Heart of New York, ten dollars at the door or a table booked for the year. Nikki Haskell went all the time - Le Club, then Régine's, then Studio, two or three clubs a night. Peppo Vanini ran Régine's clubs in Europe before he opened Xenon, and James St. James's diary has him at Régine's with Michael Musto for a Gaultier party, taken upstairs to the uptown crowd by William Norwich.",
     timeline: [
