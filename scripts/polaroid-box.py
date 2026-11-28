@@ -118,6 +118,28 @@ def cutout(img, composite, model="isnet-general-use"):
     return rgb.astype(np.float32), a
 
 
+def trim_backdrop(rgb, a, spec):
+    """Peel light studio backdrop off the outline below a line (Raja S06E04, Lisa 28 Nov 2026: "fix the outline
+    around the neck area"). spec = "Y0,LUM,SD,ER" in portrait pixels: from row Y0 down, flat light pixels
+    (9px mean > LUM, std < SD, near grey) that touch the outside leave the figure; then a smooth edge, eroded ER px."""
+    y0, lum, sdv, er = (float(v) for v in spec.split(","))
+    g = cv2.cvtColor(rgb.astype(np.uint8), cv2.COLOR_RGB2GRAY).astype(np.float32)
+    mu = cv2.blur(g, (9, 9)); sd = np.sqrt(np.maximum(cv2.blur(g * g, (9, 9)) - mu * mu, 0))
+    zone = np.zeros_like(a, bool); zone[int(y0):] = True
+    cand = (((mu > lum) & (sd < sdv) & ((rgb.max(2) - rgb.min(2)) < 30) & zone) | (a == 0)).astype(np.uint8)
+    _, lab = cv2.connectedComponents(cand)
+    out = np.unique(lab[a == 0]); out = out[out > 0]
+    a2 = a.copy(); a2[np.isin(lab, out) & (a > 0)] = 0
+    a2 = cv2.morphologyEx(a2, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11)))
+    n, lab2, st, _ = cv2.connectedComponentsWithStats(a2)
+    a2 = (lab2 == 1 + st[1:, cv2.CC_STAT_AREA].argmax()).astype(np.uint8)
+    sm = (cv2.GaussianBlur(a2.astype(np.float32), (0, 0), 4) > 0.5).astype(np.uint8); a2[zone] = sm[zone]
+    if er:
+        k = int(er); e = cv2.erode(a2, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * k + 1, 2 * k + 1))); a2[zone] = e[zone]
+    H, W = a2.shape; ff = a2.copy(); cv2.floodFill(ff, np.zeros((H + 2, W + 2), np.uint8), (0, 0), 1)
+    return a2 | (1 - ff)
+
+
 def accent_red(rgb):
     hsv = cv2.cvtColor(rgb.astype(np.uint8), cv2.COLOR_RGB2HSV).astype(np.float32)
     keep = (((hsv[..., 0] < 10) | (hsv[..., 0] > 170)) & (hsv[..., 1] > 110) & (hsv[..., 2] > 60)).astype(np.float32)
@@ -176,6 +198,7 @@ def main():
     ap.add_argument("--accent-red", action="store_true"); ap.add_argument("--composite", action="store_true")
     ap.add_argument("--head", type=float, default=0.06); ap.add_argument("--zoom", type=float, default=1.25, help="figure size (1 = head to waist fits the box)"); ap.add_argument("--ring", type=int, default=24); ap.add_argument("--no-align", action="store_true", help="never line clean cuts up with the edge")
     ap.add_argument("--model", default="isnet-general-use", help="rembg model; u2net_human_seg keeps a white shirt on a light backdrop (S04E07 Trey Speegle)")
+    ap.add_argument("--trim-backdrop", default="", help="Y0,LUM,SD,ER: peel leftover studio backdrop off the outline from row Y0 down (Raja S06E04: 560,150,30,4)")
     ap.add_argument("--width", type=float, default=0.0, help="figure width as a share of the box (0 = fit by height)")
     ap.add_argument("--labels", default="", help="scrap labels separated by | (default: top references from src/data/<id>.json)")
     ap.add_argument("--header", default="", help="WxH for a wide episode header (portrait on the right) instead of the square box")
@@ -206,6 +229,7 @@ def main():
     labels = clean[:4]
 
     rgb, a = cutout(Image.open(o.portrait), o.composite, o.model)
+    if o.trim_backdrop: a = trim_backdrop(rgb, a, o.trim_backdrop)
     if o.accent_red: rgb = accent_red(rgb)
     if o.header:
         can, ca = place(rgb, a, W, H, o.head, o.cx or 0.8, o.width)
