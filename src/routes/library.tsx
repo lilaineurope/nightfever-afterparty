@@ -37,7 +37,10 @@ export const Route = createFileRoute("/library")({
   staticData: { sitemap: true },
   // /library?cat=<key> opens on that category (Publications when there is none).
   validateSearch: (s: Record<string, unknown>): Search => ({
-    ...(typeof s["cat"] === "string" && s["cat"] !== DEFAULT_CATEGORY ? { cat: s["cat"] } : {}),
+    // With an AFTERPARTY picked, no ?cat= means every category; ?cat=publications then narrows it to Publications.
+    ...(typeof s["cat"] === "string" && (s["cat"] !== DEFAULT_CATEGORY || typeof s["ep"] === "string")
+      ? { cat: s["cat"] }
+      : {}),
     ...(s["view"] === "afterparty" ? { view: "afterparty" as const } : {}),
     ...(typeof s["ep"] === "string" && EPISODE_IDS.has(s["ep"]) ? { ep: s["ep"] } : {}),
   }),
@@ -117,6 +120,9 @@ function LibraryPage() {
   const cat = categoryOf(search.cat);
   const ep = search.ep;
   const only = !!ep || search.view === "afterparty";
+  // A guest's AFTERPARTY opens with every category selected (Lisa, 28 Nov 2026: "by default - when you open the guest's
+  // library pages, display all categories selected").
+  const allCats = !!ep && (!search.cat || search.cat === "all");
   const [shelf, setShelf] = useState("all");
   const [sort, setSort] = useState<"mentions" | "az">("mentions");
   const [open, setOpen] = useState<string | null>(null);
@@ -127,20 +133,27 @@ function LibraryPage() {
   };
   const catSearch = cat.key === DEFAULT_CATEGORY ? {} : { cat: cat.key };
   const pickCategory = (key: string) =>
-    go({
-      ...(key === DEFAULT_CATEGORY ? {} : { cat: key }),
-      ...(ep ? { ep } : only ? { view: "afterparty" as const } : {}),
-    });
+    go(
+      ep
+        ? { ...(key === "all" ? {} : { cat: key }), ep }
+        : { ...(key === DEFAULT_CATEGORY ? {} : { cat: key }), ...(only ? { view: "afterparty" as const } : {}) },
+    );
   const pickView = (afterparty: boolean) =>
     go({ ...catSearch, ...(afterparty ? { view: "afterparty" as const } : {}) });
   const pickEpisode = (id: string) =>
-    go({ ...catSearch, ...(id ? { ep: id } : only ? { view: "afterparty" as const } : {}) });
+    go(id ? { ep: id } : { ...catSearch, ...(only ? { view: "afterparty" as const } : {}) });
   // What the switch and the picker let through, in every category (for the category counts too).
   const keep = useMemo(
     () => (it: CollectionItem) => (ep ? inEpisode(it, ep) : only ? droppedInAfterparty(it) : true),
     [ep, only],
   );
   const shown = useMemo(() => cat.items.filter(keep), [cat, keep]);
+  const order = (items: CollectionItem[]) =>
+    sort === "az"
+      ? [...items].sort((a, b) => sortName(a.name).localeCompare(sortName(b.name)))
+      : ep
+        ? [...items].sort((a, b) => firstTimeIn(a, ep) - firstTimeIn(b, ep))
+        : items;
   const counts = useMemo(
     () =>
       Object.fromEntries(
@@ -149,19 +162,18 @@ function LibraryPage() {
     [cat, shown],
   );
   // One AFTERPARTY: in the order things come up in the episode; otherwise most dropped first.
-  const sorted = useMemo(
-    () =>
-      sort === "az"
-        ? [...shown].sort((a, b) => sortName(a.name).localeCompare(sortName(b.name)))
-        : ep
-          ? [...shown].sort((a, b) => firstTimeIn(a, ep) - firstTimeIn(b, ep))
-          : shown,
-    [sort, shown, ep],
-  );
-  const sections = cat.shelves
-    .filter((s) => shelf === "all" || s.key === shelf)
-    .map((s) => ({ ...s, items: sorted.filter((i) => i.shelf === s.key) }))
-    .filter((s) => !only || s.items.length > 0);
+  // One category, or (allCats) every category in turn, each with its shelves.
+  const groups = (allCats ? LIBRARY_CATEGORIES : [cat]).map((c) => {
+    const items = order(c === cat ? shown : c.items.filter(keep));
+    return {
+      c,
+      n: items.length,
+      sections: c.shelves
+        .filter((s) => allCats || shelf === "all" || s.key === shelf)
+        .map((s) => ({ ...s, items: items.filter((i) => i.shelf === s.key) }))
+        .filter((s) => !only || s.items.length > 0),
+    };
+  });
   const guest = ep ? stageName(episodeById(ep).guest) : "";
   const toggle = (key: string) => setOpen((o) => (o === key ? null : key));
 
@@ -253,21 +265,30 @@ function LibraryPage() {
         )}
         {/* Library categories (Lisa, 24 Nov 2026): flyer strips above the shelf chips; the chosen one is pink. */}
         <nav aria-label="Library categories" className="lib-cats">
+          {ep && (
+            <button type="button" className="lib-cat" aria-pressed={allCats} onClick={() => pickCategory("all")}>
+              All <span className="lib-cat-n">{LIBRARY_CATEGORIES.reduce((n, c) => n + c.items.filter(keep).length, 0)}</span>
+            </button>
+          )}
           {LIBRARY_CATEGORIES.map((c) => (
             <button
               key={c.key}
               type="button"
               className="lib-cat"
-              aria-pressed={c.key === cat.key}
+              aria-pressed={allCats || c.key === cat.key}
               onClick={() => pickCategory(c.key)}
             >
               {c.label} <span className="lib-cat-n">{only ? c.items.filter(keep).length : c.items.length}</span>
             </button>
           ))}
         </nav>
-        <p className="mt-3 text-sm text-muted-foreground">{cat.blurb}</p>
+        <p className="mt-3 text-sm text-muted-foreground">
+          {allCats
+            ? `Everything ${guest} drops, in every category. Tap a category to see just that one.`
+            : cat.blurb}
+        </p>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-b-2 border-gold pb-5">
-          <div className="flex flex-wrap gap-2">
+          <div className={allCats ? "hidden" : "flex flex-wrap gap-2"}>
             <button
               type="button"
               className={CHIP}
@@ -302,22 +323,37 @@ function LibraryPage() {
           </div>
         </div>
 
-        {only && shown.length === 0 && (
-          <p className="mt-10 text-muted-foreground">
-            {ep ? `${guest} drops no ${cat.label.toLowerCase()} in this AFTERPARTY.` : "Nothing here yet."} Try another category above.
-          </p>
+        {groups.map(({ c, n, sections }) =>
+          allCats && n === 0 ? null : (
+            <Fragment key={c.key}>
+              {allCats && (
+                <h2 className="lib-ap-cat" id={`cat-${c.key}`}>
+                  {c.label} <span className="lib-cat-n">{n}</span>
+                </h2>
+              )}
+              {!allCats && only && n === 0 && (
+                <p className="mt-10 text-muted-foreground">
+                  {ep ? `${guest} drops no ${c.label.toLowerCase()} in this AFTERPARTY.` : "Nothing here yet."} Try
+                  another category above.
+                </p>
+              )}
+              {sections.map((s) => {
+                const H = allCats ? "h3" : "h2";
+                return (
+                  <section key={s.key} aria-labelledby={`shelf-${c.key}-${s.key}`}>
+                    <H
+                      id={`shelf-${c.key}-${s.key}`}
+                      className={`${allCats ? "mt-8 text-2xl" : "mt-12 text-3xl"} border-b-[3px] border-gold pb-1 font-bold uppercase text-cream`}
+                    >
+                      {s.label} <span className="text-pink">{s.items.length}</span>
+                    </H>
+                    <Grid prefix={c.key} items={s.items} open={open} toggle={toggle} close={() => setOpen(null)} />
+                  </section>
+                );
+              })}
+            </Fragment>
+          ),
         )}
-        {sections.map((s) => (
-          <section key={s.key} aria-labelledby={`shelf-${s.key}`}>
-            <h2
-              id={`shelf-${s.key}`}
-              className="mt-12 border-b-[3px] border-gold pb-1 text-3xl font-bold uppercase text-cream"
-            >
-              {s.label} <span className="text-pink">{s.items.length}</span>
-            </h2>
-            <Grid items={s.items} open={open} toggle={toggle} close={() => setOpen(null)} />
-          </section>
-        ))}
 
         <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
           The Library fills itself from my episode indexes, so every new Afterparty adds its
@@ -339,11 +375,13 @@ function LibraryPage() {
 }
 
 function Grid({
+  prefix,
   items,
   open,
   toggle,
   close,
 }: {
+  prefix: string;
   items: CollectionItem[];
   open: string | null;
   toggle: (k: string) => void;
@@ -352,7 +390,7 @@ function Grid({
   return (
     <ul className="lib-grid">
       {items.map((it, i) => {
-        const k = keyOf(it);
+        const k = `${prefix}:${keyOf(it)}`;
         return (
           <Fragment key={k}>
             <li className="lib-item">
