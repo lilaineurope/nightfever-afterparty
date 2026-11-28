@@ -31,6 +31,9 @@ import grapePolaroid from "@/assets/clubs/gilded-grape-polaroid.webp";
 import continentalPhoto from "@/assets/clubs/continental-photo.webp";
 import continentalPhotoPhone from "@/assets/clubs/continental-photo-phone.webp";
 import continentalPolaroid from "@/assets/clubs/continental-polaroid.webp";
+import donHillsPhoto from "@/assets/clubs/don-hills-photo.webp";
+import donHillsPhotoPhone from "@/assets/clubs/don-hills-photo-phone.webp";
+import donHillsPolaroid from "@/assets/clubs/don-hills-polaroid.webp";
 import jeffersonPhoto from "@/assets/clubs/jefferson-photo.webp";
 import jeffersonPhotoPhone from "@/assets/clubs/jefferson-photo-phone.webp";
 import jeffersonPolaroid from "@/assets/clubs/jefferson-polaroid.webp";
@@ -173,6 +176,7 @@ const ROBOTS_CREDIT = "Header: a Save the Robots morning drawn for the AFTERPART
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 const CONTINENTAL_CREDIT = "Header and polaroid: the room with its hanging plexiglass and the garage door on West 25th Street, drawn for the AFTERPARTY - no photo of the Continental is known";
+const DON_HILLS_CREDIT = "Header and polaroid: the corner bar at Greenwich and Spring and its tiny stage, drawn for the AFTERPARTY - no photo of Don Hill's is free to use";
 const JEFFERSON_CREDIT = "Header and polaroid: a night at the Jefferson and its marquee on 14th Street, drawn for the AFTERPARTY - no photo of the Jefferson is free to use";
 const GILDED_GRAPE_CREDIT = "Header and polaroid: a night at the Gilded Grape drawn for the AFTERPARTY - no photo of the Gilded Grape is free to use";
 const QUICK_CREDIT = "Header and polaroid: a night at Quick drawn for the AFTERPARTY - no photo of Quick is free to use";
@@ -1050,6 +1054,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
       { episode: "s03e10", who: "Miss Guy", time: "00:40:00", context: "The first nights at Don Hill's", quote: "It got off to a slow start. It wasn't making any money. Every night was magical. There was that feeling in the air where you knew it was something special. And then I think by that summer, it was pretty much on fire, and celebrities started coming. Of course, Debbie Harry was one of the first." },
       { episode: "s04e03", who: "Bebe Buell", time: "01:09:20", context: "Bebe on the Squeezebox family and Don Hill bringing her back on stage", quote: "And they repaired me, put me back together again, gave me my soul back. I owe my life to those guys. I owe my life to Don Hill, Hilly Kristal, my New York community, my friends, my musicians, the people that have loved me and welcomed me back." },
     ],
+    portrait: { photo: donHillsPhoto, phone: donHillsPhotoPhone, polaroid: donHillsPolaroid, focus: "50%", credit: DON_HILLS_CREDIT },
   },
   "gilded-grape": {
     opened: "Early 70s",

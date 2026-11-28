@@ -76,6 +76,15 @@ import ladyBunnyPhoto from "@/assets/people/lady-bunny-photo.webp";
 import ladyBunnyPolaroid from "@/assets/people/lady-bunny-polaroid.webp";
 import colleenWeinsteinPhoto from "@/assets/people/colleen-weinstein-photo.webp";
 import colleenWeinsteinPolaroid from "@/assets/people/colleen-weinstein-polaroid.webp";
+import michaelTronPhoto from "@/assets/people/michael-tron-photo.webp";
+import michaelTronPolaroid from "@/assets/people/michael-tron-polaroid.webp";
+import juniorVasquezPhoto from "@/assets/people/junior-vasquez-photo.webp";
+import juniorVasquezPolaroid from "@/assets/people/junior-vasquez-polaroid.webp";
+import paulMorrisseyPhoto from "@/assets/people/paul-morrissey-photo.webp";
+import paulMorrisseyPolaroid from "@/assets/people/paul-morrissey-polaroid.webp";
+import houseOfXtravaganzaPhoto from "@/assets/people/house-of-xtravaganza-photo.webp";
+import houseOfXtravaganzaPolaroid from "@/assets/people/house-of-xtravaganza-polaroid.webp";
+import houseOfXtravaganzaPhotoPhone from "@/assets/people/house-of-xtravaganza-photo-phone.webp";
 import loveBallPhoto from "@/assets/people/love-ball-photo.webp";
 import loveBallPolaroid from "@/assets/people/love-ball-polaroid.webp";
 import voguingPhoto from "@/assets/people/voguing-photo.webp";
@@ -1074,6 +1083,13 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   // Real pictures, no Gemini needed (Lisa, 28 Nov 2026 on the House of Xtravaganza page: "love ball and voguing needs a picture
   // and a page"; "Haoui Montaug no entiendes needs picture and it's own page").
   "colleen-weinstein": { photo: colleenWeinsteinPhoto, polaroid: colleenWeinsteinPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Gemini, 28 Nov 2026 (Lisa: "Michael Tron needs a polaroid", "paul morrissey needs a polaroid", "the family ... junior ... needs a picture").
+  // Option A wired; Lisa picks A or B for Michael and Junior. Paul: A only (a second take was refused).
+  "michael-tron": { photo: michaelTronPhoto, polaroid: michaelTronPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "junior-vasquez": { photo: juniorVasquezPhoto, polaroid: juniorVasquezPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "paul-morrissey": { photo: paulMorrisseyPhoto, polaroid: paulMorrisseyPolaroid, focus: "30%", credit: "Illustration made with Gemini from the 1967 public-domain photo by James Kavallines, not a photo" },
+  // Lisa: "house of xtravaganza needs a background header picture and a polaroid". No faces: an empty Harlem ballroom and the judges' table.
+  "house-of-xtravaganza": { photo: houseOfXtravaganzaPhoto, phone: houseOfXtravaganzaPhotoPhone, polaroid: houseOfXtravaganzaPolaroid, focus: "50%", credit: "Header and polaroid: a Harlem ballroom before a ball and the judges' trophies, drawn for the AFTERPARTY - no people shown" },
   "love-ball": { photo: loveBallPhoto, polaroid: loveBallPolaroid, focus: "40%", credit: "Invitation: The Love Ball, Roseland, 1989 - photo via Gallery 98" },
   voguing: { photo: voguingPhoto, polaroid: voguingPolaroid, focus: "50%", credit: "Photo: S Pakhrin, Voguing Masquerade Ball, 2016, CC BY 2.0, via Wikimedia Commons" },
   "no-entiendes": { photo: noEntiendesPhoto, polaroid: noEntiendesPolaroid, focus: "45%", credit: "Card: No Entiendes, second anniversary, Danceteria, 1984 - photo via Gallery 98" },
