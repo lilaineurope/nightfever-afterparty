@@ -79,6 +79,9 @@ import leClubPolaroid from "@/assets/clubs/le-club-polaroid.webp";
 import jimmyzPhoto from "@/assets/clubs/jimmy-z-photo.webp";
 import jimmyzPhotoPhone from "@/assets/clubs/jimmy-z-photo-phone.webp";
 import jimmyzPolaroid from "@/assets/clubs/jimmy-z-polaroid.webp";
+import disco2000Photo from "@/assets/clubs/disco-2000-photo.webp";
+import disco2000PhotoPhone from "@/assets/clubs/disco-2000-photo-phone.webp";
+import disco2000Polaroid from "@/assets/clubs/disco-2000-polaroid.webp";
 import worldPhoto from "@/assets/clubs/world-photo.webp";
 import worldPhotoPhone from "@/assets/clubs/world-photo-phone.webp";
 import worldPolaroid from "@/assets/clubs/world-polaroid.webp";
@@ -192,6 +195,8 @@ const EL_MOROCCO_CREDIT = "Photo: Constance Bennett, Richard Brown and Eva Gabor
 // No period picture of either club is free to use (Commons: nothing for Le Club, only a 2014 Jimmy'z), so both are drawn (28 Nov 2026).
 const LE_CLUB_CREDIT = "Header: a night at Le Club in the 60s drawn for the AFTERPARTY. Polaroid: the door on East 55th Street, drawn for the AFTERPARTY";
 const JIMMYZ_CREDIT = "Header: Jimmy'z by the sea in the 70s drawn for the AFTERPARTY. Polaroid: the lantern-lit lake, drawn for the AFTERPARTY";
+// No Disco 2000 flyer at Gallery 98 or on Commons (28 Nov 2026), so both are drawn.
+const DISCO_2000_CREDIT = "Header: a Disco 2000 Wednesday at the Limelight drawn for the AFTERPARTY. Polaroid: Club Kids on the Limelight steps, drawn for the AFTERPARTY";
 const XENON_CREDIT = "Header: a night at Xenon drawn for the AFTERPARTY. Polaroid: Everybody Hates Punk poster, Xenon, 1978 - Gallery 98";
 
 const CONTINENTAL_CREDIT = "Header and polaroid: the room with its hanging plexiglass and the garage door on West 25th Street, drawn for the AFTERPARTY - no photo of the Continental is known";
@@ -1254,6 +1259,7 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
     closed: "c. 1996",
     address: "Wednesdays at the Limelight, Sixth Avenue at 20th Street",
     aka: "Michael Alig's Wednesday at the Limelight",
+    portrait: { photo: disco2000Photo, phone: disco2000PhotoPhone, polaroid: disco2000Polaroid, focus: "50%", credit: DISCO_2000_CREDIT },
     story:
       "Disco 2000 was Michael Alig's Wednesday night at Peter Gatien's Limelight, the Club Kids' party in the old church on Sixth Avenue. James St. James dates the first one to '89 or '90, when Clara the Carefree Chicken came out of her egg on opening night; Ernie Glam, who was Clara, worked it every week. DJ Keoki was the resident, Amanda Lepore go-go danced, Larry Tee hosted the hot body contest, and the Pyramid's Wednesday crowd hopped over because Disco 2000 went later. Behind the effortless look were fourteen-hour days, Ernie says - noon to seven at the club, home to get ready, back by eleven. Lincoln Palsgrove thinks the muscle boys taking over the Roxy led to its birth; after it, he says, the 90s scene splintered. By the mid-90s it had turned dark, and it ended with the Club Kids' world in 1996.",
     timeline: [

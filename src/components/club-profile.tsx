@@ -91,7 +91,8 @@ export function ClubProfileSections({ c, name, slug, night, wall, sound, parts, 
           around it sit beside them (Lisa, 28 Nov 2026, Régine's: "move the rooms around it next to regine's nights and parties"). */}
       {beside ? (
         <div className="club-beside mx-auto grid w-full max-w-5xl items-start gap-8 md:grid-cols-2">
-          {parts}
+          {/* The nights box and its "Looks at" chips stay together in the left column. */}
+          <div className="space-y-8">{parts}</div>
           {rooms}
         </div>
       ) : (
