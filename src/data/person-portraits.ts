@@ -710,6 +710,9 @@ import sueClowesPolaroid from "@/assets/people/sue-clowes-polaroid.webp";
 import lisaCollinsPhoto from "@/assets/people/lisa-collins-photo.webp";
 import lisaCollinsPolaroid from "@/assets/people/lisa-collins-polaroid.webp";
 
+import zandraRhodesPhoto from "@/assets/people/zandra-rhodes-photo.webp";
+import zandraRhodesPolaroid from "@/assets/people/zandra-rhodes-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   /** Phone copy of the header photo (club pages, SEO check 16 Nov 2026): the middle 800 px at full size, so the dots look the same. */
@@ -1089,4 +1092,6 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "jody-morlock": { photo: jodyMorlockPhoto, polaroid: jodyMorlockPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "sue-clowes": { photo: sueClowesPhoto, polaroid: sueClowesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "lisa-collins": { photo: lisaCollinsPhoto, polaroid: lisaCollinsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Lisa, 28 Nov 2026 ("yes zandra publish"): Gemini drawing after a reference photo (reference not on the site).
+  "zandra-rhodes": { photo: zandraRhodesPhoto, polaroid: zandraRhodesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };
