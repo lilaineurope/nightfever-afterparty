@@ -697,6 +697,19 @@ import rachelAuburnPolaroid from "@/assets/people/rachel-auburn-polaroid.webp";
 import stephenJonesPhoto from "@/assets/people/stephen-jones-photo.webp";
 import stephenJonesPolaroid from "@/assets/people/stephen-jones-polaroid.webp";
 
+import hapiPhacePhoto from "@/assets/people/hapi-phace-photo.webp";
+import hapiPhacePolaroid from "@/assets/people/hapi-phace-polaroid.webp";
+import maryMcfaddenPhoto from "@/assets/people/mary-mcfadden-photo.webp";
+import maryMcfaddenPolaroid from "@/assets/people/mary-mcfadden-polaroid.webp";
+import carolinaHerreraPhoto from "@/assets/people/carolina-herrera-photo.webp";
+import carolinaHerreraPolaroid from "@/assets/people/carolina-herrera-polaroid.webp";
+import jodyMorlockPhoto from "@/assets/people/jody-morlock-photo.webp";
+import jodyMorlockPolaroid from "@/assets/people/jody-morlock-polaroid.webp";
+import sueClowesPhoto from "@/assets/people/sue-clowes-photo.webp";
+import sueClowesPolaroid from "@/assets/people/sue-clowes-polaroid.webp";
+import lisaCollinsPhoto from "@/assets/people/lisa-collins-photo.webp";
+import lisaCollinsPolaroid from "@/assets/people/lisa-collins-polaroid.webp";
+
 export type PersonPortrait = {
   photo: string;
   /** Phone copy of the header photo (club pages, SEO check 16 Nov 2026): the middle 800 px at full size, so the dots look the same. */
@@ -962,7 +975,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "armen-ra": { photo: armenRaPhoto, polaroid: armenRaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "baroness-sherry": { photo: baronessSherryPhoto, polaroid: baronessSherryPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "claus-von-bu-low": { photo: clausVonBuLowPhoto, polaroid: clausVonBuLowPolaroid, focus: "28%", credit: "Portrait after a TV still by Open Media Ltd. (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
-  "clive-davis": { photo: cliveDavisPhoto, polaroid: cliveDavisPolaroid, focus: "28%", credit: "Portrait after a photo by Associated Press, 1980 (public domain), in our photocopy style" },
+  "clive-davis": { photo: cliveDavisPhoto, polaroid: cliveDavisPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "cyndi-lauper": { photo: cyndiLauperPhoto, polaroid: cyndiLauperPolaroid, focus: "28%", credit: "Portrait after a photo by Toglenn, 1985 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "diahann-carroll": { photo: diahannCarrollPhoto, polaroid: diahannCarrollPolaroid, focus: "28%", credit: "Portrait after a photo by CBS Television, 1976 (public domain), in our photocopy style" },
   "dita-von-teese": { photo: ditaVonTeesePhoto, polaroid: ditaVonTeesePolaroid, focus: "28%", credit: "Portrait after a photo by Georges Biard, 2009 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
@@ -972,12 +985,12 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "elizabeth-taylor": { photo: elizabethTaylorPhoto, polaroid: elizabethTaylorPolaroid, focus: "28%", credit: "Portrait after a 20th Century Fox publicity photo, 1963 (public domain), in our photocopy style" },
   "elvis-presley": { photo: elvisPresleyPhoto, polaroid: elvisPresleyPolaroid, focus: "28%", credit: "Portrait after an uncredited 1958 magazine photo (public domain), in our photocopy style" },
   "federico-fellini": { photo: federicoFelliniPhoto, polaroid: federicoFelliniPolaroid, focus: "28%", credit: "Portrait after a photo by Walter Albertin, World Telegram, 1965 (public domain), in our photocopy style" },
-  "fiorello-la-guardia": { photo: fiorelloLaGuardiaPhoto, polaroid: fiorelloLaGuardiaPolaroid, focus: "28%", credit: "Portrait after a photo by New York Times Studios, 1937 (public domain), in our photocopy style" },
-  "gary-collins": { photo: garyCollinsPhoto, polaroid: garyCollinsPolaroid, focus: "28%", credit: "Portrait after a photo by NBC Television, 1974 (public domain), in our photocopy style" },
+  "fiorello-la-guardia": { photo: fiorelloLaGuardiaPhoto, polaroid: fiorelloLaGuardiaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "gary-collins": { photo: garyCollinsPhoto, polaroid: garyCollinsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "henny-garfunkel": { photo: hennyGarfunkelPhoto, polaroid: hennyGarfunkelPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "jamie-lee-curtis": { photo: jamieLeeCurtisPhoto, polaroid: jamieLeeCurtisPolaroid, focus: "28%", credit: "Portrait after a photo by Gage Skidmore, 2015 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
-  "jennifer-holliday": { photo: jenniferHollidayPhoto, polaroid: jenniferHollidayPolaroid, focus: "28%", credit: "Portrait after a photo by Greg Hernandez, 2007 (CC BY 2.0), in our photocopy style" },
-  "jeremy-scott": { photo: jeremyScottPhoto, polaroid: jeremyScottPolaroid, focus: "28%", credit: "Portrait after a photo by MEDIODESCOCIDO, 2015 (CC BY 2.0), in our photocopy style" },
+  "jennifer-holliday": { photo: jenniferHollidayPhoto, polaroid: jenniferHollidayPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jeremy-scott": { photo: jeremyScottPhoto, polaroid: jeremyScottPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "ethyl-eichelberger": { photo: ethylEichelbergerPhoto, polaroid: ethylEichelbergerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "flawless-sabrina": { photo: flawlessSabrinaPhoto, polaroid: flawlessSabrinaPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "gary-austin": { photo: garyAustinPhoto, polaroid: garyAustinPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
@@ -992,25 +1005,25 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "laurie-pike": { photo: lauriePikePhoto, polaroid: lauriePikePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "mark-fleischman": { photo: markFleischmanPhoto, polaroid: markFleischmanPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "mr-blackwell": { photo: mrBlackwellPhoto, polaroid: mrBlackwellPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
-  "julian-lennon": { photo: julianLennonPhoto, polaroid: julianLennonPolaroid, focus: "28%", credit: "Portrait after a photo by Deborah Anderson, 2013 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
-  "kari-wuhrer": { photo: kariWuhrerPhoto, polaroid: kariWuhrerPolaroid, focus: "28%", credit: "Portrait after a photo by Rob DiCaterino, 2014 (CC BY 2.0), in our photocopy style" },
-  "kathy-hilton": { photo: kathyHiltonPhoto, polaroid: kathyHiltonPolaroid, focus: "28%", credit: "Portrait after a photo by Glenn Francis, 2008 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
+  "julian-lennon": { photo: julianLennonPhoto, polaroid: julianLennonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "kari-wuhrer": { photo: kariWuhrerPhoto, polaroid: kariWuhrerPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "kathy-hilton": { photo: kathyHiltonPhoto, polaroid: kathyHiltonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "kim-kardashian": { photo: kimKardashianPhoto, polaroid: kimKardashianPolaroid, focus: "28%", credit: "Portrait after a photo by Luke Ford, 2007 (CC BY-SA 2.5; our version is CC BY-SA 2.5 too), in our photocopy style" },
   "lou-reed": { photo: louReedPhoto, polaroid: louReedPolaroid, focus: "28%", credit: "Portrait after a photo by Arista Records / Mick Rock, 1977 (public domain), in our photocopy style" },
   "marcel-duchamp": { photo: marcelDuchampPhoto, polaroid: marcelDuchampPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer (public domain), in our photocopy style" },
   "mark-wahlberg": { photo: markWahlbergPhoto, polaroid: markWahlbergPolaroid, focus: "28%", credit: "Portrait after a photo by David Shankbone, 2011 (CC BY 3.0), in our photocopy style" },
   "meat-loaf": { photo: meatLoafPhoto, polaroid: meatLoafPolaroid, focus: "28%", credit: "Portrait after a photo by christopher simon, 2009 (CC BY 2.0), in our photocopy style" },
-  "michael-stipe": { photo: michaelStipePhoto, polaroid: michaelStipePolaroid, focus: "28%", credit: "Portrait after a photo by Kris Krug, 2008 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
+  "michael-stipe": { photo: michaelStipePhoto, polaroid: michaelStipePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "mick-jagger": { photo: mickJaggerPhoto, polaroid: mickJaggerPolaroid, focus: "28%", credit: "Portrait after a photo by Jens-Kristian Søgaard, 1973 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   "patti-astor": { photo: pattiAstorPhoto, polaroid: pattiAstorPolaroid, focus: "28%", credit: "Portrait after a photo by Anita Rosenberg (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
   "tina-chow": { photo: tinaChowPhoto, polaroid: tinaChowPolaroid, focus: "28%", credit: "Portrait after a photo by Bernard Gotfryd, 1987 (public domain), in our photocopy style" },
   "hilly-kristal": { photo: hillyKristalPhoto, polaroid: hillyKristalPolaroid, focus: "28%", credit: "Portrait after a photo by Charliesamuels, 1991 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "mark-kamins": { photo: markKaminsPhoto, polaroid: markKaminsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "octavio-aguilar": { photo: octavioAguilarPhoto, polaroid: octavioAguilarPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
-  "p-t-barnum": { photo: pTBarnumPhoto, polaroid: pTBarnumPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer, 1851 (public domain), in our photocopy style" },
+  "p-t-barnum": { photo: pTBarnumPhoto, polaroid: pTBarnumPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "patti-wilson": { photo: pattiWilsonPhoto, polaroid: pattiWilsonPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "paul-reubens": { photo: paulReubensPhoto, polaroid: paulReubensPolaroid, focus: "28%", credit: "Portrait after a photo by The Palmetto Scoop, 2008 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
-  "peter-allen": { photo: peterAllenPhoto, polaroid: peterAllenPolaroid, focus: "28%", credit: "Portrait after a photo by Premier Talent Associates, 1967 (public domain), in our photocopy style" },
+  "peter-allen": { photo: peterAllenPhoto, polaroid: peterAllenPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "raquel-welch": { photo: raquelWelchPhoto, polaroid: raquelWelchPolaroid, focus: "28%", credit: "Portrait after a photo by Alan Light, 1987 (CC BY 2.0), in our photocopy style" },
   "rihanna": { photo: rihannaPhoto, polaroid: rihannaPolaroid, focus: "28%", credit: "Portrait after a photo by oouinouin, 2010 (CC BY 2.0), in our photocopy style" },
   "robert-evans": { photo: robertEvansPhoto, polaroid: robertEvansPolaroid, focus: "28%", credit: "Portrait after a photo by NBC Television, 1981 (public domain), in our photocopy style" },
@@ -1021,12 +1034,12 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "seymour-stein": { photo: seymourSteinPhoto, polaroid: seymourSteinPolaroid, focus: "28%", credit: "Portrait after a photo by Joeyjojo86, 2013 (CC BY-SA 3.0; our version is CC BY-SA 3.0 too), in our photocopy style" },
   "sharon-tate": { photo: sharonTatePhoto, polaroid: sharonTatePolaroid, focus: "28%", credit: "Portrait after a photo by 20th Century Fox publicity (restored by Adam Cuerden), 1967 (public domain), in our photocopy style" },
   "steven-klein": { photo: stevenKleinPhoto, polaroid: stevenKleinPolaroid, focus: "28%", credit: "Portrait after a photo by Djtwilonyc, 2016 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
-  "tayce": { photo: taycePhoto, polaroid: taycePolaroid, focus: "28%", credit: "Portrait after a photo by Josiefraser, 2018 (CC BY-SA 4.0; our version is CC BY-SA 4.0 too), in our photocopy style" },
+  "tayce": { photo: taycePhoto, polaroid: taycePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "teena-marie": { photo: teenaMariePhoto, polaroid: teenaMariePolaroid, focus: "28%", credit: "Portrait after a photo by Epic Records, 1983 (public domain), in our photocopy style" },
   "snapple-lady": { photo: snappleLadyPhoto, polaroid: snappleLadyPolaroid, focus: "28%", credit: "Portrait after a photo by annulla, 2007 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
   "tony-basil": { photo: tonyBasilPhoto, polaroid: tonyBasilPolaroid, focus: "28%", credit: "Portrait after a 1960 Las Vegas High School yearbook photo (public domain), in our photocopy style" },
-  "valerie-steele": { photo: valerieSteelePhoto, polaroid: valerieSteelePolaroid, focus: "28%", credit: "Portrait after a photo by Museum at FIT, 2019 (CC BY-SA 2.0; our version is CC BY-SA 2.0 too), in our photocopy style" },
-  "vincent-gallo": { photo: vincentGalloPhoto, polaroid: vincentGalloPolaroid, focus: "28%", credit: "Portrait after a photo by Brooklyn Token, 2004 (CC BY 2.0), in our photocopy style" },
+  "valerie-steele": { photo: valerieSteelePhoto, polaroid: valerieSteelePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "vincent-gallo": { photo: vincentGalloPhoto, polaroid: vincentGalloPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "whitney-houston": { photo: whitneyHoustonPhoto, polaroid: whitneyHoustonPolaroid, focus: "28%", credit: "Portrait after a photo by PH2 Mark Kettenhofen, US Navy, 1991 (public domain), in our photocopy style" },
   "william-f-buckley-jr": { photo: williamFBuckleyJrPhoto, polaroid: williamFBuckleyJrPolaroid, focus: "28%", credit: "Portrait after a photo by SPC 5 Bert Goulait, US Military, 1985 (public domain), in our photocopy style" },
   "yul-brynner": { photo: yulBrynnerPhoto, polaroid: yulBrynnerPolaroid, focus: "28%", credit: "Portrait after a photo by an unknown photographer, 1960 (public domain), in our photocopy style" },
@@ -1069,4 +1082,11 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "norma-kamali": { photo: normaKamaliPhoto, polaroid: normaKamaliPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "rachel-auburn": { photo: rachelAuburnPhoto, polaroid: rachelAuburnPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   "stephen-jones": { photo: stephenJonesPhoto, polaroid: stephenJonesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  // Lisa, 28 Nov 2026 ("everything else publish"): sticker batch 1 redos (Hapi, Mary, Carolina, Jody, Sue) and Lisa Collins. Gemini drawings after reference photos (references not on the site).
+  "hapi-phace": { photo: hapiPhacePhoto, polaroid: hapiPhacePolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "mary-mcfadden": { photo: maryMcfaddenPhoto, polaroid: maryMcfaddenPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "carolina-herrera": { photo: carolinaHerreraPhoto, polaroid: carolinaHerreraPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "jody-morlock": { photo: jodyMorlockPhoto, polaroid: jodyMorlockPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "sue-clowes": { photo: sueClowesPhoto, polaroid: sueClowesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
+  "lisa-collins": { photo: lisaCollinsPhoto, polaroid: lisaCollinsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
 };
