@@ -142,32 +142,21 @@ export function CardSections({ v, skipRefs = false, skipEvents = false }: { v: C
         </section>
       )}
 
-      {/* A Library item page shows these as one "Also on the site" box with why (library-item.tsx, Lisa 23 Nov 2026). */}
-      {named.length > 0 && !v.item && !v.club && (
-        <section>
-          <h2 className={h}>Also named on these cards</h2>
-          <SlugPile items={named} faces={v.faces} />
-        </section>
-      )}
-
-      {v.onPages.length > 0 && !v.club && (
-        <section>
-          <h2 className={h}>On these AFTERPARTY pages</h2>
-          <SlugPile items={v.onPages.map((x) => ({ slug: x.slug, name: x.name, sub: x.kind }))} faces={v.faces} />
-        </section>
-      )}
-
-      {v.inGuestStories.length > 0 && !v.item && !v.club && (
-        <section>
-          <h2 className={h}>Pops up in the guests' stories</h2>
-          <SlugPile items={v.inGuestStories} faces={v.faces} />
-        </section>
-      )}
-
-      {related.length > 0 && !v.item && !v.club && (
-        <section>
-          <h2 className={h}>In the same rooms (aka the gang)</h2>
-          <SlugPile items={related} faces={v.faces} />
+      {/* One Connections box (Lisa, 28 Nov 2026: "it feels like we are doubling up here and mixing up databases - how can we
+          combine that also with our page standard"): what used to be "Also named on these cards", "On these AFTERPARTY pages",
+          "Pops up in the guests' stories" and "In the same rooms", each name once, by kind. A Library item page keeps its own
+          "Also on the site" box (library-item.tsx). */}
+      {v.connections.length > 0 && (
+        <section className="rounded-2xl border border-border bg-card p-6">
+          <h2 className={h}>Connections (aka the gang)</h2>
+          <div className={`mt-2 grid gap-x-10 gap-y-6 ${v.connections.length > 1 ? "md:grid-cols-2" : ""}`}>
+            {v.connections.map((g) => (
+              <div key={g.heading}>
+                <h3 className="mt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{g.heading}</h3>
+                <SlugPile items={g.items} faces={v.faces} />
+              </div>
+            ))}
+          </div>
         </section>
       )}
     </>
