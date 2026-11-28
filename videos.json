@@ -1,0 +1,150 @@
+{
+ "_note": "All checked: YouTube oEmbed 200 (can play on the site), 28 Nov 2026. No full films or pirated Paris Is Burning clips; no paid-licence material.",
+ "flawless-sabrina": [
+  {
+   "id": "-SLB6vYWKJ0",
+   "title": "Flawless Sabrina: queer icon and star of The Queen",
+   "channel": "American Masters PBS (Masters of Drag)",
+   "length": "6:31",
+   "pick": 1
+  },
+  {
+   "id": "ki3fUvhRqrk",
+   "title": "James St. James and Flawless Mother Sabrina (interview and tarot reading, for The WOW Report)",
+   "channel": "dailyfreakshow",
+   "length": "8:25",
+   "pick": 2,
+   "note": "James himself with her - strong for the page"
+  },
+  {
+   "id": "SeXrIZqMAfY",
+   "title": "The Queen (1968) - official re-release trailer",
+   "channel": "Kino Lorber",
+   "length": "1:43",
+   "pick": 3
+  },
+  {
+   "id": "e0TojIcruRk",
+   "title": "Tarot reading with Flawless Sabrina - 2014 Whitney Biennial",
+   "channel": "Whitney Museum of American Art",
+   "length": "2:37"
+  },
+  {
+   "id": "C62XptOyKfk",
+   "title": "Bruno Wizard interviews Jack, Mother Flawless Sabrina",
+   "channel": "electrisco",
+   "length": "3:48"
+  },
+  {
+   "id": "e8MuNmbMEC8",
+   "title": "Tribute to a Queen: Flawless Sabrina (Leslie-Lohman Museum, 15 Nov 2011)",
+   "channel": "Greg Frederick",
+   "length": "3:45"
+  },
+  {
+   "id": "Yxx93IjoClc",
+   "title": "YNYC with Flawless Sabrina, Kelly Webb and Dean Johnson",
+   "channel": "Scott Peehl",
+   "length": "4:59"
+  }
+ ],
+ "flawless-sabrina-not-usable": [
+  {
+   "id": "RbtbccwGxZE",
+   "title": "Flawless Sabrina speaks with Brandy Wine (1990s re-release of The Queen)",
+   "why": "embedding disabled (oEmbed 401)"
+  },
+  {
+   "id": "h-k19RnpqZA",
+   "why": "full film upload, not ours to show"
+  }
+ ],
+ "haoui-montaug": [
+  {
+   "id": "iWa-hE8KeQk",
+   "title": "Haoui Montaug and Anita Sarko's No Entiendes at the Palladium",
+   "channel": "5ninthavenueproject (Nelson Sullivan)",
+   "length": "9:19",
+   "pick": 1,
+   "real_footage": true
+  },
+  {
+   "id": "yNcEggr_xwc",
+   "title": "No Entiendes, 14 Jan 1987 - Haoui Montaug and Anita Sarko",
+   "channel": "vinyl rescue",
+   "length": "1:51",
+   "pick": 2
+  },
+  {
+   "id": "UAubqBL1i18",
+   "title": "Haoui talking about Anita",
+   "channel": "Michael Overn",
+   "length": "1:30",
+   "pick": 3
+  },
+  {
+   "id": "ag_mK2uqERw",
+   "title": "The Bad Music Video Show - No Entiendes part 1: Haoui and intro",
+   "channel": "Michael Overn",
+   "length": "2:43"
+  },
+  {
+   "id": "ZtY2rV6yWZc",
+   "title": "Madonna sings Everybody at Haoui Montaug's No Entiendes (1982)",
+   "channel": "Eric Skarsgård",
+   "length": "8:04",
+   "note": "same footage also as pcaZFCmDzV4 - check which upload is better"
+  }
+ ],
+ "haoui-montaug-not-used": [
+  {
+   "id": "Z9tEspZ3MpI",
+   "why": "Peeew! episode with Michael Alig talking about Haoui - left off (Alig rule)"
+  }
+ ],
+ "angie-xtravaganza": [
+  {
+   "id": "BpRSk_knBec",
+   "title": "Remembering icon Mother Angie Xtravaganza",
+   "channel": "gran varones",
+   "length": "1:42",
+   "pick": 1
+  },
+  {
+   "id": "-YrP3Ajf6qM",
+   "title": "Angie Xtravaganza - Xtravaganza Spring Affair Ball, Tracks NYC, 1992",
+   "channel": "sugarchampagne",
+   "length": "1:06",
+   "pick": 2,
+   "real_footage": true
+  },
+  {
+   "id": "8ej86oHMJ8o",
+   "title": "Welcome to the House of Xtravaganza",
+   "channel": "In The Know",
+   "length": "5:14",
+   "pick": 3,
+   "note": "house today - better on the House of Xtravaganza page"
+  }
+ ],
+ "angie-xtravaganza-not-usable": [
+  {
+   "id": "bw_AuiSRGkg",
+   "title": "Tribute to Angie Xtravaganza 12.19.2001 (Wolfgang Busch)",
+   "why": "embedding disabled (oEmbed 401) - could be a plain link"
+  },
+  {
+   "why": "Paris Is Burning clips on YouTube are unofficial uploads of the film - not used"
+  }
+ ],
+ "behind-the-velvet-ropes": [
+  {
+   "id": "kwp9TAD8_cQ",
+   "title": "Behind the Velvet Ropes - episode 13",
+   "channel": "Lauren Ezersky (her own channel)",
+   "length": "29:01",
+   "pick": 1,
+   "note": "most-watched episode on her channel; her channel has many full BTVR episodes (e.g. E-kpLLjqVZk ep 9, s-pR6DvvMDE ep 52, NfTGsSbgAGk 'Designing Divas' ep 4)"
+  }
+ ]
+}

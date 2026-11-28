@@ -1,0 +1,80 @@
+{
+ "_note": "From the machine transcripts (28 Nov 2026). 'quote' = exact words, names spelled right; 'transcript' = as transcribed. Max 2 per speaker. S01E02 Teams transcript: Talare 1 = Michael Musto.",
+ "flawless-sabrina": {
+  "verdict": "THIN: in all episodes only two lines name her - Musto's (already on the page) and Elyssa Maxx Goodman's below (the machine heard 'Lola Sabrina'). No other guest talks about her.",
+  "quotes": [
+   {
+    "episode": "s04e11",
+    "speaker": "Elyssa Maxx Goodman",
+    "time": "01:03:38",
+    "context": "Elyssa on why she wrote Glitter and Concrete, her history of New York drag",
+    "quote": "But the idea for the book came actually after the passing of Flawless Sabrina in November 2017. And I said to myself, I don't want her stories to get lost. I don't want anyone else's stories to get lost. How do I make sure that doesn't happen?",
+    "transcript": "But the idea for the book came actually after the passing of Lola Sabrina in November 2017. And I said to myself, I don't want her stories to get lost. I don't want anyone else's stories to get lost. How do I make sure that doesn't happen? And",
+    "check": "'Lola Sabrina' in the transcript = Flawless Sabrina (she died 18 Nov 2017). Listen at 01:03:36 to confirm."
+   },
+   {
+    "episode": "s01e02",
+    "speaker": "Michael Musto",
+    "time": "00:45:39",
+    "context": "(already on the page) Musto on drag queens who hang up the wig and the ones who go on forever",
+    "quote": "And he has a great job in publishing. But the ones that go forever, I love them too. I love Flawless Sabrina, you know.",
+    "transcript": "[0:45:39] And he has a great job in publishing. / [0:45:41] But the ones that go forever, I love them too. / [0:45:43] I love Flawless Sabrina, you know.",
+    "check": "The page has it at 00:45:41; the lead-in starts 00:45:39."
+   }
+  ]
+ },
+ "behind-the-velvet-ropes": [
+  {
+   "episode": "s04e06",
+   "speaker": "Lauren Ezersky",
+   "time": "00:24:24",
+   "context": "How the show began: Lauren went on as a guest and ended up taking it over",
+   "quote": "I was out one night wearing some pantyhose and some underwear and I don't know, some bra, and some guy comes over to me and he said, oh, would you be a guest on our show? And I said, why not? And that was Behind the Velvet Ropes.",
+   "transcript": "I was out one night Wearing some pantyhose and some underwear and I don't know some bra and some guy comes over to me and he said Oh, would you be a guest on our show? And I said, why not? And that was behind the velvet ropes.",
+   "follow_up": "00:24:45 Lauren: it was a nightclub show with three hosts (Eric Coles on music, Earl Crittenden on movies, a girl on fashion who left after two episodes); her first interview was Francesco Scavullo ('I was terrible... but he was very gracious'); she found her own sponsors - 'Wet' shampoo and MAC Cosmetics."
+  },
+  {
+   "episode": "s04e06",
+   "speaker": "Lauren Ezersky",
+   "time": "00:26:49",
+   "context": "How the show was made: no money, one camera, and everybody interviewed",
+   "quote": "We went out and we shot our own stuff... Nobody had money. We didn't really do anything fabulous, but we had content because there was not a lot of people out there doing what we did. I interviewed the cab drivers, I would interview the elevator operators on my way up to do an interview with like Vera Wang. I would talk to everybody.",
+   "transcript": "We went out and we shot our own stuff and he had some like high VA piece of shit camera. And for, for editing, he would let the first two minutes run and then that was it. Like there was no, nobody had money. We didn't really do anything fabulous, but we had content because there was not a lot of people out there doing what we did. You guys know that we were the first ones doing that. And I would interview, I interviewed the cab drivers, I would interview the elevator operators on my way up to do an interview with like Vera Wang. I would talk to everybody.",
+   "check": "Cut a swear word ('piece of shit camera'); 'Wet' sponsor line is at 00:24:45."
+  },
+  {
+   "episode": "s04e06",
+   "speaker": "Fenton Bailey",
+   "time": "00:02:37",
+   "context": "Fenton on how beloved the show still is",
+   "quote": "You are beloved. People love Behind the Velvet Ropes. People still watch it all the time on YouTube, wherever they can find it. Vogue says that you were the most unjaded fashion journalist out there.",
+   "transcript": "Yeah. You are beloved. People love behind the velvet ropes. It's still, people still watch it all the time on YouTube, wherever they can find it. Vogue says that you were the most unjaded fashion journalist out there."
+  },
+  {
+   "episode": "s04e06",
+   "speaker": "Fenton Bailey",
+   "time": "00:26:34",
+   "context": "Fenton and Randy were fans - the show inspired their Manhattan Cable",
+   "quote": "Randy and I were big fans of Behind the Velvet Ropes. And it was inspiration for Manhattan Cable, because there you go: what if we could get clips from all these shows?",
+   "transcript": "No, no, no. James think. James, how dare you. No. Randy and I were big fans of Behind the Bar. / [0:26:40 Randy] Yeah, we were. / [0:26:42 Fenton] And it was inspiration for Manhattan Cable because there you go. What if we could get clips from all these shows?",
+   "check": "The transcript says 'Behind the Bar' - he means Behind the Velvet Ropes; listen at 00:26:34."
+  },
+  {
+   "episode": "s04e06",
+   "speaker": "Randy Barbato",
+   "time": "00:27:25",
+   "context": "Randy on what Lauren covered",
+   "quote": "You were doing hairstyles, you were doing the fabric vendors, you were doing everything. And sometimes those are more interesting than the big designers.",
+   "transcript": "You were doing hairstyles, you were doing the fabric vendors, you were doing everything. And sometimes those are the more interesting than the big designers."
+  },
+  {
+   "episode": "s04e06",
+   "speaker": "James St. James",
+   "time": "00:25:59",
+   "context": "James on the show's opening titles",
+   "quote": "Looking back at it, I love the intro where you see the street style in the 90s, New Yorkers, and that surprise when you see the Twin Towers... It's so interesting to see that opening. I just, I love it so much.",
+   "transcript": "Looking back at it, I love the intro where you see the street style in the 90s, New Yorkers, and that surprise when you see the twin towers and they just get sort of paying, that sort of sudden like, it takes you, but it's so interesting to see that opening, especially. I just, I love it so much.",
+   "also": "00:00:37 James's intro: 'a cable TV pioneer whose show Behind the Velvet Ropes ran from 1989 to 2012'."
+  }
+ ]
+}
