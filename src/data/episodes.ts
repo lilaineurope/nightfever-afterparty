@@ -1108,6 +1108,7 @@ const s06e04: Episode = {
   guest: "Raja",
   released: "2026-09-09",
   watchUrl: "https://www.wowpresentsplus.com/night-fever/season:6/videos/nf-604",
+  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLVW4aQADVN8M",
   listenUrl: "https://open.spotify.com/show/0PYicagOrt96BZSMK1dcaW",
   audioUrl: "https://anchor.fm/s/68428444/podcast/play/125479296/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-9%2F5381a37a-79b3-0e94-71a0-e4ecdfacad64.mp3",
   runtime: "1:03:52",
