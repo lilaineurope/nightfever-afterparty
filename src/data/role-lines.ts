@@ -189,4 +189,5 @@ export const ROLE_LINES: Record<string, string> = {
   "mark-kamins": "Danceteria DJ",
   "paris-dupree": "founder of the House of Dupree",
   "stephen-saban": "nightlife columnist",
+  "jenny-go-getter": "Tunnel party hostess, now novelist Jennifer Banash",
 };

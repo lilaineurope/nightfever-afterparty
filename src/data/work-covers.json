@@ -1528,5 +1528,55 @@
   "kind": "book",
   "file": "work-jesus-christ-superstar.webp",
   "credit": "Cover designed by the AFTERPARTY - no picture of the real one found"
+ },
+ "The Blessed": {
+  "kind": "book",
+  "file": "work-blessed.webp",
+  "credit": "Sleeve of 'Deep Frenzy' (The Blessed, Daven Records, 1979), photo via Discogs"
+ },
+ "The Blessed – 'Deep Frenzy'": {
+  "kind": "book",
+  "file": "work-blessed.webp",
+  "credit": "Sleeve via Discogs (Daven Records, 1979)"
+ },
+ "D Generation": {
+  "kind": "book",
+  "file": "work-d-generation.webp",
+  "credit": "Cover of their first album, D Generation (Chrysalis, 1994), photo via Discogs"
+ },
+ "D Generation – 'No Way Out'": {
+  "kind": "book",
+  "file": "work-d-generation-no-way-out.webp",
+  "credit": "Sleeve via Discogs (Rockville, 1993)"
+ },
+ "D Generation – 'Wasted Years'": {
+  "kind": "book",
+  "file": "work-d-generation-wasted-years.webp",
+  "credit": "Sleeve via Discogs (Sympathy for the Record Industry, 1993)"
+ },
+ "D Generation – D Generation": {
+  "kind": "book",
+  "file": "work-d-generation.webp",
+  "credit": "CD cover via Discogs (Chrysalis, 1994)"
+ },
+ "D Generation – No Lunch": {
+  "kind": "book",
+  "file": "work-d-generation-no-lunch.webp",
+  "credit": "CD cover via Discogs (Columbia, 1996)"
+ },
+ "D Generation – Through the Darkness": {
+  "kind": "book",
+  "file": "work-d-generation-through-the-darkness.webp",
+  "credit": "CD cover via Discogs (C2 Records, 1999)"
+ },
+ "Danzig – Live on the Black Hand Side": {
+  "kind": "book",
+  "file": "work-danzig-live-on-the-black-hand-side.webp",
+  "credit": "CD cover via Discogs (Restless Records, 2001)"
+ },
+ "Danzig – 777: I Luciferi": {
+  "kind": "book",
+  "file": "work-danzig-777-i-luciferi.webp",
+  "credit": "CD cover via Discogs (Spitfire Records, 2002)"
  }
 }

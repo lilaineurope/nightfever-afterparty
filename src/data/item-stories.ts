@@ -40,6 +40,202 @@ export type ItemStory = {
 // afterparty guests ... and to all future episodes"): scripts/item-stories-auto.py writes item-stories-auto.json from the
 // work's Wikipedia page and Wikidata credits. A story written here by hand always wins.
 const HAND: Record<string, ItemStory> = {
+  // Top Google search pages, round 3 (Lisa, 28 Nov 2026: "do all 1-5"). Howie Pyro's records: the sleeves and credits on
+  // Discogs; Nations: Gallery 98's copy of the issue; The Death of Downtown: the episodes (no copy of the article found online).
+  blessed: {
+    intro:
+      "Howie Pyro's teenage punk band, playing CBGB, Max's Kansas City and the first nights of Club 57. Their one single came out on Daven Records in 1979.",
+    reviews: [],
+    facts: [
+      { label: "From", value: "New York, late 1970s" },
+      { label: "Record", value: "'Deep Frenzy' / 'American Bandstand', 7-inch single (Daven Records JC 1022, 1979)" },
+      { label: "Played", value: "CBGB, Max's Kansas City, Club 57" },
+    ],
+    inItLabel: "In the band",
+    inIt: [{ name: "Howie Pyro", note: "bass" }],
+    since: [
+      { when: "On the show", what: "Ann Magnuson: Howie Pyro went to Club 57 as a teenager, with his band The Blessed.", source: "S04E10", episode: "s04e10", time: "00:35:08" },
+    ],
+    sources: ["The single's own sleeve and label (Discogs)", "S04E10 AFTERPARTY references", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "blessed-deep-frenzy": {
+    intro: "The Blessed's only single, from 1979, with Howie Pyro on bass: two songs on a 7-inch.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1979" },
+      { label: "Label", value: "Daven Records (JC 1022), USA" },
+      { label: "Format", value: "7-inch single, 45 rpm" },
+      { label: "Songs", value: "Deep Frenzy, American Bandstand" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "The Blessed" }, { name: "Howie Pyro", note: "bass" }],
+    since: [],
+    sources: ["The single's own sleeve and label (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "d-generation": {
+    intro:
+      "The New York glam punk band Howie Pyro started in 1991 with Jesse Malin: two 7-inch singles, then three albums in the 90s, on Chrysalis, Columbia and C2.",
+    reviews: [],
+    facts: [
+      { label: "From", value: "New York, 1991" },
+      { label: "Singles", value: "'No Way Out' (Rockville, 1993), 'Wasted Years' (Sympathy for the Record Industry, 1993)" },
+      { label: "Albums", value: "D Generation (Chrysalis, 1994), No Lunch (Columbia, 1996), Through the Darkness (C2, 1999)" },
+    ],
+    inItLabel: "In the band",
+    inIt: [
+      { name: "Jesse Malin", note: "vocals" },
+      { name: "Howie Pyro", note: "bass" },
+      { name: "Danny Sage", note: "guitar" },
+      { name: "Richard Bacchus", note: "guitar" },
+      { name: "Michael Wildwood", note: "drums" },
+    ],
+    since: [],
+    sources: ["The records' own sleeves and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "d-generation-no-way-out": {
+    intro: "D Generation's first single, 1993: 'No Way Out' with 'Guitar Mafia' on the other side. Both came back on their first album a year later.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1993" },
+      { label: "Label", value: "Rockville Records" },
+      { label: "Format", value: "7-inch single" },
+      { label: "Songs", value: "No Way Out, Guitar Mafia" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "D Generation" }, { name: "Howie Pyro", note: "bass" }],
+    since: [],
+    sources: ["The single's own sleeve and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "d-generation-wasted-years": {
+    intro: "D Generation's 1993 7-inch on Sympathy for the Record Industry, with Howie Pyro on bass.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1993" },
+      { label: "Label", value: "Sympathy for the Record Industry (SFTRI 281)" },
+      { label: "Format", value: "7-inch single, 45 rpm" },
+      { label: "Songs", value: "Wasted Years, Waiting for the Next Big Parade" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "D Generation" }, { name: "Howie Pyro", note: "bass" }],
+    since: [],
+    sources: ["The single's own sleeve and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "d-generation-d-generation": {
+    intro: "D Generation's first album, 1994, on Chrysalis: thirteen songs, Howie Pyro on bass and among the writers.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1994" },
+      { label: "Label", value: "Chrysalis / EMI" },
+      { label: "Format", value: "CD album" },
+      { label: "Songs", value: "No Way Out, Sins of America, Guitar Mafia, Feel Like Suicide, Waiting for the Next Big Parade, Falling, Wasted Years, Stealing Time, Ghosts, Frankie, Working on the Avenue, Vampire Nation, Degenerated" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "D Generation" }, { name: "Howie Pyro", note: "bass, songwriting" }],
+    since: [],
+    sources: ["The album's own sleeve and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "d-generation-no-lunch": {
+    intro: "D Generation's second album, 1996, on Columbia, produced by Ric Ocasek, with Howie Pyro on bass.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1996" },
+      { label: "Label", value: "Columbia" },
+      { label: "Format", value: "CD album" },
+      { label: "Songs", value: "Scorch, She Stands There, Frankie, Capital Offender, No Way Out, Major, Disclaimer, Waiting for the Next Big Parade, Not Dreaming, Too Loose, 1981, Degenerated" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "D Generation" }, { name: "Howie Pyro", note: "bass" }],
+    since: [],
+    sources: ["The album's own sleeve and listing (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "d-generation-through-the-darkness": {
+    intro: "D Generation's third album, 1999, on C2 Records. Howie Pyro played bass and came up with the idea for the cover and booklet.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "1999" },
+      { label: "Label", value: "C2 Records (CK 68782)" },
+      { label: "Format", value: "CD album" },
+      { label: "Songs", value: "Helpless, Every Mother's Son, Hatred, Rise & Fall, Only a Ghost, Lonely, Good Ship Down, Sick on the Radio, Chinatown, So Messed Up, Sunday Secret Saints, Cornered, Don't Be Denied" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "D Generation" }, { name: "Howie Pyro", note: "bass, cover and booklet idea" }],
+    since: [],
+    sources: ["The album's own sleeve and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "danzig-live-on-the-black-hand-side": {
+    intro: "Danzig's live double album from 2001: shows from 1992 and 1994, and the 2000 tour with Howie Pyro on bass.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2001" },
+      { label: "Label", value: "Restless Records / Evilive" },
+      { label: "Format", value: "Double CD, live" },
+      { label: "Recorded", value: "Irvine Meadows 1992, Seattle Center Arena 1994, and the Satan's Child tour of 2000 (LA, New England, San Francisco)" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "Howie Pyro", note: "bass" }],
+    since: [],
+    sources: ["The album's own sleeve and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  "danzig-777-i-luciferi": {
+    intro: "Danzig's seventh studio album, 2002, with Howie Pyro on bass: thirteen songs on Spitfire Records.",
+    reviews: [],
+    facts: [
+      { label: "Out", value: "2002" },
+      { label: "Label", value: "Spitfire Records / Evilive" },
+      { label: "Format", value: "CD album" },
+      { label: "Songs", value: "Unendlich, Black Mass, Wicked Pussycat, God of Light, Liberskull, Dead Inside, Kiss the Skull, I Luciferi, Naked Witch, Angel Blake, The Coldest Sun, Halo Goddess Bone, Without Light, I Am" },
+    ],
+    inItLabel: "On it",
+    inIt: [{ name: "Howie Pyro", note: "bass" }],
+    since: [],
+    sources: ["The album's own sleeve and credits (Discogs)", "Our Library publications (no reviews or mentions yet)"],
+  },
+  nations: {
+    intro:
+      "Chi Chi Valenti's first big piece of writing, in DETAILS, October 1988: four tribes of the New York night that hung together like families. She called them nations.",
+    reviews: [],
+    facts: [
+      { label: "In", value: "DETAILS, Vol. 7 No. 5, October 1988" },
+      { label: "Written by", value: "Chi Chi Valenti" },
+      { label: "Photographs", value: "Timothy Greenfield-Sanders" },
+      { label: "The four nations", value: "The House of Xtravaganza, the House of Field (Patricia Field's), the Haringtons (Keith Haring and his crew) and the Pyramid" },
+      { label: "On the cover", value: "Tina L'Hotsky, photographed by William Coupon: 'Fashionation - Mudd Club 1978, Club Houses 1988'" },
+      { label: "Also in the issue", value: "William Coupon's Mudd Club at ten, and Stephen Saban's column with Patrick McMullan's pictures" },
+    ],
+    inIt: [
+      { name: "House of Xtravaganza" },
+      { name: "Patricia Field", note: "the House of Field" },
+      { name: "Keith Haring", note: "the Haringtons" },
+      { name: "Pyramid Club" },
+      { name: "Tina L'Hotsky", note: "on the cover" },
+    ],
+    since: [
+      { when: "On the show", what: "Chi Chi says she picked the House of Xtravaganza because they had the strongest family feel - and that the piece inspired the Love Ball, and Malcolm McLaren used its ending.", source: "S06E03", episode: "s06e03", time: "00:34:08" },
+      { when: "On the show", what: "Researching it at the balls, she kept running into the Paris Is Burning shoot, Jennie Livingston, and Donald Suggs writing Venus Envy for the Village Voice.", source: "S06E03", episode: "s06e03", time: "00:35:10" },
+    ],
+    sources: ["Gallery 98's copy of DETAILS, October 1988", "S06E03 AFTERPARTY references", "Our Library publications"],
+  },
+  "the-death-of-downtown": {
+    intro:
+      "Michael Musto's cover story in the Village Voice, written after Andy Warhol died in February 1987: with the scene's centrepiece gone, the clubs and the excitement were dying.",
+    reviews: [],
+    facts: [
+      { label: "In", value: "The Village Voice, 1987, as the cover story (the exact issue isn't online)" },
+      { label: "Written by", value: "Michael Musto" },
+      { label: "After", value: "Andy Warhol's death, 22 February 1987" },
+      { label: "It said", value: "Yuppies and the bridge-and-tunnel crowd were taking over, the press was drying up, and the VIP-room moment at Area was past" },
+      { label: "It ended", value: "Nothing's ever really over: something would come back to kick everyone in the pants - maybe a revolution" },
+      { label: "Before it", value: "Musto's book Downtown (Vintage, 1986)" },
+    ],
+    inItLabel: "About",
+    inIt: [{ name: "Andy Warhol" }, { name: "Area" }, { name: "Michael Musto", note: "wrote it" }],
+    since: [
+      { when: "On the show", what: "James asks Musto to take us through the Death of Downtown.", source: "S01E02", episode: "s01e02", time: "00:30:06" },
+      { when: "On the show", what: "James to Eric Goode: Warhol's death brought about the death of downtown, and everyone went to their separate corners.", source: "S03E06", episode: "s03e06", time: "00:34:11" },
+      { when: "On the show", what: "James: Michael Alig and the club kids came in to fill the vacuum.", source: "S06E01", episode: "s06e01", time: "00:29:58" },
+    ],
+    sources: ["Night Fever S01E02, S03E06 and S06E01", "Our Library publications"],
+  },
   // S05E09 Screamin' Rachael Cain (27 Nov 2026)
   "z-factor-and-jesse-saunders-fantasy": {
     intro: "The Chicago record credited as the first house song, made by Z-Factor and Jesse Saunders with Screamin' Rachael singing.",
@@ -547,6 +743,11 @@ const HAND: Record<string, ItemStory> = {
 /** One clip for a story that has no film of its own, shown as "Watch the clip" (Lisa, 24 Nov 2026: Blondie with Tish & Snooky -
  *  "use 1", the Hall of Fame thank-you; it is also in the S05E10 AFTERPARTY playlist). */
 const CLIPS: Record<string, NonNullable<ItemStory["film"]>> = {
+  // Howie Pyro's bands (Lisa, 28 Nov 2026).
+  "d-generation": { id: "5owZfoGwdAs", title: "D Generation - No Way Out (the video)", channel: "Official D Generation" },
+  "d-generation-no-way-out": { id: "5owZfoGwdAs", title: "D Generation - No Way Out (the video)", channel: "Official D Generation" },
+  blessed: { id: "Hqzm_q-9gu8", title: "Walter Lure and Howie Pyro - The Blessed, live", channel: "Damaged Goods" },
+  "blessed-deep-frenzy": { id: "b5ryldUFjuc", title: "The Blessed - Deep Frenzy (1979)", channel: "Daven Records" },
   // Dean Johnson's work (Lisa, 27 Nov 2026): Nelson Sullivan's own tape, the Velvet Mafia's video, the film's trailer.
   weenies: { id: "BswrxwRpoz8", title: "Dean and the Weenies - Bourgeois Boys, Pyramid Club, 1985", channel: "Nelson Sullivan's video archive" },
   "velvet-mafia": { id: "iIUGQ8_6Jh0", title: "Dean Johnson - Velvet Mafia (music video)", channel: "RYANISLANDfilms" },
