@@ -42,7 +42,7 @@ const refs: Ref[] = EPISODE_REFS.flatMap(([episode, rows]) => rows.map((r) => ({
 // "(S01E07)" is kept, so each episode's on-camera look keeps its own card.
 // A few names share their plain words with another card of a different kind (the band Berlin and the city, the film
 // Morocco and the country, the film Farinelli and the singer): those keep their bracket, so each gets its own card (S04E01).
-export const OWN_CARD = new Set(["Berlin (band)", "Morocco (1930 film)", "Farinelli (1994 film)"]);
+export const OWN_CARD = new Set(["Berlin (band)", "Morocco (1930 film)", "Farinelli (1994 film)", "McQueen (2018 film)"]);
 const clean = (n: string) =>
   n
     .replace(/\s*\(([^)]*)\)/g, (m, inner: string) =>

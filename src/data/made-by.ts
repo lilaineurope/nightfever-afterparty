@@ -564,6 +564,12 @@ export const OTHER_WORKS: Record<string, OtherWork[]> = {
   // Lisa, 27 Nov 2026: "dean's work needs cover designs and each item needs a page". Facts: the records' own sleeves and
   // labels (Discogs), the Velvet Mafia's own site and press list, the film credits (TMDB, IMDb), the NYU Fales Library's
   // Dean Johnson Papers and the flyers his sister Beth keeps (researched 27 Nov 2026).
+  // Lisa, 28 Nov 2026: "add a libarry ... box to his page". The documentary gets its own page (Moving Images).
+  "Alexander McQueen": [
+    { title: "McQueen (2018 film)", kind: "Film", role: "About him", year: 2018, card: "Film" },
+    { title: "Alexander McQueen: Savage Beauty", kind: "Book", role: "About him (the Met's exhibition book)", year: 2011 },
+    { title: "Cutting Up Rough (BBC, The Works)", kind: "TV", role: "About him", year: 1997 },
+  ],
   "Dean Johnson": [
     { title: "Dean and the Weenies – 'Chicken'", kind: "Music", role: "Wrote it, sang it", year: 1987, card: "Music" },
     { title: "Dean and the Weenies – 'F*ck You'", kind: "Music", role: "Wrote it, sang it", year: 1988, card: "Music" },
