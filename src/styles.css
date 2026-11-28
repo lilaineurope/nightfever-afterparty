@@ -1444,6 +1444,7 @@ main.episode-page a.map-btn:not([class*="bg-"]):not([class~="border"]):not([clas
 .rooms-short .rooms-list > li { break-inside: avoid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: center; padding: 6px 0; font-size: 13px; line-height: 1.35; }
 .rooms-short .rooms-badge { width: 24px; height: 24px; font-size: 11px; }
 .rooms-badge-home { background: #f6e06a; }
+.rooms-map-foot { display: flex; justify-content: flex-end; padding: 8px; border-top: 2px solid #111; background: #f6f0ea; }
 .rooms-short .home-tag { vertical-align: 1px; }
 
 /* The Map page header (Lisa, 27 Nov 2026, "H1"): the drawn city, every pin on it, the title over uptown. */

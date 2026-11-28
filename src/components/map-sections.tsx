@@ -147,7 +147,7 @@ export function BringUsHome({ m }: { m: MapHome }) {
 
 /** A living person's rooms, or an AFTERPARTY's places (the reference list's Map view): the SHORT map box (Lisa, 28 Nov
  *  2026, "REMEMBER TO ALL PAGES THAT WE ARE SHORTENING THE MAP BOX ... FROM NOW ONWARDS"), cut like "Around the block":
- *  the drawn New York with the big-map button in its corner, then the numbered names only, side by side. What was said
+ *  the drawn New York with the big-map button in its bottom-right corner, then the numbered names only, side by side. What was said
  *  about each place stays in the episode's reference list and the place's own page, not in the map box. On an AFTERPARTY
  *  page each name keeps its yellow ▶ time code. Every page with a map uses this component or AroundTheBlock, never a
  *  map box of its own. */
@@ -237,7 +237,7 @@ export function RoomsMapSection({
                   </text>
                 </a>
               ))}
-              {/* The scale sits bottom-left: the big-map button has the bottom-right corner, as on Around the block. */}
+              {/* The scale sits bottom-left, under the big-map button's corner. */}
               <g transform={`translate(24 ${m.h - 24})`}>
                 <line x1={0} y1={0} x2={m.scale.px} y2={0} className="place-scale" />
                 <text x={m.scale.px / 2} y={-7} textAnchor="middle" className="place-scale-label">
@@ -245,14 +245,17 @@ export function RoomsMapSection({
                 </text>
               </g>
             </svg>
+            {/* The big-map button in the map box's bottom-right corner, on a strip of its own so it never hides a pin. */}
             {r.stops.length > 0 && (
-              <Link
-                to="/map"
-                search={episode ? { ep: episode } : { at: r.stops[0]!.slug }}
-                className="map-btn map-btn-corner"
-              >
-                Open the big map &rarr;
-              </Link>
+              <div className="rooms-map-foot">
+                <Link
+                  to="/map"
+                  search={episode ? { ep: episode } : { at: r.stops[0]!.slug }}
+                  className="map-btn"
+                >
+                  Open the big map &rarr;
+                </Link>
+              </div>
             )}
           </div>
         )}
@@ -329,6 +332,7 @@ export function RoomsMapSection({
               ))}
             </p>
           )}
+          {(r.stops.length > 0 || r.home.length > 0) && (
           <p className="mt-4 text-xs text-muted-foreground">
             <span aria-hidden="true" className="place-key place-key-club" /> club &nbsp;
             <span aria-hidden="true" className="place-key" /> place
@@ -340,6 +344,7 @@ export function RoomsMapSection({
             )}{" "}
             · Pins are approximate, from the public address.
           </p>
+          )}
         </div>
       </div>
     </section>

@@ -281,10 +281,13 @@ function drawnCity(stops: (Pinned & { line?: MapLine | undefined })[]): {
     maxY = Math.max(...pts.map((q) => q.y));
   const spanX = Math.max(maxX - minX, 3200),
     spanY = Math.max(maxY - minY, 3200);
+  // The short map box (Lisa, 28 Nov 2026): at most 520 high, and every pin inside it (the old 640 cap cut off the top and
+  // bottom stops when they lay far apart north to south).
   const W = 600,
-    PAD = 60;
-  const s = (W - 2 * PAD) / Math.max(spanX, spanY * 0.7);
-  const H = Math.round(Math.min(640, Math.max(360, spanY * s + 2 * PAD)));
+    PAD = 60,
+    MAX_H = 520;
+  const s = Math.min((W - 2 * PAD) / spanX, (MAX_H - 2 * PAD) / spanY);
+  const H = Math.round(Math.min(MAX_H, Math.max(360, spanY * s + 2 * PAD)));
   const cx = (minX + maxX) / 2,
     cy = (minY + maxY) / 2;
   const at = (lat: number, lng: number) => {
