@@ -33,3 +33,8 @@
 ## Transcript check
 - "Colleen": only S03E06 00:39:01 (Eric Goode).
 - "Continental": only S03E06 00:13:24-00:13:32 for the club; every other hit is the Continental Baths (S02E01, S03E04, S04E03, S04E09) or the Continental Divide bar (S02E10) - not this club.
+
+## The Death of Downtown - cover (Lisa 28 Nov: "death of downtown needs a cover design")
+- Issue: The Village Voice, 28 April 1987 (Vol. XXXII No. 17) - from one academic citation (CUNY Academic Works: "Musto, Michael (1987), 'The Death of Downtown', The Village Voice, 28 April"); Musto himself calls it his 1987 Voice cover story. Not double-checked against the issue.
+  Source: https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1174&context=bc_pubs
+- Picture of that front page: NONE FOUND. Searched: Google Images, rarenewspapers.com (sells many 1987 Voice issues, not this one), eBay-style listings, Google News Archive (no Village Voice there), Musto's archive pages. So the page keeps a designed cover for now; if Lisa wants, a library/Voice archive scan could be asked for.
