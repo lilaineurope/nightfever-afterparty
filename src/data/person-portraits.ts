@@ -1144,6 +1144,7 @@ export const PERSON_PORTRAITS: Record<string, PersonPortrait> = {
   "lisa-collins": { photo: lisaCollinsPhoto, polaroid: lisaCollinsPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
   // Lisa, 28 Nov 2026 ("yes zandra publish"): Gemini drawing after a reference photo (reference not on the site).
   "zandra-rhodes": { photo: zandraRhodesPhoto, polaroid: zandraRhodesPolaroid, focus: "30%", credit: "Illustration made with Gemini, not a photo" },
-  // Lisa, 28 Nov 2026: Gemini refused his real face, she picked the free 2009 runway photo (raised hand masked out), then "publish to all pending".
-  "alexander-mcqueen": { photo: alexanderMcqueenPhoto, polaroid: alexanderMcqueenPolaroid, focus: "28%", credit: "Portrait after a photo by Ed Kavishe / FashionWirePress, 2009 (CC BY 3.0), in our photocopy style" },
+  // Lisa, 28 Nov 2026: Gemini refused his real face; "alexander g" + "publish": a still from the CC BY 3.0 Nowness/Tate film of
+  // Nick Waplington's photos of him at work on The Horn of Plenty (2009), at a fitting in his light blue shirt.
+  "alexander-mcqueen": { photo: alexanderMcqueenPhoto, polaroid: alexanderMcqueenPolaroid, focus: "28%", credit: "Portrait after a still from Nick Waplington / Alexander McQueen: Working Process (Nowness for Tate, 2015, CC BY 3.0), in our photocopy style" },
 };

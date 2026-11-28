@@ -693,6 +693,51 @@ export const MEMORIAM: Record<string, Memoriam> = {
     ],
     wikidata: "https://www.wikidata.org/wiki/Q6167922",
   },
+  // Lisa, 28 Nov 2026 (polaroid thread): "alexander mcqueen needs a better poloaroid, show me more options - also add a libarry and a
+  // movie box to his page". Facts: Wikipedia (Alexander McQueen, McQueen (film)), read 28 Nov 2026. Quotes: the transcripts.
+  "alexander-mcqueen": {
+    born: "1969",
+    died: "2010",
+    diedLine: "Died 11 February 2010 in London, aged 40",
+    aka: "Lee Alexander McQueen",
+    first: "McQueen",
+    story:
+      "The Savile Row-trained tailor from London who made fashion shows into theatre. Isabella Blow bought his whole graduate collection, Givenchy made him its head designer at 27, Daphne Guinness wore him, and Lauren Ezersky interviewed him in bed.",
+    timeline: [
+      ["1969", "Born Lee Alexander McQueen on 17 March in Lewisham, London"],
+      ["Late 1980s", "Two years learning coat-making with the Savile Row tailors Anderson & Sheppard, then pattern cutter at Gieves & Hawkes"],
+      ["Early 1990s", "Works for Romeo Gigli in Milan"],
+      ["1992", "His Central Saint Martins MA collection, Jack the Ripper Stalks His Victims, is bought whole by Isabella Blow"],
+      ["1995", "Highland Rape (Autumn/Winter 1995) makes his name"],
+      ["1996", "Head designer of Givenchy, after John Galliano moves to Dior; the first of his four British Designer of the Year awards"],
+      ["1999", "No. 13: Shalom Harlow in a white dress spray-painted by two robot arms on the runway"],
+      ["2000", "Sells 51% of his company to the Gucci Group"],
+      ["2009", "Plato's Atlantis, his last full collection, shown in Paris on 6 October"],
+      ["2010", "Dies in London on 11 February, aged 40. Sarah Burton takes over his label"],
+      ["2011", "Alexander McQueen: Savage Beauty at the Metropolitan Museum in New York, and in London in 2015"],
+      ["2018", "The documentary McQueen, by Ian Bonhôte and Peter Ettedgui"],
+    ],
+    liftedUp: [],
+    rooms: ["Nag Nag Nag", "Drama", "The Mercer Hotel", "Givenchy"],
+    said: [
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:03:53", context: "Her legendary Behind the Velvet Ropes interview: she called his hotel every hour until he answered", quote: "I called him up every hour on the hour at the hotel. Finally, he answered the phone, because he was out partying the night before. And I said, I'm coming over with a camera... He got out of the tub. I said, go into bed, I'll come in here with you, order your breakfast. And we just did a really great interview." },
+      { episode: "s04e06", who: "Lauren Ezersky", time: "00:05:04", context: "Where he was staying, and under what name", quote: "He was staying at the Mercer Hotel, and he wasn't staying under Alexander McQueen, because everybody would be calling. So he gave me some secret name... He was getting invitations for more parties for that night and for the next night. Everybody wanted him." },
+      { episode: "s04e01", who: "Daphne Guinness", time: "00:50:05", context: "The only designer who ever gave her clothes", quote: "He would come to my house and he would go through my closets and he would take away lots and lots of clothes. He'd say, I'll send them back. And then he'd send them back in plastic bags, and they were all in pieces... So then he would sort of make me something." },
+      { episode: "s04e01", who: "Daphne Guinness", time: "00:50:51", context: "Why she didn't mind getting her clothes back in pieces", quote: "It's fashion at its best, and art at its best is a conversation with the artist. It's give and take. And who am I to get in the way of that?" },
+      { episode: "s05e02", who: "Jodie Harsh", time: "00:15:56", context: "Who you'd see on a night at Nag Nag Nag, around 2003 and 2004", quote: "You'd get Boy George... You'd get Alexander McQueen, Galliano. It was really quite fabulous." },
+      { episode: "s03e01", who: "James St. James", time: "00:42:10", context: "James's favourite Sex and the City outfits. Patricia Field puts him right: Carrie's wedding dress in the movie was Vivienne Westwood", quote: "When I think of my favorite outfits from the show, it's the tutu in the opening that always stands out. I think it's the Alexander McQueen, the wedding dress in the movie." },
+    ],
+    also: { heading: "McQueen in the Library", names: ["McQueen (2018 film)", "Isabella Blow: Fashion Galore!", "McQueen's clothes in pieces", "Interviewing McQueen in bed"] },
+    // All five checked embeddable on YouTube, 28 Nov 2026.
+    videos: [
+      { id: "4OjX3ZbsfbU", title: "McQueen (2018) - official trailer" },
+      { id: "542vMeyma4g", title: "Cutting Up Rough - Alexander McQueen on BBC's The Works, 1997" },
+      { id: "roTTmuZXDqs", title: "Alexander McQueen and Nick Knight - The White Interview (SHOWstudio)" },
+      { id: "zhbRjfqKCYE", title: "Isabella Blow: the woman who discovered Alexander McQueen" },
+      { id: "Tr5WZzm1I7Y", title: "Isabella Blow: Fashion Galore! - Jack the Ripper Stalks His Victims (Somerset House)" },
+    ],
+    wikidata: "https://www.wikidata.org/wiki/Q207939",
+  },
   "halston": {
     born: "1932",
     died: "1990",
