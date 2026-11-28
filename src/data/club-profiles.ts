@@ -1029,6 +1029,35 @@ export const CLUB_PROFILES: Record<string, ClubProfile> = {
   // Lisa, 28 Nov 2026 on Howie Pyro's page: "add picture for don hills and create page". Facts: Hudson Square BID history,
   // the Village Voice's and Interview's Don Hill obituaries, The Real Deal and BrooklynVegan on the closing (Apr 2011), and
   // the guests (S02E06, S03E10, S04E03).
+  // Lisa, 28 Nov 2026: "are the quotes for michael todd?" - Palladium's upstairs room, every mention as a quote (max 2 per guest).
+  "michael-todd-room": {
+    opened: "1985",
+    closed: "1997",
+    address: "Upstairs at the Palladium, 126 East 14th Street",
+    story:
+      "Palladium's upstairs VIP room, the glam room above the dance floor: Jean-Michel Basquiat's paintings over the bar and above the DJ, Anita Sarko on the decks and Lisa Edelstein behind the bar. James calls it always spectacular, always filled; for Lincoln Palsgrove it was Babylon, a crash course in downtown.",
+    timeline: [
+      ["May 1985", "Steve Rubell and Ian Schrager open Palladium in the old Academy of Music on East 14th Street"],
+      ["1985", "Upstairs, the Michael Todd Room, with two Basquiats: one above the bar, one above the DJ"],
+      ["1985", "Lisa Edelstein moves up to its bar after her first two weeks; Anita Sarko DJs"],
+      ["1985", "Miss Guy's first night in New York ends up here, with Boy George"],
+      ["1980s", "The Grace Jones party; Madonna and Keith Haring in the crowd, James remembers"],
+      ["1997", "Palladium closes"],
+    ],
+    stage: ["Anita Sarko", "Lisa Edelstein", "Steve Rubell", "Jean-Michel Basquiat", "Keith Haring", "Grace Jones"],
+    rooms: ["Palladium", "Area", "Boy Bar"],
+    said: [
+      { episode: "s01e07", who: "James St. James", time: "01:04:23", context: "Talking to Rudolf Piper about Palladium: the upstairs VIP room was where the best parties happened", quote: "There might have been some middling people on the dance floor, but that Michael Todd Room was always spectacular, always filled. I remember the Grace Jones party. I remember Madonna and Keith Haring. Some of my best memories are at Palladium." },
+      { episode: "s04e07", who: "James St. James", time: "00:30:54", context: "With Trey Speegle: the two Basquiats, Anita Sarko on the decks and Lisa Edelstein behind the bar", quote: "There was the one above the bar, and then there was the one above Anita. Absolutely spectacular. The Mike Todd Room, that was totally glam. That was Anita Sarko, and Lisa Edelstein was doing the bar." },
+      { episode: "s04e07", who: "Randy Barbato", time: "00:29:53", context: "How Palladium took the art-in-a-club idea from Area to the next level", quote: "As great as Area was, the Palladium took that to the nth degree, where you had the Michael Todd Room with those Jean-Michel Basquiats and you had Keith Haring doing the dance floor." },
+      { episode: "s04e07", who: "Fenton Bailey", time: "00:30:36", context: "Trey asks about the long Basquiat painting", quote: "In the Michael Todd Room. I mean, that alone would be worth more than the value of the building." },
+      { episode: "s03e06", who: "Eric Goode", time: "00:22:49", context: "Area's Eric Goode on how Steve Rubell answered Area with Palladium", quote: "He did the Mike Todd Room with Jean-Michel Basquiat, and Keith Haring on the dance floor, and Kenny Scharf, and Francesco Clemente. He built a bigger, better mousetrap." },
+      { episode: "s01e03", who: "Lisa Edelstein", time: "00:22:50", context: "Her Palladium job: after trailing on opening night she was moved upstairs", quote: "I wasn't officially working the opening night. I was trailing, watching somebody else do it. And I was moved to the Michael Todd Room after the first two weeks or something. It was such a funny job." },
+      { episode: "s03e10", who: "Miss Guy", time: "00:18:09", context: "Her first night in New York, 1985: a show at Boy Bar, then on to Palladium", quote: "After the show, we went into the Palladium and went up to the Mike Todd Room. I feel like Warhol was there, and Boy George was definitely there." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:09:57", context: "His first time at Palladium as a teenager from the Upper East Side", quote: "I can remember the Mike Todd Room like it was yesterday, because it was just like Babylon, seeing all of the people in this huge space. I've never experienced anything like it. It was a crash course in downtown." },
+      { episode: "s06e06", who: "Lincoln Palsgrove IV", time: "00:14:20", context: "Going with Jennifer Rubell, Steve Rubell's niece, through the 13th Street door", quote: "We would go together to the Palladium with Jennifer. We would just scooch up the 13th Street entrance and go right into the Mike Todd Room. That is where I met Rudolf and Steve Lewis and David Knapp and Anita Sarko." },
+    ],
+  },
   "don-hill-s": {
     opened: "1993",
     closed: "Apr 2011",
