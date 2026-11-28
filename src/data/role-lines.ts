@@ -212,6 +212,7 @@ export const ROLE_LINES: Record<string, string> = {
   "love-ball": "Susanne Bartsch's AIDS benefit ball, Roseland 1989",
   voguing: "The dance of the Harlem ballroom houses",
   "no-entiendes": "Haoui Montaug's cabaret night at Danceteria",
+  "petting-zoo-party": "Really Denise and Jenny Go-Getter's party in the Tunnel basement",
   "christopher-street": "The West Village street of Stonewall and the piers",
   "david-ian-xtravaganza": "House of Xtravaganza, Elements of Vogue",
   "venus-xtravaganza": "House of Xtravaganza, Paris Is Burning",
