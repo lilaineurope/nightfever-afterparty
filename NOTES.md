@@ -38,3 +38,8 @@
 - Issue: The Village Voice, 28 April 1987 (Vol. XXXII No. 17) - from one academic citation (CUNY Academic Works: "Musto, Michael (1987), 'The Death of Downtown', The Village Voice, 28 April"); Musto himself calls it his 1987 Voice cover story. Not double-checked against the issue.
   Source: https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1174&context=bc_pubs
 - Picture of that front page: NONE FOUND. Searched: Google Images, rarenewspapers.com (sells many 1987 Voice issues, not this one), eBay-style listings, Google News Archive (no Village Voice there), Musto's archive pages. So the page keeps a designed cover for now; if Lisa wants, a library/Voice archive scan could be asked for.
+
+## I'm Gonna Make You Love Me - poster (Lisa 28 Nov: "needs a cover design")
+- covers/im-gonna-make-you-love-me.jpg (500x750): the real film poster - "i'm gonna make you love me" over a beach photo of Brian/Tish in a gold swimsuit.
+- Film: I'm Gonna Make You Love Me, documentary by Karen Bernstein about Brian Belovitch (Tish Gervais), 2019 (TMDB first release 7 Nov 2019; 82 min; Picture Box Productions; IMDb tt11742750).
+- Source: TMDB https://www.themoviedb.org/movie/682761 (poster /g7FYoIVeh1x5xhRm5mlwFl6VRlm.jpg). Credit: "Poster: I'm Gonna Make You Love Me (Karen Bernstein, 2019)".
