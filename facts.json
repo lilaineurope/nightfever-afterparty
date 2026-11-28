@@ -1,0 +1,527 @@
+{
+ "_note": "Researched 28 Nov 2026 on Lisa's Mac. Every fact has its source. Covers: Open Library (books), Discogs (records, user photos of the sleeves), Gallery 98 (Details). No licence fees, no Bill Bernstein.",
+ "jenny-go-getter": {
+  "who": "Jenny Go-Getter = Jennifer Banash (Really Denise spells it out, S05E07 00:54:50). Original Tunnel kid in the basement; threw parties with Really Denise at the Tunnel (late 1980s), 'on a million invitations' together. Today a novelist (YA and adult), ghostwriter and editor.",
+  "nights": [
+   {
+    "what": "Petting zoo party",
+    "where": "The Tunnel basement (220 Twelfth Avenue)",
+    "who": "Really Denise and Jenny Go-Getter; Zaldy danced in a cage as a zebra; invitation photo by Stephan Lupino (Denise and Jenny topless behind a cage, Denise in a fur bikini)",
+    "year": "not stated (late 1980s)",
+    "source": "S05E07b 00:44:23-00:45:49"
+   },
+   {
+    "what": "Tunnel basement / VIP room parties with Really Denise",
+    "year": "late 1980s (Tunnel opened 1986)",
+    "source": "S05E07b 00:36:25 context, 00:44:03"
+   }
+  ],
+  "nights_not_found": "No dated flyer or year for any of her parties found online.",
+  "books": [
+   {
+    "title": "Hollywoodland: An American Fairy Tale",
+    "year": 2006,
+    "publisher": "Impetus Press",
+    "isbn": "9780977669301",
+    "format": "paperback",
+    "ol": "https://openlibrary.org/works/OL8847448W",
+    "cover": "covers/jenny-go-getter/banash-hollywoodland-2006.jpg"
+   },
+   {
+    "title": "The Elite",
+    "year": 2008,
+    "publisher": "Berkley JAM (Penguin)",
+    "isbn": "9780425221570",
+    "series": "The Elite #1",
+    "ol": "https://openlibrary.org/works/OL8847447W",
+    "cover": "covers/jenny-go-getter/banash-the-elite-2008.jpg",
+    "cover_note": "from the 2008 eBook edition (the paperback scan on Open Library is a title page, skipped)"
+   },
+   {
+    "title": "In Too Deep",
+    "year": 2009,
+    "publisher": "Berkley JAM",
+    "isbn": "9780425223536",
+    "series": "The Elite #2",
+    "ol": "https://openlibrary.org/works/OL8847449W",
+    "cover": null,
+    "cover_note": "Open Library only has a title-page scan - none found"
+   },
+   {
+    "title": "Simply Irresistible",
+    "year": 2009,
+    "publisher": "Berkley JAM",
+    "isbn": "9780425227831",
+    "series": "The Elite #3",
+    "ol": "https://openlibrary.org/works/OL8847450W",
+    "cover": null,
+    "cover_note": "none on Open Library"
+   },
+   {
+    "title": "White Lines",
+    "year": 2013,
+    "publisher": "G. P. Putnam's Sons (hardcover); Speak paperback 2014 (9780147509970)",
+    "isbn": "9780399257889",
+    "about": "1980s New York: 17-year-old Caitlin escapes into nights of clubbing and drugs - her club-kid years turned into a novel",
+    "ol": "https://openlibrary.org/works/OL16591841W",
+    "cover": "covers/jenny-go-getter/banash-white-lines-2013.jpg"
+   },
+   {
+    "title": "Silent Alarm",
+    "year": 2015,
+    "publisher": "G. P. Putnam's Sons Books for Young Readers",
+    "isbn": "9780399257896",
+    "ol": "https://openlibrary.org/works/OL17358768W",
+    "cover": "covers/jenny-go-getter/banash-silent-alarm-2015.jpg"
+   },
+   {
+    "title": "The Rise and Fall of Ava Arcana",
+    "year": 2023,
+    "publisher": "Lake Union Publishing (Amazon Publishing)",
+    "isbn": "9781662505416",
+    "ol": "https://openlibrary.org/works/OL28434134W",
+    "cover": "covers/jenny-go-getter/banash-rise-and-fall-of-ava-arcana-2023.jpg"
+   },
+   {
+    "title": "The Essential Elizabeth Stone",
+    "year": 2024,
+    "publisher": "Lake Union Publishing (Amazon Publishing)",
+    "isbn": "9781662505430",
+    "ol": "https://openlibrary.org/works/OL37876952W",
+    "cover": "covers/jenny-go-getter/banash-essential-elizabeth-stone-2024.jpg",
+    "cover_note": "small (142x220) on Open Library"
+   }
+  ],
+  "also": "Contributor to the anthology 'Under the Southern Cross' (Anaphora, 2019) - not checked if it's the same Jennifer Banash; left out.",
+  "polaroid": {
+   "status": "Option A made (Gemini drew her, no refusal). Option B blocked: Gemini's daily picture limit was reached (another chat used it tonight); resets 03:24 Stockholm, 28 Nov. Labels: THE TUNNEL | PETTING ZOO | REALLY DENISE | WHITE LINES; code '13 MENTIONS' (12 in S05E07b + 1 in S06E06); line 'Tunnel party hostess · writer Jennifer Banash'. Reference (Gemini only): her author photo (Adventures in PUPlishing).",
+   "files": "polaroids/jenny-go-getter/option-A/",
+   "famous_by": "Gemini drew her",
+   "refused": "No"
+  }
+ },
+ "the-jefferson": {
+  "what": "Arthur Weinstein's illegal after-hours club in the old Jefferson Theatre on 14th Street - the first of his after-hours clubs, before the Continental and The World (1984).",
+  "address": "Jefferson Theatre, 214 East 14th Street near Third Avenue (auditorium ran through to East 13th Street). The club was upstairs: the second floor above the marquee.",
+  "years": "Opened c. New Year's 1981 (a 1980 party Weinstein threw for his wife Colleen in their loft there turned into the club the same night, per the Daily Beast; Scotty Taylor dates the opening to New Year's 1981). Closed by c. 1982-83 (Arthur was already building the Continental in a garage on West 25th Street). Exact closing date not found.",
+  "who": "Arthur Weinstein (died 2008), with his wife Colleen Weinstein; Scotty Taylor says he was a partner. Building owner Semone Grossman had backed out of a plan to turn the whole theatre into a club.",
+  "the_building": "Opened 1913 as B.F. Keith's Jefferson vaudeville theatre (architects George W. Keister, Thomas W. Lamb), later RKO Jefferson; showed films until at least 1977, then stood empty; demolished 2000; now CityMD (14th St) and apartments (13th St).",
+  "guests_say": "Susanne Bartsch went there in her first weeks in New York, 1981 - 'the one place in New York that felt fabulous' (James, S02E03). Eric Goode: Arthur 'brought down the Ninth and Tenth Precinct' wearing a wire (S03E06).",
+  "picture": "none found free. Cinema Treasures has photos of the RKO Jefferson (e.g. 1968, credit Sepp Werkmeister) but no free licence; Wikimedia Commons has nothing. A Gemini-drawn facade would be an option (marked as drawn).",
+  "sources": [
+   "https://cinematreasures.org/theaters/1357",
+   "https://knickerbockervillage.blogspot.com/2010/01/jefferson-theater.html",
+   "https://www.thedailybeast.com/club-kids-and-crooked-cops-when-new-york-went-wild-after-hours",
+   "https://en.wikipedia.org/wiki/Hurrah_(nightclub)",
+   "NYT obituary 'Arthur Weinstein, Starter of Nightclubs, Dies at 60', 16 Jul 2008"
+  ]
+ },
+ "nations": {
+  "what": "'Nations' - Chi Chi Valenti's essay on the downtown 'tribes in the night that hung together like families, like style tribes': the House of Xtravaganza, Patricia Field and the House of Field, Keith Haring and his staff ('the Haringtons'), and the Pyramid Club. Photos by Timothy Greenfield-Sanders.",
+  "issue": "DETAILS, Vol. 7 No. 5, October 1988 (222 pages). Same issue: William Coupon's 'The Mudd Pack' (the Mudd Club at 10), Stephen Saban's column with Patrick McMullan photos, Marcus Leatherdale's Hidden Identities, Chuck D by Steven Blush.",
+  "cover_star": "Tina L'Hotsky, photographed by William Coupon. Cover lines: 'Fashionation', 'Mudd Club 1978, Club Houses 1988'.",
+  "cover": "covers/nations/details-1988-10-cover.jpg (800x1041)",
+  "spreads": [
+   "covers/nations/details-1988-10-nations-house-of-field.jpg (the House of Field, for Nations)",
+   "covers/nations/details-1988-10-nations-haringtons.jpg (Keith Haring and the Haringtons, for Nations)"
+  ],
+  "credit": "DETAILS, October 1988 - photo via Gallery 98",
+  "check": "Chi Chi says she picked four tribes, one being the House of Xtravaganza; Gallery 98's listing names Patricia Field, Keith Haring and the Pyramid. Latina.com captions an Xtravaganza group photo (David DePino, Danni, Mother Angie, Jose Disla) 'Details, October 1988'.",
+  "sources": [
+   "https://gallery98.org/2019/details-magazine-1988-10-oct-tina-lhotsky-fashionnation-the-mudd-clubs-10-year-anniversary/",
+   "https://en.wikipedia.org/wiki/House_of_Xtravaganza",
+   "https://latina.com/?p=1447"
+  ]
+ },
+ "the-death-of-downtown": {
+  "what": "'The Death of Downtown' - Michael Musto's Village Voice cover story, written after Andy Warhol died (22 Feb 1987).",
+  "publication": "The Village Voice, 1987 (cover story). Exact issue date not found online - the Voice archive or a library database would have it.",
+  "argued": "With Warhol, 'the centerpiece of the scene', gone, the clubs and the excitement were dying: yuppies and 'the dreaded bridge-and-tunnel people' were taking over, the press was drying up, the grown-up 'clink clink' party at Area's VIP room was past. It ended: 'nothing's ever really over, something's going to come back to kick everyone in the pants - it might be a revolution' (Musto, S01E02). James: the vacuum was filled by Michael Alig and the club kids (S06E01).",
+  "related": "Musto's book 'Downtown' (Vintage, 12 Jun 1986, ISBN 0-394-74285-0) - with the Warhol blurb Musto says he wrote himself (S01E02 00:30:23). His later Voice piece 'Wild in the Clubs' (1988) is a different article.",
+  "scan": "none found",
+  "sources": [
+   "https://www.interviewmagazine.com/culture/michael-alig",
+   "https://en.wikipedia.org/wiki/Michael_Musto",
+   "Night Fever S01E02 00:30:06-00:31:19"
+  ]
+ },
+ "howie-pyro": {
+  "who": "Howie Pyro (Howard Kusten, 28 Jun 1960 - 4 May 2022). Teen leader of The Blessed at CBGB and Max's; early Mudd Club DJ; first DJ at Squeezebox (Michael Schmidt, S02E06); co-founder and bassist of D Generation; bassist in Danzig 2000-2003; DJ and host of Intoxica Radio (internet radio: 1950s-60s rock'n'roll, garage, surf, rockabilly); 'Howie Pyro's Sick Sick World' (Grease Rhythm TV). Died of COVID-19 pneumonia complications after a liver transplant.",
+  "records": {
+   "pyro-the-blessed-deep-frenzy-1979": {
+    "title": "Deep Frenzy / American Bandstand",
+    "artist": "The Blessed (3)",
+    "year": 1979,
+    "labels": [
+     [
+      "Daven Records",
+      "JC 1022"
+     ]
+    ],
+    "formats": [
+     "Vinyl 7\",45 RPM,Single,Stereo"
+    ],
+    "country": "US",
+    "tracks": [
+     "Deep Frenzy",
+     "American Bandstand"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/release/2572512",
+    "cover": "pyro-the-blessed-deep-frenzy-1979.jpg",
+    "cover_size": "600x584"
+   },
+   "pyro-d-generation-1994": {
+    "title": "D Generation",
+    "artist": "D Generation",
+    "year": 1994,
+    "labels": [
+     [
+      "Chrysalis",
+      "7243 8 30050 2 4"
+     ],
+     [
+      "EMI",
+      "F2-30050"
+     ]
+    ],
+    "formats": [
+     "CD Album"
+    ],
+    "country": "US",
+    "tracks": [
+     "No Way Out",
+     "Sins Of America",
+     "Guitar Mafia",
+     "Feel Like Suicide",
+     "Waiting For The Next Big Parade",
+     "Falling",
+     "Wasted Years",
+     "Stealing Time",
+     "Ghosts",
+     "Frankie",
+     "Working On The Avenue",
+     "Vampire Nation",
+     "Degenerated"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ],
+     [
+      "Howie Pyro",
+      "Written-By"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/master/379616",
+    "cover": "pyro-d-generation-1994.jpg",
+    "cover_size": "600x597"
+   },
+   "pyro-d-generation-no-lunch-1996": {
+    "title": "No Lunch",
+    "artist": "D Generation",
+    "year": 1996,
+    "labels": [
+     [
+      "Columbia",
+      "483698 9"
+     ],
+     [
+      "Columbia",
+      "COL 483698 9"
+     ]
+    ],
+    "formats": [
+     "CD Album"
+    ],
+    "country": "Europe",
+    "tracks": [
+     "Scorch",
+     "She Stands There",
+     "Frankie",
+     "Capital Offender",
+     "No Way Out",
+     "Major",
+     "Disclaimer",
+     "Waiting For The Next Big Parade",
+     "Not Dreaming",
+     "Too Loose",
+     "1981",
+     "Degenerated"
+    ],
+    "pyro_credits": [],
+    "discogs": "https://www.discogs.com/master/234946",
+    "cover": "pyro-d-generation-no-lunch-1996.jpg",
+    "cover_size": "500x500"
+   },
+   "pyro-d-generation-through-the-darkness-1999": {
+    "title": "Through The Darkness",
+    "artist": "D Generation",
+    "year": 1999,
+    "labels": [
+     [
+      "C2Records",
+      "CK 68782"
+     ]
+    ],
+    "formats": [
+     "CD Album"
+    ],
+    "country": "US",
+    "tracks": [
+     "Helpless",
+     "Every Mother's Son",
+     "Hatred",
+     "Rise & Fall",
+     "Only A Ghost",
+     "Lonely",
+     "Good Ship Down",
+     "Sick On The Radio",
+     "Chinatown",
+     "So Messed Up",
+     "Sunday Secret Saints",
+     "Cornered",
+     "Don't Be Denied"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ],
+     [
+      "Howie Pyro",
+      "Concept By [Cover and Booklet Concept]"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/master/380249",
+    "cover": "pyro-d-generation-through-the-darkness-1999.jpg",
+    "cover_size": "600x600"
+   },
+   "pyro-danzig-777-i-luciferi-2002": {
+    "title": "Danzig 777 I Luciferi",
+    "artist": "Danzig",
+    "year": 2002,
+    "labels": [
+     [
+      "Spitfire Records",
+      "SPT-15204-2"
+     ],
+     [
+      "Evilive",
+      "SPT-15204-2"
+     ]
+    ],
+    "formats": [
+     "CD Album"
+    ],
+    "country": "US",
+    "tracks": [
+     "Unendlich",
+     "Black Mass",
+     "Wicked Pussycat",
+     "God Of Light",
+     "Liberskull",
+     "Dead Inside",
+     "Kiss The Skull",
+     "I Luciferi",
+     "Naked Witch",
+     "Angel Blake",
+     "The Coldest Sun",
+     "Halo Goddess Bone",
+     "Without Light, I Am"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/master/28278",
+    "cover": "pyro-danzig-777-i-luciferi-2002.jpg",
+    "cover_size": "600x596"
+   },
+   "pyro-danzig-live-on-the-black-hand-side-2001": {
+    "title": "Live On The Black Hand Side",
+    "artist": "Danzig",
+    "year": 2001,
+    "labels": [
+     [
+      "Restless Records",
+      "73750-2"
+     ],
+     [
+      "Evilive",
+      "73750-2"
+     ]
+    ],
+    "formats": [
+     "CD Album"
+    ],
+    "country": "US",
+    "tracks": [
+     "Irvine Meadows '92",
+     "Godless",
+     "Left Hand Black",
+     "How The Gods Kill",
+     "Dirty Black Summer",
+     "Pain In The World",
+     "Evil Thing",
+     "Halloween II",
+     "Not Of This World",
+     "Seattle Center Arena '94",
+     "Killer Wolf",
+     "Little Whip",
+     "Going Down To Die",
+     "Bringer Of Death",
+     "Stalker Song",
+     "Long Way Back From Hell",
+     "Satans Child 2000 L.A. - NE - S.F.",
+     "Satan's Child",
+     "7th House",
+     "Five Finger Crawl",
+     "Unspeakable",
+     "Lilin",
+     "Her Black Wings",
+     "It's Coming Down",
+     "Do You Wear The Mark",
+     "Until You Call On The Dark",
+     "Deep",
+     "Belly Of The Beast",
+     "She Rides",
+     "Twist Of Cain",
+     "Mother"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/master/444871",
+    "cover": "pyro-danzig-live-on-the-black-hand-side-2001.jpg",
+    "cover_size": "591x585"
+   },
+   "pyro-d-generation-wasted-years-1993": {
+    "title": "Wasted Years",
+    "artist": "D Generation",
+    "year": 1993,
+    "labels": [
+     [
+      "Sympathy For The Record Industry",
+      "SFTRI 281"
+     ]
+    ],
+    "formats": [
+     "Vinyl 7\",45 RPM"
+    ],
+    "country": "US",
+    "tracks": [
+     "Wasted Years",
+     "Waiting For The Next Big Parade"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/release/1265229",
+    "cover": "pyro-d-generation-wasted-years-1993.jpg",
+    "cover_size": "600x597"
+   },
+   "pyro-d-generation-no-way-out-1993": {
+    "title": "No Way Out",
+    "artist": "D Generation",
+    "year": 1993,
+    "labels": [
+     [
+      "Rockville",
+      "Rock6108-7"
+     ]
+    ],
+    "formats": [
+     "Vinyl 7\",Single"
+    ],
+    "country": "US",
+    "tracks": [
+     "No Way Out",
+     "Guitar Mafia"
+    ],
+    "pyro_credits": [
+     [
+      "Howie Pyro",
+      "Bass"
+     ]
+    ],
+    "discogs": "https://www.discogs.com/master/358850",
+    "cover": "pyro-d-generation-no-way-out-1993.jpg",
+    "cover_size": "500x515"
+   }
+  },
+  "danzig_6_66": "Not on Danzig 6:66 Satan's Child (1999) - Discogs credits him on Live on the Black Hand Side (2001) and 777 I Luciferi (2002) only.",
+  "intoxica": "Intoxica Radio with Howie Pyro: web radio (not WFMU per the obituaries found; one Discogs release 'Origin Peoples presents: Intoxica Radio (Halloween Special)', 2017). WFMU link not confirmed.",
+  "videos_on_film": [
+   {
+    "id": "5owZfoGwdAs",
+    "title": "D Generation - No Way Out (official video)",
+    "channel": "Official D Generation",
+    "real": true
+   },
+   {
+    "id": "iKCWkGIIAz8",
+    "title": "D Generation - No Way Out (live TV show)",
+    "channel": "enquantoamorte",
+    "real": true
+   },
+   {
+    "id": "sWKjJsXddlI",
+    "title": "D Generation live at Tower Records, West Village, NYC, 15 Jul 1996",
+    "channel": "PsYcHoTVVideos",
+    "real": true
+   },
+   {
+    "id": "73BWPho7Qa8",
+    "title": "D Generation at The Abyss, Houston, 22 Nov 1996",
+    "channel": "HouseRight Productions",
+    "real": true
+   },
+   {
+    "id": "Hqzm_q-9gu8",
+    "title": "Walter Lure & Howie Pyro - The Blessed (live video)",
+    "channel": "Damaged Goods",
+    "real": true
+   },
+   {
+    "id": "b5ryldUFjuc",
+    "title": "The Blessed - Deep Frenzy (1979, Daven Records)",
+    "channel": "DavenRecords",
+    "real": "audio with stills - check"
+   },
+   {
+    "id": "FET9y2RmzCI",
+    "title": "Howie Pyro's punk rock origin story (interview)",
+    "channel": "Frumess",
+    "real": true
+   },
+   {
+    "id": "ZKo8xIFjOw4",
+    "title": "Howie Pyro's Sick Sick World - 'Spook Shows' (S1E3)",
+    "channel": "Grease Rhythm TV",
+    "real": true
+   }
+  ],
+  "videos_check": "All 8 embed (YouTube oEmbed 200). Not watched through: confirm Howie is on screen in the two 1996 concert clips before use.",
+  "sources": [
+   "https://www.discogs.com/artist/315281-Howie-Pyro",
+   "https://www.rollingstone.com/music/music-news/howie-pyro-dgeneration-dead-obit-1343029/",
+   "https://blabbermouth.net/news/howie-pyro-d-generation-co-founder-and-former-danzig-bassist-dead-at-61",
+   "https://en.wikipedia.org/wiki/Howie_Pyro"
+  ]
+ }
+}
